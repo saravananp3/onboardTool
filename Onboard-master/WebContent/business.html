@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Dashboard Template for Bootstrap</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="dashboard.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+</li>
+                        <li>
+                            <a href="#">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-right">
+</form>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li class="active">
+                            <a href="index.html">Home </a>
+                        </li>
+                        <li>
+                            <a href="functional.html">Functional</a>
+                        </li>
+                        <li>
+                            <a href="component.html">Component</a>
+                        </li>
+                        <li>
+                            <a href="#">Technoical</a>
+                        </li>
+                        <li>
+                            <a>Business</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h1 class="page-header">Intake</h1>
+                    <h3>Business</h3>
+                    <div class="panel-group" id="panels1"> 
+                        <div class="panel panel-default"> 
+                            <div class="panel-heading"> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1">Screen/Report Requirements</a> </h4> 
+                            </div>                             
+                            <div id="collapse1" class="panel-collapse collapse"> 
+                                <div class="panel-body">
+                                    <form role="form"> 
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">This
+                                                Page should have an option of add/modify/delete button
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">After
+                                                the process of development, Business Analyst will be adding the requirements
+                                                that are specific to the application with respect to it screens/Reports
+                                            </label>                                             
+                                        </div>                                         
+                                    </form>
+                                </div>                                 
+                            </div>                             
+                        </div>
+                        <div class="panel panel-default"> 
+                            <div class="panel-heading"> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">Archive Requirements</a> </h4> 
+                            </div>                             
+                            <div id="collapse2" class="panel-collapse collapse in"> 
+                                <div class="panel-body">
+                                    <form role="form"> 
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Current Legal holds on the application data must be applied to the application's archived data to override the Retention schedule
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Data from application must be retained based on the Client Retention schedule
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Archived Data encrypted must remain encrypted for data classified as Personal Sensitive or Personal Confidential
+                                            </label>
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Data Localization Laws must be followed where relevant
+                                                <br>
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Storage must be in a secure zone with minimal access
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Data Masking must be applied to archived data classified as Business Restricted
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">&nbsp;The System supports archiving structured formats maintaining the relationship to blobs                       
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">&nbsp;The System has tools to reconstruct the data in its original format                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System allows for user viewing of blob data in its original format in relationship to its structured data                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox"> Archived data maintains its field properties and formats from the source system (i.e. decimals, %, commas, .00x, YYY-MM-DD) to display values defined in Views and schemas                      
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Archived data maintains its field types from the source system (i.e. STRING, Integer, CHAR, VCHAR, Date) to display values defined in Views and schemas                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">At least one search field must be completed to retrieve data                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System supports archiving special characters as found in source data to include Foreign characters                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System supports archiving Foreign Language data and maintains the Language in the archive                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System Maintains table relationships                       
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System Maintains CLOBs from source systems
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System supports archiving unstructured formats such as word, excel, PowerPoint, pdf                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Access to the Archive is role based and controlled through Active Directory                      
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Archived data must be accessible for use in existing BI data warehouses or AA Reporting solutions after XML data has been converted
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Archived Master data marked as Master Data from the source system will     maintain is data relationships
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System allows for configuration of data views                       
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Completeness Control - record level check (The number of records sent from the Application are compared to the number of records posted to the target.)                       
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Error Handling Control - record level check (During the load, records deemed as errors based on program logic will be written to an exception log in their entirety)                        
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Archived Master data must maintain data relationships to application's archived data                        
+                                            </label>                                             
+                                        </div>
+                                    </form>
+                                </div>                                 
+                            </div>                             
+                        </div>
+                        <div class="panel panel-default"> 
+                            <div class="panel-heading"> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">System Requirements</a> </h4> 
+                            </div>                             
+                            <div id="collapse3" class="panel-collapse collapse"> 
+                                <div class="panel-body">
+                                    <form role="form"> 
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System supports metadata management and indexing
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System provides advanced search tools to include data parameters and the standard search tools
+                                            </label>                                             
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">Based on search parameters, data can be exported out of the system for analysis
+                                            </label>
+                                        </div>
+                                        <div class="checkbox"> 
+                                            <label class="control-label"> 
+                                                <input type="checkbox">The System allows for configuration of data views. Archive Screen/views can be configured to allow archive users to view data in a format similar to the legacy application
+                                                <br>
+                                            </label>                                             
+                                        </div>                                         
+                                    </form>
+                                </div>                                 
+                            </div>                             
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default">Cancel</button>                     
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="Mamba/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>
