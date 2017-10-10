@@ -129,8 +129,10 @@ if(rs.next())
         </div>
         <div class="col-sm-2">
           <div class="well">
+          <a href="archive_view.jsp">
            <center>
            <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </a>
           </div>
         </div>
       </div>

@@ -220,6 +220,16 @@ $(function() {
         arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
     }
 </script>
+<script>
+function call()
+{
+	var f=document.loginForm;
+    f.method="post";
+    f.action='priority_details';
+    f.submit();
+	}
+
+</script>
   
  
     
@@ -244,7 +254,7 @@ Statement st1 = conn.createStatement();
 Statement st2 = conn.createStatement();
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query1= "SELECT * from app_prior where prj_name='"+name+"'";
+String query1= "SELECT * from app_prior where prj_name='"+name+"' order by priorities";
 ResultSet rs1 = st1.executeQuery(query1);
 String query2= "select count(prj_name) As total from app_prior where prj_name='"+name+"'";
 ResultSet rs2 = st2.executeQuery(query2);
@@ -461,15 +471,19 @@ while(rs1.next()){
 
         <tr>
         
-          <td class="edit_row" style="cursor:pointer" id="11"><%=rs1.getString("proj_name") %></td>
-          <td class="row_s" style="cursor:pointer" id="22"><%=rs1.getString("complexity") %></td>
-          <td class="row_t" style="cursor:pointer" id="33"><%=rs1.getString("est_db_size") %></td>
-          <td class="row_d" style="cursor:pointer" id="44"><%=rs1.getString("est_cst") %></td>
+          <td class="edit_row" style="cursor:pointer" id="11"><span class="test"><input type="text" id="project_name<%=i%>" name="project_name<%=i%>" value="<%=rs1.getString("proj_name") %>"></span></td>
+          <td class="row_s" style="cursor:pointer" id="22"><span class="test"><input type="text" id="complexity<%=i%>" name="complexity<%=i%>" value="<%=rs1.getString("complexity") %>"></span></td>
+          <td class="row_t" style="cursor:pointer" id="33"><span class="test"><input type="text" id="est_db_size<%=i%>" name="est_db_size<%=i%>" value="<%=rs1.getString("est_db_size") %>"></span></td>
+          <td class="row_d" style="cursor:pointer" id="44"><span class="test"><input type="text" id="est_cst<%=i%>" name="est_cst<%=i%>" value="<%=rs1.getString("est_cst") %>"></span></td>
+          <% if(Integer.parseInt(rs1.getString("priorities"))>0){ %>
           <td class="row_d" id="55">
-          <span class="test"><input type="text" name="prior" id="5" value="Priority <%=rs2.getInt("total")-i %>" disabled></span>
-         <input type="button" value="Submit" 
-  onclick="ggg(5)" />
+          <span class="test"><input type="text" name="priority<%=i %>" id="priority<%=i %>" value="<%=rs1.getString("priorities")%>"></span>
         </td>
+        <%}else{ %>
+          <td class="row_d" id="55">
+          <span class="test"><input type="text" name="priority<%=i %>" id="priority<%=i %>" value="<%=rs2.getInt("total")-i %>"></span>
+        </td>
+        <%} %>
        
          
          
@@ -483,22 +497,7 @@ i++;
         
     </tbody>
     </table>
-    
-    <script>
-  
-
-    function ggg(id)
-    {
-    	for(i=0;i<4;i++){
-    	alert(id);
-    	
-    	
-    	}
-    	document.getElementById("5").disabled=false;	
-    }
-
-
-    </script>
+ 
       <script>
 // JavaScript script from: http://coursesweb.net/javascript/
 
@@ -527,7 +526,7 @@ for(var i=0; i<edit_row.length; i++) {
                                                                                             
                                    
                                    
-<button type="button" class="btn btn-primary" >Submit</button>     
+<button type="button" class="btn btn-primary" onclick="call()" >Submit</button>     
      
                     <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
                                       <% } 

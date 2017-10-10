@@ -45,6 +45,28 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+    
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> 
+    
+    <script type="text/javascript">
+
+    
+    $(function() {
+	    $( "#RO_DATE" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+    
+    $(function() {
+	    $( "#SME_DATE" ).datepicker({
+	        format: "dd/mm/yyyy",
+	        autoclose: true
+	    });
+	});
+   </script>
+    
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
@@ -274,7 +296,9 @@ $(function() {
         arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
     }
 </script>
-  
+  <script >
+  var bala=10;
+  </script>
  
     
 </head>
@@ -286,6 +310,7 @@ $(function() {
 <%
 double ans=0.0;
 try {
+	
 	String det=(String)session.getAttribute("theName");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
@@ -456,11 +481,9 @@ document.loginForm.est_archive.value =2500;
 document.loginForm.est_scrn.value ="<=30";
 z=5;
 }
-var qqq="<%=appno%>"
+var qqq=3;
 document.loginForm.est_db_size.value=(z*0.1*document.loginForm.strg_est.value).toFixed(2);
-window.alert(document.loginForm.est_archive.value);
 document.loginForm.est_hrs.value =(qqq*document.loginForm.est_archive.value).toFixed(2);
-window.alert(document.loginForm.est_hrs.value);
 a=(100*document.loginForm.est_hrs.value);
 document.loginForm.est_cst.value="$"+a.toFixed(2);
 b=document.loginForm.est_db_size.value*document.loginForm.IA_lic_cst.value;
@@ -644,15 +667,15 @@ for (var i = 0 ; i < x.length ; i ++)
                         <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
                          <ul>
                                 <li id="xxx">Parameters</li>
-                                <li id="xxz"><a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">Archival Complexity Calculation</a></li>
-                                <li id="xxy"><a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors1();">Archival Cost Estimate</a></li>
+                                <li id="xxz">Archival Complexity Calculation</li>
+                                <li id="xxy">Archival Cost Estimate</li>
                                 
                             </ul>
                         </li>
-                        <li><a href="sss.jsp">Application-Prioritized</a></li>
+                        <li><a href="applnprior.jsp">Application-Prioritized</a></li>
                         
                        <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
+                      
 
                     </ul>
                 </li>
@@ -824,7 +847,7 @@ for (var i = 0 ; i < x.length ; i ++)
                     <div class="panel-group" id="panels1"> 
                                                 <div class="panel panel-default">
         <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Parameters   </a> </h4> 
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" onclick="switchColors0();"> Parameters   </a> </h4> 
                             </div>  
                                                        
                             <div id="collapse1" class="panel-collapse collapse in"> 
@@ -869,7 +892,7 @@ for (var i = 0 ; i < x.length ; i ++)
     
                                <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">    Archival Complexity Calculation    </a> </h4> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">    Archival Complexity Calculation    </a> </h4> 
                             </div>                             
                             <div id="collapse2" class="panel-collapse collapse"> 
                                 <div class="panel-body text-left">
@@ -1005,7 +1028,7 @@ for(var i=0; i<edit_row.length; i++) {
                                        
                                        <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Complexity</label>                                             
-                                            <select id="complexity" class="form-control" name="complexity" onChange="againupdate()">
+                                            <select id="complexity" class="form-control" name="complexity" onChange="updatesum()">
                                                 <option></option>
                                                 <option>Low</option>                                                 
                                                 <option>Low to Medium</option>
@@ -1016,44 +1039,44 @@ for(var i=0; i<edit_row.length; i++) {
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="formInput664">Read Only Date</label>                                             
-                                            <input type="text" class="form-control" id="est_archive"  name="read_date" onChange="againupdate()" value="<%=rs.getString("read_date")%>"> 
+                                            <input type="text" class="form-control" id="RO_DATE"  name="read_date" onChange="updatesum()" value="<%=rs.getString("read_date")%>"> 
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="formInput664">SME Date</label>                                             
-                                            <input type="text" class="form-control" id="est_archive"  name="sme_date" onChange="againupdate()" value="<%=rs.getString("sme_date")%>"> 
+                                            <input type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()" value="<%=rs.getString("sme_date")%>"> 
                                         </div>          
                                         
                                     <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Archival Service Effort</label>                                             
-                                            <input type="text" class="form-control" id="est_archive"  name="est_archive" onChange="againupdate()" value="<%=rs.getString("est_archive")%>"> 
+                                            <input type="text" class="form-control" id="est_archive"  name="est_archive" onChange="updatesum()" value="<%=rs.getString("est_archive")%>"> 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Screen</label>                                             
-                                            <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="againupdate()" value="<%=rs.getString("est_scrn")%>" > 
+                                            <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" value="<%=rs.getString("est_scrn")%>" > 
                                         </div>
                                      <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Size of xDB</label>                                             
-                                            <input type="text" class="form-control" id="est_db_size"  name="est_db_size" onChange="againupdate()" value="<%=rs.getString("est_db_size")%>" > 
+                                            <input type="text" class="form-control" id="est_db_size"  name="est_db_size" onChange="updatesum()" value="<%=rs.getString("est_db_size")%>" > 
                                         </div>
                                       <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Hours</label>                                             
-                                            <input type="text" class="form-control" id="est_hrs"  name="est_hrs" onChange="againupdate()"  value="<%=rs.getString("est_hrs")%>" >  
+                                            <input type="text" class="form-control" id="est_hrs"  name="est_hrs" onChange="updatesum()"  value="<%=rs.getString("est_hrs")%>" >  
                                         </div>
                                                                                 <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Total Service Cost</label>                                             
-                                            <input type="text" class="form-control" id="est_cst"  name="est_cst" onChange="againupdate()" value="<%=rs.getString("est_cst")%>" > 
+                                            <input type="text" class="form-control" id="est_cst"  name="est_cst" onChange="updatesum()" value="<%=rs.getString("est_cst")%>" > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total IA License Cost</label>                                             
-                                            <input type="text" class="form-control" id="ttl_IA_cst"  name="ttl_IA_cst" onChange="againupdate()" value="<%=rs.getString("ttl_IA_cst")%>" > 
+                                            <input type="text" class="form-control" id="ttl_IA_cst"  name="ttl_IA_cst" onChange="updatesum()" value="<%=rs.getString("ttl_IA_cst")%>" > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total Infrastructure Storage Cost</label>                                             
-                                            <input type="text" class="form-control" id="ttl_infra_cst"  name="ttl_infra_cst" onChange="againupdate()" value="<%=rs.getString("ttl_infra_cst")%>" > 
+                                            <input type="text" class="form-control" id="ttl_infra_cst"  name="ttl_infra_cst" onChange="updatesum()" value="<%=rs.getString("ttl_infra_cst")%>" > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total Info Archive Product Maintenance Cost for 5 years</label>                                             
-                                            <input type="text" class="form-control" id="ttl_IA_prdct_cst"  name="ttl_IA_prdct_cst" onChange="againupdate()"  value="<%=rs.getString("ttl_IA_prdct_cst")%>" > 
+                                            <input type="text" class="form-control" id="ttl_IA_prdct_cst"  name="ttl_IA_prdct_cst" onChange="updatesum()"  value="<%=rs.getString("ttl_IA_prdct_cst")%>" > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total</label>                                             
@@ -1070,7 +1093,7 @@ for(var i=0; i<edit_row.length; i++) {
                         
                                <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">    Archival Cost Estimate    </a> </h4> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors1();">    Archival Cost Estimate    </a> </h4> 
                             </div>                             
                             <div id="collapse3" class="panel-collapse collapse"> 
                                 <div class="panel-body text-left">
@@ -1139,9 +1162,9 @@ for(var i=0; i<edit_row.length; i++) {
                                                                                             
                                    
                                    
-<button type="button" class="btn btn-primary" onclick="OnButton1()">Save</button>
+<button type="button" class="btn btn-primary" onclick="OnButton2()">Save</button>
 
-        <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='sss.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
+        <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='applnprior.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
                             
      
                     <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
