@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -92,14 +94,31 @@ public class Project extends HttpServlet {
 		          preparedStmt.setString (7, Execdate);
 		          preparedStmt.setString   (8, Hyperdate);
 		          preparedStmt.setString (9, Enddate);
-		      
-		          
-		          		          
-		          
-		          
-
-		          // execute the preparedstatement
 		          preparedStmt.execute();
+		          
+		          String query1="select * from archive_details";
+		          Statement st1 = conn.createStatement();
+				     ResultSet rs1 = st1.executeQuery(query1);
+				     while(rs1.next())
+				     {
+				    	 
+				    	 String query2="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				    	 PreparedStatement preparedStmt2 = conn.prepareStatement(query2);
+				          preparedStmt2.setInt (1,rs1.getInt(1));
+				          preparedStmt2.setInt (2,rs1.getInt(2));
+				          preparedStmt2.setString (3,rs1.getString(3));
+				          preparedStmt2.setString (4,rs1.getString(4));
+				          preparedStmt2.setString (5,rs1.getString(5));
+				          preparedStmt2.setString (6,rs1.getString(6));
+				          preparedStmt2.setString (7,rs1.getString(7));
+				          preparedStmt2.setString (8,rs1.getString(8));
+				          preparedStmt2.setString (9,rs1.getString(9));
+				          preparedStmt2.setString (10,rs1.getString(13));
+				          preparedStmt2.setString (11,rs1.getString(10));
+				          preparedStmt2.setString (12,rs1.getString(11));
+				          preparedStmt2.setString (13,projectname);
+				          preparedStmt2.execute(); 
+				     }
 		          
 		          conn.close();
 		        }

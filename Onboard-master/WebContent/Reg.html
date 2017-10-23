@@ -29,30 +29,29 @@
 	<section class="container">
 			<section class="login-form">
 				<form method="post" action="reg.jsp" role="login">
-					<img src="assets/images/logo1.png" class="img-responsive" alt="" />
-					<input type="text" name="userid" placeholder="Username" required class="form-control input-lg" />
-					<input type="password" name="pwd" placeholder="Password" required class="form-control input-lg" />
-					<input type="password" name="cnfpwd" placeholder="Confirm Password" required class="form-control input-lg" />
-					<input type="text" name="fname" placeholder="Firstname" required class="form-control input-lg" />
-					<input type="text" name="lname" placeholder="Lastname" required class="form-control input-lg" />
-					<input type="text" name="email" placeholder="Email" required class="form-control input-lg" />
-					<input type="text" name="proj" placeholder="Project Name" required class="form-control input-lg" />
+				<div style="background-color:lightgrey;"><label style="align:center;">Registration Page</label></div><br/>
+						<label>First Name :</label><input type="text" name="fname" placeholder="Firstname" required class="form-control input-lg" />
+					<label>Last Name :</label><input type="text" name="lname" placeholder="Lastname" required class="form-control input-lg" />
+							<label>Email :</label><input type="text" name="email" placeholder="Email" required class="form-control input-lg" />
+							<label>Confirm Email :</label><input type="text" name="email" placeholder="Confirm Email" required class="form-control input-lg" />
+					<label>Roles :</label><br/>
+				
+                                            <label class="Data Source"> 
+                                                <input type="checkbox" name="data_source" value="Administartor">Administartor</label><br />
+                                            <label class="Data Source">     <input type="checkbox" name="data_source" value="SME" >SME</label><br />
+                                                <label class="Data Source"> <input type="checkbox" name="data_source" value="BA" >BA 
+                                                </label>  <br />                          
+                                     
+					<label>User Id :</label><input type="text" name="email" placeholder="user id" required class="form-control input-lg" />
+					<label>Password :</label><input type="password" name="pwd" placeholder="Password" required class="form-control input-lg" />
+					<label>Confirm Password :</label><input type="password" name="cnfpwd" placeholder="Confirm Password" required class="form-control input-lg" />
+					<label>Projects :</label><input type="text" name="proj" placeholder="Project Name" required class="form-control input-lg" />
 					
-					<select id="role" name="role" class="form-control input-lg">
-<option value="Admin">Admin</option>
-<option value="SME">SME</option>
-<option value="BA">BA</option>
-</select>
-					<input type="text" name="workphone" placeholder="Workphone"  class="form-control input-lg" />
-					<input type="text" name="company" placeholder="Company"  class="form-control input-lg" />
+				
 					<button type="submit" name="go" class="btn btn-lg btn-primary btn-block" onclick="window.location= 'Login.html';">Register</button>
-					<div>
-						Already Registered?<a href="Login.html">Login</a>
-					</div>
+					
 				</form>
-				<div class="form-links">
-					<a href="#">www.platform3solutions.com</a>
-				</div>
+				
 			</section>
 	</section>
 	

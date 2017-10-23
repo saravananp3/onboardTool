@@ -368,6 +368,8 @@ ResultSet rs3 = st3.executeQuery(query3);
                  </li>
                 </ul>
                 </li>
+                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li> 
                 
                
                           </ul>
@@ -494,6 +496,7 @@ while(rs1.next()){
 </label>
                                             <input type="text" class="form-control" id="formInput198" placeholder="Application Name" name="appname" >
                                             <input type="hidden" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs3.getString("projectname") %>" >
+                                     
                                                                                <input type="submit" class="btn btn-primary btn pull-left" name ="p1" value="Add">
                 
                             

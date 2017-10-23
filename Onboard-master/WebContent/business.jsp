@@ -533,6 +533,8 @@ ResultSet rs4 = st4.executeQuery(query4);
                  </li>
                 </ul>
                 </li>
+                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li> 
                 
                
                           </ul>
@@ -566,51 +568,34 @@ ResultSet rs4 = st4.executeQuery(query4);
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Initiate</label></center>
+  <center><label >Requirements</label></center>
   <div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Plan</label></center>
+  <center><label >Development</label></center>
   <div class="progress">
   <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Execute</label></center>
+  <center><label >Testing</label></center>
   <div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Hypercare</label></center>
+ <center><label >Deployement</label></center>
  <div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
-<br/><br/>
-<link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700" rel="stylesheet" type="text/css">
 
-  
-<div class="container checkout">
-  <ul class="checkout-bar">
 
-    <li class="visited first">
-      <a href="#">Requirements</a>
-    </li>
-    
-    <li class="active">Development</li>
-    
-    <li class="next">Testing</li>
-     <li class="">Deployment</li>
-
-       
-  </ul>
-</div>
 
 <br/><br/><br/>
 
@@ -725,80 +710,80 @@ for (var i = 0 ; i < x.length ; i ++)
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Notice Period for Expiration of Contract</label>
-            <input placeholder="Description" id="date" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Description" id="date" name="noticeperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Contract Value of Application</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="contractvalue" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Business Units Involved
+                                                <input type="checkbox" name="businessunits">Business Units Involved
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">&nbsp;Read Only Date                       
+                                                <input type="checkbox" name="rodch">&nbsp;Read Only Date                       
                                             </label>                                             
                                         </div>
                                         
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Read Only Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="date" name="rod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Comment</label>
-            <input placeholder="Description" id="date" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Description" id="date" name="cmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">If the applications transitions has dependencies?</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="hasdep" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>    
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">What is the date Range of this Data?</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="date" name="daterange" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Size of Database</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Location of Data</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="dataloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Site Location of Data</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="siteloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>
          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Does the application needs archival?</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name="needarch" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -808,20 +793,20 @@ for (var i = 0 ; i < x.length ; i ++)
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Reason</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="archreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Comments</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="archcmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Is this Application's data the source of Truth?
+                                                <input type="checkbox" name="sourceoft">Is this Application's data the source of Truth?
                                             </label>                                             
                                         </div> 
                                         
@@ -843,38 +828,38 @@ for (var i = 0 ; i < x.length ; i ++)
                                       <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Record code of Application</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="reccode" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
                                         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Trigger Date</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="triggerdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Period of Retention</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="retentionperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Table Name/s where Retention need to apply</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="retentiontable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <label text-align:"left">Retention Requirement</label>
-    										<input type="file" name="file" size="60" />
+    										<input type="file" name="file" name="retentionname" size="60" />
     														
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Name of the Legal Retention & e-Discovery SME</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="legalholds" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
@@ -883,7 +868,7 @@ for (var i = 0 ; i < x.length ; i ++)
       
          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Does any Records have legal holds/Tax Holds or any indication?</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name="wholegal" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -893,13 +878,13 @@ for (var i = 0 ; i < x.length ; i ++)
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Who or what entity provided legal or tax hold identification</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="wholegal" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Should this application's data be aechived?</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name="archexp" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -929,7 +914,7 @@ for (var i = 0 ; i < x.length ; i ++)
                                     <form role="form"> 
                                          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Is this application's been used for BI report?</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name=""useforBI"" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -961,130 +946,130 @@ for (var i = 0 ; i < x.length ; i ++)
                                     <form role="form"> 
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Account Credit Card
+                                                <input type="checkbox" name="creditacc">Account Credit Card
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Account Number - Financial
+                                                <input type="checkbox" name="financialacc">Account Number - Financial
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Date of Birth
+                                                <input type="checkbox" name="dob">Date of Birth
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Driver's License Number
+                                                <input type="checkbox" name="driverlic">Driver's License Number
                                                 <br>
                                             </label>                                             
                                         </div> 
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Email Address
+                                                <input type="checkbox" name="email">Email Address
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">family Status
+                                                <input type="checkbox" name="family">family Status
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Gender
+                                                <input type="checkbox" name="gender">Gender
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Geo Location
+                                                <input type="checkbox" name="geoloc">Geo Location
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Image/Video
+                                                <input type="checkbox" name="img">Image/Video
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Income
+                                                <input type="checkbox" name="income">Income
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">IP Address
+                                                <input type="checkbox" name="ipadrs">IP Address
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Martial Status
+                                                <input type="checkbox" name="martialstatus">Martial Status
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Mobile Device Id
+                                                <input type="checkbox" name="mobid">Mobile Device Id
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Name
+                                                <input type="checkbox" name="name">Name
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Phone Number
+                                                <input type="checkbox" name="phno">Phone Number
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Physical/Mailing Address
+                                                <input type="checkbox" name="mailadrs">Physical/Mailing Address
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Physical Description
+                                                <input type="checkbox" name="physic">Physical Description
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Race/Ethnicity
+                                                <input type="checkbox" name="race">Race/Ethnicity
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Religion
+                                                <input type="checkbox" name="religion">Religion
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Sexual Preference
+                                                <input type="checkbox" name="sexualpref">Sexual Preference
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">SSN/SIN
+                                                <input type="checkbox" name="ssn">SSN/SIN
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Others
+                                                <input type="checkbox" name="others">Others
                                             </label>                                             
                                         </div>
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Brief Explanation</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="expl" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <h5>Security Information:
                                          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Does the application have localization requirement/ regulations</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name="localreq" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1093,7 +1078,7 @@ for (var i = 0 ; i < x.length ; i ++)
                                         </div> 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">List of Countries where localization requirement/ regulations apply</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name="localcountry" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1102,7 +1087,7 @@ for (var i = 0 ; i < x.length ; i ++)
                                         </div> 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Are the Localization requirements/regulations enforced with infrastructure or geofencing</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name="localinf" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1112,13 +1097,13 @@ for (var i = 0 ; i < x.length ; i ++)
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Infrastructure Localization enforcement, please list the locations of the datacenters</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="datacenters" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">External access required for archived data</label>                                             
-                                            <select id="formInput26" class="form-control" name="reason_for_access" > 
+                                            <select id="formInput26" class="form-control" name="extaccess" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1128,42 +1113,42 @@ for (var i = 0 ; i < x.length ; i ++)
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Describe who or what external entity needs access </label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="who" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">User Name</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="uname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Role Description</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="roledesc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Reason for Access</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="accreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Frequency of Access</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="date" name="accfreq" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Additional System Requirements</label>
-            <input placeholder="Countries/Modules" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Countries/Modules" id="date" name="sysreq" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 

@@ -98,10 +98,11 @@ if(rs.next())
 <div class="row">
         <div class="col-sm-2" height="100" width="100">
           <div class="well">
-           
+           <a href="Registration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
+           </a>
           </div>
         </div>
         <div class="col-sm-2">

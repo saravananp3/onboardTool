@@ -57,7 +57,6 @@ public class IntsantApp extends HttpServlet {
 		         
 				     int i=0;
 				
-		 
 		          // the mysql insert statement
 		          String query = " insert into appinfo (appname,prjname)"
 		            + " values (?,?)";
@@ -71,21 +70,42 @@ public class IntsantApp extends HttpServlet {
 		        
 		          preparedStmt.execute();
 		          
-		          String query1 = "select appname from appinfo where prjname='Project1'"; 
+		          String query1 = "select appname from appinfo where prjname='"+prjname+"'"; 
 		          Statement st = conn.createStatement();
 				     ResultSet rs = st.executeQuery(query1);
+				     int x=20;
+				     int y=1;
+				     int cnt=0;
 				     
 				     while(rs.next())
 				     {
+				    	 cnt=0;
 				    	 System.out.println("Application name :"+rs.getString(1));
+				    	 
+					     
 				    	 String query2="select seq_num from archive_exec where name='Closure' order by seq_num";
 				    	 Statement st2 = conn.createStatement();
 					     ResultSet rs2 = st2.executeQuery(query2);
-					      if(rs2.next()){
-				    	 String query3="update archive_exec set seq_num=seq_num+63 where seq_num>="+rs2.getInt(1);
+					     String query7="select id from archive_exec where name='Execute'";
+				    	 Statement st7 = conn.createStatement();
+					     ResultSet rs7 = st7.executeQuery(query7);
+					      if(rs2.next() && rs7.next()){
+					    	  
+					    	  String query9="select name from archive_exec where level=2 and seq_num>22 and seq_num<"+rs2.getInt(1);
+						    	 Statement st9 = conn.createStatement();
+							     ResultSet rs9 = st9.executeQuery(query9);
+							     while(rs9.next()){
+							    	 if(rs9.getString(1).equals(rs.getString(1)))
+							    	 {
+							    		cnt++; 
+							    	 }}
+							     
+					    	  
+					    	  if(cnt==0){
+				    	 String query3="update archive_exec set seq_num=seq_num+62 where seq_num>="+rs2.getInt(1);
 				    	 PreparedStatement preparedStmt1 = conn.prepareStatement(query3);
 				    	 preparedStmt1.execute();
-				    	 String query4="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs)"+ " values(?,?,?,?,?,?,?,?,?,?)";
+				    	 String query4="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				    	 PreparedStatement preparedStmt2 = conn.prepareStatement(query4);
 				          preparedStmt2.setInt (1, rs2.getInt(1));
 				          preparedStmt2.setInt (2, 2);
@@ -97,14 +117,17 @@ public class IntsantApp extends HttpServlet {
 				          preparedStmt2.setString (8,"");
 				          preparedStmt2.setString (9,"");
 				          preparedStmt2.setString (10,"");
+				          preparedStmt2.setString (11,String.valueOf(x));
+				          preparedStmt2.setString (12,rs7.getString(1));
+				          preparedStmt2.setString (13,prjname);
 				          preparedStmt2.execute();
-				          int count=rs2.getInt(1);
+				         int count=rs2.getInt(1);
 				          String query5 = "select * from details"; 
 				          Statement st5 = conn.createStatement();
 						     ResultSet rs5 = st5.executeQuery(query5);
 				         while(rs5.next()){
-				        	 System.out.println(count);
-				        	 String query6="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs)"+ " values(?,?,?,?,?,?,?,?,?,?)";
+				        	//"" System.out.println(count);
+				        	 String query6="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 						    		 PreparedStatement preparedStmt3 = conn.prepareStatement(query6);
 						          preparedStmt3.setInt (1,++count);
 						          preparedStmt3.setInt (2,rs5.getInt(1));
@@ -116,9 +139,20 @@ public class IntsantApp extends HttpServlet {
 						          preparedStmt3.setString (8,"");
 						          preparedStmt3.setString (9,"");
 						          preparedStmt3.setString (10,"");
+						          preparedStmt3.setString (11,String.valueOf(y)+rs5.getString(3));
+						          if(rs5.getInt(1)==3)
+						          preparedStmt3.setString (12,String.valueOf(x));
+						          else
+						        	  preparedStmt3.setString (12,String.valueOf(y)+rs5.getString(4));
+						          preparedStmt3.setString (13,prjname);
 						          preparedStmt3.execute();
-				          }
-					      }
+				          
+					      }}
+					      x++;
+					      y++;
+					      
+				     }
+					      
 				     }
 		          
 		         

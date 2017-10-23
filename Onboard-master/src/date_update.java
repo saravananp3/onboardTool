@@ -51,15 +51,15 @@ public class date_update extends HttpServlet {
 		 try
 		   {
 			 
-			
+			 String prjname=request.getParameter("prjname");
 				 int level1=0,level=0,seq=0;
-				 int sno=0;
+				 int sno=0,cnt=0,cnt1=0;
 				 Date d1,d2,d3,d4,d5,d6;
 		     String myDriver = "org.gjt.mm.mysql.Driver";
 		     String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
 		     Class.forName(myDriver);
 		     Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-		     String query = "select * from archive_exec order by seq_num";
+		     String query = "select * from archive_exec where projects='"+prjname+"' order by seq_num";
 		     Statement st = conn.createStatement();
 		     ResultSet rs = st.executeQuery(query);
 		     SimpleDateFormat fmt = new SimpleDateFormat("MM/dd/yyyy");
@@ -74,8 +74,13 @@ public class date_update extends HttpServlet {
 		     ArrayList<String> actual_enddate = new ArrayList<String>();
 		     ArrayList<String> planned_hours = new ArrayList<String>();
 		     ArrayList<String> actual_hours = new ArrayList<String>();
+		     
+		     ArrayList<Date> pln_st = new ArrayList<Date>();
+		       ArrayList<Date> pln_ed = new ArrayList<Date>();
+		       ArrayList<Date> act_st = new ArrayList<Date>();
 		     String temp;
 		     int i=0,index=0;
+		     System.out.println("hello.. ");
 		     while(rs.next())
 		     {    	  
 		  	  seq_num.add(rs.getInt(1));
@@ -98,7 +103,8 @@ public class date_update extends HttpServlet {
 		  String actual_start=request.getParameter("actual_start");
 		  String planned_hrs=request.getParameter("plan_hrs");
 		  String actual_hrs=request.getParameter("actual_hrs");
-		     System.out.println("ab  "+actual_hrs);
+		  	
+		  
 		     for(int j=0;j<i;j++)
 		     {
 		  	   if (task_name.get(j).equals(tasks_name))
@@ -107,18 +113,64 @@ public class date_update extends HttpServlet {
 		  		   seq=seq_num.get(j);
 		  		   index=j;
 		  		   level1=level;
-		  		   System.out.println("seq no"+seq+"level1 : "+level1);
-		  		 plan_startdate.set(index,plan_start);
+
+		  		   plan_startdate.set(index,plan_start);
 		  		 plan_enddate.set(index,plan_end);
 		  		 actual_startdate.set(index,actual_start);
-		  		planned_hours.set(index,planned_hrs);
-		  		actual_hours.set(index,actual_hrs);
+		  		 
 		  		   for(int k=index-1;k>=0;k--)
 		  		   {
-		  			//   System.out.println("Inner loop level1 : "+level1);
-		  			   //System.out.println("seq "+k);
+		  			 for(int w=k;w>=0;w--)
+		                {
+		                           
+		                           if (level_num.get(w)==level1-1 || level_num.get(w)==1)
+		                                 break;
+		                           else if (level_num.get(w)==level1)
+		                           {
+		                           	if(!plan_startdate.get(w).equals(""))
+		                                      pln_st.add(fmt.parse(plan_startdate.get(w)));
+		                           	if(!plan_enddate.get(w).equals(""))
+		                                pln_ed.add(fmt.parse(plan_enddate.get(w)));
+		                           	if(!actual_startdate.get(w).equals(""))
+		                                act_st.add(fmt.parse(actual_startdate.get(w)));
+		                                      continue;
+		                                      
+		                           }                          
+		                }
+		                          for(int w=k+1;w<200;w++)
+		                {
+		                        	  System.out.println(plan_startdate.get(w));
+		                           if (level_num.get(w)==level1+1 || level_num.get(w)==1 || level_num.get(w)==level-1)
+		                                  break;
+		                           else if (level_num.get(w)==level1)
+		                           {
+		                           	if(!plan_startdate.get(w).equals(""))
+		                                      pln_st.add(fmt.parse(plan_startdate.get(w)));
+		                           	if(!plan_enddate.get(w).equals(""))
+		                                pln_ed.add(fmt.parse(plan_enddate.get(w)));
+		                           	if(!actual_startdate.get(w).equals(""))
+		                                act_st.add(fmt.parse(actual_startdate.get(w)));
+		                                      continue;
+		                                      
+		                           }
+		                  
+		               
+		                }
+		                         /* for(int oi=0;oi<6;oi++){
+		                        	  String ww=fmt.format(pln_st.get(oi));
+		                             System.out.println(ww);
+		                          }*/
+		                          Date pminDate = Collections.min(pln_st);
+		                          String plnstart=fmt.format(pminDate);
+		                          Date pmaxDate = Collections.max(pln_ed);
+		                          String plnend=fmt.format(pmaxDate);
+		                          Date aminDate = Collections.min(act_st);
+		                          String actulstart=fmt.format(aminDate);
+		                          System.out.println(plnstart);
+				  		
 		  			   if (level_num.get(k)==0)
 		  			   {
+		  				  System.out.println("level0.. ");
 		  				   break;
 		  			   }
 		  			   else if (level_num.get(k)>=level1)
@@ -129,68 +181,67 @@ public class date_update extends HttpServlet {
 		  			   }
 		  			   else
 		  			   {
-		  				//   System.out.println("seqnumber :"+k+"  "+level1);
-		  				System.out.println("daate "+plan_start);
-		  				 d1=fmt.parse(plan_start);
-		  				 if(plan_startdate.get(k).equals(""))
+		  				 	if(plan_startdate.get(k).equals(""))
 		  					{
-		  					 plan_startdate.set(k,plan_start);
-		  					 System.out.println("bala murugan");
+		  				 		plan_startdate.set(k,plan_start);
+		  				 		//System.out.println("bala murugan");
 		  					}
-		  				 else
-		  				 {
-		  				d2 = fmt.parse(plan_startdate.get(k));
-		  			if(d1.compareTo(d2)<0)
-		  				   {
-		  					 plan_startdate.set(k,plan_start);
-		  					System.out.println("min Date.. "+d1);
-		  				   }
-		  				 }
-	  				d3=fmt.parse(plan_end);
-	  				if(plan_enddate.get(k).equals(""))
-	  				{
-	  					plan_enddate.set(k,plan_end);
-	  				}
-	  				else{
-	  				 d4 = fmt.parse(plan_enddate.get(k));
-		  				 if(d3.compareTo(d4)>0)
-		  				   {
-		  					 plan_enddate.set(k,plan_end);
-		  					System.out.println("max Date.. "+d3);
-		  				   }
-	  				}
-		  				d5=fmt.parse(actual_start);
-		  				if(actual_startdate.get(k).equals(""))
-		  				{
-		  					actual_startdate.set(k,actual_start);
-		  				}
-		  				else{
-		  				 d6 = fmt.parse(actual_startdate.get(k));
-		  				 if(d5.compareTo(d6)<0)
-		  				   {
-		  					 actual_startdate.set(k,actual_start);
-		  					System.out.println(" actual Date.. "+d5);
-		  				   }
-		  				}
-		  				
-		  				   
-		  				  
-		  				   
-		  				   level1=level1-1;
-		  				// System.out.println("updated level :"+level1);
-		  				   
-		  			   }
+		  				 	else
+		  				 	{
+		  				 			plan_startdate.set(k,plnstart);
+		  				 	}
+
+		  				 		
+		  				 	if(plan_enddate.get(k).equals(""))
+		  				 	{
+		  				 		plan_enddate.set(k,plan_end);
+		  				 	}
+		  				 	else
+		  				 	{
+		  				 		plan_enddate.set(k,plnend);
+		  				 	}
+	  				     		if(actual_startdate.get(k).equals(""))
+	  				     		{
+	  				     			actual_startdate.set(k,actual_start);
+	  				     		}
+	  				     		else
+	  				     		{
+	  				     				actual_startdate.set(k,actulstart);
+	  				     		}
+	  				     		if(planned_hours.get(k).equals("")||actual_hours.get(k).equals(""))
+	  				     		{
+	  				     			planned_hours.set(k,planned_hrs);
+	  				     			actual_hours.set(k,actual_hrs);
+	  				     		}
+	  				     		else
+	  				     		{
+	  				     			if(planned_hours.get(index).equals("")||actual_hours.get(index).equals(""))
+	  				     			{
+	  				     				planned_hours.set(k,Integer.toString(Integer.parseInt(planned_hrs)+Integer.parseInt(planned_hours.get(k))));
+		  				  				actual_hours.set(k,String.valueOf((Integer.parseInt(actual_hrs)+Integer.parseInt(actual_hours.get(k)))));
+	  				     			}
+	  				     			else
+	  				     			{
+	  				     		 planned_hours.set(k,Integer.toString(Integer.parseInt(planned_hrs)+(Integer.parseInt(planned_hours.get(k))-Integer.parseInt(planned_hours.get(index)))));
+	  				  				actual_hours.set(k,String.valueOf((Integer.parseInt(actual_hrs)+(Integer.parseInt(actual_hours.get(k))-Integer.parseInt(actual_hours.get(index))))));
+	  				     			}}
+			  				   level1=level1-1;
+		  		 			   }
+
 		  		   }
+		  		 planned_hours.set(index,planned_hrs);
+			  		actual_hours.set(index,actual_hrs);
 		  	   }
-		  	   
-		  	   
+		  
 		     }
 		     
-		     for(int n=0;n<i;n++)
+		    
+
+	   for(int n=0;n<i;n++)
 			   {
 			 //  System.out.println(seq_num.get(n)+"  "+level_num.get(n)+"  "+task_name.get(n)+"  "+plan_startdate.get(n)+" "+plan_enddate.get(n)+" "+actual_startdate.get(n));
 			 
-		    	 st.executeUpdate("update archive_exec set act_srt_date='"+actual_startdate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"'");
+		    	 st.executeUpdate("update archive_exec set act_srt_date='"+actual_startdate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"' and projects='"+prjname+"'");
  // System.out.println("update archive_exec set act_srt_date='"+actual_startdate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"'");
   
 			   }

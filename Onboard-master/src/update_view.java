@@ -49,6 +49,8 @@ public class update_view extends HttpServlet {
 		String pln_end_dat[]=new String[200];
 		String progres[]=new String[200];
 		String hr[]=new String[200];
+		String plan_hrs[]=new String[200];
+		
 		
 	
 		
@@ -62,6 +64,8 @@ act_end_dat[i]=request.getParameter("act_end_date"+i);
 pln_srt_dat[i]=request.getParameter("pln_srt_date"+i);
 pln_end_dat[i]=request.getParameter("pln_end_date"+i);
 hr[i]=request.getParameter("hrs"+i);
+plan_hrs[i]=request.getParameter("phrs"+i);
+
 }
 	System.out.println(seqnum[0]+" "+name[0]);
 		
@@ -89,8 +93,9 @@ hr[i]=request.getParameter("hrs"+i);
           String pln_srt_date=pln_srt_dat[a];
           String pln_end_date=pln_end_dat[a];
           String hrs=hr[a];
+          String pln_hrs=plan_hrs[a];
  
-      st.executeUpdate("update archive_exec set name='"+nam+"',mem_ass='"+mem_ass+"',act_srt_date='"+act_srt_date+"',act_end_date='"+act_end_date+"',pln_srt_date='"+pln_srt_date+"',pln_end_date='"+pln_end_date+"',hours='"+hrs+"' where seq_num='"+seq_num+"'");
+      st.executeUpdate("update archive_exec set name='"+nam+"',mem_ass='"+mem_ass+"',act_srt_date='"+act_srt_date+"',act_end_date='"+act_end_date+"',pln_srt_date='"+pln_srt_date+"',pln_end_date='"+pln_end_date+"',hours='"+hrs+"',planned_hrs='"+pln_hrs+"' where seq_num='"+seq_num+"'");
   	
            }
           
