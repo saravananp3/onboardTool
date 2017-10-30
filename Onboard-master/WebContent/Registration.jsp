@@ -13,9 +13,80 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	
-	
-	<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/dropdown.js"></script>
+  <style>
+span.multiselect-native-select {
+	position: relative
+}
+span.multiselect-native-select select {
+	border: 0!important;
+	clip: rect(0 0 0 0)!important;
+	height: 1px!important;
+	margin: -1px -1px -1px -3px!important;
+	overflow: hidden!important;
+	padding: 0!important;
+	position: absolute!important;
+	width: 1px!important;
+	left: 50%;
+	top: 30px
+}
+.multiselect-container {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0
+}
+.multiselect-container .input-group {
+	margin: 5px
+}
+.multiselect-container>li {
+	padding: 0
+}
+.multiselect-container>li>a.multiselect-all label {
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group label {
+	margin: 0;
+	padding: 3px 20px 3px 20px;
+	height: 100%;
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group-clickable label {
+	cursor: pointer
+}
+.multiselect-container>li>a {
+	padding: 0
+}
+.multiselect-container>li>a>label {
+	margin: 0;
+	height: 100%;
+	cursor: pointer;
+	font-weight: 400;
+	padding: 3px 0 3px 30px
+}
+.multiselect-container>li>a>label.radio, .multiselect-container>li>a>label.checkbox {
+	margin: 0
+}
+.multiselect-container>li>a>label>input[type=checkbox] {
+	margin-bottom: 5px
+}
+.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px
+}
+.form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
+	padding: 3px 20px 3px 40px
+}
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
+	margin-left: -20px;
+	margin-right: 0
+}
+</style>
 	<style>
 	@import "font-awesome.min.css";
 @import "font-awesome-ie7.min.css";
@@ -95,6 +166,11 @@
     border-bottom: 0;
   }
 }
+			#table-scroll {
+  height:400px;
+  overflow:auto;  
+  margin-top:20px;
+}
 	</style>
 	
 	
@@ -107,6 +183,11 @@
 {
 color:red;
 font-size:10px;
+}
+th
+{
+color:#00BFFF;
+text-align:center;
 }
 	
 /* Style the tab */
@@ -152,6 +233,59 @@ div.tab button.active {
     height: 720px;
 }
 	</style>
+	
+	<script>
+	function calls()
+	{
+		    var x = document.getElementById('myDiv1');
+		    if (x.style.display === 'none') {
+		        x.style.display = 'block';
+		    } 
+		    else {
+		        x.style.display = 'none';
+		    }
+		
+	}
+	</script>
+	<script>
+	var har=[];
+	var his=[];
+	function oop(name)
+	{
+		
+		if(har.indexOf(name)>=0)
+			{
+			var i = har.indexOf(name);
+			if(i != -1) {
+				har.splice(i, 1);
+			}
+			}
+		else
+			har.push(name);
+	}
+	function ops(name)
+	{
+		
+		if(his.indexOf(name)>=0)
+			{
+			var i = his.indexOf(name);
+			if(i != -1) {
+				his.splice(i, 1);
+			}
+			}
+		else
+			his.push(name);
+	}
+	
+	
+	function servlet_call()
+	{
+		var f=document.loginForm;
+	    f.method="post";
+	    f.action='deactivate?values='+har+'&values2='+his;
+	    f.submit(); 
+	}
+	</script>
 	<script>
 	
 	function openCity(evt, cityName) {
@@ -176,10 +310,67 @@ div.tab button.active {
 	}
 	
 	</script>
+	<script>
+	var arr="";
+	function ooo()
+	{
+		var e=document.getElementById("dates-field2");
+	for(i=0;i<9;i++)
+		{
+		if(e[i].selected==true){
+			arr=arr+(e[i].value);
+		}
+		}
+	
+		}
+	function qq()
+	{
+		 var f=document.loginForm;
+		    f.method="post";
+		    f.action="sendMail?roless="+arr;
+		    f.submit(); 
+	}
+	</script>
+	<script>
+	var pops="";
+	function del(cnt)
+	{
+	for(var i=0;i<cnt;i++){
+		if(document.getElementsByName('delete_check')[i].checked){
+			var name=document.getElementsByName('name_user'+i)[0].value;
+				pops=pops+name+",";	
+				
+		}
+	}
+	}
+	function ww()
+	{
+		var f=document.loginForm;
+	    f.method="post";
+	    f.action='delete_users?array='+pops;
+	    f.submit(); 	
+	}
+	
+	</script>
 
 </head>
 
 <body>
+<%@ page import="java.sql.*"%>
+		<%@ page import="javax.sql.*"%>
+		
+<%
+Class.forName("com.mysql.jdbc.Driver"); 
+java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
+String query="select * from user_details";
+String query1="select * from user_details";
+Statement s=conn.createStatement();
+Statement s1=conn.createStatement();
+ResultSet rs=s.executeQuery(query);
+ResultSet rs1=s1.executeQuery(query1);
+int count=0;
+%>
+<form class="form-signin" name="loginForm" method="post">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -209,13 +400,14 @@ div.tab button.active {
         </nav>
      
         </div>
+        
 			
 			<div class="tab"><br/><br/><br/>
-			 <button class="tablinks" onclick="openCity(event, 'config')"><span class="glyphicon glyphicon-list-alt"></span><b>User Config</b></button>
-  <button class="tablinks" onclick="openCity(event, 'London')"><span class="glyphicon glyphicon-list-alt"></span><b>Registration</b></button>
+			 <button class="tablinks" onclick="openCity(event, 'config')"><span class="glyphicon glyphicon-list-alt"></span><b><br/>User Config</b></button>
+   <button class="tablinks" onclick="openCity(event, 'list')"><span class="glyphicon glyphicon-list-alt"></span><b>User List</b></button>
   <button class="tablinks" onclick="openCity(event, 'Paris')"><span class="glyphicon glyphicon-cog"></span><b>Settings</b></button>
 </div>
-<div id="config" class="tabcontent">
+<div id="config"  class="tabcontent">
  <div class="container">
  <br/><br/><br/><br/><br/>
 	<div class="col-lg-12 well">
@@ -224,8 +416,9 @@ div.tab button.active {
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-5 form-group">
+							
 								<label>First Name<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text"  class="form-control" id="fname" onChange="call()" required>
+								<input type="text"  class="form-control" id="fname" required >
 							</div>
 							</div>
 							<div class="row">
@@ -236,15 +429,30 @@ div.tab button.active {
 						</div>		
 						<div class="row">			
 							<div class="col-sm-5 form-group">
-								<label>Roles<span class="glyphicon glyphicon-asterisk"></span></label>
-								  <div class="checkbox"> 
-                                            <label class="Data Source"> 
-                                                <input type="checkbox" name="data_source" value="regulardb" ><b>Admin</b></label>
-                                            <label class="Data Source">     <input type="checkbox" name="data_source" value="erp"><b>SME</b></label>
-                                                <label class="Data Source"> <input type="checkbox" name="data_source" value="product"><b>BA</b></label>                         
-                                        </div>
-							</div>	
-							</div>
+								 <label class="col-md-4 control-label" for="rolename">Role Name</label>
+    <div class="col-lg-13">
+        <select id="dates-field2" class="multiselect-ui form-control" multiple="multiple" name="myOption">
+            <option value="ArchivalAdmin">archival admin</option>
+            <option value="LegacyTechnicalSME">legacy technical sme</option>
+            <option value="LegacyBusinessSME">legacy business sme</option>
+            <option value="ArchivalProgramManager">archival program manager</option>
+            <option value="ArchivalProjectManager">archival project manager</option>
+            <option value="LegacyProgram/ProjectManager">legacy program/project manager</option>
+            <option value="ArchivalBusinessAnalyst">archival business analyst</option>
+            <option value="ArchivalTechnicalLead">archival technical lead</option>
+            <option value="ArchivalDeveloper">archival developer</option>
+            <option value="TestLead">test lead</option>
+        </select>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+$(function() {
+    $('.multiselect-ui').multiselect({
+        includeSelectAllOption: true
+    });
+});
+</script>
 							<div class="row">
 							<div class="col-sm-5 form-group">
 								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
@@ -258,98 +466,97 @@ div.tab button.active {
 					</div>		
 					</div>
 					
-					<button type="button" class="btn btn-lg btn-info" onclick="window.location.href='mails'">Send Invites</button>					
+					<button type="button" class="btn btn-lg btn-info" onclick="ooo();qq()">Send Invites</button>					
 					</div>
 				</form> 
 				</div>
 	</div>
 	</div>
 </div>
-<script>
-function call(){
-	var x=document.getElementById('reg_fname');
-	var y=document.getElementById('reg_lname');
-	var z=document.getElementById('reg_email');
-x.value=document.getElementById('fname').value;
-y.value=document.getElementById('lname').value;
-z.value=document.getElementById('email').value;
-}
-</script>
-<div id="London" style="display:none;" class="tabcontent">
- <div class="container">
+
+
+<div id="list" style="display:none"  class="tabcontent">
+ <div class="container" >
     <br/><br/><br/><br/>
-	<div class="col-lg-12 well">
+    <h1>LIST OF USERS</h1>
+    <br/><br/>
+	<div class="col-lg-12" style="background-color:#FFFAFA;" >
+	
 	<div class="row">
 				<form>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="float:right"><input type="button" class="btn btn-primary" onclick="calls()" value="SearchUser">&nbsp;&nbsp;</span>
+&nbsp;<input type="textbox" id="myDiv1"  style="float:right;border-radius:5px;display:none;" >&nbsp;
+</h3>
+
 					<div class="col-sm-12">
-						<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>First Name</label>
-								<input type="text" id="reg_fname"  class="form-control">
-							</div>
-							<div class="col-sm-5 form-group">
-								<label>Last Name</label>
-								<input type="text" id="reg_lname"  class="form-control" >
-							</div>
-						</div>					
-						<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Username</label>
-								<input type="text" class="form-control">
-							</div>	
-							<div class="col-sm-5 form-group">
-								<label>Roles</label>
-								  <div class="checkbox"> 
-                                            <label class="Data Source"> 
-                                                <input type="checkbox" name="data_source" value="regulardb" ><b>Admin</b></label>
-                                            <label class="Data Source">     <input type="checkbox" name="data_source" value="erp"><b>SME</b></label>
-                                                <label class="Data Source"> <input type="checkbox" name="data_source" value="product"><b>BA</b></label>                         
-                                        </div>
-							</div>	
-							</div>
-							<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Email</label>
-								<input type="text" id="reg_email" class="form-control">
-							</div>
-							</div>
-							<div class="row">	
-							<div class="col-sm-5 form-group">
-								<label>Confirm Email</label>
-								<input type="text" class="form-control">
-							</div>		
-						</div>
-						
-						<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Password</label>
-								<input type="text"  class="form-control">
-							</div></div>
-							<div class="row">		
-							<div class="col-sm-5 form-group">
-								<label>Confirm Password</label>
-								<input type="text"  class="form-control">
-							</div>	</div>
-							<div class="row">					
-					<div class="col-sm-5 form-group">
-						<label>Projects</label>
-						<input type="text"  class="form-control">
-					</div>		
-					</div>
-					
-					<button type="button" class="btn btn-lg btn-info">Submit</button>					
-					</div>
-				</form> 
-				</div>
-	</div>
-	</div>
+					<div class="table-responsive" id="table-scroll"> 
+  <table  class="js-dynamitable table table-bordered" id="myTable">
+  <thead style="background-color:white">
+  <th></th>
+  <th>UserName</th>
+  <th>FirstName</th>
+  <th>LastName</th>
+  <th>Email</th>
+  <th>Role</th>
+  <th>Status</th>
+  <th>Deactivate</th>
+  </thead>
+  <tbody>
+  <%
+  while(rs.next()){ 
+	  if(rs.getString(9).equals("active")){
+		  if(count%2!=0){
+  %>
+  <tr style="background-color:white">
+  <%}else {%>
+  <tr style="background-color:#B0C4DE">
+  <%} %>
+  <td><input type="checkbox" name="delete_check" id="delete_check" ></td>
+  <td><%= rs.getString(1) %></td>
+  <td><%= rs.getString(2) %></td>
+  <td><%= rs.getString(3) %></td>
+  <td><%= rs.getString(4) %></td>
+  <td><%= rs.getString(7) %></td>
+  <td style="background-color:lightgreen"><%=rs.getString(9) %></td>
+  <td style="text-align:center;"><input type="checkbox" name="chek" onChange="oop('<%=rs.getString(1) %>');"></td>
+  <td style="display:none;"><input type="text" name="name_user<%=count%>" value="<%= rs.getString(1) %>"></td>
+  </tr> 
+  <%
+  count++;
+  } else{
+		  %>
+		  <tr style="background-color:#ccc;cursor:not-allowed;">
+		  <td><input type="checkbox" name="delete_check" id="delete_check" ></td>
+		  <td><%= rs.getString(1) %></td>
+		  <td><%= rs.getString(2) %></td>
+		  <td><%= rs.getString(3) %></td>
+		  <td><%= rs.getString(4) %></td>
+		  <td><%= rs.getString(7) %></td>
+		<td> <%=rs.getString(9) %></td>
+    <td style="text-align:center;background-color:white;"><input type="checkbox" name="chek" onChange="ops('<%=rs.getString(1) %>')" checked></td>
+		  <td style="display:none;"><input type="text" name="name_user<%=count%>" value="<%= rs.getString(1) %>"></td>
+		  </tr> 
+ <%  
+ count++;
+ }
+  }
+%>  
+  
+  </tbody>
+  </table>
+ <button class="btn btn-primary" onclick="openCity(event, 'config')">Add User</button>&nbsp;&nbsp;
+  <input type="button" class="btn btn-primary" onclick="del(<%=count %>);ww();" value="DeleteUser">&nbsp;&nbsp;
+  <input type="button" class="btn btn-primary" onclick="servlet_call();" value="submit">
+  </div>
+</div>
+</form>
+</div>
+</div>
+</div>
 </div>
 
-<div id="Paris" style="display:none;" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
 
+</form>
 			
 </body>
 </html>

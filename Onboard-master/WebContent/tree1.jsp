@@ -562,7 +562,7 @@ function switchColors0()
 	element.style.marginRight = "70px";
 	element.style.boxSizing = "content-box";
 	element.style.borderColor = "#999";
-	element.style.background="#d1d1d1"; 
+	element.style.background="blue"; 
 	var list = document.getElementsByTagName("OL")[0];
 	var x=list.getElementsByTagName("LI");
 	for (var i = 0 ; i < x.length ; i ++)  

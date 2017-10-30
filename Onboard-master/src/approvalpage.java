@@ -1,27 +1,23 @@
 
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.util.Properties;
-
-import javax.mail.*;
-import javax.mail.internet.*;
-
-import org.omg.CORBA.Environment;
-@WebServlet("/mails")
-public class mails extends HttpServlet {
+/**
+ * Servlet implementation class approvalpage
+ */
+@WebServlet("/approvalpage")
+public class approvalpage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public mails() {
+    public approvalpage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,8 +34,13 @@ public class mails extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nam[]=new String[10];
 		
-
-			}
+		for(int i=0;i<3;i++)
+		 nam[i]=request.getParameter("user_name"+i);
+		
+		for(int i=0;i<3;i++)
+			System.out.println(nam[i]);
+	}
 
 }

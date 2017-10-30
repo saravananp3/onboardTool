@@ -3,12 +3,9 @@
   <display-name>onboard</display-name>
   <welcome-file-list>
     <welcome-file>Login.html</welcome-file>
-    <welcome-file>Login.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-    <description>Location to store uploaded file</description>
+    <description>Location to zstore uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
          C:\apache-tomcat-9.0.0.M20\webapps\data\

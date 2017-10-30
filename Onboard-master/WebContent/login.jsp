@@ -16,7 +16,14 @@ String pwd=request.getParameter("pwd");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 Statement st= con.createStatement(); 
-ResultSet rs=st.executeQuery("select * from users where user='"+userid+"'"); 
+ResultSet rs=st.executeQuery("select * from user_details where uname='"+userid+"'"); 
+if(userid.equals("admin")&&pwd.equals("admin"))
+{
+
+    String redirectURL = "project.jsp";
+
+    response.sendRedirect(redirectURL);
+}else{
 if(rs.next()) 
 { 
 if((rs.getString(2).equals(pwd))) 
@@ -35,6 +42,9 @@ else
 out.println("Invalid username or password or you are not authenticated"); 
 } 
 } 
+else
+	out.println("Invalid username or password or you are not authenticated"); 	
+}
 %>
 
 </body>
