@@ -225,7 +225,7 @@ function call()
 {
 	var f=document.loginForm;
     f.method="post";
-    f.action='priority_details';
+    f.action='updatedb';
     f.submit();
 	}
 
@@ -249,7 +249,7 @@ Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strut
 String query3 = "select * from projinfo where id = "+det;
 
 String name=request.getParameter("name");
-
+session.setAttribute("newname",name);
 Statement st1 = conn.createStatement();
 Statement st2 = conn.createStatement();
 Statement st3 = conn.createStatement();

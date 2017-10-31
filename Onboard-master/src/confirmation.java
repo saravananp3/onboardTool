@@ -37,6 +37,7 @@ public class confirmation extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		Properties props = new Properties();
+	  String email=request.getParameter("email");
 				
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -56,7 +57,7 @@ public class confirmation extends HttpServlet {
 		message.setFrom(new InternetAddress("balamurugan@platform3solutions.com"));
 		
 		message.setRecipients(Message.RecipientType.TO,
-		InternetAddress.parse("balamuruganm96@gmail.com"));
+		InternetAddress.parse(email));
 		message.setSubject("Testing Subject");
 		message.setText("Thanks for Registering...Please click on the below link\n\nhttp://localhost:8080/onboard/Login.html");
 

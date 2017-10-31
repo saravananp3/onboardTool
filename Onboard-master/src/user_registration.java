@@ -39,7 +39,7 @@ public class user_registration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String roles=request.getParameter("reg_roles");
+		String roles=request.getParameter("role");
 	String username=request.getParameter("reg_uname");
 	String firstname=request.getParameter("reg_fname");
 	String lastname=request.getParameter("reg_lname");
@@ -48,7 +48,6 @@ public class user_registration extends HttpServlet {
 	String pass=request.getParameter("reg_pwd");
 	String confmpass=request.getParameter("reg_cpwd");
 	String projects=request.getParameter("reg_projects");
-	
 	  try
       {
         // create a mysql database connection
@@ -85,7 +84,7 @@ public class user_registration extends HttpServlet {
         System.err.println("Got an exception!");
         System.err.println(e.getMessage());
       }		
-	  response.sendRedirect("confirmation");
+	  response.sendRedirect("confirmation?email="+email);
 	}
 
 }

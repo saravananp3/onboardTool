@@ -1,3 +1,5 @@
+
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -15,16 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class sendMail
+ * Servlet implementation class reset_password
  */
-@WebServlet("/sendMail")
-public class sendMail extends HttpServlet {
+@WebServlet("/reset_password")
+public class reset_password extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public sendMail() {
+    public reset_password() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,12 +35,10 @@ public class sendMail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String rol=request.getParameter("roless");
-		String email=request.getParameter("mailid");
-		System.out.println(rol);
-		System.out.println(email);
-		Properties props = new Properties();
+String email=request.getParameter("email");
+	Properties props = new Properties();
 				
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -59,8 +59,8 @@ public class sendMail extends HttpServlet {
 		
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
-		message.setSubject("Testing Subject");
-		message.setText("http://localhost:8080/onboard/user_reg.jsp?role="+rol);
+		message.setSubject("Recovery Mail");
+		message.setText("http://localhost:8080/onboard/reset_pass.jsp?email="+email);
 
 		Transport.send(message);
 
@@ -70,13 +70,13 @@ public class sendMail extends HttpServlet {
 		throw new RuntimeException(e);
 		}
 
-
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

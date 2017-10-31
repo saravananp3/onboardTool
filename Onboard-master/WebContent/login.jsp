@@ -26,7 +26,7 @@ if(userid.equals("admin")&&pwd.equals("admin"))
 }else{
 if(rs.next()) 
 { 
-if((rs.getString(2).equals(pwd))) 
+if((rs.getString(5).equals(pwd))) 
 { 
 	
 	

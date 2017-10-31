@@ -23,6 +23,11 @@
     <link href="http://cdn-na.infragistics.com/igniteui/2017.1/latest/css/structure/infragistics.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
 <style>
+.glyphicon.glyphicon-asterisk
+{
+color:red;
+font-size:10px;
+}
 span.multiselect-native-select {
 	position: relative
 }
@@ -92,13 +97,46 @@ span.multiselect-native-select select {
 </style>
 <script src="js/dropdown.js"></script>
 <script>
-	function www()
+	function www(x)
 	{
-		window.alert("registration");
-		var f=document.loginForm;
-	    f.method="post";
-	    f.action='user_registration';
-	    f.submit(); 
+	var ffname=document.getElementById("reg_fname").value;
+	var llname=document.getElementById("reg_lname").value;
+	var uuname=document.getElementById("reg_uname").value;
+	var email=document.getElementById("reg_email").value;
+	var pass=document.getElementById("reg_pwd").value;
+	var cpass=document.getElementById("reg_cpwd").value;
+	var confirm=document.getElementById("reg_cemail").value;
+	if(ffname==="" || llname==="" || uuname==="")
+		window.alert("fill the mandatory fileds");
+	else
+		{
+		if((email.includes("@"))&&(email.includes(".com")))
+		{
+			 var confirm=document.getElementById("reg_cemail").value;
+			 if(email==confirm)
+				 {
+			if(pass.length>8)
+				{
+				  if(pass==cpass)
+					  {
+					  var f=document.loginForm;
+					    f.method="post";
+					    f.action='user_registration?role='+x;
+					    f.submit(); 
+					  }
+				  else
+					  window.alert("password and confirm password are not same");
+				}
+			else
+				window.alert("password must be less than 8 letters");
+				 }
+			 else
+				 window.alert("both emails are not same");
+		
+		}
+		else
+			window.alert("Invalid Email");
+	}
 	}
 </script>
 </head>
@@ -144,18 +182,18 @@ String role=request.getParameter("role");
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-5 form-group">
-								<label>First Name</label>
-								<input type="text" name="reg_fname"  class="form-control">
+								<label>First Name<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" name="reg_fname" id="reg_fname"   class="form-control" >
 							</div>
 							<div class="col-sm-5 form-group">
-								<label>Last Name</label>
-								<input type="text" name="reg_lname"  class="form-control" >
+								<label>Last Name<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" name="reg_lname" id="reg_lname"  class="form-control" >
 							</div>
 						</div>					
 						<div class="row">
 							<div class="col-sm-5 form-group">
-								<label>Username</label>
-								<input type="text" class="form-control" name="reg_uname">
+								<label>Username<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" class="form-control" name="reg_uname" id="reg_uname">
 							</div>	
 							<div class="col-sm-5 form-group">
 								<div class="form-group">
@@ -168,26 +206,26 @@ String role=request.getParameter("role");
 							</div>
 							<div class="row">
 							<div class="col-sm-5 form-group">
-								<label>Email</label>
-								<input type="text" name="reg_email" class="form-control">
+								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" name="reg_email" id="reg_email" class="form-control">
 							</div>
 							</div>
 							<div class="row">	
 							<div class="col-sm-5 form-group">
-								<label>Confirm Email</label>
-								<input type="text" class="form-control" name="reg_cemail">
+								<label>Confirm Email<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" class="form-control" name="reg_cemail" id="reg_cemail">
 							</div>		
 						</div>
 						
 						<div class="row">
 							<div class="col-sm-5 form-group">
-								<label>Password</label>
-								<input type="password"  class="form-control" id="reg_pwd">
+								<label>Password<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="password"  class="form-control" name="reg_pwd" id="reg_pwd">
 							</div></div>
 							<div class="row">		
 							<div class="col-sm-5 form-group">
-								<label>Confirm Password</label>
-								<input type="password"  class="form-control" name="reg_cpwd">
+								<label>Confirm Password<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="password"  class="form-control" name="reg_cpwd" id="reg_cpwd">
 							</div>	</div>
 							<div class="row">					
 					<div class="col-sm-5 form-group">
@@ -196,7 +234,7 @@ String role=request.getParameter("role");
 					</div>		
 					</div>
 					
-					<button type="button" class="btn btn-lg btn-info" onclick="www();ee();">Submit</button>
+					<button type="button" class="btn btn-lg btn-info" onclick="www('<%=role %>');">Submit</button>
 										
 					</div> 
 				</div>

@@ -325,10 +325,23 @@ div.tab button.active {
 		}
 	function qq()
 	{
-		 var f=document.loginForm;
-		    f.method="post";
-		    f.action="sendMail?roless="+arr;
-		    f.submit(); 
+		var ffname=document.getElementById("fname").value;
+		var llname=document.getElementById("lname").value;
+		var email=document.getElementById("email_val").value;
+		if(ffname==="" || llname==="" || arr==="")
+			window.alert("fill the mandatory fileds");
+		else
+			{
+			 if((email.includes("@"))&&(email.includes(".com")))
+				{
+				 var f=document.loginForm;
+				    f.method="post";
+				    f.action="sendMail?roless="+arr+"&mailid="+email;
+				    f.submit();
+				}
+			 else
+				 window.alert("Invalid EmailID");
+			}
 	}
 	</script>
 	<script>
@@ -345,10 +358,12 @@ div.tab button.active {
 	}
 	function ww()
 	{
+		
 		var f=document.loginForm;
 	    f.method="post";
 	    f.action='delete_users?array='+pops;
-	    f.submit(); 	
+	    f.submit(); 
+		
 	}
 	
 	</script>
@@ -412,24 +427,23 @@ int count=0;
  <br/><br/><br/><br/><br/>
 	<div class="col-lg-12 well">
 	<div class="row">
-				<form>
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-5 form-group">
 							
 								<label>First Name<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text"  class="form-control" id="fname" required >
-							</div>
+							<input type="text" id="fname" name="fname"  class="form-control" />
+					</div>
 							</div>
 							<div class="row">
 							<div class="col-sm-5 form-group">
 								<label>Last Name<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text"  class="form-control" id="lname" required>
+								<input type="text"  class="form-control" id="lname" >
 							</div>
 						</div>		
 						<div class="row">			
 							<div class="col-sm-5 form-group">
-								 <label class="col-md-4 control-label" for="rolename">Role Name</label>
+								 <label>Role Name<span class="glyphicon glyphicon-asterisk"></span></label>
     <div class="col-lg-13">
         <select id="dates-field2" class="multiselect-ui form-control" multiple="multiple" name="myOption">
             <option value="ArchivalAdmin">archival admin</option>
@@ -456,7 +470,7 @@ $(function() {
 							<div class="row">
 							<div class="col-sm-5 form-group">
 								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text"  class="form-control" id="email" required>
+								<input type="email"  class="form-control" id="email_val" >
 							</div>
 							</div>						
 							<div class="row">					
@@ -468,7 +482,7 @@ $(function() {
 					
 					<button type="button" class="btn btn-lg btn-info" onclick="ooo();qq()">Send Invites</button>					
 					</div>
-				</form> 
+				
 				</div>
 	</div>
 	</div>
@@ -480,7 +494,7 @@ $(function() {
     <br/><br/><br/><br/>
     <h1>LIST OF USERS</h1>
     <br/><br/>
-	<div class="col-lg-12" style="background-color:#FFFAFA;" >
+	<div class="col-lg-12" style="background-color:#FFFAFA;align:middle;" >
 	
 	<div class="row">
 				<form>
