@@ -59,7 +59,7 @@ public class sendMail extends HttpServlet {
 		
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
-		message.setSubject("Testing Subject");
+		message.setSubject("Registration Link");
 		message.setText("http://localhost:8080/onboard/user_reg.jsp?role="+rol);
 
 		Transport.send(message);

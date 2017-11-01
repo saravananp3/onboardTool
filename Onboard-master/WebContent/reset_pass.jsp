@@ -15,14 +15,23 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+<script>
+function call_servlet(x){
+var f=document.loginForm;
+f.method="post";
+f.action='update_pass?email='+x;
+f.submit(); 
+}
+</script>
 </head>
 <body>
+<% String emailid=request.getParameter("email"); %>
 <div class="container">
 <h3>Reset Password</h3><br/>
 				<form method="post" action="update_pass" role="login" name="loginForm">
 					<div class="row"><div class="col-sm-5 form-group"><label>New Password </label><input type="password" name="new_pass"  required class="form-control input-lg" /></div></div>
 					<div class="row"><div class="col-sm-5 form-group"><label>Confirm Password </label><input type="password" name="new_cpass"  required class="form-control input-lg" /></div></div>
-					<button type="submit"  class="btn btn-lg btn-primary">Submit</button>
+					<button type="submit"  class="btn btn-lg btn-primary" onclick="call_servlet('<%=emailid%>');">Submit</button>
 				</form>
 			</div>
 	</div>

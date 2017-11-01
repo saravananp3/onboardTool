@@ -86,10 +86,6 @@ if(rs.next())
         </div>
 
   <br><br>
-<div class="container-fluid bg-3 text-center">
-<div class="container-fluid bg-3 text-center">  
-<div class="container-fluid bg-3 text-center">
-<div class="container-fluid bg-3 text-center">  
  <br>
   
 <br>
@@ -98,11 +94,11 @@ if(rs.next())
 <br><br>
 <br><br>
 <br><br>
-<div class="col-sm-3">
+<div class="col-sm-2">
 </div>
 <div class="col-sm-8">
 <div class="row">
-        <div class="col-sm-2" height="100" width="100">
+        <div class="col-sm-3">
           <div class="well">
            <a href="Registration.jsp">
            <center>
@@ -111,15 +107,15 @@ if(rs.next())
            </a>
           </div>
         </div>
-        <div class="col-sm-2">
-          <div class="well">
+        <div class="col-sm-3">
+          <div class="well" >
           <a href="editproject.jsp">
          <center>
            <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
           </div>
           </a>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="well">
           <a href="firstinsert.jsp">
            <center>
@@ -128,7 +124,7 @@ if(rs.next())
           </div>
           </a>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3" >
           <div class="well">
           <a href="archive_exec_samp.jsp">
            <center>
@@ -136,9 +132,8 @@ if(rs.next())
           </a>
           </div>
         </div>
-      </div>
-<div class="row">
-        <div class="col-sm-2">
+     
+        <div class="col-sm-3">
           <div class="well">
            
            <center>
@@ -146,20 +141,20 @@ if(rs.next())
            </center>
           </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="well">
          <center>
            <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="well">
            <center>
            <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
           </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="well">
            <center>
            <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
@@ -176,19 +171,7 @@ if(rs.next())
 </div>
 </div>
 
-   <center>
-      <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="project.jsp" tabindex="-1">Previous</a>
-    </li>
-
-    <li class="page-item disabled">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</center>
+  
 
 
 					<%

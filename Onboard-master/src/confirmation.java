@@ -58,7 +58,7 @@ public class confirmation extends HttpServlet {
 		
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
-		message.setSubject("Testing Subject");
+		message.setSubject("Registration Successfull");
 		message.setText("Thanks for Registering...Please click on the below link\n\nhttp://localhost:8080/onboard/Login.html");
 
 		Transport.send(message);

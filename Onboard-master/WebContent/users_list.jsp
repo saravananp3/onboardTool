@@ -286,29 +286,7 @@ div.tab button.active {
 	    f.submit(); 
 	}
 	</script>
-	<script>
-	
-	function openCity(evt, cityName) {
-	    // Declare all variables
-	    var i, tabcontent, tablinks;
 
-	    // Get all elements with class="tabcontent" and hide them
-	    tabcontent = document.getElementsByClassName("tabcontent");
-	    for (i = 0; i < tabcontent.length; i++) {
-	        tabcontent[i].style.display = "none";
-	    }
-
-	    // Get all elements with class="tablinks" and remove the class "active"
-	    tablinks = document.getElementsByClassName("tablinks");
-	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].className = tablinks[i].className.replace(" active", "");
-	    }
-
-	    // Show the current tab, and add an "active" class to the link that opened the tab
-	    document.getElementById(cityName).style.display = "block";
-	    evt.currentTarget.className += " active";
-	}
-	</script>
 	<script>
 	var arr="";
 	function ooo()
@@ -323,24 +301,11 @@ div.tab button.active {
 	
 		}
 	function qq()
-	{
-		var ffname=document.getElementById("fname").value;
-		var llname=document.getElementById("lname").value;
-		var email=document.getElementById("email_val").value;
-		if(ffname==="" || llname==="" || arr==="")
-			window.alert("fill the mandatory fileds");
-		else
-			{
-			 if((email.includes("@"))&&(email.includes(".com")))
-				{
-				 var f=document.loginForm;
+	{				 var f=document.loginForm;
 				    f.method="post";
 				    f.action="sendMail?roless="+arr+"&mailid="+email;
 				    f.submit();
-				}
-			 else
-				 window.alert("Invalid EmailID");
-			}
+			
 	}
 	</script>
 	<script>
@@ -366,8 +331,7 @@ div.tab button.active {
 	}
 	
 	</script>
-
-</head>
+		</head>
 
 <body>
 <%@ page import="java.sql.*"%>
@@ -417,76 +381,88 @@ int count=0;
         
 			
 			<div class="tab"><br/><br/><br/>
-			 <button class="tablinks"><span class="glyphicon glyphicon-list-alt"></span><b><br/>User Config</b></button>
-   <button type="button" class="tablinks" onclick="window.location.href='users_list.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b>User List</b></button>
+			 <button type="button" onclick="window.location.href='Registration.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b><br/>User Config</b></button>
+   <button type="button" onclick="window.location.href='users_list.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b>User List</b></button>
 </div>
-<div id="config" class="tabcontent">
- <div class="container">
- <br/><br/><br/><br/><br/>
-	<div class="col-lg-12 well">
+<div id="list" style="display:block;" class="tabcontent">
+ <div class="container" >
+    <br/><br/><br/><br/>
+    <h1>LIST OF USERS</h1>
+    <br/><br/>
+	<div class="col-lg-12" style="background-color:#FFFAFA;align:middle;" >
+	
 	<div class="row">
+				<form>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="float:right"><input type="button" class="btn btn-primary" onclick="calls()" value="SearchUser">&nbsp;&nbsp;</span>
+&nbsp;<input type="textbox" id="myDiv1"  style="float:right;border-radius:5px;display:none;" >&nbsp;
+</h3>
+
 					<div class="col-sm-12">
-						<div class="row">
-							<div class="col-sm-5 form-group">
-							
-								<label>First Name<span class="glyphicon glyphicon-asterisk"></span></label>
-							<input type="text" id="fname" name="fname"  class="form-control" />
-					</div>
-							</div>
-							<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Last Name<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text"  class="form-control" id="lname" >
-							</div>
-						</div>		
-						<div class="row">			
-							<div class="col-sm-5 form-group">
-								 <label>Role Name<span class="glyphicon glyphicon-asterisk"></span></label>
-    <div class="col-lg-13">
-        <select id="dates-field2" class="multiselect-ui form-control" multiple="multiple" name="myOption">
-            <option value="ArchivalAdmin">archival admin</option>
-            <option value="LegacyTechnicalSME">legacy technical sme</option>
-            <option value="LegacyBusinessSME">legacy business sme</option>
-            <option value="ArchivalProgramManager">archival program manager</option>
-            <option value="ArchivalProjectManager">archival project manager</option>
-            <option value="LegacyProgram/ProjectManager">legacy program/project manager</option>
-            <option value="ArchivalBusinessAnalyst">archival business analyst</option>
-            <option value="ArchivalTechnicalLead">archival technical lead</option>
-            <option value="ArchivalDeveloper">archival developer</option>
-            <option value="TestLead">test lead</option>
-        </select>
-    </div>
+					<div class="table-responsive" id="table-scroll"> 
+  <table  class="js-dynamitable table table-bordered" id="myTable">
+  <thead style="background-color:white">
+  <th></th>
+  <th>UserName</th>
+  <th>FirstName</th>
+  <th>LastName</th>
+  <th>Email</th>
+  <th>Role</th>
+  <th>Status</th>
+  <th>Deactivate</th>
+  </thead>
+  <tbody>
+  <%
+  while(rs.next()){ 
+	  if(rs.getString(9).equals("active")){
+		  if(count%2!=0){
+  %>
+  <tr style="background-color:white">
+  <%}else {%>
+  <tr style="background-color:#B0C4DE">
+  <%} %>
+  <td><input type="checkbox" name="delete_check" id="delete_check" ></td>
+  <td><%= rs.getString(1) %></td>
+  <td><%= rs.getString(2) %></td>
+  <td><%= rs.getString(3) %></td>
+  <td><%= rs.getString(4) %></td>
+  <td><%= rs.getString(7) %></td>
+  <td style="background-color:lightgreen"><%=rs.getString(9) %></td>
+  <td style="text-align:center;"><input type="checkbox" name="chek" onChange="oop('<%=rs.getString(1) %>');"></td>
+  <td style="display:none;"><input type="text" name="name_user<%=count%>" value="<%= rs.getString(1) %>"></td>
+  </tr> 
+  <%
+  count++;
+  } else{
+		  %>
+		  <tr style="background-color:#ccc;cursor:not-allowed;">
+		  <td><input type="checkbox" name="delete_check" id="delete_check" ></td>
+		  <td><%= rs.getString(1) %></td>
+		  <td><%= rs.getString(2) %></td>
+		  <td><%= rs.getString(3) %></td>
+		  <td><%= rs.getString(4) %></td>
+		  <td><%= rs.getString(7) %></td>
+		<td> <%=rs.getString(9) %></td>
+    <td style="text-align:center;background-color:white;"><input type="checkbox" name="chek" onChange="ops('<%=rs.getString(1) %>')" checked></td>
+		  <td style="display:none;"><input type="text" name="name_user<%=count%>" value="<%= rs.getString(1) %>"></td>
+		  </tr> 
+ <%  
+ count++;
+ }
+  }
+%>  
+  
+  </tbody>
+  </table>
+ <button class="btn btn-primary" onclick="window.location.href='Registration.jsp'">Add User</button>&nbsp;&nbsp;
+  <input type="button" class="btn btn-primary" onclick="del(<%=count %>);ww();" value="DeleteUser">&nbsp;&nbsp;
+  <input type="button" class="btn btn-primary" onclick="servlet_call();" value="submit">
+  </div>
+</div>
+</form>
 </div>
 </div>
-<script type="text/javascript">
-$(function() {
-    $('.multiselect-ui').multiselect({
-        includeSelectAllOption: true
-    });
-});
-</script>
-							<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="email" class="form-control" id="email_val" >
-							</div>
-							</div>						
-							<div class="row">					
-					<div class="col-sm-5 form-group">
-						<label>Projects</label>
-						<input type="text"  class="form-control">
-					</div>		
-					</div>
-					
-					<button type="button" class="btn btn-lg btn-info" onclick="ooo();qq()">Send Invites</button>					
-					</div>
-				
-				</div>
-	</div>
-	</div>
 </div>
-
-
+</div>
 
 
 </form>

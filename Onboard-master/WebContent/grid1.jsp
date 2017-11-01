@@ -113,7 +113,7 @@ if(rs.next())
           </div>
           </a>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2" style="display:none;">
           <div class="well">
           <a href="business.jsp">
            <center>

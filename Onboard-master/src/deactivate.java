@@ -75,7 +75,7 @@ public class deactivate extends HttpServlet {
 	        System.err.println("Got an exception!");
 	        System.err.println(e.getMessage());
 	      }
-		response.sendRedirect("Registration.jsp");
+		response.sendRedirect("users_list.jsp");
 		
 	}
 
