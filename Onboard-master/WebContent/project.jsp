@@ -133,7 +133,7 @@ function edit(id)
   
 	</head>
 	<!--from  w  w w  . ja  va 2 s.co  m-->
-  <body style='margin:30px'>
+  <body style='margin:30px' onload="btn_dis();">
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
@@ -184,7 +184,7 @@ function edit(id)
 				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
 				
 					<div class="cbp-vm-options">
-		<button type="button" class="btn btn-primary pull-right"  name="newpr"   onclick="location.href = 'newproject.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		<button id="newpro" type="button" style="display:none" class="btn btn-primary pull-right"  name="newpr"   onclick="location.href = 'newproject.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   New Project
 </button>
 						<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
@@ -204,7 +204,7 @@ String password="password123";
 int sumcount=0;
 
 try{
-	String pname="";
+	String pname="",roles="";
 	String query1="",query="";
 Class.forName(driver).newInstance();
 String uname=request.getSession().getAttribute("uname").toString();
@@ -219,15 +219,16 @@ if(uname.equals("admin"))
 else
 {
 	
-	query1 = "select projects from user_details where uname='"+uname+"'";
+	query1 = "select projects,roles from user_details where uname='"+uname+"'";
 	Statement st1 = con.createStatement();
 	ResultSet rs1 = st1.executeQuery(query1);
 	while(rs1.next()){
 		pname=rs1.getString(1);
+		roles=rs1.getString(2);
 	}
 	query = "select * from projinfo where projectname='"+pname+"'";
 }
-
+request.getSession().setAttribute("ROLES",roles);
 Statement st = con.createStatement();
 ResultSet rs = st.executeQuery(query);
 %>
@@ -265,6 +266,18 @@ while(rs.next()){
 					
 }
 %>
+<script>
+function btn_dis()
+{
+	var name="<%= uname %>" 
+	if (name=="admin")
+		{
+	document.getElementById("newpro").style.display="block";
+		}
+
+}
+
+</script>
 </ul>
 <%
 }
