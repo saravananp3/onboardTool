@@ -96,6 +96,18 @@ span.multiselect-native-select select {
 }
 </style>
 <script src="js/dropdown.js"></script>
+</head>
+<body>
+<%@page import="java.sql.*"%>
+<%
+HttpSession ses=request.getSession(); 
+String role=(String)ses.getAttribute("My_Roles");
+Class.forName("org.gjt.mm.mysql.Driver").newInstance();
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
+String query="select uname from user_details";
+Statement st = conn.createStatement();
+ResultSet rs = st.executeQuery(query);
+%>
 <script>
 	function www(x)
 	{
@@ -106,6 +118,13 @@ span.multiselect-native-select select {
 	var pass=document.getElementById("reg_pwd").value;
 	var cpass=document.getElementById("reg_cpwd").value;
 	var confirm=document.getElementById("reg_cemail").value;
+	<% while(rs.next()){ %>
+	if(uuname == "<%=rs.getString(1)%>")
+		{
+		window.alert("already there");
+		window.location.href='user_reg.jsp';
+		}
+	<%}%>
 	if(ffname==="" || llname==="" || uuname==="")
 		window.alert("fill the mandatory fileds");
 	else
@@ -139,11 +158,6 @@ span.multiselect-native-select select {
 	}
 	}
 </script>
-</head>
-<body>
-<%
-String role=request.getParameter("role");
-%>
 <form class="form-signin" name="loginForm" method="post">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -193,12 +207,13 @@ String role=request.getParameter("role");
 						<div class="row">
 							<div class="col-sm-5 form-group">
 								<label>Username<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text" class="form-control" name="reg_uname" id="reg_uname">
+								<input type="text" class="form-control" name="reg_uname" id="reg_uname" onChange="check()">
 							</div>	
+						
 							<div class="col-sm-5 form-group">
 								<div class="form-group">
    <label>Roles</label>
-								<input type="text" class="form-control" name="reg_roles" value="<%=role%>" disabled>
+								<input type="text" class="form-control" name="reg_roles" value="<%=role%>">
 
 
 							</div>	

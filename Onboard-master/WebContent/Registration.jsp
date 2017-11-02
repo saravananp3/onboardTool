@@ -324,6 +324,7 @@ div.tab button.active {
 		}
 	function qq()
 	{
+		var msg=document.getElementById("message").value;
 		var ffname=document.getElementById("fname").value;
 		var llname=document.getElementById("lname").value;
 		var email=document.getElementById("email_val").value;
@@ -335,7 +336,7 @@ div.tab button.active {
 				{
 				 var f=document.loginForm;
 				    f.method="post";
-				    f.action="sendMail?roless="+arr+"&mailid="+email;
+				    f.action="sendMail?roless="+arr+"&mailid="+email+"&message="+msg;
 				    f.submit();
 				}
 			 else
@@ -432,6 +433,11 @@ int count=0;
 								<label>First Name<span class="glyphicon glyphicon-asterisk"></span></label>
 							<input type="text" id="fname" name="fname"  class="form-control" />
 					</div>
+					<div class="col-sm-5 form-group">
+							
+							 <label for="comment">Message</label>
+      <textarea class="form-control" rows="5" id="message"></textarea>
+					</div>
 							</div>
 							<div class="row">
 							<div class="col-sm-5 form-group">
@@ -449,7 +455,7 @@ int count=0;
             <option value="LegacyBusinessSME">legacy business sme</option>
             <option value="ArchivalProgramManager">archival program manager</option>
             <option value="ArchivalProjectManager">archival project manager</option>
-            <option value="LegacyProgram/ProjectManager">legacy program/project manager</option>
+            <option value="LegacyProgramManager">legacy program/project manager</option>
             <option value="ArchivalBusinessAnalyst">archival business analyst</option>
             <option value="ArchivalTechnicalLead">archival technical lead</option>
             <option value="ArchivalDeveloper">archival developer</option>
