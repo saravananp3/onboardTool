@@ -190,6 +190,9 @@ function edit(id)
 						<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
 						<a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
 					</div>
+<script>
+</script>
+		
 		<%
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
@@ -199,12 +202,33 @@ String userName ="root";
 String password="password123";
 
 int sumcount=0;
-Statement st;
+
 try{
+	String pname="";
+	String query1="",query="";
 Class.forName(driver).newInstance();
+String uname=request.getSession().getAttribute("uname").toString();
+
 con = DriverManager.getConnection(url+db,userName,password);
-String query = "select * from projinfo";
-st = con.createStatement();
+if(uname.equals("admin"))
+{
+	
+	
+	query = "select * from projinfo ";
+}
+else
+{
+	
+	query1 = "select projects from user_details where uname='"+uname+"'";
+	Statement st1 = con.createStatement();
+	ResultSet rs1 = st1.executeQuery(query1);
+	while(rs1.next()){
+		pname=rs1.getString(1);
+	}
+	query = "select * from projinfo where projectname='"+pname+"'";
+}
+
+Statement st = con.createStatement();
 ResultSet rs = st.executeQuery(query);
 %>
 
