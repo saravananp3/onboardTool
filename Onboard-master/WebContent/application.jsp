@@ -245,6 +245,13 @@ $(function() {
         arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
     }
 </script>
+<script>
+function checkk()
+{
+	document.getElementById('app_name').readOnly = true;
+	document.getElementById('bttn').disabled = true;
+}
+</script>
 
 
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
@@ -265,6 +272,8 @@ String password="password123";
 int sumcount=0;
 Statement st1;
 try {
+	HttpSession details=request.getSession();
+	String info=(String)details.getAttribute("app_emp");
 	String det=(String)session.getAttribute("theName");
 	String name=request.getParameter("name");
 Class.forName(driver).newInstance();
@@ -494,12 +503,13 @@ while(rs1.next()){
                                             <label class="control-label" for="formInput198">
                                                Application Name&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Application Name" name="appname" >
+                                            <input type="text" class="form-control" id="app_name" placeholder="Application Name" name="appname" >
                                             <input type="hidden" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs3.getString("projectname") %>" >
                                      
-                                                                               <input type="submit" class="btn btn-primary btn pull-left" name ="p1" value="Add">
+                                                                               <input type="submit" id="bttn"  class="btn btn-primary btn pull-left" name ="p1" value="Add">
                 
                             
+                               <input type="text" id="pwqej" value="<%= info %>" hidden>  
                                 </div>                                 
                             </div>                             
                         </div>         
@@ -507,7 +517,11 @@ while(rs1.next()){
                     <button type="button" class="btn btn-default" onclick="location.href='editproject.jsp';">Back</button>
                                         
                                                                                                          
-                   
+                                                                                                                       
+ <script>
+ if(document.getElementById('pwqej').value=="R")
+	 checkk();
+ </script>        
                                                                                         
                                 
            <%

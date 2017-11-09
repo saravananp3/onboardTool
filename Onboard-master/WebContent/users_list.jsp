@@ -331,7 +331,7 @@ div.tab button.active {
 	}
 	
 	</script>
-		</head>
+			</head>
 
 <body>
 <%@ page import="java.sql.*"%>
@@ -383,6 +383,7 @@ int count=0;
 			<div class="tab"><br/><br/><br/>
 			 <button type="button" onclick="window.location.href='Registration.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b><br/>User Config</b></button>
    <button type="button" onclick="window.location.href='users_list.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b>User List</b></button>
+   <button type="button" onclick="window.location.href='roledetails.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b><br/>Role Details</b></button>
 </div>
 <div id="list" style="display:block;" class="tabcontent">
  <div class="container" >
@@ -413,7 +414,7 @@ int count=0;
   <tbody>
   <%
   while(rs.next()){ 
-	  if(rs.getString(9).equals("active")){
+	  if(rs.getString(8).equals("active")){
 		  if(count%2!=0){
   %>
   <tr style="background-color:white">
@@ -426,7 +427,7 @@ int count=0;
   <td><%= rs.getString(3) %></td>
   <td><%= rs.getString(4) %></td>
   <td><%= rs.getString(7) %></td>
-  <td style="background-color:lightgreen"><%=rs.getString(9) %></td>
+  <td style="background-color:lightgreen"><%=rs.getString(8) %></td>
   <td style="text-align:center;"><input type="checkbox" name="chek" onChange="oop('<%=rs.getString(1) %>');"></td>
   <td style="display:none;"><input type="text" name="name_user<%=count%>" value="<%= rs.getString(1) %>"></td>
   </tr> 
@@ -441,7 +442,7 @@ int count=0;
 		  <td><%= rs.getString(3) %></td>
 		  <td><%= rs.getString(4) %></td>
 		  <td><%= rs.getString(7) %></td>
-		<td> <%=rs.getString(9) %></td>
+		<td> <%=rs.getString(8) %></td>
     <td style="text-align:center;background-color:white;"><input type="checkbox" name="chek" onChange="ops('<%=rs.getString(1) %>')" checked></td>
 		  <td style="display:none;"><input type="text" name="name_user<%=count%>" value="<%= rs.getString(1) %>"></td>
 		  </tr> 
@@ -453,9 +454,10 @@ int count=0;
   
   </tbody>
   </table>
- <button class="btn btn-primary" onclick="window.location.href='Registration.jsp'">Add User</button>&nbsp;&nbsp;
+  <button type="button" class="btn btn-primary" onclick="window.location.href='Registration.jsp'">Add User</button>&nbsp;&nbsp;
   <input type="button" class="btn btn-primary" onclick="del(<%=count %>);ww();" value="DeleteUser">&nbsp;&nbsp;
   <input type="button" class="btn btn-primary" onclick="servlet_call();" value="submit">
+  
   </div>
 </div>
 </form>

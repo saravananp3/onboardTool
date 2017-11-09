@@ -57,11 +57,13 @@ public class deactivate extends HttpServlet {
 	        for(int i=0;i<names.length;i++)
 	        {
 	        	String z=names[i];
+	        	System.out.println("first   --- "+z);
 	        	st.executeUpdate("update user_details set stats='deactive' where uname='"+z+"'");
 	        }
 	        for(int i=0;i<nam.length;i++)
 	        {
 	        	String z=nam[i];
+	        	System.out.println("sec   --- "+z);
 	        	st.executeUpdate("update user_details set stats='active' where uname='"+z+"'");
 	        }
 

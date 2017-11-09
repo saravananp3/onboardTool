@@ -282,8 +282,22 @@ $(function() {
         arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
     }
 </script>
-
-
+<script>
+function checkk()
+{
+	
+	document.getElementById('pid').readOnly = true;
+	document.getElementById('projectname').readOnly = true;
+	document.getElementById('descr').readOnly = true;
+	document.getElementById('appno').readOnly = true;
+	document.getElementById('Startdate').readOnly = true;
+	document.getElementById('Intdate').readOnly = true;
+	document.getElementById('Plandate').readOnly = true;
+	document.getElementById('Execdate').readOnly = true;
+	document.getElementById('Hyperdate').readOnly = true;
+	document.getElementById('Enddate').readOnly = true;	
+}
+</script>
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
   <body>
 
@@ -292,7 +306,9 @@ $(function() {
 
 	
 <%
-
+HttpSession details=request.getSession();
+String info=(String)details.getAttribute("app_emp");
+System.out.println("appmoduel    "+info);
 try {
 	String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -513,32 +529,32 @@ if(rs.next()){
                                             <label class="control-label" for="formInput198">
                                                Project ID&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
+                                            <input type="text" class="form-control" id="pid" placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
                                         </div>
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput198">
                                                Project Name&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Project Name" name="projectname" value="<%=rs3.getString("projectname")%>" >
+                                            <input type="text" class="form-control" id="projectname" placeholder="Project Name" name="projectname" value="<%=rs3.getString("projectname")%>" >
                                         </div>
                                         
                                 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput229">Description
 </label>
-                                            <input type="text" class="form-control" id="formInput229" placeholder="Description" name="descr"  value="<%=rs3.getString("descr")%>">
+                                            <input type="text" class="form-control" id="descr" placeholder="Description" name="descr"  value="<%=rs3.getString("descr")%>">
                                         </div>
                                        <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">No of Applications</label>
-            <input placeholder="No of Applications" id="date" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("appno")%>">
+            <input placeholder="No of Applications" id="appno" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("appno")%>">
           </div>
           
         </div>  
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Project Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Startdate")%>">
+            <input placeholder="dd/mm/yyyy" id="Startdate" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Startdate")%>">
           </div>
           
         </div>  
@@ -546,7 +562,7 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required"> Initiate Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Intdate")%>">
+            <input placeholder="dd/mm/yyyy" id="Intdate" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Intdate")%>">
           </div>
           
         </div>  
@@ -554,7 +570,7 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Plan Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Plandate")%>">
+            <input placeholder="dd/mm/yyyy" id="Plandate" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Plandate")%>">
           </div>
           
         </div>    
@@ -562,7 +578,7 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Execution Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Execdate")%>">
+            <input placeholder="dd/mm/yyyy" id="Execdate" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Execdate")%>">
           </div>
           
         </div>            
@@ -570,17 +586,18 @@ if(rs.next()){
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Hypercare Start Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Hyperdate")%>">
+            <input placeholder="dd/mm/yyyy" id="Hyperdate" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Hyperdate")%>">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Project End Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Enddate")%>">
+            <input placeholder="dd/mm/yyyy" id="Enddate" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Enddate")%>">
           </div>
           
-        </div>                 
+        </div> 
+        <input type="text" id="pwqej" value="<%= info %>" hidden>                
                             
                                 </div>                                 
                             </div>                             
@@ -592,9 +609,10 @@ if(rs.next()){
                                         
                              <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='tree.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
                                                                                                            
-                   
-                                                                                        
-                                   
+ <script>
+ if(document.getElementById('pwqej').value=="R")
+	 checkk();
+ </script>                             
         
                     
                   

@@ -44,7 +44,7 @@ public class sendMail extends HttpServlet {
 		Properties props = new Properties();
 		 HttpSession ses=request.getSession();  
 	        ses.setAttribute("My_Roles",rol);  
-				
+	/*			
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "smtp.office365.com");
@@ -66,7 +66,7 @@ public class sendMail extends HttpServlet {
 		message.setSubject("Registration Link");
 		message.setText(msg);
 
-		Transport.send(message);
+		Transport.send(message);*/
 System.out.println("xxxxxxx");
 pw.println("<html><body>");  
 pw.println("Registration link have been sent to you\n");
@@ -74,9 +74,7 @@ pw.println("<a href=\"Registration.jsp\" style='color:blue'> click </a>");
 pw.println("</body></html>");  
   
 pw.close();
-		} catch (MessagingException e) {
-		throw new RuntimeException(e);
-		} 
+		 
 		//get the stream to write the data  
 		  
 		 

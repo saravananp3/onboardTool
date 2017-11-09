@@ -109,7 +109,7 @@ Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
 %>
 <script>
-	function www(x)
+	function www()
 	{
 	var ffname=document.getElementById("reg_fname").value;
 	var llname=document.getElementById("reg_lname").value;
@@ -140,7 +140,7 @@ ResultSet rs = st.executeQuery(query);
 					  {
 					  var f=document.loginForm;
 					    f.method="post";
-					    f.action='user_registration?role='+x;
+					    f.action='user_registration';
 					    f.submit(); 
 					  }
 				  else
@@ -224,11 +224,25 @@ ResultSet rs = st.executeQuery(query);
 								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="text" name="reg_email" id="reg_email" class="form-control">
 							</div>
-							</div>
-							<div class="row">	
+<div class="col-sm-5 form-group">
+								<label> Security Question<span class="glyphicon glyphicon-asterisk"></span></label>
+								<br/>
+								<label>Question 1</label>
+								<select class="form-control" name="reg_qn">
+								<option value=""></option>
+  <option value="What is Your Spouse Name?">What is Your pet Name?</option>
+  <option value="Who is your fav Cricketer?">Who is your fav Cricketer?</option>
+  <option value="In what city or town was your first job?">In what city or town was your first job?</option>
+  <option value="What is the name of your favorite childhood friend">What is the name of your favorite childhood friend</option>
+</select>
+							</div>	
 							<div class="col-sm-5 form-group">
 								<label>Confirm Email<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="text" class="form-control" name="reg_cemail" id="reg_cemail">
+							</div>	
+							<div class="col-sm-5 form-group">
+								<label>Answer</label>
+								<input type="text" class="form-control" name="reg_ans" id="reg_ans">
 							</div>		
 						</div>
 						
@@ -249,7 +263,7 @@ ResultSet rs = st.executeQuery(query);
 					</div>		
 					</div>
 					
-					<button type="button" class="btn btn-lg btn-info" onclick="www('<%=role %>');">Submit</button>
+					<button type="button" class="btn btn-lg btn-info" onclick="www();">Submit</button>
 										
 					</div> 
 				</div>

@@ -420,6 +420,7 @@ int count=0;
 			<div class="tab"><br/><br/><br/>
 			 <button class="tablinks"><span class="glyphicon glyphicon-list-alt"></span><b><br/>User Config</b></button>
    <button type="button" class="tablinks" onclick="window.location.href='users_list.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b>User List</b></button>
+   <button type="button" onclick="window.location.href='roledetails.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b><br/>Role Details</b></button>
 </div>
 <div id="config" class="tabcontent">
  <div class="container">

@@ -299,6 +299,38 @@ $(function() {
   <script >
   var bala=10;
   </script>
+  <script>
+function checkk()
+{
+	document.getElementById('prj_name').readOnly = true;
+	document.getElementById('IA_lic_cst').readOnly = true;
+	document.getElementById('IA_maint_cst').readOnly = true;
+	document.getElementById('Infrastrct_cst').readOnly = true;
+	document.getElementById('strg_est').readOnly = true;
+	document.getElementById('lab_cst').readOnly = true;
+	document.getElementById('proj_name').readOnly = true;
+	document.getElementById('data_size').disabled = true;
+	document.getElementById('curnt_users').disabled = true;
+	document.getElementById('complexity').disabled = true;
+	document.getElementById('RO_DATE').readOnly = true;
+	document.getElementById('SME_DATE').readOnly = true;
+	document.getElementById('est_archive').readOnly = true;
+	document.getElementById('est_scrn').readOnly = true;
+	document.getElementById('est_db_size').readOnly = true;
+	document.getElementById('est_hrs').readOnly = true;
+	document.getElementById('est_cst').readOnly = true;
+	document.getElementById('ttl_IA_cst').readOnly = true;
+	document.getElementById('ttl_infra_cst').readOnly = true;
+	document.getElementById('ttl_IA_prdct_cst').readOnly = true;
+	document.getElementById('ttl').readOnly = true;
+	document.getElementById('ttl_cst_fr_app').readOnly = true;
+	document.getElementById('add_cst_fr_contigency').readOnly = true;
+	document.getElementById('add_cst').readOnly = true;
+	document.getElementById('IA_app_sprt_cst').readOnly = true;
+	document.getElementById('est_archive_cst').readOnly = true;
+	
+}
+</script>
  
     
 </head>
@@ -310,7 +342,8 @@ $(function() {
 <%
 double ans=0.0;
 try {
-	
+	HttpSession details=request.getSession();
+	String info=(String)details.getAttribute("app_emp");
 	String det=(String)session.getAttribute("theName");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
@@ -860,30 +893,30 @@ for (var i = 0 ; i < x.length ; i ++)
                                     
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput526">Project Name</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="prj_name" value=<%=rs3.getString("projectname") %>>
+                                            <input type="text" class="form-control" id="prj_name"  name="prj_name" value=<%=rs3.getString("projectname") %>>
                                         </div>
                                        
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput526">IA License cost per TB</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="IA_lic_cst" value="<%=rs.getString("IA_lic_cst")%>">
+                                            <input type="text" class="form-control" id="IA_lic_cst"  name="IA_lic_cst" value="<%=rs.getString("IA_lic_cst")%>">
                                         </div>
                                          <div class="form-group"> 
                                             <label class="control-label" for="formInput526">IA Maintenance Cost Per Year</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="IA_maint_cst" value="<%=rs.getString("IA_maint_cst")%>">
+                                            <input type="text" class="form-control" id="IA_maint_cst"  name="IA_maint_cst" value="<%=rs.getString("IA_maint_cst")%>">
                                         </div>
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput316">Infra Structure Cost per TB</label>
-                                              <input type="text" class="form-control"  name="Infrastrct_cst" value="<%=rs.getString("Infrastrct_cst")%>"> 
+                                              <input type="text" class="form-control" id="Infrastrct_cst"  name="Infrastrct_cst" value="<%=rs.getString("Infrastrct_cst")%>"> 
                                          </div>
                                         <div class="form-group">
                                        
                                             <label class="control-label" for="formInput526">Storage Estimate</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="strg_est" value="<%=rs.getString("strg_est")%>">
+                                            <input type="text" class="form-control" id="strg_est"  name="strg_est" value="<%=rs.getString("strg_est")%>">
                                       
                                         </div>
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput526">Labor Cost Per Hour for IA Dev Team</label>
-                                            <input type="text" class="form-control" id="formInput526"  name="lab_cst" value="<%=rs.getString("lab_cst")%>">
+                                            <input type="text" class="form-control" id="lab_cst"  name="lab_cst" value="<%=rs.getString("lab_cst")%>">
                                         </div>
                                         <div>
                                         <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -1133,6 +1166,7 @@ for(var i=0; i<edit_row.length; i++) {
                                         </div>
                                           <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:black"> <span class="glyphicon glyphicon-chevron-left"></span> Previous</a></button>
                         
+                         <input type="text" id="pwqej" value="<%= info %>" hidden>  
                         </div>
                         </div>
                         </div>
@@ -1174,6 +1208,10 @@ for(var i=0; i<edit_row.length; i++) {
                                       
                                 </div>                                 
                             </div>
+                            <script>
+ if(document.getElementById('pwqej').value=="R")
+	 checkk();
+ </script>
                              <%
 }
 }}

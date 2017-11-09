@@ -166,7 +166,7 @@ ResultSet rs3 = st3.executeQuery(query3);
                 
                      <%if (rs3.next()) {
                     	 String name=rs3.getString("projectname");
-                    	 String query = "select * from appldetail where prjname = '"+name+"'";
+                    	 String query = "select * from appinfo where prjname = '"+name+"'";
                     	 Statement st = con.createStatement();
                     	 ResultSet rs = st.executeQuery(query);
                      
@@ -232,7 +232,7 @@ while(rs.next()){
 							
 							
 							
-							<h3 class="cbp-vm-title left-col primary" name="name" value="<%= rs.getString(2)%>" ><%= rs.getString(2)%></h3>
+							<h3 class="cbp-vm-title left-col primary" name="name" value="<%= rs.getString(1)%>" ><%= rs.getString(1)%></h3>
 							<center><div class="progress center-col cbp-vm-detail">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
   aria-valuemin="0" aria-valuemax="100" style="width:10%">
@@ -245,7 +245,7 @@ while(rs.next()){
 </center>
 
 			
-							<button type="button" class="btn btn-primary" onClick="edit('<%= rs.getString(8)%>');">
+							<button type="button" class="btn btn-primary" onClick="edit('<%= rs.getString(1)%>');">
  View/Update
 </button>
 						</li>

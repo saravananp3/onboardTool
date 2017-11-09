@@ -137,8 +137,11 @@ function edit(id)
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
-
-
+<% 
+HttpSession role_ses=request.getSession();  
+String frole=(String)role_ses.getAttribute("role");
+System.out.println(frole);
+%>
 <form method="post" name="form" action="Appin">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -201,10 +204,18 @@ String password="password123";
 int sumcount=0;
 Statement st;
 try{
+	String query;
+	HttpSession details=request.getSession();
+	String prj=(String)details.getAttribute("projects");
+	System.out.println("helo "+prj);
 Class.forName(driver).newInstance();
 con = DriverManager.getConnection(url+db,userName,password);
-String query = "select * from projinfo";
+if(prj.equals("all"))
+ query = "select * from projinfo";
+else
+ query = "select * from projinfo where projectname='"+prj+"'";
 st = con.createStatement();
+System.out.println(query);
 ResultSet rs = st.executeQuery(query);
 %>
 

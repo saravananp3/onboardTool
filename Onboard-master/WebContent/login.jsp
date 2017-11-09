@@ -10,8 +10,8 @@
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	<%
+	HttpSession details=request.getSession(); 
 String userid=request.getParameter("usr"); 
-session.putValue("userid",userid); 
 String pwd=request.getParameter("pwd"); 
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
@@ -19,6 +19,8 @@ Statement st= con.createStatement();
 ResultSet rs=st.executeQuery("select * from user_details where uname='"+userid+"'"); 
 if(userid.equals("admin")&&pwd.equals("admin"))
 {
+	details.setAttribute("role","admin");
+	details.setAttribute("projects","all");
 
     String redirectURL = "project.jsp";
 
@@ -28,6 +30,18 @@ if(rs.next())
 { 
 if((rs.getString(5).equals(pwd))) 
 { 
+	details.setAttribute("role",rs.getString(7));
+	details.setAttribute("projects",rs.getString(6));
+	Statement st1= con.createStatement(); 
+	ResultSet rs1=st.executeQuery("select * from role_details where role='"+rs.getString(7)+"'"); 
+	if(rs1.next())
+	{
+		details.setAttribute("app_emp",rs1.getString(2));
+		details.setAttribute("intake",rs1.getString(4));
+		
+	}
+
+	
 	
 	
 		        String redirectURL = "project.jsp";

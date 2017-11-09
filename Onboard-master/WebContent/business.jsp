@@ -191,7 +191,18 @@ h1 {
   color: #777;
 }
 
-
+#panels1
+{
+    /* Do not display it on entry */
+    display: block; 
+ 
+    /* Display it on the layer with index 1001.
+       Make sure this is the highest z-index value
+       used by layers on that page */
+   
+    /* make it white but fully transparent */
+    
+}
 
 ul.checkout-bar {
   margin: 0 20px;
@@ -344,10 +355,10 @@ ul.checkout-bar a {
 <script>
 function switchColors0()  
 {  
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("a");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = 'white' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
@@ -356,17 +367,17 @@ element.style.background="#d1d1d1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = 'black' ; 
 
 
 } 
 </script>
 <script>
 function switchColors(){
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("b");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = 'white' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
@@ -375,17 +386,17 @@ element.style.background="#d1d1d1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = 'black' ; 
 }
 
 </script>
 <script>
 function switchColors1()  
 {  
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("c");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = 'white' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "100px";
 element.style.boxSizing = "content-box";
@@ -394,7 +405,7 @@ element.style.background="#d1d1d1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = 'black' ; 
 
 
 } 
@@ -402,10 +413,10 @@ for (var i = 0 ; i < x.length ; i ++)
 <script>
 function switchColors2()  
 {  
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("d");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = 'white' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "120px";
 element.style.boxSizing = "content-box";
@@ -414,13 +425,88 @@ element.style.background="#d1d1d1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = 'black' ; 
 
 
 } 
 </script>
-
-
+<script>
+function checkk()
+{
+document.getElementById('legappname').readOnly = true;
+document.getElementById('reftoapp').readOnly = true;
+document.getElementById('tid').readOnly = true;
+document.getElementById('descr').readOnly = true;
+document.getElementById('vendor').readOnly = true;
+document.getElementById('expdate').readOnly = true;
+document.getElementById('noticeperiod').readOnly = true;
+document.getElementById('contractvalue').readOnly = true;
+document.getElementById('businessunits').disabled = true;
+document.getElementById('rodch').disabled = true;
+document.getElementById('rod').readOnly = true;
+document.getElementById('cmnt').readOnly = true; 
+document.getElementById('hasdep').readOnly = true; 
+document.getElementById('daterange').readOnly = true; 
+document.getElementById('dbsize').readOnly = true; 
+document.getElementById('dataloc').readOnly = true; 
+document.getElementById('siteloc').readOnly = true; 
+document.getElementById('needarch').disabled = true; 
+document.getElementById('archreason').readOnly = true; 
+document.getElementById('archcmnt').readOnly = true; 
+document.getElementById('sourceoft').disabled = true; 
+document.getElementById('btt').disabled = true; 
+document.getElementById('reccode').readOnly = true; 
+document.getElementById('triggerdate').readOnly = true; 
+document.getElementById('retentionperiod').readOnly = true; 
+document.getElementById('retentiontable').readOnly = true; 
+document.getElementById('file').readOnly = true;
+document.getElementById('retentionname').readOnly = true; 
+document.getElementById('reason_for_access').disabled = true; 
+document.getElementById('wholegal').readOnly = true; 
+document.getElementById('reason_for_access1').disabled = true; 
+document.getElementById('archexp').readOnly = true; 
+document.getElementById('btt').disabled = true;
+document.getElementById('btn_new').disabled = true; 
+document.getElementById('reason_for_access2').disabled = true; 
+document.getElementById('checkbox').disabled = true; 
+document.getElementById('checkbox1').disabled = true; 
+document.getElementById('reccode').readOnly = true; 
+document.getElementById('checkbox23').disabled = true; 
+document.getElementById('checkbox2').disabled = true;
+document.getElementById('checkbox3').disabled = true;
+document.getElementById('checkbox4').disabled = true;
+document.getElementById('checkbox5').disabled = true;
+document.getElementById('checkbox6').disabled = true;
+document.getElementById('checkbox7').disabled = true;
+document.getElementById('checkbox8').disabled = true;
+document.getElementById('checkbox9').disabled = true;
+document.getElementById('checkbox10').disabled = true;
+document.getElementById('checkbox11').disabled = true;
+document.getElementById('checkbox12').disabled = true;
+document.getElementById('checkbox13').disabled = true;
+document.getElementById('checkbox14').disabled = true;
+document.getElementById('checkbox15').disabled = true;
+document.getElementById('checkbox16').disabled = true;
+document.getElementById('checkbox17').disabled = true;
+document.getElementById('checkbox18').disabled = true;
+document.getElementById('checkbox19').disabled = true;
+document.getElementById('checkbox20').disabled = true;
+document.getElementById('checkbox21').disabled = true;
+document.getElementById('checkbox22').disabled = true;
+document.getElementById('expl').readOnly = true; 
+document.getElementById('reason_for_access4').disabled = true;
+document.getElementById('reason_for_access5').disabled = true;
+document.getElementById('reason_for_access6').disabled = true;
+document.getElementById('vendor1').readOnly = true;
+document.getElementById('reason_for_access7').disabled = true; 
+document.getElementById('vendor2').readOnly = true;
+document.getElementById('vendor3').readOnly = true;
+document.getElementById('vendor4').readOnly = true;
+document.getElementById('vendor5').readOnly = true;
+document.getElementById('vendor6').readOnly = true; 
+document.getElementById('sysreq').readOnly = true; 
+}
+</script>
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
   <body>
   <%@page language="java"%>
@@ -429,10 +515,12 @@ for (var i = 0 ; i < x.length ; i ++)
 
 <%
 try {
-	String det=(String)session.getAttribute("theName");
-	String idd = request.getParameter("id");
-
-	session.setAttribute("appidd", idd);
+	HttpSession details=request.getSession();
+	String info=(String)details.getAttribute("intake");
+	System.out.println("IntakeModule    "+ info);
+String det=(String)session.getAttribute("theName");
+String idd = request.getParameter("id");
+session.setAttribute("appidd", idd);
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query3 = "select * from projinfo where id = "+det;
@@ -444,7 +532,21 @@ ResultSet rs4 = st4.executeQuery(query4);
 
 {
 %>
-<form class="form-signin"name="loginForm" method="post" action="business">
+<script>
+
+$(document).ready(function () {
+Syste.out.println("script:" +role);
+
+  if(role.equals("admin")) {
+ 
+  $("#panels1").find("input,button,textarea,select").attr("disabled", "disabled");
+  } else {
+    $("#panels1").removeAttribute("readonly");
+  }
+});
+
+</script>
+<form class="form-signin"name="loginForm" method="post" action="business" >
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -600,7 +702,6 @@ ResultSet rs4 = st4.executeQuery(query4);
 <br/><br/><br/>
 
 <div class="row">
-		
         
             <div class="row bs-wizard" style="border-bottom:0;">
                 
@@ -638,14 +739,14 @@ ResultSet rs4 = st4.executeQuery(query4);
         
         
         
-	</div>
+</div>
 
 <script>
 
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("a");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = 'white' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
@@ -654,136 +755,132 @@ element.style.background="#d1d1d1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = 'black' ; 
 
 </script>
-					<div class="panel-group" id="panels1"> 
+
+<div id ="test">
+<div class="panel-group" id="panels1" > 
                        <br><br><br>
-                        <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                 <div class="panel panel-default"> 
+                    <div class="panel-heading"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1">Application Information</a> </h4> 
                             </div>                             
-                            <div id="collapse1" class="panel-collapse collapse in"> 
-                                <div class="panel-body">
-                                    <form role="form"> 
+                        <div id="collapse1" class="panel-collapse collapse in"> 
+                              <div class="panel-body">
+                                  <form role="form"> 
                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput198">
-                                               Legacy Application Name&nbsp;
-</label>
-                                            <input type="text" class="form-control" id="formInput198" placeholder="Legacy Application Name" name="legappname" >
+                                            <label class="control-label" for="formInput198">Legacy Application Name&nbsp;</label>
+                                            <input type="text" class="form-control" id="legappname" placeholder="Legacy Application Name" name="legappname" >
                                         </div>
-                                        
-                                
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput229">References to Application
-</label>
-                                            <input type="text" class="form-control" id="formInput229" placeholder="References" name="reftoapp" >
-                                        </div>
+                                       <div class="form-group"> 
+                                            <label class="control-label" for="formInput229">References to Application</label>
+                                            <input type="text" class="form-control" id="reftoapp" placeholder="References" name="reftoapp" >
+                                     </div>
                                        <div class="form-group row log-date">
-          <div class="col-md-12">
+           <div class="col-md-12">
             <label class="control-label required">Tracking ID</label>
-            <input placeholder="ID" id="date" name="tid" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
-          </div>
+            <input placeholder="ID" id="tid" name="tid" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            </div>
           
-        </div>  
+                                       </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Description</label>
-            <input placeholder="Description" id="date" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Description" id="descr" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Legacy Application Vendor/Manufacturer</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="vendor" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
-          
-        </div>  
-                                         <div class="form-group row log-date">
-          <div class="col-md-12">
-            <label class="control-label required">Contract Expiration Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
-          </div>
-          
+        
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
+            <label class="control-label required">Contract Expiration Date</label>
+            <input placeholder="dd/mm/yyyy" id="expdate" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+          </div>
+          
+        </div>  
+                    <div class="form-group row log-date">
+          <div class="col-md-12">
             <label class="control-label required">Notice Period for Expiration of Contract</label>
-            <input placeholder="Description" id="date" name="noticeperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Description" id="noticeperiod" name="noticeperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Contract Value of Application</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="contractvalue" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="contractvalue" name="contractvalue" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
-        <div class="checkbox"> 
+                                        <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="businessunits">Business Units Involved
+                                                <input type="checkbox"  id="businessunits" name="businessunits">Business Units Involved
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="rodch">&nbsp;Read Only Date                       
+                                                <input type="checkbox"  id="rodch" name="rodch">&nbsp;Read Only Date                       
                                             </label>                                             
                                         </div>
-                                        
-                                         <div class="form-group row log-date">
+                                        <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Read Only Date</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="rod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="rod" name="rod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Comment</label>
-            <input placeholder="Description" id="date" name="cmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Description" id="cmnt" name="cmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">If the applications transitions has dependencies?</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="hasdep" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="hasdep" name="hasdep" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>    
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">What is the date Range of this Data?</label>
-            <input placeholder="dd/mm/yyyy" id="date" name="daterange" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="daterange" name="daterange" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Size of Database</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="dbsize" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Location of Data</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="dataloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="dataloc" name="dataloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Site Location of Data</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="siteloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="siteloc" name="siteloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>
          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Does the application needs archival?</label>                                             
-                                            <select id="formInput26" class="form-control" name="needarch" > 
+                                            <select id="needarch" class="form-control" name="needarch" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -793,20 +890,20 @@ for (var i = 0 ; i < x.length ; i ++)
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Reason</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="archreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="archreason" name="archreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Comments</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="archcmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="archcmnt" name="archcmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
-         <div class="checkbox"> 
+                                        <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="sourceoft">Is this Application's data the source of Truth?
+                                                <input type="checkbox"  id="sourceoft" name="sourceoft">Is this Application's data the source of Truth?
                                             </label>                                             
                                         </div> 
                                         
@@ -816,59 +913,54 @@ for (var i = 0 ; i < x.length ; i ++)
                             </div>                             
                         </div>
                         
-                        
-                        <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                 <div class="panel panel-default"> 
+                     <div class="panel-heading"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">Legacy Retention Information</a> </h4> 
-                            </div>                             
-                            <div id="collapse2" class="panel-collapse collapse"> 
-                                <div class="panel-body">
-                                    <form role="form">
-                                    
-                                      <div class="form-group row log-date">
+                      </div>                             
+                         <div id="collapse2" class="panel-collapse collapse"> 
+                             <div class="panel-body">
+                                <form role="form">
+                                    <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Record code of Application</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="reccode" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="reccode" name="reccode" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
-                                        <div class="form-group row log-date">
+                                    <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Trigger Date</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="triggerdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" type="date" id="triggerdate" name="triggerdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Period of Retention</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="retentionperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="retentionperiod" name="retentionperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Table Name/s where Retention need to apply</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="retentiontable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="retentiontable" name="retentiontable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
-         <label text-align:"left">Retention Requirement</label>
-    										<input type="file" name="file" name="retentionname" size="60" />
-    														
+                                        <label text-align:"left">Retention Requirement</label>
+                                        <input type="file" name="file" id="file" size="60" />
+                                                            
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Name of the Legal Retention & e-Discovery SME</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="legalholds" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="retentionname" name="retentionname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
-        
-       
-      
-         <div class="form-group"> 
+        <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Does any Records have legal holds/Tax Holds or any indication?</label>                                             
-                                            <select id="formInput26" class="form-control" name="wholegal" > 
+                                            <select id="reason_for_access" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -878,13 +970,13 @@ for (var i = 0 ; i < x.length ; i ++)
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Who or what entity provided legal or tax hold identification</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="wholegal" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="wholegal" name="wholegal" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Should this application's data be aechived?</label>                                             
-                                            <select id="formInput26" class="form-control" name="archexp" > 
+                                            <select id="reason_for_access1" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -894,40 +986,41 @@ for (var i = 0 ; i < x.length ; i ++)
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Brief Explanation</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="archexp" name="archexp" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>             
-                                <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors1();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
-                                 <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors0();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
+           <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors1();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                       <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors0();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
                                         
                                     </form>
                                 </div>                                 
                             </div>                             
                         </div>
-                        <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                       
+                 <div class="panel panel-default"> 
+                     <div class="panel-heading"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">Archive Data Management</a> </h4> 
                             </div>                             
-                            <div id="collapse3" class="panel-collapse collapse"> 
-                                <div class="panel-body">
-                                    <form role="form"> 
+                         <div id="collapse3" class="panel-collapse collapse"> 
+                              <div class="panel-body">
+                                   <form role="form"> 
                                          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Is this application's been used for BI report?</label>                                             
-                                            <select id="formInput26" class="form-control" name=""useforBI"" > 
+                                            <select id="reason_for_access2" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
                                                                                            
                                             </select>
                                         </div>  
-                                        <div class="checkbox"> 
+                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">Is BI aware of using new/alternate target application data to support operational report                                            </label>                                             
+                                                <input id="checkbox" type="checkbox">Is BI aware of using new/alternate target application data to support operational report                                            </label>                                             
                                         </div>
-                                        <div class="checkbox"> 
+                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox">)- BI Engagement should be initiated by Application owner and completed prior archiving     </label>
+                                                <input id="checkbox1" type="checkbox">)- BI Engagement should be initiated by Application owner and completed prior archiving     </label>
                                         </div>
                                                                               
                                     </form>
@@ -937,139 +1030,140 @@ for (var i = 0 ; i < x.length ; i ++)
                                 </div>                                 
                             </div>                             
                         </div>
-                        <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                        
+                 <div class="panel panel-default"> 
+                      <div class="panel-heading"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">System Requirements</a> </h4> 
                             </div>                             
-                            <div id="collapse4" class="panel-collapse collapse"> 
-                                <div class="panel-body">
-                                    <form role="form"> 
+                          <div id="collapse4" class="panel-collapse collapse"> 
+                              <div class="panel-body">
+                                   <form role="form"> 
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="creditacc">Account Credit Card
+                                                <input id="checkbox23" type="checkbox">Account Credit Card
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="financialacc">Account Number - Financial
+                                                <input id="checkbox2" type="checkbox">Account Number - Financial
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="dob">Date of Birth
+                                                <input id="checkbox3" name="dob" type="checkbox">Date of Birth
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="driverlic">Driver's License Number
+                                                <input  id="checkbox4" name="driverlic" type="checkbox">Driver's License Number
                                                 <br>
                                             </label>                                             
                                         </div> 
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="email">Email Address
+                                                <input id="checkbox5" name="email" type="checkbox">Email Address
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="family">family Status
+                                                <input id="checkbox6"  name="family" type="checkbox">family Status
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="gender">Gender
+                                                <input id="checkbox7"  name="gender" type="checkbox">Gender
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="geoloc">Geo Location
+                                                <input id="checkbox8" name="geoloc" type="checkbox">Geo Location
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="img">Image/Video
+                                                <input id="checkbox9" name="img" type="checkbox">Image/Video
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="income">Income
+                                                <input id="checkbox10" type="checkbox">Income
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="ipadrs">IP Address
+                                                <input id="checkbox11" type="checkbox">IP Address
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="martialstatus">Martial Status
+                                                <input id="checkbox12" type="checkbox">Martial Status
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="mobid">Mobile Device Id
+                                                <input id="checkbox13" type="checkbox">Mobile Device Id
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="name">Name
+                                                <input id="checkbox14" name="name" type="checkbox">Name
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="phno">Phone Number
+                                                <input id="checkbox15" name="phno" type="checkbox">Phone Number
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="mailadrs">Physical/Mailing Address
+                                                <input id="checkbox16" type="checkbox">Physical/Mailing Address
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="physic">Physical Description
+                                                <input id="checkbox17" type="checkbox">Physical Description
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="race">Race/Ethnicity
+                                                <input id="checkbox18" type="checkbox">Race/Ethnicity
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="religion">Religion
+                                                <input id="checkbox19" type="checkbox">Religion
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="sexualpref">Sexual Preference
+                                                <input id="checkbox20" type="checkbox">Sexual Preference
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="ssn">SSN/SIN
+                                                <input id="checkbox21" name="ssn" type="checkbox">SSN/SIN
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox" name="others">Others
+                                                <input  id="checkbox22" name="others" type="checkbox">Others
                                             </label>                                             
                                         </div>
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Brief Explanation</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="expl" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="expl" name="expl" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
-        <h5>Security Information:
+                           <h5>Security Information:
                                          <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Does the application have localization requirement/ regulations</label>                                             
-                                            <select id="formInput26" class="form-control" name="localreq" > 
+                                            <select id="reason_for_access4" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1078,7 +1172,7 @@ for (var i = 0 ; i < x.length ; i ++)
                                         </div> 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">List of Countries where localization requirement/ regulations apply</label>                                             
-                                            <select id="formInput26" class="form-control" name="localcountry" > 
+                                            <select id="reason_for_access5" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1087,7 +1181,7 @@ for (var i = 0 ; i < x.length ; i ++)
                                         </div> 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Are the Localization requirements/regulations enforced with infrastructure or geofencing</label>                                             
-                                            <select id="formInput26" class="form-control" name="localinf" > 
+                                            <select id="reason_for_access6" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1097,13 +1191,13 @@ for (var i = 0 ; i < x.length ; i ++)
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Infrastructure Localization enforcement, please list the locations of the datacenters</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="datacenters" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="vendor1" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">External access required for archived data</label>                                             
-                                            <select id="formInput26" class="form-control" name="extaccess" > 
+                                            <select id="reason_for_access7" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1113,42 +1207,42 @@ for (var i = 0 ; i < x.length ; i ++)
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Describe who or what external entity needs access </label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="who" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="vendor2" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">User Name</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="uname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="vendor3" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Role Description</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="roledesc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="vendor4" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Reason for Access</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="accreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="vendor5" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Frequency of Access</label>
-            <input placeholder="Vendor/Manufacturer" id="date" name="accfreq" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Vendor/Manufacturer" id="vendor6" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Additional System Requirements</label>
-            <input placeholder="Countries/Modules" id="date" name="sysreq" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Countries/Modules" id="sysreq" name="sysreq" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
@@ -1158,15 +1252,24 @@ for (var i = 0 ; i < x.length ; i ++)
                                 </div>                                 
                             </div>                             
                         </div>
-                    </div>
+        </div>
+       <input type="text" id="pwqej" value="<%= info %>" hidden>   
        
-					       <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
+                    <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
 
                     <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
+ </div>  
+                    
+                    
        </div>
                 
             </div>
-            
+       <script>
+ if(document.getElementById('pwqej').value=="XR")
+ 
+checkk();
+ 
+ </script>        
             
       
         <%
@@ -1175,5 +1278,7 @@ for (var i = 0 ; i < x.length ; i ++)
 catch(Exception e){}
 %>
 </form>
+
+
   </body>
 </html>

@@ -15,14 +15,46 @@
 	
 	
 	<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+	
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+   .glyphicon {
+    font-size: 20px;
+}
+    #uname,#pwd
+    {
+    
+    background-color:#4169E1;
+    border-radius:0px;
+     border-left:transparent;
+    border-right:transparent;
+    border-bottom:solid white 1px;
+    border-top:transparent;
+    color:white;
+    }
+    #main_col
+    {
+     background-color:#4169E1;
+    border-radius:0px;
+     border-left:transparent;
+    border-right:transparent;
+    border-bottom:transparent;
+    border-top:transparent;
+    color:white;
+    }
+    ::-webkit-input-placeholder { 
+ color:white;
+}
+   #main
+    {
+    width:400px;
+    }
+    </style>
     <script>
     function res()
     {
@@ -33,29 +65,66 @@
 	    f.action="reset_password?email="+x;
 	    f.submit(); 
     }
+    function res_uname()
+    {
+    	var x=document.getElementById("neww_email").value;
+    	var y=document.getElementById("neww_roles").value;
+    	var z=document.getElementById("neww_projects").value;
+    	window.alert(y+" "+z);
+    	var f=document.loginForm;
+	    f.method="post";
+	    f.action="reset_uname.jsp?email="+x+"&role="+y+"&project="+z;
+	    f.submit();
+    }
     function reset()
     {
     	document.getElementById('side').style.display="block";
     	document.getElementById('main').style.display="none";
     }
+    function reset_uname()
+    {
+    	document.getElementById('sides').style.display="block";
+    	document.getElementById('main').style.display="none";
+    }
+    </script>
+    <script>
+    function chekbox()
+    {
+    	var x=document.getElementById("uname").value;
+    	var y=document.getElementById("pwd").value;
+    	if(x!='' && y!=''){
+    		document.getElementById("burton").disabled=false;
+    	}
+    		
+    }
     </script>
 </head>
-<body>
-
+<body style="background-color:#4169E1;">
+<br/><br/><br/><br/><br/>
 	<div class="container" id="main" style="display:block;">
 			<section class="login-form">
 				<form method="post" action="login.jsp" role="login" name="loginForm">
-					<img src="assets/images/logo1.png" class="img-responsive" alt="" />
-					<input type="text" name="usr" placeholder="Username" required class="form-control input-lg" />
-					<input type="password" name="pwd" placeholder="Password" required class="form-control input-lg" />
-					<button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
+					&nbsp;&nbsp;<img src="assets/images/logo1.png" id="imaage" style="margin:0px auto; text-align:center;" class="img-responsive" alt="" /><br/>
+					
+					    <h3 style="text-align:center;color:white;font-size:30px;">SIGN IN</h3>
+					    <br/>
+						 <div class="input-group">   
+						  <div class="input-group-addon" id="main_col">
+	                                         <span class="glyphicon glyphicon-user"></span>
+                                               </div> 
+					 <input type="text" name="usr" id="uname" placeholder="Username" onChange="chekbox()" required class="form-control input-lg" />                                    
+                                               </div>  <br/>
+                                               <div class="input-group">   
+						  <div class="input-group-addon" id="main_col">
+	                                         <span class="glyphicon glyphicon-lock"></span>
+                                               </div> 
+					 <input type="password" name="pwd" id="pwd" placeholder="Password" onChange="chekbox()"  required class="form-control input-lg" />                                 
+                                               </div>  <br/>
+					<button type="submit" name="go" id="burton" class="btn btn-lg btn-primary btn-block" disabled>Sign in</button><br/>
 					<div>
-						<a style="cursor:pointer" onclick="reset();">Forgot password?</a>
+						<a style="cursor:pointer;color:lightblue;" onclick="reset_uname();">Forgot UserName?</a><a style="cursor:pointer;float:right;color:lightblue;" onclick="reset();">Forgot password?</a>
 					</div>
 				</form>
-				<div class="form-links">
-					<a href="#">www.platform3solutions.com</a>
-				</div>
 			</section>
 	</div>
 	
@@ -65,6 +134,17 @@
 <div class="row"><div class="col-sm-5 form-group">	
 <label>Email</label><input type="text" id="new_email" required class="form-control input-lg" />	
 <br/><button type="button" class="btn btn-primary" onclick="res()">Submit</button>		</div>
+	</div>
+	</div>
+	
+	<div class="container" style="display:none" id="sides">
+
+	<h3><span style="color:white">Enter the recovery Mail Address</span></h3>
+<div class="row"><div class="col-sm-5 form-group">	
+<label>Email</label><input type="text" id="neww_email" required class="form-control input-lg" />
+<label>Roles</label><input type="text" id="neww_roles" required class="form-control input-lg" />
+<label>Projects</label><input type="text" id="neww_projects" required class="form-control input-lg" />	
+<br/><button type="button" class="btn btn-primary" onclick="res_uname()">Submit</button>		</div>
 	</div>
 	</div>
 	

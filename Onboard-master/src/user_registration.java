@@ -41,7 +41,7 @@ public class user_registration extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String roles=request.getParameter("role");
+		String roles=request.getParameter("reg_roles");
 	String username=request.getParameter("reg_uname");
 	String firstname=request.getParameter("reg_fname");
 	String lastname=request.getParameter("reg_lname");
@@ -50,7 +50,14 @@ public class user_registration extends HttpServlet {
 	String pass=request.getParameter("reg_pwd");
 	String confmpass=request.getParameter("reg_cpwd");
 	String projects=request.getParameter("reg_projects");
-	HashMap<String,String> hm=new HashMap<String,String>(); 
+	String question=request.getParameter("reg_qn");
+	String answer=request.getParameter("reg_ans");
+	
+	System.out.println("bbbbala");
+	System.out.println("Questions..   "+question);
+	System.out.println("Answers..   "+answer);
+
+/*	HashMap<String,String> hm=new HashMap<String,String>(); 
 	hm.put("Admin","XXXXXXXX");
 	hm.put("ArchivalAdmin","XXXXXXRR");
 	hm.put("LegacyProgramManager","NXXRRNNN");
@@ -64,9 +71,9 @@ public class user_registration extends HttpServlet {
 	hm.put("LegacyBusinessSME","NXRXRRNNN");
 	
 	String rol=(String)hm.get(roles);
-	int i=0;
+	int i=0;*/
 	
-	  try
+	 try
       {
         // create a mysql database connection
         String myDriver = "org.gjt.mm.mysql.Driver";
@@ -74,8 +81,8 @@ public class user_registration extends HttpServlet {
         Class.forName(myDriver);
         Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
       
-        String query = " insert into user_details (uname, fname, lname, email, pwd, projects, roles,stats,admin,app_emp,intake,arch_exe,decomm,prgm_governance,reporting,finance)"
-	            + " values (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?)";
+        String query = " insert into user_details (uname, fname, lname, email, pwd, projects, roles,stats,question,answer)"
+	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	          PreparedStatement preparedStmt = conn.prepareStatement(query);
 	          preparedStmt.setString(1, username);
@@ -86,23 +93,8 @@ public class user_registration extends HttpServlet {
 	          preparedStmt.setString(6, projects);
 	          preparedStmt.setString(7, roles);
 	          preparedStmt.setString(8, "active");
-	          preparedStmt.setString(9,""+rol.charAt(0));
-	          preparedStmt.setString(10,""+rol.charAt(1));
-	          if(rol.length()>8)
-	          {
-	         preparedStmt.setString(11,rol.charAt(2)+""+rol.charAt(3));
-	         i=1;
-	          }
-	          else
-	          preparedStmt.setString(11,""+rol.charAt(2));
-	          preparedStmt.setString(12,""+rol.charAt(3+i));
-	          preparedStmt.setString(13,""+rol.charAt(4+i));
-	          preparedStmt.setString(14,""+rol.charAt(5+i));
-	          preparedStmt.setString(15,""+rol.charAt(6+i));
-	          preparedStmt.setString(16,""+rol.charAt(7+i));
-	        
-	        
-	          
+	          preparedStmt.setString(9, question);
+	          preparedStmt.setString(10, answer);
 	          
          preparedStmt.execute();
 	          

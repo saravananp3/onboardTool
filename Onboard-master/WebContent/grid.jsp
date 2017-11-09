@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -20,6 +21,18 @@
       background-color: #f2f2f2;
       padding: 25px;
     }
+    
+    div div #testDecom
+{
+  pointer-events: none;
+  /* for "disabled" effect */
+  opacity: 0.5;
+  
+}
+   #navbar {
+    color:#008B8B;
+    
+    }
   </style>
   <script src="js/multiplepages.js"></script>
   <script language="javascript"></script>
@@ -27,6 +40,7 @@
  
 </head>
 <body>
+
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
@@ -37,10 +51,11 @@ String db = "strutsdb";
 String driver = "com.mysql.jdbc.Driver";
 String userName ="root";
 String password="password123";
-
 String name = request.getParameter("id");
 session.setAttribute("theName", name);
-
+HttpSession details=request.getSession();
+String roles=(String)details.getAttribute("role");
+System.out.println("sdsdlkdasdlkasdlkads.............."+roles);
 int sumcount=0;
 Statement st;
 try{
@@ -50,10 +65,11 @@ Statement st1;
 String query1 = "select * from projinfo where id = "+name;
 st1 = con.createStatement();
 ResultSet rs = st1.executeQuery(query1);
-
-
 if(rs.next())
 {
+	
+	
+	
 %>
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -63,7 +79,7 @@ if(rs.next())
                  
                     <a class="navbar-brand">Onboarding Tool-<%=rs.getString("projectname") %></a>
               
-                <div id="navbar" class="navbar-collapse collapse">
+                <div id="navbar" class="navbar-collapse collapse" >
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
@@ -86,6 +102,10 @@ if(rs.next())
         </div>
 
   <br><br>
+<div class="container-fluid bg-3 text-center">
+<div class="container-fluid bg-3 text-center">  
+<div class="container-fluid bg-3 text-center">
+<div class="container-fluid bg-3 text-center">  
  <br>
   
 <br>
@@ -94,28 +114,36 @@ if(rs.next())
 <br><br>
 <br><br>
 <br><br>
-<div class="col-sm-2">
+<div class="col-sm-3">
 </div>
-<div class="col-sm-8">
+
+<% 
+	if(roles.equals("admin")){
+System.out.println("Result:"+roles);
+	%>
+    <!--  admin Role -->  
+    
+           
+<div class="col-sm-8" >
 <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2" height="100" width="100">
           <div class="well">
-           <a href="Registration.jsp">
+          <a href="Registration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
            </a>
           </div>
         </div>
-        <div class="col-sm-3">
-          <div class="well" >
+        <div class="col-sm-2">
+          <div class="well">
           <a href="editproject.jsp">
          <center>
            <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
           </div>
           </a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="well">
           <a href="firstinsert.jsp">
            <center>
@@ -124,16 +152,16 @@ if(rs.next())
           </div>
           </a>
         </div>
-        <div class="col-sm-3" >
+        <div class="col-sm-2">
           <div class="well">
           <a href="archive_exec_samp.jsp">
            <center>
            <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
-          </a>
           </div>
         </div>
-     
-        <div class="col-sm-3">
+      </div>
+<div class="row">
+        <div class="col-sm-2">
           <div class="well">
            
            <center>
@@ -141,26 +169,737 @@ if(rs.next())
            </center>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="well">
          <center>
            <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="well">
            <center>
            <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="well">
            <center>
            <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
         </div>
         
+
+<%
+}
+	else if(roles.equals("TestLead"))
+{
+%>
+<!-- Test Lead -->
+ <div class="col-sm-8">
+<div class="row">
+        <div class="col-sm-2" height="100" width="100" id="testDecom" >
+          <div class="well">
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="90" alt="Avatar" >
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom" >
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2" id="testDecom" >
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2" id="testDecom">
+     
+          <div class="well">
+         <a href="#">
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="90" alt="Avatar" float="left">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+
+<%
+}
+else if(roles.equals("ArchivalAdmin"))
+{
+	%>
+	<!-- Archival Admin -->
+	 <div class="col-sm-8">
+<div class="row">
+        <div class="col-sm-2" height="100" width="100">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+
+        <div class="col-sm-2">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+	
+	<%} 
+	
+else if(roles.equals("ArchivalProgramManager"))
+{
+	%>
+	<!-- Archival Program Manager -->
+ <div class="col-sm-8">
+<div class="row">
+        <div class="col-sm-2" height="100" width="100">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        
+
+
+<%
+}
+else if(roles.equals("LegacyBusinessSME"))
+{
+%>
+      <!-- Technical BUsiness SME -->
+     <div class="col-sm-8" >
+<div class="row">
+        <div class="col-sm-2" height="100" width="100" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      
+      
+      
+      
+      
+ <%
+}
+else if(roles.equals("LegacyTechnicalSME"))
+{
+      %>
+      <!-- Legacy Technical SME -->
+       <div class="col-sm-8" >
+<div class="row">
+        <div class="col-sm-2" height="100" width="100" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+ 
+ <%} 
+else if(roles.equals("LegacyProgramManager"))
+{
+ %>    
+
+<div class="col-sm-8" >
+<div class="row">
+        <div class="col-sm-2" height="100" width="100" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+ 
+
+
+<%
+  
+         }
+else if(roles.equals("ArchivalBusinessAnalyst"))
+{
+         %>
+         
+         <!-- Archival Business Analyst -->
+<div class="col-sm-8" >
+<div class="row">
+        <div class="col-sm-2" height="100" width="100" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2" id="testDecom">
+          <div class="well"> 
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+ 
+
+<%
+}
+else if(roles.equals("ArchivalTechnicalLead"))
+{
+%>
+<div class="col-sm-8" >
+<div class="row">
+        <div class="col-sm-2" height="100" width="100" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+ 
+<%
+}
+else if(roles.equals("ArchivalProjectManager"))
+{
+	%>
+	<!-- Archival Program Manager -->
+ <div class="col-sm-8">
+<div class="row">
+        <div class="col-sm-2" height="100" width="100">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2">
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        
+
+
+<%
+}
+else if(roles.equals("ArchivalDeveloper"))
+{
+%>
+<div class="col-sm-8" >
+<div class="row">
+        <div class="col-sm-2" height="100" width="100" id="testDecom" >
+          <div class="well">
+           <center>
+           <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="editproject.jsp">
+         <center>
+           <img src="assets/images/Appemphasize.png" class="img-rounded" height="100" width="100" alt="Avatar" onclick="edit()"></center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="firstinsert.jsp">
+           <center>
+           <img src="assets/images/Intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+          </a>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+          <a href="archive_exec_samp.jsp">
+           <center>
+           <img src="assets/images/ArchivalExecution.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+      </div>
+<div class="row">
+        <div class="col-sm-2" id="testDecom" >
+          <div class="well">
+           
+           <center>
+           <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar" >
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom" >
+          <div class="well">
+         <center>
+           <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="well">
+           <center>
+           <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
+           </center>
+          </div>
+        </div>
+        <div class="col-sm-2" id="testDecom" >
+          <div class="well">
+           <center>
+           <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
+          </div>
+        </div>
+
+
+
+<%} %>
+
+
+
       </div>
    
 </div>
@@ -171,7 +910,19 @@ if(rs.next())
 </div>
 </div>
 
-  
+   <center>
+      <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="project.jsp" tabindex="-1">Previous</a>
+    </li>
+
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</center>
 
 
 					<%
@@ -186,4 +937,11 @@ e.printStackTrace();
 }
 %>
 </body>
+
+<script>
+$(document).ready(function() {
+    
+    $('#testDecom').attr('disabled', true);
+});
+</script>
 </html>
