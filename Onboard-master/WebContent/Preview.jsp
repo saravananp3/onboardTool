@@ -89,6 +89,32 @@ float:right;
 
 } 
 </style>
+  <style>
+.bs-wizard {margin-top: 40px;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+/*END Form Wizard*/
+
+</style>
+
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
@@ -202,7 +228,16 @@ function myFunction4() {
     }
 }
 </script>
-    
+ <script>
+function call()
+{
+	var f=document.loginForm;
+    f.method="post";
+    f.action='updatedb';
+    f.submit();
+	}
+
+</script>
 <script type="text/javascript">
     function EnableDisableTextBox(chkROD) {
         var txtROD = document.getElementById("txtROD");
@@ -434,46 +469,45 @@ $(document).ready(function () {
                     <br/><br/><br/>
                     
                     
-<div class="col-md-9">
+<div class="col-md-8">
 
       
-            
 
-<div class="row">
-  <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Initiate</label></center>
-  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
-</div></div></div>
-
-  <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Plan</label></center>
-  <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
-</div></div></div>
-
-  <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Execute</label></center>
-  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-
- <div class="col-md-3">
- <div class="form-group">
- <center><label >Hypercare</label></center>
- <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-</div>
-              
+               <div class="row">
+		
+        
+            <div class="row bs-wizard" style="border-bottom:0;">
+                
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Project Information</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Final</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
                     <br/><br/><br/>
-           
-                                
-                        <h3 style="color:powderblue;">List of Application:</h3>   
-                 <a href="applnprior.jsp" style="background-color:powderblue;" class="btn btn-default" class="btn pull-right">Edit</a>                      
+            <h1 align="center">Preview & Summary</h1>   
+                            
+                      <button type="button" class="btn btn-primary" onclick="call()" >Back</button> 
+                                       
                 <button id="exportview" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button> </br>  <br>  
                 
   <div class="table table-hover" border= "1" id="table-scroll"> 

@@ -551,10 +551,10 @@ Syste.out.println("script:" +role);
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
-                   <% if(rs3.next()){ %>
-                    <% if(rs4.next()){ %>
+                   <% if(rs3.next()){ System.out.println("HIIII"+rs3.getString("projectname")); %>
+                    <% if(rs4.next()){ System.out.println("Hello"+rs4.getString("appname"));%>
                     <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
-                    <%} }%>
+                    
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
@@ -1271,7 +1271,7 @@ checkk();
  
  </script>        
             
-      
+      <%} }%>
         <%
 }
 }
