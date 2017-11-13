@@ -81,16 +81,6 @@
 	}
 	</script>
 	<script>
-	function jink()
-	{
-		var f=document.loginForm;
-	    f.method="post";
-	    f.action='deactivate?values='+har+'&values2='+his;
-	    f.submit(); 	
-	}
-	</script>
-
-	<script>
 	var arr="";
 	function ooo()
 	{
@@ -139,6 +129,17 @@
 <body>
 <%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
+		<%
+
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 <%
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
@@ -147,9 +148,9 @@ Statement s=conn.createStatement();
 ResultSet rs=s.executeQuery(query);
 
 %>
-
+<form class="form-signin" name="loginForm" method="post">
 <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="blue">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -157,27 +158,27 @@ ResultSet rs=s.executeQuery(query);
     	<div class="sidebar-wrapper">
                        <ul class="nav">
                 <li><br/><br/><br/>
-                    <a href="dashboard.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                    <a href="project.jsp">
+                        <i class="glyphicon glyphicon-home"></i>
+                        <p>Home</p>
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="Registration.jsp">
                         <i class="pe-7s-user"></i>
                         <p>User Configuration</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="table.html">
+                    <a href="dash.jsp">
                         <i class="pe-7s-note2"></i>
                         <p>Users List</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="roledetails.jsp">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Roles List</p>
+                        <p>Authorization List</p>
                     </a>
                 </li>
                          </ul>
@@ -185,7 +186,7 @@ ResultSet rs=s.executeQuery(query);
     </div>
 
     <div class="main-panel">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:blue">
             <div class="container-fluid">
                 
     
@@ -204,7 +205,7 @@ ResultSet rs=s.executeQuery(query);
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
@@ -224,7 +225,7 @@ ResultSet rs=s.executeQuery(query);
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th></th>
-  <th>UserName</th>
+  <th >UserName</th>
   <th>FirstName</th>
   <th>LastName</th>
   <th>Email</th>
@@ -237,12 +238,8 @@ ResultSet rs=s.executeQuery(query);
                                       int count=0;
   while(rs.next()){ 
 	  if(rs.getString(8).equals("active")){
-		  if(count%2!=0){
-  %>
-  <tr style="background-color:white">
-  <%}else {%>
-  <tr style="background-color:#B0C4DE">
-  <%} %>
+		  %>
+<tr style="background-color:white;">
   <td><input type="checkbox" name="delete_check" id="delete_check" ></td>
   <td><%= rs.getString(1) %></td>
   <td><%= rs.getString(2) %></td>
@@ -278,7 +275,7 @@ ResultSet rs=s.executeQuery(query);
 
  &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='Registration.jsp'">Add User</button>&nbsp;&nbsp;
   <input type="button" class="btn btn-primary" onclick="del(<%=count %>);ww();" value="DeleteUser">&nbsp;&nbsp;
-  <button type="button" class="btn btn-primary" onclick="jink();">Submit</button>
+  <button type="button" class="btn btn-primary" onclick="servlet_call();">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -293,7 +290,7 @@ ResultSet rs=s.executeQuery(query);
 
     </div>
 </div>
- 
+ </form>
 
 </body>
 

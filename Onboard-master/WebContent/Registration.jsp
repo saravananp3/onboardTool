@@ -1,181 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>List Page</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
+    
 		<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js/dropdown.js"></script>
-  <style>
-span.multiselect-native-select {
-	position: relative
-}
-span.multiselect-native-select select {
-	border: 0!important;
-	clip: rect(0 0 0 0)!important;
-	height: 1px!important;
-	margin: -1px -1px -1px -3px!important;
-	overflow: hidden!important;
-	padding: 0!important;
-	position: absolute!important;
-	width: 1px!important;
-	left: 50%;
-	top: 30px
-}
-.multiselect-container {
-	position: absolute;
-	list-style-type: none;
-	margin: 0;
-	padding: 0
-}
-.multiselect-container .input-group {
-	margin: 5px
-}
-.multiselect-container>li {
-	padding: 0
-}
-.multiselect-container>li>a.multiselect-all label {
-	font-weight: 700
-}
-.multiselect-container>li.multiselect-group label {
-	margin: 0;
-	padding: 3px 20px 3px 20px;
-	height: 100%;
-	font-weight: 700
-}
-.multiselect-container>li.multiselect-group-clickable label {
-	cursor: pointer
-}
-.multiselect-container>li>a {
-	padding: 0
-}
-.multiselect-container>li>a>label {
-	margin: 0;
-	height: 100%;
-	cursor: pointer;
-	font-weight: 400;
-	padding: 3px 0 3px 30px
-}
-.multiselect-container>li>a>label.radio, .multiselect-container>li>a>label.checkbox {
-	margin: 0
-}
-.multiselect-container>li>a>label>input[type=checkbox] {
-	margin-bottom: 5px
-}
-.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
-	border-top-left-radius: 4px;
-	border-bottom-left-radius: 4px
-}
-.form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
-	padding: 3px 20px 3px 40px
-}
-.form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
-	margin-left: -20px;
-	margin-right: 0
-}
-</style>
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <style>
+    
 	<style>
-	@import "font-awesome.min.css";
-@import "font-awesome-ie7.min.css";
-/* Space out content a bit */
-
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  padding-bottom: 9px;
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 20px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 1px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 930px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-			#table-scroll {
-  height:400px;
-  overflow:auto;  
-  margin-top:20px;
-}
-	</style>
 	
-	
-	
-	<style>
+	input.noact
+{
+border:none;
+border-color:transparent;
+width:40px;
+background-color:transparent;
+}
+
+input.act
+{
+border:none;
+border-color:transparent;
+width:45px;
+background-color: transparent;
+}
 	.glyphicon {
     font-size: 35px;
 }
@@ -184,57 +68,9 @@ span.multiselect-native-select select {
 color:red;
 font-size:10px;
 }
-th
-{
-color:#00BFFF;
-text-align:center;
-}
-	
-/* Style the tab */
-div.tab {
-    float: left;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 7%;
-    height: 720px;
-}
 
-/* Style the buttons inside the tab */
-div.tab button {
-    display: block;
-    background-color: inherit;
-    color: black;
-    padding: 22px 16px;
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-div.tab button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-div.tab button.active {
-    background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-    float: left;
-    padding: 0px 12px;
-    border: 1px solid #ccc;
-    width: 93%;
-    border-left: none;
-    height: 720px;
-}
-	</style>
-	
-	<script>
+ </style>
+      <script>
 	function calls()
 	{
 		    var x = document.getElementById('myDiv1');
@@ -247,7 +83,7 @@ div.tab button.active {
 		
 	}
 	</script>
-	<script>
+<script>
 	var har=[];
 	var his=[];
 	function oop(name)
@@ -287,29 +123,6 @@ div.tab button.active {
 	}
 	</script>
 	<script>
-	
-	function openCity(evt, cityName) {
-	    // Declare all variables
-	    var i, tabcontent, tablinks;
-
-	    // Get all elements with class="tabcontent" and hide them
-	    tabcontent = document.getElementsByClassName("tabcontent");
-	    for (i = 0; i < tabcontent.length; i++) {
-	        tabcontent[i].style.display = "none";
-	    }
-
-	    // Get all elements with class="tablinks" and remove the class "active"
-	    tablinks = document.getElementsByClassName("tablinks");
-	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].className = tablinks[i].className.replace(" active", "");
-	    }
-
-	    // Show the current tab, and add an "active" class to the link that opened the tab
-	    document.getElementById(cityName).style.display = "block";
-	    evt.currentTarget.className += " active";
-	}
-	</script>
-	<script>
 	var arr="";
 	function ooo()
 	{
@@ -343,37 +156,22 @@ div.tab button.active {
 				 window.alert("Invalid EmailID");
 			}
 	}
-	</script>
-	<script>
-	var pops="";
-	function del(cnt)
-	{
-	for(var i=0;i<cnt;i++){
-		if(document.getElementsByName('delete_check')[i].checked){
-			var name=document.getElementsByName('name_user'+i)[0].value;
-				pops=pops+name+",";	
-				
-		}
-	}
-	}
-	function ww()
-	{
-		
-		var f=document.loginForm;
-	    f.method="post";
-	    f.action='delete_users?array='+pops;
-	    f.submit(); 
-		
-	}
-	
-	</script>
-
+	</script> 
 </head>
-
 <body>
+<%
+
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 <%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
-		
 <%
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
@@ -386,8 +184,44 @@ ResultSet rs1=s1.executeQuery(query1);
 int count=0;
 %>
 <form class="form-signin" name="loginForm" method="post">
-<div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="wrapper">
+    <div class="sidebar" data-color="blue">
+
+    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+    	<div class="sidebar-wrapper">
+                       <ul class="nav">
+                <li><br/><br/><br/>
+                    <a href="project.jsp">
+                        <i class="glyphicon glyphicon-home"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="Registration.jsp">
+                        <i class="pe-7s-user"></i>
+                        <p>User Configuration</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="dash.jsp">
+                        <i class="pe-7s-note2"></i>
+                        <p>Users List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="roledetails.jsp">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Authorization List</p>
+                    </a>
+                </li>
+                         </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+		<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:blue">
             <div class="container-fluid">
                 
     
@@ -406,27 +240,19 @@ int count=0;
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
                 </div>
             </div>
         </nav>
-     
-        </div>
-        
-			
-			<div class="tab"><br/><br/><br/>
-			 <button class="tablinks"><span class="glyphicon glyphicon-list-alt"></span><b><br/>User Config</b></button>
-   <button type="button" class="tablinks" onclick="window.location.href='users_list.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b>User List</b></button>
-   <button type="button" onclick="window.location.href='roledetails.jsp'"><span class="glyphicon glyphicon-list-alt"></span><b><br/>Role Details</b></button>
-</div>
+<br/><br/><br/>
+
 <div id="config" class="tabcontent">
  <div class="container">
- <br/><br/><br/><br/><br/>
-	<div class="col-lg-12 well">
-	<div class="row">
+ <br/><div class="col-lg-10" style="background-color:white;border-radius:5px;margin-left:20px;">
+	<br/><br/><div class="row">
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-5 form-group">
@@ -485,7 +311,7 @@ $(function() {
 					</div>		
 					</div>
 					
-					<button type="button" class="btn btn-lg btn-info" onclick="ooo();qq()">Send Invites</button>					
+					<button type="button" class="btn btn-primary" onclick="ooo();qq()">Send Invites</button>					
 					</div>
 				
 				</div>
@@ -497,6 +323,34 @@ $(function() {
 
 
 </form>
-			
+            
+
+
+    </div>
+</div>
+ 
+</form>
 </body>
+
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="assets/js/demo.js"></script>
+
+
 </html>

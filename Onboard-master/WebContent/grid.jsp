@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <html lang="en">
 <head>
@@ -43,15 +43,25 @@
 
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
-
 <%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+	
+}
+else{
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
 String db = "strutsdb";
 String driver = "com.mysql.jdbc.Driver";
 String userName ="root";
 String password="password123";
-String name = request.getParameter("id");
+String name = (String)session.getAttribute("param");
+System.out.println(name);
 session.setAttribute("theName", name);
 HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
@@ -91,7 +101,7 @@ if(rs.next())
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
@@ -163,7 +173,7 @@ System.out.println("Result:"+roles);
 <div class="row">
         <div class="col-sm-2">
           <div class="well">
-           
+            <a href="#">
            <center>
            <img src="assets/images/Decom.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
@@ -171,12 +181,14 @@ System.out.println("Result:"+roles);
         </div>
         <div class="col-sm-2">
           <div class="well">
+          <a href="#">
          <center>
            <img src="assets/images/Program.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="well">
+          <a href="#">
            <center>
            <img src="assets/images/Report.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
@@ -184,6 +196,7 @@ System.out.println("Result:"+roles);
         </div>
         <div class="col-sm-2">
           <div class="well">
+          <a href="#">
            <center>
            <img src="assets/images/Finance&ContractManagement.png" class="img-rounded" height="100" width="100" alt="Avatar"></center>
           </div>
@@ -339,7 +352,7 @@ else if(roles.equals("ArchivalProgramManager"))
 	<!-- Archival Program Manager -->
  <div class="col-sm-8">
 <div class="row">
-        <div class="col-sm-2" height="100" width="100">
+        <div class="col-sm-2" height="100" width="100" id="testDecom">
           <div class="well">
            
            <center>
@@ -934,6 +947,7 @@ else if(roles.equals("ArchivalDeveloper"))
 }
 catch(Exception e){
 e.printStackTrace();
+}
 }
 %>
 </body>

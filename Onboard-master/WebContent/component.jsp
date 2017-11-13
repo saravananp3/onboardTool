@@ -294,7 +294,17 @@ document.getElementById('file3').disabled = true;
 </script>
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
+<%
 
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 
 <%
 try {
@@ -308,7 +318,7 @@ Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strut
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query4 = "select * from appldetail where id = "+idd;
+String query4 = "select * from appldetail where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 {
@@ -335,7 +345,7 @@ ResultSet rs4 = st4.executeQuery(query4);
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ol>
                     

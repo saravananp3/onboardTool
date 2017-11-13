@@ -1,12 +1,7 @@
-
-
 <!DOCTYPE html>  
 <html>  
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
-
-  
-
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script> 
@@ -468,7 +463,7 @@ $(function() {
 	  
 	  var f=document.loginForm;
 	    f.method="post";
-	    f.action='update_view';
+	    f.action='archivesummary.jsp';
 	    f.submit(); 
 	 // document.loginForm.action = "update_view";
   	 // document.loginForm.submit();   
@@ -501,7 +496,17 @@ function remove(x)
 <%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
 <form class="form-signin" name="loginForm" method="post" action="archive_exec">
-	
+	<%
+
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 <%
 
 	String det=(String)session.getAttribute("theName");
@@ -553,7 +558,7 @@ if(rs4.next()){
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
@@ -669,7 +674,7 @@ if(rs4.next()){
   </script>
   <br/><br/><br/>
                                 
-                 <div class="col-md-8">
+                 <div class="col-md-7">
                  
                  
                              

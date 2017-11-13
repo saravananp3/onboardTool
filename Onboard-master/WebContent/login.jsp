@@ -9,10 +9,13 @@
 <body>
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
+	
 	<%
 	HttpSession details=request.getSession(); 
-String userid=request.getParameter("usr"); 
+String userid=request.getParameter("usr");
 String pwd=request.getParameter("pwd"); 
+session.setAttribute("username",userid);
+
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 Statement st= con.createStatement(); 
@@ -21,6 +24,8 @@ if(userid.equals("admin")&&pwd.equals("admin"))
 {
 	details.setAttribute("role","admin");
 	details.setAttribute("projects","all");
+	details.setAttribute("app_emp","X");
+	details.setAttribute("intake","X");
 
     String redirectURL = "project.jsp";
 

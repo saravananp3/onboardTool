@@ -118,11 +118,12 @@ $(function() {
     }
 </script>
 <script>
-function edit(id)
+function edit()
 {
+	
 	var f=document.form;
 	f.method="post";
-	f.action="grid.jsp?id="+id;
+	f.action="grid.jsp";
 	f.submit();
 	}
 
@@ -137,10 +138,47 @@ function edit(id)
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
+<%
+
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
+
 <% 
 HttpSession role_ses=request.getSession();  
 String frole=(String)role_ses.getAttribute("role");
 System.out.println(frole);
+%>
+		<%
+Connection con = null;
+String url = "jdbc:mysql://localhost:3306/";
+String db = "strutsdb";
+String driver = "com.mysql.jdbc.Driver";
+String userName ="root";
+String password="password123";
+
+int sumcount=0;
+Statement st;
+try{
+	String query;
+	HttpSession details=request.getSession();
+	String prj=(String)details.getAttribute("projects");
+	System.out.println("helo "+prj);
+Class.forName(driver).newInstance();
+con = DriverManager.getConnection(url+db,userName,password);
+if(prj.equals("all"))
+ query = "select * from projinfo";
+else
+ query = "select * from projinfo where projectname='"+prj+"'";
+st = con.createStatement();
+System.out.println(query);
+ResultSet rs = st.executeQuery(query);
 %>
 <form method="post" name="form" action="Appin">
 <div class="container">
@@ -162,7 +200,7 @@ System.out.println(frole);
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                       <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
@@ -193,31 +231,6 @@ System.out.println(frole);
 						<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
 						<a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
 					</div>
-		<%
-Connection con = null;
-String url = "jdbc:mysql://localhost:3306/";
-String db = "strutsdb";
-String driver = "com.mysql.jdbc.Driver";
-String userName ="root";
-String password="password123";
-
-int sumcount=0;
-Statement st;
-try{
-	String query;
-	HttpSession details=request.getSession();
-	String prj=(String)details.getAttribute("projects");
-	System.out.println("helo "+prj);
-Class.forName(driver).newInstance();
-con = DriverManager.getConnection(url+db,userName,password);
-if(prj.equals("all"))
- query = "select * from projinfo";
-else
- query = "select * from projinfo where projectname='"+prj+"'";
-st = con.createStatement();
-System.out.println(query);
-ResultSet rs = st.executeQuery(query);
-%>
 
 	<ul>
 <%
@@ -242,7 +255,7 @@ while(rs.next()){
 			<h5 class="cbp-vm-title right-col primary" >Initiate</h5>
 		
 						
-							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%=rs.getString(10)%>);">
+							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%session.setAttribute("param",rs.getString(10));%>);">
  View/Update
 </button>
 						</li>

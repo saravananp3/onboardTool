@@ -511,6 +511,17 @@ document.getElementById('sysreq').readOnly = true;
   <body>
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
+<%
+
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 
 
 <%
@@ -520,41 +531,31 @@ try {
 	System.out.println("IntakeModule    "+ info);
 String det=(String)session.getAttribute("theName");
 String idd = request.getParameter("id");
+System.out.println("id is "+idd);
 session.setAttribute("appidd", idd);
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query4 = "select * from appldetail where id = "+idd;
+System.out.println(query3);
+String query4 = "select * from appldetail where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
+System.out.println(query4);
 
 {
 %>
-<script>
 
-$(document).ready(function () {
-Syste.out.println("script:" +role);
-
-  if(role.equals("admin")) {
- 
-  $("#panels1").find("input,button,textarea,select").attr("disabled", "disabled");
-  } else {
-    $("#panels1").removeAttribute("readonly");
-  }
-});
-
-</script>
 <form class="form-signin"name="loginForm" method="post" action="business" >
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
-                   <% if(rs3.next()){ System.out.println("HIIII"+rs3.getString("projectname")); %>
-                    <% if(rs4.next()){ System.out.println("Hello"+rs4.getString("appname"));%>
+                   <% if(rs3.next()){ %>
+                    <% if(rs4.next()){ %>
                     <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
-                    
+                    <%} }%>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
@@ -568,7 +569,7 @@ Syste.out.println("script:" +role);
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ol>
                     
@@ -759,7 +760,7 @@ x.item(i).style.backgroundColor = 'black' ;
 
 </script>
 
-<div id ="test">
+
 <div class="panel-group" id="panels1" > 
                        <br><br><br>
                  <div class="panel panel-default"> 
@@ -1253,7 +1254,7 @@ x.item(i).style.backgroundColor = 'black' ;
                             </div>                             
                         </div>
         </div>
-       <input type="text" id="pwqej" value="<%= info %>" hidden>   
+                     <input type="text" id="pwqej" value="<%= info %>" hidden>   
        
                     <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
 
@@ -1263,7 +1264,7 @@ x.item(i).style.backgroundColor = 'black' ;
                     
        </div>
                 
-            </div>
+            
        <script>
  if(document.getElementById('pwqej').value=="XR")
  
@@ -1271,7 +1272,7 @@ checkk();
  
  </script>        
             
-      <%} }%>
+      
         <%
 }
 }

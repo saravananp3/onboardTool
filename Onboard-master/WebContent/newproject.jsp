@@ -387,7 +387,17 @@ $(function() {
 
 <%@page import="java.sql.*"%>
 <%@ page import="java.text.NumberFormat" %>
+<%
 
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 
  
 <form class="form-signin" name="loginForm" method="post" >
@@ -520,7 +530,7 @@ function validation(pro_name)
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     

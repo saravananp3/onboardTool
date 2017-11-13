@@ -643,7 +643,17 @@ for (var i = 0 ; i < x.length ; i ++)
 
 } 
 </script>
+<%
 
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 
 
  
@@ -669,7 +679,7 @@ for (var i = 0 ; i < x.length ; i ++)
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Help</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ol>
                     

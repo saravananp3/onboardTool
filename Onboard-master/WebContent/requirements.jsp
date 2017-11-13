@@ -246,7 +246,7 @@ Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strut
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query4 = "select * from appldetail where id = "+idd;
+String query4 = "select * from appldetail where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 {

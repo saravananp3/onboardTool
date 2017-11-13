@@ -124,31 +124,6 @@ select { width: 100%; }
     border: 0;
 }
 </style>
-  <style>
-.bs-wizard {margin-top: 40px;}
-
-/*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
-.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
-.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
-.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
-.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
-.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
-.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
-.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
-.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
-.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
-/*END Form Wizard*/
-
-</style>
   
    <script>
 function myFunction1() {
@@ -255,16 +230,7 @@ function call()
 	}
 
 </script>
-<script>
-function back()
-{
-	var f=document.loginForm;
-    f.method="post";
-    f.action='editproject.jsp';
-    f.submit();
-	}
-
-</script>
+  
  
     
 </head>
@@ -272,6 +238,17 @@ function back()
     <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="java.text.NumberFormat" %>
+<%
+
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+
+if (session.getAttribute("username")==null)
+{
+	response.sendRedirect("Login.html");
+}
+%>
 
 <%
 double ans=0.0;
@@ -324,7 +301,7 @@ total=rs2.getInt("total");
                             <a href="#">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Help</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
@@ -461,42 +438,9 @@ total=rs2.getInt("total");
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
-           <div class="row">
-		
-        
-            <div class="row bs-wizard" style="border-bottom:0;">
-                
-                <div class="col-xs-3 bs-wizard-step complete">
-                  <div class="text-center bs-wizard-stepnum">Project Information</div>
-                  <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
-                
-                </div>
-                
-                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
-                  <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
-                  <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
-                </div>
-                
-                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
-                  <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
-                  <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
-                </div>
-                
-                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
-                  <div class="text-center bs-wizard-stepnum">Final</div>
-                  <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
-                </div>
-            </div>
-           
+              
                     <br/><br/><br/>
-               
-        
-        
-	</div>  
+                 
                                 
                                 
   <div class="table-responsive" id="table-scroll"> 
@@ -594,10 +538,10 @@ for(var i=0; i<edit_row.length; i++) {
          
                                                                                             
                                    
-<button type="button" class="btn btn-primary" onclick="back()" >Back</button>   
+                                   
 <button type="button" class="btn btn-primary" onclick="call()" >Submit</button>     
      
-                    <a href="root1.jsp" class="btn btn-primary" class="btn pull-right">Cancel</a>
+                    <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
                                       <% } 
                                       }
 %> 
