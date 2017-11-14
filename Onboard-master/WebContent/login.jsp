@@ -24,8 +24,10 @@ if(userid.equals("admin")&&pwd.equals("admin"))
 {
 	details.setAttribute("role","admin");
 	details.setAttribute("projects","all");
+	details.setAttribute("admin","X");
 	details.setAttribute("app_emp","X");
 	details.setAttribute("intake","X");
+	details.setAttribute("archive_exec","X");
 
     String redirectURL = "project.jsp";
 
@@ -41,8 +43,10 @@ if((rs.getString(5).equals(pwd)))
 	ResultSet rs1=st.executeQuery("select * from role_details where role='"+rs.getString(7)+"'"); 
 	if(rs1.next())
 	{
-		details.setAttribute("app_emp",rs1.getString(2));
+		details.setAttribute("admin",rs1.getString(2));
+		details.setAttribute("app_emp",rs1.getString(3));
 		details.setAttribute("intake",rs1.getString(4));
+		details.setAttribute("archive_exec",rs1.getString(5));
 		
 	}
 

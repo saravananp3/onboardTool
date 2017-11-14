@@ -60,12 +60,10 @@ String db = "strutsdb";
 String driver = "com.mysql.jdbc.Driver";
 String userName ="root";
 String password="password123";
-String name = (String)session.getAttribute("param");
-System.out.println(name);
+String name = request.getParameter("id");
 session.setAttribute("theName", name);
 HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
-System.out.println("sdsdlkdasdlkasdlkads.............."+roles);
 int sumcount=0;
 Statement st;
 try{
@@ -94,12 +92,7 @@ if(rs.next())
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
+
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
@@ -129,7 +122,6 @@ if(rs.next())
 
 <% 
 	if(roles.equals("admin")){
-System.out.println("Result:"+roles);
 	%>
     <!--  admin Role -->  
     
@@ -283,10 +275,11 @@ else if(roles.equals("ArchivalAdmin"))
 <div class="row">
         <div class="col-sm-2" height="100" width="100">
           <div class="well">
-           
+           <a href="Registration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
+           </a>
           </div>
         </div>
         <div class="col-sm-2">
@@ -352,12 +345,13 @@ else if(roles.equals("ArchivalProgramManager"))
 	<!-- Archival Program Manager -->
  <div class="col-sm-8">
 <div class="row">
-        <div class="col-sm-2" height="100" width="100" id="testDecom">
+        <div class="col-sm-2" height="100" width="100">
           <div class="well">
-           
+            <a href="Registration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
+           </a>
           </div>
         </div>
         <div class="col-sm-2">
@@ -777,10 +771,11 @@ else if(roles.equals("ArchivalProjectManager"))
 <div class="row">
         <div class="col-sm-2" height="100" width="100">
           <div class="well">
-           
+           <a href="Registration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
+           </a>
           </div>
         </div>
         <div class="col-sm-2">

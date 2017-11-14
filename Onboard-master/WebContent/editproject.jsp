@@ -318,7 +318,6 @@ if (session.getAttribute("username")==null)
 <%
 HttpSession details=request.getSession();
 String info=(String)details.getAttribute("app_emp");
-System.out.println("appmoduel    "+info);
 try {
 	String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -339,7 +338,10 @@ if(rs.next()){
             <div class="container-fluid">
                 
                     
-                    <% if(rs3.next()){ %>
+                    <% if(rs3.next()){
+                    	details.setAttribute("appno",rs3.getString("appno"));
+                    	details.setAttribute("projectname",rs3.getString("projectname"));
+                    	%>
                     <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                     <%} %>
                     
@@ -348,12 +350,6 @@ if(rs.next()){
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
@@ -383,7 +379,7 @@ if(rs.next()){
                         <li><a href="application1.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree1.jsp">Application Prioritization</a>
                          <ul>
                                 <li >Parameters</li>
                                 <li>Archival Complexity Calculation</li>

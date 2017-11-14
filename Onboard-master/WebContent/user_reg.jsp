@@ -173,12 +173,6 @@ ResultSet rs = st.executeQuery(query);
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
-                        <li>
                             <a href="Login.html">Logout</a>
                         </li>
                     </ul>

@@ -108,6 +108,33 @@
             }
         });
     </script>
+       <style>
+.bs-wizard {margin-top: 40px;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+/*END Form Wizard*/
+
+</style>
+
+    
       <style>
 
 .glyphicon { cursor: pointer; }
@@ -265,9 +292,10 @@ Statement st1 = conn.createStatement();
 Statement st2 = conn.createStatement();
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query1= "SELECT * from app_prior where prj_name='"+name+"' order by priorities";
+System.out.println(name);
+String query1= "SELECT * from appinfo where prjname='"+name+"' and complexity is not null";
 ResultSet rs1 = st1.executeQuery(query1);
-String query2= "select count(prj_name) As total from app_prior where prj_name='"+name+"'";
+String query2= "select count(prjname) As total from appinfo where prjname='"+name+"' and complexity is not null";
 ResultSet rs2 = st2.executeQuery(query2);
 {
 %>
@@ -275,6 +303,7 @@ ResultSet rs2 = st2.executeQuery(query2);
 <%if(rs2.next())
 {
 total=rs2.getInt("total");
+System.out.println(total);
 
 %>
 
@@ -294,12 +323,6 @@ total=rs2.getInt("total");
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
@@ -438,9 +461,43 @@ total=rs2.getInt("total");
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
-              
-                    <br/><br/><br/>
-                 
+                    
+         <div class="row">
+		
+        
+            <div class="row bs-wizard" style="border-bottom:0;">
+                
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Project Information</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Final</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                </div>
+            </div>
+            <br/>
+        
+        
+        
+	</div>
+        
                                 
                                 
   <div class="table-responsive" id="table-scroll"> 
@@ -484,19 +541,14 @@ while(rs1.next()){
 
         <tr>
         
-          <td class="edit_row" style="cursor:pointer" id="11"><span class="test"><input type="text" id="project_name<%=i%>" name="project_name<%=i%>" value="<%=rs1.getString("proj_name") %>"></span></td>
+          <td class="edit_row" style="cursor:pointer" id="11"><span class="test"><input type="text" id="project_name<%=i%>" name="project_name<%=i%>" value="<%=rs1.getString("appname") %>"></span></td>
           <td class="row_s" style="cursor:pointer" id="22"><span class="test"><input type="text" id="complexity<%=i%>" name="complexity<%=i%>" value="<%=rs1.getString("complexity") %>"></span></td>
           <td class="row_t" style="cursor:pointer" id="33"><span class="test"><input type="text" id="est_db_size<%=i%>" name="est_db_size<%=i%>" value="<%=rs1.getString("est_db_size") %>"></span></td>
           <td class="row_d" style="cursor:pointer" id="44"><span class="test"><input type="text" id="est_cst<%=i%>" name="est_cst<%=i%>" value="<%=rs1.getString("est_cst") %>"></span></td>
-          <% if(Integer.parseInt(rs1.getString("priorities"))>0){ %>
-          <td class="row_d" id="55">
-          <span class="test"><input type="text" name="priority<%=i %>" id="priority<%=i %>" value="<%=rs1.getString("priorities")%>"></span>
-        </td>
-        <%}else{ %>
           <td class="row_d" id="55">
           <span class="test"><input type="text" name="priority<%=i %>" id="priority<%=i %>" value="<%=rs2.getInt("total")-i %>"></span>
         </td>
-        <%} %>
+
        
          
          

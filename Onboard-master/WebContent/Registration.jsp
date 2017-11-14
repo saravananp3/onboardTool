@@ -156,7 +156,20 @@ font-size:10px;
 				 window.alert("Invalid EmailID");
 			}
 	}
-	</script> 
+	</script>
+	<script>
+function checkk()
+{
+	
+	document.getElementById('fname').readOnly = true;
+	document.getElementById('message').readOnly = true;
+	document.getElementById('lname').readOnly = true;
+	document.getElementById('dates-field2').disabled = true;
+	document.getElementById('email_val').readOnly = true;
+	document.getElementById('proj').readOnly = true;
+	document.getElementById('send_btn').disabled = true;
+	}
+</script> 
 </head>
 <body>
 <%
@@ -173,6 +186,9 @@ if (session.getAttribute("username")==null)
 <%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
 <%
+HttpSession details=request.getSession();
+String info=(String)details.getAttribute("admin");
+System.out.println("role info   -- "+info);
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 String query="select * from user_details";
@@ -213,7 +229,7 @@ int count=0;
                 <li>
                     <a href="roledetails.jsp">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Authorization List</p>
+                        <p>Authorization</p>
                     </a>
                 </li>
                          </ul>
@@ -233,12 +249,6 @@ int count=0;
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
@@ -307,11 +317,11 @@ $(function() {
 							<div class="row">					
 					<div class="col-sm-5 form-group">
 						<label>Projects</label>
-						<input type="text"  class="form-control">
+						<input type="text"  class="form-control" id="proj">
 					</div>		
 					</div>
-					
-					<button type="button" class="btn btn-primary" onclick="ooo();qq()">Send Invites</button>					
+					 <input type="text" id="pwqej" value="<%= info %>" hidden>  
+					<button type="button" class="btn btn-primary" id="send_btn" onclick="ooo();qq()">Send Invites</button>					
 					</div>
 				
 				</div>
@@ -330,6 +340,10 @@ $(function() {
 </div>
  
 </form>
+ <script>
+ if(document.getElementById('pwqej').value=="R")
+	 checkk();
+ </script>    
 </body>
 
 

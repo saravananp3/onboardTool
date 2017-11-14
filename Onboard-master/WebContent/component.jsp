@@ -318,7 +318,7 @@ Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strut
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query4 = "select * from appldetail where appname ='"+idd+"'";
+String query4 = "select * from appinfo where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 {
@@ -337,14 +337,7 @@ ResultSet rs4 = st4.executeQuery(query4);
                     <ol class="nav navbar-nav navbar-right">
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
-</li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
-                        <li>
+</li><li>
                             <a href="logout.jsp">Logout</a>
                         </li>
                     </ol>
@@ -412,6 +405,8 @@ ResultSet rs4 = st4.executeQuery(query4);
                  </li>
                 </ul>
                 </li>
+                 <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li> 
                 
                
                           </ul>
@@ -533,7 +528,7 @@ x.item(i).style.backgroundColor = 'black' ;
 <br><br>
                         <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1">                            Application Data Information                            </a> </h4> 
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" onclick="switchColors0();">                            Application Data Information                            </a> </h4> 
                             </div>                             
                             <div id="collapse1" class="panel-collapse collapse in"> 
                                 <div class="panel-body text-left">
@@ -669,7 +664,7 @@ x.item(i).style.backgroundColor = 'black' ;
                         </div>
                         <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">Infrastructure & Environment Information</a> </h4> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">Infrastructure & Environment Information</a> </h4> 
                             </div>                             
                             <div id="collapse2" class="panel-collapse collapse"> 
                                 <div class="panel-body">
@@ -833,7 +828,7 @@ x.item(i).style.backgroundColor = 'black' ;
                         </div>
                         <div class="panel panel-default"> 
                             <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">Technical Information</a> </h4> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors1();">Technical Information</a> </h4> 
                             </div>                             
                             <div id="collapse3" class="panel-collapse collapse"> 
                                 <div class="panel-body">
@@ -862,7 +857,7 @@ x.item(i).style.backgroundColor = 'black' ;
     
                     <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
                     <script>
- if(document.getElementById('pwqej').value=="RX")
+ if(document.getElementById('pwqej').value=="RX" || document.getElementById('pwqej').value=="R")
  
 checkk();
  

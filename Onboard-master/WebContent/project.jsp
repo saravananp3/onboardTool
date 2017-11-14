@@ -118,12 +118,12 @@ $(function() {
     }
 </script>
 <script>
-function edit()
+function edit(id)
 {
 	
 	var f=document.form;
 	f.method="post";
-	f.action="grid.jsp";
+	f.action="grid.jsp?id="+id;
 	f.submit();
 	}
 
@@ -153,7 +153,6 @@ if (session.getAttribute("username")==null)
 <% 
 HttpSession role_ses=request.getSession();  
 String frole=(String)role_ses.getAttribute("role");
-System.out.println(frole);
 %>
 		<%
 Connection con = null;
@@ -169,7 +168,7 @@ try{
 	String query;
 	HttpSession details=request.getSession();
 	String prj=(String)details.getAttribute("projects");
-	System.out.println("helo "+prj);
+	
 Class.forName(driver).newInstance();
 con = DriverManager.getConnection(url+db,userName,password);
 if(prj.equals("all"))
@@ -177,7 +176,6 @@ if(prj.equals("all"))
 else
  query = "select * from projinfo where projectname='"+prj+"'";
 st = con.createStatement();
-System.out.println(query);
 ResultSet rs = st.executeQuery(query);
 %>
 <form method="post" name="form" action="Appin">
@@ -193,12 +191,7 @@ ResultSet rs = st.executeQuery(query);
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
+
                         <li>
                        <a href="logout.jsp">Logout</a>
                         </li>
@@ -255,7 +248,7 @@ while(rs.next()){
 			<h5 class="cbp-vm-title right-col primary" >Initiate</h5>
 		
 						
-							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%session.setAttribute("param",rs.getString(10));%>);">
+							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%=rs.getString(10)%>);">
  View/Update
 </button>
 						</li>

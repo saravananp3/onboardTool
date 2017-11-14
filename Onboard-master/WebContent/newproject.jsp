@@ -379,12 +379,6 @@ $(function() {
 <body class='default'>
 
 
-
-
-
- 
-
-
 <%@page import="java.sql.*"%>
 <%@ page import="java.text.NumberFormat" %>
 <%
@@ -523,12 +517,6 @@ function validation(pro_name)
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>

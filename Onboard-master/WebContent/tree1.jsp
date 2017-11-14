@@ -149,14 +149,8 @@
 .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
 /*END Form Wizard*/
 
-</style>
-
-    
-   
+</style>   
       <style>
-
-
-
 input,
 select { width: 100%; }
 
@@ -179,7 +173,6 @@ cursor:not-allowed;
 }
 
 </style>
-  
    <script>
 function myFunction1() {
     var x = document.getElementById('myDiv1');
@@ -220,9 +213,7 @@ function myFunction4() {
 </script>
   
   <script>
-  
-
-  function kk2()
+    function kk2()
   {
       document.getElementById("complexity").disabled  = false;
       document.getElementById("est_archive").disabled  = false;
@@ -344,35 +335,36 @@ double ans=0.0;
 try {
 	HttpSession details=request.getSession();
 	String info=(String)details.getAttribute("app_emp");
+	String appno=(String)details.getAttribute("appno");
+	String projectname=(String)details.getAttribute("projectname");
 	String det=(String)session.getAttribute("theName");
+	System.out.println("-- "+info+"-- "+appno+"---"+projectname+"---"+det);
+	
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query = "SELECT * from app_prior where id=(select max(id) from app_prior)";
+Statement st = conn.createStatement();
+ResultSet rs = st.executeQuery(query);
+
+
 String query3 = "select * from projinfo where id = "+det;
+Statement st3 = conn.createStatement();
+ResultSet rs3 = st3.executeQuery(query3);
 
-String name=request.getParameter("name");
+String query1= "SELECT * from appinfo where prjname='"+projectname+"'";
+Statement st1 = conn.createStatement();
+ResultSet rs1 = st1.executeQuery(query1);
 
-PreparedStatement statement =  conn.prepareStatement("select sum(ttl) from app_prior");
+
+String query2= "SELECT * from app_prior";
+Statement st2 = conn.createStatement();
+ResultSet rs2 = st2.executeQuery(query2);
+
+
+PreparedStatement statement =  conn.prepareStatement("select sum(ttl_cst_fr_app) from app_prior");
 ResultSet result = statement.executeQuery();
 result.next();
 String sum=result.getString(1);
-ans = Double.parseDouble(sum);
-String ans1=String.format("%.2f",ans);
-PreparedStatement stmt =  conn.prepareStatement("select appno from projinfo where id=(select max(id) from projinfo)");
-ResultSet res = stmt.executeQuery();
-res.next();
-String appno=res.getString(1);
-Statement st = conn.createStatement();
-Statement st1 = conn.createStatement();
-Statement st2 = conn.createStatement();
-Statement st3 = conn.createStatement();
-ResultSet rs = st.executeQuery(query);
-ResultSet rs3 = st3.executeQuery(query3);
-String query1= "SELECT * from appinfo where prjname='"+name+"'";
-ResultSet rs1 = st1.executeQuery(query1);
-
-String query2= "SELECT * from app_prior";
-ResultSet rs2 = st2.executeQuery(query2);
 {
 %>
 
@@ -514,7 +506,7 @@ document.loginForm.est_archive.value =2500;
 document.loginForm.est_scrn.value ="<=30";
 z=5;
 }
-var qqq=3;
+var qqq=<%=appno%>;
 document.loginForm.est_db_size.value=(z*0.1*document.loginForm.strg_est.value).toFixed(2);
 document.loginForm.est_hrs.value =(qqq*document.loginForm.est_archive.value).toFixed(2);
 a=(100*document.loginForm.est_hrs.value);
@@ -527,60 +519,14 @@ d=5*b*document.loginForm.IA_maint_cst.value
 document.loginForm.ttl_IA_prdct_cst.value ="$"+d.toFixed(2);
 e=(a*5)+(5*b)+(5*c)+d;
 document.loginForm.ttl.value="$"+e.toFixed(2);
-document.loginForm.ttl.value=e.toFixed(2);
+document.loginForm.tootal.value=e.toFixed(2);
+document.loginForm.ttl_cst_fr_app.value=<%=sum%>+(e.toFixed(2)-0);
 }
 function add()
 {
 	var i;
 	i=(document.loginForm.ttl_cst_fr_app.value-0)+(document.loginForm.add_cst_fr_contigency.value-0)+(document.loginForm.add_cst.value-0)+(document.loginForm.IA_app_sprt_cst.value-0);
 	document.loginForm.est_archive_cst.value="$"+i.toFixed(2); 
-}
-</script>
-<script>
-function againupdate(){
-	var a,b,c,d,e,z;
-if(document.loginForm.complexity.value=="Low")
-{
-document.loginForm.est_archive.value =700;
-document.loginForm.est_scrn.value ="<=5";
-z=1;
-}
-if(document.loginForm.complexity.value=="Low to Medium")
-{
-document.loginForm.est_archive.value =1000;
-document.loginForm.est_scrn.value ="<=10";
-z=2;
-}
-if(document.loginForm.complexity.value=="Medium")
-{
-document.loginForm.est_archive.value =1400;
-document.loginForm.est_scrn.value ="<=20";
-z=3;
-}
-if(document.loginForm.complexity.value=="Medium to High")
-{
-document.loginForm.est_archive.value =1800;
-document.loginForm.est_scrn.value ="<=25";
-z=4;
-}
-if(document.loginForm.complexity.value=="High")
-{
-document.loginForm.est_archive.value =2500;
-document.loginForm.est_scrn.value ="<=30";
-z=5;
-}
-document.loginForm.est_db_size.value=(z*0.1*document.loginForm.strg_est.value).toFixed(2);
-document.loginForm.est_hrs.value =(document.loginForm.no_of_app.value*document.loginForm.est_archive.value).toFixed(2);
-a=(100*document.loginForm.est_hrs.value);
-document.loginForm.est_cst.value="$"+a.toFixed(2);
-b=document.loginForm.est_db_size.value*document.loginForm.IA_lic_cst.value;
-document.loginForm.ttl_IA_cst.value ="$"+b.toFixed(2);
-c=10000*document.loginForm.est_db_size.value;
-document.loginForm.ttl_infra_cst.value="$"+c.toFixed(2);
-d=5*b*document.loginForm.IA_maint_cst.value;
-document.loginForm.ttl_IA_prdct_cst.value ="$"+d.toFixed(2);
-e=(a*5)+(b*5)+(c*5)+d;
-document.loginForm.ttl.value="$"+e.toFixed(2);
 }
 </script>
 <script>
@@ -595,7 +541,7 @@ function switchColors0()
 	element.style.marginRight = "70px";
 	element.style.boxSizing = "content-box";
 	element.style.borderColor = "#999";
-	element.style.background="blue"; 
+	element.style.background="#d1d1d1"; 
 	var list = document.getElementsByTagName("OL")[0];
 	var x=list.getElementsByTagName("LI");
 	for (var i = 0 ; i < x.length ; i ++)  
@@ -643,17 +589,6 @@ for (var i = 0 ; i < x.length ; i ++)
 
 } 
 </script>
-<%
-
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-response.setHeader("Expires", "0"); // Proxies.
-
-if (session.getAttribute("username")==null)
-{
-	response.sendRedirect("Login.html");
-}
-%>
 
 
  
@@ -665,7 +600,7 @@ if (session.getAttribute("username")==null)
             <%if (rs3.next()) {%>
                 
                     
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="#">Onboarding Tool-<%= projectname %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
@@ -1126,6 +1061,7 @@ for(var i=0; i<edit_row.length; i++) {
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total</label>                                             
                                             <input type="text" class="form-control" id="ttl"  name="ttl"  value="<%=rs.getString("ttl")%>" > 
+                                            <input type="text" class="form-control" id="tootal"  name="tootal"  style="display:none;" > 
                                         </div>   
                                         <div>
                                         <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors1();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -1146,7 +1082,7 @@ for(var i=0; i<edit_row.length; i++) {
                                   
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput664">Total Cost for all applications in the project</label>
-                                            <input type="text" class="form-control" id="ttl_cst_fr_app"  name="ttl_cst_fr_app" onChange="add()" value="<%=ans1%>" >
+                                            <input type="text" class="form-control" id="ttl_cst_fr_app"  name="ttl_cst_fr_app" onChange="add()" value="<%=sum%>" >
                                         </div>                                         
                                           <div class="form-group">
                                             <label class="control-label" for="formInput664">Additional Cost for Contingency</label>
@@ -1188,27 +1124,13 @@ for(var i=0; i<edit_row.length; i++) {
                         	  document.loginForm.submit();   
                           // document.Form1.target = "_blank";    // Open in a new window
                           document.loginForm.submit();             // Submit the page
-
-                          return true;
                       }
-                      function OnButton2()
-                      {
-                          document.loginForm.action = "infodb"
-                          // document.Form1.target = "_blank";    // Open in a new window
-
-                          document.loginForm.submit();             // Submit the page
-
-                          return true;
-                      }
-                      
-                      
-                     
                       </script>
          
                                                                                             
                                    
                                    
-<button type="button" class="btn btn-primary" onclick="OnButton2()">Save</button>
+<button type="button" class="btn btn-primary" onclick="OnButton1()">Save</button>
 
         <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='applnprior.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
                             

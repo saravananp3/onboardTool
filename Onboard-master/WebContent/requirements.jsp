@@ -246,7 +246,7 @@ Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strut
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query4 = "select * from appldetail where appname ='"+idd+"'";
+String query4 = "select * from appinfo where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 {
@@ -267,12 +267,6 @@ ResultSet rs4 = st4.executeQuery(query4);
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li>
                             <a href="Login.html">Logout</a>
                         </li>
@@ -341,6 +335,8 @@ ResultSet rs4 = st4.executeQuery(query4);
                  </li>
                 </ul>
                 </li>
+                 <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li> 
                 
                
                           </ul>

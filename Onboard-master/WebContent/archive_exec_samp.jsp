@@ -492,6 +492,25 @@ function remove(x)
     f.submit();
 }
 </script>
+<style>
+input[type="text"]:disabled{background-color:white;}
+</style>
+<script>
+function checkk()
+{
+ 	   for(var i=0;i<1000;i++){
+ 	  document.getElementsByName("name"+i)[0].disabled=true;
+ 	  document.getElementsByName("mem_ass"+i)[0].disabled=true;
+		  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
+		  document.getElementsByName("act_end_date"+i)[0].disabled=true;
+		  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
+		  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
+		  document.getElementsByName("hrs"+i)[0].disabled=true;
+ 	   }
+ 	
+}
+</script>
+
 <body class='default'>
 <%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
@@ -508,7 +527,9 @@ if (session.getAttribute("username")==null)
 }
 %>
 <%
-
+HttpSession details=request.getSession();
+String info=(String)details.getAttribute("archive_exec");
+System.out.println(info);
 	String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
@@ -527,7 +548,6 @@ if(rs9.next()){
 String query3 = "select * from archive_exec where projects='"+rs9.getString("projectname")+"' order by seq_num";
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-System.out.println(rs9.getString("projectname"));
 String query5 = "select * from archive_exec where projects='"+rs9.getString("projectname")+"' order by seq_num";
 Statement st5 = conn.createStatement();
 ResultSet rs5 = st5.executeQuery(query5);
@@ -709,9 +729,7 @@ if(rs4.next()){
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
-         
-                 
-                     <br/><br/><br/> 
+          
                      <script>
                      $(function(){
                     	    $.contextMenu({
@@ -720,26 +738,7 @@ if(rs4.next()){
                     	    });
                     	});
                      </script>
-                  <script>
-               function toenable()
-               {
-            	   
-            	   document.getElementsByName("addbtn")['0'].disabled=false;
-               	   document.getElementsByName("subbtn")['0'].disabled=false;
-            	   for(var i=0;i<60;i++){
-            	  document.getElementsByName("name"+i)['0'].disabled=false;
-            	  document.getElementsByName("mem_ass"+i)['0'].disabled=false;
-        		  document.getElementsByName("act_srt_date"+i)['0'].disabled=false;
-        		  document.getElementsByName("act_end_date"+i)['0'].disabled=false;
-        		  document.getElementsByName("pln_srt_date"+i)['0'].disabled=false;
-        		  document.getElementsByName("pln_end_date"+i)['0'].disabled=false;
-        		  document.getElementsByName("hrs"+i)['0'].disabled=false;
-            	   }
-            	  
-            	   
-            	  
-               }
-                  </script>
+               
               
               
                       
@@ -819,6 +818,11 @@ i++;
 </tbody>
 
 </table>
+<input type="text" id="pwqej" value="<%= info %>" hidden> 
+<script>
+ if(document.getElementById('pwqej').value=="R")
+	 checkk();
+ </script>    
 
    <script type="text/javascript">
 		com_github_culmat_jsTreeTable.register(this)

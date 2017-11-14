@@ -124,6 +124,19 @@
 	}
 	
 	</script>
+	<script>
+function checkk()
+{
+	
+	document.getElementById('add_btn').disabled = true;
+	document.getElementById('del_btn').disabled = true;
+	document.getElementById('sub_btn').disabled = true;
+	for(i=0;i<50;i++){
+	document.getElementsByName('delete_check')[i].disabled = true;
+	document.getElementsByName('chek')[i].disabled = true;
+	}
+	}
+</script>
     
 </head>
 <body>
@@ -141,6 +154,8 @@ if (session.getAttribute("username")==null)
 }
 %>
 <%
+HttpSession details=request.getSession();
+String info=(String)details.getAttribute("admin");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 String query="select * from user_details";
@@ -178,7 +193,7 @@ ResultSet rs=s.executeQuery(query);
                 <li>
                     <a href="roledetails.jsp">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Authorization List</p>
+                        <p>Authorization</p>
                     </a>
                 </li>
                          </ul>
@@ -198,12 +213,6 @@ ResultSet rs=s.executeQuery(query);
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
@@ -262,7 +271,7 @@ ResultSet rs=s.executeQuery(query);
 		  <td><%= rs.getString(4) %></td>
 		  <td><%= rs.getString(7) %></td>
 		<td> <%=rs.getString(8) %></td>
-    <td style="text-align:center;background-color:white;"><input type="checkbox" name="chek" onChange="ops('<%=rs.getString(1) %>')" checked></td>
+    <td style="text-align:center;background-color:white;"><input type="checkbox" name="chek" id="chek" onChange="ops('<%=rs.getString(1) %>')" checked></td>
 		  <td style="display:none;"><input type="text" name="name_user<%=count%>" value="<%= rs.getString(1) %>"></td>
 		  </tr> 
  <%  
@@ -272,10 +281,10 @@ ResultSet rs=s.executeQuery(query);
 %>  
                                                                            </tbody>
                                 </table>
-
- &nbsp;&nbsp;<button type="button" class="btn btn-primary" onclick="window.location.href='Registration.jsp'">Add User</button>&nbsp;&nbsp;
-  <input type="button" class="btn btn-primary" onclick="del(<%=count %>);ww();" value="DeleteUser">&nbsp;&nbsp;
-  <button type="button" class="btn btn-primary" onclick="servlet_call();">Submit</button>
+ <input type="text" id="pwqej" value="<%= info %>" hidden>
+ &nbsp;&nbsp;<button type="button" id="add_btn" class="btn btn-primary" onclick="window.location.href='Registration.jsp'">Add User</button>&nbsp;&nbsp;
+  <input type="button" id="del_btn" class="btn btn-primary" onclick="del(<%=count %>);ww();" value="DeleteUser">&nbsp;&nbsp;
+  <button type="button" id="sub_btn" class="btn btn-primary" onclick="servlet_call();">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -290,6 +299,10 @@ ResultSet rs=s.executeQuery(query);
 
     </div>
 </div>
+ <script>
+ if(document.getElementById('pwqej').value=="R")
+	 checkk();
+ </script>   
  </form>
 
 </body>

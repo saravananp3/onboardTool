@@ -91,7 +91,13 @@ font-size:10px;
 		    f.submit(); 
 	}
 	
-	</script>  
+	</script>
+	<script>
+function checkk()
+{
+	document.getElementById('sub_btn').disabled = true;
+	}
+</script>  
 </head>
 <body>
 <%@ page import="java.sql.*"%>
@@ -108,7 +114,8 @@ if (session.getAttribute("username")==null)
 }
 %>
 <%
-
+HttpSession details=request.getSession();
+String info=(String)details.getAttribute("admin");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 String query="select * from role_details";
@@ -145,7 +152,7 @@ int count=0;
                 <li class="active">
                     <a href="roledetails.jsp">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Authorization List</p>
+                        <p>Authorization</p>
                     </a>
                 </li>
                          </ul>
@@ -165,12 +172,7 @@ int count=0;
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
+                      
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
@@ -224,8 +226,8 @@ int count=0;
 %>  
                                                                            </tbody>
                                 </table>
-
- &nbsp;&nbsp;&nbsp;<button type="button" style="background-color:lightblue;" class="btn btn-primary" onclick="edit_serv()">Submit</button>                           </div>
+ <input type="text" id="pwqej" value="<%= info %>" hidden>
+ &nbsp;&nbsp;&nbsp;<button type="button" id="sub_btn" class="btn btn-primary" onclick="edit_serv()">Submit</button>                           </div>
                         </div>
                     </div>
 
@@ -239,7 +241,10 @@ int count=0;
 
     </div>
 </div>
- 
+  <script>
+ if(document.getElementById('pwqej').value=="R")
+	 checkk();
+ </script>   
 </form>
 </body>
 

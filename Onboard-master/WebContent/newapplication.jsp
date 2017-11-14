@@ -281,12 +281,6 @@ ResultSet rs3 = st3.executeQuery(query3);
                         <li>
 </li>
                         <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
-                        <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
