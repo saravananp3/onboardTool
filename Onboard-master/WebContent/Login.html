@@ -58,7 +58,6 @@
     <script>
     function res()
     {
-    	window.alert("Recovery Mail have been sent to your account");
     	var x=document.getElementById("new_email").value;
     	var f=document.loginForm;
 	    f.method="post";
@@ -70,7 +69,6 @@
     	var x=document.getElementById("neww_email").value;
     	var y=document.getElementById("neww_roles").value;
     	var z=document.getElementById("neww_projects").value;
-    	window.alert(y+" "+z);
     	var f=document.loginForm;
 	    f.method="post";
 	    f.action="reset_uname.jsp?email="+x+"&role="+y+"&project="+z;

@@ -23,8 +23,7 @@
 		var y=document.getElementById("ans").value;
 		var name=document.getElementById("uname").value;
 		if(x==y){
-			window.alert("your username is "+name);
-			window.location.href='Login.html';
+			window.location.href='mail_uname?uname='+name;
 		}
 		else
 			window.alert("wrong answer");
@@ -36,6 +35,8 @@
 <%@page import="java.sql.*"%>
 <% 
 String x=request.getParameter("email");
+HttpSession passwd=request.getSession();
+passwd.setAttribute("emailid",x);
 String rl=request.getParameter("role");
 String pj=request.getParameter("project");
 String Qn="";

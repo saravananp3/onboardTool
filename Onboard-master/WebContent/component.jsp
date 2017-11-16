@@ -331,7 +331,7 @@ ResultSet rs4 = st4.executeQuery(query4);
                     
                    <% if(rs3.next()){ %>
                     <% if(rs4.next()){ %>
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
                     <%} }%>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">

@@ -563,7 +563,7 @@ if(rs4.next()){
             <div class="container-fluid">
                 
                     <% if(rs.next()){ %>
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs.getString("projectname") %></a>
                     <%} %>
               
                 <div id="navbar" class="navbar-collapse collapse">
@@ -571,12 +571,7 @@ if(rs4.next()){
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
+                      
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>

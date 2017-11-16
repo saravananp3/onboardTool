@@ -332,7 +332,7 @@ if(rs.next()){
 %>
 
  
-<form class="form-signin" name="loginForm" method="post" action="Project">
+<form class="form-signin" name="loginForm" method="post" action="EditProject">
 <div class="container">
 <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
@@ -342,7 +342,7 @@ if(rs.next()){
                     	details.setAttribute("appno",rs3.getString("appno"));
                     	details.setAttribute("projectname",rs3.getString("projectname"));
                     	%>
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                     <%} %>
                     
                 <div id="navbar" class="navbar-collapse collapse">
@@ -379,7 +379,7 @@ if(rs.next()){
                         <li><a href="application1.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true'> <a href="tree1.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
                          <ul>
                                 <li >Parameters</li>
                                 <li>Archival Complexity Calculation</li>

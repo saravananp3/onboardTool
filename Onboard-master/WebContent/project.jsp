@@ -184,7 +184,7 @@ ResultSet rs = st.executeQuery(query);
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="#">Onboarding Tool</a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">

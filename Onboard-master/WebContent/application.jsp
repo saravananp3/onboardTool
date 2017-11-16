@@ -304,19 +304,14 @@ ResultSet rs3 = st3.executeQuery(query3);
             <div class="container-fluid">
                 
                      <% if(rs3.next()){ %>
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                     <%} %>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
+                    
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>

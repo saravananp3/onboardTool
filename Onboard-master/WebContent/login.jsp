@@ -25,6 +25,7 @@ if(userid.equals("admin")&&pwd.equals("admin"))
 	details.setAttribute("role","admin");
 	details.setAttribute("projects","all");
 	details.setAttribute("admin","X");
+	details.setAttribute("prj","X");
 	details.setAttribute("app_emp","X");
 	details.setAttribute("intake","X");
 	details.setAttribute("archive_exec","X");

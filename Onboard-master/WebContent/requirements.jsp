@@ -246,7 +246,7 @@ Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strut
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query4 = "select * from appinfo where appname ='"+idd+"'";
+String query4 = "select * from appldetail where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 {
@@ -259,7 +259,7 @@ ResultSet rs4 = st4.executeQuery(query4);
                     
                  <% if(rs3.next()){ %>
                  <% if(rs4.next()){ %>
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
                     <%} }%>
               
                 <div id="navbar" class="navbar-collapse collapse">
@@ -335,8 +335,6 @@ ResultSet rs4 = st4.executeQuery(query4);
                  </li>
                 </ul>
                 </li>
-                 <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
-               </li> 
                 
                
                           </ul>
@@ -345,7 +343,16 @@ ResultSet rs4 = st4.executeQuery(query4);
          </div>
    </div>
                 </div>
-              
+         <script>
+function call()
+{
+	var f=document.loginForm;
+    f.method="post";
+    f.action='review.jsp';
+    f.submit();
+	}
+
+</script>     
    <script>
   $(function () {
     // 6 create an instance when the DOM is ready
@@ -577,7 +584,7 @@ for (var i = 0 ; i < x.length ; i ++)
                    
                     </div>
        
-      <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
+       <button type="button" class="btn btn-primary" onclick="call()" >Save</button> &nbsp;
 
                     <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
        </div>

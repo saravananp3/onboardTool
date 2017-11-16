@@ -336,13 +336,13 @@ try {
 	HttpSession details=request.getSession();
 	String info=(String)details.getAttribute("app_emp");
 	String appno=(String)details.getAttribute("appno");
-	String projectname=(String)details.getAttribute("projectname");
+	String projectname=request.getParameter("name");
 	String det=(String)session.getAttribute("theName");
 	System.out.println("-- "+info+"-- "+appno+"---"+projectname+"---"+det);
 	
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
-String query = "SELECT * from app_prior where id=(select max(id) from app_prior)";
+String query = "SELECT * from app_prior where id=(select max(id) from app_prior) and prj_name='"+projectname+"'";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
 
@@ -356,12 +356,12 @@ Statement st1 = conn.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
 
 
-String query2= "SELECT * from app_prior";
+String query2= "SELECT * from app_prior where prj_name='"+projectname+"'";
 Statement st2 = conn.createStatement();
 ResultSet rs2 = st2.executeQuery(query2);
 
 
-PreparedStatement statement =  conn.prepareStatement("select sum(ttl_cst_fr_app) from app_prior");
+PreparedStatement statement =  conn.prepareStatement("select sum(ttl_cst_fr_app) from app_prior where prj_name='"+projectname+"'");
 ResultSet result = statement.executeQuery();
 result.next();
 String sum=result.getString(1);
@@ -600,19 +600,14 @@ for (var i = 0 ; i < x.length ; i ++)
             <%if (rs3.next()) {%>
                 
                     
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%= projectname %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%= projectname %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
                         <li item-selected='true'>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
+                       
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>

@@ -85,7 +85,7 @@ if(rs.next())
                 
     
                  
-                    <a class="navbar-brand">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse" >
                     <ul class="nav navbar-nav navbar-right">

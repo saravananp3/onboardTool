@@ -485,6 +485,12 @@ $(function() {
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
  
+ #table{
+ 
+ padding:20px;
+ 
+ }
+ 
   </style>
  
   <script>
@@ -534,11 +540,12 @@ function remove(x)
 <body class='default'>
 <%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
+		
 <form class="form-signin" name="loginForm" method="post" action="archive_exec">
 	
 <%
 
-	String det=(String)session.getAttribute("theName");
+String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 
@@ -628,8 +635,9 @@ if(rs4.next()){
               
               
                       
-<h3>Archive Execution</h3><br><br>        
-<button id="pdf-button" type="button" value="Download PDF" onclick="downloadPDF()" />Export PDF</button>
+<h3>Archive Execution</h3><a href="archive_exec_samp.jsp" class="btn btn-primary" class="btn pull-right">Edit</a><button id="pdf-button" type="button"  class="btn btn-primary" value="Download PDF" onclick="downloadPDF()" />Export PDF</button>
+</br></br>     
+<div class="container" id="table">
 <table class="table table-bordered" style="align:center" id="table">
 <thead>
 <tr>
@@ -705,7 +713,7 @@ i++;
 </tbody>
 
 </table>
-
+</div>
    <script type="text/javascript">
 		com_github_culmat_jsTreeTable.register(this)
 
@@ -729,6 +737,7 @@ i++;
 }
 %>
 </form>
+
 </body>
  <script>
     var downloadPDF = function() {

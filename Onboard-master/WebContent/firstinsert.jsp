@@ -182,7 +182,7 @@ ResultSet rs3 = st3.executeQuery(query3);
                     	 ResultSet rs = st.executeQuery(query);
                      
                      %>
-                  <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                  <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">

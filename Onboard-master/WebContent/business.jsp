@@ -528,13 +528,10 @@ if (session.getAttribute("username")==null)
 try {
 	HttpSession details=request.getSession();
 	String info=(String)details.getAttribute("intake");
-	System.out.println("IntakeModule    "+ info);
 String det=(String)session.getAttribute("theName");
 String idd = request.getParameter("id");
-System.out.println("id is "+idd);
 if (idd != null && !idd.isEmpty()) {
 session.setAttribute("appidd", idd);
-System.out.println("inside");
 }
 idd=(String)session.getAttribute("appidd");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
@@ -558,7 +555,7 @@ System.out.println(query4);
                 
                    <% if(rs3.next()){ %>
                     <% if(rs4.next()){ %>
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
                     <%} }%>
               
                 <div id="navbar" class="navbar-collapse collapse">
