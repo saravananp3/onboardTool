@@ -634,7 +634,7 @@ catch(Exception e){}
  var pdf = new jsPDF('l', 'pt', 'a4', true); 
  pdf.setFontSize(20);
  pdf.setFontType("italic");
- pdf.text(250, 40, 'PLATFORM 3 TECHNOLOGIES PVT LTD');
+ 
  pdf.text(100, 200, 'Application Based On Priority:');
  
  var header = function (doc, pageCount, options) {
