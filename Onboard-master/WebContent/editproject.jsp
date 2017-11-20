@@ -28,7 +28,11 @@
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
  
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  
+  
+  
     <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
@@ -46,7 +50,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -101,6 +105,33 @@
             }
         });
     </script>
+    <style>
+    
+   #sidemenu
+   {
+   background:#34495E ;
+   color: white;
+   cursor: pointer;
+   
+ width:200%;
+ font-size: 1.0em;
+  text-decoration: none;
+  line-height: 25px; 
+  
+  margin-right: 6px;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+   }
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+   
+
+   </style>
    <style>
 .bs-wizard {margin-top: 40px;}
 
@@ -126,8 +157,12 @@
 /*END Form Wizard*/
 
 </style>
-
-
+<style>.affix {
+      top: 20px;
+      z-index: 9999 !important;
+  }
+  </style>
+  
 <script>
     $(document).ready(function(){
       var date_input=$('input[name="Startdate"]'); //our date input has the name "date"
@@ -361,16 +396,16 @@ if(rs.next()){
         </div>
        
            
-                 <div class="row">
+                 <div class="row" >
             <br>
                <div class="col-md-3 sidebar">
-                  <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+                  <div id='jqxWidget' >
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; margin-right:30px; padding-left:10px '>
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
@@ -428,6 +463,8 @@ if(rs.next()){
          </div>
    </div>
                 </div>
+               
+               
                
    <script>
   $(function () {
