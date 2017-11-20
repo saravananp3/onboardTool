@@ -150,32 +150,7 @@ $(function() {
 			  }
 		  }
 	  </script>
-	  <script>
-	  var mindates=[];
-	  var maxdates=[];
-	  var actdates=[];
-	  function exxexx(x){
-		  var dat=document.getElementById(x).value;
-		  actdates.push(new Date(dat));
-		  var actDate=new Date(Math.max.apply(null,actdates));
-		  document.getElementById("act_srt_date0").value=(actDate.getMonth()+1)+'/'+actDate.getDate()+'/'+actDate.getFullYear();  
-	  }
-	  function exex(x){
-		  var dat=document.getElementById(x).value;
-		  mindates.push(new Date(dat));
-		  var minDate=new Date(Math.min.apply(null,mindates));
-		  document.getElementById("pln_srt_date0").value=(minDate.getMonth()+1)+'/'+minDate.getDate()+'/'+minDate.getFullYear();  
-	  }
-	  function exexx(x){
-		  var dat=document.getElementById(x).value;
-		  maxdates.push(new Date(dat));
-		  var minDate=new Date(Math.max.apply(null,maxdates));
-		  document.getElementById("pln_end_date0").value=(minDate.getMonth()+1)+'/'+minDate.getDate()+'/'+minDate.getFullYear();  
-	  }
-	  </script>
-    
- 
-  
+	
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree

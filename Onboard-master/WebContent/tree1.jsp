@@ -342,7 +342,7 @@ try {
 	
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
-String query = "SELECT * from app_prior where id=(select max(id) from app_prior) and prj_name='"+projectname+"'";
+String query = "SELECT * from app_prior where prj_name='"+projectname+"'";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
 
@@ -521,6 +521,7 @@ e=(a*5)+(5*b)+(5*c)+d;
 document.loginForm.ttl.value="$"+e.toFixed(2);
 document.loginForm.tootal.value=e.toFixed(2);
 document.loginForm.ttl_cst_fr_app.value=<%=sum%>+(e.toFixed(2)-0);
+document.loginForm.est_archive_cst.value="$"+document.loginForm.ttl_cst_fr_app.value.toFixed(2); 
 }
 function add()
 {

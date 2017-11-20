@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <html lang="en">
 <head>
@@ -54,15 +53,15 @@ if (session.getAttribute("username")==null)
 	
 }
 else{
+	String name=(String)session.getAttribute("ID");
+	  HttpSession details=request.getSession(); 
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
 String db = "strutsdb";
 String driver = "com.mysql.jdbc.Driver";
 String userName ="root";
 String password="password123";
-String name = request.getParameter("id");
 session.setAttribute("theName", name);
-HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 int sumcount=0;
 Statement st;

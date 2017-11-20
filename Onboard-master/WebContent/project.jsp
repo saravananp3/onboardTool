@@ -118,12 +118,12 @@ $(function() {
     }
 </script>
 <script>
-function edit(id)
+function edit(id,nam)
 {
-	
+
 	var f=document.form;
 	f.method="post";
-	f.action="grid.jsp?id="+id;
+	f.action="setid?id="+id+"&name="+nam;
 	f.submit();
 	}
 
@@ -248,7 +248,7 @@ while(rs.next()){
 			<h5 class="cbp-vm-title right-col primary" >Initiate</h5>
 		
 						
-							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%=rs.getString(10)%>);">
+							<button type="button" class="btn btn-primary" name="btn" onClick="edit('<%=rs.getString(10)%>','<%=rs.getString(1)%>');">
  View/Update
 </button>
 						</li>
