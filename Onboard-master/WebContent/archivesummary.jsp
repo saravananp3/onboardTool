@@ -239,11 +239,7 @@ $(function() {
             }
         });
     </script>
-  <style>.bar {
-  background-color: lightblue;
-  height: 100%;
-  text-align:center;
-} 
+ 
   </style>
 
 <style>
@@ -487,7 +483,7 @@ $(function() {
  
  #table{
  
- padding:20px;
+ padding:0px;
  
  }
  
@@ -638,8 +634,8 @@ if(rs4.next()){
 <h3>Archive Execution</h3><a href="archive_exec_samp.jsp" class="btn btn-primary" class="btn pull-right">Edit</a><button id="pdf-button" type="button"  class="btn btn-primary" value="Download PDF" onclick="downloadPDF()" />Export PDF</button>
 </br></br>     
 <div class="container" id="table">
-<table class="table table-bordered" style="align:center" id="table">
-<thead>
+<table class="table table-bordered" style="float:left" >
+<thead style="background:#34495E ; color:white;">
 <tr>
 <th style="width:70%;">Tasks </th> 
 <th>Resource Assigned</th>

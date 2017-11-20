@@ -15,7 +15,7 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />   
@@ -150,11 +150,36 @@ $(function() {
 			  }
 		  }
 	  </script>
-	
+	  <script>
+	  var mindates=[];
+	  var maxdates=[];
+	  var actdates=[];
+	  function exxexx(x){
+		  var dat=document.getElementById(x).value;
+		  actdates.push(new Date(dat));
+		  var actDate=new Date(Math.max.apply(null,actdates));
+		  document.getElementById("act_srt_date0").value=(actDate.getMonth()+1)+'/'+actDate.getDate()+'/'+actDate.getFullYear();  
+	  }
+	  function exex(x){
+		  var dat=document.getElementById(x).value;
+		  mindates.push(new Date(dat));
+		  var minDate=new Date(Math.min.apply(null,mindates));
+		  document.getElementById("pln_srt_date0").value=(minDate.getMonth()+1)+'/'+minDate.getDate()+'/'+minDate.getFullYear();  
+	  }
+	  function exexx(x){
+		  var dat=document.getElementById(x).value;
+		  maxdates.push(new Date(dat));
+		  var minDate=new Date(Math.max.apply(null,maxdates));
+		  document.getElementById("pln_end_date0").value=(minDate.getMonth()+1)+'/'+minDate.getDate()+'/'+minDate.getFullYear();  
+	  }
+	  </script>
+    
+ 
+  
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '1050px', width: '340px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -216,6 +241,34 @@ $(function() {
 } 
   </style>
 
+<style>
+    
+   #sidemenu
+   {
+   background:#34495E ;
+   color: white;
+   cursor: pointer;
+   
+ width:200%;
+ font-size: 1.0em;
+  text-decoration: none;
+  line-height: 25px; 
+  
+  margin-right: 6px;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+ 
+   }
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+  
+
+   </style>
 <style>
 input
 {
@@ -534,11 +587,11 @@ ResultSet rs7 = st7.executeQuery(query7);
 if(rs4.next()){
 	%>
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
                 
                     <% if(rs.next()){ %>
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs.getString("projectname") %></a>
                     <%} %>
               
                 <div id="navbar" class="navbar-collapse collapse">
@@ -548,7 +601,7 @@ if(rs4.next()){
 </li>
                       
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                            <a href="logout.jsp" style="color:white">Logout</a>
                         </li>
                     </ul>
                     
@@ -564,73 +617,62 @@ if(rs4.next()){
                
                <div class="col-md-3 sidebar">
                   <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; margin-right:30px; padding-left:10px '>
+                    <ul class="nav nav-sidebar" id="sidemenu">
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
-                       <li item-expanded='true'><input type="text" value="project details"/>
+                        <li item-expanded='true'>Project Details
                     <ul>
-                        <li><a href="editproject.jsp">Project Information</a></li>
+                        <li item-selected='true'><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true' item-selected='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
                          <ul>
                                 <li >Parameters</li>
                                 <li>Archival Complexity Calculation</li>
                                 <li>Archival Cost Estimate</li>
-                               
+                             
                             </ul>
                         </li>
-                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li ><a href="demo.jsp">ROI Calculation</a></li>
-                       
+                        <li><a href="applnprior.jsp">Application-Prioritized</li>
+                       <li> <a href="demo.jsp">ROI Calculation</a></li>
+                        <li>Estimates</li>
 
                     </ul>
                 </li>
                 <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
-               <ul>
-               <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-               Business</div></a>
                 <ul>
-                <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Information</div></a></li>
-                <li><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Legacy Retention Information</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Archive Data Management</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                System Requirements</div></a></li>
+                <li item-expanded='true'>Business
+                <ul>
+                <li>Application Information</li>
+                <li>Legacy Retention Information</li>
+                <li>Archive Data Management</li>
+                <li>System Requirements</li>
                 
                 </ul></li>
-                <li item-expanded='true'><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical</div></a>
+                <li item-expanded='true'>Technical
                 <ul>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Data Information</div></a></li>
-                <li>   <a href="#" data-toggle="tooltip" title="Select Intake Module">             <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Infrastructure & Environment Inforamation</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical Information</div></a></li>
+                <li>Application Data Information</li>
+                <li>Infrastructure & Environment Inforamation</li>
+                <li>Technical Information</li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archival Requirements</div></a>
+                 <li item-expanded='true'>Archival Requirements
                  <ul>
-                 <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Screen/Report Requirements</div></a></li>
-                 <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archive Requirements</div></a></li>
+                 <li>Screen/Report Requirements</li>
+                 <li>Archive Requirements</li>
                  </ul>
                  </li>
                 </ul>
                 </li>
-                <li item-selected='true'>Archive Execution Module</li>
+                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li>                
                
                           </ul>
     
@@ -638,9 +680,6 @@ if(rs4.next()){
          </div>
    </div>
                 </div>
-               
-
-               
                
                
                
@@ -713,8 +752,8 @@ if(rs4.next()){
               
                       
 
-<table class="table table-bordered" style="align:center" id="table">
-<thead>
+<table class="table table-bordered" style="align:center;  id="table"  >
+<thead style="background:#34495E ; color:white;">
 <tr>
 <th style="width:70%;">Tasks </th> 
 <th>Resource Assigned</th>
@@ -727,7 +766,7 @@ if(rs4.next()){
 <th>Progress %</th>
 <th style="width:20%;">Status</th>
 <th>Comments</th>
-<th></th>
+
 </tr>
 </thead>
 <tbody >      
