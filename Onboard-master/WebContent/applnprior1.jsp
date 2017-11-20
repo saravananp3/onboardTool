@@ -12,6 +12,7 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
@@ -53,7 +54,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+           $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -108,6 +109,33 @@
             }
         });
     </script>
+    <style>
+    
+   #sidemenu
+   {
+   background:#34495E ;
+   color: white;
+   cursor: pointer;
+   
+ width:200%;
+ font-size: 1.0em;
+  text-decoration: none;
+  line-height: 25px; 
+  
+  margin-right: 6px;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+   }
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+   
+
+   </style>
        <style>
 .bs-wizard {margin-top: 40px;}
 
@@ -310,13 +338,13 @@ System.out.println(total);
  
 <form class="form-signin" name="loginForm" method="post">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
             
             <%if (rs3.next()) {%>
                 
                     
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs3.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -324,7 +352,7 @@ System.out.println(total);
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                            <a href="logout.jsp" style="color:white">Logout</a>
                         </li>
                     </ul>
                     
@@ -338,12 +366,12 @@ System.out.println(total);
             <br>
                 <div class="col-md-3 sidebar">
                   <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; margin-right:30px; padding-left:10px '>
+                    <ul class="nav nav-sidebar" id ="sidemenu">
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
@@ -361,8 +389,7 @@ System.out.println(total);
                             </ul>
                         </li>
                         <li item-selected='true'><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
+                      
 
                     </ul>
                 </li>
@@ -500,12 +527,12 @@ System.out.println(total);
         
                                 
                                 
-  <div class="table-responsive" id="table-scroll"> 
+  <div class="table-responsive" id="table-scroll" > 
     
     <!-- Initialization 
                 * js-dynamitable => dynamitable trigger (table)
                 -->
-    <table class="js-dynamitable     table table-bordered" id="myTable">
+    <table class="js-dynamitable     table table-bordered" id="myTable" style="background:#34495E ; color:white;">
       
       <!-- table heading -->
       <thead>

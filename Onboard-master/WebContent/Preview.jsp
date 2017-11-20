@@ -327,13 +327,13 @@ total=rs2.getInt("total");
  
 <form class="form-signin" name="loginForm" method="post">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
             
             <%if (rs3.next()) {%>
                 
                     
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs3.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -341,7 +341,7 @@ total=rs2.getInt("total");
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp">Log Out</a>
+                            <a href="logout.jsp" style="color:white">Log Out</a>
                         </li>
                     </ul>
                     
@@ -445,12 +445,12 @@ $(document).ready(function () {
   </script>
   
 
-                    <br/><br/><br/>
+                    <br/>
                     
                     
 <div class="col-md-7">
 
-                        <h1 align="center">Preview & Summary</h1>   
+                       
       
             
 
@@ -504,20 +504,19 @@ $(document).ready(function () {
                 </div>
             </div>
               
-                    <br/><br/><br/>
-           
+                    <br/>
+            <h3 align="center">Preview & Summary</h3>   
                                 
-                        <h3 >List of Application:</h3>   
-                 <a href="applnprior.jsp"  class="btn btn-default" class="btn pull-right"><span class="glyphicon glyphicon-download-edit"></span>Edit</a>                      
-                <button id="exportview" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button> </br>  <br>  
+                      
+                 <tr><a href="applnprior.jsp"  class="btn btn-default" class="btn pull-right"><span class="glyphicon glyphicon-download-edit"></span>Edit</a>                      
+                <button id="exportview" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button> </tr></br>  <br>  
                 
-  <div class="table table-hover" border= "1" id="table-scroll"> 
+  <div class="table table-hover" border= "1" id="table-scroll" > 
      
     
-                 <div id="editor"></div>
-              
                  
-    <table class="js-dynamitable   table table-bordered" id="myTable">
+                 
+    <table class="js-dynamitable   table table-bordered" id="myTable" style="background:#34495E; color:white">
       <thead align="center">
         <tr>
           <th width="20%" >Application Name</th>

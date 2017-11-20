@@ -123,13 +123,17 @@
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear;
+  opacity:0.9;
    }
 
 #sidemenu a:hover {
     background-color: #ddd;
     color: black;
     }
+   label{
    
+   color:#313133;
+   }
 
    </style>
    <style>
@@ -369,7 +373,7 @@ if(rs.next()){
  
 <form class="form-signin" name="loginForm" method="post" action="EditProject">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
                 
                     
@@ -377,7 +381,7 @@ if(rs.next()){
                     	details.setAttribute("appno",rs3.getString("appno"));
                     	details.setAttribute("projectname",rs3.getString("projectname"));
                     	%>
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                     <%} %>
                     
                 <div id="navbar" class="navbar-collapse collapse">
@@ -386,7 +390,7 @@ if(rs.next()){
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                            <a href="logout.jsp" style="color:white">Logout</a>
                         </li>
                     </ul>
                     
@@ -492,29 +496,29 @@ if(rs.next()){
 <div class="row">
 
   <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Initiate</label></center>
+  <div class="form-group" >
+  <center><label style="color:#A9A9A9">Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+  <div class="bar"  role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Plan</label></center>
+  <center><label style="color:#A9A9A9">Plan</label></center>
   <div class="progress">
   <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Execute</label></center>
+  <center><label style="color:#A9A9A9" >Execute</label></center>
   <div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Hypercare</label></center>
+ <center><label style="color:#A9A9A9" >Hypercare</label></center>
  <div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
@@ -525,26 +529,26 @@ if(rs.next()){
             <div class="row bs-wizard" style="border-bottom:0;">
                 
                 <div class="col-xs-3 bs-wizard-step active">
-                  <div class="text-center bs-wizard-stepnum">Project Information</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Project Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
-                  <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Cost Complexity Calculation</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
-                  <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Prioritized Applications</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
-                  <div class="text-center bs-wizard-stepnum">Final</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Final</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 </div>
@@ -557,7 +561,7 @@ if(rs.next()){
                     <div class="panel-group" id="panels1"> 
                     <br/><br/><br/>
                                                 <div class="panel panel-default">
-        <div class="panel-heading" style="background:#34495E ; color:white;"> 
+        <div class="panel-heading" style="background:#708090 ; color:white;"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Project Information  </a> </h4> 
                             </div>  
                                                        
