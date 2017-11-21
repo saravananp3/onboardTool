@@ -17,7 +17,7 @@
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="css/style.min.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -96,7 +96,7 @@
     
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+             $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -168,6 +168,38 @@ p.required-field::before {
 }
 
 </style>
+    
+     <style>
+    
+   #sidemenu
+   {
+   background:#34495E ;
+   color: white;
+   cursor: pointer;
+   
+ width:200%;
+ font-size: 1.0em;
+  text-decoration: none;
+  line-height: 25px; 
+  
+  margin-right: 6px;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+ 
+   }
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+   label{
+   
+   color:#313133;
+   }
+
+   </style>
         
 <script>
 
@@ -506,11 +538,11 @@ function validation(pro_name)
    }
 </style>
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool</a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -518,7 +550,7 @@ function validation(pro_name)
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                            <a href="logout.jsp" style="color:white">Logout</a>
                         </li>
                     </ul>
                     
@@ -532,12 +564,12 @@ function validation(pro_name)
             
               <div class="col-md-3 sidebar">
                   <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+         <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; margin-right:30px; padding-left:10px '>
+                    <ul class="nav nav-sidebar" id="sidemenu">
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
@@ -654,8 +686,8 @@ function validation(pro_name)
                     <div class="panel-group" id="panels1"> 
                    
                                                 <div class="panel panel-default">
-        <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Project Information  </a> </h4> 
+        <div class="panel-heading" style="background:#34495E ; color:white;"> 
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" > Project Information  </a> </h4> 
                             </div>  
                                                        
                             <div id="collapse1" class="panel-collapse collapse"> 

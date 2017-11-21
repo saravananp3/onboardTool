@@ -123,7 +123,7 @@
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   transition: all 0.2s linear;
-  opacity:0.9;
+ 
    }
 
 #sidemenu a:hover {
@@ -561,7 +561,7 @@ if(rs.next()){
                     <div class="panel-group" id="panels1"> 
                     <br/><br/><br/>
                                                 <div class="panel panel-default">
-        <div class="panel-heading" style="background:#708090 ; color:white;"> 
+        <div class="panel-heading" style="background:#34495E ; color:white;"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Project Information  </a> </h4> 
                             </div>  
                                                        

@@ -15,24 +15,24 @@
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />   
  
  
-		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
-		<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
-		<script type="text/javascript" src="js/jqueryprogressbar.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="js/jqueryprogressbar.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
          <script src="https://docraptor.com/docraptor-1.0.0.js"></script>
-		<link type="text/css" href="css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />	
-		<link type="text/css" rel="stylesheet" href="css/progressbar.css" />
-		<script src="js/treeTable.js"></script>
+<link type="text/css" href="css/jquery-ui-1.8.13.custom.css" rel="stylesheet" /> 
+<link type="text/css" rel="stylesheet" href="css/progressbar.css" />
+<script src="js/treeTable.js"></script>
 
-		 <script src="js/jstree.min.js"></script>
+<script src="js/jstree.min.js"></script>
   
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    
        
 
@@ -45,8 +45,7 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
-      	
-	
+     
      
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
@@ -54,133 +53,151 @@
 <script>
 
 $(function() {
-	 for(var i=0;i<200;i++)
-		{
-	    $( "#pln_srt_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#pln_end_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#act_srt_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#act_end_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-		}
-	});
+for(var i=0;i<200;i++)
+{
+    $( "#pln_srt_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+    $( "#pln_end_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+    $( "#act_srt_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+    $( "#act_end_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+}
+});
 
 
-</script>		  
+</script>   
  
     <script>
-	  function getID(lev,pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
-	  {
-		 // window.alert(pln_srt+" "+pln_end+" "+act_srt+" "+status.id+" "+pln_hrs.id+" "+act_hrs.id+" "+progressbar.id);
-		  var startDate =pln_srt;
-		  var endDate =pln_end;
-		  var actual_startdate =act_srt;
-		  var percentage;
+  function getID(lev,pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
+  {
+// window.alert(pln_srt+" "+pln_end+" "+act_srt+" "+status.id+" "+pln_hrs.id+" "+act_hrs.id+" "+progressbar.id);
+var startDate =pln_srt;
+  var endDate =pln_end;
+  var actual_startdate =act_srt;
+  var percentage;
 
-		  if (startDate!="" && endDate!="" && actual_startdate!= "") {
-		  var minDate = new Date(convertStringToDate(startDate));
-		  var today = new Date();
-		  var maxDate = new Date(convertStringToDate(endDate));
-		  var actual_minDate = new Date(convertStringToDate(actual_startdate));
-		  var nbPastDays = Math.floor((today.getTime() - actual_minDate.getTime()) / 86400000);
+  if (startDate!="" && endDate!="" && actual_startdate!= "") {
+  var minDate = new Date(convertStringToDate(startDate));
+  var today = new Date();
+  var maxDate = new Date(convertStringToDate(endDate));
+  var actual_minDate = new Date(convertStringToDate(actual_startdate));
+  var nbPastDays = Math.floor((today.getTime() - actual_minDate.getTime()) / 86400000);
 
-		  var actual_Hours= (nbPastDays*24)/3;
+  var actual_Hours= (nbPastDays*24)/3;
 
-		  var total_days = (minDate-maxDate)-86400000;
+  var total_days = (minDate-maxDate)-86400000;
 
-		  var total_hours =(Math.round(Math.abs(total_days/(60*60*1000))))/3;
+  var total_hours =(Math.round(Math.abs(total_days/(60*60*1000))))/3;
 
-		  var percent = (actual_Hours/total_hours) * 100;
+  var percent = (actual_Hours/total_hours) * 100;
 
-		  //alert("minDate "+minDate);
-		  //alert("maxDate "+maxDate);
-		  percentage=100;
-		  console.log("actual_Hours : "+actual_Hours);
-		  console.log("total_hours : "+total_hours);
-		  if(lev!=1){
-		  document.getElementById(pln_hrs.id).value=total_hours;
-		  document.getElementById(act_hrs.id).value=actual_Hours;
-		  }
-		  if (percent < 0 ) {
-		  percent=0;
-		  $('#'+progressbar.id).reportprogress(percent);
-		  } 
-		  else if(percent>100)
-		  {
-			  percent=100;
-			  $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'green'});
-		  }  
-		  else if (actual_enddate!="") {
-		  
-		  percent=100 ;
-		  $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'green'});
-		  }
-		  else if (percent < 20) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'red'});
-		  }
-		  else if (percent > 20) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'yellow'});
-		  }
-		               else if (percent < 75) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'orange'});
-		  }
-		               else if (percent >76 ) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'green'});
-		  }
-		  }
-		  else
-			  {
-		
-			  }
-		  }
-	  </script>
-	  <script>
-	  var mindates=[];
-	  var maxdates=[];
-	  var actdates=[];
-	  function exxexx(x){
-		  var dat=document.getElementById(x).value;
-		  actdates.push(new Date(dat));
-		  var actDate=new Date(Math.max.apply(null,actdates));
-		  document.getElementById("act_srt_date0").value=(actDate.getMonth()+1)+'/'+actDate.getDate()+'/'+actDate.getFullYear();  
-	  }
-	  function exex(x){
-		  var dat=document.getElementById(x).value;
-		  mindates.push(new Date(dat));
-		  var minDate=new Date(Math.min.apply(null,mindates));
-		  document.getElementById("pln_srt_date0").value=(minDate.getMonth()+1)+'/'+minDate.getDate()+'/'+minDate.getFullYear();  
-	  }
-	  function exexx(x){
-		  var dat=document.getElementById(x).value;
-		  maxdates.push(new Date(dat));
-		  var minDate=new Date(Math.max.apply(null,maxdates));
-		  document.getElementById("pln_end_date0").value=(minDate.getMonth()+1)+'/'+minDate.getDate()+'/'+minDate.getFullYear();  
-	  }
-	  </script>
-    
- 
+  //alert("minDate "+minDate);
+  //alert("maxDate "+maxDate);
+  percentage=100;
+  console.log("actual_Hours : "+actual_Hours);
+  console.log("total_hours : "+total_hours);
+  if(lev!=1){
+  document.getElementById(pln_hrs.id).value=total_hours;
+  document.getElementById(act_hrs.id).value=actual_Hours;
+  }
+  if (percent < 0 ) {
+  percent=0;
+  $('#'+progressbar.id).reportprogress(percent);
+  } 
+  else if(percent>100)
+  {
+  percent=100;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }  
+  else if (actual_enddate!="") {
   
+  percent=100 ;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  else if (percent < 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'red'});
+  }
+  else if (percent > 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'yellow'});
+  }
+               else if (percent < 75) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'orange'});
+  }
+               else if (percent >76 ) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  }
+  else
+  {
+  }
+  }
+  </script>
+
+  
+  <script>
+  
+  function getDetID(total_hours,actual_Hours,progressbar,status,actual_enddate)
+  {
+  
+  var percent = (actual_Hours.value/total_hours.value) * 100; 
+  percentage=100;
+  if (percent < 0 ) {
+  percent=0;
+  $('#'+progressbar.id).reportprogress(percent);
+  } 
+  else if(percent>100)
+  {
+  percent=100;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }  
+  else if (actual_enddate!="") {
+  
+  percent=100 ;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  else if (percent < 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'red'});
+  }
+  else if (percent > 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'yellow'});
+  }
+               else if (percent < 75) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'orange'});
+  }
+               else if (percent >76 ) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  }
+
+  </script>
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '1050px', width: '340px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
             $('#jqxTree').css('visibility', 'visible');
+            
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
             
@@ -191,6 +208,7 @@ $(function() {
                     var rightClick = isRightClick(event);
                     if (rightClick && target != null) {
                         $("#jqxTree").jqxTree('selectItem', target);
+                        
                         var scrollTop = $(window).scrollTop();
                         var scrollLeft = $(window).scrollLeft();
                         contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
@@ -241,34 +259,6 @@ $(function() {
 } 
   </style>
 
-<style>
-    
-   #sidemenu
-   {
-   background:#34495E ;
-   color: white;
-   cursor: pointer;
-   
- width:200%;
- font-size: 1.0em;
-  text-decoration: none;
-  line-height: 25px; 
-  
-  margin-right: 6px;
-  text-shadow: 1px 1px 1px #000;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
- 
-   }
-
-#sidemenu a:hover {
-    background-color: #ddd;
-    color: black;
-    }
-  
-
-   </style>
 <style>
 input
 {
@@ -385,11 +375,37 @@ th
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {padding-top: 10px;}
   .sidenav a {font-size: 18px;}
 }
 </style>
+<style>
+    
+   #sidemenu
+   {
+   background:#34495E ;
+   color: white;
+   cursor: pointer;
+   
+ width:200%;
+ font-size: 1.0em;
+  text-decoration: none;
+  line-height: 25px; 
+  
+  margin-right: 6px;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+ 
+   }
 
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+  
+   </style>
 <script>
 
 $(function() {
@@ -479,42 +495,42 @@ $(function() {
   <script>
   function sub(x,y,z,w)
   {
-	  var f=document.loginForm;
-	    f.method="post";
-	    f.action='archive_exec?s='+x+'&l='+y+'&r='+z+'&m='+w;
-	    f.submit();
-  	}
+  var f=document.loginForm;
+    f.method="post";
+    f.action='archive_exec?s='+x+'&l='+y+'&r='+z+'&m='+w;
+    f.submit();
+  }
   </script>
   <script>
   function update()
   {
-	  
-	  var f=document.loginForm;
-	    f.method="post";
-	    f.action='archivesummary.jsp';
-	    f.submit(); 
-	 // document.loginForm.action = "update_view";
-  	 // document.loginForm.submit();   
+  
+  var f=document.loginForm;
+    f.method="post";
+    f.action='archivesummary.jsp';
+    f.submit(); 
+// document.loginForm.action = "update_view";
+  // document.loginForm.submit();   
   // document.Form1.target = "_blank";    // Open in a new window
   //document.loginForm.submit(); 
-	  
+  
   }
   
   </script>
   <script>
   function call_fun(name,a,b,c,d,e,g)
   {
-	 var f=document.loginForm;
-	    f.method="post";
-	    f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e;
-	    f.submit();  
+var f=document.loginForm;
+    f.method="post";
+    f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e;
+    f.submit();  
   }
   </script>
   
 <script>
 function remove(x)
 {
-	var f=document.loginForm;
+var f=document.loginForm;
     f.method="post";
     f.action='remove?s='+x;
     f.submit();
@@ -526,24 +542,24 @@ input[type="text"]:disabled{background-color:white;}
 <script>
 function checkk()
 {
- 	   for(var i=0;i<1000;i++){
- 	  document.getElementsByName("name"+i)[0].disabled=true;
- 	  document.getElementsByName("mem_ass"+i)[0].disabled=true;
-		  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
-		  document.getElementsByName("act_end_date"+i)[0].disabled=true;
-		  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
-		  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
-		  document.getElementsByName("hrs"+i)[0].disabled=true;
- 	   }
- 	
+     for(var i=0;i<1000;i++){
+    document.getElementsByName("name"+i)[0].disabled=true;
+    document.getElementsByName("mem_ass"+i)[0].disabled=true;
+  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
+  document.getElementsByName("act_end_date"+i)[0].disabled=true;
+  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
+  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
+  document.getElementsByName("hrs"+i)[0].disabled=true;
+     }
+  
 }
 </script>
 
 <body class='default'>
 <%@ page import="java.sql.*"%>
-		<%@ page import="javax.sql.*"%>
+<%@ page import="javax.sql.*"%>
 <form class="form-signin" name="loginForm" method="post" action="archive_exec">
-	<%
+<%
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -551,14 +567,14 @@ response.setHeader("Expires", "0"); // Proxies.
 
 if (session.getAttribute("username")==null)
 {
-	response.sendRedirect("Login.html");
+response.sendRedirect("Login.html");
 }
 %>
 <%
 HttpSession details=request.getSession();
 String info=(String)details.getAttribute("archive_exec");
 System.out.println(info);
-	String det=(String)session.getAttribute("theName");
+String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 
@@ -585,7 +601,7 @@ Statement st7 = conn.createStatement();
 ResultSet rs7 = st7.executeQuery(query7);
 
 if(rs4.next()){
-	%>
+%>
 <div class="container">
 <nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
@@ -610,22 +626,19 @@ if(rs4.next()){
         </nav>
         </div>
        
-            <div class="row">
+              <div class="row" >
             <br>
-               
-               
-               
                <div class="col-md-3 sidebar">
-                  <div id='jqxWidget'>
+                  <div id='jqxWidget' >
         <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; margin-right:30px; padding-left:10px '>
-                    <ul class="nav nav-sidebar" id="sidemenu">
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
                         
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
-                        <li item-expanded='true'>Project Details
+                       <li item-expanded='true'>Project Details
                     <ul>
                         <li item-selected='true'><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
@@ -680,9 +693,7 @@ if(rs4.next()){
          </div>
    </div>
                 </div>
-               
-               
-               
+                           
                
                
                   <script>
@@ -741,19 +752,19 @@ if(rs4.next()){
           
                      <script>
                      $(function(){
-                    	    $.contextMenu({
-                    	        selector: '.context-menu-one', 
-                    	        items: $.contextMenu.fromMenu($('#html5menu'))
-                    	    });
-                    	});
+                        $.contextMenu({
+                            selector: '.context-menu-one', 
+                            items: $.contextMenu.fromMenu($('#html5menu'))
+                        });
+                    });
                      </script>
                
               
               
                       
 
-<table class="table table-bordered" style="align:center;  id="table"  >
-<thead style="background:#34495E ; color:white;">
+<table class="table table-bordered" style="align:center" id="table">
+<thead style="background:#34495E ; color:white" >
 <tr>
 <th style="width:70%;">Tasks </th> 
 <th>Resource Assigned</th>
@@ -773,9 +784,9 @@ if(rs4.next()){
 <%
  int i=0,count=0;
 while(rs3.next()){
-	if(Integer.parseInt(rs3.getString(2))==1)
-	{
-	%>
+if(Integer.parseInt(rs3.getString(2))==1)
+{
+%>
 <tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>">
 <td style="width:200px;"><b>
 <span style="color:#3071a9;font-size:150%;"><input  type="text"   placeholder="enter" id="task" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly /></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></b></td>
@@ -787,22 +798,22 @@ while(rs3.next()){
 <td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)" /></td>
 <td><input  type="text" class="in"  id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)"/></td>
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
-	<td ><input type="text" style="background-color:transparent;width:20%;"; id="status<%=i %>"  /></td>
+<td ><input type="text" style=" border-style: solid; width:20%;"; id="status<%=i %>"  /></td>
 <td></td>
-<td style="display:none"><input type="text" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
+<td style="display:none"><input type="text" name="seqnum<%=i %>" value="<%=rs3.getString(1)%>" hidden /></td>
 <script>
-getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
+getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
 </script>
 
 </tr>
 <%}
-	else
-	{%>
+else
+{%>
 
-		<tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>" data-tt-parent-id="<%=rs3.getString(11) %>">
-		&nbsp;&nbsp;<td style="width:200px;">
-		<span style="color:#00BFFF;font-size:100%;"><input  type="text"   placeholder="enter" id="name<%=i %>" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly/></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></td>
-		<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
+<tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>" data-tt-parent-id="<%=rs3.getString(11) %>">
+&nbsp;&nbsp;<td style="width:200px;">
+<span style="color:#00BFFF;font-size:100%;"><input  type="text"   placeholder="enter" id="name<%=i %>" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly/></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></td>
+<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
 <td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>"  /></td>
 <td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>"  /></td>
 <td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
@@ -810,13 +821,13 @@ getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value
 <td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value);""/></td>
 <td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value);" /></td>
 <td ><div class="progressbar" id="progressbar<%=i%>" style="display:none;"></div></td>
-	<td ><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i %>"  /></td>
+<td ><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i %>"  /></td>
 <td></td>
 <td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
 
 </tr>
 <%
-	}
+}
 i++;
 }
 %>
@@ -830,14 +841,14 @@ i++;
 <input type="text" id="pwqej" value="<%= info %>" hidden> 
 <script>
  if(document.getElementById('pwqej').value=="R")
-	 checkk();
+checkk();
  </script>    
 
    <script type="text/javascript">
-		com_github_culmat_jsTreeTable.register(this)
+com_github_culmat_jsTreeTable.register(this)
 
-		treeTable($('#table'))
-	</script>       
+treeTable($('#table'))
+</script>       
 <div>
 <%if(rs7.next()){ %>
     <input type="hidden" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs7.getString("projectname") %>" >

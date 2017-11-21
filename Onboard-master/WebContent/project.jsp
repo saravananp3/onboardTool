@@ -118,12 +118,12 @@ $(function() {
     }
 </script>
 <script>
-function edit(id,nam)
+function edit(id)
 {
-
+	
 	var f=document.form;
 	f.method="post";
-	f.action="setid?id="+id+"&name="+nam;
+	f.action="grid.jsp?id="+id;
 	f.submit();
 	}
 
@@ -180,11 +180,11 @@ ResultSet rs = st.executeQuery(query);
 %>
 <form method="post" name="form" action="Appin">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool</a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -193,7 +193,7 @@ ResultSet rs = st.executeQuery(query);
 </li>
 
                         <li>
-                       <a href="logout.jsp">Logout</a>
+                       <a href="logout.jsp" style="color:white">Logout</a>
                         </li>
                     </ul>
                     
@@ -248,7 +248,7 @@ while(rs.next()){
 			<h5 class="cbp-vm-title right-col primary" >Initiate</h5>
 		
 						
-							<button type="button" class="btn btn-primary" name="btn" onClick="edit('<%=rs.getString(10)%>','<%=rs.getString(1)%>');">
+							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%=rs.getString(10)%>);">
  View/Update
 </button>
 						</li>
