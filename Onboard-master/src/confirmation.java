@@ -47,14 +47,14 @@ public class confirmation extends HttpServlet {
 		new javax.mail.Authenticator() {
 		protected PasswordAuthentication getPasswordAuthentication() {
 		//return new PasswordAuthentication("vkarun202@gmail.com","arun's@kumar");
-			return new PasswordAuthentication("balamurugan@platform3solutions.com","Bala1996");
+			return new PasswordAuthentication("arun.vk@platform3solutions.com","arun@kid06");
 		}
 		});
 
 		try {
 
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("balamurugan@platform3solutions.com"));
+		message.setFrom(new InternetAddress("arun.vk@platform3solutions.com"));
 		
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));

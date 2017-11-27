@@ -321,6 +321,7 @@ ResultSet rs3 = st3.executeQuery(query3);
 String query4 = "select * from appinfo where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
+String imp_id="";
 {
 %>
 <form class="form-signin"name="loginForm" method="post" action="Technical">
@@ -332,7 +333,28 @@ ResultSet rs4 = st4.executeQuery(query4);
                    <% if(rs3.next()){ %>
                     <% if(rs4.next()){ %>
                     <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
-                    <%} }%>
+                    <%
+                    String quer2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
+                    Statement s2 = conn.createStatement();
+                   ResultSet rss = s2.executeQuery(quer2);
+                   while(rss.next())
+                   	session.setAttribute(rss.getString(3),rss.getString(15));
+                   
+                   String quer3="select id from archive_exec where name='"+rs4.getString("appname")+"' and projects='"+rs3.getString("projectname")+"'order by seq_num";
+                   Statement s3 = conn.createStatement();
+                  ResultSet rss1 = s3.executeQuery(quer3);
+                  while(rss1.next())
+                	  imp_id=rss1.getString(1);
+                  System.out.println(imp_id);
+                  String quer4="select * from archive_exec where ref_id='"+imp_id+"' and projects='"+rs3.getString("projectname")+"'order by seq_num";
+                  Statement s4 = conn.createStatement();
+                 ResultSet rss2 = s4.executeQuery(quer4);
+                
+                  while(rss2.next()){
+                  	session.setAttribute(rss2.getString(3),rss2.getString(15));
+                  }
+                   
+                    }}%>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
                         <li>
@@ -434,35 +456,86 @@ ResultSet rs4 = st4.executeQuery(query4);
                     
                 
                 <div class="col-md-8">
-                <br><br><br>
-                <div class="row">
+                 <%
+String initiate=(String)session.getAttribute("Ideation and Initiate");
+String plan=(String)session.getAttribute("Plan");
+String execute=(String)session.getAttribute("Execute");
+String hypercare=(String)session.getAttribute("Closure");
+if(initiate == null)
+	initiate="0";
+if(plan == null)
+	plan="0";
+if(execute == null)
+	execute="0";
+if(hypercare == null)
+	hypercare="0";
+%>                            
+<br/><br/><br/>
+<div class="row">
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Requirement</label></center>
+  <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
+
+  <div class="col-md-3">
+  <div class="form-group">
+  <center><label >Plan</label></center>
+  <div class="progress">
+  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+</div></div></div>
+
+  <div class="col-md-3">
+  <div class="form-group">
+  <center><label >Execute</label></center>
+  <div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+</div></div></div>
+
+ <div class="col-md-3">
+ <div class="form-group">
+ <center><label >Closure</label></center>
+ <div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+</div></div></div>
+</div>
+                <br>
+                <div class="row">
+ <%
+String requirements=(String)session.getAttribute("Requirements");
+
+if(requirements == null)
+	requirements="0";
+
+%>
+  <div class="col-md-3">
+  <div class="form-group">
+  <center><label >Requirements</label></center>
+  <div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: <%=requirements%>%" aria-valuenow="<%=requirements %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=requirements %>%</span></div>
+  </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Development</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
+  <div id="one" class="bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Testing</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Deployement</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
 </div></div></div>
 </div>
 

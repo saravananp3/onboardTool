@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Project
@@ -51,17 +52,6 @@ public class Project extends HttpServlet {
 		        String Execdate = request.getParameter("Execdate");
 		        String Hyperdate = request.getParameter("Hyperdate");
 		        String Enddate = request.getParameter("Enddate"); 
-		        
-		        // do some processing here...
-		         
-		        // get response writer
-		        PrintWriter writer = response.getWriter();
-		         
-		        // build HTML code
-		        String htmlRespone = "<html>";
-		        htmlRespone += "<h2>Your Order Has been Taken</h2>";  
-		        htmlRespone += "</html>";
-		        writer.println(htmlRespone);
 		        try
 		        {
 		          // create a mysql database connection
@@ -69,21 +59,10 @@ public class Project extends HttpServlet {
 		          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
 		          Class.forName(myDriver);
 		          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-		        
-		         
-		          // the mysql insert statement
+		     
 		          String query = " insert into projinfo (projectname, descr,appno,Startdate,Intdate,Plandate,Execdate,Hyperdate,Enddate)"
 		            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		          // create the mysql insert preparedstatement
-		          //Scanner sin=new Scanner(System.in);
-		          //String id,food,extra;
-		          //System.out.println("Enter Your id");
-		          //id=sin.next();
-		          //System.out.println("Please tell what food you want");
-		          //food=sin.next();
-		          //System.out.println("would you like to have extra food today say y or n");
-		          //extra=sin.next();
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
 		          preparedStmt.setString (1, projectname);
 		          preparedStmt.setString   (2, descr);
@@ -96,13 +75,44 @@ public class Project extends HttpServlet {
 		          preparedStmt.setString (9, Enddate);
 		          preparedStmt.execute();
 		          
+		          String query4 = " insert into app_prior (prj_name, IA_lic_cst, IA_maint_cst, Infrastrct_cst, strg_est, lab_cst, proj_name, data_size, data_source, curnt_users, complexity, est_archive, est_scrn, est_db_size, est_hrs, est_cst, ttl_IA_cst, ttl_infra_cst, ttl_IA_prdct_cst, ttl, ttl_cst_fr_app, add_cst_fr_contigency, add_cst, IA_app_sprt_cst, est_archive_cst)"
+		  	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          
+		  	          PreparedStatement preparedStmt1 = conn.prepareStatement(query4);
+		  	          preparedStmt1.setString(1,projectname);
+		  	          preparedStmt1.setString(2, " ");
+		  	          preparedStmt1.setString(3, " ");
+		  	          preparedStmt1.setString(4, " ");
+		  	          preparedStmt1.setString(5, " ");
+		  	          preparedStmt1.setString(6, " ");
+		  	          preparedStmt1.setString(7, " ");
+		  	          preparedStmt1.setString(8, " ");
+		  	          preparedStmt1.setString(9, " ");
+		  	          preparedStmt1.setString (10, " ");
+		  	          preparedStmt1.setString   (11, " ");
+		  	          preparedStmt1.setString (12, " ");
+		  	          preparedStmt1.setString(13, " ");
+		  	          preparedStmt1.setString(14, " ");
+		  	          preparedStmt1.setString (15, " ");
+		  	          preparedStmt1.setString   (16, " ");
+		  	          preparedStmt1.setString (17, " ");
+		  	          preparedStmt1.setString(18, " ");
+		  	          preparedStmt1.setString(19, " ");
+		  	          preparedStmt1.setString (20, " ");
+		  	          preparedStmt1.setString(21, " ");
+		  	          preparedStmt1.setString(22, " ");
+		  	          preparedStmt1.setString(23, " ");
+		  	          preparedStmt1.setString(24, " ");
+		  	          preparedStmt1.setString(25, " ");	          
+		           preparedStmt1.execute();
+		           
 		          String query1="select * from archive_details";
 		          Statement st1 = conn.createStatement();
 				     ResultSet rs1 = st1.executeQuery(query1);
 				     while(rs1.next())
 				     {
 				    	 
-				    	 String query2="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				    	 String query2="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects,progressbar)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				    	 PreparedStatement preparedStmt2 = conn.prepareStatement(query2);
 				          preparedStmt2.setInt (1,rs1.getInt(1));
 				          preparedStmt2.setInt (2,rs1.getInt(2));
@@ -117,6 +127,7 @@ public class Project extends HttpServlet {
 				          preparedStmt2.setString (11,rs1.getString(10));
 				          preparedStmt2.setString (12,rs1.getString(11));
 				          preparedStmt2.setString (13,projectname);
+				          preparedStmt2.setString (14,"0");
 				          preparedStmt2.execute(); 
 				     }
 		          

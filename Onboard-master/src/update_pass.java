@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class update_pass
@@ -41,7 +42,8 @@ public class update_pass extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String pwd=request.getParameter("new_pass");
-		String email=request.getParameter("email");
+		HttpSession passwd=request.getSession();
+		String email=(String)passwd.getAttribute("email");
 		 try
 	      {
 	        // create a mysql database connection
