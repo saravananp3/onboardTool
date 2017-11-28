@@ -83,7 +83,7 @@ public class IntsantApp extends HttpServlet {
 				    	 System.out.println("Application name :"+rs.getString(1));
 				    	 
 					     
-				    	 String query2="select seq_num from archive_exec where name='Closure' order by seq_num";
+				    	 String query2="select seq_num from archive_exec where name='Closure' and projects='"+prjname+"'";
 				    	 Statement st2 = conn.createStatement();
 					     ResultSet rs2 = st2.executeQuery(query2);
 					     String query7="select id from archive_exec where name='Execute'";
@@ -91,15 +91,17 @@ public class IntsantApp extends HttpServlet {
 					     ResultSet rs7 = st7.executeQuery(query7);
 					      if(rs2.next() && rs7.next()){
 					    	  
-					    	  String query9="select name from archive_exec where level=2 and seq_num>22 and seq_num<"+rs2.getInt(1);
+					    	  String query9="select name from archive_exec where level=2 and seq_num>=22 and seq_num<"+rs2.getInt(1)+" and projects='"+prjname+"'";
 						    	 Statement st9 = conn.createStatement();
 							     ResultSet rs9 = st9.executeQuery(query9);
 							     while(rs9.next()){
+							    	 System.out.println("projects name --- "+rs9.getString(1));
 							    	 if(rs9.getString(1).equals(rs.getString(1)))
 							    	 {
 							    		cnt++; 
 							    	 }}
 							     
+							   System.out.println("aaa... "+cnt);  
 					    	  
 					    	  if(cnt==0){
 				    	 String query3="update archive_exec set seq_num=seq_num+62 where seq_num>="+rs2.getInt(1);

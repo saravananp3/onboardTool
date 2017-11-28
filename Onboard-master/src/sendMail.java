@@ -44,7 +44,7 @@ public class sendMail extends HttpServlet {
 		Properties props = new Properties();
 		 HttpSession ses=request.getSession();  
 	        ses.setAttribute("My_Roles",rol);  
-	/*			
+				
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "smtp.office365.com");
@@ -53,21 +53,21 @@ public class sendMail extends HttpServlet {
 		new javax.mail.Authenticator() {
 		protected PasswordAuthentication getPasswordAuthentication() {
 		//return new PasswordAuthentication("vkarun202@gmail.com","arun's@kumar");
-			return new PasswordAuthentication("balamurugan@platform3solutions.com","Bala1996");
+			return new PasswordAuthentication("arun.vk@platform3solutions.com","arun@kid06");
 		}
 		});
 
 		try {
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("balamurugan@platform3solutions.com"));
+		message.setFrom(new InternetAddress("arun.vk@platform3solutions.com"));
 		
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
 		message.setSubject("Registration Link");
 		message.setText(msg);
 
-		Transport.send(message);*/
-System.out.println("xxxxxxx");
+		Transport.send(message);
+//response.sendRedirect("user_reg.jsp");
 pw.println("<html><body>");  
 pw.println("Registration link have been sent to you\n");
 pw.println("<a href=\"Registration.jsp\" style='color:blue'> click </a>");
@@ -76,10 +76,14 @@ pw.println("</body></html>");
 pw.close();
 		 
 		//get the stream to write the data  
-		  
-		 
 		
 
+	}
+		
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**

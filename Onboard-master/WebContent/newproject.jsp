@@ -648,39 +648,7 @@ function validation(pro_name)
                   
                     
                <div class="col-md-8">
-               
-                  <br/><br/><br/>         
-
-<div class="row">
-
-  <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Initiate</label></center>
-  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
-</div></div></div>
-
-  <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Plan</label></center>
-  <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
-</div></div></div>
-
-  <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Execute</label></center>
-  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-
- <div class="col-md-3">
- <div class="form-group">
- <center><label >Hypercare</label></center>
- <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-</div>
+              
          
           <br/><br/><br/>
                     <div class="panel-group" id="panels1"> 

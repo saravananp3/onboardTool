@@ -62,22 +62,24 @@ priority[i]=request.getParameter("priority"+i);
           String myDriver = "org.gjt.mm.mysql.Driver";
           String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
           Class.forName(myDriver);
-          Connection conn = DriverManager.getConnection(myUrl, "root", "password");
+          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
         
        
           
           Statement st=conn.createStatement();
           
-          for(int a=0;a<4;a++){
+          for(int a=0;a<10;a++){
           String projectname=project_name[a];
           String complexitye=complexity[a];
           String estdbsize=est_db_size[a];
           String estcst=est_cst[a];
           String priorities=priority[a];
  
-      st.executeUpdate("update app_prior set complexity='"+complexitye+"',est_db_size='"+estdbsize+"',est_cst='"+estcst+"',priorities='"+priorities+"' where proj_name='"+projectname+"'");
+          System.out.println("jkasdjas  "+priorities+" "+projectname);
+          
+     st.executeUpdate("update app_prior set complexity='"+complexitye+"',est_db_size='"+estdbsize+"',est_cst='"+estcst+"',priorities='"+priorities+"' where proj_name='"+projectname+"'");
  
-      //System.out.println("update app_prior set complexity='"+complexitye+"',est_db_size='"+estdbsize+"',est_cst='"+estcst+"',priorities='"+priorities+"' where proj_name='"+projectname+"'");
+      System.out.println("update app_prior set complexity='"+complexitye+"',est_db_size='"+estdbsize+"',est_cst='"+estcst+"',priorities='"+priorities+"' where proj_name='"+projectname+"'");
            }
           
           conn.close();
