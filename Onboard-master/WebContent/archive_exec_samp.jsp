@@ -54,7 +54,7 @@
 <script>
 
 $(function() {
-	 for(var i=0;i<200;i++)
+	 for(var i=0;i<500;i++)
 		{
 	    $( "#pln_srt_date"+i ).datepicker({
 	        format: "mm/dd/yyyy",
@@ -533,7 +533,7 @@ function checkk()
 <script>
 function init_disable()
 {
- 	   for(var i=7;i<1000;i++){
+ 	   for(var i=6;i<1000;i++){
  	  document.getElementsByName("name"+i)[0].disabled=true;
  	  document.getElementsByName("mem_ass"+i)[0].disabled=true;
 		  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
@@ -813,6 +813,7 @@ if(hypercare == null)
 <tbody >     
 <%
  int i=0,count=0,pp=0;
+String no="";
 while(rs3.next()){
 	if(Integer.parseInt(rs3.getString(2))==1)
 	{
@@ -837,51 +838,7 @@ getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours
 </script>
 <%
 int progress=0;
-String first="";
-if(!rs3.getString(6).equals(""))
-	progress=100;
-System.out.println(progress);
-if(progress==100)
-{
-String queries="select seq_num from archive_exec where level=1 and projects='"+rs.getString("projectname")+"'";
-Statement sq = conn.createStatement();
-ResultSet rq = sq.executeQuery(queries); 
-int u=0;
-while(rq.next())
-{
-	if(u>pp){
-		first=rq.getString(1);
-	}
-u++;
-}
-}
-System.out.println("firdt is "+first);
-if(!first.equals("")){
-	System.out.println("balalalalalala");
 %>
-<script>
-window.alert('<%= first %>');
-chang_enb('<%=first%>');
-</script>
-<script>
-function chang_enb(var s)
-{
-	window.alert(s);
-/*	for(var i=0;i<s;i++)
-		{
-		  document.getElementsByName("name"+i)[0].disabled=true;
-	 	  document.getElementsByName("mem_ass"+i)[0].disabled=true;
-			  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
-			  document.getElementsByName("act_end_date"+i)[0].disabled=true;
-			  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
-			  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
-			  document.getElementsByName("hrs"+i)[0].disabled=true;
-		}*/
-	}
-</script>
-<%
-System.out.println("function executed");
-}%>
 </tr>
 <%}
 	else
@@ -941,8 +898,7 @@ i++;
 </div>
 
                                               </div>                             
-                        </div>    
-                        
+                        </div>                         
                                   
        <%
 

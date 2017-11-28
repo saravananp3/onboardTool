@@ -73,7 +73,21 @@
 <style>
 
 
-
+ #panels1
+  {
+ 
+    width: 120%;
+    height:600px;;
+    display: inline-block;
+    background: #fff;
+    
+    border: 2px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    transition: all .2s ease;
+}
 
  td {
   border:1px solid black
@@ -158,20 +172,26 @@ select { width: 100%; }
 .test input {
     border: 0;
 }
+
+
+.invoice-title h2{
+    display: inline-block;
+}
+
 </style>
-     <style>
+  <style>
 .bs-wizard {margin-top: 40px;}
 
 /*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
 .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
@@ -184,7 +204,7 @@ select { width: 100%; }
 /*END Form Wizard*/
 
 </style>
-   <script>
+     <script>
 function myFunction1() {
     var x = document.getElementById('myDiv1');
     if (x.style.display === 'none') {
@@ -292,7 +312,7 @@ function call()
  
     
 </head>
-<body class='default'>
+<body style="background-color:#F7F7F7;margin-left:0px">
     <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="java.text.NumberFormat" %>
@@ -301,6 +321,8 @@ function call()
 double ans=0.0;
 try {
 	int  total;
+	HttpSession details=request.getSession();
+	String roles=(String)details.getAttribute("role");
 	String det=(String)session.getAttribute("theName");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
@@ -327,7 +349,7 @@ total=rs2.getInt("total");
  
 <form class="form-signin" name="loginForm" method="post">
 <div class="container">
-<nav class="navbar-fixed-top" style="background:#34495E">
+<nav class="navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
             
             <%if (rs3.next()) {%>
@@ -338,10 +360,13 @@ total=rs2.getInt("total");
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                        <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />
+</li>&nbsp;
+<li>
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
 </li>
                         <li>
-                            <a href="logout.jsp" style="color:white">Log Out</a>
+                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -353,7 +378,7 @@ total=rs2.getInt("total");
        
             <div class="row">
             <br>
-                <div class="col-md-3 sidebar">
+                <div class="col-md-2 sidebar">
                   <div id='jqxWidget'>
         <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
                     <ul class="nav nav-sidebar">
@@ -449,74 +474,63 @@ $(document).ready(function () {
                     
                     
 <div class="col-md-7">
-
-                       
-      
-            
-
 <div class="row">
   <div class="col-md-3">
   <div class="form-group">
   
 </div></div>
 
-  <div class="col-md-3">
-  <div class="form-group">
   
-</div></div>
-
-  <div class="col-md-3">
-  <div class="form-group">
- </div></div>
-
- <div class="col-md-3">
- <div class="form-group">
- </div></div>
 </div>
- <div class="row">
-		
-        
+ <div class="invoice-title" >
+    			<h2 >Preview & Summary</h2>
+    		</div>
+    		<hr>
+ <div class="row" id="panels1">
             <div class="row bs-wizard" style="border-bottom:0;">
                 
                 <div class="col-xs-3 bs-wizard-step complete">
                   <div class="text-center bs-wizard-stepnum">Project Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
-                
+                  <a href="#" class="bs-wizard-dot" style="color:white">1</a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">2</a>
+                  <div class="bs-wizard-info text-center"></div>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">3</a>
+                  <div class="bs-wizard-info text-center"></div>
                 </div>
                 
-                <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                <div class="col-xs-3 bs-wizard-step complete"><!-- active -->
                   <div class="text-center bs-wizard-stepnum">Final</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">4</a>
+                  <div class="bs-wizard-info text-center"></div>
                 </div>
             </div>
+        
               
-                    <br/>
-            <h3 align="center">Preview & Summary</h3>   
+                    
+             
                                 
-                      
-                 <tr><a href="applnprior.jsp"  class="btn btn-default" class="btn pull-right"><span class="glyphicon glyphicon-download-edit"></span>Edit</a>                      
-                <button id="exportview" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button> </tr></br>  <br>  
+     <tr><a href="applnprior.jsp"  class="btn btn-success" class="btn pull-right"><span class="glyphicon glyphicon-download-edit"></span>Back</a>                      
+                <button id="exportview" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button> </tr></br>  <br>                 
+ <div class="panel panel-default" >              
                 
-  <div class="table table-hover" border= "1" id="table-scroll" > 
+  <div class="table-responsive" border= "1" id="table-scroll" > 
      
     
                  
                  
-    <table class="js-dynamitable   table table-bordered" id="myTable" style="background:#34495E; color:white">
+    <table class="js-dynamitable   table table-condensed" id="myTable" >
       <thead align="center">
         <tr>
           <th width="20%" >Application Name</th>
@@ -568,8 +582,8 @@ i++;
         
     </tbody>
     </table>
-    
-    
+     
+    </div>
 </div>
     <script>
   
@@ -679,8 +693,10 @@ $('#exportview').click(function () {
       
             'elementHandlers': specialElementHandlers
     });
-    console.log(pdf);
-       pdf.save('Application.pdf');
+	 var d = new Date().toISOString().slice(0, 19);
+     filename = 'ApplicationPriority' +"_"+ d + '.pdf';
+     pdf.save(filename);
+
 });
 
 

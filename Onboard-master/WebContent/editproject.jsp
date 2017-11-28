@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Project Information</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -28,7 +29,7 @@
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
  
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
@@ -46,9 +47,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
-            var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
+            var contextMenu = $("#jqxMenu").jqxMenu({ width: '100px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
             
             var attachContextMenu = function () {
@@ -101,19 +102,79 @@
             }
         });
     </script>
-   <style>
+     <style>
+    body
+    {
+     margin:0; padding:0; 
+    color:#73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
+    
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
+   #sidemenu
+   {
+   
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
+ 
+
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+   </style>
+<style>
 .bs-wizard {margin-top: 40px;}
 
 /*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
 .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
@@ -126,6 +187,53 @@
 /*END Form Wizard*/
 
 </style>
+<style>
+  
+  .sidebar{
+  
+  position:relative;
+  left:5px;
+  width:22%;
+  
+  background:#F7F7F7 ;
+  }
+  
+  
+  #panels1
+  {
+ 
+    width: 110%;
+    
+    display: inline-block;
+    background: white;
+    right:10%;
+    border: 1px solid #E6E9ED;
+   
+    opacity: 1;
+    transition: all .2s ease;
+}
+  
+  
+  
+  .form-control{
+  
+  height:40px;
+  }
+  
+  
+ #descr{
+  height:40px;
+  }
+  
+  #projectname{
+    height:40px;
+  
+  }
+  #pid{
+  height:40px;
+  }
+  </style>
+  
 
 
 <script>
@@ -299,7 +407,7 @@ function checkk()
 }
 </script>
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
-  <body>
+  <body style="background-color:#F7F7F7;margin-left:0px">
 
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
@@ -317,6 +425,7 @@ if (session.getAttribute("username")==null)
 %>
 <%
 HttpSession details=request.getSession();
+String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("app_emp");
 try {
 	String det=(String)session.getAttribute("theName");
@@ -334,7 +443,7 @@ if(rs.next()){
  
 <form class="form-signin" name="loginForm" method="post" action="EditProject">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                 
                     
@@ -342,7 +451,7 @@ if(rs.next()){
                     	details.setAttribute("appno",rs3.getString("appno"));
                     	details.setAttribute("projectname",rs3.getString("projectname"));
                     	%>
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white"id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                     <%
                     String q2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
@@ -357,10 +466,13 @@ if(rs.next()){
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                        <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
+</li>
+<li>
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
 </li>
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -373,13 +485,15 @@ if(rs.next()){
                  <div class="row">
             <br>
                <div class="col-sm-3 sidebar">
-                  <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+                 <div class="col-md-2 sidebar" >
+                 
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; '>
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
+                        
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                  <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
@@ -505,144 +619,193 @@ if(hypercare == null)
 </div></div></div>
 </div>
 <div class="row">
-		
+		  <div class="panel-group" id="panels1" style="display:block;"> 
         
             <div class="row bs-wizard" style="border-bottom:0;">
                 
                 <div class="col-xs-3 bs-wizard-step active">
                   <div class="text-center bs-wizard-stepnum">Project Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
-                
+                  <a href="#" class="bs-wizard-dot" style="color:white">1</a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">2</a>
+                  <div class="bs-wizard-info text-center"></div>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">3</a>
+                  <div class="bs-wizard-info text-center"></div>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                   <div class="text-center bs-wizard-stepnum">Final</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">4</a>
+                  <div class="bs-wizard-info text-center"></div>
                 </div>
             </div>
         
-        
-        
-	</div>
-         
-                    <div class="panel-group" id="panels1"> 
-                    <br/><br/><br/>
-                                                <div class="panel panel-default">
-        <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Project Information  </a> </h4> 
+	
+     
+                   
+                                              
+            <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
+                                <h2 class="panel-title"> <a  data-parent="#panels"   > Project Information  </a> </h2> 
                             </div>  
                                                        
-                            <div id="collapse1" class="panel-collapse collapse"> 
+                           
                                 <div class="panel-body text-left">
-                                
+                                <br/><br/>
                                 
                                     
                                     
-                                        <form role="form">
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput198">
+                                        <form role="form" class="form-horizontal">
+                                        
+                                         <div class="form-group form-group-sm" > 
+                                         <div class="col-sm-2">
+                                         </div>
+                                            <label class="col-sm-2 control-label" for="pid">
                                                Project ID&nbsp;
 </label>
-                                            <input type="text" class="form-control" id="pid" placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
+<div class="col-sm-5">
+                                            <input type="text"  class="form-control" id="pid"  placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
                                         </div>
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput198">
-                                               Project Name&nbsp;
-</label>
-                                            <input type="text" class="form-control" id="projectname" placeholder="Project Name" name="projectname" value="<%=rs3.getString("projectname")%>" >
                                         </div>
+                                        <br/><br/><br>
+                                        <div class="form-group form-group-sm"> 
                                         
-                                
-                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput229">Description
+                                        <div class="col-sm-2">
+                                        
+                                         </div>
+                                            <label class="col-sm-2 control-label" for="projectname">
+                                               Project Name 
 </label>
+                            <div class="col-sm-5">
+                                            <input type="text" class="form-control" size="35" id="projectname" placeholder="Project Name" name="projectname" value="<%=rs3.getString("projectname")%>" >
+                                        </div>
+                                        </div>
+                                      <br/><br/><br>
+                                      
+                                      
+                                        <div class="form-group form-group-sm"> 
+                                       
+                                        <div class="col-sm-2">
+                                         </div>
+                                            <label class="col-sm-2 control-label" for="descr">Description</label>
+<div class="col-sm-5">
                                             <input type="text" class="form-control" id="descr" placeholder="Description" name="descr"  value="<%=rs3.getString("descr")%>">
                                         </div>
+                                       
+                                        </div>
+                                         <br/><br/><br>
+                                         
+                                         
                                        <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">No of Applications</label>
+          <div class="col-sm-2">
+                                         </div>
+            <label class="col-sm-2 control-label required">No of Applications</label>
+            <div class="col-sm-5">
             <input placeholder="No of Applications" id="appno" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("appno")%>">
           </div>
+          </div>
           
         </div>  
+        <br/>
+        
                                          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Project Start Date</label>
+          <div class="col-sm-2">
+                                         </div>
+            <label class="col-sm-2 control-label required">Project Start Date</label>
+             <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Startdate" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Startdate")%>">
           </div>
-          
+          </div>
         </div>  
-        
+        <br>
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required"> Initiate Start Date</label>
+          <div class="col-sm-2">
+                                         </div>
+            <label class="col-sm-2 control-label required"> Initiate Start Date</label>
+             <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Intdate" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Intdate")%>">
           </div>
-          
+          </div>
         </div>  
-        
+        <br>
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Plan Start Date</label>
+          <div class="col-sm-2">
+                                         </div>
+            <label class="col-sm-2 control-label required">Plan Start Date</label>
+            <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Plandate" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Plandate")%>">
           </div>
-          
+          </div>
         </div>    
-        
+        <br/>
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Execution Start Date</label>
+          <div class="col-sm-2">
+                                         </div>
+            <label class="col-sm-2 control-label required">Execution Start Date</label>
+             <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Execdate" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Execdate")%>">
           </div>
-          
+          </div>
         </div>            
+        <br>
         
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Hypercare Start Date</label>
+          <div class="col-sm-2">
+                                         </div>
+            <label class="col-sm-2 control-label required">Hypercare Start Date</label>
+             <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Hyperdate" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Hyperdate")%>">
           </div>
-          
+          </div>
+         
         </div>  
+        <br>
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Project End Date</label>
+          <div class="col-sm-2">
+                                         </div>
+            <label class="col-sm-2 control-label required">Project End Date</label>
+            <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Enddate" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Enddate")%>">
           </div>
-          
+          </div>
         </div> 
         <input type="text" id="pwqej" value="<%= info %>" hidden>                
                             
                                 </div>                                 
-                            </div>                             
-                        </div>  
-                        </form>
-        <br/><br/>
-                       <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
-                    <button type="button" class="btn btn-default" onclick="location.href='appemp.jsp';">Back</button>
-                                        
-                             <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='tree.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
-                                                                                                           
+                                                      
+                       
+                       <hr>
+        <br/>
+                       &nbsp;&nbsp;<button type="submit" class="btn btn-primary " >Save</button>&nbsp;
+                       <button type="button" class="btn btn-default" onclick="location.href='appemp.jsp';">Back</button>
+                       <button type="button"  class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='tree.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button> &nbsp;&nbsp; 
+              &nbsp;&nbsp; <br/>
+               
+              <br/>
+               </form>                                                                                                               
  <script>
  if(document.getElementById('pwqej').value=="R")
 	 checkk();
  </script>                             
         
-                    
+                   
                   
   <%
 }
@@ -653,7 +816,8 @@ catch(Exception e){}
  
  
                     
-         
+         </div>
+       </div>
        </div>
    
 </body>

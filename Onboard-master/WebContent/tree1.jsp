@@ -44,7 +44,7 @@
     <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+   
     
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> 
@@ -70,9 +70,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '550px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
-            var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
+            var contextMenu = $("#jqxMenu").jqxMenu({ width: '100px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
             
             var attachContextMenu = function () {
@@ -126,18 +126,81 @@
         });
     </script>
     <style>
+    
+    
+    body
+    {
+     margin:0; padding:0; 
+    color:#73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
+    
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
+   #sidemenu
+   {
+   
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
+ 
+
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+   
+    </style>
+    <style>
 .bs-wizard {margin-top: 40px;}
 
 /*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
 .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
@@ -149,8 +212,33 @@
 .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
 /*END Form Wizard*/
 
-</style>   
+</style>
       <style>
+  
+  .sidebar{
+  
+  position:relative;
+  left:5px;
+  width:22%;
+  
+  
+  }
+  
+  
+  #panels1
+  {
+ 
+    width: 110%;
+    
+    display: inline-block;
+    background: white;
+    right:10%;
+    border: 1px solid #E6E9ED;
+   
+    opacity: 1;
+    transition: all .2s ease;
+}
+      
 input,
 select { width: 100%; }
 
@@ -334,6 +422,7 @@ function checkk()
 double ans=0.0;
 try {
 	HttpSession details=request.getSession();
+	String roles=(String)details.getAttribute("role");
 	String info=(String)details.getAttribute("app_emp");
 	String appno=(String)details.getAttribute("appno");
 	String projectname=request.getParameter("name");
@@ -537,16 +626,16 @@ function switchColors0()
 	links=document.getElementsByTagName("li") ;  
 	var element=document.getElementById("xxx");
 	for (var i = 0 ; i < links.length ; i ++)  
-		links.item(i).style.backgroundColor = 'white' ; 
+		links.item(i).style.backgroundColor = '#3276B1' ; 
 	element.style.borderRadius="5px";
 	element.style.marginRight = "70px";
 	element.style.boxSizing = "content-box";
-	element.style.borderColor = "#999";
-	element.style.background="#d1d1d1"; 
+	element.style.borderColor = "#3276B1";
+	element.style.background="#3276B1"; 
 	var list = document.getElementsByTagName("OL")[0];
 	var x=list.getElementsByTagName("LI");
 	for (var i = 0 ; i < x.length ; i ++)  
-		x.item(i).style.backgroundColor = 'black' ; 
+		x.item(i).style.backgroundColor = '#3276B1' ; 
 	
 	}
 	</script>
@@ -556,16 +645,16 @@ function switchColors()
 	links=document.getElementsByTagName("li") ; 	 
 var element=document.getElementById("xxz");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+	links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "85px";
 element.style.boxSizing = "content-box";
-element.style.borderColor = "#999";
-element.style.background="#d1d1d1";
-var list = document.getElementsByTagName("OL")[0];
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1";
+var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+	x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -576,16 +665,16 @@ function switchColors1()
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("xxy");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+	links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "150px";
 element.style.boxSizing = "content-box";
-element.style.borderColor = "#999";
-element.style.background="#d1d1d1";
-var list = document.getElementsByTagName("OL")[0];
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1";
+var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+	x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -595,13 +684,13 @@ for (var i = 0 ; i < x.length ; i ++)
  
 <form class="form-signin" name="loginForm" method="post">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
             
             <%if (rs3.next()) {%>
                 
                     
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%= projectname %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle" >Onboarding Tool-<%= projectname %></a>
              <%        String q2="select * from archive_exec where level=1 and projects='"+projectname+"'order by seq_num";
 Statement s2 = conn.createStatement();
 ResultSet rss = s2.executeQuery(q2);
@@ -610,16 +699,20 @@ while(rss.next())
 	session.setAttribute(rss.getString(3),rss.getString(15));
 }%>
               
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ol class="nav navbar-nav navbar-right">
-                        <li item-selected='true'>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                <div id="navbar" class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                       <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
+                       
+</li>
+<li style="background:#3276B1">
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
 </li>
                        
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                           <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
-                    </ol>
+                    </ul>
                     
                 </div>
                
@@ -631,15 +724,14 @@ while(rss.next())
             <br>
                 <div class="col-md-3 sidebar">
                   <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
-                        
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; '>
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
-                <li item-expanded='true'>App Emphasize Module
+                <li >App Emphasize Module
                     <ul>
-                       <li item-expanded='true'>Project Details
+                       <li >Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
@@ -661,55 +753,41 @@ while(rss.next())
                     </ul>
                 </li>
                 
-                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
-               <ul>
-               <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-               Business</div></a>
+                <li item-expanded='true'><a href='firstinsert.jsp'><b>Intake Module</b></a>
                 <ul>
-                <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Information</div></a></li>
-                <li><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Legacy Retention Information</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Archive Data Management</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                System Requirements</div></a></li>
+                <li item-expanded='true'>Business
+                <ul>
+                <li>Application Information</li>
+                <li>Legacy Retention Information</li>
+                <li>Archive Data Management</li>
+                <li>System Requirements</li>
                 
                 </ul></li>
-                <li item-expanded='true'><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical</div></a>
+                <li item-expanded='true'>Technical
                 <ul>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Data Information</div></a></li>
-                <li>   <a href="#" data-toggle="tooltip" title="Select Intake Module">             <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Infrastructure & Environment Inforamation</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical Information</div></a></li>
+                <li>Application Data Information</li>
+                <li>Infrastructure & Environment <br/>Inforamation</li>
+                <li>Technical Information</li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archival Requirements</div></a>
+                 <li item-expanded='true'>Archival Requirements
                  <ul>
-                 <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Screen/Report Requirements</div></a></li>
-                 <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archive Requirements</div></a></li>
+                 <li>Screen/Report Requirements</li>
+                 <li>Archive Requirements</li>
                  </ul>
                  </li>
                 </ul>
                 </li>
-                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
-               </li> 
-                
+                <li><a href="archive_exec_samp.jsp"><b>Archive Execution Module</b></a>
+               </li>                
                
                           </ul>
     
      </ul>
          </div>
    </div>
-                </div>
-                <script>
+             </div>   <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
@@ -793,26 +871,26 @@ if(hypercare == null)
                 <div class="col-xs-3 bs-wizard-step complete">
                   <div class="text-center bs-wizard-stepnum">Project Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">1</a>
                 
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">2</a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">3</a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                   <div class="text-center bs-wizard-stepnum">Final</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">4</a>
                 </div>
             </div>
         
@@ -824,16 +902,16 @@ if(hypercare == null)
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("xxx");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = 'white' ; 
+	links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
-element.style.borderColor = "#999";
-element.style.background="#d1d1d1"; 
-var list = document.getElementsByTagName("OL")[0];
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1"; 
+var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = 'black' ; 
+	x.item(i).style.backgroundColor = '#3276B1' ; 
 </script>
 
 
@@ -842,8 +920,8 @@ for (var i = 0 ; i < x.length ; i ++)
                     <br/><br/><br/>
                     <div class="panel-group" id="panels1"> 
                                                 <div class="panel panel-default">
-        <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" onclick="switchColors0();"> Parameters   </a> </h4> 
+        <div class="panel-heading" style="color:white; background:#3276B1"> 
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" onclick="switchColors0();" style="color:white; background:#3276B1"> Parameters   </a> </h4> 
                             </div>  
                                                        
                             <div id="collapse1" class="panel-collapse collapse in"> 
@@ -887,7 +965,7 @@ for (var i = 0 ; i < x.length ; i ++)
                         </div> 
     
                                <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                            <div class="panel-heading" style="color:white; background:#3276B1"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">    Archival Complexity Calculation    </a> </h4> 
                             </div>                             
                             <div id="collapse2" class="panel-collapse collapse"> 
@@ -1089,8 +1167,8 @@ for(var i=0; i<edit_row.length; i++) {
                    
                         
                                <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
-                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors1();">    Archival Cost Estimate    </a> </h4> 
+                            <div class="panel-heading" style="color:white; background:#3276B1"> 
+                                <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors1();" >    Archival Cost Estimate    </a> </h4> 
                             </div>                             
                             <div id="collapse3" class="panel-collapse collapse"> 
                                 <div class="panel-body text-left">

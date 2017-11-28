@@ -109,46 +109,79 @@
             }
         });
     </script>
-    <style>
+   <style>
+    body
+    {
+     margin:0; padding:0; 
+    color:#73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
     
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
    #sidemenu
    {
-   background:#34495E ;
-   color: white;
-   cursor: pointer;
    
- width:200%;
- font-size: 1.0em;
-  text-decoration: none;
-  line-height: 25px; 
-  
-  margin-right: 6px;
-  text-shadow: 1px 1px 1px #000;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
-   }
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
+ 
+
 
 #sidemenu a:hover {
     background-color: #ddd;
     color: black;
     }
-   
 
    </style>
        <style>
 .bs-wizard {margin-top: 40px;}
 
 /*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
 .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
@@ -338,7 +371,7 @@ System.out.println(total);
  
 <form class="form-signin" name="loginForm" method="post">
 <div class="container">
-<nav class=" navbar-fixed-top" style="background:#34495E">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
             
             <%if (rs3.next()) {%>
@@ -357,10 +390,10 @@ while(rss.next())
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                         <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
                         <li>
-                            <a href="logout.jsp" style="color:white">Logout</a>
+                            <a href="logout.jsp" style="color:white ;background:#3276B1" >Logout</a>
                         </li>
                     </ul>
                     
@@ -517,20 +550,20 @@ if(hypercare == null)
                 <div class="col-xs-3 bs-wizard-step complete">
                   <div class="text-center bs-wizard-stepnum">Project Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">1</a>
                 
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">2</a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">3</a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
@@ -547,7 +580,7 @@ if(hypercare == null)
         
                                 
                                 
-  <div class="table-responsive" id="table-scroll" > 
+  <div class="table-responsive" id="table-scroll"  > 
     
     <!-- Initialization 
                 * js-dynamitable => dynamitable trigger (table)
@@ -555,7 +588,7 @@ if(hypercare == null)
     <table class="js-dynamitable     table table-bordered" id="myTable" >
       
       <!-- table heading -->
-      <thead style="background:#34495E ; color:white;">
+      <thead style="color:white; background:#3276B1">
         
         <!-- Sortering
                         * js-sorter-asc => ascending sorter trigger

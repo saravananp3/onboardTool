@@ -36,9 +36,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-           $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
+           $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
-            var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
+            var contextMenu = $("#jqxMenu").jqxMenu({ width: '100px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
             
             var attachContextMenu = function () {
@@ -91,31 +91,64 @@
             }
         });
     </script>
-<style>
+ <style>
+    body
+    {
+     margin:0; padding:0; 
+    color:#73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
     
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
    #sidemenu
    {
-   background:#34495E ;
-   color: white;
-   cursor: pointer;
    
- width:200%;
- font-size: 1.0em;
-  text-decoration: none;
-  line-height: 25px; 
-  
-  margin-right: 6px;
-  text-shadow: 1px 1px 1px #000;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
-   }
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
+ 
+
 
 #sidemenu a:hover {
     background-color: #ddd;
     color: black;
     }
-   
 
    </style>
 <script>
@@ -310,6 +343,7 @@ int sumcount=0;
 Statement st1;
 try {
 	HttpSession details=request.getSession();
+	 String roles=(String)details.getAttribute("role");
 	String info=(String)details.getAttribute("app_emp");
 	String det=(String)session.getAttribute("theName");
 	String name=request.getParameter("name");
@@ -327,11 +361,11 @@ ResultSet rs3 = st3.executeQuery(query3);
  
 <form class="form-signin" name="loginForm" method="post" action="IntsantApp">
 <div class="container">
-<nav class=" navbar-fixed-top" style="background:#34495E">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                 
                      <% if(rs3.next()){ %>
-                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                  <%   String q2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
 Statement s2 = con.createStatement();
 ResultSet rss = s2.executeQuery(q2);
@@ -343,11 +377,14 @@ while(rss.next())
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                        <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
                     
                         <li>
-                            <a href="logout.jsp" style="color:white">Logout</a>
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
+</li>
+                        <li>
+                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -497,11 +534,11 @@ if(hypercare == null)
                     <br/><br/><br/>
                                                        
 <div class="panel panel-default">
-        <div class="panel-heading" style="background:#34495E ; color:white;"> 
+        <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse2"> Application Information  </a> </h4> 
                             </div>  
                                                        
-                            <div id="collapse2" class="panel-collapse collapse"> 
+                            <div id="collapse2" class="panel-collapse"> 
                                 <div class="panel-body text-left">
                                 
                                 
@@ -555,7 +592,7 @@ while(rs1.next()){
 </label>
                                             <input type="text" class="form-control" id="app_name" placeholder="Application Name" name="appname" >
                                             <input type="hidden" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs3.getString("projectname") %>" >
-                                     
+                                     </br>
                                                                                <input type="submit" id="bttn"  class="btn btn-primary btn pull-left" name ="p1" value="Add">
                 
                             

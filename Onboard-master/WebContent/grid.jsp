@@ -28,10 +28,53 @@
   opacity: 0.5;
   
 }
-   #navbar {
+    #navbar {
     color:#008B8B;
     
     }
+    .navbar-brand {
+    
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+.img-rounded {
+width:100%;
+    border-top-left-radius: 0.5px;
+    border-top-right-radius: 0.5px;
+    border-bottom-left-radius: 0.5px;
+    border-bottom-right-radius: 0.5px;
+    padding-top: 10px;
+    
+}
+
+.img-rounded:hover {
+    box-shadow: 0px 0px 10px #797373;
+     border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+       border-bottom-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+}
   </style>
   <script src="js/multiplepages.js"></script>
   <script language="javascript"></script>
@@ -55,6 +98,7 @@ if (session.getAttribute("username")==null)
 else{
 	String name=(String)session.getAttribute("ID");
 	  HttpSession details=request.getSession(); 
+	  
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
 String db = "strutsdb";
@@ -79,18 +123,20 @@ if(rs.next())
 	
 %>
 <div class="container">
-<nav class="navbar-fixed-top" style="background:#34495E">
+<nav class="navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
-                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse" >
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                          <img src="assets/images/logo1.png" id="image" class="img" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
-
+<li>
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
+</li>
                         <li>
-                            <a href="logout.jsp" style="color:white; background:#34495E">Logout</a>
+                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -917,19 +963,7 @@ else if(roles.equals("ArchivalDeveloper"))
 </div>
 </div>
 
-   <center>
-      <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="project.jsp" tabindex="-1">Previous</a>
-    </li>
-
-    <li class="page-item disabled">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</center>
+  
 
 
 					<%
