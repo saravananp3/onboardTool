@@ -28,7 +28,11 @@
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
  
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  
+  
+  
     <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
@@ -46,7 +50,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -101,6 +105,37 @@
             }
         });
     </script>
+    <style>
+    
+   #sidemenu
+   {
+   background:#34495E ;
+   color: white;
+   cursor: pointer;
+   
+ width:200%;
+ font-size: 1.0em;
+  text-decoration: none;
+  line-height: 25px; 
+  
+  margin-right: 6px;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+ 
+   }
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+   label{
+   
+   color:#313133;
+   }
+
+   </style>
    <style>
 .bs-wizard {margin-top: 40px;}
 
@@ -126,8 +161,12 @@
 /*END Form Wizard*/
 
 </style>
-
-
+<style>.affix {
+      top: 20px;
+      z-index: 9999 !important;
+  }
+  </style>
+  
 <script>
     $(document).ready(function(){
       var date_input=$('input[name="Startdate"]'); //our date input has the name "date"
@@ -334,7 +373,7 @@ if(rs.next()){
  
 <form class="form-signin" name="loginForm" method="post" action="EditProject">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
                 
                     
@@ -342,17 +381,8 @@ if(rs.next()){
                     	details.setAttribute("appno",rs3.getString("appno"));
                     	details.setAttribute("projectname",rs3.getString("projectname"));
                     	%>
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %></a>
-                    <%
-                    String q2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
-                    Statement s2 = conn.createStatement();
-                    ResultSet rss = s2.executeQuery(q2);
-                    while(rss.next())
-                    {
-                    	session.setAttribute(rss.getString(3),rss.getString(15));
-                    }
-                    
-                    } %>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <%} %>
                     
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -360,7 +390,7 @@ if(rs.next()){
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                            <a href="logout.jsp" style="color:white">Logout</a>
                         </li>
                     </ul>
                     
@@ -370,16 +400,16 @@ if(rs.next()){
         </div>
        
            
-                 <div class="row">
+                 <div class="row" >
             <br>
-               <div class="col-sm-3 sidebar">
-                  <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+               <div class="col-md-3 sidebar">
+                  <div id='jqxWidget' >
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; margin-right:30px; padding-left:10px '>
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
@@ -438,6 +468,8 @@ if(rs.next()){
    </div>
                 </div>
                
+               
+               
    <script>
   $(function () {
     // 6 create an instance when the DOM is ready
@@ -459,49 +491,36 @@ if(rs.next()){
                 
                 <div class="col-md-8">
                 
-<%
-String initiate=(String)session.getAttribute("Ideation and Initiate");
-String plan=(String)session.getAttribute("Plan");
-String execute=(String)session.getAttribute("Execute");
-String hypercare=(String)session.getAttribute("Closure");
-if(initiate == null)
-	initiate="0";
-if(plan == null)
-	plan="0";
-if(execute == null)
-	execute="0";
-if(hypercare == null)
-	hypercare="0";
-%>                            
+                            
 
 <div class="row">
 
   <div class="col-md-3">
-  <div class="form-group">
-  <center><label >Initiate</label></center>
+  <div class="form-group" >
+  <center><label style="color:#A9A9A9">Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="bar"  role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Plan</label></center>
+  <center><label style="color:#A9A9A9">Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
-  <center><label >Execute</label></center>
+  <center><label style="color:#A9A9A9" >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: %" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"></span></div>
+  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Closure</label></center>
+ <center><label style="color:#A9A9A9" >Hypercare</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"></span></div>
+  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
 <div class="row">
@@ -510,26 +529,26 @@ if(hypercare == null)
             <div class="row bs-wizard" style="border-bottom:0;">
                 
                 <div class="col-xs-3 bs-wizard-step active">
-                  <div class="text-center bs-wizard-stepnum">Project Information</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Project Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
-                  <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Cost Complexity Calculation</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
-                  <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Prioritized Applications</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 </div>
                 
                 <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
-                  <div class="text-center bs-wizard-stepnum">Final</div>
+                  <div class="text-center bs-wizard-stepnum" style="color:#A9A9A9">Final</div>
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="#" class="bs-wizard-dot"></a>
                 </div>
@@ -542,7 +561,7 @@ if(hypercare == null)
                     <div class="panel-group" id="panels1"> 
                     <br/><br/><br/>
                                                 <div class="panel panel-default">
-        <div class="panel-heading"> 
+        <div class="panel-heading" style="background:#34495E ; color:white;"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1"> Project Information  </a> </h4> 
                             </div>  
                                                        

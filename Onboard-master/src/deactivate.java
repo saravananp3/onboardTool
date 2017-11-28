@@ -68,7 +68,7 @@ public class deactivate extends HttpServlet {
 	        }
 
 		         
-	        response.sendRedirect("dash.jsp");
+	        
 	        conn.close();
 	      }
 	      catch (Exception e)
@@ -77,7 +77,7 @@ public class deactivate extends HttpServlet {
 	        System.err.println("Got an exception!");
 	        System.err.println(e.getMessage());
 	      }
-		
+		response.sendRedirect("users_list.jsp");
 		
 	}
 

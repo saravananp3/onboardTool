@@ -180,22 +180,106 @@ ResultSet rs2 = st2.executeQuery(query2);
                                                            
                                                                   <br>
                                                                    <tbody>
-                                                                  
+                                                                   <tr>
                                                                      <%
           
 while(rs1.next()){
-	System.out.println("adkjaddkjhasdkjuhasds");
 
 %>
-       <h3>HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</h3>
+
+<h3>Application Information :</h3>
+        <tr>
+        
+         <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Legacy Application Name       : <strong align="right"><%=rs1.getString("legappname") %></strong></pre> <pre style="font-family:verdana;font-size:125%;">Reference To Application         :  <strong><%=rs1.getString("reftoapp") %></strong></pre></tr> 
+          <tr class="row_s"> <pre style="font-family:verdana;font-size:125%;">Reference To Application         :  <strong><%=rs1.getString("reftoapp") %></strong></pre></tr>
+          <tr class="row_t">    <pre style="font-family:verdana;font-size:125%;">Tracking  ID         : <strong><%=rs1.getString("tid") %></strong></pre></tr> 
+          <tr class="row_d">    <pre style="font-family:verdana;font-size:125%;">Description          : <strong><%=rs1.getString("descr") %></strong></pre></tr> 
+           <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Legacy Application Vendor/Manufacture : <strong><%=rs1.getString("vendor") %></strong></pre></tr>
+            <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Contract Expiration Date : <strong><%=rs1.getString("expdate") %></strong></pre></tr>
+             <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Notice Period for Expiration of Contract  : <strong><%=rs1.getString("noticeperiod") %></strong></pre></tr>
+           <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Contract Value of Application  : <strong><%=rs1.getString("contractvalue") %></strong></pre></tr>
+         <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">ROD : <strong><%=rs1.getString("rod") %></strong></pre></tr>
+          <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Commment : <strong><%=rs1.getString("cmnt") %></strong></pre></tr>
+          <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">If the applications transitions has dependencies?  : <strong><%=rs1.getString("hasdep") %></strong></pre></tr>
+           <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">What is the date Range of this Data? : <strong><%=rs1.getString("daterange") %></strong></pre></tr>
+           <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Size of Database : <strong><%=rs1.getString("dbsize") %></strong></pre></tr>
+          
+          <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Location of Data : <strong><%=rs1.getString("dataloc") %></strong></pre></tr>
+          <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Site Location of Data  : <strong><%=rs1.getString("siteloc") %></strong></pre></tr>
+           <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Does the application needs archival?  : <strong><%=rs1.getString("needarch") %></strong></pre></tr>
+           <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Reason : <strong><%=rs1.getString("archreason") %></strong></pre></tr>
+         <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Comments : <strong><%=rs1.getString("archcmnt") %></strong></pre></tr>
+           <br />
+       
+         
+        </tr>
+        <h3>Legal Retention Information :</h3>
+        <tr>
+        
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Record Code Of Application: <strong align="right"><%=rs1.getString("reccode") %></strong></pre> </tr> 
+<tr class="row_s"> <pre style="font-family:verdana;font-size:125%;">Trigger Date:  <strong><%=rs1.getString("triggerdate") %></strong></pre></tr>
+<tr class="row_t">    <pre style="font-family:verdana;font-size:125%;">Period of Retention : <strong><%=rs1.getString("retentionperiod") %></strong></pre></tr> 
+<tr class="row_d">    <pre style="font-family:verdana;font-size:125%;">Table Name/s where Retention need to apply : <strong><%=rs1.getString("retentiontable") %></strong></pre></tr> 
+<tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Name of the Legal Retention & e-Discovery SME : <strong><%=rs1.getString("retentionname") %></strong></pre></tr>
+<tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Does any Records have legal holds/Tax Holds or any indication? : <strong><%=rs1.getString("legalholds") %></strong></pre></tr> 
+  <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Who or what entity provided legal or tax hold identification : <strong><%=rs1.getString("wholegal") %></strong></pre></tr>  
+  <tr class="row_d">   <pre style="font-family:verdana;font-size:125%;">Brief Explanation : <strong><%=rs1.getString("archexp") %></strong></pre></tr>
+ 
+         
+        </tr>
+        <h3>Archive Data Management :</h3>
+        <tr>
+        
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Is this application's been used for BI report?: <strong align="right"><%=rs1.getString("useforBI") %></strong></pre> </tr> 
+
+ 
+         
+        </tr>
         <br><br>
+         <h3>SystemRequirements :</h3>
+        <tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Account Credit Card: <strong align="right"><%=rs1.getString("creditacc") %></strong></pre> </tr> 
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Account Number-Financial: <strong align="right"><%=rs1.getString("financialacc") %></strong></pre> </tr>     
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Date of Birth: <strong align="right"><%=rs1.getString("dob") %></strong></pre> </tr> 
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Driver's License Number: <strong align="right"><%=rs1.getString("driverlic") %></strong></pre> </tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Email Address: <strong align="right"><%=rs1.getString("email") %></strong></pre> </tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Family Status: <strong align="right"><%=rs1.getString("family") %></strong></pre> </tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Gender: <strong align="right"><%=rs1.getString("gender") %></strong></pre> </tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Geo Location: <strong align="right"><%=rs1.getString("geoloc") %></strong></pre> </tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Image/Video: <strong align="right"><%=rs1.getString("img") %></strong></pre> </tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Income: <strong align="right"><%=rs1.getString("income") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">IP Address: <strong align="right"><%=rs1.getString("ipadrs") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Martial Status: <strong align="right"><%=rs1.getString("martialstatus") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Mpobile Device ID: <strong align="right"><%=rs1.getString("mobid") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Name: <strong align="right"><%=rs1.getString("name") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Phone Number: <strong align="right"><%=rs1.getString("phno") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Physical/Mailing Address : <strong align="right"><%=rs1.getString("mailadrs") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Physical Description: <strong align="right"><%=rs1.getString("physic") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Race/Ethnicity: <strong align="right"><%=rs1.getString("race") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Religion: <strong align="right"><%=rs1.getString("religion") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Sexual Preference : <strong align="right"><%=rs1.getString("sexualpref") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">SSN: <strong align="right"><%=rs1.getString("ssn") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Others: <strong align="right"><%=rs1.getString("others") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Brief Explaination: <strong align="right"><%=rs1.getString("expl") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Does the application have localization requirement/ regulations: <strong align="right"><%=rs1.getString("localreq") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">List of Countries where localization requirement/ regulations apply: <strong align="right"><%=rs1.getString("localcountry") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Are the Localization requirements/regulations enforced with infrastructure or geofencing : <strong align="right"><%=rs1.getString("localinf") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Infrastructure Localization enforcement, please list the locations of the datacenters : <strong align="right"><%=rs1.getString("datacenters") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">External access required for archived data : <strong align="right"><%=rs1.getString("extaccess") %></strong></pre> </tr>        
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Describe who or what external entity needs access : <strong align="right"><%=rs1.getString("who") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">User Name : <strong align="right"><%=rs1.getString("uname") %></strong></pre> </tr> 
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Role Description : <strong align="right"><%=rs1.getString("roledesc") %></strong></pre> </tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Reason for Access : <strong align="right"><%=rs1.getString("accreason") %></strong></pre> </tr>    
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Frequency of Access : <strong align="right"><%=rs1.getString("accfreq") %></strong></pre> </tr> 
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Additional System Requirements : <strong align="right"><%=rs1.getString("sysreq") %></strong></pre> </tr>     
+        </tr>
+        
+        
         
         <hr><br><br>
         <% } 
         
         %>
-   
-   
      <span><h2 style='color: #848484; font-family: arial,sans-serif; font-size: 150%;'>Technical Details</h2></span>
                                                                    
                 <%
@@ -203,9 +287,9 @@ while(rs1.next()){
 while(rs2.next()){
 
 %>        
- <h3>heeeeeeeeeeeeeeeeeelllllllllooo</h3>
+
 <h3>Application Data Information :</h3>
-      
+        <tr>
         
  <tr class="edit_row">  <pre style="font-family:verdana;font-size:125%;">Datatype Characteristics  : <strong align="right"><%=rs2.getString("datatype") %></strong></pre> </tr> 
  <tr class="row_s"> <pre style="font-family:verdana;font-size:125%;">If the Data Type is Unstructured or Hybrid, process for extracting unstructured data? : <strong><%=rs2.getString("pname") %></strong></pre></tr>

@@ -101,7 +101,6 @@ public class user_registration extends HttpServlet {
 	         
         
         conn.close();
-        response.sendRedirect("confirmation?email="+email);
       }
       catch (Exception e)
       {
@@ -109,6 +108,7 @@ public class user_registration extends HttpServlet {
         System.err.println("Got an exception!");
         System.err.println(e.getMessage());
       }		
+	//  response.sendRedirect("confirmation?email="+email);
 	}
 
 }

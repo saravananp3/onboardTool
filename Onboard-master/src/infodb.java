@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class infodb
@@ -32,15 +31,25 @@ public class infodb extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-System.out.println("hii");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession app_details=request.getSession();
+		 String proj_name = request.getParameter("proj_name");
+		String complexity = request.getParameter("complexity");
+		String est_db_size = request.getParameter("est_db_size");
+		String est_cst = request.getParameter("est_cst");
 		
-		 String proj_name = (String)app_details.getAttribute("proj_name");
-		String complexity = (String)app_details.getAttribute("complexity");
-		String est_db_size = (String)app_details.getAttribute("est_db_size");
-		String est_cst = (String)app_details.getAttribute("est_cst");
-		
+		 PrintWriter writer = response.getWriter();
+	        String htmlRespone = "<html>";
+	        htmlRespone += "<h2>Your Order Has been Taken</h2>";  
+	        htmlRespone += "</html>";
+	        writer.println(htmlRespone);
 	         
 	        final String myDriver = "org.gjt.mm.mysql.Driver";
 	          final String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
@@ -67,16 +76,8 @@ preparedStmt.execute();
 	          System.err.println("Got an exception!");
 	          System.err.println(e.getMessage());
 	        }
-	        response.sendRedirect("tree1.jsp");	
-
+	        response.sendRedirect("tree.jsp");	
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		}
 	
 
 }

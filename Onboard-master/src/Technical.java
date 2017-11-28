@@ -1,7 +1,6 @@
 
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -102,8 +101,8 @@ String datatype = request.getParameter("datatype");
    
          
          // the mysql insert statement
-         String query = " insert into technical (datatype, pname, archneed, formatsp, mlang, loclang, dataretain, systemdoc, userdoc, techdoc, traindoc, supportdoc, datadic, testcasedoc, testrec, designspec, validityplan, dataloc, servername, prodinstance, prodinstanceloc, infraengage, sourcearch, apphost, retenduration, clientapp, extcustfacing, url, dbsize, nooftable, noofrec, xmlcount, anyvpn, vpnacces, appintegrate)"
-           + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+         String query = " insert into technical (datatype, pname, archneed, formatsp, mlang, loclang, dataretain, systemdoc, userdoc, techdoc, traindoc, supportdoc, datadic, testcasedoc, testrec, designspec, validityplan, dataloc, servername, prodinstance, prodinstanceloc, infraengage, sourcearch, apphost, retenduration, clientapp, extcustfacing, url, dbsize, nooftable, noofrec, xmlcount, anyvpn, vpnacces, appintegrate, integname, decomdate)"
+           + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
          // create the mysql insert preparedstatement
          //Scanner sin=new Scanner(System.in);
@@ -150,7 +149,8 @@ String datatype = request.getParameter("datatype");
          preparedStmt.setString(15, anyvpn);
          preparedStmt.setString (16, vpnacces);
          preparedStmt.setString   (17, appintegrate);
- 
+         preparedStmt.setDate (18, java.sql.Date.valueOf(integname));
+         preparedStmt.setDate (19, java.sql.Date.valueOf(decomdate));
         
          
          

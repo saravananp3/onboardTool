@@ -332,14 +332,7 @@ ResultSet rs3 = st3.executeQuery(query3);
                 
                      <% if(rs3.next()){ %>
                     <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs3.getString("projectname") %></a>
-                 <%   String q2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
-Statement s2 = con.createStatement();
-ResultSet rss = s2.executeQuery(q2);
-while(rss.next())
-{
-	session.setAttribute(rss.getString(3),rss.getString(15));
-}
-                    } %>
+                    <%} %>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -448,20 +441,8 @@ while(rss.next())
                     <br/><br/><br/>
                        
                 <div class="col-md-8">
-<%
-String initiate=(String)session.getAttribute("Ideation and Initiate");
-String plan=(String)session.getAttribute("Plan");
-String execute=(String)session.getAttribute("Execute");
-String hypercare=(String)session.getAttribute("Closure");
-if(initiate == null)
-	initiate="0";
-if(plan == null)
-	plan="0";
-if(execute == null)
-	execute="0";
-if(hypercare == null)
-	hypercare="0";
-%>                            
+                
+                            
 
 <div class="row">
 
@@ -469,30 +450,32 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Closure</label></center>
+ <center><label >Hypercare</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
+         
+                
                     <div class="panel-group" id="panels1"> 
                     <br/><br/><br/>
                                                        

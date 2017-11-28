@@ -1,7 +1,6 @@
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -16,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class reset_password
@@ -37,11 +35,9 @@ public class reset_password extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub;
-		PrintWriter pw=response.getWriter();
-		HttpSession passwd=request.getSession();
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 String email=request.getParameter("email");
-passwd.setAttribute("email", email);
 	Properties props = new Properties();
 				
 		props.put("mail.smtp.auth", "true");
@@ -52,26 +48,23 @@ passwd.setAttribute("email", email);
 		new javax.mail.Authenticator() {
 		protected PasswordAuthentication getPasswordAuthentication() {
 		//return new PasswordAuthentication("vkarun202@gmail.com","arun's@kumar");
-			return new PasswordAuthentication("arun.vk@platform3solutions.com","arun@kid06");
+			return new PasswordAuthentication("balamurugan@platform3solutions.com","Bala1996");
 		}
 		});
 
 		try {
 
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("arun.vk@platform3solutions.com"));
+		message.setFrom(new InternetAddress("balamurugan@platform3solutions.com"));
 		
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
 		message.setSubject("Recovery Mail");
-		message.setText("http://localhost:8080/onboard/reset_pass.jsp");
+		message.setText("http://localhost:8080/onboard/reset_pass.jsp?email="+email);
 
 		Transport.send(message);
-		pw.println("<html><body>");  
-		pw.println("Recovery Mail have been sent to your account\n");
-		pw.println("</body></html>");  
-		  
-		pw.close();
+
+		System.out.println("Done");
 
 		} catch (MessagingException e) {
 		throw new RuntimeException(e);

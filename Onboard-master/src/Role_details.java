@@ -51,7 +51,7 @@ public class Role_details extends HttpServlet {
 		
 	
 		
-		System.out.println("________1___________");
+		
 		for(int i=0;i<10;i++){
 			role[i]=request.getParameter("role"+i);
 			admin[i]=request.getParameter("admin"+i);
@@ -63,6 +63,8 @@ public class Role_details extends HttpServlet {
 			report[i]=request.getParameter("report"+i);
 			finance[i]=request.getParameter("finance"+i);
 }
+		System.out.println("asddjhbasdd");
+
 	    PrintWriter writer = response.getWriter();
 	  
      
@@ -88,7 +90,7 @@ public class Role_details extends HttpServlet {
           String _report=report[a];
           String _finance=finance[a];
       st.executeUpdate("update role_details set admin='"+_admin+"',app_emp='"+_app_emp+"',intake='"+_intake+"',arch_exe='"+_arch_exe+"',decomm='"+_decomm+"',prgm_governance='"+_prgm_gov+"',reporting='"+_report+"',finance='"+_finance+"' where role='"+_role+"'");                                           
-  	System.out.println("update role_details set admin='"+_admin+"',app_emp='"+_app_emp+"',intake='"+_intake+"',arch_exe='"+_arch_exe+"',decomm='"+_decomm+"',prgm_governance='"+_prgm_gov+"',reporting='"+_report+"',finance='"+_finance+"' where role='"+_role+"'");
+  	
            }
           
           conn.close();

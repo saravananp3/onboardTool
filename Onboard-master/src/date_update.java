@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,9 +50,8 @@ public class date_update extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 try
 		   {
-			 HttpSession session=request.getSession();
+			 
 			 String prjname=request.getParameter("prjname");
-			
 				 int level1=0,level=0,seq=0;
 				 int sno=0,cnt=0,cnt1=0;
 				 Date d1,d2,d3,d4,d5,d6;
@@ -80,13 +78,13 @@ public class date_update extends HttpServlet {
 		     ArrayList<Date> pln_st = new ArrayList<Date>();
 		       ArrayList<Date> pln_ed = new ArrayList<Date>();
 		       ArrayList<Date> act_st = new ArrayList<Date>();
-		       ArrayList<Date> act_ed = new ArrayList<Date>();
 		     String temp;
 		     int i=0,index=0;
+		     System.out.println("hello.. ");
 		     while(rs.next())
 		     {    	  
 		  	  seq_num.add(rs.getInt(1));
-		  	level_num.add(rs.getInt(2));	
+		  	level_num.add(rs.getInt(2));
 		  	task_name.add(rs.getString(3));
 		  	member_ass.add(rs.getString(4));
 		  	plan_startdate.add(rs.getString(7));
@@ -95,35 +93,30 @@ public class date_update extends HttpServlet {
 		  	actual_enddate.add(rs.getString(6));
 		  	planned_hours.add(rs.getString(13));
 		  	actual_hours.add(rs.getString(9));
-		  	
 		  	i++;
 		     }
-	
+		     
 		  String tasks_name=request.getParameter("name");
 		  String sequence_no=request.getParameter("sequence_no");
 		  String plan_start=request.getParameter("plan_start");
 		  String plan_end=request.getParameter("plan_end");
 		  String actual_start=request.getParameter("actual_start");
-		  String actual_end=request.getParameter("actual_end");
 		  String planned_hrs=request.getParameter("plan_hrs");
 		  String actual_hrs=request.getParameter("actual_hrs");
-	
 		  	
 		  
 		     for(int j=0;j<i;j++)
 		     {
-		  	   if (seq_num.get(j)==Integer.parseInt(sequence_no))
+		  	   if (task_name.get(j).equals(tasks_name))
 		  	   {
 		  		   level=level_num.get(j);
 		  		   seq=seq_num.get(j);
 		  		   index=j;
 		  		   level1=level;
-	
 
 		  		   plan_startdate.set(index,plan_start);
 		  		 plan_enddate.set(index,plan_end);
 		  		 actual_startdate.set(index,actual_start);
-		  		actual_enddate.set(index,actual_end);
 		  		 
 		  		   for(int k=index-1;k>=0;k--)
 		  		   {
@@ -140,15 +133,13 @@ public class date_update extends HttpServlet {
 		                                pln_ed.add(fmt.parse(plan_enddate.get(w)));
 		                           	if(!actual_startdate.get(w).equals(""))
 		                                act_st.add(fmt.parse(actual_startdate.get(w)));
-		                           	if(!actual_enddate.get(w).equals(""))
-		                                act_ed.add(fmt.parse(actual_enddate.get(w)));
 		                                      continue;
 		                                      
 		                           }                          
 		                }
 		                          for(int w=k+1;w<200;w++)
 		                {
-		                        	 // System.out.println(plan_startdate.get(w));
+		                        	  System.out.println(plan_startdate.get(w));
 		                           if (level_num.get(w)==level1+1 || level_num.get(w)==1 || level_num.get(w)==level-1)
 		                                  break;
 		                           else if (level_num.get(w)==level1)
@@ -159,8 +150,6 @@ public class date_update extends HttpServlet {
 		                                pln_ed.add(fmt.parse(plan_enddate.get(w)));
 		                           	if(!actual_startdate.get(w).equals(""))
 		                                act_st.add(fmt.parse(actual_startdate.get(w)));
-		                        	if(!actual_enddate.get(w).equals(""))
-		                                act_ed.add(fmt.parse(actual_enddate.get(w)));
 		                                      continue;
 		                                      
 		                           }
@@ -177,15 +166,16 @@ public class date_update extends HttpServlet {
 		                          String plnend=fmt.format(pmaxDate);
 		                          Date aminDate = Collections.min(act_st);
 		                          String actulstart=fmt.format(aminDate);
-		                          Date amaxDate = Collections.min(act_st);
-		                          String actulend=fmt.format(amaxDate);
+		                          System.out.println(plnstart);
 				  		
 		  			   if (level_num.get(k)==0)
 		  			   {
+		  				  System.out.println("level0.. ");
 		  				   break;
 		  			   }
 		  			   else if (level_num.get(k)>=level1)
 		  			   {
+		  				   System.out.println("continue");
 		  				   continue;
 		  				   
 		  			   }
@@ -218,14 +208,6 @@ public class date_update extends HttpServlet {
 	  				     		{
 	  				     				actual_startdate.set(k,actulstart);
 	  				     		}
-	  				     		if(actual_enddate.get(k).equals(""))
-	  				     		{
-	  				     			actual_enddate.set(k,actual_end);
-	  				     		}
-	  				     		else
-	  				     		{
-	  				     				actual_enddate.set(k,actulend);
-	  				     		}
 	  				     		if(planned_hours.get(k).equals("")||actual_hours.get(k).equals(""))
 	  				     		{
 	  				     			planned_hours.set(k,planned_hrs);
@@ -243,7 +225,6 @@ public class date_update extends HttpServlet {
 	  				     		 planned_hours.set(k,Integer.toString(Integer.parseInt(planned_hrs)+(Integer.parseInt(planned_hours.get(k))-Integer.parseInt(planned_hours.get(index)))));
 	  				  				actual_hours.set(k,String.valueOf((Integer.parseInt(actual_hrs)+(Integer.parseInt(actual_hours.get(k))-Integer.parseInt(actual_hours.get(index))))));
 	  				     			}}
-	  				     	
 			  				   level1=level1-1;
 		  		 			   }
 
@@ -258,25 +239,11 @@ public class date_update extends HttpServlet {
 
 	   for(int n=0;n<i;n++)
 			   {
-		   int planed,actl,prog;
-             if(planned_hours.get(n).equals(""))
-            	 planed=0;
-             else
-		    planed=Integer.parseInt(planned_hours.get(n));
-             
-             if(actual_hours.get(n).equals(""))
-            	 actl=0;
-             else
-		    actl=Integer.parseInt(actual_hours.get(n));
-             
-             if(planed==0 || actl==0)
-            	 prog=0;
-             else
-		   prog=(actl*100)/planed;
-if(!actual_enddate.get(n).equals(""))
-	prog=100;
-		    	 st.executeUpdate("update archive_exec set progressbar='"+prog +"', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"' and projects='"+prjname+"'");
+			 //  System.out.println(seq_num.get(n)+"  "+level_num.get(n)+"  "+task_name.get(n)+"  "+plan_startdate.get(n)+" "+plan_enddate.get(n)+" "+actual_startdate.get(n));
+			 
+		    	 st.executeUpdate("update archive_exec set act_srt_date='"+actual_startdate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"' and projects='"+prjname+"'");
  // System.out.println("update archive_exec set act_srt_date='"+actual_startdate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"'");
+  
 			   }
 
 		   }

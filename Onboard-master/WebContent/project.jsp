@@ -118,12 +118,12 @@ $(function() {
     }
 </script>
 <script>
-function edit(id,nam)
+function edit(id)
 {
-
+	
 	var f=document.form;
 	f.method="post";
-	f.action="setid?id="+id+"&name="+nam;
+	f.action="grid.jsp?id="+id;
 	f.submit();
 	}
 
@@ -163,7 +163,7 @@ String userName ="root";
 String password="password123";
 
 int sumcount=0;
-Statement st,st1;
+Statement st;
 try{
 	String query;
 	HttpSession details=request.getSession();
@@ -177,7 +177,6 @@ else
  query = "select * from projinfo where projectname='"+prj+"'";
 st = con.createStatement();
 ResultSet rs = st.executeQuery(query);
-
 %>
 <form method="post" name="form" action="Appin">
 <div class="container">
@@ -236,35 +235,20 @@ while(rs.next()){
 							
 							
 							<h3 class="cbp-vm-title left-col primary" name="name"><%=rs.getString(1)%></h3>
-<% 			String q="select * from archive_exec where level=1 and projects='"+rs.getString(1)+"'order by seq_num";
-st1 = con.createStatement();
-ResultSet rs1 = st1.executeQuery(q);
-while(rs1.next())
-{
-	if(rs1.getString(15).equals("100"))
-		continue;
-	else
-	{
-
-
-	%>						<center><div class="progress center-col cbp-vm-detail">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%=rs1.getString(15) %>"
-  aria-valuemin="0" aria-valuemax="100" style="width:<%=rs1.getString(15) %>%">
-  <%=rs1.getString(15) %>
+							<center><div class="progress center-col cbp-vm-detail">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
+  aria-valuemin="0" aria-valuemax="100" style="width:10%">
+    10%
   </div>
   
 							
 </div> 	
 		
 </center>
-			<h5 class="cbp-vm-title right-col primary" ><%=rs1.getString(3) %></h5>
-			<%
-	break;
-	}
-	} %>
+			<h5 class="cbp-vm-title right-col primary" >Initiate</h5>
 		
 						
-							<button type="button" class="btn btn-primary" name="btn" onClick="edit('<%=rs.getString(10)%>','<%=rs.getString(1)%>');">
+							<button type="button" class="btn btn-primary" name="btn" onClick="edit(<%=rs.getString(10)%>);">
  View/Update
 </button>
 						</li>

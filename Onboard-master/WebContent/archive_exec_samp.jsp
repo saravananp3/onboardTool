@@ -21,18 +21,18 @@
         can populate it from 'UL' or by using its 'source' property." />   
  
  
-		<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
-		<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
-		<script type="text/javascript" src="js/jqueryprogressbar.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="js/jqueryprogressbar.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
          <script src="https://docraptor.com/docraptor-1.0.0.js"></script>
-		<link type="text/css" href="css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />	
-		<link type="text/css" rel="stylesheet" href="css/progressbar.css" />
-		<script src="js/treeTable.js"></script>
+<link type="text/css" href="css/jquery-ui-1.8.13.custom.css" rel="stylesheet" /> 
+<link type="text/css" rel="stylesheet" href="css/progressbar.css" />
+<script src="js/treeTable.js"></script>
 
-		 <script src="js/jstree.min.js"></script>
+<script src="js/jstree.min.js"></script>
   
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    
        
 
@@ -45,8 +45,7 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
-      	
-	
+     
      
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
@@ -54,153 +53,151 @@
 <script>
 
 $(function() {
-	 for(var i=0;i<200;i++)
-		{
-	    $( "#pln_srt_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#pln_end_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#act_srt_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#act_end_date"+i ).datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-		}
-	});
+for(var i=0;i<200;i++)
+{
+    $( "#pln_srt_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+    $( "#pln_end_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+    $( "#act_srt_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+    $( "#act_end_date"+i ).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+}
+});
 
 
-</script>		  
+</script>   
  
     <script>
-	  function getID(lev,pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
-	  {
-		 // window.alert(pln_srt+" "+pln_end+" "+act_srt+" "+status.id+" "+pln_hrs.id+" "+act_hrs.id+" "+progressbar.id);
-		 var startDate =pln_srt;
-		  var endDate =pln_end;
-		  var actual_startdate =act_srt;
-		  var percentage;
+  function getID(lev,pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
+  {
+// window.alert(pln_srt+" "+pln_end+" "+act_srt+" "+status.id+" "+pln_hrs.id+" "+act_hrs.id+" "+progressbar.id);
+var startDate =pln_srt;
+  var endDate =pln_end;
+  var actual_startdate =act_srt;
+  var percentage;
 
-		  if (startDate!="" && endDate!="" && actual_startdate!= "") {
-		  var minDate = new Date(convertStringToDate(startDate));
-		  var today = new Date();
-		  var maxDate = new Date(convertStringToDate(endDate));
-		  var actual_minDate = new Date(convertStringToDate(actual_startdate));
-		  var nbPastDays = Math.floor((today.getTime() - actual_minDate.getTime()) / 86400000);
+  if (startDate!="" && endDate!="" && actual_startdate!= "") {
+  var minDate = new Date(convertStringToDate(startDate));
+  var today = new Date();
+  var maxDate = new Date(convertStringToDate(endDate));
+  var actual_minDate = new Date(convertStringToDate(actual_startdate));
+  var nbPastDays = Math.floor((today.getTime() - actual_minDate.getTime()) / 86400000);
 
-		  var actual_Hours= (nbPastDays*24)/3;
+  var actual_Hours= (nbPastDays*24)/3;
 
-		  var total_days = (minDate-maxDate)-86400000;
+  var total_days = (minDate-maxDate)-86400000;
 
-		  var total_hours =(Math.round(Math.abs(total_days/(60*60*1000))))/3;
+  var total_hours =(Math.round(Math.abs(total_days/(60*60*1000))))/3;
 
-		  var percent = (actual_Hours/total_hours) * 100;
+  var percent = (actual_Hours/total_hours) * 100;
 
-		  //alert("minDate "+minDate);
-		  //alert("maxDate "+maxDate);
-		  percentage=100;
-		  console.log("actual_Hours : "+actual_Hours);
-		  console.log("total_hours : "+total_hours);
-		  if(lev!=1){
-		  document.getElementById(pln_hrs.id).value=total_hours;
-		  document.getElementById(act_hrs.id).value=actual_Hours;
-		  }
-		  if (percent < 0 ) {
-		  percent=0;
-		  $('#'+progressbar.id).reportprogress(percent);
-		  } 
-		  else if(percent>100)
-		  {
-			  percent=100;
-			  $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'green'});
-		  }  
-		  else if (actual_enddate!="") {
-		  
-		  percent=100 ;
-		  $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'green'});
-		  }
-		  else if (percent < 20) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'red'});
-		  }
-		  else if (percent > 20) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'yellow'});
-		  }
-		               else if (percent < 75) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'orange'});
-		  }
-		               else if (percent >76 ) 
-		  { $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'green'});
-		  }
-		  }
-		  else
-			  {
-		
-			  }
-		  }
-	  </script>
+  //alert("minDate "+minDate);
+  //alert("maxDate "+maxDate);
+  percentage=100;
+  console.log("actual_Hours : "+actual_Hours);
+  console.log("total_hours : "+total_hours);
+  if(lev!=1){
+  document.getElementById(pln_hrs.id).value=total_hours;
+  document.getElementById(act_hrs.id).value=actual_Hours;
+  }
+  if (percent < 0 ) {
+  percent=0;
+  $('#'+progressbar.id).reportprogress(percent);
+  } 
+  else if(percent>100)
+  {
+  percent=100;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }  
+  else if (actual_enddate!="") {
+  
+  percent=100 ;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  else if (percent < 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'red'});
+  }
+  else if (percent > 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'yellow'});
+  }
+               else if (percent < 75) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'orange'});
+  }
+               else if (percent >76 ) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  }
+  else
+  {
+  }
+  }
+  </script>
 
-	  
-	  <script>
-	  
-	  function getDetID(total_hours,actual_Hours,progressbar,status,actual_enddate)
-	  {
-		  var percent = (actual_Hours.value/total_hours.value) * 100; 
-		  percentage=100;
-		  if (percent < 0 ) {
-			  percent=0;
-			  $('#'+progressbar.id).reportprogress(percent);
-			  } 
-			  else if(percent>100)
-			  {
-				  percent=100;
-				  $('#'+progressbar.id).reportprogress(percent);
-				  $('#'+status.id).css({background:'green'});
-			  }  
-			  else if (actual_enddate!="") {
-			  
-			  percent=100 ;
-			  $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'green'});
-			  }
-			  else if (percent < 20) 
-			  { $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'red'});
-			  }
-			  else if (percent > 20) 
-			  { $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'yellow'});
-			  }
-			               else if (percent < 75) 
-			  { $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'orange'});
-			  }
-			               else if (percent >76 ) 
-			  { $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'green'});
-			  }
-		  
-		  
-			  }
+  
+  <script>
+  
+  function getDetID(total_hours,actual_Hours,progressbar,status,actual_enddate)
+  {
+  
+  var percent = (actual_Hours.value/total_hours.value) * 100; 
+  percentage=100;
+  if (percent < 0 ) {
+  percent=0;
+  $('#'+progressbar.id).reportprogress(percent);
+  } 
+  else if(percent>100)
+  {
+  percent=100;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }  
+  else if (actual_enddate!="") {
+  
+  percent=100 ;
+  $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  else if (percent < 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'red'});
+  }
+  else if (percent > 20) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'yellow'});
+  }
+               else if (percent < 75) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'orange'});
+  }
+               else if (percent >76 ) 
+  { $('#'+progressbar.id).reportprogress(percent);
+  $('#'+status.id).css({background:'green'});
+  }
+  }
 
-	  </script>
-	
+  </script>
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
             $('#jqxTree').css('visibility', 'visible');
+            
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
             
@@ -211,6 +208,7 @@ $(function() {
                     var rightClick = isRightClick(event);
                     if (rightClick && target != null) {
                         $("#jqxTree").jqxTree('selectItem', target);
+                        
                         var scrollTop = $(window).scrollTop();
                         var scrollLeft = $(window).scrollLeft();
                         contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
@@ -377,11 +375,37 @@ th
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {padding-top: 10px;}
   .sidenav a {font-size: 18px;}
 }
 </style>
+<style>
+    
+   #sidemenu
+   {
+   background:#34495E ;
+   color: white;
+   cursor: pointer;
+   
+ width:200%;
+ font-size: 1.0em;
+  text-decoration: none;
+  line-height: 25px; 
+  
+  margin-right: 6px;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+ 
+   }
 
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+  
+   </style>
 <script>
 
 $(function() {
@@ -471,85 +495,71 @@ $(function() {
   <script>
   function sub(x,y,z,w)
   {
-	  var f=document.loginForm;
-	    f.method="post";
-	    f.action='archive_exec?s='+x+'&l='+y+'&r='+z+'&m='+w;
-	    f.submit();
-  	}
+  var f=document.loginForm;
+    f.method="post";
+    f.action='archive_exec?s='+x+'&l='+y+'&r='+z+'&m='+w;
+    f.submit();
+  }
   </script>
   <script>
   function update()
   {
-	  
-	  var f=document.loginForm;
-	    f.method="post";
-	    f.action='archivesummary.jsp';
-	    f.submit(); 
-	 // document.loginForm.action = "update_view";
-  	 // document.loginForm.submit();   
+  
+  var f=document.loginForm;
+    f.method="post";
+    f.action='archivesummary.jsp';
+    f.submit(); 
+// document.loginForm.action = "update_view";
+  // document.loginForm.submit();   
   // document.Form1.target = "_blank";    // Open in a new window
   //document.loginForm.submit(); 
-	  
+  
   }
   
   </script>
   <script>
-  function call_fun(name,a,b,c,d,e,g,h)
+  function call_fun(name,a,b,c,d,e,g)
   {
-	 var f=document.loginForm;
-	    f.method="post";
-	    f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h;
-	    f.submit();  
+var f=document.loginForm;
+    f.method="post";
+    f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e;
+    f.submit();  
   }
   </script>
   
 <script>
 function remove(x)
 {
-	var f=document.loginForm;
+var f=document.loginForm;
     f.method="post";
     f.action='remove?s='+x;
     f.submit();
 }
 </script>
 <style>
-/*input[type="text"]:disabled{background-color:white;}*/
+input[type="text"]:disabled{background-color:white;}
 </style>
 <script>
 function checkk()
 {
- 	   for(var i=0;i<1000;i++){
- 	  document.getElementsByName("name"+i)[0].disabled=true;
- 	  document.getElementsByName("mem_ass"+i)[0].disabled=true;
-		  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
-		  document.getElementsByName("act_end_date"+i)[0].disabled=true;
-		  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
-		  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
-		  document.getElementsByName("hrs"+i)[0].disabled=true;
- 	   }
- 	
+     for(var i=0;i<1000;i++){
+    document.getElementsByName("name"+i)[0].disabled=true;
+    document.getElementsByName("mem_ass"+i)[0].disabled=true;
+  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
+  document.getElementsByName("act_end_date"+i)[0].disabled=true;
+  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
+  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
+  document.getElementsByName("hrs"+i)[0].disabled=true;
+     }
+  
 }
 </script>
-<script>
-function init_disable()
-{
- 	   for(var i=7;i<1000;i++){
- 	  document.getElementsByName("name"+i)[0].disabled=true;
- 	  document.getElementsByName("mem_ass"+i)[0].disabled=true;
-		  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
-		  document.getElementsByName("act_end_date"+i)[0].disabled=true;
-		  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
-		  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
-		  document.getElementsByName("hrs"+i)[0].disabled=true;
- 	   }
- 	
-}
-</script>
+
 <body class='default'>
 <%@ page import="java.sql.*"%>
-		<%@ page import="javax.sql.*"%>
+<%@ page import="javax.sql.*"%>
 <form class="form-signin" name="loginForm" method="post" action="archive_exec">
-	<%
+<%
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -557,13 +567,14 @@ response.setHeader("Expires", "0"); // Proxies.
 
 if (session.getAttribute("username")==null)
 {
-	response.sendRedirect("Login.html");
+response.sendRedirect("Login.html");
 }
 %>
 <%
 HttpSession details=request.getSession();
 String info=(String)details.getAttribute("archive_exec");
-	String det=(String)session.getAttribute("theName");
+System.out.println(info);
+String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 
@@ -590,23 +601,14 @@ Statement st7 = conn.createStatement();
 ResultSet rs7 = st7.executeQuery(query7);
 
 if(rs4.next()){
-	%>
+%>
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#34495E">
             <div class="container-fluid">
                 
                     <% if(rs.next()){ %>
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs.getString("projectname") %></a>
-                    <%
-                    String q2="select * from archive_exec where level=1 and projects='"+rs.getString("projectname")+"'order by seq_num";
-                    Statement s2 = conn.createStatement();
-                    ResultSet rss = s2.executeQuery(q2);
-                    while(rss.next())
-                    {
-                    	session.setAttribute(rss.getString(3),rss.getString(15));
-                    }
-                    
-                    %>
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <%} %>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -615,7 +617,7 @@ if(rs4.next()){
 </li>
                       
                         <li>
-                            <a href="logout.jsp">Logout</a>
+                            <a href="logout.jsp" style="color:white">Logout</a>
                         </li>
                     </ul>
                     
@@ -624,80 +626,66 @@ if(rs4.next()){
         </nav>
         </div>
        
-            <div class="row">
+              <div class="row" >
             <br>
-               
-               
-               
                <div class="col-md-3 sidebar">
-                  <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+                  <div id='jqxWidget' >
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; margin-right:30px; padding-left:10px '>
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
-                       <li item-expanded='true'><input type="text" value="project details"/>
+                       <li item-expanded='true'>Project Details
                     <ul>
-                        <li><a href="editproject.jsp">Project Information</a></li>
+                        <li item-selected='true'><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true' item-selected='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
                          <ul>
                                 <li >Parameters</li>
                                 <li>Archival Complexity Calculation</li>
                                 <li>Archival Cost Estimate</li>
-                               
+                             
                             </ul>
                         </li>
-                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li ><a href="demo.jsp">ROI Calculation</a></li>
-                       
+                        <li><a href="applnprior.jsp">Application-Prioritized</li>
+                       <li> <a href="demo.jsp">ROI Calculation</a></li>
+                        <li>Estimates</li>
 
                     </ul>
                 </li>
                 <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
-               <ul>
-               <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-               Business</div></a>
                 <ul>
-                <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Information</div></a></li>
-                <li><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Legacy Retention Information</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Archive Data Management</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                System Requirements</div></a></li>
+                <li item-expanded='true'>Business
+                <ul>
+                <li>Application Information</li>
+                <li>Legacy Retention Information</li>
+                <li>Archive Data Management</li>
+                <li>System Requirements</li>
                 
                 </ul></li>
-                <li item-expanded='true'><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical</div></a>
+                <li item-expanded='true'>Technical
                 <ul>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Data Information</div></a></li>
-                <li>   <a href="#" data-toggle="tooltip" title="Select Intake Module">             <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Infrastructure & Environment Inforamation</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical Information</div></a></li>
+                <li>Application Data Information</li>
+                <li>Infrastructure & Environment Inforamation</li>
+                <li>Technical Information</li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archival Requirements</div></a>
+                 <li item-expanded='true'>Archival Requirements
                  <ul>
-                 <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Screen/Report Requirements</div></a></li>
-                 <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archive Requirements</div></a></li>
+                 <li>Screen/Report Requirements</li>
+                 <li>Archive Requirements</li>
                  </ul>
                  </li>
                 </ul>
                 </li>
-                <li item-selected='true'>Archive Execution Module</li>
+                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li>                
                
                           </ul>
     
@@ -705,12 +693,7 @@ if(rs4.next()){
          </div>
    </div>
                 </div>
-               
-
-               
-               
-               
-               
+                           
                
                
                   <script>
@@ -733,20 +716,8 @@ if(rs4.next()){
                                 
                  <div class="col-md-7">
                  
- <%
-String initiate=(String)session.getAttribute("Ideation and Initiate");
-String plan=(String)session.getAttribute("Plan");
-String execute=(String)session.getAttribute("Execute");
-String hypercare=(String)session.getAttribute("Closure");
-if(initiate == null)
-	initiate="0";
-if(plan == null)
-	plan="0";
-if(execute == null)
-	execute="0";
-if(hypercare == null)
-	hypercare="0";
-%>                            
+                 
+                             
 
 <div class="row">
 
@@ -754,38 +725,38 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div id="one" class="bar" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Closure</label></center>
+ <center><label >Hypercare</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div></div></div>
 </div>
-           
+          
                      <script>
                      $(function(){
-                    	    $.contextMenu({
-                    	        selector: '.context-menu-one', 
-                    	        items: $.contextMenu.fromMenu($('#html5menu'))
-                    	    });
-                    	});
+                        $.contextMenu({
+                            selector: '.context-menu-one', 
+                            items: $.contextMenu.fromMenu($('#html5menu'))
+                        });
+                    });
                      </script>
                
               
@@ -793,7 +764,7 @@ if(hypercare == null)
                       
 
 <table class="table table-bordered" style="align:center" id="table">
-<thead>
+<thead style="background:#34495E ; color:white" >
 <tr>
 <th style="width:70%;">Tasks </th> 
 <th>Resource Assigned</th>
@@ -806,18 +777,16 @@ if(hypercare == null)
 <th>Progress %</th>
 <th style="width:20%;">Status</th>
 <th>Comments</th>
-<th></th>
+
 </tr>
 </thead>
-
-<tbody >     
+<tbody >      
 <%
- int i=0,count=0,pp=0;
+ int i=0,count=0;
 while(rs3.next()){
-	if(Integer.parseInt(rs3.getString(2))==1)
-	{
-		pp++;
-	%>
+if(Integer.parseInt(rs3.getString(2))==1)
+{
+%>
 <tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>">
 <td style="width:200px;"><b>
 <span style="color:#3071a9;font-size:150%;"><input  type="text"   placeholder="enter" id="task" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly /></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></b></td>
@@ -829,88 +798,36 @@ while(rs3.next()){
 <td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)" /></td>
 <td><input  type="text" class="in"  id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)"/></td>
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
-	<td ><input type="text" style="background-color:transparent;width:20%;"; id="status<%=i %>"  /></td>
+<td ><input type="text" style=" border-style: solid; width:20%;"; id="status<%=i %>"  /></td>
 <td></td>
-<td style="display:none"><input type="text" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
+<td style="display:none"><input type="text" name="seqnum<%=i %>" value="<%=rs3.getString(1)%>" hidden /></td>
 <script>
 getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
 </script>
-<%
-int progress=0;
-String first="";
-if(!rs3.getString(6).equals(""))
-	progress=100;
-System.out.println(progress);
-if(progress==100)
-{
-String queries="select seq_num from archive_exec where level=1 and projects='"+rs.getString("projectname")+"'";
-Statement sq = conn.createStatement();
-ResultSet rq = sq.executeQuery(queries); 
-int u=0;
-while(rq.next())
-{
-	if(u>pp){
-		first=rq.getString(1);
-	}
-u++;
-}
-}
-System.out.println("firdt is "+first);
-if(!first.equals("")){
-	System.out.println("balalalalalala");
-%>
-<script>
-window.alert('<%= first %>');
-chang_enb('<%=first%>');
-</script>
-<script>
-function chang_enb(var s)
-{
-	window.alert(s);
-/*	for(var i=0;i<s;i++)
-		{
-		  document.getElementsByName("name"+i)[0].disabled=true;
-	 	  document.getElementsByName("mem_ass"+i)[0].disabled=true;
-			  document.getElementsByName("act_srt_date"+i)[0].disabled=true;
-			  document.getElementsByName("act_end_date"+i)[0].disabled=true;
-			  document.getElementsByName("pln_srt_date"+i)[0].disabled=true;
-			  document.getElementsByName("pln_end_date"+i)[0].disabled=true;
-			  document.getElementsByName("hrs"+i)[0].disabled=true;
-		}*/
-	}
-</script>
-<%
-System.out.println("function executed");
-}%>
+
 </tr>
 <%}
-	else
-	{%>
+else
+{%>
 
-		<tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>" data-tt-parent-id="<%=rs3.getString(11) %>">
-		&nbsp;&nbsp;<td style="width:200px;">
-		<span style="color:#00BFFF;font-size:100%;"><input  type="text"   placeholder="enter" id="name<%=i %>" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly/></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></td>
-		<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
+<tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>" data-tt-parent-id="<%=rs3.getString(11) %>">
+&nbsp;&nbsp;<td style="width:200px;">
+<span style="color:#00BFFF;font-size:100%;"><input  type="text"   placeholder="enter" id="name<%=i %>" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly/></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></td>
+<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
 <td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>"  /></td>
 <td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>"  /></td>
 <td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
 <td><input  type="text" class="in" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
-<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value);""/></td>
-<td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value);" /></td>
-<td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
-	<td ><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i %>"  /></td>
+<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value);""/></td>
+<td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value);" /></td>
+<td ><div class="progressbar" id="progressbar<%=i%>" style="display:none;"></div></td>
+<td ><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i %>"  /></td>
 <td></td>
 <td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
 
-<% if(rs3.getString(3).equals("Requirements")){%>
-<script>
-getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
-</script>
-<%} %>
-	
 </tr>
 <%
-	}
+}
 i++;
 }
 %>
@@ -924,13 +841,14 @@ i++;
 <input type="text" id="pwqej" value="<%= info %>" hidden> 
 <script>
  if(document.getElementById('pwqej').value=="R")
-	 checkk();
+checkk();
  </script>    
-   <script type="text/javascript">
-		com_github_culmat_jsTreeTable.register(this)
 
-		treeTable($('#table'))
-	</script>       
+   <script type="text/javascript">
+com_github_culmat_jsTreeTable.register(this)
+
+treeTable($('#table'))
+</script>       
 <div>
 <%if(rs7.next()){ %>
     <input type="hidden" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs7.getString("projectname") %>" >
@@ -946,7 +864,7 @@ i++;
                                   
        <%
 
-                    }
+
 }
 %>
 </form>

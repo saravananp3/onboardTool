@@ -64,7 +64,7 @@ String password="password123";
 session.setAttribute("theName", name);
 String roles=(String)details.getAttribute("role");
 int sumcount=0;
-Statement st,st2;
+Statement st;
 try{
 Class.forName(driver).newInstance();
 con = DriverManager.getConnection(url+db,userName,password);
@@ -79,9 +79,12 @@ if(rs.next())
 	
 %>
 <div class="container">
-<nav class="navbar-fixed-top" style="background:#34495E">
+<nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
-                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                
+    
+                 
+                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse" >
                     <ul class="nav navbar-nav navbar-right">
@@ -90,7 +93,7 @@ if(rs.next())
 </li>
 
                         <li>
-                            <a href="logout.jsp" style="color:white; background:#34495E">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
@@ -99,9 +102,6 @@ if(rs.next())
         </nav>
      
         </div>
-        
-    
-        
 
   <br><br>
 <div class="container-fluid bg-3 text-center">

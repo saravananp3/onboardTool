@@ -68,8 +68,8 @@ public class Appin extends HttpServlet {
 		        
 		         
 		          // the mysql insert statement
-		          String query = " insert into appinfo (appname,prjname)"
-		            + " values (? ,?)";
+		          String query = " insert into appldetail (prjname,appname,descr,rod,dbsize,dbloc,legappsme)"
+		            + " values (? ,? ,? ,?, ?, ?, ?)";
 
 		          // create the mysql insert preparedstatement
 		          //Scanner sin=new Scanner(System.in);
@@ -81,8 +81,14 @@ public class Appin extends HttpServlet {
 		          //System.out.println("would you like to have extra food today say y or n");
 		          //extra=sin.next();
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
-		          preparedStmt.setString (2, prjname);
-		          preparedStmt.setString (1, appname);
+		          preparedStmt.setString (1, prjname);
+		          preparedStmt.setString (2, appname);
+		          preparedStmt.setString (3, descr);
+		          preparedStmt.setString (4, rod);
+		          preparedStmt.setString (5, dbsize);
+		          preparedStmt.setString (6, dbloc);
+		          preparedStmt.setString (7, legappsme);
+		          
 
 		          // execute the preparedstatement
 		          preparedStmt.execute();
