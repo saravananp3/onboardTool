@@ -14,7 +14,7 @@
    <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="scripts/demos.js"></script>
@@ -28,7 +28,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -102,6 +102,62 @@
         
     }
 </script>
+<style>
+    body
+    {
+     margin:0; padding:0; 
+    color:#73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
+    
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
+   #sidemenu
+   {
+   
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
+ 
+
+
+
+   </style>
 <script>
 
 $(function() {
@@ -152,15 +208,15 @@ $(function() {
 .bs-wizard {margin-top: 40px;}
 
 /*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
 .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
@@ -180,16 +236,16 @@ function switchColors()
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("b");
 for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
-element.style.borderColor = "#999";
-element.style.background="#d1d1d1";
-var list = document.getElementsByTagName("OL")[0];
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1";
+var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -200,16 +256,16 @@ function switchColors1()
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("c");
 for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
-element.style.borderColor = "#999";
-element.style.background="#d1d1d1";
-var list = document.getElementsByTagName("OL")[0];
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1";
+var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -220,16 +276,16 @@ function switchColors0()
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("a");
 for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
-element.style.borderColor = "#999";
-element.style.background="#d1d1d1";
-var list = document.getElementsByTagName("OL")[0];
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1";
+var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -310,6 +366,8 @@ if (session.getAttribute("username")==null)
 try {
 	HttpSession details=request.getSession();
 	String info=(String)details.getAttribute("intake");
+
+	String roles=(String)details.getAttribute("role");
 	System.out.println("IntakeModule    "+ info);
 String det=(String)session.getAttribute("theName");
 String idd=(String)session.getAttribute("appidd");
@@ -326,13 +384,13 @@ String imp_id="";
 %>
 <form class="form-signin"name="loginForm" method="post" action="Technical">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                 
                     
                    <% if(rs3.next()){ %>
                     <% if(rs4.next()){ %>
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
                     <%
                     String quer2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
@@ -358,9 +416,11 @@ String imp_id="";
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
 </li><li>
-                            <a href="logout.jsp">Logout</a>
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
+</li>     <li>
+                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ol>
                     
@@ -374,11 +434,11 @@ String imp_id="";
                <div class="col-md-3 sidebar">
                   <div id='jqxWidget'>
         <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+                    <ul class="nav nav-sidebar" id="sidemenu">
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
@@ -546,32 +606,32 @@ if(requirements == null)
                 <div class="col-xs-2 bs-wizard-step active">
                   <div class="text-center bs-wizard-stepnum">Intake Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">1</a>
                 
                 </div>
                 
                 <div class="col-xs-2 bs-wizard-step disabled"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Summary</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">2</a>
                 </div>
                 
                 <div class="col-xs-2 bs-wizard-step disabled"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Review</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">3</a>
                 </div>
                 
                 <div class="col-xs-2 bs-wizard-step disabled"><!-- active -->
                   <div class="text-center bs-wizard-stepnum">Approval</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">4</a>
                 </div>
                 
                  <div class="col-xs-2 bs-wizard-step disabled"><!-- active -->
                   <div class="text-center bs-wizard-stepnum">Final</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot">5</a>
                 </div>
             </div>
         
@@ -584,23 +644,23 @@ if(requirements == null)
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("a");
 for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = 'white' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
-element.style.borderColor = "#999";
-element.style.background="#d1d1d1";
-var list = document.getElementsByTagName("OL")[0];
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1";
+var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = 'black' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 </script>
 
 <div class="panel-group" id="panels1"> 
 <br><br>
                         <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                            <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" onclick="switchColors0();">                            Application Data Information                            </a> </h4> 
                             </div>                             
                             <div id="collapse1" class="panel-collapse collapse in"> 
@@ -736,7 +796,7 @@ x.item(i).style.backgroundColor = 'black' ;
                             </div>                             
                         </div>
                         <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                            <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">Infrastructure & Environment Information</a> </h4> 
                             </div>                             
                             <div id="collapse2" class="panel-collapse collapse"> 
@@ -900,7 +960,7 @@ x.item(i).style.backgroundColor = 'black' ;
                             </div>                             
                         </div>
                         <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                            <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors1();">Technical Information</a> </h4> 
                             </div>                             
                             <div id="collapse3" class="panel-collapse collapse"> 

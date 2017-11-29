@@ -3023,7 +3023,7 @@ of the horizontal scrollbar.*/
 }
 .jqx-icon-arrow-down, .jqx-icon-arrow-down-hover, .jqx-icon-arrow-down-selected
 {
-    background-image: url('images/icon-down.png');
+    background-image: url('images/icon-down-white.png');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -3036,7 +3036,7 @@ of the horizontal scrollbar.*/
 }
 .jqx-icon-arrow-right, .jqx-icon-arrow-right-hover, .jqx-icon-arrow-right-selected
 {
-    background-image: url('images/icon-right.png');
+    background-image: url('images/icon-right-white.png');
     background-repeat: no-repeat;
     background-position: center;
 }
