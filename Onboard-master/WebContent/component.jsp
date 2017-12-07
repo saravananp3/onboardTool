@@ -205,6 +205,13 @@ $(function() {
     }
 </script>
 <style>
+
+.required:after {
+    content: " *";
+    color: red;
+}
+</style>
+<style>
 .bs-wizard {margin-top: 40px;}
 
 /*Form Wizard*/
@@ -290,7 +297,35 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 
 } 
 </script>
+<script>
 
+
+function validateform() {
+	
+	var dataType = document.loginForm.datatype.value
+	var processname = document.loginForm.pname.value
+	var needarch = document.loginForm.archneed.value
+	var format = document.loginForm.format.value
+var multi = document.loginForm.mlang.value
+var local = document.loginForm.loclang.value
+
+	
+	
+
+	if(dataType ==""|| processname=="" || needarch =="" || format == "" ||multi == "" || local == "")	
+		
+		{
+		alert("Please Fill the Mandatory Field");
+		
+		  return false; 
+		  
+		}
+
+	
+	
+	
+}
+</script>
 
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
   <body>
@@ -382,7 +417,7 @@ ResultSet rs4 = st4.executeQuery(query4);
 String imp_id="";
 {
 %>
-<form class="form-signin"name="loginForm" method="post" action="Technical">
+<form class="form-signin" name="loginForm" method="post" action="Technical">
 <div class="container">
 <nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
@@ -669,23 +704,23 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                   <form role="form"> 
                           <div class="form-group"> 
                                             <label class="control-label"> 
-                                                Datatype Characteristics
+                                                <div class="required">Datatype Characteristics</div>
                                             </label>      
                                             <br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox" type="checkbox">Structured &nbsp;      
-                                            <input id="checkbox1" type="checkbox">Unstructured &nbsp;
-                                            <input id="checkbox2" type="checkbox">Hybrid      &nbsp;                         
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox" type="checkbox" name="datatype" value="Structured" required>Structured &nbsp;      
+                                            <input id="checkbox1" type="checkbox" name="datatype" value="Unstructured" required>Unstructured &nbsp;
+                                            <input id="checkbox2" type="checkbox" name="datatype" value="Hybrid" required>Hybrid      &nbsp;                         
                                         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">If the Data Type is Unstructured or Hybrid, process for extracting unstructured data? </label>
-            <input placeholder="Process Name"  id= "pname" name="pname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">If the Data Type is Unstructured or Hybrid, process for extracting unstructured data? </div></label>
+            <input placeholder="Process Name"  id= "pname" name="pname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>
          <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Does Unstructured or Hybrid business objects needs to be archived?</label>                                             
-                                            <select id="reason_for_access" class="form-control" name="reason_for_access" > 
+                                            <label class="control-label" for="formInput26"><div class="required">Does Unstructured or Hybrid business objects needs to be archived?</div></label>                                             
+                                            <select id="reason_for_access" class="form-control" name="archneed" required> 
                                            
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -695,19 +730,19 @@ x.item(i).style.backgroundColor = '#3276B1' ;
        
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Please specify the formats</label>
-            <input placeholder="Format Name" id="format" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Please specify the formats</div></label>
+            <input placeholder="Format Name" id="format" name="format" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
           <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input id="language" type="checkbox">Any Special/ Multi Language characters or Foreign Language contained in the application?
+                                            <label class="control-label required"> 
+                                                <input id="language" type="checkbox" name ="mlang" value="Yes" required>Any Special/ Multi Language characters or Foreign Language contained in the application?
                                             </label>                                             
                                         </div> 
                                           <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input id="archive" type="checkbox">If the legacy application contains local language, should the local language be maintained in the archive? 
+                                            <label class="control-label required"> 
+                                                <input id="archive" type="checkbox" name="loclang" value="Yes" required>If the legacy application contains local language, should the local language be maintained in the archive? 
                                             </label>                                             
                                         </div> 
                                           <div class="checkbox"> 
@@ -722,75 +757,75 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div> 
                                         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">User Documentation</label>
+            <label class="control-label ">User Documentation</label>
             <input placeholder="User Documentation" id="userdoc" name="userdoc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Technical Documentation</label>
+            <label class="control-label ">Technical Documentation</label>
             <input placeholder="Technical Documentation" id="techdoc" name="techdoc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Training Documentation</label>
+            <label class="control-label ">Training Documentation</label>
             <input placeholder="Training Documentation" id="traindoc" name="traindoc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Support Documentation</label>
+            <label class="control-label ">Support Documentation</label>
             <input placeholder="Support Documentation" id="supportdoc" name="supportdoc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Data Dictionary</label>
+            <label class="control-label ">Data Dictionary</label>
             <input placeholder="Data Dictionary" id="datadic" name="datadic" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Test Case Documentation</label>
+            <label class="control-label ">Test Case Documentation</label>
             <input placeholder="Test Case Documentation" id="testcasedoc" name="testcasedoc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Testing Records</label>
+            <label class="control-label ">Testing Records</label>
             <input placeholder="Testing Records" id="testrec" name="testrec" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Design Specification</label>
+            <label class="control-label ">Design Specification</label>
             <input placeholder="Design Specification" id="designspec" name="designspec" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Requirements Specification</label>
+            <label class="control-label ">Requirements Specification</label>
             <input placeholder="Requirements Specification" id="reqSpeci" name="reqSpeci" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Validation Plan</label>
+            <label class="control-label ">Validation Plan</label>
             <input placeholder="Validation Plan" id="validityplan" name="validityplan" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
-                                     <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                     <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform()"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
                                         
                                 </div>                                 
                             </div>                             
@@ -804,8 +839,8 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                     <form role="form">
                                     
                                     <div class="checkbox"> 
-                                            <label class="control-label"> 
-                                                <input id="checkbox3" type="checkbox">&nbsp;Location of Data                       
+                                            <label class="control-label required"> 
+                                                <input id="checkbox3" type="checkbox" name="dataloc"  value="stage" required>&nbsp;Location of Data                       
                                             </label>                                             
                                         </div>
                                         
@@ -837,7 +872,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         
                                       <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Contact Name or Entity for Infrastructure Engagement </label>
+            <label class="control-label ">Contact Name or Entity for Infrastructure Engagement </label>
             <input placeholder="Contact Name or Entity for Infrastructure Engagement " id="infraengage" name="infraengage" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
@@ -849,7 +884,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                             </label>                                             
                                         </div>
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Is this Application a Hosted Service ?</label>                                             
+                                            <label class="control-label required" for="formInput26">Is this Application a Hosted Service ?</label>                                             
                                             <select id="reason_for_access1" class="form-control" name="reason_for_access" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
@@ -860,21 +895,21 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                            
                                         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Duration for retention agreements with the vendor</label>
+            <label class="control-label ">Duration for retention agreements with the vendor</label>
             <input placeholder="" id="retenduration" name="retenduration" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Does the legacy application’s data need to be archived in the client archive application </label>
+            <label class="control-label ">Does the legacy application’s data need to be archived in the client archive application </label>
             <input placeholder="" id="clientapp" name="clientapp" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Is the Application external customer facing or have a component of being external customer facing</label>
+            <label class="control-label ">Is the Application external customer facing or have a component of being external customer facing</label>
             <input placeholder="" id="extcustfacing" name="extcustfacing" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
@@ -882,7 +917,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
           
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">If external facing, web apps/website URLs</label>
+            <label class="control-label ">If external facing, web apps/website URLs</label>
             <input placeholder="" id="url" name="url" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
@@ -890,21 +925,21 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Database size of the application</label>
-            <input placeholder="" id="dbsize" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="" id="dbsize" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Estimated No of Table in the application</label>
-            <input placeholder="" id="nooftable" name="nooftable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="" id="nooftable" name="nooftable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Estimated No of Records(volume) in the application</label>
-            <input placeholder="" id="noofrec" name="noofrec" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="" id="noofrec" name="noofrec" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
@@ -912,14 +947,14 @@ x.item(i).style.backgroundColor = '#3276B1' ;
    
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">XML counts for the database</label>
+            <label class="control-label ">XML counts for the database</label>
             <input placeholder="" id="xmlcount" name="xmlcount" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Does this application utilize any VPN environments (E.g. Citrix) for access</label>
+            <label class="control-label ">Does this application utilize any VPN environments (E.g. Citrix) for access</label>
             <input placeholder="" id="anyvpn" name="anyvpn" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
@@ -939,7 +974,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Specify the application to integrate</label>
+            <label class="control-label ">Specify the application to integrate</label>
             <input placeholder="" id="appintegrate" name="appintegrate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
@@ -947,7 +982,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                        <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Ready Date for Complete Server decommission and Application Retirement</label>
-            <input placeholder="dd/mm/yyyy" id="integname" name="integname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="dd/mm/yyyy" id="integname" name="integname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>                    
@@ -989,6 +1024,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
        <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
     
                     <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
+                     <button type="button" class="btn btn-primary btn pull-right" onclick="location.href = 'requirements.jsp';">Next</button>
                     <script>
  if(document.getElementById('pwqej').value=="RX" || document.getElementById('pwqej').value=="R")
  

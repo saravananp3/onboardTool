@@ -7,6 +7,7 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
@@ -408,6 +409,22 @@ ul.checkout-bar a {
   }
 }
 </style>
+<style>
+
+.required:after {
+    content: " *";
+    color: red;
+}
+</style>
+<script>
+$(function() {
+    $( "#expdate" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
+
+</script>
 <script>
 function switchColors0()  
 {  
@@ -445,6 +462,102 @@ for (var i = 0 ; i < x.length ; i ++)
 x.item(i).style.backgroundColor = '#3276B1' ; 
 }
 
+</script>
+<script>
+
+
+function validateform() {
+	
+	var legappname = document.loginForm.legappname.value
+	var description = document.loginForm.descr.value
+	var vendor = document.loginForm.vendor.value
+	var conExpDate = document.loginForm.expdate.value
+	var read = document.loginForm.rod.value
+	var daterange = document.loginForm.daterange.value
+	var data = document.loginForm.dbsize.value
+	var archival = document.loginForm.needarch.value
+	var reason = document.loginForm.archreason.value
+	var cmnt = document.loginForm.archcmnt.value
+
+
+	if(legappname=="" || description=="" || vendor == "" || conExpDate =="" || read=="" || daterange =="" || data=="" || archival=="" || reason=="" || cmnt =="")	
+		
+		{
+		alert("Please Fill the Mandatory Field");
+		}
+}
+</script>
+<script>
+
+
+function validateform1() {
+	
+	var record = document.loginForm.reccode.value
+	var trigger = document.loginForm.triggerdate.value
+	var retention = document.loginForm.retentionperiod.value
+	var table = document.loginForm.retentiontable.value
+	var path = document.loginForm.file.value
+	var name = document.loginForm.retentionname.value
+	var reason = document.loginForm.reason_for_access.value
+	var explain = document.loginForm.archexp.value
+	
+	if(record ==""|| trigger==""||retention=="" ||table=="" || path == "" || name =="" || reason=="" || explain == "" )	
+		
+		{
+		alert("Please Fill the Mandatory Field");
+		
+		  return false; 
+		  
+		}
+
+	
+	
+	
+}
+</script>
+
+<script>
+
+
+function validateform2() {
+	
+	
+	
+	
+
+	if(form.reason_for_access.selectedIndex == "")	
+		
+		{
+		alert("Please Fill the Mandatory Field");
+		
+		  return false; 
+		  
+		}
+	
+	
+	
+	
+}
+</script>
+<script>
+
+
+function validateform3() {
+	
+	var local = document.loginForm.localreq.value
+	var country = document.loginForm.localcountry.value
+	var infra = document.loginForm.localinf.value
+	var data = document.loginForm.datacenters.value
+	
+	if(local ==""|| country=="" || infra =="" || data == "")	
+		
+		{
+		alert("Please Fill the Mandatory Field");
+		
+		  return false; 
+		  
+		}	
+}
 </script>
 <script>
 function switchColors1()  
@@ -605,7 +718,7 @@ String imp_id="";
 {
 %>
 
-<form class="form-signin"name="loginForm" method="post" action="business" >
+<form class="form-signin" name="loginForm" method="post" action="business" >
 <div class="container">
 <nav class="navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
@@ -895,12 +1008,15 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                     <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1" onclick="switchColors0();">Application Information</a> </h4> 
                             </div>                             
-                        <div id="collapse1" class="panel-collapse collapse in"> 
+                        <div id="collapse1" class="panel-collapse collapse in" name="collapse"> 
                               <div class="panel-body">
                                   <form role="form"> 
                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput198">Legacy Application Name&nbsp;</label>
-                                            <input type="text" class="form-control" id="legappname" placeholder="Legacy Application Name" name="legappname" >
+                                            <label class="control-label" for="formInput198" >
+                                            <div class="required">Legacy Application Name&nbsp;
+                                            </div>
+                                            </label>
+                                            <input type="text" class="form-control" id="legappname" placeholder="Legacy Application Name" name="legappname" value="<%=rs4.getString("appname") %>"required />
                                         </div>
                                        <div class="form-group"> 
                                             <label class="control-label" for="formInput229">References to Application</label>
@@ -908,42 +1024,42 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                      </div>
                                        <div class="form-group row log-date">
            <div class="col-md-12">
-            <label class="control-label required">Tracking ID</label>
+            <label class="control-label ">Tracking ID</label>
             <input placeholder="ID" id="tid" name="tid" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
             </div>
           
                                        </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Description</label>
-            <input placeholder="Description" id="descr" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Description</div></label>
+            <input placeholder="Description" id="descr" name="descr" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Legacy Application Vendor/Manufacturer</label>
-            <input placeholder="Vendor/Manufacturer" id="vendor" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Legacy Application Vendor/Manufacturer</div></label>
+            <input placeholder="Vendor/Manufacturer" id="vendor" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
         
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Contract Expiration Date</label>
-            <input placeholder="dd/mm/yyyy" id="expdate" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Contract Expiration Date</div></label>
+            <input placeholder="dd/mm/yyyy" id="expdate" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
                     <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Notice Period for Expiration of Contract</label>
+            <label class="control-label ">Notice Period for Expiration of Contract</label>
             <input placeholder="Description" id="noticeperiod" name="noticeperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Contract Value of Application</label>
+            <label class="control-label ">Contract Value of Application</label>
             <input placeholder="Vendor/Manufacturer" id="contractvalue" name="contractvalue" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
@@ -955,78 +1071,78 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input type="checkbox"  id="rodch" name="rodch">&nbsp;Read Only Date                       
+                                                <input type="checkbox"  id="rodch" name="rodch" value="Yes" >&nbsp;Read Only Date                       
                                             </label>                                             
                                         </div>
                                         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Read Only Date</label>
-            <input placeholder="dd/mm/yyyy" id="rod" name="rod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Read Only Date</div></label>
+            <input placeholder="dd/mm/yyyy" id="rod" name="rod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>
          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Comment</label>
+            <label class="control-label ">Comment</label>
             <input placeholder="Description" id="cmnt" name="cmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">If the applications transitions has dependencies?</label>
+            <label class="control-label ">If the applications transitions has dependencies?</label>
             <input placeholder="Vendor/Manufacturer" id="hasdep" name="hasdep" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>    
          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">What is the date Range of this Data?</label>
-            <input placeholder="dd/mm/yyyy" id="daterange" name="daterange" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "> <div class="required">What is the date Range of this Data?</div></label>
+            <input placeholder="dd/mm/yyyy" id="daterange" name="daterange" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Size of Database</label>
-            <input placeholder="Vendor/Manufacturer" id="dbsize" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Size of Database</div></label>
+            <input placeholder="Vendor/Manufacturer" id="dbsize" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Location of Data</label>
+            <label class="control-label ">Location of Data</label>
             <input placeholder="Vendor/Manufacturer" id="dataloc" name="dataloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Site Location of Data</label>
+            <label class="control-label ">Site Location of Data</label>
             <input placeholder="Vendor/Manufacturer" id="siteloc" name="siteloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>
          <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Does the application needs archival?</label>                                             
-                                            <select id="needarch" class="form-control" name="needarch" > 
+                                            <label class="control-label" for="formInput26"><div class="required">Does the application needs archival?</div></label>                                             
+                                            <select id="needarch" class="form-control" name="needarch" required> 
                                             <option></option>
-                                                <option>Yes</option>                                                 
-                                                <option>No</option>  
-                                                <option>Other</option>                                                 
+                                                <option value="yes">Yes</option>                                                 
+                                                <option value="no">No</option>  
+                                                <option value="other">Other</option>                                                 
                                             </select>
                                         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Reason</label>
-            <input placeholder="Vendor/Manufacturer" id="archreason" name="archreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Reason</div></label>
+            <input placeholder="Vendor/Manufacturer" id="archreason" name="archreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Comments</label>
-            <input placeholder="Vendor/Manufacturer" id="archcmnt" name="archcmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Comments</div></label>
+            <input placeholder="Vendor/Manufacturer" id="archcmnt" name="archcmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
@@ -1036,7 +1152,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                             </label>                                             
                                         </div> 
                                         
-                                     <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button> 
+  <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick=" validateform()"> Next<span class="glyphicon glyphicon-chevron-right"></span></button> 
                                        
                                 </div>                                 
                             </div>                             
@@ -1051,39 +1167,39 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                 <form role="form">
                                     <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Record code of Application</label>
-            <input placeholder="Vendor/Manufacturer" id="reccode" name="reccode" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Record code of Application</div></label>
+            <input placeholder="Vendor/Manufacturer" id="reccode" name="reccode" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required />
           </div>
           
         </div> 
                                     <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Trigger Date</label>
-            <input placeholder="Vendor/Manufacturer" type="date" id="triggerdate" name="triggerdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "> <div class="required">Trigger Date</div></label>
+            <input placeholder="Vendor/Manufacturer" type="date" id="triggerdate" name="triggerdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Period of Retention</label>
-            <input placeholder="Vendor/Manufacturer" id="retentionperiod" name="retentionperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Period of Retention</div></label>
+            <input placeholder="Vendor/Manufacturer" id="retentionperiod" name="retentionperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Table Name/s where Retention need to apply</label>
-            <input placeholder="Vendor/Manufacturer" id="retentiontable" name="retentiontable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Table Name/s where Retention need to apply</div></label>
+            <input placeholder="Vendor/Manufacturer" id="retentiontable" name="retentiontable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
-                                        <label text-align:"left">Retention Requirement</label>
-                                        <input type="file" name="file" id="file" size="60" />
+                                        <label text-align:"left"><div class="required">Retention Requirement</div></label>
+                                        <input type="file" name="file" id="file" size="60" required />
                                                             
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Name of the Legal Retention & e-Discovery SME</label>
-            <input placeholder="Vendor/Manufacturer" id="retentionname" name="retentionname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Name of the Legal Retention & e-Discovery SME</div></label>
+            <input placeholder="Vendor/Manufacturer" id="retentionname" name="retentionname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
@@ -1098,14 +1214,14 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div>   
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Who or what entity provided legal or tax hold identification</label>
+            <label class="control-label ">Who or what entity provided legal or tax hold identification</label>
             <input placeholder="Vendor/Manufacturer" id="wholegal" name="wholegal" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Should this application's data be aechived?</label>                                             
-                                            <select id="reason_for_access1" class="form-control" name="reason_for_access" > 
+                                            <label class="control-label" for="formInput26"><div class="required">Should this application's data to be archived?</div></label>                                             
+                                            <select id="reason_for_access1" class="form-control" name="reason_for_access" required> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1114,12 +1230,12 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Brief Explanation</label>
-            <input placeholder="Vendor/Manufacturer" id="archexp" name="archexp" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label"><div class="required">Brief Explanation</div></label>
+            <input placeholder="Vendor/Manufacturer" id="archexp" name="archexp" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>             
-           <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors1();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+           <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform1()"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
                                        <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors0();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
                                         
                                     </form>
@@ -1135,8 +1251,8 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                               <div class="panel-body">
                                    <form role="form"> 
                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Is this application's been used for BI report?</label>                                             
-                                            <select id="reason_for_access2" class="form-control" name="reason_for_access" > 
+                                            <label class="control-label" for="formInput26"><div class="required">Is this application's been used for BI report?</div></label>                                             
+                                            <select id="reason_for_access2" class="form-control" name="reason_for_access" required/> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1145,15 +1261,15 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div>  
                                          <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox" type="checkbox">Is BI aware of using new/alternate target application data to support operational report                                            </label>                                             
+                                                <input id="checkbox" type="checkbox" name ="report" required /> <div class="required">Is BI aware of using new/alternate target application data to support operational report </div></label>                                             
                                         </div>
                                          <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox1" type="checkbox">)- BI Engagement should be initiated by Application owner and completed prior archiving     </label>
+                                                <input id="checkbox1" type="checkbox" name = "archive" required /><div class="required">BI Engagement should be initiated by Application owner and completed prior archiving </div></label>
                                         </div>
                                                                               
                                     </form>
-                                     <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors2();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                     <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform2()"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
                                       <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
                                        
                                 </div>                                 
@@ -1169,130 +1285,130 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                    <form role="form"> 
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox23" type="checkbox">Account Credit Card
+                                                <input id="checkbox23" type="checkbox" name="creditacc" value="Yes">Account Credit Card
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox2" type="checkbox">Account Number - Financial
+                                                <input id="checkbox2" type="checkbox" name="financialacc" value="Yes" >Account Number - Financial
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox3" name="dob" type="checkbox">Date of Birth
+                                                <input id="checkbox3" name="dob" type="checkbox" name="dob"  value="Yes">Date of Birth
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input  id="checkbox4" name="driverlic" type="checkbox">Driver's License Number
+                                                <input  id="checkbox4" name="driverlic" type="checkbox" name="driverlic" value="Yes" >Driver's License Number
                                                 <br>
                                             </label>                                             
                                         </div> 
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox5" name="email" type="checkbox">Email Address
+                                                <input id="checkbox5" name="email" type="checkbox" name="email" value="Yes">Email Address
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox6"  name="family" type="checkbox">family Status
+                                                <input id="checkbox6"  name="family" type="checkbox" name="family" value="Yes">family Status
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox7"  name="gender" type="checkbox">Gender
+                                                <input id="checkbox7"  name="gender" type="checkbox" name="gender" value="Yes">Gender
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox8" name="geoloc" type="checkbox">Geo Location
+                                                <input id="checkbox8" name="geoloc" type="checkbox" value="Yes" name="geoloc">Geo Location
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox9" name="img" type="checkbox">Image/Video
+                                                <input id="checkbox9" name="img" type="checkbox" name="img" value="Yes">Image/Video
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox10" type="checkbox">Income
+                                                <input id="checkbox10" type="checkbox" name="income" value="Yes">Income
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox11" type="checkbox">IP Address
+                                                <input id="checkbox11" type="checkbox" name="ipadrs" value="Yes">IP Address
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox12" type="checkbox">Martial Status
+                                                <input id="checkbox12" type="checkbox" name="martialstatus" value="Yes">Martial Status
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox13" type="checkbox">Mobile Device Id
+                                                <input id="checkbox13" type="checkbox" name="mobid" value="Yes">Mobile Device Id
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox14" name="name" type="checkbox">Name
+                                                <input id="checkbox14" name="name" type="checkbox" name="name" value="Yes">Name
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox15" name="phno" type="checkbox">Phone Number
+                                                <input id="checkbox15" name="phno" type="checkbox" name="phno" value="Yes" >Phone Number
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox16" type="checkbox">Physical/Mailing Address
+                                                <input id="checkbox16" type="checkbox" name="mailadrs" value="Yes">Physical/Mailing Address
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox17" type="checkbox">Physical Description
+                                                <input id="checkbox17" type="checkbox" name="physic" value="Yes" >Physical Description
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox18" type="checkbox">Race/Ethnicity
+                                                <input id="checkbox18" type="checkbox" name="race" value="Yes">Race/Ethnicity
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox19" type="checkbox">Religion
+                                                <input id="checkbox19" type="checkbox" name="religion" value="Yes"> Religion
                                             </label>
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox20" type="checkbox">Sexual Preference
+                                                <input id="checkbox20" type="checkbox" name="sexualpref" value="Yes">Sexual Preference
                                                 <br>
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input id="checkbox21" name="ssn" type="checkbox">SSN/SIN
+                                                <input id="checkbox21" name="ssn" type="checkbox" name="ssn" value="Yes">SSN/SIN
                                             </label>                                             
                                         </div>
                                         <div class="checkbox"> 
                                             <label class="control-label"> 
-                                                <input  id="checkbox22" name="others" type="checkbox">Others
+                                                <input  id="checkbox22" name="others" type="checkbox" name="others" value="Yes">Others
                                             </label>                                             
                                         </div>
                                          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Brief Explanation</label>
+            <label class="control-label">Brief Explanation</label>
             <input placeholder="Vendor/Manufacturer" id="expl" name="expl" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
                            <h5>Security Information:
                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Does the application have localization requirement/ regulations</label>                                             
-                                            <select id="reason_for_access4" class="form-control" name="reason_for_access" > 
+                                            <label class="control-label" for="formInput26"><div class="required">Does the application have localization requirement/ regulations</div></label>                                             
+                                            <select id="reason_for_access4" class="form-control" name="localreq" required> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1300,8 +1416,8 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                             </select>
                                         </div> 
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">List of Countries where localization requirement/ regulations apply</label>                                             
-                                            <select id="reason_for_access5" class="form-control" name="reason_for_access" > 
+                                            <label class="control-label" for="formInput26"><div class="required">List of Countries where localization requirement/ regulations apply</div></label>                                             
+                                            <select id="reason_for_access5" class="form-control" name="localcountry" required> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1309,8 +1425,8 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                             </select>
                                         </div> 
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Are the Localization requirements/regulations enforced with infrastructure or geofencing</label>                                             
-                                            <select id="reason_for_access6" class="form-control" name="reason_for_access" > 
+                                            <label class="control-label" for="formInput26"><div class="required">Are the Localization requirements/regulations enforced with infrastructure or geofencing</div></label>                                             
+                                            <select id="reason_for_access6" class="form-control" name="localinf" required> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1319,14 +1435,14 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div> 
                                          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Infrastructure Localization enforcement, please list the locations of the datacenters</label>
-            <input placeholder="Vendor/Manufacturer" id="vendor1" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <label class="control-label "><div class="required">Infrastructure Localization enforcement, please list the locations of the datacenters</div></label>
+            <input placeholder="Vendor/Manufacturer" id="vendor1" name="datacenters" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">External access required for archived data</label>                                             
-                                            <select id="reason_for_access7" class="form-control" name="reason_for_access" > 
+                                            <select id="reason_for_access7" class="form-control" name="extaccess"> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1342,40 +1458,40 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">User Name</label>
+            <label class="control-label ">User Name</label>
             <input placeholder="Vendor/Manufacturer" id="vendor3" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Role Description</label>
+            <label class="control-label ">Role Description</label>
             <input placeholder="Vendor/Manufacturer" id="vendor4" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Reason for Access</label>
+            <label class="control-label ">Reason for Access</label>
             <input placeholder="Vendor/Manufacturer" id="vendor5" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Frequency of Access</label>
+            <label class="control-label ">Frequency of Access</label>
             <input placeholder="Vendor/Manufacturer" id="vendor6" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required">Additional System Requirements</label>
+            <label class="control-label">Additional System Requirements</label>
             <input placeholder="Countries/Modules" id="sysreq" name="sysreq" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
-                                         <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors1();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
+                                         <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="validateform3()"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
                                                                               
                                     </form>
                                 </div>                                 
@@ -1387,8 +1503,9 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                     <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
 
                     <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
+                     <button type="button" class="btn btn-primary btn pull-right" onclick="location.href = 'component.jsp';">Next</button>
  </div>  
-                    
+                   
                     
        </div>
                 
