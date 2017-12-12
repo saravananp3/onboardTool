@@ -26,7 +26,36 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <script type="text/javascript">
+    
+    $(function() {
+        $( "#expirydate" ).datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+    });
+    $(function() {
+        $( "#rod" ).datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+    });
+    $(function() {
+        $( "#daterange" ).datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+    });
+    
+    $(function() {
+        $( "#triggerdate" ).datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+    });
+    
         $(document).ready(function () {
             // Create jqxTree
             $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
@@ -417,13 +446,20 @@ ul.checkout-bar a {
 }
 </style>
 <script>
-$(function() {
-    $( "#expdate" ).datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true
-    });
-});
 
+</script>
+<script>
+$(document).ready(function(){
+  var date_input=$('input[name="expdate"]'); //our date input has the name "date"
+  var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+  var options={
+    format: 'yyyy/mm/dd',
+    container: container,
+    todayHighlight: true,
+    autoclose: true,
+  };
+  date_input.datepicker(options);
+})
 </script>
 <script>
 function switchColors0()  
@@ -485,7 +521,25 @@ function validateform() {
 		{
 		alert("Please Fill the Mandatory Field");
 		}
+	else{
+		
+		toggle();
+	}
 }
+</script>
+<script language="javascript"> 
+function toggle() {
+	var ele = document.getElementById("collapse2");
+	
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "show";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "hide";
+	}
+} 
 </script>
 <script>
 
@@ -498,51 +552,43 @@ function validateform1() {
 	var table = document.loginForm.retentiontable.value
 	var path = document.loginForm.file.value
 	var name = document.loginForm.retentionname.value
-	var reason = document.loginForm.reason_for_access.value
+	var reason1 = document.loginForm.reason.value
 	var explain = document.loginForm.archexp.value
 	
-	if(record ==""|| trigger==""||retention=="" ||table=="" || path == "" || name =="" || reason=="" || explain == "" )	
+	if(record ==""|| trigger==""||retention=="" ||table=="" || path == "" || name =="" || reason1 =="" || explain == "" )	
 		
 		{
 		alert("Please Fill the Mandatory Field");
 		
-		  return false; 
 		  
 		}
-
+	else{
+		toggle1();
+	}
 	
 	
 	
 }
+</script>
+<script language="javascript"> 
+function toggle1() {
+	var ele = document.getElementById("collapse3");
+	
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "show";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "hide";
+	}
+} 
 </script>
 
 <script>
 
 
 function validateform2() {
-	
-	
-	
-	
-
-	if(form.reason_for_access.selectedIndex == "")	
-		
-		{
-		alert("Please Fill the Mandatory Field");
-		
-		  return false; 
-		  
-		}
-	
-	
-	
-	
-}
-</script>
-<script>
-
-
-function validateform3() {
 	
 	var local = document.loginForm.localreq.value
 	var country = document.loginForm.localcountry.value
@@ -553,12 +599,27 @@ function validateform3() {
 		
 		{
 		alert("Please Fill the Mandatory Field");
-		
-		  return false; 
-		  
+				  
 		}	
+	else{
+		toggle2();
+	}
 }
 </script>
+<script>
+function toggle2()
+{
+
+var f=document.form;
+f.method="post";
+f.action="business"
+f.submit();
+}
+
+
+
+</script>
+
 <script>
 function switchColors1()  
 {  
@@ -1046,7 +1107,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Contract Expiration Date</div></label>
-            <input placeholder="dd/mm/yyyy" id="expdate" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="dd/mm/yyyy" id="expirydate" name="expdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
@@ -1175,7 +1236,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                     <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "> <div class="required">Trigger Date</div></label>
-            <input placeholder="Vendor/Manufacturer" type="date" id="triggerdate" name="triggerdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="dd/mm/yyyy"  id="triggerdate" name="triggerdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
@@ -1205,7 +1266,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         </div> 
         <div class="form-group"> 
                                             <label class="control-label" for="formInput26">Does any Records have legal holds/Tax Holds or any indication?</label>                                             
-                                            <select id="reason_for_access" class="form-control" name="reason_for_access" > 
+                                            <select id="reason_for_access" class="form-control" name="recordhold" > 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1221,7 +1282,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         </div> 
          <div class="form-group"> 
                                             <label class="control-label" for="formInput26"><div class="required">Should this application's data to be archived?</div></label>                                             
-                                            <select id="reason_for_access1" class="form-control" name="reason_for_access" required> 
+                                            <select id="reason_for_access1" class="form-control" name="reason" required> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -1235,7 +1296,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
           </div>
           
         </div>             
-           <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform1()"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+           <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform1()"> <a class="collapsed"  href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
                                        <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors0();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
                                         
                                     </form>
@@ -1500,10 +1561,10 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         </div>
                      <input type="text" id="pwqej" value="<%= info %>" hidden>   
        
-                    <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
+                    <button type="submit" class="btn btn-primary btn pull-right" onclick="validateform2();">Save & Continue...</button>&nbsp;
 
                     <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
-                     <button type="button" class="btn btn-primary btn pull-right" onclick="location.href = 'component.jsp';">Next</button>
+                     
  </div>  
                    
                     
