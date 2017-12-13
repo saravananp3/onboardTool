@@ -96,7 +96,7 @@
     
         $(document).ready(function () {
             // Create jqxTree
-             $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
+             $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -169,35 +169,60 @@ p.required-field::before {
 
 </style>
     
-     <style>
+    <style>
+    body
+    {
+     margin:0; padding:0; 
+    color:#73879C;
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
     
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
    #sidemenu
    {
-   background:#34495E ;
-   color: white;
-   cursor: pointer;
    
- width:200%;
- font-size: 1.0em;
-  text-decoration: none;
-  line-height: 25px; 
-  
-  margin-right: 6px;
-  text-shadow: 1px 1px 1px #000;
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  transition: all 0.2s linear;
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
  
-   }
 
-#sidemenu a:hover {
-    background-color: #ddd;
-    color: black;
-    }
-   label{
-   
-   color:#313133;
-   }
+
 
    </style>
         
@@ -453,7 +478,8 @@ function valid1()
 	int i=0;
 	int count=0;
     String project_name=request.getParameter("projectname"); 
-	
+    HttpSession details=request.getSession();
+    String roles=(String)details.getAttribute("role");
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 Statement st= con.createStatement(); 
@@ -538,19 +564,22 @@ function validation(pro_name)
    }
 </style>
 <div class="container">
-<nav class=" navbar-fixed-top" style="background:#34495E">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                 
                     
-                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool</a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
+</li>
+<li>
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
 </li>
                         <li>
-                            <a href="logout.jsp" style="color:white">Logout</a>
+                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -654,11 +683,11 @@ function validation(pro_name)
                     <div class="panel-group" id="panels1"> 
                    
                                                 <div class="panel panel-default">
-        <div class="panel-heading" style="background:#34495E ; color:white;"> 
+        <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" > Project Information  </a> </h4> 
                             </div>  
                                                        
-                            <div id="collapse1" class="panel-collapse collapse"> 
+                            <div id="collapse1" class="panel-collapse "> 
                                 <div class="panel-body text-left">
                                 
                                 
@@ -691,7 +720,7 @@ function validation(pro_name)
         </div>  
                                          <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required "><div class="required_fie">Project Start Date&nbsp;</div></label>
+            <label class="control-label  "><div class="required_fie">Project Start Date&nbsp;</div></label>
             <input placeholder="dd/mm/yyyy" id="Project_Start_Date" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required/>
           </div>
           
@@ -699,7 +728,7 @@ function validation(pro_name)
         
         <div class="form-group row log-date">
           <div class="col-md-12">
-            <label class="control-label required"> Initiate Start Date</label>
+            <label class="control-label "> Initiate Start Date</label>
             <input placeholder="dd/mm/yyyy" id="Initiate_start_date" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
@@ -745,19 +774,6 @@ function validation(pro_name)
                                         
                                                                            </form>                               
                
-<center>
-      <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="grid.jsp" tabindex="-1">Previous</a>
-    </li>
-    
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</center>
 
 
 

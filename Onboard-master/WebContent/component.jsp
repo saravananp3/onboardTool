@@ -25,7 +25,17 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <script type="text/javascript">
+    
+    $(function() {
+        $( "#integname" ).datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+    });
+    
         $(document).ready(function () {
             // Create jqxTree
             $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
@@ -236,7 +246,46 @@ $(function() {
 /*END Form Wizard*/
 
 </style>
-    
+   <script>
+   function validateform1()
+   {
+	   var location = document.loginForm.dataloc.value
+		var server = document.loginForm.servername.value
+		var prod = document.loginForm.prodinstance.value
+	    var instance = document.loginForm.prodinstanceloc.value
+		var reasonforaccess = document.loginForm.reasonfor.value
+		var database = document.loginForm.dbsize.value
+		var number = document.loginForm.nooftable.value
+		var record = document.loginForm.noofrec.value
+		var decommision = document.loginForm.integname.value
+		
+
+		if(location == "" || server  ==  "" || prod == "" || instance == "" || reasonforaccess == "" || database == ""|| number == "" || record =="" ||  decommision == "" )	
+			
+			
+			
+			{
+			alert("Please Fill the Mandatory Field");
+			  		}
+	     else{
+			
+			toggle1();
+		}
+   }
+   </script>
+   <script>
+function toggle2()
+{
+
+var f=document.form;
+f.method="post";
+f.action="Technical"
+f.submit();
+}
+
+
+
+</script>
 <script>
 function switchColors()  
 {  
@@ -278,6 +327,50 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 } 
 </script>
 <script>
+
+function validate() {
+	
+	var data = document.loginForm.dataloc.value
+	var name = document.loginForm.servername.value
+	var prod = document.loginForm.prodinstance.value
+    var location = document.loginForm.prodinstanceloc.value
+	var reason = document.loginForm.reasonfor.value
+	var size = document.loginForm.dbsize.value
+	var number = document.loginForm.nooftable.value
+	var record = document.loginForm.noofrec.value
+	var decommision = document.loginForm.integname.value
+	
+	if(data == "" || name == "" || prod == "" ||location == "" || reason == ""||size == "" || number = "" || record == "" || decommision == "" )	
+		{
+		alert("Please Fill the Mandatory Field");
+		  		}
+     else
+     {
+		
+		toggle1();
+	}
+	
+	
+}
+</script>
+
+<script language="javascript"> 
+function toggle1() {
+	var ele = document.getElementById("collapse3");
+	
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "show";
+		
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "hide";
+	}
+} 
+</script>
+
+<script>
 function switchColors0()  
 {  
 links=document.getElementsByTagName("li") ;  
@@ -297,34 +390,44 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 
 } 
 </script>
+
 <script>
-
-
 function validateform() {
 	
 	var dataType = document.loginForm.datatype.value
 	var processname = document.loginForm.pname.value
 	var needarch = document.loginForm.archneed.value
-	var format = document.loginForm.format.value
-var multi = document.loginForm.mlang.value
-var local = document.loginForm.loclang.value
+	var format1 = document.loginForm.format.value
+   var multi = document.loginForm.mlang.value
+   var local = document.loginForm.loclang.value
 
-	
-	
-
-	if(dataType ==""|| processname=="" || needarch =="" || format == "" ||multi == "" || local == "")	
+	if( dataType ==" "|| processname=="" || needarch =="" || format1 == "" ||multi == "" || local == "")	
 		
 		{
 		alert("Please Fill the Mandatory Field");
+		  		}
+     else{
 		
-		  return false; 
-		  
-		}
-
-	
+		toggle();
+	}
 	
 	
 }
+</script>
+
+<script language="javascript"> 
+function toggle() {
+	var ele = document.getElementById("collapse2");
+	
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "show";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "hide";
+	}
+} 
 </script>
 
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
@@ -708,8 +811,8 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                             </label>      
                                             <br />
                                             &nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox" type="checkbox" name="datatype" value="Structured" required>Structured &nbsp;      
-                                            <input id="checkbox1" type="checkbox" name="datatype" value="Unstructured" required>Unstructured &nbsp;
-                                            <input id="checkbox2" type="checkbox" name="datatype" value="Hybrid" required>Hybrid      &nbsp;                         
+                                            <input id="checkbox1" type="checkbox" name="datatype" value="Unstructured" >Unstructured &nbsp;
+                                            <input id="checkbox2" type="checkbox" name="datatype" value="Hybrid" >Hybrid      &nbsp;                         
                                         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
@@ -720,7 +823,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         </div>
          <div class="form-group"> 
                                             <label class="control-label" for="formInput26"><div class="required">Does Unstructured or Hybrid business objects needs to be archived?</div></label>                                             
-                                            <select id="reason_for_access" class="form-control" name="archneed" required> 
+                                            <select id="reason1" class="form-control" name="archneed" required> 
                                            
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -825,7 +928,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
           </div>
           
         </div> 
-                                     <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform()"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                     <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform()"> <a class="collapsed"  href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
                                         
                                 </div>                                 
                             </div>                             
@@ -885,7 +988,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div>
                                         <div class="form-group"> 
                                             <label class="control-label required" for="formInput26">Is this Application a Hosted Service ?</label>                                             
-                                            <select id="reason_for_access1" class="form-control" name="reason_for_access" > 
+                                            <select id="reasonfor" class="form-control" name="reasonfor"  required> 
                                             <option></option>
                                                 <option>Yes</option>                                                 
                                                 <option>No</option>  
@@ -986,7 +1089,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
           </div>
           
         </div>                    
-         <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors1();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
+         <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="validateform1();"> <a class="collapsed" href="#collapse3" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
         <button type="button"  class="btn btn-default  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="switchColors0();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse1" style="color:black"><span class="glyphicon glyphicon-chevron-left"></span>  Previous</a></button>
                                                                     
                                     </form>
@@ -1021,10 +1124,11 @@ x.item(i).style.backgroundColor = '#3276B1' ;
           
                     </div>
        <input type="text" id="pwqej" value="<%= info %>" hidden>
-       <button type="submit" class="btn btn-primary btn pull-left" >Save</button>&nbsp;
+      
     
                     <button type="button" class="btn btn-default" onclick="location.href = 'grid.jsp';">Cancel</button> 
-                     <button type="button" class="btn btn-primary btn pull-right" onclick="location.href = 'requirements.jsp';">Next</button>
+                   <button type="submit" class="btn btn-primary btn pull-right" >Save & Continue ...</button>&nbsp;
+    
                     <script>
  if(document.getElementById('pwqej').value=="RX" || document.getElementById('pwqej').value=="R")
  
