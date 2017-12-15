@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>User List</title>
+	<title>List Page</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -191,6 +191,10 @@ function checkk()
  
 
 
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
 
    </style>
 </head>
@@ -256,12 +260,12 @@ ResultSet rs=s.executeQuery(query);
     </div>
 
     <div class="main-panel">
-		<nav class="navbar-fixed-top" style="background-color:#3276B1">
+		<nav class=" navbar-fixed-top" style="background-color:#3276B1">
             <div class="container-fluid">
                 
     
                  
-                    <a class="navbar-brand" style="color:white" id="sitetitle">Onboarding Tool</a>
+                    <a class="navbar-brand" style="color:white"id="sitetitle">Onboarding Tool</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -269,7 +273,7 @@ ResultSet rs=s.executeQuery(query);
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+                           <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     

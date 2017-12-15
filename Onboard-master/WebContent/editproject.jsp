@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,15 +145,15 @@
    
    background:#3276B1 ;
    position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
+top: 45px;
+left: -1%;
+padding-left:0px;
+width:300px !important;
+bottom: 0px;
+overflow: auto;
+color:white;
+text-size:30%;
+} 
  
 
 
@@ -403,17 +402,17 @@ $(function() {
 <script>
 function checkk()
 {
-	
-	document.getElementById('pid').readOnly = true;
-	document.getElementById('projectname').readOnly = true;
-	document.getElementById('descr').readOnly = true;
-	document.getElementById('appno').readOnly = true;
-	document.getElementById('Startdate').readOnly = true;
-	document.getElementById('Intdate').readOnly = true;
-	document.getElementById('Plandate').readOnly = true;
-	document.getElementById('Execdate').readOnly = true;
-	document.getElementById('Hyperdate').readOnly = true;
-	document.getElementById('Enddate').readOnly = true;	
+ 
+document.getElementById('pid').readOnly = true;
+document.getElementById('projectname').readOnly = true;
+document.getElementById('descr').readOnly = true;
+document.getElementById('appno').readOnly = true;
+document.getElementById('Startdate').readOnly = true;
+document.getElementById('Intdate').readOnly = true;
+document.getElementById('Plandate').readOnly = true;
+document.getElementById('Execdate').readOnly = true;
+document.getElementById('Hyperdate').readOnly = true;
+document.getElementById('Enddate').readOnly = true;
 }
 </script>
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
@@ -422,7 +421,7 @@ function checkk()
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
-	<%
+<%
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -430,7 +429,7 @@ response.setHeader("Expires", "0"); // Proxies.
 
 if (session.getAttribute("username")==null)
 {
-	response.sendRedirect("Login.html");
+response.sendRedirect("Login.html");
 }
 %>
 <%
@@ -438,7 +437,7 @@ HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("app_emp");
 try {
-	String det=(String)session.getAttribute("theName");
+String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query = "select * from projinfo";
@@ -458,9 +457,9 @@ if(rs.next()){
                 
                     
                     <% if(rs3.next()){
-                    	details.setAttribute("appno",rs3.getString("appno"));
-                    	details.setAttribute("projectname",rs3.getString("projectname"));
-                    	%>
+                    details.setAttribute("appno",rs3.getString("appno"));
+                    details.setAttribute("projectname",rs3.getString("projectname"));
+                    %>
                     <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                     <%
                     String q2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
@@ -468,7 +467,7 @@ if(rs.next()){
                     ResultSet rss = s2.executeQuery(q2);
                     while(rss.next())
                     {
-                    	session.setAttribute(rss.getString(3),rss.getString(15));
+                    session.setAttribute(rss.getString(3),rss.getString(15));
                     }
                     
                     } %>
@@ -504,9 +503,9 @@ if(rs.next()){
 
             <ul>
                   <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
-                <li item-expanded='true'>App Emphasize Module
+                <li item-expanded='true'><a href="editproject.jsp">App Emphasize Module
                     <ul>
-                       <li item-expanded='true'>Project Details
+                       <li item-expanded='true'><a href="editproject.jsp">Project Details
                     <ul>
                         <li item-selected='true'><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
@@ -521,8 +520,7 @@ if(rs.next()){
                             </ul>
                         </li>
                         <li><a href="applnprior.jsp">Application-Prioritized</li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
+                   
 
                     </ul>
                 </li>
@@ -589,14 +587,15 @@ String plan=(String)session.getAttribute("Plan");
 String execute=(String)session.getAttribute("Execute");
 String hypercare=(String)session.getAttribute("Closure");
 if(initiate == null)
-	initiate="0";
+initiate="0";
 if(plan == null)
-	plan="0";
+plan="0";
 if(execute == null)
-	execute="0";
+execute="0";
 if(hypercare == null)
-	hypercare="0";
+hypercare="0";
 %>                            
+
 
 <div class="row">
 
@@ -604,32 +603,37 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: %" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"></span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Closure</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"></span></div>
+  <div class="progress-bar progress-bar-success progress-bar-stripedss-bar" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
 </div></div></div>
-</div>
+</div><jsp:include page="progress_details.jsp" >
+<jsp:param name="Initiate" value="<%=initiate %>"/>
+<jsp:param name="Plan" value="<%=plan %>"/>
+<jsp:param name="Execute" value="<%=execute %>"/>
+<jsp:param name="Hypercare" value="<%=hypercare %>"/>
+</jsp:include>
 <div class="row">
-		  <div class="panel-group" id="panels1" style="display:block;"> 
+  <div class="panel-group" id="panels1" style="display:block;"> 
         
             <div class="row bs-wizard" style="border-bottom:0;">
                 
@@ -661,7 +665,7 @@ if(hypercare == null)
                 </div>
             </div>
         
-	
+ 
      
                    
                                               
@@ -812,7 +816,7 @@ if(hypercare == null)
                </form>                                                                                                               
  <script>
  if(document.getElementById('pwqej').value=="R")
-	 checkk();
+checkk();
  </script>                             
         
                    
@@ -832,5 +836,3 @@ catch(Exception e){}
    
 </body>
 </html>
-
-

@@ -154,15 +154,15 @@
    
    background:#3276B1 ;
    position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
+top: 45px;
+left: -1%;
+padding-left:0px;
+width:300px !important;
+bottom: 0px;
+overflow: auto;
+color:white;
+text-size:30%;
+} 
  
 
 
@@ -249,28 +249,28 @@ $(function() {
    <script>
    function validateform1()
    {
-	   var location = document.loginForm.dataloc.value
-		var server = document.loginForm.servername.value
-		var prod = document.loginForm.prodinstance.value
-	    var instance = document.loginForm.prodinstanceloc.value
-		var reasonforaccess = document.loginForm.reasonfor.value
-		var database = document.loginForm.dbsize.value
-		var number = document.loginForm.nooftable.value
-		var record = document.loginForm.noofrec.value
-		var decommision = document.loginForm.integname.value
-		
+   var location = document.loginForm.dataloc.value
+var server = document.loginForm.servername.value
+var prod = document.loginForm.prodinstance.value
+    var instance = document.loginForm.prodinstanceloc.value
+var reasonforaccess = document.loginForm.reasonfor.value
+var database = document.loginForm.dbsize.value
+var number = document.loginForm.nooftable.value
+var record = document.loginForm.noofrec.value
+var decommision = document.loginForm.integname.value
+ 
 
-		if(location == "" || server  ==  "" || prod == "" || instance == "" || reasonforaccess == "" || database == ""|| number == "" || record =="" ||  decommision == "" )	
-			
-			
-			
-			{
-			alert("Please Fill the Mandatory Field");
-			  		}
-	     else{
-			
-			toggle1();
-		}
+if(location == "" || server  ==  "" || prod == "" || instance == "" || reasonforaccess == "" || database == ""|| number == "" || record =="" ||  decommision == "" )
+ 
+ 
+ 
+{
+alert("Please Fill the Mandatory Field");
+  }
+     else{
+ 
+toggle1();
+}
    }
    </script>
    <script>
@@ -329,44 +329,44 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 <script>
 
 function validate() {
-	
-	var data = document.loginForm.dataloc.value
-	var name = document.loginForm.servername.value
-	var prod = document.loginForm.prodinstance.value
+ 
+var data = document.loginForm.dataloc.value
+var name = document.loginForm.servername.value
+var prod = document.loginForm.prodinstance.value
     var location = document.loginForm.prodinstanceloc.value
-	var reason = document.loginForm.reasonfor.value
-	var size = document.loginForm.dbsize.value
-	var number = document.loginForm.nooftable.value
-	var record = document.loginForm.noofrec.value
-	var decommision = document.loginForm.integname.value
-	
-	if(data == "" || name == "" || prod == "" ||location == "" || reason == ""||size == "" || number = "" || record == "" || decommision == "" )	
-		{
-		alert("Please Fill the Mandatory Field");
-		  		}
+var reason = document.loginForm.reasonfor.value
+var size = document.loginForm.dbsize.value
+var number = document.loginForm.nooftable.value
+var record = document.loginForm.noofrec.value
+var decommision = document.loginForm.integname.value
+ 
+if(data == "" || name == "" || prod == "" ||location == "" || reason == ""||size == "" || number = "" || record == "" || decommision == "" )
+{
+alert("Please Fill the Mandatory Field");
+  }
      else
      {
-		
-		toggle1();
-	}
-	
-	
+ 
+toggle1();
+}
+ 
+ 
 }
 </script>
 
 <script language="javascript"> 
 function toggle1() {
-	var ele = document.getElementById("collapse3");
-	
-	if(ele.style.display == "block") {
-    		ele.style.display = "none";
-		text.innerHTML = "show";
-		
-  	}
-	else {
-		ele.style.display = "block";
-		text.innerHTML = "hide";
-	}
+var ele = document.getElementById("collapse3");
+ 
+if(ele.style.display == "block") {
+    ele.style.display = "none";
+text.innerHTML = "show";
+ 
+  }
+else {
+ele.style.display = "block";
+text.innerHTML = "hide";
+}
 } 
 </script>
 
@@ -393,40 +393,40 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 
 <script>
 function validateform() {
-	
-	var dataType = document.loginForm.datatype.value
-	var processname = document.loginForm.pname.value
-	var needarch = document.loginForm.archneed.value
-	var format1 = document.loginForm.format.value
+ 
+var dataType = document.loginForm.datatype.value
+var processname = document.loginForm.pname.value
+var needarch = document.loginForm.archneed.value
+var format1 = document.loginForm.format.value
    var multi = document.loginForm.mlang.value
    var local = document.loginForm.loclang.value
 
-	if( dataType ==" "|| processname=="" || needarch =="" || format1 == "" ||multi == "" || local == "")	
-		
-		{
-		alert("Please Fill the Mandatory Field");
-		  		}
+if( dataType ==" "|| processname=="" || needarch =="" || format1 == "" ||multi == "" || local == "")
+ 
+{
+alert("Please Fill the Mandatory Field");
+  }
      else{
-		
-		toggle();
-	}
-	
-	
+ 
+toggle();
+}
+ 
+ 
 }
 </script>
 
 <script language="javascript"> 
 function toggle() {
-	var ele = document.getElementById("collapse2");
-	
-	if(ele.style.display == "block") {
-    		ele.style.display = "none";
-		text.innerHTML = "show";
-  	}
-	else {
-		ele.style.display = "block";
-		text.innerHTML = "hide";
-	}
+var ele = document.getElementById("collapse2");
+ 
+if(ele.style.display == "block") {
+    ele.style.display = "none";
+text.innerHTML = "show";
+  }
+else {
+ele.style.display = "block";
+text.innerHTML = "hide";
+}
 } 
 </script>
 
@@ -496,17 +496,17 @@ response.setHeader("Expires", "0"); // Proxies.
 
 if (session.getAttribute("username")==null)
 {
-	response.sendRedirect("Login.html");
+response.sendRedirect("Login.html");
 }
 %>
 
 <%
 try {
-	HttpSession details=request.getSession();
-	String info=(String)details.getAttribute("intake");
+HttpSession details=request.getSession();
+String info=(String)details.getAttribute("intake");
 
-	String roles=(String)details.getAttribute("role");
-	System.out.println("IntakeModule    "+ info);
+String roles=(String)details.getAttribute("role");
+System.out.println("IntakeModule    "+ info);
 String det=(String)session.getAttribute("theName");
 String idd=(String)session.getAttribute("appidd");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
@@ -518,6 +518,8 @@ String query4 = "select * from appinfo where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 String imp_id="";
+String sequenceNumber="";
+int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
 {
 %>
 <form class="form-signin" name="loginForm" method="post" action="Technical">
@@ -528,7 +530,7 @@ String imp_id="";
                     
                    <% if(rs3.next()){ %>
                     <% if(rs4.next()){ %>
-                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
+                   <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
                     <%
                     String quer2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
@@ -548,9 +550,48 @@ String imp_id="";
                 
                   while(rss2.next()){
                   	session.setAttribute(rss2.getString(3),rss2.getString(15));
+                  	System.out.println(rss2.getString(3));
                   }
-                   
-                    }}%>
+                  
+                  String quer5="select seq_num from archive_exec where name='Build and Test'";
+                  Statement s5 = conn.createStatement();
+                  ResultSet rss3 = s5.executeQuery(quer5);
+                  if(rss3.next())
+                	  sequenceNumber=rss3.getString(1);
+                  System.out.println(sequenceNumber);
+                  String quer6="select * from archive_exec where projects='"+rs3.getString("projectname")+"' and seq_num>"+sequenceNumber+" and seq_num<"+(sequenceNumber+33)+" and level=4";
+                  Statement s6 = conn.createStatement();
+                  ResultSet rss4 = s6.executeQuery(quer6);
+                  int knt=0;
+                  System.out.println("bala");
+                  while(rss4.next())
+                  {
+                	  if(knt>2)
+                	  {
+                		  if(rss4.getString(9).equals(""))
+                			  actualHours1+=0;
+                		  else
+                		  actualHours1+=Integer.parseInt(rss4.getString(9));
+                		  if(rss4.getString(13).equals(""))
+                			  plannedHours1+=0;
+                		  else
+                		  plannedHours1+=Integer.parseInt(rss4.getString(13)); 
+                	  }
+                	  else
+                	  { System.out.println("murugan");
+                		  if(rss4.getString(9).equals(""))
+                			  actualHours+=0;
+                		  else
+                		  actualHours+=Integer.parseInt(rss4.getString(9));
+                		  if(rss4.getString(13).equals(""))
+                			  plannedHours+=0;
+                		  else
+                		  plannedHours+=Integer.parseInt(rss4.getString(13)); 
+                		  System.out.println(actualHours);
+                	  }
+                	 knt++;
+                  }
+                    } }%>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
                         <li>
@@ -577,7 +618,7 @@ String imp_id="";
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
-                <li item-expanded='true'>App Emphasize Module
+                <li item-expanded='true'><a href="editproject.jsp">App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
                     <ul>
@@ -594,8 +635,7 @@ String imp_id="";
                             </ul>
                         </li>
                          <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
+                     
 
                     </ul>
                 </li>
@@ -660,13 +700,13 @@ String plan=(String)session.getAttribute("Plan");
 String execute=(String)session.getAttribute("Execute");
 String hypercare=(String)session.getAttribute("Closure");
 if(initiate == null)
-	initiate="0";
+initiate="0";
 if(plan == null)
-	plan="0";
+plan="0";
 if(execute == null)
-	execute="0";
+execute="0";
 if(hypercare == null)
-	hypercare="0";
+hypercare="0";
 %>                            
 <br/><br/><br/>
 <div class="row">
@@ -675,67 +715,84 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Closure</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-stripedss-bar" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
 </div></div></div>
 </div>
-                <br>
-                <div class="row">
- <%
-String requirements=(String)session.getAttribute("Requirements");
 
+     <br>
+                <div class="row">
+    <%
+     int dev=0,test=0;
+String requirements=(String)session.getAttribute("Requirements");
+String implement=(String)session.getAttribute("Implement");
+    if(plannedHours!=0)
+     dev=(actualHours*100)/plannedHours;
+    if(plannedHours1!=0)
+     test=(actualHours1*100)/plannedHours1;
+    String development=String.valueOf(dev);
+    String testing=String.valueOf(test);
 if(requirements == null)
-	requirements="0";
+requirements="0";
+if(implement == null)
+	implement="0";
 
 %>
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Requirements</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=requirements%>%" aria-valuenow="<%=requirements %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=requirements %>%</span></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar4" style="width: <%=requirements%>%" aria-valuenow="<%=requirements %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=requirements %>%</span></div>
   </div></div></div>
-
-  <div class="col-md-3">
+<div class="col-md-3">
   <div class="form-group">
   <center><label >Development</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
-</div></div></div>
-
-  <div class="col-md-3">
+  <div class="progress-bar" role="progressbar" id="prog_bar5" style="width: <%=development%>%" aria-valuenow="<%=development %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=development %>%</span></div>
+  </div></div></div>
+ <div class="col-md-3">
   <div class="form-group">
   <center><label >Testing</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
-</div></div></div>
-
+  <div class="progress-bar" role="progressbar" id="prog_bar6" style="width: <%=testing%>%" aria-valuenow="<%=testing %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=testing %>%</span></div>
+  </div></div></div>
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Deployement</label></center>
+ <center><label >Deployment</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar7" style="width: <%=implement%>%" aria-valuenow="<%=implement%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=implement %>%</span></div>
 </div></div></div>
 </div>
+<jsp:include page="progress_details1.jsp" >
+<jsp:param name="Initiate" value="<%=initiate %>"/>
+<jsp:param name="Plan" value="<%=plan %>"/>
+<jsp:param name="Execute" value="<%=execute %>"/>
+<jsp:param name="Hypercare" value="<%=hypercare %>"/>
+<jsp:param name="Requirements" value="<%=requirements %>"/>
+<jsp:param name="Development" value="<%=development %>"/>
+<jsp:param name="Testing" value="<%=testing %>"/>
+<jsp:param name="Deployment" value="<%=implement %>"/>
+</jsp:include>
 
 <div class="row">
         

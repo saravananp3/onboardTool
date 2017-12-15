@@ -129,11 +129,11 @@ function edit(id){
     f.submit();
 }
 </script>
-  <style>
+<style>
     body
     {
      margin:0; padding:0; 
-   
+    color:#73879C;
     font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
     }
     .navbar-brand {
@@ -183,8 +183,13 @@ function edit(id){
  
 
 
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
 
    </style>
+  
 	</head>
 	<!--from  w  w w  . ja  va 2 s.co  m-->
   <body style='margin:30px'>
@@ -202,8 +207,7 @@ if (session.getAttribute("username")==null)
 }
 %>
 <%
-HttpSession details=request.getSession();
-String roles=(String)details.getAttribute("role");
+
 String det=(String)session.getAttribute("theName");
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
@@ -228,7 +232,7 @@ ResultSet rs3 = st3.executeQuery(query3);
 
 <form method="post" name="form" action="Appin">
 <div class="container">
-<nav class="navbar-fixed-top" style="background:#3276B1">
+<nav class=" navbar-fixed-top" style="background-color:#3276B1">
             <div class="container-fluid">
                 
                      <%if (rs3.next()) {
@@ -238,19 +242,16 @@ ResultSet rs3 = st3.executeQuery(query3);
                     	 ResultSet rs = st.executeQuery(query);
                      
                      %>
-                  <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                  <a class="navbar-brand" href="project.jsp" style="color:white"id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                   
                         <li item-selected='true'>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
-</li>
-<li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
+                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+                            <a href="logout.jsp">Logout</a>
                         </li>
                     </ul>
                     
@@ -288,24 +289,59 @@ ResultSet rs3 = st3.executeQuery(query3);
 					
 	<ul>
 <%
+String sequnce="";
 while(rs.next()){
 %>			
-				
 						<li>
-							
-							
-							
-							<h3 class="cbp-vm-title left-col primary" name="name" value="<%= rs.getString(1)%>" ><%= rs.getString(1)%></h3>
+							<h3 class="cbp-vm-title left-col primary" name="name"><%= rs.getString(1)%></h3>
+<% 
+String detail="";
+String q3="select seq_num from archive_exec where projects='"+name +"' and name='"+rs.getString(1)+"'";
+Statement stt = con.createStatement();
+ResultSet rst = stt.executeQuery(q3);
+if(rst.next())
+	detail=rst.getString(1);
+
+String q1="select * from archive_exec where projects='"+name+"' and seq_num>"+detail+" and seq_num<"+(detail+70)+" and level=3";
+Statement st2 = con.createStatement();
+ResultSet rs2 = st2.executeQuery(q1);
+int l=-1;
+while(rs2.next()){
+	l++;
+	if(rs2.getString(15).equals("100"))
+		continue;
+	else
+	{
+		System.out.println(rs2.getString(15));
+%>
 							<center><div class="progress center-col cbp-vm-detail">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10"
-  aria-valuemin="0" aria-valuemax="100" style="width:10%">
-    10%
+ <div class="progress-bar progress-bar-success" id="prog_bar<%=l %>" role="progressbar" aria-valuenow="<%=rs2.getString(15) %>"
+  aria-valuemin="0" aria-valuemax="100" style="width:<%=rs2.getString(15) %>%">
+    <%=rs2.getString(15) %>%
   </div>
   
 							
-</div> 	
-		
+</div> 		
 </center>
+	<%if(Integer.parseInt(rs2.getString(15))<35){
+%>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-danger progress-bar-striped'</script>
+<%} 
+else if(Integer.parseInt(rs2.getString(15))<65){
+System.out.println("minimum progress bar");
+%>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-warning progress-bar-striped'</script>
+<%} %>
+<% if(l==1){%>
+<h5 class="cbp-vm-title right-col primary" >Development</h5>
+<%} else if(l==2){ %>
+<h5 class="cbp-vm-title right-col primary" >Testing</h5>
+<%} %>
+<h5 class="cbp-vm-title right-col primary" ><%=rs2.getString(3) %></h5>
+<%
+break;
+}
+} %>
 
 			
 							<button type="button" class="btn btn-primary" onClick="edit('<%= rs.getString(1)%>');">

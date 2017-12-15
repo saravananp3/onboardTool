@@ -98,7 +98,7 @@ if (session.getAttribute("username")==null)
 else{
 	String name=(String)session.getAttribute("ID");
 	  HttpSession details=request.getSession(); 
-	  
+	  session.setAttribute("date_cnt","false");
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
 String db = "strutsdb";

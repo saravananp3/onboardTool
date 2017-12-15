@@ -40,6 +40,9 @@ public class sendMail extends HttpServlet {
 		String rol=request.getParameter("roless");
 		String email=request.getParameter("mailid");
 		String msg=request.getParameter("message");
+		String fname=request.getParameter("fname");
+		String lname=request.getParameter("lname");
+		String project=request.getParameter("project");
 		System.out.println(msg);
 		Properties props = new Properties();
 		 HttpSession ses=request.getSession();  
@@ -53,18 +56,18 @@ public class sendMail extends HttpServlet {
 		new javax.mail.Authenticator() {
 		protected PasswordAuthentication getPasswordAuthentication() {
 		//return new PasswordAuthentication("vkarun202@gmail.com","arun's@kumar");
-			return new PasswordAuthentication("arun.vk@platform3solutions.com","arun@kid06");
+			return new PasswordAuthentication("balamurugan@platform3solutions.com","ilovecric123!");
 		}
 		});
 
 		try {
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("arun.vk@platform3solutions.com"));
+		message.setFrom(new InternetAddress("balamurugan@platform3solutions.com"));
 		
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
-		message.setSubject("Registration Link");
-		message.setText(msg);
+		message.setSubject("Access Granted - Register into Onboarding Tool");
+		message.setText("Dear "+fname+" "+lname+",\nWe are pleased to inform that you are granted access to Onboarding Tool as "+rol +" for the Project "+project+".\nPlease login to the below url for registering your account\n http://localhost:8080/onboard/user_reg.jsp");
 
 		Transport.send(message);
 //response.sendRedirect("user_reg.jsp");

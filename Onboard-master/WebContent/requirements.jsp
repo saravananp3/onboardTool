@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,15 +138,15 @@
    
    background:#3276B1 ;
    position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
+top: 45px;
+left: -1%;
+padding-left:0px;
+width:300px !important;
+bottom: 0px;
+overflow: auto;
+color:white;
+text-size:30%;
+} 
  
 
 
@@ -250,10 +251,10 @@ $(function() {
 <script>
 function switchColors()  
 {  
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("b");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = '#3276B1' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
@@ -262,7 +263,7 @@ element.style.background="#3276B1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = '#3276B1' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -270,10 +271,10 @@ for (var i = 0 ; i < x.length ; i ++)
 <script>
 function switchColors0()  
 {  
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("a");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = '#3276B1' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
@@ -282,7 +283,7 @@ element.style.background="#3276B1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = '#3276B1' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -296,10 +297,10 @@ for (var i = 0 ; i < x.length ; i ++)
 
 <%
 try {
-	HttpSession details=request.getSession();
-	String roles=(String)details.getAttribute("role");
-	String det=(String)session.getAttribute("theName");
-	String idd=(String)session.getAttribute("appidd");
+HttpSession details=request.getSession();
+String roles=(String)details.getAttribute("role");
+String det=(String)session.getAttribute("theName");
+String idd=(String)session.getAttribute("appidd");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query3 = "select * from projinfo where id = "+det;
@@ -309,6 +310,8 @@ String query4 = "select * from appinfo where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 String imp_id="";
+String sequenceNumber="";
+int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
 {
 %>
 <form class="form-signin"name="loginForm" method="post">
@@ -325,7 +328,7 @@ String imp_id="";
                     Statement s2 = conn.createStatement();
                    ResultSet rss = s2.executeQuery(quer2);
                    while(rss.next())
-                   	session.setAttribute(rss.getString(3),rss.getString(15));   
+                   	session.setAttribute(rss.getString(3),rss.getString(15));
                    
                    String quer3="select id from archive_exec where name='"+rs4.getString("appname")+"' and projects='"+rs3.getString("projectname")+"'order by seq_num";
                    Statement s3 = conn.createStatement();
@@ -339,9 +342,48 @@ String imp_id="";
                 
                   while(rss2.next()){
                   	session.setAttribute(rss2.getString(3),rss2.getString(15));
+                  	System.out.println(rss2.getString(3));
                   }
-                 
-                 } }%>
+                  
+                  String quer5="select seq_num from archive_exec where name='Build and Test'";
+                  Statement s5 = conn.createStatement();
+                  ResultSet rss3 = s5.executeQuery(quer5);
+                  if(rss3.next())
+                	  sequenceNumber=rss3.getString(1);
+                  System.out.println(sequenceNumber);
+                  String quer6="select * from archive_exec where projects='"+rs3.getString("projectname")+"' and seq_num>"+sequenceNumber+" and seq_num<"+(sequenceNumber+33)+" and level=4";
+                  Statement s6 = conn.createStatement();
+                  ResultSet rss4 = s6.executeQuery(quer6);
+                  int knt=0;
+                  System.out.println("bala");
+                  while(rss4.next())
+                  {
+                	  if(knt>2)
+                	  {
+                		  if(rss4.getString(9).equals(""))
+                			  actualHours1+=0;
+                		  else
+                		  actualHours1+=Integer.parseInt(rss4.getString(9));
+                		  if(rss4.getString(13).equals(""))
+                			  plannedHours1+=0;
+                		  else
+                		  plannedHours1+=Integer.parseInt(rss4.getString(13)); 
+                	  }
+                	  else
+                	  { System.out.println("murugan");
+                		  if(rss4.getString(9).equals(""))
+                			  actualHours+=0;
+                		  else
+                		  actualHours+=Integer.parseInt(rss4.getString(9));
+                		  if(rss4.getString(13).equals(""))
+                			  plannedHours+=0;
+                		  else
+                		  plannedHours+=Integer.parseInt(rss4.getString(13)); 
+                		  System.out.println(actualHours);
+                	  }
+                	 knt++;
+                  }
+                    } }%>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ol class="nav navbar-nav navbar-right">
@@ -370,7 +412,7 @@ String imp_id="";
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
-                <li item-expanded='true'>App Emphasize Module
+                <li item-expanded='true'><a href="editproject.jsp">App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
                     <ul>
@@ -387,9 +429,6 @@ String imp_id="";
                             </ul>
                         </li>
                          <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
-
                     </ul>
                 </li>
                 <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
@@ -429,11 +468,11 @@ String imp_id="";
          <script>
 function call()
 {
-	var f=document.loginForm;
+var f=document.loginForm;
     f.method="post";
     f.action='review.jsp';
     f.submit();
-	}
+}
 
 </script>     
    <script>
@@ -461,13 +500,13 @@ String plan=(String)session.getAttribute("Plan");
 String execute=(String)session.getAttribute("Execute");
 String hypercare=(String)session.getAttribute("Closure");
 if(initiate == null)
-	initiate="0";
+initiate="0";
 if(plan == null)
-	plan="0";
+plan="0";
 if(execute == null)
-	execute="0";
+execute="0";
 if(hypercare == null)
-	hypercare="0";
+hypercare="0";
 %>                            
 <br/><br/><br/>
 <div class="row">
@@ -476,70 +515,84 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Closure</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-stripedss-bar" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
 </div></div></div>
 </div>
-                <br>
-                <div class="row">
- <%
+ <div class="row">
+    <%
+     int dev=0,test=0;
 String requirements=(String)session.getAttribute("Requirements");
-
+String implement=(String)session.getAttribute("Implement");
+    if(plannedHours!=0)
+     dev=(actualHours*100)/plannedHours;
+    if(plannedHours1!=0)
+     test=(actualHours1*100)/plannedHours1;
+    String development=String.valueOf(dev);
+    String testing=String.valueOf(test);
 if(requirements == null)
-	requirements="0";
+requirements="0";
+if(implement == null)
+	implement="0";
 
 %>
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Requirements</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=requirements%>%" aria-valuenow="<%=requirements %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=requirements %>%</span></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar4" style="width: <%=requirements%>%" aria-valuenow="<%=requirements %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=requirements %>%</span></div>
   </div></div></div>
-
-  <div class="col-md-3">
+<div class="col-md-3">
   <div class="form-group">
   <center><label >Development</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-
-  <div class="col-md-3">
+  <div class="progress-bar" role="progressbar" id="prog_bar5" style="width: <%=development%>%" aria-valuenow="<%=development %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=development %>%</span></div>
+  </div></div></div>
+ <div class="col-md-3">
   <div class="form-group">
   <center><label >Testing</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-
+  <div class="progress-bar" role="progressbar" id="prog_bar6" style="width: <%=testing%>%" aria-valuenow="<%=testing %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=testing %>%</span></div>
+  </div></div></div>
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Deployement</label></center>
+ <center><label >Deployment</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar7" style="width: <%=implement%>%" aria-valuenow="<%=implement%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=implement %>%</span></div>
 </div></div></div>
 </div>
-
+<jsp:include page="progress_details1.jsp" >
+<jsp:param name="Initiate" value="<%=initiate %>"/>
+<jsp:param name="Plan" value="<%=plan %>"/>
+<jsp:param name="Execute" value="<%=execute %>"/>
+<jsp:param name="Hypercare" value="<%=hypercare %>"/>
+<jsp:param name="Requirements" value="<%=requirements %>"/>
+<jsp:param name="Development" value="<%=development %>"/>
+<jsp:param name="Testing" value="<%=testing %>"/>
+<jsp:param name="Deployment" value="<%=implement %>"/>
+</jsp:include>
 <div class="row">
-		
+ 
         
             <div class="row bs-wizard" style="border-bottom:0;">
                 
@@ -577,16 +630,16 @@ if(requirements == null)
         
         
         
-	</div>
+</div>
 
 
 <div class="panel-group" id="panels1"> 
                        <br><br><br>
                        <script>
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("a");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = '#3276B1' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
@@ -595,7 +648,7 @@ element.style.background="#3276B1";
 var list = document.getElementsByTagName("OL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = '#3276B1' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 </script>
                         <div class="panel panel-default"> 

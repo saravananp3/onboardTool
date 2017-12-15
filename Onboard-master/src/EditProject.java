@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +15,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/EditProject")
 public class EditProject extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,21 +25,21 @@ public class EditProject extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+// TODO Auto-generated method stub
+response.getWriter().append("Served at: ").append(request.getContextPath());
+}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  
-	    String id = request.getParameter("pid");
-		String projectname = request.getParameter("projectname");
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  
+    String id = request.getParameter("pid");
+String projectname = request.getParameter("projectname");
         String descr = request.getParameter("descr");
         String appno = request.getParameter("appno");
         String Startdate = request.getParameter("Startdate");
@@ -53,59 +51,57 @@ public class EditProject extends HttpServlet {
         
         HttpSession details=request.getSession(); 
         String prjname=(String)details.getAttribute("Myproject");
-        
-        System.out.println("xlxllllllxlxlx");
-        System.out.println(prjname);
-		try
-	        {
-	          // create a mysql database connection
-	          String myDriver = "org.gjt.mm.mysql.Driver";
-	          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
-	          Class.forName(myDriver);
-	          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-	     
-	          String query = "update projinfo set projectname=?, descr=?, appno=? ,Startdate=?, Intdate=?, Plandate=?, Execdate=?, Hyperdate=?, Enddate=? where id=?";
+  
+try
+        {
+          // create a mysql database connection
+          String myDriver = "org.gjt.mm.mysql.Driver";
+          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
+          Class.forName(myDriver);
+          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
+     
+          String query = "update projinfo set projectname=?, descr=?, appno=? ,Startdate=?, Intdate=?, Plandate=?, Execdate=?, Hyperdate=?, Enddate=? where id=?";
 
-	          PreparedStatement preparedStmt = conn.prepareStatement(query);
-	          preparedStmt.setString (1, projectname);
-	          preparedStmt.setString   (2, descr);
-	          preparedStmt.setString (3, appno);
-	          preparedStmt.setString   (4, Startdate);
-	          preparedStmt.setString (5, Intdate);
-	          preparedStmt.setString   (6, Plandate);
-	          preparedStmt.setString (7, Execdate);
-	          preparedStmt.setString   (8, Hyperdate);
-	          preparedStmt.setString (9, Enddate);
-	          preparedStmt.setString (10, id);
-	          preparedStmt.execute();
-	          
-	          String query1="update app_prior set prj_name=? where prj_name=?";
-	          PreparedStatement preparedStmt1 = conn.prepareStatement(query1);
-	          preparedStmt1.setString (1, projectname);
-	          preparedStmt1.setString   (2, prjname);
-	          preparedStmt1.execute();
-	          
-	          String query2="update appinfo set prjname=? where prjname=?";
-	          PreparedStatement preparedStmt2 = conn.prepareStatement(query2);
-	          preparedStmt2.setString (1, projectname);
-	          preparedStmt2.setString   (2, prjname);
-	          preparedStmt2.execute();
-	          
-	          String query3="update archive_exec set projects=? where projects=?";
-	          PreparedStatement preparedStmt3 = conn.prepareStatement(query3);
-	          preparedStmt3.setString (1, projectname);
-	          preparedStmt3.setString   (2, prjname);
-	          preparedStmt3.execute();
-	          
-	        }
-		  catch (Exception e)
-	        {
-	        	 
-	          System.err.println("Got an exception!");
-	          System.err.println(e.getMessage());
-	        }
-	        // return response
-	        response.sendRedirect("tree.jsp");
-	}
+          PreparedStatement preparedStmt = conn.prepareStatement(query);
+          preparedStmt.setString (1, projectname);
+          preparedStmt.setString   (2, descr);
+          preparedStmt.setString (3, appno);
+          preparedStmt.setString   (4, Startdate);
+          preparedStmt.setString (5, Intdate);
+          preparedStmt.setString   (6, Plandate);
+          preparedStmt.setString (7, Execdate);
+          preparedStmt.setString   (8, Hyperdate);
+          preparedStmt.setString (9, Enddate);
+          preparedStmt.setString (10, id);
+          preparedStmt.execute();
+          
+          String query1="update app_prior set prj_name=? where prj_name=?";
+          PreparedStatement preparedStmt1 = conn.prepareStatement(query1);
+          preparedStmt1.setString (1, projectname);
+          preparedStmt1.setString   (2, prjname);
+          preparedStmt1.execute();
+          
+          String query2="update appinfo set prjname=? where prjname=?";
+          PreparedStatement preparedStmt2 = conn.prepareStatement(query2);
+          preparedStmt2.setString (1, projectname);
+          preparedStmt2.setString   (2, prjname);
+          preparedStmt2.execute();
+          
+          String query3="update archive_exec set projects=? where projects=?";
+          PreparedStatement preparedStmt3 = conn.prepareStatement(query3);
+          preparedStmt3.setString (1, projectname);
+          preparedStmt3.setString   (2, prjname);
+          preparedStmt3.execute();
+          
+        }
+  catch (Exception e)
+        {
+         
+          System.err.println("Got an exception!");
+          System.err.println(e.getMessage());
+        }
+        // return response
+        response.sendRedirect("tree.jsp");
+}
 
 }

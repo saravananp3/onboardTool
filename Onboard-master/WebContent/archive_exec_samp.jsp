@@ -31,10 +31,7 @@
 		<script src="js/treeTable.js"></script>
 
 		 <script src="js/jstree.min.js"></script>
-  
-
-   
-       
+ 
 
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
      <script type="text/javascript" src="scripts/demos.js"></script>
@@ -47,33 +44,10 @@
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
       	
 	
-     
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script>
-
-$(function() {
-	    $( "#pln_srt_date0").datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#pln_end_date1").datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#act_srt_date1").datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-	    $( "#act_end_date1").datepicker({
-	        format: "mm/dd/yyyy",
-	        autoclose: true
-	    });
-		}
-	});
-
-</script>		  
+		  
  
     <script>
 	  function getID(lev,pln_srt,pln_end,act_srt,status,pln_hrs,act_hrs,progressbar,actual_enddate)
@@ -83,12 +57,13 @@ $(function() {
 		  var endDate =pln_end;
 		  var actual_startdate =act_srt;
 		  var percentage;
+		  var date_count=0;
 
-		  if (startDate!="" && endDate!="" && actual_startdate!= "") {
-		  var minDate = new Date(convertStringToDate(startDate));
+		  if (pln_srt!="" && pln_end!="" && act_srt!= "") {
+		  var minDate = new Date(convertStringToDate(pln_srt));
 		  var today = new Date();
-		  var maxDate = new Date(convertStringToDate(endDate));
-		  var actual_minDate = new Date(convertStringToDate(actual_startdate));
+		  var maxDate = new Date(convertStringToDate(pln_end));
+		  var actual_minDate = new Date(convertStringToDate(act_srt));
 		  var nbPastDays = Math.floor((today.getTime() - actual_minDate.getTime()) / 86400000);
 
 		  var actual_Hours= (nbPastDays*24)/3;
@@ -104,11 +79,56 @@ $(function() {
 		  percentage=100;
 		  console.log("actual_Hours : "+actual_Hours);
 		  console.log("total_hours : "+total_hours);
+		  var first,last;
 		  if(lev!=1){
 		  document.getElementById(pln_hrs.id).value=total_hours;
 		  document.getElementById(act_hrs.id).value=actual_Hours;
 		  }
-		  if (percent < 0 ) {
+		/*  if(seq_no>initiate_seqno)
+			  {
+			  if(seq_no>plan_seqno)
+				  {
+				  if(seq_no>execute_seqno)
+					  {
+					  if(seq_no>hypercare_seqno)
+						  {
+						  first=hypercare_seqno;
+						  last=hypercare_seqno+7;
+						  }
+					  else
+						  {
+						  first=execute_seqno;
+						  last=hypercare_seqno;
+						  }
+					  }
+				  else
+				  {
+				  first=plan_seqno;
+				  last=execute_seqno;
+				  }
+				  }
+			  else
+			  {
+			  first=initiate_seqno;
+			  last=plan_seqno;
+			  }
+			  }
+		  window.alert("first "+first+" last "+last);
+		  for(var i=first;i<last-1;i++)
+			  {
+			  var q=document.getElementById("pln_srt_date"+first).value;
+			  if(q!="")
+				  date_count++;
+			  }
+		  window.alert(date_count+" "+(last-1-first));
+		  
+		  
+		  if(date_count==(last-1-first)){
+			  percent=100;
+			  $('#'+progressbar.id).reportprogress(percent);
+			  $('#'+status.id).css({background:'green'});
+		  }*/
+		   if (percent < 0 ) {
 		  percent=0;
 		  $('#'+progressbar.id).reportprogress(percent);
 		  } 
@@ -118,12 +138,6 @@ $(function() {
 			  $('#'+progressbar.id).reportprogress(percent);
 			  $('#'+status.id).css({background:'green'});
 		  }  
-		  else if (actual_enddate!="") {
-		  
-		  percent=100 ;
-		  $('#'+progressbar.id).reportprogress(percent);
-		  $('#'+status.id).css({background:'green'});
-		  }
 		  else if (percent < 20) 
 		  { $('#'+progressbar.id).reportprogress(percent);
 		  $('#'+status.id).css({background:'red'});
@@ -141,21 +155,25 @@ $(function() {
 		  $('#'+status.id).css({background:'green'});
 		  }
 		  }
-		  else
-			  {
-		
-			  }
+	
 		  }
 	  </script>
 
 	  
 	  <script>
 	  
-	  function getDetID(total_hours,actual_Hours,progressbar,status,actual_enddate)
+	  function getDetID(total_hours,actual_Hours,progressbar,status,actual_enddate,datecount)
 	  {
+		  if(datecount=="True")
+			  {
+			  percent=100;
+			  $('#'+progressbar.id).reportprogress(percent);
+			  $('#'+status.id).css({background:'green'});
+			  }
+		  else{
 		  var percent = (actual_Hours.value/total_hours.value) * 100; 
 		  percentage=100;
-		  if (percent < 0 ) {
+		   if (percent < 0 ) {
 			  percent=0;
 			  $('#'+progressbar.id).reportprogress(percent);
 			  } 
@@ -181,7 +199,7 @@ $(function() {
 			  { $('#'+progressbar.id).reportprogress(percent);
 			  $('#'+status.id).css({background:'green'});
 			  }
-		  
+		  }
 		  
 			  }
 
@@ -402,10 +420,11 @@ $(function() {
 
 
 </script>
-<style>
+ <style>
     body
     {
      margin:0; padding:0; 
+    color:#73879C;
     font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
     }
     .navbar-brand {
@@ -455,6 +474,10 @@ $(function() {
  
 
 
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
 
    </style>
  <style>
@@ -540,11 +563,11 @@ $(function() {
   
   </script>
   <script>
-  function call_fun(name,a,b,c,d,e,g,h)
+  function call_fun(name,a,b,c,d,e,g,h,i,j,k,l)
   {
 	 var f=document.loginForm;
 	    f.method="post";
-	    f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h;
+	    f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h+'&initiate_seqno='+i+'&plan_seqno='+j+'&execute_seqno='+k+'&hypercare_seqno='+l;
 	    f.submit();  
   }
   </script>
@@ -639,11 +662,11 @@ ResultSet rs7 = st7.executeQuery(query7);
 if(rs4.next()){
 	%>
 <div class="container">
-<nav class="navbar-fixed-top" style="background:#3276B1">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                 
                     <% if(rs.next()){ %>
-                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white"id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
                     <%
                     String q2="select * from archive_exec where level=1 and projects='"+rs.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
@@ -651,6 +674,7 @@ if(rs4.next()){
                     while(rss.next())
                     {
                     	session.setAttribute(rss.getString(3),rss.getString(15));
+                    	session.setAttribute((rss.getString(3)+"1"),rss.getString(1));
                     }
                     
                     %>
@@ -660,11 +684,11 @@ if(rs4.next()){
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
 </li>
-                      <li>
+                     <li>
  <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>
-                   <li>
-                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+</li> 
+                        <li>
+                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -673,33 +697,69 @@ if(rs4.next()){
         </nav>
         </div>
         <script>
-function check_previous(seq_no,level,previous_level,true_count)
+function check_previous(seq_no,level,previous_level,true_count,initiate_seqno,plan_seqno,execute_seqno,hypercare_seqno,number)
 {
-	var true_cnt=parseInt(true_count)+1;
+	var task_number=[initiate_seqno,plan_seqno,execute_seqno,hypercare_seqno];
+	var tasks=[];
+	var count1=[];
+	var x,y,z,index,count=0,cnt=1;
 //	window.alert(seq_no+"   "+true_cnt);
-	var count=1;
-if(true_cnt==seq_no){
+//window.alert(initiate_seqno+" "+plan_seqno+" "+execute_seqno+" "+hypercare_seqno);
  if(level==previous_level)
 		{
-	var x=document.getElementById("pln_srt_date"+(seq_no-2)).value;
-	var y=document.getElementById("pln_end_date"+(seq_no-2)).value;
-	var z=document.getElementById("act_srt_date"+(seq_no-2)).value;
+	 x=document.getElementById("pln_srt_date"+(seq_no-2)).value;
+	 y=document.getElementById("pln_end_date"+(seq_no-2)).value;
+	 z=document.getElementById("act_srt_date"+(seq_no-2)).value;
+	 w=document.getElementById("act_end_date"+(seq_no-2)).value;
 	if(x=="" && y=="" && z==""){
-		count=0;
+		cnt=0;
 		window.alert("please fill the aboveeee text field");
 	}
 		}
-	}
-
-else if(level!=previous_level)
-	count=1;
-else{
-	alert("Please fill the above text fields");
-	count=0;
-}
-	
-	
-if(count==1){
+ else
+	 {
+	 for(var i=0;i<4;i++){
+		if(parseInt(task_number[i])<parseInt(seq_no))
+			{
+			tasks.push(task_number[i]);
+			}
+		else
+			{
+			continue;
+			}
+	  }
+	 for(var i=tasks.length-1;i>=0;i--)
+		 {
+		    count++;
+		    if (count<=2)
+		    	{
+		    	 x=document.getElementById("pln_srt_date"+(tasks[i]-1)).value;
+		    	 y=document.getElementById("pln_end_date"+(tasks[i]-1)).value;
+		    	 z=document.getElementById("act_srt_date"+(tasks[i]-1)).value;
+		    	if(x=="" && y=="" && z==""){
+		    		count1.push("FALSE");
+		    		continue;
+		    		
+		    	}
+		    	else
+		    		{
+		    		count1.push("TRUE");
+		    		continue;
+		    		}
+		    	}
+		    else
+		    	{
+		    	break;
+		    	}
+		 }
+	 
+	 
+	 }
+ if(count1[0]=="FALSE" && count1[1]=="FALSE"){
+	 window.alert("please fill the above fields");
+	 cnt=0;
+ }
+ if(cnt==1){
 	$( "#pln_srt_date"+(seq_no-1)).datepicker({
         format: "mm/dd/yyyy",
         autoclose: true
@@ -716,10 +776,14 @@ if(count==1){
         format: "mm/dd/yyyy",
         autoclose: true
     });
+ if(number==1)
  $( "#pln_srt_date"+(seq_no-1)).datepicker('show');
-/* $( "#pln_end_date"+(seq_no-1)).datepicker('show');
+ if(number==2)
+$( "#pln_end_date"+(seq_no-1)).datepicker('show');
+ if(number==3)
  $( "#act_srt_date"+(seq_no-1)).datepicker('show');
- $( "#act_end_date"+(seq_no-1)).datepicker('show');*/
+ if(number==4)
+ $( "#act_end_date"+(seq_no-1)).datepicker('show');
 }
 }
 
@@ -731,8 +795,10 @@ if(count==1){
                
                
                <div class="col-md-3 sidebar">
-                 <div class="col-md-2 sidebar" >
-                  <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; '>
+               
+                  <div id='jqxWidget'>
+                  
+        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; '>
                     <ul class="nav nav-sidebar" id ="sidemenu" >
                         
                         
@@ -756,8 +822,6 @@ if(count==1){
                             </ul>
                         </li>
                         <li><a href="applnprior.jsp">Application-Prioritized</li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
 
                     </ul>
                 </li>
@@ -829,6 +893,10 @@ String initiate=(String)session.getAttribute("Ideation and Initiate");
 String plan=(String)session.getAttribute("Plan");
 String execute=(String)session.getAttribute("Execute");
 String hypercare=(String)session.getAttribute("Closure");
+String initiate_seqno=(String)session.getAttribute("Ideation and Initiate1");
+String plan_seqno=(String)session.getAttribute("Plan1");
+String execute_seqno=(String)session.getAttribute("Execute1");
+String hypercare_seqno=(String)session.getAttribute("Closure1");
 if(initiate == null)
 	initiate="0";
 if(plan == null)
@@ -837,6 +905,7 @@ if(execute == null)
 	execute="0";
 if(hypercare == null)
 	hypercare="0";
+System.out.println(plan);
 %>                            
 
 <div class="row">
@@ -852,7 +921,7 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div class="bar" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
@@ -937,11 +1006,10 @@ while(rs3.next()){
 <td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)" /></td>
 <td><input  type="text" class="in"  id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)"/></td>
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
-	<td ><input type="text" style="background-color:transparent;width:20%;"; id="status<%=i %>"  /></td>
+	<td ><input type="text" style="background-color:transparent;width:20%;" id="status<%=i %>"  /></td>
 <td></td>
-
 <script>
-getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
+getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value,'<%= rs3.getString(17)%>');
 </script>
 <%
 int progress=0;
@@ -958,12 +1026,12 @@ int progress=0;
 		<td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getInt(1) %>" hidden /></td>
 <td style="display:none"><input type="text" id="level<%=i %>" name="level<%=i %>" value="<%=rs3.getInt(2) %>" hidden /></td>
 		<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
-<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%= true_count %>');"  /></td>
-<td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>"  /></td>
-<td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
-<td><input  type="text" class="in" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
-<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value);"/></td>
-<td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value);" /></td>
+<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%= true_count %>','<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',1);"  /></td>
+<td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%= true_count %>','<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',2);"  /></td>
+<td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%= true_count %>','<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',3);"  /></td>
+<td><input  type="text" class="in" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%= true_count %>','<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',4);"  /></td>
+<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value,'<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>');"/></td>
+<td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value,'<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>');" /></td>
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
 	<td ><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i %>"  /></td>
 <td></td>

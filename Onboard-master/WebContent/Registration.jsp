@@ -74,7 +74,7 @@ font-size:10px;
     body
     {
      margin:0; padding:0; 
-  
+    color:#73879C;
     font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
     }
     .navbar-brand {
@@ -124,6 +124,10 @@ font-size:10px;
  
 
 
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
 
    </style>
       <script>
@@ -197,6 +201,7 @@ font-size:10px;
 		var ffname=document.getElementById("fname").value;
 		var llname=document.getElementById("lname").value;
 		var email=document.getElementById("email_val").value;
+		var project=document.getElementById('proj').value;
 		if(ffname==="" || llname==="" || arr==="")
 			window.alert("fill the mandatory fileds");
 		else
@@ -205,7 +210,7 @@ font-size:10px;
 				{
 				 var f=document.loginForm;
 				    f.method="post";
-				    f.action="sendMail?roless="+arr+"&mailid="+email+"&message="+msg;
+				    f.action="sendMail?roless="+arr+"&mailid="+email+"&message="+msg+"&fname="+ffname+"&lname="+llname+"&project="+project;
 				    f.submit();
 				}
 			 else
@@ -293,19 +298,18 @@ int count=0;
     </div>
 
     <div class="main-panel">
-		<nav class=" navbar-fixed-top" style="background-color:#3276B1">
+		<nav class="navbar-fixed-top" style="background-color:#3276B1">
             <div class="container-fluid">
                 
     
                  
-                    <a class="navbar-brand" style="color:white" id="sitetitle">Onboarding Tool</a>
+                    <a class="navbar-brand" style="color:white"id="sitetitle">Onboarding Tool</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
+                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
-                     
                         <li>
                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>

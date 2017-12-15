@@ -20,7 +20,7 @@
     <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property." />
-   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="scripts/demos.js"></script>
@@ -34,7 +34,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -89,7 +89,66 @@
             }
         });
     </script>
+<style>
+    body
+    {
+     margin:0; padding:0; 
+    
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
+    
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
 
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
+   #sidemenu
+   {
+   
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
+ 
+
+
+#sidemenu a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+   </style>
 
 <script>
     $(document).ready(function(){
@@ -182,6 +241,7 @@
 
 
 </script>
+
 <script>
 
 $(function() {
@@ -242,7 +302,7 @@ response.setHeader("Expires", "0"); // Proxies.
 
 if (session.getAttribute("username")==null)
 {
-	response.sendRedirect("Login.html");
+response.sendRedirect("Login.html");
 }
 %>
 <%
@@ -269,20 +329,21 @@ ResultSet rs3 = st3.executeQuery(query3);
 
 <form class="form-signin"name="loginForm" method="post" action="Appin">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background-color:#3276B1">
             <div class="container-fluid">
                 
                  <%if (rs3.next()) {%>
                     
-                    <a class="navbar-brand" href="#">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                     <a class="navbar-brand" style="color:white"id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
+                        <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
-                        <li>
-                            <a href="logout.jsp">Logout</a>
-                        </li>
+                       <li style="background:#3276B1">
+   <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+</li>
                     </ul>
                     
                 </div>
@@ -293,13 +354,12 @@ ResultSet rs3 = st3.executeQuery(query3);
             <div class="row">
             <br>
                 <div class="col-md-3 sidebar">
-                    <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+                    <div id='jqxWidget'>  <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; '>
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
                        <li item-expanded='true'>Project Details
@@ -380,7 +440,7 @@ ResultSet rs3 = st3.executeQuery(query3);
                     <h3>Application Details</h3>
 <div class="panel-group" id="panels1"> 
                         <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                            <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1">                           Application Information                            </a> </h4> 
                             </div>                             
                             <div id="collapse1" class="panel-collapse collapse"> 
@@ -392,7 +452,7 @@ ResultSet rs3 = st3.executeQuery(query3);
 </label>
                                             <input type="text" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs3.getString("projectname") %>">
                                         </div>
-								
+ 
                                    
                                         
                                         <div class="form-group"> 
@@ -438,7 +498,7 @@ ResultSet rs3 = st3.executeQuery(query3);
                             </div>                             
                         </div>                         
                         <div class="panel panel-default"> 
-                            <div class="panel-heading"> 
+                            <div class="panel-heading" style="background:#3276B1 ; color:white;"> 
                                 <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2">                 Additional Details</a> </h4> 
                             </div>                             
                             <div id="collapse2" class="panel-collapse collapse "> 

@@ -52,46 +52,46 @@
     <script type="text/javascript">
     
     $(function() {
-	    $( "#P_S_date" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#P_S_date" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
     
     $(function() {
-	    $( "#Project_end_date" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#Project_end_date" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
     
     $(function() {
-	    $( "#Hyper_care_date" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#Hyper_care_date" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
     
     $(function() {
-	    $( "#Exec_start_date" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#Exec_start_date" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
     
     $(function() {
-	    $( "#Initiate_start_date" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#Initiate_start_date" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
     
     $(function() {
-	    $( "#Project_Start_Date" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#Project_Start_Date" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
     
     
         $(document).ready(function () {
@@ -211,15 +211,15 @@ p.required-field::before {
    
    background:#3276B1 ;
    position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
+top: 45px;
+left: -1%;
+padding-left:0px;
+width:300px !important;
+bottom: 0px;
+overflow: auto;
+color:white;
+text-size:30%;
+} 
  
 
 
@@ -446,7 +446,7 @@ response.setHeader("Expires", "0"); // Proxies.
 
 if (session.getAttribute("username")==null)
 {
-	response.sendRedirect("Login.html");
+response.sendRedirect("Login.html");
 }
 %>
 
@@ -457,26 +457,26 @@ if (session.getAttribute("username")==null)
 
 function valid1()
 {
-	
-	var project_name = document.getElementsByName("projectname")[0].value;
-	
-		var descr = document.getElementsByName("descr")[0].value;
-	var appno = document.getElementsByName("appno")[0].value;
-	var Startdate = document.getElementsByName("Startdate")[0].value;
-	var Intdate = document.getElementsByName("Intdate")[0].value;
-	var Plandate = document.getElementsByName("Plandate")[0].value;
-	var Execdate = document.getElementsByName("Execdate")[0].value;
-	var Hyperdate = document.getElementsByName("Hyperdate")[0].value;
-	var Enddate = document.getElementsByName("Enddate")[0].value;
-	var flag=0;
-	<%@ page import="java.sql.*"%>
-	<%@ page import="javax.sql.*"%>
-	<%@ page import="java.util.ArrayList" %>
-	<%
-	String[] values_name = new String[5];
-	ArrayList<String> zoom = new ArrayList<String>();
-	int i=0;
-	int count=0;
+ 
+var project_name = document.getElementsByName("projectname")[0].value;
+ 
+var descr = document.getElementsByName("descr")[0].value;
+var appno = document.getElementsByName("appno")[0].value;
+var Startdate = document.getElementsByName("Startdate")[0].value;
+var Intdate = document.getElementsByName("Intdate")[0].value;
+var Plandate = document.getElementsByName("Plandate")[0].value;
+var Execdate = document.getElementsByName("Execdate")[0].value;
+var Hyperdate = document.getElementsByName("Hyperdate")[0].value;
+var Enddate = document.getElementsByName("Enddate")[0].value;
+var flag=0;
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%@ page import="java.util.ArrayList" %>
+<%
+String[] values_name = new String[5];
+ArrayList<String> zoom = new ArrayList<String>();
+int i=0;
+int count=0;
     String project_name=request.getParameter("projectname"); 
     HttpSession details=request.getSession();
     String roles=(String)details.getAttribute("role");
@@ -487,7 +487,7 @@ Statement st= con.createStatement();
 /*ResultSet rs1=st.executeQuery("select count(*) from projinfo ");
 while (rs1.next())
 {
-	count= Integer.parseInt(rs1.getString(1));
+count= Integer.parseInt(rs1.getString(1));
 }
 */
 
@@ -495,8 +495,8 @@ ResultSet rs=st.executeQuery("select projectname from projinfo ");
 while (rs.next())
 {
 
-	//values_name[i] = rs.getString(1);
-	zoom.add(rs.getString(1));
+//values_name[i] = rs.getString(1);
+zoom.add(rs.getString(1));
     //System.out.println("Hello " + values_name[i]);
     //i++;
 }   
@@ -507,53 +507,53 @@ for (String z : zoom) {
 %>
 
 if (project_name == "<%= z %>" ) 
-		
-	{
-	flag=1;
-	
-	}
+ 
+{
+flag=1;
+ 
+}
 
 <% } %> 
 
  
 
-	if (project_name == "" || descr == "" || Startdate == "" || Enddate == "" )
-		{
-		alert("Please fill the mandatory fields");
-		return false;
-		}
-	
-	else if (flag == 1)
-		{
-		alert("Project Already Exists");
-		return false;
-		}
-	else
-		{
-	var f=document.loginForm;
+if (project_name == "" || descr == "" || Startdate == "" || Enddate == "" )
+{
+alert("Please fill the mandatory fields");
+return false;
+}
+ 
+else if (flag == 1)
+{
+alert("Project Already Exists");
+return false;
+}
+else
+{
+var f=document.loginForm;
     f.method="post";
     f.action='Project';
     f.submit();   
-		}
+}
 }
 
 
 function validation(pro_name)
 {
 
-	if (project_name == Pro_name)
-		{
-		alert("Project Already Exists");
-		}
-	else
-		{
-		var f=document.loginForm;
-	    f.method="post";
-	    f.action='Project';
-	    f.submit(); 
-		}
-	
-	
+if (project_name == Pro_name)
+{
+alert("Project Already Exists");
+}
+else
+{
+var f=document.loginForm;
+    f.method="post";
+    f.action='Project';
+    f.submit(); 
+}
+ 
+ 
 }
 </script>
 <style>
@@ -616,8 +616,7 @@ function validation(pro_name)
                             </ul>
                         </li>
                         <li><a href="applnprior.jsp">Application-Prioritized</li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
+                     
 
                     </ul>
                 </li>

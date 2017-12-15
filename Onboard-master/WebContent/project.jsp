@@ -236,7 +236,7 @@ f.submit();
   
 </head>
 <!--from  w  w w  . ja  va 2 s.co  m-->
-  <body style='margin:30px'>
+  <body style='margin:20px'>
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 
@@ -311,14 +311,14 @@ ResultSet rs = st.executeQuery(query);
        
             <div class="row">
             <br>
-                <div class="col-sm-2 col-md-2 sidebar">
+                <div class="col-md-1 sidebar">
                     <ul class="nav nav-sidebar">
                     <br>
                        
                     </ul>
                 </div>
                 
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <h1 class="page-header">Projects</h1>
                     
                     <div class="main">
@@ -333,7 +333,9 @@ ResultSet rs = st.executeQuery(query);
 
 <ul>
 <%
+int k=0;
 while(rs.next()){
+	k++;
 %> 
 <li>
 <h3 class="cbp-vm-title left-col primary" name="name"><%=rs.getString(1)%></h3>
@@ -345,17 +347,31 @@ while(rs1.next())
 if(rs1.getString(15).equals("100"))
 continue;
 else
-{
-
-
-%> <center><div class="progress center-col cbp-vm-detail">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%=rs1.getString(15) %>"
-  aria-valuemin="0" aria-valuemax="100" style="width:<%=rs1.getString(15) %>%">
-  <%=rs1.getString(15) %>
-  </div>
-  
-</div>
-</center>
+{%>
+	<center><div class="progress center-col cbp-vm-detail">
+	  <div class="progress-bar progress-bar-success progress-bar-striped" id="prog_bar<%=k %>" role="progressbar" aria-valuenow="<%=rs1.getString(15) %>"
+	  aria-valuemin="0" aria-valuemax="100" style="width:<%=rs1.getString(15) %>%">
+	  <%=rs1.getString(15) %>%
+	  </div>
+	  
+	</div>
+	</center>
+	<%
+	System.out.println("k value is : "+k);
+	if(Integer.parseInt(rs1.getString(15))<35){
+%>
+<script>
+document.getElementById('prog_bar<%=k%>').className='progress-bar progress-bar-danger progress-bar-striped';</script>
+<%
+System.out.println("danger prog_bar"+k);
+	} 
+else if(Integer.parseInt(rs1.getString(15))<65){
+%>
+<script>
+document.getElementById('prog_bar<%=k%>').className='progress-bar progress-bar-warning progress-bar-striped';
+</script>
+<%
+} %>
 <h5 class="cbp-vm-title right-col primary" ><%=rs1.getString(3) %></h5>
 <%
 break;

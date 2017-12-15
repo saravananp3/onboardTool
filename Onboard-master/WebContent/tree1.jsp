@@ -53,18 +53,18 @@
 
     
     $(function() {
-	    $( "#RO_DATE" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#RO_DATE" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
     
     $(function() {
-	    $( "#SME_DATE" ).datepicker({
-	        format: "dd/mm/yyyy",
-	        autoclose: true
-	    });
-	});
+    $( "#SME_DATE" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
    </script>
     
     <script type="text/javascript">
@@ -169,15 +169,15 @@
    
    background:#3276B1 ;
    position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
+top: 45px;
+left: -1%;
+padding-left:0px;
+width:300px !important;
+bottom: 0px;
+overflow: auto;
+color:white;
+text-size:30%;
+} 
  
 
 
@@ -381,33 +381,33 @@ $(function() {
   <script>
 function checkk()
 {
-	document.getElementById('prj_name').readOnly = true;
-	document.getElementById('IA_lic_cst').readOnly = true;
-	document.getElementById('IA_maint_cst').readOnly = true;
-	document.getElementById('Infrastrct_cst').readOnly = true;
-	document.getElementById('strg_est').readOnly = true;
-	document.getElementById('lab_cst').readOnly = true;
-	document.getElementById('proj_name').readOnly = true;
-	document.getElementById('data_size').disabled = true;
-	document.getElementById('curnt_users').disabled = true;
-	document.getElementById('complexity').disabled = true;
-	document.getElementById('RO_DATE').readOnly = true;
-	document.getElementById('SME_DATE').readOnly = true;
-	document.getElementById('est_archive').readOnly = true;
-	document.getElementById('est_scrn').readOnly = true;
-	document.getElementById('est_db_size').readOnly = true;
-	document.getElementById('est_hrs').readOnly = true;
-	document.getElementById('est_cst').readOnly = true;
-	document.getElementById('ttl_IA_cst').readOnly = true;
-	document.getElementById('ttl_infra_cst').readOnly = true;
-	document.getElementById('ttl_IA_prdct_cst').readOnly = true;
-	document.getElementById('ttl').readOnly = true;
-	document.getElementById('ttl_cst_fr_app').readOnly = true;
-	document.getElementById('add_cst_fr_contigency').readOnly = true;
-	document.getElementById('add_cst').readOnly = true;
-	document.getElementById('IA_app_sprt_cst').readOnly = true;
-	document.getElementById('est_archive_cst').readOnly = true;
-	
+document.getElementById('prj_name').readOnly = true;
+document.getElementById('IA_lic_cst').readOnly = true;
+document.getElementById('IA_maint_cst').readOnly = true;
+document.getElementById('Infrastrct_cst').readOnly = true;
+document.getElementById('strg_est').readOnly = true;
+document.getElementById('lab_cst').readOnly = true;
+document.getElementById('proj_name').readOnly = true;
+document.getElementById('data_size').disabled = true;
+document.getElementById('curnt_users').disabled = true;
+document.getElementById('complexity').disabled = true;
+document.getElementById('RO_DATE').readOnly = true;
+document.getElementById('SME_DATE').readOnly = true;
+document.getElementById('est_archive').readOnly = true;
+document.getElementById('est_scrn').readOnly = true;
+document.getElementById('est_db_size').readOnly = true;
+document.getElementById('est_hrs').readOnly = true;
+document.getElementById('est_cst').readOnly = true;
+document.getElementById('ttl_IA_cst').readOnly = true;
+document.getElementById('ttl_infra_cst').readOnly = true;
+document.getElementById('ttl_IA_prdct_cst').readOnly = true;
+document.getElementById('ttl').readOnly = true;
+document.getElementById('ttl_cst_fr_app').readOnly = true;
+document.getElementById('add_cst_fr_contigency').readOnly = true;
+document.getElementById('add_cst').readOnly = true;
+document.getElementById('IA_app_sprt_cst').readOnly = true;
+document.getElementById('est_archive_cst').readOnly = true;
+ 
 }
 </script>
  
@@ -421,14 +421,14 @@ function checkk()
 <%
 double ans=0.0;
 try {
-	HttpSession details=request.getSession();
-	String roles=(String)details.getAttribute("role");
-	String info=(String)details.getAttribute("app_emp");
-	String appno=(String)details.getAttribute("appno");
-	String projectname=request.getParameter("name");
-	String det=(String)session.getAttribute("theName");
-	System.out.println("-- "+info+"-- "+appno+"---"+projectname+"---"+det);
-	
+HttpSession details=request.getSession();
+String roles=(String)details.getAttribute("role");
+String info=(String)details.getAttribute("app_emp");
+String appno=(String)details.getAttribute("appno");
+String projectname=request.getParameter("name");
+String det=(String)session.getAttribute("theName");
+System.out.println("-- "+info+"-- "+appno+"---"+projectname+"---"+det);
+ 
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query = "SELECT * from app_prior where prj_name='"+projectname+"'";
@@ -461,8 +461,8 @@ String sum=result.getString(1);
 <script type="text/javascript">
   var e;
  function updatesum() {
-	 var x=document.loginForm.data_size.value;
-	  var y=document.loginForm.curnt_users.value;
+var x=document.loginForm.data_size.value;
+  var y=document.loginForm.curnt_users.value;
 
 var a,b,c,d,z;
 if(x.charAt(0)=='<' && y.charAt(1)=='1'&&y.length<=3)
@@ -566,11 +566,11 @@ if(x.charAt(0)=='>' && y.charAt(0)=='1')
 document.loginForm.complexity.value ="High";
 }
 if(document.loginForm.complexity.value=="Low")
-	{
-	document.loginForm.est_archive.value =700;
-	document.loginForm.est_scrn.value ="<=5";
-	z=1;
-	}
+{
+document.loginForm.est_archive.value =700;
+document.loginForm.est_scrn.value ="<=5";
+z=1;
+}
 if(document.loginForm.complexity.value=="Low to Medium")
 {
 document.loginForm.est_archive.value =1000;
@@ -614,38 +614,38 @@ document.loginForm.est_archive_cst.value="$"+document.loginForm.ttl_cst_fr_app.v
 }
 function add()
 {
-	var i;
-	i=(document.loginForm.ttl_cst_fr_app.value-0)+(document.loginForm.add_cst_fr_contigency.value-0)+(document.loginForm.add_cst.value-0)+(document.loginForm.IA_app_sprt_cst.value-0);
-	document.loginForm.est_archive_cst.value="$"+i.toFixed(2); 
+var i;
+i=(document.loginForm.ttl_cst_fr_app.value-0)+(document.loginForm.add_cst_fr_contigency.value-0)+(document.loginForm.add_cst.value-0)+(document.loginForm.IA_app_sprt_cst.value-0);
+document.loginForm.est_archive_cst.value="$"+i.toFixed(2); 
 }
 </script>
 <script>
 function switchColors0()
 {
-	 
-	links=document.getElementsByTagName("li") ;  
-	var element=document.getElementById("xxx");
-	for (var i = 0 ; i < links.length ; i ++)  
-		links.item(i).style.backgroundColor = '#3276B1' ; 
-	element.style.borderRadius="5px";
-	element.style.marginRight = "70px";
-	element.style.boxSizing = "content-box";
-	element.style.borderColor = "#3276B1";
-	element.style.background="#3276B1"; 
-	var list = document.getElementsByTagName("OL")[0];
-	var x=list.getElementsByTagName("LI");
-	for (var i = 0 ; i < x.length ; i ++)  
-		x.item(i).style.backgroundColor = '#3276B1' ; 
-	
-	}
-	</script>
+ 
+links=document.getElementsByTagName("li") ;  
+var element=document.getElementById("xxx");
+for (var i = 0 ; i < links.length ; i ++)  
+links.item(i).style.backgroundColor = '#3276B1' ; 
+element.style.borderRadius="5px";
+element.style.marginRight = "70px";
+element.style.boxSizing = "content-box";
+element.style.borderColor = "#3276B1";
+element.style.background="#3276B1"; 
+var list = document.getElementsByTagName("OL")[0];
+var x=list.getElementsByTagName("LI");
+for (var i = 0 ; i < x.length ; i ++)  
+x.item(i).style.backgroundColor = '#3276B1' ; 
+ 
+}
+</script>
 <script>
 function switchColors()  
 {  
-	links=document.getElementsByTagName("li") ; 	 
+links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("xxz");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = '#3276B1' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "85px";
 element.style.boxSizing = "content-box";
@@ -654,7 +654,7 @@ element.style.background="#3276B1";
 var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = '#3276B1' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -665,7 +665,7 @@ function switchColors1()
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("xxy");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = '#3276B1' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "150px";
 element.style.boxSizing = "content-box";
@@ -674,7 +674,7 @@ element.style.background="#3276B1";
 var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = '#3276B1' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 
 
 } 
@@ -696,7 +696,7 @@ Statement s2 = conn.createStatement();
 ResultSet rss = s2.executeQuery(q2);
 while(rss.next())
 {
-	session.setAttribute(rss.getString(3),rss.getString(15));
+session.setAttribute(rss.getString(3),rss.getString(15));
 }%>
               
                 <div id="navbar" class="navbar-collapse">
@@ -729,9 +729,9 @@ while(rss.next())
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
-                <li >App Emphasize Module
+                <li ><a href="editproject.jsp">App Emphasize Module
                     <ul>
-                       <li >Project Details
+                       <li ><a href="editproject.jsp">Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
@@ -746,9 +746,7 @@ while(rss.next())
                             </ul>
                         </li>
                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                        
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                      
+          
 
                     </ul>
                 </li>
@@ -824,13 +822,13 @@ String plan=(String)session.getAttribute("Plan");
 String execute=(String)session.getAttribute("Execute");
 String hypercare=(String)session.getAttribute("Closure");
 if(initiate == null)
-	initiate="0";
+initiate="0";
 if(plan == null)
-	plan="0";
+plan="0";
 if(execute == null)
-	execute="0";
+execute="0";
 if(hypercare == null)
-	hypercare="0";
+hypercare="0";
 %>                            
 
 <div class="row">
@@ -839,32 +837,37 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Closure</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-stripedss-bar" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
 </div></div></div>
-</div>
+</div><jsp:include page="progress_details.jsp" >
+<jsp:param name="Initiate" value="<%=initiate %>"/>
+<jsp:param name="Plan" value="<%=plan %>"/>
+<jsp:param name="Execute" value="<%=execute %>"/>
+<jsp:param name="Hypercare" value="<%=hypercare %>"/>
+</jsp:include>
  <div class="row">
-		
+ 
         
             <div class="row bs-wizard" style="border-bottom:0;">
                 
@@ -896,13 +899,13 @@ if(hypercare == null)
         
         
         
-	</div>
+</div>
         
 <script> 
 links=document.getElementsByTagName("li") ;  
 var element=document.getElementById("xxx");
 for (var i = 0 ; i < links.length ; i ++)  
-	links.item(i).style.backgroundColor = '#3276B1' ; 
+links.item(i).style.backgroundColor = '#3276B1' ; 
 element.style.borderRadius="5px";
 element.style.marginRight = "70px";
 element.style.boxSizing = "content-box";
@@ -911,7 +914,7 @@ element.style.background="#3276B1";
 var list = document.getElementsByTagName("UL")[0];
 var x=list.getElementsByTagName("LI");
 for (var i = 0 ; i < x.length ; i ++)  
-	x.item(i).style.backgroundColor = '#3276B1' ; 
+x.item(i).style.backgroundColor = '#3276B1' ; 
 </script>
 
 
@@ -1031,7 +1034,7 @@ while(rs1.next()){
         </tr>
         <% } 
         
-	
+ 
         %>
     </tbody>
     </table>
@@ -1183,7 +1186,7 @@ for(var i=0; i<edit_row.length; i++) {
                                              <div class="input-group">
                                                <input type="text" class="form-control" id="add_cst_fr_contigency" name="add_cst_fr_contigency" onChange="add()" value="<%=rs.getString("add_cst_fr_contigency")%>"> 
                                                 <div class="input-group-addon">
-	                                           <a href="#" data-toggle="tooltip" title="Infra Setup/unplanned labor/travel Etc."> <span class="glyphicon glyphicon-info-sign" ></span></a> 
+                                           <a href="#" data-toggle="tooltip" title="Infra Setup/unplanned labor/travel Etc."> <span class="glyphicon glyphicon-info-sign" ></span></a> 
                                                </div>
                                                </div>                                     
                                         </div>
@@ -1192,7 +1195,7 @@ for(var i=0; i<edit_row.length; i++) {
                                              <div class="input-group">                                        
                                             <input type="text" class="form-control" id="add_cst" name="add_cst" onChange="add()" value="<%=rs.getString("add_cst")%>">
                                             <div class="input-group-addon">
-	                                           <a href="#" data-toggle="tooltip" title="if there is a program team"> <span class="glyphicon glyphicon-info-sign" ></span></a> 
+                                           <a href="#" data-toggle="tooltip" title="if there is a program team"> <span class="glyphicon glyphicon-info-sign" ></span></a> 
                                                </div>
                                                </div>    
                                         </div>
@@ -1215,7 +1218,7 @@ for(var i=0; i<edit_row.length; i++) {
                       function OnButton1()
                       {
                           document.loginForm.action = "Displaydb"
-                        	  document.loginForm.submit();   
+                          document.loginForm.submit();   
                           // document.Form1.target = "_blank";    // Open in a new window
                           document.loginForm.submit();             // Submit the page
                       }
@@ -1236,7 +1239,7 @@ for(var i=0; i<edit_row.length; i++) {
                             </div>
                             <script>
  if(document.getElementById('pwqej').value=="R")
-	 checkk();
+checkk();
  </script>
                              <%
 }

@@ -406,9 +406,9 @@ while(rss.next())
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
-                <li item-expanded='true'>App Emphasize Module
+                <li item-expanded='true'><a href="editproject.jsp">App Emphasize Module
                     <ul>
-                       <li item-expanded='true'>Project Details
+                       <li item-expanded='true'><a href="editproject.jsp">Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
                         <li item-selected='true'><a href="application1.jsp">Application Details</a></li>
@@ -423,8 +423,7 @@ while(rss.next())
                             </ul>
                         </li>
                         <li><a href="applnprior.jsp">Application-Prioritized</li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                        <li>Estimates</li>
+                     
 
                     </ul>
                 </li>
@@ -506,30 +505,36 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Closure</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
 </div></div></div>
 </div>
+<jsp:include page="progress_details.jsp" >
+<jsp:param name="Initiate" value="<%=initiate %>"/>
+<jsp:param name="Plan" value="<%=plan %>"/>
+<jsp:param name="Execute" value="<%=execute %>"/>
+<jsp:param name="Hypercare" value="<%=hypercare %>"/>
+</jsp:include>
                     <div class="panel-group" id="panels1"> 
                     <br/><br/><br/>
                                                        

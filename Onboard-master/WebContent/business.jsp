@@ -246,15 +246,15 @@ $(function() {
    
    background:#3276B1 ;
    position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
+top: 45px;
+left: -1%;
+padding-left:0px;
+width:300px !important;
+bottom: 0px;
+overflow: auto;
+color:white;
+text-size:30%;
+} 
  
 
 
@@ -503,85 +503,85 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 
 
 function validateform() {
-	
-	var legappname = document.loginForm.legappname.value
-	var description = document.loginForm.descr.value
-	var vendor = document.loginForm.vendor.value
-	var conExpDate = document.loginForm.expdate.value
-	var read = document.loginForm.rod.value
-	var daterange = document.loginForm.daterange.value
-	var data = document.loginForm.dbsize.value
-	var archival = document.loginForm.needarch.value
-	var reason = document.loginForm.archreason.value
-	var cmnt = document.loginForm.archcmnt.value
+ 
+var legappname = document.loginForm.legappname.value
+var description = document.loginForm.descr.value
+var vendor = document.loginForm.vendor.value
+var conExpDate = document.loginForm.expdate.value
+var read = document.loginForm.rod.value
+var daterange = document.loginForm.daterange.value
+var data = document.loginForm.dbsize.value
+var archival = document.loginForm.needarch.value
+var reason = document.loginForm.archreason.value
+var cmnt = document.loginForm.archcmnt.value
 
 
-	if(legappname=="" || description=="" || vendor == "" || conExpDate =="" || read=="" || daterange =="" || data=="" || archival=="" || reason=="" || cmnt =="")	
-		
-		{
-		alert("Please Fill the Mandatory Field");
-		}
-	else{
-		
-		toggle();
-	}
+if(legappname=="" || description=="" || vendor == "" || conExpDate =="" || read=="" || daterange =="" || data=="" || archival=="" || reason=="" || cmnt =="")
+ 
+{
+alert("Please Fill the Mandatory Field");
+}
+else{
+ 
+toggle();
+}
 }
 </script>
 <script language="javascript"> 
 function toggle() {
-	var ele = document.getElementById("collapse2");
-	
-	if(ele.style.display == "block") {
-    		ele.style.display = "none";
-		text.innerHTML = "show";
-  	}
-	else {
-		ele.style.display = "block";
-		text.innerHTML = "hide";
-	}
+var ele = document.getElementById("collapse2");
+ 
+if(ele.style.display == "block") {
+    ele.style.display = "none";
+text.innerHTML = "show";
+  }
+else {
+ele.style.display = "block";
+text.innerHTML = "hide";
+}
 } 
 </script>
 <script>
 
 
 function validateform1() {
-	
-	var record = document.loginForm.reccode.value
-	var trigger = document.loginForm.triggerdate.value
-	var retention = document.loginForm.retentionperiod.value
-	var table = document.loginForm.retentiontable.value
-	var path = document.loginForm.file.value
-	var name = document.loginForm.retentionname.value
-	var reason1 = document.loginForm.reason.value
-	var explain = document.loginForm.archexp.value
-	
-	if(record ==""|| trigger==""||retention=="" ||table=="" || path == "" || name =="" || reason1 =="" || explain == "" )	
-		
-		{
-		alert("Please Fill the Mandatory Field");
-		
-		  
-		}
-	else{
-		toggle1();
-	}
-	
-	
-	
+ 
+var record = document.loginForm.reccode.value
+var trigger = document.loginForm.triggerdate.value
+var retention = document.loginForm.retentionperiod.value
+var table = document.loginForm.retentiontable.value
+var path = document.loginForm.file.value
+var name = document.loginForm.retentionname.value
+var reason1 = document.loginForm.reason.value
+var explain = document.loginForm.archexp.value
+ 
+if(record ==""|| trigger==""||retention=="" ||table=="" || path == "" || name =="" || reason1 =="" || explain == "" )
+ 
+{
+alert("Please Fill the Mandatory Field");
+ 
+  
+}
+else{
+toggle1();
+}
+ 
+ 
+ 
 }
 </script>
 <script language="javascript"> 
 function toggle1() {
-	var ele = document.getElementById("collapse3");
-	
-	if(ele.style.display == "block") {
-    		ele.style.display = "none";
-		text.innerHTML = "show";
-  	}
-	else {
-		ele.style.display = "block";
-		text.innerHTML = "hide";
-	}
+var ele = document.getElementById("collapse3");
+ 
+if(ele.style.display == "block") {
+    ele.style.display = "none";
+text.innerHTML = "show";
+  }
+else {
+ele.style.display = "block";
+text.innerHTML = "hide";
+}
 } 
 </script>
 
@@ -589,21 +589,21 @@ function toggle1() {
 
 
 function validateform2() {
-	
-	var local = document.loginForm.localreq.value
-	var country = document.loginForm.localcountry.value
-	var infra = document.loginForm.localinf.value
-	var data = document.loginForm.datacenters.value
-	
-	if(local ==""|| country=="" || infra =="" || data == "")	
-		
-		{
-		alert("Please Fill the Mandatory Field");
-				  
-		}	
-	else{
-		toggle2();
-	}
+ 
+var local = document.loginForm.localreq.value
+var country = document.loginForm.localcountry.value
+var infra = document.loginForm.localinf.value
+var data = document.loginForm.datacenters.value
+ 
+if(local ==""|| country=="" || infra =="" || data == "")
+ 
+{
+alert("Please Fill the Mandatory Field");
+  
+}
+else{
+toggle2();
+}
 }
 </script>
 <script>
@@ -749,14 +749,14 @@ response.setHeader("Expires", "0"); // Proxies.
 
 if (session.getAttribute("username")==null)
 {
-	response.sendRedirect("Login.html");
+response.sendRedirect("Login.html");
 }
 %>
 
 
 <%
 try {
-	HttpSession details=request.getSession();
+HttpSession details=request.getSession();
 	String info=(String)details.getAttribute("intake");
 	String roles=(String)details.getAttribute("role");
 String det=(String)session.getAttribute("theName");
@@ -776,6 +776,8 @@ Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 System.out.println(query4);
 String imp_id="";
+String sequenceNumber="";
+int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
 {
 %>
 
@@ -806,6 +808,46 @@ String imp_id="";
                 
                   while(rss2.next()){
                   	session.setAttribute(rss2.getString(3),rss2.getString(15));
+                  	System.out.println(rss2.getString(3));
+                  }
+                  
+                  String quer5="select seq_num from archive_exec where name='Build and Test'";
+                  Statement s5 = conn.createStatement();
+                  ResultSet rss3 = s5.executeQuery(quer5);
+                  if(rss3.next())
+                	  sequenceNumber=rss3.getString(1);
+                  System.out.println(sequenceNumber);
+                  String quer6="select * from archive_exec where projects='"+rs3.getString("projectname")+"' and seq_num>"+sequenceNumber+" and seq_num<"+(sequenceNumber+33)+" and level=4";
+                  Statement s6 = conn.createStatement();
+                  ResultSet rss4 = s6.executeQuery(quer6);
+                  int knt=0;
+                  System.out.println("bala");
+                  while(rss4.next())
+                  {
+                	  if(knt>2)
+                	  {
+                		  if(rss4.getString(9).equals(""))
+                			  actualHours1+=0;
+                		  else
+                		  actualHours1+=Integer.parseInt(rss4.getString(9));
+                		  if(rss4.getString(13).equals(""))
+                			  plannedHours1+=0;
+                		  else
+                		  plannedHours1+=Integer.parseInt(rss4.getString(13)); 
+                	  }
+                	  else
+                	  { System.out.println("murugan");
+                		  if(rss4.getString(9).equals(""))
+                			  actualHours+=0;
+                		  else
+                		  actualHours+=Integer.parseInt(rss4.getString(9));
+                		  if(rss4.getString(13).equals(""))
+                			  plannedHours+=0;
+                		  else
+                		  plannedHours+=Integer.parseInt(rss4.getString(13)); 
+                		  System.out.println(actualHours);
+                	  }
+                	 knt++;
                   }
                     } }%>
               
@@ -838,9 +880,9 @@ String imp_id="";
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
-                <li item-expanded='true'>App Emphasize Module
+                <li item-expanded='true'><a href="editproject.jsp">App Emphasize Module
                     <ul>
-                       <li item-expanded='true'>Project Details
+                       <li item-expanded='true'><a href="editproject.jsp">Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
@@ -854,9 +896,7 @@ String imp_id="";
                                
                             </ul>
                         </li>
-                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li> <a href="demo.jsp">ROI Calculation</a></li>
-                     
+                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>                 
 
                     </ul>
                 </li>
@@ -922,13 +962,13 @@ String plan=(String)session.getAttribute("Plan");
 String execute=(String)session.getAttribute("Execute");
 String hypercare=(String)session.getAttribute("Closure");
 if(initiate == null)
-	initiate="0";
+initiate="0";
 if(plan == null)
-	plan="0";
+plan="0";
 if(execute == null)
-	execute="0";
+execute="0";
 if(hypercare == null)
-	hypercare="0";
+hypercare="0";
 %>                            
 <br/><br/><br/>
 <div class="row">
@@ -937,69 +977,84 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Closure</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar progress-bar-success progress-bar-stripedss-bar" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
 </div></div></div>
 </div>
+
      <br>
                 <div class="row">
     <%
+     int dev=0,test=0;
 String requirements=(String)session.getAttribute("Requirements");
-
+String implement=(String)session.getAttribute("Implement");
+    if(plannedHours!=0)
+     dev=(actualHours*100)/plannedHours;
+    if(plannedHours1!=0)
+     test=(actualHours1*100)/plannedHours1;
+    String development=String.valueOf(dev);
+    String testing=String.valueOf(test);
 if(requirements == null)
-	requirements="0";
+requirements="0";
+if(implement == null)
+	implement="0";
 
 %>
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Requirements</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=requirements%>%" aria-valuenow="<%=requirements %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=requirements %>%</span></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar4" style="width: <%=requirements%>%" aria-valuenow="<%=requirements %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=requirements %>%</span></div>
   </div></div></div>
-
-  <div class="col-md-3">
+<div class="col-md-3">
   <div class="form-group">
   <center><label >Development</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-
-  <div class="col-md-3">
+  <div class="progress-bar" role="progressbar" id="prog_bar5" style="width: <%=development%>%" aria-valuenow="<%=development %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=development %>%</span></div>
+  </div></div></div>
+ <div class="col-md-3">
   <div class="form-group">
   <center><label >Testing</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div></div></div>
-
+  <div class="progress-bar" role="progressbar" id="prog_bar6" style="width: <%=testing%>%" aria-valuenow="<%=testing %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=testing %>%</span></div>
+  </div></div></div>
  <div class="col-md-3">
  <div class="form-group">
- <center><label >Deployement</label></center>
+ <center><label >Deployment</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar7" style="width: <%=implement%>%" aria-valuenow="<%=implement%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=implement %>%</span></div>
 </div></div></div>
 </div>
-
-
+<jsp:include page="progress_details1.jsp" >
+<jsp:param name="Initiate" value="<%=initiate %>"/>
+<jsp:param name="Plan" value="<%=plan %>"/>
+<jsp:param name="Execute" value="<%=execute %>"/>
+<jsp:param name="Hypercare" value="<%=hypercare %>"/>
+<jsp:param name="Requirements" value="<%=requirements %>"/>
+<jsp:param name="Development" value="<%=development %>"/>
+<jsp:param name="Testing" value="<%=testing %>"/>
+<jsp:param name="Deployment" value="<%=implement %>"/>
+</jsp:include>
 
 <br/>
 
@@ -1121,7 +1176,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Contract Value of Application</label>
-            <input placeholder="Vendor/Manufacturer" id="contractvalue" name="contractvalue" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Contract Value" id="contractvalue" name="contractvalue" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
@@ -1145,14 +1200,14 @@ x.item(i).style.backgroundColor = '#3276B1' ;
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Comment</label>
-            <input placeholder="Description" id="cmnt" name="cmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Comments" id="cmnt" name="cmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">If the applications transitions has dependencies?</label>
-            <input placeholder="Vendor/Manufacturer" id="hasdep" name="hasdep" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="" id="hasdep" name="hasdep" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>    
@@ -1166,21 +1221,21 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Size of Database</div></label>
-            <input placeholder="Vendor/Manufacturer" id="dbsize" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="Size" id="dbsize" name="dbsize" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Location of Data</label>
-            <input placeholder="Vendor/Manufacturer" id="dataloc" name="dataloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="location" id="dataloc" name="dataloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Site Location of Data</label>
-            <input placeholder="Vendor/Manufacturer" id="siteloc" name="siteloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="sitelocation" id="siteloc" name="siteloc" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div>
@@ -1196,14 +1251,14 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Reason</div></label>
-            <input placeholder="Vendor/Manufacturer" id="archreason" name="archreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="Reason" id="archreason" name="archreason" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>  
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Comments</div></label>
-            <input placeholder="Vendor/Manufacturer" id="archcmnt" name="archcmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="Comments" id="archcmnt" name="archcmnt" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
@@ -1229,7 +1284,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                     <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Record code of Application</div></label>
-            <input placeholder="Vendor/Manufacturer" id="reccode" name="reccode" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required />
+            <input placeholder="Recordcode" id="reccode" name="reccode" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required />
           </div>
           
         </div> 
@@ -1243,14 +1298,14 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Period of Retention</div></label>
-            <input placeholder="Vendor/Manufacturer" id="retentionperiod" name="retentionperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="RententionPeriod" id="retentionperiod" name="retentionperiod" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Table Name/s where Retention need to apply</div></label>
-            <input placeholder="Vendor/Manufacturer" id="retentiontable" name="retentiontable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="Table Name" id="retentiontable" name="retentiontable" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
@@ -1260,7 +1315,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Name of the Legal Retention & e-Discovery SME</div></label>
-            <input placeholder="Vendor/Manufacturer" id="retentionname" name="retentionname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="Name of Retention" id="retentionname" name="retentionname" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div> 
@@ -1276,7 +1331,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Who or what entity provided legal or tax hold identification</label>
-            <input placeholder="Vendor/Manufacturer" id="wholegal" name="wholegal" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Identification" id="wholegal" name="wholegal" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
@@ -1292,7 +1347,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
         <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label"><div class="required">Brief Explanation</div></label>
-            <input placeholder="Vendor/Manufacturer" id="archexp" name="archexp" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
+            <input placeholder="Explaination" id="archexp" name="archexp" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" required>
           </div>
           
         </div>             
@@ -1462,7 +1517,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label">Brief Explanation</label>
-            <input placeholder="Vendor/Manufacturer" id="expl" name="expl" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Explaination" id="expl" name="expl" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
@@ -1497,7 +1552,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label "><div class="required">Infrastructure Localization enforcement, please list the locations of the datacenters</div></label>
-            <input placeholder="Vendor/Manufacturer" id="vendor1" name="datacenters" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="location" id="vendor1" name="datacenters" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
@@ -1513,35 +1568,35 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label required">Describe who or what external entity needs access </label>
-            <input placeholder="Vendor/Manufacturer" id="vendor2" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="" id="vendor2" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">User Name</label>
-            <input placeholder="Vendor/Manufacturer" id="vendor3" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Username" id="vendor3" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Role Description</label>
-            <input placeholder="Vendor/Manufacturer" id="vendor4" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="RoleDescription" id="vendor4" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Reason for Access</label>
-            <input placeholder="Vendor/Manufacturer" id="vendor5" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Reason" id="vendor5" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 
          <div class="form-group row log-date">
           <div class="col-md-12">
             <label class="control-label ">Frequency of Access</label>
-            <input placeholder="Vendor/Manufacturer" id="vendor6" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="Frequency" id="vendor6" name="vendor" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
           </div>
           
         </div> 

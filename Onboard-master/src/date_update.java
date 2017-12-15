@@ -63,6 +63,7 @@ public class date_update extends HttpServlet {
 		     Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
 		     String query = "select * from archive_exec where projects='"+prjname+"' order by seq_num";
 		     Statement st = conn.createStatement();
+		     Statement sr=conn.createStatement();
 		     ResultSet rs = st.executeQuery(query);
 		     SimpleDateFormat fmt = new SimpleDateFormat("MM/dd/yyyy");
 		     //DateFormat d3 = new SimpleDateFormat("mm/dd/yyyy");
@@ -98,7 +99,8 @@ public class date_update extends HttpServlet {
 		  	
 		  	i++;
 		     }
-	
+		     System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+		     System.out.println("ïiiiiiiii"+i);
 		  String tasks_name=request.getParameter("name");
 		  String sequence_no=request.getParameter("sequence_no");
 		  String plan_start=request.getParameter("plan_start");
@@ -107,24 +109,34 @@ public class date_update extends HttpServlet {
 		  String actual_end=request.getParameter("actual_end");
 		  String planned_hrs=request.getParameter("plan_hrs");
 		  String actual_hrs=request.getParameter("actual_hrs");
+		  System.out.println("bala");
+		 int seq_no=Integer.parseInt(request.getParameter("sequence_no"));
+		  int initiate_seqno=Integer.parseInt(request.getParameter("initiate_seqno"));
+		  int plan_seqno=Integer.parseInt(request.getParameter("plan_seqno"));
+		  int execute_seqno=Integer.parseInt(request.getParameter("execute_seqno"));
+		  int hypercare_seqno=Integer.parseInt(request.getParameter("hypercare_seqno"));
+		  System.out.println("murugan");
+		  int first=0,last=0;
+		  int date_count=0;
 	
-		  	
+		  System.out.println(seq_no+"  "+initiate_seqno+" "+plan_seqno+" "+execute_seqno);
+			 
 		  
 		     for(int j=0;j<i;j++)
 		     {
+		    	 
 		  	   if (seq_num.get(j)==Integer.parseInt(sequence_no))
 		  	   {
 		  		   level=level_num.get(j);
 		  		   seq=seq_num.get(j);
 		  		   index=j;
 		  		   level1=level;
-	
+		  		
 
 		  		   plan_startdate.set(index,plan_start);
 		  		 plan_enddate.set(index,plan_end);
 		  		 actual_startdate.set(index,actual_start);
 		  		actual_enddate.set(index,actual_end);
-		  		 
 		  		   for(int k=index-1;k>=0;k--)
 		  		   {
 		  			 for(int w=k;w>=0;w--)
@@ -177,8 +189,10 @@ public class date_update extends HttpServlet {
 		                          String plnend=fmt.format(pmaxDate);
 		                          Date aminDate = Collections.min(act_st);
 		                          String actulstart=fmt.format(aminDate);
-		                          Date amaxDate = Collections.min(act_st);
+		                          Date amaxDate = Collections.max(act_ed);
 		                          String actulend=fmt.format(amaxDate);
+		                          
+		                          
 				  		
 		  			   if (level_num.get(k)==0)
 		  			   {
@@ -254,10 +268,11 @@ public class date_update extends HttpServlet {
 		  
 		     }
 		     
-		    
+
 
 	   for(int n=0;n<i;n++)
 			   {
+		   System.out.println("agggggggggggkjkjkjkjkggia");
 		   int planed,actl,prog;
              if(planned_hours.get(n).equals(""))
             	 planed=0;
@@ -273,13 +288,16 @@ public class date_update extends HttpServlet {
             	 prog=0;
              else
 		   prog=(actl*100)/planed;
-if(!actual_enddate.get(n).equals(""))
-	prog=100;
-		    	 st.executeUpdate("update archive_exec set progressbar='"+prog +"', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"' and projects='"+prjname+"'");
- // System.out.println("update archive_exec set act_srt_date='"+actual_startdate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"'");
+             String flag="";
+            if(planned_hours.get(n).equals(""))
+            	flag="F";
+            else
+            	flag="T";
+            	
+		    	 st.executeUpdate("update archive_exec set progressbar='"+prog +"', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"',flag='"+flag+"' where seq_num="+seq_num.get(n)+" and projects='"+prjname+"'");
+  System.out.println("update archive_exec set act_srt_date='"+actual_startdate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"'where seq_num='"+seq_num.get(n)+"'");
 			   }
-
-		   }
+	   		   }
 		   catch (Exception e)
 		   {
 		   	 
