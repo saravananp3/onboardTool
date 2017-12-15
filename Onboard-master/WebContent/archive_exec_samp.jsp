@@ -50,31 +50,28 @@
      
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
- 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
 
 $(function() {
-	 for(var i=0;i<500;i++)
-		{
-	    $( "#pln_srt_date"+i ).datepicker({
+	    $( "#pln_srt_date0").datepicker({
 	        format: "mm/dd/yyyy",
 	        autoclose: true
 	    });
-	    $( "#pln_end_date"+i ).datepicker({
+	    $( "#pln_end_date1").datepicker({
 	        format: "mm/dd/yyyy",
 	        autoclose: true
 	    });
-	    $( "#act_srt_date"+i ).datepicker({
+	    $( "#act_srt_date1").datepicker({
 	        format: "mm/dd/yyyy",
 	        autoclose: true
 	    });
-	    $( "#act_end_date"+i ).datepicker({
+	    $( "#act_end_date1").datepicker({
 	        format: "mm/dd/yyyy",
 	        autoclose: true
 	    });
 		}
 	});
-
 
 </script>		  
  
@@ -168,12 +165,6 @@ $(function() {
 				  $('#'+progressbar.id).reportprogress(percent);
 				  $('#'+status.id).css({background:'green'});
 			  }  
-			  else if (actual_enddate!="") {
-			  
-			  percent=100 ;
-			  $('#'+progressbar.id).reportprogress(percent);
-			  $('#'+status.id).css({background:'green'});
-			  }
 			  else if (percent < 20) 
 			  { $('#'+progressbar.id).reportprogress(percent);
 			  $('#'+status.id).css({background:'red'});
@@ -199,7 +190,7 @@ $(function() {
     <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '550px', width: '300px' });
+            $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
@@ -411,6 +402,61 @@ $(function() {
 
 
 </script>
+<style>
+    body
+    {
+     margin:0; padding:0; 
+    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+    }
+    .navbar-brand {
+    
+    padding: 10px;
+  border: 0px;
+  border-radius: 1px;
+   font-size: 1.15em;
+  font-weight: 400;
+    }
+    .
+    
+   .navbar-brand {
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+    
+    
+    #sitetitle{
+    
+    font-size: 22px;
+    margin:auto;
+}
+
+
+    
+    
+
+   #sidemenu
+   {
+   
+   background:#3276B1 ;
+   position: fixed;
+	top: 45px;
+	left: -1%;
+	padding-left:0px;
+	width:300px !important;
+	bottom: 0px;
+	overflow: auto;
+	color:white;
+	text-size:30%;
+	} 
+ 
+
+
+
+   </style>
  <style>
  
 .progressTSK {
@@ -562,6 +608,7 @@ if (session.getAttribute("username")==null)
 %>
 <%
 HttpSession details=request.getSession();
+String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("archive_exec");
 	String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver"); 
@@ -592,11 +639,11 @@ ResultSet rs7 = st7.executeQuery(query7);
 if(rs4.next()){
 	%>
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                 
                     <% if(rs.next()){ %>
-                    <a class="navbar-brand" href="project.jsp">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
                     <%
                     String q2="select * from archive_exec where level=1 and projects='"+rs.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
@@ -611,11 +658,13 @@ if(rs4.next()){
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
+                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
 </li>
-                      
-                        <li>
-                            <a href="logout.jsp">Logout</a>
+                      <li>
+ <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
+</li>
+                   <li>
+                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -623,6 +672,58 @@ if(rs4.next()){
             </div>
         </nav>
         </div>
+        <script>
+function check_previous(seq_no,level,previous_level,true_count)
+{
+	var true_cnt=parseInt(true_count)+1;
+//	window.alert(seq_no+"   "+true_cnt);
+	var count=1;
+if(true_cnt==seq_no){
+ if(level==previous_level)
+		{
+	var x=document.getElementById("pln_srt_date"+(seq_no-2)).value;
+	var y=document.getElementById("pln_end_date"+(seq_no-2)).value;
+	var z=document.getElementById("act_srt_date"+(seq_no-2)).value;
+	if(x=="" && y=="" && z==""){
+		count=0;
+		window.alert("please fill the aboveeee text field");
+	}
+		}
+	}
+
+else if(level!=previous_level)
+	count=1;
+else{
+	alert("Please fill the above text fields");
+	count=0;
+}
+	
+	
+if(count==1){
+	$( "#pln_srt_date"+(seq_no-1)).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+ $( "#pln_end_date"+(seq_no-1)).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+ $( "#act_srt_date"+(seq_no-1)).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+ $( "#act_end_date"+(seq_no-1)).datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
+ $( "#pln_srt_date"+(seq_no-1)).datepicker('show');
+/* $( "#pln_end_date"+(seq_no-1)).datepicker('show');
+ $( "#act_srt_date"+(seq_no-1)).datepicker('show');
+ $( "#act_end_date"+(seq_no-1)).datepicker('show');*/
+}
+}
+
+</script>
        
             <div class="row">
             <br>
@@ -630,74 +731,64 @@ if(rs4.next()){
                
                
                <div class="col-md-3 sidebar">
-                  <div id='jqxWidget'>
-        <div id='jqxTree' style='visibility: hidden;  padding-top:40px; float:left;  margin-left: -45px; padding-left:0 '>
-                    <ul class="nav nav-sidebar">
+                 <div class="col-md-2 sidebar" >
+                  <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; '>
+                    <ul class="nav nav-sidebar" id ="sidemenu" >
+                        
                         
 
             <ul>
-                <li id='home' item-selected='true'> <a href="project.jsp">Home </a></li>
+                  <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
                 <li item-expanded='true'>App Emphasize Module
                     <ul>
-                       <li item-expanded='true'><input type="text" value="project details"/>
+                       <li item-expanded='true'>Project Details
                     <ul>
-                        <li><a href="editproject.jsp">Project Information</a></li>
+                        <li item-selected='true'><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true' item-selected='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
                          <ul>
                                 <li >Parameters</li>
                                 <li>Archival Complexity Calculation</li>
                                 <li>Archival Cost Estimate</li>
-                               
+                             
                             </ul>
                         </li>
-                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>
-                       <li ><a href="demo.jsp">ROI Calculation</a></li>
-                       
+                        <li><a href="applnprior.jsp">Application-Prioritized</li>
+                       <li> <a href="demo.jsp">ROI Calculation</a></li>
+                        <li>Estimates</li>
 
                     </ul>
                 </li>
                 <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
-               <ul>
-               <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-               Business</div></a>
                 <ul>
-                <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Information</div></a></li>
-                <li><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Legacy Retention Information</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Archive Data Management</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                System Requirements</div></a></li>
+                <li item-expanded='true'>Business
+                <ul>
+                <li>Application Information</li>
+                <li>Legacy Retention Information</li>
+                <li>Archive Data Management</li>
+                <li>System Requirements</li>
                 
                 </ul></li>
-                <li item-expanded='true'><a href="#" data-toggle="tooltip" title="Select Intake Module">                <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical</div></a>
+                <li item-expanded='true'>Technical
                 <ul>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Application Data Information</div></a></li>
-                <li>   <a href="#" data-toggle="tooltip" title="Select Intake Module">             <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Infrastructure & Environment Inforamation</div></a></li>
-                <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                Technical Information</div></a></li>
+                <li>Application Data Information</li>
+                <li>Infrastructure & Environment Inforamation</li>
+                <li>Technical Information</li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archival Requirements</div></a>
+                 <li item-expanded='true'>Archival Requirements
                  <ul>
-                 <li> <a href="#" data-toggle="tooltip" title="Select Intake Module">               <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Screen/Report Requirements</div></a></li>
-                 <li>  <a href="#" data-toggle="tooltip" title="Select Intake Module">              <div style="background-color:white;border-color:white;cursor:not-allowed;" class="draggable jqx-rc-all jqx-rc-all-name=Project1 jqx-tree-item jqx-tree-item-name=Project1 jqx-item jqx-item-name=Project1 jqx-fill-state-pressed jqx-fill-state-pressed-name=Project1 jqx-tree-item-selected jqx-tree-item-selected-name=Project1">
-                 Archive Requirements</div></a></li>
+                 <li>Screen/Report Requirements</li>
+                 <li>Archive Requirements</li>
                  </ul>
                  </li>
                 </ul>
                 </li>
-                <li item-selected='true'>Archive Execution Module</li>
+                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li>                
                
                           </ul>
     
@@ -754,30 +845,36 @@ if(hypercare == null)
   <div class="form-group">
   <center><label >Initiate</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Plan</label></center>
   <div class="progress">
-  <div id="one" class="bar" role="progressbar" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+  <div id="one" class="bar" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
 </div></div></div>
 
   <div class="col-md-3">
   <div class="form-group">
   <center><label >Execute</label></center>
   <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
 </div></div></div>
 
  <div class="col-md-3">
  <div class="form-group">
  <center><label >Closure</label></center>
  <div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+  <div class="progress-bar" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
 </div></div></div>
 </div>
+<jsp:include page="progress_details.jsp" >
+<jsp:param name="Initiate" value="<%=initiate %>"/>
+<jsp:param name="Plan" value="<%=plan %>"/>
+<jsp:param name="Execute" value="<%=execute %>"/>
+<jsp:param name="Hypercare" value="<%=hypercare %>"/>
+</jsp:include>
            
                      <script>
                      $(function(){
@@ -789,6 +886,14 @@ if(hypercare == null)
                      </script>
                
               
+ <%
+ String true_count="";
+ String queries="select count(Flag) from archive_exec where projects='Medtonic' and Flag='T'";
+ Statement statment= conn.createStatement();
+ ResultSet result = statment.executeQuery(queries);
+ if(result.next())
+	 true_count=result.getString(1);
+ %>             
               
                       
 
@@ -822,8 +927,10 @@ while(rs3.next()){
 <tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>">
 <td style="width:200px;"><b>
 <span style="color:#3071a9;font-size:150%;"><input  type="text"   placeholder="enter" id="task" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly /></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></b></td>
+<td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getInt(1) %>" hidden /></td>
+<td style="display:none"><input type="text" id="level<%=i %>" name="level<%=i %>" value="<%=rs3.getInt(2) %>" hidden /></td>
 <td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
-<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" onChange="pass('<%=rs3.getString(3)%>',this.value,'<%=i %>')"  readonly/></td>
+<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" readonly/></td>
 <td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>" /></td>
 <td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>" /></td>
 <td><input  type="text" class="in" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
@@ -832,7 +939,7 @@ while(rs3.next()){
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
 	<td ><input type="text" style="background-color:transparent;width:20%;"; id="status<%=i %>"  /></td>
 <td></td>
-<td style="display:none"><input type="text" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
+
 <script>
 getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
 </script>
@@ -842,24 +949,25 @@ int progress=0;
 </tr>
 <%}
 	else
-	{%>
-
+	{
+	
+	%>
 		<tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>" data-tt-parent-id="<%=rs3.getString(11) %>">
 		&nbsp;&nbsp;<td style="width:200px;">
 		<span style="color:#00BFFF;font-size:100%;"><input  type="text"   placeholder="enter" id="name<%=i %>" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly/></span> <span style="float:right;cursor:pointer;" class="glyphicon glyphicon-plus" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span></td>
+		<td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getInt(1) %>" hidden /></td>
+<td style="display:none"><input type="text" id="level<%=i %>" name="level<%=i %>" value="<%=rs3.getInt(2) %>" hidden /></td>
 		<td><input  type="text" class="in"   placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
-<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>"  /></td>
+<td><input  type="text" class="in" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%= true_count %>');"  /></td>
 <td><input  type="text" class="in" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>"  /></td>
 <td><input type="text" class="in" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>"  /></td>
 <td><input  type="text" class="in" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
-<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value);""/></td>
+<td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value);"/></td>
 <td><input  type="text" class="in" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value);call_fun(document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value);" /></td>
 <td ><div class="progressbar" id="progressbar<%=i%>"></div></td>
 	<td ><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i %>"  /></td>
 <td></td>
-<td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getString(1) %>" hidden /></td>
-
-<% if(rs3.getString(3).equals("Requirements")){%>
+<% if((rs3.getString(3).equals("Requirements"))||(rs3.getString(3).equals("Build and Test"))){%>
 <script>
 getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
 </script>

@@ -186,6 +186,13 @@
 
 </style>
 <style>
+
+.required:after {
+    content: " *";
+    color: red;
+}
+</style>
+<style>
   
   .sidebar{
   
@@ -687,10 +694,10 @@ if(hypercare == null)
                                         
                                          </div>
                                             <label class="col-sm-2 control-label" for="projectname">
-                                               Project Name 
+                                              <div class="required"> Project Name </div>
 </label>
                             <div class="col-sm-5">
-                                            <input type="text" class="form-control" size="35" id="projectname" placeholder="Project Name" name="projectname" value="<%=rs3.getString("projectname")%>" >
+                                            <input type="text" class="form-control" size="35" id="projectname" placeholder="Project Name" name="projectname" value="<%=rs3.getString("projectname")%>" required>
                                         </div>
                                         </div>
                                       <br/><br/><br>
@@ -700,9 +707,9 @@ if(hypercare == null)
                                        
                                         <div class="col-sm-2">
                                          </div>
-                                            <label class="col-sm-2 control-label" for="descr">Description</label>
+                                            <label class="col-sm-2 control-label" for="descr"> <div class="required">Description</div></label>
 <div class="col-sm-5">
-                                            <input type="text" class="form-control" id="descr" placeholder="Description" name="descr"  value="<%=rs3.getString("descr")%>">
+                                            <input type="text" class="form-control" id="descr" placeholder="Description" name="descr"  value="<%=rs3.getString("descr")%>" required>
                                         </div>
                                        
                                         </div>
@@ -713,7 +720,7 @@ if(hypercare == null)
           <div class="col-md-12">
           <div class="col-sm-2">
                                          </div>
-            <label class="col-sm-2 control-label required">No of Applications</label>
+            <label class="col-sm-2 control-label ">No of Applications</label>
             <div class="col-sm-5">
             <input placeholder="No of Applications" id="appno" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("appno")%>">
           </div>
@@ -726,9 +733,9 @@ if(hypercare == null)
           <div class="col-md-12">
           <div class="col-sm-2">
                                          </div>
-            <label class="col-sm-2 control-label required">Project Start Date</label>
+            <label class="col-sm-2 control-label "><div class="required">Project Start Date</div></label>
              <div class="col-sm-5">
-            <input placeholder="dd/mm/yyyy" id="Startdate" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Startdate")%>">
+            <input placeholder="dd/mm/yyyy" id="Startdate" name="Startdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Startdate")%>" required>
           </div>
           </div>
         </div>  
@@ -737,7 +744,7 @@ if(hypercare == null)
           <div class="col-md-12">
           <div class="col-sm-2">
                                          </div>
-            <label class="col-sm-2 control-label required"> Initiate Start Date</label>
+            <label class="col-sm-2 control-label "> Initiate Start Date</label>
              <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Intdate" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Intdate")%>">
           </div>
@@ -748,7 +755,7 @@ if(hypercare == null)
           <div class="col-md-12">
           <div class="col-sm-2">
                                          </div>
-            <label class="col-sm-2 control-label required">Plan Start Date</label>
+            <label class="col-sm-2 control-label ">Plan Start Date</label>
             <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Plandate" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Plandate")%>">
           </div>
@@ -759,7 +766,7 @@ if(hypercare == null)
           <div class="col-md-12">
           <div class="col-sm-2">
                                          </div>
-            <label class="col-sm-2 control-label required">Execution Start Date</label>
+            <label class="col-sm-2 control-label ">Execution Start Date</label>
              <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Execdate" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Execdate")%>">
           </div>
@@ -771,7 +778,7 @@ if(hypercare == null)
           <div class="col-md-12">
           <div class="col-sm-2">
                                          </div>
-            <label class="col-sm-2 control-label required">Hypercare Start Date</label>
+            <label class="col-sm-2 control-label ">Hypercare Start Date</label>
              <div class="col-sm-5">
             <input placeholder="dd/mm/yyyy" id="Hyperdate" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Hyperdate")%>">
           </div>
@@ -783,9 +790,9 @@ if(hypercare == null)
           <div class="col-md-12">
           <div class="col-sm-2">
                                          </div>
-            <label class="col-sm-2 control-label required">Project End Date</label>
+            <label class="col-sm-2 control-label "><div class="required">Project End Date</div></label>
             <div class="col-sm-5">
-            <input placeholder="dd/mm/yyyy" id="Enddate" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Enddate")%>">
+            <input placeholder="dd/mm/yyyy" id="Enddate" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("Enddate")%>" required>
           </div>
           </div>
         </div> 
