@@ -35,6 +35,7 @@
         can populate it from 'UL' or by using its 'source' property." />
 
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+   
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="scripts/demos.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
@@ -49,6 +50,7 @@
             // Create jqxTree
             $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
             $('#jqxTree').css('visibility', 'visible');
+
             var contextMenu = $("#jqxMenu").jqxMenu({ width: '100px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
             var clickedItem = null;
             
@@ -156,10 +158,6 @@
  
 
 
-#sidemenu a:hover {
-    background-color: #ddd;
-    color: black;
-    }
 
    </style>
 <style>
@@ -232,6 +230,11 @@
   #pid{
   height:40px;
   }
+ 
+}
+#jqxTree{
+background:green;
+}
   </style>
   
 
@@ -451,7 +454,7 @@ if(rs.next()){
                     	details.setAttribute("appno",rs3.getString("appno"));
                     	details.setAttribute("projectname",rs3.getString("projectname"));
                     	%>
-                    <a class="navbar-brand" href="project.jsp" style="color:white"id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
                     <%
                     String q2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
@@ -793,9 +796,9 @@ if(hypercare == null)
                        
                        <hr>
         <br/>
-                       &nbsp;&nbsp;<button type="submit" class="btn btn-primary " >Save</button>&nbsp;
+                      &nbsp;&nbsp;  &nbsp;&nbsp;<button type="submit" class="btn btn-success pull-right" >Save & Continue...</button>&nbsp;
                        <button type="button" class="btn btn-default" onclick="location.href='appemp.jsp';">Back</button>
-                       <button type="button"  class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='tree.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button> &nbsp;&nbsp; 
+                       
               &nbsp;&nbsp; <br/>
                
               <br/>

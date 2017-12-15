@@ -105,7 +105,7 @@ public class EditProject extends HttpServlet {
 	          System.err.println(e.getMessage());
 	        }
 	        // return response
-	        response.sendRedirect("project.jsp");
+	        response.sendRedirect("tree.jsp");
 	}
 
 }

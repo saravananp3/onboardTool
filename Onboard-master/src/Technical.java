@@ -44,7 +44,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 String datatype = request.getParameter("datatype");
        String pname = request.getParameter("pname");
        String archneed = request.getParameter("archneed");
-       String formatsp = request.getParameter("formatsp");
+       String formatsp = request.getParameter("format");
        String mlang = request.getParameter("mlang");
        String loclang = request.getParameter("loclang");
        String dataretain = request.getParameter("dataretain");
@@ -169,7 +169,7 @@ System.out.println("Sorry Your order for today has been already taken");
          System.err.println(e.getMessage());
        }
        // return response
-       response.sendRedirect("component.jsp");
+       response.sendRedirect("requirements.jsp");
 
 
 }

@@ -202,7 +202,7 @@ String creditacc = request.getParameter("creditacc");
          System.err.println(e.getMessage());
        }
        // return response
-       response.sendRedirect("business.jsp");
+       response.sendRedirect("component.jsp");
 }
 
 }

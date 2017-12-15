@@ -1224,9 +1224,9 @@ for(var i=0; i<edit_row.length; i++) {
                                                                                             
                                    
                                    
-<button type="button" class="btn btn-primary" onclick="OnButton1()">Save</button>
+<button type="button" class="btn btn-success pull-right" onclick="OnButton1()">Save & Continue ...</button>
 
-        <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btn_new" onclick="window.location.href='applnprior.jsp'"> Next<span class="glyphicon glyphicon-chevron-right"></span></button>
+        
                             
      
                     <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
