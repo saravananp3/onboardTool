@@ -51,7 +51,7 @@ public class archive_exec extends HttpServlet {
 		String progres[]=new String[10];
 		String hr[]=new String[10];
 		
-	
+	System.out.println("In servlet");
 		
 		
 		for(int i=0;i<10;i++){
@@ -100,7 +100,7 @@ hr[i]=request.getParameter("hrs"+i);
         {
         	 
           System.err.println("Got an exception!");
-          System.err.println(e.getMessage());
+          System.err.println("gfghfhgfhgg"+e.getMessage());
         }
 
 		
@@ -178,8 +178,8 @@ hr[i]=request.getParameter("hrs"+i);
 		 catch (Exception e)
 	        {
 	        	 
-	          System.err.println("Got an exception!");
-	          System.err.println(e.getMessage());
+	          System.err.println("Got an exception!ffddhdhgdh");
+	          System.err.println("egdsggfhg"+e.getMessage());
 	          e.printStackTrace(System.out);
 	        }
 	        

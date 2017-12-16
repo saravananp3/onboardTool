@@ -130,7 +130,7 @@ String datatype = request.getParameter("datatype");
          preparedStmt.setString(15, testrec);
          preparedStmt.setString (16, designspec);
          preparedStmt.setString   (17, validityplan);
-         preparedStmt.setDate (18, java.sql.Date.valueOf(dataloc));
+         preparedStmt.setString (18, dataloc);
          preparedStmt.setString (1, servername);
          preparedStmt.setString   (2, prodinstance);
          preparedStmt.setString (3, prodinstanceloc);

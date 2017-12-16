@@ -54,6 +54,7 @@ public class Project extends HttpServlet {
 		        String Enddate = request.getParameter("Enddate"); 
 		        try
 		        {
+		        	System.out.println("Project.java");
 		          // create a mysql database connection
 		          String myDriver = "org.gjt.mm.mysql.Driver";
 		          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";

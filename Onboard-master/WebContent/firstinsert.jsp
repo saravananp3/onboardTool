@@ -308,6 +308,7 @@ ResultSet rs2 = st2.executeQuery(q1);
 int l=-1;
 while(rs2.next()){
 	l++;
+	System.out.println(rs2.getString(15));
 	if(rs2.getString(15).equals("100"))
 		continue;
 	else

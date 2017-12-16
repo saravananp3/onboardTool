@@ -333,7 +333,7 @@ Statement st1 = conn.createStatement();
 Statement st2 = conn.createStatement();
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query1= "SELECT * from app_prior where prj_name='"+name+"' ORDER BY priorities";
+String query1= "SELECT * from app_prior where prj_name='"+name+"' and priorities is not null ORDER BY priorities";
 ResultSet rs1 = st1.executeQuery(query1);
 String query2= "select count(prj_name) As total from app_prior where prj_name='"+name+"'";
 ResultSet rs2 = st2.executeQuery(query2);

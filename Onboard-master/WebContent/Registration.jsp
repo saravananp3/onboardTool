@@ -1,309 +1,176 @@
-<!doctype html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-	<title>Registration Page</title>
-
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Registration Page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
-		<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+	
+	
+	<link href="http://fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
-
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
-
-
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-    <style>
-    
-	<style>
-	
-	input.noact
-{
-border:none;
-border-color:transparent;
-width:40px;
-background-color:transparent;
-}
-
-input.act
-{
-border:none;
-border-color:transparent;
-width:45px;
-background-color: transparent;
-}
-	.glyphicon {
-    font-size: 35px;
-}
+   <link href="http://cdn-na.infragistics.com/igniteui/2017.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2017.1/latest/css/structure/infragistics.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<style>
 .glyphicon.glyphicon-asterisk
 {
 color:red;
 font-size:10px;
 }
-
- </style>
-  <style>
-    body
-    {
-     margin:0; padding:0; 
-    color:#73879C;
-    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
-    }
-    .navbar-brand {
-    
-    padding: 10px;
-  border: 0px;
-  border-radius: 1px;
-   font-size: 1.15em;
-  font-weight: 400;
-    }
-    .
-    
-   .navbar-brand {
-  color: black;
+span.multiselect-native-select {
+	position: relative
 }
-
-.navbar-brand:hover {
-  color: #ffffff;
-  text-shadow: 1px -1px 8px #b3e9ff;
+span.multiselect-native-select select {
+	border: 0!important;
+	clip: rect(0 0 0 0)!important;
+	height: 1px!important;
+	margin: -1px -1px -1px -3px!important;
+	overflow: hidden!important;
+	padding: 0!important;
+	position: absolute!important;
+	width: 1px!important;
+	left: 50%;
+	top: 30px
 }
-    
-    
-    #sitetitle{
-    
-    font-size: 22px;
-    margin:auto;
+.multiselect-container {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0
 }
-
-
-    
-    
-
-   #sidemenu
-   {
-   
-   background:#3276B1 ;
-   position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
- 
-
-
-#sidemenu a:hover {
-    background-color: #ddd;
-    color: black;
-    }
-
-   </style>
-      <script>
-	function calls()
-	{
-		    var x = document.getElementById('myDiv1');
-		    if (x.style.display === 'none') {
-		        x.style.display = 'block';
-		    } 
-		    else {
-		        x.style.display = 'none';
-		    }
-		
-	}
-	</script>
-<script>
-	var har=[];
-	var his=[];
-	function oop(name)
-	{
-		
-		if(har.indexOf(name)>=0)
-			{
-			var i = har.indexOf(name);
-			if(i != -1) {
-				har.splice(i, 1);
-			}
-			}
-		else
-			har.push(name);
-	}
-	function ops(name)
-	{
-		
-		if(his.indexOf(name)>=0)
-			{
-			var i = his.indexOf(name);
-			if(i != -1) {
-				his.splice(i, 1);
-			}
-			}
-		else
-			his.push(name);
-	}
-	
-	
-	function servlet_call()
-	{
-		var f=document.loginForm;
-	    f.method="post";
-	    f.action='deactivate?values='+har+'&values2='+his;
-	    f.submit(); 
-	}
-	</script>
-	<script>
-	var arr="";
-	function ooo()
-	{
-		var e=document.getElementById("dates-field2");
-	for(i=0;i<9;i++)
-		{
-		if(e[i].selected==true){
-			arr=arr+(e[i].value);
-		}
-		}
-	
-		}
-	function qq()
-	{
-		var msg=document.getElementById("message").value;
-		var ffname=document.getElementById("fname").value;
-		var llname=document.getElementById("lname").value;
-		var email=document.getElementById("email_val").value;
-		var project=document.getElementById('proj').value;
-		if(ffname==="" || llname==="" || arr==="")
-			window.alert("fill the mandatory fileds");
-		else
-			{
-			 if((email.includes("@"))&&(email.includes(".com")))
-				{
-				 var f=document.loginForm;
-				    f.method="post";
-				    f.action="sendMail?roless="+arr+"&mailid="+email+"&message="+msg+"&fname="+ffname+"&lname="+llname+"&project="+project;
-				    f.submit();
-				}
-			 else
-				 window.alert("Invalid EmailID");
-			}
-	}
-	</script>
-	<script>
-function checkk()
-{
-	
-	document.getElementById('fname').readOnly = true;
-	document.getElementById('message').readOnly = true;
-	document.getElementById('lname').readOnly = true;
-	document.getElementById('dates-field2').disabled = true;
-	document.getElementById('email_val').readOnly = true;
-	document.getElementById('proj').readOnly = true;
-	document.getElementById('send_btn').disabled = true;
-	}
-</script> 
+.multiselect-container .input-group {
+	margin: 5px
+}
+.multiselect-container>li {
+	padding: 0
+}
+.multiselect-container>li>a.multiselect-all label {
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group label {
+	margin: 0;
+	padding: 3px 20px 3px 20px;
+	height: 100%;
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group-clickable label {
+	cursor: pointer
+}
+.multiselect-container>li>a {
+	padding: 0
+}
+.multiselect-container>li>a>label {
+	margin: 0;
+	height: 100%;
+	cursor: pointer;
+	font-weight: 400;
+	padding: 3px 0 3px 30px
+}
+.multiselect-container>li>a>label.radio, .multiselect-container>li>a>label.checkbox {
+	margin: 0
+}
+.multiselect-container>li>a>label>input[type=checkbox] {
+	margin-bottom: 5px
+}
+.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px
+}
+.form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
+	padding: 3px 20px 3px 40px
+}
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
+	margin-left: -20px;
+	margin-right: 0
+}
+</style>
+<script src="js/dropdown.js"></script>
 </head>
 <body>
+<%@page import="java.sql.*"%>
 <%
-
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-response.setHeader("Expires", "0"); // Proxies.
-
-if (session.getAttribute("username")==null)
-{
-	response.sendRedirect("Login.html");
-}
+HttpSession ses=request.getSession(); 
+String role=(String)ses.getAttribute("My_Roles");
+String fname=(String)ses.getAttribute("fname");
+String lname=(String)ses.getAttribute("lname");
+String email=(String)ses.getAttribute("email");
+String project=(String)ses.getAttribute("project");
+System.out.println(fname+"   "+lname);
+Class.forName("org.gjt.mm.mysql.Driver").newInstance();
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
+String query="select uname from user_details";
+Statement st = conn.createStatement();
+ResultSet rs = st.executeQuery(query);
 %>
-<%@ page import="java.sql.*"%>
-		<%@ page import="javax.sql.*"%>
-<%
-HttpSession details=request.getSession();
-String info=(String)details.getAttribute("admin");
-System.out.println("role info   -- "+info);
-Class.forName("com.mysql.jdbc.Driver"); 
-java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
-String query="select * from user_details";
-String query1="select * from user_details";
-Statement s=conn.createStatement();
-Statement s1=conn.createStatement();
-ResultSet rs=s.executeQuery(query);
-ResultSet rs1=s1.executeQuery(query1);
-int count=0;
-%>
+<script>
+	function www()
+	{
+	var ffname=document.getElementById("reg_fname").value;
+	var llname=document.getElementById("reg_lname").value;
+	var uuname=document.getElementById("reg_uname").value;
+	var email=document.getElementById("reg_email").value;
+	var pass=document.getElementById("reg_pwd").value;
+	var cpass=document.getElementById("reg_cpwd").value;
+	var confirm=document.getElementById("reg_cemail").value;
+	<% while(rs.next()){ %>
+	if(uuname == "<%=rs.getString(1)%>")
+		{
+		window.alert("Project Name is already taken");
+		window.location.href='Registration.jsp';
+		}
+	<%}%>
+	if(ffname==="" || llname==="" || uuname==="")
+		window.alert("fill the mandatory fileds");
+	else
+		{
+		if((email.includes("@"))&&(email.includes(".com")))
+		{
+			 var confirm=document.getElementById("reg_cemail").value;
+			 if(email==confirm)
+				 {
+			if(pass.length>8)
+				{
+				  if(pass==cpass)
+					  {
+					  var f=document.loginForm;
+					    f.method="post";
+					    f.action='user_registration?email='+reg_email;
+					    f.submit(); 
+					  }
+				  else
+					  window.alert("password and confirm password are not same");
+				}
+			else
+				window.alert("password must be less than 8 letters");
+				 }
+			 else
+				 window.alert("both emails are not same");
+		
+		}
+		else
+			window.alert("Invalid Email");
+	}
+	}
+</script>
 <form class="form-signin" name="loginForm" method="post">
-<div class="wrapper">
-    <div class="sidebar" data-color="blue">
-
-    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-
-
-    	<div class="sidebar-wrapper">
-                       <ul class="nav">
-                <li><br/><br/><br/>
-                    <a href="project.jsp">
-                        <i class="glyphicon glyphicon-home"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="Registration.jsp">
-                        <i class="pe-7s-user"></i>
-                        <p>User Configuration</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="dash.jsp">
-                        <i class="pe-7s-note2"></i>
-                        <p>Users List</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="roledetails.jsp">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Authorization</p>
-                    </a>
-                </li>
-                         </ul>
-    	</div>
-    </div>
-
-    <div class="main-panel">
-		<nav class="navbar-fixed-top" style="background-color:#3276B1">
+<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 
     
                  
-                    <a class="navbar-brand" style="color:white"id="sitetitle">Onboarding Tool</a>
+                    <a class="navbar-brand">Registration Page</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -311,121 +178,96 @@ int count=0;
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+                            <a href="Login.html">Logout</a>
                         </li>
                     </ul>
                     
                 </div>
             </div>
         </nav>
-<br/><br/><br/>
-
-<div id="config" class="tabcontent">
+     
+        </div>
  <div class="container">
- <br/><div class="col-lg-10" style="background-color:white;border-radius:5px;margin-left:20px;">
-	<br/><br/><div class="row">
+    <br/><br/><br/><br/>
+	<div class="col-lg-12 well">
+	<div class="row">
+			
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-5 form-group">
-							
 								<label>First Name<span class="glyphicon glyphicon-asterisk"></span></label>
-							<input type="text" id="fname" name="fname"  class="form-control" />
-					</div>
-					<div class="col-sm-5 form-group">
-							
-							 <label for="comment">Message</label>
-      <textarea class="form-control" rows="5" id="message"></textarea>
-					</div>
+								<input type="text" name="reg_fname" id="reg_fname"   class="form-control" value="<%=fname%>" >
 							</div>
-							<div class="row">
 							<div class="col-sm-5 form-group">
 								<label>Last Name<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text"  class="form-control" id="lname" >
+								<input type="text" name="reg_lname" id="reg_lname"  class="form-control" value="<%=lname%>">
 							</div>
-						</div>		
-						<div class="row">			
+						</div>					
+						<div class="row">
 							<div class="col-sm-5 form-group">
-								 <label>Role Name<span class="glyphicon glyphicon-asterisk"></span></label>
-    <div class="col-lg-13">
-        <select id="dates-field2" class="multiselect-ui form-control" multiple="multiple" name="myOption">
-            <option value="ArchivalAdmin">archival admin</option>
-            <option value="LegacyTechnicalSME">legacy technical sme</option>
-            <option value="LegacyBusinessSME">legacy business sme</option>
-            <option value="ArchivalProgramManager">archival program manager</option>
-            <option value="ArchivalProjectManager">archival project manager</option>
-            <option value="LegacyProgramManager">legacy program/project manager</option>
-            <option value="ArchivalBusinessAnalyst">archival business analyst</option>
-            <option value="ArchivalTechnicalLead">archival technical lead</option>
-            <option value="ArchivalDeveloper">archival developer</option>
-            <option value="TestLead">test lead</option>
-        </select>
-    </div>
-</div>
-</div>
-<script type="text/javascript">
-$(function() {
-    $('.multiselect-ui').multiselect({
-        includeSelectAllOption: true
-    });
-});
-</script>
+								<label>Username<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" class="form-control" name="reg_uname" id="reg_uname" onChange="check()">
+							</div>	
+						
+							<div class="col-sm-5 form-group">
+								<div class="form-group">
+   <label>Roles</label>
+								<input type="text" class="form-control" name="reg_roles" value="<%=role%>">
+
+
+							</div>	
+							</div>
+							</div>
 							<div class="row">
 							<div class="col-sm-5 form-group">
 								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="email" class="form-control" id="email_val" >
+								<input type="text" name="reg_email" id="reg_email" class="form-control" value="<%=email%>">
 							</div>
-							</div>						
+<div class="col-sm-5 form-group">
+								<label> Security Question<span class="glyphicon glyphicon-asterisk"></span></label>
+								<br/>
+								<label>Question 1</label>
+								<select class="form-control" name="reg_qn">
+								<option value=""></option>
+  <option value="What is Your Spouse Name?">What is Your pet Name?</option>
+  <option value="Who is your fav Cricketer?">Who is your fav Cricketer?</option>
+  <option value="In what city or town was your first job?">In what city or town was your first job?</option>
+  <option value="What is the name of your favorite childhood friend">What is the name of your favorite childhood friend</option>
+</select>
+							</div>	
+							<div class="col-sm-5 form-group">
+								<label>Confirm Email<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" class="form-control" name="reg_cemail" id="reg_cemail">
+							</div>	
+							<div class="col-sm-5 form-group">
+								<label>Answer</label>
+								<input type="text" class="form-control" name="reg_ans" id="reg_ans">
+							</div>		
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-5 form-group">
+								<label>Password<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="password"  class="form-control" name="reg_pwd" id="reg_pwd">
+							</div></div>
+							<div class="row">		
+							<div class="col-sm-5 form-group">
+								<label>Confirm Password<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="password"  class="form-control" name="reg_cpwd" id="reg_cpwd">
+							</div>	</div>
 							<div class="row">					
 					<div class="col-sm-5 form-group">
 						<label>Projects</label>
-						<input type="text"  class="form-control" id="proj">
+						<input type="text"  class="form-control" name="reg_projects" value="<%=project%>">
 					</div>		
 					</div>
-					 <input type="text" id="pwqej" value="<%= info %>" hidden>  
-					<button type="button" class="btn btn-primary" id="send_btn" onclick="ooo();qq()">Send Invites</button>					
-					</div>
-				
+					
+					<button type="button" class="btn btn-lg btn-info" onclick="www();">Submit</button>
+										
+					</div> 
 				</div>
 	</div>
 	</div>
-</div>
-
-
-
-
 </form>
-            
-
-
-    </div>
-</div>
- 
-</form>
- <script>
- if(document.getElementById('pwqej').value=="R")
-	 checkk();
- </script>    
 </body>
-
-
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
-
-
 </html>

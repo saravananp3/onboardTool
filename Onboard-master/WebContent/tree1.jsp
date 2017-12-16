@@ -357,6 +357,13 @@ $(function() {
 
 
 </script>
+<style>
+
+.required:after {
+    content: " *";
+    color: red;
+}
+</style>
 
 <script type="text/javascript">
     function ShowHideDiv() {
@@ -425,7 +432,7 @@ HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("app_emp");
 String appno=(String)details.getAttribute("appno");
-String projectname=request.getParameter("name");
+String projectname=(String)details.getAttribute("nameofproject");
 String det=(String)session.getAttribute("theName");
 System.out.println("-- "+info+"-- "+appno+"---"+projectname+"---"+det);
  
@@ -596,7 +603,7 @@ document.loginForm.est_scrn.value ="<=30";
 z=5;
 }
 var qqq=<%=appno%>;
-document.loginForm.est_db_size.value=(z*0.1*document.loginForm.strg_est.value).toFixed(2);
+document.loginForm.est_db_size.value=(document.loginForm.no_of_app_complexity.value*0.1*document.loginForm.strg_est.value).toFixed(2);
 document.loginForm.est_hrs.value =(qqq*document.loginForm.est_archive.value).toFixed(2);
 a=(100*document.loginForm.est_hrs.value);
 document.loginForm.est_cst.value="$"+a.toFixed(2);
@@ -688,9 +695,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
             <div class="container-fluid">
             
             <%if (rs3.next()) {%>
-                
-                    
-                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle" >Onboarding Tool-<%= projectname %></a>
+                    <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle" >Onboarding Tool-<%= rs3.getString(1) %></a>
              <%        String q2="select * from archive_exec where level=1 and projects='"+projectname+"'order by seq_num";
 Statement s2 = conn.createStatement();
 ResultSet rss = s2.executeQuery(q2);
@@ -930,35 +935,41 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                             <div id="collapse1" class="panel-collapse collapse in"> 
                                 <div class="panel-body text-left">
                                 
-                                <%if(rs.next()){ %>
+                                <%if(rs.next()){
+                                	System.out.println("llovvvvvvvvvvvv  "+projectname);
+                                	%>
                                     
                                     
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Project Name</label>
-                                            <input type="text" class="form-control" id="prj_name"  name="prj_name" value=<%=rs3.getString("projectname") %>>
+                                            <label class="control-label" for="formInput526"><div class="required">Project Name</div></label>
+                                            <input type="text" class="form-control" id="prj_name"  name="prj_name" value="<%=projectname %>" required>
                                         </div>
                                        
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">IA License cost per TB</label>
-                                            <input type="text" class="form-control" id="IA_lic_cst"  name="IA_lic_cst" value="<%=rs.getString("IA_lic_cst")%>">
+                                            <label class="control-label" for="formInput526"><div class="required">IA License cost per TB(%)</div></label>
+                                            <input type="text" class="form-control" id="IA_lic_cst"  name="IA_lic_cst" value="<%=rs.getString("IA_lic_cst")%>" required>
                                         </div>
                                          <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">IA Maintenance Cost Per Year</label>
-                                            <input type="text" class="form-control" id="IA_maint_cst"  name="IA_maint_cst" value="<%=rs.getString("IA_maint_cst")%>">
+                                            <label class="control-label" for="formInput526"><div class="required">IA Maintenance Cost Per Year(%)</div></label>
+                                            <input type="text" class="form-control" id="IA_maint_cst"  name="IA_maint_cst" value="<%=rs.getString("IA_maint_cst")%>" required>
                                         </div>
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput316">Infra Structure Cost per TB</label>
-                                              <input type="text" class="form-control" id="Infrastrct_cst"  name="Infrastrct_cst" value="<%=rs.getString("Infrastrct_cst")%>"> 
+                                            <label class="control-label" for="formInput316"><div class="required">Infra Structure Cost per TB(%)</div></label>
+                                              <input type="text" class="form-control" id="Infrastrct_cst"  name="Infrastrct_cst" value="<%=rs.getString("Infrastrct_cst")%>" required> 
                                          </div>
                                         <div class="form-group">
                                        
-                                            <label class="control-label" for="formInput526">Storage Estimate</label>
-                                            <input type="text" class="form-control" id="strg_est"  name="strg_est" value="<%=rs.getString("strg_est")%>">
+                                            <label class="control-label" for="formInput526"><div class="required">Storage Estimate(%)</div></label>
+                                            <input type="text" class="form-control" id="strg_est"  name="strg_est" value="<%=rs.getString("strg_est")%>" required>
                                       
                                         </div>
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput526">Labor Cost Per Hour for IA Dev Team</label>
-                                            <input type="text" class="form-control" id="lab_cst"  name="lab_cst" value="<%=rs.getString("lab_cst")%>">
+                                            <label class="control-label" for="formInput526"><div class="required">Labor Cost Per Hour for IA Dev Team(%)</div></label>
+                                            <input type="text" class="form-control" id="lab_cst"  name="lab_cst" value="<%=rs.getString("lab_cst")%>" required>
+                                        </div>
+                                         <div class="form-group"> 
+                                            <label class="control-label" for="formInput526"><div class="required">Number of Applications based on Complexity</div></label>
+                                            <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value="<%=rs.getString("no_of_app_complexity")%>" required>
                                         </div>
                                         <div>
                                         <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -1061,14 +1072,14 @@ for(var i=0; i<edit_row.length; i++) {
                                  
                                   
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput664">Project Name</label>
+                                            <label class="control-label" for="formInput664">Application Name</label>
                                             <input type="text" class="form-control" id="proj_name"  name="proj_name" value="<%=rs.getString("proj_name")%>" >
                                         </div>                                         
                                          
                                       
                                               <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Data Size</label>                                             
-                                            <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" > 
+                                            <label class="control-label" for="formInput26"><div class="required">Data Size</div></label>                                             
+                                            <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required > 
                                             <option><%=rs.getString("data_size")%></option>
                                                 <option><100 GB</option>                                                 
                                                 <option>100 to 250 GB</option>
@@ -1080,7 +1091,7 @@ for(var i=0; i<edit_row.length; i++) {
                                        
                                         
                                          <div class="form-group">
-                                            <label class="control-label" for="formInput664"><b>Data Source</b></label> 
+                                            <label class="control-label" for="formInput664"><b><div class="required">Data Source</div></b></label> 
                                             </div>
                                             <div class="checkbox"> 
                                             <label class="Data Source"> 
@@ -1092,8 +1103,8 @@ for(var i=0; i<edit_row.length; i++) {
                                         
                                       
                                           <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Current users</label>                                             
-                                            <select id="curnt_users" class="form-control" name="curnt_users" onChange="updatesum()"> 
+                                            <label class="control-label" for="formInput26"><div class="required">Current users</div></label>                                             
+                                            <select id="curnt_users" class="form-control" name="curnt_users" onChange="updatesum()" required> 
                                             <option><%=rs.getString("curnt_users")%></option>
                                                 <option><10</option>                                                 
                                                 <option><25</option>
@@ -1104,8 +1115,8 @@ for(var i=0; i<edit_row.length; i++) {
                                         </div>                    
                                        
                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput26">Complexity</label>                                             
-                                            <select id="complexity" class="form-control" name="complexity" onChange="updatesum()">
+                                            <label class="control-label" for="formInput26"><div class="required">Complexity</div></label>                                             
+                                            <select id="complexity" class="form-control" name="complexity" onChange="updatesum()" required>
                                                 <option></option>
                                                 <option>Low</option>                                                 
                                                 <option>Low to Medium</option>
@@ -1128,7 +1139,7 @@ for(var i=0; i<edit_row.length; i++) {
                                             <input type="text" class="form-control" id="est_archive"  name="est_archive" onChange="updatesum()" value="<%=rs.getString("est_archive")%>"> 
                                         </div>
                                          <div class="form-group">
-                                            <label class="control-label" for="formInput664">Estimated Screen</label>                                             
+                                            <label class="control-label" for="formInput664">Estimated Number of Screen</label>                                             
                                             <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" value="<%=rs.getString("est_scrn")%>" > 
                                         </div>
                                      <div class="form-group">

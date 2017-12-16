@@ -2,7 +2,7 @@
     <wb-module deploy-name="onboard">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="onboard"/>
         <property name="java-output-path" value="/onboard/build/classes"/>
+        <property name="context-root" value="onboard"/>
     </wb-module>
 </project-modules>

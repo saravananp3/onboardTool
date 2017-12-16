@@ -44,6 +44,7 @@ public class IntsantApp extends HttpServlet {
 				String appname = request.getParameter("appname");
 				String prjname = request.getParameter("prjname");
 				
+				System.out.println(appname+" "+prjname);
 	
 		    
 		        
@@ -107,7 +108,7 @@ public class IntsantApp extends HttpServlet {
 				    	 String query3="update archive_exec set seq_num=seq_num+62 where seq_num>="+rs2.getInt(1);
 				    	 PreparedStatement preparedStmt1 = conn.prepareStatement(query3);
 				    	 preparedStmt1.execute();
-				    	 String query4="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				    	 String query4="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects,progressbar)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				    	 PreparedStatement preparedStmt2 = conn.prepareStatement(query4);
 				          preparedStmt2.setInt (1, rs2.getInt(1));
 				          preparedStmt2.setInt (2, 2);
@@ -122,6 +123,7 @@ public class IntsantApp extends HttpServlet {
 				          preparedStmt2.setString (11,String.valueOf(x));
 				          preparedStmt2.setString (12,rs7.getString(1));
 				          preparedStmt2.setString (13,prjname);
+				          preparedStmt2.setString (14,"0");
 				          preparedStmt2.execute();
 				         int count=rs2.getInt(1);
 				          String query5 = "select * from details"; 
@@ -129,7 +131,7 @@ public class IntsantApp extends HttpServlet {
 						     ResultSet rs5 = st5.executeQuery(query5);
 				         while(rs5.next()){
 				        	//"" System.out.println(count);
-				        	 String query6="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				        	 String query6="insert into archive_exec(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects,progressbar)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 						    		 PreparedStatement preparedStmt3 = conn.prepareStatement(query6);
 						          preparedStmt3.setInt (1,++count);
 						          preparedStmt3.setInt (2,rs5.getInt(1));
@@ -147,6 +149,7 @@ public class IntsantApp extends HttpServlet {
 						          else
 						        	  preparedStmt3.setString (12,String.valueOf(y)+rs5.getString(4));
 						          preparedStmt3.setString (13,prjname);
+						          preparedStmt3.setString (14,"0");
 						          preparedStmt3.execute();
 				          
 					      }}

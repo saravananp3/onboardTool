@@ -342,8 +342,10 @@ while(rs.next()){
 <% String q="select * from archive_exec where level=1 and projects='"+rs.getString(1)+"'order by seq_num";
 st1 = con.createStatement();
 ResultSet rs1 = st1.executeQuery(q);
+System.out.println("HIIIIIIIIIIII");
 while(rs1.next())
 {
+	System.out.println(rs1.getString(15));
 if(rs1.getString(15).equals("100"))
 continue;
 else

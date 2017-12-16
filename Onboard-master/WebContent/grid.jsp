@@ -98,7 +98,6 @@ if (session.getAttribute("username")==null)
 else{
 	String name=(String)session.getAttribute("ID");
 	  HttpSession details=request.getSession(); 
-	  session.setAttribute("date_cnt","false");
 Connection con = null;
 String url = "jdbc:mysql://localhost:3306/";
 String db = "strutsdb";
@@ -126,7 +125,9 @@ if(rs.next())
 <nav class="navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                     <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
-              
+              <%
+              details.setAttribute("nameofproject",rs.getString("projectname"));
+              %>
                 <div id="navbar" class="navbar-collapse collapse" >
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -175,7 +176,7 @@ if(rs.next())
 <div class="row">
         <div class="col-sm-2" height="100" width="100">
           <div class="well">
-          <a href="Registration.jsp">
+          <a href="UserConfiguration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
@@ -320,7 +321,7 @@ else if(roles.equals("ArchivalAdmin"))
 <div class="row">
         <div class="col-sm-2" height="100" width="100">
           <div class="well">
-           <a href="Registration.jsp">
+           <a href="UserConfiguration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
@@ -392,7 +393,7 @@ else if(roles.equals("ArchivalProgramManager"))
 <div class="row">
         <div class="col-sm-2" height="100" width="100">
           <div class="well">
-            <a href="Registration.jsp">
+            <a href="UserConfiguration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>
@@ -816,7 +817,7 @@ else if(roles.equals("ArchivalProjectManager"))
 <div class="row">
         <div class="col-sm-2" height="100" width="100">
           <div class="well">
-           <a href="Registration.jsp">
+           <a href="UserConfiguration.jsp">
            <center>
            <img src="assets/images/Admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
            </center>

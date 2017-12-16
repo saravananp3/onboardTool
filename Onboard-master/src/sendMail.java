@@ -46,7 +46,12 @@ public class sendMail extends HttpServlet {
 		System.out.println(msg);
 		Properties props = new Properties();
 		 HttpSession ses=request.getSession();  
-	        ses.setAttribute("My_Roles",rol);  
+	        ses.setAttribute("My_Roles",rol); 
+	        ses.setAttribute("fname",fname); 
+	        ses.setAttribute("lname",lname); 
+	        ses.setAttribute("email",email); 
+	        ses.setAttribute("project",project); 
+	        
 				
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -67,13 +72,13 @@ public class sendMail extends HttpServlet {
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
 		message.setSubject("Access Granted - Register into Onboarding Tool");
-		message.setText("Dear "+fname+" "+lname+",\nWe are pleased to inform that you are granted access to Onboarding Tool as "+rol +" for the Project "+project+".\nPlease login to the below url for registering your account\n http://localhost:8080/onboard/user_reg.jsp");
+		message.setText("Dear "+fname+" "+lname+",\nWe are pleased to inform that you are granted access to Onboarding Tool as "+rol +" for the Project "+project+".\nPlease login to the below url for registering your account\n http://localhost:8080/onboard/Registration.jsp\n"+msg);
 
 		Transport.send(message);
 //response.sendRedirect("user_reg.jsp");
 pw.println("<html><body>");  
 pw.println("Registration link have been sent to you\n");
-pw.println("<a href=\"Registration.jsp\" style='color:blue'> click </a>");
+pw.println("<a href=\"UserConfigration.jsp\" style='color:blue'> click </a>");
 pw.println("</body></html>");  
   
 pw.close();
