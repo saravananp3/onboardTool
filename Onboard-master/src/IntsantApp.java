@@ -59,16 +59,12 @@ public class IntsantApp extends HttpServlet {
 				     int i=0;
 				
 		          // the mysql insert statement
-		          String query = " insert into appinfo (appname,prjname)"
+		          String query = " insert into appinfo (appname, prjname)"
 		            + " values (?,?)";
 		       
 		          PreparedStatement preparedStmt = conn.prepareStatement(query);
 		          preparedStmt.setString (1, appname);
 		          preparedStmt.setString (2, prjname);
-		         
-		          
-
-		        
 		          preparedStmt.execute();
 		          
 		          String query1 = "select appname from appinfo where prjname='"+prjname+"'"; 

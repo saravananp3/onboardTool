@@ -401,8 +401,7 @@ var format1 = document.loginForm.format.value
    var multi = document.loginForm.mlang.value
    var local = document.loginForm.loclang.value
 
-if( dataType ==" "|| processname=="" || needarch =="" || format1 == "" ||multi == "" || local == "")
- 
+ if(((document.loginForm.datatype[0].checked == false) && (document.loginForm.datatype[1].checked == false) && (document.loginForm.datatype[2].checked == false))|| processname=="" || needarch =="" || format1 == "" ||(document.loginForm.mlang.checked == false) || (document.loginForm.loclang.checked == false))  
 {
 alert("Please Fill the Mandatory Field");
   }
@@ -596,8 +595,10 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                     <ol class="nav navbar-nav navbar-right">
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
-</li><li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
+</li><li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
 </li>     <li>
                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
@@ -639,28 +640,28 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
 
                     </ul>
                 </li>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+                    <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
                 <li item-expanded='true'><a href="business.jsp">Business</a>
                 <ul>
-                <li>Application Information</li>
-                <li>Legacy Retention Information</li>
-                <li>Archive Data Management</li>
-                <li>System Requirements</li>
+                <li><a href="business.jsp">Application Information</a></li>
+                <li><a href="business.jsp">Legacy Retention Information</a></li>
+                <li><a href="business.jsp">Archive Data Management</a></li>
+                <li><a href="business.jsp">System Requirements</a></li>
                 
                 </ul></li>
                 <li item-expanded='true'><a href="component.jsp">Technical</a>
                 <ul>
-                <li id='a'> Application Data Information</li>
-                <li id='b'> Infrastructure & Environment Information</li>
-                <li id='c'>Technical Information</li>
+                <li id='a'><a href="component.jsp">Application Data Information</a></li>
+                <li id='b'><a href="component.jsp">Infrastructure & Environment Inforamation</a></li>
+                <li id='c'><a href="component.jsp">Technical Information</a></li>
                 </ul>
                 </li>
                 
                  <li item-expanded='true'><a href="requirements.jsp">Archival Requirements</a>
                  <ul>
-                 <li>Screen/Report Requirements</li>
-                 <li>Archive Requirements</li>
+                 <li><a href="requirements.jsp">Screen/Report Requirements</a></li>
+                 <li><a href="requirements.jsp">Archive Requirements</a></li>
                  </ul>
                  </li>
                 </ul>
@@ -867,7 +868,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                                 <div class="required">Datatype Characteristics</div>
                                             </label>      
                                             <br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox" type="checkbox" name="datatype" value="Structured" required>Structured &nbsp;      
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox" type="checkbox" name="datatype" value="Structured" >Structured &nbsp;      
                                             <input id="checkbox1" type="checkbox" name="datatype" value="Unstructured" >Unstructured &nbsp;
                                             <input id="checkbox2" type="checkbox" name="datatype" value="Hybrid" >Hybrid      &nbsp;                         
                                         </div> 

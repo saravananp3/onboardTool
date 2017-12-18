@@ -54,7 +54,7 @@ public class Project extends HttpServlet {
 		        String Enddate = request.getParameter("Enddate"); 
 		        try
 		        {
-		        	System.out.println("Project.java");
+		        	
 		          // create a mysql database connection
 		          String myDriver = "org.gjt.mm.mysql.Driver";
 		          String myUrl = "jdbc:mysql://localhost:3306/strutsdb";
@@ -76,8 +76,8 @@ public class Project extends HttpServlet {
 		          preparedStmt.setString (9, Enddate);
 		          preparedStmt.execute();
 		          
-		          String query4 = " insert into app_prior (prj_name, IA_lic_cst, IA_maint_cst, Infrastrct_cst, strg_est, lab_cst, proj_name, data_size, data_source, curnt_users, complexity, est_archive, est_scrn, est_db_size, est_hrs, est_cst, ttl_IA_cst, ttl_infra_cst, ttl_IA_prdct_cst, ttl, ttl_cst_fr_app, add_cst_fr_contigency, add_cst, IA_app_sprt_cst, est_archive_cst)"
-		  	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		          String query4 = " insert into app_prior (prj_name, IA_lic_cst, IA_maint_cst, Infrastrct_cst, strg_est, lab_cst, proj_name, data_size, data_source, curnt_users, complexity, est_archive, est_scrn, est_db_size, est_hrs, est_cst, ttl_IA_cst, ttl_infra_cst, ttl_IA_prdct_cst, ttl, ttl_cst_fr_app, add_cst_fr_contigency, add_cst, IA_app_sprt_cst, est_archive_cst,no_of_app_complexity, read_date,sme_date)"
+		  	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
           
 		  	          PreparedStatement preparedStmt1 = conn.prepareStatement(query4);
 		  	          preparedStmt1.setString(1,projectname);
@@ -104,7 +104,10 @@ public class Project extends HttpServlet {
 		  	          preparedStmt1.setString(22, " ");
 		  	          preparedStmt1.setString(23, " ");
 		  	          preparedStmt1.setString(24, " ");
-		  	          preparedStmt1.setString(25, " ");	          
+		  	          preparedStmt1.setString(25, " ");
+		  	        preparedStmt1.setString(26, " ");
+		  	      preparedStmt1.setString(27, " ");
+		  	        preparedStmt1.setString(28, " ");	
 		           preparedStmt1.execute();
 		           
 		          String query1="select * from archive_details";

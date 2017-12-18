@@ -497,10 +497,10 @@ while (rs.next())
 
 //values_name[i] = rs.getString(1);
 zoom.add(rs.getString(1));
-    //System.out.println("Hello " + values_name[i]);
+    
     //i++;
 }   
-//System.out.println("Count : " +count);
+
 
 for (String z : zoom) {
     //System.err.println("FDFD "+z);
@@ -575,11 +575,11 @@ var f=document.loginForm;
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
 </li>
-<li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>
-                        <li>
-                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+ <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
+</li>                     <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -599,9 +599,9 @@ var f=document.loginForm;
 
             <ul>
                 <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
-                <li item-expanded='true'>App Emphasize Module
+                <li item-expanded='true'><a href="editproject.jsp">App Emphasize Module</a>
                     <ul>
-                       <li item-expanded='true'>Project Details
+                       <li item-expanded='true'><a href="editproject.jsp">Project Details</a>
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
                         <li><a href="application1.jsp">Application Details</a></li>
@@ -620,33 +620,39 @@ var f=document.loginForm;
 
                     </ul>
                 </li>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+              <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
-                <li item-expanded='true'>Business
+                <li item-expanded='true'><a href='firstinsert.jsp'>Business</a>
                 <ul>
+                <a href='firstinsert.jsp'>
                 <li>Application Information</li>
                 <li>Legacy Retention Information</li>
                 <li>Archive Data Management</li>
                 <li>System Requirements</li>
-                
+                </a>
                 </ul></li>
                 <li item-expanded='true'>Technical
                 <ul>
+                <a href='firstinsert.jsp'>
                 <li>Application Data Information</li>
                 <li>Infrastructure & Environment Inforamation</li>
                 <li>Technical Information</li>
+                </a>
                 </ul>
                 </li>
                 
+                <a href='firstinsert.jsp'>
                  <li item-expanded='true'>Archival Requirements
                  <ul>
                  <li>Screen/Report Requirements</li>
                  <li>Archive Requirements</li>
+                 </a>
                  </ul>
                  </li>
                 </ul>
                 </li>
-                
+                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li> 
                
                           </ul>
     

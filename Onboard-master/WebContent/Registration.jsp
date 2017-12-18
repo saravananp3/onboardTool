@@ -94,10 +94,14 @@ span.multiselect-native-select select {
 	margin-left: -20px;
 	margin-right: 0
 }
+.well
+{
+background-color: rgb(22, 105, 173);
+}
 </style>
 <script src="js/dropdown.js"></script>
 </head>
-<body>
+<body >
 <%@page import="java.sql.*"%>
 <%
 HttpSession ses=request.getSession(); 
@@ -163,14 +167,16 @@ ResultSet rs = st.executeQuery(query);
 	}
 	}
 </script>
+
+
 <form class="form-signin" name="loginForm" method="post">
 <div class="container">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
                 
     
                  
-                    <a class="navbar-brand">Registration Page</a>
+                    <a class="navbar-brand" style="color:white" id="sitetitle">Registration Page</a>
               
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -178,7 +184,7 @@ ResultSet rs = st.executeQuery(query);
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
                         <li>
-                            <a href="Login.html">Logout</a>
+                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -187,31 +193,31 @@ ResultSet rs = st.executeQuery(query);
         </nav>
      
         </div>
- <div class="container">
+ <div class="container" style="float:right">
     <br/><br/><br/><br/>
-	<div class="col-lg-12 well">
+	<div class=" well col-lg-7 well" style="background:rgb(22, 105, 173)">
 	<div class="row">
 			
-					<div class="col-sm-12">
+					<div class="col-sm-12" style="padding:10px">
 						<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>First Name<span class="glyphicon glyphicon-asterisk"></span></label>
+							<div class="col-sm-6 form-group">
+								<label style="color:white">First Name<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="text" name="reg_fname" id="reg_fname"   class="form-control" value="<%=fname%>" >
 							</div>
-							<div class="col-sm-5 form-group">
-								<label>Last Name<span class="glyphicon glyphicon-asterisk"></span></label>
+							<div class="col-sm-6 form-group">
+								<label style="color:white">Last Name<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="text" name="reg_lname" id="reg_lname"  class="form-control" value="<%=lname%>">
 							</div>
 						</div>					
 						<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Username<span class="glyphicon glyphicon-asterisk"></span></label>
+							<div class="col-sm-6 form-group">
+								<label style="color:white">Username<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="text" class="form-control" name="reg_uname" id="reg_uname" onChange="check()">
 							</div>	
 						
-							<div class="col-sm-5 form-group">
+							<div class="col-sm-6 form-group">
 								<div class="form-group">
-   <label>Roles</label>
+                            <label style="color:white">Roles</label>
 								<input type="text" class="form-control" name="reg_roles" value="<%=role%>">
 
 
@@ -219,14 +225,14 @@ ResultSet rs = st.executeQuery(query);
 							</div>
 							</div>
 							<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
+							<div class="col-sm-6 form-group">
+								<label style="color:white">Email<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="text" name="reg_email" id="reg_email" class="form-control" value="<%=email%>">
 							</div>
-<div class="col-sm-5 form-group">
-								<label> Security Question<span class="glyphicon glyphicon-asterisk"></span></label>
+<div class="col-sm-6 form-group">
+								<label style="color:white"> Security Question<span class="glyphicon glyphicon-asterisk"></span></label>
 								<br/>
-								<label>Question 1</label>
+								<label style="color:white">Question 1</label>
 								<select class="form-control" name="reg_qn">
 								<option value=""></option>
   <option value="What is Your Spouse Name?">What is Your pet Name?</option>
@@ -235,34 +241,36 @@ ResultSet rs = st.executeQuery(query);
   <option value="What is the name of your favorite childhood friend">What is the name of your favorite childhood friend</option>
 </select>
 							</div>	
-							<div class="col-sm-5 form-group">
-								<label>Confirm Email<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="text" class="form-control" name="reg_cemail" id="reg_cemail">
-							</div>	
-							<div class="col-sm-5 form-group">
-								<label>Answer</label>
-								<input type="text" class="form-control" name="reg_ans" id="reg_ans">
-							</div>		
+								
+									
 						</div>
 						
 						<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Password<span class="glyphicon glyphicon-asterisk"></span></label>
+							<div class="col-sm-6 form-group">
+								<label style="color:white">Password<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="password"  class="form-control" name="reg_pwd" id="reg_pwd">
-							</div></div>
-							<div class="row">		
-							<div class="col-sm-5 form-group">
-								<label>Confirm Password<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="password"  class="form-control" name="reg_cpwd" id="reg_cpwd">
+							</div>
+							<div class="col-sm-6 form-group">
+								<label style="color:white">Confirm Email<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="text" class="form-control" name="reg_cemail" id="reg_cemail">
 							</div>	</div>
+							<div class="row">		
+							<div class="col-sm-6 form-group">
+								<label style="color:white">Confirm Password<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="password"  class="form-control" name="reg_cpwd" id="reg_cpwd">
+							</div>
+							<div class="col-sm-6 form-group">
+								<label style="color:white">Answer</label>
+								<input type="text" class="form-control" name="reg_ans" id="reg_ans">
+							</div>		</div>
 							<div class="row">					
-					<div class="col-sm-5 form-group">
-						<label>Projects</label>
+					<div class="col-sm-6 form-group">
+						<label style="color:white">Projects</label>
 						<input type="text"  class="form-control" name="reg_projects" value="<%=project%>">
 					</div>		
 					</div>
 					
-					<button type="button" class="btn btn-lg btn-info" onclick="www();">Submit</button>
+					<button type="button" class="btn btn-lg btn-info pull-right" onclick="www();">Submit</button>
 										
 					</div> 
 				</div>

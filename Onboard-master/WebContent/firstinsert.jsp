@@ -250,6 +250,12 @@ ResultSet rs3 = st3.executeQuery(query3);
                         <li item-selected='true'>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
+<li><%
+ HttpSession details=request.getSession();
+                         String uid=(String)details.getAttribute("username");
+                         String roles=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=roles%></span></p>
+</li> 
                         <li>
                             <a href="logout.jsp">Logout</a>
                         </li>
@@ -293,10 +299,10 @@ String sequnce="";
 while(rs.next()){
 %>			
 						<li>
-							<h3 class="cbp-vm-title left-col primary" name="name"><%= rs.getString(1)%></h3>
+							<h3 class="cbp-vm-title left-col primary" name="name"><%= rs.getString("appname")%></h3>
 <% 
 String detail="";
-String q3="select seq_num from archive_exec where projects='"+name +"' and name='"+rs.getString(1)+"'";
+String q3="select seq_num from archive_exec where projects='"+name +"' and name='"+rs.getString("appname")+"'";
 Statement stt = con.createStatement();
 ResultSet rst = stt.executeQuery(q3);
 if(rst.next())
@@ -345,7 +351,7 @@ break;
 } %>
 
 			
-							<button type="button" class="btn btn-primary" onClick="edit('<%= rs.getString(1)%>');">
+							<button type="button" class="btn btn-primary" onClick="edit('<%= rs.getString("appname")%>');">
  View/Update
 </button>
 						</li>

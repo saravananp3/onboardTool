@@ -296,9 +296,11 @@ ResultSet rs = st.executeQuery(query);
                         
               <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
-<li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>
+ <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
+</li> 
                         <li>
                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
@@ -342,10 +344,10 @@ while(rs.next()){
 <% String q="select * from archive_exec where level=1 and projects='"+rs.getString(1)+"'order by seq_num";
 st1 = con.createStatement();
 ResultSet rs1 = st1.executeQuery(q);
-System.out.println("HIIIIIIIIIIII");
+
 while(rs1.next())
 {
-	System.out.println(rs1.getString(15));
+	
 if(rs1.getString(15).equals("100"))
 continue;
 else
@@ -359,13 +361,13 @@ else
 	</div>
 	</center>
 	<%
-	System.out.println("k value is : "+k);
+
 	if(Integer.parseInt(rs1.getString(15))<35){
 %>
 <script>
 document.getElementById('prog_bar<%=k%>').className='progress-bar progress-bar-danger progress-bar-striped';</script>
 <%
-System.out.println("danger prog_bar"+k);
+
 	} 
 else if(Integer.parseInt(rs1.getString(15))<65){
 %>

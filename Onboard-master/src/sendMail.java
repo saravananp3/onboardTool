@@ -77,8 +77,8 @@ public class sendMail extends HttpServlet {
 		Transport.send(message);
 //response.sendRedirect("user_reg.jsp");
 pw.println("<html><body>");  
-pw.println("Registration link have been sent to you\n");
-pw.println("<a href=\"UserConfigration.jsp\" style='color:blue'> click </a>");
+pw.println("Registration link have been sent to \n");
+pw.println("<a href=\"UserConfiguration.jsp\" style='color:blue'> Click Here </a>");
 pw.println("</body></html>");  
   
 pw.close();

@@ -668,7 +668,7 @@ document.getElementById('reftoapp').readOnly = true;
 document.getElementById('tid').readOnly = true;
 document.getElementById('descr').readOnly = true;
 document.getElementById('vendor').readOnly = true;
-document.getElementById('expdate').readOnly = true;
+document.getElementById('expirydate').readOnly = true;
 document.getElementById('noticeperiod').readOnly = true;
 document.getElementById('contractvalue').readOnly = true;
 document.getElementById('businessunits').disabled = true;
@@ -858,8 +858,10 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                        <img src="assets/images/Logo sized.jpg" class="img-rounded"  height="50" width="80" float="right" alt="Avatar">&nbsp;
 </li>
                    
-                   <li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
+         <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
 </li>     <li>
                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
@@ -904,24 +906,24 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                 <ul>
                 <li item-expanded='true'><a href="business.jsp">Business</a>
                 <ul>
-                <li id='a'>Application Information</li>
-                <li id='b'>Legacy Retention Information</li>
-                <li id='c'>Archive Data Management</li>
-                <li id='d'>System Requirements</li>
+                <li id='a'><a href="business.jsp">Application Information</a></li>
+                <li id='b'><a href="business.jsp">Legacy Retention Information</a></li>
+                <li id='c'><a href="business.jsp">Archive Data Management</a></li>
+                <li id='d'><a href="business.jsp">System Requirements</a></li>
                 
                 </ul></li>
                 <li item-expanded='true'><a href="component.jsp">Technical</a>
                 <ul>
-                <li>Application Data Information</li>
-                <li>Infrastructure & Environment Inforamation</li>
-                <li>Technical Information</li>
+                <li><a href="component.jsp">Application Data Information</a></li>
+                <li><a href="component.jsp">Infrastructure & Environment Inforamation</a></li>
+                <li><a href="component.jsp">Technical Information</a></li>
                 </ul>
                 </li>
                 
                  <li item-expanded='true'><a href="requirements.jsp">Archival Requirements</a>
                  <ul>
-                 <li>Screen/Report Requirements</li>
-                 <li>Archive Requirements</li>
+                 <li><a href="requirements.jsp">Screen/Report Requirements</a></li>
+                 <li><a href="requirements.jsp">Archive Requirements</a></li>
                  </ul>
                  </li>
                 </ul>

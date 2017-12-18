@@ -6,6 +6,42 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>atozknowledge.com demo loginjsp</title>
+<script type='text/javascript'
+  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+   <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
+    <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
+        can populate it from 'UL' or by using its 'source' property." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/demos.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<style>
+.well
+{
+ margin: 100px auto;
+ padding: 20px 20px;
+  border: 2px solid black;
+  background:;
+  
+ }
+</style>
 </head>
 <%
 
@@ -40,12 +76,12 @@ class Exec
 
 
 %>
-<<body>
+<body  background="assets/images/bg.jpg">
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	
 	<%
-	int i=0,exec_det=0;
+	int i=0,exec_det=0,dum=0;
 	HttpSession details=request.getSession(); 
 String userid=request.getParameter("usr");
 String pwd=request.getParameter("pwd"); 
@@ -58,10 +94,24 @@ Statement st5= con.createStatement();
 ResultSet rs5=st5.executeQuery("select * from archive_details");
 Statement st6= con.createStatement(); 
 ResultSet rs6=st6.executeQuery("select * from details");
+Statement st7= con.createStatement(); 
+ResultSet rs7=st7.executeQuery("select * from dummy");
 while(rs5.next())
 	i++;
 while(rs6.next())
 	exec_det++;
+while(rs7.next())
+	dum++;
+if(dum==0){
+String q = " insert into dummy (value)"
+        + " values (?)";
+
+      PreparedStatement preparedStmt01 = con.prepareStatement(q);
+
+      preparedStmt01.setString (1, "10000");
+
+      preparedStmt01.execute();
+      }
 
 if(i==0){
 	Samp s[]=new Samp[30];
@@ -232,6 +282,8 @@ if((rs.getString(5).equals(pwd)))
 		details.setAttribute("archive_exec",rs1.getString(5));
 		
 	}
+	
+
 
 	
 	
@@ -245,11 +297,29 @@ if((rs.getString(5).equals(pwd)))
 } 
 else 
 { 
-out.println("Invalid username or password or you are not authenticated"); 
+	%>
+	
+	<div class="container">
+<div class="well">
+<h1> Invalid Username or Password </h1>
+
+</div>
+
+</div>
+	
+<%
 } 
 } 
 else
-	out.println("Invalid username or password or you are not authenticated"); 	
+	%>
+	<div class="container">
+<div class="well">
+<h1> Invalid Username or Password </h1>
+
+</div>
+
+</div>
+<% 
 }
 %>
 

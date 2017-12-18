@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -36,6 +37,7 @@ public class confirmation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter pw=response.getWriter();
 		Properties props = new Properties();
 	  String email=request.getParameter("email");
 				
@@ -63,7 +65,13 @@ public class confirmation extends HttpServlet {
 
 		Transport.send(message);
 
-		System.out.println("Done");
+		pw.println("<html><body>");  
+		pw.println("Registration Successfull \n");
+		pw.println("Thanks for Registering...Please click on the below link\n\nhttp://localhost:8080/onboard/Login.html");
+		pw.println("</body></html>");  
+		  
+		pw.close();
+				 
 
 		} catch (MessagingException e) {
 		throw new RuntimeException(e);

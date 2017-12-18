@@ -603,17 +603,17 @@ document.loginForm.est_scrn.value ="<=30";
 z=5;
 }
 var qqq=<%=appno%>;
-document.loginForm.est_db_size.value=(document.loginForm.no_of_app_complexity.value*0.1*document.loginForm.strg_est.value).toFixed(2);
-document.loginForm.est_hrs.value =(qqq*document.loginForm.est_archive.value).toFixed(2);
+document.loginForm.est_db_size.value=(document.loginForm.no_of_app_complexity.value*0.001*document.loginForm.strg_est.value).toFixed(2);
+document.loginForm.est_hrs.value =(document.loginForm.no_of_app_complexity.value*document.loginForm.est_archive.value).toFixed(2);
 a=(100*document.loginForm.est_hrs.value);
 document.loginForm.est_cst.value="$"+a.toFixed(2);
 b=document.loginForm.est_db_size.value*document.loginForm.IA_lic_cst.value;
 document.loginForm.ttl_IA_cst.value ="$"+b.toFixed(2);
 c=10000*document.loginForm.est_db_size.value;
 document.loginForm.ttl_infra_cst.value="$"+c.toFixed(2);
-d=5*b*document.loginForm.IA_maint_cst.value
+d=5*b*0.01*document.loginForm.IA_maint_cst.value
 document.loginForm.ttl_IA_prdct_cst.value ="$"+d.toFixed(2);
-e=(a*5)+(5*b)+(5*c)+d;
+e=a+b+c+d;
 document.loginForm.ttl.value="$"+e.toFixed(2);
 document.loginForm.tootal.value=e.toFixed(2);
 document.loginForm.ttl_cst_fr_app.value=<%=sum%>+(e.toFixed(2)-0);
@@ -710,11 +710,11 @@ session.setAttribute(rss.getString(3),rss.getString(15));
                        <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
                        
 </li>
-<li style="background:#3276B1">
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>
-                       
-                        <li>
+ <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
+</li>               <li>
                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
@@ -756,34 +756,36 @@ session.setAttribute(rss.getString(3),rss.getString(15));
                     </ul>
                 </li>
                 
-                <li item-expanded='true'><a href='firstinsert.jsp'><b>Intake Module</b></a>
+           <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
-                <li item-expanded='true'>Business
+                <li item-expanded='true'><a href='firstinsert.jsp'>Business</a>
                 <ul>
-                <li>Application Information</li>
-                <li>Legacy Retention Information</li>
-                <li>Archive Data Management</li>
-                <li>System Requirements</li>
+                <li><a href='firstinsert.jsp'>Application Information</a></li>
+                <li><a href='firstinsert.jsp'>Legacy Retention Information</a></li>
+                <li><a href='firstinsert.jsp'>Archive Data Management</a></li>
+                <li><a href='firstinsert.jsp'>System Requirements</a></li>
                 
                 </ul></li>
-                <li item-expanded='true'>Technical
+                <li item-expanded='true'><a href='firstinsert.jsp'>Technical</a>
                 <ul>
-                <li>Application Data Information</li>
-                <li>Infrastructure & Environment <br/>Inforamation</li>
-                <li>Technical Information</li>
+                <li><a href='firstinsert.jsp'>Application Data Information</a></li>
+                <li><a href='firstinsert.jsp'>Infrastructure & Environment Inforamation</a></li>
+                <li><a href='firstinsert.jsp'>Technical Information</a></li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'>Archival Requirements
+                 <li item-expanded='true'><a href='firstinsert.jsp'>Archival Requirements</a>
                  <ul>
-                 <li>Screen/Report Requirements</li>
-                 <li>Archive Requirements</li>
+                 <li><a href='firstinsert.jsp'>Screen/Report Requirements</a></li>
+                 <li><a href='firstinsert.jsp'>Archive Requirements</a></li>
                  </ul>
                  </li>
                 </ul>
                 </li>
-                <li><a href="archive_exec_samp.jsp"><b>Archive Execution Module</b></a>
-               </li>                
+                </ul>
+                </li>
+                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li>         
                
                           </ul>
     
@@ -946,7 +948,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                         </div>
                                        
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput526"><div class="required">IA License cost per TB(%)</div></label>
+                                            <label class="control-label" for="formInput526"><div class="required">IA License cost per TB($)</div></label>
                                             <input type="text" class="form-control" id="IA_lic_cst"  name="IA_lic_cst" value="<%=rs.getString("IA_lic_cst")%>" required>
                                         </div>
                                          <div class="form-group"> 
@@ -954,7 +956,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                             <input type="text" class="form-control" id="IA_maint_cst"  name="IA_maint_cst" value="<%=rs.getString("IA_maint_cst")%>" required>
                                         </div>
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput316"><div class="required">Infra Structure Cost per TB(%)</div></label>
+                                            <label class="control-label" for="formInput316"><div class="required">Infra Structure Cost per TB($)</div></label>
                                               <input type="text" class="form-control" id="Infrastrct_cst"  name="Infrastrct_cst" value="<%=rs.getString("Infrastrct_cst")%>" required> 
                                          </div>
                                         <div class="form-group">
@@ -964,7 +966,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                       
                                         </div>
                                         <div class="form-group"> 
-                                            <label class="control-label" for="formInput526"><div class="required">Labor Cost Per Hour for IA Dev Team(%)</div></label>
+                                            <label class="control-label" for="formInput526"><div class="required">Labor Cost Per Hour for IA Dev Team($)</div></label>
                                             <input type="text" class="form-control" id="lab_cst"  name="lab_cst" value="<%=rs.getString("lab_cst")%>" required>
                                         </div>
                                          <div class="form-group"> 
@@ -1036,10 +1038,10 @@ while(rs1.next()){
 
         <tr>
         
-          <td class="edit_row" style="cursor:pointer" id="1"><%=rs1.getString(1) %></td>
-          <td class="row_s" style="cursor:pointer" id="2"><%=rs1.getString(2) %></td>
-          <td class="row_t" style="cursor:pointer" id="3"><%=rs1.getString(3) %></td>
-          <td class="row_d" style="cursor:pointer" id="4"><%=rs1.getString(4) %></td>
+          <td class="edit_row" style="cursor:pointer" id="1"><%=rs1.getString("appname") %></td>
+          <td class="row_s" style="cursor:pointer" id="2"><%=rs1.getString("complexity") %></td>
+          <td class="row_t" style="cursor:pointer" id="3"><%=rs1.getString("est_db_size") %></td>
+          <td class="row_d" style="cursor:pointer" id="4"><%=rs1.getString("est_cst") %></td>
        
          
         </tr>
@@ -1047,6 +1049,7 @@ while(rs1.next()){
         
  
         %>
+        
     </tbody>
     </table>
     <script>
@@ -1059,9 +1062,53 @@ for(var i=0; i<edit_row.length; i++) {
     // get parent row, add data from its cells in form fields
     var tr_parent = this.parentNode;
     document.getElementById('proj_name').value = tr_parent.querySelector('.edit_row').innerHTML;
-    document.getElementById('complexity').value = tr_parent.querySelector('.row_s').innerHTML;
-    document.getElementById('est_db_size').value = tr_parent.querySelector('.row_t').innerHTML;
-    document.getElementById('est_cst').value = tr_parent.querySelector('.row_d').innerHTML;
+    var projectname_value=document.getElementById('proj_name').value;
+    var knt=0;
+ <%
+ String query8= "SELECT * from app_prior where prj_name='"+projectname+"'";
+ Statement st8 = conn.createStatement();
+ ResultSet rs8 = st8.executeQuery(query8);
+ while(rs8.next())
+ {
+	 %>
+	 valuess="<%=rs8.getString("proj_name")%>";
+	 if(valuess==projectname_value)
+		 {
+		 knt++;
+		 
+		 document.getElementById('complexity').value = "<%= rs8.getString("complexity") %>";
+		    document.getElementById('est_db_size').value = "<%= rs8.getString("est_db_size") %>";
+		    document.getElementById('est_cst').value = "<%= rs8.getString("est_cst") %>";
+		    document.getElementById('curnt_users').value = "<%= rs8.getString("curnt_users") %>";
+		    document.getElementById('data_size').value = "<%= rs8.getString("data_size") %>";
+		    document.getElementById('RO_DATE').value = "<%= rs8.getString("read_date") %>";
+		    document.getElementById('SME_DATE').value = "<%= rs8.getString("sme_date") %>";
+		    document.getElementById('est_archive').value = "<%= rs8.getString("est_archive") %>";
+		    document.getElementById('est_scrn').value = "<%= rs8.getString("est_scrn") %>";
+		    document.getElementById('est_hrs').value = "<%= rs8.getString("est_hrs") %>";
+		    document.getElementById('ttl_IA_cst').value = "<%= rs8.getString("ttl_IA_cst") %>";
+		    document.getElementById('ttl_infra_cst').value = "<%= rs8.getString("ttl_infra_cst") %>";
+		    document.getElementById('ttl_IA_prdct_cst').value = "<%= rs8.getString("ttl_IA_prdct_cst") %>";
+		    document.getElementById('ttl').value = "<%= rs8.getString("ttl") %>";
+		 }
+<% }
+ %>
+ if(knt==0){
+    document.getElementById('complexity').value = " ";
+    document.getElementById('est_db_size').value = " ";
+    document.getElementById('est_cst').value = " ";
+    document.getElementById('curnt_users').value = " ";
+    document.getElementById('data_size').value = " ";
+    document.getElementById('RO_DATE').value = " ";
+    document.getElementById('SME_DATE').value = " ";
+    document.getElementById('est_archive').value = " ";
+    document.getElementById('est_scrn').value = " ";
+    document.getElementById('est_hrs').value = " ";
+    document.getElementById('ttl_IA_cst').value = " ";
+    document.getElementById('ttl_infra_cst').value = " ";
+    document.getElementById('ttl_IA_prdct_cst').value = " ";
+    document.getElementById('ttl').value = " ";
+ }
     }, false);
 }
 
@@ -1073,14 +1120,19 @@ for(var i=0; i<edit_row.length; i++) {
                                   
                                         <div class="form-group"> 
                                             <label class="control-label" for="formInput664">Application Name</label>
-                                            <input type="text" class="form-control" id="proj_name"  name="proj_name" value="<%=rs.getString("proj_name")%>" >
+                                            <input type="text" class="form-control" id="proj_name"  name="proj_name">
                                         </div>                                         
-                                         
+                                    <%
+                                    System.out.println(rs.getString("proj_name"));
+                                    //String q="select * from app_prior where prj_name='"+projectname+"' and proj_name='"+rs.getString("proj_name")+"'";
+                                    
+                                    
+                                    %>
                                       
                                               <div class="form-group"> 
                                             <label class="control-label" for="formInput26"><div class="required">Data Size</div></label>                                             
                                             <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required > 
-                                            <option><%=rs.getString("data_size")%></option>
+                                            <option></option>
                                                 <option><100 GB</option>                                                 
                                                 <option>100 to 250 GB</option>
                                                 <option>250 to 500 GB</option>
@@ -1105,7 +1157,7 @@ for(var i=0; i<edit_row.length; i++) {
                                           <div class="form-group"> 
                                             <label class="control-label" for="formInput26"><div class="required">Current users</div></label>                                             
                                             <select id="curnt_users" class="form-control" name="curnt_users" onChange="updatesum()" required> 
-                                            <option><%=rs.getString("curnt_users")%></option>
+                                            <option></option>
                                                 <option><10</option>                                                 
                                                 <option><25</option>
                                                 <option><50</option>
@@ -1127,48 +1179,48 @@ for(var i=0; i<edit_row.length; i++) {
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="formInput664">Read Only Date</label>                                             
-                                            <input type="text" class="form-control" id="RO_DATE"  name="read_date" onChange="updatesum()" value="<%=rs.getString("read_date")%>"> 
+                                            <input type="text" class="form-control" id="RO_DATE"  name="read_date" onChange="updatesum()"> 
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="formInput664">SME Date</label>                                             
-                                            <input type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()" value="<%=rs.getString("sme_date")%>"> 
+                                            <input type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()"> 
                                         </div>          
                                         
                                     <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Archival Service Effort</label>                                             
-                                            <input type="text" class="form-control" id="est_archive"  name="est_archive" onChange="updatesum()" value="<%=rs.getString("est_archive")%>"> 
+                                            <input type="text" class="form-control" id="est_archive"  name="est_archive" onChange="updatesum()"> 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Number of Screen</label>                                             
-                                            <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" value="<%=rs.getString("est_scrn")%>" > 
+                                            <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" > 
                                         </div>
                                      <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Size of xDB</label>                                             
-                                            <input type="text" class="form-control" id="est_db_size"  name="est_db_size" onChange="updatesum()" value="<%=rs.getString("est_db_size")%>" > 
+                                            <input type="text" class="form-control" id="est_db_size"  name="est_db_size" onChange="updatesum()" > 
                                         </div>
                                       <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Hours</label>                                             
-                                            <input type="text" class="form-control" id="est_hrs"  name="est_hrs" onChange="updatesum()"  value="<%=rs.getString("est_hrs")%>" >  
+                                            <input type="text" class="form-control" id="est_hrs"  name="est_hrs" onChange="updatesum()"   >  
                                         </div>
                                                                                 <div class="form-group">
                                             <label class="control-label" for="formInput664">Estimated Total Service Cost</label>                                             
-                                            <input type="text" class="form-control" id="est_cst"  name="est_cst" onChange="updatesum()" value="<%=rs.getString("est_cst")%>" > 
+                                            <input type="text" class="form-control" id="est_cst"  name="est_cst" onChange="updatesum()" > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total IA License Cost</label>                                             
-                                            <input type="text" class="form-control" id="ttl_IA_cst"  name="ttl_IA_cst" onChange="updatesum()" value="<%=rs.getString("ttl_IA_cst")%>" > 
+                                            <input type="text" class="form-control" id="ttl_IA_cst"  name="ttl_IA_cst" onChange="updatesum()"  > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total Infrastructure Storage Cost</label>                                             
-                                            <input type="text" class="form-control" id="ttl_infra_cst"  name="ttl_infra_cst" onChange="updatesum()" value="<%=rs.getString("ttl_infra_cst")%>" > 
+                                            <input type="text" class="form-control" id="ttl_infra_cst"  name="ttl_infra_cst" onChange="updatesum()"  > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total Info Archive Product Maintenance Cost for 5 years</label>                                             
-                                            <input type="text" class="form-control" id="ttl_IA_prdct_cst"  name="ttl_IA_prdct_cst" onChange="updatesum()"  value="<%=rs.getString("ttl_IA_prdct_cst")%>" > 
+                                            <input type="text" class="form-control" id="ttl_IA_prdct_cst"  name="ttl_IA_prdct_cst" onChange="updatesum()"  > 
                                         </div>
                                          <div class="form-group">
                                             <label class="control-label" for="formInput664">Total</label>                                             
-                                            <input type="text" class="form-control" id="ttl"  name="ttl"  value="<%=rs.getString("ttl")%>" > 
+                                            <input type="text" class="form-control" id="ttl"  name="ttl"  > 
                                             <input type="text" class="form-control" id="tootal"  name="tootal"  style="display:none;" > 
                                         </div>   
                                         <div>

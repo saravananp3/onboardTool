@@ -343,7 +343,6 @@ int sumcount=0;
 Statement st1;
 try {
 	HttpSession details=request.getSession();
-	 String roles=(String)details.getAttribute("role");
 	String info=(String)details.getAttribute("app_emp");
 	String det=(String)session.getAttribute("theName");
 	String name=request.getParameter("name");
@@ -380,9 +379,11 @@ while(rss.next())
                         <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
                     
-                        <li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>
+     <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String roles=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=roles%></span></p>
+</li> 
                         <li>
                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
@@ -427,35 +428,36 @@ while(rss.next())
 
                     </ul>
                 </li>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+              <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
-                <li item-expanded='true'>Business
+                <li item-expanded='true'><a href='firstinsert.jsp'>Business</a>
                 <ul>
-                <li>Application Information</li>
-                <li>Legacy Retention Information</li>
-                <li>Archive Data Management</li>
-                <li>System Requirements</li>
+                <li><a href='firstinsert.jsp'>Application Information</a></li>
+                <li><a href='firstinsert.jsp'>Legacy Retention Information</a></li>
+                <li><a href='firstinsert.jsp'>Archive Data Management</a></li>
+                <li><a href='firstinsert.jsp'>System Requirements</a></li>
                 
                 </ul></li>
-                <li item-expanded='true'>Technical
+                <li item-expanded='true'><a href='firstinsert.jsp'>Technical</a>
                 <ul>
-                <li>Application Data Information</li>
-                <li>Infrastructure & Environment Inforamation</li>
-                <li>Technical Information</li>
+                <li><a href='firstinsert.jsp'>Application Data Information</a></li>
+                <li><a href='firstinsert.jsp'>Infrastructure & Environment Inforamation</a></li>
+                <li><a href='firstinsert.jsp'>Technical Information</a></li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'>Archival Requirements
+                 <li item-expanded='true'><a href='firstinsert.jsp'>Archival Requirements</a>
                  <ul>
-                 <li>Screen/Report Requirements</li>
-                 <li>Archive Requirements</li>
+                 <li><a href='firstinsert.jsp'>Screen/Report Requirements</a></li>
+                 <li><a href='firstinsert.jsp'>Archive Requirements</a></li>
                  </ul>
                  </li>
                 </ul>
                 </li>
+                </ul>
+                </li>
                 <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
                </li> 
-                
                
                           </ul>
     
@@ -579,7 +581,7 @@ while(rs1.next()){
 %>
         <tr>
         
-          <td class="edit_row" style="cursor:pointer"><%=rs1.getString(1) %></td>
+          <td class="edit_row" style="cursor:pointer"><%=rs1.getString("appname") %></td>
          
          
         </tr>
@@ -606,7 +608,9 @@ while(rs1.next()){
                             </div>                             
                         </div>         
                           </form>  
+                       
                     <button type="button" class="btn btn-default" onclick="location.href='editproject.jsp';">Back</button>
+                    <button type="button" class="btn btn-success pull-right" onclick="location.href='tree.jsp';">Save & Continue...</button>
                                         
                                                                                                          
                                                                                                                        

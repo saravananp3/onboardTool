@@ -133,9 +133,11 @@ if(rs.next())
                         <li>
                           <img src="assets/images/logo1.png" id="image" class="img" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
-<li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>
+ <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
+</li> 
                         <li>
                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>

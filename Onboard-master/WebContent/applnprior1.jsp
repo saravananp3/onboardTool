@@ -392,6 +392,12 @@ while(rss.next())
                         <li>
                          <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
+ <li><%
+ HttpSession details=request.getSession();
+                         String uid=(String)details.getAttribute("username");
+                         String roles=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=roles%></span></p>
+</li> 
                         <li>
                             <a href="logout.jsp" style="color:white ;background:#3276B1" >Logout</a>
                         </li>
@@ -432,32 +438,35 @@ while(rss.next())
                         <li item-selected='true'><a href="applnprior.jsp">Application-Prioritized</a></li>
                     </ul>
                 </li>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+               <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
-                <li item-expanded='true'>Business
+                <li item-expanded='true'><a href='firstinsert.jsp'>Business</a>
                 <ul>
-                <li>Application Information</li>
-                <li>Legacy Retention Information</li>
-                <li>Archive Data Management</li>
-                <li>System Requirements</li>
+                <li><a href='firstinsert.jsp'>Application Information</a></li>
+                <li><a href='firstinsert.jsp'>Legacy Retention Information</a></li>
+                <li><a href='firstinsert.jsp'>Archive Data Management</a></li>
+                <li><a href='firstinsert.jsp'>System Requirements</a></li>
                 
                 </ul></li>
-                <li item-expanded='true'>Technical
+                <li item-expanded='true'><a href='firstinsert.jsp'>Technical</a>
                 <ul>
-                <li>Application Data Information</li>
-                <li>Infrastructure & Environment Inforamation</li>
-                <li>Technical Information</li>
+                <li><a href='firstinsert.jsp'>Application Data Information</a></li>
+                <li><a href='firstinsert.jsp'>Infrastructure & Environment Inforamation</a></li>
+                <li><a href='firstinsert.jsp'>Technical Information</a></li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'>Archival Requirements
+                 <li item-expanded='true'><a href='firstinsert.jsp'>Archival Requirements</a>
                  <ul>
-                 <li>Screen/Report Requirements</li>
-                 <li>Archive Requirements</li>
+                 <li><a href='firstinsert.jsp'>Screen/Report Requirements</a></li>
+                 <li><a href='firstinsert.jsp'>Archive Requirements</a></li>
                  </ul>
                  </li>
                 </ul>
                 </li>
+                </ul>
+                </li>
+               
                 <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
                </li> 
                 
@@ -678,6 +687,8 @@ for(var i=0; i<edit_row.length; i++) {
 <button type="button" class="btn btn-primary" onclick="call()" >Submit</button>     
      
                     <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
+                    
+                    <a href="tree.jsp" style="float:right">Click here to enter data for application</a>
                                       <% } 
                                       }
 %> 

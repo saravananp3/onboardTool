@@ -44,7 +44,52 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+    
     <script type="text/javascript">
+    
+    $(function() {
+    $( "#Plandate" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
+    
+    $(function() {
+    $( "#Enddate" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
+    
+    $(function() {
+    $( "#Hyperdate" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
+    
+    $(function() {
+    $( "#Execdate" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
+    
+    $(function() {
+    $( "#Intdate" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
+    
+    $(function() {
+    $( "#Startdate" ).datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true
+    });
+});
+    
+   
         $(document).ready(function () {
             // Create jqxTree
             $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
@@ -103,6 +148,8 @@
             }
         });
     </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
      <style>
     body
     {
@@ -477,11 +524,13 @@ if(rs.next()){
                         <li>
                         <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
-<li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>
-                        <li>
-                            <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+ <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
+</li>     
+
+<li>               <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ul>
                     
@@ -526,26 +575,26 @@ if(rs.next()){
                 </li>
                 <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
-                <li item-expanded='true'>Business
+                <li item-expanded='true'><a href='firstinsert.jsp'>Business</a>
                 <ul>
-                <li>Application Information</li>
-                <li>Legacy Retention Information</li>
-                <li>Archive Data Management</li>
-                <li>System Requirements</li>
+                <li><a href='firstinsert.jsp'>Application Information</a></li>
+                <li><a href='firstinsert.jsp'>Legacy Retention Information</a></li>
+                <li><a href='firstinsert.jsp'>Archive Data Management</a></li>
+                <li><a href='firstinsert.jsp'>System Requirements</a></li>
                 
                 </ul></li>
-                <li item-expanded='true'>Technical
+                <li item-expanded='true'><a href='firstinsert.jsp'>Technical</a>
                 <ul>
-                <li>Application Data Information</li>
-                <li>Infrastructure & Environment Inforamation</li>
-                <li>Technical Information</li>
+                <li><a href='firstinsert.jsp'>Application Data Information</a></li>
+                <li><a href='firstinsert.jsp'>Infrastructure & Environment Inforamation</a></li>
+                <li><a href='firstinsert.jsp'>Technical Information</a></li>
                 </ul>
                 </li>
                 
-                 <li item-expanded='true'>Archival Requirements
+                 <li item-expanded='true'><a href='firstinsert.jsp'>Archival Requirements</a>
                  <ul>
-                 <li>Screen/Report Requirements</li>
-                 <li>Archive Requirements</li>
+                 <li><a href='firstinsert.jsp'>Screen/Report Requirements</a></li>
+                 <li><a href='firstinsert.jsp'>Archive Requirements</a></li>
                  </ul>
                  </li>
                 </ul>

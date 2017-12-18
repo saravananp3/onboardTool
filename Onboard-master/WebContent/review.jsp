@@ -181,7 +181,8 @@ ResultSet rs2 = st2.executeQuery(query2);
             </div>
   <div class="col-md-11" >
    <a href="business.jsp" style="background:lightgreen;" class="btn btn-default btn pull-left">Edit</a>
-<button id="cmd" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button>
+<button id="cmd" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button>
+<button id="cmd" class="btn btn-primary pull-right" onclick="location.href='firstinsert.jsp'" >HOME</button>
 </div>
 <div class="container">
 <div   bgcolor='#e4e4e4'  style='font-family:Arial,Helvetica,sans-serif;' id="table-scroll">

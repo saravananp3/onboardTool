@@ -389,10 +389,11 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                     <ol class="nav navbar-nav navbar-right">
                         <li>
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">&nbsp;
-</li>
-                       <li>
- <p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-</li>     <li>
+</li><li><%
+                         String uid=(String)details.getAttribute("username");
+                         String role=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
+</li>    <li>
                             <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
                         </li>
                     </ol>
@@ -431,32 +432,35 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                          <li><a href="applnprior.jsp">Application-Prioritized</a></li>
                     </ul>
                 </li>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+                 <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
                 <li item-expanded='true'><a href="business.jsp">Business</a>
                 <ul>
-                <li>Application Information</li>
-                <li>Legacy Retention Information</li>
-                <li>Archive Data Management</li>
-                <li>System Requirements</li>
+                <li><a href="business.jsp">Application Information</a></li>
+                <li><a href="business.jsp">>Legacy Retention Information</a></li>
+                <li><a href="business.jsp">Archive Data Management</a></li>
+                <li><a href="business.jsp">System Requirements</a></li>
                 
                 </ul></li>
                 <li item-expanded='true'><a href="component.jsp">Technical</a>
                 <ul>
-                <li>Application Data Information</li>
-                <li>Infrastructure & Environment Inforamation</li>
-                <li>Technical Information</li>
+                <li><a href="component.jsp">Application Data Information</a></li>
+                <li><a href="component.jsp">Infrastructure & Environment Inforamation</a></li>
+                <li><a href="component.jsp">Technical Information</a></li>
                 </ul>
                 </li>
                 
                  <li item-expanded='true'><a href="requirements.jsp">Archival Requirements</a>
                  <ul>
-                 <li id='a'>Screen/Report Requirements</li>
-                 <li id='b'>Archive Requirements</li>
+                 <li id='a'><a href="requirements.jsp">Screen/Report Requirements</a></li>
+                 <li id='b'><a href="requirements.jsp">Archive Requirements</a></li>
                  </ul>
                  </li>
                 </ul>
                 </li>
+                 <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
+               </li> 
+                
                 
                
                           </ul>
@@ -659,7 +663,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                 <div class="panel-body">
                                     <form role="form"> 
                                    </form>
-                                        
+                                        <button type="button" class="btn btn-primary">Add Requirement</button>
                                    <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
                                        
                                 </div>                                 

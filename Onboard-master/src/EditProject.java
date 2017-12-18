@@ -101,7 +101,7 @@ try
           System.err.println(e.getMessage());
         }
         // return response
-        response.sendRedirect("tree.jsp");
+        response.sendRedirect("application1.jsp");
 }
 
 }

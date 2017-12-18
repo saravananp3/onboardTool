@@ -94,7 +94,6 @@ public class Appin extends HttpServlet {
 				     int x=20;
 				     int y=1;
 				     int cnt=0;
-				     System.out.println("clicccccccccccccccccccccc kkk sklad");
 				     while(rs.next())
 				     {
 				    	 cnt=0;
