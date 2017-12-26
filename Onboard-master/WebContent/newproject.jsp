@@ -620,35 +620,32 @@ var f=document.loginForm;
 
                     </ul>
                 </li>
-              <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
+             <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
                 <ul>
                 <li item-expanded='true'><a href='firstinsert.jsp'>Business</a>
                 <ul>
-                <a href='firstinsert.jsp'>
-                <li>Application Information</li>
-                <li>Legacy Retention Information</li>
-                <li>Archive Data Management</li>
-                <li>System Requirements</li>
-                </a>
+                <li><a href='firstinsert.jsp'>Application Information</a></li>
+                <li><a href='firstinsert.jsp'>Legacy Retention Information</a></li>
+                <li><a href='firstinsert.jsp'>Archive Data Management</a></li>
+                <li><a href='firstinsert.jsp'>System Requirements</a></li>
+                
                 </ul></li>
-                <li item-expanded='true'>Technical
+                <li item-expanded='true'><a href='firstinsert.jsp'>Technical</a>
                 <ul>
-                <a href='firstinsert.jsp'>
-                <li>Application Data Information</li>
-                <li>Infrastructure & Environment Inforamation</li>
-                <li>Technical Information</li>
-                </a>
+                <li><a href='firstinsert.jsp'>Application Data Information</a></li>
+                <li><a href='firstinsert.jsp'>Infrastructure & Environment Inforamation</a></li>
+                <li><a href='firstinsert.jsp'>Technical Information</a></li>
                 </ul>
                 </li>
                 
-                <a href='firstinsert.jsp'>
-                 <li item-expanded='true'>Archival Requirements
+                 <li item-expanded='true'><a href='firstinsert.jsp'>Archival Requirements</a>
                  <ul>
-                 <li>Screen/Report Requirements</li>
-                 <li>Archive Requirements</li>
-                 </a>
+                 <li><a href='firstinsert.jsp'>Screen/Report Requirements</a></li>
+                 <li><a href='firstinsert.jsp'>Archive Requirements</a></li>
                  </ul>
                  </li>
+                </ul>
+                </li>
                 </ul>
                 </li>
                 <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>

@@ -94,22 +94,18 @@ padding-left:20px;
 
 </style>
 <style>
-
-
-
-
 .bs-wizard {margin-top: 40px;}
 
 /*Form Wizard*/
-.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #428bca; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background:#428bca; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 100%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: lightblue; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #428bca;}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
 .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
@@ -122,7 +118,7 @@ padding-left:20px;
 /*END Form Wizard*/
 
 </style>
-  <body style="background-color:#F7F7F7;margin-left:0px">
+  <body style="margin-left:0px">
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
      
@@ -142,7 +138,13 @@ String query2 = "select * from technical";
 Statement st2 = conn.createStatement();
 ResultSet rs2 = st2.executeQuery(query2);
 
- 
+String query3 = "select * from archivalRequirements";
+Statement st3 = conn.createStatement();
+ResultSet rs3 = st3.executeQuery(query3);
+
+String query5 = "select * from NewRequirements";
+Statement st5 = conn.createStatement();
+ResultSet rs5 = st4.executeQuery(query5);
 %>
  <div class="row"  id="wizard">
         
@@ -151,38 +153,37 @@ ResultSet rs2 = st2.executeQuery(query2);
                 <div class="col-xs-2 bs-wizard-step complete">
                   <div class="text-center bs-wizard-stepnum">Intake Information</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">1</a>
                 
                 </div>
                 
                 <div class="col-xs-2 bs-wizard-step complete"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Summary</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">2</a>
                 </div>
                 
                 <div class="col-xs-2 bs-wizard-step active"><!-- complete -->
                   <div class="text-center bs-wizard-stepnum">Review</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" style="color:white">3</a>
                 </div>
                 
                 <div class="col-xs-2 bs-wizard-step disabled"><!-- active -->
                   <div class="text-center bs-wizard-stepnum">Approval</div>
                   <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <a href="#" class="bs-wizard-dot" >4</a>
                 </div>
                 
                  <div class="col-xs-2 bs-wizard-step disabled"><!-- active -->
                   <div class="text-center bs-wizard-stepnum">Final</div>
-                  <div class="progress"><div class="progress-bar"></div></div>
-                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="progress"><div class="progress-bar">5</div></div>
+                  <a href="#" class="bs-wizard-dot">5</a>
                 </div>
             </div>
   <div class="col-md-11" >
    <a href="business.jsp" style="background:lightgreen;" class="btn btn-default btn pull-left">Edit</a>
-<button id="cmd" class="btn btn-primary pull-right" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button>
-<button id="cmd" class="btn btn-primary pull-right" onclick="location.href='firstinsert.jsp'" >HOME</button>
+<button id="cmd" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button>
 </div>
 <div class="container">
 <div   bgcolor='#e4e4e4'  style='font-family:Arial,Helvetica,sans-serif;' id="table-scroll">
@@ -208,8 +209,9 @@ ResultSet rs2 = st2.executeQuery(query2);
                                                <tr align='left' >
                                                      <td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
                                                      
-                                                     <span><h2 style='color: #848484; font-family: arial,sans-serif; font-size: 150%;'>Bussiness Details</h2></span>
-                <div   bgcolor='#e4e4e4'  style='font-family:Arial,Helvetica,sans-serif;' id="table1">                                           
+                                                     
+                <div   bgcolor='#e4e4e4'  style='font-family:Arial,Helvetica,sans-serif;' id="table1">    
+                <span><h2 style='color: #848484; font-family: arial,sans-serif; font-size: 150%;'>Bussiness Details</h2></span>                                       
     <table width='0' border='0' align='left' cellpadding='0' cellspacing='0'>
                                                            
                                                                    <tbody>
@@ -381,17 +383,57 @@ while(rs2.next()){
      </table>
      </div>
      <div   bgcolor='#e4e4e4'  style='font-family:Arial,Helvetica,sans-serif;' id="table4">  
-     <table>
-      <span><h2 style='color: #848484; font-family: arial,sans-serif; font-size: 150%;'>Archival Requirements</h2></span>
+     <h2>Screen/Report Requirements :</h2>
+       <%
+          
+while(rs5.next()){
+%>      
+
+<table id="newReq">
+<tr>
+<tr class="edit_row">  <pre style="font-family:verdana;font-size:100%;"><%=rs5.getString("newInput") %> :<strong align="right">Yes</strong></pre></tr>
+</tr>
+
+</table>
+</div>
+<%}%>
+      
+    <div   bgcolor='#e4e4e4'  style='font-family:Arial,Helvetica,sans-serif;' id="table5">  
+     <table >   
+<%
+          
+while(rs3.next()){
+
+%>        
+       <h3>Archival Requirements :</h3>
        
-       <h3>Screen/Report Requirements :</h3>
-       
-       
+      
+        <tr>
+ <tr class="edit_row">  <pre style="font-family:verdana;font-size:100%;">Current Legal holds on the application data must be applied to the application's archived data to override the Retention schedule : <strong align="right"><%=rs3.getString("legalholds") %></strong></pre></tr> 
+ <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Data from application must be retained based on the Client Retention schedule : <strong><%=rs3.getString("dataapp") %></strong></pre></tr>
+  <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Data Localization Laws must be followed where relevant : <strong><%=rs3.getString("dataloc") %></strong></pre></tr>     
+       <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System has tools to reconstruct the data in its original format : <strong><%=rs3.getString("reconsttools") %></strong></pre></tr> 
+        <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System allows for user viewing of blob data in its original format in relationship to its structured data : <strong><%=rs3.getString("viewblob") %></strong></pre></tr>
+        <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Archived data maintains its field properties and formats from the source system (i.e. decimals, %, commas, .00x, YYY-MM-DD) to display values defined in Views and schemas : <strong><%=rs3.getString("fieldprop") %></strong></pre></tr>
+       <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Archived data maintains its field types from the source system (i.e. STRING, Integer, CHAR, VCHAR, Date) to display values defined in Views and schemas : <strong><%=rs3.getString("filedtype") %></strong></pre></tr>
+    <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System supports archiving special characters as found in source data to include Foreign characters : <strong><%=rs3.getString("splchars") %></strong></pre></tr>     
+     <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System supports archiving Foreign Language data and maintains the Language in the archive : <strong><%=rs3.getString("foreignlang") %></strong></pre></tr>   
+    <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System Maintains CLOBs from source systems: <strong><%=rs3.getString("clobsource") %></strong></pre></tr>
+     <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System supports archiving unstructured formats such as word, excel, PowerPoint, pdf : <strong><%=rs3.getString("unstructarch") %></strong></pre></tr>
+     <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Access to the Archive is role based and controlled through Active Directory : <strong><%=rs3.getString("accrole") %></strong></pre></tr>
+     <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System allows for configuration of data views : <strong><%=rs3.getString("dataview") %></strong></pre></tr>
+      <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Completeness Control - record level check (The number of records sent from the Application are compared to the number of records posted to the target.) : <strong><%=rs3.getString("complctrl") %></strong></pre></tr>
+     <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Error Handling Control - record level check (During the load, records deemed as errors based on program logic will be written to an exception log in their entirety) : <strong><%=rs3.getString("errctrl") %></strong></pre></tr>
+     <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System supports metadata management and indexing : <strong><%=rs3.getString("metadata") %></strong></pre></tr>
+    <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">The System provides advanced search tools to include data parameters and the standard search tools : <strong><%=rs3.getString("advsearch") %></strong></pre></tr>
+     <tr class="row_s"> <pre style="font-family:verdana;font-size:100%;">Based on search parameters, data can be exported out of the system for analysis : <strong><%=rs3.getString("searchparam") %></strong></pre></tr>
+     </tr>
        
      </table>
+      
      </div>
-       
-       
+       <%} %>
+     
        
        
         </tr>

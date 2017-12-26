@@ -342,7 +342,10 @@ if (session.getAttribute("username")==null)
 double ans=0.0;
 try {
 	int  total;
+	HttpSession details=request.getSession();
 	String det=(String)session.getAttribute("theName");
+	String appl=(String)details.getAttribute("applications");
+	String prj=(String)details.getAttribute("projects");
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
 String query3 = "select * from projinfo where id = "+det;
@@ -354,7 +357,11 @@ Statement st2 = conn.createStatement();
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
 System.out.println(name);
-String query1= "SELECT * from appinfo where prjname='"+name+"' and complexity is not null";
+String query1="";
+if(prj.equals("all"))
+	 query1 = "select * from appinfo where prjname = '"+name+"' and complexity is not null";
+else
+	 query1 = "select * from appinfo where prjname = '"+prj+"' and appname='"+appl+"' and complexity is not null";
 ResultSet rs1 = st1.executeQuery(query1);
 String query2= "select count(prjname) As total from appinfo where prjname='"+name+"' and complexity is not null";
 ResultSet rs2 = st2.executeQuery(query2);
@@ -393,7 +400,6 @@ while(rss.next())
                          <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
 </li>
  <li><%
- HttpSession details=request.getSession();
                          String uid=(String)details.getAttribute("username");
                          String roles=(String)details.getAttribute("role");%>
  <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=roles%></span></p>

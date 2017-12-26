@@ -483,6 +483,7 @@ response.sendRedirect("Login.html");
 HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("app_emp");
+
 try {
 String det=(String)session.getAttribute("theName");
 Class.forName("com.mysql.jdbc.Driver").newInstance();

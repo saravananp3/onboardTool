@@ -1,4 +1,5 @@
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.Properties;
 
@@ -43,6 +44,7 @@ public class sendMail extends HttpServlet {
 		String fname=request.getParameter("fname");
 		String lname=request.getParameter("lname");
 		String project=request.getParameter("project");
+		String application=request.getParameter("application");
 		System.out.println(msg);
 		Properties props = new Properties();
 		 HttpSession ses=request.getSession();  
@@ -51,6 +53,7 @@ public class sendMail extends HttpServlet {
 	        ses.setAttribute("lname",lname); 
 	        ses.setAttribute("email",email); 
 	        ses.setAttribute("project",project); 
+	        ses.setAttribute("application",application); 
 	        
 				
 		props.put("mail.smtp.auth", "true");
@@ -77,7 +80,7 @@ public class sendMail extends HttpServlet {
 		Transport.send(message);
 //response.sendRedirect("user_reg.jsp");
 pw.println("<html><body>");  
-pw.println("Registration link have been sent to \n");
+pw.println("Registration link have been sent  \n");
 pw.println("<a href=\"UserConfiguration.jsp\" style='color:blue'> Click Here </a>");
 pw.println("</body></html>");  
   

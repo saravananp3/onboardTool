@@ -52,11 +52,9 @@ public class user_registration extends HttpServlet {
 	String projects=request.getParameter("reg_projects");
 	String question=request.getParameter("reg_qn");
 	String answer=request.getParameter("reg_ans");
+	String app=request.getParameter("reg_app");
 	
-	System.out.println("bbbbala");
-	System.out.println("Questions..   "+question);
-	System.out.println("Answers..   "+answer);
-
+	System.out.println("application name is "+app);
 /*	HashMap<String,String> hm=new HashMap<String,String>(); 
 	hm.put("Admin","XXXXXXXX");
 	hm.put("ArchivalAdmin","XXXXXXRR");
@@ -81,8 +79,8 @@ public class user_registration extends HttpServlet {
         Class.forName(myDriver);
         Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
       
-        String query = " insert into user_details (uname, fname, lname, email, pwd, projects, roles,stats,question,answer)"
-	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = " insert into user_details (uname, fname, lname, email, pwd, projects, roles,stats,question,answer,application)"
+	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	          PreparedStatement preparedStmt = conn.prepareStatement(query);
 	          preparedStmt.setString(1, username);
@@ -95,6 +93,7 @@ public class user_registration extends HttpServlet {
 	          preparedStmt.setString(8, "active");
 	          preparedStmt.setString(9, question);
 	          preparedStmt.setString(10, answer);
+	          preparedStmt.setString(11, app);
 	          
          preparedStmt.execute();
 	          

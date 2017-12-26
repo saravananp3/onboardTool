@@ -434,6 +434,8 @@ String info=(String)details.getAttribute("app_emp");
 String appno=(String)details.getAttribute("appno");
 String projectname=(String)details.getAttribute("nameofproject");
 String det=(String)session.getAttribute("theName");
+String appl=(String)details.getAttribute("applications");
+String prj=(String)details.getAttribute("projects");
 System.out.println("-- "+info+"-- "+appno+"---"+projectname+"---"+det);
  
 Class.forName("org.gjt.mm.mysql.Driver").newInstance();
@@ -447,7 +449,15 @@ String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
 
-String query1= "SELECT * from appinfo where prjname='"+projectname+"'";
+System.out.println(projectname);
+
+String query1="";
+if(prj.equals("all"))
+	 query1 = "select * from appinfo where prjname = '"+projectname+"'";
+else
+	 query1 = "select * from appinfo where prjname = '"+prj+"' and appname='"+appl+"'";
+
+System.out.println(query1);
 Statement st1 = conn.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
 
@@ -938,7 +948,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                 <div class="panel-body text-left">
                                 
                                 <%if(rs.next()){
-                                	System.out.println("llovvvvvvvvvvvv  "+projectname);
+                                
                                 	%>
                                     
                                     
@@ -1074,6 +1084,8 @@ for(var i=0; i<edit_row.length; i++) {
 	 valuess="<%=rs8.getString("proj_name")%>";
 	 if(valuess==projectname_value)
 		 {
+		 
+		 window.alert("true");
 		 knt++;
 		 
 		 document.getElementById('complexity').value = "<%= rs8.getString("complexity") %>";
@@ -1130,7 +1142,7 @@ for(var i=0; i<edit_row.length; i++) {
                                     %>
                                       
                                               <div class="form-group"> 
-                                            <label class="control-label" for="formInput26"><div class="required">Data Size</div></label>                                             
+                                            <label class="control-label" for="formInput26">Data Size</label>                                             
                                             <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required > 
                                             <option></option>
                                                 <option><100 GB</option>                                                 
@@ -1143,7 +1155,7 @@ for(var i=0; i<edit_row.length; i++) {
                                        
                                         
                                          <div class="form-group">
-                                            <label class="control-label" for="formInput664"><b><div class="required">Data Source</div></b></label> 
+                                            <label class="control-label" for="formInput664"><b>Data Source</b></label> 
                                             </div>
                                             <div class="checkbox"> 
                                             <label class="Data Source"> 
@@ -1155,7 +1167,7 @@ for(var i=0; i<edit_row.length; i++) {
                                         
                                       
                                           <div class="form-group"> 
-                                            <label class="control-label" for="formInput26"><div class="required">Current users</div></label>                                             
+                                            <label class="control-label" for="formInput26">Current users</label>                                             
                                             <select id="curnt_users" class="form-control" name="curnt_users" onChange="updatesum()" required> 
                                             <option></option>
                                                 <option><10</option>                                                 
@@ -1167,7 +1179,7 @@ for(var i=0; i<edit_row.length; i++) {
                                         </div>                    
                                        
                                        <div class="form-group"> 
-                                            <label class="control-label" for="formInput26"><div class="required">Complexity</div></label>                                             
+                                            <label class="control-label" for="formInput26">Complexity</label>                                             
                                             <select id="complexity" class="form-control" name="complexity" onChange="updatesum()" required>
                                                 <option></option>
                                                 <option>Low</option>                                                 

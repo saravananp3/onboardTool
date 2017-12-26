@@ -217,10 +217,17 @@ String userName ="root";
 String password="password123";
 
 try{
+	String query3="";
+	HttpSession details=request.getSession();
 Class.forName(driver).newInstance();
 con = DriverManager.getConnection(url+db,userName,password);
+String prj=(String)details.getAttribute("projects");
+String appl=(String)details.getAttribute("applications");
+if(prj.equals("all"))
+	 query3 = "select * from projinfo";
+	else
+	 query3 = "select * from projinfo where projectname='"+prj+"'";
 
-String query3 = "select * from projinfo where id = "+det;
 Statement st3 = con.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
 
@@ -237,7 +244,11 @@ ResultSet rs3 = st3.executeQuery(query3);
                 
                      <%if (rs3.next()) {
                     	 String name=rs3.getString("projectname");
-                    	 String query = "select * from appinfo where prjname = '"+name+"'";
+                    	 String query="";
+                    	 if(prj.equals("all"))
+                    	  query = "select * from appinfo where prjname = '"+name+"'";
+                    	 else
+                    		 query = "select * from appinfo where prjname = '"+name+"' and appname='"+appl+"'";
                     	 Statement st = con.createStatement();
                     	 ResultSet rs = st.executeQuery(query);
                      
@@ -251,7 +262,6 @@ ResultSet rs3 = st3.executeQuery(query3);
                         <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
 </li>
 <li><%
- HttpSession details=request.getSession();
                          String uid=(String)details.getAttribute("username");
                          String roles=(String)details.getAttribute("role");%>
  <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=roles%></span></p>
@@ -332,16 +342,32 @@ while(rs2.next()){
 </center>
 	<%if(Integer.parseInt(rs2.getString(15))<35){
 %>
-<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-danger progress-bar-striped'</script>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-danger progress-bar-striped';</script>
+
 <%} 
 else if(Integer.parseInt(rs2.getString(15))<65){
-System.out.println("minimum progress bar");
 %>
-<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-warning progress-bar-striped'</script>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-warning progress-bar-striped';</script>
 <%} %>
 <% if(l==1){%>
+<%if(Integer.parseInt(rs2.getString(15))<35){
+%>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-danger progress-bar-striped';</script>
+<%} 
+else if(Integer.parseInt(rs2.getString(15))<65){
+%>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-warning progress-bar-striped';</script>
+<%} %>
 <h5 class="cbp-vm-title right-col primary" >Development</h5>
 <%} else if(l==2){ %>
+<%if(Integer.parseInt(rs2.getString(15))<35){
+%>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-danger progress-bar-striped';</script>
+<%} 
+else if(Integer.parseInt(rs2.getString(15))<65){
+%>
+<script>document.getElementById('prog_bar<%=l %>').className='progress-bar progress-bar-warning progress-bar-striped';</script>
+<%} %>
 <h5 class="cbp-vm-title right-col primary" >Testing</h5>
 <%} %>
 <h5 class="cbp-vm-title right-col primary" ><%=rs2.getString(3) %></h5>

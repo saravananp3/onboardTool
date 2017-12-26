@@ -67,7 +67,7 @@ public class confirmation extends HttpServlet {
 
 		pw.println("<html><body>");  
 		pw.println("Registration Successfull \n");
-		pw.println("Thanks for Registering...Please click on the below link\n\nhttp://localhost:8080/onboard/Login.html");
+		pw.println("<a href=\"Login.html\" style='color:blue'> Click Here </a>");
 		pw.println("</body></html>");  
 		  
 		pw.close();

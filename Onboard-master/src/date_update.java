@@ -171,6 +171,8 @@ public class date_update extends HttpServlet {
                                    String planned_hrs=request.getParameter("plan_hrs");
 
                                    String actual_hrs=request.getParameter("actual_hrs");
+                                   
+                                   String comments=request.getParameter("cmnts");
 
                      
 
@@ -592,21 +594,15 @@ public class date_update extends HttpServlet {
 
                          prog=(actl*100)/planed;
 
-             String flag="";
-
-            if(planned_hours.get(n).equals(""))
-
-                      flag="F";
-
-            else
-
-                      flag="T";
 
                       if(progressbar.get(n).equals("100")){
 
                                  System.out.println("balaalala");
-
-                                 st.executeUpdate("update archive_exec set progressbar='100', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"',flag='"+flag+"' where seq_num="+seq_num.get(n)+" and projects='"+prjname+"'");
+                                 
+                                 if(seq_num.get(n)==Integer.parseInt(sequence_no))
+                                	 st.executeUpdate("update archive_exec set comments='"+comments+"',progressbar='100', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"' where seq_num="+seq_num.get(n)+" and projects='"+prjname+"'");
+                                 else
+                                 st.executeUpdate("update archive_exec set progressbar='100', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"' where seq_num="+seq_num.get(n)+" and projects='"+prjname+"'");
 
                    
 
@@ -617,8 +613,10 @@ public class date_update extends HttpServlet {
                       {
 
                                  System.out.println("Progressbar updating");
-
-                                 st.executeUpdate("update archive_exec set progressbar='"+prog +"', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"',flag='"+flag+"' where seq_num="+seq_num.get(n)+" and projects='"+prjname+"'");
+                                 if(seq_num.get(n)==Integer.parseInt(sequence_no))
+                                	 st.executeUpdate("update archive_exec set comments='"+comments+"',progressbar='100', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"' where seq_num="+seq_num.get(n)+" and projects='"+prjname+"'");
+                                 else
+                                 st.executeUpdate("update archive_exec set progressbar='"+prog +"', act_srt_date='"+actual_startdate.get(n)+"',act_end_date='"+actual_enddate.get(n)+"',pln_srt_date='"+plan_startdate.get(n)+"',pln_end_date='"+plan_enddate.get(n)+"',planned_hrs='"+planned_hours.get(n)+"',hours='"+actual_hours.get(n)+"' where seq_num="+seq_num.get(n)+" and projects='"+prjname+"'");
 
                      
 

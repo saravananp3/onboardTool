@@ -868,7 +868,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
                                                 <div class="required">Datatype Characteristics</div>
                                             </label>      
                                             <br />
-                                            &nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox" type="checkbox" name="datatype" value="Structured" >Structured &nbsp;      
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<input id="checkbox" type="checkbox" name="datatype" value="Structured">Structured &nbsp;      
                                             <input id="checkbox1" type="checkbox" name="datatype" value="Unstructured" >Unstructured &nbsp;
                                             <input id="checkbox2" type="checkbox" name="datatype" value="Hybrid" >Hybrid      &nbsp;                         
                                         </div> 

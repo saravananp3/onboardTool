@@ -202,6 +202,8 @@ font-size:10px;
 		var llname=document.getElementById("lname").value;
 		var email=document.getElementById("email_val").value;
 		var project=document.getElementById('proj').value;
+		var app=document.getElementById('app').value;
+		//window.alert(project);
 		if(ffname==="" || llname==="" || arr==="")
 			window.alert("fill the mandatory fileds");
 		else
@@ -211,7 +213,7 @@ font-size:10px;
 				
 				 var f=document.loginForm;
 				    f.method="post";
-				    f.action="sendMail?roless="+arr+"&mailid="+email+"&message="+msg+"&fname="+ffname+"&lname="+llname+"&project="+project;
+				    f.action="sendMail?roless="+arr+"&mailid="+email+"&message="+msg+"&fname="+ffname+"&lname="+llname+"&project="+project+"&application="+app;
 				    f.submit();
 				}
 			 else
@@ -249,8 +251,9 @@ if (session.getAttribute("username")==null)
 		<%@ page import="javax.sql.*"%>
 <%
 HttpSession details=request.getSession();
+String prjname=(String)details.getAttribute("nameofproject");
 String info=(String)details.getAttribute("admin");
-System.out.println("role info   -- "+info);
+
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123"); 
 String query="select * from user_details";
@@ -259,6 +262,9 @@ Statement s=conn.createStatement();
 Statement s1=conn.createStatement();
 ResultSet rs=s.executeQuery(query);
 ResultSet rs1=s1.executeQuery(query1);
+String query2="select * from projinfo";
+Statement s2=conn.createStatement();
+ResultSet rs2=s2.executeQuery(query2);
 int count=0;
 %>
 <form class="form-signin" name="loginForm" method="post">
@@ -343,6 +349,10 @@ int count=0;
 								<label>Last Name<span class="glyphicon glyphicon-asterisk"></span></label>
 								<input type="text"  class="form-control" id="lname" >
 							</div>
+							<div class="col-sm-5 form-group">
+								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
+								<input type="email" class="form-control" id="email_val" >
+							</div>
 						</div>		
 						<div class="row">			
 							<div class="col-sm-5 form-group">
@@ -370,20 +380,74 @@ $(function() {
     });
 });
 </script>
-							<div class="row">
-							<div class="col-sm-5 form-group">
-								<label>Email<span class="glyphicon glyphicon-asterisk"></span></label>
-								<input type="email" class="form-control" id="email_val" >
-							</div>
-							</div>						
+						
 							<div class="row">					
 					<div class="col-sm-5 form-group">
 						<label>Projects</label>
-						<input type="text"  class="form-control" id="proj">
-					</div>		
+						 <select id="proj" class="form-control" name="proj" onChange="calx()" required > 
+						 <option></option>
+						 
+                                         <% while(rs2.next()) { %>
+                                                <option><%=rs2.getString("projectname") %></option>
+                                                
+                                          <%}%>                                                 
+                                            </select>
+					</div>	
+					<script>
+						function calx()
+						{
+							
+							var prj=document.getElementById('proj').value;
+							var select = document.getElementById("app");
+							
+							
+							var length = select.options.length;
+							document.getElementById("app").options.length = 0;
+		
+							var options = [];
+							var option = document.createElement('option');
+							var i;
+							var prjarray=[];
+							var apparray=[];
+							<% String query3="select appname,prjname from appinfo";
+							Statement s3=conn.createStatement();
+							ResultSet rs3=s3.executeQuery(query3);
+							
+							while(rs3.next()){
+							%>	
+							
+							apparray.push("<%=rs3.getString("appname") %>");
+							prjarray.push("<%=rs3.getString("prjname") %>");
+		                         <% 
+		                       
+							}
+							%>
+							
+							var k=0;
+							for(i=0;i<=prjarray.length;i++)
+								{
+								if(prj==prjarray[i])
+								{
+									
+									option.text = option.value = apparray[i];
+								    options.push(option.outerHTML);
+								  
+								}		
+			
+							}
+							select.insertAdjacentHTML('beforeEnd', options.join('\n'));
+						}
+							
+										</script>	
+					<div class="col-sm-5 form-group" id="cont">
+						<label>Applications</label>
+						<select id="app" class="form-control"></select>
+						</div>	
 					</div>
+					<br/>
 					 <input type="text" id="pwqej" value="<%= info %>" hidden>  
-					<button type="button" class="btn btn-primary" id="send_btn" onclick="ooo();qq()">Send Invites</button>					
+					<button type="button" class="btn btn-primary" id="send_btn" onclick="ooo();qq();">Send Invites</button>	
+					<br/>		<hr/>		
 					</div>
 				
 				</div>

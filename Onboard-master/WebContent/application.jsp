@@ -346,9 +346,16 @@ try {
 	String info=(String)details.getAttribute("app_emp");
 	String det=(String)session.getAttribute("theName");
 	String name=request.getParameter("name");
+	String appl=(String)details.getAttribute("applications");
+	String prj=(String)details.getAttribute("projects");
+	System.out.println(prj);
 Class.forName(driver).newInstance();
 con = DriverManager.getConnection(url+db,userName,password);
-String query1 = "select * from appinfo where prjname='"+name+"'"; 
+String query1="";
+if(prj.equals("all"))
+	 query1 = "select * from appinfo where prjname = '"+name+"'";
+else
+	 query1 = "select * from appinfo where prjname = '"+prj+"' and appname='"+appl+"'";
 st1 = con.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
 String query3 = "select * from projinfo where id = "+det;
