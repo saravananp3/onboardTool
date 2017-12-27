@@ -204,7 +204,7 @@ int count=0;
                     </a>
                 </li>
                 <li>
-                    <a href="dash.jsp">
+                    <a href="userslist.jsp">
                         <i class="pe-7s-note2"></i>
                         <p>Users List</p>
                     </a>
