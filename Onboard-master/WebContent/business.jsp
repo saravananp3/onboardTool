@@ -401,23 +401,6 @@ if(implement == null)
         
 </div>
 
-<script>
-
-links=document.getElementsByTagName("li") ;  
-var element=document.getElementById("a");
-for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = '3276B1' ; 
-element.style.borderRadius="5px";
-element.style.marginRight = "70px";
-element.style.boxSizing = "content-box";
-element.style.borderColor = "#3276B1";
-element.style.background="#3276B1";
-var list = document.getElementsByTagName("UL")[0];
-var x=list.getElementsByTagName("LI");
-for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = '#3276B1' ; 
-
-</script>
 
 
 
@@ -929,12 +912,7 @@ x.item(i).style.backgroundColor = '#3276B1' ;
        </div>
                 
             
-       <script>
- if(document.getElementById('pwqej').value=="XR" ||document.getElementById('pwqej').value=="R" )
- 
-checkk();
- 
- </script>        
+          
             
       
         <%
