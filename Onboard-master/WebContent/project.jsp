@@ -1,244 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>Projects</title>
-<meta name="description" content="Blueprint: View Mode Switch" />
-<meta name="keywords" content="view mode, switch, css, style, grid, list, template" />
-<meta name="author" content="Codrops" />
-<link rel="stylesheet" type="text/css" href="css/default.css" />
-<link rel="stylesheet" type="text/css" href="css/component.css" />
-<script src="js/modernizr.custom.js"></script>
-<script type='text/javascript'
-  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
- <script type='text/javascript'
-  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-   <!--  jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
-<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-<script src="js/multiplepages.js"></script>
-<style>
-   body
-    {
-     margin:0; padding:0; 
-   
-    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
-    }
-    .navbar-brand {
-    
-    padding: 10px;
-  border: 0px;
-  border-radius: 1px;
-   font-size: 1.15em;
-  font-weight: 400;
-    }
-    .
-    
-   .navbar-brand {
-  color: black;
-}
-
-.navbar-brand:hover {
-  color: #ffffff;
-  text-shadow: 1px -1px 8px #b3e9ff;
-}
-    
-    
-    #sitetitle{
-    
-    font-size: 22px;
-    margin:auto;
-}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    
-    
-
-   #sidemenu
-   {
-   
-   background:#3276B1 ;
-   position: fixed;
-top: 45px;
-left: -1%;
-padding-left:0px;
-width:300px !important;
-bottom: 0px;
-overflow: auto;
-color:white;
-text-size:30%;
-} 
  
-
-
-#sidemenu a:hover {
-    background-color: #ddd;
-    color: black;
-    }
-
-  
-  .sidebar{
-  
-  position:relative;
-  left:5px;
-  width:22%;
-  
-  background:#F7F7F7 ;
-  }
-  
-  
-  #panels1
-  {
- 
-    width: 110%;
-    
-    display: inline-block;
-    background: white;
-    right:10%;
-    border: 1px solid #E6E9ED;
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
    
-    opacity: 1;
-    transition: all .2s ease;
-}
-  
-  
-  
-  .form-control{
-  
-  height:40px;
-  }
-  
-  
- #descr{
-  height:40px;
-  }
-  
-  #projectname{
-    height:40px;
-  
-  }
-  #pid{
-  height:40px;
-  }
-  </style>
-
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="Startdate"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-    $(document).ready(function(){
-      var date_input=$('input[name="Enddate"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>   
-  
-<script type="text/javascript">
-    function EnableDisableTextBox(chkROD) {
-        var txtROD = document.getElementById("txtROD");
-        txtROD.disabled = chkROD.checked ? false : true;
-        if (!txtROD.disabled) {
-            txtROD.focus();
-        }
-        
-    }
-</script>
-<script>
-
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox").attr("disabled", "disabled");
-        }
-    });
-});
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox1").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox1").attr("disabled", "disabled");
-        }
-    });
-});
-
-
-</script>
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var adMigrated = document.getElementById("adMigrated");
-        var adMigratedDet = document.getElementById("adMigratedDet");
-        adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
-    }
-</script>
-
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var arcNeed = document.getElementById("arcNeed");
-        var arcReason = document.getElementById("arcReason");
-        arcReason.style.display = arcNeed.value == "N" ? "block" : "none";
-        var arcComment = document.getElementById("arcComment");
-        arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
-    }
-</script>
-<script>
-function edit(id,nam)
-{
-
-var f=document.form;
-f.method="post";
-f.action="setid?id="+id+"&name="+nam;
-f.submit();
-}
-
-
-
-</script>
-
-  
+ <script type="text/javascript" src="js_in_pages/project.js"></script>
+<script type="text/javascript" src="js_in_pages/tree.js"></script>
+  <link rel="stylesheet" href="js_in_pages/project.css" type="text/css" />
+    <script type="text/javascript" src="scripts/demos.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+   
+    
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> 
+   
 </head>
 <!--from  w  w w  . ja  va 2 s.co  m-->
   <body style='margin:20px'>
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
+<%@ page import="onboard.DBconnection" %>
 
 <%
 
@@ -257,12 +49,6 @@ HttpSession role_ses=request.getSession();
 String frole=(String)role_ses.getAttribute("role");
 %>
 <%
-Connection con = null;
-String url = "jdbc:mysql://localhost:3306/";
-String db = "strutsdb";
-String driver = "com.mysql.jdbc.Driver";
-String userName ="root";
-String password="password123";
 
 int sumcount=0;
 Statement st,st1;
@@ -271,8 +57,8 @@ String query;
 HttpSession details=request.getSession();
 String prj=(String)details.getAttribute("projects");
 String roles=(String)details.getAttribute("role");
-Class.forName(driver).newInstance();
-con = DriverManager.getConnection(url+db,userName,password);
+DBconnection d=new DBconnection();
+Connection con = (Connection)d.getConnection();
 if(prj.equals("all"))
  query = "select * from projinfo";
 else

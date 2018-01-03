@@ -168,7 +168,7 @@ public class IntsantApp extends HttpServlet {
 		        }
 		        // return response
 		      
-		        response.sendRedirect("application1.jsp"); 
+		        response.sendRedirect("application.jsp"); 
 
 	
 

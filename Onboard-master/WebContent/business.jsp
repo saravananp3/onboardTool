@@ -20,7 +20,11 @@
         can populate it from 'UL' or by using its 'source' property." />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+   
+     
+ <script type="text/javascript" src="js_in_pages/business.js"></script>
+<script type="text/javascript" src="js_in_pages/tree.js"></script>
+  <link rel="stylesheet" href="js_in_pages/business.css" type="text/css" />
     <script type="text/javascript" src="scripts/demos.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
@@ -42,6 +46,7 @@
   <body>
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
+<%@ page import="onboard.DBconnection" %>
 <%
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -66,8 +71,8 @@ if (idd != null && !idd.isEmpty()) {
 session.setAttribute("appidd", idd);
 }
 idd=(String)session.getAttribute("appidd");
-Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
+DBconnection d=new DBconnection();
+Connection conn = (Connection)d.getConnection();
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);

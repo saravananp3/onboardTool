@@ -98,7 +98,7 @@ class Role
 <body  background="assets/images/bg.jpg">
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
-	
+	<jsp:include page="tablecreation.jsp"/>
 	<%
 	int i=0,exec_det=0,dum=0,lm=0;
 	HttpSession details=request.getSession(); 

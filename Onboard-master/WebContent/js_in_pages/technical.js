@@ -1,75 +1,5 @@
-  
-    
-    $(function() {
-        $( "#integname" ).datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true
-        });
-    });
-    
-        $(document).ready(function () {
-            // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
-            $('#jqxTree').css('visibility', 'visible');
-            var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
-            var clickedItem = null;
-            
-            var attachContextMenu = function () {
-                // open the context menu when the user presses the mouse right button.
-                $("#jqxTree li").on('mousedown', function (event) {
-                    var target = $(event.target).parents('li:first')[0];
-                    var rightClick = isRightClick(event);
-                    if (rightClick && target != null) {
-                        $("#jqxTree").jqxTree('selectItem', target);
-                        var scrollTop = $(window).scrollTop();
-                        var scrollLeft = $(window).scrollLeft();
-                        contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
-                        return false;
-                    }
-                });
-            }
-            attachContextMenu();
-            $("#jqxMenu").on('itemclick', function (event) {
-                var item = $.trim($(event.args).text());
-                switch (item) {
-                    case "Add Item":
-                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
-                        if (selectedItem != null) {
-                            $('#jqxTree').jqxTree('addTo', { label: 'Item' }, selectedItem.element);
-                            attachContextMenu();
-                        }
-                        break;
-                    case "Remove Item":
-                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
-                        if (selectedItem != null) {
-                            $('#jqxTree').jqxTree('removeItem', selectedItem.element);
-                            attachContextMenu();
-                        }
-                        break;
-                }
-            });
-            // disable the default browser's context menu.
-            $(document).on('contextmenu', function (e) {
-                if ($(e.target).parents('.jqx-tree').length > 0) {
-                    return false;
-                }
-                return true;
-            });
-            function isRightClick(event) {
-                var rightclick;
-                if (!event) var event = window.event;
-                if (event.which) rightclick = (event.which == 3);
-                else if (event.button) rightclick = (event.button == 2);
-                return rightclick;
-            }
-        });
+
    
-     
-
-
-
-
- 
    function validateform1()
    {
    var location = document.loginForm.dataloc.value
@@ -95,7 +25,7 @@ alert("Please Fill the Mandatory Field");
 toggle1();
 }
    }
-  
+ 
 function toggle2()
 {
 
@@ -104,8 +34,6 @@ f.method="post";
 f.action="Technical"
 f.submit();
 }
-
-
 
 
 function switchColors()  
@@ -126,7 +54,6 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 
 
 } 
-
 function switchColors1()  
 {  
 links=document.getElementsByTagName("li") ;  
@@ -145,21 +72,19 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 
 
 } 
-
-
 function validate() {
  
 var data = document.loginForm.dataloc.value
 var name = document.loginForm.servername.value
 var prod = document.loginForm.prodinstance.value
-var location = document.loginForm.prodinstanceloc.value
+    var location = document.loginForm.prodinstanceloc.value
 var reason = document.loginForm.reasonfor.value
 var size = document.loginForm.dbsize.value
-var table = document.loginForm.nooftable.value
+var number = document.loginForm.nooftable.value
 var record = document.loginForm.noofrec.value
 var decommision = document.loginForm.integname.value
-
-if(data == "" || name == "" || prod == "" ||location == "" || reason == ""||size == "" || record == "" || decommision == "" )
+ 
+if(data == "" || name == "" || prod == "" ||location == "" || reason == ""||size == "" || number == "" || record == "" || decommision == "" )
 {
 alert("Please Fill the Mandatory Field");
   }
@@ -171,7 +96,6 @@ toggle1();
  
  
 }
-
 function toggle1() {
 var ele = document.getElementById("collapse3");
  
@@ -185,7 +109,6 @@ ele.style.display = "block";
 text.innerHTML = "hide";
 }
 } 
-
 function switchColors0()  
 {  
 links=document.getElementsByTagName("li") ;  
@@ -204,7 +127,6 @@ x.item(i).style.backgroundColor = '#3276B1' ;
 
 
 } 
-
 function validateform() {
  
 var dataType = document.loginForm.datatype.value
@@ -225,7 +147,6 @@ toggle();
  
  
 }
-
 function toggle() {
 var ele = document.getElementById("collapse2");
  
@@ -238,23 +159,6 @@ ele.style.display = "block";
 text.innerHTML = "hide";
 }
 } 
-
-$(function () {
-  // 6 create an instance when the DOM is ready
-  $('#jstree').jstree();
-  // 7 bind to events triggered on the tree
-  $('#jstree').on("changed.jstree", function (e, data) {
-    console.log(data.selected);
-  });
-  // 8 interact with the tree - either way is OK
-  $('button').on('click', function () {
-    $('#jstree').jstree(true).select_node('child_node_1');
-    $('#jstree').jstree('select_node', 'child_node_1');
-    $.jstree.reference('#jstree').select_node('child_node_1');
-  });
-});
-
-
 function checkk()
 {
 
@@ -307,25 +211,3 @@ document.getElementById('file1').disabled = true;
 document.getElementById('file2').disabled = true;
 document.getElementById('file3').disabled = true;
 }
-
-links=document.getElementsByTagName("li") ;  
-var element=document.getElementById("a");
-for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = '#3276B1' ; 
-element.style.borderRadius="5px";
-element.style.marginRight = "70px";
-element.style.boxSizing = "content-box";
-element.style.borderColor = "#3276B1";
-element.style.background="#3276B1";
-var list = document.getElementsByTagName("UL")[0];
-var x=list.getElementsByTagName("LI");
-for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = '#3276B1' ; 
-
-
-
-
-if(document.getElementById('pwqej').value=="RX" || document.getElementById('pwqej').value=="R")
-
-checkk();
-
