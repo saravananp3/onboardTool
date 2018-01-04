@@ -37,9 +37,11 @@ public class setid extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String id=request.getParameter("id");
 	String name=request.getParameter("name");
-	HttpSession session=request.getSession();session.setAttribute("ID",id);
+	HttpSession session=request.getSession();
+	session.setAttribute("ID",id);
 	   HttpSession details=request.getSession(); 
        details.setAttribute("Myproject",name);
+       System.out.println("setid");
 
        
 	response.sendRedirect("grid.jsp");

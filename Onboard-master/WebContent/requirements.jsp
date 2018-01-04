@@ -9,14 +9,13 @@
 <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
- <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
-    <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
-        can populate it from 'UL' or by using its 'source' property." />
+
+<script type="text/javascript" src="js_in_pages/requirements.js"></script>
+<script type="text/javascript" src="js_in_pages/tree.js"></script>
+  <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css" />
 
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
@@ -28,271 +27,15 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Create jqxTree
-            $('#jqxTree').jqxTree({ height: '650px', width: '0px' });
-            $('#jqxTree').css('visibility', 'visible');
-            var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
-            var clickedItem = null;
-            
-            var attachContextMenu = function () {
-                // open the context menu when the user presses the mouse right button.
-                $("#jqxTree li").on('mousedown', function (event) {
-                    var target = $(event.target).parents('li:first')[0];
-                    var rightClick = isRightClick(event);
-                    if (rightClick && target != null) {
-                        $("#jqxTree").jqxTree('selectItem', target);
-                        var scrollTop = $(window).scrollTop();
-                        var scrollLeft = $(window).scrollLeft();
-                        contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
-                        return false;
-                    }
-                });
-            }
-            attachContextMenu();
-            $("#jqxMenu").on('itemclick', function (event) {
-                var item = $.trim($(event.args).text());
-                switch (item) {
-                    case "Add Item":
-                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
-                        if (selectedItem != null) {
-                            $('#jqxTree').jqxTree('addTo', { label: 'Item' }, selectedItem.element);
-                            attachContextMenu();
-                        }
-                        break;
-                    case "Remove Item":
-                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
-                        if (selectedItem != null) {
-                            $('#jqxTree').jqxTree('removeItem', selectedItem.element);
-                            attachContextMenu();
-                        }
-                        break;
-                }
-            });
-            // disable the default browser's context menu.
-            $(document).on('contextmenu', function (e) {
-                if ($(e.target).parents('.jqx-tree').length > 0) {
-                    return false;
-                }
-                return true;
-            });
-            function isRightClick(event) {
-                var rightclick;
-                if (!event) var event = window.event;
-                if (event.which) rightclick = (event.which == 3);
-                else if (event.button) rightclick = (event.button == 2);
-                return rightclick;
-            }
-        });
-    </script>
-     <style>
-    .bar {
-  background-color: lightblue;
-  height: 100%;
-  text-align:center;
-} 
-
-
-</style>
-
-<style>
-    body
-    {
-     margin:0; padding:0; 
-    color:#73879C;
-    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
-    }
-    .navbar-brand {
-    
-    padding: 10px;
-  border: 0px;
-  border-radius: 1px;
-   font-size: 1.15em;
-  font-weight: 400;
-    }
-    .
-    
-   .navbar-brand {
-  color: black;
-}
-
-.navbar-brand:hover {
-  color: #ffffff;
-  text-shadow: 1px -1px 8px #b3e9ff;
-}
-    
-    
-    #sitetitle{
-    
-    font-size: 22px;
-    margin:auto;
-}
-
-
-    
-    
-
-   #sidemenu
-   {
    
-   background:#3276B1 ;
-   position: fixed;
-top: 45px;
-left: -1%;
-padding-left:0px;
-width:300px !important;
-bottom: 0px;
-overflow: auto;
-color:white;
-text-size:30%;
-} 
- 
 
 
-
-   </style>
-<script>
-    $(document).ready(function(){
-      var date_input=$('input[name="expdate"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'yyyy/mm/dd',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-    </script>
-  
-<script type="text/javascript">
-    function EnableDisableTextBox(chkROD) {
-        var txtROD = document.getElementById("txtROD");
-        txtROD.disabled = chkROD.checked ? false : true;
-        if (!txtROD.disabled) {
-            txtROD.focus();
-        }
-        
-    }
-</script>
-<script>
-
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox").attr("disabled", "disabled");
-        }
-    });
-});
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox1").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox1").attr("disabled", "disabled");
-        }
-    });
-});
-
-
-</script>
-<style>
-.bs-wizard {margin-top: 40px;}
-
-/*Form Wizard*/
-.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
-.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
-.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
-.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
-.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
-.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
-.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
-.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
-.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
-.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
-/*END Form Wizard*/
-
-</style>
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var adMigrated = document.getElementById("adMigrated");
-        var adMigratedDet = document.getElementById("adMigratedDet");
-        adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
-    }
-</script>
-
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var arcNeed = document.getElementById("arcNeed");
-        var arcReason = document.getElementById("arcReason");
-        arcReason.style.display = arcNeed.value == "N" ? "block" : "none";
-        var arcComment = document.getElementById("arcComment");
-        arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
-    }
-</script>
-
-<script>
-function switchColors()  
-{  
-links=document.getElementsByTagName("li") ;  
-var element=document.getElementById("b");
-for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = '#3276B1' ; 
-element.style.borderRadius="5px";
-element.style.marginRight = "70px";
-element.style.boxSizing = "content-box";
-element.style.borderColor = "#3276B1";
-element.style.background="#3276B1";
-var list = document.getElementsByTagName("OL")[0];
-var x=list.getElementsByTagName("LI");
-for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = '#3276B1' ; 
-
-
-} 
-</script>
-<script>
-function switchColors0()  
-{  
-links=document.getElementsByTagName("li") ;  
-var element=document.getElementById("a");
-for (var i = 0 ; i < links.length ; i ++)  
-links.item(i).style.backgroundColor = '#3276B1' ; 
-element.style.borderRadius="5px";
-element.style.marginRight = "70px";
-element.style.boxSizing = "content-box";
-element.style.borderColor = "#3276B1";
-element.style.background="#3276B1";
-var list = document.getElementsByTagName("OL")[0];
-var x=list.getElementsByTagName("LI");
-for (var i = 0 ; i < x.length ; i ++)  
-x.item(i).style.backgroundColor = '#3276B1' ; 
-
-
-} 
-</script>
 
   </head><!--from  w  w w  . ja  va 2 s.co  m-->
   <body>
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
+<%@ page import="onboard.DBconnection" %>
 
 
 <%
@@ -301,8 +44,8 @@ HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 String det=(String)session.getAttribute("theName");
 String idd=(String)session.getAttribute("appidd");
-Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
+DBconnection d=new DBconnection();
+Connection conn = (Connection)d.getConnection();
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
@@ -355,7 +98,7 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                   Statement s6 = conn.createStatement();
                   ResultSet rss4 = s6.executeQuery(quer6);
                   int knt=0;
-                  System.out.println("bala");
+     
                   while(rss4.next())
                   {
                 	  if(knt>2)
@@ -370,7 +113,7 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                 		  plannedHours1+=Integer.parseInt(rss4.getString(13)); 
                 	  }
                 	  else
-                	  { System.out.println("murugan");
+                	  { 
                 		  if(rss4.getString(9).equals(""))
                 			  actualHours+=0;
                 		  else
@@ -418,10 +161,10 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                        <li item-expanded='true'>Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
-                        <li><a href="application1.jsp">Application Details</a></li>
+                        <li><a href="application.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree1.jsp">Application Prioritization</a>
                          <ul>
                                 <li > Parameters</li>
                                 <li>Archival Complexity Calculation</li>
@@ -429,7 +172,7 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                                
                             </ul>
                         </li>
-                         <li><a href="applnprior.jsp">Application-Prioritized</a></li>
+                         <li><a href="applnprior1.jsp">Application-Prioritized</a></li>
                     </ul>
                 </li>
                  <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
@@ -469,32 +212,6 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
          </div>
    </div>
                 </div>
-         <script>
-function call()
-{
-var f=document.loginForm;
-    f.method="post";
-    f.action='review.jsp';
-    f.submit();
-}
-
-</script>     
-   <script>
-  $(function () {
-    // 6 create an instance when the DOM is ready
-    $('#jstree').jstree();
-    // 7 bind to events triggered on the tree
-    $('#jstree').on("changed.jstree", function (e, data) {
-      console.log(data.selected);
-    });
-    // 8 interact with the tree - either way is OK
-    $('button').on('click', function () {
-      $('#jstree').jstree(true).select_node('child_node_1');
-      $('#jstree').jstree('select_node', 'child_node_1');
-      $.jstree.reference('#jstree').select_node('child_node_1');
-    });
-  });
-  </script>
                    
                 
                 <div class="col-md-8">

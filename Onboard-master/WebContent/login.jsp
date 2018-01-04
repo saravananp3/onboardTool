@@ -99,7 +99,12 @@ class Role
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	
+<%@ page import="onboard.encryption"%>
+<jsp:include page="db_creation.jsp"/>
+	<jsp:include page="tablecreation.jsp"/>
+	
 	<%
+	
 	int i=0,exec_det=0,dum=0,lm=0;
 	HttpSession details=request.getSession(); 
 String userid=request.getParameter("usr");
@@ -324,8 +329,11 @@ if(userid.equals("admin")&&pwd.equals("admin"))
     response.sendRedirect(redirectURL);
 }else{
 if(rs.next()) 
-{ 
-if((rs.getString(5).equals(pwd))) 
+{
+	encryption et=new encryption();
+	String decrypted_pass=et.decrypt(rs.getString(5));
+	System.out.println("decrypt "+decrypted_pass);
+	if((decrypted_pass.equals(pwd))) 
 { 
 	details.setAttribute("role",rs.getString(7));
 	details.setAttribute("projects",rs.getString(6));

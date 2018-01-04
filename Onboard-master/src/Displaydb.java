@@ -192,7 +192,7 @@ preparedStmt2.execute();
 	          System.err.println("Got an exception!");
 	          System.err.println(e.getMessage());
 	        }
-	        response.sendRedirect("applnprior.jsp");
+	        response.sendRedirect("applnprior1.jsp");
 
 		}
 }

@@ -1,4 +1,3 @@
-
     body
     {
      margin:0; padding:0; 
@@ -31,10 +30,6 @@
     margin:auto;
 }
 
-
-    
-    
-
    #sidemenu
    {
    
@@ -49,19 +44,9 @@ overflow: auto;
 color:white;
 text-size:30%;
 } 
- 
-required:after {
-    content: " *";
-    color: red;
-}
-
-
-
-
 
 .bs-wizard {margin-top: 40px;}
 
-/*Form Wizard*/
 .bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
 .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
@@ -80,9 +65,64 @@ required:after {
 .bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
 .bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
 .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
-/*END Form Wizard*/
 
 
 
+.required:after {
+    content: " *";
+    color: red;
+}
 
+  .sidebar{
   
+  position:relative;
+  left:5px;
+  width:22%;
+  
+  background:#F7F7F7 ;
+  }
+  
+  
+  #panels1
+  {
+ 
+    width: 110%;
+    
+    display: inline-block;
+    background: white;
+    right:10%;
+    border: 1px solid #E6E9ED;
+   
+    opacity: 1;
+    transition: all .2s ease;
+}
+  
+  
+  
+  .form-control{
+  
+  height:40px;
+  }
+  
+  
+ #descr{
+  height:40px;
+  }
+  
+  #projectname{
+    height:40px;
+  
+  }
+  #pid{
+  height:40px;
+  }
+ 
+}
+#jqxTree{
+background:green;
+}.bar {
+  background-color: lightblue;
+  height: 100%;
+  text-align:center;
+} 
+

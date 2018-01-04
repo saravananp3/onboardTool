@@ -1,47 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type='text/javascript'
-  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="css/style.min.css">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  
-   <script src="js/jquery.js"></script>
-  <script src="js/jstree.min.js"></script>
-   <script src="js/multiplepages.js"></script>
 
-    <meta name="keywords" content="jQuery Tree, Tree Widget, TreeView" />
-    <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
-        can populate it from 'UL' or by using its 'source' property." />
-   
+ 
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+    
+    <script type="text/javascript" src="js_in_pages/applnprior1.js"></script>
+<script type="text/javascript" src="js_in_pages/tree.js"></script>
+  <link rel="stylesheet" href="js_in_pages/applnprior1.css" type="text/css" />
+   
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="scripts/demos.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
@@ -51,281 +21,13 @@
     <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Create jqxTree
-           $('#jqxTree').jqxTree({ height: '650px', width: '340px' });
-            $('#jqxTree').css('visibility', 'visible');
-            var contextMenu = $("#jqxMenu").jqxMenu({ width: '120px',  height: '56px', autoOpenPopup: false, mode: 'popup' });
-            var clickedItem = null;
-            
-            var attachContextMenu = function () {
-                // open the context menu when the user presses the mouse right button.
-                $("#jqxTree li").on('mousedown', function (event) {
-                    var target = $(event.target).parents('li:first')[0];
-                    var rightClick = isRightClick(event);
-                    if (rightClick && target != null) {
-                        $("#jqxTree").jqxTree('selectItem', target);
-                        var scrollTop = $(window).scrollTop();
-                        var scrollLeft = $(window).scrollLeft();
-                        contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
-                        return false;
-                    }
-                });
-            }
-            attachContextMenu();
-            $("#jqxMenu").on('itemclick', function (event) {
-                var item = $.trim($(event.args).text());
-                switch (item) {
-                    case "Add Item":
-                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
-                        if (selectedItem != null) {
-                            $('#jqxTree').jqxTree('addTo', { label: 'Item' }, selectedItem.element);
-                            attachContextMenu();
-                        }
-                        break;
-                    case "Remove Item":
-                        var selectedItem = $('#jqxTree').jqxTree('selectedItem');
-                        if (selectedItem != null) {
-                            $('#jqxTree').jqxTree('removeItem', selectedItem.element);
-                            attachContextMenu();
-                        }
-                        break;
-                }
-            });
-            // disable the default browser's context menu.
-            $(document).on('contextmenu', function (e) {
-                if ($(e.target).parents('.jqx-tree').length > 0) {
-                    return false;
-                }
-                return true;
-            });
-            function isRightClick(event) {
-                var rightclick;
-                if (!event) var event = window.event;
-                if (event.which) rightclick = (event.which == 3);
-                else if (event.button) rightclick = (event.button == 2);
-                return rightclick;
-            }
-        });
-    </script>
-   <style>
-    body
-    {
-     margin:0; padding:0; 
-    color:#73879C;
-    font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
-    }
-    .navbar-brand {
-    
-    padding: 10px;
-  border: 0px;
-  border-radius: 1px;
-   font-size: 1.15em;
-  font-weight: 400;
-    }
-    .
-    
-   .navbar-brand {
-  color: black;
-}
-
-.navbar-brand:hover {
-  color: #ffffff;
-  text-shadow: 1px -1px 8px #b3e9ff;
-}
-    
-    
-    #sitetitle{
-    
-    font-size: 22px;
-    margin:auto;
-}
-
-
-    
-    
-
-   #sidemenu
-   {
-   
-   background:#3276B1 ;
-   position: fixed;
-	top: 45px;
-	left: -1%;
-	padding-left:0px;
-	width:300px !important;
-	bottom: 0px;
-	overflow: auto;
-	color:white;
-	text-size:30%;
-	} 
- 
-
-
-#sidemenu a:hover {
-    background-color: #ddd;
-    color: black;
-    }
-
-   </style>
-       <style>
-.bs-wizard {margin-top: 40px;}
-
-/*Form Wizard*/
-.bs-wizard {border-bottom: solid 2px #e0e0e0; padding: 0 0 10px 0;}
-.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
-.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
-.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
-.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 17px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; text-align:center; text-decoration:none; z-index: 1; display: block;  background: #3276B1; top: 47px; left: 50%; padding: 5px 11px; font-weight: 700; margin-top: -14px; margin-left: -15px; border-radius: 50%;} 
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 16px; height: 16px;  border-radius: 50px; position: absolute; top: 10px; left: 8px; } 
-.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 3px; box-shadow: none; margin: 25px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:#3276B1;}
-.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
-.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
-.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
-.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
-.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
-.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
-.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
-.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
-/*END Form Wizard*/
-
-</style>
-
-    
-      <style>
-
-.glyphicon { cursor: pointer; }
-
-input,
-select { width: 100%; }
-
-.bar {
-  background-color: lightblue;
-  height: 100%;
-  text-align:center;
-} 
-.test input {
-    border: 0;
-}
-</style>
   
-   <script>
-function myFunction1() {
-    var x = document.getElementById('myDiv1');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } 
-    else {
-        x.style.display = 'none';
-    }
-}
-function myFunction2() {
-    var x = document.getElementById('myDiv2');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } 
-    else {
-        x.style.display = 'none';
-    }
-}
-function myFunction3() {
-    var x = document.getElementById('myDiv3');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } 
-    else {
-        x.style.display = 'none';
-    }
-}
-function myFunction4() {
-    var x = document.getElementById('myDiv4');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } 
-    else {
-        x.style.display = 'none';
-    }
-}
-</script>
-    
-<script type="text/javascript">
-    function EnableDisableTextBox(chkROD) {
-        var txtROD = document.getElementById("txtROD");
-        txtROD.disabled = chkROD.checked ? false : true;
-        if (!txtROD.disabled) {
-            txtROD.focus();
-        }
-        
-    }
-</script>
-<script>
-
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox").attr("disabled", "disabled");
-        }
-    });
-});
-$(function() {
-    $("#datamig").change(function() {
-        if ($(this).val() == "yes") {
-            console.log(true);
-            $("#textbox1").removeAttr("disabled");
-        }
-        else {
-            console.log(false);
-            $("#textbox1").attr("disabled", "disabled");
-        }
-    });
-});
-
-
-</script>
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var adMigrated = document.getElementById("adMigrated");
-        var adMigratedDet = document.getElementById("adMigratedDet");
-        adMigratedDet.style.display = adMigrated.value == "Y" ? "block" : "none";
-    }
-</script>
-
-<script type="text/javascript">
-    function ShowHideDiv() {
-        var arcNeed = document.getElementById("arcNeed");
-        var arcReason = document.getElementById("arcReason");
-        arcReason.style.display = arcNeed.value == "N" ? "block" : "none";
-        var arcComment = document.getElementById("arcComment");
-        arcComment.style.display = arcNeed.value == "O" ? "block" : "none";
-    }
-</script>
-<script>
-function call()
-{
-	var f=document.loginForm;
-    f.method="post";
-    f.action='updatedb';
-    f.submit();
-	}
-
-</script>
-  
- 
-    
 </head>
 <body class='default'>
     <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="onboard.DBconnection" %>
 <%
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -346,17 +48,19 @@ try {
 	String det=(String)session.getAttribute("theName");
 	String appl=(String)details.getAttribute("applications");
 	String prj=(String)details.getAttribute("projects");
-Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb", "root", "password123");
+	DBconnection d=new DBconnection();
+	Connection conn = (Connection)d.getConnection();
 String query3 = "select * from projinfo where id = "+det;
 
-String name=request.getParameter("name");
-session.setAttribute("newname",name);
+String name="";
+
 Statement st1 = conn.createStatement();
 Statement st2 = conn.createStatement();
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-System.out.println(name);
+if(rs3.next())
+	name=rs3.getString("projectname");
+session.setAttribute("newname",name);
 String query1="";
 if(prj.equals("all"))
 	 query1 = "select * from appinfo where prjname = '"+name+"' and complexity is not null";
@@ -380,12 +84,11 @@ System.out.println(total);
 <div class="container">
 <nav class=" navbar-fixed-top" style="background:#3276B1">
             <div class="container-fluid">
-            
-            <%if (rs3.next()) {%>
+           
                 
                     
-                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=rs3.getString("projectname") %></a>
-                    <%String quer2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
+                    <a class="navbar-brand" href="project.jsp" style="color:white">Onboarding Tool-<%=name %></a>
+                    <%String quer2="select * from archive_exec where level=1 and projects='"+name+"'order by seq_num";
  Statement s2 = conn.createStatement();
 ResultSet rss = s2.executeQuery(quer2);
 while(rss.next())
@@ -430,10 +133,10 @@ while(rss.next())
                        <li item-expanded='true'><a href="editproject.jsp">Project Details
                     <ul>
                         <li><a href="editproject.jsp">Project Information</a></li>
-                        <li item-selected='true'><a href="application1.jsp">Application Details</a></li>
+                        <li item-selected='true'><a href="application.jsp">Application Details</a></li>
                         </ul>
                         </li>
-                        <li item-expanded='true'> <a href="tree.jsp">Application Prioritization</a>
+                        <li item-expanded='true'> <a href="tree1.jsp">Application Prioritization</a>
                          <ul>
                                 <li >Parameters</li>
                                 <li>Archival Complexity Calculation</li>
@@ -441,7 +144,7 @@ while(rss.next())
                                 
                             </ul>
                         </li>
-                        <li item-selected='true'><a href="applnprior.jsp">Application-Prioritized</a></li>
+                        <li item-selected='true'><a href="applnprior1.jsp">Application-Prioritized</a></li>
                     </ul>
                 </li>
                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
@@ -484,28 +187,7 @@ while(rss.next())
    </div>
                 </div>
 
-               
-   <script>
-  $(function () {
-    // 6 create an instance when the DOM is ready
-    $('#jstree').jstree();
-    // 7 bind to events triggered on the tree
-    $('#jstree').on("changed.jstree", function (e, data) {
-      console.log(data.selected);
-    });
-    // 8 interact with the tree - either way is OK
-    $('button').on('click', function () {
-      $('#jstree').jstree(true).select_node('child_node_1');
-      $('#jstree').jstree('select_node', 'child_node_1');
-      $.jstree.reference('#jstree').select_node('child_node_1');
-    });
-  });
-  </script>
-
-  </script>
-  
-
-                    <br/><br/><br/>
+                             <br/><br/><br/>
                     
                     
                 <div class="col-md-9">
@@ -600,19 +282,11 @@ if(hypercare == null)
                                 
                                 
   <div class="table-responsive" id="table-scroll"  > 
-    
-    <!-- Initialization 
-                * js-dynamitable => dynamitable trigger (table)
-                -->
+   
     <table class="js-dynamitable     table table-bordered" id="myTable" >
       
-      <!-- table heading -->
       <thead style="color:white; background:#3276B1">
-        
-        <!-- Sortering
-                        * js-sorter-asc => ascending sorter trigger
-                        * js-sorter-desc => desending sorter trigger
-                        -->
+
         <tr>
           <th>Application Name</th>
           <th>Complexity</th>
@@ -622,13 +296,9 @@ if(hypercare == null)
          
     </tr>
         
-        <!-- Filtering
-                        * js-filter => filter trigger (input, select)
-                        -->
         
       </thead>
-      
-      <!-- table body -->
+     
       <tbody>   
         
       <%int i=0	; %>
@@ -692,11 +362,11 @@ for(var i=0; i<edit_row.length; i++) {
                                    
 <button type="button" class="btn btn-primary" onclick="call()" >Submit</button>     
      
-                    <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
+                    <a href="tree1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
                     
-                    <a href="tree.jsp" style="float:right">Click here to enter data for application</a>
+                    <a href="tree1.jsp" style="float:right">Click here to enter data for application</a>
                                       <% } 
-                                      }
+                                      
 %> 
                            
                                 </div>                                 
