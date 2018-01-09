@@ -10,6 +10,7 @@
 </head>
 <body>
 <%
+try{
 Statement stmt;
 Connection con;
 String url = "jdbc:mysql://localhost:3306/";
@@ -21,6 +22,11 @@ con = DriverManager.getConnection(url, "root", "password123");
 stmt = con.createStatement();
 stmt.executeUpdate("CREATE DATABASE strutsdb");
 con.close();
+}
+catch(Exception e)
+{
+	System.out.println("database already created");
+}
 %>
 </body>
 </html>
