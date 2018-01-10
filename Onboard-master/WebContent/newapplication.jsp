@@ -12,9 +12,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 <link rel="stylesheet" href="css/style.min.css">
+
+<script type="text/javascript" src="js_in_pages/newapplication.js"></script>
+<script type="text/javascript" src="js_in_pages/tree.js"></script>
+  <link rel="stylesheet" href="js_in_pages/newapplication.css" type="text/css" />
  
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
-    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+
     <script type="text/javascript" src="scripts/demos.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>

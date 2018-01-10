@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import onboard.encryption;
 
 /**
  * Servlet implementation class user_registration
@@ -54,23 +56,9 @@ public class user_registration extends HttpServlet {
 	String answer=request.getParameter("reg_ans");
 	String app=request.getParameter("reg_app");
 	
-	System.out.println("application name is "+app);
-/*	HashMap<String,String> hm=new HashMap<String,String>(); 
-	hm.put("Admin","XXXXXXXX");
-	hm.put("ArchivalAdmin","XXXXXXRR");
-	hm.put("LegacyProgramManager","NXXRRNNN");
-	hm.put("ArchivalProgramManager","RXXXXXXX");
-	hm.put("ArchivalProjectManager","RXXXXXXX");
-	hm.put("ArchivalBusinessAnalyst","NXXXXNNN");
-	hm.put("ArchivalTechnicalLead","NXXXXNNN");
-	hm.put("ArchivalDeveloper","NRRRRNNN");
-	hm.put("TestLead","NNNRRNNN");
-	hm.put("LegacyTechnicalSME","NXXRRRNNN");
-	hm.put("LegacyBusinessSME","NXRXRRNNN");
-	
-	String rol=(String)hm.get(roles);
-	int i=0;*/
-	
+	encryption et=new encryption();
+	String passw=et.encrypt(pass);
+	System.out.println("enpt pass is "+passw);
 	 try
       {
         // create a mysql database connection
@@ -87,7 +75,7 @@ public class user_registration extends HttpServlet {
 	          preparedStmt.setString(2, firstname);
 	          preparedStmt.setString(3, lastname);
 	          preparedStmt.setString(4, email);
-	          preparedStmt.setString(5, pass);
+	          preparedStmt.setString(5, passw);
 	          preparedStmt.setString(6, projects);
 	          preparedStmt.setString(7, roles);
 	          preparedStmt.setString(8, "active");
