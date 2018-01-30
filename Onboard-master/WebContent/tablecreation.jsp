@@ -47,6 +47,12 @@
                        String query11="CREATE TABLE `app_prior` ( `prj_name` varchar(255) DEFAULT NULL, `IA_lic_cst` varchar(255) DEFAULT NULL, `IA_maint_cst` varchar(255) DEFAULT NULL, `Infrastrct_cst` varchar(255) DEFAULT NULL, `strg_est` varchar(255) DEFAULT NULL, `lab_cst` varchar(255) DEFAULT NULL, `proj_name` varchar(255) DEFAULT NULL, `data_size` varchar(255) DEFAULT NULL, `data_source` varchar(255) DEFAULT NULL, `curnt_users` varchar(255) DEFAULT NULL, `complexity` varchar(255) DEFAULT NULL, `est_archive` varchar(255) DEFAULT NULL, `est_scrn` varchar(255) DEFAULT NULL, `est_db_size` varchar(255) DEFAULT NULL, `est_hrs` varchar(255) DEFAULT NULL, `est_cst` varchar(255) DEFAULT NULL, `ttl_IA_cst` varchar(255) DEFAULT NULL, `ttl_infra_cst` varchar(255) DEFAULT NULL, `ttl_IA_prdct_cst` varchar(255) DEFAULT NULL, `ttl` varchar(255) DEFAULT NULL, `ttl_cst_fr_app` varchar(255) DEFAULT NULL, `add_cst_fr_contigency` varchar(255) DEFAULT NULL, `add_cst` varchar(255) DEFAULT NULL, `IA_app_sprt_cst` varchar(255) DEFAULT NULL, `est_archive_cst` varchar(255) DEFAULT NULL, `id` int(4) NOT NULL AUTO_INCREMENT, `sum` int(11) DEFAULT NULL, `read_date` varchar(255) DEFAULT NULL, `sme_date` varchar(255) DEFAULT NULL, `priorities` int(11) DEFAULT NULL, `no_of_app_complexity` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`) )";
                        statement.executeUpdate(query11);
                        
+                       String query12="CREATE TABLE `logs` (   `USER_ID` varchar(20) NOT NULL,   `DATED` varchar(25) NOT NULL,   `LOGGER` varchar(50) NOT NULL,   `LEVEL` varchar(10) NOT NULL,   `MESSAGE` varchar(1000) NOT NULL,   `roles` varchar(255) DEFAULT NULL )";
+                       statement.executeUpdate(query12);
+                       
+                       String query13="CREATE TABLE `visits` (   `uname` varchar(255) DEFAULT NULL,   `date` varchar(255) DEFAULT NULL,   `module` varchar(255) DEFAULT NULL,   `count` varchar(255) DEFAULT NULL )";
+                       statement.executeUpdate(query13);
+                       
                 
                         %> 
         <%	} catch (Exception ex) {

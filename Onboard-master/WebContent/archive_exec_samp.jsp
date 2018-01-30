@@ -18,7 +18,6 @@
 		<link type="text/css" href="css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />	
 		<link type="text/css" rel="stylesheet" href="css/progressbar.css" />
 		<script src="js/treeTable.js"></script>
-
 		 <script src="js/jstree.min.js"></script>
  
 <script type="text/javascript" src="js_in_pages/archive_exec.js"></script>
@@ -46,6 +45,10 @@
 <%@ page import="java.sql.*"%>
 		<%@ page import="javax.sql.*"%>
 		<%@ page import="onboard.DBconnection" %>
+		<%@page import="java.text.DateFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Date" %>
+<%@page import="java.util.Calendar" %>
 <form class="form-signin" name="loginForm" method="post" action="archive_exec">
 	<%
 
@@ -63,8 +66,43 @@ HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("archive_exec");
 	String det=(String)session.getAttribute("theName");
+	String username=(String)details.getAttribute("u_Name");
 	DBconnection d=new DBconnection();
 	Connection conn = (Connection)d.getConnection();
+	String visit_query="select * from visits";
+	Statement visit_st = conn.createStatement();
+	ResultSet visit_rs = visit_st.executeQuery(visit_query);
+	int flag=1;
+
+	Date date = new Date();
+	SimpleDateFormat ft = 
+	new SimpleDateFormat ("yyyy-MM-dd");
+	String strDate=ft.format(date);
+
+	while(visit_rs.next())
+	{
+		if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Archive Execution Module") )
+		{
+			Statement stmtt = conn.createStatement();
+	         String queryy = "update visits set count=count+1 where uname='"+username+"' and module='App Emphasize Module'";
+	         int count = stmtt.executeUpdate(queryy);
+	         flag=0;
+		}
+	}
+	if(flag==1)
+	{
+		
+		String ins_query = " insert into visits (uname, date, module, count)"
+		        + " values (?, ?, ?, ?)";
+		      PreparedStatement preparedStmt = conn.prepareStatement(ins_query);
+		      preparedStmt.setString (1, username);
+		      preparedStmt.setString (2, strDate);
+		      preparedStmt.setString(3, "Archive Execution Module");
+		      preparedStmt.setString(4, "1");
+
+		      // execute the preparedstatement
+		      preparedStmt.execute();
+	}
 String query = "select * from projinfo where id = "+det;
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
@@ -95,6 +133,7 @@ if(rs4.next()){
                 
                     <% if(rs.next()){ %>
                     <a class="navbar-brand" href="project.jsp" style="color:white"id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
+                       <input type="text" id="project_name" name="project_name" value="<%=rs.getString("projectname")%>" hidden>                              
                     <%
                     String q2="select * from archive_exec where level=1 and projects='"+rs.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();

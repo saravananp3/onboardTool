@@ -110,6 +110,7 @@ class Role
 String userid=request.getParameter("usr");
 String pwd=request.getParameter("pwd"); 
 session.setAttribute("username",userid);
+details.setAttribute("u_Name",userid);
 
 Class.forName("com.mysql.jdbc.Driver"); 
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/strutsdb","root","password123");
@@ -316,6 +317,7 @@ ResultSet rs=st.executeQuery("select * from user_details where uname='"+userid+"
 
 if(userid.equals("admin")&&pwd.equals("admin"))
 {
+	
 	details.setAttribute("role","admin");
 	details.setAttribute("projects","all");
 	details.setAttribute("admin","X");
@@ -333,7 +335,7 @@ if(rs.next())
 	encryption et=new encryption();
 	String decrypted_pass=et.decrypt(rs.getString(5));
 	System.out.println("decrypt "+decrypted_pass);
-	if((decrypted_pass.equals(pwd))) 
+	if((rs.getString(5).equals(pwd))) 
 { 
 	details.setAttribute("role",rs.getString(7));
 	details.setAttribute("projects",rs.getString(6));

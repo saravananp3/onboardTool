@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,11 +49,9 @@
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection" %>
 <%
-
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 response.setHeader("Expires", "0"); // Proxies.
-
 if (session.getAttribute("username")==null)
 {
 response.sendRedirect("Login.html");
@@ -95,6 +94,7 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                    <% if(rs3.next()){ %>
                     <% if(rs4.next()){ %>
                     <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
+                      <input type="text" id="project_name" name="project_name" value="<%=rs3.getString("projectname")%>" hidden>                              
                     <%
                     String quer2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
@@ -326,7 +326,6 @@ if(requirements == null)
 requirements="0";
 if(implement == null)
 	implement="0";
-
 %>
   <div class="col-md-3">
   <div class="form-group">

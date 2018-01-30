@@ -21,6 +21,7 @@
         can populate it from 'UL' or by using its 'source' property." />
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/demos.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
@@ -32,7 +33,26 @@
      <script type="text/javascript" src="js/RoleDashboard.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<style>.x_panel {
+    width: 200%;
+    padding: 10px 17px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    transition: all .2s ease;
+}
+custom.min.css:1
+.x_panel, .x_title {
+    margin-bottom: 30px;
+}
+</style>
+ 
+    
 </head><!--from  w  w w  . ja  va 2 s.co  m-->
  <body>
 
@@ -67,7 +87,7 @@ ResultSet rs3 = st3.executeQuery(query3);
 String query2 = "select * from role";
 Statement st2 = conn.createStatement();
 ResultSet rs2 = st2.executeQuery(query2);
-String query1 = "SELECT DISTINCT role FROM role";
+String query1 = "SELECT DISTINCT(role) FROM role";
 Statement st1 = conn.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
 
@@ -245,44 +265,33 @@ hypercare="0";
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="row">
             <label>Roles :</label>
-          <select id="slct1" name="slct1" onchange="getValue(this.id)">
+          <select id="slct1" name="slct1" onchange="getValue(this.value)">
   <option disabled selected>Please Select any Option</option>
    <%  
-  
-    while(rs1.next()){
    
-    %>
+
+    while(rs1.next()){
+    
+    	
+    
+    	    	 %>
             <option value="<%= rs1.getString("role") %>"><%= rs1.getString("role") %></option>
-        <%}%>
-        
+     
+      <%} %>
+    
+    
   </select>
   
-  <script>
-  function getValue(s1){
-	  var s1 = document.getElementById("slct1").value
-	  if (s1 == )
-	   {
-		  doument.write("HAi");
-	   }
-	  
-  }
   
-  </script>
-  <label>UserName :</label>
-  <select id="slct2" name="slct2" >
-    <option disabled selected>Please Select any Option</option>
-     <%  
-      String query4 = "select distinct username from role";
-     Statement st4= conn.createStatement();
-     ResultSet rs4 = st4.executeQuery(query4);
-     while(rs4.next()){ 
-    	 
-      %>
-     <option value="<%= rs4.getString(1)%>"><%= rs4.getString(1) %></option>
-       <% 
-       } 
-       %>   
-  </select>
+  
+  
+ <label>UserName :</label>
+ <span id="state">
+      <select name='state' id="username" onchange="filter(this.id,'slct1')">  
+     <option disabled selected>Please Select any Option</option>
+      </select>  
+    </span>
+    
   <label>Activity :</label>
    <select id="filterText">
    
@@ -307,7 +316,7 @@ hypercare="0";
       </div>
 
       <div class="panel-body table-responsive">
-        <table class="table table-hover" id="table" >
+        <table class="table table-hover" id="MyTable" >
           <thead>
             <tr>
               <th class="text-center">User Name</th>
@@ -347,11 +356,28 @@ while(rs2.next())
             </div>
           </div>
         </div>
+        
       </div>
     </div>
+      <h2>Roles Pie Chart</h2>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                  
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content"><iframe class="chartjs-hidden-iframe" style="width: 200%; display: block; border: 0px; height: 100px; margin: 10px; position: absolute; left: 30px; right: -10px; top: 0px; bottom: 0px;"></iframe>
+                  
+                    <div id="chartContainer" style="width: 500px; height: 380px;"></div>
+
+                  </div>
+                </div>
+              </div>
+    
   </div>
   </div>
- 
+
   <%
 }
 }
@@ -365,7 +391,100 @@ catch(Exception e){}
        </div>
        
        </div>
-   </form>
-</body>
+      
 
+   </form>
+    </body>
+<script language="javascript" type="text/javascript">  
+      var xmlHttp  
+      var xmlHttp
+      function getValue(str){
+    	  var input,filter, table, tr, td, i;
+    	 
+    	  
+    	 
+    	  
+      if (typeof XMLHttpRequest != "undefined"){
+      xmlHttp= new XMLHttpRequest();
+      }
+      else if (window.ActiveXObject){
+      xmlHttp= new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      if (xmlHttp==null){
+      alert("Browser does not support XMLHTTP Request")
+      return;
+      } 
+      
+      var url="state.jsp";
+      url +="?count=" +str;
+      xmlHttp.onreadystatechange = stateChange;
+      xmlHttp.open("GET", url, true);
+      xmlHttp.send(null);
+      
+            }
+
+      function stateChange(){   
+      if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){   
+      document.getElementById("username").innerHTML=xmlHttp.responseText   
+ 
+     
+      }   
+      
+  	  
+      }
+      
+      
+      </script>  
+      <script>
+      function filter(input,s2) {
+    	  // Declare variables 
+    	  var input, filter, table, tr, td, i;
+    	  input = document.getElementById("username").value;
+    	  s2 = document.getElementById("slct1").value;
+    	  console.log("s2:" + input);
+    	  table = document.getElementById("MyTable");
+    	  tr = table.getElementsByTagName("tr");
+
+    	  // Loop through all table rows, and hide those who don't match the search query
+    	  for (i = 0; i < tr.length; i++) {
+    	    td = tr[i].getElementsByTagName("td")[1];
+    	    console.log(td);
+    	    
+    	    if (td) {
+    	    	
+    	      if (td.innerHTML.indexOf(s2)> -1) {
+    	        tr[i].style.display = "";
+    	      } else {
+    	        tr[i].style.display = "none";
+    	      }
+    	    } 
+    	  }
+    	}
+      </script>
+    <script>
+window.onload = function() {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Role Info"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+			{y: 79.45, label: "archivaladmin"},
+			{y: 7.31, label: "admin"},
+			{y: 7.06, label: "archivalDeveloper"},
+			{y: 4.91, label: "legacy"},
+			{y: 1.26, label: "SME"}
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
 </html>

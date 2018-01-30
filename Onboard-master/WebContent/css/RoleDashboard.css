@@ -74,7 +74,7 @@ body { text-align:center }
 .ui-widget .ui-label { position:absolute; left:0; bottom:-10px; width:100%; font-size:14px; text-transform:uppercase; color:#888; font-weight:700 }
 .container{padding:20px;}
 #slct1{color:black}
-#slct2{color:black}
+#username{color:black}
 .pagetitle{font-size: 22px;
     font-weight: 500;
     display: block;
@@ -88,7 +88,10 @@ body { text-align:center }
     border-image: initial;
     }
 
+  .panel panel-primary{
   
+  position:fixed;
+  }
   .sidebar{
   
   position:relative;

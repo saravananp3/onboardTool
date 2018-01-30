@@ -169,11 +169,11 @@ ResultSet rs = st.executeQuery(query);
 
 </li>
 
-<li>
-
-<p style="color:white; padding-top:15px;">logged in as &nbsp;<span><%=roles%></span></p>
-
-</li>
+ <li><%
+                         String uid=(String)details.getAttribute("username");
+                         String rol=(String)details.getAttribute("role");%>
+ <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=rol%></span></p>
+</li> 
 
                         <li>
 

@@ -304,7 +304,7 @@ function call()
 {
 	var f=document.loginForm;
     f.method="post";
-    f.action="applnprior.jsp";
+    f.action="applnprior1.jsp";
     f.submit();
 	}
 </script>

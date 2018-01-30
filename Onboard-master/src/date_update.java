@@ -1,5 +1,6 @@
 import java.io.IOException;
 
+
 import java.sql.Connection;
 
 import java.sql.DriverManager;
@@ -11,7 +12,12 @@ import java.sql.Statement;
 import java.text.DateFormat;
 
 import java.util.ArrayList;
+import org.apache.log4j.BasicConfigurator;
 
+import org.apache.log4j.Logger;
+
+import org.apache.log4j.MDC;
+import javax.servlet.ServletConfig;
  
 
 import javax.servlet.ServletException;
@@ -57,7 +63,7 @@ import java.util.List;
 public class date_update extends HttpServlet {
 
            private static final long serialVersionUID = 1L;
-
+           private Logger logger = null;
       
 
     /**
@@ -72,6 +78,14 @@ public class date_update extends HttpServlet {
 
         // TODO Auto-generated constructor stub
 
+    }
+    public void init(ServletConfig config) throws ServletException
+
+    {
+
+              logger=Logger.getRootLogger();
+
+              BasicConfigurator.configure();
     }
 
  
@@ -105,6 +119,16 @@ public class date_update extends HttpServlet {
                                  HttpSession session=request.getSession();
 
                                  String prjname=request.getParameter("prjname");
+                               
+                                 HttpSession details=request.getSession(); 
+                             	String u_name=(String)details.getAttribute("username");
+
+                             		String userid=u_name;
+                             				MDC.put("USERID", userid);
+                             				String u_role=(String)details.getAttribute("role");
+                             				MDC.put("USERROLE", u_role);
+                             				String projectname=request.getParameter("project_name");
+                             				logger.info("modified project "+projectname); 
 
                                 
 

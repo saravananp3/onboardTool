@@ -298,7 +298,7 @@ while(rs1.next()){
                           </form>  
                        
                     <button type="button" class="btn btn-default" onclick="location.href='editproject.jsp';">Back</button>
-                    <button type="button" class="btn btn-success pull-right" onclick="location.href='tree.jsp';">Save & Continue...</button>
+                    <button type="button" class="btn btn-success pull-right" onclick="location.href='tree1.jsp';">Save & Continue...</button>
                                         
                                                                                                          
                                                                                                                        

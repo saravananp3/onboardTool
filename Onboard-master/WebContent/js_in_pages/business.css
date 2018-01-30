@@ -22,9 +22,6 @@
 .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
 /*END Form Wizard*/
 
-</style>
-
- <style>
     body
     {
      margin:0; padding:0; 
@@ -79,8 +76,7 @@ text-size:30%;
 
 
 
-   </style>
-<style class="cp-pen-styles">@-webkit-keyframes myanimation {
+@-webkit-keyframes myanimation {
   from {
     left: 0%;
   }
@@ -257,8 +253,7 @@ ul.checkout-bar a {
     z-index: 99;
   }
 }
-</style>
-<style>
+
 
 .required:after {
     content: " *";

@@ -35,6 +35,10 @@
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection" %>
+<%@page import="java.text.DateFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Date" %>
+<%@page import="java.util.Calendar" %>
 <%
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -49,6 +53,7 @@ if (session.getAttribute("username")==null)
 <%
 
 String det=(String)session.getAttribute("theName");
+
 try{
 	String query3="";
 	HttpSession details=request.getSession();
@@ -56,8 +61,43 @@ try{
 	Connection con = (Connection)d.getConnection();
 String prj=(String)details.getAttribute("projects");
 String appl=(String)details.getAttribute("applications");
+String username=(String)details.getAttribute("u_Name");
+String visit_query="select * from visits";
+Statement visit_st = con.createStatement();
+ResultSet visit_rs = visit_st.executeQuery(visit_query);
+int flag=1;
+
+Date date = new Date();
+SimpleDateFormat ft = 
+new SimpleDateFormat ("yyyy-MM-dd");
+String strDate=ft.format(date);
+
+while(visit_rs.next())
+{
+	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Intake Module") )
+	{
+		Statement stmtt = con.createStatement();
+         String queryy = "update visits set count=count+1 where uname='"+username+"' and module='Intake Module'";
+         int count = stmtt.executeUpdate(queryy);
+         flag=0;
+	}
+}
+if(flag==1)
+{
+	
+	String ins_query = " insert into visits (uname, date, module, count)"
+	        + " values (?, ?, ?, ?)";
+	      PreparedStatement preparedStmt = con.prepareStatement(ins_query);
+	      preparedStmt.setString (1, username);
+	      preparedStmt.setString (2, strDate);
+	      preparedStmt.setString(3, "Intake Module");
+	      preparedStmt.setString(4, "1");
+
+	      // execute the preparedstatement
+	      preparedStmt.execute();
+}
 if(prj.equals("all"))
-	 query3 = "select * from projinfo";
+	 query3 = "select * from projinfo where id="+det;
 	else
 	 query3 = "select * from projinfo where projectname='"+prj+"'";
 
@@ -77,6 +117,7 @@ ResultSet rs3 = st3.executeQuery(query3);
                 
                      <%if (rs3.next()) {
                     	 String name=rs3.getString("projectname");
+                    	 System.out.println("the projectname is "+name);
                     	 String query="";
                     	 if(prj.equals("all"))
                     	  query = "select * from appinfo where prjname = '"+name+"'";

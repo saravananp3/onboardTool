@@ -1,15 +1,24 @@
 import java.io.IOException;
 
+
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import org.apache.log4j.BasicConfigurator;
+
+import org.apache.log4j.Logger;
+
+import org.apache.log4j.MDC;
+import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  * Servlet implementation class comp
@@ -17,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Technical")
 public class Technical extends HttpServlet {
 private static final long serialVersionUID = 1L;
+private Logger logger = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,6 +36,14 @@ private static final long serialVersionUID = 1L;
         // TODO Auto-generated constructor stub
     }
 
+    public void init(ServletConfig config) throws ServletException
+
+    {
+
+              logger=Logger.getRootLogger();
+
+              BasicConfigurator.configure();
+    }
 /**
 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 */
@@ -38,7 +56,15 @@ response.getWriter().append("Served at: ").append(request.getContextPath());
 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 */
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-// TODO Auto-generated method stub
+	HttpSession details=request.getSession(); 
+	String u_name=(String)details.getAttribute("username");
+
+		String userid=u_name;
+				MDC.put("USERID", userid);
+				String u_role=(String)details.getAttribute("role");
+				MDC.put("USERROLE", u_role);
+				String projectname=request.getParameter("project_name");
+				logger.info("modified project "+projectname); 
 String datatype = request.getParameter("datatype");
        String pname = request.getParameter("pname");
        String archneed = request.getParameter("archneed");

@@ -1,18 +1,25 @@
 
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
+import org.apache.log4j.MDC;
+import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Appin
@@ -20,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Appin")
 public class Appin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Logger logger = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,6 +35,14 @@ public class Appin extends HttpServlet {
     public Appin() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    public void init(ServletConfig config) throws ServletException
+
+    {
+
+              logger=Logger.getRootLogger();
+
+              BasicConfigurator.configure();
     }
 
 	/**
@@ -41,9 +57,16 @@ public class Appin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession details=request.getSession(); 
+		String u_name=(String)details.getAttribute("username");
+
+			String userid=u_name;
+					MDC.put("USERID", userid);
+					String u_role=(String)details.getAttribute("role");
+					MDC.put("USERROLE", u_role);
 		String prjname = request.getParameter("prjname");		
 		String appname = request.getParameter("appname");
+		logger.info("created application  "+appname+" in project "+prjname+" for Intake Module"); 
 				String descr = request.getParameter("descr");
 				String rod = request.getParameter("rod");
 				String dbsize = request.getParameter("dbsize");

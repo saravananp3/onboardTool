@@ -1,6 +1,12 @@
 
 
 import java.io.IOException;
+import org.apache.log4j.BasicConfigurator;
+
+import org.apache.log4j.Logger;
+
+import org.apache.log4j.MDC;
+import javax.servlet.ServletConfig;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,6 +27,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Project")
 public class Project extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	   private Logger logger = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,7 +36,14 @@ public class Project extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    public void init(ServletConfig config) throws ServletException
 
+    {
+
+              logger=Logger.getRootLogger();
+
+              BasicConfigurator.configure();
+    }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -43,7 +57,19 @@ public class Project extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession details=request.getSession(); 
+		String u_name=(String)details.getAttribute("username");
+		String u_role=(String)details.getAttribute("role");
+
+			String userid=u_name;
+					MDC.put("USERID", userid);
+					MDC.put("USERROLE", u_role);
+					
+				     
+
 				String projectname = request.getParameter("projectname");
+				 logger.info("created project "+projectname); 
+				 
 		        String descr = request.getParameter("descr");
 		        String appno = request.getParameter("appno");
 		        String Startdate = request.getParameter("Startdate");

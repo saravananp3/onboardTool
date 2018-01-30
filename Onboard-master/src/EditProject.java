@@ -2,6 +2,12 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import org.apache.log4j.BasicConfigurator;
+
+import org.apache.log4j.Logger;
+
+import org.apache.log4j.MDC;
+import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +22,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/EditProject")
 public class EditProject extends HttpServlet {
 private static final long serialVersionUID = 1L;
+private Logger logger = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -23,6 +30,14 @@ private static final long serialVersionUID = 1L;
     public EditProject() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    public void init(ServletConfig config) throws ServletException
+
+    {
+
+              logger=Logger.getRootLogger();
+
+              BasicConfigurator.configure();
     }
 
 /**
@@ -37,9 +52,16 @@ response.getWriter().append("Served at: ").append(request.getContextPath());
 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 */
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-  
+	HttpSession details=request.getSession(); 
+	String u_name=(String)details.getAttribute("username");
+	String u_role=(String)details.getAttribute("role");
+		String userid=u_name;
+				MDC.put("USERID", userid);
+				MDC.put("USERROLE", u_role);
+				
     String id = request.getParameter("pid");
 String projectname = request.getParameter("projectname");
+logger.info("modified project "+projectname); 
         String descr = request.getParameter("descr");
         String appno = request.getParameter("appno");
         String Startdate = request.getParameter("Startdate");
@@ -48,8 +70,7 @@ String projectname = request.getParameter("projectname");
         String Execdate = request.getParameter("Execdate");
         String Hyperdate = request.getParameter("Hyperdate");
         String Enddate = request.getParameter("Enddate"); 
-        
-        HttpSession details=request.getSession(); 
+      
         String prjname=(String)details.getAttribute("Myproject");
   
 try

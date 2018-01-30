@@ -13,8 +13,9 @@
 
 <link rel="stylesheet" href="css/style.min.css">
 
-<script type="text/javascript" src="js_in_pages/newapplication.js"></script>
 <script type="text/javascript" src="js_in_pages/tree.js"></script>
+<script type="text/javascript" src="js_in_pages/newapplication.js"></script>
+
   <link rel="stylesheet" href="js_in_pages/newapplication.css" type="text/css" />
  
     <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />

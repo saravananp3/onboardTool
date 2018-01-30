@@ -1,11 +1,17 @@
 import java.io.IOException;
 
 
+
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+
+import org.apache.log4j.MDC;
+import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,11 +25,19 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/Displaydb")
 public class Displaydb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private Logger logger = null;
   
     public Displaydb() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    public void init(ServletConfig config) throws ServletException
+
+    {
+
+              logger=Logger.getRootLogger();
+
+              BasicConfigurator.configure();
     }
 
 	
@@ -31,11 +45,19 @@ public class Displaydb extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
+	
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession details=request.getSession(); 
+		String u_name=(String)details.getAttribute("username");
+		String u_role=(String)details.getAttribute("role");
+
+			String userid=u_name;
+					MDC.put("USERID", userid);
+					MDC.put("USERROLE", u_role);
 		String prj_name = request.getParameter("prj_name");
+		logger.info("modified project "+prj_name); 
 		String IA_lic_cst = request.getParameter("IA_lic_cst");
 		String IA_maint_cst = request.getParameter("IA_maint_cst");
 		String Infrastrct_cst = request.getParameter("Infrastrct_cst");

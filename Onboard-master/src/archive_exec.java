@@ -1,17 +1,25 @@
 
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import org.apache.log4j.BasicConfigurator;
+
+import org.apache.log4j.Logger;
+
+import org.apache.log4j.MDC;
+import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class archive_exec
@@ -19,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/archive_exec")
 public class archive_exec extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Logger logger = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,6 +35,14 @@ public class archive_exec extends HttpServlet {
     public archive_exec() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    public void init(ServletConfig config) throws ServletException
+
+    {
+
+              logger=Logger.getRootLogger();
+
+              BasicConfigurator.configure();
     }
 
 	/**
@@ -40,7 +57,15 @@ public class archive_exec extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession details=request.getSession(); 
+		String u_name=(String)details.getAttribute("username");
+		String u_role=(String)details.getAttribute("role");
+		MDC.put("USERROLE", u_role);
+			String userid=u_name;
+					MDC.put("USERID", userid);
+					
+					String projectname=request.getParameter("project_name");
+					logger.info("modified project "+projectname); 
 		String seqnum[]=new String[10];
 		String name[]=new String[10];
 		String mem_as[]=new String[10];
