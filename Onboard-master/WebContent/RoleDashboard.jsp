@@ -31,6 +31,7 @@
     <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
      <script type="text/javascript" src="js/RoleDashboard.js"></script>
+      <script type="text/javascript" src="js/Chart.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -68,7 +69,7 @@ if (session.getAttribute("username")==null)
 response.sendRedirect("Login.html");
 }
 %>
-You Selected :<p id="role"><p>
+
 <%
 
 HttpSession details=request.getSession();
@@ -84,13 +85,21 @@ ResultSet rs = st.executeQuery(query);
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
-String query2 = "select * from role";
+String query2 = "select * from logs";
 Statement st2 = conn.createStatement();
 ResultSet rs2 = st2.executeQuery(query2);
-String query1 = "SELECT DISTINCT(role) FROM role";
+String query1 = "SELECT DISTINCT(roles) FROM logs";
 Statement st1 = conn.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
-
+String query4 = "select count(USER_ID) from logs";
+Statement st4 = conn.createStatement();
+ResultSet rs4 = st4.executeQuery(query4);
+String query5 = "select count(roles) from logs";
+Statement st5 = conn.createStatement();
+ResultSet rs5 = st5.executeQuery(query5);
+String query6 = "select count(roles) from logs";
+Statement st6 = conn.createStatement();
+ResultSet rs6 = st6.executeQuery(query6);
 if(rs.next()){
 %>
 <form id="form1" name="loginform">
@@ -244,7 +253,7 @@ hypercare="0";
 <div class="container"> 
       
         <div class="ui-widget">
-  <h1 class="ui-value">25</h1>
+  <h1 class="ui-value"><%  while(rs4.next()){ %><%= rs4.getString(1) %><%}%> </h1>
   <span class="ui-label">Users</span>
 </div>
 
@@ -254,7 +263,7 @@ hypercare="0";
 </div>
 
 <div class="ui-widget">
-  <h1 class="ui-value">11</h1>
+  <h1 class="ui-value"><%  while(rs5.next()){ %><%= rs5.getString(1) %><%}%></h1>
   <span class="ui-label">Roles</span>
 </div>
        
@@ -275,7 +284,7 @@ hypercare="0";
     	
     
     	    	 %>
-            <option value="<%= rs1.getString("role") %>"><%= rs1.getString("role") %></option>
+            <option value="<%= rs1.getString("roles") %>"><%= rs1.getString("roles") %></option>
      
       <%} %>
     
@@ -335,9 +344,9 @@ while(rs2.next())
           
             <tr class="content">
               <td  class="text-center"><%=rs2.getString(1)%></td>
-              <td  class="text-center"> <%=rs2.getString(2) %> </td>
-              <td class="text-center"><%=rs2.getString(3) %></td>
-              <td  class="text-center"><%=rs2.getString(4)%></td>
+              <td  class="text-center"> <%=rs2.getString(6) %> </td>
+              <td class="text-center"><%=rs2.getString(2) %></td>
+              <td  class="text-center"><%=rs2.getString(5)%></td>
              
             </tr>
 
@@ -374,7 +383,9 @@ while(rs2.next())
                   </div>
                 </div>
               </div>
-    
+    <div class="chart-container">
+		<canvas id="line-chartcanvas"></canvas>
+	</div>
   </div>
   </div>
 
@@ -486,5 +497,88 @@ var chart = new CanvasJS.Chart("chartContainer", {
 chart.render();
 
 }
+</script>
+<script>
+$(document).ready(function() {
+
+	/**
+	 * call the data.php file to fetch the result from db table.
+	 */
+	$.ajax({
+		url : "http://localhost/onboard/WebContent/chartjs2/api/data.php",
+		type : "GET",
+		success : function(data){
+			console.log(data);
+
+			var score = {
+				TeamA : [],
+				TeamB : []
+			};
+
+			var len = data.length;
+
+			for (var i = 0; i < len; i++) {
+				if (data[i].team == "TeamA") {
+					score.TeamA.push(data[i].score);
+				}
+				else if (data[i].team == "TeamB") {
+					score.TeamB.push(data[i].score);
+				}
+			}
+
+			//get canvas
+			var ctx = $("#line-chartcanvas");
+
+			var data = {
+				labels : ["match1", "match2", "match3", "match4", "match5"],
+				datasets : [
+					{
+						label : "TeamA score",
+						data : score.TeamA,
+						backgroundColor : "blue",
+						borderColor : "lightblue",
+						fill : false,
+						lineTension : 0,
+						pointRadius : 5
+					},
+					{
+						label : "TeamB score",
+						data : score.TeamB,
+						backgroundColor : "green",
+						borderColor : "lightgreen",
+						fill : false,
+						lineTension : 0,
+						pointRadius : 5
+					}
+				]
+			};
+
+			var options = {
+				title : {
+					display : true,
+					position : "top",
+					text : "Line Graph",
+					fontSize : 18,
+					fontColor : "#111"
+				},
+				legend : {
+					display : true,
+					position : "bottom"
+				}
+			};
+
+			var chart = new Chart( ctx, {
+				type : "line",
+				data : data,
+				options : options
+			} );
+
+		},
+		error : function(data) {
+			console.log(data);
+		}
+	});
+
+});
 </script>
 </html>

@@ -99,7 +99,7 @@ class Role
 	<%@ page import="java.sql.*"%>
 	<%@ page import="javax.sql.*"%>
 	
-<%@ page import="onboard.encryption"%>
+
 <jsp:include page="db_creation.jsp"/>
 	<jsp:include page="tablecreation.jsp"/>
 	
@@ -332,9 +332,9 @@ if(userid.equals("admin")&&pwd.equals("admin"))
 }else{
 if(rs.next()) 
 {
-	encryption et=new encryption();
-	String decrypted_pass=et.decrypt(rs.getString(5));
-	System.out.println("decrypt "+decrypted_pass);
+	//encryption et=new encryption();
+	//String decrypted_pass=et.decrypt(rs.getString(5));
+	//System.out.println("decrypt "+decrypted_pass);
 	if((rs.getString(5).equals(pwd))) 
 { 
 	details.setAttribute("role",rs.getString(7));

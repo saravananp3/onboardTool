@@ -17,7 +17,11 @@ public class DBconnection{
 	public  DBconnection() throws ClassNotFoundException, SQLException{
 		try {
 			Properties prop = new Properties();
+<<<<<<< HEAD
 			File file = new File("C:\\onboardng\\onboardTool\\Onboard-master\\src\\Configuration.properties");
+=======
+			File file = new File("C:\\on\\Onboard-master\\src\\Configuration.properties");
+>>>>>>> 910c9ad7ace7ddefe381023b7a459be84935d576
                    FileInputStream fn = new FileInputStream(file);
                    prop.load(fn);
                    Class.forName(prop.getProperty("DRIVER"));
