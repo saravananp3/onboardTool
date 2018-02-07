@@ -100,6 +100,10 @@ ResultSet rs5 = st5.executeQuery(query5);
 String query6 = "select count(roles) from logs";
 Statement st6 = conn.createStatement();
 ResultSet rs6 = st6.executeQuery(query6);
+
+String query9 = "select * from visits order by date desc,time desc;";
+Statement st9 = conn.createStatement();
+ResultSet rs9 = st9.executeQuery(query9);
 if(rs.next()){
 %>
 <form id="form1" name="loginform">
@@ -265,6 +269,10 @@ hypercare="0";
 <div class="ui-widget">
   <h1 class="ui-value"><%  while(rs5.next()){ %><%= rs5.getString(1) %><%}%></h1>
   <span class="ui-label">Roles</span>
+</div>
+<div class="ui-widget">
+  <h1 class="ui-value"><%  if(rs9.next()){ %><%= rs9.getString(3) %><%}%></h1>
+  <span class="ui-label">Last visited</span>
 </div>
        
 

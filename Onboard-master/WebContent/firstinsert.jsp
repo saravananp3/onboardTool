@@ -68,16 +68,18 @@ ResultSet visit_rs = visit_st.executeQuery(visit_query);
 int flag=1;
 
 Date date = new Date();
-SimpleDateFormat ft = 
-new SimpleDateFormat ("yyyy-MM-dd");
+SimpleDateFormat ft,ft1;
+ft=new SimpleDateFormat ("yyyy-MM-dd");
+ft1=new SimpleDateFormat ("hh:mm:ss");
 String strDate=ft.format(date);
+String strTime=ft1.format(date);
 
 while(visit_rs.next())
 {
 	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Intake Module") )
 	{
 		Statement stmtt = con.createStatement();
-         String queryy = "update visits set count=count+1 where uname='"+username+"' and module='Intake Module'";
+         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Intake Module'";
          int count = stmtt.executeUpdate(queryy);
          flag=0;
 	}
@@ -85,13 +87,14 @@ while(visit_rs.next())
 if(flag==1)
 {
 	
-	String ins_query = " insert into visits (uname, date, module, count)"
-	        + " values (?, ?, ?, ?)";
+	String ins_query = " insert into visits (uname, date, module, count, time)"
+	        + " values (?, ?, ?, ?, ?)";
 	      PreparedStatement preparedStmt = con.prepareStatement(ins_query);
 	      preparedStmt.setString (1, username);
 	      preparedStmt.setString (2, strDate);
 	      preparedStmt.setString(3, "Intake Module");
 	      preparedStmt.setString(4, "1");
+	      preparedStmt.setString(5, strTime);
 
 	      // execute the preparedstatement
 	      preparedStmt.execute();
