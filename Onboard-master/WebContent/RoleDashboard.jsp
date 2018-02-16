@@ -32,11 +32,16 @@
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
      <script type="text/javascript" src="js/RoleDashboard.js"></script>
       <script type="text/javascript" src="js/Chart.min.js"></script>
+      
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+ <link rel="stylesheet" href="https://cdn.oesmith.co.uk/morris-0.5.1.css">
+
 <style>.x_panel {
-    width: 200%;
+    width: 100%;
     padding: 10px 17px;
     display: inline-block;
     background: #fff;
@@ -50,6 +55,14 @@
 custom.min.css:1
 .x_panel, .x_title {
     margin-bottom: 30px;
+}
+#area-chart,
+#line-chart,
+#bar-chart,
+#stacked,
+#pie-chart{
+  width: 500px;
+  min-height: 400px;
 }
 </style>
  
@@ -88,7 +101,7 @@ ResultSet rs3 = st3.executeQuery(query3);
 String query2 = "select * from logs";
 Statement st2 = conn.createStatement();
 ResultSet rs2 = st2.executeQuery(query2);
-String query1 = "SELECT DISTINCT(roles) FROM logs";
+String query1 = "SELECT role FROM role_details";
 Statement st1 = conn.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
 String query4 = "select count(USER_ID) from logs";
@@ -100,10 +113,6 @@ ResultSet rs5 = st5.executeQuery(query5);
 String query6 = "select count(roles) from logs";
 Statement st6 = conn.createStatement();
 ResultSet rs6 = st6.executeQuery(query6);
-
-String query9 = "select * from visits order by date desc,time desc;";
-Statement st9 = conn.createStatement();
-ResultSet rs9 = st9.executeQuery(query9);
 if(rs.next()){
 %>
 <form id="form1" name="loginform">
@@ -270,10 +279,6 @@ hypercare="0";
   <h1 class="ui-value"><%  while(rs5.next()){ %><%= rs5.getString(1) %><%}%></h1>
   <span class="ui-label">Roles</span>
 </div>
-<div class="ui-widget">
-  <h1 class="ui-value"><%  if(rs9.next()){ %><%= rs9.getString(3) %><%}%></h1>
-  <span class="ui-label">Last visited</span>
-</div>
        
 
 <div class="panel panel-primary">
@@ -289,10 +294,10 @@ hypercare="0";
 
     while(rs1.next()){
     
-    	
+   
     
-    	    	 %>
-            <option value="<%= rs1.getString("roles") %>"><%= rs1.getString("roles") %></option>
+        %>
+            <option value="<%= rs1.getString("role") %>"><%= rs1.getString("role") %></option>
      
       <%} %>
     
@@ -309,13 +314,7 @@ hypercare="0";
       </select>  
     </span>
     
-  <label>Activity :</label>
-   <select id="filterText">
-   
-       <option selected="selected" value="10">last 10 days</option>
-       <option value="20">last 20 days</option>
-       <option value="30">last 30 days</option>
-    </select>   
+  
 </div>
 
           </div>
@@ -376,8 +375,13 @@ while(rs2.next())
         
       </div>
     </div>
-      <h2>Roles Pie Chart</h2>
-    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="row">
+   
+  <div class="col-sm-6 text-center">
+       <label class="label label-success">Line Chart</label>
+      <div id="line-chart"></div>
+    </div>
+    <div class="col-md-6 ">
                 <div class="x_panel">
                   <div class="x_title">
                   
@@ -391,12 +395,13 @@ while(rs2.next())
                   </div>
                 </div>
               </div>
-    <div class="chart-container">
-		<canvas id="line-chartcanvas"></canvas>
-	</div>
+ </div>
+      
+    
+   
   </div>
   </div>
-
+ 
   <%
 }
 }
@@ -414,15 +419,16 @@ catch(Exception e){}
 
    </form>
     </body>
+    
 <script language="javascript" type="text/javascript">  
       var xmlHttp  
       var xmlHttp
       function getValue(str){
-    	  var input,filter, table, tr, td, i;
-    	 
-    	  
-    	 
-    	  
+      var input,filter, table, tr, td, i;
+     
+      
+     
+      
       if (typeof XMLHttpRequest != "undefined"){
       xmlHttp= new XMLHttpRequest();
       }
@@ -449,144 +455,109 @@ catch(Exception e){}
      
       }   
       
-  	  
+    
       }
       
       
       </script>  
-      <script>
-      function filter(input,s2) {
-    	  // Declare variables 
-    	  var input, filter, table, tr, td, i;
-    	  input = document.getElementById("username").value;
-    	  s2 = document.getElementById("slct1").value;
-    	  console.log("s2:" + input);
-    	  table = document.getElementById("MyTable");
-    	  tr = table.getElementsByTagName("tr");
-
-    	  // Loop through all table rows, and hide those who don't match the search query
-    	  for (i = 0; i < tr.length; i++) {
-    	    td = tr[i].getElementsByTagName("td")[1];
-    	    console.log(td);
-    	    
-    	    if (td) {
-    	    	
-    	      if (td.innerHTML.indexOf(s2)> -1) {
-    	        tr[i].style.display = "";
-    	      } else {
-    	        tr[i].style.display = "none";
-    	      }
-    	    } 
-    	  }
-    	}
-      </script>
+     
     <script>
 window.onload = function() {
 
 var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title: {
-		text: "Role Info"
-	},
-	data: [{
-		type: "pie",
-		startAngle: 240,
-		yValueFormatString: "##0.00\"%\"",
-		indexLabel: "{label} {y}",
-		dataPoints: [
-			{y: 79.45, label: "archivaladmin"},
-			{y: 7.31, label: "admin"},
-			{y: 7.06, label: "archivalDeveloper"},
-			{y: 4.91, label: "legacy"},
-			{y: 1.26, label: "SME"}
-		]
-	}]
+animationEnabled: true,
+title: {
+text: "Role Info"
+},
+data: [{
+type: "pie",
+startAngle: 240,
+yValueFormatString: "##0.00\"%\"",
+indexLabel: "{label} {y}",
+dataPoints: [
+{y: 79.45, label: "archivaladmin"},
+{y: 7.31, label: "admin"},
+{y: 7.06, label: "archivalDeveloper"},
+{y: 4.91, label: "legacy"},
+{y: 1.26, label: "SME"}
+]
+}]
 });
 chart.render();
 
 }
 </script>
+
 <script>
-$(document).ready(function() {
+var data = [
+    { y: '2014', a: 50, b: 90},
+    { y: '2015', a: 65,  b: 75},
+    { y: '2016', a: 50,  b: 50},
+    { y: '2017', a: 75,  b: 60},
+    { y: '2018', a: 80,  b: 65},
+    { y: '2019', a: 90,  b: 70},
+    { y: '2020', a: 100, b: 75},
+    { y: '2021', a: 115, b: 75},
+    { y: '2022', a: 120, b: 85},
+    { y: '2023', a: 145, b: 85},
+    { y: '2024', a: 160, b: 95}
+  ],
+  config = {
+    data: data,
+    xkey: 'y',
+    ykeys: ['a', 'b'],
+    labels: ['Total Income', 'Total Outcome'],
+    fillOpacity: 0.6,
+    hideHover: 'auto',
+    behaveLikeLine: true,
+    resize: true,
+    pointFillColors:['#ffffff'],
+    pointStrokeColors: ['black'],
+    lineColors:['gray','red']
+};
 
-	/**
-	 * call the data.php file to fetch the result from db table.
-	 */
-	$.ajax({
-		url : "http://localhost/onboard/WebContent/chartjs2/api/data.php",
-		type : "GET",
-		success : function(data){
-			console.log(data);
+config.element = 'line-chart';
+Morris.Line(config);
+config.element = 'stacked';
+config.stacked = true;
 
-			var score = {
-				TeamA : [],
-				TeamB : []
-			};
-
-			var len = data.length;
-
-			for (var i = 0; i < len; i++) {
-				if (data[i].team == "TeamA") {
-					score.TeamA.push(data[i].score);
-				}
-				else if (data[i].team == "TeamB") {
-					score.TeamB.push(data[i].score);
-				}
-			}
-
-			//get canvas
-			var ctx = $("#line-chartcanvas");
-
-			var data = {
-				labels : ["match1", "match2", "match3", "match4", "match5"],
-				datasets : [
-					{
-						label : "TeamA score",
-						data : score.TeamA,
-						backgroundColor : "blue",
-						borderColor : "lightblue",
-						fill : false,
-						lineTension : 0,
-						pointRadius : 5
-					},
-					{
-						label : "TeamB score",
-						data : score.TeamB,
-						backgroundColor : "green",
-						borderColor : "lightgreen",
-						fill : false,
-						lineTension : 0,
-						pointRadius : 5
-					}
-				]
-			};
-
-			var options = {
-				title : {
-					display : true,
-					position : "top",
-					text : "Line Graph",
-					fontSize : 18,
-					fontColor : "#111"
-				},
-				legend : {
-					display : true,
-					position : "bottom"
-				}
-			};
-
-			var chart = new Chart( ctx, {
-				type : "line",
-				data : data,
-				options : options
-			} );
-
-		},
-		error : function(data) {
-			console.log(data);
-		}
-	});
-
+Morris.Donut({
+element: 'pie-chart',
+data: [
+  {label: "Friends", value: 30},
+  {label: "Allies", value: 15},
+  {label: "Enemies", value: 45},
+  {label: "Neutral", value: 10}
+]
 });
 </script>
+ <script>
+      function filter(input,s2) {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("username").value;
+      
+      s2 = document.getElementById("slct1").value;
+      
+    console.log("Role : " + s2 + " Username :" + input)
+     
+    $.ajax({
+          type:"Post",
+          url:"fetch.jsp",
+         data:{
+              s2: s2,
+              input: input
+             
+           }, 
+         async:true,
+         cache:false,
+         success:function(data) {
+
+console.log(data);
+         }
+          });
+     
+    }
+      </script>
+     
 </html>

@@ -86,7 +86,7 @@ String info=(String)details.getAttribute("archive_exec");
 		if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Archive Execution Module") )
 		{
 			Statement stmtt = conn.createStatement();
-	         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='App Emphasize Module'";
+	         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Archive Execution Module'";
 	         int count = stmtt.executeUpdate(queryy);
 	         flag=0;
 		}
