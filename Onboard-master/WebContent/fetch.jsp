@@ -26,6 +26,7 @@ String data2=request.getParameter("input");
 
 System.out.println("ROle : " + data1 + "userid :" +data2);
 
+
 String query = "select * from user_details where roles='ArchivalAdmin' and uname='bala'";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);
@@ -33,8 +34,6 @@ ResultSet rs = st.executeQuery(query);
 
 while(rs.next())
 {
-System.out.println("Project name : "+rs.getString("projects"));
-System.out.println("Application name : "+rs.getString("application"));
  
 String query1 = "select * from archive_exec where projects='"+rs.getString("projects")+"' and level=1";
 Statement st1 = conn.createStatement();
@@ -51,7 +50,7 @@ break;
 
 
 String status=rs1.getString("name");
-System.out.println("Status of Project : "+status);
+
 
 String query2 = "select seq_num from archive_exec where projects='"+rs.getString("projects")+"' and name='"+rs.getString("application")+"'";
 Statement st2 = conn.createStatement();
@@ -82,7 +81,7 @@ Stats="Implement";
 break;
 }
 }
-System.out.println("Status of Appliaction :"+Stats);
+
 }%>
 <br/><br/>
 <%
@@ -102,8 +101,6 @@ while(rs4.next())
 <%
 }
 
-
- 
 
  %>
 </body>

@@ -48,6 +48,10 @@
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection" %>
+<%@page import="java.text.DateFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Date" %>
+<%@page import="java.util.Calendar" %>
 <%
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -72,6 +76,23 @@ session.setAttribute("appidd", idd);
 idd=(String)session.getAttribute("appidd");
 DBconnection d=new DBconnection();
 Connection conn = (Connection)d.getConnection();
+String prj=(String)details.getAttribute("projects");
+String appl=(String)details.getAttribute("applications");
+String username=(String)details.getAttribute("u_Name");
+String Project_Name=(String)details.getAttribute("nameofproject");
+String visit_query="select * from visits";
+Statement visit_st = conn.createStatement();
+ResultSet visit_rs = visit_st.executeQuery(visit_query);
+int flag=1;
+
+Date date = new Date();
+SimpleDateFormat ft,ft1;
+ft=new SimpleDateFormat ("yyyy-MM-dd");
+ft1=new SimpleDateFormat ("hh:mm:ss");
+String strDate=ft.format(date);
+String strTime=ft1.format(date);
+
+
 String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
@@ -96,6 +117,37 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                     <a class="navbar-brand" href="project.jsp" style="color:white" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %></a>
                       <input type="text" id="project_name" name="project_name" value="<%=rs3.getString("projectname")%>" hidden>                              
                     <%
+                    
+                    
+                    while(visit_rs.next())
+                    {
+                    	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Intake Module") && visit_rs.getString(6).equals(Project_Name) && visit_rs.getString(7).equals(rs4.getString("appname")) )
+                    	{
+                    		Statement stmtt = conn.createStatement();
+                             String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Intake Module' and Projects='"+Project_Name+"' and Applications='"+rs4.getString("appname")+"'";
+                             int count = stmtt.executeUpdate(queryy);
+                             flag=0;
+                    	}
+                    }
+                    if(flag==1)
+                    {
+                    	
+                    	String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
+                    	        + " values (?, ?, ?, ?, ?, ?, ?)";
+                    	      PreparedStatement preparedStmt = conn.prepareStatement(ins_query);
+                    	      preparedStmt.setString (1, username);
+                    	      preparedStmt.setString (2, strDate);
+                    	      preparedStmt.setString(3, "Intake Module");
+                    	      preparedStmt.setString(4, "1");
+                    	      preparedStmt.setString(5, strTime);
+                    	      preparedStmt.setString(6, Project_Name);
+                    	      preparedStmt.setString(7, rs4.getString("appname") );
+
+                    	      // execute the preparedstatement
+                    	      preparedStmt.execute();
+                    }
+                    
+                    
                     String quer2="select * from archive_exec where level=1 and projects='"+rs3.getString("projectname")+"'order by seq_num";
                     Statement s2 = conn.createStatement();
                    ResultSet rss = s2.executeQuery(quer2);

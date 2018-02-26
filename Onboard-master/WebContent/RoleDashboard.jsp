@@ -33,6 +33,7 @@
      <script type="text/javascript" src="js/RoleDashboard.js"></script>
       <script type="text/javascript" src="js/Chart.min.js"></script>
       
+      
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -113,6 +114,7 @@ ResultSet rs5 = st5.executeQuery(query5);
 String query6 = "select count(roles) from logs";
 Statement st6 = conn.createStatement();
 ResultSet rs6 = st6.executeQuery(query6);
+
 if(rs.next()){
 %>
 <form id="form1" name="loginform">
@@ -401,13 +403,9 @@ while(rs2.next())
    
   </div>
   </div>
+  
  
-  <%
-}
-}
-catch(Exception e){}
-%>    
-           
+     
  
  
                     
@@ -417,8 +415,6 @@ catch(Exception e){}
        </div>
       
 
-   </form>
-    </body>
     
 <script language="javascript" type="text/javascript">  
       var xmlHttp  
@@ -459,8 +455,12 @@ catch(Exception e){}
       }
       
       
-      </script>  
-     
+      </script> 
+      <%
+      String query8 = "select * from user_details where roles='ArchivalAdmin' and uname='bala'";
+      Statement st8 = conn.createStatement();
+      ResultSet rs8 = st8.executeQuery(query8);
+      %>  
     <script>
 window.onload = function() {
 
@@ -475,11 +475,25 @@ startAngle: 240,
 yValueFormatString: "##0.00\"%\"",
 indexLabel: "{label} {y}",
 dataPoints: [
-{y: 79.45, label: "archivaladmin"},
-{y: 7.31, label: "admin"},
-{y: 7.06, label: "archivalDeveloper"},
-{y: 4.91, label: "legacy"},
-{y: 1.26, label: "SME"}
+	<% while(rs8.next()){ 
+		 
+		String query9 = "select * from archive_exec where projects='"+rs8.getString("projects")+"' and level=1";
+		Statement st9 = conn.createStatement();
+		ResultSet rs9 = st9.executeQuery(query9);
+
+		while(rs9.next())
+		{
+		if(rs9.getString("progressbar")=="100")
+		continue;
+		else
+		break;
+		}
+
+		String status=rs9.getString("name");
+		String progressBar=rs9.getString("progressbar");
+		%>
+{y:50 , label:"<%= rs8.getString(6) %>", toolTipContent:"Status of Project : <%= status %> <br/> Percentage : <%= progressBar %>% <br/> Application : <%= rs8.getString("application") %> "},
+<%}%>
 ]
 }]
 });
@@ -487,27 +501,35 @@ chart.render();
 
 }
 </script>
+<%
+String query10 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 10 DAY) AND NOW()";
+Statement st10 = conn.createStatement();
+ResultSet rs10 = st10.executeQuery(query10);
+String query11 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
+Statement st11 = conn.createStatement();
+ResultSet rs11 = st11.executeQuery(query11);
+int last_10=0,last_30=0;
+System.out.println("before last 10");
+while(rs10.next())
+	last_10+=Integer.parseInt(rs10.getString(4));
+System.out.println("after last 10");
+while(rs11.next())
+	last_30+=Integer.parseInt(rs11.getString(4));
 
+System.out.println("lst 10 days : "+last_10+" lst 30 days : "+last_30);
+%>
 <script>
 var data = [
-    { y: '2014', a: 50, b: 90},
-    { y: '2015', a: 65,  b: 75},
-    { y: '2016', a: 50,  b: 50},
-    { y: '2017', a: 75,  b: 60},
-    { y: '2018', a: 80,  b: 65},
-    { y: '2019', a: 90,  b: 70},
-    { y: '2020', a: 100, b: 75},
-    { y: '2021', a: 115, b: 75},
-    { y: '2022', a: 120, b: 85},
-    { y: '2023', a: 145, b: 85},
-    { y: '2024', a: 160, b: 95}
+    { y: 10, a: <%= last_10 %>},
+    { y: '20', a: 3 },
+    { y: '30', a: <%= last_30 %> }
   ],
   config = {
     data: data,
     xkey: 'y',
-    ykeys: ['a', 'b'],
-    labels: ['Total Income', 'Total Outcome'],
-    fillOpacity: 0.6,
+    ykeys: ['y', 'a'],
+    labels: ['Days', 'Visits'],
+    fillOpacity: 0.4,
     hideHover: 'auto',
     behaveLikeLine: true,
     resize: true,
@@ -521,15 +543,6 @@ Morris.Line(config);
 config.element = 'stacked';
 config.stacked = true;
 
-Morris.Donut({
-element: 'pie-chart',
-data: [
-  {label: "Friends", value: 30},
-  {label: "Allies", value: 15},
-  {label: "Enemies", value: 45},
-  {label: "Neutral", value: 10}
-]
-});
 </script>
  <script>
       function filter(input,s2) {
@@ -559,5 +572,13 @@ console.log(data);
      
     }
       </script>
-     
+         <%
+}
+}
+catch(Exception e){}
+%>   
+   
+   </form>
+        </body> 
+      
 </html>

@@ -55,6 +55,8 @@ HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("app_emp");
 String username=(String)details.getAttribute("u_Name");
+String Project_Name=(String)details.getAttribute("nameofproject");
+System.out.println("the username is "+username);
 
 try {
 String det=(String)session.getAttribute("theName");
@@ -63,8 +65,7 @@ Connection conn = (Connection)d.getConnection();
 String visit_query="select * from visits";
 Statement visit_st = conn.createStatement();
 ResultSet visit_rs = visit_st.executeQuery(visit_query);
-int flag=1;
-
+int flag=1,knt=0;
 Date date = new Date();
 SimpleDateFormat ft,ft1;
 ft=new SimpleDateFormat ("yyyy-MM-dd");
@@ -73,25 +74,28 @@ String strDate=ft.format(date);
 String strTime=ft1.format(date);
 while(visit_rs.next())
 {
-	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("App Emphasize Module") )
+	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("App Emphasize Module") && visit_rs.getString(6).equals(Project_Name) )
 	{
 		Statement stmtt = conn.createStatement();
-         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='App Emphasize Module'";
+         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='App Emphasize Module' and Projects='"+Project_Name+"'";
          int count = stmtt.executeUpdate(queryy);
          flag=0;
 	}
+	else
+		System.out.println(++knt+" Noo");
 }
+System.out.println("the flag value is "+flag);
 if(flag==1)
 {
-	
-	String ins_query = " insert into visits (uname, date, module, count, time)"
-	        + " values (?, ?, ?, ?, ?)";
+	String ins_query = " insert into visits (uname, date, module, count, time, Projects)"
+	        + " values (?, ?, ?, ?, ?, ?)";
 	      PreparedStatement preparedStmt = conn.prepareStatement(ins_query);
 	      preparedStmt.setString (1, username);
 	      preparedStmt.setString (2, strDate);
 	      preparedStmt.setString(3, "App Emphasize Module");
 	      preparedStmt.setString(4, "1");
 	      preparedStmt.setString(5, strTime);
+	      preparedStmt.setString(6, Project_Name);
 
 	      // execute the preparedstatement
 	      preparedStmt.execute();

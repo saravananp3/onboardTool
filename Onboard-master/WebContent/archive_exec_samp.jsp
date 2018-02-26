@@ -67,6 +67,7 @@ String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("archive_exec");
 	String det=(String)session.getAttribute("theName");
 	String username=(String)details.getAttribute("u_Name");
+	String Project_Name=(String)details.getAttribute("nameofproject");
 	DBconnection d=new DBconnection();
 	Connection conn = (Connection)d.getConnection();
 	String visit_query="select * from visits";
@@ -83,25 +84,25 @@ String info=(String)details.getAttribute("archive_exec");
 
 	while(visit_rs.next())
 	{
-		if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Archive Execution Module") )
+		if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Archive Execution Module") && visit_rs.getString(6).equals(Project_Name) )
 		{
 			Statement stmtt = conn.createStatement();
-	         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Archive Execution Module'";
+	         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Archive Execution Module' and Projects='"+Project_Name+"'";
 	         int count = stmtt.executeUpdate(queryy);
 	         flag=0;
 		}
 	}
 	if(flag==1)
 	{
-		
-		String ins_query = " insert into visits (uname, date, module, count, time)"
-		        + " values (?, ?, ?, ?, ?)";
+		String ins_query = " insert into visits (uname, date, module, count, time, Projects)"
+		        + " values (?, ?, ?, ?, ?, ?)";
 		      PreparedStatement preparedStmt = conn.prepareStatement(ins_query);
 		      preparedStmt.setString (1, username);
 		      preparedStmt.setString (2, strDate);
 		      preparedStmt.setString(3, "Archive Execution Module");
 		      preparedStmt.setString(4, "1");
 		      preparedStmt.setString(5, strTime);
+		      preparedStmt.setString(6, Project_Name);
 
 		      // execute the preparedstatement
 		      preparedStmt.execute();

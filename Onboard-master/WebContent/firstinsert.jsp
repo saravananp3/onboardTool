@@ -62,6 +62,7 @@ try{
 String prj=(String)details.getAttribute("projects");
 String appl=(String)details.getAttribute("applications");
 String username=(String)details.getAttribute("u_Name");
+String Project_Name=(String)details.getAttribute("nameofproject");
 String visit_query="select * from visits";
 Statement visit_st = con.createStatement();
 ResultSet visit_rs = visit_st.executeQuery(visit_query);
@@ -76,10 +77,10 @@ String strTime=ft1.format(date);
 
 while(visit_rs.next())
 {
-	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Intake Module") )
+	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Intake Module") && visit_rs.getString(6).equals(Project_Name) )
 	{
 		Statement stmtt = con.createStatement();
-         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Intake Module'";
+         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Intake Module' and Projects='"+Project_Name+"'";
          int count = stmtt.executeUpdate(queryy);
          flag=0;
 	}
@@ -87,14 +88,15 @@ while(visit_rs.next())
 if(flag==1)
 {
 	
-	String ins_query = " insert into visits (uname, date, module, count, time)"
-	        + " values (?, ?, ?, ?, ?)";
+	String ins_query = " insert into visits (uname, date, module, count, time, Projects)"
+	        + " values (?, ?, ?, ?, ?, ?)";
 	      PreparedStatement preparedStmt = con.prepareStatement(ins_query);
 	      preparedStmt.setString (1, username);
 	      preparedStmt.setString (2, strDate);
 	      preparedStmt.setString(3, "Intake Module");
 	      preparedStmt.setString(4, "1");
 	      preparedStmt.setString(5, strTime);
+	      preparedStmt.setString(6, Project_Name);
 
 	      // execute the preparedstatement
 	      preparedStmt.execute();
