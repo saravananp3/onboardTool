@@ -50,7 +50,7 @@
                        String query12="CREATE TABLE `logs` (   `USER_ID` varchar(20) NOT NULL,   `DATED` varchar(25) NOT NULL,   `LOGGER` varchar(50) NOT NULL,   `LEVEL` varchar(10) NOT NULL,   `MESSAGE` varchar(1000) NOT NULL,   `roles` varchar(255) DEFAULT NULL )";
                        statement.executeUpdate(query12);
                        
-                       String query13="CREATE TABLE `visits` (   `uname` varchar(255) DEFAULT NULL,   `date` varchar(255) DEFAULT NULL,   `module` varchar(255) DEFAULT NULL,   `count` varchar(255) DEFAULT NULL, `time` varchar(255) DEFAULT NULL, `Projects` varchar(255) DEFAULT NULL, `Applications` varchar(255) DEFAULT NULL,  )";
+                       String query13="CREATE TABLE `visits` (   `uname` varchar(255) DEFAULT NULL,   `date` varchar(255) DEFAULT NULL,   `module` varchar(255) DEFAULT NULL,   `count` varchar(255) DEFAULT NULL, `time` varchar(255) DEFAULT NULL, `Projects` varchar(255) DEFAULT NULL, `Applications` varchar(255) DEFAULT NULL)";
                        statement.executeUpdate(query13);
                        
                 
