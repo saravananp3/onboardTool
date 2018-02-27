@@ -32,7 +32,7 @@
     <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
      <script type="text/javascript" src="js/RoleDashboard.js"></script>
       <script type="text/javascript" src="js/Chart.min.js"></script>
-      
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
@@ -379,24 +379,9 @@ while(rs2.next())
     </div>
     <div class="row">
    
-  <div class="col-sm-6 text-center">
-       <label class="label label-success">Line Chart</label>
-      <div id="line-chart"></div>
-    </div>
-    <div class="col-md-6 ">
-                <div class="x_panel">
-                  <div class="x_title">
-                  
-                    
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content"><iframe class="chartjs-hidden-iframe" style="width: 200%; display: block; border: 0px; height: 100px; margin: 10px; position: absolute; left: 30px; right: -10px; top: 0px; bottom: 0px;"></iframe>
-                  
-                    <div id="chartContainer" style="width: 500px; height: 380px;"></div>
-
-                  </div>
-                </div>
-              </div>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="piechart"></div>
+   
  </div>
       
     
@@ -461,90 +446,162 @@ while(rs2.next())
       Statement st8 = conn.createStatement();
       ResultSet rs8 = st8.executeQuery(query8);
       %>  
-    <script>
-window.onload = function() {
+    <script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-var chart = new CanvasJS.Chart("chartContainer", {
-animationEnabled: true,
-title: {
-text: "Role Info"
-},
-data: [{
-type: "pie",
-startAngle: 240,
-yValueFormatString: "##0.00\"%\"",
-indexLabel: "{label} {y}",
-dataPoints: [
-	<% while(rs8.next()){ 
-		 
-		String query9 = "select * from archive_exec where projects='"+rs8.getString("projects")+"' and level=1";
-		Statement st9 = conn.createStatement();
-		ResultSet rs9 = st9.executeQuery(query9);
+// Draw the chart and set the chart values
+function drawChart() {
+	var dataTable = new google.visualization.DataTable();
+    dataTable.addColumn('string', 'Year');
+    dataTable.addColumn('number', 'Sales');
+    // A column for custom tooltip content
+    dataTable.addColumn({type: 'string', role: 'tooltip'});
+    dataTable.addRows([
+  <% while(rs8.next()){ 
+  String query22 = "select * from archive_exec where projects='"+rs8.getString("projects")+"' and level=1";
+	Statement st22 = conn.createStatement();
+	ResultSet rs22 = st22.executeQuery(query22);
 
-		while(rs9.next())
-		{
-		if(rs9.getString("progressbar")=="100")
-		continue;
-		else
-		break;
-		}
+	while(rs22.next())
+	{
+	if(rs22.getString("progressbar")=="100")
+	continue;
+	else
+	break;
+	}
 
-		String status=rs9.getString("name");
-		String progressBar=rs9.getString("progressbar");
-		%>
-{y:50 , label:"<%= rs8.getString(6) %>", toolTipContent:"Status of Project : <%= status %> <br/> Percentage : <%= progressBar %>% <br/> Application : <%= rs8.getString("application") %> "},
-<%}%>
-]
-}]
-});
-chart.render();
+	String status=rs22.getString("name");
+	String progressBar=rs22.getString("progressbar");
+	if(progressBar.equals("0"))
+		progressBar="1";
+	  String query23 = "select sum(count) from visits where projects='"+rs8.getString("projects")+"'";
+		Statement st23 = conn.createStatement();
+		ResultSet rs23 = st23.executeQuery(query23);
+		String ttl_visits="",CurntDay_visits="",last_visited_Module="",last_visited_App="";
+		while(rs23.next())
+			 ttl_visits=rs23.getString(1);
+		 String query24 = "select count(*) from visits where date=CURDATE() and projects='"+rs8.getString("projects")+"'";
+			Statement st24 = conn.createStatement();
+			ResultSet rs24 = st24.executeQuery(query24);
+			while(rs24.next())
+				CurntDay_visits=rs24.getString(1);
+		String query25 = "select module from visits where projects='"+rs8.getString("projects")+"' order by date desc,time desc";
+				Statement st25 = conn.createStatement();
+				ResultSet rs25 = st25.executeQuery(query25);
+				if(rs25.next())
+					last_visited_Module=rs25.getString(1);
+  
+				String query30 = "select Applications from visits where projects='"+rs8.getString("projects")+"' and module='Intake Module' order by date desc,time desc";
+				Statement st30 = conn.createStatement();
+				ResultSet rs30 = st30.executeQuery(query30);
+				if(rs30.next())
+					last_visited_App=rs30.getString(1);
+	
+	String query26 = "select seq_num from archive_exec where projects='"+rs8.getString("projects")+"' and name='"+rs8.getString("application")+"'";
+	Statement st26 = conn.createStatement();
+	ResultSet rs26 = st26.executeQuery(query26);
+	String seqnum="";
+	if(rs26.next())
+	seqnum=rs26.getString(1);
 
+	String query27="select * from archive_exec where projects='"+rs8.getString("projects")+"' and seq_num>"+seqnum+" and seq_num<="+(Integer.parseInt(seqnum)+70)+" and level=3 order by seq_num";
+	//System.out.println(query3);
+	Statement st27 = conn.createStatement();
+	ResultSet rs27 = st27.executeQuery(query27);
+
+	String Stats="",ProgresBar="";
+	while(rs27.next())
+	{
+	if(rs27.getString("name").equals("Requirements") && Integer.parseInt(rs27.getString("progressbar"))<100 ){
+	Stats="Requirements";
+	ProgresBar=rs27.getString("progressbar");
+	break;
+	}
+	if(rs27.getString("name").equals("Build and Test") && Integer.parseInt(rs27.getString("progressbar"))<100){
+	Stats="Development";
+	ProgresBar=rs27.getString("progressbar");
+	break;
+	}
+	if(rs27.getString("name").equals("Implement") && Integer.parseInt(rs27.getString("progressbar"))<100 ){
+	Stats="Implement";
+	ProgresBar=rs27.getString("progressbar");
+	break;
+	}
+	}
+			
+	System.out.println(Stats);
+
+		
+	
+    %>
+    ['<%= rs8.getString(6) %>', <%= progressBar %>, "Total Visits : <%= ttl_visits %>\nVisits in current day : <%= CurntDay_visits %>\n Last Visited Module : <%= last_visited_Module %>\n Last Visited Application : <%= last_visited_App %>\n Application : <%= rs8.getString(11)%>,Status : <%= Stats %>,Percentage of Completion : <%= ProgresBar %>%"],
+  <% }  %>
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {
+		  'title':'My Average Day',
+		  'width':550,
+		  'height':400,
+		  pieSliceText: 'label',
+		  legend : 'none'
+  };
+  
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(dataTable, options);
 }
 </script>
 <%
 String query10 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 10 DAY) AND NOW()";
 Statement st10 = conn.createStatement();
 ResultSet rs10 = st10.executeQuery(query10);
-String query11 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
+String query12 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 20 DAY) AND NOW()";
+Statement st12 = conn.createStatement();
+ResultSet rs12 = st12.executeQuery(query12);
+String query13 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
+Statement st13 = conn.createStatement();
+ResultSet rs13 = st13.executeQuery(query13);
+String query11 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 50 DAY) AND NOW()";
 Statement st11 = conn.createStatement();
 ResultSet rs11 = st11.executeQuery(query11);
-int last_10=0,last_30=0;
-System.out.println("before last 10");
+int last_10=0,last_30=0,last_50=0,last_20=0;
 while(rs10.next())
 	last_10+=Integer.parseInt(rs10.getString(4));
-System.out.println("after last 10");
 while(rs11.next())
-	last_30+=Integer.parseInt(rs11.getString(4));
-
-System.out.println("lst 10 days : "+last_10+" lst 30 days : "+last_30);
+	last_50+=Integer.parseInt(rs11.getString(4));
+while(rs12.next())
+	last_20+=Integer.parseInt(rs12.getString(4));
+while(rs13.next())
+	last_30+=Integer.parseInt(rs13.getString(4));
 %>
-<script>
-var data = [
-    { y: 10, a: <%= last_10 %>},
-    { y: '20', a: 3 },
-    { y: '30', a: <%= last_30 %> }
-  ],
-  config = {
-    data: data,
-    xkey: 'y',
-    ykeys: ['y', 'a'],
-    labels: ['Days', 'Visits'],
-    fillOpacity: 0.4,
-    hideHover: 'auto',
-    behaveLikeLine: true,
-    resize: true,
-    pointFillColors:['#ffffff'],
-    pointStrokeColors: ['black'],
-    lineColors:['gray','red']
-};
+ <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-config.element = 'line-chart';
-Morris.Line(config);
-config.element = 'stacked';
-config.stacked = true;
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['day', 'Visits'],
+          ['Last 10 days', <%= last_10 %> ],
+          ['Last 20 days', <%= last_20 %>],
+          ['Last 30 days', <%= last_30 %>],
+          ['Last 50 days', <%= last_50 %>]
+        ]);
 
-</script>
- <script>
+        var options = {
+          title: 'Number of Visits',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script> <script>
       function filter(input,s2) {
       // Declare variables 
       var input, filter, table, tr, td, i;
