@@ -97,6 +97,7 @@ String query3 = "select * from projinfo where id = "+det;
 Statement st3 = conn.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
 System.out.println(query3);
+String app_Name=idd;
 String query4 = "select * from appinfo where appname ='"+idd+"'";
 Statement st4 = conn.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
@@ -118,7 +119,6 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                       <input type="text" id="project_name" name="project_name" value="<%=rs3.getString("projectname")%>" hidden>                              
                     <%
                     
-                    
                     while(visit_rs.next())
                     {
                     	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Intake Module") && visit_rs.getString(6).equals(Project_Name) && visit_rs.getString(7).equals(rs4.getString("appname")) )
@@ -129,11 +129,13 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                              flag=0;
                     	}
                     }
+                    System.out.println("below visits");
                     if(flag==1)
                     {
                     	
                     	String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
                     	        + " values (?, ?, ?, ?, ?, ?, ?)";
+                    	System.out.println(ins_query);
                     	      PreparedStatement preparedStmt = conn.prepareStatement(ins_query);
                     	      preparedStmt.setString (1, username);
                     	      preparedStmt.setString (2, strDate);
@@ -141,7 +143,7 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                     	      preparedStmt.setString(4, "1");
                     	      preparedStmt.setString(5, strTime);
                     	      preparedStmt.setString(6, Project_Name);
-                    	      preparedStmt.setString(7, rs4.getString("appname") );
+                    	      preparedStmt.setString(7, app_Name );
 
                     	      // execute the preparedstatement
                     	      preparedStmt.execute();

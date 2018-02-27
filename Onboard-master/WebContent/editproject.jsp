@@ -87,8 +87,8 @@ while(visit_rs.next())
 System.out.println("the flag value is "+flag);
 if(flag==1)
 {
-	String ins_query = " insert into visits (uname, date, module, count, time, Projects)"
-	        + " values (?, ?, ?, ?, ?, ?)";
+	String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
+	        + " values (?, ?, ?, ?, ?, ?, ?)";
 	      PreparedStatement preparedStmt = conn.prepareStatement(ins_query);
 	      preparedStmt.setString (1, username);
 	      preparedStmt.setString (2, strDate);
@@ -96,6 +96,7 @@ if(flag==1)
 	      preparedStmt.setString(4, "1");
 	      preparedStmt.setString(5, strTime);
 	      preparedStmt.setString(6, Project_Name);
+	      preparedStmt.setString(7, "");
 
 	      // execute the preparedstatement
 	      preparedStmt.execute();

@@ -75,32 +75,6 @@ ft1=new SimpleDateFormat ("hh:mm:ss");
 String strDate=ft.format(date);
 String strTime=ft1.format(date);
 
-while(visit_rs.next())
-{
-	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Intake Module") && visit_rs.getString(6).equals(Project_Name) )
-	{
-		Statement stmtt = con.createStatement();
-         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Intake Module' and Projects='"+Project_Name+"'";
-         int count = stmtt.executeUpdate(queryy);
-         flag=0;
-	}
-}
-if(flag==1)
-{
-	
-	String ins_query = " insert into visits (uname, date, module, count, time, Projects)"
-	        + " values (?, ?, ?, ?, ?, ?)";
-	      PreparedStatement preparedStmt = con.prepareStatement(ins_query);
-	      preparedStmt.setString (1, username);
-	      preparedStmt.setString (2, strDate);
-	      preparedStmt.setString(3, "Intake Module");
-	      preparedStmt.setString(4, "1");
-	      preparedStmt.setString(5, strTime);
-	      preparedStmt.setString(6, Project_Name);
-
-	      // execute the preparedstatement
-	      preparedStmt.execute();
-}
 if(prj.equals("all"))
 	 query3 = "select * from projinfo where id="+det;
 	else
