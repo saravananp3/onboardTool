@@ -377,12 +377,14 @@ while(rs2.next())
         
       </div>
     </div>
-    <div class="row">
-   
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
-    <div id="piechart"></div>
-   
- </div>
+
+ 
+  <table class="columns">
+      <tr>
+        <td><div id="piechart"></div></td>
+        <td><div id="curve_chart" style="width: 800px; height: 500px;"></div></td>
+      </tr>
+    </table>
       
     
    
@@ -543,8 +545,8 @@ function drawChart() {
   // Optional; add a title and set the width and height of the chart
   var options = {
 		  'title':'My Average Day',
-		  'width':550,
-		  'height':400,
+		  'width':300,
+		  'height':300,
 		  pieSliceText: 'label',
 		  legend : 'none'
   };
@@ -585,7 +587,7 @@ while(rs13.next())
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['day', 'Visits'],
-          ['Last 10 days', <%= last_10 %> ],
+          ['Last 10 days', <%= last_10 %>],
           ['Last 20 days', <%= last_20 %>],
           ['Last 30 days', <%= last_30 %>],
           ['Last 50 days', <%= last_50 %>]

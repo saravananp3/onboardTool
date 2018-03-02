@@ -521,7 +521,7 @@ $(document).ready(function () {
                     
              
                                 
-     <tr><a href="applnprior.jsp"  class="btn btn-success" class="btn pull-right"><span class="glyphicon glyphicon-download-edit"></span>Back</a>                      
+     <tr><a href="applnprior1.jsp"  class="btn btn-success" class="btn pull-right"><span class="glyphicon glyphicon-download-edit"></span>Back</a>                      
                 <button id="exportview" class="btn btn-primary" ><span class="glyphicon glyphicon-download-alt"></span> Export PDF</button> </tr></br>  <br>                 
  <div class="panel panel-default" >              
                 
