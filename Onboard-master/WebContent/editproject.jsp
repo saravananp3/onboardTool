@@ -2,31 +2,28 @@
 <html lang="en">
 <head>
 <title>Project Information</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
-  <script type="text/javascript" src="js_in_pages/edit_project.js"></script>
-<script type="text/javascript" src="js_in_pages/tree.js"></script>
-  <link rel="stylesheet" href="js_in_pages/edit_project.css" type="text/css" />
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
- 
-    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
-  
-    <script type="text/javascript" src="scripts/demos.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
-    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-     
+     <!-- ========== COMMON STYLES ========== -->
+        <link rel="stylesheet" href="od/css/bootstrap.min.css" media="screen" >
+        <link rel="stylesheet" href="od/css/font-awesome.min.css" media="screen" >
+        <link rel="stylesheet" href="od/css/animate-css/animate.min.css" media="screen" >
+        <link rel="stylesheet" href="od/css/lobipanel/lobipanel.min.css" media="screen" >
+
+        <!-- ========== PAGE STYLES ========== -->
+        <link rel="stylesheet" href="od/css/prism/prism.css" media="screen" >
+        <link rel="stylesheet" href="od/css/toastr/toastr.min.css" media="screen" >
+        <link rel="stylesheet" href="od/css/icheck/skins/line/blue.css" >
+        <link rel="stylesheet" href="od/css/bootstrap-tour/bootstrap-tour.css" >
+
+        <!-- ========== THEME CSS ========== -->
+        <link rel="stylesheet" href="od/css/main.css" media="screen" >
+
+        <!-- ========== MODERNIZR ========== -->
+        <script src="od/js/modernizr/modernizr.min.js"></script>
+   
   </head>
-  <body style="background-color:#F7F7F7;margin-left:0px">
+  
+  <body class="top-navbar-fixed">
 
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
@@ -36,9 +33,7 @@
 <%@page import="java.util.Date" %>
 <%@page import="java.util.Calendar" %>
 
-
 <%
-
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -56,7 +51,7 @@ String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("app_emp");
 String username=(String)details.getAttribute("u_Name");
 String Project_Name=(String)details.getAttribute("nameofproject");
-System.out.println("the username is "+username);
+System.out.println("the prjname is "+Project_Name);
 
 try {
 String det=(String)session.getAttribute("theName");
@@ -74,15 +69,18 @@ String strDate=ft.format(date);
 String strTime=ft1.format(date);
 while(visit_rs.next())
 {
+ if(visit_rs.getString(6)!=null)
+	{
 	if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("App Emphasize Module") && visit_rs.getString(6).equals(Project_Name) )
 	{
 		Statement stmtt = conn.createStatement();
-         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='App Emphasize Module' and Projects='"+Project_Name+"'";
+         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='App Emphasize Module' and Projects='"+Project_Name+"' and date ='"+strDate+"'";
          int count = stmtt.executeUpdate(queryy);
          flag=0;
+         break;
 	}
-	else
-		System.out.println(++knt+" Noo");
+}
+
 }
 System.out.println("the flag value is "+flag);
 if(flag==1)
@@ -112,11 +110,15 @@ if(rs.next()){
 
  
 <form class="form-signin" name="loginForm" method="post" action="EditProject">
-<div class="container">
-<nav class=" navbar-fixed-top" style="background:#3276B1">
-            <div class="container-fluid">
-                
-                    
+
+ <div class="main-wrapper">
+            
+            <!-- ========== TOP NAVBAR ========== -->
+            <nav class="navbar top-navbar bg-white box-shadow">
+            	<div class="container-fluid">
+                    <div class="row">
+                        <div class="navbar-header no-padding">
+
                     <% if(rs3.next()){
                     details.setAttribute("appno",rs3.getString("appno"));
                     details.setAttribute("projectname",rs3.getString("projectname"));
@@ -133,99 +135,128 @@ if(rs.next()){
                     
                     } %>
                     
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                        <img src="assets/images/logo1.png" id="image" class="img-rounded" height="50" width="80" alt="Platform3Solutions" />&nbsp;
-</li>
- <li><%
-                         String uid=(String)details.getAttribute("username");
-                         String role=(String)details.getAttribute("role");%>
- <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=role%></span></p>
-</li>     
+                			<a class="navbar-brand" href="project.jsp" id="sitetitle">
+                			    <img src="od/images/logo1.png" alt="Onboarding Tool" class="logo">
+                			</a>
+                           
+                			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                				<span class="sr-only">Toggle navigation</span>
+                				<i class="fa fa-ellipsis-v"></i>
+                			</button>
+                            <button type="button" class="navbar-toggle mobile-nav-toggle" >
+                				<i class="fa fa-bars"></i>
+                			</button>
+                		</div>
+                        <!-- /.navbar-header -->
 
-<li>               <a href="logout.jsp" style="color:white; background:#3276B1">Logout</a>
+                		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+                			
+                            <!-- /.nav navbar-nav -->
+ <ul class="nav navbar-nav navbar-right">
+ 
+<li><a href="logout.jsp" class="text-center"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
                     </ul>
-                    
-                </div>
-            </div>
-        </nav>
-        </div>
-       
+					
+                		</div>
+                		<!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.row -->
+            	</div>
+            	<!-- /.container-fluid -->
+            </nav>
+ 
            
-                 <div class="row">
-            <br>
-               <div class="col-sm-3 sidebar">
-                 <div class="col-md-2 sidebar" >
-                 
-        <div id='jqxTree' style='visibility: hidden;  padding-top:30px;   float:right; '>
-                    <ul class="nav nav-sidebar" id ="sidemenu" >
-                        
-                        
+              
+            <div class="content-wrapper">
+                <div class="content-container">
+            
 
-            <ul>
-                  <li id='home' item-selected='true'> <a href="project.jsp"><i class="fa fa-home"></i>&nbsp;Home </a></li>
-                <li item-expanded='true'><a href="editproject.jsp">App Emphasize Module
-                    <ul>
-                       <li item-expanded='true'><a href="editproject.jsp">Project Details
-                    <ul>
-                        <li item-selected='true'><a href="editproject.jsp">Project Information</a></li>
-                        <li><a href="application.jsp">Application Details</a></li>
-                        </ul>
-                        </li>
-                        <li item-expanded='true'> <a href="tree1.jsp">Application Prioritization</a>
-                         <ul>
-                                <li >Parameters</li>
-                                <li>Archival Complexity Calculation</li>
-                                <li>Archival Cost Estimate</li>
-                             
-                            </ul>
-                        </li>
-                        <li><a href="applnprior1.jsp">Application-Prioritized</li>
-                   
+                    <!-- ========== LEFT SIDEBAR ========== -->
+                    <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
+                        <div class="sidebar-content" id='jqxWidget'>
+							
+							
+                            <div class="sidebar-nav">
+                                <ul class="side-nav color-gray">
+                                    <li class="nav-header">
+                                        <span class="">Main Category</span>
+                                    </li>
+                                    <li id='home' item-selected='true'>
+                                        <a href="project.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
+                                    </li>
 
-                    </ul>
-                </li>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Intake Module</a>
-                <ul>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Business</a>
-                <ul>
-                <li><a href='firstinsert.jsp'>Application Information</a></li>
-                <li><a href='firstinsert.jsp'>Legacy Retention Information</a></li>
-                <li><a href='firstinsert.jsp'>Archive Data Management</a></li>
-                <li><a href='firstinsert.jsp'>System Requirements</a></li>
-                
-                </ul></li>
-                <li item-expanded='true'><a href='firstinsert.jsp'>Technical</a>
-                <ul>
-                <li><a href='firstinsert.jsp'>Application Data Information</a></li>
-                <li><a href='firstinsert.jsp'>Infrastructure & Environment Inforamation</a></li>
-                <li><a href='firstinsert.jsp'>Technical Information</a></li>
-                </ul>
-                </li>
-                
-                 <li item-expanded='true'><a href='firstinsert.jsp'>Archival Requirements</a>
-                 <ul>
-                 <li><a href='firstinsert.jsp'>Screen/Report Requirements</a></li>
-                 <li><a href='firstinsert.jsp'>Archive Requirements</a></li>
-                 </ul>
-                 </li>
-                </ul>
-                </li>
-                <li><a href="archive_exec_samp.jsp">Archive Execution Module</a>
-               </li>                
-               
-                          </ul>
-    
-     </ul>
-         </div>
-   </div>
-                </div>
-   
+                                    <li class="nav-header">
+                                        <a href="editproject.jsp"><span class="">App Emphasize Module</span></a>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="editproject.jsp"><i class="fa fa-file-text"></i> <span>Project Details</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="editproject.jsp"> <span>Project Information</span></a></li>
+                                            <li><a href="AppEmphasize_application.jsp"> <span>Application Details</span></a></li>
+                                        </ul>
+                                    </li>
 
-                    <br/><br/><br/>
-                
+                                    <li class="has-children">
+                                        <a href="tree.jsp"><i class="fa fa-paint-brush"></i> <span>Application Prioritization</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="editproject1.php"> <span>Parameters</span></a></li>
+                                            <li><a href="editproject.php"> <span>Archival Complexity Calculation</span></a></li>
+                                            <li><a href="editproject1.php"> <span>Archival Cost Estimate</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="AppEmphasize_applnprior1.jsp"><i class="fa fa-map-signs"></i> <span>Application Prioritized</span> </a>
+                                    </li>
+
+                                    <li class="nav-header">
+                                        <a href='firstinsert.jsp'><span class="">Intake Module</span></a>
+                                    </li>
+
+                                    <li class="has-children">
+                                        <a href="firstinsert.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="firstinsert.jsp"> <span>Application Information</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Legacy Retention Information</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Archive Data Management</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>System Requirements</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="has-children">
+                                        <a href="firstinsert.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="firstinsert.jsp"> <span>Application Data Information</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Technical Information</span></a></li>
+                                        </ul>
+                                    </li>
+                                     <li class="has-children">
+                                        <a href="firstinsert.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="firstinsert.jsp"> <span>Screen/Report Requirements</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Archive Requirements</span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+										
+                            </div>
+                            <!-- /.sidebar-nav -->
+                        </div>
+                        <!-- /.sidebar-content -->
+                    </div>
+                    <!-- /.left-sidebar -->
+            
+            
+                        <section>
+
+    <div class="row">
+      <div class="container">
+
+                      <div class="main">
+              
+
                 <div class="col-md-8">
                 
 <%
@@ -475,7 +506,26 @@ catch(Exception e){}
 %>    
            
  
- 
+         <!-- /.col-md-6 -->
+
+                                </div>
+                                <!-- /.row -->
+
+                        </section>
+                        <!-- /.section -->
+
+                    </div>
+                    <!-- /.main-page -->
+                 
+<!-- Project List End -->
+
+                </div>
+                <!-- /.content-container -->
+            </div>
+            <!-- /.content-wrapper -->
+
+        </div>
+        <!-- /.main-wrapper -->
                     
          </div>
        </div>
