@@ -16,34 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_details`
+-- Table structure for table `visits`
 --
 
-DROP TABLE IF EXISTS `user_details`;
+DROP TABLE IF EXISTS `visits`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_details` (
+CREATE TABLE `visits` (
   `uname` varchar(255) DEFAULT NULL,
-  `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `pwd` varchar(255) DEFAULT NULL,
-  `projects` varchar(255) DEFAULT NULL,
-  `roles` varchar(255) DEFAULT NULL,
-  `stats` varchar(255) DEFAULT NULL,
-  `question` varchar(255) DEFAULT NULL,
-  `answer` varchar(255) DEFAULT NULL,
-  `application` varchar(255) DEFAULT NULL
+  `date` varchar(255) DEFAULT NULL,
+  `module` varchar(255) DEFAULT NULL,
+  `count` varchar(255) DEFAULT NULL,
+  `time` varchar(255) DEFAULT NULL,
+  `Projects` varchar(255) DEFAULT NULL,
+  `Applications` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_details`
+-- Dumping data for table `visits`
 --
 
-LOCK TABLES `user_details` WRITE;
-/*!40000 ALTER TABLE `user_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_details` ENABLE KEYS */;
+LOCK TABLES `visits` WRITE;
+/*!40000 ALTER TABLE `visits` DISABLE KEYS */;
+INSERT INTO `visits` VALUES ('admin','2018-03-14','App Emphasize Module','3','08:38:00','JBA',''),('admin','2018-03-15','App Emphasize Module','5','01:20:57','JBA',''),('admin','2018-03-15','Intake Module','3','01:32:21','JBA','IA1'),('admin','2018-03-15','Archive Execution Module','14','01:32:24','JBA',NULL);
+/*!40000 ALTER TABLE `visits` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -55,7 +55,7 @@ CREATE TABLE `app_prior` (
   `priorities` int(11) DEFAULT NULL,
   `no_of_app_complexity` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +64,7 @@ CREATE TABLE `app_prior` (
 
 LOCK TABLES `app_prior` WRITE;
 /*!40000 ALTER TABLE `app_prior` DISABLE KEYS */;
+INSERT INTO `app_prior` VALUES ('JBA',' 10','20','30','40','50','IA1','100 to 250 GB',NULL,'<25','Low to Medium','1000','<=10','2.40','60000.00','$6000000.00','$24.00','$24000.00','$24.00','$6024048.00','6024048','10','10','10','$6024078.00',2,NULL,'','',2,'60'),('JBA',' 10','20','30','40','50','','',NULL,'','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,'','',NULL,'60'),('JBA',' 10','20','30','40','50','IA2','500 to 1 TB','erp','<100','Medium to High','1800','<=25','2.40','108000.00','$10800000.00','$24.00','$24000.00','$24.00','$10824048.00','16848096','10','10','10','$6024078.00',4,NULL,'12/03/2018','27/03/2018',1,'60');
 /*!40000 ALTER TABLE `app_prior` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -76,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-16 21:37:18
+-- Dump completed on 2018-03-15 13:33:28

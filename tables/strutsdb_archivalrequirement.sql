@@ -16,34 +16,42 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_details`
+-- Table structure for table `archivalrequirement`
 --
 
-DROP TABLE IF EXISTS `user_details`;
+DROP TABLE IF EXISTS `archivalrequirement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_details` (
-  `uname` varchar(255) DEFAULT NULL,
-  `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `pwd` varchar(255) DEFAULT NULL,
-  `projects` varchar(255) DEFAULT NULL,
-  `roles` varchar(255) DEFAULT NULL,
-  `stats` varchar(255) DEFAULT NULL,
-  `question` varchar(255) DEFAULT NULL,
-  `answer` varchar(255) DEFAULT NULL,
-  `application` varchar(255) DEFAULT NULL
+CREATE TABLE `archivalrequirement` (
+  `legalholds` varchar(255) DEFAULT NULL,
+  `dataapp` varchar(255) DEFAULT NULL,
+  `dataloc` varchar(255) DEFAULT NULL,
+  `reconsttools` varchar(255) DEFAULT NULL,
+  `viewblob` varchar(255) DEFAULT NULL,
+  `fieldprop` varchar(255) DEFAULT NULL,
+  `fieldtype` varchar(255) DEFAULT NULL,
+  `splchars` varchar(255) DEFAULT NULL,
+  `foreignlang` varchar(255) DEFAULT NULL,
+  `clob` varchar(255) DEFAULT NULL,
+  `unstructarch` varchar(255) DEFAULT NULL,
+  `accrole` varchar(255) DEFAULT NULL,
+  `dataview` varchar(255) DEFAULT NULL,
+  `complctrl` varchar(255) DEFAULT NULL,
+  `errctrl` varchar(255) DEFAULT NULL,
+  `metadata` varchar(255) DEFAULT NULL,
+  `advsearch` varchar(255) DEFAULT NULL,
+  `searchparam` varchar(255) DEFAULT NULL,
+  `appname` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_details`
+-- Dumping data for table `archivalrequirement`
 --
 
-LOCK TABLES `user_details` WRITE;
-/*!40000 ALTER TABLE `user_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_details` ENABLE KEYS */;
+LOCK TABLES `archivalrequirement` WRITE;
+/*!40000 ALTER TABLE `archivalrequirement` DISABLE KEYS */;
+/*!40000 ALTER TABLE `archivalrequirement` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

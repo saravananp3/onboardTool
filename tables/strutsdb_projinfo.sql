@@ -34,7 +34,7 @@ CREATE TABLE `projinfo` (
   `Enddate` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `projinfo` (
 
 LOCK TABLES `projinfo` WRITE;
 /*!40000 ALTER TABLE `projinfo` DISABLE KEYS */;
+INSERT INTO `projinfo` VALUES ('JBA','cgen2 application','3','3/12/2018','06/03/2018','','','','3/27/2018',1);
 /*!40000 ALTER TABLE `projinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-16 21:37:20
+-- Dump completed on 2018-03-15 13:33:30

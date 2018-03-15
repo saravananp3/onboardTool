@@ -86,7 +86,8 @@ CREATE TABLE `business` (
   `roledesc` varchar(255) DEFAULT NULL,
   `accreason` varchar(255) DEFAULT NULL,
   `accfreq` varchar(255) DEFAULT NULL,
-  `sysreq` varchar(255) DEFAULT NULL
+  `sysreq` varchar(255) DEFAULT NULL,
+  `appname` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -96,6 +97,7 @@ CREATE TABLE `business` (
 
 LOCK TABLES `business` WRITE;
 /*!40000 ALTER TABLE `business` DISABLE KEYS */;
+INSERT INTO `business` VALUES ('IA1','asd','2618658214153','ajsd','vendor','12/03/2018','asd','ijasd','Yes','Yes','05/03/2018','asnd','no','26/03/2018','10GB','chenai','chennai','no','no reason','no comments',NULL,'Recooo1','13/03/2018','10','none','none','No','asds','Explain','No','Yes','Yes','Yes','Yes','Yes','Yes','Yes','Yes','Yes','No','Yes','No','Yes','No','Yes','Yes','No','Yes','No','Yes','No','Yes','no','No','Yes','Yes','chennai','No','lkn','bala','techlead','no reason','no freq','conutries','IA1');
 /*!40000 ALTER TABLE `business` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-16 21:37:18
+-- Dump completed on 2018-03-15 13:33:29

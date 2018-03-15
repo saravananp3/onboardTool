@@ -41,6 +41,7 @@ CREATE TABLE `role_details` (
 
 LOCK TABLES `role_details` WRITE;
 /*!40000 ALTER TABLE `role_details` DISABLE KEYS */;
+INSERT INTO `role_details` VALUES ('Admin','X','X','X','X','X','X','X','R'),('ArchivalAdmin','X','X','X','X','X','R','X','R'),('LegacyTechnicalSME','N','X','XR','R','N','N','R','N'),('LegacyBusinessSME','N','X','RX','R','N','N','R','N'),('LegacyProgramManager','N','X','X','R','N','N','R','N'),('ArchivalBusinessAnalyst','N','X','X','X','N','N','X','N'),('ArchivalProgramManager','R','X','X','X','X','X','X','X'),('ArchivalProjectManager','R','X','X','X','X','X','X','X'),('ArchivalDeveloper','N','R','R','R','N','N','R','N'),('TestLead','N','N','N','R','N','N','R','N');
 /*!40000 ALTER TABLE `role_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-16 21:37:18
+-- Dump completed on 2018-03-15 13:33:28

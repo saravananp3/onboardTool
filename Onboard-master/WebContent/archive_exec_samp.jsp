@@ -84,12 +84,16 @@ String info=(String)details.getAttribute("archive_exec");
 
 	while(visit_rs.next())
 	{
+		if(visit_rs.getString(6)!=null || visit_rs.getString(1)!=null)
+		{
 		if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Archive Execution Module") && visit_rs.getString(6).equals(Project_Name) )
 		{
 			Statement stmtt = conn.createStatement();
 	         String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Archive Execution Module' and Projects='"+Project_Name+"'";
 	         int count = stmtt.executeUpdate(queryy);
 	         flag=0;
+	         break;
+		}
 		}
 	}
 	if(flag==1)

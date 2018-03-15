@@ -23,9 +23,7 @@ DROP TABLE IF EXISTS `dummy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `dummy` (
-  `value` varchar(255) DEFAULT NULL,
-  `subvalue` varchar(255) DEFAULT NULL,
-  `subsubvalue` varchar(255) DEFAULT NULL
+  `value` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -35,7 +33,7 @@ CREATE TABLE `dummy` (
 
 LOCK TABLES `dummy` WRITE;
 /*!40000 ALTER TABLE `dummy` DISABLE KEYS */;
-INSERT INTO `dummy` VALUES ('10103','10001','10000');
+INSERT INTO `dummy` VALUES ('10000');
 /*!40000 ALTER TABLE `dummy` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-16 21:37:19
+-- Dump completed on 2018-03-15 13:33:29

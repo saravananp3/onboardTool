@@ -16,34 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_details`
+-- Table structure for table `newrequirements`
 --
 
-DROP TABLE IF EXISTS `user_details`;
+DROP TABLE IF EXISTS `newrequirements`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_details` (
-  `uname` varchar(255) DEFAULT NULL,
-  `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `pwd` varchar(255) DEFAULT NULL,
-  `projects` varchar(255) DEFAULT NULL,
-  `roles` varchar(255) DEFAULT NULL,
-  `stats` varchar(255) DEFAULT NULL,
-  `question` varchar(255) DEFAULT NULL,
-  `answer` varchar(255) DEFAULT NULL,
-  `application` varchar(255) DEFAULT NULL
+CREATE TABLE `newrequirements` (
+  `requirements` varchar(255) DEFAULT NULL,
+  `appname` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_details`
+-- Dumping data for table `newrequirements`
 --
 
-LOCK TABLES `user_details` WRITE;
-/*!40000 ALTER TABLE `user_details` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_details` ENABLE KEYS */;
+LOCK TABLES `newrequirements` WRITE;
+/*!40000 ALTER TABLE `newrequirements` DISABLE KEYS */;
+INSERT INTO `newrequirements` VALUES ('App name','IA1');
+/*!40000 ALTER TABLE `newrequirements` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

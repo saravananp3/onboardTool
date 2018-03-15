@@ -59,7 +59,8 @@ CREATE TABLE `technical` (
   `vpnacces` varchar(255) DEFAULT NULL,
   `appintegrate` varchar(255) DEFAULT NULL,
   `integname` varchar(255) DEFAULT NULL,
-  `decomdate` varchar(255) DEFAULT NULL
+  `decomdate` varchar(255) DEFAULT NULL,
+  `appname` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -69,6 +70,7 @@ CREATE TABLE `technical` (
 
 LOCK TABLES `technical` WRITE;
 /*!40000 ALTER TABLE `technical` DISABLE KEYS */;
+INSERT INTO `technical` VALUES ('Structured','no name','No','any format','Yes','Yes',NULL,NULL,'user doc','tech doc','traingin doc','sprt doc','data dict','test case doc','test rec','design spec','val plan','stage','APST1000v','APST1000v','lpd','no name',NULL,NULL,'no','legacy applicatio ','no issue','no web apps','10GB','300','none','100','yes',NULL,'ad','27/12/2017',NULL,'IA1');
 /*!40000 ALTER TABLE `technical` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +83,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-16 21:37:19
+-- Dump completed on 2018-03-15 13:33:29
