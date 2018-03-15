@@ -8,30 +8,42 @@
 		<meta name="description" content="Blueprint: View Mode Switch" />
 		<meta name="keywords" content="view mode, switch, css, style, grid, list, template" />
 		<meta name="author" content="Codrops" />
-		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="css/default.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="js/modernizr.custom.js"></script>
+		<script src="js/modernizr.custom.js"></script> -->
 	
-<script type='text/javascript'
-  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+ 		<link rel="stylesheet" href="styles/styles.css" type="text/css" />
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    
+     <!-- ========== COMMON STYLES ========== -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
+        <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
+        <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
+        <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen" >
+
+        <!-- ========== PAGE STYLES ========== -->
+        <link rel="stylesheet" href="css/prism/prism.css" media="screen" >
+        <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen" >
+        <link rel="stylesheet" href="css/icheck/skins/line/blue.css" >
+        <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
+        <link rel="stylesheet" href="css/icheck/skins/line/green.css" >
+        <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css" >
+
+        <!-- ========== THEME CSS ========== -->
+        <link rel="stylesheet" href="css/main.css" media="screen" >
+
+        <!-- ========== MODERNIZR ========== -->
+        <script src="js/modernizr/modernizr.min.js"></script>
+        
 <script type="text/javascript" src="js_in_pages/firstinsert.js"></script>
 <script type="text/javascript" src="js_in_pages/tree.js"></script>
   <link rel="stylesheet" href="js_in_pages/firstinsert.css" type="text/css" />
-
   
 	</head>
+	
 	<!--from  w  w w  . ja  va 2 s.co  m-->
-  <body style='margin:30px'>
+  <body class="top-navbar-fixed">
+  
   <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection" %>
@@ -83,16 +95,16 @@ if(prj.equals("all"))
 Statement st3 = con.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
 
-
-
-
-
 %>
 
 <form method="post" name="form" action="Appin">
-<div class="container">
-<nav class=" navbar-fixed-top" style="background-color:#3276B1">
-            <div class="container-fluid">
+ 
+        <div class="main-wrapper">
+        
+            <!-- ========== TOP NAVBAR ========== -->
+            <nav class="navbar top-navbar bg-white box-shadow">
+            	<div class="container-fluid">
+                    <div class="row">
                 
                      <%if (rs3.next()) {
                     	 String name=rs3.getString("projectname");
@@ -106,43 +118,163 @@ ResultSet rs3 = st3.executeQuery(query3);
                     	 ResultSet rs = st.executeQuery(query);
                      
                      %>
-                  <a class="navbar-brand" href="project.jsp" style="color:white"id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
-              
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                  
-                        <li item-selected='true'>
-                        <img src="assets/images/Logo sized.jpg" class="img-rounded" height="50" width="80" alt="Avatar">
-</li>
-<li><%
+                     
+                     <div class="navbar-header no-padding">
+                			<a class="navbar-brand" href="project.jsp" id="sitetitle">
+                			    <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                			</a>
+                            <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
+                			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                				<span class="sr-only">Toggle navigation</span>
+                				<i class="fa fa-ellipsis-v"></i>
+                			</button>
+                            <button type="button" class="navbar-toggle mobile-nav-toggle" >
+                				<i class="fa fa-bars"></i>
+                			</button>
+                		</div>
+                        <!-- /.navbar-header -->
+
+                		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+                			
+                            <!-- /.nav navbar-nav -->
+ <ul class="nav navbar-nav navbar-right">
+      
+<li><a href="logout.jsp" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
+                        </li>
+                        <li><%
                          String uid=(String)details.getAttribute("username");
                          String roles=(String)details.getAttribute("role");%>
  <p style="color:white; padding-top:15px;"><%=uid%>&nbsp;logged in as &nbsp;<span><%=roles%></span></p>
 </li> 
-                        <li>
-                            <a href="logout.jsp">Logout</a>
-                        </li>
                     </ul>
-                    
-                </div>
-            </div>
-        </nav>
-        </div>
-       
-            <div class="row">
-            <br>
-                <div class="col-sm-2 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                    <br>
-                        
-                        
-                    </ul>
-                </div>
+					
+                		</div>
+                		<!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.row -->
+            	</div>
+            	<!-- /.container-fluid -->
+            </nav>
                 
-                <div class="col-md-9">
-                    <h1 class="page-header">Applications</h1>
-                    
-                    <div class="main">
+
+            
+            <div class="content-wrapper">
+                <div class="content-container">
+            
+
+                    <!-- ========== LEFT SIDEBAR ========== -->
+                    <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
+                        <div class="sidebar-content" id='jqxWidget'>
+							
+							
+                            <div class="sidebar-nav">
+                                <ul class="side-nav color-gray">
+                                    <li class="nav-header">
+                                        <span class="">Main Category</span>
+                                    </li>
+                                    <li id='home' item-selected='true'>
+                                        <a href="project.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
+                                    </li>
+
+                                    <li class="nav-header">
+                                        <a href="editproject.jsp"><span class="">App Emphasize Module</span></a>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="editproject.jsp"><i class="fa fa-file-text"></i> <span>Project Details</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="editproject.jsp"> <span>Project Information</span></a></li>
+                                            <li><a href="application1.jsp"> <span>Application Details</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="has-children">
+                                        <a href="tree.jsp"><i class="fa fa-paint-brush"></i> <span>Application Prioritization</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a> <span>Parameters</span></a></li>
+                                            <li><a> <span>Archival Complexity Calculation</span></a></li>
+                                            <li><a> <span>Archival Cost Estimate</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="applnprior.jsp"><i class="fa fa-map-signs"></i> <span>Application Prioritized</span> </a>
+                                    </li>
+
+                                    <li class="nav-header">
+                                        <a href='firstinsert.jsp'><span class="">Intake Module</span></a>
+                                    </li>
+
+                                    <li class="has-children">
+                                        <a href="firstinsert.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="firstinsert.jsp"> <span>Application Information</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Legacy Retention Information</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Archive Data Management</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>System Requirements</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="has-children">
+                                        <a href="firstinsert.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="firstinsert.jsp"> <span>Application Data Information</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Technical Information</span></a></li>
+                                        </ul>
+                                    </li>
+                                     <li class="has-children">
+                                        <a href="firstinsert.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="firstinsert.jsp"> <span>Screen/Report Requirements</span></a></li>
+                                            <li><a href="firstinsert.jsp"> <span>Archive Requirements</span></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+										
+                            </div>
+                            <!-- /.sidebar-nav -->
+                        </div>
+                        <!-- /.sidebar-content -->
+                    </div>
+                    <!-- /.left-sidebar -->
+            
+
+					
+<!-- Projects List Start -->
+
+                    <div class="main-page">
+                        <div class="container-fluid">
+                            <div class="row page-title-div">
+                                <div class="col-sm-6">
+                                    <h2 class="title">Applications</h2>
+                                    <p class="sub-title">One stop solution for perfect admin!</p>
+                                </div>
+                                
+                            </div>
+                            <!-- /.row -->
+                            <div class="row breadcrumb-div">
+                                <div class="col-sm-6">
+                                    <ul class="breadcrumb">
+                                        <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+                                        <li class="active">Applications</li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-sm-6 -->
+                                <div class="col-sm-6 text-right hidden-xs">
+                                    <a href="#" class="pl-20"><i class="fa fa-cog"></i> Settings</a>
+                                </div>
+                                <!-- /.col-sm-6 -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.container-fluid -->
+
+                        <section>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+
 				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
 				
 					<div class="cbp-vm-options">
@@ -254,9 +386,132 @@ e.printStackTrace();
             </div>
             
       
-        
+<!-- Project List End -->
+
+                </div>
+                <!-- /.content-container -->
+            </div>
+            <!-- /.content-wrapper -->
+
+        </div>
+        <!-- /.main-wrapper -->
+            
 </form>
-<script src="js/classie.js"></script>
-		<script src="js/cbpViewModeSwitch.js"></script>
-  </body>
+		
+        <!-- ========== COMMON JS FILES ========== -->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="js/jquery-ui/jquery-ui.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/pace/pace.min.js"></script>
+        <script src="js/lobipanel/lobipanel.min.js"></script>
+        <script src="js/iscroll/iscroll.js"></script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".lis").click(function() {
+                    $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
+                    $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
+                });
+                $(".gr").click(function() {
+                    $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
+                    $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
+                });
+            });
+        </script>
+      
+
+        <!-- ========== PAGE JS FILES ========== -->
+        <script src="js/prism/prism.js"></script>
+        <script src="js/waypoint/waypoints.min.js"></script>
+        <script src="js/counterUp/jquery.counterup.min.js"></script>
+        <script src="js/amcharts/amcharts.js"></script>
+        <script src="js/amcharts/serial.js"></script>
+        <script src="js/amcharts/plugins/export/export.min.js"></script>
+        <script src="js/amcharts/themes/light.js"></script>
+        <script src="js/toastr/toastr.min.js"></script>
+        <script src="js/icheck/icheck.min.js"></script>
+        <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
+
+        <!-- ========== THEME JS ========== -->
+        <script src="js/production-chart.js"></script>
+        <script src="js/traffic-chart.js"></script>
+        <script src="js/task-list.js"></script>
+
+        <!-- ========== THEME JS ========== -->
+        <script src="js/main.js"></script>
+       
+       
+        <!-- ========== PAGE JS FILES ========== -->
+        <script src="js/prism/prism.js"></script>
+        <script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
+        <script type="text/javascript" src="js/date-picker/datepair.js"></script>
+        <script type="text/javascript" src="js/date-picker/moment.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+
+        <!-- ========== THEME JS ========== -->
+        
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
+});
+</script>
+
+
+        <!-- ========== THEME JS ========== -->
+        <script>
+            $(function($) {
+
+                // 1st  datepicker
+                $('#basicExample .time').timepicker({
+                'showDuration': true,
+                'timeFormat': 'g:ia'
+                });
+
+                $('#basicExample .date').datepicker({
+                'format': 'm/d/yyyy',
+                'autoclose': true
+                });
+
+                var basicExampleEl = document.getElementById('basicExample');
+                var datepair = new Datepair(basicExampleEl);
+
+                // 2nd  datepicker
+                $('#datetimepicker1').datetimepicker({
+                    debug: true
+                });
+
+                // 3rd  datepicker
+                $('#datetimepicker9').datetimepicker({
+                viewMode: 'years'
+                });
+
+                // 4th  datepicker
+                $('#datetimepicker10').datetimepicker({
+                viewMode: 'years',
+                format: 'MM/YYYY'
+                });
+
+                // 5th  datepicker
+                $('#datetimepicker11').datetimepicker({
+                daysOfWeekDisabled: [0, 6]
+                });
+
+                // 6th  datepicker
+                $('#datetimepicker12').datetimepicker({
+                    inline: true,
+                    sideBySide: true
+                });
+            });
+        </script>
+       
+
+	</body>
 </html>
+
+
+
+      

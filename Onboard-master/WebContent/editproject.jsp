@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
 <title>Project Information</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-     <!-- ========== COMMON STYLES ========== -->
-        <link rel="stylesheet" href="od/css/bootstrap.min.css" media="screen" >
-        <link rel="stylesheet" href="od/css/font-awesome.min.css" media="screen" >
-        <link rel="stylesheet" href="od/css/animate-css/animate.min.css" media="screen" >
-        <link rel="stylesheet" href="od/css/lobipanel/lobipanel.min.css" media="screen" >
+ <script type="text/javascript" src="js_in_pages/editproject.js"></script>
+<script type="text/javascript" src="js_in_pages/tree.js"></script>
 
-        <!-- ========== PAGE STYLES ========== -->
-        <link rel="stylesheet" href="od/css/prism/prism.css" media="screen" >
-        <link rel="stylesheet" href="od/css/toastr/toastr.min.css" media="screen" >
-        <link rel="stylesheet" href="od/css/icheck/skins/line/blue.css" >
-        <link rel="stylesheet" href="od/css/bootstrap-tour/bootstrap-tour.css" >
-
-        <!-- ========== THEME CSS ========== -->
-        <link rel="stylesheet" href="od/css/main.css" media="screen" >
-
-        <!-- ========== MODERNIZR ========== -->
-        <script src="od/js/modernizr/modernizr.min.js"></script>
+   <link rel="stylesheet" href="js_in_pages/editproject.css" type="text/css" />
+  
+    <link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+   
+    <script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/demos.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxtree.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+        
+       
    
   </head>
   

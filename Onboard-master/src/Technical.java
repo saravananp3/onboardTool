@@ -177,7 +177,7 @@ String datatype = request.getParameter("datatype");
  
         
          
-         
+         System.out.println("tech inserted");
          
 
          // execute the preparedstatement
