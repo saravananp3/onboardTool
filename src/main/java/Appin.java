@@ -60,6 +60,7 @@ public class Appin extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Hello");
         HttpSession details = request.getSession();
         String u_name = (String) details.getAttribute("username");
 
