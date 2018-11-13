@@ -23,7 +23,7 @@ try {
 Properties prop = new Properties();
 String workingDir = System.getProperty("user.dir");
 //File file = new File("Configuration.properties");
- 
+ //system.out.print;
 //String path= file.getAbsolutePath();
 //System.out.println("Path : "+path);
 System.out.println("the new working directory");
