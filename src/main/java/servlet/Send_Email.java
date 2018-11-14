@@ -52,7 +52,11 @@ public class Send_Email extends HttpServlet {
             List<ReportPojo> masterReportPojoList = new IntakeReportUtil().intakeReviewPdf(app_Name, infojson);
             ByteArrayOutputStream byteArrayOutputStream = StaticReportGenerator.build(masterReportPojoList, ReportUtils.PDF, "sample", "");
             DocusignUtility docusignUtility = new DocusignUtility();
-            docusignUtility.requestDocumentSigning(byteArrayOutputStream, users);
+            for (Map.Entry<String,String> s:users.entrySet())
+            {
+                docusignUtility.requestDocumentSigning(byteArrayOutputStream, s);
+            }
+
             /*response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(String.valueOf(jsonArray));*/

@@ -14,10 +14,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 public class DocusignUtility {
 
@@ -33,7 +31,7 @@ public class DocusignUtility {
     //private static final String PdfSample = "/src/test/docs/Intake_review.pdf";
     //private static final String TemplateId = "d54ffe5b-216a-4f73-b62e-c7fba66227a4\n";
     //private String EnvelopeId = "5dee8599-13e1-46e4-891b-ee6de60519e8\n";
-    public void requestDocumentSigning(ByteArrayOutputStream fileOutputStream, Map<String,String> users) {
+    public void requestDocumentSigning(ByteArrayOutputStream fileOutputStream, Map.Entry<String,String> users) {
         System.out.println("\nRequestASignatureTest:\n" + "===========================================");
         byte[] fileBytes = null;
             String currentDir = System.getProperty("user.dir");
@@ -63,18 +61,12 @@ public class DocusignUtility {
         envDef.setDocuments(docs);
 
         // Add a recipient to sign the document
-        int order=1;
-        List<Signer> signerList=new ArrayList();
+
         List<Signer> signerListTabs=new ArrayList();
-        for (Map.Entry<String,String> entry:users.entrySet())
-        {
             Signer signer = new Signer();
-            signer.setEmail(entry.getKey());
-            signer.setName(entry.getValue());
-            signer.setRecipientId(String.valueOf(order));
-            signerList.add(signer);
-            order++;
-        };
+            signer.setEmail(users.getKey());
+            signer.setName(users.getValue());
+            signer.setRecipientId(UUID.randomUUID().toString());
 
         // Create a SignHere tab somewhere on the document for the signer to
         // sign
@@ -90,10 +82,10 @@ public class DocusignUtility {
          //signHereTabs.add(signHere);
         Tabs tabs = new Tabs();
         tabs.setSignHereTabs(signHereTabs);
-        for (Signer signer : signerList) {
+
             signer.setTabs(tabs);
             signerListTabs.add(signer);
-        }
+
 
         // Above causes issue
         envDef.setRecipients(new Recipients());
