@@ -72,6 +72,7 @@ public class IntakeReportUtil {
 
             /*List<ReportPojo> p8List = new LinkedList();
             p5List.add(new ReportPojo("Screen Requirements", "", false, true));*/
+
             List<ReportPojo> p9List = new LinkedList();
             p9List.add(new ReportPojo("Archive Requirements", "", false, true));
 
@@ -83,6 +84,7 @@ public class IntakeReportUtil {
                 /*if (values[1].equals("P8")) {
                     p8List.add(reportPojo);
                 }*/
+
                 if (values[1].equals("P9")) {
                     p9List.add(reportPojo);
                 }
