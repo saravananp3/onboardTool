@@ -195,6 +195,18 @@
 
     }
 
+    .aligncheckbox {
+        text-align: center;
+    }
+
+    .bootstrap-dialog-message {
+        width: 250px;
+        border: 3px;
+        padding: 0px;
+        margin: auto;
+    }
+
+
 </style>
 <script>
     function ExportPdf() {
@@ -203,6 +215,8 @@
         $("#data_submit").val("true");
         $("#loginForm").submit();
     }
+
+
 </script>
 <script type="application/javascript">
 
@@ -304,6 +318,10 @@
             }
         });
     });
+    $("#checkAll").click(function () {
+
+        $(".check").prop('checked', $(this).prop('checked'));
+    });
 
     function createTable(rows) {
         return '<table width=\'0\' border=\'0\' align=\'left\'\n' +
@@ -314,23 +332,24 @@
             '</table>';
     }
 
-    var result;
+
     $(document).ready(function () {
         var value;
-        $('#mymodal').click(function () {
+        $('#button_id').click(function () {
+            $('#myModal').modal('show');
             $.ajax({
                 url: '/List_Users',
                 type: 'post',
                 dataType: 'json',
                 success: function (response) {
-                    var userlistdiv = $('#user_list_div_id')
+                    var userlistdiv = $('#user_list_div_id_name')
                     console.log("Request:", response);
                     userlistdiv.empty();
                     $.each(response, function (key, value) {
                         //userlistdiv.append('<input type="checkbox"   value="' + key + '">' + value)
                         //userlistdiv.append('<input  type="checkbox"   value="' + key + '">' + value)
                         userlistdiv.append('<div class="checkbox">\n' +
-                            '      <label><input  type="checkbox"   value="' + key + '">' + value + '</label>\n' + '</div>')
+                            '      <label><input  type="checkbox" class="check"   value="' + key + '">' + value + '</label>\n' + '</div>')
                         userlistdiv.append('')
                     });
 
@@ -344,9 +363,40 @@
 
         $('#email_id').click(function () {
             var selectedEmail = [];
-            $('#user_list_div_id input:checked').each(function () {
+            $('#user_list_div_id_name input:checked').each(function () {
                 selectedEmail.push($(this).attr('value'));
             });
+            if (selectedEmail.length == 0) {
+                BootstrapDialog.show({
+                    title: 'INFORMATION',
+                    message: 'Please Select the Check Box!',
+                    buttons: [{
+                        id: 'btn-ok',
+                        icon: 'glyphicon glyphicon-check',
+                        label: 'OK',
+                        cssClass: 'btn-primary',
+                        data: {
+                            js: 'btn-confirm',
+                            'user-id': '3'
+                        },
+                        autospin: false,
+                        action: function (dialogRef) {
+                            dialogRef.close();
+                        }
+                    }]
+
+
+                });
+
+                //BootstrapDialog.alert("Please Select the Check Box");
+                //BootstrapDialog.alert("Please Select the Check Box");
+                /*alert('Please Select the Check Box');*/
+                return false;
+            }
+            else {
+                BootstrapDialog.alert(selectedEmail.length + " User selected");
+            }
+
             console.log("emails", selectedEmail);
             $.ajax({
                 url: '/Send_Email',
@@ -364,9 +414,18 @@
         });
     });
 
+
     function openPage(pageURL) {
         window.location.href = pageURL;
     }
+</script>
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#select_all').click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+
+    });
 </script>
 <body class="top-navbar-fixed">
 
@@ -702,77 +761,109 @@
 
                             </div>
 
-                        </div>
+                            <%--</div>
 
+                    </div>--%>
 
+                        </div>c
+
+                        <%--</section>--%>
                 </div>
-            </div>
 
-            <%--</section>--%>
-        </div>
+                <!-- /.row -->
+                <div class="container">
 
-        <!-- /.row -->
-        <div class="container">
+                    <!-- Trigger the modal with a button -->
+                    <%--<button type="button" id="mymodal" name="mymodal"
+                            class="btn btn-primary btn-lg pull-right"
+                            data-toggle="modal" data-target="#myModal"><span
+                            class="pull-right">Request Sign</span>
+                    </button>--%>
 
-            <!-- Trigger the modal with a button -->
-            <button type="button" id="mymodal" name="mymodal"
-                    class="btn btn-primary btn-lg pull-right"
-                    data-toggle="modal" data-target="#myModal"><span
-                    class="pull-right">Request Sign</span>
-            </button>
+                    <%--<button type="button" id="" name="mymodal"
+                            class="btn btn-primary btn-lg pull-right"
+                            data-toggle="modal" data-target="#myModal"><span
+                            class="pull-right" onclick="openPage('Intake_View_Page.jsp')">Intake Pageview</span>
+                    </button>--%>
 
-            <%--<button type="button" id="" name="mymodal"
-                    class="btn btn-primary btn-lg pull-right"
-                    data-toggle="modal" data-target="#myModal"><span
-                    class="pull-right" onclick="openPage('Intake_View_Page.jsp')">Intake Pageview</span>
-            </button>--%>
+                    <!-- Button trigger modal -->
+                    <button type="button" id="button_id" name="button_id" class="btn btn-primary btn-lg pull-right">
+                        Request Sign
+                    </button>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <%--<h4 class="modal-title" id="myModalLabel" style="text-align: center">List Of Users</h4>--%>
+                                    <div class="aligncheckbox">
+                                        <label>
+                                            <input type="checkbox" class="check" id="select_all"> List Of Users
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="modal-body" id="user_list_div_id_name">
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">
-                                &times
-                            </button>
-                            <h4 class="modal-title" align="center">List Of Users</h4>
-                        </div>
-
-                        <div class="modal-body" id="user_list_div_id">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button id="email_id" name="email_id" type="button" class="btn btn-default"
-                                    data-dismiss="modal">Send mail
-                            </button>
-                            <input type="hidden" name="email_id" id="email_id" value=""/>
-                            <button type="button" class="btn btn-default"
-                                    data-dismiss="modal">Close
-                            </button>
-
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" name="email_id" id="email_id"
+                                            data-dismiss="modal">Send Email
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Modal -->
+                    <%--<div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        &times
+                                    </button>
+                                    <h4 class="modal-title" align="center">List Of Users</h4>
+                                </div>
+
+                                <div class="modal-body" id="user_list_div_id">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="email_id" name="email_id" type="button" class="btn btn-default"
+                                            data-dismiss="modal">Send mail
+                                    </button>
+                                    <input type="hidden" name="email_id" id="email_id" value=""/>
+                                    <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>--%>
+
                 </div>
+
+
+                </section>
+
+
             </div>
+
+
+            <!-- /.main-page -->
 
         </div>
 
-
-        </section>
-
-
-    </div>
-
-
-    <!-- /.main-page -->
-
-    </div>
-
-    <!-- /.content-container -->
+        <!-- /.content-container -->
 
     </div>
     <!-- /.content-wrapper -->
@@ -794,6 +885,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+<script src="validation.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".lis").click(function () {
