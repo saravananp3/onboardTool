@@ -765,7 +765,7 @@
 
                 </div>--%>
 
-            </div>c
+            </div>
 
             <%--</section>--%>
         </div>
