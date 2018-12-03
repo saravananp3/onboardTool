@@ -73,7 +73,7 @@ public class Intake_Review_Email extends HttpServlet {
             order++;
         }
 
-        docusignUtility.requestRoutingDocumentSigning1(byteArrayOutputStream, signerList);
+        docusignUtility.requestRoutingDocumentSigning(byteArrayOutputStream, signerList);
     }
 
     private void sendIndividualEmail(Map<String, String> users, ByteArrayOutputStream byteArrayOutputStream, DocusignUtility docusignUtility) {
