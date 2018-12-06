@@ -146,19 +146,19 @@
                             ResultSet rs = st.executeQuery(query);
 
                     %>--%>
-                        <%
-                            if (rs3.next()) {
-                                String Project_Name = rs3.getString("projectname");
-                                //System.out.println("the projectname is "+Project_Name);
-                                String query = "";
-                                if (Project_name.equals("all"))
-                                    query = "select * from AppEmphazize_ApplicationInfo where prjname = '" + Project_Name + "'";
-                                else
-                                    query = "select * from AppEmphazize_ApplicationInfo where prjname = '" + Project_Name + "' and appname='" + Applications + "'";
-                                Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery(query);
+                    <%
+                        if (rs3.next()) {
+                            String Project_Name = rs3.getString("projectname");
+                            //System.out.println("the projectname is "+Project_Name);
+                            String query = "";
+                            if (Project_name.equals("all"))
+                                query = "select * from AppEmphazize_ApplicationInfo where prjname = '" + Project_Name + "'";
+                            else
+                                query = "select * from AppEmphazize_ApplicationInfo where prjname = '" + Project_Name + "' and appname='" + Applications + "'";
+                            Statement st = con.createStatement();
+                            ResultSet rs = st.executeQuery(query);
 
-                        %>
+                    %>
 
                     <div class="navbar-header no-padding">
                         <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">
@@ -420,7 +420,7 @@
                                             %>
                                             <script>document.getElementById('prog_bar<%=l %>').className = 'progress-bar progress-bar-warning progress-bar-striped';</script>
                                             <%} %>
-                                            <h5 class="cbp-vm-title right-col primary">Testing</h5>
+                                            <h5 class="cbp-vm-title right-col primary"><!-- Testing --></h5>
                                             <%} %>
                                             <h5 class="cbp-vm-title right-col primary"><%=rs2.getString(3) %>
                                             </h5>
