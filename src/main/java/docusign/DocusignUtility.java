@@ -182,8 +182,8 @@ public class DocusignUtility {
         signHere.setDocumentId("1");
         signHere.setPageNumber("7");
         signHere.setRecipientId("1");
-        signHere.setXPosition("450");
-        signHere.setYPosition("700");
+        signHere.setXPosition("400");
+        signHere.setYPosition("400");
         signHere.anchorXOffset("500");
         signHere.anchorYOffset("1000");
 
@@ -191,16 +191,26 @@ public class DocusignUtility {
         signHereTabs.add(signHere);
         Tabs tabs = new Tabs();
         tabs.setSignHereTabs(signHereTabs);
-        signers.stream().map(signer -> {
-            signer.setTabs(tabs);
-            return signer;
-        }).collect(Collectors.toList()).stream().forEach(signer -> signerListTabs.add(signer));
 
+
+        Signer signer= signers.get(0);
+        signer.setTabs(tabs);
+        signerListTabs.add(signer);
+
+        signers.stream().skip(1).forEach(s -> signerListTabs.add(s));
         // Above causes issue
 
         envelopeDefinition.setRecipients(new Recipients());
         signerListTabs.forEach(s -> envelopeDefinition.getRecipients().getSigners().add(s));
-
+/* List<SignHere> signHereTabs = new ArrayList<SignHere>();
+        signHereTabs.add(signHere);
+        Tabs tabs = new Tabs();
+        tabs.setSignHereTabs(signHereTabs);
+        signers.stream().map(signer -> {
+            signer.setTabs(tabs);
+            return signer;
+        }).collect(Collectors.toList()).stream().forEach(signer -> signerListTabs.add(signer));
+*/
 
         // send the envelope (otherwise it will be "created" in the Draft folder
         envelopeDefinition.setStatus("sent");

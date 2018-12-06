@@ -343,7 +343,7 @@
                     console.log('1->', usersList)
                     $.each(response, function (key, value) {
                         //userlistdiv.append('<input  type="checkbox"   value="' + key + '">' + value)
-                        usersList += '<li><input  type="checkbox" name="chk" id="chk" value="' + key + '" >' + value + '</li>';
+                        usersList += '<li><input type="checkbox" value="' + key + '" >' + value + '</li>';
                     });
                     usersList += '</ul>' + '</div>';
                     console.log('->', usersList)

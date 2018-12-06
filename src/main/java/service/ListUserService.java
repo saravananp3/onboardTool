@@ -29,8 +29,11 @@ public class ListUserService {
             Statement user_st = connection.createStatement();
             ResultSet users_list = user_st.executeQuery(user_query);
             while (users_list.next()) {
-                String field = users_list.getString(12);
-                String value = users_list.getString(1);
+                String field = users_list.getString("id");
+                //String value = users_list.getString("uname").concat(" ("+ users_list.getString("fname")).concat(users_list.getString("lname")+")");
+                //String value = users_list.getString("uname").concat("("+ users_list.getString("email")+")");
+                String value = users_list.getString("uname");
+                System.out.println("value"+value);
                 infoJson.addProperty(field, value);
             }
         } catch (Exception e) {
