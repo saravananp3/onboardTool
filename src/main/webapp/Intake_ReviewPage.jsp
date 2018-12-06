@@ -195,10 +195,6 @@
 
     }
 
-    .aligncheckbox {
-        text-align: center;
-    }
-
     .bootstrap-dialog-message {
         width: 250px;
         border: 3px;
@@ -206,9 +202,13 @@
         margin: auto;
     }
 
+    .searchbox {
+        float: right;
+
+    }
 
 </style>
-<script>
+<script type="application/javascript">
     function ExportPdf() {
         $("#loginForm").attr('action', '/Intake_Review_Data');
         $("#loginForm").attr('target', '_blank');
@@ -216,12 +216,7 @@
         $("#loginForm").submit();
     }
 
-
-</script>
-<script type="application/javascript">
-
     $(document).ready(function () {
-        console.log("regdvf")
         $.ajax({
             url: "Intake_Review_Data",
             type: 'post',
@@ -318,10 +313,7 @@
             }
         });
     });
-    $("#checkAll").click(function () {
 
-        $(".check").prop('checked', $(this).prop('checked'));
-    });
 
     function createTable(rows) {
         return '<table width=\'0\' border=\'0\' align=\'left\'\n' +
@@ -343,16 +335,23 @@
                 dataType: 'json',
                 success: function (response) {
                     var userlistdiv = $('#user_list_div_id_name')
+                    var userlistMul = $('#user_list_div_mul')
                     console.log("Request:", response);
                     userlistdiv.empty();
+                    userlistMul.empty();
+                    var usersList = '<div class="checkbox"> <ul id="sortable">';
+                    console.log('1->', usersList)
                     $.each(response, function (key, value) {
-                        //userlistdiv.append('<input type="checkbox"   value="' + key + '">' + value)
                         //userlistdiv.append('<input  type="checkbox"   value="' + key + '">' + value)
-                        userlistdiv.append('<div class="checkbox">\n' +
-                            '      <label><input  type="checkbox" class="check"   value="' + key + '">' + value + '</label>\n' + '</div>')
-                        userlistdiv.append('')
+                        usersList += '<li><input type="checkbox" value="' + key + '" >' + value + '</li>';
                     });
-
+                    usersList += '</ul>' + '</div>';
+                    console.log('->', usersList)
+                    userlistdiv.append(usersList)
+                    userlistdiv.append('')
+                    userlistMul.append(usersList)
+                    userlistMul.append('')
+                    $("#user_list_div_mul").find("#sortable").sortable();
                 }
             });
 
@@ -363,13 +362,21 @@
 
         $('#email_id').click(function () {
             var selectedEmail = [];
-            $('#user_list_div_id_name input:checked').each(function () {
-                selectedEmail.push($(this).attr('value'));
-            });
+            if ($('#signorder').is(':checked')) {
+                $('#user_list_div_mul input:checked').each(function () {
+                    selectedEmail.push($(this).attr('value'));
+                });
+            }
+            else {
+                $('#user_list_div_id_name input:checked').each(function () {
+                    selectedEmail.push($(this).attr('value'));
+                });
+            }
+            console.log("hm", selectedEmail);
             if (selectedEmail.length == 0) {
                 BootstrapDialog.show({
                     title: 'INFORMATION',
-                    message: 'Please Select the Check Box!',
+                    message: 'Please Select any User',
                     buttons: [{
                         id: 'btn-ok',
                         icon: 'glyphicon glyphicon-check',
@@ -387,10 +394,6 @@
 
 
                 });
-
-                //BootstrapDialog.alert("Please Select the Check Box");
-                //BootstrapDialog.alert("Please Select the Check Box");
-                /*alert('Please Select the Check Box');*/
                 return false;
             }
             else {
@@ -399,34 +402,60 @@
 
             console.log("emails", selectedEmail);
             $.ajax({
-                url: '/Send_Email',
+                url: '/Intake_Review_Email',
                 type: 'post',
                 contentType: 'application/json; charset=utf-8',
+                headers: {"signorder": $('#signorder').is(':checked')},
                 dataType: 'json',
                 data: JSON.stringify(selectedEmail),
                 success: function (data) {
 
-                    console.log(data);
                 }
             });
 
 
         });
     });
-
-
-    function openPage(pageURL) {
-        window.location.href = pageURL;
-    }
-</script>
-<script type="application/javascript">
     $(document).ready(function () {
-        $('#select_all').click(function () {
-            $('input:checkbox').not(this).prop('checked', this.checked);
-        });
 
+        $('#signorder').click(function () {
+
+            var userlistdiv = $('#user_list_div_id_name');
+            var user_list_div_mul = $('#user_list_div_mul');
+            if (userlistdiv.is(":visible")) {
+                userlistdiv.hide();
+                user_list_div_mul.show();
+            }
+            else {
+                user_list_div_mul.hide();
+                userlistdiv.show();
+            }
+            console.log(userlistdiv.is(":visible"));
+
+
+        })
     });
+
+    $(document).ready(function () {
+        $('#search_bar').keyup(function () {
+            filter(this);
+        });
+    });
+
+    function filter(element) {
+        var value = $(element).val();
+        $("#sortable > li").each(function () {
+            if ($(this).text().indexOf(value) > -1) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
 </script>
+
+
 <body class="top-navbar-fixed">
 
 <form class="form-signin" name="loginForm" id="loginForm" onsubmit="ExportPdf()" method="post">
@@ -626,16 +655,10 @@
                                         <div class="container">
                                             <a href="Intake_Business.jsp"
                                                class="btn btn-default btn pull-left">Edit</a>
-                                            <%--<button id="intake_module" class="btn btn-primary pull-right">Servlet
-                                            </button>--%>
-                                            <%--<button id="cmd" class="btn btn-primary pull-right"><span
-                                                    class="glyphicon glyphicon-download-alt"></span> Export PDF
-                                            </button>--%>
+
                                             <button id="intake_module" class="btn btn-primary pull-right"><span
-                                                    class="glyphicon glyphicon-download-alt"></span> <%--<a href="/Intake_Export_PDF">--%>Export
-                                                Pdf<%--</a>--%>
+                                                    class="glyphicon glyphicon-download-alt"></span> Export Pdf
                                             </button>
-                                            <%-- <a href="/Intake_Export_PDF">Export Pdf</a>--%>
                                             <button class="btn btn-primary pull-left"
                                                     onclick="location.href='Applications.jsp'">HOME
                                             </button>
@@ -765,26 +788,13 @@
 
                     </div>--%>
 
-                        </div>c
+                        </div>
 
                         <%--</section>--%>
                 </div>
 
                 <!-- /.row -->
                 <div class="container">
-
-                    <!-- Trigger the modal with a button -->
-                    <%--<button type="button" id="mymodal" name="mymodal"
-                            class="btn btn-primary btn-lg pull-right"
-                            data-toggle="modal" data-target="#myModal"><span
-                            class="pull-right">Request Sign</span>
-                    </button>--%>
-
-                    <%--<button type="button" id="" name="mymodal"
-                            class="btn btn-primary btn-lg pull-right"
-                            data-toggle="modal" data-target="#myModal"><span
-                            class="pull-right" onclick="openPage('Intake_View_Page.jsp')">Intake Pageview</span>
-                    </button>--%>
 
                     <!-- Button trigger modal -->
                     <button type="button" id="button_id" name="button_id" class="btn btn-primary btn-lg pull-right">
@@ -799,14 +809,16 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                             aria-hidden="true">&times;</span></button>
-                                    <%--<h4 class="modal-title" id="myModalLabel" style="text-align: center">List Of Users</h4>--%>
-                                    <div class="aligncheckbox">
-                                        <label>
-                                            <input type="checkbox" class="check" id="select_all"> List Of Users
-                                        </label>
-                                    </div>
+                                    <h4 class="modal-title" id="myModalLabel" style="text-align: center"><b>List of
+                                        Users</b></h4>
+                                    <input type="checkbox" name="signorder" id="signorder"> <b>Set signing order</b>
+                                    <input class="searchbox" id="search_bar" type="text" placeholder="Search User"
+                                           name="search"/>
                                 </div>
                                 <div class="modal-body" id="user_list_div_id_name">
+
+                                </div>
+                                <div class="modal-body" id="user_list_div_mul" style="display: none">
 
                                 </div>
                                 <div class="modal-footer">
@@ -819,36 +831,6 @@
                         </div>
                     </div>
 
-                    <!-- Modal -->
-                    <%--<div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">
-                                        &times
-                                    </button>
-                                    <h4 class="modal-title" align="center">List Of Users</h4>
-                                </div>
-
-                                <div class="modal-body" id="user_list_div_id">
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button id="email_id" name="email_id" type="button" class="btn btn-default"
-                                            data-dismiss="modal">Send mail
-                                    </button>
-                                    <input type="hidden" name="email_id" id="email_id" value=""/>
-                                    <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">Close
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>--%>
 
                 </div>
 
@@ -890,6 +872,8 @@
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
 <script src="validation.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $(".lis").click(function () {
