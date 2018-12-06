@@ -208,6 +208,7 @@ public class Application_dashboard_pie_chart
             String query1="select * from archiveexecution_details where level=3 and projects='"+selprj+"' and seq_num>"+index+" and seq_num<"+(index+62)+" and pln_srt_date!='' and pln_end_date!='' and act_srt_date!='' and act_end_date!=''";
             Statement st1 = con.createStatement();
             ResultSet rs1 = st1.executeQuery(query1);
+            System.out.println("sample");
             while(rs1.next())
             {
                 res+="<li>"+rs1.getString("name")+"</li>";
