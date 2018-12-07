@@ -198,6 +198,7 @@ public class DocusignUtility {
         signerListTabs.add(signer);
 
         signers.stream().skip(1).forEach(s -> signerListTabs.add(s));
+        System.out.println("testing---->"+signer);
         // Above causes issue
 
         envelopeDefinition.setRecipients(new Recipients());
