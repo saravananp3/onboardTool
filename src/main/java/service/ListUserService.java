@@ -31,6 +31,7 @@ public class ListUserService {
             while (users_list.next()) {
                 String field = users_list.getString("id");
                 //String value = users_list.getString("uname").concat(" ("+ users_list.getString("fname")).concat(users_list.getString("lname")+")");
+                //String value = users_list.getString("id").concat("\t"+users_list.getString("uname")).concat("\t("+users_list.getString("email")+")");
                 String value = users_list.getString("uname").concat("\t("+users_list.getString("email")+")");
                 //String value = users_list.getString("uname");
                 infoJson.addProperty(field, value);
