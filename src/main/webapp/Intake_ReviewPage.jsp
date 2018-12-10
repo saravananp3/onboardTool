@@ -811,9 +811,9 @@
                                             aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel" style="text-align: center"><b>List of
                                         Users</b></h4>
-                                    <input type="checkbox" name="signorder" id="signorder" style=""> <b>Set signing order</b>
+                                    <input type="checkbox" name="signorder" id="signorder" style="margin-left: 245px;"> <b>Set signing order</b>
                                     <input class="searchbox" id="search_bar" type="text" placeholder="Search User"
-                                           name="search" style="font-size: 20px"/>
+                                           name="search" style="font-size: 15px"/>
                                 </div>
                                 <div class="modal-body" style="width: 500px" id="user_list_div_id_name">
 
