@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
 <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
 <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- ========== PAGE STYLES ========== -->
 <link rel="stylesheet" href="css/prism/prism.css" media="screen">
 <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
@@ -206,6 +206,14 @@
         float: right;
 
     }
+    .checkbox
+    {
+        height: 130px;
+        width: 700px;
+        overflow-y: scroll;
+    }
+
+
 
 </style>
 <script type="application/javascript">
@@ -335,11 +343,9 @@
                 dataType: 'json',
                 success: function (response) {
                     var userlistdiv = $('#user_list_div_id_name')
-                    var userlistMul = $('#user_list_div_mul')
                     console.log("Request:", response);
                     userlistdiv.empty();
-                    userlistMul.empty();
-                    var usersList = '<div class="checkbox"> <ul id="sortable">';
+                    var usersList = '<div class="checkbox"> <ul id="sortable" style="cursor: pointer">';
                     console.log('1->', usersList)
                     $.each(response, function (key, value) {
                         //userlistdiv.append('<input  type="checkbox"   value="' + key + '">' + value)
@@ -349,9 +355,10 @@
                     console.log('->', usersList)
                     userlistdiv.append(usersList)
                     userlistdiv.append('')
-                    userlistMul.append(usersList)
-                    userlistMul.append('')
-                    $("#user_list_div_mul").find("#sortable").sortable();
+                    $("#sortable").sortable({
+
+                    });
+                    $("#sortable").sortable("disable");
                 }
             });
 
@@ -362,16 +369,9 @@
 
         $('#email_id').click(function () {
             var selectedEmail = [];
-            if ($('#signorder').is(':checked')) {
-                $('#user_list_div_mul input:checked').each(function () {
-                    selectedEmail.push($(this).attr('value'));
-                });
-            }
-            else {
-                $('#user_list_div_id_name input:checked').each(function () {
-                    selectedEmail.push($(this).attr('value'));
-                });
-            }
+            $('#user_list_div_id_name input:checked').each(function () {
+                selectedEmail.push($(this).attr('value'));
+            });
             console.log("hm", selectedEmail);
             if (selectedEmail.length == 0) {
                 BootstrapDialog.show({
@@ -419,23 +419,23 @@
     $(document).ready(function () {
 
         $('#signorder').click(function () {
-
-            var userlistdiv = $('#user_list_div_id_name');
-            var user_list_div_mul = $('#user_list_div_mul');
-            if (userlistdiv.is(":visible")) {
-                userlistdiv.hide();
-                user_list_div_mul.show();
+            var flag = $('#signorder').is(':checked');
+            if (flag)
+            {
+                $("#sortable").sortable("enable");
             }
             else {
-                user_list_div_mul.hide();
-                userlistdiv.show();
+                $("#sortable").sortable("disable");
+
             }
-            console.log(userlistdiv.is(":visible"));
-
-
         })
     });
-
+    /* function disableDraggable(elements){
+         for (var i = 0; i < elements.length; i++) {
+             $("#" + elements[i]).addClass("disable-sort");
+             $("#" + elements[i]).fadeTo("fast", 0.5);
+         }
+     }*/
     $(document).ready(function () {
         $('#search_bar').keyup(function () {
             filter(this);
@@ -804,24 +804,21 @@
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                          aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog" style="width:1000px">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                             aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel" style="text-align: center"><b>List of
                                         Users</b></h4>
-                                    <input type="checkbox" name="signorder" id="signorder"> <b>Set signing order</b>
+                                    <input type="checkbox" name="signorder" id="signorder" style=""> <b>Set signing order</b>
                                     <input class="searchbox" id="search_bar" type="text" placeholder="Search User"
-                                           name="search"/>
+                                           name="search" style="font-size: 20px"/>
                                 </div>
-                                <div class="modal-body" id="user_list_div_id_name">
+                                <div class="modal-body" style="width: 500px" id="user_list_div_id_name">
 
                                 </div>
-                                <div class="modal-body" id="user_list_div_mul" style="display: none">
-
-                                </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer" style="height: 80px;padding: 20px">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     <button type="button" class="btn btn-primary" name="email_id" id="email_id"
                                             data-dismiss="modal">Send Email
