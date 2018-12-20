@@ -218,7 +218,7 @@
 </style>
 <script type="application/javascript">
     function ExportPdf() {
-        $("#loginForm").attr('action', '/Intake_Review_Data');
+        $("#loginForm").attr('action', 'Intake_Review_Data');
         $("#loginForm").attr('target', '_blank');
         $("#data_submit").val("true");
         $("#loginForm").submit();
@@ -338,7 +338,7 @@
         $('#button_id').click(function () {
             $('#myModal').modal('show');
             $.ajax({
-                url: '/List_Users',
+                url: 'List_Users',
                 type: 'post',
                 dataType: 'json',
                 success: function (response) {
@@ -402,7 +402,7 @@
 
             console.log("emails", selectedEmail);
             $.ajax({
-                url: '/Intake_Review_Email',
+                url: 'Intake_Review_Email',
                 type: 'post',
                 contentType: 'application/json; charset=utf-8',
                 headers: {"signorder": $('#signorder').is(':checked')},
