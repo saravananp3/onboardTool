@@ -213,7 +213,7 @@ if(rs.next())
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                
                   </a>
@@ -283,7 +283,7 @@ if(rs.next())
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -353,7 +353,7 @@ if(rs.next())
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -419,7 +419,7 @@ if(rs.next())
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -487,7 +487,7 @@ else if(roles.equals("ArchivalAdmin"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -554,7 +554,7 @@ else if(roles.equals("ArchivalAdmin"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -620,7 +620,7 @@ else if(roles.equals("ArchivalProgramManager"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -688,7 +688,7 @@ else if(roles.equals("ArchivalProgramManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -760,7 +760,7 @@ else if(roles.equals("LegacyBusinessSME"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -828,7 +828,7 @@ else if(roles.equals("LegacyBusinessSME"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -897,7 +897,7 @@ else if(roles.equals("LegacyTechnicalSME"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -969,7 +969,7 @@ else if(roles.equals("LegacyTechnicalSME"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1034,7 +1034,7 @@ else if(roles.equals("LegacyProgramManager"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -1106,7 +1106,7 @@ else if(roles.equals("LegacyProgramManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1175,7 +1175,7 @@ else if(roles.equals("ArchivalBusinessAnalyst"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -1243,7 +1243,7 @@ else if(roles.equals("ArchivalBusinessAnalyst"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1308,7 +1308,7 @@ else if(roles.equals("ArchivalTechnicalLead"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -1381,7 +1381,7 @@ else if(roles.equals("ArchivalTechnicalLead"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1450,7 +1450,7 @@ else if(roles.equals("ArchivalProjectManager"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -1520,7 +1520,7 @@ else if(roles.equals("ArchivalProjectManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1587,7 +1587,7 @@ else if(roles.equals("ArchivalDeveloper"))
                   <a href="AppEmphasize_EditProject.jsp">
                  <center>
                    <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">App Emphasize</h6>
+                   <h6 class="mt-5">Plan and Pirority</h6>
                </center>
                   </a>
                 </div>
@@ -1657,7 +1657,7 @@ else if(roles.equals("ArchivalDeveloper"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reporting</h6>
+                   <h6 class="mt-5">Program Governance</h6>
                  </center>
                   </a>
                 </div>
