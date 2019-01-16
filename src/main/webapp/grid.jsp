@@ -283,7 +283,7 @@ if(rs.next())
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -294,7 +294,7 @@ if(rs.next())
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -419,7 +419,7 @@ if(rs.next())
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -430,7 +430,7 @@ if(rs.next())
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -554,7 +554,7 @@ else if(roles.equals("ArchivalAdmin"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -565,7 +565,7 @@ else if(roles.equals("ArchivalAdmin"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -688,7 +688,7 @@ else if(roles.equals("ArchivalProgramManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -701,7 +701,7 @@ else if(roles.equals("ArchivalProgramManager"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -828,7 +828,7 @@ else if(roles.equals("LegacyBusinessSME"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -839,7 +839,7 @@ else if(roles.equals("LegacyBusinessSME"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -969,7 +969,7 @@ else if(roles.equals("LegacyTechnicalSME"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -980,7 +980,7 @@ else if(roles.equals("LegacyTechnicalSME"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1106,7 +1106,7 @@ else if(roles.equals("LegacyProgramManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1117,7 +1117,7 @@ else if(roles.equals("LegacyProgramManager"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1243,7 +1243,7 @@ else if(roles.equals("ArchivalBusinessAnalyst"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1254,7 +1254,7 @@ else if(roles.equals("ArchivalBusinessAnalyst"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1381,7 +1381,7 @@ else if(roles.equals("ArchivalTechnicalLead"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1393,7 +1393,7 @@ else if(roles.equals("ArchivalTechnicalLead"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1520,7 +1520,7 @@ else if(roles.equals("ArchivalProjectManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1531,7 +1531,7 @@ else if(roles.equals("ArchivalProjectManager"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1657,7 +1657,7 @@ else if(roles.equals("ArchivalDeveloper"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1668,7 +1668,7 @@ else if(roles.equals("ArchivalDeveloper"))
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Program Governance</h6>
+                   <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
                 </div>
