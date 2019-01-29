@@ -189,7 +189,12 @@ public class Application_dashboard_pie_chart
             endate=rs12.getString("act_end_date");
             System.out.println("actsrtdate-------------enddate------------"+strtdate+endate);
         }
+        if(cenddate.equals(""))
+        {
+            cenddate="Not Available";
+        }
         String result=progbar+","+stats1+","+cstartdate+","+cenddate;
+        System.out.println("result--------"+result);
         return result;
     }
     public String completedmain_task(String[] app,String selprj) throws ClassNotFoundException, SQLException
@@ -217,5 +222,52 @@ public class Application_dashboard_pie_chart
             index+=62;
         }
         return res;
+    }
+    public String percentage_conversion(String applications,String selprj) throws ClassNotFoundException, SQLException
+    {
+        System.out.println("applications---->"+applications);
+        String ans1="";
+        String[] applications1=applications.substring(0,applications.length()-1).split(",");
+        String application_percent="";
+        DBconnection d = new DBconnection();
+        Connection con = (Connection) d.getConnection();
+        Statement st_distinct = con.createStatement();
+        int[] perc=new int[applications1.length];
+        float[] array=new float[applications1.length];
+        float sum=0;
+        float sum1;
+
+        for(int i=0;i<applications1.length;i++)
+        {
+            int percent=0;
+            String query1="select progressbar from archiveexecution_details where projects='"+selprj+"'and name='"+applications1[i]+"'";
+            Statement st1 = con.createStatement();
+            ResultSet rs1 = st1.executeQuery(query1);
+            if(rs1.next())
+            {
+                perc[i]=Integer.parseInt(rs1.getString("progressbar"));
+                System.out.println("perc---------->"+perc[i]);
+                sum+=perc[i];
+            }
+        }
+    /*for(int j=0;j<perc.length;j++)
+    {
+       perc[j]=Integer.parseInt(stringarr[j]);
+    }
+    */
+        System.out.println("sum------ "+sum);
+        sum1=sum/100;
+        System.out.println("sum1------- "+sum1);
+        for(int l=0;l<perc.length;l++)
+        {
+            array[l]=perc[l]/sum1;
+            System.out.println("array[l] "+array[l]);
+        }
+        for(int ans=0;ans<perc.length;ans++)
+        {
+            ans1+=array[ans]+",";
+        }
+        System.out.println("ans1 "+ans1);
+        return ans1;
     }
 }

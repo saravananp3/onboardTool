@@ -628,7 +628,7 @@
                                                         Application_dashboard_pie_chart appobj=new Application_dashboard_pie_chart();
                                                         String apps=appobj.applications(Projets,selprj,uname);
                                                         //Application name for admin
-                                                                                                               System.out.println("apps-------------------"+apps);
+                                                        System.out.println("apps-------------------"+apps);
                                                         String[] app=apps.substring(0,apps.length()-1).split(",");
 
 
@@ -899,6 +899,8 @@
                                                        int appindex=0;
                                                        String application_percentage="";
                                                        application_percentage=appobj.Applicationpercentage(app,selprj);
+                                                       String pieperc=appobj.percentage_conversion(apps,selprj);
+                                                       String[] pie_perc=pieperc.substring(0,pieperc.length()-1).split(",");
                                                        String[] respercentage=application_percentage.substring(0,application_percentage.length()-1).split("_");
                                                        String currentmaintask="";
                                                        currentmaintask=appobj.currentmain_task(app,selprj);
@@ -913,7 +915,7 @@
                                                               {
                                                           System.out.println("testing............ "+"app-------- "+app[appindex]+" progbar----------- "+progbar+" statement------ "+stats1+" current start date and end date----------- "+cstartdate+" "+cenddate+" application percentage--------- "+respercentage[appindex]);
                                                               %>
-                                                        ['<%=app[appindex]%>',33,"Application:<%=app[appindex]%>,\nProject Completion:<%=progbar%>%,\nState:<%=stats1%>,\nTask Startdate:<%=cstartdate%>,\nTask Enddate:<%=cenddate%>,\nApplication%:<%=respercentage[appindex]%>"],
+                                                        ['<%=app[appindex]%>',<%=pie_perc[appindex]%>,"Application:<%=app[appindex]%>,\nProject Completion:<%=progbar%>%,\nState:<%=stats1%>,\nTask Startdate:<%=cstartdate%>,\nTask Enddate:<%=cenddate%>,\nApplication%:<%=respercentage[appindex]%>"],
                                                         <%
                                                         //System.out.println("user----------"+users[i]);
                                                         appindex++;
