@@ -948,10 +948,10 @@
                         <div class="container">
 
                             <!-- Button trigger modal -->
-                            <%--<button type="button" id="button_id" name="button_id"
+                            <button type="button" id="button_id" name="button_id"
                                     class="btn btn-primary btn-lg pull-right">
                                 Request Sign
-                            </button>--%>
+                            </button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
