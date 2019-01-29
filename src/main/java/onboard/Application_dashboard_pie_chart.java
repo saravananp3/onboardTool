@@ -255,6 +255,7 @@ public class Application_dashboard_pie_chart
        perc[j]=Integer.parseInt(stringarr[j]);
     }
     */
+        //System.out.println("sample");
         System.out.println("sum------ "+sum);
         sum1=sum/100;
         System.out.println("sum1------- "+sum1);
