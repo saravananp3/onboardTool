@@ -230,10 +230,10 @@ int count=0;
                                     <li class="nav-header">
                                         <span class="">Main Category</span>
                                     </li>
-                                    <li id='home' item-selected='true'>
+                           s         <li id='home' item-selected='true'>
                                         <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
                                     </li>
-
+s
                                     <li class="nav-header">
                                         <a><span class="">User Module</span></a>
                                     </li>
