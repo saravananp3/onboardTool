@@ -7,11 +7,12 @@
     <title>Onboard - Archive Executive Sample</title>
 
     <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+           src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+
+  <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
@@ -20,11 +21,13 @@
 
     <link rel="stylesheet" type="text/css" href="css/date-picker/jquery.timepicker.css" />
     <link rel="stylesheet" type="text/css" href="css/date-picker/bootstrap-datepicker.css" />
-
     <script type="text/javascript" src="js/archivesummary/jqueryprogressbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="old/css/loading-bar.css"/>
+    <script type="text/javascript" src="js/archivesummary/loading-bar.js"></script>
+
     <script type="text/javascript" src="js/archivesummary/main.js"></script>
     <script src="https://docraptor.com/docraptor-1.0.0.js"></script>
-    <link type="text/css" rel="stylesheet" href="old/css/progressbar.css" />
+
     <script src="js/archivesummary/treeTable.js"></script>
 
     <!-- ========== PAGE STYLES ========== -->
@@ -52,7 +55,73 @@
 
 
     <script src="js/archivesummary/jstree.min.js"></script>
+    <style>
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
 
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 30%;
+      height:60%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    /*popup input text field taskname style*/
+    #taskname
+    {
+      width:300px;
+      height:50px;
+      border: 2px ridge black;
+      border-radius: 4px;
+    }
+    .node { /* Change width and height */
+    width:1em;
+    height:1em;
+    }
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button2 {background-color: rgb(52, 152, 219);border-radius: 12px;} /* Blue */
+    </style>
 
 </head>
 
@@ -62,6 +131,7 @@
 <%
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date1 = new Date();
+    String projectname="";
     System.out.println("[INFO]-----"+formatter.format(date1)+"-----Accessed Archive_Execution JSP PAGE-----[INFO]");  %>
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
@@ -185,6 +255,7 @@
                     <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
                     <input type="text" id="project_name" name="project_name" value="<%=rs.getString("projectname")%>" style="display:none;">
                     <%
+                       projectname=rs.getString("projectname");
                         String q2="select * from ArchiveExecution_Details where level=1 and projects='"+rs.getString("projectname")+"'order by seq_num";
                         Statement s2 = conn.createStatement();
                         ResultSet rss = s2.executeQuery(q2);
@@ -195,6 +266,7 @@
                         }
 
                     %>
+
                     <!-- /.navbar-header -->
 
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -431,13 +503,18 @@
                                                 <td id="basicExample"><input  type="text" class="in date start" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>"  /></td>
                                                 <td><input  type="text" class="in"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)" /></td>
                                                 <td><input  type="text" class="in"  id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)"/></td>
-                                                <td ><div class="progressbar" id="progressbar<%=i%>"></td>
-                                                <td ><input type="text" style="background-color:transparent;width:20%;" id="status<%=i %>"  /></td>
+                                                <td ><div class="progressbar" id="myItem<%=i%>"></div></td>
+                                                <td ><input type="text" style="background-color:transparent;width:20%;" id="status<%=i%>"  /></td>
                                                 <td></td>
-                                                <td><i class="fa fa-plus"></i>  <i class="fa fa-edit"></i>  <i class="fa fa-trash"></i></td>
+                                                <td>
+                                                   <%-- <input type="button" id="myBtn<%=i%>" onclick="popup(this.id);" value="+"/>--%>
+
+                                                       <i class="fa fa-plus" id="myBtn<%=i%>" onclick="popup(this.id);"></i> <%--<i class="fa fa-edit"></i>--%>  <i class="fa fa-trash"></i>
+                                                    <%--<i class="fas fa-layer-plus"></i>--%>
+                                                </td>
 
                                                 <script>
-                                                    getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value,'<%= rs3.getString(17)%>');
+                                                    getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value,'<%= rs3.getString(17)%>',<%=i%>,'<%=projectname%>');
                                                 </script>
                                                 <%
                                                     int progress=0;
@@ -466,15 +543,19 @@
                                                 <td id="basicExample"><input  type="text" class="in date start" id="act_end_date<%=i %>" name="act_end_date<%=i %>" value="<%=rs3.getString(6) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',4);"  /></td>
                                                 <td id="basicExample"><input  type="text" class="in date start"  id="phours<%=i %>" name="phrs<%=i %>" value="<%=rs3.getString(13)%>" onclick="getID('<%=rs3.getInt(2) %>',document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('status<%=i %>'),document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('act_end_date<%=i %>').value)"/></td>
                                                 <td id="basicExample"><input  type="text" class="in date start" id="hours<%=i %>" name="hrs<%=i %>" value="<%=rs3.getString(9) %>" onclick="call_fun(document.getElementById('mem_ass<%=i %>').value,document.getElementById('name<%=i %>').value,document.getElementById('seqnum<%=i %>').value,document.getElementById('pln_srt_date<%=i %>').value,document.getElementById('pln_end_date<%=i %>').value,document.getElementById('act_srt_date<%=i %>').value,document.getElementById('phours<%=i %>').value,document.getElementById('hours<%=i %>').value,document.getElementById('act_end_date<%=i %>').value,'<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>');" /></td>
-                                                <td><div class="progressbar" id="progressbar<%=i%>"></div></td>
-                                                <td><input type="text" style="background-color:transparent;display:none;width:20%;" /></td>
+                                                <td><div class="progressbar" id="myItem<%=i%>"></div></td>
+                                                <td><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i%>"/></td>
                                                 <td><input type="text" id="cmnts<%=i %>" name="cmnts<%=i %>" value="<%=rs3.getString(17) %>" /></td>
-                                                <td><i class="fa fa-plus"></i>  <i class="fa fa-edit"></i>  <i class="fa fa-trash"></i></td>
+                                               <td><%--<input type="button" id="myBtn<%=i%>" onclick="popup(this.id);" value="+"/>--%>
+
+                                                   <i class="fa fa-plus" id="myBtn<%=i%>" onclick="popup(this.id);">
+                                               </td>
+
 
                                                 <% if((rs3.getString(3).equals("Requirements"))||(rs3.getString(3).equals("Build and Test"))){%>
 
                                                 <script>
-                                                    getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value);
+                                                    getDetID(document.getElementById('phours<%=i %>'),document.getElementById('hours<%=i %>'),document.getElementById('progressbar<%=i %>'),document.getElementById('status<%=i %>'),document.getElementById('act_end_date<%=i %>').value,'<%= rs3.getString(17)%>',<%=i%>,'<%=projectname%>');
                                                 </script>
                                                 <%} %>
 
@@ -529,6 +610,42 @@
 
 </div>
 <!-- /.main-wrapper -->
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" >
+    <span class="close" style="color:white;">&times;</span>
+    <div class="modal-header" style="background-color:rgb(52, 152, 219);">
+          <h1 style="color:white;">Node Details</h1>
+        </div>
+        <div class="modal-body" >
+        <table>
+          <tr>
+          <b style="font-size:16px;">Task Name:</b>
+          <input type="text" id="taskname" name="firstname" placeholder="Task Name" required>
+          </tr>
+          <tr>
+          <label class="container">
+            <input type="radio" class="node" id="node1" name="radio" checked="checked"reuired="required"><b>MAIN TASK</b></input>
+          </label>
+          </tr>
+          <tr>
+          <label class="container">
+            <input type="radio" class="node" id="node2" name="radio" valuerequired="required"><b>SUB TASK</b></input>
+            <span class="checkmark"></span>
+          </label>
+          </tr>
+          </table>
+          <input type="hidden" id="sequence"/>
+        </div>
+        <div class="modal-footer" >
+        <button class="button button2" onclick="createnode(document.getElementById('sequence').value,document.getElementById('taskname').value,'<%=projectname%>',$('#node2').prop('checked'));">Create Node</button>
+        <button class="button button2" id="cancelbtn">cancel</button>
+        </div>
+  </div>
+
+</div>
 
 
 <!-- ========== COMMON JS FILES ========== -->
@@ -567,7 +684,74 @@
 
 <!-- ========== THEME JS ========== -->
 
+<script>
 
+    function popup_delete(id)
+    {
+//alert(id);
+        console.log(id);
+        var model = document.getElementById('myModel');
+        var button = document.getElementById(id);
+        /*alert(id);*/
+        document.getElementById('sequence').value=id;
+        var closebutton=document.getElementById("cancelbutton");
+        modal.style.display = "block";
+        closebutton.onclick= function() {
+            modal.style.display="none";
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        }
+        window.onclick = function(event) {
+            if (event.target == model) {
+                model.style.display = "none";
+            }
+        }
+    }
+
+function popup(id)
+{
+//alert(id);
+console.log(id);
+var modal = document.getElementById('myModal');
+var btn = document.getElementById(id);
+/*alert(id);*/
+document.getElementById('sequence').value=id;
+var closebtn=document.getElementById("cancelbtn");
+  modal.style.display = "block";
+  closebtn.onclick= function() {
+modal.style.display="none";
+var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+  }
+  }
+function createnode(seq,taskname,projectname,typeofnode)
+{
+//alert(seq+" "+taskname+" "+projectname+" "+typeofnode);
+$.ajax({
+                    url: "Adding_Node",
+                    type: 'post',
+                    data: {seq:seq,taskname:taskname,projectname:projectname,typeofnode:typeofnode},
+                    dataType: "text",
+                    success: function (data) {
+                        //alert("data");
+
+
+                    },
+                    error: function (e) { //A callback function to be executed when the request fails.
+                        console.log(e);
+                    }
+                });
+}
+</script>
 <script src="js/jquery.doubleScroll.js"></script>
 <script>
     $(document).ready(function(){

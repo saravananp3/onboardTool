@@ -23,6 +23,7 @@
 
         <!-- ========== PAGE STYLES ========== -->
         <link rel="stylesheet" href="css/prism/prism.css" media="screen" >
+    <link rel="stylesheet" href="css/archive_add/archive_add.css" media="screen" >
         <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen" >
         <link rel="stylesheet" href="css/icheck/skins/line/blue.css" >
         <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
@@ -237,7 +238,7 @@ int count=0;
                                         <a><span class="">User Module</span></a>
                                     </li>
                                     <li>
-                                        <a href="Admin_UserConfiguration.jsp"><i class="fa fa-file-text"></i> <span>User Configuration</span> </a>
+                                        <a href="User_Configuration.jsp"><i class="fa fa-file-text"></i> <span>User Configuration</span> </a>
                                     </li>
 
                                     <li>
