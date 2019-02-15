@@ -103,7 +103,7 @@
 	function qq()
 	{				 var f=document.loginForm;
 				    f.method="post";
-				    f.action="sendMail?roless="+arr+"&mailid="+email;
+				    f.action="Admin_Module_Send_Invites_Mail?roless="+arr+"&mailid="+email;
 				    f.submit();
 			
 	}

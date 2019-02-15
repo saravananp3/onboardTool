@@ -114,7 +114,7 @@ height: 250px;
                         <a href="<%--Admin_UserConfiguration.jsp--%>">
                             <center>
 
-                               <a href="Send_Invites.jsp">
+                               <a href="Admin_Module_Send_Invites.jsp">
                                    <img src="images/admin_userconfiguration/send_invite.jpg" class="img-rounded" data-toggle="tooltip"  title="SEND INVITES" id="invite" height="100" width="100" data-color="#494949">
                                 <%--<button type="button" class="btn btn-primary">SEND INVITES</button>--%>
                                </a>

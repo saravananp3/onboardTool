@@ -270,7 +270,7 @@ if(rs.next())
             <div class="col-md-12" id="box1">
 
  <div class="col-md-2 col-sm-2">
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -285,21 +285,21 @@ if(rs.next())
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
 <div class="col-md-1 col-sm-1" id="arrow">
 
                  </div>
-                <div class="col-md-2 col-sm-2">
+                <%--<div class="col-md-2 col-sm-2">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
 <div class="col-md-1 col-sm-1" id="arrow">
 
                  </div>
@@ -405,7 +405,7 @@ if(rs.next())
     <div class="container">
             <div class="col-md-12" id="box1">
 <div class="col-md-2 col-sm-2" id="testDecom">
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -421,21 +421,21 @@ if(rs.next())
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
   <div class="col-md-1 col-sm-1" id="arrow">
 
                  </div>
-                <div class="col-md-2 col-sm-2" id="testDecom">
+                <%--<div class="col-md-2 col-sm-2" id="testDecom">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
   <div class="col-md-1 col-sm-1" id="arrow">
 
                  </div>
@@ -542,7 +542,7 @@ else if(roles.equals("ArchivalAdmin"))
 
                 
 <div class="col-md-2 col-sm-2" >
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -556,21 +556,21 @@ else if(roles.equals("ArchivalAdmin"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
 <div class="col-md-1 col-sm-1" id="arrow">
 
                  </div>
-                <div class="col-md-2 col-sm-2">
+                <%--<div class="col-md-2 col-sm-2">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
 <div class="col-md-1 col-sm-1" id="arrow">
 
                  </div>
@@ -674,7 +674,7 @@ else if(roles.equals("ArchivalProgramManager"))
     <div class="container">
             <div class="col-md-12" id="box1">
  <div class="col-md-2 col-sm-2" >
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -690,7 +690,7 @@ else if(roles.equals("ArchivalProgramManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -699,7 +699,7 @@ else if(roles.equals("ArchivalProgramManager"))
                 
                  </div>
 				 
-                <div class="col-md-2 col-sm-2">
+                <%--<div class="col-md-2 col-sm-2">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
@@ -707,7 +707,7 @@ else if(roles.equals("ArchivalProgramManager"))
                  </center>
                   </a>
                 </div>
- 
+ --%>
 				  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
@@ -815,7 +815,7 @@ else if(roles.equals("LegacyBusinessSME"))
     <div class="container">
             <div class="col-md-12" id="box1">
 <div class="col-md-2 col-sm-2" id="testDecom">
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -830,21 +830,21 @@ else if(roles.equals("LegacyBusinessSME"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
-                <div class="col-md-2 col-sm-2" id="testDecom">
+                <%--<div class="col-md-2 col-sm-2" id="testDecom">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
@@ -956,7 +956,7 @@ else if(roles.equals("LegacyTechnicalSME"))
     <div class="container">
             <div class="col-md-12" id="box1">
  <div class="col-md-2 col-sm-2" id="testDecom">
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -971,23 +971,23 @@ else if(roles.equals("LegacyTechnicalSME"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
-                <div class="col-md-2 col-sm-2" id="testDecom">
+                <%--<div class="col-md-2 col-sm-2" id="testDecom">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
  <div class="col-md-1 col-sm-1" id="arrow">
-                
+
                  </div>
                 <div class="col-md-3 col-sm-3" id="testDecom">
                   <a href="#">
@@ -1093,7 +1093,7 @@ else if(roles.equals("LegacyProgramManager"))
     <div class="container">
             <div class="col-md-12" id="box1">
 <div class="col-md-2 col-sm-2" id="testDecom">
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -1108,21 +1108,21 @@ else if(roles.equals("LegacyProgramManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
-                <div class="col-md-2 col-sm-2" id="testDecom">
+                <%--<div class="col-md-2 col-sm-2" id="testDecom">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
@@ -1231,7 +1231,7 @@ else if(roles.equals("ArchivalBusinessAnalyst"))
 
                
 <div class="col-md-2 col-sm-2" id="testDecom">
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -1245,21 +1245,21 @@ else if(roles.equals("ArchivalBusinessAnalyst"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
-                <div class="col-md-2 col-sm-2" id="testDecom">
+                <%--<div class="col-md-2 col-sm-2" id="testDecom">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
@@ -1366,7 +1366,7 @@ else if(roles.equals("ArchivalTechnicalLead"))
     <div class="container">
             <div class="col-md-12" id="box1">
 <div class="col-md-2 col-sm-2" id="testDecom">
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -1383,7 +1383,7 @@ else if(roles.equals("ArchivalTechnicalLead"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
@@ -1391,14 +1391,14 @@ else if(roles.equals("ArchivalTechnicalLead"))
                 
                  </div>
 				 
-                <div class="col-md-2 col-sm-2" id="testDecom">
+                <%--<div class="col-md-2 col-sm-2" id="testDecom">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
@@ -1507,7 +1507,7 @@ else if(roles.equals("ArchivalProjectManager"))
     <div class="container">
             <div class="col-md-12" id="box1">
 <div class="col-md-2 col-sm-2" >
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -1522,14 +1522,14 @@ else if(roles.equals("ArchivalProjectManager"))
                   <a href="ProjectManager_dashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
 <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
-                <div class="col-md-2 col-sm-2">
+                <%--<div class="col-md-2 col-sm-2">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
@@ -1537,7 +1537,7 @@ else if(roles.equals("ArchivalProjectManager"))
                  </center>
                   </a>
                 </div>
-
+--%>
 <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
@@ -1645,7 +1645,7 @@ else if(roles.equals("ArchivalDeveloper"))
 
                 
 <div class="col-md-2 col-sm-2"  id="testDecom" >
-                  <a href="Admin_UserConfiguration.jsp">
+                  <a href="User_Configuration.jsp">
                    <center>
                    <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Admin</h6>
@@ -1659,21 +1659,21 @@ else if(roles.equals("ArchivalDeveloper"))
                   <a href="RoleUIDashboard.jsp">
                  <center>
                    <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                   <h6 class="mt-5">Reports Governance</h6>
+                   <h6 class="mt-5">Reports and Governance</h6>
                  </center>
                   </a>
                 </div>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>
-                <div class="col-md-2 col-sm-2" id="testDecom">
+                <%--<div class="col-md-2 col-sm-2" id="testDecom">
                   <a href="#">
                  <center>
                    <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
                    <h6 class="mt-5">Reports Governance</h6>
                  </center>
                   </a>
-                </div>
+                </div>--%>
  <div class="col-md-1 col-sm-1" id="arrow">
                 
                  </div>

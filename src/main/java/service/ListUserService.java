@@ -24,7 +24,7 @@ public class ListUserService {
         try {
             Class.forName("org.gjt.mm.mysql.Driver").newInstance();
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
-            String user_query = "select * from admin_userdetails";
+            String user_query = "select * from admin_userdetails /*where stats='active'*/";
             /*String user_query = "select * from admin_userdetails where uname ='" + uname+ "'";*/
             Statement user_st = connection.createStatement();
             ResultSet users_list = user_st.executeQuery(user_query);

@@ -1,5 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,13 +43,17 @@
 
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
+
+
+
+
     <style type="text/css">
         .breadcrumb-div {
             background-color: #e7e7e7;
             color: #010101;
         }
-    </style>
-    <style>
+
+
         .selectBox {
             position: static;
         }
@@ -64,13 +66,13 @@
             bottom: 0;
         }
 
-        .overSelect1 {
+        /*.overSelect1 {
             position: absolute;
             left: 0;
             right: 0;
             top: 0;
             bottom: 0;
-        }
+        }*/
 
         #checkboxes {
             width: auto;
@@ -111,10 +113,6 @@
         #app {
             background-color: white;
         }
-
-    </style>
-
-    <style>
 
         .glyphicon.glyphicon-asterisk {
             color: red;
@@ -187,7 +185,9 @@
             var llname = document.getElementById("lname").value;
             var email = document.getElementById("email_val").value;
             var project = document.getElementById('proj').value;
+            console.log("koomkortf",project);
             var app = document.getElementById('projapp').value;
+
             //window.alert(project);
             if (ffname === "" || llname === "" || arr === "")
                 window.alert("fill the mandatory fileds");
@@ -196,7 +196,7 @@
 
                     var f = document.loginForm;
                     f.method = "post";
-                    f.action = "sendMail?roless=" + arr + "&mailid=" + email + "&message=" + msg + "&fname=" + ffname + "&lname=" + llname + "&project=" + project + "&application=" + app;
+                    f.action = "Admin_Module_Send_Invites_Mail?=roless" + arr + "&mailid=" + email + "&message=" + msg + "&fname=" + ffname + "&lname=" + llname + "&project=" + project + "&application=" + app;
                     f.submit();
                 } else
                     window.alert("Invalid EmailID");
@@ -215,6 +215,93 @@
             document.getElementById('send_btn').disabled = true;
         }
     </script>
+
+
+    <script type="application/javascript">
+        $(document).ready(function () {
+            var html_code = '';
+            $('#proj').click(function () {
+                $.ajax({
+                    url: 'Admin_Module_Send_Invites',
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        var userlistdiv = $('#projects_id');
+                        console.log("sample----->", data);
+                        //var testing=$("#projects_id").append("<option value='0'>Select player...</option>");
+                        var testing = "";
+                        //$("#projects_id").append("<option value='" +key+ "'>" + value + "</option>")
+                        $('#checkboxes').html('');
+                        $.each(data, function (key, value) {
+                            //testing+= '<option value=' +key+ '>' + value + '</option>';
+                            var label = '<label for=' + value + '><input type="checkbox" id=' + value + ' class="op" value=' + value + ' onclick="CheckForm(this.value);ChecForm();">' + value + '</label>';
+                            $('#checkboxes').append(label);
+                        });
+
+
+                    }
+                });
+
+
+            });
+        });
+
+        /*$(document).ready(function () {
+
+            //var table_data={"mydata":{header: heads, data: data},"selectedEmail":selectedEmail};
+            $('#projapp').click(function () {
+                var proj = $('#proj').val();
+                //alert("appname---->"+proj);
+                //var projectname="";
+                $.ajax({
+                    url: 'Admin_Module_Applications_Info',
+                    type: 'post',
+                    data: {proj: proj},
+                    dataType: 'json',
+                    success: function (data) {
+                        //alert("sample 1---->", data)
+                    }
+                });
+
+
+            });
+        });*/
+         function appdrop1(proj,checking) {
+
+              $.ajax({
+                  url: 'Admin_Module_Applications_Info',
+                  type: 'post',
+                  data: {proj: proj},
+                  dataType: 'json',
+                  success: function (data) {
+                      if(checking==true)
+                      {
+                         $.each(data,function(key,value)
+                          {
+                              var str3 = '<label for="' + proj + "-" + value + '"> <input type="checkbox" id="' + proj + "-" + value + '"class="oppp" value="' + proj + "-" + value + '"onclick="ChecForm();"> ' + proj + "-" + value + '</label>';
+                              $('#app').append(str3);
+                          });
+                      }
+                      else {
+                          $.each(data,function(key,value)
+                          {
+                              var remove_element="label[for=" + proj + "-" + value + "]";
+                              var string_variabe=remove_element.toString();
+                              $(string_variabe).remove();
+                          });
+
+                      }
+
+
+                  }
+              });
+          }
+
+    </script>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css"/>
+
 </head>
 <body class="top-navbar-fixed">
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -242,16 +329,7 @@
 
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
-    String query = "select * from Admin_UserDetails";
-    String query1 = "select * from Admin_UserDetails";
-    Statement s = conn.createStatement();
-    Statement s1 = conn.createStatement();
-    ResultSet rs = s.executeQuery(query);
-    ResultSet rs1 = s1.executeQuery(query1);
-    String query2 = "select * from AppEmphazize_ProjectDetails";
-    Statement s2 = conn.createStatement();
-    ResultSet rs2 = s2.executeQuery(query2);
-    int count = 0;
+
 %>
 
 <div class="main-wrapper">
@@ -361,7 +439,7 @@
 
                                                             <label><b> First Name</b>
                                                                 <span
-                                                                    class="glyphicon glyphicon-asterisk"></span>
+                                                                        class="glyphicon glyphicon-asterisk"></span>
                                                             </label>
                                                             <input type="text" id="fname" name="fname"
                                                                    class="form-control"/>
@@ -385,6 +463,47 @@
                                                             <input type="email" class="form-control" id="email_val">
                                                         </div>
                                                     </div>
+                                                   <%-- <div class="row">
+                                                        <div class="col-sm-6 form-group">
+                                                            <label>Role Name<span
+                                                                    class="glyphicon glyphicon-asterisk"></span></label>
+                                                            <div class="col-lg-12">
+                                                                <select id="dates-field2"
+                                                                        class="selectpicker multiselect-ui form-control"
+                                                                        data-show-subtext="true"
+                                                                        data-live-search="true" &lt;%&ndash;multiple="multiple"&ndash;%&gt;>
+                                                                    <option data-subtext="Archival Admin">
+                                                                        ArchivalAdmin
+                                                                    </option>
+                                                                    <option data-subtext="Legacy Technical SME">
+                                                                        LegacyTechnicalSME
+                                                                    </option>
+                                                                    <option data-subtext="Legacy Business SME">
+                                                                        LegacyBusinessSME
+                                                                    </option>
+                                                                    <option data-subtext="Archival Program Manager">
+                                                                        ArchivalProgramManager
+                                                                    </option>
+                                                                    <option data-subtext="Archival Project Manager">
+                                                                        ArchivalProjectManager
+                                                                    </option>
+                                                                    <option data-subtext="Legacy Program Manager">
+                                                                        LegacyProgramManager
+                                                                    </option>
+                                                                    <option data-subtext="Archival Business Analyst">
+                                                                        ArchivalBusinessAnalyst
+                                                                    </option>
+                                                                    <option data-subtext="Archival Technical Lead">
+                                                                        ArchivalTechnicalLead
+                                                                    </option>
+                                                                    <option data-subtext="Archival Developer">
+                                                                        ArchivalDeveloper
+                                                                    </option>
+                                                                    <option data-subtext="Test Lead">TestLead</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>--%>
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
                                                             <label>Role Name<span
@@ -434,6 +553,31 @@
 
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
+                                                            <%--<div class="multiselect">
+                                                                <label>Projects<span
+                                                                        class="glyphicon glyphicon-asterisk"></span></label>
+                                                                <div class="col-lg-12 selectBox"
+                                                                     onclick="showCheckboxes();">
+                                                                    <select id="projects_id" name="projects_id"
+                                                                            class="form-control"
+                                                                             required>
+                                                                        <option class="overSelect" id="checkboxes" name="checkboxes">
+
+                                                                            &lt;%&ndash; <% while (rs2.next()) { %>
+                                                                            <label for=<%=rs2.getString("projectname")%>><input
+                                                                                    type="checkbox"
+                                                                                    id=<%=rs2.getString("projectname")%> class="op"
+                                                                                    value=<%= rs2.getString("projectname")%> onclick="CheckForm(this.value);ChecForm();"> <%=rs2.getString("projectname") %>
+                                                                            </label>
+                                                                            <%}%>&ndash;%&gt;
+
+                                                                        </option>
+
+                                                                    </select>
+                                                                </div>
+                                                            </div>--%>
+
+
                                                             <div class="multiselect">
                                                                 <label>Projects</label>
                                                                 <div class="selectBox" onclick="showCheckboxes();">
@@ -443,18 +587,18 @@
                                                                            onclick="" value="" readonly required>
                                                                     <div class="overSelect"></div>
                                                                 </div>
-                                                                <div id="checkboxes">
-                                                                    <% while (rs2.next()) { %>
+                                                                <div id="checkboxes" name="checkboxes">
+                                                                    <%--<% while (rs2.next()) { %>
                                                                     <label for=<%=rs2.getString("projectname")%>><input
                                                                             type="checkbox"
                                                                             id=<%=rs2.getString("projectname")%> class="op"
                                                                             value=<%= rs2.getString("projectname")%> onclick="CheckForm(this.value);ChecForm();"> <%=rs2.getString("projectname") %>
                                                                     </label>
-                                                                    <%}%>
+                                                                    <%}%>--%>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <script>
+                                                        <%--<script>
                                                             function calx() {
 
                                                                 var prj = document.getElementById('proj').value;
@@ -496,9 +640,10 @@
                                                                 select.insertAdjacentHTML('beforeEnd', options.join('\n'));
                                                             }
 
-                                                        </script>
+                                                        </script>--%>
                                                         <script type="text/javascript">
                                                             function CheckForm(val) {
+
                                                                 var element = document.getElementsByClassName("op");
                                                                 var txt = "";
                                                                 var options1;
@@ -510,10 +655,9 @@
                                                                     }
                                                                 }
                                                                 var txt1 = txt.substring(0, txt.length - 1);
-                                                                /*  alert(txt1); */
                                                                 document.getElementById("proj").value = txt1;
                                                                 var checking = document.getElementById(val).checked;
-                                                                appdrop(eindex, val, checking);
+                                                                appdrop1(val, checking);
                                                             }
                                                         </script>
                                                         <script type="text/javascript">
@@ -529,10 +673,11 @@
 
                                                             }
                                                         </script>
-                                                        <script type="text/javascript">
+                                                      <%--  <script type="text/javascript">
                                                             var lindex = 0;
 
-                                                            function appdrop(eindex, val, checking) {
+                                                            /*function appdrop(eindex, val, checking) {
+                                                                //alert("val"+val+"eindex"+eindex+"checking"+checking);
 
                                                                 var txt1 = document.getElementById("proj").value;
                                                                 var pro = [];
@@ -540,7 +685,7 @@
                                                                 var txt = txt1.split(",");
                                                                 var projects = "";
                                                                 var apps = "";
-                                                                <% String query4="select appname,prjname from AppEmphazize_ApplicationInfo";
+                                                                &lt;%&ndash;<% String query4="select appname,prjname from AppEmphazize_ApplicationInfo";
                                                                 Statement s4=conn.createStatement();
                                                                  ResultSet rs4=s4.executeQuery(query4);
                                                                  while(rs4.next())
@@ -551,7 +696,7 @@
                                                                 <% String str1=rs4.getString("appname");%>
                                                                 ap.push("<%=str1%>");
                                                                 apps = apps + "," + "<%=str1%>";
-                                                                <%}%>
+                                                                <%}%>&ndash;%&gt;
                                                                 var projects1 = projects.substring(1, projects.length - 1);
                                                                 var apps1 = apps.substring(1, apps.length - 1);
                                                                 var apps2 = apps1.split(",");
@@ -561,7 +706,7 @@
                                                                 var len = 0;
                                                                 var oplen = document.getElementsByClassName("oppp").length;
                                                                 var options1 = [];
-                                                                /*if statement get executed when a project check box is true  */
+                                                                /!*if statement get executed when a project check box is true  *!/
                                                                 if (checking == true) {
                                                                     var k = 0;
                                                                     while (k < pro.length) {
@@ -574,14 +719,14 @@
                                                                             var appww = ap[k].replace(/\s/g, '');
                                                                             options1.push(pa);
                                                                             var str3 = '<label for="' + val + "-" + appww + '"> <input type="checkbox" id="' + val + "-" + appww + '"class="oppp" value="' + val + "-" + appw + '"onclick="ChecForm();"> ' + val + "-" + appw + '</label>';
-                                                                            /*adding applications in application drop down for respective checked project  */
+                                                                            /!*adding applications in application drop down for respective checked project  *!/
                                                                             select.append(str3);
                                                                             len = len + 1;
                                                                         }
                                                                         k = k + 1;
                                                                     }
                                                                 }
-                                                                /*else statement get executed when project check box is false  */
+                                                                /!*else statement get executed when project check box is false  *!/
                                                                 else {
                                                                     var k = 0;
                                                                     while (k < pro.length) {
@@ -593,15 +738,15 @@
                                                                             var pa = "label[for=" + val + "-" + appww + "]";
                                                                             options1.push(pa);
                                                                             var val1 = pa.toString();
-                                                                            /*removing applications in application drop down for respective unchecked project  */
+                                                                            /!*removing applications in application drop down for respective unchecked project  *!/
                                                                             $(val1).remove();
                                                                             var elem = document.getElementById(pa);
                                                                         }
                                                                         k = k + 1;
                                                                     }
                                                                 }
-                                                            }
-                                                        </script>
+                                                            }*/
+                                                        </script>--%>
                                                         <script>
                                                             var expanded = false;
 
@@ -662,6 +807,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
     </form>
 
@@ -750,6 +896,8 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 <!-- ========== THEME JS ========== -->
 
 <script type="text/javascript">

@@ -194,7 +194,7 @@
 
                     var f = document.loginForm;
                     f.method = "post";
-                    f.action = "sendMail?roless=" + arr + "&mailid=" + email + "&message=" + msg + "&fname=" + ffname + "&lname=" + llname + "&project=" + project + "&application=" + app;
+                    f.action = "Admin_Module_Send_Invites_Mail?roless=" + arr + "&mailid=" + email + "&message=" + msg + "&fname=" + ffname + "&lname=" + llname + "&project=" + project + "&application=" + app;
                     f.submit();
                 } else
                     window.alert("Invalid EmailID");
@@ -292,6 +292,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+</div>
 
 
     <form class="form-signin" name="loginForm" method="post">
@@ -334,12 +335,16 @@
                             </ul>
 
                         </div>
-                        <!-- /.sidebar-nav -->
                     </div>
-                    <!-- /.sidebar-content -->
-                </div>
-                <!-- /.left-sidebar -->
 
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>
 
                 <!-- Projects List Start -->
 
