@@ -726,7 +726,7 @@ public class date_update extends HttpServlet {
 
 					prog = (actl * 100) / planed;
 
-				if (progressbar.get(n).equals("100")) {
+				/*if (progressbar.get(n).equals("100")) {
 
 					//System.out.println("balaalala");
 
@@ -748,23 +748,23 @@ public class date_update extends HttpServlet {
 				else
 
 				{
+*/
+				//System.out.println("Progressbar updating");
+				if (seq_num.get(n) == Integer.parseInt(sequence_no))
+					st.executeUpdate("update ArchiveExecution_Details set comments='" + comments
+							+ "', act_srt_date='" + actual_startdate.get(n) + "',act_end_date='"
+							+ actual_enddate.get(n) + "',pln_srt_date='" + plan_startdate.get(n)
+							+ "',pln_end_date='" + plan_enddate.get(n) + "',planned_hrs='" + planned_hours.get(n)
+							+ "',mem_ass='" + mem_ass+ "',hours='" + actual_hours.get(n) + "' where seq_num=" + seq_num.get(n)
+							+ " and projects='" + prjname + "'");
+				else
+					st.executeUpdate("update ArchiveExecution_Details set  act_srt_date='"
+							+ actual_startdate.get(n) + "',act_end_date='" + actual_enddate.get(n)
+							+ "',pln_srt_date='" + plan_startdate.get(n) + "',pln_end_date='" + plan_enddate.get(n)
+							+ "',planned_hrs='" + planned_hours.get(n) + "',hours='" + actual_hours.get(n)
+							+ "' where seq_num=" + seq_num.get(n) + " and projects='" + prjname + "'");
 
-					//System.out.println("Progressbar updating");
-					if (seq_num.get(n) == Integer.parseInt(sequence_no))
-						st.executeUpdate("update ArchiveExecution_Details set comments='" + comments
-								+ "',progressbar='100', act_srt_date='" + actual_startdate.get(n) + "',act_end_date='"
-								+ actual_enddate.get(n) + "',pln_srt_date='" + plan_startdate.get(n)
-								+ "',pln_end_date='" + plan_enddate.get(n) + "',planned_hrs='" + planned_hours.get(n)
-								+ "',mem_ass='" + mem_ass+ "',hours='" + actual_hours.get(n) + "' where seq_num=" + seq_num.get(n)
-								+ " and projects='" + prjname + "'");
-					else
-						st.executeUpdate("update ArchiveExecution_Details set progressbar='" + prog + "', act_srt_date='"
-								+ actual_startdate.get(n) + "',act_end_date='" + actual_enddate.get(n)
-								+ "',pln_srt_date='" + plan_startdate.get(n) + "',pln_end_date='" + plan_enddate.get(n)
-								+ "',planned_hrs='" + planned_hours.get(n) + "',hours='" + actual_hours.get(n)
-								+ "' where seq_num=" + seq_num.get(n) + " and projects='" + prjname + "'");
-
-				}
+				/*}*/
 
 			}
 
@@ -792,7 +792,7 @@ public class date_update extends HttpServlet {
 			Statement sr = conn.createStatement();
 
 			int seq_no = Integer.parseInt(request.getParameter("sequence_no"));
-
+			System.out.println("initiate sequence number :"+request.getParameter("initiate_seqno"));
 			int initiate_seqno = Integer.parseInt(request.getParameter("initiate_seqno"));
 
 			int plan_seqno = Integer.parseInt(request.getParameter("plan_seqno"));
@@ -885,8 +885,8 @@ public class date_update extends HttpServlet {
                    int sub1=Integer.parseInt(actual_hours.get(first-1))-Integer.parseInt(actual_hours.get(k-1));
                    int sub2=Integer.parseInt(planned_hours.get(first-1))-Integer.parseInt(planned_hours.get(k-1));
                    System.out.println("testing");
-                   actual_hours.add(first-1,Integer.toString(sub1));
-                   planned_hours.add(first-1,Integer.toString(sub2));
+                   actual_hours.Add(first-1,Integer.toString(sub1));
+                   planned_hours.Add(first-1,Integer.toString(sub2));
                 }*/
 			}
 
@@ -906,8 +906,8 @@ public class date_update extends HttpServlet {
 
 				//	System.out.println("kjadkjakdjj");
 
-				//actual_hours.add(first-1,Integer.toString(sub1));
-				//planned_hours.add(first-1,Integer.toString(sub2));
+				//actual_hours.Add(first-1,Integer.toString(sub1));
+				//planned_hours.Add(first-1,Integer.toString(sub2));
 				//int act1=Integer.parseInt(actual_hours.get(first-1));
 				//int plan1=Integer.parseInt(planned_hours.get(first-1));
 				System.out.println("actual hours "+actual_hours.get(first-1)+"planned hours "+planned_hours.get(first-1));
