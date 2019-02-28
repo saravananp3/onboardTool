@@ -27,14 +27,14 @@ import java.util.*;
 
 @WebServlet("/Intake_Review_Email")
 public class Intake_Review_Email extends HttpServlet {
-    final static Logger LOGGER = Logger.getLogger(Intake_Review_Email.class);
+    final static Logger logger = Logger.getLogger(Intake_Review_Email.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("hello");
+        logger.info("hello");
         try {
             boolean isSignOrdered = Boolean.valueOf(request.getHeader("signorder"));
             String email = request.getReader().readLine();
-            System.out.println("Email_ID" + email);
+            logger.info("Email_ID" + email);
             String app_Name = request.getSession().getAttribute("appidd").toString();
             JsonArray recepientsIdArray = new JsonParser().parse(email).getAsJsonArray();
             Map<String, String> users = getUserOrder(recepientsIdArray);

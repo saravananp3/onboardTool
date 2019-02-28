@@ -17,7 +17,7 @@ import java.sql.Statement;
 import java.util.List;
 
 public class ListUserService {
-    final static Logger LOGGER = Logger.getLogger(ListUserService.class);
+    final static Logger logger = Logger.getLogger(ListUserService.class);
 
     public JsonObject getUserList() {
         JsonObject infoJson = new JsonObject();
@@ -60,7 +60,7 @@ public class ListUserService {
                 String key = users_list.getString("email");
                 String value = users_list.getString("uname");
                 userTable.put(id, key, value);
-                LOGGER.info("Testing--->" + userTable);
+                logger.info("usertable--->" + userTable);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -21,43 +21,34 @@ import java.io.*;
  */
 @WebServlet("/priorityreview")
 public class PriorityReview extends HttpServlet {
-    final static Logger LOGGER = Logger.getLogger(PriorityReview.class);
+
+    final static Logger logger = Logger.getLogger(PriorityReview.class);
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public PriorityReview() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         // response.getWriter().append("Served at: ").append(request.getContextPath());
 
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        //final Logg
-        // er LOGGER = Logger.getLogger(Intake_Review_Data.class);
+
         String realPath = "";
-        JsonObject infojson=null;
+        JsonObject infojson = null;
         final int ARBITARY_SIZE = 1048;
         String data_submit = request.getParameter("mydata");
         if (data_submit != null) {
-             String filename = "Priority_Review.pdf";
-            infojson =  new JsonParser().parse(data_submit).getAsJsonObject();
+            String filename = "Priority_Review.pdf";
+            infojson = new JsonParser().parse(data_submit).getAsJsonObject();
             try {
-                ByteArrayOutputStream byteArrayOutputStream = new TableReportGenerator().build(infojson.getAsJsonArray("header"),infojson.getAsJsonArray("data"), ReportUtils.PDF, "Plan and Priority Review", realPath);
+                ByteArrayOutputStream byteArrayOutputStream = new TableReportGenerator().build(infojson.getAsJsonArray("header"), infojson.getAsJsonArray("data"), ReportUtils.PDF, "Plan and Priority Review", realPath);
                 response.setContentType("application/pdf");
                 response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");
 
@@ -83,8 +74,7 @@ public class PriorityReview extends HttpServlet {
 
         } else {
             String json = new Gson().toJson(infojson);
-             System.out.println("json--->" + json);
-            LOGGER.info("json--->" + json);
+            logger.info("json--->" + json);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);

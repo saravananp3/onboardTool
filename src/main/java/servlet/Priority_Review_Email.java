@@ -28,24 +28,24 @@ import java.util.*;
 
 @WebServlet("/Priority_Review_Email")
 public class Priority_Review_Email extends HttpServlet {
-    final static Logger LOGGER = Logger.getLogger(Priority_Review_Email.class);
+    final static Logger logger = Logger.getLogger(Priority_Review_Email.class);
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("hello");
+        logger.info("testing---->");
         try {
-            String source=request.getReader().readLine();
-            JsonObject infojson  = new JsonParser().parse(source).getAsJsonObject();
+            String source = request.getReader().readLine();
+            JsonObject infojson = new JsonParser().parse(source).getAsJsonObject();
             boolean isSignOrdered = Boolean.valueOf(request.getHeader("signorder"));
-            String email =  infojson.get("selectedEmail").toString();
-            System.out.println("Email_ID" + email);
+            String email = infojson.get("selectedEmail").toString();
+            logger.info("Email_ID" + email);
             //String app_Name = request.getSession().getAttribute("appidd").toString();
 
-            JsonObject tableData  =infojson.get("mydata").getAsJsonObject();
+            JsonObject tableData = infojson.get("mydata").getAsJsonObject();
             JsonArray recepientsIdArray = new JsonParser().parse(email).getAsJsonArray();
             Map<String, String> users = getUserOrder(recepientsIdArray);
-            ByteArrayOutputStream pdfReportOutputStream = new TableReportGenerator().build(tableData.get("header").getAsJsonArray(), tableData.get("data").getAsJsonArray(),  ReportUtils.PDF, "Priority_Review", "");
+            ByteArrayOutputStream pdfReportOutputStream = new TableReportGenerator().build(tableData.get("header").getAsJsonArray(), tableData.get("data").getAsJsonArray(), ReportUtils.PDF, "Priority_Review", "");
             DocusignUtility docusignUtility = new DocusignUtility();
             if (isSignOrdered) {
                 sendSigningEmail(users, pdfReportOutputStream, docusignUtility);
