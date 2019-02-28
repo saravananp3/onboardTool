@@ -11,13 +11,12 @@ import java.sql.Statement;
 public class Admin_Module_Service {
 
     public JsonObject getproject_details() {
+        String query2 = "select * from AppEmphazize_ProjectDetails";
         JsonObject infoJson = new JsonObject();
-        try {
-            DBconnection dBconnection = new DBconnection();
-            Connection connection = (Connection) dBconnection.getConnection();
-            String query2 = "select * from AppEmphazize_ProjectDetails";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query2);
+        try (Connection connection = new DBconnection().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query2);
+        ) {
             while (resultSet.next()) {
                 String field = resultSet.getString("id");
                 String value = resultSet.getString("projectname");

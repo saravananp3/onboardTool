@@ -121,10 +121,10 @@ height: 250px;
                                 <%--<h6 class="mt-5">Send Invites</h6>--%>
                             </center>
                         </a>
-                    </div>
+                     </div>
 
                     <div class="col-md-3 col-sm-3">
-                        <a href="<%--Admin_UserConfiguration.jsp--%>">
+                        <a href="Modify_Admin_Users_list.jsp">
                             <center>
                                 <img src="images/admin_userconfiguration/Modification.png" class="img-rounded" data-toggle="tooltip"  title="MODIFY" id="modify" height="100" width="100" data-color="#494949">
                                 <%--<div>
@@ -135,18 +135,18 @@ height: 250px;
                             </center>
                         </a>
                     </div>
-                    <div class="col-md-3 col-sm-3">
-                        <a href="<%--Admin_UserConfiguration.jsp--%>">
+                    <%--<div class="col-md-3 col-sm-3">
+                        <a href="&lt;%&ndash;Admin_UserConfiguration.jsp&ndash;%&gt;">
                             <center>
                                 <img src="images/admin_userconfiguration/Deletion.png" class="img-rounded" data-toggle="tooltip"  title="DELETION" id="delete" height="100" width="100" data-color="#494949">
-                               <%--<div>
+                               &lt;%&ndash;<div>
                                    <button type="button" class="btn btn-primary">DELETION</button>
-                               </div>--%>
+                               </div>&ndash;%&gt;
 
-                                <%--<h6 class="mt-5">Send Invites</h6>--%>
+                                &lt;%&ndash;<h6 class="mt-5">Send Invites</h6>&ndash;%&gt;
                             </center>
                         </a>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="partition"></div>
 
