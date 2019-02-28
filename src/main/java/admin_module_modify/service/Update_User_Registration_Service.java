@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Update_User_Registration_Service {
-    final static Logger LOGGER = Logger.getLogger(Update_User_Registration_Service.class);
+    final static Logger logger = Logger.getLogger(Update_User_Registration_Service.class);
 
     public Update_User_Registration_Service Update_Service_Registration (String uname,String fname,String lname,String email_val,String project_id,String application_id,String id) {
         JsonObject infoJson = new JsonObject();

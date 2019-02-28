@@ -17,7 +17,7 @@ import java.sql.Statement;
 import java.util.List;
 
 public class Modify_List_User_Service {
-    final static Logger LOGGER = Logger.getLogger(Modify_List_User_Service.class);
+    final static Logger logger = Logger.getLogger(Modify_List_User_Service.class);
 
     public JsonArray getModify_List_of_User() {
 
@@ -38,7 +38,7 @@ public class Modify_List_User_Service {
                     infoJson.addProperty(users_list.getMetaData().getColumnLabel(i + 1).toLowerCase(), users_list.getString(i + 1));
                 }
                 jsonArray.add(infoJson);
-                System.out.println("json array---->" + jsonArray);
+                logger.info("json array---->" + jsonArray);
             }
         } catch (Exception e) {
             e.printStackTrace();

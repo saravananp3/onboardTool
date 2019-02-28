@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ModifyDataRetrieve_Serice {
-    final static Logger LOGGER = Logger.getLogger(ModifyDataRetrieve_Serice.class);
+    final static Logger logger = Logger.getLogger(ModifyDataRetrieve_Serice.class);
 
     public JsonArray getModify_List_of_User_Service(String id) {
         //JsonObject infoJson = new JsonObject();
@@ -37,7 +37,7 @@ public class ModifyDataRetrieve_Serice {
                     infoJson.addProperty(users_list.getMetaData().getColumnLabel(i + 1).toLowerCase(), users_list.getString(i + 1));
                 }
                 jsonArray.add(infoJson);
-                System.out.println("json array 1---->" + jsonArray);
+                logger.info("json array 1---->" + jsonArray);
             }
         } catch (Exception e) {
             e.printStackTrace();
