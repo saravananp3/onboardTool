@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @WebServlet("/Admin_Module_Applications_Info")
 public class Admin_Module_Applications_Info extends HttpServlet {
-    final static org.apache.log4j.Logger logger = Logger.getLogger(Admin_Module_Applications_Info.class);
+    final static Logger logger = Logger.getLogger(Admin_Module_Applications_Info.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
