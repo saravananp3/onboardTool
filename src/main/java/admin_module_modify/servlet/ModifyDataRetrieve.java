@@ -2,9 +2,11 @@ package admin_module_modify.servlet;
 
 import admin_module_modify.service.ModifyDataRetrieve_Serice;
 import admin_module_modify.service.Modify_List_User_Service;
+import admin_module_modify.service.Update_User_Registration_Service;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,17 +17,17 @@ import java.io.IOException;
 
 @WebServlet("/ModifyDataRetrieve")
 public class ModifyDataRetrieve extends HttpServlet {
+    final static Logger logger = Logger.getLogger(ModifyDataRetrieve.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("hello");
-        String id=request.getParameter("id");
+        String id = request.getParameter("id");
         try {
             JsonArray infojson = new ModifyDataRetrieve_Serice().getModify_List_of_User_Service(id);
             String json = new Gson().toJson(infojson);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);
-            System.out.println("json data 1----->"+json);
+            logger.info("json data----->" + json);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,9 +35,6 @@ public class ModifyDataRetrieve extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
 
 
     }

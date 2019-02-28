@@ -4,6 +4,7 @@ import admin_module_modify.service.ModifyDataRetrieve_Serice;
 import admin_module_modify.service.Update_User_Registration_Service;
 import com.google.gson.JsonObject;
 import onboard.encryption;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,26 +26,20 @@ import java.util.Date;
 
 public class Update_User_registration extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    final static Logger logger = Logger.getLogger(Update_User_registration.class);
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public Update_User_registration() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String uname = request.getParameter("uname");
@@ -54,9 +49,9 @@ public class Update_User_registration extends HttpServlet {
             String project_id = request.getParameter("project_id");
             String application_id = request.getParameter("application_id");
             String id = request.getParameter("id");
-            Update_User_Registration_Service update_user_registration_service =new Update_User_Registration_Service().Update_Service_Registration(uname,fname,lname,email_val,project_id,application_id,id);
-/*            String update_registration = new Update_User_Registration_Service().Update_Service_Registration(uname,fname,lname,email_val,project_id,application_id,id);*/
-            System.out.println("testing----->"+update_user_registration_service);
+            Update_User_Registration_Service update_user_registration_service = new Update_User_Registration_Service().Update_Service_Registration(uname, fname, lname, email_val, project_id, application_id, id);
+            /*            String update_registration = new Update_User_Registration_Service().Update_Service_Registration(uname,fname,lname,email_val,project_id,application_id,id);*/
+            logger.info("queryyyy" + update_user_registration_service);
             /*String myDriver = "org.gjt.mm.mysql.Driver";
             String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
             Class.forName(myDriver);
@@ -67,7 +62,8 @@ public class Update_User_registration extends HttpServlet {
             conn.close();*/
             response.sendRedirect("Modify_Admin_Users_list.jsp");
         } catch (Exception e) {
-            System.err.println("[ERROR]-----Got an exception!" + e + "----[ERROR]");
+            e.printStackTrace();
+            logger.error("[ERROR]-----Got an exception!" + e + "----[ERROR]");
         }
     }
 
