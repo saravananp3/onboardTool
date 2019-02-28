@@ -46,6 +46,7 @@ public class Admin_Module_Service {
                 infoJson.addProperty(key, value);
             }
             logger.info("json obj----->" + infoJson);
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

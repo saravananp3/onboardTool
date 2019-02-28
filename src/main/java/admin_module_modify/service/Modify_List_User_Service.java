@@ -40,6 +40,7 @@ public class Modify_List_User_Service {
                 jsonArray.add(infoJson);
                 logger.info("json array---->" + jsonArray);
             }
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -14,7 +14,7 @@ public class Role_Details_Service {
 
     public JsonArray role_details() {
         //JsonObject infoJson = new JsonObject();
-        JsonArray jsonArray=new JsonArray();
+        JsonArray jsonArray = new JsonArray();
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
@@ -36,7 +36,7 @@ public class Role_Details_Service {
                 jsonArray.add(infoJson);
                 logger.info("json array---->" + jsonArray);
             }
-
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
