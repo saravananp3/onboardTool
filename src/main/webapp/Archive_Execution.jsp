@@ -7,12 +7,14 @@
     <title>Onboard - Archive Executive Sample</title>
 
     <link rel="stylesheet"
-         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script
-           src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+    <a href="https://icons8.com/icon/103369/add-row"></a>
+    <a href="https://icons8.com/icon/14320/delete-row"></a>
 
-  <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
@@ -56,76 +58,99 @@
 
     <script src="js/archivesummary/jstree.min.js"></script>
     <style>
-    /* The Modal (background) */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      padding-top: 100px; /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
 
-    /* Modal Content */
-    .modal-content {
-      background-color: #fefefe;
-      margin: auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 30%;
-      height:60%;
-    }
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            height:55%;
+        }
+        .modal-content1 {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            height:46%;
+        }
+        .modal-content2 {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            height:47  %;
+        }
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-    /* The Close Button */
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /*popup input text field taskname style*/
+        #taskname
+        {
+            width:300px;
+            height:50px;
+            border: 2px ridge black;
+            border-radius: 4px;
+        }
+        #modifytaskname
+        {
+            width:300px;
+            height:50px;
+            border: 2px ridge black;
+            border-radius: 4px;
+        }
+        .node { /* Change width and height */
+            width:1em;
+            height:1em;
+        }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
 
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    /*popup input text field taskname style*/
-    #taskname
-    {
-      width:300px;
-      height:50px;
-      border: 2px ridge black;
-      border-radius: 4px;
-    }
-    .node { /* Change width and height */
-    width:1em;
-    height:1em;
-    }
-    .button {
-      background-color: #4CAF50; /* Green */
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-
-    .button2 {background-color: rgb(52, 152, 219);border-radius: 12px;} /* Blue */
+        .button2 {background-color: rgb(52, 152, 219);border-radius: 12px;} /* Blue */
+        .mem_ass{ height:30px;}
     </style>
 
 </head>
 
-<body class="top-navbar-fixed">
+<body class="top-navbar-fixed" onload="UserList();">
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <%
@@ -255,7 +280,7 @@
                     <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
                     <input type="text" id="project_name" name="project_name" value="<%=rs.getString("projectname")%>" style="display:none;">
                     <%
-                       projectname=rs.getString("projectname");
+                        projectname=rs.getString("projectname");
                         String q2="select * from ArchiveExecution_Details where level=1 and projects='"+rs.getString("projectname")+"'order by seq_num";
                         Statement s2 = conn.createStatement();
                         ResultSet rss = s2.executeQuery(q2);
@@ -488,8 +513,8 @@
                                             <tr style="text-align:center;" data-tt-id="<%=rs3.getString(10) %>">
                                                 <td style="width:200px;">
                                                     <b>
-		<span style="color:#3071a9;font-size:150%; position:relative; left:5px;">
-		<input  type="text" placeholder="enter" id="task" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly /></span>
+		                                            <span style="color:#3071a9;font-size:150%; position:relative; left:5px;">
+		                                            <input  type="text" placeholder="enter" class="maintask" id="task" name="name<%=i %>" value="<%=rs3.getString(3) %>" readonly /></span>
                                                         <span style="float:right;cursor:pointer;" onclick="sub('<%=rs3.getString(1) %>','<%= (Integer.parseInt(rs3.getString(2))+1) %>','<%=rs4.getString(1) %>','<%=rs3.getString(10) %>')"></span>
                                                     </b>
                                                 </td>
@@ -507,10 +532,9 @@
                                                 <td ><input type="text" style="background-color:transparent;width:20%;" id="status<%=i%>"  /></td>
                                                 <td></td>
                                                 <td>
-                                                   <%-- <input type="button" id="myBtn<%=i%>" onclick="popup(this.id);" value="+"/>--%>
-
-                                                       <i class="fa fa-plus" id="myBtn<%=i%>" onclick="popup(this.id);"></i> <%--<i class="fa fa-edit"></i>--%>  <i class="fa fa-trash"></i>
-                                                    <%--<i class="fas fa-layer-plus"></i>--%>
+                                                    <i class="fa fa-plus" aria-hidden="true" id="myBtn<%=i%>" onclick="popup(this.id);"></i>
+                                                    <i class="fa fa-trash-o" aria-hidden="true" id="delete<%=i%>" onclick="delete_popup(this.id);"></i>
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true" id="modify<%=i%>" onclick="modify_popup(this.id);"></i>
                                                 </td>
 
                                                 <script>
@@ -536,7 +560,7 @@
 
                                                 <td style="display:none"><input type="text" id="seqnum<%=i %>" name="seqnum<%=i %>" value="<%=rs3.getInt(1) %>" hidden /></td>
                                                 <td style="display:none"><input type="text" id="level<%=i %>" name="level<%=i %>" value="<%=rs3.getInt(2) %>" hidden /></td>
-                                                <td><input  type="text" class="in"  id="mem_ass<%=i %>" placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" /></td>
+                                                <td><input  list="userlist" class="in mem_ass"  id="mem_ass<%=i %>" placeholder="enter" name="mem_ass<%=i %>" value="<%=rs3.getString(4) %>" style="text-align:center;"/></td>
                                                 <td id="basicExample"><input  type="text" class="in date start" id="pln_srt_date<%=i %>" name="pln_srt_date<%=i %>" value="<%=rs3.getString(7) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',1);"  /></td>
                                                 <td id="basicExample"><input  type="text" class="in date start" id="pln_end_date<%=i %>" name="pln_end_date<%=i %>" value="<%=rs3.getString(8) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',2);"  /></td>
                                                 <td id="basicExample"><input type="text" class="in date start" id="act_srt_date<%=i %>" name="act_srt_date<%=i %>" value="<%=rs3.getString(5) %>" onClick="check_previous('<%=rs3.getInt(1) %>','<%=rs3.getInt(2) %>',document.getElementById('level<%=i-1 %>').value,'<%=initiate_seqno %>','<%=plan_seqno %>','<%=execute_seqno %>','<%=hypercare_seqno %>',3);"  /></td>
@@ -546,11 +570,12 @@
                                                 <td><div class="progressbar" id="myItem<%=i%>"></div></td>
                                                 <td><input type="text" style="background-color:transparent;display:none;width:20%;" id="status<%=i%>"/></td>
                                                 <td><input type="text" id="cmnts<%=i %>" name="cmnts<%=i %>" value="<%=rs3.getString(17) %>" /></td>
-                                               <td><%--<input type="button" id="myBtn<%=i%>" onclick="popup(this.id);" value="+"/>--%>
+                                                <td>
 
-                                                   <i class="fa fa-plus" id="myBtn<%=i%>" onclick="popup(this.id);">
-                                               </td>
-
+                                                    <i class="fa fa-plus" aria-hidden="true" id="myBtn<%=i%>" onclick="popup(this.id);"></i>
+                                                    <i class="fa fa-trash-o" aria-hidden="true" id="delete<%=i%>" onclick="delete_popup(this.id);"></i>
+                                                    <i class="fa fa-pencil-square-o" aria-hidden="true" id="modify<%=i%>" onclick="modify_popup(this.id);"></i>
+                                                </td>
 
                                                 <% if((rs3.getString(3).equals("Requirements"))||(rs3.getString(3).equals("Build and Test"))){%>
 
@@ -610,43 +635,91 @@
 
 </div>
 <!-- /.main-wrapper -->
-<!-- The Modal -->
+<!-- ADD popup -->
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content" >
-    <span class="close" style="color:white;">&times;</span>
-    <div class="modal-header" style="background-color:rgb(52, 152, 219);">
-          <h1 style="color:white;">Node Details</h1>
+    <!-- Modal content -->
+    <div class="modal-content" >
+        <span class="close" style="color:white;">&times;</span>
+        <div class="modal-header" style="background-color:rgb(52, 152, 219);">
+            <h1 style="color:white;">Create Task</h1>
         </div>
         <div class="modal-body" >
-        <table>
-          <tr>
-          <b style="font-size:16px;">Task Name:</b>
-          <input type="text" id="taskname" name="firstname" placeholder="Task Name" required>
-          </tr>
-          <tr>
-          <label class="container">
-            <input type="radio" class="node" id="node1" name="radio" checked="checked"reuired="required"><b>MAIN TASK</b></input>
-          </label>
-          </tr>
-          <tr>
-          <label class="container">
-            <input type="radio" class="node" id="node2" name="radio" valuerequired="required"><b>SUB TASK</b></input>
-            <span class="checkmark"></span>
-          </label>
-          </tr>
-          </table>
-          <input type="hidden" id="sequence"/>
+            <table>
+                <tr>
+                    <b style="font-size:16px;">Task Name:</b>
+                    <input type="text" id="taskname" name="firstname" autocomplete="off" required>
+                </tr>
+                <tr>
+                    <label class="container">
+                        <input type="radio" class="node" id="node1" name="radio" checked="checked" required="required"><b>Similar Node</b></input>
+                    </label>
+                </tr>
+                <tr>
+                    <label class="container">
+                        <input type="radio" class="node" id="node2" name="radio" required="required"><b>Child Node</b></input>
+                        <span class="checkmark"></span>
+                    </label>
+                </tr>
+            </table>
+            <input type="hidden" id="sequence"/>
         </div>
         <div class="modal-footer" >
-        <button class="button button2" onclick="createnode(document.getElementById('sequence').value,document.getElementById('taskname').value,'<%=projectname%>',$('#node2').prop('checked'));">Create Node</button>
-        <button class="button button2" id="cancelbtn">cancel</button>
+            <button class="button button2" onclick="createnode(document.getElementById('sequence').value,document.getElementById('taskname').value,'<%=projectname%>',$('#node2').prop('checked'));">Create Node</button>
+            <button class="button button2" id="cancelbtn">cancel</button>
         </div>
-  </div>
+    </div>
 
 </div>
 
+<!-- Delete pop-up -->
+<div id="myModal1" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content1" >
+        <span class="close" style="color:white;">&times;</span>
+        <div class="modal-header" style="background-color:rgb(52, 152, 219);">
+            <h1 style="color:white;">Delete Task</h1>
+        </div>
+        <div class="modal-body" >
+            <p style="font-size:24px;">Are you sure, you want to delete this <span id="taskdelete" style="font-size:24px;"></span><p style="font-size:24px;"> task and all relevant task permenantly?</p>
+            <input type="hidden" id="sequence1"/>
+        </div>
+        <div class="modal-footer" >
+            <button class="button button2" onclick="deletenode(document.getElementById('sequence1').value,'<%=projectname%>');"><u>Y</u>es</button>
+            <button class="button button2" id="cancelbtn1"><u>N</u>o</button>
+        </div>
+    </div>
+
+</div>
+<!--Modify pop-up -->
+<div id="myModal2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content2" >
+        <span class="close" style="color:white;">&times;</span>
+        <div class="modal-header" style="background-color:rgb(52, 152, 219);">
+            <h1 style="color:white;">Edit Task</h1>
+        </div>
+        <div class="modal-body" >
+            <table>
+                <tr>
+                    <b style="font-size:16px;">Task Name:</b>
+                    <input type="text" id="modifytaskname" name="firstname" autocomplete="off" required>
+                </tr>
+                <tr>
+                </tr>
+            </table>
+            <input type="hidden" id="sequence2"/>
+        </div>
+        <div class="modal-footer" >
+            <button class="button button2" onclick="editnode(document.getElementById('sequence2').value,'<%=projectname%>',document.getElementById('modifytaskname').value);">Apply</button>
+            <button class="button button2" id="cancelbtn2">cancel</button>
+        </div>
+    </div>
+</div>
+<datalist id="userlist">
+</datalist>
 
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -681,77 +754,7 @@
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
 <!-- ========== THEME JS ========== -->
-
-<script>
-
-    function popup_delete(id)
-    {
-//alert(id);
-        console.log(id);
-        var model = document.getElementById('myModel');
-        var button = document.getElementById(id);
-        /*alert(id);*/
-        document.getElementById('sequence').value=id;
-        var closebutton=document.getElementById("cancelbutton");
-        modal.style.display = "block";
-        closebutton.onclick= function() {
-            modal.style.display="none";
-            var span = document.getElementsByClassName("close")[0];
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-        }
-        window.onclick = function(event) {
-            if (event.target == model) {
-                model.style.display = "none";
-            }
-        }
-    }
-
-function popup(id)
-{
-//alert(id);
-console.log(id);
-var modal = document.getElementById('myModal');
-var btn = document.getElementById(id);
-/*alert(id);*/
-document.getElementById('sequence').value=id;
-var closebtn=document.getElementById("cancelbtn");
-  modal.style.display = "block";
-  closebtn.onclick= function() {
-modal.style.display="none";
-var span = document.getElementsByClassName("close")[0];
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-  }
-  }
-function createnode(seq,taskname,projectname,typeofnode)
-{
-//alert(seq+" "+taskname+" "+projectname+" "+typeofnode);
-$.ajax({
-                    url: "Adding_Node",
-                    type: 'post',
-                    data: {seq:seq,taskname:taskname,projectname:projectname,typeofnode:typeofnode},
-                    dataType: "text",
-                    success: function (data) {
-                        //alert("data");
-
-
-                    },
-                    error: function (e) { //A callback function to be executed when the request fails.
-                        console.log(e);
-                    }
-                });
-}
-</script>
 <script src="js/jquery.doubleScroll.js"></script>
 <script>
     $(document).ready(function(){

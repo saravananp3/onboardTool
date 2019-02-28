@@ -1,3 +1,4 @@
+
 function getID(lev, pln_srt, pln_end, act_srt, status, pln_hrs, act_hrs, progressbar, actual_enddate) {
 	var actual_Hours = "";
 	var planned_Hours = "";
@@ -191,36 +192,50 @@ function getID(lev, pln_srt, pln_end, act_srt, status, pln_hrs, act_hrs, progres
 	}
 }
 
-function getDetID(total_hours, actual_Hours, progressbar, status, actual_enddate, datecount) {
-	if (datecount == "True") {
-		percent = 100;
-		$('#' + progressbar.id).reportprogress(percent);
-		$('#' + status.id).css({background: 'green'});
-	} else {
-		var percent = (actual_Hours.value / total_hours.value) * 100;
-		percentage = 100;
-		if (percent < 0) {
-			percent = 0;
-			$('#' + progressbar.id).reportprogress(percent);
-		} else if (percent > 100) {
-			percent = 100;
-			$('#' + progressbar.id).reportprogress(percent);
-			$('#' + status.id).css({background: 'green'});
-		} else if (percent < 35) {
-			$('#' + progressbar.id).reportprogress(percent);
-			$('#' + status.id).css({background: 'red'});
-		} else if (percent > 35) {
-			$('#' + progressbar.id).reportprogress(percent);
-			$('#' + status.id).css({background: 'yellow'});
-		} else if (percent < 75) {
-			$('#' + progressbar.id).reportprogress(percent);
-			$('#' + status.id).css({background: 'yellow'});
-		} else if (percent > 76) {
-			$('#' + progressbar.id).reportprogress(percent);
-			$('#' + status.id).css({background: 'green'});
-		}
-	}
+function getDetID(total_hours, actual_Hours, progressbar, status, actual_enddate, datecount,i,projectname) {
+	//console.log("testing"+i+" projectname "+projectname);
+	//console.log("progressbar "+progressbar.id+"status "+status.id);
+	var s=i;
+	$.ajax({
+		url: "Cal_Percentage",
+		type: 'POST',
+		data: {sequence: i,ProjectName: projectname},
+		dataType: "text",
+		success: function (data) {
+			//console.log("data "+data+"i: "+ i);
+			var percent=parseInt(data);
+			//console.log(typeof(data));
+			console.log("percentage",percent);
+			var bar1 = new ldBar("#myItem"+i);
+			var bar2 = document.getElementById('myItem'+i).ldBar;
+			bar1.set(percent);
+			/*if (percent < 0) {
+              percent = 0;
+               $('#' + progressbar.id).reportprogress(percent);
+            } else if (percent > 100) {
+               percent = 100;
+                $('#' + progressbar.id).reportprogress(percent);
+                $('#' + status.id).css({background: 'green'});
+            } else if (percent < 35) {
+               $('#' + progressbar.id).reportprogress(percent);
+                $('#' + status.id).css({background: 'red'});
+            } else if (percent > 35) {
+                $('#' + progressbar.id).reportprogress(percent);
+                ('#' + status.id).css({background: 'yellow'});
+            } else if (percent < 75) {
+               $('#' + progressbar.id).reportprogress(percent);
+                $('#' + status.id).css({background: 'yellow'});
+           } else if (percent > 76) {
+               $('#' + progressbar.id).reportprogress(percent);
+               $('#' + status.id).css({background: 'green'});
+            }*/
 
+
+		},
+		error: function (e) { //A callback function to be executed when the request fails.
+			console.log(e);
+		}
+	});
 }
 
 function sub(x, y, z, w) {
@@ -379,5 +394,150 @@ $(function () {
 		$.jstree.reference('#jstree').select_node('child_node_1');
 	});
 });
- 
+//calling java servlet for adding task name
+function createnode(seq,taskname,projectname,typeofnode)
+{
+//console.log("start");
+//alert(seq+" "+taskname+" "+projectname+" "+typeofnode);
+	var f = document.loginForm;
+	//console.log("after loginform");
+	f.method = "post";
+	//console.log("after post");
+	f.action = 'AddingNode?sequence='+ seq +'&task_name='+ taskname +'&project_name='+ projectname +'&type_of_node='+ typeofnode;
+	//console.log("after action");
+	f.submit();
+	//console.log("after submit");
+}
+//adding task popups
+function popup(id)
+{
+//alert(id);
+//console.log(id);
+	var modal = document.getElementById('myModal');
+	var btn = document.getElementById(id);
+//alert(id);
+	$('.modal-content').draggable();
+	/*$('#myModal').on('show.bs.modal', function () {
+        $(this).find('.modal-body').css({
+            'max-height':'100%'
+        });
+    });*/
 
+	document.getElementById('sequence').value=id;
+	var closebtn=document.getElementById("cancelbtn");
+	modal.style.display = "block";
+	closebtn.onclick= function() {
+		modal.style.display="none";
+	}
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+
+}
+function delete_popup(id)
+{
+	//alert(id);
+	//console.log(id);
+	var modal = document.getElementById('myModal1');
+	var btn = document.getElementById(id);
+	//alert(id);
+	var ID=id.substring(id.lastIndexOf('e')+1,id.length);
+	//alert("changed "+ID);
+	document.getElementById('sequence1').value=ID;
+	//var taskid=document.getElementById('name'+ID).value;
+	//document.getElementById('taskdelete').innerHTML=taskid;
+	$('.modal-content1').draggable();
+	var closebtn=document.getElementById("cancelbtn1");
+	modal.style.display = "block";
+	closebtn.onclick= function() {
+		modal.style.display="none";
+	}
+	var span = document.getElementsByClassName("close")[1];
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
+function deletenode(seq,projectname)
+{
+//alert(seq+" "+projectname);
+	var f=document.loginForm;
+	f.method="post";
+	var sequence=seq;
+	var project=projectname;
+	f.action='DeletingNode?seq='+seq+'&projectname='+projectname;
+	f.submit();
+}
+function modify_popup(id)
+{
+	//alert(id);
+	//console.log(id);
+	var modal = document.getElementById('myModal2');
+	var btn = document.getElementById(id);
+	//alert(id);
+	var ID=id.substring(id.lastIndexOf('y')+1,id.length);
+	//alert("changed "+ID);
+	document.getElementById('sequence2').value=ID;
+	$('.modal-content2').draggable();
+	//var taskid=document.getElementById('name'+ID).value;
+	//document.getElementById('taskdelete').innerHTML=taskid;
+	var closebtn=document.getElementById("cancelbtn2");
+	modal.style.display = "block";
+	closebtn.onclick= function() {
+		modal.style.display="none";
+	}
+	var span = document.getElementsByClassName("close")[2];
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
+function editnode(seq,projectname,taskname)
+{
+//alert("sequence "+seq+" projectname "+projectname+" taskname "+taskname);
+	var f=document.loginForm;
+	f.method="post";
+	f.action="EditingNode?seq="+seq+"&projectname="+projectname+"&taskname="+taskname;
+	f.submit();
+}
+function UserList(){
+//var projecttitle=document.getElementById('sitetitle').value;
+	var projecttitle=$('#sitetitle').val();
+	var projectname=projecttitle.substring(projecttitle.lastIndexOf('-')+1,projecttitle.length);
+	console.log('projectname'+projectname);
+
+	$.ajax({
+
+		url: 'ArchiveUserList',
+		type: 'POST',
+		data: {projectname,projectname},
+		dataType: "text",
+		success: function (data) {
+			//console.log('data-----'+data);
+			var usernames=data.split(',');
+			for(var i=0;i<usernames.length;i++)
+			{
+				var option="<option value="+usernames[i]+">";
+				$('#userlist').append(option);
+			}
+		},
+		error: function (e) {
+			//salert("err");
+			console.log("ERROR : ", e);
+		}
+	});
+}
