@@ -1,5 +1,6 @@
 package docusign;
 
+import authorization.servlet.Role_Details_Servlet;
 import com.docusign.esign.api.EnvelopesApi;
 import com.docusign.esign.client.ApiClient;
 import com.docusign.esign.client.ApiException;
@@ -7,6 +8,7 @@ import com.docusign.esign.client.Configuration;
 import com.docusign.esign.client.auth.OAuth;
 import com.docusign.esign.model.*;
 import com.migcomponents.migbase64.Base64;
+import org.apache.log4j.Logger;
 import org.junit.*;
 
 import java.io.ByteArrayOutputStream;
@@ -20,6 +22,8 @@ import java.util.stream.Collectors;
 
 public class DocusignUtility {
 
+    final static Logger logger = Logger.getLogger(DocusignUtility.class);
+
     private static final String RedirectURI = "https://appdemo.docusign.com";
     private static final String OAuthBaseUrl = "account-d.docusign.com";
     private static final String BaseUrl = "https://demo.docusign.net/restapi";
@@ -29,7 +33,7 @@ public class DocusignUtility {
     private static final String privateKeyFilename = "E:\\office project\\onboard_tool\\src\\main\\webapp\\docs\\privatekey.txt";
 
     public void requestIndividualDocumentSigning(ByteArrayOutputStream fileOutputStream, Map.Entry<String, String> users) {
-        System.out.println("\nRequestASignatureTest:\n" + "===========================================");
+        logger.info("\nRequestASignatureTest:\n" + "===========================================");
         byte[] fileBytes = null;
 
         fileBytes = fileOutputStream.toByteArray();
@@ -117,7 +121,7 @@ public class DocusignUtility {
             Assert.assertNotNull(userInfo.getAccounts());
             Assert.assertTrue(userInfo.getAccounts().size() > 0);
 
-            System.out.println("UserInfo: " + userInfo);
+            logger.info("UserInfo: " + userInfo);
             // parse first account's baseUrl
             // below code required for production, no effect in demo (same
             // domain)
@@ -134,7 +138,7 @@ public class DocusignUtility {
             Assert.assertNotNull(envelopeSummary.getEnvelopeId());
             Assert.assertEquals("sent", envelopeSummary.getStatus());
 
-            System.out.println("EnvelopeSummary: " + envelopeSummary);
+            logger.info("EnvelopeSummary: " + envelopeSummary);
 
         } catch (ApiException ex) {
             ex.printStackTrace();
@@ -147,7 +151,7 @@ public class DocusignUtility {
     }
 
     public void requestRoutingDocumentSigning(ByteArrayOutputStream fileOutputStream, List<Signer> signers) {
-        System.out.println("\nRequestASignatureTest:\n" + "===========================================");
+        logger.info("\nRequestASignatureTest:\n" + "===========================================");
         byte[] fileBytes = null;
 
         fileBytes = fileOutputStream.toByteArray();
@@ -198,7 +202,7 @@ public class DocusignUtility {
         signerListTabs.add(signer);
 
         signers.stream().skip(1).forEach(s -> signerListTabs.add(s));
-        System.out.println("testing---->" + signer);
+        logger.info("signer---->" + signer);
         // Above causes issue
 
         envelopeDefinition.setRecipients(new Recipients());
@@ -237,7 +241,7 @@ public class DocusignUtility {
             Assert.assertNotNull(userInfo.getAccounts());
             Assert.assertTrue(userInfo.getAccounts().size() > 0);
 
-            System.out.println("UserInfo: " + userInfo);
+            logger.info("UserInfo: " + userInfo);
             // parse first account's baseUrl
             // below code required for production, no effect in demo (same
             // domain)
@@ -254,7 +258,7 @@ public class DocusignUtility {
             Assert.assertNotNull(envelopeSummary.getEnvelopeId());
             Assert.assertEquals("sent", envelopeSummary.getStatus());
 
-            System.out.println("EnvelopeSummary: " + envelopeSummary);
+            logger.info("EnvelopeSummary: " + envelopeSummary);
 
         } catch (ApiException ex) {
             ex.printStackTrace();
@@ -267,7 +271,7 @@ public class DocusignUtility {
     }
 
     public void priorityrequestIndividualDocumentSigning(ByteArrayOutputStream fileOutputStream, Map.Entry<String, String> users) {
-        System.out.println("\nRequestASignatureTest:\n" + "===========================================");
+        logger.info("\nRequestASignatureTest:\n" + "===========================================");
         byte[] fileBytes = null;
 
         fileBytes = fileOutputStream.toByteArray();
@@ -350,7 +354,7 @@ public class DocusignUtility {
             Assert.assertNotNull(userInfo.getAccounts());
             Assert.assertTrue(userInfo.getAccounts().size() > 0);
 
-            System.out.println("UserInfo: " + userInfo);
+            logger.info("UserInfo: " + userInfo);
             // parse first account's baseUrl
             // below code required for production, no effect in demo (same
             // domain)
@@ -367,7 +371,7 @@ public class DocusignUtility {
             Assert.assertNotNull(envelopeSummary.getEnvelopeId());
             Assert.assertEquals("sent", envelopeSummary.getStatus());
 
-            System.out.println("EnvelopeSummary: " + envelopeSummary);
+            logger.info("EnvelopeSummary: " + envelopeSummary);
 
         } catch (ApiException ex) {
             ex.printStackTrace();
@@ -380,7 +384,7 @@ public class DocusignUtility {
     }
 
     public void priorityrequestRoutingDocumentSigning(ByteArrayOutputStream fileOutputStream, List<Signer> signers) {
-        System.out.println("\nRequestASignatureTest:\n" + "===========================================");
+        logger.info("\nRequestASignatureTest:\n" + "===========================================");
         byte[] fileBytes = null;
 
         fileBytes = fileOutputStream.toByteArray();
@@ -429,7 +433,7 @@ public class DocusignUtility {
         signerListTabs.add(signer);
 
         signers.stream().skip(1).forEach(s -> signerListTabs.add(s));
-        System.out.println("testing---->" + signer);
+        logger.info("testing---->" + signer);
         // Above causes issue
 
         envelopeDefinition.setRecipients(new Recipients());
@@ -468,7 +472,7 @@ public class DocusignUtility {
             Assert.assertNotNull(userInfo.getAccounts());
             Assert.assertTrue(userInfo.getAccounts().size() > 0);
 
-            System.out.println("UserInfo: " + userInfo);
+            logger.info("UserInfo: " + userInfo);
             // parse first account's baseUrl
             // below code required for production, no effect in demo (same
             // domain)
@@ -485,7 +489,7 @@ public class DocusignUtility {
             Assert.assertNotNull(envelopeSummary.getEnvelopeId());
             Assert.assertEquals("sent", envelopeSummary.getStatus());
 
-            System.out.println("EnvelopeSummary: " + envelopeSummary);
+            logger.info("EnvelopeSummary: " + envelopeSummary);
 
         } catch (ApiException ex) {
             ex.printStackTrace();
