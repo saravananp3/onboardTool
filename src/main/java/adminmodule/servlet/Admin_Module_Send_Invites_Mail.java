@@ -94,8 +94,6 @@ public class Admin_Module_Send_Invites_Mail extends HttpServlet {
             printWriter.close();
 
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("[ERROR]-----Got an exception!" + simpleDateFormat.format(date) + "-----" + e.getMessage() + "----[ERROR]");

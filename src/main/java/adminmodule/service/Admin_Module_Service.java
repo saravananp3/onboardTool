@@ -1,7 +1,9 @@
 package adminmodule.service;
 
+import admin_module_modify.servlet.Update_User_registration;
 import com.google.gson.JsonObject;
 import onboard.DBconnection;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Admin_Module_Service {
+    final static Logger logger = Logger.getLogger(Admin_Module_Service.class);
 
     public JsonObject getproject_details() {
         String query2 = "select * from AppEmphazize_ProjectDetails";
@@ -42,7 +45,7 @@ public class Admin_Module_Service {
                 String value = rs.getString("appname");
                 infoJson.addProperty(key, value);
             }
-            System.out.println("json obj" + infoJson);
+            logger.info("json obj----->" + infoJson);
         } catch (Exception e) {
             e.printStackTrace();
         }
