@@ -87,7 +87,7 @@ height: 250px;
                             </li>
 
                             <li>
-                                <a href="Admin_RoleDetails.jsp"><i class="fa fa-map-signs"></i> <span>Authorization </span> </a>
+                                <a href="Admin_Role_Details.jsp"><i class="fa fa-map-signs"></i> <span>Authorization </span> </a>
                             </li>
                         </ul>
 

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
     <title>UserConfiguration Page</title>
-    <a href="Admin_Roledetails.jsp">
+    <a href="Admin_Role_Details.jsp">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
@@ -213,7 +213,7 @@
             document.getElementById('send_btn').disabled = true;
         }
     </script>
-</head>
+</a>
 <body class="top-navbar-fixed">
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
@@ -329,7 +329,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="Admin_Roledetails.jsp"><i class="fa fa-map-signs"></i>
+                                    <a href="Admin_Role_Details.jsp"><i class="fa fa-map-signs"></i>
                                         <span>Authorization </span> </a>
                                 </li>
                             </ul>
