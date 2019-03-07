@@ -209,6 +209,18 @@ function getDetID(total_hours, actual_Hours, progressbar, status, actual_enddate
 			var bar1 = new ldBar("#myItem"+i);
 			var bar2 = document.getElementById('myItem'+i).ldBar;
 			bar1.set(percent);
+			if (percent<=35)
+			{
+				$('#'+status.id).css({background: 'red'});
+			}
+			else if (percent>35&&percent<=75)
+			{
+				$('#'+status.id).css({background: 'yellow'});
+			}
+			else if (percent>75)
+			{
+				$('#'+status.id).css({background: 'green'});
+			}
 			/*if (percent < 0) {
               percent = 0;
                $('#' + progressbar.id).reportprogress(percent);
