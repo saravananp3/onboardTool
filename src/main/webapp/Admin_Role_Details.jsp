@@ -260,7 +260,7 @@
                                                             <thead>
                                                             <th>Role</th>
                                                             <th>Admin</th>
-                                                            <th>AppEmphasize</th>
+                                                            <th>Plan and Pirority</th>
                                                             <th>Intake</th>
                                                             <th>Archival Execution</th>
                                                             <th>Decommision</th>
