@@ -125,6 +125,7 @@ public class Archive_execution_db_update {
             {
                 unames+=rs1.getString("uname")+",";
             }
+            if(!unames.equals(""))
             unames1=unames.substring(0,unames.length()-1);
         }
         catch(Exception e)

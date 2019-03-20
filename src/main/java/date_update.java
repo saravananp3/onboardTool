@@ -267,6 +267,7 @@ public class date_update extends HttpServlet {
 					index = j;
 
 					level1 = level;
+					member_ass.set(index,mem_ass);
 
 					plan_startdate.set(index, plan_start);
 
