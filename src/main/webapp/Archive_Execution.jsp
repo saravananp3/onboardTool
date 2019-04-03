@@ -96,7 +96,7 @@
             padding: 20px;
             border: 1px solid #888;
             width: 30%;
-            height:47  %;
+            height:47%;
         }
         /* The Close Button */
         .close {
