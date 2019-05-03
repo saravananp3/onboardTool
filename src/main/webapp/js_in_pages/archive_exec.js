@@ -192,62 +192,44 @@ function getID(lev, pln_srt, pln_end, act_srt, status, pln_hrs, act_hrs, progres
 	}
 }
 
-function getDetID(total_hours, actual_Hours, progressbar, status, actual_enddate, datecount,i,projectname) {
+function getDetID(total_hours, actual_Hours, progressbar, status, actual_enddate,comments,i,projectname,name) {
 	//console.log("testing"+i+" projectname "+projectname);
 	//console.log("progressbar "+progressbar.id+"status "+status.id);
-	var s=i;
-	$.ajax({
-		url: "Cal_Percentage",
-		type: 'POST',
-		data: {sequence: i,ProjectName: projectname},
-		dataType: "text",
-		success: function (data) {
-			//console.log("data "+data+"i: "+ i);
-			var percent=parseInt(data);
-			//console.log(typeof(data));
-			console.log("percentage",percent);
-			var bar1 = new ldBar("#myItem"+i);
-			var bar2 = document.getElementById('myItem'+i).ldBar;
-			bar1.set(percent);
-			if (percent<=35)
-			{
-				$('#'+status.id).css({background: 'red'});
-			}
-			else if (percent>35&&percent<=75)
-			{
-				$('#'+status.id).css({background: 'yellow'});
-			}
-			else if (percent>75)
-			{
-				$('#'+status.id).css({background: 'green'});
-			}
-			/*if (percent < 0) {
-              percent = 0;
-               $('#' + progressbar.id).reportprogress(percent);
-            } else if (percent > 100) {
-               percent = 100;
-                $('#' + progressbar.id).reportprogress(percent);
-                $('#' + status.id).css({background: 'green'});
-            } else if (percent < 35) {
-               $('#' + progressbar.id).reportprogress(percent);
-                $('#' + status.id).css({background: 'red'});
-            } else if (percent > 35) {
-                $('#' + progressbar.id).reportprogress(percent);
-                ('#' + status.id).css({background: 'yellow'});
-            } else if (percent < 75) {
-               $('#' + progressbar.id).reportprogress(percent);
-                $('#' + status.id).css({background: 'yellow'});
-           } else if (percent > 76) {
-               $('#' + progressbar.id).reportprogress(percent);
-               $('#' + status.id).css({background: 'green'});
-            }*/
-
-
-		},
-		error: function (e) { //A callback function to be executed when the request fails.
-			console.log(e);
-		}
-	});
+    if (name=="Requirements"||name=="Build and Test"||name=="Ideation and Initiate"||name=="Plan"||name=="Execute"||name=="Closure") {
+        console.log('name : ', name);
+        var s = i;
+        $.ajax({
+            url: "Cal_Percentage",
+            type: 'POST',
+            data: {sequence: i, ProjectName: projectname},
+            dataType: "text",
+            success: function (data) {
+            	var percent = parseInt(data);
+                console.log("percentage---->", percent);
+                var progressbar_color="progress-bar progress-bar-success  progress-bar-striped active";
+				if(percent<35)
+				{
+					progressbar_color= "progress-bar progress-bar-danger progress-bar-striped active";
+				}
+				else if(percent<65)
+				{
+					progressbar_color= "progress-bar progress-bar-warning progress-bar-striped";
+				}
+				$('#parent_progressbar'+i).html("<div class='"+progressbar_color+"' role='progressbar' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100' style='width:"+percent+"%;height: 20px'>"+percent+"% </div>");
+				$('#parent_progressbar'+i).addClass("progress");
+                if (percent <= 35) {
+                    $('#' + status.id).css({background: 'red'});
+                } else if (percent > 35 && percent <= 75) {
+                    $('#' + status.id).css({background: 'yellow'});
+                } else if (percent > 75) {
+                    $('#' + status.id).css({background: 'green'});
+                }
+                },
+            error: function (e) { //A callback function to be executed when the request fails.
+                console.log(e);
+            }
+        });
+    }
 }
 
 function sub(x, y, z, w) {
@@ -270,13 +252,13 @@ function update() {
 
 }
 
-function call_fun(mem_ass, name, a, b, c, d, e, g, h, i, j, k, l) {
+function call_fun(mem_ass, name, a, b, c, d, e, g, h, i, j, k, l,project_name) {
 	//alert(l);
 	var comments = document.getElementById("cmnts" + (a - 1)).value;
 	var f = document.loginForm;
 	f.method = "post";
 	//alert(l);
-	f.action = 'date_update?mem_ass=' + mem_ass + '&name=' + name + '&sequence_no=' + a + '&plan_start=' + b + '&plan_end=' + c + '&actual_start=' + d + '&actual_hrs=' + g + '&plan_hrs=' + e + '&actual_end=' + h + '&initiate_seqno=' + i + '&plan_seqno=' + j + '&execute_seqno=' + k + '&hypercare_seqno=' + l + "&cmnts=" + comments;
+	f.action = 'date_update?mem_ass=' + mem_ass + '&name=' + name + '&sequence_no=' + a + '&plan_start=' + b + '&plan_end=' + c + '&actual_start=' + d + '&actual_hrs=' + g + '&plan_hrs=' + e + '&actual_end=' + h + '&initiate_seqno=' + i + '&plan_seqno=' + j + '&execute_seqno=' + k + '&hypercare_seqno=' + l + "&cmnts=" + comments + "&ProjectName=" +project_name ;
 	// f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h+'&initiate_seqno='+i+'&plan_seqno='+j+'&execute_seqno='+k+'&hypercare_seqno='+l+"'&cmnts="+comments;
 	f.submit();
 }
@@ -316,6 +298,64 @@ function init_disable() {
 }
 
 function check_previous(seq_no, level, previous_level, initiate_seqno, plan_seqno, execute_seqno, hypercare_seqno, number) {
+ 	//alert("Seqno: "+seq_no+" level :"+level+" prevoius level :"+previous_level+" initiate no : "+initiate_seqno+" plan seqno : "+plan_seqno+" execute_seqno :"+execute_seqno+" hypercare_seqno :"+hypercare_seqno+" number :"+number );
+	/*var plan_startdate=$('#pln_srt_date'+(seq_no-1)).val();
+	var plan_enddate=$('#pln_end_date'+(seq_no-1)).val();
+	var actual_startdate=$('#act_srt_date'+(seq_no-1)).val();
+	var actual_enddate=$('#act_end_date'+(seq_no-1)).val();
+	var checkdate=false;
+	if(number==1)
+	{
+		checkdate=true;
+	}
+	else if(number==2)
+	{
+		if(plan_startdate!="")
+		{
+			checkdate=true;
+		}
+		else {
+			BootstrapDialog.alert("please fill the plan start date.");
+		}
+	}
+	else if(number==3)
+	{
+		if(plan_enddate!="")
+		{
+			checkdate=true;
+		}
+		else {
+			if(plan_startdate=="")
+			{
+				BootstrapDialog.alert("please fill the plan start and plan end date.");
+
+			}
+			else {
+				BootstrapDialog.alert("please fill the plan end date.");
+			}
+		}
+	}
+	else if(number==4)
+	{
+		if(actual_startdate!="")
+		{
+			checkdate=true;
+		}
+		else {
+			if(plan_startdate==""&&plan_enddate==""&&actual_startdate=="")
+			{
+				BootstrapDialog.alert("please fill the plan start date,plan end date and actual start date.");
+			}
+			else if(plan_enddate==""&&actual_startdate=="")
+			{
+				BootstrapDialog.alert("please fill the plan end date and actual start date.");
+			}
+			else {
+				BootstrapDialog.alert("please fill the actual start date.");
+			}
+		}
+	}*/
+/*if(checkdate==true) {*/
 	var task_number = [initiate_seqno, plan_seqno, execute_seqno, hypercare_seqno];
 	var tasks = [];
 	var count1 = [];
@@ -329,7 +369,8 @@ function check_previous(seq_no, level, previous_level, initiate_seqno, plan_seqn
 		w = document.getElementById("act_end_date" + (seq_no - 2)).value;
 		if (x == "" && y == "" && z == "") {
 			cnt = 0;
-			window.alert("Please fill the above text field");
+			//window.alert("Please fill the above text field");
+			BootstrapDialog.alert("Please fill the above text field");
 		}
 	} else {
 		for (var i = 0; i < 4; i++) {
@@ -361,7 +402,9 @@ function check_previous(seq_no, level, previous_level, initiate_seqno, plan_seqn
 
 	}
 	if (count1[0] == "FALSE" && count1[1] == "FALSE") {
-		window.alert("please fill the above fields");
+		//window.alert("please fill the above fields");
+		BootstrapDialog.alert("please fill the above fields");
+
 		cnt = 0;
 	}
 	if (cnt == 1) {
@@ -390,6 +433,7 @@ function check_previous(seq_no, level, previous_level, initiate_seqno, plan_seqn
 		if (number == 4)
 			$("#act_end_date" + (seq_no - 1)).datepicker('show');
 	}
+/*}*/
 }
 
 $(function () {
@@ -526,30 +570,38 @@ function editnode(seq,projectname,taskname)
 	f.action="EditingNode?seq="+seq+"&projectname="+projectname+"&taskname="+taskname;
 	f.submit();
 }
-function UserList(){
-//var projecttitle=document.getElementById('sitetitle').value;
-	var projecttitle=$('#sitetitle').val();
-	var projectname=projecttitle.substring(projecttitle.lastIndexOf('-')+1,projecttitle.length);
-	console.log('projectname'+projectname);
-
-	$.ajax({
-
-		url: 'ArchiveUserList',
-		type: 'POST',
-		data: {projectname,projectname},
-		dataType: "text",
-		success: function (data) {
-			//console.log('data-----'+data);
-			var usernames=data.split(',');
-			for(var i=0;i<usernames.length;i++)
-			{
-				var option="<option value="+usernames[i]+">";
-				$('#userlist').append(option);
-			}
-		},
-		error: function (e) {
-			//salert("err");
-			console.log("ERROR : ", e);
-		}
-	});
+function Progressbar_ColorDesign(Initiate,Plan,Execute,Closure)
+{
+	if(Initiate<35)
+	{
+		document.getElementById('prog_bar').className='progress-bar progress-bar-danger progress-bar-striped';
+	}
+	else if(Initiate<65)
+	{
+		document.getElementById('prog_bar').className='progress-bar progress-bar-warning progress-bar-striped'
+	}
+	if(Plan<35)
+	{
+		document.getElementById('prog_bar1').className='progress-bar progress-bar-danger progress-bar-striped';
+	}
+	else if(Plan<65)
+	{
+		document.getElementById('prog_bar1').className='progress-bar progress-bar-warning progress-bar-striped';
+	}
+	if(Execute<35)
+	{
+		document.getElementById('prog_bar2').className='progress-bar progress-bar-danger progress-bar-striped';
+	}
+	else if(Execute<65)
+	{
+		document.getElementById('prog_bar2').className='progress-bar progress-bar-warning progress-bar-striped';
+	}
+	if(Closure<35)
+	{
+		document.getElementById('prog_bar3').className='progress-bar progress-bar-danger progress-bar-striped';
+	}
+	else if(Closure<65)
+	{
+		document.getElementById('prog_bar3').className='progress-bar progress-bar-warning progress-bar-striped';
+	}
 }

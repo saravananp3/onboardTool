@@ -103,7 +103,7 @@ public class Archive_execution_db_update {
         }
         //return progressbar;
     }
-    public static String user_name(String select_project)
+   /* public static String user_name(String select_project)
     {
         String unames="";
         String unames1="";
@@ -133,7 +133,7 @@ public class Archive_execution_db_update {
             System.out.println("Exception----------"+e);
         }
         return unames1;
-    }
+    }*/
     public static float percent(int seq_num,String selected_project)
     {
         float prog=0;

@@ -110,7 +110,7 @@ public class date_update extends HttpServlet {
 
 		HttpSession session = request.getSession();
 
-		String prjname = request.getParameter("prjname");
+		String prjname = request.getParameter("ProjectName");
 
 		HttpSession details = request.getSession();
 		String u_name = (String) details.getAttribute("username");
@@ -119,7 +119,7 @@ public class date_update extends HttpServlet {
 		MDC.put("USERID", userid);
 		String u_role = (String) details.getAttribute("role");
 		MDC.put("USERROLE", u_role);
-		String projectname = request.getParameter("project_name");
+		String projectname = request.getParameter("ProjectName");
 		logger.info("modified project " + projectname);
 		int count=0;
 		String stages="";
