@@ -524,7 +524,7 @@
                                     <div class="table-responsive">
 
                                         <table class="table table-bordered" style="align:center" id="table">
-                                            <thead>
+                                            <thead style="background-color: #5D8896">
                                             <tr>
                                                 <th style="width:70%;">Tasks </th>
                                                 <th>Resource Assigned</th>
