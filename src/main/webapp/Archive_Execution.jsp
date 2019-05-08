@@ -784,12 +784,12 @@ console.log("testing---->",data)
                             "<td style='display:none'><input type='text' id='seqnum"+i+"' name='seqnum"+i+"' value='"+data[i].seq_num+"' hidden /></td>\n" +
                             "<td style='display:none'><input type='text' id='level"+i+"' name='level"+i+"' value='"+data[i].level+"' hidden /></td>\n" +
                             "<td></td>\n"+
-                            "<td id='basicExample'><input type='text' class='in date start' id='pln_srt_date"+i+"' name='pln_srt_date"+i+"' value='"+data[i].pln_srt_date+"' readonly/></td>\n" +
-                            "<td id='basicExample'><input type='text' class='in date start' id='pln_end_date"+i+"' name='pln_end_date"+i+"' value='"+data[i].pln_end_date+"' /></td>\n" +
-                            "<td id='basicExample'><input type='text' class='in date start' id='act_srt_date"+i+"' name='act_srt_date"+i+"' value='"+data[i].act_srt_date+"' /></td>\n" +
-                            "<td id='basicExample'><input  type='text' class='in date start' id='act_end_date"+i+"' name='act_end_date"+i+"' value='"+data[i].act_end_date+"'  /></td>\n"+
-                            "<td><input type='text' class='in'  id='phours"+i+"' name='phrs"+i+"' value='"+data[i].planned_hrs+"' onclick='getID('"+data[i].level+"',document.getElementById('pln_srt_date"+i+"').value,document.getElementById('pln_end_date"+i+"').value,document.getElementById('act_srt_date"+i+"').value,document.getElementById('status"+i+"'),document.getElementById('phours"+i+"'),document.getElementById('hours"+i+"'),document.getElementById('progressbar"+i+"'),document.getElementById('act_end_date"+i+"').value)' /></td>\n" +
-                            "<td><input type='text' class='in'  id='hours"+i+"' name='hrs"+i+"' value='"+data[i].hours+"' onclick='getID('"+data[i].level+"',document.getElementById('pln_srt_date"+i+"').value,document.getElementById('pln_end_date"+i+"').value,document.getElementById('act_srt_date"+i+"').value,document.getElementById('status"+i+"'),document.getElementById('phours"+i+"'),document.getElementById('hours"+i+"'),document.getElementById('progressbar"+i+"'),document.getElementById('act_end_date"+i+"').value)'/></td>\n" +
+                            "<td id='basicExample'><input type='text' class='in date start' id='pln_srt_date"+i+"' name='pln_srt_date"+i+"' value='"+data[i].pln_srt_date+"' style='width: 90px' disabled/></td>\n" +
+                            "<td id='basicExample'><input type='text' class='in date start' id='pln_end_date"+i+"' name='pln_end_date"+i+"' value='"+data[i].pln_end_date+"' style='width: 90px' disabled /></td>\n" +
+                            "<td id='basicExample'><input type='text' class='in date start' id='act_srt_date"+i+"' name='act_srt_date"+i+"' value='"+data[i].act_srt_date+"' style='width: 90px' disabled /></td>\n" +
+                            "<td id='basicExample'><input  type='text' class='in date start' id='act_end_date"+i+"' name='act_end_date"+i+"' value='"+data[i].act_end_date+"' style='width: 90px' disabled /></td>\n"+
+                            "<td><input type='text' class='in'  id='phours"+i+"' name='phrs"+i+"' value='"+data[i].planned_hrs+"' onclick='getID('"+data[i].level+"',document.getElementById('pln_srt_date"+i+"').value,document.getElementById('pln_end_date"+i+"').value,document.getElementById('act_srt_date"+i+"').value,document.getElementById('status"+i+"'),document.getElementById('phours"+i+"'),document.getElementById('hours"+i+"'),document.getElementById('progressbar"+i+"'),document.getElementById('act_end_date"+i+"').value)' disabled /></td>\n" +
+                            "<td><input type='text' class='in'  id='hours"+i+"' name='hrs"+i+"' value='"+data[i].hours+"' onclick='getID('"+data[i].level+"',document.getElementById('pln_srt_date"+i+"').value,document.getElementById('pln_end_date"+i+"').value,document.getElementById('act_srt_date"+i+"').value,document.getElementById('status"+i+"'),document.getElementById('phours"+i+"'),document.getElementById('hours"+i+"'),document.getElementById('progressbar"+i+"'),document.getElementById('act_end_date"+i+"').value)' disabled/></td>\n" +
                             "<td><div class=''id='parent_progressbar"+i+"'> </div></td>\n" +
                             "<td ><input type='text' style='background-color:transparent;width:20%;' id='status"+i+"'  /></td>\n" +
                             "<td></td>\n" +
@@ -827,23 +827,23 @@ console.log("testing---->",data)
                             "id='pln_srt_date"+i+"'" +
                             "name='pln_srt_date"+i+"'" +
                             "value='"+data[i].pln_srt_date+"'" +
-                            "onClick=\"check_previous("+data[i].seq_num+","+data[i].level+",document.getElementById('level"+(i-1)+"').value,"+data[data.length-1].IdeationandInitiate+","+data[data.length-1].Plan+","+data[data.length-1].Execute+","+data[data.length-1].Closure+",1);\"/>" +
+                            "onClick=\"check_previous("+data[i].seq_num+","+data[i].level+",document.getElementById('level"+(i-1)+"').value,"+data[data.length-1].IdeationandInitiate+","+data[data.length-1].Plan+","+data[data.length-1].Execute+","+data[data.length-1].Closure+",1);\" style='width: 90px'/>" +
                             "</td><td id='basicExample'><input type='text' class='in date start'\n" +
                             "id='pln_end_date"+i+"'\n" +
                             "name='pln_end_date"+i+"'\n" +
                             "value='"+data[i].pln_end_date+"'\n" +
-                            "onClick=\"check_previous('"+data[i].seq_num+"','"+data[i].level+"',document.getElementById('level"+(i-1)+"').value,'"+data[data.length-1].IdeationandInitiate+"','"+data[data.length-1].Plan+"','"+data[data.length-1].Execute+"','"+data[data.length-1].Closure+"',2);\"/>\n" +
+                            "onClick=\"check_previous('"+data[i].seq_num+"','"+data[i].level+"',document.getElementById('level"+(i-1)+"').value,'"+data[data.length-1].IdeationandInitiate+"','"+data[data.length-1].Plan+"','"+data[data.length-1].Execute+"','"+data[data.length-1].Closure+"',2);\" style='width: 90px'/>\n" +
                             "</td>\n" +
                             "<td id='basicExample'><input type='text' class='in date start'\n" +
                             "id='act_srt_date"+i+"'\n" +
                             "name='act_srt_date"+i+"'\n" +
                             "value='"+data[i].act_srt_date+"'\n" +
-                            "onClick=\"check_previous('"+data[i].seq_num+"','"+data[i].level+"',document.getElementById('level"+(i-1)+"').value,'"+data[data.length-1].IdeationandInitiate+"','"+data[data.length-1].Plan+"','"+data[data.length-1].Execute+"','"+data[data.length-1].Closure+"',3);\"/>\n" +
+                            "onClick=\"check_previous('"+data[i].seq_num+"','"+data[i].level+"',document.getElementById('level"+(i-1)+"').value,'"+data[data.length-1].IdeationandInitiate+"','"+data[data.length-1].Plan+"','"+data[data.length-1].Execute+"','"+data[data.length-1].Closure+"',3);\" style='width: 90px'/>\n" +
                             "</td>\n" +"<td id='basicExample'><input type='text' class='in date start'\n" +
                             "id='act_end_date"+i+"'\n" +
                             "name='act_end_date"+i+"'\n" +
                             "value='"+data[i].act_end_date+"'\n" +
-                            "onClick=\"check_previous('"+data[i].seq_num+"','"+data[i].level+"',document.getElementById('level"+(i-1)+"').value,'"+data[data.length-1].IdeationandInitiate+"','"+data[data.length-1].Plan+"','"+data[data.length-1].Execute+"','"+data[data.length-1].Closure+"',4);\"/>\n" +
+                            "onClick=\"check_previous('"+data[i].seq_num+"','"+data[i].level+"',document.getElementById('level"+(i-1)+"').value,'"+data[data.length-1].IdeationandInitiate+"','"+data[data.length-1].Plan+"','"+data[data.length-1].Execute+"','"+data[data.length-1].Closure+"',4);\" style='width: 90px'/>\n" +
                             "</td><td id='basicExample'><input type='text' class='in date start'\n" +
                             "id='phours"+i+"' name='phrs"+i+"'\n" +
                             "value='"+data[i].planned_hrs+"'\n" +
