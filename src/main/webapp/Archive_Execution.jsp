@@ -696,7 +696,19 @@
             }
         });
     });
-
+$(document).ready(function () {
+    var projectname=$('#nameofproject').val();
+    console.log('projectname'+projectname);
+    $.ajax({
+        url:'ReadOnly_Seq_Number',
+        type: 'post',
+        data: {projectname,projectname},
+        dataType: 'json',
+        success: function (data) {
+console.log("testing---->",data)
+        },
+    });
+})
     $(document).ready(function () {
         /*var title = $('#sitetitle1').html().split('-');
         var projectName = title[1];*/
@@ -810,7 +822,7 @@
                             "</td>\n" +
                             "<td><input list='userlist' class='in mem_ass' id='mem_ass"+i+"'" +
                             "placeholder='enter' name='mem_ass'" +
-                            "value='' style='text-align:center;'/>\n" +
+                            "value='"+data[i].mem_ass+"'' style='text-align:center;'/>\n" +
                             "</td><td id='basicExample'><input type='text' class='in date start'\n" +
                             "id='pln_srt_date"+i+"'" +
                             "name='pln_srt_date"+i+"'" +

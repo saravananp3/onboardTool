@@ -202,10 +202,13 @@ function getDetID(total_hours, actual_Hours, progressbar, status, actual_enddate
             url: "Cal_Percentage",
             type: 'POST',
             data: {sequence: i, ProjectName: projectname},
-            dataType: "text",
+            dataType: "json",
             success: function (data) {
+            	//data=JSON.parse(data)["value"];
+				//console.log('pecentage->',data.value);
+				data=data.value;
             	var percent = parseInt(data);
-                console.log("percentage---->", percent);
+                //console.log("percentage---->", percent);
                 var progressbar_color="progress-bar progress-bar-success  progress-bar-striped active";
 				if(percent<35)
 				{
@@ -259,6 +262,15 @@ function call_fun(mem_ass, name, a, b, c, d, e, g, h, i, j, k, l,project_name) {
 	f.method = "post";
 	//alert(l);
 	f.action = 'date_update?mem_ass=' + mem_ass + '&name=' + name + '&sequence_no=' + a + '&plan_start=' + b + '&plan_end=' + c + '&actual_start=' + d + '&actual_hrs=' + g + '&plan_hrs=' + e + '&actual_end=' + h + '&initiate_seqno=' + i + '&plan_seqno=' + j + '&execute_seqno=' + k + '&hypercare_seqno=' + l + "&cmnts=" + comments + "&ProjectName=" +project_name ;
+	// f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h+'&initiate_seqno='+i+'&plan_seqno='+j+'&execute_seqno='+k+'&hypercare_seqno='+l+"'&cmnts="+comments;
+	f.submit();
+}
+function call_fun1(mem_ass) {
+	//alert(l);
+	var f = document.loginForm;
+	f.method = "post";
+	//alert(l);
+	f.action = 'Cal_Percentage?mem_ass=' + mem_ass;
 	// f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h+'&initiate_seqno='+i+'&plan_seqno='+j+'&execute_seqno='+k+'&hypercare_seqno='+l+"'&cmnts="+comments;
 	f.submit();
 }
