@@ -535,7 +535,7 @@
 <script>
     $(document).ready(function () {
         $.ajax({
-            url: 'Archive_Intake_Servlet',
+            url: 'Decomm_Intake_App_Servlet',
             type: 'post',
             dataType: 'json',
             success: function (data) {
@@ -564,7 +564,7 @@
                         "<script>if("+data[i].applicationpercentage+"<35){document.getElementById('prog_bar"+i+"').className = 'progress-bar progress-bar-danger progress-bar-striped';}else if("+data[i].applicationpercentage+"<65)" +
                         "{document.getElementById('prog_bar"+i+"').className = 'progress-bar progress-bar-warning progress-bar-striped';}<\/script>"+
                         "<button type='button' class='btn btn-primary'\n" +
-                        "onClick=\"edit('"+data[i].applicationname+"');\">\n" +
+                        "onClick=\"decomm_intake_edit('"+data[i].applicationname+"');\">\n" +
                         "View/Update\n"+
                         "</button></li>";
                     ulid.append(li);

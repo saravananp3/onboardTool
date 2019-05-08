@@ -35,6 +35,11 @@
             background-color: #e7e7e7;
             color: #010101; }
     </style>
+    <style>
+        .margin {
+            margin-bottom: auto;
+        }
+    </style>
     <script src="js_in_pages/tree1.js"></script>
 
 </head>
@@ -318,6 +323,7 @@
                 <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
                     <div class="sidebar-content" id='jqxWidget'>
 
+
                         <div class="sidebar-nav">
                             <ul class="side-nav color-gray">
                                 <li class="nav-header">
@@ -327,103 +333,60 @@
                                     <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
                                 </li>
 
-                                <%--   <li class="nav-header">
-                                       <a href="AppEmphasize_EditProject.jsp"><span class="">Plan and pirority</span></a>
-                                   </li>--%>
-                                <li class="has-children">
-                                    <a href=""><i class="fa fa-archive"></i> <span>Plan and pirority</span> <i class="fa fa-angle-right arrow"></i></a>
-                                    <ul class="child-nav">
-                                        <li><a href="AppEmphasize_EditProject.jsp" class="active-menu"> <span>Project Information</span></a></li>
-                                        <li><a href="AppEmphasize_Application.jsp" class="active-menu"> <span>Application Information</span></a></li>
-                                        <li><a href="AppEmphasize_CostCalculation.jsp" > <span>Application Complexity</span></a></li>
-                                        <li><a href="AppEmphasize_PrioritizedApplications.jsp"> <span>Prioritized Applications</span></a></li>
-                                        <li><a href="AppEmphasize_Preview.jsp"> <span>Review Page</span></a></li>
-                                    </ul>
+                                <li class="nav-header">
+                                    <a href="AppEmphasize_EditProject.jsp"><span class="">App Emphasize Module</span></a>
                                 </li>
-                                <%--<li class="has-children">
+                                <li class="has-children">
                                     <a href="AppEmphasize_EditProject.jsp"><i class="fa fa-file-text"></i> <span>Project Details</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
                                         <li><a href="AppEmphasize_EditProject.jsp"> <span>Project Information</span></a></li>
                                         <li><a href="AppEmphasize_Application.jsp"> <span>Application Details</span></a></li>
                                     </ul>
-                                </li>--%>
+                                </li>
 
-
-                                <%--<li class="has-children">
+                                <li class="has-children">
                                     <a href="AppEmphasize_CostCalculation.jsp"><i class="fa fa-paint-brush"></i> <span>Application Prioritization</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity </span></a></li>
+                                        <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity</span></a></li>
                                     </ul>
-                                </li>--%>
+                                </li>
 
-                                <%--<li>
+                                <li>
                                     <a href="AppEmphasize_PrioritizedApplications.jsp"><i class="fa fa-map-signs"></i> <span>Application Prioritized</span> </a>
-                                </li>--%>
+                                </li>
 
-                                <%-- <li class="nav-header">
-                                     <a href='Applications.jsp'><span class="">Intake Module</span></a>
-                                 </li>
+                                <li class="nav-header">
+                                    <a href='Applications.jsp'><span class="">Intake Module</span></a>
+                                </li>
 
-                                 <li class="has-children">
-                                     <a href="Applications.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
-                                     <ul class="child-nav">
-                                         <li><a href="Applications.jsp"> <span>Application Information</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Legacy Retention Information</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Archive Data Management</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>System Requirements</span></a></li>
-                                     </ul>
-                                 </li>
-
-                                 <li class="has-children">
-                                     <a href="Applications.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
-                                     <ul class="child-nav">
-                                         <li><a href="Applications.jsp"> <span>Application Data Information</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Technical Information</span></a></li>
-                                     </ul>
-                                 </li>
-                                 <li class="has-children">
-                                     <a href="Applications.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
-                                     <ul class="child-nav">
-                                         <li><a href="Applications.jsp"> <span>Screen/Report Requirements</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
-                                     </ul>
-                                 </li>--%>
                                 <li class="has-children">
-                                    <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <a href="Applications.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="Applications.jsp" class="active-menu"> <span>Application Details</span></a></li>
-                                        <li><a href="Intake_Business.jsp" > <span>Business Details</span></a></li>
-                                        <li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
-                                        <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
-                                        <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>Application Information</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>Legacy Retention Information</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>Archive Data Management</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>System Requirements</span></a></li>
                                     </ul>
                                 </li>
-                                <%--<li class="nav-header">
-                                    <a href='Archive_Execution.jsp'><span class="">Archive Execution Module</span></a>
-                                </li>--%>
-                                <li class="has-children">
-                                    <a href=""><i class="fa fa-map-signs"></i> <span>Archive Execution Module</span> <i class="fa fa-angle-right arrow"></i></a>
-                                    <ul class="child-nav">
-                                        <li><a href="Archive_Execution.jsp" class="active-menu"> <span>Archive Execution</span></a></li>
-                                        <li><a href="archivesummary.jsp" > <span>Archive summary</span></a></li>
 
+                                <li class="has-children">
+                                    <a href="Applications.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav">
+                                        <li><a href="Applications.jsp"> <span>Application Data Information</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>Technical Information</span></a></li>
                                     </ul>
                                 </li>
-                                <%--   <li class="nav-header">
-                                       <a href='RoleUIDashboard.jsp'><span class="">Report Module</span></a>
-                                   </li>--%>
                                 <li class="has-children">
-                                    <a href=""><i class="fa fa-paint-brush"></i> <span>Report Module</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <a href="Applications.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="RoleUIDashboard.jsp" class="active-menu"> <span>Reports Dashboard</span></a></li>
-                                        <li><a href="RoleDashboard.jsp" class="active-menu"> <span>Role Dashboard</span></a></li>
-                                        <li><a href="ProjectDashboard.jsp" > <span>Project Dashboard</span></a></li>
-                                        <li><a href="ApplicationDashboard.jsp"> <span>Application Dashboard</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>Screen/Report Requirements</span></a></li>
+                                        <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
                                     </ul>
+                                </li>
+                                <li><a href="Archive_Execution.jsp"><i class="fa fa-suitcase"></i> <span>Archive Execution Module</span></a>
                                 </li>
                             </ul>
-
                         </div>
                         <!-- /.sidebar-nav -->
                     </div>
@@ -775,6 +738,41 @@
                 <label class="control-label" for="formInput664">Estimated Number of Screen</label>
                 <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" >
             </div>
+            <div class="form-group">
+                <label class="control-label" for="formInput664">Does the data needs to be Retained?</label>
+                <p>
+                    <label class="radio-inline">
+
+                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_yes" value="true"/>
+                        <b>Yes</b>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_no" value="false"/>
+                        <b>No</b>
+                    </label>
+                </p>
+            </div>
+            <div class="form-group">
+                <label class="Q2" for="formInput664" hidden>If the data is retained , do we need to decommission the application?</label>
+
+                <p class="Q2" hidden>
+                    <label class="radio-inline">
+
+                        <input type="hidden" id="yes" name="Decommission" class="radio1" value="true"/>
+                        <b>Yes</b>
+
+                    </label>
+                    <label class="radio-inline">
+
+                        <input type="hidden" id="no" name="Decommission" class="radio1" value="false"/>
+                        <b>  No </b>
+                    </label>
+                </p>
+
+
+            </div>
+
+
 
         </div>
     </div>
@@ -787,10 +785,55 @@
     <script>
         function OnButton1()
         {
-            document.loginForm.action = "Displaydb"
-            document.loginForm.submit();
-            document.loginForm.submit();
+            var ProjectName=$('#prj_name').val();
+            var no_of_app_complexity=$('#no_of_app_complexity').val();
+            var data_size=$('#data_size').val();
+            var current_user=$('#curnt_users').val();
+            var complexity=$('#complexity').val();
+            var q2id=$('#yes').attr('type');
+            var check2=$('[name="Decommission"]:checked').val();
+            var check1=$('[name="data_retained"]:checked').val();
+            if(ProjectName==""||no_of_app_complexity==""||current_user==""||complexity==""||check1==undefined||q2id=="radio"&&check2==undefined)
+            {
+                alert("fill the manditory fields.");
+            }
+            else {
+                document.loginForm.action = "Displaydb"
+                document.loginForm.submit();
+                document.loginForm.submit();
+            }
         }
+        $('.radio').on('change', function() {
+            //alert( this.value );
+            if(this.value=="true")
+            {
+                $(".Q2").show();
+                $(".radio1").attr('type','radio');
+            }
+            else
+            {
+                $(".Q2").hide();
+                $(".radio1").attr('type','hidden');
+
+
+            }
+        });
+
+        /*$('.radio').on('click', function() {
+            // in the handler, 'this' refers to the box clicked on
+            var $box = $(this);
+            if ($box.is(":checked")) {
+                // the name of the box is retrieved using the .attr() method
+                // as it is assumed and expected to be immutable
+                var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                // the checked state of the group/box on the other hand will change
+                // and the current value is retrieved using .prop() method
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+        });*/
     </script>
 
 
