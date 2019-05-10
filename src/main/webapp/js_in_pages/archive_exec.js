@@ -265,7 +265,7 @@ function call_fun(mem_ass, name, a, b, c, d, e, g, h, i, j, k, l,project_name) {
 	// f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h+'&initiate_seqno='+i+'&plan_seqno='+j+'&execute_seqno='+k+'&hypercare_seqno='+l+"'&cmnts="+comments;
 	f.submit();
 }
-function call_fun1(mem_ass) {
+/*function call_fun1(mem_ass) {
 	//alert(l);
 	var f = document.loginForm;
 	f.method = "post";
@@ -273,7 +273,7 @@ function call_fun1(mem_ass) {
 	f.action = 'Cal_Percentage?mem_ass=' + mem_ass;
 	// f.action='date_update?name='+name+'&sequence_no='+a+'&plan_start='+b+'&plan_end='+c+'&actual_start='+d+'&actual_hrs='+g+'&plan_hrs='+e+'&actual_end='+h+'&initiate_seqno='+i+'&plan_seqno='+j+'&execute_seqno='+k+'&hypercare_seqno='+l+"'&cmnts="+comments;
 	f.submit();
-}
+}*/
 
 function remove(x) {
 	var f = document.loginForm;

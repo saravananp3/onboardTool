@@ -86,6 +86,8 @@ public class ArchiveExecutionDataRetrieve {
             }
             lastobject.addProperty("projectname",projectname);
             jsonArray.add(lastobject);
+            JsonObject parent_seq_num=new Read_Only_Seq_Number().Read_Seq_Number(project_id);
+            jsonArray.add(parent_seq_num);
             System.out.println("hello"+jsonArray);
             connection.close();
         } catch (Exception e) {
