@@ -497,7 +497,7 @@
 
                             </div>
                         </div>
-                        <input type="hidden" name="nameofproject" id="nameofproject" value="<%=prjname%>">
+                        <input type="hidden" name="projectname" id="projectname" <%--value="<%=prjname%>"--%>>
 
 </form>
 </div>
@@ -660,9 +660,7 @@
 <script>
     var username_dropdown="";
     $(document).ready(function () {
-        /* var projecttitle=$('#sitetitle').val();
-         var projectname=projecttitle.substring(projecttitle.lastIndexOf('-')+1,projecttitle.length);*/
-        var projectname=$('#nameofproject').val();
+        var projectname=$('#projectname').val();
         console.log('projectname'+projectname);
         $.ajax({
             url: 'Archive_User_List',
@@ -672,13 +670,11 @@
             success: function (data) {
                 console.log('json drop down data-----',data);
                 var str="";
-
                 $.each(data, function (key, value) {
                     str+="{ Name: '"+value+"' },\n";
                 });
                 username_dropdown=str.substring(0,str.length-2);
                 console.log("username_dropdown=----->",username_dropdown);
-
             },
             /*error: function (e) {
                 //salert("err");
