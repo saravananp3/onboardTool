@@ -305,8 +305,12 @@ public class Archive_execution_db_update {
                 for (int n = selectedindex; n >= 0; n--) {
                     if(n!=deleteindex) {
                         if (currentlevel - 1 == level_num.get(n)) {
-
-                            if (check == true) {
+                            if(node_count==0)
+                            {
+                                progressbar.set(n, "0");
+                                sr.executeUpdate("update archiveexecution_details set progressbar='0' where projects='" + prjname + "' and seq_num=" + (n + 1) + ";");
+                            }
+                            else if (check == true) {
                                 progressbar.set(n, "100");
                                 sr.executeUpdate("update archiveexecution_details set progressbar='100' where projects='" + prjname + "' and seq_num=" + (n + 1) + ";");
                                 System.out.println("level" + n + ": " + progressbar.get(n));
