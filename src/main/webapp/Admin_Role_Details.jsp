@@ -28,74 +28,16 @@
     <link rel="stylesheet" href="css/icheck/skins/line/red.css">
     <link rel="stylesheet" href="css/icheck/skins/line/green.css">
     <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen">
 
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 16px;
-        }
 
-        .switch input {
-            display: none;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 9px;
-            width: 9px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 30px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
     <style type="text/css">
         .breadcrumb-div {
-            background-color: #e7e7e7;
+            background-color: #fff;
             color: #010101;
         }
 
@@ -103,6 +45,132 @@
             color: red;
             font-size: 6px;
         }
+
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .card {
+            border-radius: 6px;
+            box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+            background-color: #FFFFFF;
+            color: #252422;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .card .header {
+            padding: 20px 20px 0;
+        }
+        .card .title {
+            margin: 0;
+            color: #252422;
+            font-weight: 300;
+        }
+        h4, .h4 {
+            font-size: 1.5em;
+            font-weight: 600;
+            line-height: 1.2em;
+        }
+
+        .card .content {
+            padding: 15px 15px 10px 15px;
+        }
+        @media (min-width: 992px)
+            .table-responsive {
+                overflow: visible;
+            }
+            @media (min-width: 992px)
+                .table-full-width {
+                    margin-left: -15px;
+                    margin-right: -15px;
+                }
+                input[type=text] {
+                    background-color: transparent;
+                    border: 0px solid;
+                    height: 20px;
+                    width: 35%;
+                    color: black;
+
+                }
+                input.break {
+                    word-wrap: break-word;
+                    word-break: break-all;
+                    height: 80px;
+                }
+
+                .table-striped tbody > tr:nth-of-type(n) .slider {
+
+                }
+                .table-striped tbody > tr:nth-of-type(2n) .slider  .slider.round  {
+                    background-color: #f2f2f2;
+                }
+                .switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 30px;
+                    height: 16px;
+                }
+
+                .switch input {
+                    display: none;
+                }
+
+                .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: -8px;
+                    right: -3px;
+                    bottom: 0;
+                    background-color: #FA8383;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+
+                .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 9px;
+                    width: 9px;
+                    left: 4px;
+                    bottom: 4px;
+                    background-color: #f2f2f2;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+
+                input:checked + .slider {
+                    background-color: #00b33c;
+                }
+
+                input:focus + .slider {
+                    box-shadow: 0 0 1px #2196F3;
+                }
+
+                input:checked + .slider:before {
+                    -webkit-transform: translateX(26px);
+                    -ms-transform: translateX(26px);
+                    transform: translateX(26px);
+                }
+
+                /* Rounded sliders */
+                .slider.round {
+                    border-radius: 30px;
+                }
+
+                .slider.round:before {
+                    border-radius: 50%;
+                }
+
+
+                input[type="checkbox"] {
+                    opacity: 0;
+                }
+                input.act:focus {
+                    outline-width: 0;
+                }
+
     </style>
 
     <script>
@@ -240,130 +308,77 @@
                 <!-- Projects List Start -->
 
                 <div class="main-page">
+                    <div class="container-fluid">
+                        <div class="row page-title-div">
+                            <div class="col-sm-6">
+                                <h2 class="title">Authorization List</h2>
+                            </div>
+                            <!-- /.col-sm-6
+                            <div class="col-sm-6 right-side">
+                                <a class="btn bg-black toggle-code-handle tour-four" role="button">Toggle Code!</a>
+                            </div>
+                             /.col-sm-6 text-right -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row breadcrumb-div">
+                            <div class="col-sm-6">
+                                <ul class="breadcrumb">
+                                    <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+                                    <li class="active">Permissions</li>
+                                </ul>
+                            </div>
+                            <!-- /.col-sm-6 -->
 
-                    <section>
+                            <!-- /.col-sm-6 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <section class="section">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
 
-                        <div class="row">
-                            <div class="col-md-12">
+                                        <div class="header">
+                                            <h4 class="title">Permissions</h4>
 
-                                <br/>
-                                <div class="content">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="card">
-                                                    <div class="header">
-                                                        <h4 class="title" style="text-align: center">Authorization List</h4>
-                                                    </div>
-                                                    <div class="content table-responsive table-full-width">
-                                                        <table class="table table-hover table-striped">
-                                                            <thead>
-                                                            <th>Role</th>
-                                                            <th>Admin</th>
-                                                            <th>Plan and Pirority</th>
-                                                            <th>Intake</th>
-                                                            <th>Archival Execution</th>
-                                                            <th>Decommision</th>
-                                                            <th>Program governance</th>
-                                                            <th>Reporting</th>
-                                                            <th>Finance</th>
-                                                            </thead>
-                                                            <tbody id="authorization_details">
-
-
-                                                            <%--<tr>
-                                                                <td><input class="act" style="width:170px;" type="text"
-                                                                           name="role "
-                                                                           value=" "></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="slideradmin "
-                                                                                                 onclick=chk("admin","slideradmin")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="admin"
-                                                                        name="admin"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="sliderapp_emp"
-                                                                                                 onclick=chk("app_emp","sliderapp_emp")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="app_emp"
-                                                                        name="app_emp"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="sliderintake"
-                                                                                                 onclick=chk("intake","sliderintake")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="intake"
-                                                                        name="intake"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="sliderarch_exe"
-                                                                                                 onclick=chk("arch_exe","sliderarch_exe")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="arch_exe"
-                                                                        name="arch_exe"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="sliderdecomm"
-                                                                                                 onclick=chk("decomm","sliderdecomm")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="decomm"
-                                                                        name="decomm"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="sliderprgm_gov"
-                                                                                                 onclick=chk("prgm_gov","sliderprgm_gov")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="prgm_gov"
-                                                                        name="prgm_gov"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="sliderreport"
-                                                                                                 onclick=chk("report","sliderreport")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="report"
-                                                                        name="report"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                                <td><label class="switch"><input type="checkbox"
-                                                                                                 id="sliderfinance"
-                                                                                                 onclick=chk("finance","sliderfinance")><span
-                                                                        class="slider round"></span></label><input
-                                                                        class="act" type="text" id="finance"
-                                                                        name="finance"
-                                                                        value=""
-                                                                        style="background-color:lightgrey; "
-                                                                        readonly="readonly"/></td>
-                                                            </tr>
-
-                                                            --%></tbody>
-                                                        </table>
-                                                        <input type="hidden" id="rolecheck" value="<%= info %>" hidden>
-                                                        &nbsp;&nbsp;&nbsp;
-                                                        <button type="button" id="sub_btn" class="btn btn-primary"
-                                                                onclick="edit_serv()">Submit
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <p class="category">If the Module is restricted to a particular role, it is accessible by that role only.</p>
 
 
                                         </div>
+
+                                        <div class="content table-responsive table-full-width">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                <th>Role</th>
+                                                <th>Admin</th>
+                                                <th>Plan and Pirority</th>
+                                                <th>Intake</th>
+                                                <th>Archival Execution</th>
+                                                <th>Decommision</th>
+                                                <th>Program governance</th>
+                                                <th>Reporting</th>
+                                                <th>Finance</th>
+
+                                                </thead>
+                                                <tbody id="authorization_details">
+
+
+                                                </tbody>
+
+                                            </table>
+                                            <p>Note : (x = full access ; R = readonly ; N = no access)</p>
+                                            <input type="hidden" id="rolecheck" value="<%= info %>" hidden>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <button type="button" id="sub_btn" class="btn btn-primary pull-right"
+                                                    onclick="edit_serv()">Submit
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
+
+
+
 
                             </div>
                         </div>
@@ -378,7 +393,7 @@
                                 /*  var boolean_val=$('#'+slider_id).prop('checked');*/
                                 if (boolean_val == false) {
                                     /*$('#'+textbox_id).css({"background-color:":"lightgrey"});*/
-                                    document.getElementById(textbox_id).style.backgroundColor = "lightgrey";
+                                    document.getElementById(textbox_id).style.backgroundColor = "white";
                                     //$('#'+textbox_id).attr('readonly', true);
                                     document.getElementById(textbox_id).readOnly = true;
                                 } else {
@@ -440,60 +455,62 @@
                         '</tr>'*/
                     var row_data = ' <tr>' +
                         '<td>' +
-                        '<input class="act" style="width:170px;" type="text" name="role'  + i + '" value="' + data[i].role + '">' +
+                        '<input class="act" style="width:200px;" type="text"  tabindex="1" name="role'  + i + '" value="' + data[i].role + '" readonly="readonly">' +
                         '</td>' +
-                        '<td>' +
-                        '<label class="switch"><input type="checkbox"id="slideradmin' + i + '"onclick=chk("admin' + i + '","slideradmin' + i + '")>' + '<span class="slider round"></span>' +
+                        '<td >' +
+                        '<label class="switch"><input type="checkbox"   id="slideradmin' + i + '"onclick=chk("admin' + i + '","slideradmin' + i + '") >' + '<span class="slider round" ></span>' +
                         '</label>' +
-                        '<input class="act" type="text" id="admin' + i + '" name="admin' + i + '"value="' + data[i].admin + '"' +
-                        'style="background-color:lightgrey; " readonly="readonly"/>' +
+                        '<input class="act" type="text"  id="admin' + i + '" name="admin' + i + '"value="' + data[i].admin + '"' +
+                        ' " readonly="readonly"/>' +
                         '</td>' +
                         '<td>' +
                         '<label class="switch">' +
                         '<input type="checkbox" id="sliderapp_emp' + i + '" onclick=chk("app_emp' + i + '","sliderapp_emp' + i + '")>' +
-                        '<span class="slider round"></span>' +
+                        '<span class="slider round"  ></span>' +
                         '</label>' +
                         '<input class="act" type="text" id="app_emp' + i + '" name="app_emp' + i + '" value="' + data[i].app_emp +
-                        '" style="background-color:lightgrey; " readonly="readonly"/>' +
+                        '"  " readonly="readonly"/>' +
                         '</td>' +
                         '<td><label class="switch">' +
                         '<input type="checkbox" id="sliderintake' + i + '" onclick=chk("intake' + i + '","sliderintake' + i + '")>' +
-                        '<span class="slider round"></span>' +
+                        '<span class="slider round" ></span>' +
                         '</label>' +
-                        '<input class="act" type="text" id="intake' + i + '" name="intake' + i + '" value="' + data[i].intake + '" style="background-color:lightgrey; " readonly="readonly"/>' +
+                        '<input class="act" type="text" id="intake' + i + '" name="intake' + i + '" value="' + data[i].intake + '"  " readonly="readonly"/>' +
                         '</td>' +
                         '<td><label class="switch">' +
                         '<input type="checkbox" id="sliderarch_exe' + i + '"onclick=chk("arch_exe' + i + '","sliderarch_exe' + i + '")>' +
-                        '<span class="slider round"></span>' +
+                        '<span class="slider round" ></span>' +
                         '</label>' +
-                        '<input class="act" type="text" id="arch_exe' + i + '" name="arch_exe' + i + '" value="' + data[i].arch_exe + '"style="background-color:lightgrey; " readonly="readonly"/>' +
+                        '<input class="act" type="text" id="arch_exe' + i + '" name="arch_exe' + i + '" value="' + data[i].arch_exe + '" " readonly="readonly"/>' +
                         '</td>' +
                         '<td>' +
                         '<label class="switch">' +
                         '<input type="checkbox" id="sliderdecomm' + i + '" onclick=chk("decomm' + i + '","sliderdecomm' + i + '") >' +
-                        '<span class="slider round"></span>' +
-                        '</label><input class="act" type="text" id="decomm' + i + '" name="decomm' + i + '" value="' + data[i].decomm + '"' + 'style="background-color:lightgrey;" readonly="readonly"/>' +
+                        '<span class="slider round" ></span>' +
+                        '</label><input class="act" type="text" id="decomm' + i + '" name="decomm' + i + '" value="' + data[i].decomm + '"' + '" readonly="readonly"/>' +
                         '</td>' +
                         '<td>' +
                         '<label class="switch">' +
                         '<input type="checkbox" id="sliderprgm_gov' + i + '" onclick=chk("prgm_gov' + i + '","sliderprgm_gov' + i + '")>' +
-                        '<span class="slider round"></span>' +
+                        '<span class="slider round" ></span>' +
                         '</label>' +
                         '<input class="act" type="text" id="prgm_gov' + i + '" name="prgm_gov' + i + '"value="' + data[i].prgm_governance +
-                        '" style="background-color:lightgrey; " readonly="readonly"/>' +
+                        '"  " readonly="readonly" />' +
                         '</td>' +
                         '<td>' +
                         '<label class="switch">' +
                         '<input type="checkbox" id="sliderreport' + i + '" onclick=chk("report' + i + '","sliderreport' + i + '") >' +
-                        '<span class="slider round"></span>' +
-                        '</label><input class="act" type="text" id="report' + i + '" name="report' + i + '" value="' + data[i].reporting + '" style="background-color:lightgrey; " readonly="readonly"/>' +
+                        '<span class="slider round"  ></span>' +
+                        '</label><input class="act" type="text" id="report' + i + '" name="report' + i + '" value="' + data[i].reporting + '"  " readonly="readonly"/>' +
                         '</td>' +
                         '<td>' +
                         '<label class="switch">' +
                         '<input type="checkbox" id="sliderfinance' + i + '" onclick=chk("finance' + i + '","sliderfinance' + i + '") >' +
-                        '<span class="slider round"></span>' +
-                        '</label><input class="act" type="text" id="finance' + i + '" name="finance' + i + '" value="' + data[i].finance + '" style="background-color:lightgrey; " readonly="readonly"/>' +
-                        '</td>' +
+                        '<span class="slider round" > </span>' +
+                        '</label><input class="act" type="text" id="finance' + i + '" name="finance' + i + '" value="' + data[i].finance + '"  " readonly="readonly"/>' +
+                        '</td>'  +'<td>' +
+
+                        '</td>'+
                         '</tr>';
                     $('#authorization_details').append(row_data);
                 }
@@ -503,6 +520,13 @@
     });
 </script>
 
+<script>
+    $(document).ready(function(){
+        $("#enable").click(function(){
+            $("input[type='hidden']").show();;
+        });
+    });
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".lis").click(function () {
@@ -605,7 +629,39 @@
         });
     });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript">
 
+    function enableSlider(){
+
+        document.getElementById("slider_one").style.display = 'block'
+        document.getElementById("slider_two").style.display = 'block'
+        document.getElementById("slider_three").style.display = 'block'
+        document.getElementById("slider_four").style.display = 'block'
+        document.getElementById("slider_five").style.display = 'block'
+        document.getElementById("slider_six").style.display = 'block'
+        document.getElementById("slider_seven").style.display = 'block'
+        document.getElementById("slider_eight").style.display = 'block'
+
+
+    }
+
+    function disableSlider(){
+
+        document.getElementById("slider_one").style.display = 'none'
+        document.getElementById("slider_two").style.display = 'none'
+        document.getElementById("slider_three").style.display = 'none'
+        document.getElementById("slider_four").style.display = 'none'
+        document.getElementById("slider_five").style.display = 'none'
+        document.getElementById("slider_six").style.display = 'none'
+        document.getElementById("slider_seven").style.display = 'none'
+        document.getElementById("slider_eight").style.display = 'none'
+
+
+    }
+
+
+</script>
 
 </body>
 </html>

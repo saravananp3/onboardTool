@@ -31,14 +31,45 @@
 
 
     <style type="text/css">
-        .breadcrumb-div {
-            background-color: #e7e7e7;
-            color: #010101; }
-    </style>
-    <style>
-        .margin {
-            margin-bottom: auto;
+
+        body{
+
+            background:#f5f5f5;
+
         }
+        #sitetitle1{
+
+            color:DodgerBlue;
+            text-align:center;
+            float:right;
+
+        }
+
+
+        .bs-wizard {margin-top: 40px;}
+
+        /*Form Wizard*/
+        .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+        .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+        .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+        .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+        .bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+        .bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #6dccff; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
+        .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: 	#1E90FF; border-radius: 50px; position: absolute; top: 8px; left: 8px; }
+        .bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+        .bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:  #6dccff;}
+        .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+        .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+        .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+        .bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+        .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+        .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+        .bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+        .bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+        .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+        /*END Form Wizard*/
+
+
     </style>
     <script src="js_in_pages/tree1.js"></script>
 
@@ -258,7 +289,7 @@
     }
 </script>
 
-<form class="form-signin" name="loginForm" method="post">
+<form class="form-signin" name="loginForm" method="post" action="Displaydb">
 
     <div class="main-wrapper">
 
@@ -291,13 +322,14 @@
                         </button>
                     </div>
                     <!-- /.navbar-header -->
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+
 
 
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
                         <!-- /.nav navbar-nav -->
                         <ul class="nav navbar-nav navbar-right">
+                            <a class="navbar-brand" href="Project_List.jsp" id="sitetitle1">PROJECT NAME-<%=rs3.getString("projectname") %></a>
                             <%
                                 String uname=(String)details.getAttribute("username");
                                 String role=(String)details.getAttribute("role");%>
@@ -317,7 +349,6 @@
 
         <div class="content-wrapper">
             <div class="content-container">
-
 
                 <!-- ========== LEFT SIDEBAR ========== -->
                 <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
@@ -384,9 +415,10 @@
                                         <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
                                     </ul>
                                 </li>
-                                <li><a href="Archive_Execution.jsp"><i class="fa fa-suitcase"></i> <span>Archive Execution Module</span></a>
+                                <li ><a href="Archive_Execution.jsp"><i class="fa fa-suitcase"></i> <span>Archive Execution Module</span></a>
                                 </li>
                             </ul>
+
                         </div>
                         <!-- /.sidebar-nav -->
                     </div>
@@ -395,33 +427,13 @@
                 <!-- /.left-sidebar -->
 
 
-                <script>
-                    $(document).ready(function(){
-                        $('[data-toggle="tooltip"]').tooltip();
-                    });
-                </script>
 
-                <script>
-                    $(function () {
-                        // 6 create an instance when the DOM is ready
-                        $('#jstree').jstree();
-                        // 7 bind to events triggered on the tree
-                        $('#jstree').on("changed.jstree", function (e, data) {
-                            console.log(data.selected);
-                        });
-                        // 8 interact with the tree - either way is OK
-                        $('button').on('click', function () {
-                            $('#jstree').jstree(true).select_node('child_node_1');
-                            $('#jstree').jstree('select_node', 'child_node_1');
-                            $.jstree.reference('#jstree').select_node('child_node_1');
-                        });
-                    });
-                </script>
+
 
                 </script>
 
                 <!-- Projects List Start -->
-
+                <form>
                 <section>
 
                 <div class="row">
@@ -481,36 +493,45 @@
                 </jsp:include>
 
 
-                <div class="row">
+
+                <div class="container">
+
 
                     <div class="row bs-wizard" style="border-bottom:0;">
 
                     <div class="col-xs-3 bs-wizard-step complete">
                     <div class="text-center bs-wizard-stepnum">Project Information</div>
                 <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot" style="color:white">1</a>
-                    </div>
-
-                    <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
-                    <div class="text-center bs-wizard-stepnum">Application Complexity </div>
-                <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot">2</a>
+                <a href="#" class="bs-wizard-dot"></a>
                     <div class="bs-wizard-info text-center"></div>
                     </div>
 
-                    <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                    <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="#" class="bs-wizard-dot"></a>
+                    <div class="bs-wizard-info text-center"></div>
+                    </div>
+
+                    <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                     <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                 <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot">3</a>
+                <a href="#" class="bs-wizard-dot"></a>
                     <div class="bs-wizard-info text-center"></div>
                     </div>
 
                     <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                     <div class="text-center bs-wizard-stepnum">Final</div>
                     <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot">4</a>
-                    <div class="bs-wizard-info text-center"></div>
+                <a href="#" class="bs-wizard-dot"></a>
+                    <div class="bs-wizard-info text-center"> </div>
                     </div>
+                    </div>
+
+
+
+
+
                     </div>
                     <br/>
                     <div class="panel-group" id="panels1">
@@ -564,9 +585,9 @@
                 </div> -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                    <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">    Application Complexity   </a> </h4>
+                    <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">    Application Complexity   </a> </h4>
                 </div>
-                <div id="collapse2" class="panel-collapse collapse">
+                <div id="collapse2" class="panel-collapse ">
                     <div class="panel-body text-left">
 
 
@@ -668,7 +689,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="formInput526"><div class="required">Number of Applications based on Complexity&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value="<%=rs.getString("no_of_app_complexity")%>" required>
+                <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value="<%=rs.getString("no_of_app_complexity")%>" >
             </div>
 
             <div class="form-group">
@@ -678,7 +699,7 @@
 
             <div class="form-group">
                 <label class="control-label" for="formInput26">Data Size&nbsp;<span class="text-danger">*</span></label>
-                <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required >
+                <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required>
                     <option></option>
                     <option><100 GB</option>
                     <option>100 to 250 GB</option>
@@ -772,80 +793,33 @@
 
             </div>
 
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary pull-right" onclick="OnButton1()" >Save & Continue</button>
 
+
+
+
+                <a href="AppEmphasize_Application.jsp" class="btn btn-default" class="btn pull-right">Back</a>
+            </div>
 
         </div>
+
     </div>
+
     </div>
 
 
 
     <input type="text" id="pwqej" value="<%= info %>" style="display:none">
     <br/>
-    <script>
-        function OnButton1()
-        {
-            var ProjectName=$('#prj_name').val();
-            var no_of_app_complexity=$('#no_of_app_complexity').val();
-            var data_size=$('#data_size').val();
-            var current_user=$('#curnt_users').val();
-            var complexity=$('#complexity').val();
-            var q2id=$('#yes').attr('type');
-            var check2=$('[name="Decommission"]:checked').val();
-            var check1=$('[name="data_retained"]:checked').val();
-            if(ProjectName==""||no_of_app_complexity==""||current_user==""||complexity==""||check1==undefined||q2id=="radio"&&check2==undefined)
-            {
-                alert("fill the manditory fields.");
-            }
-            else {
-                document.loginForm.action = "Displaydb"
-                document.loginForm.submit();
-                document.loginForm.submit();
-            }
-        }
-        $('.radio').on('change', function() {
-            //alert( this.value );
-            if(this.value=="true")
-            {
-                $(".Q2").show();
-                $(".radio1").attr('type','radio');
-            }
-            else
-            {
-                $(".Q2").hide();
-                $(".radio1").attr('type','hidden');
-
-
-            }
-        });
-
-        /*$('.radio').on('click', function() {
-            // in the handler, 'this' refers to the box clicked on
-            var $box = $(this);
-            if ($box.is(":checked")) {
-                // the name of the box is retrieved using the .attr() method
-                // as it is assumed and expected to be immutable
-                var group = "input:checkbox[name='" + $box.attr("name") + "']";
-                // the checked state of the group/box on the other hand will change
-                // and the current value is retrieved using .prop() method
-                $(group).prop("checked", false);
-                $box.prop("checked", true);
-            } else {
-                $box.prop("checked", false);
-            }
-        });*/
-    </script>
 
 
 
 
-    <button type="button" class="btn btn-success pull-right" onclick="OnButton1()">Save & Continue ...</button>
 
 
-
-
-    <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
-        <% } %>
+    <% } %>
 
     </div>
 
@@ -857,134 +831,186 @@
 
     </section>
     <!-- /.section -->
+</form>
+</div>
+<!-- /.main-page -->
 
-    </div>
-    <!-- /.main-page -->
+<!-- Project List End -->
 
-    <!-- Project List End -->
+</div>
+<!-- /.content-container -->
+</div>
+<!-- /.content-wrapper -->
 
-    </div>
-    <!-- /.content-container -->
-    </div>
-    <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /.main-wrapper -->
+</div>
+<!-- /.main-wrapper -->
 
 
 
-    <script>
-        if(document.getElementById('pwqej').value=="R")
-            checkk();
-    </script>
-        <%
-}
-}}
-catch(Exception e){}
+<script>
+    if(document.getElementById('pwqej').value=="R")
+        checkk();
+</script>
+<%
+            }
+        }}
+    catch(Exception e){}
 %>
 
-    <!-- ========== COMMON JS FILES ========== -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/pace/pace.min.js"></script>
-    <script src="js/lobipanel/lobipanel.min.js"></script>
-    <script src="js/iscroll/iscroll.js"></script>
+<!-- ========== COMMON JS FILES ========== -->
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/lobipanel/lobipanel.min.js"></script>
+<script src="js/iscroll/iscroll.js"></script>
 
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".lis").click(function() {
-                $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
-                $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
-            });
-            $(".gr").click(function() {
-                $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
-                $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
-            });
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".lis").click(function() {
+            $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
+            $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
         });
-    </script>
-
-
-    <!-- ========== PAGE JS FILES ========== -->
-    <script src="js/prism/prism.js"></script>
-    <script src="js/waypoint/waypoints.min.js"></script>
-    <script src="js/counterUp/jquery.counterup.min.js"></script>
-    <script src="js/amcharts/amcharts.js"></script>
-    <script src="js/amcharts/serial.js"></script>
-    <script src="js/amcharts/plugins/export/export.min.js"></script>
-    <link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
-    <script src="js/amcharts/themes/light.js"></script>
-    <script src="js/toastr/toastr.min.js"></script>
-    <script src="js/icheck/icheck.min.js"></script>
-    <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
-
-    <!-- ========== THEME JS ========== -->
-    <script src="js/production-chart.js"></script>
-    <script src="js/traffic-chart.js"></script>
-    <script src="js/task-list.js"></script>
-
-    <!-- ========== THEME JS ========== -->
-    <script src="js/main.js"></script>
-
-
-    <!-- ========== PAGE JS FILES ========== -->
-    <script src="js/prism/prism.js"></script>
-    <script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
-    <script type="text/javascript" src="js/date-picker/datepair.js"></script>
-    <script type="text/javascript" src="js/date-picker/moment.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-
-    <!-- ========== THEME JS ========== -->
-
-    <script type="text/javascript">
-        $('.datepicker').datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '-3d'
+        $(".gr").click(function() {
+            $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
+            $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
         });
-    </script>
+    });
+</script>
 
 
-    <!-- ========== THEME JS ========== -->
-    <script>
-        $(function($) {
-            // 1st  datepicker
-            $('#basicExample .time').timepicker({
-                'showDuration': true,
-                'timeFormat': 'g:ia'
-            });
-            $('#basicExample .date').datepicker({
-                'format': 'm/d/yyyy',
-                'autoclose': true
-            });
-            var basicExampleEl = document.getElementById('basicExample');
-            var datepair = new Datepair(basicExampleEl);
-            // 2nd  datepicker
-            $('#datetimepicker1').datetimepicker({
-                debug: true
-            });
-            // 3rd  datepicker
-            $('#datetimepicker9').datetimepicker({
-                viewMode: 'years'
-            });
-            // 4th  datepicker
-            $('#datetimepicker10').datetimepicker({
-                viewMode: 'years',
-                format: 'MM/YYYY'
-            });
-            // 5th  datepicker
-            $('#datetimepicker11').datetimepicker({
-                daysOfWeekDisabled: [0, 6]
-            });
-            // 6th  datepicker
-            $('#datetimepicker12').datetimepicker({
-                inline: true,
-                sideBySide: true
-            });
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script src="js/waypoint/waypoints.min.js"></script>
+<script src="js/counterUp/jquery.counterup.min.js"></script>
+<script src="js/amcharts/amcharts.js"></script>
+<script src="js/amcharts/serial.js"></script>
+<script src="js/amcharts/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
+<script src="js/amcharts/themes/light.js"></script>
+<script src="js/toastr/toastr.min.js"></script>
+<script src="js/icheck/icheck.min.js"></script>
+<script src="js/bootstrap-tour/bootstrap-tour.js"></script>
+
+<!-- ========== THEME JS ========== -->
+<script src="js/production-chart.js"></script>
+<script src="js/traffic-chart.js"></script>
+<script src="js/task-list.js"></script>
+
+<!-- ========== THEME JS ========== -->
+<script src="js/main.js"></script>
+
+
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
+<script type="text/javascript" src="js/date-picker/datepair.js"></script>
+<script type="text/javascript" src="js/date-picker/moment.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+
+<!-- ========== THEME JS ========== -->
+
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+        startDate: '-3d'
+    });
+</script>
+
+<script>
+    function OnButton1()
+    {
+        var ProjectName=$('#prj_name').val();
+        var no_of_app_complexity=$('#no_of_app_complexity').val();
+        var data_size=$('#data_size').val();
+        var current_user=$('#curnt_users').val();
+        var complexity=$('#complexity').val();
+        var q2id=$('#yes').attr('type');
+        var check2=$('[name="Decommission"]:checked').val();
+        var check1=$('[name="data_retained"]:checked').val();
+        if(ProjectName==""||no_of_app_complexity==""||current_user==""||complexity==""||check1==undefined||q2id=="radio"&&check2==undefined)
+        {
+            alert("fill the manditory fields.");
+        }
+        else {
+            document.loginForm.action = "Displaydb"
+            document.loginForm.submit();
+            document.loginForm.submit();
+        }
+    }
+    $('.radio').on('change', function() {
+        //alert( this.value );
+        if(this.value=="true")
+        {
+            $(".Q2").show();
+            $(".radio1").attr('type','radio');
+        }
+        else
+        {
+            $(".Q2").hide();
+            $(".radio1").attr('type','hidden');
+
+
+        }
+    });
+
+    /*$('.radio').on('click', function() {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });*/
+</script>
+<!-- ========== THEME JS ========== -->
+<script>
+    $(function($) {
+        // 1st  datepicker
+        $('#basicExample .time').timepicker({
+            'showDuration': true,
+            'timeFormat': 'g:ia'
         });
-    </script>
+        $('#basicExample .date').datepicker({
+            'format': 'm/d/yyyy',
+            'autoclose': true
+        });
+        var basicExampleEl = document.getElementById('basicExample');
+        var datepair = new Datepair(basicExampleEl);
+        // 2nd  datepicker
+        $('#datetimepicker1').datetimepicker({
+            debug: true
+        });
+        // 3rd  datepicker
+        $('#datetimepicker9').datetimepicker({
+            viewMode: 'years'
+        });
+        // 4th  datepicker
+        $('#datetimepicker10').datetimepicker({
+            viewMode: 'years',
+            format: 'MM/YYYY'
+        });
+        // 5th  datepicker
+        $('#datetimepicker11').datetimepicker({
+            daysOfWeekDisabled: [0, 6]
+        });
+        // 6th  datepicker
+        $('#datetimepicker12').datetimepicker({
+            inline: true,
+            sideBySide: true
+        });
+    });
+</script>
 
 
 </body>
