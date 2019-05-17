@@ -4541,11 +4541,12 @@ code:not(.language-html) {
 }
 
 .left-sidebar .side-nav .nav-header {
-  font-size: 80%;
+  font-size: 97%;
   text-transform: uppercase;
   padding-left: 15px;
   padding-top: 10px;
   opacity: 0.8;
+  margin-top:12px;
 }
 
 .left-sidebar .side-nav .nav-header:first-child {
