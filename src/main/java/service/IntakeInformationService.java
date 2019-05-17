@@ -233,5 +233,171 @@ public class IntakeInformationService {
         return jsonArray;
 
     }
+    public JsonArray DecommIntakeRequirementsDataRetrieve(String projectname,String applicationname)
+    {
+        JsonArray jsonArray=new JsonArray();
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String existing_data_query="  select * from Decomm_BusinessUnit_GeographicCode where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by id;";
+            Statement st=connection.createStatement();
+            ResultSet existingdata=st.executeQuery(existing_data_query);
+            int i=0;
+            if(existingdata.next())
+            {
+                JsonObject existingdataObject2=new JsonObject();
+                existingdataObject2.addProperty("CheckExistance",true);
+                jsonArray.add(existingdataObject2);
+                JsonObject existingdataObject=new JsonObject();
+                existingdataObject.addProperty("BusinessUnit",existingdata.getString("business_unit"));
+                existingdataObject.addProperty("OperationUnit",existingdata.getString("operation_unit"));
+                existingdataObject.addProperty("LocationUnit",existingdata.getString("location_unit"));
+                existingdataObject.addProperty("Dept",existingdata.getString("dept"));
+                jsonArray.add(existingdataObject);
+                i++;
+                while(existingdata.next())
+                {
+                    JsonObject existingdataObject1=new JsonObject();
+                    existingdataObject1.addProperty("BusinessUnit",existingdata.getString("business_unit"));
+                    existingdataObject1.addProperty("OperationUnit",existingdata.getString("operation_unit"));
+                    existingdataObject1.addProperty("LocationUnit",existingdata.getString("location_unit"));
+                    existingdataObject1.addProperty("Dept",existingdata.getString("dept"));
+                    jsonArray.add(existingdataObject1);
+                    i++;
+
+                }
+            }
+            else
+            {
+                JsonObject existingdataObject4=new JsonObject();
+                existingdataObject4.addProperty("CheckExistance",false);
+                jsonArray.add(existingdataObject4);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Exception----------------"+e);
+        }
+        System.out.println("json array------>"+jsonArray);
+        return jsonArray;
+    }
+
+    public JsonArray DecommSiteLocationDataRetrieve(String projectname,String applicationname)
+    {
+        JsonArray jsonArray=new JsonArray();
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String existing_data_query="  select * from Decomm_Sitelocation_Assets where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by id;";
+            Statement st=connection.createStatement();
+            ResultSet existingdata=st.executeQuery(existing_data_query);
+            int i=0;
+            if(existingdata.next())
+            {
+                JsonObject existingdataObject2=new JsonObject();
+                existingdataObject2.addProperty("CheckExistance",true);
+                jsonArray.add(existingdataObject2);
+                JsonObject existingdataObject=new JsonObject();
+                existingdataObject.addProperty("Country",existingdata.getString("country"));
+                existingdataObject.addProperty("City",existingdata.getString("city"));
+                existingdataObject.addProperty("State",existingdata.getString("state"));
+                existingdataObject.addProperty("OfficeDesignation",existingdata.getString("office_designation"));
+                jsonArray.add(existingdataObject);
+                i++;
+                while(existingdata.next())
+                {
+                    JsonObject existingdataObject1=new JsonObject();
+                    existingdataObject1.addProperty("Country",existingdata.getString("country"));
+                    existingdataObject1.addProperty("City",existingdata.getString("city"));
+                    existingdataObject1.addProperty("State",existingdata.getString("state"));
+                    existingdataObject1.addProperty("OfficeDesignation",existingdata.getString("office_designation"));
+                    jsonArray.add(existingdataObject1);
+                    i++;
+
+                }
+            }
+            else
+            {
+                JsonObject existingdataObject4=new JsonObject();
+                existingdataObject4.addProperty("CheckExistance",false);
+                jsonArray.add(existingdataObject4);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Exception----------------"+e);
+        }
+        System.out.println("json array------>"+jsonArray);
+        return jsonArray;
+    }
+
+    public JsonObject DecommIntakeRequirementDataRetrieve(String projectname,String applicationname)
+    {
+        JsonObject jsonobject=new JsonObject();
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String existing_data_query="  select * from decomm_intake_req where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by id;";
+            Statement st=connection.createStatement();
+            ResultSet existingdata=st.executeQuery(existing_data_query);
+            if(existingdata.next())
+            {
+                jsonobject.addProperty("CheckExistance",true);
+                jsonobject.addProperty("Project_Name",existingdata.getString("prj_name"));
+                jsonobject.addProperty("App_Name",existingdata.getString("app_name"));
+                jsonobject.addProperty("Legacy_App_Name",existingdata.getString("legacy_app_name"));
+                jsonobject.addProperty("Enterprise_Team_Decomm_Prj_No",existingdata.getString("enterprise_team_decomm_prj_no"));
+                jsonobject.addProperty("App_Identification_No",existingdata.getString("app_identification_no"));
+                jsonobject.addProperty("Infra_Prj_No",existingdata.getString("infra_prj_no"));
+                //jsonobject.addProperty("Read_Only_Date",existingdata.getString("read_only_date"));
+
+            }
+            else{
+                jsonobject.addProperty("CheckExistance",false);
+            }
+            String readOnly_query = "Select * from AppEmphazize_ApplicationPrioritization where prj_name='"+projectname+"' and proj_name='"+applicationname+"'";
+            Statement st1=connection.createStatement();
+            ResultSet existingdata1=st1.executeQuery(readOnly_query);
+            if(existingdata1.next()) {
+                jsonobject.addProperty("Read_Only", existingdata1.getString("read_date"));
+            }
+            //int i=0;
+            /*if(existingdata.next())
+            {
+                JsonObject existingdataObject2=new JsonObject();
+                existingdataObject2.addProperty("CheckExistance",true);
+                jsonArray.add(existingdataObject2);
+                JsonObject existingdataObject=new JsonObject();
+
+                jsonArray.add(existingdataObject);
+                i++;
+                while(existingdata.next())
+                {
+                    JsonObject existingdataObject1=new JsonObject();
+                    existingdataObject.addProperty("Project_Name",existingdata.getString("prj_name"));
+                    existingdataObject.addProperty("App_Name",existingdata.getString("app_name"));
+                    existingdataObject.addProperty("Legacy_App_Name",existingdata.getString("legacy_app_name"));
+                    existingdataObject.addProperty("Enterprise_Team_Decomm_Prj_No",existingdata.getString("enterprise_team_decomm_prj_no"));
+                    existingdataObject.addProperty("App_Identification_No",existingdata.getString("app_identification_no"));
+                    existingdataObject.addProperty("Infra_Prj_No",existingdata.getString("infra_prj_no"));
+                    existingdataObject.addProperty("Read_Only_Date",existingdata.getString("read_only_date"));
+                    jsonArray.add(existingdataObject1);
+                    i++;
+
+                }
+            }
+            else
+            {
+                JsonObject existingdataObject4=new JsonObject();
+                existingdataObject4.addProperty("CheckExistance",false);
+                jsonArray.add(existingdataObject4);
+            }*/
+        }
+        catch(Exception e)
+        {
+            System.out.println("Exception----------------"+e);
+        }
+        return jsonobject;
+    }
 
 }

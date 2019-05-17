@@ -11,8 +11,10 @@ function edit(id){
     f.submit();
 }
 function decomm_intake_edit(id){
+    var projectnamesplit=$("#sitetitle1").text();
+    var projectname=projectnamesplit.split("-");
     var f=document.form;
     f.method="post";
-    f.action='AppDecommInfo.jsp?appname='+id;
+    f.action='AppDecommInfo.jsp?appname='+id+'&projectname='+projectname[1];
     f.submit();
 }

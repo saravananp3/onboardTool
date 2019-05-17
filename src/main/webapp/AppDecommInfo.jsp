@@ -237,22 +237,23 @@
                 <section>
                     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
                     <br>
-                    <form name="Decomm_Intake_Requirements">
-                        <div class="row">
 
-                            <div class="container">
+                    <div class="row">
 
-                                <div class="panel-group" id="panels1">
+                        <div class="container">
 
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title"> <a  data-parent="#panels1" > App Decomm Info  </a> </h4>
-                                        </div>
+                            <div class="panel-group" id="panels1">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> <a  data-parent="#panels1" > App Decomm Info  </a> </h4>
+                                    </div>
+                                    <form name="Decomm_Intake_Requirements">
                                         <div id="collapse2" class="panel-collapse">
                                             <div class="panel-body text-left">
                                                 <div class="form-group">
                                                     <label class="control-label" for="formInput198"> Application Name</label>
-                                                    <input type="text" class="form-control" id="app_name" placeholder="Application Name" name="appname" >
+                                                    <input type="text" class="form-control" id="app_name" placeholder="Application Name" name="appname" readonly >
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label" for="formInput198"><div class="required_fie"> Legacy Application Name</div></label>
@@ -279,29 +280,16 @@
                                                                 <th scope="col" style="color:white;">Operation Unit</th>
                                                                 <th scope="col" style="color:white;">Location Unit</th>
                                                                 <th scope="col" style="color:white;">Department</th>
-                                                                <th scope="col" style="color:white;">Action</th>
+                                                                <th scope="col" style="color:white;"></th>
                                                             </tr>
                                                             </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td><input type="text" id ="business_unit_1"></td>
-                                                                <td><input type="text" id ="operation_unit_1"></td>
-                                                                <td><input type="text" id ="location_unit_1"></td>
-                                                                <td><input type="text" id ="department_1"></td>
-
-                                                                <td>
-                                                                    <i class="fa fa-plus" aria-hidden="true" id="myBtn"></i>
-                                                                    <i class="fa fa-trash-o" aria-hidden="true" id="delete"></i>
-                                                                    <i class="fa fa-pencil-square-o" aria-hidden="true" id="modify"></i>
-
-                                                                </td>
-                                                            </tr>
-
+                                                            <tbody id ="business_unit_and_geographic_location">
 
                                                             </tbody>
                                                         </table>
-
+                                                        <button type="button" class="btn btn-primary" onclick="addrow_bussiness();">Add</button>
                                                     </div>
+
                                                 </div>
 
                                                 <!--End of Table Info -->
@@ -322,44 +310,14 @@
                                                                 <th scope="col" style="color:white;">City</th>
                                                                 <th scope="col" style="color:white;">State</th>
                                                                 <th scope="col" style="color:white;">Office Designation</th>
-                                                                <th scope="col" style="color:white;">Action</th>
+                                                                <th scope="col" style="color:white;"></th>
 
                                                             </tr>
                                                             </thead>
-                                                            <tbody>
-                                                            <tr>
-
-                                                                <td><input type="text" id ="country1"></td>
-                                                                <td><input type="text" id ="city1"></td>
-                                                                <td><input type="text" id ="state1"></td>
-                                                                <td><input type="text" id ="office_designation1"></td>
-                                                                <td>
-                                                                    <i class="fa fa-plus" aria-hidden="true" id="myBtn1"></i>
-                                                                    <i class="fa fa-trash-o" aria-hidden="true" id="delete1"></i>
-                                                                    <i class="fa fa-pencil-square-o" aria-hidden="true" id="modify1"></i>
-                                                                </td>
-
-
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td><input type="text" id ="country"></td>
-                                                                <td><input type="text" id ="city"></td>
-                                                                <td><input type="text" id ="state"></td>
-                                                                <td><input type="text" id ="office_designation"></td>
-                                                                <td>
-                                                                    <i class="fa fa-plus" aria-hidden="true" id="myBtn2"></i>
-                                                                    <i class="fa fa-trash-o" aria-hidden="true" id="delete2"></i>
-                                                                    <i class="fa fa-pencil-square-o" aria-hidden="true" id="modify2"></i>
-                                                                </td>
-
-
-                                                            </tr>
-
-
+                                                            <tbody id="SiteLocation">
                                                             </tbody>
                                                         </table>
-
+                                                        <button type="button" class="btn btn-primary" onclick="addrow_sitelocation();">Add</button>
                                                     </div>
                                                 </div>
 
@@ -367,35 +325,29 @@
 
                                                 <div class="form-group">
                                                     <label class="control-label" for="formInput664"><div class="required_fie">Read Only Date</div></label>
-                                                    <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()">
+                                                    <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()" readonly>
                                                 </div>
-
-
-
-
-
-
-
                                                 <br>
                                                 <br>
-                                                <button type="button" class="btn btn-primary pull-right" onclick="location.href='ContactInfo.jsp';">Save & Continue</button>
                                             </div>
 
                                         </div>
+                                    </form>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="submit();">Save & Continue</button>
 
 
 
 
 
 
-
-                                    </div>
 
                                 </div>
 
                             </div>
+
                         </div>
-                    </form>
+                    </div>
+
 
 
 
@@ -418,14 +370,127 @@
             var url_string=window.location.href;
             var url = new URL(url_string);
             var appname = url.searchParams.get("appname");
-            console.log("application name",appname);
-            function submit(appname)
+            var projname=url.searchParams.get("projectname");
+            console.log("application name",appname,"project name ",projname);
+            $(document).ready(function(){
+                $('#app_name').val(appname);
+                $.ajax({
+                    url: "DecommIntakeFRequirementsDataRetrieveServlet",
+                    type: 'POST',
+                    data: {ApplicationName:appname,ProjectName: projname},
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("json object of array--->", data);
+                        var trid = $("#business_unit_and_geographic_location");
+                        if (data[0].CheckExistance == false) {
+                            var input_fields = "<tr><td><input type='text' id ='business_unit_0' class='BusinessUnit' name='BusinessUnit0'></td>\n" +
+                                "<td><input type='text' id ='operation_unit_0' class='OperationUnit' name='OperationUnit0'></td>\n" +
+                                "<td><input type='text' id ='location_unit_0' class='LocationUnit' name='LocationUnit0'></td>\n" +
+                                "<td><input type='text' id ='department_0' class='Department' name='Department0'></td>\n" +
+                                "<td> <img src='images/Delete.png' id='delete0' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this.id);'></td>"+
+                                "</tr>";
+                            trid.append(input_fields);
+                        } else {
+
+                            for (var i = 1; i <= data.length-1; i++) {
+                                var input_fields = "<tr><td><input type='text' id ='business_unit_" + (i - 1) + "' class='BusinessUnit' name='BusinessUnit" + (i - 1) + "' value='" + data[i].BusinessUnit + "'></td>\n" +
+                                    "<td><input type='text' id ='operation_unit_" + (i - 1) + "' class='OperationUnit' name='OperationUnit" + (i - 1) + "' value='" + data[i].OperationUnit + "'></td>\n" +
+                                    "<td><input type='text' id ='location_unit_" + (i - 1) + "' class='LocationUnit' name='LocationUnit" + (i - 1) + "' value='" + data[i].LocationUnit + "'></td>\n" +
+                                    "<td><input type='text' id ='department_" + (i - 1) + "' class='Department' name='Department" + (i - 1) + "' value='" + data[i].Dept + "' ></td>\n" +
+                                    "<td> <img src='images/Delete.png' id='delete"+(i-1)+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this);'></td>"+
+                                    "</tr>";
+                                trid.append(input_fields);
+                                console.log("Testing", data[i].BusinessUnit);
+                            }
+                        }
+                    }
+                });
+
+                $('#app_name').val(appname);
+                $.ajax({
+                    url: "DecommIntakeSiteRequirementsDataRetrieveServlet",
+                    type: 'POST',
+                    data: {ApplicationName:appname,ProjectName: projname},
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("json object of array1--->", data);
+                        var trid1=$("#SiteLocation");
+                        if(data[0].CheckExistance==false)
+                        {
+                            var input_fields1="<tr id='0'><td><input type='text' id ='Country_0' class='Country' name='Country0'></td>\n" +
+                                "<td><input type='text' id ='City_0' class='City' name='City0'></td>\n" +
+                                "<td><input type='text' id ='State_0' class='State' name='State0'></td>\n" +
+                                "<td><input type='text' id ='office_designation0' class='office_designation' name='OfficeDesignation0'></td>\n" +
+                                "<td> <img src='images/Delete.png' id='delete0' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this);'></td>"+
+                                "</tr>";
+                            trid1.append(input_fields1);
+                        }
+                        else {
+                            for(var i=1;i<=data.length-1;i++)
+                            {
+                                var input_fields1='<tr id="'+(i-1)+'"><td><input type="text" id ="country'+(i-1)+'" class="Country" name="Country'+(i-1)+'" value="'+data[i].Country+'"></td>'+
+                                    '<td><input type="text" id ="city'+(i-1)+'" class="City" name="City'+(i-1)+'" value="'+data[i].City+'"></td>'+
+                                    '<td><input type="text" id ="state'+(i-1)+'" class="State" name="State'+(i-1)+'" value="'+data[i].State+'"></td>'+
+                                    '<td><input type="text" id ="office_designation'+((i-1))+'" class="OfficeDesignation" name="OfficeDesignation'+(i-1)+'" value="'+data[i].OfficeDesignation+'"></td>'+
+                                    "<td> <img src='images/Delete.png' id='delete"+(i-1)+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this.id);'></td>"+
+                                    '</tr>';
+                                trid1.append(input_fields1);
+                                console.log("Testing", data[i].Country);
+                            }
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+
+                $('#app_name').val(appname);
+                $.ajax({
+                    url: "DecommIntakeRequirementServlet",
+                    type: 'POST',
+                    data: {ApplicationName:appname,ProjectName: projname},
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("json object--->", data);
+                        if(data.CheckExistance==false) {
+                            $('#legacyappname').val("");
+                            $('#projectnumber').val("");
+                            $('#ain').val("");
+                            $('#infraprojectnumber').val("");
+                            $('#RO_DATE').val(data.Read_Only);
+                        }
+                        else{
+                            $('#app_name').val(data.App_Name);
+                            $('#legacyappname').val(data.Legacy_App_Name);
+                            $('#projectnumber').val(data.Enterprise_Team_Decomm_Prj_No);
+                            $('#ain').val(data.App_Identification_No);
+                            $('#infraprojectnumber').val(data.Infra_Prj_No);
+                            $('#RO_DATE').val(data.Read_Only);
+                        }
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+
+            });
+
+            function submit()
             {
+                var url_string=window.location.href;
+                var url = new URL(url_string);
+                var appname = url.searchParams.get("appname");
+                var projname=url.searchParams.get("projectname");
+                var classlength=$('.BusinessUnit').length;
+                var site_classlength=$('.Country').length;
+                console.log("class length",classlength,projname);
+                console.log("Site class length",site_classlength,projname);
                 var f=document.Decomm_Intake_Requirements;
                 f.method = "post";
-                f.action="DecommIntakeRequirements_db_update?appname&="+appname;
+                f.action="DecommIntakeRequirements_db_update?appnames="+appname+"&projectname="+projname+'&BULUClassLength='+classlength+'&SLAClassLength='+site_classlength;
                 f.submit();
             }
+
         </script>
 
 
@@ -531,6 +596,54 @@
             });
         </script>
 
+        <%--<script>
+            function SomeDeleteRowFunction(o) {
+                var classlength = $('.Country').length;
+                var id = parseInt(o.substring(o.lastIndexOf('e')+1,o.length));
+                $('#'+id).remove();
+                for(var i=id+1;i<classlength;i++)
+                {
+                    $('#Country_'+i).attr('name','Country'+(i-1));
+                    $('#City_'+i).attr('name','City'+(i-1));
+                    $('#State_'+i).attr('name','Country'+(i-1));
+                    $('#office_designation'+i).attr('name','Country'+(i-1));
+                    $('#delete'+i).attr('name','delete'+(i-1));
+                }
+            }
+        </script>--%>
+        <script>
+            function addrow_sitelocation()
+            {
+
+                var rowlength=$('.Country').length;
+
+                var i=rowlength;
+                var element='<tr><td><input type="text" id ="country'+i+'" class="Country" name="Country'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="city'+i+'" class="City" name="City'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="state'+i+'" class="State" name="State'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="office_designation'+i+'" class="OfficeDesignation" name="OfficeDesignation'+i+'" value=""></td>'+
+                    "<td> <img src='images/Delete.png' id='delete'"+i+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this);'></td>"+
+                    '</tr>';
+                $('#SiteLocation').append(element);
+
+            }
+
+            function addrow_bussiness()
+            {
+
+                var rowlength=$('.BusinessUnit').length;
+
+                var i=rowlength;
+                var element="<tr><td><input type='text' id ='business_unit_"+i+"' class='BusinessUnit' name='BusinessUnit"+i+"' value=''></td>\n"+
+                    "<td><input type='text' id ='operation_unit_"+i+"' class='OperationUnit' name='OperationUnit"+i+"' value=''></td>\n"+
+                    "<td><input type='text' id ='location_unit_"+i+"' class='LocationUnit' name='LocationUnit"+i+"' value=''></td>\n"+
+                    "<td><input type='text' id ='department_"+i+"' class='Department' name='Department"+i+"' value='' ></td>\n"+
+                    "<td> <img src='images/Delete.png' id='delete'"+i+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this);'></td>"+
+                    "</tr>";
+                $('#business_unit_and_geographic_location').append(element);
+
+            }
+        </script>
 
 </body>
 

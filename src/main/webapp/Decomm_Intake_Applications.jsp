@@ -175,7 +175,7 @@
                         </button>
                     </div>
                     <!-- /.navbar-header -->
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding
+                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle1">Onboarding
                         Tool-<%=rs3.getString("projectname") %>
                     </a>
 
