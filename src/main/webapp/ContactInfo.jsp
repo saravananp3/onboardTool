@@ -262,7 +262,7 @@
 
 
                                         <div class="row">
-                                            <div class="col-sm-6 form-group">
+                                            <div class="col-sm-4 form-group">
                                                 <label><font size="4"><b> USER </b> </font><span
                                                         class="glyphicon glyphicon-asterisk"></span></label>
                                                 <div class="col-lg-12">
@@ -273,10 +273,10 @@
                                                             data-live-search="true"
                                                             &lt;%&ndash;multiple="multiple" &ndash;%&gt;>
 
-                                                        <option id ="Cross_Application">
+                                                        <option>
                                                             Cross-Application Team Project Manager
                                                         </option>
-                                                        <option id ="Service_Level">
+                                                        <option>
                                                             Service Level Owner
                                                         </option>
                                                         <option>
@@ -304,348 +304,21 @@
                                         </div>
 
 
+                                        <div id="collapse2" class="panel-collapse">
+                                            <div class="panel-body text-left">
+                                                <div class="form-group" id="entiretableother">
 
 
-
-                                        <!--  <option id="cross">
-                                                     Cross-Application Team Project Manager
-                                                 </option>
-                                                 <option>
-                                                     Service Level Owner
-                                                 </option>
-                                                 <option>
-                                                    Application Contact/SME
-                                                 </option>
-                                                 <option>
-                                                    IT/Application Owner
-                                                 </option>
-                                                 <option>
-                                                  Application Business Owner
-                                                 </option>
-                                                 <option>
-                                                 IT Legacy Application Owner
-                                                 </option>
-                                                 <option>
-                                                 Enterprise Technology Project Manager
-                                                 </option>
-                                                 <option>
-                                                 Enterprise Technology System Engineer
-                                                 </option> -->
-
-
-
-                                    </div>
-                                    <div id="collapse2" class="panel-collapse">
-                                        <div class="panel-body text-left">
-
-                                            <!-- Table Info -->
-
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198"><div class="required_fie"> Cross-Application Team Project Manager</div></label>
-                                                <div class="table-responsive" id="table-scroll">
-
-                                                    <table class="table table-bordered" id="mytable">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-                                                        </tr>
-                                                        </thead >
-                                                        <tbody id="tablebody">
-                                                        <tr class="cross">
-                                                            <td><input type="text" id ="username_1" value="Angie"></td>
-                                                            <td><input type="text" id ="email_1" value="angie@p3solutions.com"></td>
-                                                            <td><input type="text" id ="userid_1" value="123"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="38879420930"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        <tr class="cross">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" id = "add" onclick="addrow();">Add</button>
                                                 </div>
-                                            </div>
-
-                                            <!--End of Table Info -->
-
-                                            <!-- Table Info -->
-
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198">Service Level Owner</label>
-                                                <div class="table-responsive" id="table-scroll">
-
-                                                    <table class="table table-bordered">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tableservice">
-                                                        <tr>
-                                                            <td><input type="text" id ="username_1" value="Eloise"></td>
-                                                            <td><input type="text" id ="email_1" value = "eloise@p3solutions.com" ></td>
-                                                            <td><input type="text" id ="userid_1" value="124"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="6378984739"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        <tr class="service">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" onclick="addrow_service();">Add</button>
-                                                </div>
-                                            </div>
-
-                                            <!--End of Table Info -->
-
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198"><div class="required_fie"> Application Contact/SME</div></label>
-                                                <div class="table-responsive" id="table-scroll">
-
-                                                    <table class="table table-bordered">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tableapplication">
-                                                        <tr>
-                                                            <td><input type="text" id ="username_1" value="Satya"></td>
-                                                            <td><input type="text" id ="email_1" value="satya@p3solutions.com"></td>
-                                                            <td><input type="text" id ="userid_1" value="125"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="23564763543"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-                                                        <tr class="application">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" onclick="addrow_application();">Add</button>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198"> IT/Application Owner</label>
-                                                <div class="table-responsive" id="table-scroll">
-                                                    s
-                                                    <table class="table table-bordered">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tableowner">
-                                                        <tr>
-                                                            <td><input type="text" id ="username_1" value="Parthiban"></td>
-                                                            <td><input type="text" id ="email_1" value="parthiban@p3solutions.com"></td>
-                                                            <td><input type="text" id ="userid_1" value="126"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="36742934001"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        <tr class="owner">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" onclick="addrow_owner();">Add</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198"> Application Business Owner</label>
-                                                <div class="table-responsive" id="table-scroll">
-
-                                                    <table class="table table-bordered">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tablebussinessowner">
-                                                        <tr>
-                                                            <td><input type="text" id ="username_1" value="Shankar"></td>
-                                                            <td><input type="text" id ="email_1" value="shankar@p3solutions.com"></td>
-                                                            <td><input type="text" id ="userid_1" value="127"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="675564432"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-                                                        <tr class="bussinessowner">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" onclick="addrow_bussinessowner();">Add</button>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198"><div class="required_fie"> IT Legacy Application Owner</div></label>
-                                                <div class="table-responsive" id="table-scroll">
-
-                                                    <table class="table table-bordered">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tablelegancy">
-                                                        <tr>
-                                                            <td><input type="text" id ="username_1" value="vinoth"></td>
-                                                            <td><input type="text" id ="email_1" value="vinoth@p3solutions.com"></td>
-                                                            <td><input type="text" id ="userid_1" value="128"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="34587297"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-                                                        <tr class="legancy">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" onclick="addrow_legancy();">Add</button>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198"> Enterprise Technology Project Manager</label>
-                                                <div class="table-responsive" id="table-scroll">
-
-                                                    <table class="table table-bordered">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody id="tableenterprise_PM">
-                                                        <tr>
-                                                            <td><input type="text" id ="username_1" value="John"></td>
-                                                            <td><input type="text" id ="email_1" value="john@p3solutions.com"></td>
-                                                            <td><input type="text" id ="userid_1" value="129"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="457207529034"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        <tr class="enterprise">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" onclick="addrow_enterprise();">Add</button>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label" for="formInput198"> Enterprise Technology System Engineer</label>
-                                                <div class="table-responsive" id="table-scroll">
-
-                                                    <table class="table table-bordered">
-                                                        <thead style="color:white;background-color:DodgerBlue;">
-                                                        <tr >
-                                                            <th scope="col" style="color:black;">User Name</th>
-                                                            <th scope="col" style="color:black;">Email</th>
-                                                            <th scope="col" style="color:black;">User Id</th>
-                                                            <th scope="col" style="color:black;">Contact Number</th>
-                                                            <th scope="col" style="color:black;"></th>
-                                                        </tr>
-
-                                                        </thead>
-                                                        <tbody id="tableenterpriseSE">
-                                                        <tr>
-                                                            <td><input type="text" id ="username_1" value="Poornima"></td>
-                                                            <td><input type="text" id ="email_1" value="poornima@p3solutions.com"></td>
-                                                            <td><input type="text" id ="userid_1" value="130"></td>
-                                                            <td><input type="text" id ="contactnumber_1" value="47693650236"></td>
-                                                            <td><img src="images/Delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-                                                        <tr class="enterpriseSE">
-                                                            <td><input type="text" id ="username_2" value=""></td>
-                                                            <td><input type="text" id ="email_2" value=""></td>
-                                                            <td><input type="text" id ="userid_2" value=""></td>
-                                                            <td><input type="text" id ="contactnumber_2" value=""></td>
-                                                            <td><img src="images/Delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>
-                                                        </tr>
-
-
-                                                        </tbody>
-                                                    </table>
-                                                    <button type="button" class="btn btn-primary" onclick="addrow_enterpriseSE();">Add</button>
-                                                </div>
+                                                <button type="button" class="btn btn-primary" onclick="addothers();">Add</button>
+                                                <button type="button" class="btn btn-warning">Modify</button>
+                                                <button type="button" class="btn btn-danger">Delete</button>
                                             </div>
 
                                             <br>
                                             <br>
                                             <button type="button" class="btn btn-default" onclick="location.href='AppDecommInfo.jsp';">Back</button>
-                                            <button type="button" class="btn btn-primary pull-right" onclick="#';">Submit</button>
+                                            <button type="button" class="btn btn-primary pull-right" onclick="#';">save and continue</button>
                                         </div>
 
                                     </div>
@@ -662,238 +335,405 @@
 
                         </div>
                     </div>
-
-
-
-
-
-                </section>
-
-
             </div>
+
+
+
+
+            </section>
 
 
         </div>
 
 
-        <!-- <script>
-            if(document.getElementById('Role_info').value=="R")
-                checkk();
-     </script> -->
-        <script>
-            $('#dates-field2').on('change',function(){
-                var ans=$('#dates-field2').val();
-                console.log("Testing",ans);
-                $.ajax({
-                    url: "",
-                    type: 'POST',
-                    data: {ApplicationName:appname,ProjectName: projname},
-                    dataType: "json",
-                    success: function (data)
-                    {
-                        console.log("json object of array1--->", data);
+    </div>
 
-                    },
-                    error: function (e)
-                    {
-                        console.log(e);
-                    }
-                });
 
+    <!-- <script>
+        if(document.getElementById('Role_info').value=="R")
+            checkk();
+ </script> -->
+
+
+    <script>
+
+        function addrow()
+        {
+
+            var rowlength=$('.cross').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="cross">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tablebody').append(element);
+
+        }
+
+
+        function addrow_service()
+        {
+
+            var rowlength=$('.service').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="service">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tableservice').append(element);
+
+        }
+
+        function addrow_application()
+        {
+
+            var rowlength=$('.application').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="application">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tableapplication').append(element);
+
+        }
+
+        function addrow_owner()
+        {
+
+            var rowlength=$('.owner').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="owner">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tableowner').append(element);
+
+        }
+
+        function addrow_bussinessowner()
+        {
+
+            var rowlength=$('.bussinessowner').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="bussinessowner">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tablebussinessowner').append(element);
+
+        }
+
+        function addrow_legancy()
+        {
+
+            var rowlength=$('.legancy').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="legancy">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tablelegancy').append(element);
+
+        }
+
+        function addrow_enterprise()
+        {
+
+            var rowlength=$('.enterprise').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="enterprise">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tableenterprise_PM').append(element);
+
+        }
+
+        function addrow_enterpriseSE()
+        {
+
+            var rowlength=$('.enterpriseSE').length;
+            //alert("hi"+rowlength);
+            var i=rowlength+1;
+            var element='<tr class="enterpriseSE">'+
+                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tableenterpriseSE').append(element);
+
+        }
+
+        function addrow_entiretable()
+        {
+
+            var rowlength=$('.others').length;
+            var i=rowlength+1;
+            var element= '<tr class="others">'+
+                '<td><input type="text" id ="username_2" value=""></td>'+
+                '<td><input type="text" id ="email_2" value=""></td>'+
+                '<td><input type="text" id ="userid_2" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_2" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>';
+            $('#tableothers').append(element);
+        }
+
+
+    </script>
+
+
+    <script>
+        function SomeDeleteRowFunction(o) {
+
+
+            var p=o.parentNode.parentNode;
+            p.parentNode.removeChild(p);
+        }
+    </script>
+
+
+    <script>
+        $(document).ready(function(){
+            $("cross_app").click(function(){
+                $("tablebody").toggle();
+            });
+        });
+    </script>
+
+    <script>
+        $(".hidetable").hide();
+    </script>
+    <%--<script>
+        $('#dates-field2').on('change',function(){
+            var ans=$('#dates-field2').val();
+            alert("Testing",ans);
+            $.ajax({
+                url: "servlet.ContactInfoTableDataRetrieveServlet",
+                type: 'POST',
+                data: {ApplicationName:appname,ProjectName: projname},
+                dataType: "json",
+                success: function (data)
+                {
+                    console.log("json object of array1--->", data);
+
+                },
+                error: function (e)
+                {
+                    console.log(e);
+                }
             });
 
+        });
 
-        </script>
 
-        <script>
+    </script>--%>
 
-            function addrow()
+
+
+    <script>
+        var url_string=window.location.href;
+        var url = new URL(url_string);
+        var appname = url.searchParams.get("appname");
+        var projname=url.searchParams.get("prjname");
+        console.log("application name",appname,"project name ",projname);
+        $('#dates-field2').on('change',function(){
+            var ans=$('#dates-field2').val();
+            var roles = "";
+            for(var i=0; i<ans.length; i++)
             {
-
-                var rowlength=$('.cross').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="cross">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tablebody').append(element);
-                console.log("Element------->>>",element);
-
+                roles += ans[i]+",";
             }
+            console.log(ans);
+            $.ajax({
+                url: "servlet.ContactInfoTableDataRetrieveServlet",
+                type: 'POST',
+                data: {ApplicationName:appname,ProjectName: projname,Roles:roles},
+                dataType: "json",
+                success: function (data)
+                {
+                    console.log("data length--->",data);
+                    for(var i=0;i<data.length;i++) {
+
+                        var check=false;
+                        var table_row = "";
+                        for(var j=1;j<data[i].length;j++)
+                        {
+                            var table="";
+                            var tablelast="";
+
+                            console.log("checkexistance :",data[i][0].CheckExistance)
+                            if(data[i][0].CheckExistance==false)
+                            {
+
+                                table_row="<tr>" +
+                                    "<td><input type='text' id ='username_1' value=''></td>\n" +
+                                    "<td><input type='text' id ='email_1' value=''></td>\n" +
+                                    "<td><input type='text' id ='userid_1' value=''></td>\n" +
+                                    "<td><input type='text' id ='contactnumber_1' value=''></td>\n" +
+                                    "<td><img src='images/Delete.png' id='delete1' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
+                                    "</tr>";
+                            }
+                            else {
+                                table = "<div class='form-group'>\n" +
+                                    "<label class='control-label hidetable' for='formInput198'> "+data[i][0].name+"</label>\n" +
+                                    " <div class='table-responsive' id='table-scroll'>\n" +
+                                    "<table class='table table-bordered hidetable'>\n" +
+                                    "<thead style='color:white;background-color:DodgerBlue;'>\n" +
+                                    "<tr >\n" +
+                                    "<th scope='col' style='color:black;'>User Name</th>\n" +
+                                    "<th scope='col' style='color:black;'>Email</th>\n" +
+                                    "<th scope='col' style='color:black;'>User Id</th>\n" +
+                                    "<th scope='col' style='color:black;'>Contact Number</th>\n" +
+                                    "<th scope='col' style='color:black;'></th>\n" +
+                                    "</tr>\n" +
+                                    "</thead>\n" +
+                                    "<tbody id='tableenterprise_PM'>\n";
+                                table_row +="<tr>" +
+                                    "<td><input type='text' id ='username_"+j+"' value='"+data[i][j].Uname+"'></td>\n" +
+                                    "<td><input type='text' id ='email_1' value='"+data[i][j].Email+"'></td>\n" +
+                                    "<td><input type='text' id ='userid_1' value='"+data[i][j].user_id+"'></td>\n" +
+                                    "<td><input type='text' id ='contactnumber_1' value='"+data[i][j].contact_no+"'></td>\n" +
+                                    "<td><img src='images/Delete.png' id='delete1' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
+                                    "</tr>";
+                                console.log("table_row--->"+table_row);
+                                check=true;
+                            }
+                        }
+
+                        if(check)
+                        {
+                            tablelast="</tbody>\n" +
+                                "</table><button type='button' class='btn btn-primary hidetable' onclick='addrow_enterprise();'>Add</button>\n" +
+                                "</div>\n" +
+                                "</div>";
+                        }
+                        var Table=table+table_row+tablelast;
+                        $('#entiretableother').html(Table);
+                    }
+                },
+                error: function (e)
+                {
+                    console.log(e);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function addothers()
+        {
+            var element = '<div class="form-group">'+
+                '<input type ="text" id="additinalrole" class="control-label hidetable" placeholder="ROLE">'+
+                '<div class="table-responsive" id="table-scroll">'+
+
+                '<table class="table table-bordered hidetable">'+
+                '<thead style="color:white;background-color:DodgerBlue;">'+
+                '<tr >'+
+                '<th scope="col" style="color:black;">User Name</th>'+
+                '<th scope="col" style="color:black;">Email</th>'+
+                '<th scope="col" style="color:black;">User Id</th>'+
+                '<th scope="col" style="color:black;">Contact Number</th>'+
+                '<th scope="col" style="color:black;"></th>'+
+                '</tr>'+
+                '</thead>'+
+                '<tbody id="tableothers">'+
+                '<tr>'+
+                '<td><input type="text" id ="username_1" value="John"></td>'+
+                '<td><input type="text" id ="email_1" value="john@p3solutions.com"></td>'+
+                '<td><input type="text" id ="userid_1" value="129"></td>'+
+                '<td><input type="text" id ="contactnumber_1" value="457207529034"></td>'+
+                '<td><img src="images/delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>'+
+
+                '<tr class="others">'+
+                '<td><input type="text" id ="username_2" value=""></td>'+
+                '<td><input type="text" id ="email_2" value=""></td>'+
+                '<td><input type="text" id ="userid_2" value=""></td>'+
+                '<td><input type="text" id ="contactnumber_2" value=""></td>'+
+                '<td><img src="images/delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                '</tr>'+
+                '</tbody>'+
+                '</table>'+
+                '<button type="button" class="btn btn-primary hidetable" onclick="addrow_entiretable();">Add</button>'+
+                '</div>'+
+                '</div>';
+            $('#entiretableother').append(element);
+        }
+    </script>
+
+    <script>
+
+    </script>
 
 
-            function addrow_service()
-            {
-
-                var rowlength=$('.service').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="service">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tableservice').append(element);
-
-            }
-
-            function addrow_application()
-            {
-
-                var rowlength=$('.application').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="application">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tableapplication').append(element);
-
-            }
-
-            function addrow_owner()
-            {
-
-                var rowlength=$('.owner').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="owner">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tableowner').append(element);
-
-            }
-
-            function addrow_bussinessowner()
-            {
-
-                var rowlength=$('.bussinessowner').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="bussinessowner">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tablebussinessowner').append(element);
-
-            }
-
-            function addrow_legancy()
-            {
-
-                var rowlength=$('.legancy').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="legancy">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tablelegancy').append(element);
-
-            }
-
-            function addrow_enterprise()
-            {
-
-                var rowlength=$('.enterprise').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="enterprise">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tableenterprise_PM').append(element);
-
-            }
-
-            function addrow_enterpriseSE()
-            {
-
-                var rowlength=$('.enterpriseSE').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="enterpriseSE">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tableenterpriseSE').append(element);
-
-            }
-
-        </script>
-
-
-        <script>
-            function SomeDeleteRowFunction(o) {
-
-
-                var p=o.parentNode.parentNode;
-                p.parentNode.removeChild(p);
-            }
-        </script>
-
-    </div>
-    <!-- /.main-wrapper -->
-    <!-- ========== COMMON JS FILES ========== -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/pace/pace.min.js"></script>
-    <script src="js/lobipanel/lobipanel.min.js"></script>
-    <script src="js/iscroll/iscroll.js"></script>
-    <!-- ========== PAGE JS FILES ========== -->
-    <script src="js/prism/prism.js"></script>
-    <script src="js/waypoint/waypoints.min.js"></script>
-    <script src="js/counterUp/jquery.counterup.min.js"></script>
-    <script src="js/amcharts/amcharts.js"></script>
-    <script src="js/amcharts/serial.js"></script>
-    <script src="js/amcharts/plugins/export/export.min.js"></script>
-    <link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all"/>
-    <script src="js/amcharts/themes/light.js"></script>
-    <script src="js/toastr/toastr.min.js"></script>
-    <script src="js/icheck/icheck.min.js"></script>
-    <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
-    <!-- ========== THEME JS ========== -->
-    <script src="js/production-chart.js"></script>
-    <script src="js/traffic-chart.js"></script>
-    <script src="js/task-list.js"></script>
-    <!-- ========== THEME JS ========== -->
-    <script src="js/main.js"></script>
-    <!-- ========== PAGE JS FILES ========== -->
-    <script src="js/prism/prism.js"></script>
-    <script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
-    <script type="text/javascript" src="js/date-picker/datepair.js"></script>
-    <script type="text/javascript" src="js/date-picker/moment.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-    <script src="js/admin_module/admin_module_send_invites.js"></script>
+</div>
+<!-- /.main-wrapper -->
+<!-- ========== COMMON JS FILES ========== -->
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/lobipanel/lobipanel.min.js"></script>
+<script src="js/iscroll/iscroll.js"></script>
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script src="js/waypoint/waypoints.min.js"></script>
+<script src="js/counterUp/jquery.counterup.min.js"></script>
+<script src="js/amcharts/amcharts.js"></script>
+<script src="js/amcharts/serial.js"></script>
+<script src="js/amcharts/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all"/>
+<script src="js/amcharts/themes/light.js"></script>
+<script src="js/toastr/toastr.min.js"></script>
+<script src="js/icheck/icheck.min.js"></script>
+<script src="js/bootstrap-tour/bootstrap-tour.js"></script>
+<!-- ========== THEME JS ========== -->
+<script src="js/production-chart.js"></script>
+<script src="js/traffic-chart.js"></script>
+<script src="js/task-list.js"></script>
+<!-- ========== THEME JS ========== -->
+<script src="js/main.js">ContactInfoTableDataRetrieveServlet</script>
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
+<script type="text/javascript" src="js/date-picker/datepair.js"></script>
+<script type="text/javascript" src="js/date-picker/moment.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<script src="js/admin_module/admin_module_send_invites.js"></script>
 
 
 </body>
