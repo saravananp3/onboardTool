@@ -325,6 +325,7 @@ public class IntakeInformationService {
         }
         catch(Exception e)
         {
+            e.printStackTrace();
             System.out.println("Exception----------------"+e);
         }
         System.out.println("json array------>"+jsonArray);
@@ -440,6 +441,66 @@ public class IntakeInformationService {
                 }
                 jsonobject.add(jsonArray);
                 System.out.println("json array"+jsonobject);
+            }
+
+        }
+        catch(Exception e){
+            System.out.println("Exception......"+e);
+        }
+        return  jsonobject;
+    }
+
+    public JsonArray DecommIntakeContactInfoDataRetrieve(String projectname,String applicationname,String[] roles)
+    {
+        JsonArray jsonobject=new JsonArray();
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            if(roles.length==0)
+            {
+             JsonObject json=new JsonObject();
+             json.addProperty("CheckRoles",false);
+             jsonobject.add(json);
+            }
+            else {
+                JsonObject json=new JsonObject();
+                json.addProperty("CheckRoles",true);
+                jsonobject.add(json);
+                for (int i = 0; i < roles.length; i++) {
+                    String query = "select * from Decomm_Intake_Contact_Info where prj_name='" + projectname + "' and app_name='" + applicationname + "' and role='" + roles[i] + "'order by seq_num;";
+
+                    Statement st = connection.createStatement();
+                    ResultSet rs = st.executeQuery(query);
+
+                    JsonArray jsonArray = new JsonArray();
+                    if (rs.next()) {
+                        JsonObject json1 = new JsonObject();
+                        json1.addProperty("CheckExistance", true);
+                        json1.addProperty("name", roles[i]);
+                        jsonArray.add(json1);
+                        JsonObject json2 = new JsonObject();
+                        json2.addProperty("Uname", rs.getString("user_name"));
+                        json2.addProperty("Email", rs.getString("Email"));
+                        json2.addProperty("user_id", rs.getString("user_id"));
+                        json2.addProperty("contact_no", rs.getString("contact_no"));
+                        jsonArray.add(json2);
+                        while (rs.next()) {
+                            JsonObject json3 = new JsonObject();
+                            json3.addProperty("Uname", rs.getString("user_name"));
+                            json3.addProperty("Email", rs.getString("Email"));
+                            json3.addProperty("user_id", rs.getString("user_id"));
+                            json3.addProperty("contact_no", rs.getString("contact_no"));
+                            jsonArray.add(json3);
+                        }
+                    } else {
+                        JsonObject json4 = new JsonObject();
+                        json4.addProperty("CheckExistance", false);
+                        json4.addProperty("name", roles[i]);
+                        jsonArray.add(json4);
+                    }
+                    jsonobject.add(jsonArray);
+                    System.out.println("json array" + jsonobject);
+                }
             }
 
         }

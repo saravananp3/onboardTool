@@ -276,7 +276,7 @@
                                                         <option>
                                                             Cross-Application Team Project Manager
                                                         </option>
-                                                        <option>
+                                                        <option id ="Service_Level">
                                                             Service Level Owner
                                                         </option>
                                                         <option>
@@ -372,11 +372,11 @@
                 '</tr>';
             $('#tablebody').append(element);
 
-        }
+            }
 
 
-        function addrow_service()
-        {
+            function addrow_service()
+            {
 
             var rowlength=$('.service').length;
             //alert("hi"+rowlength);
@@ -390,10 +390,10 @@
                 '</tr>';
             $('#tableservice').append(element);
 
-        }
+            }
 
-        function addrow_application()
-        {
+            function addrow_application()
+            {
 
             var rowlength=$('.application').length;
             //alert("hi"+rowlength);
@@ -513,189 +513,14 @@
     </script>
 
 
-    <script>
-        function SomeDeleteRowFunction(o) {
+        <script>
+            function SomeDeleteRowFunction(o) {
 
 
-            var p=o.parentNode.parentNode;
-            p.parentNode.removeChild(p);
-        }
-    </script>
-
-
-    <script>
-        $(document).ready(function(){
-            $("cross_app").click(function(){
-                $("tablebody").toggle();
-            });
-        });
-    </script>
-
-    <script>
-        $(".hidetable").hide();
-    </script>
-    <%--<script>
-        $('#dates-field2').on('change',function(){
-            var ans=$('#dates-field2').val();
-            alert("Testing",ans);
-            $.ajax({
-                url: "servlet.ContactInfoTableDataRetrieveServlet",
-                type: 'POST',
-                data: {ApplicationName:appname,ProjectName: projname},
-                dataType: "json",
-                success: function (data)
-                {
-                    console.log("json object of array1--->", data);
-
-                },
-                error: function (e)
-                {
-                    console.log(e);
-                }
-            });
-
-        });
-
-
-    </script>--%>
-
-
-
-    <script>
-        var url_string=window.location.href;
-        var url = new URL(url_string);
-        var appname = url.searchParams.get("appname");
-        var projname=url.searchParams.get("prjname");
-        console.log("application name",appname,"project name ",projname);
-        $('#dates-field2').on('change',function(){
-            var ans=$('#dates-field2').val();
-            var roles = "";
-            for(var i=0; i<ans.length; i++)
-            {
-                roles += ans[i]+",";
+                var p=o.parentNode.parentNode;
+                p.parentNode.removeChild(p);
             }
-            console.log(ans);
-            $.ajax({
-                url: "servlet.ContactInfoTableDataRetrieveServlet",
-                type: 'POST',
-                data: {ApplicationName:appname,ProjectName: projname,Roles:roles},
-                dataType: "json",
-                success: function (data)
-                {
-                    console.log("data length--->",data);
-                    for(var i=0;i<data.length;i++) {
-
-                        var check=false;
-                        var table_row = "";
-                        for(var j=1;j<data[i].length;j++)
-                        {
-                            var table="";
-                            var tablelast="";
-
-                            console.log("checkexistance :",data[i][0].CheckExistance)
-                            if(data[i][0].CheckExistance==false)
-                            {
-
-                                table_row="<tr>" +
-                                    "<td><input type='text' id ='username_1' value=''></td>\n" +
-                                    "<td><input type='text' id ='email_1' value=''></td>\n" +
-                                    "<td><input type='text' id ='userid_1' value=''></td>\n" +
-                                    "<td><input type='text' id ='contactnumber_1' value=''></td>\n" +
-                                    "<td><img src='images/Delete.png' id='delete1' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
-                                    "</tr>";
-                            }
-                            else {
-                                table = "<div class='form-group'>\n" +
-                                    "<label class='control-label hidetable' for='formInput198'> "+data[i][0].name+"</label>\n" +
-                                    " <div class='table-responsive' id='table-scroll'>\n" +
-                                    "<table class='table table-bordered hidetable'>\n" +
-                                    "<thead style='color:white;background-color:DodgerBlue;'>\n" +
-                                    "<tr >\n" +
-                                    "<th scope='col' style='color:black;'>User Name</th>\n" +
-                                    "<th scope='col' style='color:black;'>Email</th>\n" +
-                                    "<th scope='col' style='color:black;'>User Id</th>\n" +
-                                    "<th scope='col' style='color:black;'>Contact Number</th>\n" +
-                                    "<th scope='col' style='color:black;'></th>\n" +
-                                    "</tr>\n" +
-                                    "</thead>\n" +
-                                    "<tbody id='tableenterprise_PM'>\n";
-                                table_row +="<tr>" +
-                                    "<td><input type='text' id ='username_"+j+"' value='"+data[i][j].Uname+"'></td>\n" +
-                                    "<td><input type='text' id ='email_1' value='"+data[i][j].Email+"'></td>\n" +
-                                    "<td><input type='text' id ='userid_1' value='"+data[i][j].user_id+"'></td>\n" +
-                                    "<td><input type='text' id ='contactnumber_1' value='"+data[i][j].contact_no+"'></td>\n" +
-                                    "<td><img src='images/Delete.png' id='delete1' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
-                                    "</tr>";
-                                console.log("table_row--->"+table_row);
-                                check=true;
-                            }
-                        }
-
-                        if(check)
-                        {
-                            tablelast="</tbody>\n" +
-                                "</table><button type='button' class='btn btn-primary hidetable' onclick='addrow_enterprise();'>Add</button>\n" +
-                                "</div>\n" +
-                                "</div>";
-                        }
-                        var Table=table+table_row+tablelast;
-                        $('#entiretableother').html(Table);
-                    }
-                },
-                error: function (e)
-                {
-                    console.log(e);
-                }
-            });
-        });
-    </script>
-
-    <script>
-        function addothers()
-        {
-            var element = '<div class="form-group">'+
-                '<input type ="text" id="additinalrole" class="control-label hidetable" placeholder="ROLE">'+
-                '<div class="table-responsive" id="table-scroll">'+
-
-                '<table class="table table-bordered hidetable">'+
-                '<thead style="color:white;background-color:DodgerBlue;">'+
-                '<tr >'+
-                '<th scope="col" style="color:black;">User Name</th>'+
-                '<th scope="col" style="color:black;">Email</th>'+
-                '<th scope="col" style="color:black;">User Id</th>'+
-                '<th scope="col" style="color:black;">Contact Number</th>'+
-                '<th scope="col" style="color:black;"></th>'+
-                '</tr>'+
-                '</thead>'+
-                '<tbody id="tableothers">'+
-                '<tr>'+
-                '<td><input type="text" id ="username_1" value="John"></td>'+
-                '<td><input type="text" id ="email_1" value="john@p3solutions.com"></td>'+
-                '<td><input type="text" id ="userid_1" value="129"></td>'+
-                '<td><input type="text" id ="contactnumber_1" value="457207529034"></td>'+
-                '<td><img src="images/delete.png" id="delete1" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>'+
-
-                '<tr class="others">'+
-                '<td><input type="text" id ="username_2" value=""></td>'+
-                '<td><input type="text" id ="email_2" value=""></td>'+
-                '<td><input type="text" id ="userid_2" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_2" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>'+
-                '</tbody>'+
-                '</table>'+
-                '<button type="button" class="btn btn-primary hidetable" onclick="addrow_entiretable();">Add</button>'+
-                '</div>'+
-                '</div>';
-            $('#entiretableother').append(element);
-        }
-    </script>
-
-    <script>
-
-    </script>
-
+        </script>
 
 </div>
 <!-- /.main-wrapper -->

@@ -15,9 +15,11 @@ import java.io.IOException;
 @WebServlet("/DecommIntakeFRequirementsDataRetrieveServlet")
 public class DecommIntakeFRequirementsDataRetrieveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String applicationname=request.getParameter("ApplicationName");
         String projectname=request.getParameter("ProjectName");
         JsonArray jsonArray=new IntakeInformationService().DecommIntakeRequirementsDataRetrieve(projectname,applicationname);
+        System.out.println("Im here"+jsonArray);
         String json = new Gson().toJson(jsonArray);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

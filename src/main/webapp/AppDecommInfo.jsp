@@ -372,32 +372,33 @@
             var appname = url.searchParams.get("appname");
             var projname=url.searchParams.get("projectname");
             console.log("application name",appname,"project name ",projname);
+            $('#app_name').val(appname);
             $(document).ready(function(){
-                $('#app_name').val(appname);
+
                 $.ajax({
                     url: "DecommIntakeFRequirementsDataRetrieveServlet",
                     type: 'POST',
                     data: {ApplicationName:appname,ProjectName: projname},
                     dataType: "json",
                     success: function (data) {
-                        console.log("json object of array--->", data);
+                        console.log("json object of array--->", data[0].CheckExistance);
                         var trid = $("#business_unit_and_geographic_location");
                         if (data[0].CheckExistance == false) {
-                            var input_fields = "<tr><td><input type='text' id ='business_unit_0' class='BusinessUnit' name='BusinessUnit0'></td>\n" +
+                            var input_fields = "<tr id='Row_id0' name = 'Row0'><td><input type='text' id ='business_unit_0' class='BusinessUnit' name='BusinessUnit0'></td>\n" +
                                 "<td><input type='text' id ='operation_unit_0' class='OperationUnit' name='OperationUnit0'></td>\n" +
                                 "<td><input type='text' id ='location_unit_0' class='LocationUnit' name='LocationUnit0'></td>\n" +
                                 "<td><input type='text' id ='department_0' class='Department' name='Department0'></td>\n" +
-                                "<td> <img src='images/Delete.png' id='delete0' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this.id);'></td>"+
+                                "<td> <img src='images/Delete.png' id='Delete0' name = 'Delete0' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this.id);'></td>"+
                                 "</tr>";
                             trid.append(input_fields);
                         } else {
 
                             for (var i = 1; i <= data.length-1; i++) {
-                                var input_fields = "<tr><td><input type='text' id ='business_unit_" + (i - 1) + "' class='BusinessUnit' name='BusinessUnit" + (i - 1) + "' value='" + data[i].BusinessUnit + "'></td>\n" +
+                                var input_fields = "<tr id='Row_id"+(i-1)+"' name = 'Row"+(i-1)+"'><td><input type='text' id ='business_unit_" + (i - 1) + "' class='BusinessUnit' name='BusinessUnit" + (i - 1) + "' value='" + data[i].BusinessUnit + "'></td>\n" +
                                     "<td><input type='text' id ='operation_unit_" + (i - 1) + "' class='OperationUnit' name='OperationUnit" + (i - 1) + "' value='" + data[i].OperationUnit + "'></td>\n" +
                                     "<td><input type='text' id ='location_unit_" + (i - 1) + "' class='LocationUnit' name='LocationUnit" + (i - 1) + "' value='" + data[i].LocationUnit + "'></td>\n" +
                                     "<td><input type='text' id ='department_" + (i - 1) + "' class='Department' name='Department" + (i - 1) + "' value='" + data[i].Dept + "' ></td>\n" +
-                                    "<td> <img src='images/Delete.png' id='delete"+(i-1)+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this);'></td>"+
+                                    "<td> <img src='images/Delete.png' id='Delete"+(i-1)+"'  name = 'Delete"+(i-1)+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunctionUnit(this.id);'></td>"+
                                     "</tr>";
                                 trid.append(input_fields);
                                 console.log("Testing", data[i].BusinessUnit);
@@ -406,7 +407,6 @@
                     }
                 });
 
-                $('#app_name').val(appname);
                 $.ajax({
                     url: "DecommIntakeSiteRequirementsDataRetrieveServlet",
                     type: 'POST',
@@ -417,22 +417,22 @@
                         var trid1=$("#SiteLocation");
                         if(data[0].CheckExistance==false)
                         {
-                            var input_fields1="<tr id='0'><td><input type='text' id ='Country_0' class='Country' name='Country0'></td>\n" +
+                            var input_fields1="<tr id='row_id0' name = 'row0'><td><input type='text' id ='Country_0' class='Country' name='Country0'></td>\n" +
                                 "<td><input type='text' id ='City_0' class='City' name='City0'></td>\n" +
                                 "<td><input type='text' id ='State_0' class='State' name='State0'></td>\n" +
                                 "<td><input type='text' id ='office_designation0' class='office_designation' name='OfficeDesignation0'></td>\n" +
-                                "<td> <img src='images/Delete.png' id='delete0' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this);'></td>"+
+                                "<td> <img src='images/Delete.png' id='delete0' name = 'delete_0' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this);'></td>"+
                                 "</tr>";
                             trid1.append(input_fields1);
                         }
                         else {
                             for(var i=1;i<=data.length-1;i++)
                             {
-                                var input_fields1='<tr id="'+(i-1)+'"><td><input type="text" id ="country'+(i-1)+'" class="Country" name="Country'+(i-1)+'" value="'+data[i].Country+'"></td>'+
-                                    '<td><input type="text" id ="city'+(i-1)+'" class="City" name="City'+(i-1)+'" value="'+data[i].City+'"></td>'+
-                                    '<td><input type="text" id ="state'+(i-1)+'" class="State" name="State'+(i-1)+'" value="'+data[i].State+'"></td>'+
+                                var input_fields1='<tr id="row_id'+(i-1)+'" name = "row'+(i-1)+'"><td><input type="text" id ="country'+(i-1)+'" class="Country" name="Country'+(i-1)+'" value="'+data[i].Country+'"></td>'+
+                                    '<td><input type="text" id ="City_'+(i-1)+'" class="City" name="City'+(i-1)+'" value="'+data[i].City+'"></td>'+
+                                    '<td><input type="text" id ="State_'+(i-1)+'" class="State" name="State'+(i-1)+'" value="'+data[i].State+'"></td>'+
                                     '<td><input type="text" id ="office_designation'+((i-1))+'" class="OfficeDesignation" name="OfficeDesignation'+(i-1)+'" value="'+data[i].OfficeDesignation+'"></td>'+
-                                    "<td> <img src='images/Delete.png' id='delete"+(i-1)+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this.id);'></td>"+
+                                    "<td> <img src='images/Delete.png' id='delete"+(i-1)+"' name = 'delete_"+(i-1)+"' style='height:30px; width:30px;' onclick='SomeDeleteRowFunction(this.id);'></td>"+
                                     '</tr>';
                                 trid1.append(input_fields1);
                                 console.log("Testing", data[i].Country);
@@ -596,21 +596,76 @@
             });
         </script>
 
-        <%--<script>
+        <script>
             function SomeDeleteRowFunction(o) {
                 var classlength = $('.Country').length;
                 var id = parseInt(o.substring(o.lastIndexOf('e')+1,o.length));
-                $('#'+id).remove();
+                $('#row_id'+id).remove();
                 for(var i=id+1;i<classlength;i++)
                 {
-                    $('#Country_'+i).attr('name','Country'+(i-1));
+                    $('#country'+i).removeAttr("name");
+                    $('#country'+i).attr('name','Country'+(i-1));
+                    $('input[name=Country'+(i-1)+']').removeAttr("id");
+                    $('input[name=Country'+(i-1)+']').attr('id','country'+(i-1));
+                    $('#City_'+i).removeAttr("name");
                     $('#City_'+i).attr('name','City'+(i-1));
-                    $('#State_'+i).attr('name','Country'+(i-1));
-                    $('#office_designation'+i).attr('name','Country'+(i-1));
-                    $('#delete'+i).attr('name','delete'+(i-1));
+                    $('input[name=City'+(i-1)+']').removeAttr("id");
+                    $('input[name=City'+(i-1)+']').attr('id','City_'+(i-1));
+                    $('#State_'+i).removeAttr("name");
+                    $('#State_'+i).attr('name','State'+(i-1));
+                    $('input[name=State'+(i-1)+']').removeAttr("id");
+                    $('input[name=State'+(i-1)+']').attr('id','State_'+(i-1));
+                    $('#office_designation'+i).removeAttr("name");
+                    $('#office_designation'+i).attr('name','OfficeDesignation'+(i-1));
+                    $('input[name=OfficeDesignation'+(i-1)+']').removeAttr("id");
+                    $('input[name=OfficeDesignation'+(i-1)+']').attr('id','office_designation'+(i-1));
+                    $('#delete'+i).removeAttr("name");
+                    $('#delete'+i).attr('name','delete_'+(i-1));
+                    $('img[name=delete_'+(i-1)+']').removeAttr("id");
+                    $('img[name=delete_'+(i-1)+']').attr('id','delete'+(i-1));
+                    $('#row_id'+i).removeAttr("name");
+                    $('#row_id'+i).attr('name','row'+(i-1));
+                    $('tr[name=row'+(i-1)+']').removeAttr("id");
+                    $('tr[name=row'+(i-1)+']').attr('id','row_id'+(i-1));
                 }
             }
-        </script>--%>
+        </script>
+
+        <script>
+            function SomeDeleteRowFunctionUnit(o) {
+                var classlength = $('.BusinessUnit').length;
+                var id = parseInt(o.substring(o.lastIndexOf('e')+1,o.length));
+                $('#Row_id'+id).remove();
+                for(var i=id+1;i<classlength;i++)
+                {
+                    $('#business_unit_'+i).removeAttr("name");
+                    $('#business_unit_'+i).attr('name','BusinessUnit'+(i-1));
+                    $('input[name=BusinessUnit'+(i-1)+']').removeAttr("id");
+                    $('input[name=BusinessUnit'+(i-1)+']').attr('id','business_unit_'+(i-1));
+                    $('#operation_unit_'+i).removeAttr("name");
+                    $('#operation_unit_'+i).attr('name','OperationUnit'+(i-1));
+                    $('input[name=OperationUnit'+(i-1)+']').removeAttr("id");
+                    $('input[name=OperationUnit'+(i-1)+']').attr('id','operation_unit_'+(i-1));
+                    $('#location_unit_'+i).removeAttr("name");
+                    $('#location_unit_'+i).attr('name','LocationUnit'+(i-1));
+                    $('input[name=LocationUnit'+(i-1)+']').removeAttr("id");
+                    $('input[name=LocationUnit'+(i-1)+']').attr('id','location_unit_'+(i-1));
+                    $('#department_'+i).removeAttr("name");
+                    $('#department_'+i).attr('name','Department'+(i-1));
+                    $('input[name=Department'+(i-1)+']').removeAttr("id");
+                    $('input[name=Department'+(i-1)+']').attr('id','department_'+(i-1));
+                    $('#Delete'+i).removeAttr("name");
+                    $('#Delete'+i).attr('name','Delete'+(i-1));
+                    $('img[name=Delete'+(i-1)+']').removeAttr("id");
+                    $('img[name=Delete'+(i-1)+']').attr('id','Delete'+(i-1));
+                    $('#Row_id'+i).removeAttr("name");
+                    $('#Row_id'+i).attr('name','Row'+(i-1));
+                    $('tr[name=Row'+(i-1)+']').removeAttr("id");
+                    $('tr[name=Row'+(i-1)+']').attr('id','Row_id'+(i-1));
+                }
+            }
+        </script>
+
         <script>
             function addrow_sitelocation()
             {

@@ -16,6 +16,7 @@ import java.io.IOException;
 public class DecommIntakeRequirementServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String applicationname=request.getParameter("ApplicationName");
+        System.out.println("in servslet");
         String projectname=request.getParameter("ProjectName");
         JsonObject jsonobject=new IntakeInformationService().DecommIntakeRequirementDataRetrieve(projectname,applicationname);
         String json = new Gson().toJson(jsonobject);
