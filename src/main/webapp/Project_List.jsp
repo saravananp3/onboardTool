@@ -97,8 +97,13 @@
             margin-top:5px;
         }
 
+         .cologen{
+             color: #1c95f8 !important;
+         }
+
 
     </style>
+
 </head>
 <body class="top-navbar-fixed">
 <%@ page import="java.text.SimpleDateFormat"%>
@@ -181,7 +186,6 @@
 
 
 
-
 <!-- main wrapper -->
 <div class="main-wrapper">
 
@@ -253,6 +257,8 @@
                     </div>
 
                 </div>
+
+
                 <form method="post" name="form" action="Appin">
                     <section>
 
@@ -261,8 +267,8 @@
                                 <div class="main">
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                                         <div class="cbp-vm-options">
-                                            <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected gr" data-view="cbp-vm-view-grid">Grid View</a>
-                                            <a href="#" class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list">List View</a>
+                                            <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid">Grid View</a>
+                                            <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list">List View</a>
                                         </div>
 
 
@@ -418,6 +424,16 @@
 
 
 <script type="text/javascript">
+    $('#list').click(function()
+    {
+        $('#grid').removeClass('cologen');
+        $('#list').addClass('cologen');
+    });
+    $('#grid').click(function()
+    {
+        $('#list').removeClass('cologen');
+        $('#grid').addClass('cologen');
+    });
     $(document).ready(function() {
         $(".lis").click(function() {
             $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");

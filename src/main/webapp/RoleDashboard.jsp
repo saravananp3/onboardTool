@@ -42,8 +42,21 @@
                 #nav_userid{
              color:green;
              }
-              
 
+   .btn {
+       border: none;
+       outline: none;
+       padding: 3px 14px;
+       background-color: #3697e8;
+       cursor: pointer;
+
+   }
+   .activ-pro{font-size: 16px;
+       margin-left: -13px;
+       margin-right: 129px;}
+   .active, .btn:hover {
+       color: white;
+   }
 
 .pg-normal { 
 color: white; 
@@ -559,11 +572,11 @@ if(rs.next()){
                                     <%--   <li class="nav-header">
                                            <a href='RoleUIDashboard.jsp'><span class="">Report Module</span></a>
                                        </li>--%>
-                                    <li class="has-children">
+                                    <li class="has-children" >
                                         <a href=""><i class="fa fa-paint-brush"></i> <span>Report Module</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
+                                        <ul class="child-nav"  id="myDIV">
                                             <li><a href="RoleUIDashboard.jsp" > <span>Reports Dashboard</span></a></li>
-                                            <li><a href="RoleDashboard.jsp" > <span>Role Dashboard</span></a></li>
+                                            <li class="btn"><a href="RoleDashboard.jsp" > <span class="activ-pro">Role Dashboard</span></a></li>
                                             <li><a href="ProjectDashboard.jsp" > <span>Project Dashboard</span></a></li>
                                             <li><a href="ApplicationDashboard.jsp"> <span>Application Dashboard</span></a></li>
                                         </ul>
@@ -1486,7 +1499,18 @@ catch(Exception e){}
         <!-- /.main-wrapper -->
                           
          </div>
-         
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
     
        <!-- ========== COMMON JS FILES ========== -->
 
@@ -1610,18 +1634,7 @@ function filter(input,s2)
     }
 </script>
 
-<script>
-    // Add active class to the current button (highlight it)
-    var header = document.getElementById("myDIV");
-    var btns = header.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-</script>
+
 
         
 </body>

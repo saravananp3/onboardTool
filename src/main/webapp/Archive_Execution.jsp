@@ -184,7 +184,19 @@
             margin: auto;
         }
 
+        .but11 {
+            border: none;
+            outline: none;
+            padding: 3px 14px;
+            background-color: #3697e8;
+            cursor: pointer;
 
+        }
+        .activ-pro{font-size: 16px;
+            margin-left: -17px;}
+        .active, .btn:hover {
+            color: white;
+        }
     </style>
 
 </head>
@@ -261,6 +273,7 @@
 
         <div class="content-wrapper">
             <div class="content-container">
+
 
                 <!-- ========== LEFT SIDEBAR ========== -->
                 <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
@@ -350,10 +363,10 @@
                                 <%--<li class="nav-header">
                                     <a href='Archive_Execution.jsp'><span class="">Archive Execution Module</span></a>
                                 </li>--%>
-                                <li class="has-children">
+                                <li class="has-children" id="myDIV">
                                     <a href=""><i class="fa fa-map-signs"></i> <span>Archive Execution Module</span> <i class="fa fa-angle-right arrow"></i></a>
-                                    <ul class="child-nav" id="myDIV">
-                                        <li class="1btn"><a href="Archive_Execution.jsp" > <span class="activ-pro">Archive Execution</span></a></li>
+                                    <ul class="child-nav" >
+                                        <li class="but11" style="padding-right: 0px;"><a href="Archive_Execution.jsp" > <span class="activ-pro">Archive Execution</span></a></li>
                                         <li><a href="archivesummary.jsp" > <span>Archive summary</span></a></li>
 
                                     </ul>
@@ -656,7 +669,18 @@
         $('.table-responsive').doubleScroll();
     });
 </script>
-
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
 <script>
     var username_dropdown="";
     $(document).ready(function () {

@@ -43,7 +43,10 @@
 
     }
 
-
+    .example-two {
+        border-radius: 10px;
+        border: 3px solid #e3e3e3;
+    }
 
          /* Style the buttons */
      .btn {
@@ -361,28 +364,28 @@ if(hypercare == null)
                                         <div class="col-xs-3 bs-wizard-step active">
                                             <div class="text-center bs-wizard-stepnum">Project Information</div>
                                             <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <a href="#" class="bs-wizard-dot example-two"></a>
                                             <div class="bs-wizard-info text-center"></div>
                                         </div>
 
                                         <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                                             <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
                                             <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <a href="#" class="bs-wizard-dot example-two"></a>
                                             <div class="bs-wizard-info text-center"></div>
                                         </div>
 
                                         <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                                             <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                                             <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <a href="#" class="bs-wizard-dot example-two"></a>
                                             <div class="bs-wizard-info text-center"></div>
                                         </div>
 
                                         <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                                             <div class="text-center bs-wizard-stepnum">Final</div>
                                             <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <a href="#" class="bs-wizard-dot example-two"></a>
                                             <div class="bs-wizard-info text-center"> </div>
                                         </div>
                                     </div>

@@ -38,6 +38,7 @@
     <script type="text/javascript" src="js_in_pages/tree.js"></script>
     <!-- graph -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
 </head>
 <style>
     /* =================piechart pop-up table row line================= */
@@ -90,7 +91,20 @@
         font-size: 28px;
         font-weight: bold;
     }
+    .btn {
+        border: none;
+        outline: none;
+        padding: 3px 14px;
+        background-color: #3697e8;
+        cursor: pointer;
 
+    }
+    .activ-pro{font-size: 16px;
+        margin-left: -13px;
+        margin-right: 129px;}
+    .active, .btn:hover {
+        color: white;
+    }
     .close:hover,
     .close:focus {
         color: #000;
@@ -380,7 +394,7 @@
                                     <li><a href="RoleUIDashboard.jsp"> <span>Reports Dashboard</span></a></li>
                                     <li><a href="RoleDashboard.jsp" > <span>Role Dashboard</span></a></li>
                                     <li><a href="ProjectDashboard.jsp" > <span>Project Dashboard</span></a></li>
-                                    <li><a href="ApplicationDashboard.jsp"> <span>Application Dashboard</span></a></li>
+                                    <li class="btn"><a href="ApplicationDashboard.jsp"> <span class="activ-pro">Application Dashboard</span></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -1190,7 +1204,18 @@
 
 </div>
 
-
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {f/hea
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 

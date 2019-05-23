@@ -55,7 +55,7 @@
         .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
         .bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
         .bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #6dccff; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
-        .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: 	#1E90FF; border-radius: 50px; position: absolute; top: 8px; left: 8px; }
+        .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' ';width: 14px;height: 14px;background: 	#1E90FF;border-radius: 50px;position: absolute;top: 5px;left: 5px;}
         .bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
         .bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:  #6dccff;}
         .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
@@ -85,6 +85,10 @@
 
             color: white;
         }
+        .example-two {
+            border-radius: 10px;
+            border: 3px solid #e3e3e3;
+        }
 
         /* Style the active class, and buttons on mouse-over */
 
@@ -95,56 +99,15 @@
 
 </head>
 <body class="top-navbar-fixed">
-<%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="java.util.Date"%>
-<%
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    Date date = new Date();
-    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed AppEmphazize_CostCalculation JSP PAGE-----[INFO]");  %>
-<%@page language="java"%>
-<%@page import="java.sql.*"%>
-<%@ page import="java.text.NumberFormat" %>
-<%@ page import="onboard.DBconnection" %>
 
-<%
-    double ans=0.0;
-    try {
-        HttpSession details=request.getSession();
-        String roles=(String)details.getAttribute("role");
-        String info=(String)details.getAttribute("app_emp");
-        String appno=(String)details.getAttribute("appno");
-        String projectname=(String)details.getAttribute("nameofproject");
-        String det=(String)session.getAttribute("theName");
-        String appl=(String)details.getAttribute("applications");
-        String prj=(String)details.getAttribute("projects");
-//System.out.println("-- "+info+"-- "+appno+"---"+projectname+"---"+det);
 
-        DBconnection d=new DBconnection();
-        Connection conn = (Connection)d.getConnection();
-        String query = "SELECT * from AppEmphazize_ApplicationPrioritization where prj_name='"+projectname+"'";
-        Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery(query);
-        String query3 = "select * from AppEmphazize_ProjectDetails where id = "+det;
-        Statement st3 = conn.createStatement();
-        ResultSet rs3 = st3.executeQuery(query3);
-//System.out.println(projectname);
-        String query1="";
-        if(prj.equals("all"))
-            query1 = "select * from AppEmphazize_ApplicationInfo where prjname = '"+projectname+"'";
-        else
-            query1 = "select * from AppEmphazize_ApplicationInfo where prjname = '"+prj+"' and appname='"+appl+"'";
-//System.out.println(query1);
-        Statement st1 = conn.createStatement();
-        ResultSet rs1 = st1.executeQuery(query1);
-        String query2= "SELECT * from AppEmphazize_ApplicationPrioritization where prj_name='"+projectname+"'";
-        Statement st2 = conn.createStatement();
-        ResultSet rs2 = st2.executeQuery(query2);
-        PreparedStatement statement =  conn.prepareStatement("select sum(ttl_cst_fr_app) from AppEmphazize_ApplicationPrioritization where prj_name='"+projectname+"'");
-        ResultSet result = statement.executeQuery();
-        result.next();
-        String sum=result.getString(1);
-        {
-%>
+
+
+
+
+
+
+
 
 
 <script type="text/javascript">
@@ -284,7 +247,7 @@
             document.loginForm.est_scrn.value ="<=30";
             result=5;
         }
-        var appnumber=<%=appno%>;
+        var appnumber=3;
         document.loginForm.est_db_size.value=(document.loginForm.no_of_app_complexity.value*0.001*document.loginForm.strg_est.value).toFixed(2);
         document.loginForm.est_hrs.value =(document.loginForm.no_of_app_complexity.value*document.loginForm.est_archive.value).toFixed(2);
         temp=(100*document.loginForm.est_hrs.value);
@@ -298,7 +261,7 @@
         total=temp+temp1+temp2+temp3;
         document.loginForm.ttl.value="$"+total.toFixed(2);
         document.loginForm.tootal.value=total.toFixed(2);
-        document.loginForm.ttl_cst_fr_app.value=<%=sum%>+(total.toFixed(2)-0);
+        document.loginForm.ttl_cst_fr_app.value=0+(total.toFixed(2)-0);
         document.loginForm.est_archive_cst.value="$"+document.loginForm.ttl_cst_fr_app.value.toFixed(2);
     }
     function add()
@@ -320,17 +283,11 @@
                 <div class="row">
                     <div class="navbar-header no-padding">
 
-                        <%if (rs3.next()) {%>
+
                         <a class="navbar-brand" href="Project_list.jsp" id="sitetitle">
                             <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                         </a>
-                        <%        String q2="select * from ArchiveExecution_Details where level=1 and projects='"+projectname+"'order by seq_num";
-                            Statement s2 = conn.createStatement();
-                            ResultSet rss = s2.executeQuery(q2);
-                            while(rss.next())
-                            {
-                                session.setAttribute(rss.getString(3),rss.getString(15));
-                            }%>
+
 
                         <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
@@ -349,11 +306,9 @@
 
                         <!-- /.nav navbar-nav -->
                         <ul class="nav navbar-nav navbar-right">
-                            <a class="navbar-brand" href="Project_List.jsp" id="sitetitle1">PROJECT NAME-<%=rs3.getString("projectname") %></a>
-                            <%
-                                String uname=(String)details.getAttribute("username");
-                                String role=(String)details.getAttribute("role");%>
-                            <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
+                            <a class="navbar-brand" href="Project_List.jsp" id="sitetitle1">PROJECT NAME-onboard1</a>
+
+                            <li><a href="#"><span id="nav_userid">admin&nbsp;</span>logged in as &nbsp;<span id='nav_role'>admin</span></a></li>
                             <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                             </li>
                         </ul>
@@ -383,9 +338,7 @@
                                     <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
                                 </li>
 
-                                <%--   <li class="nav-header">
-                                       <a href="AppEmphasize_EditProject.jsp"><span class="">Plan and pirority</span></a>
-                                   </li>--%>
+
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-archive"></i> <span>Plan and pirority</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav" id="myDIV">
@@ -396,68 +349,23 @@
                                         <li><a href="AppEmphasize_Preview.jsp"> <span>Review Page</span></a></li>
                                     </ul>
                                 </li>
-                                <%--<li class="has-children">
-                                    <a href="AppEmphasize_EditProject.jsp"><i class="fa fa-file-text"></i> <span>Project Details</span> <i class="fa fa-angle-right arrow"></i></a>
-                                    <ul class="child-nav">
-                                        <li><a href="AppEmphasize_EditProject.jsp"> <span>Project Information</span></a></li>
-                                        <li><a href="AppEmphasize_Application.jsp"> <span>Application Details</span></a></li>
-                                    </ul>
-                                </li>--%>
 
 
-                                <%--<li class="has-children">
-                                    <a href="AppEmphasize_CostCalculation.jsp"><i class="fa fa-paint-brush"></i> <span>Application Prioritization</span> <i class="fa fa-angle-right arrow"></i></a>
-                                    <ul class="child-nav">
-                                        <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity </span></a></li>
-                                    </ul>
-                                </li>--%>
 
-                                <%--<li>
-                                    <a href="AppEmphasize_PrioritizedApplications.jsp"><i class="fa fa-map-signs"></i> <span>Application Prioritized</span> </a>
-                                </li>--%>
 
-                                <%-- <li class="nav-header">
-                                     <a href='Applications.jsp'><span class="">Intake Module</span></a>
-                                 </li>
 
-                                 <li class="has-children">
-                                     <a href="Applications.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
-                                     <ul class="child-nav">
-                                         <li><a href="Applications.jsp"> <span>Application Information</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Legacy Retention Information</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Archive Data Management</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>System Requirements</span></a></li>
-                                     </ul>
-                                 </li>
 
-                                 <li class="has-children">
-                                     <a href="Applications.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
-                                     <ul class="child-nav">
-                                         <li><a href="Applications.jsp"> <span>Application Data Information</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Technical Information</span></a></li>
-                                     </ul>
-                                 </li>
-                                 <li class="has-children">
-                                     <a href="Applications.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
-                                     <ul class="child-nav">
-                                         <li><a href="Applications.jsp"> <span>Screen/Report Requirements</span></a></li>
-                                         <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
-                                     </ul>
-                                 </li>--%>
+
+
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
                                         <li><a href="Applications.jsp" > <span>Archive Intake</span></a></li>
                                         <li><a href="Decomm_Intake_Applications.jsp" > <span>Decomm Intake</span></a></li>
-                                        <%--<li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
-                                        <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
-                                        <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>--%>
+
                                     </ul>
                                 </li>
-                                <%--<li class="nav-header">
-                                    <a href='Archive_Execution.jsp'><span class="">Archive Execution Module</span></a>
-                                </li>--%>
+
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-map-signs"></i> <span>Archive Execution Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
@@ -466,9 +374,7 @@
 
                                     </ul>
                                 </li>
-                                <%--   <li class="nav-header">
-                                       <a href='RoleUIDashboard.jsp'><span class="">Report Module</span></a>
-                                   </li>--%>
+
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-paint-brush"></i> <span>Report Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
@@ -501,20 +407,7 @@
                     <div class="container">
                     <div class="col-md-12">
 
-                    <%
-                   String initiate=(String)session.getAttribute("Ideation and Initiate");
-                   String plan=(String)session.getAttribute("Plan");
-                   String execute=(String)session.getAttribute("Execute");
-                   String hypercare=(String)session.getAttribute("Closure");
-                   if(initiate == null)
-                   initiate="0";
-                   if(plan == null)
-                   plan="0";
-                   if(execute == null)
-                   execute="0";
-                   if(hypercare == null)
-                   hypercare="0";
-                   %>
+
 
                     <br>
                     <div class="row">
@@ -523,35 +416,46 @@
                     <div class="form-group">
                     <center><label >Initiate</label></center>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: <%=initiate%>%" aria-valuenow="<%=initiate %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=initiate %>%</span></div>
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="color:black;">0%</span></div>
                 </div></div></div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                     <center><label >Plan</label></center>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: <%=plan%>%" aria-valuenow="<%=plan%>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=plan %>%</span></div>
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar1" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="color:black;">0%</span></div>
                 </div></div></div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                     <center><label >Execute</label></center>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: <%=execute %>%" aria-valuenow="<%=execute %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=execute %>%</span></div>
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" id="prog_bar2" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="color:black;">0%</span></div>
                 </div></div></div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                     <center><label >Closure</label></center>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-stripedss-bar" role="progressbar" id="prog_bar3" style="width: <%=hypercare %>%" aria-valuenow="<%=hypercare %>" aria-valuemin="0" aria-valuemax="100"><span style="color:black;"><%=hypercare %>%</span></div>
+                    <div class="progress-bar progress-bar-success progress-bar-stripedss-bar" role="progressbar" id="prog_bar3" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span style="color:black;">0%</span></div>
                 </div></div></div>
-                </div><jsp:include page="progress_details.jsp" >
-                <jsp:param name="Initiate" value="<%=initiate %>"/>
-                <jsp:param name="Plan" value="<%=plan %>"/>
-                <jsp:param name="Execute" value="<%=execute %>"/>
-                <jsp:param name="Hypercare" value="<%=hypercare %>"/>
-                </jsp:include>
+                </div>
+
+
+
+                <script>document.getElementById('prog_bar').className='progress-bar progress-bar-danger progress-bar-striped'</script>
+
+
+                <script>document.getElementById('prog_bar1').className='progress-bar progress-bar-danger progress-bar-striped'</script>
+
+
+                <script>document.getElementById('prog_bar2').className='progress-bar progress-bar-danger progress-bar-striped'</script>
+
+
+                <script>document.getElementById('prog_bar3').className='progress-bar progress-bar-danger progress-bar-striped'</script>
+
+
+
 
 
 
@@ -560,42 +464,42 @@
 
                     <div class="row bs-wizard" style="border-bottom:0;">
 
-                    <div class="col-xs-3 bs-wizard-step complete">
-                    <div class="text-center bs-wizard-stepnum">Project Information</div>
-                <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot"></a>
-                    <div class="bs-wizard-info text-center"></div>
+                        <div class="col-xs-3 bs-wizard-step complete">
+                            <div class="text-center bs-wizard-stepnum">Project Information</div>
+                            <div class="progress"><div class="progress-bar"></div></div>
+                            <a href="#" class="bs-wizard-dot example-two"></a>
+                            <div class="bs-wizard-info text-center"></div>
+                        </div>
+
+                        <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                            <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                            <div class="progress"><div class="progress-bar"></div></div>
+                            <a href="#" class="circle bs-wizard-dot example-two"></a>
+                            <div class="bs-wizard-info text-center"></div>
+                        </div>
+
+                        <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                            <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
+                            <div class="progress"><div class="progress-bar "></div></div>
+                            <a href="#" class=" bs-wizard-dot example-two"></a>
+                            <div class="bs-wizard-info text-center"></div>
+                        </div>
+
+                        <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                            <div class="text-center bs-wizard-stepnum">Final</div>
+                            <div class="progress"><div class="progress-bar"></div></div>
+                            <a href="#" class="bs-wizard-dot example-two"></a>
+                            <div class="bs-wizard-info text-center"> </div>
+                        </div>
                     </div>
 
-                    <div class="col-xs-3 bs-wizard-step active"><!-- active -->
-                    <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
-                <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot"></a>
-                    <div class="bs-wizard-info text-center"></div>
-                    </div>
-
-                    <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
-                    <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
-                <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot"></a>
-                    <div class="bs-wizard-info text-center"></div>
-                    </div>
-
-                    <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
-                    <div class="text-center bs-wizard-stepnum">Final</div>
-                    <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot"></a>
-                    <div class="bs-wizard-info text-center"> </div>
-                    </div>
-                    </div>
 
 
 
 
-
-                    </div>
-                    <br/>
-                    <div class="panel-group" id="panels1">
+                </div>
+                <br/>
+                <div class="panel-group" id="panels1">
                     <!-- <div class="panel-heading">
                     <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#panels1" href="#collapse1" onclick="switchColors0();"> Parameters   </a> </h4>
                 </div>
@@ -603,40 +507,38 @@
                 <div id="collapse1" class="panel-collapse collapse in">
                     <div class="panel-body text-left">
 
-                    <%if(rs.next()){
 
-                        %>
 
                     <div class="form-group">
                     <label class="control-label" for="formInput526"><div class="required">Project Name&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="prj_name"  name="prj_name" value="<%=projectname %>" required>
+                <input type="text" class="form-control" id="prj_name"  name="prj_name" value="onboard1" required>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="formInput526"><div class="required">IA License cost per TB($)&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="IA_lic_cst"  name="IA_lic_cst" value="<%=rs.getString("IA_lic_cst")%>" required>
+                <input type="text" class="form-control" id="IA_lic_cst"  name="IA_lic_cst" value=" " required>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="formInput526"><div class="required">IA Maintenance Cost Per Year(%)&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="IA_maint_cst"  name="IA_maint_cst" value="<%=rs.getString("IA_maint_cst")%>" required>
+                <input type="text" class="form-control" id="IA_maint_cst"  name="IA_maint_cst" value=" " required>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="formInput316"><div class="required">Infra Structure Cost per TB($)&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="Infrastrct_cst"  name="Infrastrct_cst" value="<%=rs.getString("Infrastrct_cst")%>" required>
+                <input type="text" class="form-control" id="Infrastrct_cst"  name="Infrastrct_cst" value=" " required>
                 </div>
                 <div class="form-group">
 
                     <label class="control-label" for="formInput526"><div class="required">Storage Estimate(%)&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="strg_est"  name="strg_est" value="<%=rs.getString("strg_est")%>" required>
+                <input type="text" class="form-control" id="strg_est"  name="strg_est" value=" " required>
 
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="formInput526"><div class="required">Labor Cost Per Hour for IA Dev Team($)&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="lab_cst"  name="lab_cst" value="<%=rs.getString("lab_cst")%>" required>
+                <input type="text" class="form-control" id="lab_cst"  name="lab_cst" value=" " required>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="formInput526"><div class="required">Number of Applications based on Complexity&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value="<%=rs.getString("no_of_app_complexity")%>" required>
+                <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value=" " required>
                 </div>
                 <div>
                 <button type="button"  class="btn btn-primary  pull-right" data-toggle="modal" data-target="#myModal" id="btt" onclick="switchColors();"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" style="color:white">  Next</a><span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -644,254 +546,240 @@
                 </div>
                 </div>
                 </div> -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">    Application Complexity   </a> </h4>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">    Application Complexity   </a> </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse ">
+                            <div class="panel-body text-left">
+
+
+                                <div class="table-responsive" id="table-scroll">
+
+                                    <!-- Initialization
+                                                * js-dynamitable => dynamitable trigger (table)
+                                                -->
+                                    <table class="js-dynamitable     table table-bordered" id="myTable">
+
+                                        <!-- table heading -->
+                                        <thead>
+
+                                        <!-- Sortering
+                                                        * js-sorter-asc => ascending sorter trigger
+                                                        * js-sorter-desc => desending sorter trigger
+                                                        -->
+                                        <tr>
+                                            <th>Application Name<span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> <span class="glyphicon glyphicon-search pull-right" onClick="myFunction1()"></span></th>
+                                            <th>Complexity <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> <span class="glyphicon glyphicon-search pull-right" onClick="myFunction2()"></span></th>
+                                            <th>Estimated Number of Screens <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> <span class="glyphicon glyphicon-search pull-right" onClick="myFunction3()"></span></th>
+                                        </tr>
+
+
+                                        <!-- table body -->
+                                        <tbody>
+
+
+
+
+                                        <tr>
+
+                                            <td class="edit_row" style="cursor:pointer" id="1">onboard1</td>
+                                            <td class="row_s" style="cursor:pointer" id="2">null</td>
+                                            <td class="row_t" style="cursor:pointer" id="3">null</td>
+
+
+
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                    <script>
+                                        var edit_row = document.querySelectorAll('#myTable .edit_row');
+                                        for(var i=0; i<edit_row.length; i++) {
+                                            edit_row[i].addEventListener('click', function(e){
+                                                var tr_parent = this.parentNode;
+                                                document.getElementById('proj_name').value = tr_parent.querySelector('.edit_row').innerHTML;
+                                                var projectname_value=document.getElementById('proj_name').value;
+                                                var knt=0;
+
+                                                valuess=" ";
+                                                if(valuess==projectname_value)
+                                                {
+
+                                                    knt++;
+
+                                                    document.getElementById('complexity').value = " ";
+                                                    document.getElementById('curnt_users').value = " ";
+                                                    document.getElementById('data_size').value = " ";
+                                                    document.getElementById('RO_DATE').value = " ";
+                                                    document.getElementById('SME_DATE').value = " ";
+                                                    document.getElementById('est_scrn').value = " ";
+                                                }
+
+                                                if(knt==0){
+                                                    document.getElementById('complexity').value = " ";
+                                                    document.getElementById('curnt_users').value = " ";
+                                                    document.getElementById('data_size').value = " ";
+                                                    document.getElementById('RO_DATE').value = " ";
+                                                    document.getElementById('SME_DATE').value = " ";
+                                                    document.getElementById('est_scrn').value = " ";
+                                                }
+                                            }, false);
+                                        }
+                                    </script>
+
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput526"><div class="required">Project Name&nbsp;<span class="text-danger">*</span></div></label>
+                                    <input type="text" class="form-control" id="prj_name"  name="prj_name" value="onboard1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput526"><div class="required">Number of Applications based on Complexity&nbsp;<span class="text-danger">*</span></div></label>
+                                    <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value=" " >
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput664">Application Name</label>
+                                    <input type="text" class="form-control" id="proj_name"  name="proj_name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput26">Data Size&nbsp;<span class="text-danger">*</span></label>
+                                    <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required>
+                                        <option></option>
+                                        <option><100 GB</option>
+                                        <option>100 to 250 GB</option>
+                                        <option>250 to 500 GB</option>
+                                        <option>500 to 1 TB</option>
+                                        <option>>1 TB</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput664"><b>Data Source</b></label>
+                                </div>
+                                <div class="checkbox">
+                                    <label class="Data Source">
+                                        <input type="checkbox" name="data_source" value="regulardb"  >Regular DB</label><br />
+                                    <label class="Data Source">     <input type="checkbox" name="data_source" value="erp"  >ERP</label><br />
+                                    <label class="Data Source"> <input type="checkbox" name="data_source" value="product"  >Product based
+                                    </label>  <br />
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput26">Current users&nbsp;<span class="text-danger">*</span></label>
+                                    <select id="curnt_users" class="form-control" name="curnt_users" onChange="updatesum()" required>
+                                        <option></option>
+                                        <option><10</option>
+                                        <option><25</option>
+                                        <option><50</option>
+                                        <option><100</option>
+                                        <option>100 to 500</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput26">Complexity&nbsp;<span class="text-danger">*</span></label>
+                                    <select id="complexity" class="form-control" name="complexity" onChange="updatesum()" required>
+                                        <option></option>
+                                        <option>Low</option>
+                                        <option>Low to Medium</option>
+                                        <option>Medium</option>
+                                        <option>Medium to High</option>
+                                        <option>High</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput664">Read Only Date</label>
+                                    <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput664">SME Availability Date</label>
+                                    <input placeholder="mm/dd/yyyy" type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput664">Estimated Number of Screen</label>
+                                    <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="formInput664">Does the data needs to be Retained?</label>
+                                    <p>
+                                        <label class="radio-inline">
+
+                                            <input type="radio" name="data_retained" class="radio" id="checkbox_id_yes" value="true"/>
+                                            <b>Yes</b>
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="data_retained" class="radio" id="checkbox_id_no" value="false"/>
+                                            <b>No</b>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="Q2" for="formInput664" hidden>If the data is retained , do we need to decommission the application?</label>
+
+                                    <p class="Q2" hidden>
+                                        <label class="radio-inline">
+
+                                            <input type="hidden" id="yes" name="Decommission" class="radio1" value="true"/>
+                                            <b>Yes</b>
+
+                                        </label>
+                                        <label class="radio-inline">
+
+                                            <input type="hidden" id="no" name="Decommission" class="radio1" value="false"/>
+                                            <b>  No </b>
+                                        </label>
+                                    </p>
+
+
+                                </div>
+
+                                <br>
+                                <div>
+                                    <button type="submit" class="btn btn-primary pull-right" onclick="OnButton1()" >Save & Continue</button>
+
+
+
+
+                                    <a href="AppEmphasize_Application.jsp" class="btn btn-default" class="btn pull-right">Back</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <input type="text" id="pwqej" value="X" style="display:none">
+                    <br/>
+
+
+
+
+
+
+
+
                 </div>
-                <div id="collapse2" class="panel-collapse ">
-                    <div class="panel-body text-left">
-
-
-                    <div class="table-responsive" id="table-scroll">
-
-                    <!-- Initialization
-                                * js-dynamitable => dynamitable trigger (table)
-                                -->
-                    <table class="js-dynamitable     table table-bordered" id="myTable">
-
-                    <!-- table heading -->
-                    <thead>
-
-                    <!-- Sortering
-                                    * js-sorter-asc => ascending sorter trigger
-                                    * js-sorter-desc => desending sorter trigger
-                                    -->
-                    <tr>
-                    <th>Application Name<span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> <span class="glyphicon glyphicon-search pull-right" onClick="myFunction1()"></span></th>
-                <th>Complexity <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> <span class="glyphicon glyphicon-search pull-right" onClick="myFunction2()"></span></th>
-                <th>Estimated Number of Screens <span class="js-sorter-desc     glyphicon glyphicon-chevron-down pull-right"></span> <span class="js-sorter-asc     glyphicon glyphicon-chevron-up pull-right"></span> <span class="glyphicon glyphicon-search pull-right" onClick="myFunction3()"></span></th>
-                </tr>
-
-
-                <!-- table body -->
-                <tbody>
-
-
-                <%
-
-      while(rs1.next()){
-
-      %>
-
-                <tr>
-
-                <td class="edit_row" style="cursor:pointer" id="1"><%=rs1.getString("appname") %></td>
-                    <td class="row_s" style="cursor:pointer" id="2"><%=rs1.getString("complexity") %></td>
-                    <td class="row_t" style="cursor:pointer" id="3"><%=rs1.getString("est_scrn") %></td>
-
-
-
-                    </tr>
-                    <% }
-
-
-                    %>
-
-                    </tbody>
-                    </table>
-                    <script>
-                var edit_row = document.querySelectorAll('#myTable .edit_row');
-                for(var i=0; i<edit_row.length; i++) {
-                    edit_row[i].addEventListener('click', function(e){
-                        var tr_parent = this.parentNode;
-                        document.getElementById('proj_name').value = tr_parent.querySelector('.edit_row').innerHTML;
-                        var projectname_value=document.getElementById('proj_name').value;
-                        var knt=0;
-                        <%
-                        String query8= "SELECT * from AppEmphazize_ApplicationPrioritization where prj_name='"+projectname+"'";
-                        Statement st8 = conn.createStatement();
-                        ResultSet rs8 = st8.executeQuery(query8);
-                        while(rs8.next())
-                        {
-                            %>
-                        valuess="<%=rs8.getString("proj_name")%>";
-                        if(valuess==projectname_value)
-                        {
-
-                            knt++;
-
-                            document.getElementById('complexity').value = "<%= rs8.getString("complexity") %>";
-                            document.getElementById('curnt_users').value = "<%= rs8.getString("curnt_users") %>";
-                            document.getElementById('data_size').value = "<%= rs8.getString("data_size") %>";
-                            document.getElementById('RO_DATE').value = "<%= rs8.getString("read_date") %>";
-                            document.getElementById('SME_DATE').value = "<%= rs8.getString("sme_date") %>";
-                            document.getElementById('est_scrn').value = "<%= rs8.getString("est_scrn") %>";
-                        }
-                        <% }
-                         %>
-                        if(knt==0){
-                            document.getElementById('complexity').value = " ";
-                            document.getElementById('curnt_users').value = " ";
-                            document.getElementById('data_size').value = " ";
-                            document.getElementById('RO_DATE').value = " ";
-                            document.getElementById('SME_DATE').value = " ";
-                            document.getElementById('est_scrn').value = " ";
-                        }
-                    }, false);
-                }
-                </script>
 
             </div>
-            <br />
-
-            <div class="form-group">
-                <label class="control-label" for="formInput526"><div class="required">Project Name&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="prj_name"  name="prj_name" value="<%=projectname %>" required>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="formInput526"><div class="required">Number of Applications based on Complexity&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value="<%=rs.getString("no_of_app_complexity")%>" >
-            </div>
-
-            <div class="form-group">
-                <label class="control-label" for="formInput664">Application Name</label>
-                <input type="text" class="form-control" id="proj_name"  name="proj_name">
-            </div>
-
-            <div class="form-group">
-                <label class="control-label" for="formInput26">Data Size&nbsp;<span class="text-danger">*</span></label>
-                <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required>
-                    <option></option>
-                    <option><100 GB</option>
-                    <option>100 to 250 GB</option>
-                    <option>250 to 500 GB</option>
-                    <option>500 to 1 TB</option>
-                    <option>>1 TB</option>
-                </select>
-            </div>
-
-
-            <div class="form-group">
-                <label class="control-label" for="formInput664"><b>Data Source</b></label>
-            </div>
-            <div class="checkbox">
-                <label class="Data Source">
-                    <input type="checkbox" name="data_source" value="regulardb" <%=rs.getString("data_source")%>>Regular DB</label><br />
-                <label class="Data Source">     <input type="checkbox" name="data_source" value="erp" <%=rs.getString("data_source")%>>ERP</label><br />
-                <label class="Data Source"> <input type="checkbox" name="data_source" value="product" <%=rs.getString("data_source")%>>Product based
-                </label>  <br />
-            </div>
-
-
-            <div class="form-group">
-                <label class="control-label" for="formInput26">Current users&nbsp;<span class="text-danger">*</span></label>
-                <select id="curnt_users" class="form-control" name="curnt_users" onChange="updatesum()" required>
-                    <option></option>
-                    <option><10</option>
-                    <option><25</option>
-                    <option><50</option>
-                    <option><100</option>
-                    <option>100 to 500</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label" for="formInput26">Complexity&nbsp;<span class="text-danger">*</span></label>
-                <select id="complexity" class="form-control" name="complexity" onChange="updatesum()" required>
-                    <option></option>
-                    <option>Low</option>
-                    <option>Low to Medium</option>
-                    <option>Medium</option>
-                    <option>Medium to High</option>
-                    <option>High</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="formInput664">Read Only Date</label>
-                <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()">
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="formInput664">SME Availability Date</label>
-                <input placeholder="mm/dd/yyyy" type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()">
-            </div>
-
-
-            <div class="form-group">
-                <label class="control-label" for="formInput664">Estimated Number of Screen</label>
-                <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" >
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="formInput664">Does the data needs to be Retained?</label>
-                <p>
-                    <label class="radio-inline">
-
-                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_yes" value="true"/>
-                        <b>Yes</b>
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_no" value="false"/>
-                        <b>No</b>
-                    </label>
-                </p>
-            </div>
-            <div class="form-group">
-                <label class="Q2" for="formInput664" hidden>If the data is retained , do we need to decommission the application?</label>
-
-                <p class="Q2" hidden>
-                    <label class="radio-inline">
-
-                        <input type="hidden" id="yes" name="Decommission" class="radio1" value="true"/>
-                        <b>Yes</b>
-
-                    </label>
-                    <label class="radio-inline">
-
-                        <input type="hidden" id="no" name="Decommission" class="radio1" value="false"/>
-                        <b>  No </b>
-                    </label>
-                </p>
-
-
-            </div>
-
-            <br>
-            <div>
-                <button type="submit" class="btn btn-primary pull-right" onclick="OnButton1()" >Save & Continue</button>
-
-
-
-
-                <a href="AppEmphasize_Application.jsp" class="btn btn-default" class="btn pull-right">Back</a>
-            </div>
+            <!-- /.col-md-6 -->
 
         </div>
+        <!-- /.row -->
 
-    </div>
-
-    </div>
-
-
-
-    <input type="text" id="pwqej" value="<%= info %>" style="display:none">
-    <br/>
-
-
-
-
-
-
-    <% } %>
-
-    </div>
-
-    </div>
-    <!-- /.col-md-6 -->
-
-    </div>
-    <!-- /.row -->
-
-    </section>
-    <!-- /.section -->
+        </section>
+        <!-- /.section -->
 </form>
 </div>
 <!-- /.main-page -->
@@ -924,11 +812,7 @@
         });
     }
 </script>
-<%
-            }
-        }}
-    catch(Exception e){}
-%>
+
 
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
