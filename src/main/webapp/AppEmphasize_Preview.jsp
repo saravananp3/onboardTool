@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-
-
-
-
-
+<%@page import="java.util.Arrays" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
+<%@page import="java.util.Map" %>
+<%@page import="java.util.LinkedHashMap" %>
 <html lang="en">
 <head>
     <title>AppEmphasize Preview</title>
@@ -15,7 +15,7 @@
     <meta name="description" content="The jqxTree displays a hierarchical collection of items. You
         can populate it from 'UL' or by using its 'source' property."/>
 
-
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
@@ -60,7 +60,7 @@
         .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
         .bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
         .bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #6dccff; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
-        .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' ';width: 14px;height: 14px;background: 	#1E90FF;border-radius: 50px;position: absolute;top: 5px;left: 5px;}
+        .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: 	#1E90FF; border-radius: 50px; position: absolute; top: 8px; left: 8px; }
         .bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
         .bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:  #6dccff;}
         .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
@@ -104,10 +104,7 @@
             max-width: 100%;
             margin-bottom: 270px;
         }
-        .example-two {
-            border-radius: 10px;
-            border: 3px solid #e3e3e3;
-        }
+
         .button{
 
             margin-bottom:10px;
@@ -124,7 +121,7 @@
 
         }
         /* Style the buttons */
-        .btn1 {
+        .btn {
             border: none;
             outline: none;
             padding: 3px 13px;
@@ -135,7 +132,7 @@
         .activ-pro{font-size: 16px;
             margin-left: -14px;
             color: white;
-            margin-right: 148px;}
+            margin-right: 166px;}
         .active, .btn:hover {
             color: white;
         }
@@ -164,20 +161,49 @@
             f.submit();
         }
     </script>
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+
 
 </head>
 <body class="top-navbar-fixed">
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date = new Date();
+    System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed AppEmphazize Preview JSP PAGE-----[INFO]"); %>
+<%@page language="java" %>
+<%@page import="java.sql.*" %>
+<%@ page import="java.text.NumberFormat" %>
 
+<%
+    double ans = 0.0;
+    try {
+        int total;
+        HttpSession details = request.getSession();
+        String roles = (String) details.getAttribute("role");
+        String det = (String) session.getAttribute("theName");
+        Class.forName("org.gjt.mm.mysql.Driver").newInstance();
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
 
+        String query3 = "select * from AppEmphazize_ProjectDetails where id = " + det;
+        String name = (String) session.getAttribute("newname");
 
+        System.out.println("testinpreview" + name);
+        Statement st1 = conn.createStatement();
+        Statement st2 = conn.createStatement();
+        Statement st3 = conn.createStatement();
+        ResultSet rs3 = st3.executeQuery(query3);
+        String query1 = "SELECT * from AppEmphazize_ApplicationInfo where prjname='" + name + "'";
+        ResultSet rs1 = st1.executeQuery(query1);
+        String query2 = "select count(prjname) As total from AppEmphazize_ApplicationInfo where prjname='" + name + "'";
+        ResultSet rs2 = st2.executeQuery(query2);
+        {
+%>
 
-
-
-
-
-
-
+<%
+    if (rs2.next()) {
+        total = rs2.getInt("total");
+%>
 <form class="form-signin" name="loginForm" id="loginForm" method="post">
 
     <div class="main-wrapper">
@@ -185,7 +211,7 @@
         <!-- ========== TOP NAVBAR ========== -->
         <nav class="navbar top-navbar bg-white box-shadow">
             <div class="container-fluid">
-
+                <%if (rs3.next()) {%>
 
 
                 <div class="row">
@@ -243,35 +269,81 @@
                                     <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
                                 </li>
 
-
+                                <%--   <li class="nav-header">
+                                       <a href="AppEmphasize_EditProject.jsp"><span class="">Plan and pirority</span></a>
+                                   </li>--%>
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-archive"></i> <span>Plan and pirority</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav" id="myDIV">
                                         <li><a href="AppEmphasize_EditProject.jsp" > <span>Project Information</span></a></li>
                                         <li><a href="AppEmphasize_Application.jsp" > <span>Application Information</span></a></li>
                                         <li><a href="AppEmphasize_CostCalculation.jsp" > <span>Application Complexity</span></a></li>
-
                                         <li><a href="AppEmphasize_PrioritizedApplications.jsp"> <span>Prioritized Applications</span></a></li>
-                                        <li style="padding-right: 0px;" class="btn1"><a href="AppEmphasize_Preview.jsp"> <span class="activ-pro">Review Page</span></a></li>
+                                        <li class="btn"><a href="AppEmphasize_Preview.jsp"> <span class="activ-pro">Review Page</span></a></li>
                                     </ul>
                                 </li>
+                                <%--<li class="has-children">
+                                    <a href="AppEmphasize_EditProject.jsp"><i class="fa fa-file-text"></i> <span>Project Details</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav">
+                                        <li><a href="AppEmphasize_EditProject.jsp"> <span>Project Information</span></a></li>
+                                        <li><a href="AppEmphasize_Application.jsp"> <span>Application Details</span></a></li>
+                                    </ul>
+                                </li>--%>
 
 
+                                <%--<li class="has-children">
+                                    <a href="AppEmphasize_CostCalculation.jsp"><i class="fa fa-paint-brush"></i> <span>Application Prioritization</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav">
+                                        <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity </span></a></li>
+                                    </ul>
+                                </li>--%>
 
+                                <%--<li>
+                                    <a href="AppEmphasize_PrioritizedApplications.jsp"><i class="fa fa-map-signs"></i> <span>Application Prioritized</span> </a>
+                                </li>--%>
 
+                                <%-- <li class="nav-header">
+                                     <a href='Applications.jsp'><span class="">Intake Module</span></a>
+                                 </li>
 
+                                 <li class="has-children">
+                                     <a href="Applications.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
+                                     <ul class="child-nav">
+                                         <li><a href="Applications.jsp"> <span>Application Information</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Legacy Retention Information</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Archive Data Management</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>System Requirements</span></a></li>
+                                     </ul>
+                                 </li>
 
-
-
+                                 <li class="has-children">
+                                     <a href="Applications.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
+                                     <ul class="child-nav">
+                                         <li><a href="Applications.jsp"> <span>Application Data Information</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Technical Information</span></a></li>
+                                     </ul>
+                                 </li>
+                                 <li class="has-children">
+                                     <a href="Applications.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
+                                     <ul class="child-nav">
+                                         <li><a href="Applications.jsp"> <span>Screen/Report Requirements</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
+                                     </ul>
+                                 </li>--%>
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
                                         <li><a href="Applications.jsp" > <span>Archive Intake</span></a></li>
                                         <li><a href="Decomm_Intake_Applications.jsp" > <span>Decomm Intake</span></a></li>
-
+                                        <%--<li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
+                                        <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
+                                        <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>--%>
                                     </ul>
                                 </li>
-
+                                <%--<li class="nav-header">
+                                    <a href='Archive_Execution.jsp'><span class="">Archive Execution Module</span></a>
+                                </li>--%>
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-map-signs"></i> <span>Archive Execution Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
@@ -280,7 +352,9 @@
 
                                     </ul>
                                 </li>
-
+                                <%--   <li class="nav-header">
+                                       <a href='RoleUIDashboard.jsp'><span class="">Report Module</span></a>
+                                   </li>--%>
                                 <li class="has-children">
                                     <a href=""><i class="fa fa-paint-brush"></i> <span>Report Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
@@ -312,28 +386,28 @@
                                     <div class="col-xs-3 bs-wizard-step complete">
                                         <div class="text-center bs-wizard-stepnum">Project Information</div>
                                         <div class="progress"><div class="progress-bar"></div></div>
-                                        <a href="#" class="bs-wizard-dot example-two"></a>
+                                        <a href="#" class="bs-wizard-dot"></a>
                                         <div class="bs-wizard-info text-center"></div>
                                     </div>
 
                                     <div class="col-xs-3 bs-wizard-step complete"><!-- active -->
                                         <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
                                         <div class="progress"><div class="progress-bar"></div></div>
-                                        <a href="#" class="bs-wizard-dot example-two"></a>
+                                        <a href="#" class="bs-wizard-dot"></a>
                                         <div class="bs-wizard-info text-center"></div>
                                     </div>
 
                                     <div class="col-xs-3 bs-wizard-step complete"><!-- active -->
                                         <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                                         <div class="progress"><div class="progress-bar"></div></div>
-                                        <a href="#" class="bs-wizard-dot example-two"></a>
+                                        <a href="#" class="bs-wizard-dot"></a>
                                         <div class="bs-wizard-info text-center"></div>
                                     </div>
 
                                     <div class="col-xs-3 bs-wizard-step active"><!-- active -->
                                         <div class="text-center bs-wizard-stepnum">Final</div>
                                         <div class="progress"><div class="progress-bar"></div></div>
-                                        <a href="#" class="bs-wizard-dot example-two"></a>
+                                        <a href="#" class="bs-wizard-dot"></a>
                                         <div class="bs-wizard-info text-center"> </div>
                                     </div>
                                 </div>
@@ -448,67 +522,214 @@
                                             </thead>
 
                                             <tbody>
+                                            <%int i = 0; %>
+
+                                            <%! LinkedHashMap<Integer, String> SettingPriority(ArrayList<String> complexity) {
+
+                                                ArrayList<String> indexes = new ArrayList<String>();
+                                                ArrayList<String> priorities = new ArrayList<String>();
+                                                priorities.add("Low");
+                                                priorities.add("Low to Medium");
+                                                priorities.add("Medium");
+                                                priorities.add("Medium to High");
+                                                priorities.add("High");
 
 
+                                                LinkedHashMap<Integer, String> map = new LinkedHashMap<Integer, String>();
+                                                for (int i = 0; i < complexity.size(); i++) {
+                                                    map.put(i, "P" + (i + 1));
+                                                }
 
 
+                                                filter(complexity, priorities, indexes);
+                                                System.out.println("c" + indexes);
+                                                int size = 0;
+                                                for (Object obj : indexes) {
+                                                    ArrayList a1 = (ArrayList) obj;
+                                                    size = size + a1.size();
+                                                }
+                                                int i = 1;
+                                                for (Object ob : indexes) {
+
+                                                    ArrayList a = (ArrayList) ob;
+                                                    if (a.size() == 0) {
+                                                        i = i - 1;
+                                                    }
+                                                    for (Object str : a) {
 
 
+                                                        map.put(Integer.parseInt(str.toString()), "P" + i);
 
 
+                                                    }
+                                                    i++;
+
+                                                }
 
 
+                                                return map;
+                                            } %>
 
 
-
-                                            <div class="container">
-
-                                                <!-- Button trigger modal -->
-
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                                     aria-labelledby="myModalLabel"
-                                                     aria-hidden="true">
-                                                    <div class="modal-dialog" style="width:1000px">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                                        aria-hidden="true">&times;</span></button>
-                                                                <h4 class="modal-title" id="myModalLabel" style="text-align: center"><b>List
-                                                                    of
-                                                                    Users</b></h4>
-                                                                <input type="checkbox" name="signorder" id="signorder" >
-                                                                <p class="ex1"><b>Set signing order</b></p>
-                                                                <div class="searchbox">
-                                                                    <input class="searchbox" id="search_bar" type="text"
-                                                                           placeholder="Search User"
-                                                                           name="search"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-body" style="width: 500px" id="user_list_div_id_name">
-
-                                                            </div>
-                                                            <div class="modal-footer" style="height: 80px;padding: 20px">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close
-                                                                </button>
-                                                                <button type="button" class="btn btn-primary" name="email_id" id="email_id"
-                                                                        data-dismiss="modal">Send Email
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                            <%!
+                                                public static void filter(List<String> category, ArrayList priorities, ArrayList indexes) {
+                                                    for (Object ob : priorities) {
+                                                        ArrayList rindex = new ArrayList();
+                                                        for (int i = 0; i < category.size(); i++) {
+                                                            if (category.get(i).equalsIgnoreCase(ob.toString())) {
+                                                                String id = Integer.toString(i);
+                                                                rindex.add(id);
+                                                            }
+                                                        }
+                                                        indexes.add(rindex);
+                                                    }
+                                                }
 
 
-                                            </div>
+                                            %>
+
+                                            <%
+                                                ArrayList appname = new ArrayList();
+                                                ArrayList complexity = new ArrayList();
+                                                ArrayList screen = new ArrayList();
+                                                ArrayList priority = new ArrayList();
+                                                while (rs1.next()) {
+                                                    appname.add(rs1.getString("appname"));
+                                                    complexity.add(rs1.getString("complexity"));
+                                                    screen.add(rs1.getString("est_scrn"));
+
+                                                    i++;
+                                                }
+
+                                                LinkedHashMap priorityMap = SettingPriority(complexity);
+                                                String x[] = new String[appname.size()];
+                                                for (int j = 0; j < appname.size(); j++) {
+                                                    x[j] = (String) priorityMap.get(j);
+                                                }
+                                                Arrays.sort(x);
+                                                System.out.println("the elements are");
+                                                for (int j = 0; j < appname.size(); j++)
+                                                    System.out.print(x[j]);
+
+                                            %>
+
+
+                                            <%
+                                                for (int k = 0; k < appname.size(); k++) {
+                                                    for (int j = 0; j < appname.size(); j++) {
+                                                        if (x[k].equals((String) priorityMap.get(j))) {
+                                            %>
+                                            <tr>
+
+                                                <td class="edit_row" style="cursor:pointer" id="11"><span
+                                                        class="test"><%=appname.get(j) %></span></td>
+                                                <td class="row_s" style="cursor:pointer" id="22"><span
+                                                        class="test"><%=complexity.get(j) %></span></td>
+                                                <td class="row_s" style="cursor:pointer" id="22"><span
+                                                        class="test"><%=screen.get(j) %></span></td>
+                                                <td class="row_d" id="55">
+
+                                                    <span class="test"><%=priorityMap.get(j) %></span>
+                                                </td>
+
+                                                <%
+                                                                break;
+                                                            }
+                                                        }
+
+
+                                                    } %>
+
+
+                                            </tr>
+
+
+                                            </tbody>
+
+                                        </table>
+
 
 
                                     </div>
+                                </div>
+
+
+
+                                <% }
+                                }
+                                %>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <%
+                                }
+                            } catch (Exception e) {
+                            }
+                        %>
+
+
+
+
+
+                        <div class="container">
+
+                            <!-- Button trigger modal -->
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" style="width:1000px">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                    aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel" style="text-align: center"><b>List
+                                                of
+                                                Users</b></h4>
+                                            <input type="checkbox" name="signorder" id="signorder" >
+                                            <p class="ex1"><b>Set signing order</b></p>
+                                            <div class="searchbox">
+                                                <input class="searchbox" id="search_bar" type="text"
+                                                       placeholder="Search User"
+                                                       name="search"/>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body" style="width: 500px" id="user_list_div_id_name">
+
+                                        </div>
+                                        <div class="modal-footer" style="height: 80px;padding: 20px">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="button" class="btn btn-primary" name="email_id" id="email_id"
+                                                    data-dismiss="modal">Send Email
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
 
                 </section>
-
 
 </form>
 
@@ -528,7 +749,6 @@
 
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
-
 <script src="js/jquery-ui/jquery-ui.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/pace/pace.min.js"></script>
