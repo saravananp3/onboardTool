@@ -35,26 +35,62 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
 
     <style type="text/css">
-        .breadcrumb-div {
+        body {
+            font-size: 14px;;
+            font-family: "pt-sans-regular", sans-serif;
+            font-weight: initial;
+            background:#F6F8FA;
+        }
+        .card .card-body {
+            padding: 1.88rem 1.81rem;
+        }
+
+        .grid-margin {
+            margin-bottom: 1.875rem;
+        }
+        .col-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
             background-color: #fff;
-            color: #010101;
+            background-clip: border-box;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 0.3125rem;
+        }
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1.25rem;
+        }
+
+        .card-title {
+            margin-bottom: 0.75rem;
+        }
+
+        form {
+            display: block;
+            margin-top: 0em;
         }
 
 
-        #nav_userid {
-            color: green;
+        #container {
+
+            animation: rotateStuff 1.5s steps(20) infinite;
+        }
+        .loading {
+            position: absolute;
+            align-self: center;
+            width: 3vh;
+            height: 3vh;
+            border-radius: 50%;
         }
 
-        #nav_role {
-            color: blue;
-        }
 
-        .bootstrap-dialog-message {
-            width: 250px;
-            border: 3px;
-            padding: 0px;
-            margin: auto;
-        }
     </style>
 
     <script>
@@ -273,6 +309,7 @@
                                 <ul class="breadcrumb">
                                     <li><a href="Project_List.jsp"><i class="fa fa-home"></i>Home</a></li>
                                     <li class="active">Admin</li>
+                                    <li class="active">User List</li>
 
                                 </ul>
                             </div>
@@ -335,7 +372,7 @@
                                                     &nbsp;&nbsp;
 
                                                     <button type="button" id="edit_button" name="edit_button"
-                                                            class="btn btn-success">
+                                                            class="btn btn-primary">
                                                         Edit User
                                                     </button>
 
