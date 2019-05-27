@@ -184,6 +184,15 @@
             margin: auto;
         }
 
+        /*tbody tr {
+            display : none;
+        }*/
+        .parent {
+            display : table-row;
+        }
+        .open {
+            display : table-row;
+        }
 
     </style>
 
@@ -387,10 +396,6 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="container-fluid">
-                                    <h1 class="page-header">Projects</h1>
-
-
-
                                     <div class="row">
 
                                         <div class="col-md-3">
@@ -457,7 +462,7 @@
                                         <table class="table table-bordered" style="align:center" id="table1">
                                             <thead style="background-color: #3498db;">
                                             <tr>
-                                                <th style="width:70%;color: white;">Tasks</th>
+                                                <th style="width:20%;color: white;">Tasks</th>
                                                 <th style="color: white;">Resource Assigned</th>
                                                 <th style="color: white;">Plan start date</th>
                                                 <th style="color: white;">Plan End date</th>
@@ -466,7 +471,7 @@
                                                 <th style="color: white;">Planned Hours</th>
                                                 <th style="color: white;">Actual Hours</th>
                                                 <th style="color: white;">Progress %</th>
-                                                <th style="width:20%;color: white;">Status</th>
+                                                <th style="color: white;">Status</th>
                                                 <th style="color: white;">Comments</th>
                                                 <th style="color: white;">Action</th>
                                             </tr>
@@ -796,41 +801,41 @@
                         if (value==i)
                         {
 
-                                planstartdate="<td id='basicExample'><input type='text' class='in date start'\n" +
-                                    "id='pln_srt_date"+i+"'" +
-                                    "name='pln_srt_date"+i+"'" +
-                                    "value='"+data[i].pln_srt_date+"'" +
-                                    "style='width: 90px' readonly/>" +
-                                    "</td>";
-                                planenddate="<td id='basicExample'><input type='text' class='in date start'\n" +
-                                    "id='pln_end_date"+i+"'\n" +
-                                    "name='pln_end_date"+i+"'\n" +
-                                    "value='"+data[i].pln_end_date+"'\n" +
-                                    "style='width: 90px' readonly/>\n" +
-                                    "</td>\n";
-                                actualstartdate="<td id='basicExample'><input type='text' class='in date start'\n" +
-                                    "id='act_srt_date"+i+"'\n" +
-                                    "name='act_srt_date"+i+"'\n" +
-                                    "value='"+data[i].act_srt_date+"'\n" +
-                                    "style='width: 90px' readonly/>\n" +
-                                    "</td>\n";
-                                actualenddate="<td id='basicExample'><input type='text' class='in date start'\n" +
-                                    "id='act_end_date"+i+"'\n" +
-                                    "name='act_end_date"+i+"'\n" +
-                                    "value='"+data[i].act_end_date+"'\n" +
-                                    "style='width: 90px' readonly/>\n" +
-                                    "</td>";
-                                planhours="<td id='basicExample'><input type='text' class='in date start'\n" +
-                                    "id='phours"+i+"' name='phrs"+i+"'\n" +
-                                    "value='"+data[i].planned_hrs+"'\n" +
-                                    "readonly/>\n" +
-                                    "</td>\n";
-                                actualhours="<td id='basicExample'><input type='text' class='in date start'\n" +
-                                    "id='hours"+i+"' name='hrs"+i+"'\n" +
-                                    "value='"+data[i].hours+"'\n" +
-                                    "readonly/>\n" +
-                                    "</td>";
-                                memberassigned="<td><input list='userlist' class='in mem_ass' id='mem_ass"+i+"'" +
+                            planstartdate="<td id='basicExample'><input type='text' class='in date start'\n" +
+                                "id='pln_srt_date"+i+"'" +
+                                "name='pln_srt_date"+i+"'" +
+                                "value='"+data[i].pln_srt_date+"'" +
+                                "style='width: 90px' readonly/>" +
+                                "</td>";
+                            planenddate="<td id='basicExample'><input type='text' class='in date start'\n" +
+                                "id='pln_end_date"+i+"'\n" +
+                                "name='pln_end_date"+i+"'\n" +
+                                "value='"+data[i].pln_end_date+"'\n" +
+                                "style='width: 90px' readonly/>\n" +
+                                "</td>\n";
+                            actualstartdate="<td id='basicExample'><input type='text' class='in date start'\n" +
+                                "id='act_srt_date"+i+"'\n" +
+                                "name='act_srt_date"+i+"'\n" +
+                                "value='"+data[i].act_srt_date+"'\n" +
+                                "style='width: 90px' readonly/>\n" +
+                                "</td>\n";
+                            actualenddate="<td id='basicExample'><input type='text' class='in date start'\n" +
+                                "id='act_end_date"+i+"'\n" +
+                                "name='act_end_date"+i+"'\n" +
+                                "value='"+data[i].act_end_date+"'\n" +
+                                "style='width: 90px' readonly/>\n" +
+                                "</td>";
+                            planhours="<td id='basicExample'><input type='text' class='in date start'\n" +
+                                "id='phours"+i+"' name='phrs"+i+"'\n" +
+                                "value='"+data[i].planned_hrs+"'\n" +
+                                "readonly/>\n" +
+                                "</td>\n";
+                            actualhours="<td id='basicExample'><input type='text' class='in date start'\n" +
+                                "id='hours"+i+"' name='hrs"+i+"'\n" +
+                                "value='"+data[i].hours+"'\n" +
+                                "readonly/>\n" +
+                                "</td>";
+                            memberassigned="<td><input list='userlist' class='in mem_ass' id='mem_ass"+i+"'" +
                                 "placeholder='enter' name='mem_ass'" +
                                 "value='"+data[i].mem_ass+"'' style='text-align:center;' readonly/>\n" +
                                 "</td>";
@@ -842,7 +847,7 @@
                     if(data[i].level==1)
                     {
                         //alert("level1 :"+data[i].name);
-                        var level1="<tr style='text-align:center;' data-tt-id=\""+data[i].id+"\">\n" +
+                        var level1="<tr class='parent' id='2479' style='text-align:center;' data-tt-id=\""+data[i].id+"\">\n" +
                             "<td style='width:200px;'>\n" +
                             "<b>\n" +
                             "<span style='color:#3071a9;font-size:150%; position:relative; left:5px;'>\n" +
@@ -868,11 +873,17 @@
                             "getDetID(document.getElementById('phours"+i+"'),document.getElementById('hours"+i+"'),document.getElementById('progressbar"+i+"'),document.getElementById('status"+i+"'),document.getElementById('act_end_date"+i+"').value,'"+data[i].comments+"',"+i+",'"+data[data.length-2].projectname+"','"+data[i].name+"');" +
                             "<\/script>\n" +
                             "</tr>";
+                        /*  $("#table1").on("click","a",function(e) {
+                              alert("ewfwsd");
+                              e.preventDefault();
+                              $(this).closest("tr").nextUntil(".parent").toggleClass("open");
+                          });*/
+
                         tboady_id.append(level1);
                     }
                     else {
 
-                        var child="<tr style='text-align:center;' data-tt-id='"+data[i].id+"'\n" +
+                        var child="<tr class='child-2479' style='text-align:center;' data-tt-id='"+data[i].id+"'\n" +
                             "data-tt-parent-id='"+data[i].ref_id+"'>\n" +
                             "&nbsp;&nbsp;\n" +
                             "<td style='width:230px;'>\n" +
@@ -920,7 +931,7 @@
                             "\n" +
                             "\n" +
                             "        $(\"#mem_ass\"+"+i+").igCombo({\n" +
-                            "            width: 300,\n" +
+                            "            width: 250,\n" +
                             "            dataSource: colors,\n" +
                             "            textKey: \"Name\",\n" +
                             "            valueKey: \"Name\",\n" +
@@ -937,6 +948,14 @@
                         tboady_id.append(child);
 
                     }
+                    $(function() {
+                        $('tr.parent td span.btn')
+                            .on("click", function(){
+                                var idOfParent = $(this).parents('tr').attr('id');
+                                $('tr.child-'+idOfParent).toggle();
+                            });
+                        $('tr[class^=child-]').hide().children('td');
+                    });
                 }
                 var scriptfortree="<script type='text/javascript'>\n" +
                     "com_github_culmat_jsTreeTable.register(this)\n" +

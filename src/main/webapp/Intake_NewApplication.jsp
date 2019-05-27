@@ -154,7 +154,6 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
             
             <div class="content-wrapper">
                 <div class="content-container">
-
                     <!-- ========== LEFT SIDEBAR ========== -->
                     <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
                         <div class="sidebar-content" id='jqxWidget'>
@@ -171,14 +170,14 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                                     <%--   <li class="nav-header">
                                            <a href="AppEmphasize_EditProject.jsp"><span class="">Plan and pirority</span></a>
                                        </li>--%>
-                                    <li class="has-children">
+                                    <li class="has-children ">
                                         <a href=""><i class="fa fa-archive"></i> <span>Plan and pirority</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="AppEmphasize_EditProject.jsp" class="active-menu"> <span>Project Information</span></a></li>
-                                            <li><a href="AppEmphasize_Application.jsp" class="active-menu"> <span>Application Information</span></a></li>
-                                            <li><a href="AppEmphasize_CostCalculation.jsp" > <span>Application Complexity</span></a></li>
-                                            <li><a href="AppEmphasize_PrioritizedApplications.jsp"> <span>Prioritized Applications</span></a></li>
-                                            <li><a href="AppEmphasize_Preview.jsp"> <span>Review Page</span></a></li>
+                                            <li ><a href="AppEmphasize_EditProject.jsp" > <span  >Project Information</span></a></li>
+                                            <li ><a href="AppEmphasize_Application.jsp" > <span>Application Information</span></a></li>
+                                            <li ><a href="AppEmphasize_CostCalculation.jsp" > <span>Application Complexity</span></a></li>
+                                            <li ><a href="AppEmphasize_PrioritizedApplications.jsp"> <span>Prioritized Applications</span></a></li>
+                                            <li ><a href="AppEmphasize_Preview.jsp"> <span>Review Page</span></a></li>
                                         </ul>
                                     </li>
                                     <%--<li class="has-children">
@@ -233,11 +232,11 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                                     <li class="has-children">
                                         <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="Applications.jsp" class="active-menu"> <span>Application Details</span></a></li>
-                                            <li><a href="Intake_Business.jsp" > <span>Business Details</span></a></li>
-                                            <li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
+                                            <li><a href="Applications.jsp" > <span>Archive Intake</span></a></li>
+                                            <li><a href="Decomm_Intake_Applications.jsp" > <span>Decomm Intake</span></a></li>
+                                            <%--<li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
                                             <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
-                                            <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>
+                                            <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>--%>
                                         </ul>
                                     </li>
                                     <%--<li class="nav-header">
@@ -246,7 +245,7 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                                     <li class="has-children">
                                         <a href=""><i class="fa fa-map-signs"></i> <span>Archive Execution Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="Archive_Execution.jsp" class="active-menu"> <span>Archive Execution</span></a></li>
+                                            <li><a href="Archive_Execution.jsp" > <span>Archive Execution</span></a></li>
                                             <li><a href="archivesummary.jsp" > <span>Archive summary</span></a></li>
 
                                         </ul>
@@ -257,8 +256,8 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                                     <li class="has-children">
                                         <a href=""><i class="fa fa-paint-brush"></i> <span>Report Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
-                                            <li><a href="RoleUIDashboard.jsp" class="active-menu"> <span>Reports Dashboard</span></a></li>
-                                            <li><a href="RoleDashboard.jsp" class="active-menu"> <span>Role Dashboard</span></a></li>
+                                            <li><a href="RoleUIDashboard.jsp" > <span>Reports Dashboard</span></a></li>
+                                            <li><a href="RoleDashboard.jsp" > <span>Role Dashboard</span></a></li>
                                             <li><a href="ProjectDashboard.jsp" > <span>Project Dashboard</span></a></li>
                                             <li><a href="ApplicationDashboard.jsp"> <span>Application Dashboard</span></a></li>
                                         </ul>
@@ -271,7 +270,8 @@ int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;
                         <!-- /.sidebar-content -->
                     </div>
                     <!-- /.left-sidebar -->
-            
+
+
 
                 <script>
   $(function () {

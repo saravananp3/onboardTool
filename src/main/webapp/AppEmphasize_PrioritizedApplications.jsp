@@ -156,15 +156,15 @@
                 outline-width: 0;
             }
 
-             /* Style the buttons */
-         .btn {
-             border: none;
-             outline: none;
-             padding: 3px 14px;
-             background-color: #3697e8;
-             cursor: pointer;
+            /* Style the buttons */
+            .btn {
+                border: none;
+                outline: none;
+                padding: 3px 14px;
+                background-color: #3697e8;
+                cursor: pointer;
 
-         }
+            }
             .activ-pro{font-size: 16px;
                 margin-left: -13px;
                 margin-right: 99px;}
