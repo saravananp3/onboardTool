@@ -262,10 +262,10 @@
 
 
                                         <div class="row">
-                                            <div class="col-sm-4 form-group">
+                                            <div class="col-sm-4 form-group" align="right">
                                                 <label><font size="4"><b> USER </b> </font><span
-                                                        class="glyphicon glyphicon-asterisk"></span></label>
-                                                <div class="col-lg-12">
+                                                        class="glyphicon glyphicon-asterisk"></span></label></div>
+                                                <div class="col-sm-4">
                                                     <select id="dates-field2"
                                                             class="selectpicker multiselect-ui form-control"
                                                             multiple="multiple"
@@ -301,24 +301,211 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
+
 
 
                                         <div id="collapse2" class="panel-collapse">
                                             <div class="panel-body text-left">
-                                                <div class="form-group" id="entiretableother">
+                                                <!-- Table Info -->
+
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable CrossApplicationTeamProjectManagerClass" for="formInput198"><div class="required_fie"> Cross-Application Team Project Manager</div></label>
+                                                    <div class="table-responsive">
+
+                                                        <table class="table table-bordered hidetable CrossApplicationTeamProjectManagerClass" id="mytable">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+                                                            </tr>
+                                                            </thead >
+                                                            <tbody id="CrossApplicationTeamProjectManager">
 
 
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable CrossApplicationTeamProjectManagerClass" id = "CrossApplicationTeamProjectManagerAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
+                                                </div>
+
+                                                <!--End of Table Info -->
+
+                                                <!-- Table Info -->
+
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable ServiceLevelOwnerClass" for="formInput198">Service Level Owner</label>
+                                                    <div class="table-responsive ">
+
+                                                        <table class="table table-bordered hidetable ServiceLevelOwnerClass">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="ServiceLevelOwner">
+
+
+
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable ServiceLevelOwnerClass" id = "ServiceLevelOwnerAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
+                                                </div>
+
+                                                <!--End of Table Info -->
+
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable ApplicationContactSMEClass" for="formInput198"><div class="required_fie"> Application Contact/SME</div></label>
+                                                    <div class="table-responsive">
+
+                                                        <table class="table table-bordered hidetable ApplicationContactSMEClass">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="ApplicationContactSME">
+
+
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable ApplicationContactSMEClass" id = "ApplicationContactSMEAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable ITApplicationOwnerClass" for="formInput198"> IT/Application Owner</label>
+                                                    <div class="table-responsive">
+
+                                                        <table class="table table-bordered hidetable ITApplicationOwnerClass">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="ITApplicationOwner">
+
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable ITApplicationOwnerClass" id = "ITApplicationOwnerAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable ApplicationBusinessOwnerClass" for="formInput198"> Application Business Owner</label>
+                                                    <div class="table-responsive">
+
+                                                        <table class="table table-bordered hidetable ApplicationBusinessOwnerClass">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="ApplicationBusinessOwner">
+
+
+
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable ApplicationBusinessOwnerClass" id = "ApplicationBusinessOwnerAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable ITLegacyApplicationOwnerClass" for="formInput198"><div class="required_fie"> IT Legacy Application Owner</div></label>
+                                                    <div class="table-responsive">
+
+                                                        <table class="table table-bordered hidetable ITLegacyApplicationOwnerClass">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="ITLegacyApplicationOwner">
+
+
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable ITLegacyApplicationOwnerClass" id = "ITLegacyApplicationOwnerAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable EnterpriseTechnologyProjectManagerClass" for="formInput198"> Enterprise Technology Project Manager</label>
+                                                    <div class="table-responsive">
+
+                                                        <table class="table table-bordered hidetable EnterpriseTechnologyProjectManagerClass">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="EnterpriseTechnologyProjectManager">
+
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable EnterpriseTechnologyProjectManagerClass" id = "EnterpriseTechnologyProjectManagerAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label hidetable EnterpriseTechnologySystemEngineerClass" for="formInput198"> Enterprise Technology System Engineer</label>
+                                                    <div class="table-responsive">
+
+                                                        <table class="table table-bordered hidetable EnterpriseTechnologySystemEngineerClass">
+                                                            <thead style="color:white;background-color:DodgerBlue;">
+                                                            <tr >
+                                                                <th scope="col" style="color:white;">User Name</th>
+                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;">User Id</th>
+                                                                <th scope="col" style="color:white;">Contact Number</th>
+                                                                <th scope="col" style="color:white;"></th>
+                                                            </tr>
+
+                                                            </thead>
+                                                            <tbody id="EnterpriseTechnologySystemEngineer">
+
+
+
+                                                            </tbody>
+                                                        </table>
+                                                        <button type="button" class="btn btn-primary hidetable EnterpriseTechnologySystemEngineerClass" id ="EnterpriseTechnologySystemEngineerAdd" onclick="addrow(this.id);">Add</button>
+                                                    </div>
                                                 </div>
                                                 <button type="button" class="btn btn-primary" onclick="addothers();">Add</button>
-                                                <button type="button" class="btn btn-warning">Modify</button>
-                                                <button type="button" class="btn btn-danger">Delete</button>
+                                                <%--<button type="button" class="btn btn-warning">Modify</button>
+                                                <button type="button" class="btn btn-danger">Delete</button>--%>
                                             </div>
-
-                                            <br>
-                                            <br>
                                             <button type="button" class="btn btn-default" onclick="location.href='AppDecommInfo.jsp';">Back</button>
-                                            <button type="button" class="btn btn-primary pull-right" onclick="#';">save and continue</button>
+                                            <button type="button" class="btn btn-primary pull-right" onclick="SaveTable();">Save & Continue</button>
                                         </div>
 
                                     </div>
@@ -349,28 +536,194 @@
     </div>
 
 
-    <!-- <script>
+    <script>
         if(document.getElementById('Role_info').value=="R")
             checkk();
- </script> -->
+ </script>
+    <script>
+        function SaveTable()
+        {
+           $('.hidetable').is(':hidden');
+            var arr=['CrossApplicationTeamProjectManager','ServiceLevelOwner','ApplicationContactSME','ITApplicationOwner','ApplicationBusinessOwner','ITLegacyApplicationOwner','EnterpriseTechnologyProjectManager','EnterpriseTechnologySystemEngineer'];
+            var check1=[];
+            for(var i=0;i<arr.length;i++)
+            {
+                if($('.'+arr[i]+'Class').is(':hidden'))
+                {
+                    check1.push(arr[i]);
+                }
+            }
+            console.log('a------->',check1);
+        }
+        $(document).ready(function(){
+           $('.hidetable').hide();
+        });
+        </script>
+    <script>
+        var url_string=window.location.href;
+        var url = new URL(url_string);
+        var appname = url.searchParams.get("appname");
+        var projname=url.searchParams.get("prjname");
+        console.log("application name",appname,"project name ",projname);
 
+        $('#dates-field2').on('change',function(){
+            var ans=$('#dates-field2').val();
+            var roles = "";
+            for(var i=0; i<ans.length; i++)
+            {
+                roles += ans[i]+",";
+            }
+            console.log(ans);
+            $.ajax({
+                url: "ContactInfoTableDataRetrieveServlet",
+                type: 'POST',
+                data: {ApplicationName:appname,ProjectName: projname,Roles:roles},
+                dataType: "json",
+                success: function (data)
+                {
+                    console.log("data--->",data);
+                    var arr=['CrossApplicationTeamProjectManager','ServiceLevelOwner','ApplicationContactSME','ITApplicationOwner','ApplicationBusinessOwner','ITLegacyApplicationOwner','EnterpriseTechnologyProjectManager','EnterpriseTechnologySystemEngineer'];
+                    var roles=[];
+                    console.log("data length--->",data.length);
+                    //$('.hidetable').hide();
+                        for (var i = 1; i < data.length; i++) {
+                            var table_row="";
+                            var rolenames = ((data[i][0].name).replace(/-|\s/g,"")).replace(/\//g,'');
+                            console.log("role names--->",rolenames,"data[i].length-->",data[i].length);
+                            roles.push(rolenames);
+                            var length=0;
+                            if(data[i][0].CheckExistance==true)
+                            {
+                                length=1;
+                            }
+                            var a=$('.'+rolenames+'Class').is(':hidden');
+                            console.log('Check visible',a);
+                            for (var j = length; j <data[i].length; j++) {
+                                if(a) {
+                                    $('.' + rolenames + 'Class').show();
+                                }
+                                console.log('j check existance',data[i][0].CheckExistance," j ",j);
+                                if (data[i][0].CheckExistance == false&&a) {
+                                    table_row = "<tr class = '"+rolenames+"ClassName"+"'>" +
+                                        "<td><input type='text' id ='UserName"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserName"+"0"+"' value=''></td>\n" +
+                                        "<td><input type='text' id ='Email"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+"0"+"' value=''></td>\n" +
+                                        "<td><input type='text' id ='Userid"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserId"+"0"+"' value=''></td>\n" +
+                                        "<td><input type='text' id ='ContactNumber"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"ContactNumber"+"0"+"' value=''></td>\n" +
+                                        "<td><img src='images/Delete.png' id='Delete"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
+                                        "</tr>";
+                                } else if(a){
+                                    table_row += "<tr class = '"+rolenames+"ClassName"+"'>" +
+                                        "<td><input type='text' id ='UserName"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserName"+(j-1)+"' value='"+data[i][j].Uname+"'></td>\n"+
+                                        "<td><input type='text' id ='Email"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+(j-1)+"' value='"+data[i][j].Email+"'></td>\n" +
+                                        "<td><input type='text' id ='Userid"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserId"+(j-1)+"' value='"+data[i][j].user_id+"'></td>\n" +
+                                        "<td><input type='text' id ='ContactNumber"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"ContactNumber"+(j-1)+"' value='"+data[i][j].contact_no+"'></td>\n" +
+                                        "<td><img src='images/Delete.png' id='Delete"+rolenames+(j-1)+"' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n"+
+                                        "</tr>";
+                                }
+                                if(a) {
+                                    $('#' + rolenames).html(table_row);
+                                }
+                            }
+
+                        }
+                        for(var n=0;n<roles.length;n++)
+                        {
+                            var index = arr.indexOf(roles[n]);
+
+                            if (index > -1) {
+                                arr.splice(index, 1);
+                            }
+                        }
+                        console.log('removed array--->',arr);
+                        for(var m=0;m<arr.length;m++)
+                        {
+                            $('.'+arr[m]+'Class').hide();
+                        }
+                    /*for(var i=0;i<data.length;i++) {
+
+                        var check=false;
+                        var table_row = "";
+                        for(var j=1;j<data[i].length;j++)
+                        {
+                            var table="";
+                            var tablelast="";
+
+                            console.log("checkexistance :",data[i][0].CheckExistance)
+                            if(data[i][0].CheckExistance==false)
+                            {
+
+                                table_row="<tr>" +
+                                    "<td><input type='text' id ='username_1' value=''></td>\n" +
+                                    "<td><input type='text' id ='email_1' value=''></td>\n" +
+                                    "<td><input type='text' id ='userid_1' value=''></td>\n" +
+                                    "<td><input type='text' id ='contactnumber_1' value=''></td>\n" +
+                                    "<td><img src='images/Delete.png' id='delete1' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
+                                    "</tr>";
+                            }
+                            else {
+                                table = "<div class='form-group'>\n" +
+                                    "<label class='control-label hidetable' for='formInput198'> "+data[i][0].name+"</label>\n" +
+                                    " <div class='table-responsive' id='table-scroll'>\n" +
+                                    "<table class='table table-bordered hidetable'>\n" +
+                                    "<thead style='color:white;background-color:DodgerBlue;'>\n" +
+                                    "<tr >\n" +
+                                    "<th scope='col' style='color:black;'>User Name</th>\n" +
+                                    "<th scope='col' style='color:black;'>Email</th>\n" +
+                                    "<th scope='col' style='color:black;'>User Id</th>\n" +
+                                    "<th scope='col' style='color:black;'>Contact Number</th>\n" +
+                                    "<th scope='col' style='color:black;'></th>\n" +
+                                    "</tr>\n" +
+                                    "</thead>\n" +
+                                    "<tbody id='tableenterprise_PM'>\n";
+                                table_row +="<tr>" +
+                                    "<td><input type='text' id ='username_"+j+"' value='"+data[i][j].Uname+"'></td>\n" +
+                                    "<td><input type='text' id ='email_1' value='"+data[i][j].Email+"'></td>\n" +
+                                    "<td><input type='text' id ='userid_1' value='"+data[i][j].user_id+"'></td>\n" +
+                                    "<td><input type='text' id ='contactnumber_1' value='"+data[i][j].contact_no+"'></td>\n" +
+                                    "<td><img src='images/Delete.png' id='delete1' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
+                                    "</tr>";
+                                console.log("table_row--->"+table_row);
+                                check=true;
+                            }
+                        }
+
+                        if(check)
+                        {
+                            tablelast="</tbody>\n" +
+                                "</table><button type='button' class='btn btn-primary hidetable' onclick='addrow_enterprise();'>Add</button>\n" +
+                                "</div>\n" +
+                                "</div>";
+                        }
+                        var Table=table+table_row+tablelast;
+                        $('#entiretableother').html(Table);
+                    }*/
+                },
+                error: function (e)
+                {
+                    console.log(e);
+                }
+            });
+        });
+    </script>
 
     <script>
 
-        function addrow()
+        function addrow(id)
         {
-
-            var rowlength=$('.cross').length;
+           //alert(id);
+            var classname=id.substring(0,id.lastIndexOf('A'));
+            //alert("classname--->"+classname);
+            var rowlength=$('.'+classname+"ClassName").length;
             //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="cross">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tablebody').append(element);
+            //var i=rowlength+1;
+            var table_row = "<tr class = '"+classname+"ClassName"+"'>" +
+                "<td><input type='text' id ='UserName"+classname+rowlength+"' class='"+classname+"RowClass"+"' name='"+classname+"UserName"+rowlength+"' value=''></td>\n" +
+                "<td><input type='text' id ='Email"+classname+rowlength+"' class='"+classname+"RowClass"+"' name='"+classname+"Email"+rowlength+"' value=''></td>\n" +
+                "<td><input type='text' id ='Userid"+classname+rowlength+"' class='"+classname+"RowClass"+"' name='"+classname+"UserId"+rowlength+"' value=''></td>\n" +
+                "<td><input type='text' id ='ContactNumber"+classname+rowlength+"' class='"+classname+"RowClass"+"' name='"+classname+"ContactNumber"+rowlength+"' value=''></td>\n" +
+                "<td><img src='images/Delete.png' id='Delete"+classname+rowlength+"' class='"+classname+"RowClass"+"' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
+                "</tr>";
+            $('#'+classname).append(table_row);
 
             }
 
@@ -458,59 +811,43 @@
                 '</tr>';
             $('#tablelegancy').append(element);
 
-        }
+            }
 
-        function addrow_enterprise()
-        {
+            function addrow_enterprise()
+            {
 
-            var rowlength=$('.enterprise').length;
-            //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="enterprise">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tableenterprise_PM').append(element);
+                var rowlength=$('.enterprise').length;
+                //alert("hi"+rowlength);
+                var i=rowlength+1;
+                var element='<tr class="enterprise">'+
+                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                    '</tr>';
+                $('#tableenterprise_PM').append(element);
 
-        }
+            }
 
-        function addrow_enterpriseSE()
-        {
+            function addrow_enterpriseSE()
+            {
 
-            var rowlength=$('.enterpriseSE').length;
-            //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="enterpriseSE">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tableenterpriseSE').append(element);
+                var rowlength=$('.enterpriseSE').length;
+                //alert("hi"+rowlength);
+                var i=rowlength+1;
+                var element='<tr class="enterpriseSE">'+
+                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
+                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
+                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
+                    '</tr>';
+                $('#tableenterpriseSE').append(element);
 
-        }
+            }
 
-        function addrow_entiretable()
-        {
-
-            var rowlength=$('.others').length;
-            var i=rowlength+1;
-            var element= '<tr class="others">'+
-                '<td><input type="text" id ="username_2" value=""></td>'+
-                '<td><input type="text" id ="email_2" value=""></td>'+
-                '<td><input type="text" id ="userid_2" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_2" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete2" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tableothers').append(element);
-        }
-
-
-    </script>
+        </script>
 
 
         <script>
@@ -522,43 +859,43 @@
             }
         </script>
 
-</div>
-<!-- /.main-wrapper -->
-<!-- ========== COMMON JS FILES ========== -->
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
-<script src="js/jquery-ui/jquery-ui.min.js"></script>
-<script src="js/bootstrap/bootstrap.min.js"></script>
-<script src="js/pace/pace.min.js"></script>
-<script src="js/lobipanel/lobipanel.min.js"></script>
-<script src="js/iscroll/iscroll.js"></script>
-<!-- ========== PAGE JS FILES ========== -->
-<script src="js/prism/prism.js"></script>
-<script src="js/waypoint/waypoints.min.js"></script>
-<script src="js/counterUp/jquery.counterup.min.js"></script>
-<script src="js/amcharts/amcharts.js"></script>
-<script src="js/amcharts/serial.js"></script>
-<script src="js/amcharts/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all"/>
-<script src="js/amcharts/themes/light.js"></script>
-<script src="js/toastr/toastr.min.js"></script>
-<script src="js/icheck/icheck.min.js"></script>
-<script src="js/bootstrap-tour/bootstrap-tour.js"></script>
-<!-- ========== THEME JS ========== -->
-<script src="js/production-chart.js"></script>
-<script src="js/traffic-chart.js"></script>
-<script src="js/task-list.js"></script>
-<!-- ========== THEME JS ========== -->
-<script src="js/main.js">ContactInfoTableDataRetrieveServlet</script>
-<!-- ========== PAGE JS FILES ========== -->
-<script src="js/prism/prism.js"></script>
-<script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
-<script type="text/javascript" src="js/date-picker/datepair.js"></script>
-<script type="text/javascript" src="js/date-picker/moment.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-<script src="js/admin_module/admin_module_send_invites.js"></script>
+    </div>
+    <!-- /.main-wrapper -->
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/pace/pace.min.js"></script>
+    <script src="js/lobipanel/lobipanel.min.js"></script>
+    <script src="js/iscroll/iscroll.js"></script>
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="js/prism/prism.js"></script>
+    <script src="js/waypoint/waypoints.min.js"></script>
+    <script src="js/counterUp/jquery.counterup.min.js"></script>
+    <script src="js/amcharts/amcharts.js"></script>
+    <script src="js/amcharts/serial.js"></script>
+    <script src="js/amcharts/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all"/>
+    <script src="js/amcharts/themes/light.js"></script>
+    <script src="js/toastr/toastr.min.js"></script>
+    <script src="js/icheck/icheck.min.js"></script>
+    <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
+    <!-- ========== THEME JS ========== -->
+    <script src="js/production-chart.js"></script>
+    <script src="js/traffic-chart.js"></script>
+    <script src="js/task-list.js"></script>
+    <!-- ========== THEME JS ========== -->
+    <script src="js/main.js"></script>
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="js/prism/prism.js"></script>
+    <script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
+    <script type="text/javascript" src="js/date-picker/datepair.js"></script>
+    <script type="text/javascript" src="js/date-picker/moment.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <script src="js/admin_module/admin_module_send_invites.js"></script>
 
 
 </body>

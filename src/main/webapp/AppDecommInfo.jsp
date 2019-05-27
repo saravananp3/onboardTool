@@ -267,6 +267,20 @@
                                                     <label class="control-label" for="formInput198"><div class="required_fie"> Application Identification Number</div></label>
                                                     <input type="text" class="form-control" id="ain" placeholder="Tracking ID/Unique Application Id from Service Now or any relevant source" name="ain" >
                                                 </div>
+
+                                                <!--End of Table Info -->
+                                                <div class="form-group">
+                                                    <label class="control-label" for="formInput198"> Infrastructure Project Number</label>
+                                                    <input type="text" class="form-control" id="infraprojectnumber" placeholder="Infrastructure Project Number" name="infraprojectnumber" >
+                                                </div>
+
+                                                <!--End of Table Info -->
+
+                                                <div class="form-group">
+                                                    <label class="control-label" for="formInput664"><div class="required_fie">Read Only Date</div></label>
+                                                    <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()" readonly>
+                                                </div>
+
                                                 <!-- Table Info -->
 
                                                 <div class="form-group">
@@ -292,11 +306,7 @@
 
                                                 </div>
 
-                                                <!--End of Table Info -->
-                                                <div class="form-group">
-                                                    <label class="control-label" for="formInput198"> Infrastructure Project Number</label>
-                                                    <input type="text" class="form-control" id="infraprojectnumber" placeholder="Infrastructure Project Number" name="infraprojectnumber" >
-                                                </div>
+
                                                 <!-- Table Info -->
 
                                                 <div class="form-group">
@@ -321,12 +331,7 @@
                                                     </div>
                                                 </div>
 
-                                                <!--End of Table Info -->
 
-                                                <div class="form-group">
-                                                    <label class="control-label" for="formInput664"><div class="required_fie">Read Only Date</div></label>
-                                                    <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()" readonly>
-                                                </div>
                                                 <br>
                                                 <br>
                                             </div>
