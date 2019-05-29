@@ -368,82 +368,127 @@ function check_previous(seq_no, level, previous_level, initiate_seqno, plan_seqn
 		}
 	}*/
 /*if(checkdate==true) {*/
-	var task_number = [initiate_seqno, plan_seqno, execute_seqno, hypercare_seqno];
-	var tasks = [];
-	var count1 = [];
-	var x, y, z, index, count = 0, cnt = 1;
+	var Ideation_Progressbar=parseInt($('#prog_bar').attr('aria-valuenow'));
+	//alert("Ideation_Progressbar "+seq_no);
+	var Plan_Progressbar=parseInt($('#prog_bar1').attr('aria-valuenow'));
+	var Execute_Progressbar=parseInt($('#prog_bar2').attr('aria-valuenow'));
+	var Closure_Progressbar=parseInt($('#prog_bar3').attr('aria-valuenow'));
+	var checking_pogressbar=false;
+	var sequence_number=parseInt(seq_no);
+	if(sequence_number>initiate_seqno&&sequence_number<plan_seqno)
+	{
+		checking_pogressbar=true;
+	}
+	else if(sequence_number>plan_seqno&&sequence_number<execute_seqno){
+		if(Ideation_Progressbar==100)
+		{
+			checking_pogressbar=true;
+		}
+		else {
+			checking_pogressbar=false;
+		}
+	}
+	else if(sequence_number>execute_seqno&&sequence_number<hypercare_seqno)
+	{
+		if(Ideation_Progressbar==100&&Plan_Progressbar==100)
+		{
+			checking_pogressbar=true;
+		}
+		else {
+			checking_pogressbar=false;
+		}
+	}
+	else if(sequence_number>hypercare_seqno)
+	{
+		if(Ideation_Progressbar==100&&Plan_Progressbar==100&&Closure_Progressbar==100)
+		{
+			checking_pogressbar=true;
+		}
+		else {
+			checking_pogressbar=false;
+		}
+	}
+	if(checking_pogressbar) {
+		var task_number = [initiate_seqno, plan_seqno, execute_seqno, hypercare_seqno];
+		var tasks = [];
+		var count1 = [];
+		var x, y, z, index, count = 0, cnt = 1;
 //    	window.alert(seq_no+"   "+true_cnt);
-	//window.alert(initiate_seqno+" "+plan_seqno+" "+execute_seqno+" "+hypercare_seqno);
-	if (level == previous_level) {
-		x = document.getElementById("pln_srt_date" + (seq_no - 2)).value;
-		y = document.getElementById("pln_end_date" + (seq_no - 2)).value;
-		z = document.getElementById("act_srt_date" + (seq_no - 2)).value;
-		w = document.getElementById("act_end_date" + (seq_no - 2)).value;
-		if (x == "" && y == "" && z == "") {
-			cnt = 0;
-			//window.alert("Please fill the above text field");
-			BootstrapDialog.alert("Please fill the above text field");
-		}
-	} else {
-		for (var i = 0; i < 4; i++) {
-			if (parseInt(task_number[i]) < parseInt(seq_no)) {
-				tasks.push(task_number[i]);
-			} else {
-				continue;
+		//window.alert(initiate_seqno+" "+plan_seqno+" "+execute_seqno+" "+hypercare_seqno);
+		if (level == previous_level) {
+			x = document.getElementById("pln_srt_date" + (seq_no - 2)).value;
+			y = document.getElementById("pln_end_date" + (seq_no - 2)).value;
+			z = document.getElementById("act_srt_date" + (seq_no - 2)).value;
+			w = document.getElementById("act_end_date" + (seq_no - 2)).value;
+			if (x == "" && y == "" && z == "") {
+				cnt = 0;
+				//window.alert("Please fill the above text field");
+				BootstrapDialog.alert("Please fill the above text field");
 			}
-		}
-		for (var i = tasks.length - 1; i >= 0; i--) {
-			count++;
-			if (count <= 2) {
-				x = document.getElementById("pln_srt_date" + (tasks[i] - 1)).value;
-				y = document.getElementById("pln_end_date" + (tasks[i] - 1)).value;
-				z = document.getElementById("act_srt_date" + (tasks[i] - 1)).value;
-				if (x == "" && y == "" && z == "") {
-					count1.push("FALSE");
-					continue;
-
+		} else {
+			for (var i = 0; i < 4; i++) {
+				if (parseInt(task_number[i]) < parseInt(seq_no)) {
+					tasks.push(task_number[i]);
 				} else {
-					count1.push("TRUE");
 					continue;
 				}
-			} else {
-				break;
 			}
+			for (var i = tasks.length - 1; i >= 0; i--) {
+				count++;
+				if (count <= 2) {
+					x = document.getElementById("pln_srt_date" + (tasks[i] - 1)).value;
+					y = document.getElementById("pln_end_date" + (tasks[i] - 1)).value;
+					z = document.getElementById("act_srt_date" + (tasks[i] - 1)).value;
+					if (x == "" && y == "" && z == "") {
+						count1.push("FALSE");
+						continue;
+
+					} else {
+						count1.push("TRUE");
+						continue;
+					}
+				} else {
+					break;
+				}
+			}
+
+
 		}
+		if (count1[0] == "FALSE" && count1[1] == "FALSE") {
+			//window.alert("please fill the above fields");
+			BootstrapDialog.alert("please fill the above fields");
 
-
+			cnt = 0;
+		}
+		if (cnt == 1) {
+			$("#pln_srt_date" + (seq_no - 1)).datepicker({
+				format: "mm/dd/yyyy",
+				autoclose: true
+			});
+			$("#pln_end_date" + (seq_no - 1)).datepicker({
+				format: "mm/dd/yyyy",
+				autoclose: true
+			});
+			$("#act_srt_date" + (seq_no - 1)).datepicker({
+				format: "mm/dd/yyyy",
+				autoclose: true
+			});
+			$("#act_end_date" + (seq_no - 1)).datepicker({
+				format: "mm/dd/yyyy",
+				autoclose: true
+			});
+			if (number == 1)
+				$("#pln_srt_date" + (seq_no - 1)).datepicker('show');
+			if (number == 2)
+				$("#pln_end_date" + (seq_no - 1)).datepicker('show');
+			if (number == 3)
+				$("#act_srt_date" + (seq_no - 1)).datepicker('show');
+			if (number == 4)
+				$("#act_end_date" + (seq_no - 1)).datepicker('show');
+		}
 	}
-	if (count1[0] == "FALSE" && count1[1] == "FALSE") {
-		//window.alert("please fill the above fields");
-		BootstrapDialog.alert("please fill the above fields");
-
-		cnt = 0;
-	}
-	if (cnt == 1) {
-		$("#pln_srt_date" + (seq_no - 1)).datepicker({
-			format: "mm/dd/yyyy",
-			autoclose: true
-		});
-		$("#pln_end_date" + (seq_no - 1)).datepicker({
-			format: "mm/dd/yyyy",
-			autoclose: true
-		});
-		$("#act_srt_date" + (seq_no - 1)).datepicker({
-			format: "mm/dd/yyyy",
-			autoclose: true
-		});
-		$("#act_end_date" + (seq_no - 1)).datepicker({
-			format: "mm/dd/yyyy",
-			autoclose: true
-		});
-		if (number == 1)
-			$("#pln_srt_date" + (seq_no - 1)).datepicker('show');
-		if (number == 2)
-			$("#pln_end_date" + (seq_no - 1)).datepicker('show');
-		if (number == 3)
-			$("#act_srt_date" + (seq_no - 1)).datepicker('show');
-		if (number == 4)
-			$("#act_end_date" + (seq_no - 1)).datepicker('show');
+	else {
+		BootstrapDialog.alert("Please fill all the above tasks of parent node");
 	}
 /*}*/
 }

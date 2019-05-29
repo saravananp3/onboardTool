@@ -348,7 +348,7 @@
                                         <div id="collapse2" class="panel-collapse">
                                             <div class="panel-body text-left">
                                                 <!-- Table Info -->
-
+                                               <form name="TableSubmitForm">
                                                 <div class="form-group">
                                                     <label class="control-label hidetable CrossApplicationTeamProjectManagerClass" for="formInput198"><div class="required_fie"> Cross-Application Team Project Manager</div></label>
                                                     <div class="table-responsive">
@@ -545,6 +545,8 @@
                                                 <%--<button type="button" class="btn btn-warning">Modify</button>
                                                 <button type="button" class="btn btn-danger">Delete</button>--%>
                                             </div>
+                                        </div>
+                                        </form>
                                             <button type="button" class="btn btn-default" onclick="location.href='AppDecommInfo.jsp';">Back</button>
                                             <button type="button" class="btn btn-primary pull-right" onclick="SaveTable();">Save & Continue</button>
                                         </div>
@@ -582,25 +584,6 @@
             checkk();
  </script>
     <script>
-        function SaveTable()
-        {
-           $('.hidetable').is(':hidden');
-            var arr=['CrossApplicationTeamProjectManager','ServiceLevelOwner','ApplicationContactSME','ITApplicationOwner','ApplicationBusinessOwner','ITLegacyApplicationOwner','EnterpriseTechnologyProjectManager','EnterpriseTechnologySystemEngineer'];
-            var check1=[];
-            for(var i=0;i<arr.length;i++)
-            {
-                if($('.'+arr[i]+'Class').is(':hidden'))
-                {
-                    check1.push(arr[i]);
-                }
-            }
-            console.log('a------->',check1);
-        }
-        $(document).ready(function(){
-           $('.hidetable').hide();
-        });
-        </script>
-    <script>
         var url_string=window.location.href;
         var url = new URL(url_string);
         var appname = url.searchParams.get("appname");
@@ -609,6 +592,11 @@
 
         $('#dates-field2').on('change',function(){
             var ans=$('#dates-field2').val();
+            //alert("ans-> "+ans);
+            if(ans==null)
+            {
+                ans=[];
+            }
             var roles = "";
             for(var i=0; i<ans.length; i++)
             {
@@ -645,20 +633,20 @@
                                 }
                                 console.log('j check existance',data[i][0].CheckExistance," j ",j);
                                 if (data[i][0].CheckExistance == false&&a) {
-                                    table_row = "<tr class = '"+rolenames+"ClassName"+"'>" +
+                                    table_row = "<tr id = '"+rolenames+"row_id0' class = '"+rolenames+"ClassName"+"'>" +
                                         "<td><input type='text' id ='UserName"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserName"+"0"+"' value=''></td>\n" +
                                         "<td><input type='text' id ='Email"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+"0"+"' value=''></td>\n" +
                                         "<td><input type='text' id ='Userid"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserId"+"0"+"' value=''></td>\n" +
                                         "<td><input type='text' id ='ContactNumber"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"ContactNumber"+"0"+"' value=''></td>\n" +
-                                        "<td><img src='images/Delete.png' id='Delete"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n" +
+                                        "<td><img src='images/Delete.png' id='"+rolenames+"Delete"+"0"+"' class='"+rolenames+"RowClass"+"' onclick='SomeDeleteRowFunctionContactInfo(this.id);' style='width:30px; height:30px;'> </td>\n" +
                                         "</tr>";
                                 } else if(a){
-                                    table_row += "<tr class = '"+rolenames+"ClassName"+"'>" +
+                                    table_row += "<tr id = '"+rolenames+"row_id"+(j-1)+"' class = '"+rolenames+"ClassName"+"'>" +
                                         "<td><input type='text' id ='UserName"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserName"+(j-1)+"' value='"+data[i][j].Uname+"'></td>\n"+
                                         "<td><input type='text' id ='Email"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+(j-1)+"' value='"+data[i][j].Email+"'></td>\n" +
                                         "<td><input type='text' id ='Userid"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserId"+(j-1)+"' value='"+data[i][j].user_id+"'></td>\n" +
                                         "<td><input type='text' id ='ContactNumber"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"ContactNumber"+(j-1)+"' value='"+data[i][j].contact_no+"'></td>\n" +
-                                        "<td><img src='images/Delete.png' id='Delete"+rolenames+(j-1)+"' onclick='SomeDeleteRowFunction(this);' style='width:30px; height:30px;'> </td>\n"+
+                                        "<td><img src='images/Delete.png' id='"+rolenames+"Delete"+(j-1)+"' onclick='SomeDeleteRowFunctionContactInfo(this.id);' style='width:30px; height:30px;'> </td>\n"+
                                         "</tr>";
                                 }
                                 if(a) {
@@ -746,7 +734,40 @@
             });
         });
     </script>
+<script>
+    function SaveTable()
+    {
+        $('.hidetable').is(':hidden');
+        var arr=['Cross-Application Team Project Manager','Service Level Owner','Application Contact/SME','IT/Application Owner','Application Business Owner','IT Legacy Application Owner','Enterprise Technology Project Manager','Enterprise Technology Project Manager'];
+        var check1=[];
+        var rolename="";
+        for(var i=0;i<arr.length;i++)
+        {
+            var rolenames = ((arr[i]).replace(/-|\s/g,"")).replace(/\//g,'');
+            if(!$('.'+rolenames+'Class').is(':hidden'))
+            {
+                check1[i]=arr[i];
+                rolename+= arr[i]+",";
+            }
+        }
+        rolename=rolename.substring(0,rolename.length-1);
+        var array_row = [];
+        var rowlength=[];
+        for(var j=0; j<check1.length; j++){
+            var rolenames = ((check1[j]).replace(/-|\s/g,"")).replace(/\//g,'');
+            var row_length=$('.'+rolenames+'ClassName').length;
+            rowlength[j]=row_length;
+        }
+        var f=document.TableSubmitForm;
+        f.method="post";
+        f.action="ContactInfoDbUpdateServlet?ProjectName="+projname+"&ApplicationName="+appname+"&RoleName="+check1+"&RowLength="+rowlength;
+        f.submit();
 
+    }
+    $(document).ready(function(){
+        $('.hidetable').hide();
+    });
+</script>
     <script>
 
         function addrow(id)
@@ -899,8 +920,45 @@
                 p.parentNode.removeChild(p);
             }
         </script>
+<script>
+    function SomeDeleteRowFunctionContactInfo(o) {
 
-    </div>
+        var role_sub = (o.substring(0,(o.lastIndexOf('D'))));
+        var id = parseInt(o.substring(o.lastIndexOf('e')+1,o.length));
+        var classlength = $('.'+role_sub+"ClassName").length;
+        var id = parseInt(o.substring(o.lastIndexOf('e')+1,o.length));
+        $('#'+role_sub+'row_id'+id).remove();
+        for(var i=id+1;i<classlength;i++)
+        {
+            $('#UserName'+role_sub+i).removeAttr("name");
+            $('#UserName'+role_sub+i).attr('name',role_sub+"UserName"+(i-1));
+            $('input[name='+role_sub+"UserName"+(i-1)+']').removeAttr("id");
+            $('input[name='+role_sub+"UserName"+(i-1)+']').attr('id','UserName'+role_sub+(i-1));
+            $('#Email'+role_sub+i).removeAttr("name");
+            $('#Email'+role_sub+i).attr('name',role_sub+"Email"+(i-1));
+            $('input[name='+role_sub+"Email"+(i-1)+']').removeAttr("id");
+            $('input[name='+role_sub+"Email"+(i-1)+']').attr('id','Email'+role_sub+(i-1));
+            $('#Userid'+role_sub+i).removeAttr("name");
+            $('#Userid'+role_sub+i).attr('name',role_sub+"UserId"+(i-1));
+            $('input[name='+role_sub+"UserId"+(i-1)+']').removeAttr("id");
+            $('input[name='+role_sub+"UserId"+(i-1)+']').attr('id','Userid'+role_sub+(i-1));
+            $('#ContactNumber'+role_sub+i).removeAttr("name");
+            $('#ContactNumber'+role_sub+i).attr('name',role_sub+"ContactNumber"+(i-1));
+            $('input[name='+role_sub+"ContactNumber"+(i-1)+']').removeAttr("id");
+            $('input[name='+role_sub+"ContactNumber"+(i-1)+']').attr('id','ContactNumber'+role_sub+(i-1));
+            $('#'+role_sub+'Delete'+i).removeAttr("name");
+            $('#'+role_sub+'Delete'+i).attr('name',role_sub+"Delete"+(i-1));
+            $('img[name='+role_sub+"Delete"+(i-1)+']').removeAttr("id");
+            $('img[name='+role_sub+"Delete"+(i-1)+']').attr('id','Delete'+role_sub+(i-1));
+            $('#'+role_sub+'row_id'+i).removeAttr("name");
+            $('#'+role_sub+'row_id'+i).attr('name',role_sub+"row_id"+(i-1));
+            $('tr[name='+role_sub+"row_id"+(i-1)+']').removeAttr("id");
+            $('tr[name='+role_sub+"row_id"+(i-1)+']').attr('id','row_id'+role_sub+(i-1));
+
+        }
+    }
+</script>
+</div>
     <!-- /.main-wrapper -->
     <!-- ========== COMMON JS FILES ========== -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>

@@ -472,40 +472,40 @@ public class IntakeInformationService {
             System.out.println("Exception-------[info]-----"+e);
         }
     }
-    public void ContactInfotableUpdate(String project,String applicationname,String roletable,int rowlength,String[] username,String[] email,long[] contactno,int[] userid)
+    public static void ContactInfotableUpdate(String project,String applicationname,String roletable,String username,String email,String contactno,String userid,int j,int RowLength)
     {
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            for (int j = 0; j < rowlength; j++) {
                 String check_query="select * from Decomm_Intake_Contact_Info where prj_name='"+project+"'and app_name='"+applicationname+"' and role='"+roletable+"' and seq_num='"+(j+1)+"'";
                 Statement statementforcheck=connection.createStatement();
                 ResultSet Resultset=statementforcheck.executeQuery(check_query);
 
                 if(Resultset.next())
                 {
-                    String update_query="update table Decomm_Intake_Contact_Info set user_name=?,Email=?,User_id=?,contact_no=? where prj_name='"+project+"' and app_name='"+applicationname+"' and seq_num='"+(j+1)+"' ";
+                    String update_query="update Decomm_Intake_Contact_Info set user_name=?,Email=?,User_id=?,contact_no=? where prj_name='"+project+"' and app_name='"+applicationname+"' and seq_num='"+(j+1)+"' ";
                     PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
-                    preparedStmt1.setString(1,username[j]);
-                    preparedStmt1.setString(2,email[j]);
-                    preparedStmt1.setInt(3,userid[j]);
-                    preparedStmt1.setLong(4, contactno[j]);
+                    preparedStmt1.setString(1,username);
+                    preparedStmt1.setString(2,email);
+                    preparedStmt1.setString(3,userid);
+                    preparedStmt1.setString(4, contactno);
                     preparedStmt1.execute();
                 }
                 else
                 {
-                    String insert_query="insert into Decomm_Intake_Contact_Info (seq_num,prj_name,app_name,user_name,Email, user_id, contact_no)\"\n" +
-                            "values(?,?,?,?,?,?,?);";
+                    String insert_query="insert into Decomm_Intake_Contact_Info (seq_num,prj_name,app_name,user_name,Email, user_id, contact_no,role)" +
+                            "values(?,?,?,?,?,?,?,?);";
                     PreparedStatement preparedStmt = connection.prepareStatement(insert_query);
-                    preparedStmt.setInt(1, (j+1));
+                    preparedStmt.setInt(1,(j+1));
                     preparedStmt.setString(2,project);
-                    preparedStmt.setString(3, applicationname);
-                    preparedStmt.setString(4, username[j]);
-                    preparedStmt.setString(5, email[j]);
-                    preparedStmt.setInt(6,userid[j]);
-                    preparedStmt.setLong(7, contactno[j]);
+                    preparedStmt.setString(3,applicationname);
+                    preparedStmt.setString(4,username);
+                    preparedStmt.setString(5,email);
+                    preparedStmt.setString(6,userid);
+                    preparedStmt.setString(7, contactno);
+                    preparedStmt.setString(8, roletable);
+                    preparedStmt.execute();
                 }
-            }
         }
         catch(Exception e)
         {
