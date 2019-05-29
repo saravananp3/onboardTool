@@ -512,10 +512,10 @@
                                             <div id="collapse2" class="panel-collapse">
                                                 <div class="panel-body text-left">
 
-                                                    <div class="form-group">
+                                                    <%--<div class="form-group">
                                                         <label control-label" for="pid">Project ID&nbsp;</label>
                                                         <input type="text"  class="form-control" id="pid"  placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
-                                                    </div>
+                                                    </div>--%>
 
                                                     <div class="form-group">
                                                         <label class="control-label" for="projectname"><div class="required"> Project Name </div></label>
