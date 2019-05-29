@@ -360,9 +360,9 @@
                                 </ul>
                             </div>
                             <!-- /.col-sm-6 -->
-                            <div class="col-sm-6 text-right hidden-xs">
+                            <%--<div class="col-sm-6 text-right hidden-xs">
                                 <a href="#" class="pl-20"><i class="fa fa-cog"></i> Settings</a>
-                            </div>
+                            </div>--%>
                             <!-- /.col-sm-6 -->
                         </div>
                         <!-- /.row -->
@@ -380,7 +380,7 @@
                                     <div class="cbp-vm-options">
 
 
-                                        <button type="button" class="btn btn-primary pull-right" name="newpr"
+                                        <%--<button type="button" class="btn btn-primary pull-right" name="newpr"
                                                 onClick="editRecord();"><span class="glyphicon glyphicon-plus"
                                                                               aria-hidden="true"></span>
                                             New Application
@@ -389,7 +389,7 @@
                                         <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected"
                                            data-view="cbp-vm-view-grid">Grid View</a>
                                         <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List
-                                            View</a>
+                                            View</a>--%>
                                     </div>
 
                                     <ul id="ApplicationGrid">
