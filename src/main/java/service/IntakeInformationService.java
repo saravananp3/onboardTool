@@ -513,4 +513,110 @@ public class IntakeInformationService {
         }
     }
 
+    public static JsonObject DecommLegacyRetentionDataRetrieve(String projectname,String applicationname) {
+        JsonObject jsonobject = new JsonObject();
+        try {
+
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String query = "select * from decomm_legacy_retention_info where prj_name = '"+projectname+"' and app_name = '"+applicationname+"'";
+            Statement statementforcheck=connection.createStatement();
+            ResultSet Resultset=statementforcheck.executeQuery(query);
+
+            if(Resultset.next()){
+                jsonobject.addProperty("CheckExistance",true);
+                jsonobject.addProperty("Project_Name",Resultset.getString("prj_name"));
+                jsonobject.addProperty("App_Name",Resultset.getString("app_name"));
+                jsonobject.addProperty("Retention_Code",Resultset.getString("retention_code"));
+                jsonobject.addProperty("Tigger_Date",Resultset.getString("tigger_date"));
+                jsonobject.addProperty("Period_Retention",Resultset.getString("period_retention"));
+                jsonobject.addProperty("Choosen_File_Name",Resultset.getString("choosen_file_name"));
+                jsonobject.addProperty("E_Discovery_SME",Resultset.getString("e_discovery_SME"));
+                jsonobject.addProperty("Legal_Tax_Holds",Resultset.getString("legal_tax_holds"));
+                jsonobject.addProperty("Legal_Tax_Identification",Resultset.getString("legal_tax_identification"));
+                jsonobject.addProperty("App_Data_Archived",Resultset.getString("app_data_archived"));
+                jsonobject.addProperty("Brief_Explain",Resultset.getString("brief_explain"));
+            }
+            else{
+                jsonobject.addProperty("CheckExistance",false);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Exception--->" + e);
+
+        }
+        return jsonobject;
+    }
+
+    public static JsonArray DecommIntakePreviewDataRetrieve(String projectname,String applicationname) {
+        JsonArray jsonArray = new JsonArray();
+
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            JsonArray jsonArray_Business = new IntakeInformationService().DecommIntakeRequirementsDataRetrieve(projectname,applicationname);
+            JsonArray jsonArray_Site = new IntakeInformationService().DecommSiteLocationDataRetrieve(projectname,applicationname);
+            JsonObject jsonObject_intake_req = new IntakeInformationService().DecommIntakeRequirementDataRetrieve(projectname,applicationname);
+            JsonArray jsonArray_Contact_info_preview = new IntakeInformationService().DecommContactInfoPreviewPageDataRetrieve(projectname,applicationname);
+            JsonObject jsonObject_legacy_retention =  new IntakeInformationService().DecommLegacyRetentionDataRetrieve(projectname,applicationname);
+            jsonArray.add(jsonArray_Business);
+            jsonArray.add(jsonArray_Site);
+            jsonArray.add(jsonObject_intake_req);
+            jsonArray.add(jsonArray_Contact_info_preview);
+            jsonArray.add(jsonObject_legacy_retention);
+
+        }
+        catch(Exception e){
+            System.out.println("Exception--->" + e);
+        }
+        return jsonArray;
+    }
+public static JsonArray DecommContactInfoPreviewPageDataRetrieve(String projectname,String applicationname){
+        JsonArray jsonArray = new JsonArray();
+
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String arr[] = {"Cross-Application Team Project Manager","Service Level Owner","Application Contact/SME","IT/Application Owner","Application Business Owner","IT Legacy Application Owner","Enterprise Technology Project Manager","Enterprise Technology System Engineer"};
+            for(int i=0; i<arr.length; i++) {
+                JsonArray jsonArray1 = new JsonArray();
+                JsonObject jsonObject = new JsonObject();
+                JsonObject jsonObject1 = new JsonObject();
+                String Query = "select * from decomm_intake_contact_info where prj_name = '" + projectname + "' and app_name = '" + applicationname + "' and role ='"+arr[i]+"' order by seq_num";
+                Statement statementforcheck = connection.createStatement();
+                ResultSet Resultset = statementforcheck.executeQuery(Query);
+                if (Resultset.next()){
+                    jsonObject.addProperty("RoleName",arr[i]);
+                    jsonObject.addProperty("CheckExistance",true);
+                    jsonArray1.add(jsonObject);
+                    jsonObject1.addProperty("User_Name",Resultset.getString("user_name"));
+                    jsonObject1.addProperty("Email",Resultset.getString("Email"));
+                    jsonObject1.addProperty("User_Id",Resultset.getString("user_id"));
+                    jsonObject1.addProperty("Contact_No",Resultset.getString("contact_no"));
+                    jsonArray1.add(jsonObject1);
+                    while(Resultset.next()){
+                        JsonObject jsonObject2 = new JsonObject();
+                        jsonObject2.addProperty("User_Name",Resultset.getString("user_name"));
+                        jsonObject2.addProperty("Email",Resultset.getString("Email"));
+                        jsonObject2.addProperty("User_Id",Resultset.getString("user_id"));
+                        jsonObject2.addProperty("Contact_No",Resultset.getString("contact_no"));
+                        jsonArray1.add(jsonObject2);
+
+                    }
+                }
+                else
+                {
+                    jsonObject.addProperty("CheckExistance",false);
+                    jsonArray1.add(jsonObject);
+                }
+                jsonArray.add(jsonArray1);
+            }
+
+        }
+        catch(Exception e){
+            System.out.println("Exception--->>>"+e);
+    }
+        return jsonArray;
+    }
+
 }

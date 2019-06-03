@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen" >
+    <link rel="stylesheet" type="text/css" href="css/date-picker/bootstrap-datepicker.css" />
 
     <!-- ========== PAGE STYLES ========== -->
     <link rel="stylesheet" href="css/prism/prism.css" media="screen" >
@@ -245,30 +246,31 @@
 
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"> <a  data-parent="#panels1" > Legency Retention Information  </a> </h4>
+                                        <h4 class="panel-title"> <a  data-parent="#panels1" > Legacy Retention Information  </a> </h4>
                                     </div>
                                     <div id="collapse2" class="panel-collapse">
                                         <div class="panel-body text-left">
+                                         <form name="LegacyForm">
                                             <div class="form-group">
                                                 <label class="control-label" for="formInput198"><div class="required_fie">Retention Code</div></label>
-                                                <input type="text" class="form-control" id="retention_code" placeholder="Retention Code" name="appname" >
+                                                <input type="text" class="form-control" id="retention_code" placeholder="Retention Code" name="retention_code" >
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label" for="formInput198"><div class="required_fie">Trigger Date Field </div></label>
-                                                <input type="text" class="form-control" id="trigger_date_field" placeholder="mm/dd/yyyy" name="legacyappname" required >
+                                                <input type="text" class="form-control" id="trigger_date_field" placeholder="mm/dd/yyyy" name="trigger_date_field" required >
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label" for="formInput198"><div class="required_fie">Period Of Retention </div> </label>
-                                                <input type="text" class="form-control" id="period_of_retention" placeholder="period of retention" name="projectnumber" >
+                                                <input type="text" class="form-control" id="period_of_retention" placeholder="period of retention" name="period_of_retention" >
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label" for="formInput198"><div class="required_fie"> Table Name/Is Retentio need to apply </div></label>
-                                                <input type="file" name="pic" accept="image/*">
+                                                <label class="control-label" for="formInput198"><div class="required_fie"> Table Name/Is Retention need to apply </div></label>
+                                                <input type="file" name="pic" accept="image/*" id ="choosen_file_name">
                                             </div>
                                             <!-- Table Info -->
 
                                             <div class="form-group">
-                                                <label class="control-label" for="formInput198"><div class="required_fie">Name the Legancy Retention & e-Discovery SME</div></label>
+                                                <label class="control-label" for="formInput198"><div class="required_fie">Name the Legacy Retention & E-Discovery SME</div></label>
                                                 <input type="text" class="form-control" id="sme"  name="e_dicovery" >
 
                                             </div>
@@ -276,7 +278,7 @@
                                             <!--End of Table Info -->
                                             <div class="form-group=">
                                                 <label class="control-label" for="formInput198">Does any Records Have Legal Holds/Tax Holds or Any Indication</label>
-                                                <select class="col-sm-12" style="height:35px;">
+                                                <select class="col-sm-12" style="height:35px;" id = "legal_tax_holds" name = "legal_tax_holds">
                                                     <option>yes</option>
                                                     <option>No</option>
 
@@ -285,11 +287,11 @@
 
                                             <div>
                                                 <label class="control-label" for="formInput198"><div class="required_fie">Who or What entity provided legal or tax hold identification</div></label>
-                                                <input type ="text" class="form-control" id="tax_holds">
+                                                <input type ="text" class="form-control" id="tax_holds" name = "tax_holds">
                                             </div>
                                             <div>
-                                                <label class="control-label" for="formInput198">should this application's data to be archived?</label>
-                                                <select class="col-sm-12" style="height:35px;">
+                                                <label class="control-label" for="formInput198">Should this Application's Data to be Archived?</label>
+                                                <select class="col-sm-12" style="height:35px;" id ="data_archived" name = "data_archived">
                                                     <option>yes</option>
                                                     <option>no</option>
                                                 </select>
@@ -298,16 +300,16 @@
                                             <br>
                                             <div>
                                                 <label class="control-label" for="formInput198">Brief Explanation</label>
-                                                <input type ="text" class="form-control" id="brief">
+                                                <input type ="text" class="form-control" id="brief" name = "brief">
                                             </div>
                                             <br>
                                             <br>
 
-                                            <button type="button" style="margin:5px;" class="btn btn-success pull-left" onclick="addothers();">Add</button>
+                                            <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button>
                                             <button type="button" style="margin:5px;" class="btn btn-warning pull-left">Modify</button>
-
+                                         </form>
                                             <button type="button" style="margin:5px;" class="btn btn-danger pull-left">Delete</button>
-                                            <button type="button" class="btn btn-primary pull-right" >Save & Continue</button>
+                                            <button type="button" class="btn btn-primary pull-right" onclick="Submit();">Save & Continue</button>
                                         </div>
 
                                         <!--End of Table Info -->
@@ -328,6 +330,7 @@
 
                     </div>
             </div>
+        </div>
 
 
 
@@ -340,15 +343,204 @@
 
 
     </div>
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-8">
+                        <label class="control-label" for="formInput526">Label:</label>
+                        <input type="text" class="form-control" id="label"  name="label" required>
+                    </div>
+                </div>
+            </div><br/>
+            <input type="hidden" id="project_name" name="project_name" value="">
+
+            <input type="text" id="appln_name" name="appln_name" value="" style="display:none;">
+            <input type="text" id="servlet_name" name="servlet_name" value="" style="display:none;">
 
 
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-8">
+                        <label class="control-label" for="formInput526">Column name:</label>
+                        <input type="text" class="form-control" id="idname"  name="idname" required>
+                    </div>
+                </div>
+            </div><br/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-8">
+                        <label class="control-label" for="formInput526">Type:</label>
+                        <select id="types" class="form-control" name="types" onChange="call()" required >
+                            <option value="Text box">Text box</option>
+                            <option value="Check box">Check box</option>
+                            <option value="Radio box">Radio box</option>
+                            <option value="Dropdown">Dropdown</option>
+                            <option value="Datepicker">Datepicker</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-    <script>
+            <div class="row" id="check" style="display:none;">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label class="control-label" for="formInput526">Number of check boxes:</label>
+                        <input type="text" class="form-control" id="number"  name="number" onChange="chk">
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <div class="row" id="rdo" style="display:none;">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label class="control-label" for="formInput526">Number of Radio boxes:</label>
+                        <input type="text" class="form-control" id="radio_number"  name="radio_number" onChange="radio()">
+                    </div>
+                </div>
+                <br/>
+            </div>
+            <div class="row" id="drop" style="display:none;">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label class="control-label" for="formInput526">Number of Options:</label>
+                        <input type="text" class="form-control" id="drop_number"  name="drop_number" onChange="drp_dwn()">
+                    </div>
+                </div>
+                <br/>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <div id="demo"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <div id="demo1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <div id="demo2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-8">
+                        <label class="control-label" for="formInput526">Mandatory:</label>
+                        <select id="mandatory" class="form-control" name="mandatory" required >
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+            <input type="text" name="panel" value="" style="display:none;">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+            <button type="button" onclick="window.location.href='samp_business.jsp'" class="btn btn-default">Cancel</button>
+    </div>
+</div>
+</div>
+</form>
+</div>
+
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
         if(document.getElementById('Role_info').value=="R")
             checkk();
     </script>
-
-
+<script>
+    var url_string=window.location.href;
+    var url = new URL(url_string);
+    var appname = url.searchParams.get("appname");
+    var projname=url.searchParams.get("prjname");
+    console.log("Application:",appname,"Project:",projname);
+    $(document).ready(function(){
+        $('#trigger_date_field').datepicker({});
+        $.ajax({
+            url: "LegacyRetentionDataRetrieveServlet",
+            type: 'POST',
+            data: {ApplicationName:appname,ProjectName: projname},
+            dataType: "json",
+            success: function (data) {
+                console.log("Data----->",data);
+                if(data.CheckExistance==true){
+                    $('#retention_code').val(data.Retention_Code);
+                    $('#trigger_date_field').val(data.Tigger_Date);
+                    $('#period_of_retention').val(data.Period_Retention);
+                    $('#sme').val(data.E_Discovery_SME);
+                    $('#legal_tax_holds').val(data.Legal_Tax_Holds);
+                    $('#tax_holds').val(data.Legal_Tax_Identification);
+                    $('#data_archived').val(data.App_Data_Archived);
+                    $('#brief').val(data.Brief_Explain);
+                }
+                else{
+                    $('#retention_code').val("");
+                    $('#trigger_date_field').val("");
+                    $('#period_of_retention').val("");
+                    $('#sme').val("");
+                    $('#legal_tax_holds').val("");
+                    $('#tax_holds').val("");
+                    $('#data_archived').val("");
+                    $('#brief').val("");
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+    </script>
+<script>
+    function Submit(){
+        //alert("Hello");
+        var f = document.LegacyForm;
+        f.method = "post";
+        f.action = "LegacyRetentionDbUpdataServlet?appname="+appname+"&prjname="+projname;
+        f.submit();
+    }
+    </script>
 
 
     <script src="js/prism/prism.js"></script>
@@ -409,14 +601,12 @@
                 scrollTop : 0                       // Scroll to top of body
             }, 500);
         });
-
-
-
-
-
-
     </script>
+<script>
 
+
+
+</script>
     <!-- ========== THEME JS ========== -->
     <script>
         $(function($) {
@@ -473,6 +663,7 @@
     $('#tablecountry').append(element);
 
     } */
+    </script>
 
 
 

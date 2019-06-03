@@ -61,7 +61,8 @@ public class ContactInfoDbUpdateServlet extends HttpServlet {
             e.printStackTrace();
             System.out.println("Exception-----[info]------"+e);
         }
-    response.sendRedirect("legency_retention.jsp");
+    response.sendRedirect("legency_retention.jsp?appname="+application+"&prjname="+project);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

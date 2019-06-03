@@ -91,9 +91,6 @@
         color: #fff;
         top: 5px;
     }
-
-
-
 </style>
 
 
@@ -348,11 +345,10 @@
                                         <div id="collapse2" class="panel-collapse">
                                             <div class="panel-body text-left">
                                                 <!-- Table Info -->
-                                               <form name="TableSubmitForm">
+                                               <form name="TableSubmitForm" action="/action_page.php">
                                                 <div class="form-group">
                                                     <label class="control-label hidetable CrossApplicationTeamProjectManagerClass" for="formInput198"><div class="required_fie"> Cross-Application Team Project Manager</div></label>
                                                     <div class="table-responsive">
-
                                                         <table class="table table-bordered hidetable CrossApplicationTeamProjectManagerClass" id="mytable">
                                                             <thead style="color:white;background-color:DodgerBlue;">
                                                             <tr >
@@ -364,8 +360,6 @@
                                                             </tr>
                                                             </thead >
                                                             <tbody id="CrossApplicationTeamProjectManager">
-
-
                                                             </tbody>
                                                         </table>
                                                         <button type="button" class="btn btn-primary hidetable CrossApplicationTeamProjectManagerClass" id = "CrossApplicationTeamProjectManagerAdd" onclick="addrow(this.id);">Add</button>
@@ -384,7 +378,7 @@
                                                             <thead style="color:white;background-color:DodgerBlue;">
                                                             <tr >
                                                                 <th scope="col" style="color:white;">User Name</th>
-                                                                <th scope="col" style="color:white;">Email</th>
+                                                                <th scope="col" style="color:white;" >Email</th>
                                                                 <th scope="col" style="color:white;">User Id</th>
                                                                 <th scope="col" style="color:white;">Contact Number</th>
                                                                 <th scope="col" style="color:white;"></th>
@@ -520,7 +514,6 @@
                                                 <div class="form-group">
                                                     <label class="control-label hidetable EnterpriseTechnologySystemEngineerClass" for="formInput198"> Enterprise Technology System Engineer</label>
                                                     <div class="table-responsive">
-
                                                         <table class="table table-bordered hidetable EnterpriseTechnologySystemEngineerClass">
                                                             <thead style="color:white;background-color:DodgerBlue;">
                                                             <tr >
@@ -530,12 +523,8 @@
                                                                 <th scope="col" style="color:white;">Contact Number</th>
                                                                 <th scope="col" style="color:white;"></th>
                                                             </tr>
-
                                                             </thead>
                                                             <tbody id="EnterpriseTechnologySystemEngineer">
-
-
-
                                                             </tbody>
                                                         </table>
                                                         <button type="button" class="btn btn-primary hidetable EnterpriseTechnologySystemEngineerClass" id ="EnterpriseTechnologySystemEngineerAdd" onclick="addrow(this.id);">Add</button>
@@ -577,8 +566,6 @@
 
 
     </div>
-
-
     <script>
         if(document.getElementById('Role_info').value=="R")
             checkk();
@@ -635,7 +622,7 @@
                                 if (data[i][0].CheckExistance == false&&a) {
                                     table_row = "<tr id = '"+rolenames+"row_id0' class = '"+rolenames+"ClassName"+"'>" +
                                         "<td><input type='text' id ='UserName"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserName"+"0"+"' value=''></td>\n" +
-                                        "<td><input type='text' id ='Email"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+"0"+"' value=''></td>\n" +
+                                        "<td><input type='email' id ='Email"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+"0"+"' value='' pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"></td>\n" +
                                         "<td><input type='text' id ='Userid"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserId"+"0"+"' value=''></td>\n" +
                                         "<td><input type='text' id ='ContactNumber"+rolenames+"0"+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"ContactNumber"+"0"+"' value=''></td>\n" +
                                         "<td><img src='images/Delete.png' id='"+rolenames+"Delete"+"0"+"' class='"+rolenames+"RowClass"+"' onclick='SomeDeleteRowFunctionContactInfo(this.id);' style='width:30px; height:30px;'> </td>\n" +
@@ -643,7 +630,7 @@
                                 } else if(a){
                                     table_row += "<tr id = '"+rolenames+"row_id"+(j-1)+"' class = '"+rolenames+"ClassName"+"'>" +
                                         "<td><input type='text' id ='UserName"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserName"+(j-1)+"' value='"+data[i][j].Uname+"'></td>\n"+
-                                        "<td><input type='text' id ='Email"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+(j-1)+"' value='"+data[i][j].Email+"'></td>\n" +
+                                        "<td><input type='email' id ='Email"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"Email"+(j-1)+"' value='"+data[i][j].Email+"' pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$\"></td>\n" +
                                         "<td><input type='text' id ='Userid"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"UserId"+(j-1)+"' value='"+data[i][j].user_id+"'></td>\n" +
                                         "<td><input type='text' id ='ContactNumber"+rolenames+(j-1)+"' class='"+rolenames+"RowClass"+"' name='"+rolenames+"ContactNumber"+(j-1)+"' value='"+data[i][j].contact_no+"'></td>\n" +
                                         "<td><img src='images/Delete.png' id='"+rolenames+"Delete"+(j-1)+"' onclick='SomeDeleteRowFunctionContactInfo(this.id);' style='width:30px; height:30px;'> </td>\n"+
@@ -789,130 +776,8 @@
 
             }
 
-
-            function addrow_service()
-            {
-
-            var rowlength=$('.service').length;
-            //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="service">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tableservice').append(element);
-
-            }
-
-            function addrow_application()
-            {
-
-            var rowlength=$('.application').length;
-            //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="application">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tableapplication').append(element);
-
-        }
-
-        function addrow_owner()
-        {
-
-            var rowlength=$('.owner').length;
-            //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="owner">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tableowner').append(element);
-
-        }
-
-        function addrow_bussinessowner()
-        {
-
-            var rowlength=$('.bussinessowner').length;
-            //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="bussinessowner">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tablebussinessowner').append(element);
-
-        }
-
-        function addrow_legancy()
-        {
-
-            var rowlength=$('.legancy').length;
-            //alert("hi"+rowlength);
-            var i=rowlength+1;
-            var element='<tr class="legancy">'+
-                '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                '<td><img src="images/delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                '</tr>';
-            $('#tablelegancy').append(element);
-
-            }
-
-            function addrow_enterprise()
-            {
-
-                var rowlength=$('.enterprise').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="enterprise">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tableenterprise_PM').append(element);
-
-            }
-
-            function addrow_enterpriseSE()
-            {
-
-                var rowlength=$('.enterpriseSE').length;
-                //alert("hi"+rowlength);
-                var i=rowlength+1;
-                var element='<tr class="enterpriseSE">'+
-                    '<td><input type="text" id ="username_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="email_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="userid_'+i+'" value=""></td>'+
-                    '<td><input type="text" id ="contactnumber_'+i+'" value=""></td>'+
-                    '<td><img src="images/Delete.png" id="delete'+i+'" onclick="SomeDeleteRowFunction(this)" style="width:30px; height:30px;"> </td>'+
-                    '</tr>';
-                $('#tableenterpriseSE').append(element);
-
-            }
-
-        </script>
-
-
-        <script>
+    </script>
+            <script>
             function SomeDeleteRowFunction(o) {
 
 
@@ -958,6 +823,7 @@
         }
     }
 </script>
+
 </div>
     <!-- /.main-wrapper -->
     <!-- ========== COMMON JS FILES ========== -->
