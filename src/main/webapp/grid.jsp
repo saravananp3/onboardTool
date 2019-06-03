@@ -1461,7 +1461,7 @@ else if(roles.equals("ArchivalProjectManager"))
                                         <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
                                     </div>
                                     <div class="col-md-2 col-sm-2">
-                                        <a href="Applications.jsp" >
+                                        <a href="ArchiveDecommPage.jsp" >
                                             <center>
                                                 <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
                                                 <h6 class="mt-5">Intake</h6>
