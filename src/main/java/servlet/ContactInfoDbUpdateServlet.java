@@ -3,6 +3,7 @@ package servlet;
 import onboard.DBconnection;
 import service.IntakeInformationService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,8 +62,8 @@ public class ContactInfoDbUpdateServlet extends HttpServlet {
             e.printStackTrace();
             System.out.println("Exception-----[info]------"+e);
         }
-    response.sendRedirect("legency_retention.jsp?appname="+application+"&prjname="+project);
-
+        RequestDispatcher rd = request.getRequestDispatcher("DecommIntakeLegacyRetentionTableUpdateServlet");
+        rd.forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

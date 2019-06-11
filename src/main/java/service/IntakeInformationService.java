@@ -2,6 +2,7 @@ package service;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
 import onboard.DBconnection;
 import org.apache.log4j.Logger;
 
@@ -513,39 +514,48 @@ public class IntakeInformationService {
         }
     }
 
-    public static JsonObject DecommLegacyRetentionDataRetrieve(String projectname,String applicationname) {
-        JsonObject jsonobject = new JsonObject();
+    public static JsonArray DecommLegacyRetentionDataRetrieve(String projectname,String applicationname) {
+        JsonArray jsonArray=new JsonArray();
         try {
 
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            String query = "select * from decomm_legacy_retention_info where prj_name = '"+projectname+"' and app_name = '"+applicationname+"'";
+            String query = "select * from decomm_legacy_add_table where prj_name = '"+projectname+"' and app_name = '"+applicationname+"'";
             Statement statementforcheck=connection.createStatement();
             ResultSet Resultset=statementforcheck.executeQuery(query);
-
             if(Resultset.next()){
-                jsonobject.addProperty("CheckExistance",true);
-                jsonobject.addProperty("Project_Name",Resultset.getString("prj_name"));
-                jsonobject.addProperty("App_Name",Resultset.getString("app_name"));
-                jsonobject.addProperty("Retention_Code",Resultset.getString("retention_code"));
-                jsonobject.addProperty("Tigger_Date",Resultset.getString("tigger_date"));
-                jsonobject.addProperty("Period_Retention",Resultset.getString("period_retention"));
-                jsonobject.addProperty("Choosen_File_Name",Resultset.getString("choosen_file_name"));
-                jsonobject.addProperty("E_Discovery_SME",Resultset.getString("e_discovery_SME"));
-                jsonobject.addProperty("Legal_Tax_Holds",Resultset.getString("legal_tax_holds"));
-                jsonobject.addProperty("Legal_Tax_Identification",Resultset.getString("legal_tax_identification"));
-                jsonobject.addProperty("App_Data_Archived",Resultset.getString("app_data_archived"));
-                jsonobject.addProperty("Brief_Explain",Resultset.getString("brief_explain"));
-            }
-            else{
-                jsonobject.addProperty("CheckExistance",false);
+                JsonObject jsonObject1=new JsonObject();
+                jsonObject1.addProperty("seq_num",Resultset.getString("seq_num"));
+                jsonObject1.addProperty("Project_Name",Resultset.getString("prj_name"));
+                jsonObject1.addProperty("App_Name",Resultset.getString("app_name"));
+                jsonObject1.addProperty("options",Resultset.getString("options"));
+                jsonObject1.addProperty("LabelName",Resultset.getString("label_name"));
+                jsonObject1.addProperty("ColumnName",Resultset.getString("column_name"));
+                jsonObject1.addProperty("Type",Resultset.getString("type"));
+                jsonObject1.addProperty("Mandatory",Resultset.getString("mandatory"));
+                jsonObject1.addProperty("Value",Resultset.getString("value"));
+                jsonArray.add(jsonObject1);
+                while(Resultset.next())
+                {
+                    JsonObject jsonObject2=new JsonObject();
+                    jsonObject2.addProperty("seq_num",Resultset.getString("seq_num"));
+                    jsonObject2.addProperty("Project_Name",Resultset.getString("prj_name"));
+                    jsonObject2.addProperty("App_Name",Resultset.getString("app_name"));
+                    jsonObject2.addProperty("options",Resultset.getString("options"));
+                    jsonObject2.addProperty("LabelName",Resultset.getString("label_name"));
+                    jsonObject2.addProperty("ColumnName",Resultset.getString("column_name"));
+                    jsonObject2.addProperty("Type",Resultset.getString("type"));
+                    jsonObject2.addProperty("Mandatory",Resultset.getString("mandatory"));
+                    jsonObject2.addProperty("Value",Resultset.getString("value"));
+                    jsonArray.add(jsonObject2);
+                }
             }
         }
         catch (Exception e) {
             System.out.println("Exception--->" + e);
 
         }
-        return jsonobject;
+        return jsonArray;
     }
 
     public static JsonArray DecommIntakePreviewDataRetrieve(String projectname,String applicationname) {
@@ -558,12 +568,12 @@ public class IntakeInformationService {
             JsonArray jsonArray_Site = new IntakeInformationService().DecommSiteLocationDataRetrieve(projectname,applicationname);
             JsonObject jsonObject_intake_req = new IntakeInformationService().DecommIntakeRequirementDataRetrieve(projectname,applicationname);
             JsonArray jsonArray_Contact_info_preview = new IntakeInformationService().DecommContactInfoPreviewPageDataRetrieve(projectname,applicationname);
-            JsonObject jsonObject_legacy_retention =  new IntakeInformationService().DecommLegacyRetentionDataRetrieve(projectname,applicationname);
+            //JsonObject jsonObject_legacy_retention =  new IntakeInformationService().DecommLegacyRetentionDataRetrieve(projectname,applicationname);
             jsonArray.add(jsonArray_Business);
             jsonArray.add(jsonArray_Site);
             jsonArray.add(jsonObject_intake_req);
             jsonArray.add(jsonArray_Contact_info_preview);
-            jsonArray.add(jsonObject_legacy_retention);
+            //jsonArray.add(jsonObject_legacy_retention);
 
         }
         catch(Exception e){
