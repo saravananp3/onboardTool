@@ -19,9 +19,7 @@ public class DecommIntakeDeleteOperationServlet extends HttpServlet {
         String projectname=request.getParameter("ProjectName");
         int deleteseqnum=Integer.parseInt(request.getParameter("DeleteNumber"));
         DecommIntakeServices.DecommIntakeDeleteOperation(projectname,applicationname,deleteseqnum);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-
+        response.sendRedirect("legency_retention.jsp?appname="+applicationname+"&prjname="+projectname);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -35,7 +35,7 @@ public class DecommLegacyRetentionAddServlet extends HttpServlet {
             jsonobject.addProperty("ProjectName", projectname);
             jsonobject.addProperty("ApplicationName", applicationname);
             jsonobject.addProperty("LabelName", label_name);
-            jsonobject.addProperty("ColumnName", column_name);
+            jsonobject.addProperty("ColumnName","LegacyRetention");
             jsonobject.addProperty("Mandatory", mandatory);
             jsonobject.addProperty("Type", type);
             jsonobject.addProperty("Options",option);

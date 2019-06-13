@@ -18,3 +18,11 @@ function decomm_intake_edit(id){
     f.action='AppDecommInfo.jsp?appname='+id+'&projectname='+projectname[1];
     f.submit();
 }
+function decomm_manage_edit(id){
+    var projectnamesplit=$("#sitetitle1").text();
+    var projectname=projectnamesplit.split("-");
+    var f=document.form;
+    f.method="post";
+    f.action='DecommManageExecutionInfo.jsp?appname='+id+'&projectname='+projectname[1];
+    f.submit();
+}

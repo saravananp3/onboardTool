@@ -80,9 +80,9 @@
         statement.executeUpdate(query22);
         String query23 = "CREATE TABLE `Decomm_Intake_Contact_Info`(`seq_num` varchar(255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `role` varchar(255) DEFAULT NULL, `user_name` varchar(255) DEFAULT NULL, `Email` varchar(255) DEFAULT NULL, `user_id` varchar(255) DEFAULT NULL, `contact_no` varchar(255) DEFAULT NULL )";
         statement.executeUpdate(query23);
-        String query24 = "CREATE TABLE `Decomm_Legacy_retention_Info`(`prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `retention_code` varchar(255) DEFAULT NULL, `tigger_date` varchar(255) DEFAULT NULL, `period_retention` varchar(255) DEFAULT NULL, `choosen_file_name` varchar(255) DEFAULT NULL, `e_discovery_SME` varchar(255) DEFAULT NULL, `legal_tax_holds` varchar(255) DEFAULT NULL, `legal_tax_identification` varchar(255) DEFAULT NULL, `app_data_archived` varchar(255) DEFAULT NULL, `brief_explain` varchar(255) DEFAULT NULL, `dynamic_clm` varchar(255) DEFAULT NULL)";
+        String query24 = "CREATE TABLE `Decomm_Legacy_Add_Table`(`seq_num` INTEGER (255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `options` varchar(255) DEFAULT NULL, `label_name` varchar(255) DEFAULT NULL, `column_name` varchar(255) DEFAULT NULL, `type` varchar(255) DEFAULT NULL, `mandatory` varchar(255) DEFAULT NULL, `value` varchar(255) DEFAULT NULL)";
         statement.executeUpdate(query24);
-        String query25 = "CREATE TABLE `Decomm_Legacy_Add_Table`(`seq_num` varchar(255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `options` varchar(255) DEFAULT NULL, `label_name` varchar(255) DEFAULT NULL, `column_name` varchar(255) DEFAULT NULL, `type` varchar(255) DEFAULT NULL, `mandatory` varchar(255) DEFAULT NULL, `value` varchar(255) DEFAULT NULL)";
+        String query25 = "CREATE TABLE `Decomm_Manage_Execution_Info`(`seq_num` INTEGER (255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `options` varchar(255) DEFAULT NULL, `label_name` varchar(255) DEFAULT NULL, `column_name` varchar(255) DEFAULT NULL, `type` varchar(255) DEFAULT NULL, `mandatory` varchar(255) DEFAULT NULL, `value` varchar(255) DEFAULT NULL)";
         statement.executeUpdate(query25);
 
 %>

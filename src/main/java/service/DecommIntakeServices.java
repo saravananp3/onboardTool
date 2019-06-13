@@ -16,37 +16,36 @@ public class DecommIntakeServices {
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            String select_query="select * from decomm_legacy_add_table where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by seq_num;";
-            Statement st=connection.createStatement();
-            ResultSet rs=st.executeQuery(select_query);
-            int max_seq_num=1;
-            if(rs.next())
-            {
-                String max_seqnum="select max(seq_num) from decomm_legacy_add_table where prj_name='"+projectname+"'and app_name='"+applicationname+"';";
-                Statement st1=connection.createStatement();
-                ResultSet rs1=st1.executeQuery(max_seqnum);
+            String select_query = "select * from decomm_legacy_add_table where prj_name='" + projectname + "' and app_name='" + applicationname + "' order by seq_num;";
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(select_query);
+            String name = "LegacyRetention";
+            int max_seq_num = 1;
+            if (rs.next()) {
+                String max_seqnum = "select max(seq_num) from decomm_legacy_add_table where prj_name='" + projectname + "'and app_name='" + applicationname + "';";
+                Statement st1 = connection.createStatement();
+                ResultSet rs1 = st1.executeQuery(max_seqnum);
 
-                if(rs1.next())
-                {
-                    max_seq_num=Integer.parseInt(rs1.getString(1))+1;
+                if (rs1.next()) {
+                    max_seq_num = Integer.parseInt(rs1.getString(1));
+                    max_seq_num++;
                 }
             }
-            if(!type.equals("Text box")&&!type.equals("Datepicker")) {
+            if (!type.equals("Text box") && !type.equals("Datepicker")) {
                 options = options.substring(0, options.length() - 1);
             }
-                String insert_query = "insert into decomm_legacy_add_table (seq_num,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?,?,?,?,?,?,?,?,?);";
-                PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
-                preparedStatement1.setInt(1,max_seq_num);
-                preparedStatement1.setString(2, projectname);
-                preparedStatement1.setString(3, applicationname);
-                preparedStatement1.setString(4,options);
-                preparedStatement1.setString(5, label_name);
-                preparedStatement1.setString(6, column_name);
-                preparedStatement1.setString(7, type);
-                preparedStatement1.setString(8, mandatory);
-                preparedStatement1.setString(9, "");
-                preparedStatement1.execute();
-                max_seq_num++;
+            String insert_query = "insert into decomm_legacy_add_table (seq_num,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?,?,?,?,?,?,?,?,?);";
+            PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
+            preparedStatement1.setInt(1, max_seq_num);
+            preparedStatement1.setString(2, projectname);
+            preparedStatement1.setString(3, applicationname);
+            preparedStatement1.setString(4, options);
+            preparedStatement1.setString(5, label_name);
+            preparedStatement1.setString(6, (name+max_seq_num));
+            preparedStatement1.setString(7, type);
+            preparedStatement1.setString(8, mandatory);
+            preparedStatement1.setString(9, "");
+            preparedStatement1.execute();
         }
         catch(Exception e)
         {
@@ -81,7 +80,7 @@ public class DecommIntakeServices {
             ArrayList<String> arr_value_split = new ArrayList<String>();
 
 
-            String select_query="select max (seq_num) from decomm_legacy_add_table where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by seq_num;";
+            String select_query="select max(seq_num) from decomm_legacy_add_table where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by seq_num;";
             Statement st=connection.createStatement();
             ResultSet rs=st.executeQuery(select_query);
             if(rs.next()) {
@@ -123,7 +122,7 @@ public class DecommIntakeServices {
                     arr_app_split.add(arr_app.get(i));
                     arr_options_split.add(arr_options.get(i));
                     arr_label_name_split.add(arr_label_name.get(i));
-                    arr_column_name_split.add(arr_column_name.get(i));
+                    arr_column_name_split.add("LegacyRetention"+(arr_seqmax.get(i)-1));
                     arr_type_split.add(arr_type.get(i));
                     arr_mandatory_split.add(arr_mandatory.get(i));
                     arr_value_split.add(arr_value.get(i));
@@ -133,7 +132,7 @@ public class DecommIntakeServices {
             String delete_query = "delete from decomm_legacy_add_table where prj_name='"+projectname+"' and app_name='"+applicationname+"' ";
             Statement st2=connection.createStatement();
             st2.executeUpdate(delete_query);
-            for  (int j=0; j<seqmax; j++){
+            for  (int j=0; j<seqmax-1; j++){
                 String insert_query = "insert into decomm_legacy_add_table (seq_num,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?,?,?,?,?,?,?,?,?);";
                 PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
                 preparedStatement1.setInt(1,arr_seqmax_split.get(j));
@@ -155,10 +154,12 @@ public class DecommIntakeServices {
     }
 
 
-    public static void DecommIntakeEditOperation(String projectname,String applicationname, String label_name, String type, String mandatory,String[] options,int sequencenumber) {
+    public static void DecommIntakeEditOperation(String projectname,String applicationname, String label_name,int sequencenumber) {
 
-        try{
-            String option="";
+        try {
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            /*String option="";
             for(int i=0;i<options.length;i++)
             {
                 option+=options[i]+",";
@@ -180,8 +181,13 @@ public class DecommIntakeServices {
                 preparedStmt1.setString(1, label_name);
                 preparedStmt1.setString(2, type);
                 preparedStmt1.setString(3, mandatory);
-                preparedStmt1.execute();
-            }
+                preparedStmt1.execute();*/
+        //}
+
+            String update_query = "update decomm_legacy_add_table set label_name =? where prj_name = '" + projectname + "' and app_name = '" + applicationname + "' and seq_num='"+sequencenumber+"'";
+            PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
+            preparedStmt1.setString(1, label_name);
+            preparedStmt1.execute();
         }
         catch(Exception e){
                 System.out.println("Exception---->>>>"+e);

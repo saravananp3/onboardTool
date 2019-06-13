@@ -507,10 +507,11 @@
                             </div>
                         </div>
                     </div><br/>
-                    <input type="hidden" id="project_name1" name="project_name" value="">
+                    <input type="text" id="seq_num" name="" value="" style="display:none;">
+              <%--      &lt;%&ndash;<input type="hidden" id="project_name1" name="project_name" value="">
 
                     <input type="text" id="appln_name1" name="appln_name" value="" style="display:none;">
-                    <input type="text" id="servlet_name1" name="servlet_name" value="" style="display:none;">
+                    <input type="text" id="servlet_name1" name="servlet_name" value="" style="display:none;">&ndash;%&gt;
                     <input type="text" id="seq_num" name="" value="" style="display:none;">
 
 
@@ -593,7 +594,7 @@
                             </div>
                         </div>
                     </div>
-                    <br/><br/>
+                    <br/><br/>--%>
                 </div>
             </form>
             <button type="button" id="submit1" class="btn btn-primary" >Submit</button>
@@ -608,6 +609,7 @@
         <div class="modal-dialog" style="width:2000px">
             <div id="modal-contentdelete1">
                 <%--<span class="close" style="color:white;">&times;</span>--%>
+                <form name="DeleteForm">
                 <div class="modal-header" style="background-color:rgb(52, 152, 219);">
                     <h1 style="color:white;">Delete Task</h1>
                 </div>
@@ -617,9 +619,10 @@
                     <p style="font-size:24px;">input field permanently?</p>
                     <input type="hidden" id="sequence1"/>
                 </div>
+                </form>
                 <div class="modal-footer">
-                    <button type="button" id="submit2" class="btn btn-primary" ><u>Y</u>es</button>
-                    <button type="button" onclick="window.location.href=''" class="btn btn-default"><u>N</u>o</button>
+                    <button type="button" id="submit2" class="btn btn-primary" >Yes</button>
+                    <button type="button" onclick="window.location.href=''" class="btn btn-default">No</button>
                 </div>
             </div>
         </div>
@@ -755,7 +758,7 @@
                     else if(Type=="Dropdown")
                     {
                         var inputdrop= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
-                            "<select style = 'width:100%;'>";
+                            "<select style = 'width:100%;' name='"+ColumnName+"'>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
@@ -819,6 +822,8 @@
                     "});"+
                     "<\/script>";
                 script+="<script> $('.deletepopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.deletepopup');"+
+                        "$('#sequence1').val(seqnum);"+
                     "modal2.style.display = \"block\";\n" +
                     "});<\/script>";
                 $('#scripttag').append(script);
@@ -830,7 +835,7 @@
     });
     $('#submit1').click(function() {
         var labelmodify = $('#Label_modify').val();
-        var Type = $('#types_modify').val();
+        /*var Type = $('#types_modify').val();
         var number = 0;
         var options=[];
         if (Type == "Check box") {
@@ -856,12 +861,12 @@
                 options[i]=$('#drp_labelModify'+(i+1)).val();
             }
         }
-        var mandatory = $('#Mandatory_modify').val();
-        var seqnum = $('#seq_num').val()+1;
+        var mandatory = $('#Mandatory_modify').val();*/
+        var seqnum = parseInt($('#seq_num').val())+1;
 
         var f=document.ModifyPopupForm;
         f.method="post";
-        f.action="DecommIntakeEditOperationServlet?ProjectName="+projname+"&ApplicationName="+appname+"&Seq_num="+seqnum+"&Mandatory="+mandatory+"&Type="+Type+"&Label="+labelmodify+"&Options="+options;
+        f.action="DecommIntakeEditOperationServlet?ProjectName="+projname+"&ApplicationName="+appname+"&Seq_num="+seqnum+"&Label="+labelmodify;
         f.submit();
         /*$.ajax({
             url: "DecommIntakeEditOperationServlet",
@@ -984,6 +989,7 @@
                 success: function (data) {
                     var required = "";
                     console.log("data add---->",data);
+                    var num=parseInt($('.editpopup').length)+1;
                     var required_field = "";
                     if (data.Mandatory == "Yes"){
                         required_field = "class = 'required_fie'";
@@ -995,16 +1001,16 @@
                     else if(data.Type=="Text box")
                     {
                         var inputtext="<div class='form-group'>"+
-                        "<label class='control-label' for='formInput198'><div "+required_field+">"+data.LabelName+"</div></label>"+
-                    "<input type='text' class='form-control' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+"'/>"+
+                        "<label class='control-label' for='formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                    "<input type='text' class='form-control' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
                     "</div>";
                     $('#inputFields').append(inputtext);
                     }
                     else if(data.Type=="Datepicker")
                     {
                      var inputdate="<div class='form-group'>"+
-                         "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"</div></label>"+
-                         "<input type='text' class='form-control datepicker1' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+"'/>"+
+                         "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                         "<input type='text' class='form-control datepicker1' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
                         "</div>";
                         $('#inputFields').append(inputdate);
                         var script="<script>$('.datepicker1').datepicker({\n" +
@@ -1017,13 +1023,13 @@
                     {
                         var input="";
                         input+= "<div class='form-group'>"+
-                                    "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"</div></label>";
+                                    "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                         var Options=data.Options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
                         for (var i=0; i<option.length; i++){
 
-                            input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+"'/>"+
+                            input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
                             option[i]+"</label>";
 
                         }
@@ -1034,13 +1040,13 @@
                     {
                         var input="";
                         input+= "<div class='form-group'>"+
-                            "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"</div></label>";
+                            "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                         var Options=data.Options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
                         for (var i=0; i<option.length; i++) {
 
-                            input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='" + data.ColumnName + "'/>" +
+                            input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='" + data.ColumnName+num+"'/>" +
                                 option[i] + "</label>";
                         }
                         input +="</div>";
@@ -1049,8 +1055,8 @@
                     else if(data.Type=="Dropdown")
                     {
                         var select="";
-                        select+= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"</div></label>"+
-                            "<select style = 'width:100%;'>";
+                        select+= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                            "<select style = 'width:100%;' name = "+data.ColumnName+num+">";
                         var Options=data.Options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
@@ -1075,16 +1081,22 @@
 <script>
     function Submit(){
         //alert("Hello");
+        var classlength = $('.editpopup').length;
         var f = document.LegacyForm;
         f.method = "post";
-        f.action = "LegacyRetentionDbUpdataServlet?appname="+appname+"&prjname="+projname;
+        f.action = "LegacyRetentionDbUpdataServlet?appname="+appname+"&prjname="+projname+"&classlength="+classlength;
         f.submit();
     }
     </script>
 
-
     <script>
-
+        $('#submit2').click(function(){
+            var deleteseq=parseInt($('#sequence1').val())+1;
+            var f=document.DeleteForm;
+            f.method = "post";
+            f.action = "DecommIntakeDeleteOperationServlet?ApplicationName="+appname+"&ProjectName="+projname+"&DeleteNumber="+deleteseq;
+            f.submit();
+        });
     </script>
 
 

@@ -247,7 +247,7 @@
                                     <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
-                                    <a href="#">
+                                    <a href="DecommManageApplication.jsp">
                                         <center>
                                             <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
                                             <h6 class="mt-5">Decommission Execution</h6>

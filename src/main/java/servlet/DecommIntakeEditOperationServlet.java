@@ -15,11 +15,11 @@ public class DecommIntakeEditOperationServlet extends HttpServlet {
         String applicationname=request.getParameter("ApplicationName");
         String projectname=request.getParameter("ProjectName");
         String label_name =request.getParameter("Label");
-        String type =request.getParameter("Type");
+        /*String type =request.getParameter("Type");
         String mandatory =request.getParameter("Mandatory");
-        String[] options =request.getParameterValues("Options");
+        String[] options =request.getParameterValues("Options");*/
         int SequenceNumber=Integer.parseInt(request.getParameter("Seq_num"));
-       DecommIntakeServices.DecommIntakeEditOperation(projectname,applicationname,label_name,type,mandatory,options,SequenceNumber);
+       DecommIntakeServices.DecommIntakeEditOperation(projectname,applicationname,label_name,SequenceNumber);
         response.sendRedirect("legency_retention.jsp?appname="+applicationname+"&prjname="+projectname);
     }
 
