@@ -360,7 +360,11 @@
                                         </ul>
 
                                         <%
-                                            }
+                                                con.close();
+                                                visit_st.close();
+    }
+
+
                                             catch(Exception e){
                                                 e.printStackTrace();
                                             }
