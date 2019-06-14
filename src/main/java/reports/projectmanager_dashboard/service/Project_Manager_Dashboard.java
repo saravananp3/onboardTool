@@ -62,6 +62,26 @@ public class Project_Manager_Dashboard {
             infoJson.addProperty(key, applive_count);
             logger.info("json obj----->" + infoJson);
             infoJson.addProperty("AppInDevelopmentCount",appindev_count);
+            String ProjectQuery="select * from appemphazize_applicationinfo where prjname= '"+projectname+"';";
+            Statement st1=connection.createStatement();
+            ResultSet rs1=st1.executeQuery(ProjectQuery);
+            String app_in_appem="";
+            while(rs1.next())
+            {
+                app_in_appem+=rs1.getString(1)+",";
+
+            }
+            String[] app_in_appem_arr=app_in_appem.substring(0,app_in_appem.length()-1).split(",");
+            String apps_in_drop_down="";
+            for(int j=0;j<app_in_appem_arr.length;j++)
+            {
+                if(applicationname.contains(app_in_appem_arr[j]))
+                {
+                    apps_in_drop_down+=app_in_appem_arr[j]+",";
+                }
+            }
+            apps_in_drop_down=apps_in_drop_down.substring(0,apps_in_drop_down.length()-1);
+            infoJson.addProperty("AppDropdown",apps_in_drop_down);
             connection.close();
             app_count_stat.close();
             app_count_resultset.close();
