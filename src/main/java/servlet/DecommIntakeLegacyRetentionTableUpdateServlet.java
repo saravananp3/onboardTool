@@ -20,7 +20,7 @@ public class DecommIntakeLegacyRetentionTableUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      String ProjectName=request.getParameter("ProjectName");
      String ApplicationName=request.getParameter("ApplicationName");
-        JsonObject jsonObject=new JsonObject();
+     JsonObject jsonObject=new JsonObject();
      try
      {
          DBconnection dBconnection = new DBconnection();

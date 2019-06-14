@@ -660,6 +660,20 @@
 </script>
 
 <script>
+    function UpdateTable(){
+        var url_string=window.location.href;
+        var url = new URL(url_string);
+        var appname = url.searchParams.get("appname");
+        var projname=url.searchParams.get("prjname");
+        console.log("application name",appname,"project name ",projname);
+        var f=document.TableSubmitForm;
+        f.method="post";
+        f.action="DecommManageExecutionInfoServlet?ProjectName="+projname+"&ApplicationName="+appname+"&RoleName="+check1+"&RowLength="+rowlength;
+        f.submit();
+    }
+</script>
+
+<script>
     // Add active class to the current button (highlight it)
     var header = document.getElementById("myDIV");
     var btns = header.getElementsByClassName("btn");

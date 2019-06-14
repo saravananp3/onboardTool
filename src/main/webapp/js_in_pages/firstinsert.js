@@ -23,6 +23,6 @@ function decomm_manage_edit(id){
     var projectname=projectnamesplit.split("-");
     var f=document.form;
     f.method="post";
-    f.action='DecommManageExecutionInfo.jsp?appname='+id+'&projectname='+projectname[1];
+    f.action='DecommManageExecutionInfoServlet?appname='+id+'&projectname='+projectname[1];
     f.submit();
 }

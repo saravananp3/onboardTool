@@ -251,205 +251,8 @@
                                     <div id="collapse2" class="panel-collapse">
                                         <div class="panel-body text-left">
                                             <form name="LegacyForm">
-                                                <div class="form-group retention_code">
-                                                    <label class="control-label " for="formInput198">Decommission Target ID
-
-                                                    </label>
-
-                                                    <input type="text" class="form-control" id="decommission_target_id" placeholder="Decommission Target ID" name="decommission_target_id" >
+                                                <div id="inputFields">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="control-label " for="formInput198">Decommission Status
-
-                                                    </label>
-                                                    <select style="width:100%;">
-                                                        <option value="Opportunity">Opportunity</option>
-                                                        <option value="Active">Active</option>
-                                                        <option value=Complete>Complete</option>
-                                                        <option value="Cancelled">Cancelled</option>
-
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label " for="formInput198">Project Number
-
-                                                    </label>
-                                                    <input type="text" class="form-control" id="project_number" placeholder="Project Number " name="project_number" >
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label " for="formInput198"> Project Name
-
-                                                    </label>
-                                                    <input type="text" class="form-control" id="project_name" placeholder="Project Name " name="project_name" >
-                                                </div>
-                                                <!-- Table Info -->
-
-                                                <div class="form-group">
-                                                    <label class="control-label " for="formInput198">Application Name
-
-                                                    </label>
-                                                    <input type="text" class="form-control" id="application_name" placeholder="Application Name"  name="application_name" >
-
-                                                </div>
-
-                                                <!--End of Table Info -->
-                                                <div class="form-group=">
-                                                    <label class="control-label " for="formInput198">Application ID
-
-                                                    </label>
-                                                    <input type="text" class="form-control" id = "application_id" placeholder="Application ID" name = "application_id">
-
-                                                </div>
-
-                                                <div>
-                                                    <label class="control-label " for="formInput198">Service Name
-
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="service_name" placeholder="Service Name" name = "service_name">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Service ID
-
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="service_id" placeholder="Service ID" name = "service_id">
-
-
-                                                </div>
-                                                <br>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Version
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="version" placeholder="Version" name = "version">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Manufacturer
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="manufacture" placeholder="Manufacture" name = "manufacture">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Tier Level
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="tier_level" placeholder="Tier Level" name = "tier_level">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Segment
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="segment" placeholder="Segment" name = "segment">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">GL Code
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="gl_code" placeholder="GL Code" name = "gl_code">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Hosting Method
-                                                    </label>
-                                                    <select style="width:100%;">
-                                                        <option value="Local">Local</option>
-                                                        <option value="Cloud">Cloud</option>
-                                                        <option value="Server">Server</option>
-                                                        <option value="Web">Web</option>
-                                                        <option value="Internal">Internal</option>
-                                                        <option value="External">External</option>
-                                                        <option value="Private Cloud IAAS">Private Cloud IAAS</option>
-                                                        <option value="Private Cloud PAAS">Private Cloud PAAS</option>
-                                                        <option value="Public Cloud IAAS">Public Cloud IAAS</option>
-                                                        <option value="Public Cloud PAAS">Public Cloud PAAS</option>
-                                                        <option value="Public Cloud SAAS">Public Cloud SAAS</option>
-
-                                                    </select>
-
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Business Owner
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="business_owner" placeholder="Business Owner" name = "business_owner">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Application Owner
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="application_owner" placeholder="Application Owner" name = "application_owner">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Service Owner
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="service_owner" placeholder="Service Owner" name = "service_owner">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">IT Development Owner
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="version" placeholder="IT Development Owner" name = "it_development_owner">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Operational Support Owner
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="operational_support_owner" placeholder="Operational Support Owner" name = "operational_support_owner">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Lead
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="lead" placeholder="Lead" name = "lead">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Other Contacts
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="other_contacts" placeholder="Other Contacts" name = "other_contacts">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Production Deployed Date
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="production_deployed_date" placeholder="Production Deployed Date" name = "production_deployed_date">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Retention Review Status
-                                                    </label>
-                                                    <select style="width:100%;">
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Content/Data Owner
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="content" placeholder="Content" name = "content">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Migration Completion Date
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="migration_completion_date" placeholder="MM/DD/YYYY" name = "migration_completion_date">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Data Classification Type
-                                                    </label>
-                                                    <select style="width:100%;">
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Legal Review Status
-                                                    </label>
-                                                    <select style="width:100%;">
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Reviewer
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="reviewer" placeholder="Reviewer" name = "reviewer">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Legal Hold if Any
-                                                    </label>
-                                                    <input type ="text" class="form-control" id="legal_hold_if_any" placeholder="Legal Hold if Any" name = "legal_hold_if_any">
-                                                </div>
-                                                <div>
-                                                    <label class="control-label" for="formInput198">Brief Description
-                                                    </label>
-                                                    <textarea maxlength="120" style="width:100%;">
-                                                </textarea>
-                                                </div>
-                                                <br>
-                                                <br>
-
                                                 <!-- <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button> -->
                                                 <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="">Add</button>
                                                 <button type="button" style="margin:5px;" class="btn btn-warning pull-left" onclick="">Modify</button>
@@ -503,7 +306,146 @@
 
 </div>
 
+<script>
+    var url_string=window.location.href;
+    var url = new URL(url_string);
+    var appname = url.searchParams.get("appname");
+    var projname=url.searchParams.get("projectname");
+    console.log("Application:",appname,"Project:",projname);
+    $(document).ready(function(){
+        $.ajax({
+            url: "DecommManageExecuteInfoDataRetrieveServlet",
+            type: 'POST',
+            data: {ApplicationName:appname,ProjectName: projname},
+            dataType: "json",
+            success: function (data) {
+                console.log("Data Retrieve json array----->",data);
+                if (!$.isArray(data)) {
+                    data = [data];
+                }
 
+                $.each(data, function(key, value){
+                    /*console.log("FULL NAME " + value.Type);*/
+                    var manadatory="class='required_fie'";
+                    var Type=value.Type;
+                    var ColumnName=value.ColumnName;
+                    var LabelName=value.LabelName;
+                    var Value=value.Value;
+                    //var options=data[i].options.split(',');
+                    if(value.Mandatory=="No")
+                    {
+                        manadatory="";
+                    }
+                    if(Type=="Text box")
+                    {
+                        var inputtext="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            "<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
+                            "</div>";
+                        $('#inputFields').append(inputtext);
+                    }
+                    else if(Type=="Datepicker")
+                    {
+                        var inputdate="<div class='form-group'>" +
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
+                            "</div>";
+                        $('#inputFields').append(inputdate);
+
+                    }
+                    else if(Type=="Dropdown")
+                    {
+                        var inputdrop= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                            "<select style = 'width:100%;' name='"+ColumnName+"'>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=sub_option.split(",");
+                        for(var i=0;i<option.length;i++) {
+                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'formInput198' >" + option[i] + "</option>";
+                        }
+                        inputdrop +="</select></div>";
+                        $('#inputFields').append(inputdrop);
+
+                    }
+                    else if(Type=="Check box")
+                    {
+                        var inputcheck= "<div class='form-group'>"+
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=sub_option.split(",");
+                        for (var i=0; i<option.length; i++) {
+
+                            inputcheck += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='"+ColumnName+"'/>" +
+                                option[i]+"</label>";
+                        }
+                        inputcheck +="</div>";
+                        $('#inputFields').append(inputcheck);
+
+                    }
+                    else if(Type=="Radio box")
+                    {
+                        var inputdrop= "<div class='form-group'>"+
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=sub_option.split(",");
+                        for (var i=0; i<option.length; i++){
+                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+ColumnName+"'/>"+
+                                option[i]+"</label>";
+                        }
+                        inputdrop +="</div>";
+                        $('#inputFields').append(inputdrop);
+
+                    }
+                    else if(Type=="file")
+                    {
+                        inputfile="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div class='required_fie'>"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
+                            "<input type='file' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'>\n" +
+                            "</div>";
+                        $('#inputFields').append(inputfile);
+
+                    }
+                });
+                var script="<script>$('.datepicker1').datepicker({\n" +
+                    "format: \"mm/dd/yyyy\",\n"+
+                    "autoclose: true\n"+
+                    "});<\/script>";
+                script+="<script>\n" +
+                    "$('.editpopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.editpopup');"+
+                    "$('#seq_num').val(seqnum);"+
+                    "modal1.style.display = \"block\";\n" +
+                    "});"+
+                    "<\/script>";
+                script+="<script> $('.deletepopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.deletepopup');"+
+                    "$('#sequence1').val(seqnum);"+
+                    "modal2.style.display = \"block\";\n" +
+                    "});<\/script>";
+                $('#scripttag').append(script);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+</script>
+
+<%--<script>
+    function UpdateTable (){
+        var url_string=window.location.href;
+        var url = new URL(url_string);
+        var appname = url.searchParams.get("appname");
+        var projname=url.searchParams.get("prjname");
+        console.log("application name",appname,"project name ",projname);
+        var f=document.TableSubmitForm;
+        f.method="post";
+        f.action="DecommManageExecutionInfoServlet?ProjectName="+projname+"&ApplicationName="+appname+"&RoleName="+check1+"&RowLength="+rowlength;
+        f.submit();
+    }
+    </script>--%>
 
 <script src="js/prism/prism.js"></script>
 <script src="js/waypoint/waypoints.min.js"></script>
