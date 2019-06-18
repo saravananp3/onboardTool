@@ -29,8 +29,8 @@ public class DocusignUtility {
     private static final String BaseUrl = "https://demo.docusign.net/restapi";
     private static final String IntegratorKey = "9a87f67e-1079-44b2-9309-f64ed4a4cc6e";
     private static final String UserId = "82ee6844-85fd-4716-986f-f8a4b6921c22";
-    private static final String publicKeyFilename = "E:\\office project\\onboard_tool\\src\\main\\webapp\\docs\\publickey.txt";
-    private static final String privateKeyFilename = "E:\\office project\\onboard_tool\\src\\main\\webapp\\docs\\privatekey.txt";
+    private static final String publicKeyFilename = "E:\\office project\\onboarding_tool\\src\\main\\webapp\\docs\\publickey.txt";
+    private static final String privateKeyFilename = "E:\\office project\\onboarding_tool\\src\\main\\webapp\\docs\\privatekey.txt";
 
     public void requestIndividualDocumentSigning(ByteArrayOutputStream fileOutputStream, Map.Entry<String, String> users) {
         logger.info("\nRequestASignatureTest:\n" + "===========================================");
