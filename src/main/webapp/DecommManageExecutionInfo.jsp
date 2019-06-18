@@ -84,8 +84,95 @@
 
 
 
-</style>
+    #myModal1 {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
 
+    /* Modal Content */
+    #modal-content1 {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        height: 50%;
+        overflow: scroll;
+    }
+    #myModaldelete {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    #modal-contentdelete1 {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        height: 50%;
+        overflow: scroll;
+    }
+    /* The Modal (background) */
+    #myModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    #modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        height: 70%;
+        overflow: scroll;
+
+    }
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
 <body class="top-navbar-fixed">
 
 
@@ -250,16 +337,15 @@
                                     </div>
                                     <div id="collapse2" class="panel-collapse">
                                         <div class="panel-body text-left">
-                                            <form name="LegacyForm">
+                                            <form name="DecommManageExecuteForm">
                                                 <div id="inputFields">
                                                 </div>
                                                 <!-- <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button> -->
-                                                <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="">Add</button>
-                                                <button type="button" style="margin:5px;" class="btn btn-warning pull-left" onclick="">Modify</button>
+                                                <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" >Add</button>
+                                                <button type="button" style="margin:5px;" class="btn btn-warning pull-left" id="Modifybtn">Modify</button>
                                             </form>
 
-                                            <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="visible_del"
-                                                    onclick="">Delete
+                                            <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="Deletebtn">Delete
                                             </button>
 
                                             <button type="button" class="btn btn-primary pull-right" onclick="Submit();">Save & Continue</button>
@@ -305,13 +391,585 @@
 </div>
 
 </div>
+<div id="myModal" class="modal">
 
+    <!-- Modal content -->
+    <div id="modal-content">
+        <span class="close">&times;</span>
+        <form name="PopUpform">
+            <div id="scrollbar">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Label:</label>
+                            <input type="text" class="form-control" id="label"  name="label" required>
+                        </div>
+                    </div>
+                </div><br/>
+                <input type="hidden" id="project_name" name="project_name" value="">
+
+                <input type="text" id="appln_name" name="appln_name" value="" style="display:none;">
+                <input type="text" id="servlet_name" name="servlet_name" value="" style="display:none;">
+
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Column name:</label>
+                            <input type="text" class="form-control" id="idname"  name="idname" required>
+                        </div>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Type:</label>
+                            <select id="types" class="form-control" name="types" required >
+                                <option value="Text box">Text box</option>
+                                <option value="Check box">Check box</option>
+                                <option value="Radio box">Radio box</option>
+                                <option value="Dropdown">Dropdown</option>
+                                <option value="Datepicker">Datepicker</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row hidefield" id="check" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of check boxes:</label>
+                            <input type="text" class="form-control" id="number"  name="number1">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row hidefield" id="rdo" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Radio boxes:</label>
+                            <input type="text" class="form-control" id="radio_number"  name="radio_number">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row hidefield" id="drop" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Options:</label>
+                            <input type="text" class="form-control" id="drop_number"  name="drop_number" onChange="drp_dwn()">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="options">
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Mandatory:</label>
+                            <select id="mandatory" class="form-control" name="mandatory" required >
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+            </div>
+        </form>
+        <button type="button" id="submit" class="btn btn-primary" >Submit</button>
+        <button type="button" onclick="window.location.href=''" class="btn btn-default">Cancel</button>
+    </div>
+</div>
+<div id="myModal1" class="modal">
+
+    <!-- Modal content -->
+    <div id="modal-content1">
+
+        <span class="close">&times;</span>
+        <form name="ModifyPopupForm">
+            <div id="scrollbar1">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Label:</label>
+                            <input type="text" class="form-control" id="Label_modify"  name="label" required>
+                        </div>
+                    </div>
+                </div><br/>
+                <input type="text" id="seq_num" name="" value="" style="display:none;">
+                <%--      &lt;%&ndash;<input type="hidden" id="project_name1" name="project_name" value="">
+
+                      <input type="text" id="appln_name1" name="appln_name" value="" style="display:none;">
+                      <input type="text" id="servlet_name1" name="servlet_name" value="" style="display:none;">&ndash;%&gt;
+                      <input type="text" id="seq_num" name="" value="" style="display:none;">
+
+
+                      <br/>
+                      <div class="row">
+                          <div class="form-group">
+                              <div class="col-lg-8">
+                                  <label class="control-label" for="formInput526">Type:</label>
+                                  <select id="types_modify" class="form-control" name="types" required >
+                                      <option value="Text box">Text box</option>
+                                      <option value="Check box">Check box</option>
+                                      <option value="Radio box">Radio box</option>
+                                      <option value="Dropdown">Dropdown</option>
+                                      <option value="Datepicker">Datepicker</option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row hidefield" id="check1" style="display:none;">
+                          <div class="form-group">
+                              <div class="col-sm-4">
+                                  <label class="control-label" for="formInput526">Number of check boxes:</label>
+                                  <input type="text" class="form-control" id="CheckboxNumberModify"  name="number1">
+                              </div>
+                          </div>
+                          <br/>
+                      </div>
+                      <div class="row hidefield" id="rdo1" style="display:none;">
+                          <div class="form-group">
+                              <div class="col-sm-4">
+                                  <label class="control-label" for="formInput526">Number of Radio boxes:</label>
+                                  <input type="text" class="form-control" id="RadioNumberModify"  name="radio_number">
+                              </div>
+                          </div>
+                          <br/>
+                      </div>
+                      <div class="row hidefield" id="drop1" style="display:none;">
+                          <div class="form-group">
+                              <div class="col-sm-4">
+                                  <label class="control-label" for="formInput526">Number of Options:</label>
+                                  <input type="text" class="form-control" id="OptionsNumberModify"  name="drop_number" onChange="drp_dwn()">
+                              </div>
+                          </div>
+                          <br/>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group">
+                              <div class="col-sm-4">
+                                  <div id="checklabel"></div>
+                              </div>
+                          </div>
+                      </div>
+                      <div id="options1">
+                      </div>
+                      <div class="row">
+                          <div class="form-group">
+                              <div class="col-sm-4">
+                                  <div id="demo11"></div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="form-group">
+                              <div class="col-sm-4">
+                                  <div id="demo21"></div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="form-group">
+                              <div class="col-lg-8">
+                                  <label class="control-label" for="formInput526">Mandatory:</label>
+                                  <select id="Mandatory_modify" class="form-control" name="mandatory" required >
+                                      <option>Yes</option>
+                                      <option>No</option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                      <br/><br/>--%>
+            </div>
+        </form>
+        <button type="button" id="submit1" class="btn btn-primary" >Submit</button>
+        <button type="button" onclick="window.location.href=''" class="btn btn-default">Cancel</button>
+
+    </div>
+
+</div>
+<div id="myModaldelete" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-dialog" style="width:2000px">
+        <div id="modal-contentdelete1">
+            <%--<span class="close" style="color:white;">&times;</span>--%>
+            <form name="DeleteForm">
+                <div class="modal-header" style="background-color:rgb(52, 152, 219);">
+                    <h1 style="color:white;">Delete Task</h1>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:24px;">Are you sure, you want to delete this <span id="taskdelete"
+                                                                                           style="font-size:24px;"></span>
+                    <p style="font-size:24px;">input field permanently?</p>
+                    <input type="hidden" id="sequence1"/>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" id="submit2" class="btn btn-primary" >Yes</button>
+                <button type="button" onclick="window.location.href=''" class="btn btn-default">No</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="scripttag">
+</div>
 <script>
     var url_string=window.location.href;
     var url = new URL(url_string);
     var appname = url.searchParams.get("appname");
     var projname=url.searchParams.get("projectname");
     console.log("Application:",appname,"Project:",projname);
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    // Get the modal
+    var modal1 = document.getElementById("myModal1");
+
+    // Get the button that opens the modal
+    var btn1 = document.getElementsByClassName("editpopup");
+
+    // Get the <span> element that closes the modal
+    var span1= document.getElementsByClassName("close")[1];
+
+    // When the user clicks the button, open the modal
+    $('.editpopup').click(function() {
+        alert("Testing index"+$(this).index('.editpopup'));
+        modal1.style.display = "block";
+    });
+
+    // When the user clicks on <span> (x), close the modal
+    span1.onclick = function() {
+        modal1.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+    }
+    // Get the modal
+    var modal2 = document.getElementById("myModaldelete");
+
+    // Get the button that opens the modal
+    var btn2 = document.getElementsByClassName("deletepopup");
+
+    // Get the <span> element that closes the modal
+    var span2= document.getElementsByClassName("close")[2];
+
+    // When the user clicks the button, open the modal
+    $('.deletepopup').click(function() {
+        alert("Testing index"+$(this).index('.deletepopup'));
+        modal2.style.display = "block";
+    });
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+    $('#Deletebtn').click(function()
+    {
+        $(".hidepencil").hide();
+        $(".hidedelete").toggle();
+    });
+    $('#Modifybtn').click(function()
+    {
+        $(".hidedelete").hide();
+        $(".hidepencil").toggle();
+    });
+
+    $('#submit').click(function() {
+        var labelname = $('#label').val();
+        var columnname = $('#idname').val();
+        var type = $('#types').val();
+        var mandatory = $('#mandatory').val();
+        var num = 1;
+        var options = "";
+        if (type == "Check box") {
+            num = $('#number').val();
+            var length = $('.checkclass').length;
+            for (var i = 1; i <= length; i++) {
+                var checklabel = $('#label' + i).val();
+                options += checklabel + ",";
+            }
+        } else if (type == "Radio box") {
+            num = $('#radio_number').val();
+            var length = $('.radioclass').length;
+            for (var i = 1; i <= length; i++) {
+                var radiolabel = $('#Rlabel' + i).val();
+                options += radiolabel + ",";
+            }
+
+        } else if (type == "Dropdown") {
+            num = $('#drop_number').val();
+            var length = $('.dropclass').length;
+            for (var i = 1; i <= length; i++) {
+                var drplabel = $('#drp_label' + i).val();
+                options += drplabel + ",";
+            }
+
+        }
+        $.ajax({
+            url: "DecommManagerAddServlet",
+            type: 'POST',
+            data: {ApplicationName:appname,ProjectName: projname,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Number:num,Options:options},
+            dataType: "json",
+            success: function (data) {
+                var required = "";
+                console.log("data add---->",data);
+                var num=parseInt($('.editpopup').length)+1;
+                var required_field = "";
+                if (data.Mandatory == "Yes"){
+                    required_field = "class = 'required_fie'";
+                }
+                if (data.CheckExistance == true)
+                {
+                    alert("Alredey Label or Column name Existed ");
+                }
+                else if(data.Type=="Text box")
+                {
+                    var inputtext="<div class='form-group'>"+
+                        "<label class='control-label' for='formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                        "<input type='text' class='form-control' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
+                        "</div>";
+                    $('#inputFields').append(inputtext);
+                }
+                else if(data.Type=="Datepicker")
+                {
+                    var inputdate="<div class='form-group'>"+
+                        "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                        "<input type='text' class='form-control datepicker1' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
+                        "</div>";
+                    $('#inputFields').append(inputdate);
+                    var script="<script>$('.datepicker1').datepicker({\n" +
+                        "format: \"mm/dd/yyyy\",\n" +
+                        "autoclose: true\n" +
+                        "});<\/script>";
+                    $('#scripttag').append(script);
+                }
+                else if(data.Type=="Radio box")
+                {
+                    var input="";
+                    input+= "<div class='form-group'>"+
+                        "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                    var Options=data.Options;
+                    var sub_option = Options.substring(0, Options.length - 1);
+                    var option=sub_option.split(",");
+                    for (var i=0; i<option.length; i++){
+
+                        input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
+                            option[i]+"</label>";
+
+                    }
+                    input +="</div>";
+                    $('#inputFields').append(input);
+                }
+                else if(data.Type=="Check box")
+                {
+                    var input="";
+                    input+= "<div class='form-group'>"+
+                        "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                    var Options=data.Options;
+                    var sub_option = Options.substring(0, Options.length - 1);
+                    var option=sub_option.split(",");
+                    for (var i=0; i<option.length; i++) {
+
+                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='" + data.ColumnName+num+"'/>" +
+                            option[i] + "</label>";
+                    }
+                    input +="</div>";
+                    $('#inputFields').append(input);
+                }
+                else if(data.Type=="Dropdown")
+                {
+                    var select="";
+                    select+= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                        "<select style = 'width:100%;' name = "+data.ColumnName+num+">";
+                    var Options=data.Options;
+                    var sub_option = Options.substring(0, Options.length - 1);
+                    var option=sub_option.split(",");
+                    for(var i=0;i<option.length;i++) {
+                        select += "<option label=" + option[i] + " class='control-label' for= 'formInput198' >" + option[i] + "</option>";
+                    }
+                    select +="</select></div>";
+                    $('#inputFields').append(select);
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+        /* var f=document.PopUpform;
+         f.method="post";
+         f.action="DecommLegacyRetentionAddServlet?ProjectName"+projname+"&ApplicationName="+appname+"&LabelName="+labelname+"&ColumnName="+columnname+"&type="+type+"&mandatory="+mandatory;
+         f.submit();*/
+        //alert("values---> label name"+labelname+" column name"+columnname+" type"+type+" manadatory"+mandatory);
+    });
+    $('#submit1').click(function() {
+        var labelmodify = $('#Label_modify').val();
+        /*var Type = $('#types_modify').val();
+        var number = 0;
+        var options=[];
+        if (Type == "Check box") {
+            number = $('#CheckboxNumberModify').val();
+            var length=$('.checkclass1').length;
+            for(var i=0;i<length;i++)
+            {
+                options[i]=$('#LabelModify'+(i+1)).val();
+            }
+
+        } else if (Type == "Radio box") {
+            number = $('#RadioNumberModify').val();
+            var length=$('.radioclass1').length;
+            for(var i=0;i<length;i++)
+            {
+                options[i]=$('#RlabelModify'+(i+1)).val();
+            }
+        } else if (Type == "Dropdown") {
+            number = $('#OptionsNumberModify').val();
+            var length=$('.dropclass1').length;
+            for(var i=0;i<length;i++)
+            {
+                options[i]=$('#drp_labelModify'+(i+1)).val();
+            }
+        }
+        var mandatory = $('#Mandatory_modify').val();*/
+        var seqnum = parseInt($('#seq_num').val())+1;
+
+        var f=document.ModifyPopupForm;
+        f.method="post";
+        f.action="DecommManagerModifyServlet?ProjectName="+projname+"&ApplicationName="+appname+"&Seq_num="+seqnum+"&Label="+labelmodify;
+        f.submit();
+        /*$.ajax({
+            url: "DecommIntakeEditOperationServlet",
+            type: 'POST',
+            data: {ApplicationName: appname, ProjectName: projname,Seq_num:seqnum,Mandatory:mandatory,Type:Type,Label:labelmodify},
+            dataType: "json",
+            success: function (data) {
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });*/
+    });
+    $('#submit2').click(function(){
+        var deleteseq=parseInt($('#sequence1').val())+1;
+        var f=document.DeleteForm;
+        f.method = "post";
+        f.action = "DecommManagerDeleteServlet?ApplicationName="+appname+"&ProjectName="+projname+"&DeleteNumber="+deleteseq;
+        f.submit();
+    });
+        </script>
+<script>
+    $('#types').change(function()
+    {
+        var type=$('#types').val();
+        //alert('Type--> '+type);
+        $(".hidefield").hide();
+        if(type=="Check box")
+        {
+            $('#check').show();
+
+
+        }
+        else if(type=="Radio box")
+        {
+            $('#rdo').show();
+
+        }
+        else if(type=="Dropdown")
+        {
+            $('#drop').show();
+        }
+        //alert('types--->'+type);
+    });
+    $('#radio_number').change(function(){
+        var count=$('#radio_number').val();
+        var s="";
+        for(var i=1;i<=count;i++) {
+            s += '<label class="hidefield">Radiobox Label' + i + ':</label><input type="text" class="form-control hidefield radioclass" id="Rlabel'+i+'" name="Rlabel' + i + '"><br/>'; //Create one textbox as HTML
+        }
+        $('#options').html(s);
+    });
+    $('#number').change(function()
+    {
+        var count=$('#number').val();
+        var s="";
+        for(var i = 1; i <=count; i++) {
+            s+= '<label class="hidefield">Checkbox Label'+i +':</label><input type="text" class="form-control hidefield checkclass" id="label'+i+'" name="label'+i+'"><br/>'; //Create one textbox as HTML
+        }
+        $('#options').html(s);
+    });
+    $('#drop_number').change(function()
+    {
+        var drop=$('#drop_number').val();
+        /*console.log('drop---> '+drop);
+        alert('drop---> '+drop);*/
+        var s="";
+        for(var i=1;i<=drop;i++)
+        {
+            s+='<label class="hidefield">Options Label'+i +':</label><input type="text" class="form-control hidefield dropclass" id="drp_label'+i+'" name="drp_label'+i+'"><br/>';
+        }
+        $('#options').html(s);
+    });
+</script>
+<script>
     $(document).ready(function(){
         $.ajax({
             url: "DecommManageExecuteInfoDataRetrieveServlet",
@@ -407,6 +1065,16 @@
                         $('#inputFields').append(inputfile);
 
                     }
+                    else if(Type=="Text area")
+                    {
+                        var inputtext="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
+                             "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'></textarea>"+
+                            "</div>";
+                        $('#inputFields').append(inputtext);
+                    }
+
                 });
                 var script="<script>$('.datepicker1').datepicker({\n" +
                     "format: \"mm/dd/yyyy\",\n"+
@@ -421,6 +1089,7 @@
                     "<\/script>";
                 script+="<script> $('.deletepopup').click(function() {\n" +
                     "var seqnum=$(this).index('.deletepopup');"+
+                        "alert('sequence number '+seqnum);"+
                     "$('#sequence1').val(seqnum);"+
                     "modal2.style.display = \"block\";\n" +
                     "});<\/script>";
@@ -431,6 +1100,14 @@
             }
         });
     });
+    function Submit(){
+        //alert("Hello");
+        var classlength = $('.editpopup').length;
+        var f = document.DecommManageExecuteForm;
+        f.method = "post";
+        f.action = "DecommManageExecuteDbUpdateServlet?appname="+appname+"&prjname="+projname+"&classlength="+classlength;
+        f.submit();
+    }
 </script>
 
 <%--<script>
