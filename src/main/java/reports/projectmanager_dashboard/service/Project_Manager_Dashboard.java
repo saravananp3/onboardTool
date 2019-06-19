@@ -1,5 +1,6 @@
 package reports.projectmanager_dashboard.service;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import onboard.DBconnection;
 import org.apache.log4j.Logger;
@@ -90,6 +91,69 @@ public class Project_Manager_Dashboard {
         }
         return infoJson;
 
+    }
+    public static JsonArray ProjectManagerDashboardTeamMembers(String projectname, String Applicationname, String Role)
+    {
+        JsonArray jsonArray=new JsonArray();
+        try
+        {
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            JsonObject json=new JsonObject();
+            json.addProperty("Roles",Role);
+            jsonArray.add(json);
+            if(Role.equals("All"))
+            {
+                JsonObject json1=new JsonObject();
+                String[] Roles={"ArchivalProjectManager","ArchivalProgramManager","LegacyProgramManager","ArchivalAdmin","LegacyTechnicalSME","LegacyBusinessSME","ArchivalBusinessAnalyst","ArchivalTechnicalLead","ArchivalDeveloper","TestLead"};
+                for(int i=0;i<Roles.length;i++)
+                {
+                    String AllRoles="select * from Admin_UserDetails where projects like '%"+projectname+"%' and application like '%"+Applicationname+"%' and roles='"+Roles[i]+"'";
+                    Statement st=connection.createStatement();
+                    ResultSet rs=st.executeQuery(AllRoles);
+                    if(rs.next())
+                    {
+                        JsonObject jsonrole=new JsonObject();
+                        int j=1;
+                        json1.addProperty(rs.getString("roles")+j,rs.getString("uname"));
+                        j++;
+                        while(rs.next())
+                        {
+                            json1.addProperty(rs.getString("roles")+j,rs.getString("uname"));
+                            j++;
+                        }
+                    }
+                }
+                jsonArray.add(json1);
+            }
+            else
+            {
+                JsonObject json1=new JsonObject();
+                String SelectedRole="select * from Admin_UserDetails where projects like '%"+projectname+"%' and application like '%"+Applicationname+"%' and roles='"+Role+"'";
+                Statement st1=connection.createStatement();
+                ResultSet rs1=st1.executeQuery(SelectedRole);
+                JsonObject json2=new JsonObject();
+                if(rs1.next())
+                {
+                    int j=1;
+                    json2.addProperty(rs1.getString("roles")+j,rs1.getString("uname"));
+                    j++;
+                    while(rs1.next())
+                    {
+                        json2.addProperty(rs1.getString("roles")+j,rs1.getString("uname"));
+                        j++;
+                    }
+                }
+                jsonArray.add(json2);
+                System.out.println("sample---->"+jsonArray);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("Exception---------[info]--------"+e);
+        }
+        return jsonArray;
     }
 
 }

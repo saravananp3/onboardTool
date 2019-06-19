@@ -33,6 +33,10 @@
     <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" type="text/css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet"/>
+
 </head>
 
 <body class="top-navbar-fixed">
@@ -41,6 +45,7 @@
     String prjname = (String) details.getAttribute("nameofproject");
     //String appname = (String) session.getAttribute("appidd");
     String appname = (String) details.getAttribute("applications");
+    String role = (String) details.getAttribute("role");
 
 %>
 
@@ -541,7 +546,7 @@
                                                                         <th>Assigned To</th>
                                                                         <th>StartDate</th>
                                                                         <th>End Date</th>
-                                                                       <%-- <th>Read Only Date </th>--%>
+                                                                        <%-- <th>Read Only Date </th>--%>
                                                                         <th>Status</th>
 
 
@@ -651,34 +656,127 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-5">
+
+
+
+
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+
+                                                                <div class="panel">
+                                                                    <div class="header">
+                                                                        <h4 class="title">Team Members</h4>
+                                                                        <div class="col-md-7">
+                                                                            <div class="form-group row">
+                                                                                <label class="col-sm-9 col-form-label"><div class="required_fie">Role Name</div></label>
+                                                                                <div class="col-sm-20">
+                                                                                    <select id="dates-field2"
+                                                                                            class="selectpicker multiselect-ui form-control dropdown"
+                                                                                            data-show-subtext="true"
+                                                                                            data-live-search="true"
+                                                                                            &lt;%&ndash;multiple="multiple" &ndash;%&gt;>
+                                                                                        <option data-subtext="All">
+                                                                                            All
+                                                                                        </option>
+                                                                                        <option data-subtext="Archival Admin">
+                                                                                            ArchivalAdmin
+                                                                                        </option>
+                                                                                        <option data-subtext="Legacy Technical SME">
+                                                                                            LegacyTechnicalSME
+                                                                                        </option>
+                                                                                        <option data-subtext="Legacy Business SME">
+                                                                                            LegacyBusinessSME
+                                                                                        </option>
+                                                                                        <option data-subtext="Archival Program Manager">
+                                                                                            ArchivalProgramManager
+                                                                                        </option>
+                                                                                        <option data-subtext="Archival Project Manager">
+                                                                                            ArchivalProjectManager
+                                                                                        </option>
+                                                                                        <option data-subtext="Legacy Program Manager">
+                                                                                            LegacyProgramManager
+                                                                                        </option>
+                                                                                        <option data-subtext="Archival Business Analyst">
+                                                                                            ArchivalBusinessAnalyst
+                                                                                        </option>
+                                                                                        <option data-subtext="Archival Technical Lead">
+                                                                                            ArchivalTechnicalLead
+                                                                                        </option>
+                                                                                        <option data-subtext="Archival Developer">
+                                                                                            ArchivalDeveloper
+                                                                                        </option>
+                                                                                        <option data-subtext="Test Lead">TestLead</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-7">
+                                                                            <div class="form-group row">
+                                                                                <label class="col-sm-9 col-form-label"><div class="required_fie">Application Name</div></label>
+                                                                                <div class="col-sm-20">
+                                                                                    <select id="application_name" name="application_name"
+                                                                                            class="selectpicker multiselect-ui form-control dropdown"
+                                                                                            data-show-subtext="true"
+                                                                                            data-live-search="true"
+                                                                                            &lt;%&ndash;multiple="multiple" &ndash;%&gt;>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="panel-body">
+
+                                                                        <table id="datatable" class="table table-striped">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Role Name</th>
+                                                                                <th>User Name</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody id="RoleId">
+                                                                             </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
-
-
                                         </div>
-                                        <!-- /.container-fluid -->
+
 
                                     </div>
+                                    <!-- /.container-fluid -->
+
                                 </div>
                             </div>
                         </div>
-
-
-                    </section>
-                    <%--<footer class="footer">
-                        <div class="container-fluid">
-                            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.platform3solutions.com/" target="_blank">Platform3solutions.com</a>. All rights reserved.</span>
-                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
-                        </div>
-                    </footer>--%>
-
                 </div>
 
 
+                </section>
+                <%--<footer class="footer">
+                    <div class="container-fluid">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.platform3solutions.com/" target="_blank">Platform3solutions.com</a>. All rights reserved.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
+                    </div>
+                </footer>--%>
+
             </div>
-            <!-- /.content-container -->
+
 
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.content-container -->
+
+    </div>
+    <!-- /.content-wrapper -->
 
 
     </div>
@@ -762,6 +860,7 @@
             href="#" target="_blank" data-notify="url"></a></div>
     <input type="hidden" id="projectname" name="projectname" value="<%=prjname%>">
     <input type="hidden" id="appname" name="appname" value="<%=appname%>">
+    <input type="hidden" id="role" name="role" value="<%=role%>">
     <script>
         $(function () {
 
@@ -825,40 +924,122 @@
             //alert("efdsx");
             $('#sample').DataTable();
         });
-
+        /*$(document).ready(function () {
+            //alert("efdsx");
+           var table= $('#datatable').DataTable();
+        });*/
+        /*$('#application_name').on('change', function(){
+            alert("sample---->");
+            table.search(this.value).draw();
+        });*/
     </script>
     <script type="application/javascript">
         $(document).ready(function () {
-            //var projname=$('#projname').val();
-           // var appname=$('#appname').val();
-            //var projectname=$('#projectname').val();
             var projectname=document.getElementById("projectname").value;
-            /*var arrprojectname=projectname.split(',');*/
             var applicationname=document.getElementById("appname").value;
-          /*  var a1=new Array();
-            a1=applicationname.split(",");
-            document.write(a1.join(" <br> "));*/
-            /*var arrapplication=applicationname.split(",");*/
-
+            var select = $('#application_name');
+            select.empty();
             $.ajax({
                 url: 'Project_Manager_Servlet',
                 type: 'post',
                 data: {appname:applicationname,projectname: projectname},
                 dataType: 'json',
                 success: function (data) {
-                    /*console.log("card details",data);
-                    //document.getElementById('project_count').innerHTML=data.project_count;
-                    document.getElementById('application_count').innerHTML=data.app_count;
-                    /!*document.getElementById('live_app_count').innerHTML=data.resource_count;*!/*/
                     console.log("card details",data);
                     $('#project_count').html(data.project_count);
                     $('#application_count').html(data.app_count);
                     $('#applive').html(data.live_app_count);
                     $('#appdev').html(data.AppInDevelopmentCount);
-                    //document.getElementById('project_count').innerHTML=data.project_count;
-                    //document.getElementById('application_count').innerHTML=data.app_count;
-                    /*document.getElementById('live_app_count').innerHTML=data.resource_count;*/
+                    var testing=data.AppDropdown;
+                    var option=testing.split(",");
+                    for (var i=0; i<option.length; i++){
+                        $('#application_name').append('<option>' + option[i] + '</option>')
+                    }
+                    var app=$('#application_name').val();
+                    var role=$('#dates-field2').val();
+                    var projectname=document.getElementById("projectname").value;
+                    $.ajax({
+                        url: 'TeamMember',
+                        type: 'post',
+                        data: {appname:app,projectname: projectname,role:role},
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log("datattt---->",data);
+                            if(data[0].Roles=="All")
+                            {
+                                var length = data[1].length;
+                                var role = "";
+                                $.each(data[1], function (key, value) {
+                                    role += "<tr>\n" +
+                                        "<td data-column='Task'>" + key.replace(/[0-9]/g, '') +
+                                        "</td>\n";
+                                    role += "<td data-column='assignedto'>" + value + "</td>\n" +
+                                        "</tr>";
+                                });
+                                $('#RoleId').html(role);
+                            }
+                            else {
+                                var length = data[1].length;
+                                var role = "";
+                                $.each(data[1], function (key, value) {
+                                    role += "<tr>\n" +
+                                        "<td data-column='Task'>" + data[0].Roles +
+                                        "</td>\n";
+                                    role += "<td data-column='assignedto'>" + value + "</td>\n" +
+                                        "</tr>";
+                                });
+                                $('#RoleId').html(role);
+                            }
+                        }
+                    });
+                }
+            });
 
+        });
+        $('.dropdown').change(function()
+        {
+            var app=$('#application_name').val();
+            var role=$('#dates-field2').val();
+            var projectname=document.getElementById("projectname").value;
+            //alert("ans "+app+" "+role);
+            $.ajax({
+                url: 'TeamMember',
+                type: 'post',
+                data: {appname:app,projectname: projectname,role:role},
+                dataType: 'json',
+                success: function (data) {
+                    console.log("datattt---->",data);
+                    if(data[0].Roles=="All")
+                    {
+                        var length = data[1].length;
+                        var role = "";
+                        var j=1;
+                        $.each(data[1], function (key, value) {
+                            if(j%5==0)
+                            {
+                                role+="<div id='divid"+j+"'>";
+                            }
+                            role += "<tr>\n" +
+                                "<td data-column='Task'>" + key.replace(/[0-9]/g, '') +
+                                "</td>\n";
+                            role += "<td data-column='assignedto'>" + value + "</td>\n" +
+                                "</tr>";
+                            j++;
+                        });
+                        $('#RoleId').html(role);
+                    }
+                    else {
+                        var length = data[1].length;
+                        var role = "";
+                        $.each(data[1], function (key, value) {
+                            role += "<tr>\n" +
+                                "<td data-column='Task'>" + data[0].Roles +
+                                "</td>\n";
+                            role += "<td data-column='assignedto'>" + value + "</td>\n" +
+                                "</tr>";
+                        });
+                        $('#RoleId').html(role);
+                    }
                 }
             });
 
@@ -866,6 +1047,7 @@
     </script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 </form>
 </body>
 </html>
