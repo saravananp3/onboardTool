@@ -84,6 +84,8 @@
         statement.executeUpdate(query24);
         String query25 = "CREATE TABLE `Decomm_Manage_Execution_Info`(`seq_num` INTEGER (255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `options` varchar(255) DEFAULT NULL, `label_name` varchar(255) DEFAULT NULL, `column_name` varchar(255) DEFAULT NULL, `type` varchar(255) DEFAULT NULL, `mandatory` varchar(255) DEFAULT NULL, `value` varchar(255) DEFAULT NULL)";
         statement.executeUpdate(query25);
+        String query26 = "CREATE TABLE `Decomm_Manage_Infra_Comp`(`seq_num` INTEGER (255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL,`infra_comp_type` varchar(255) DEFAULT NULL,`comp_name` varchar(255) DEFAULT NULL,`managed_legacy` varchar(255) DEFAULT NULL,`server_app` varchar(255) DEFAULT NULL,`dev` varchar(255) DEFAULT NULL,`test` varchar(255) DEFAULT NULL,`stage` varchar(255) DEFAULT NULL,`prod` varchar(255) DEFAULT NULL,`retired` varchar(255) DEFAULT NULL,`comments` varchar(255) DEFAULT NULL)";
+        statement.executeUpdate(query26);
 
 %>
 <% } catch (Exception ex) {

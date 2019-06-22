@@ -31,6 +31,30 @@
 
 </head>
 <style type="text/css">
+    #myModaldelete {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    #modal-contentdelete1 {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        height: 50%;
+        overflow: scroll;
+    }
     #ScrollBar
     {
         overflow-x: scroll;
@@ -86,7 +110,20 @@
         top: 5px;
     }
 
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
 </style>
 
@@ -254,7 +291,7 @@
                                     </div>
                                     <div id="collapse2" class="panel-collapse">
                                         <div class="panel-body text-left">
-                                            <form name="LegacyForm">
+                                            <form name="InfraComp">
                                                 <div id="ScrollBar">
                                                     <table class="table table-bordered hidetable" id="mytable_infra">
                                                         <tr style="color:white;background-color:DodgerBlue;">
@@ -265,172 +302,34 @@
                                                             <td>
                                                                 <table class="table table-bordered hidetable">
                                                                     <tr style="color:white;background-color:DodgerBlue;">
-                                                                        <td scope="col" style="width:5px; float:center;" colspan="4">ENVIRONMENTS</td>
+                                                                        <td scope="col" style="width:5px; float:center;" colspan="5">ENVIRONMENTS</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td scope="col" style="color:black;">Dev</td>
                                                                         <td scope="col" style="color:black;">Test</td>
                                                                         <td scope="col" style="color:black;">Stage</td>
                                                                         <td scope="col" style="color:black;">Prod</td>
+                                                                        <td scope="col" style="color:black;">Retired?</td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
                                                             <td scope="col" style="color:white;"> Additional Comments</td>
-
-
-
                                                         </tr>
-                                                        <tr>
-                                                            <td> <input type="text" value="" placeholder="Infrastructure Component"> </td>
-                                                            <td> <input type="text" value="" placeholder=" Component Name"> </td>
-                                                            <td>
-                                                                <select style="width:200px; height:34px;">
-                                                                    <option value="Managed">Managed</option>
-                                                                    <option value="Legacy">Legacy</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" value="yes">yes
-                                                                <input type="radio" value="No">No
-                                                            </td>
-                                                            <td>
-                                                                <table>
-                                                                    <tr>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td><textarea maxlength="120"></textarea></td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td> <input type="text" value="" placeholder="Infrastructure Component"> </td>
-                                                            <td> <input type="text" value="" placeholder=" Component Name"> </td>
-                                                            <td>
-                                                                <select style="width:200px; height:34px;">
-                                                                    <option value="Managed">Managed</option>
-                                                                    <option value="Legacy">Legacy</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" value="yes">yes
-                                                                <input type="radio" value="No">No
-                                                            </td>
-                                                            <td>
-                                                                <table>
-                                                                    <tr>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td><textarea maxlength="120"></textarea></td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td> <input type="text" value="" placeholder="Infrastructure Component"> </td>
-                                                            <td> <input type="text" value="" placeholder=" Component Name"> </td>
-                                                            <td>
-                                                                <select style="width:200px; height:34px;">
-                                                                    <option value="Managed">Managed</option>
-                                                                    <option value="Legacy">Legacy</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" value="yes">yes
-                                                                <input type="radio" value="No">No
-                                                            </td>
-                                                            <td>
-                                                                <table>
-                                                                    <tr>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td><textarea maxlength="120"></textarea></td>
-                                                        </tr>
-
-
-                                                        <tr>
-                                                            <td> <input type="text" value="" placeholder="Infrastructure Component"> </td>
-                                                            <td> <input type="text" value="" placeholder=" Component Name"> </td>
-                                                            <td>
-                                                                <select style="width:200px; height:34px;">
-                                                                    <option value="Managed">Managed</option>
-                                                                    <option value="Legacy">Legacy</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" value="yes">yes
-                                                                <input type="radio" value="No">No
-                                                            </td>
-                                                            <td>
-                                                                <table>
-                                                                    <tr>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td><textarea maxlength="120"></textarea></td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td> <input type="text" value="" placeholder="Infrastructure Component"> </td>
-                                                            <td> <input type="text" value="" placeholder=" Component Name"> </td>
-                                                            <td>
-                                                                <select style="width:200px; height:34px;">
-                                                                    <option value="Managed">Managed</option>
-                                                                    <option value="Legacy">Legacy</option>
-                                                                </select>
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" value="yes">yes
-                                                                <input type="radio" value="No">No
-                                                            </td>
-                                                            <td>
-                                                                <table>
-                                                                    <tr>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-                                                                        <td> <input type="text" value=""> </td>
-
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                            <td><textarea maxlength="120"></textarea></td>
-                                                        </tr>
-
 
                                                     </table>
                                                 </div>
+                                            </form>
                                         </div>
 
                                         <!-- <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button> -->
                                         <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="">Add</button>
-                                        <button type="button" style="margin:5px;" class="btn btn-warning pull-left" onclick="">Modify</button>
-                                        </form>
+                                        <button type="button" style="margin:5px;" class="btn btn-warning pull-left" id="modify_id" onclick="">Edit</button>
+                                        <input type = "hidden" value = "false" id = "sam_id"/>
 
-                                        <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="visible_del"
-                                                onclick="">Delete
+                                        <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="visible_del">Delete
                                         </button>
 
-                                        <button type="button" class="btn btn-primary pull-right" onclick="Submit();">Save & Continue</button>
+                                        <button type="button" class="btn btn-primary pull-right" id = "save">Save & Continue</button>
                                     </div>
 
                                     <!--End of Table Info -->
@@ -473,8 +372,249 @@
 </div>
 
 </div>
+<div id="myModaldelete" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-dialog" style="width:2000px">
+        <div id="modal-contentdelete1">
+            <%--<span class="close" style="color:white;">&times;</span>--%>
+            <form name="DeleteForm">
+                <div class="modal-header" style="background-color:rgb(52, 152, 219);">
+                    <h1 style="color:white;">Delete Task</h1>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:24px;">Are you sure, you want to delete this <span id="taskdelete"
+                                                                                           style="font-size:24px;"></span>
+                    <p style="font-size:24px;">input field permanently?</p>
+                    <input type="hidden" id="sequence1"/>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" id="submit2" class="btn btn-primary" >Yes</button>
+                <button type="button" onclick="window.location.href=''" class="btn btn-default">No</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    var url_string=window.location.href;
+    var url = new URL(url_string);
+    var appname = url.searchParams.get("appname");
+    var projname=url.searchParams.get("projectname");
+    console.log("Application:",appname,"Project:",projname);
+    $(document).ready(function(){
+        $.ajax({
+            url: "DecommManageInfraCompDataRetrieveServlet",
+            type: 'POST',
+            data: {ApplicationName:appname,ProjectName: projname},
+            dataType: "json",
+            success: function (data) {
+                console.log("Data Retrieve json array----->",data);
+                    if(data[0].CheckExistance==true){
+                            for(var i=1; i<data.length; i++){
+                                var yes_server_app="";
+                                var no_server_app="";
+                                var yes_retired="";
+                                var no_retired="";
+                                var manage_drop="";
+                                var legacy_drop="";
+                                var style = "";
+                                if(data[i].Server_App=="Yes")
+                                {
+                                    yes_server_app="checked";
+                                }
+                                else {
+                                      no_server_app="checked";
+                                }
+                                if(data[i].Retired=="retired_yes")
+                                {
+                                   yes_retired="checked";
+                                }
+                                else{
+                                   no_retired="checked";
+                                }
+                                if(data[i].Managed_Legacy=="Managed"){
+                                    manage_drop ="selected";
+                                    style = "style = 'display:none;'";
+                                }
+                                else{
+                                    legacy_drop ="selected";
+                                    style = "style = 'display:block;'";
+                                }
+
+                                var tr ="<tr>\n" +
+                                    "<td> <input type='text' value='"+data[i].Infra_Comp_Type+"' name = 'infra_comp"+data[i].Seq_Num+"' placeholder='Infrastructure Component'> </td>\n" +
+                                    "<td> <input type='text' value='"+data[i].Comp_Name+"' name = 'comp_name"+data[i].Seq_Num+"' placeholder=' Component Name'> </td>\n" +
+                                    "<td>\n" +
+                                    "<select style='width:200px; height:34px;' name = 'manage_legacy"+data[i].Seq_Num+"' onchange='manage_legacy(this.name,this.value);'>\n" +
+                                    "<option value='Managed' "+manage_drop+">Managed</option>\n" +
+                                    "<option value='Legacy' "+legacy_drop+">Legacy</option>\n" +
+                                    "</select>\n" +
+                                    "</td>\n" +
+                                    "<td>\n" +
+                                    "<input type='radio' class = 'serverapp"+data[i].Seq_Num+"' value='Yes' "+style+" name = 'server_app"+data[i].Seq_Num+"'"+yes_server_app+"><div class = 'serverapp"+data[i].Seq_Num+"' "+style+">Yes</div>\n" +
+                                    "<input type='radio' class = 'serverapp"+data[i].Seq_Num+"' value='No' "+style+" name = 'server_app"+data[i].Seq_Num+"'"+no_server_app+"><div class = 'serverapp"+data[i].Seq_Num+"' "+style+">No</div>\n" +
+                                    "</td>\n" +
+                                    "<td>\n" +
+                                    "<table>\n" +
+                                    "<tr colspan='5'>\n" +
+                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Dev+"' name='dev"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Test+"' name='test"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Stage+"' name='stage"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Prod+"' name='prod"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td>\n" +
+                                    "<input type='radio' class = 'class_access1' name='retired"+data[i].Seq_Num+"' value='retired_yes' "+yes_retired+" disabled>Yes\n" +
+                                    "<input type='radio' class = 'class_access1' name='retired"+data[i].Seq_Num+"' value='retired_no'"+no_retired+" disabled>No\n" +
+                                    "</td>\n" +
+                                    "\n" +
+                                    "</tr>\n" +
+                                    "</table>\n" +
+                                    "</td>\n" +
+                                    "<td><textarea maxlength='120' name ='textarea"+data[i].Seq_Num+"' >"+data[i].Comments+"</textarea><span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'></span></td>\n" +
+                                    "</tr>";
+                                $('#mytable_infra').append(tr);
+                            }
+                    }
+                    else{
+                        var tr ="<tr>\n" +
+                            "<td> <input type='text' value='' name = 'infra_comp1' placeholder='Infrastructure Component'> </td>\n" +
+                            "<td> <input type='text' value='' name = 'comp_name1' placeholder=' Component Name'> </td>\n" +
+                            "<td>\n" +
+                            "<select style='width:200px; height:34px;' name = 'manage_legacy1' value = '' onchange='manage_legacy(this.name,this.value);'>\n" +
+                            "<option value='Managed'>Managed</option>\n" +
+                            "<option value='Legacy'>Legacy</option>\n" +
+                            "</select>\n" +
+                            "</td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' class = 'serverapp1' value='Yes' "+style+" name = 'server_app1'><div class = 'serverapp1' "+style+">Yes</div>\n" +
+                            "<input type='radio' class = 'serverapp1' value='No' "+style+" name = 'server_app1'><div class = 'serverapp1' "+style+">No</div>\n" +
+                            "</td>\n" +
+                            "<td>\n" +
+                            "<table>\n" +
+                            "<tr colspan='5'>\n" +
+                            "<td> <input type='text' class = 'class_access' value='' name='dev1' readonly> </td>\n" +
+                            "<td> <input type='text' class = 'class_access' value='' name='test1' readonly> </td>\n" +
+                        "<td> <input type='text' class = 'class_access' value='' name='stage1' readonly> </td>\n" +
+                        "<td> <input type='text' class = 'class_access' value='' name='prod1' readonly> </td>\n" +
+                        "<td>\n" +
+                        "<input type='radio' class = 'class_access1' name='retired1' value='retired_yes' disabled>Yes\n" +
+                        "<input type='radio' class = 'class_access1' name='retired1' value='retired_no' disabled>No\n" +
+                        "</td>\n" +
+                        "\n" +
+                        "</tr>\n" +
+                        "</table>\n" +
+                        "</td>\n" +
+                        "<td><textarea maxlength='120' name ='textarea1' value=''></textarea><span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'></span></td>\n" +
+                        "</tr>";
+                        $('#mytable_infra').append(tr);
+                    }
+
+                    var script ="<script> $('.deletepopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.deletepopup');"+
+                    //   "alert('sequence number '+seqnum);"+
+                    "$('#sequence1').val(seqnum);"+
+                    "modal2.style.display = \"block\";\n" +
+                    "});<\/script>";
+                $('#scripttag').append(script);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+
+    var modal2 = document.getElementById("myModaldelete");
+
+    // Get the button that opens the modal
+    var btn2 = document.getElementsByClassName("deletepopup");
+
+    // Get the <span> element that closes the modal
+    var span2= document.getElementsByClassName("close")[2];
+
+    // When the user clicks the button, open the modal
+    $('.deletepopup').click(function() {
+        alert("Testing index"+$(this).index('.deletepopup'));
+        modal2.style.display = "block";
+    });
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+    $('#visible_del').click(function()
+    {
+        $('.hidedelete').toggle();
+    });
+    </script>
+<div id="scripttag"></div>
+<script>
+    /*$.ajax({
+        url : "DecommManageInfraCompAddServlet",
+        type : "post",
+        data : {ProjectName:projname,ApplicationName:appname},
+        datatype : "json",
+        success:function(data)
+        {
+            console.log("Data------>>>",data);
+        },
+        error:function(e)
+        {
+           console.log(e);
+        }
+    })*/
+
+    $('#myBtn').click(function (){
+    var f = document.InfraComp;
+    f.method = "post";
+    f.action = "DecommManageInfraCompAddServlet?ProjectName="+projname+"&ApplicationName="+appname;
+    f.submit();
+    })
+
+    $('#submit2').click(function(){
+        var deleteseq=parseInt($('#sequence1').val())+1;
+        var f=document.DeleteForm;
+        f.method = "post";
+        f.action = "DecommManageInfraCompDeleteServlet?ApplicationName="+appname+"&ProjectName="+projname+"&DeleteNumber="+deleteseq;
+        f.submit();
+    });
+
+    $('#save').click(function(){
+        $('.class_access').attr('disabled',false);
+        var rowlength = $('.deletepopup').length;
+        var f = document.InfraComp;
+        f.method = "post";
+        f.action ="DecommManageInfraCompSaveServlet?ApplicationName="+appname+"&ProjectName="+projname+"&RowLength="+rowlength;
+        f.submit();
+    });
+
+    $('#modify_id').click(function() {
+        var readonly_value = $('#sam_id').val();
+        if(readonly_value=="false"){
+            $('.class_access').attr('readonly',false);
+            $('.class_access1').attr('disabled',false);
+            $('#sam_id').val("true");
+        }
+        else{
+            $('.class_access').attr('readonly',true);
+            $('.class_access1').attr('disabled',true);
+            $('#sam_id').val("false");
+        }
+    });
+
+    function manage_legacy(o,v){
+        var id = parseInt(o.substring(o.lastIndexOf('y')+1,o.length));
+        if (v=="Managed"){
+            $('.serverapp'+id).hide();
+        }
+        else{
+            $('.serverapp'+id).show();
+        }
+    }
 
 
+</script>
 
 <script src="js/prism/prism.js"></script>
 <script src="js/waypoint/waypoints.min.js"></script>

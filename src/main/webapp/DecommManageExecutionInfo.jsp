@@ -1089,7 +1089,7 @@
                     "<\/script>";
                 script+="<script> $('.deletepopup').click(function() {\n" +
                     "var seqnum=$(this).index('.deletepopup');"+
-                        "alert('sequence number '+seqnum);"+
+                     //   "alert('sequence number '+seqnum);"+
                     "$('#sequence1').val(seqnum);"+
                     "modal2.style.display = \"block\";\n" +
                     "});<\/script>";

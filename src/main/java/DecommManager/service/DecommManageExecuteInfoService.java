@@ -232,5 +232,247 @@ public class DecommManageExecuteInfoService {
             System.out.println("Exception---->>>"+e);
         }
     }
+    public static JsonArray DecommManageExecuteInfraCompDataRetrieveService(String projectname, String applicationname)
+        {
+            JsonArray jsonArray = new JsonArray();
+            try {
+                DBconnection dBconnection = new DBconnection();
+                Connection connection = (Connection) dBconnection.getConnection();
+                String select_query = "select * from decomm_manage_infra_comp where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' order by seq_num";
+                Statement statementforcheck=connection.createStatement();
+                ResultSet rs=statementforcheck.executeQuery(select_query);
+                if(rs.next()){
+                    JsonObject jsonObject1 = new JsonObject();
+                    jsonObject1.addProperty("CheckExistance",true);
+                    jsonArray.add(jsonObject1);
+                    JsonObject jsonObject = new JsonObject();
+                    jsonObject.addProperty("Seq_Num", rs.getString("seq_num"));
+                    jsonObject.addProperty("Prj_Name", rs.getString("prj_name"));
+                    jsonObject.addProperty("App_Name", rs.getString("app_name"));
+                    jsonObject.addProperty("Infra_Comp_Type", rs.getString("infra_comp_type"));
+                    jsonObject.addProperty("Comp_Name", rs.getString("Comp_Name"));
+                    jsonObject.addProperty("Managed_Legacy", rs.getString("managed_legacy"));
+                    jsonObject.addProperty("Server_App", rs.getString("Server_App"));
+                    jsonObject.addProperty("Dev", rs.getString("dev"));
+                    jsonObject.addProperty("Test", rs.getString("test"));
+                    jsonObject.addProperty("Stage", rs.getString("stage"));
+                    jsonObject.addProperty("Prod", rs.getString("prod"));
+                    jsonObject.addProperty("Retired", rs.getString("retired"));
+                    jsonObject.addProperty("Comments", rs.getString("comments"));
+                    jsonArray.add(jsonObject);
+                    while(rs.next()){
+                        JsonObject jsonObject2 = new JsonObject();
+                        jsonObject2.addProperty("Seq_Num", rs.getString("seq_num"));
+                        jsonObject2.addProperty("Prj_Name", rs.getString("prj_name"));
+                        jsonObject2.addProperty("App_Name", rs.getString("app_name"));
+                        jsonObject2.addProperty("Infra_Comp_Type", rs.getString("infra_comp_type"));
+                        jsonObject2.addProperty("Comp_Name", rs.getString("Comp_Name"));
+                        jsonObject2.addProperty("Managed_Legacy", rs.getString("managed_legacy"));
+                        jsonObject2.addProperty("Server_App", rs.getString("Server_App"));
+                        jsonObject2.addProperty("Dev", rs.getString("dev"));
+                        jsonObject2.addProperty("Test", rs.getString("test"));
+                        jsonObject2.addProperty("Stage", rs.getString("stage"));
+                        jsonObject2.addProperty("Prod", rs.getString("prod"));
+                        jsonObject2.addProperty("Retired", rs.getString("retired"));
+                        jsonObject2.addProperty("Comments", rs.getString("comments"));
+                        jsonArray.add(jsonObject2);
+                    }
+                }
+                else{
+                    JsonObject jsonObject3=new JsonObject();
+                    jsonObject3.addProperty("CheckExistance",false);
+                    jsonArray.add(jsonObject3);
+                }
 
+              } catch (Exception e) {
+                System.out.println("Exception......" + e);
+            }
+            return jsonArray;
+        }
+    public static void DecommManageInfraCompDataAddService(String projectname, String applicationname)
+    {
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String  max_seq_num_Query="select max(seq_num) from decomm_manage_infra_comp where prj_name='"+projectname+"' and app_name='"+applicationname+"';";
+            Statement max_seqnum_statement=connection.createStatement();
+            ResultSet result_max_seqnum=max_seqnum_statement.executeQuery(max_seq_num_Query);
+            int Max_Seq_Number=1;
+            if(result_max_seqnum.next())
+            {
+                if(result_max_seqnum.getString(1)!= null)
+                Max_Seq_Number=Integer.parseInt(result_max_seqnum.getString(1))+1;
+            }
+            String insertQuery="insert into decomm_manage_infra_comp(seq_num,prj_name,app_name,infra_comp_type,comp_name,managed_legacy,server_app,dev,test,stage,prod,retired,comments) values('"+Max_Seq_Number+"','"+projectname+"','"+applicationname +"','','','','','','','','','','');";
+            Statement update_statement=connection.createStatement();
+            update_statement.executeUpdate(insertQuery);
+        }
+        catch(Exception e){
+            System.out.println("Exception---->>>"+e);
+        }
+    }
+    public static void DecommManagerInfraCompDeleteService(String projectname,String applicationname, int  delete_seqnum)
+    {
+        try{
+            int seqmax = 0;
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            ArrayList<Integer> arr_seqmax = new ArrayList<Integer>();
+            ArrayList<String> arr_prj = new ArrayList<String>();
+            ArrayList<String> arr_app = new ArrayList<String>();
+            ArrayList<String> arr_infra_comp_type = new ArrayList<String>();
+            ArrayList<String> arr_comp_name = new ArrayList<String>();
+            ArrayList<String> arr_managed_legacy = new ArrayList<String>();
+            ArrayList<String> arr_server_app = new ArrayList<String>();
+            ArrayList<String> arr_dev = new ArrayList<String>();
+            ArrayList<String> arr_test = new ArrayList<String>();
+            ArrayList<String> arr_stage = new ArrayList<String>();
+            ArrayList<String> arr_prod = new ArrayList<String>();
+            ArrayList<String> arr_retired = new ArrayList<String>();
+            ArrayList<String> arr_comments = new ArrayList<String>();
+
+            ArrayList<Integer> arr_seqmax_split = new ArrayList<Integer>();
+            ArrayList<String> arr_prj_split = new ArrayList<String>();
+            ArrayList<String> arr_app_split = new ArrayList<String>();
+            ArrayList<String> arr_infra_comp_type_split = new ArrayList<String>();
+            ArrayList<String> arr_comp_name_split = new ArrayList<String>();
+            ArrayList<String> arr_managed_legacy_split = new ArrayList<String>();
+            ArrayList<String> arr_server_app_split = new ArrayList<String>();
+            ArrayList<String> arr_dev_split = new ArrayList<String>();
+            ArrayList<String> arr_test_split = new ArrayList<String>();
+            ArrayList<String> arr_stage_split = new ArrayList<String>();
+            ArrayList<String> arr_prod_split = new ArrayList<String>();
+            ArrayList<String> arr_retired_split = new ArrayList<String>();
+            ArrayList<String> arr_comments_split = new ArrayList<String>();
+
+            String select_query="select max(seq_num) from decomm_manage_infra_comp where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by seq_num;";
+            Statement st=connection.createStatement();
+            ResultSet rs=st.executeQuery(select_query);
+            if(rs.next()) {
+                seqmax = Integer.parseInt(rs.getString(1));
+            }
+
+            String query = "select * from decomm_manage_infra_comp where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by seq_num;";
+            Statement st1=connection.createStatement();
+            ResultSet rs1=st1.executeQuery(query);
+            while(rs1.next()) {
+                arr_seqmax.add(rs1.getInt(1));
+                arr_prj.add(rs1.getString(2));
+                arr_app.add(rs1.getString(3));
+                arr_infra_comp_type.add(rs1.getString(4));
+                arr_comp_name.add(rs1.getString(5));
+                arr_managed_legacy.add(rs1.getString(6));
+                arr_server_app.add(rs1.getString(7));
+                arr_dev.add(rs1.getString(8));
+                arr_test.add(rs1.getString(9));
+                arr_stage.add(rs1.getString(10));
+                arr_prod.add(rs1.getString(11));
+                arr_retired.add(rs1.getString(12));
+                arr_comments.add(rs1.getString(13));
+            }
+            for (int i=0; i<seqmax; i++) {
+                if (arr_seqmax.get(i) < delete_seqnum) {
+                    arr_seqmax_split.add(arr_seqmax.get(i));
+                    arr_prj_split.add(arr_prj.get(i));
+                    arr_app_split.add(arr_app.get(i));
+                    arr_infra_comp_type_split.add(arr_infra_comp_type.get(i));
+                    arr_comp_name_split.add(arr_comp_name.get(i));
+                    arr_managed_legacy_split.add(arr_managed_legacy.get(i));
+                    arr_server_app_split.add(arr_server_app.get(i));
+                    arr_dev_split.add(arr_dev.get(i));
+                    arr_test_split.add(arr_test.get(i));
+                    arr_stage_split.add(arr_stage.get(i));
+                    arr_prod_split.add(arr_prod.get(i));
+                    arr_retired_split.add(arr_retired.get(i));
+                    arr_comments_split.add(arr_comments.get(i));
+                }
+                else if(arr_seqmax.get(i) > delete_seqnum){
+                    arr_seqmax_split.add((arr_seqmax.get(i)-1));
+                    arr_prj_split.add(arr_prj.get(i));
+                    arr_app_split.add(arr_app.get(i));
+                    arr_infra_comp_type_split.add(arr_infra_comp_type.get(i));
+                    arr_comp_name_split.add(arr_comp_name.get(i));
+                    arr_managed_legacy_split.add(arr_managed_legacy.get(i));
+                    arr_server_app_split.add(arr_server_app.get(i));
+                    arr_dev_split.add(arr_dev.get(i));
+                    arr_test_split.add(arr_test.get(i));
+                    arr_stage_split.add(arr_stage.get(i));
+                    arr_prod_split.add(arr_prod.get(i));
+                    arr_retired_split.add(arr_retired.get(i));
+                    arr_comments_split.add(arr_comments.get(i));
+                }
+            }
+
+            String delete_query = "delete from decomm_manage_infra_comp where prj_name='"+projectname+"' and app_name='"+applicationname+"' ";
+            Statement st2=connection.createStatement();
+            st2.executeUpdate(delete_query);
+            for  (int j=0; j<seqmax-1; j++) {
+                String insert_query = "insert into decomm_manage_infra_comp (seq_num,prj_name,app_name,infra_comp_type,comp_name,managed_legacy,server_app,dev,test,stage,prod,retired,comments) values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
+                preparedStatement1.setInt(1, arr_seqmax_split.get(j));
+                preparedStatement1.setString(2, arr_prj_split.get(j));
+                preparedStatement1.setString(3, arr_app_split.get(j));
+                preparedStatement1.setString(4, arr_infra_comp_type_split.get(j));
+                preparedStatement1.setString(5, arr_comp_name_split.get(j));
+                preparedStatement1.setString(6, arr_managed_legacy_split.get(j));
+                preparedStatement1.setString(7, arr_server_app_split.get(j));
+                preparedStatement1.setString(8, arr_dev_split.get(j));
+                preparedStatement1.setString(9, arr_test_split.get(j));
+                preparedStatement1.setString(10, arr_stage_split.get(j));
+                preparedStatement1.setString(11, arr_prod_split.get(j));
+                preparedStatement1.setString(12, arr_retired_split.get(j));
+                preparedStatement1.setString(13, arr_comments_split.get(j));
+                preparedStatement1.execute();
+            }
+        }
+        catch(Exception e){
+            System.out.println("Exception---->>>"+e);
+        }
+    }
+    public static void DecommManageInfraCompSaveService(String projectname, String applicationname, int seq_num, String infra_comp, String comp_name, String manage_legacy, String server_app, String dev, String test, String stage, String prod, String retired, String textarea)
+    {
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String select_query = "select * from decomm_manage_infra_comp where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and seq_num = '"+seq_num+"'";
+            Statement st=connection.createStatement();
+            ResultSet rs=st.executeQuery(select_query);
+            if (rs.next()){
+                String update_query = "update decomm_manage_infra_comp set infra_comp_type =?, comp_name=?, managed_legacy=?, server_app=?, dev=?, test=?, stage=?, prod=?, retired=?, comments=? where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and seq_num = '"+seq_num+"'";
+                PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
+                preparedStmt1.setString(1, infra_comp);
+                preparedStmt1.setString(2, comp_name);
+                preparedStmt1.setString(3, manage_legacy);
+                preparedStmt1.setString(4, server_app);
+                preparedStmt1.setString(5, dev);
+                preparedStmt1.setString(6, test);
+                preparedStmt1.setString(7, stage);
+                preparedStmt1.setString(8, prod);
+                preparedStmt1.setString(9, retired);
+                preparedStmt1.setString(10, textarea);
+                preparedStmt1.execute();
+            }
+            else{
+                String insert_query = "insert into decomm_manage_infra_comp (seq_num,prj_name,app_name,infra_comp_type,comp_name,managed_legacy,server_app,dev,test,stage,prod,retired,comments) values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                PreparedStatement preparedStmt2 = connection.prepareStatement(insert_query);
+                preparedStmt2.setInt(1, seq_num);
+                preparedStmt2.setString(2, projectname);
+                preparedStmt2.setString(3, applicationname);
+                preparedStmt2.setString(4, infra_comp);
+                preparedStmt2.setString(5, comp_name);
+                preparedStmt2.setString(6, manage_legacy);
+                preparedStmt2.setString(7, server_app);
+                preparedStmt2.setString(8, dev);
+                preparedStmt2.setString(9, test);
+                preparedStmt2.setString(10, stage);
+                preparedStmt2.setString(11, prod);
+                preparedStmt2.setString(12, retired);
+                preparedStmt2.setString(13, textarea);
+                preparedStmt2.execute();
+            }
+        }
+        catch(Exception e){
+            System.out.println("Exception---->>>"+e);
+        }
+    }
 }
