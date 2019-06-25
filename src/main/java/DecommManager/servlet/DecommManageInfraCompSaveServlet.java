@@ -2,6 +2,7 @@ package DecommManager.servlet;
 
 import DecommManager.service.DecommManageExecuteInfoService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,9 @@ public class DecommManageInfraCompSaveServlet extends HttpServlet {
             String Textarea = request.getParameter("textarea"+i);
             DecommManageExecuteInfoService.DecommManageInfraCompSaveService(projectname,applicationname,i,Infra_Comp_Type,Comp_Name,Manage_Legacy,Server_App,Dev,Test,Stage,Prod,Retired,Textarea);
         }
-        response.sendRedirect("DecommManageInfraComp.jsp?appname="+applicationname+"&projectname="+projectname);
+        RequestDispatcher rd = request.getRequestDispatcher("DecommManageServiceCategotiesDynamicTableServlet");
+        rd.forward(request,response);
+        //response.sendRedirect("DecommManageServiceCategoriesChecklist.jsp?appname="+applicationname+"&projectname="+projectname);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
