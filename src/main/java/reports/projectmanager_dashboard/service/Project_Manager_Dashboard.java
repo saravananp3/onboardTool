@@ -232,7 +232,7 @@ public class Project_Manager_Dashboard {
         }
         return jsonarray;
     }
-    public static JsonArray GangChartDetails(String projectName)
+    public static JsonArray GanttChartDetails(String projectName)
     {
         JsonArray jsonArray =new JsonArray();
         try {
