@@ -354,171 +354,20 @@
                                                                 <table id="example" class="table table-striped">
                                                                     <thead>
                                                                     <tr>
-                                                                        <th>Select</th>
-                                                                        <th>Project Name</th>
-                                                                        <th>Project Manager</th>
+                                                                       <%-- <th>Select</th>--%>
+                                                                        <th>Application Name</th>
+                                                                        <th>Read only Date</th>
                                                                         <th>StartDate</th>
-                                                                        <th>EndDate</th>
+                                                                        <th>EndDate</th>\
+                                                                        <th>% of Completion</th>
+                                                                        <th>No of Resources</th>
+                                                                        <th>Application State</th>
                                                                         <th>Status</th>
 
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Model_N</td>
-                                                                        <td data-column="PM">Angie</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">CGEN5</td>
-                                                                        <td data-column="PM">Eloise</td>
-                                                                        <td data-column="startDate">01/02/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Neuro</td>
-                                                                        <td data-column="PM">Parthiban</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">030/05/2019</td>
-                                                                        <td data-column="status" style="color:Orange">In
-                                                                            Progress
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Migration</td>
-                                                                        <td data-column="PM">Vinoth</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Sydney</td>
-                                                                        <td data-column="PM">Surishwari</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Spine</td>
-                                                                        <td data-column="PM">Poornima</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Italy</td>
-                                                                        <td data-column="PM">Satya</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Marine</td>
-                                                                        <td data-column="PM">Srinivasan</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">CGEN5</td>
-                                                                        <td data-column="PM">Angie</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Navigation</td>
-                                                                        <td data-column="PM">Angie</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
 
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Testing</td>
-                                                                        <td data-column="PM">Angie</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">Sample</td>
-                                                                        <td data-column="PM">shankar</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">PeopleSoft</td>
-                                                                        <td data-column="PM">Angie</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input class="single_Checkbox"
-                                                                                   type="checkbox" id="" name=""/></td>
-                                                                        <td data-column="Pname">navesion</td>
-                                                                        <td data-column="PM">Keerthi</td>
-                                                                        <td data-column="startDate">01/01/2019</td>
-                                                                        <td data-column="EndDate">01/03/2019</td>
-                                                                        <td data-column="status" style="color:green">
-                                                                            Completed
-                                                                        </td>
-                                                                    </tr>
 
                                                                     </tbody>
                                                                 </table>
@@ -916,14 +765,14 @@
         }
     </script>
     <script>
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             //alert("efdsx");
             $('#example').DataTable();
         });
         $(document).ready(function () {
             //alert("efdsx");
             $('#sample').DataTable();
-        });
+        });*/
         /*$(document).ready(function () {
             //alert("efdsx");
            var table= $('#datatable').DataTable();
@@ -1044,6 +893,56 @@
             });
 
         });
+
+        var datatable = $('#example');
+        $(document).ready(function () {
+            var projectname = document.getElementById("projectname").value;
+            var applicationname = document.getElementById("appname").value;
+            var select = $('#application_name');
+            select.empty();
+            $.ajax({
+                url: 'Project_Information',
+                type: 'post',
+                data: {appname: applicationname, projectname: projectname},
+                dataType: 'json',
+                success: function (data)
+                {
+                    console.log("project information",data)
+                    /*var tablevalue = "";
+                    tablevalue='<tr><td>'+data[0].appname+'</td>';
+                   /!* $.each(data[1], function (key, val) {
+                        console.log("project key",
+Project Namekey);
+                        console.log("project value",val);
+                        tablevalue += '<td>' + val + '</td>';
+                    });*!/
+                   for(var i=0;i<data[2].length;i++)
+                   {
+                       tablevalue += '<td>' + data[2][i].ProjectManager + '</td>';
+                   }
+                    tablevalue+='<td>'+data[0].intdate+'</td>';
+                    tablevalue+='<td>'+data[0].enddate+'</td>';
+                    tablevalue+='<td>'+data[2].Status+'</td></tr>';
+                    datatable.append(tablevalue);
+                   /!* $.each(data, function (index, jsonObject) {
+                        tablevalue = ""
+                        tablevalue += '<tr>';
+                        $.each(jsonObject, function (key, val) {
+                            console.log("project key",key);
+                            console.log("project value",val);
+                                tablevalue += '<td>' + val + '</td>';
+                        });
+                        tablevalue += '</tr>';
+                        datatable.append(tablevalue);
+                    });*!/
+                   /!* $('#example').DataTable();*!/*/
+                }
+                });
+
+            });
+
+
+
     </script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js" type="text/javascript"></script>
