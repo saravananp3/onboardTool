@@ -911,8 +911,7 @@
                     /*var tablevalue = "";
                     tablevalue='<tr><td>'+data[0].appname+'</td>';
                    /!* $.each(data[1], function (key, val) {
-                        console.log("project key",
-Project Namekey);
+                        console.log("project key",Project Namekey);
                         console.log("project value",val);
                         tablevalue += '<td>' + val + '</td>';
                     });*!/
