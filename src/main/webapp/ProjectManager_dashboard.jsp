@@ -358,7 +358,7 @@
                                                                         <th>Application Name</th>
                                                                         <th>Read only Date</th>
                                                                         <th>StartDate</th>
-                                                                        <th>EndDate</th>\
+                                                                        <th>EndDate</th>
                                                                         <th>% of Completion</th>
                                                                         <th>No of Resources</th>
                                                                         <th>Application State</th>
