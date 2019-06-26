@@ -346,7 +346,7 @@
 
                                                         <div class="panel">
                                                             <div class="header">
-                                                                <h4 class="title">Project Information</h4>
+                                                                <h4 class="title">Application Information</h4>
 
                                                             </div>
                                                             <div class="panel-body">
