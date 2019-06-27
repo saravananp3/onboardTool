@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head id ="link_id">
     <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -12,8 +12,6 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
-    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -39,6 +37,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
     <link rel="stylesheet" href="css/admin_module/admin_module_send_invites.css" media="screen">
+    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
+    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
 </head>
 <style type="text/css">
     .breadcrumb-div {
@@ -394,225 +394,27 @@ $(".add_question").hide();
                                                     <input type="checkbox" class="final_backup_checkbox" value="final_backups_value" name="others7" onchange="valueChanged6()">Final Backups
 
                                                 </div>--%>
-                                            </div>
-                                                <div class="textbox_show" style="display:none;">
-                                                    <textarea rows="5" maxlength="500" style="width:100%"></textarea>
-                                                </div>
-                                                <br>
-
-                                                <!-- <h3>Services- Environment Information</h3> -->
-
-                                                <div class="form-group">
-                                                    <table>
-
-
-                                                        <tr class="Mainframe" style="display:none;">
-
-                                                            <td><b>MAINFRAME</b></td>
-                                                            <td>
-                                                                <select style="width:100%;"
-
-                                                                        class="selectpicker multiselect-ui form-control"
-                                                                        multiple="multiple"
-                                                                        data-show-subtext="true"
-                                                                        data-live-search="true"
-                                                                        &lt;%&ndash;multiple="multiple" &ndash;%&gt;>
-                                                                    <option value="CICS Regions">CICS Regions</option>
-                                                                    <option value="DB2">DB2</option>
-                                                                    <option value="Endevor Flows">Endevor Flows</option>
-                                                                    <option value="HLQ's (high level qualifiers) to be eliminated">HLQ's (high level qualifiers) to be eliminated</option>
-                                                                    <option value="IMS Regions">IMS Regions</option>
-                                                                    <option value="Mainframe  Storage ">Mainframe  Storage </option>
-                                                                    <option value="Mainframe Batch Processing">Mainframe Batch Processing</option>
-                                                                    <option value="Mainframe Capacity ">Mainframe Capacity </option>
-                                                                    <option value="Tape Media">Tape Media</option>
-                                                                    <option value="VSAM">VSAM</option>
-                                                                </select>
-                                                            </td>
-
-
-                                                        </tr>
-                                                    </table>
-                                                    <table style="display:none;" class="support_readiness">
-
-                                                        <tr>
-
-                                                            <td><b>SUPPORT READINESS</b></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <font color="blue">  Is the application supported by the United Support Center (Help Desk) and/or
-                                                                    IT Service Management (service/infrastructure performance monitoring)? </font></td>
-                                                            </td>
-                                                            <td>
-                                                                <input type="radio" name="support" value="yes">yes
-                                                                <input type="radio" name="support" value="No">No
-                                                            </td>
-
-                                                        </tr>
-                                                    </table>
-                                                    <table>
-
-                                                        <tr style="display:none;" class="disaster_recovery">
-
-                                                            <td><b>DISASTER RECOVERY</b></td>
-                                                            <td>
-                                                                <select style="width:100%"
-                                                                        id="disaster_recovery"
-                                                                        class="selectpicker multiselect-ui form-control"
-                                                                        multiple="multiple"
-                                                                        data-show-subtext="true"
-                                                                        data-live-search="true"
-                                                                        &lt;%&ndash;multiple="multiple" &ndash;%&gt;
-                                                                >
-                                                                    <option value="Rapid Recovery ">Rapid Recovery </option>
-                                                                    <option value="SRM">SRM</option>
-                                                                    <option value="Tier 0">Tier 0</option>
-                                                                    <option value="Tier 1">Tier 1</option>
-                                                                    <option value="Tier 2">Tier 2</option>
-                                                                    <option value="Legacy Recovery">Legacy Recovery</option>
-                                                                    <option></option>
-                                                                </select>
-                                                            </td>
-
-                                                        </tr>
-
-
-                                                    </table>
-                                                    <table style="display:none;" class="desktop_software">
-                                                        <tr>
-
-                                                            <td> <b>DESKTOP SOFTWARE</b> </td>
-                                                            <td></td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td><font color="blue";> Is there any desktop or supporting desktop software? </font> </td>
-                                                            <td>
-                                                                <input type="radio" name="desktop" value="yes">yes
-                                                                <input type="radio" name="desktop" value="No">No
-                                                            </td>
-
-                                                        </tr>
-                                                    </table>
-                                                    <table class="citrix_c" style="display:none;">
-                                                        <tr>
-                                                            <td><b>CITRIX</b></td>
-                                                        </tr>
-
-                                                        <tr>
-
-                                                            <td> <font color="blue";> Does the application utilize any Citrix environments? </font> </td>
-                                                            <td>
-                                                                <input type="radio" name="citrix" value="yes">yes
-                                                                <input type="radio" name="citrix" value="No">No
-                                                            </td>
-
-
-                                                        </tr>
-                                                    </table>
-                                                    <table class="application_security" style="display:none;">
-                                                        <tr>
-
-                                                            <td><b>APPLICATION SECURITY</b></td>
-                                                        </tr>
-
-                                                        <tr >
-                                                            <td> <font color="blue";> Does the application utilize Global Groups?</font></td>
-                                                            <td>
-                                                                <input type="radio" name="citrix" class="citrix" value="answer_yes">yes
-                                                                <input type="radio" name="citrix"  class="citrix" value="no">No
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr class="add_question" style="display:none;">
-                                                            <td><font color="blue";>Is the application in SECURE?</font></td>
-                                                            <td>
-                                                                <input type="radio" name="citrix_1" class="citrix_1" value="answer_second_yes">yes
-                                                                <input type="radio" name="citrix_1" class="citrix_1" value="no">No
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="add_question_2" style="display:none;">
-                                                            <td> <font color="blue";> Does the application have an Internally supported access mechanism or other not listed above
-                                                                ( e.g., your own directory)?</font></td>
-
-                                                            <td>
-                                                                <input type="radio" name="citrix_2" class="citrix_2" value="answer_thrid_yes" >Yes
-                                                                <input type="radio" name="citrix_2" class="citrix_2" value="no">No
-                                                            </td>
-                                                        </tr>
-
-                                                    </table>
-                                                    <table style="display:none;" class="final_backup">
-                                                        <tr>
-
-                                                            <td><b>FINAL BACKUPS</b></td>
-
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td><font color="blue";> Are Final Backups Required?     </font></td>
-                                                            <td>
-                                                                <input type="radio" name="backup" class="backup" value="yes">yes
-                                                                <input type="radio" name="backup" class="backup" value="no">No
-                                                            </td>
-
-                                                        </tr>
-
-
-
-                                                    </table>
-                                                </div>
-
-                                                <!-- <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button> -->
+                                            </div>                                     <!-- <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button> -->
                                                 <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="">Add</button>
                                                 <button type="button" style="margin:5px;" class="btn btn-warning pull-left" onclick="">Modify</button>
-
-
                                                 <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="visible_del"
                                                         onclick="">Delete
                                                 </button>
-
                                                 <button type="button" class="btn btn-primary pull-right" onclick="Submit();">Save & Continue</button>
                                             </form>
                                         </div>
 
                                         <!--End of Table Info -->
-
                                     </div>
-
                                 </div>
-
-
-
-
-
-
-
                             </div>
-
                         </div>
-
                     </div>
                 </section>
             </div>
         </div>
-
-
-
-
-
-
-
-
     </div>
-
-
 </div>
-
-
-
-
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/jquery-ui/jquery-ui.min.js"></script>
@@ -658,152 +460,6 @@ $(".add_question").hide();
 
 
 <!-- ========== THEME JS ========== -->
-
-
-<!-- <script>
-$(".multiple_entry").change(function()
-	{
-	//alert(this.value);
-	if("multiple_choice"==this.value)
-		{
-		$(".textbox_show").show();
-		}
-	else{
-		$(".textbox_show").hide();
-	}
-	}
-		);
-</script> -->
-
-<!-- <script>
-    function valueChanged()
-    {
-        alert("hi");
-        if($('.multiple_choice').is(":checked"))
-            $(".textbox_show").show();
-        else
-            $(".textbox_show").hide();
-    }
-</script> -->
-
-<script>
-    function valueChanged()
-    {
-
-        if($('.mainframe_checkbox').is(":checked"))
-            $(".Mainframe").show();
-        else
-            $(".Mainframe").hide();
-    }
-
-</script>
-<script>
-    function valueChanged1()
-    {
-
-        if($('.application_security_checkbox').is(":checked"))
-            $(".application_security").show();
-        else
-            $(".application_security").hide();
-    }
-
-</script>
-
-<%--<script>
-    function valuechanged2()
-    {
-        if($('.support_readiness_checkbox').is(".checked"))
-            $(".support_readiness").show();
-        else
-            $(".support_readiness").hide();
-    }
-</script>--%>
-
-
-<script>
-    function valueChanged2()
-    {
-        if($('.support_readiness_checkbox').is(":checked"))
-            $(".support_readiness").show();
-        else
-            $(".support_readiness").hide();
-    }
-</script>
-
-<script>
-    function valueChanged4()
-    {
-        if($('.disaster_recovery_checkbox').is(":checked"))
-            $(".disaster_recovery").show();
-        else
-            $(".disaster_recovery").hide();
-    }
-
-</script>
-
-
-
-<script>
-    function valueChanged3()
-    {
-        if($('.desktop_software_checkbox').is(":checked"))
-            $(".desktop_software").show();
-        else($(".desktop_software")).hide();
-    }
-</script>
-
-<script>
-    function valueChanged5()
-    {
-
-        if($('.citrix_checkbox').is(":checked"))
-            $(".citrix_c").show();
-        else($(".citrix_c")).hide();
-
-
-
-    }
-</script>
-
-<script>
-    function valueChanged6()
-    {
-        if($('.final_backup_checkbox').is(":checked"))
-            $(".final_backup").show();
-        else($(".final_backup")).hide();
-    }
-</script>
-
-
-<script>
-    $(".citrix").change(function()
-        {
-            //alert(this.value);
-            if("answer_yes"==this.value)
-            {
-                $(".add_question").show();
-            }
-            else{
-                $(".add_question").hide();
-            }
-        }
-    );
-</script>
-
-<script>
-    $(".citrix_1").change(function()
-        {
-            //alert(this.value);
-            if("answer_second_yes"==this.value)
-            {
-                $(".add_question_2").show();
-            }
-            else{
-                $(".add_question_2").hide();
-            }
-        }
-    );
-</script>
 
 <script>
     var url_string=window.location.href;
@@ -875,11 +531,130 @@ $(".multiple_entry").change(function()
                         var option=sub_option.split(",");
                         for (var i=0; i<option.length; i++) {
 
-                            inputcheck += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='"+ColumnName+"'/>" +
+                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol' id="+((option[i]+(i + 1)).replace(/\s/g,''))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"'/>" +
                                 option[i]+"</label>";
                         }
                         inputcheck +="</div>";
                         $('#inputFields').append(inputcheck);
+                        if (LabelName=="Others" && ColumnName=="ServiceCategories6"){
+
+                        var others= "<div class='form-group'>\n" +
+                            "<table  class='Mainframe hidetable' style='display:none;'>\n" +
+                            "<tr>\n" +
+                            "<td><b>MAINFRAME</b></td>\n" +
+                            "<td>\n" +
+                            "<select class=\"multiselect-ui form-control\" multiple>\n" +
+                            "<option value='CICS Regions'>CICS Regions</option>\n" +
+                            "<option value='DB2'>DB2</option>\n" +
+                            "<option value='Endevor Flows'>Endevor Flows</option>\n" +
+                            '<option value="HLQ\'s (high level qualifiers) to be eliminated">HLQ\'s (high level qualifiers) to be eliminated</option>\n' +
+                            "<option value='IMS Regions'>IMS Regions</option>\n" +
+                            "<option value='Mainframe  Storage '>Mainframe  Storage </option>\n" +
+                            "<option value='Mainframe Batch Processing'>Mainframe Batch Processing</option>\n" +
+                            "<option value='Mainframe Capacity'>Mainframe Capacity </option>\n" +
+                            "<option value='Tape Media'>Tape Media</option>\n" +
+                            "<option value='VSAM'>VSAM</option>\n" +
+                            "</select>\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table style='display:none;' class='Support_Readiness hidetable'>\n" +
+                            "<tr><td><b>SUPPORT READINESS</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td>\n" +
+                            "<font color='blue'>  Is the application supported by the United Support Center (Help Desk) and/or\n" +
+                            "IT Service Management (service/infrastructure performance monitoring)? </font></td>\n" +
+                            "</td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='support' value='yes'>yes\n" +
+                            "<input type='radio' name='support' value='No'>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table style='display:none;' class='Disaster_Recovery hidetable'>\n" +
+                            "<tr>\n" +
+                            "<td><b>DISASTER RECOVERY</b></td>\n" +
+                            "<td>\n" +
+                            "<select style='width:100%'\n>\n" +
+                            "<option value='Rapid Recovery '>Rapid Recovery </option>\n" +
+                            "<option value='SRM'>SRM</option>\n" +
+                            "<option value='Tier 0'>Tier 0</option>\n" +
+                            "<option value='Tier 1'>Tier 1</option>\n" +
+                            "<option value='Tier 2'>Tier 2</option>\n" +
+                            "<option value='Legacy Recovery'>Legacy Recovery</option>\n" +
+                            "<option></option>\n" +
+                            "</select>\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table style='display:none;' class='Desktop_Software hidetable'>\n" +
+                            "<tr>\n" +
+                            "<td> <b>DESKTOP SOFTWARE</b> </td>\n" +
+                            "<td></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td><font color='blue';> Is there any desktop or supporting desktop software? </font> </td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='desktop' value='yes'>yes\n" +
+                            "<input type='radio' name='desktop' value='No'>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Citrix hidetable' style='display:none;'>\n" +
+                            "<tr>\n" +
+                            "<td><b>CITRIX</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td> <font color='blue';> Does the application utilize any Citrix environments? </font> </td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='citrix' value='yes'>yes\n" +
+                            "<input type='radio' name='citrix' value='No'>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Application_Security hidetable' style='display:none;'>\n" +
+                            "<tr>\n" +
+                            "<td><b>APPLICATION SECURITY</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr >\n" +
+                            "<td> <font color='blue';> Does the application utilize Global Groups?</font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='citrix' class='citrix' value='answer_yes'>yes\n" +
+                            "<input type='radio' name='citrix'  class='citrix' value='no'>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "<tr class='add_question' style='display:none;'>\n" +
+                            "<td><font color='blue';>Is the application in SECURE?</font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='citrix_1' class='citrix_1' value='answer_second_yes'>yes\n" +
+                            "<input type='radio' name='citrix_1' class='citrix_1' value='no'>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "<tr class='add_question_2' style='display:none;'>\n" +
+                            "<td> <font color='blue';> Does the application have an Internally supported access mechanism or other not listed above\n" +
+                            "( e.g., your own directory)?</font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='citrix_2' class='citrix_2' value='answer_thrid_yes' >Yes\n" +
+                            "<input type='radio' name='citrix_2' class='citrix_2' value='no'>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table style='display:none;' class='Final_Backups hidetable'>\n" +
+                            "<tr>\n" +
+                            "<td><b>FINAL BACKUPS</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td><font color='blue';> Are Final Backups Required?     </font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='backup' class='backup' value='yes'>yes\n" +
+                            "<input type='radio' name='backup' class='backup' value='no'>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "</div>";
+                            $('#inputFields').append(others);
+                        }
 
                     }
                     else if(Type=="Radio box")
@@ -934,14 +709,28 @@ $(".multiple_entry").change(function()
                     "$('#sequence1').val(seqnum);"+
                     "modal2.style.display = \"block\";\n" +
                     "});<\/script>";
+                script+="<script> $('input[name=ServiceCategories6]').change(function(){" +
+                    "var answer = [];\n" +
+                    "$.each($('input[name=ServiceCategories6]:checked'), function(){\n" +
+                    "answer.push($(this).val());\n" +
+                    "});" +
+                        "$('.hidetable').hide();"+
+                        "for(var i=0;i<answer.length;i++)" +
+                    "{"+
+                    "$('.'+answer[i].replace(' ','_')).show();}});<\/script>";
                 $('#scripttag').append(script);
+
             },
             error: function (e) {
                 console.log(e);
             }
         });
     });
+
 </script>
+<div id ='scripttag'>
+
+</div>
 
 </body>
 
