@@ -67,7 +67,7 @@ public class confirmation extends HttpServlet {
 		InternetAddress.parse(email));
 		message.setSubject("Registration Successfull");
 		message.setText("Thanks for Registering...Please click on the below link\n\nhttp://localhost:8081/Login.jsp");
-
+        //message.setText("Thanks for Registering...Please click on the below link\n\nhttp://18.217.95.127:8080/Decomm_Manager
 		Transport.send(message);
 
 		pw.println("<html><body>");  

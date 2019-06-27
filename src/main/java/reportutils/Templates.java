@@ -129,7 +129,7 @@ public class Templates {
     public static ComponentBuilder<?, ?> createTitleComponent(String realpath) throws IllegalAccessException, InstantiationException {
 
         String strmwLogoImg = "E:\\office project\\onboarding_tool\\src\\main\\webapp\\images\\logo1.png";
-        //String strmwLogoImg = "C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 7.0\\webapps\\onboarding_tool\\images\\logo1.png";
+        //String strmwLogoImg = "C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 7.0\\webapps\\Decomm_Manager\\images\\logo1.png";
 
 
         return cmp.horizontalList()

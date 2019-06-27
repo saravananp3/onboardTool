@@ -31,8 +31,8 @@ public class DocusignUtility {
     private static final String UserId = "82ee6844-85fd-4716-986f-f8a4b6921c22";
     private static final String publicKeyFilename = "E:\\office project\\onboarding_tool\\src\\main\\webapp\\docs\\publickey.txt";
     private static final String privateKeyFilename = "E:\\office project\\onboarding_tool\\src\\main\\webapp\\docs\\privatekey.txt";
-    /*private static final String publicKeyFilename = "C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 7.0\\webapps\\onboarding_tool\\docs\\publickey.txt";
-    private static final String privateKeyFilename = "C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 7.0\\webapps\\onboarding_tool\\docs\\privatekey.txt";*/
+    /*private static final String publicKeyFilename = "C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 7.0\\webapps\\Decomm_Manager\\docs\\publickey.txt";
+    private static final String privateKeyFilename = "C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 7.0\\webapps\\Decomm_Manager\\docs\\privatekey.txt";*/
 
     public void requestIndividualDocumentSigning(ByteArrayOutputStream fileOutputStream, Map.Entry<String, String> users) {
         logger.info("\nRequestASignatureTest:\n" + "===========================================");

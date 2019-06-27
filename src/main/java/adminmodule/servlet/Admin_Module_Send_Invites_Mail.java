@@ -83,6 +83,7 @@ public class Admin_Module_Send_Invites_Mail extends HttpServlet {
                     InternetAddress.parse(email));
             mimeMessage.setSubject("Access Granted - Register into Onboarding Tool");
             mimeMessage.setText("Dear " + first_name + " " + last_name + ",\nWe are pleased to inform that you are granted access to Onboarding Tool as " + role_name + " for the Project " + project + ".\nPlease login to the below url for registering your account\n http://localhost:8080/Registration.jsp\n" + message);
+            //mimeMessage.setText("Dear " + first_name + " " + last_name + ",\nWe are pleased to inform that you are granted access to Onboarding Tool as " + role_name + " for the Project " + project + ".\nPlease login to the below url for registering your account\n http://18.217.95.127:8080/Decomm_Manager/Registration.jsp\n" + message);
 
             Transport.send(mimeMessage);
 //response.sendRedirect("user_reg.jsp");

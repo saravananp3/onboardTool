@@ -70,7 +70,7 @@ public class reset_password extends HttpServlet {
                     InternetAddress.parse(email));
             message.setSubject("Recovery Mail");
             message.setText("http://localhost:8081/reset_pass.jsp");
-
+            //message.setText("http://18.217.95.127:8080/Decomm_Manager/reset_pass.jsp");
             Transport.send(message);
             pw.println("<html><body>");
             pw.println("Recovery Mail have been sent to your account\n");
