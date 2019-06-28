@@ -443,14 +443,17 @@
                                                         Add User
                                                     </button>
 
-                                                    <button type="button" id="edit_button" name="edit_button"
+                                                    <%--<button type="button" id="edit_button" name="edit_button"
                                                             class="btn btn-primary" style="margin:5px">
                                                         Delete User
                                                     </button>
                                                     <button type="button" id="delete_button" name="delete_button"
                                                             class="btn btn-primary" style="margin:5px">
                                                         Submit
-                                                    </button>
+                                                    </button>--%>
+                                                    <input type="button" id="del_btn" class="btn btn-primary" onclick="del(<%=count %>);deluser();" value="DeleteUser" style="margin:5px">
+                                                    &nbsp;&nbsp;
+                                                    <button type="button" id="sub_btn" class="btn btn-primary" onclick="servlet_call();" style="margin:-5px">Submit</button>
 
                                             </div>
 
