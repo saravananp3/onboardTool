@@ -284,34 +284,34 @@
                                                                             data-show-subtext="true"
                                                                             data-live-search="true"
                                                                             &lt;%&ndash;multiple="multiple" &ndash;%&gt;>
-                                                                        <option data-subtext="Archival Admin">
+                                                                        <option>
                                                                             ArchivalAdmin
                                                                         </option>
-                                                                        <option data-subtext="Legacy Technical SME">
+                                                                        <option>
                                                                             LegacyTechnicalSME
                                                                         </option>
-                                                                        <option data-subtext="Legacy Business SME">
+                                                                        <option>
                                                                             LegacyBusinessSME
                                                                         </option>
-                                                                        <option data-subtext="Archival Program Manager">
+                                                                        <option>
                                                                             ArchivalProgramManager
                                                                         </option>
-                                                                        <option data-subtext="Archival Project Manager">
+                                                                        <option>
                                                                             ArchivalProjectManager
                                                                         </option>
-                                                                        <option data-subtext="Legacy Program Manager">
+                                                                        <option>
                                                                             LegacyProgramManager
                                                                         </option>
-                                                                        <option data-subtext="Archival Business Analyst">
+                                                                        <option>
                                                                             ArchivalBusinessAnalyst
                                                                         </option>
-                                                                        <option data-subtext="Archival Technical Lead">
+                                                                        <option>
                                                                             ArchivalTechnicalLead
                                                                         </option>
-                                                                        <option data-subtext="Archival Developer">
+                                                                        <option>
                                                                             ArchivalDeveloper
                                                                         </option>
-                                                                        <option data-subtext="Test Lead">TestLead</option>
+                                                                        <option>TestLead</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
