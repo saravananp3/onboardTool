@@ -376,13 +376,14 @@
                                                         <table class="table table-striped table-dark" id="datatable">
                                                             <thead class="table table-striped">
 
+                                                            <th></th>
                                                             <th>UserName</th>
                                                             <th>FirstName</th>
                                                             <th>LastName</th>
                                                             <th>Email</th>
-                                                            <th>Project</th>
-                                                            <th>Application</th>
-                                                            <th>Select</th>
+                                                            <th>Role</th>
+                                                            <th>Status</th>
+                                                            <th>Deactivate</th>
                                                             <th></th>
                                                             </thead>
                                                             <tbody>
