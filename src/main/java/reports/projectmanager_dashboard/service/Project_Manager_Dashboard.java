@@ -3,6 +3,7 @@ package reports.projectmanager_dashboard.service;
 import ArchiveExecution.Service.Weekday;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import javafx.application.Application;
 import onboard.DBconnection;
 import org.apache.log4j.Logger;
 
@@ -10,6 +11,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 public class Project_Manager_Dashboard {
     final static Logger logger = Logger.getLogger(Project_Manager_Dashboard.class);
@@ -173,6 +177,7 @@ public class Project_Manager_Dashboard {
             int percentage[] = new int[arr_value.length];
             int resourcesCount[]=new int[arr_value.length];
             String AppState[]=new String[arr_value.length];
+            int sequence_number=0;
             for(int i = 0; i < arr_value.length; i++){
                 String select_query2 = "select * from archiveexecution_details where projects = '"+project+"' and name = '"+arr_value[i]+"'";
                 Statement st2 = connection.createStatement();
@@ -197,21 +202,179 @@ public class Project_Manager_Dashboard {
                     String App_state="";
                     String Archive=rs4.getString("data_retained");
                     String Decomm=rs4.getString("Decommission");
-                    if(Archive=="false")
+                    if(Archive.equals("false"))
                     {
                         App_state="Decommission";
                     }
-                    else if(Archive=="true"&&Decomm=="true")
+                    else if(Archive.equals("true")&&Decomm.equals("true"))
                     {
                         App_state="Archival & Decommission";
                     }
-                    else if(Archive=="true"&&Decomm=="false")
+                    else if(Archive.equals("true")&&Decomm.equals("false"))
                     {
                         App_state="Archival";
                     }
                     AppState[i]=App_state;
                 }
             }
+            ArrayList<Integer> sequence_num=new ArrayList<Integer>();
+            for(int k=0;k<arr_value.length;k++)
+            {
+                String SequenceNumber_Query="select * from archiveexecution_details where projects='"+project+"' and name='"+arr_value[k]+"';";
+                Statement statement=connection.createStatement();
+                ResultSet resultSet=statement.executeQuery(SequenceNumber_Query);
+                if(resultSet.next()) {
+                    sequence_num.add(Integer.parseInt(resultSet.getString(1)));
+                }
+            }
+            String ClosureIndex="select * from archiveexecution_details where projects='"+project+"' and name='Closure';";
+            Statement statement1=connection.createStatement();
+            ResultSet resultSet1=statement1.executeQuery(ClosureIndex);
+            if(resultSet1.next())
+            {
+                sequence_num.add(Integer.parseInt(resultSet1.getString(1)));
+            }
+            HashMap<String,String> ApplicationDetails_ActualStartDate=new HashMap<String, String>();
+            HashMap<String,String> ApplicationDetails_ActualEndDate=new HashMap<String, String>();
+            for(int m=0;m<sequence_num.size();m++)
+            {
+
+                if(m+1!=sequence_num.size())
+                {
+                    int current_seqnum=sequence_num.get(m);
+                    int next_sequencenum=sequence_num.get(m+1);
+                    String Requirements_Query="select * from ArchiveExecution_details where projects='"+project+"' and name='Requirements' and seq_num>'"+current_seqnum+"' and seq_num<'"+next_sequencenum+"';";
+                    Statement Requirements_Query_statement=connection.createStatement();
+                    ResultSet resultSet_Requirements=Requirements_Query_statement.executeQuery(Requirements_Query);
+                    if(resultSet_Requirements.next())
+                    {
+                        ApplicationDetails_ActualStartDate.put(arr_value[m]+"RequirementsActSrt",resultSet_Requirements.getString("act_srt_date"));
+                        ApplicationDetails_ActualEndDate.put(arr_value[m]+"RequirementsActEnd",resultSet_Requirements.getString("act_end_date"));
+                    }
+                    String Dev_stage1_Query="select * from ArchiveExecution_details where projects='"+project +"' and name='Cycle 1 (Dev)' and seq_num>'"+current_seqnum+"' and seq_num<'"+next_sequencenum+"';";
+                    Statement Dev_stage1_statement=connection.createStatement();
+                    ResultSet Dev_stage1_resultSet=Dev_stage1_statement.executeQuery(Dev_stage1_Query);
+                    if(Dev_stage1_resultSet.next())
+                    {
+                        ApplicationDetails_ActualStartDate.put(arr_value[m]+"Dev1ActSrt",Dev_stage1_resultSet.getString("act_srt_date"));
+                        ApplicationDetails_ActualEndDate.put(arr_value[m]+"Dev1ActEnd",Dev_stage1_resultSet.getString("act_end_date"));
+                    }
+                    String Dev_stage2_Query="select * from ArchiveExecution_details where projects='"+project +"' and name='Cycle 2 (Stage)' and seq_num>'"+current_seqnum+"' and seq_num<'"+next_sequencenum+"';";
+                    Statement Dev_stage2_statement=connection.createStatement();
+                    ResultSet Dev_stage2_resultSet=Dev_stage2_statement.executeQuery(Dev_stage2_Query);
+                    if(Dev_stage2_resultSet.next()) {
+                        ApplicationDetails_ActualStartDate.put(arr_value[m]+"Dev2ActSrt",Dev_stage2_resultSet.getString("act_srt_date"));
+                        ApplicationDetails_ActualEndDate.put(arr_value[m]+"Dev2ActEnd",Dev_stage2_resultSet.getString("act_end_date"));
+                    }
+                    String UAT_setup_Query="select * from archiveexecution_details where projects='"+project+"' and name='UAT setup (Stage)' and seq_num>'"+current_seqnum+"' and seq_num<'"+next_sequencenum+"';";
+                    Statement UAT_setup_statement=connection.createStatement();
+                    ResultSet UAT_setup_resultset=UAT_setup_statement.executeQuery(UAT_setup_Query);
+                    if(UAT_setup_resultset.next())
+                    {
+                        ApplicationDetails_ActualStartDate.put(arr_value[m]+"UATsetupActSrt",UAT_setup_resultset.getString("act_srt_date"));
+                        ApplicationDetails_ActualEndDate.put(arr_value[m]+"UATsetupActEnd",UAT_setup_resultset.getString("act_end_date"));
+                    }
+                    String UAT_Query="select * from archiveexecution_details where projects='"+project+"' and name='UAT setup (Stage)' and seq_num>'"+current_seqnum+"' and seq_num<'"+next_sequencenum+"';";
+                    Statement UAT_statement=connection.createStatement();
+                    ResultSet UAT_resultset=UAT_setup_statement.executeQuery(UAT_Query);
+                    if(UAT_resultset.next())
+                    {
+                        ApplicationDetails_ActualStartDate.put(arr_value[m]+"UATActSrt",UAT_resultset.getString("act_srt_date"));
+                        ApplicationDetails_ActualEndDate.put(arr_value[m]+"UATActEnd",UAT_resultset.getString("act_end_date"));
+                    }
+                    String Implement_Query="select * from archiveexecution_details where projects='"+project+"' and name='UAT setup (Stage)' and seq_num>'"+current_seqnum+"' and seq_num<'"+next_sequencenum+"';";
+                    Statement Implement_statement=connection.createStatement();
+                    ResultSet Implement_resultset=Implement_statement.executeQuery(Implement_Query);
+                    if(Implement_resultset.next())
+                    {
+                        ApplicationDetails_ActualStartDate.put(arr_value[m]+"ImplementActSrt",Implement_resultset.getString("act_srt_date"));
+                        ApplicationDetails_ActualEndDate.put(arr_value[m]+"ImplementActEnd",Implement_resultset.getString("act_end_date"));
+                    }
+                }
+            }
+            JsonObject jsonappstatus=new JsonObject();
+            ArrayList<String> AppStatus=new ArrayList<String>();
+            for(int index=0;index<arr_value.length;index++)
+            {
+                String RequirementsActSrt= ApplicationDetails_ActualStartDate.get(arr_value[index]+"RequirementsActSrt");
+                String RequirementsActEnd=ApplicationDetails_ActualEndDate.get(arr_value[index]+"RequirementsActEnd");
+                String dev1ActSrt=ApplicationDetails_ActualStartDate.get(arr_value[index]+"Dev1ActSrt");
+                String dev1ActEnd=ApplicationDetails_ActualEndDate.get(arr_value[index]+"Dev1ActEnd");
+                String dev2ActSrt=ApplicationDetails_ActualStartDate.get(arr_value[index]+"Dev2ActSrt");
+                String dev2ActEnd=ApplicationDetails_ActualEndDate.get(arr_value[index]+"Dev2ActEnd");
+                String UATsetupActSrt=ApplicationDetails_ActualStartDate.get(arr_value[index]+"UATsetupActSrt");
+                String UATsetupActEnd=ApplicationDetails_ActualEndDate.get(arr_value[index]+"UATsetupActEnd");
+                String UATActSrt=ApplicationDetails_ActualStartDate.get(arr_value[index]+"UATActSrt");
+                String UATActEnd=ApplicationDetails_ActualEndDate.get(arr_value[index]+"UATActEnd");
+                String Implementation_Actsrt=ApplicationDetails_ActualStartDate.get(arr_value[index]+"ImplementActSrt");
+                String Iplementation_ACtEnd=ApplicationDetails_ActualEndDate.get(arr_value[index]+"ImplementActEnd");
+                String ApplicationStatus="";
+                String ApplicationLivestatusQuery="select * from archiveexecution_details where projects='"+project+"' and name='"+arr_value[index]+"';";
+                Statement LiveStatement=connection.createStatement();
+                ResultSet LiveResultSet=LiveStatement.executeQuery(ApplicationLivestatusQuery);
+                if(LiveResultSet.next())
+                {
+                    if(Integer.parseInt(LiveResultSet.getString("progressbar"))==100)
+                        ApplicationStatus="Live";
+                    else if((RequirementsActSrt.equals("")&&RequirementsActEnd.equals(""))&&(dev1ActSrt.equals("")&&dev1ActEnd.equals(""))&&(dev2ActSrt.equals("")&&dev2ActEnd.equals(""))&&(UATsetupActSrt.equals("")&&UATsetupActEnd.equals(""))&&(UATActSrt.equals("")&&UATActEnd.equals(""))&&(Implementation_Actsrt.equals("")&&Iplementation_ACtEnd.equals("")))
+                    {
+                        ApplicationStatus="Application Not yet started";
+                    }
+                    else
+                if((RequirementsActSrt.equals("")&&RequirementsActEnd.equals(""))||(!RequirementsActSrt.equals("")&&RequirementsActEnd.equals("")))
+                {
+                    ApplicationStatus="Plan in progress";
+                }
+                else if((dev1ActSrt.equals("")&&dev1ActEnd.equals(""))||(!dev1ActSrt.equals("")&&dev1ActEnd.equals("")))
+                {
+                    ApplicationStatus="Development in progress";
+                }
+                else if((dev2ActSrt.equals("")&&dev2ActEnd.equals(""))||(!dev2ActSrt.equals("")&&dev2ActEnd.equals("")))
+                {
+                    ApplicationStatus="Development in progress";
+                }else if((UATsetupActSrt.equals("")&&UATsetupActEnd.equals(""))||(!UATsetupActSrt.equals("")&&UATsetupActEnd.equals("")))
+                {
+                    ApplicationStatus="Testing in progress";
+                }else if((UATActSrt.equals("")&&UATActEnd.equals(""))||(!UATActSrt.equals("")&&UATActEnd.equals("")))
+                {
+                    ApplicationStatus="Testing in progress";
+                }else if((Implementation_Actsrt.equals("")&&Iplementation_ACtEnd.equals(""))||(!Implementation_Actsrt.equals("")&&Iplementation_ACtEnd.equals("")))
+                {
+                    ApplicationStatus="Deployment in progress";
+                }
+                }
+                AppStatus.add(ApplicationStatus);
+            }
+            /*for(int m=0;m<arr_value.length+1;m++)
+            {
+                String ActualStartDate="";
+                String ActualEndDate="";
+                String status="";
+                int nextindex=m+1;
+                if(m+1==arr_value.length) {
+                    String SelectQuery = "select * from archiveexecution_details where projects='" + project + "' and seq_num>'"+sequence_num.get(m)+"' and seq_num<'"+sequence_num.get(m+1)+"' and name='Requirements' or name='Cycle 1 (Dev)' and projects='"+project+"' and seq_num>'"+sequence_num.get(m)+"' and seq_num<'"+sequence_num.get(m+1)+"'  or name='Cycle 2 (Stage)' and projects='" + project + "' and seq_num>'"+sequence_num.get(m)+"' and seq_num<'"+sequence_num.get(m+1)+"'  or name='UAT setup (Stage)' and projects='" + project + "' and seq_num>'"+sequence_num.get(m)+"' and seq_num<'"+sequence_num.get(m+1)+"' or name=''";
+                    Statement statement2 = connection.createStatement();
+                    ResultSet resultSet2 = statement2.executeQuery(SelectQuery);
+                    if(resultSet1.next())
+                    {
+                        ActualStartDate=resultSet1.getString("act_srt_date");
+
+                        ActualEndDate=resultSet1.getString("act_end_date");
+
+                        if(!ActualStartDate.equals("")&&!ActualEndDate.equals(""))
+                        {
+                        }
+                        else if(!ActualStartDate.equals("")&&!ActualEndDate.equals(""))
+                        {
+                        }
+                    }
+                }
+                else {
+
+                }
+            }*/
+
+
             for(int j=0;j<arr_value.length;j++)
             {
                 JsonObject jsonObject=new JsonObject();
@@ -222,6 +385,7 @@ public class Project_Manager_Dashboard {
                 jsonObject.addProperty("Percentage",percentage[j]);
                 jsonObject.addProperty("ResourceCount",resourcesCount[j]);
                 jsonObject.addProperty("ApplicationState",AppState[j]);
+                jsonObject.addProperty(arr_value[j]+"status",AppStatus.get(j));
                 jsonarray.add(jsonObject);
             }
 
