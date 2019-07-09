@@ -613,7 +613,7 @@
                 </section>
                 <%--<footer class="footer">
                     <div class="container-fluid">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018 <a href="http://www.platform3solutions.com/" target="_blank">Platform3solutions.com</a>. All rights reserved.</span>
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ï¿½ 2018 <a href="http://www.platform3solutions.com/" target="_blank">Platform3solutions.com</a>. All rights reserved.</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"></span>
                     </div>
                 </footer>--%>
@@ -702,7 +702,7 @@
          role="alert" data-notify-position="top-right"
          style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; top: 20px; right: 20px;">
         <button type="button" aria-hidden="true" class="close" data-notify="dismiss"
-                style="position: absolute; right: 10px; top: 50%; margin-top: -13px; z-index: 1033;">×
+                style="position: absolute; right: 10px; top: 50%; margin-top: -13px; z-index: 1033;">ï¿½
         </button>
         <span data-notify="icon" class="fa fa-2x fa-gift"></span> <span data-notify="title"></span> <span
             data-notify="message">Welcome to <b>Project Manager Dashboard</b> - a beautiful Project Manager  Panel for your  project.</span><a
@@ -908,33 +908,35 @@
                 success: function (data)
                 {
                     console.log("project information",data)
-                    /*var tablevalue = "";
-                    tablevalue='<tr><td>'+data[0].appname+'</td>';
-                   /!* $.each(data[1], function (key, val) {
-                        console.log("project key",Project Namekey);
-                        console.log("project value",val);
-                        tablevalue += '<td>' + val + '</td>';
-                    });*!/
-                   for(var i=0;i<data[2].length;i++)
-                   {
-                       tablevalue += '<td>' + data[2][i].ProjectManager + '</td>';
-                   }
-                    tablevalue+='<td>'+data[0].intdate+'</td>';
-                    tablevalue+='<td>'+data[0].enddate+'</td>';
-                    tablevalue+='<td>'+data[2].Status+'</td></tr>';
-                    datatable.append(tablevalue);
-                   /!* $.each(data, function (index, jsonObject) {
-                        tablevalue = ""
-                        tablevalue += '<tr>';
-                        $.each(jsonObject, function (key, val) {
-                            console.log("project key",key);
-                            console.log("project value",val);
-                                tablevalue += '<td>' + val + '</td>';
-                        });
-                        tablevalue += '</tr>';
-                        datatable.append(tablevalue);
-                    });*!/
-                   /!* $('#example').DataTable();*!/*/
+                    var obj = data;
+                    var appinfo = "";
+
+
+
+                    for(var i=0;i<obj.length;i++)
+                    {
+
+                        var status = obj[i]["AppName"] + "status";
+
+                        appinfo += "<tr>";
+                        appinfo +=  "<td>"+obj[i]["AppName"] + "</td>";
+                        appinfo += "<td>"+obj[i]["ReadOnlyDate"]+ "</td>";
+                        appinfo +=  "<td>"+obj[i]["StartDate"]+ "</td>";
+
+                        appinfo += "<td>"+obj[i]["EndDate"]+ "</td>";
+                        appinfo +="<td>"+obj[i]["Percentage"]+ "</td>";
+                        appinfo += "<td>"+obj[i]["ResourceCount"]+ "</td>";
+                        appinfo +=  "<td>"+obj[i]["ApplicationState"]+ "</td>";
+                        appinfo +=  "<td>"+obj[i][status]+ "</td>";
+                        appinfo += "</tr>";
+
+
+                        //$("#example").append(appinfo1 + appinfo2 + appinfo3 +appinfo4 +appinfo5+appinfo6+appinfo7+appinfo8+appinfo9+appinfo10 )
+
+
+
+                    }
+                    $("#example").append(appinfo);
                 }
                 });
 
