@@ -88,6 +88,10 @@
         statement.executeUpdate(query26);
         String query27 = "CREATE TABLE `Decomm_Manage_Service_Categories_Checklist`(`seq_num` INTEGER (255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `options` varchar(600) DEFAULT NULL, `label_name` varchar(255) DEFAULT NULL, `column_name` varchar(255) DEFAULT NULL, `type` varchar(255) DEFAULT NULL, `mandatory` varchar(255) DEFAULT NULL, `value` varchar(255) DEFAULT NULL)";
         statement.executeUpdate(query27);
+        String query28 = "CREATE TABLE `Decomm_Manage_Service_Categories_Checklist_others`(`prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL,`others`varchar(255) DEFAULT NULL, `questions` varchar(600) DEFAULT NULL, `type` varchar(255) DEFAULT NULL,`value` varchar(600) DEFAULT NULL,`level` INTEGER(255) DEFAULT NULL, `sub_seq` INTEGER(255) DEFAULT NULL) ";
+        statement.executeUpdate(query28);
+        String query29 = "CREATE TABLE `Decomm_Manage_Key_mile_stone`(`seq_num` INTEGER(255) DEFAULT NULL, `prj_name` varchar(255) DEFAULT NULL, `app_name` varchar(255) DEFAULT NULL, `tab_name` varchar(255) DEFAULT NULL, `tab_name_question` varchar(500) DEFAULT NULL, `tab_name_value` varchar(255))";
+        statement.executeUpdate(query29);
 
 %>
 <% } catch (Exception ex) {

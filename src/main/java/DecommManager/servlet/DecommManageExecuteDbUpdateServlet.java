@@ -26,7 +26,7 @@ public class DecommManageExecuteDbUpdateServlet extends HttpServlet {
                 String Updatequery="update decomm_manage_execution_info set value=? where prj_name = '" + projectname + "' and app_name = '" + appname + "' and column_name='"+"ExecuteInfo"+i+"'";
                 PreparedStatement preparedStmt1 = connection.prepareStatement(Updatequery);
                 preparedStmt1.setString(1, value);
-                System.out.println("Hello");
+                //System.out.println("Hello");
                 preparedStmt1.execute();
             }
         }

@@ -12,11 +12,15 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link href="css/themes/infragistics/infragistics.theme.css" rel="stylesheet" type="text/css" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2019.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2019.1/latest/css/structure/infragistics.css" rel="stylesheet" />
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
+
     <!-- ========== PAGE STYLES ========== -->
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
     <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
@@ -92,7 +96,102 @@
         top: 5px;
     }
 
+    #myModal1 {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
 
+    /* Modal Content */
+    #modal-content1 {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        height: 50%;
+        overflow: scroll;
+    }
+    #myModaldelete {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    #modal-contentdelete1 {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        height: 50%;
+        overflow: scroll;
+    }
+    /* The Modal (background) */
+    #myModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    #modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        height: 70%;
+        overflow: scroll;
+
+    }
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .mainframe
+    {
+        height: 30px;
+    }
+    .disaster_rec{
+        height: 30px;
+    }
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -281,7 +380,7 @@ $(".add_question").hide();
                                     </div>
                                     <div id="collapse2" class="panel-collapse">
                                         <div class="panel-body text-left">
-                                            <form name="LegacyForm">
+                                            <form name="ServiceCategoriesForm">
                                             <div id="inputFields">
                                                 <%--
                                                 <div class="form-group">
@@ -396,8 +495,8 @@ $(".add_question").hide();
                                                 </div>--%>
                                             </div>                                     <!-- <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button> -->
                                                 <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="">Add</button>
-                                                <button type="button" style="margin:5px;" class="btn btn-warning pull-left" onclick="">Modify</button>
-                                                <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="visible_del"
+                                                <%--<button type="button" style="margin:5px;" class="btn btn-warning pull-left" onclick="">Modify</button>--%>
+                                                <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="Deletebtn"
                                                         onclick="">Delete
                                                 </button>
                                                 <button type="button" class="btn btn-primary pull-right" onclick="Submit();">Save & Continue</button>
@@ -414,6 +513,146 @@ $(".add_question").hide();
             </div>
         </div>
     </div>
+</div>
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div id="modal-content">
+        <span class="close">&times;</span>
+        <form name="PopUpform">
+            <div id="scrollbar">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Label:</label>
+                            <input type="text" class="form-control" id="label"  name="label" required>
+                        </div>
+                    </div>
+                </div><br/>
+                <input type="hidden" id="project_name" name="project_name" value="">
+
+                <input type="text" id="appln_name" name="appln_name" value="" style="display:none;">
+                <input type="text" id="servlet_name" name="servlet_name" value="" style="display:none;">
+
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Column name:</label>
+                            <input type="text" class="form-control" id="idname"  name="idname" required>
+                        </div>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Type:</label>
+                            <select id="types" class="form-control" name="types" required >
+                                <option value="Text box">Text box</option>
+                                <option value="Check box">Check box</option>
+                                <option value="Radio box">Radio box</option>
+                                <option value="Dropdown">Dropdown</option>
+                                <option value="Datepicker">Datepicker</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row hidefield" id="check" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of check boxes:</label>
+                            <input type="text" class="form-control" id="number"  name="number1">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row hidefield" id="rdo" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Radio boxes:</label>
+                            <input type="text" class="form-control" id="radio_number"  name="radio_number">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row hidefield" id="drop" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Options:</label>
+                            <input type="text" class="form-control" id="drop_number"  name="drop_number" onChange="drp_dwn()">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="options">
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Mandatory:</label>
+                            <select id="mandatory" class="form-control" name="mandatory" required >
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+            </div>
+        </form>
+        <button type="button" id="submit" class="btn btn-primary" >Submit</button>
+        <button type="button" onclick="window.location.href=''" class="btn btn-default">Cancel</button>
+    </div>
+</div>
+<div id="myModaldelete" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-dialog" style="width:2000px">
+        <div id="modal-contentdelete1">
+            <%--<span class="close" style="color:white;">&times;</span>--%>
+            <form name="DeleteForm">
+                <div class="modal-header" style="background-color:rgb(52, 152, 219);">
+                    <h1 style="color:white;">Delete Task</h1>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:24px;">Are you sure, you want to delete this <span id="taskdelete"
+                                                                                           style="font-size:24px;"></span>
+                    <p style="font-size:24px;">input field permanently?</p>
+                    <input type="hidden" id="sequence1"/>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" id="submit2" class="btn btn-primary" >Yes</button>
+                <button type="button" onclick="window.location.href=''" class="btn btn-default">No</button>
+            </div>
+        </div>
+    </div>
+
 </div>
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -467,6 +706,31 @@ $(".add_question").hide();
     var appname = url.searchParams.get("appname");
     var projname=url.searchParams.get("projectname");
     console.log("Application:",appname,"Project:",projname);
+    var mainframe_val=[];
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
     $(document).ready(function(){
         $.ajax({
             url: "DecommManageServiceCategoriesDataRetrieveServlet",
@@ -511,12 +775,17 @@ $(".add_question").hide();
                     else if(Type=="Dropdown")
                     {
                         var inputdrop= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
-                            "<select style = 'width:100%;' name='"+ColumnName+"'>";
+                            "<select style = 'width:100%;' value='"+Value+"' name='"+ColumnName+"'>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
                         for(var i=0;i<option.length;i++) {
-                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'formInput198' >" + option[i] + "</option>";
+                            var checkdropdown="";
+                            if(Value.includes(option[i]))
+                            {
+                                checkdropdown="selected";
+                            }
+                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'formInput198'"+checkdropdown+" >" + option[i] + "</option>";
                         }
                         inputdrop +="</select></div>";
                         $('#inputFields').append(inputdrop);
@@ -531,19 +800,23 @@ $(".add_question").hide();
                         var option=sub_option.split(",");
                         for (var i=0; i<option.length; i++) {
 
-                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol' id="+((option[i]+(i + 1)).replace(/\s/g,''))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"'/>" +
+                            var Checking = "";
+                            if(Value.includes(option[i])){
+                                Checking = "checked";
+                            }
+                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol' id="+((option[i]+(i + 1)).replace(/\s/g,''))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"' "+Checking+"/>" +
                                 option[i]+"</label>";
                         }
                         inputcheck +="</div>";
                         $('#inputFields').append(inputcheck);
-                        if (LabelName=="Others" && ColumnName=="ServiceCategories6"){
+                        /*if (LabelName=="Others" && ColumnName=="ServiceCategories6"){
 
                         var others= "<div class='form-group'>\n" +
                             "<table  class='Mainframe hidetable' style='display:none;'>\n" +
                             "<tr>\n" +
                             "<td><b>MAINFRAME</b></td>\n" +
                             "<td>\n" +
-                            "<select class=\"multiselect-ui form-control\" multiple>\n" +
+                            "<select class=\"selectpicker multiselect-ui form-control style='width:100%;'\n>\n" +
                             "<option value='CICS Regions'>CICS Regions</option>\n" +
                             "<option value='DB2'>DB2</option>\n" +
                             "<option value='Endevor Flows'>Endevor Flows</option>\n" +
@@ -654,7 +927,7 @@ $(".add_question").hide();
                             "</table>\n" +
                             "</div>";
                             $('#inputFields').append(others);
-                        }
+                        }*/
 
                     }
                     else if(Type=="Radio box")
@@ -665,7 +938,12 @@ $(".add_question").hide();
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
                         for (var i=0; i<option.length; i++){
-                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+ColumnName+"'/>"+
+
+                            var Checking = "";
+                            if(Value.includes(option[i])){
+                                Checking = "checked";
+                            }
+                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+ColumnName+"' "+Checking+"/>"+
                                 option[i]+"</label>";
                         }
                         inputdrop +="</div>";
@@ -689,6 +967,266 @@ $(".add_question").hide();
                             "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'></textarea>"+
                             "</div>";
                         $('#inputFields').append(inputtext);
+                    }
+                    else if(Type=="Others")
+                    {
+                        var inputcheck= "<div class='form-group'>"+
+                            "<label class='control-label deletepopup editpopup' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-pencil' style='float:right;display:none;'></span></div></label>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=sub_option.split(",");
+                        console.log("Testing:",value.Value);
+                        //var value_arr = Value.split(",");
+                        var Mainframe_check = "style = 'display:none;'";
+                        var Support_Readiness_check = "style = 'display:none;'";
+                        var Desktop_Software_check = "style = 'display:none;'";
+                        var Disaster_Recovery_check = "style = 'display:none;'";
+                        var Citrix_check = "style = 'display:none;'";
+                        var Application_Security_check = "style = 'display:none;'";
+                        var Final_Backups_check = "style = 'display:none;'";
+                        var Mainframe_others="";
+                        var Mainframe_Questions="";
+                        var Mainframe_Type="";
+                        var Mainframe_value="";
+                        var Support_Readiness_others="";
+                        var Support_Readiness_Questions="";
+                        var Support_Readiness_Type="";
+                        var Support_Readiness_value_yes="";
+                        var Support_Readiness_value_No="";
+                        var Desktop_Software_others="";
+                        var Desktop_Software_Questions="";
+                        var Desktop_Software_Type="";
+                        var Desktop_Software_value_Yes="";
+                        var Desktop_Software_value_No="";
+                        var Disaster_Recovery_others="";
+                        var Disaster_Recovery_Questions="";
+                        var Disaster_Recovery_Type="";
+                        var Disaster_Recovery_value="";
+                        var Citrix_others="";
+                        var Citrix_Questions="";
+                        var Citrix_Type="";
+                        var Citrix_value_Yes="";
+                        var Citrix_value_No="";
+                        var Application_Security_others="";
+                        var Application_Security_Questions="";
+                        var Application_Security_Type="";
+                        var Application_Security_value_Yes1="";
+                        var Application_Security_value_No1="";
+                        var Application_Security_value_Yes2="";
+                        var Application_Security_value_No2="";
+                        var Application_Security_value_Yes3="";
+                        var Application_Security_value_No3="";
+                        var Application_Security_Display1="Style='display:none';";
+                        var Application_Security_Display2="Style='display:none';";
+                        var Application_Security_Display3="Style='display:none';";
+                        var Final_Backups_others="";
+                        var Final_Backups_Questions="";
+                        var Final_Backups_Type="";
+                        var Final_Backups_value_Yes="";
+                        var Final_Backups_value_No="";
+                        /*console.log("array array ----->",value.OthersJsonArray[0].Questions);
+                        console.log("array array length----->",value.OthersJsonArray.length);*/
+                        for(var n=0;n<value.OthersJsonArray.length;n++)
+                        {
+                            var element_others=value.OthersJsonArray[n].Others;
+                            if(element_others!="Application Security") {
+                                var element_Questions = value.OthersJsonArray[n].Questions;
+                                var element_Type = value.OthersJsonArray[n].Type;
+                                var element_value = value.OthersJsonArray[n].Value;
+                                if (element_others == "Mainframe") {
+                                    Mainframe_value = element_value;
+                                    mainframe_val=element_value.split(",");
+                                }
+                                if (element_others == "Support Readiness") {
+                                    if (element_value == "yes")
+                                        Support_Readiness_value_yes = "checked";
+                                    else if (element_value == "No")
+                                        Support_Readiness_value_No = "checked";
+                                }
+                                if (element_others == "Desktop Software") {
+                                    if (element_value == "Yes")
+                                        Desktop_Software_value_Yes = "checked";
+                                    else if (element_value == "No")
+                                        Desktop_Software_value_No = "checked";
+                                }
+                                if (element_others == "Disaster Recovery") {
+                                    Disaster_Recovery_value = element_value;
+                                }
+                                if (element_others == "Citrix") {
+                                    if (element_value == "Yes")
+                                        Citrix_value_Yes = "checked";
+                                    else if (element_value == "No")
+                                        Citrix_value_No = "checked";
+                                }
+
+                                if (element_others == "Final Backups") {
+                                    if (element_value == "Yes")
+                                        Final_Backups_value_Yes = "checked";
+                                    else if (element_value == "No")
+                                        Final_Backups_value_No = "checked";
+                                }
+                            }
+                            else {
+                                if(element_others=="Application Security")
+                                {
+                                    var element_value1 = value.OthersJsonArray[n].values[0].Value;
+                                    if(element_value1=="Yes") {
+                                        Application_Security_Display2="";
+                                        Application_Security_value_Yes1 = "checked";
+                                        var element_value2 = value.OthersJsonArray[n].values[1].Value;
+                                        if(element_value2=="Yes")
+                                        {
+                                            Application_Security_value_Yes2="checked";
+                                            Application_Security_Display3="";
+                                            var element_value3 = value.OthersJsonArray[n].values[2].Value;
+                                            if(element_value3=="Yes")
+                                            {
+                                              Application_Security_value_Yes3="checked";
+                                            }
+                                            else {
+                                                Application_Security_value_No3="checked";
+                                            }
+                                        }
+                                        else {
+                                            Application_Security_value_No2="checked";
+                                        }
+                                    }else if(element_value1=="No") {
+                                        Application_Security_value_No1 = "checked";
+                                    }
+                                }
+                            }
+                             }
+                        if (Value.includes("Mainframe")){
+                            Mainframe_check = "";
+                        }
+                        if (Value.includes("Support Readiness")){
+                            Support_Readiness_check = "";
+                        }
+                        if (Value.includes("Desktop Software")){
+                            Desktop_Software_check = "";
+                        }
+                        if (Value.includes("Disaster Recovery")){
+                            Disaster_Recovery_check = "";
+                        }
+                        if (Value.includes("Citrix")){
+                            Citrix_check = "";
+                        }
+                        if (Value.includes("Application Security")){
+                            Application_Security_check = "";
+                        }
+                        if (Value.includes("Final Backups")){
+                            Final_Backups_check = "";
+                        }
+
+                        for (var i=0; i<option.length; i++) {
+                            var Checking = "";
+                            if(Value.includes(option[i])){
+                                Checking = "checked";
+                            }
+                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol "+ColumnName+"' id='"+((option[i]).replace(/\s/g,''))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"' "+Checking+"/>" +
+                                option[i]+"</label>";
+
+                        }
+                        inputcheck +="</div>";
+                        $('#inputFields').append(inputcheck);
+                            var others= "<div class='form-group'>\n" +
+                                "<table  class='Mainframe hidetable' "+Mainframe_check+">\n" +
+                                "<tr>\n" +
+                                "<td><b>MAINFRAME</b></td>\n" +
+                                "<td>\n" +
+                                "<input class='form-control mainframe' id='mainframe' value='"+Mainframe_value+"'name='Mainframe' placeholder='select...' autocomplete='off' style='width:100%;'>\n" +
+                                "\n"+
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "</table>\n" +
+                                "<table class='Support_Readiness hidetable' "+Support_Readiness_check+">\n" +
+                                "<tr><td><b>SUPPORT READINESS</b></td>\n" +
+                                "</tr>\n" +
+                                "<tr>\n" +
+                                "<td>\n" +
+                                "<font color='blue'>  Is the application supported by the United Support Center (Help Desk) and/or\n" +
+                                "IT Service Management (service/infrastructure performance monitoring)? </font></td>\n" +
+                                "</td>\n" +
+                                "<td>\n" +
+                                "<input type='radio' name='SupportReadiness' value='yes'"+Support_Readiness_value_yes+">yes\n" +
+                                "<input type='radio' name='SupportReadiness' value='No'"+Support_Readiness_value_No+">No\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "</table>\n" +
+                                "<table class='Desktop_Software hidetable' "+Disaster_Recovery_check+">\n" +
+                                "<tr>\n" +
+                                "<td> <b>DESKTOP SOFTWARE</b> </td>\n" +
+                                "<td></td>\n" +
+                                "</tr>\n" +
+                                "<tr>\n" +
+                                "<td><font color='blue';> Is there any desktop or supporting desktop software? </font> </td>\n" +
+                                "<td>\n" +
+                                "<input type='radio' name='DesktopSoftware' value='yes'"+Desktop_Software_value_Yes+">yes\n" +
+                                "<input type='radio' name='DesktopSoftware' value='No'"+Desktop_Software_value_No+">No\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "</table>\n" +
+                                "<table class='Disaster_Recovery hidetable' "+Desktop_Software_check+">\n" +
+                                "<tr>\n" +
+                                "<td><b>DISASTER RECOVERY</b></td>\n" +
+                                "<td>\n" +
+                                "<input class='form-control disaster_rec' name='DisasterRecovery' id='disaster_rec' value='"+Disaster_Recovery_value+"' placeholder='select...' value='' autocomplete='off' style='width:100%;'>\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "</table>\n" +
+                                "<table class='Citrix hidetable' "+Citrix_check+">\n" +
+                                "<tr>\n" +
+                                "<td><b>CITRIX</b></td>\n" +
+                                "</tr>\n" +
+                                "<tr>\n" +
+                                "<td> <font color='blue';> Does the application utilize any Citrix environments? </font> </td>\n" +
+                                "<td>\n" +
+                                "<input type='radio' name='Citrix' value='yes'"+Citrix_value_Yes+">yes\n" +
+                                "<input type='radio' name='Citrix' value='No'"+Citrix_value_No+">No\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "</table>\n" +
+                                "<table class='Application_Security hidetable' "+Application_Security_check+">\n" +
+                                "<tr>\n" +
+                                "<td><b>APPLICATION SECURITY</b></td>\n" +
+                                "</tr>\n" +
+                                "<tr >\n" +
+                                "<td> <font color='blue';> Does the application utilize Global Groups?</font></td>\n" +
+                                "<td>\n" +
+                                "<input type='radio' name='ApplicationSecurity1' class='citrix' value='Yes'"+Application_Security_value_Yes1+">yes\n" +
+                                "<input type='radio' name='ApplicationSecurity1'  class='citrix' value='No'"+Application_Security_value_No1+">No\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "<tr class='add_question' "+Application_Security_Display2+">\n" +
+                                "<td><font color='blue';>Is the application in SECURE?</font></td>\n" +
+                                "<td>\n" +
+                                "<input type='radio' name='ApplicationSecurity2' class='citrix_1' value='Yes'"+Application_Security_value_Yes2+">yes\n" +
+                                "<input type='radio' name='ApplicationSecurity2' class='citrix_1' value='No' "+Application_Security_value_No2+">No\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "<tr class='add_question_2' "+Application_Security_Display3+">\n" +
+                                "<td> <font color='blue';> Does the application have an Internally supported access mechanism or other not listed above\n" +
+                                "( e.g., your own directory)?</font></td>\n" +
+                                "<td>\n" +
+                                "<input type='radio' name='ApplicationSecurity3' class='citrix_2' value='Yes'"+Application_Security_value_Yes3+" >Yes\n" +
+                                "<input type='radio' name='ApplicationSecurity3' class='citrix_2' value='No'"+Application_Security_value_No3+">No\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "</table>\n" +
+                                "<table class='Final_Backups hidetable' "+Final_Backups_check+">\n" +
+                                "<tr>\n" +
+                                "<td><b>FINAL BACKUPS</b></td>\n" +
+                                "</tr>\n" +
+                                "<tr>\n" +
+                                "<td><font color='blue';> Are Final Backups Required?     </font></td>\n" +
+                                "<td>\n" +
+                                "<input type='radio' name='backup' class='backup' value='yes'"+Final_Backups_value_Yes+">yes\n" +
+                                "<input type='radio' name='backup' class='backup' value='no'"+Final_Backups_value_No+">No\n" +
+                                "</td>\n" +
+                                "</tr>\n" +
+                                "</table>\n" +
+                                "</div>";
+                            $('#inputFields').append(others);
                     }
 
                 });
@@ -718,20 +1256,305 @@ $(".add_question").hide();
                         "for(var i=0;i<answer.length;i++)" +
                     "{"+
                     "$('.'+answer[i].replace(' ','_')).show();}});<\/script>";
+                script+="<script>$('input[name=\"ApplicationSecurity1\"]').on('change', function(){"+
+                "if(this.value == 'Yes'){"+
+                    "$('.add_question').show();"+
+                "}"+
+                "else{"+
+                    "$('.add_question').hide();"+
+                "}"+
+            "});" +
+                    "$('input[name=\"ApplicationSecurity2\"]').on('change', function(){" +
+                    "if(this.value == 'Yes'){" +
+                    "$('.add_question_2').show();" +
+                    "}" +
+                    "else{" +
+                    "$('.add_question_2').hide();" +
+                    "}" +
+                    "});<\/script>";
+                script+="<script>var mainframe_dropdown = [{Name:'CICS Regions'},{Name:'DB2'},{Name:'Endevor Flows'},{Name:'HLQ\\'s (high level qualifiers) to be eliminated'},{Name:'IMS Regions'},{Name:'Mainframe  Storage'},{Name:'Mainframe Batch Processing'},{Name:'Mainframe Capacity'},{Name:'Tape Media'},{Name:'VSAM'}, ];\n"+
+                    "$('#mainframe').igCombo({\n" +
+                    "width: 250," +
+                    "dataSource: mainframe_dropdown," +
+                    "textKey: 'Name'," +
+                    "valueKey: 'Name'," +
+                    "multiSelection: {" +
+                    "enabled: true," +
+                    "showCheckboxes: true" +
+                    "},dropDownOrientation: 'bottom'}); <\/script>";
+                script+="<script>var disaster_rec_dropdown = [{Name:'Rapid Recovery'},{Name:'SRM'},{Name:'Tier 0'},{Name:'Tier 1'},{Name:'Tier 2'},{Name:'Legacy Recovery'}, ];\n" +
+                    "$('#disaster_rec').igCombo({\n" +
+                    "width: 250,\n" +
+                    "dataSource: disaster_rec_dropdown," +
+                    "textKey: 'Name',"+
+                    "valueKey: 'Name'," +
+                    "multiSelection: {" +
+                    "enabled: true," +
+                    "showCheckboxes: true" +
+                    "},dropDownOrientation: 'bottom'});<\/script>";
                 $('#scripttag').append(script);
-
-            },
+                },
             error: function (e) {
                 console.log(e);
             }
         });
+
+    });
+    $(document).ready(function(){
+        for(var i=0;i<mainframe_val.length;i++) {
+            $('#mainframe').igCombo("values", mainframe_val[i]);
+        }
+    $.ajax({
+        url: "DecommManageServiceCategoriesDataRetrieveOthersServlet",
+        type: 'POST',
+        data: {ApplicationName:appname,ProjectName: projname},
+        dataType: "json",
+        success: function (data) {
+            console.log("Data Retrieve json array----->",data);
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
     });
 
+</script>
+<script>
+    // Get the modal
+    var modal2 = document.getElementById("myModaldelete");
+
+    // Get the button that opens the modal
+    var btn2 = document.getElementsByClassName("deletepopup");
+
+    // Get the <span> element that closes the modal
+    var span2= document.getElementsByClassName("close")[1];
+
+    // When the user clicks the button, open the modal
+    $('.deletepopup').click(function() {
+        alert("Testing index"+$(this).index('.deletepopup'));
+        modal2.style.display = "block";
+    });
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+    $('#Deletebtn').click(function()
+    {
+        $(".hidepencil").hide();
+        $(".hidedelete").toggle();
+    });
+    $('#Modifybtn').click(function()
+    {
+        $(".hidedelete").hide();
+        $(".hidepencil").toggle();
+    });
+
+    $('#submit').click(function() {
+        var labelname = $('#label').val();
+        var columnname = $('#idname').val();
+        var type = $('#types').val();
+        var mandatory = $('#mandatory').val();
+        var num = 1;
+        var options = "";
+        if (type == "Check box") {
+            num = $('#number').val();
+            var length = $('.checkclass').length;
+            for (var i = 1; i <= length; i++) {
+                var checklabel = $('#label' + i).val();
+                options += checklabel + ",";
+            }
+        } else if (type == "Radio box") {
+            num = $('#radio_number').val();
+            var length = $('.radioclass').length;
+            for (var i = 1; i <= length; i++) {
+                var radiolabel = $('#Rlabel' + i).val();
+                options += radiolabel + ",";
+            }
+
+        } else if (type == "Dropdown") {
+            num = $('#drop_number').val();
+            var length = $('.dropclass').length;
+            for (var i = 1; i <= length; i++) {
+                var drplabel = $('#drp_label' + i).val();
+                options += drplabel + ",";
+            }
+
+        }
+    $.ajax({
+        url: "DecommManageServiceCategoriesAddServlet",
+        type: 'POST',
+        data: {ApplicationName:appname,ProjectName: projname,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Number:num,Options:options},
+        dataType: "json",
+        success: function (data) {
+            var required = "";
+            console.log("data add---->",data);
+            var num=parseInt($('.editpopup').length)+1;
+            var required_field = "";
+            if (data.Mandatory == "Yes"){
+                required_field = "class = 'required_fie'";
+            }
+            if (data.CheckExistance == true)
+            {
+                alert("Alredey Label or Column name Existed ");
+            }
+            else if(data.Type=="Text box")
+            {
+                var inputtext="<div class='form-group'>"+
+                    "<label class='control-label' for='formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                    "<input type='text' class='form-control' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
+                    "</div>";
+                $('#inputFields').append(inputtext);
+            }
+            else if(data.Type=="Datepicker")
+            {
+                var inputdate="<div class='form-group'>"+
+                    "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                    "<input type='text' class='form-control datepicker1' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
+                    "</div>";
+                $('#inputFields').append(inputdate);
+                var script="<script>$('.datepicker1').datepicker({\n" +
+                    "format: \"mm/dd/yyyy\",\n" +
+                    "autoclose: true\n" +
+                    "});<\/script>";
+                $('#scripttag').append(script);
+            }
+            else if(data.Type=="Radio box")
+            {
+                var input="";
+                input+= "<div class='form-group'>"+
+                    "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                var Options=data.Options;
+                var sub_option = Options.substring(0, Options.length - 1);
+                var option=sub_option.split(",");
+                for (var i=0; i<option.length; i++){
+
+                    input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
+                        option[i]+"</label>";
+
+                }
+                input +="</div>";
+                $('#inputFields').append(input);
+            }
+            else if(data.Type=="Check box")
+            {
+                var input="";
+                input+= "<div class='form-group'>"+
+                    "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                var Options=data.Options;
+                var sub_option = Options.substring(0, Options.length - 1);
+                var option=sub_option.split(",");
+                for (var i=0; i<option.length; i++) {
+
+                    input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='" + data.ColumnName+num+"'/>" +
+                        option[i] + "</label>";
+                }
+                input +="</div>";
+                $('#inputFields').append(input);
+            }
+            else if(data.Type=="Dropdown")
+            {
+                var select="";
+                select+= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                    "<select style = 'width:100%;' name = "+data.ColumnName+num+">";
+                var Options=data.Options;
+                var sub_option = Options.substring(0, Options.length - 1);
+                var option=sub_option.split(",");
+                for(var i=0;i<option.length;i++) {
+                    select += "<option label=" + option[i] + " class='control-label' for= 'formInput198' >" + option[i] + "</option>";
+                }
+                select +="</select></div>";
+                $('#inputFields').append(select);
+            }
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+    });
+    $('#submit2').click(function(){
+        var deleteseq=parseInt($('#sequence1').val())+1;
+        var f=document.DeleteForm;
+        f.method = "post";
+        f.action = "DecommManagerServiceCategoriesDeleteServlet?ApplicationName="+appname+"&ProjectName="+projname+"&DeleteNumber="+deleteseq;
+        f.submit();
+    });
+</script>
+<script>
+    $('#types').change(function()
+    {
+        var type=$('#types').val();
+        //alert('Type--> '+type);
+        $(".hidefield").hide();
+        if(type=="Check box")
+        {
+            $('#check').show();
+
+
+        }
+        else if(type=="Radio box")
+        {
+            $('#rdo').show();
+
+        }
+        else if(type=="Dropdown")
+        {
+            $('#drop').show();
+        }
+        //alert('types--->'+type);
+    });
+    $('#radio_number').change(function(){
+        var count=$('#radio_number').val();
+        var s="";
+        for(var i=1;i<=count;i++) {
+            s += '<label class="hidefield">Radiobox Label' + i + ':</label><input type="text" class="form-control hidefield radioclass" id="Rlabel'+i+'" name="Rlabel' + i + '"><br/>'; //Create one textbox as HTML
+        }
+        $('#options').html(s);
+    });
+    $('#number').change(function()
+    {
+        var count=$('#number').val();
+        var s="";
+        for(var i = 1; i <=count; i++) {
+            s+= '<label class="hidefield">Checkbox Label'+i +':</label><input type="text" class="form-control hidefield checkclass" id="label'+i+'" name="label'+i+'"><br/>'; //Create one textbox as HTML
+        }
+        $('#options').html(s);
+    });
+    $('#drop_number').change(function()
+    {
+        var drop=$('#drop_number').val();
+        /*console.log('drop---> '+drop);
+        alert('drop---> '+drop);*/
+        var s="";
+        for(var i=1;i<=drop;i++)
+        {
+            s+='<label class="hidefield">Options Label'+i +':</label><input type="text" class="form-control hidefield dropclass" id="drp_label'+i+'" name="drp_label'+i+'"><br/>';
+        }
+        $('#options').html(s);
+    });
+    function Submit(){
+        //alert("Hello");
+        var name = $('#Mainframe').attr('name');
+        var val = [];
+        $. each($("input[name='"+name+"']:checked"), function(){
+            val. push($(this). val());
+        });
+        /*alert("hiiiiiiiiiiii "+val);*/
+        console.log("Testing_Process: ",val);
+        var classlength = $('.editpopup').length;
+        var f = document.ServiceCategoriesForm;
+        f.method = "post";
+        f.action = "DecommManageSerivceCategoriesDBUpdateServlet?appname="+appname+"&prjname="+projname+"&classlength="+classlength+"&OthersVal"+val;
+        f.submit();
+    }
 </script>
 <div id ='scripttag'>
 
 </div>
 
+<script src="http://cdn-na.infragistics.com/igniteui/2019.1/latest/js/infragistics.core.js"></script>
+<script src="http://cdn-na.infragistics.com/igniteui/2019.1/latest/js/infragistics.lob.js"></script>
 </body>
 
 </html>

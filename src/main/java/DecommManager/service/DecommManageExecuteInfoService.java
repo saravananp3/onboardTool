@@ -121,8 +121,8 @@ public class DecommManageExecuteInfoService {
                 preparedStmt1.setString(1, label_name);
                 preparedStmt1.setString(2, type);
                 preparedStmt1.setString(3, mandatory);
-                preparedStmt1.execute();*/
-            //}
+                preparedStmt1.execute();
+            }*/
 
             String update_query = "update decomm_manage_execution_info set label_name =? where prj_name = '" + projectname + "' and app_name = '" + applicationname + "' and seq_num='"+sequencenumber+"'";
             PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
@@ -485,6 +485,8 @@ public class DecommManageExecuteInfoService {
             String query = "select * from decomm_manage_service_categories_checklist where prj_name = '"+projectname+"' and app_name = '"+applicationname+"'";
             Statement statementforcheck=connection.createStatement();
             ResultSet Resultset=statementforcheck.executeQuery(query);
+            String others_value_if[];
+            String others_value_while[];
             if(Resultset.next()){
                 JsonObject jsonObject1=new JsonObject();
                 jsonObject1.addProperty("seq_num",Resultset.getString("seq_num"));
@@ -496,6 +498,26 @@ public class DecommManageExecuteInfoService {
                 jsonObject1.addProperty("Type",Resultset.getString("type"));
                 jsonObject1.addProperty("Mandatory",Resultset.getString("mandatory"));
                 jsonObject1.addProperty("Value",Resultset.getString("value"));
+
+                if(Resultset.getString("type").equals("Others"))
+                {
+                    others_value_if=Resultset.getString("value").split(",");
+                    JsonArray others_jsonArray = new JsonArray();
+                    for(int index1=0;index1<others_value_if.length;index1++) {
+                        String OthersTableQuery = "select * from decomm_manage_service_categories_checklist_others where prj_name='" + projectname + "' and app_name='" + applicationname + "'and others='"+others_value_if[index1]+"';";
+                        Statement statement_others = connection.createStatement();
+                        ResultSet resultset_others = statement_others.executeQuery(OthersTableQuery);
+                        while (resultset_others.next()) {
+                            JsonObject others_jsonObject = new JsonObject();
+                            others_jsonObject.addProperty("Others", resultset_others.getString("others"));
+                            others_jsonObject.addProperty("Questions", resultset_others.getString("questions"));
+                            others_jsonObject.addProperty("Type", resultset_others.getString("type"));
+                            others_jsonObject.addProperty("Value", resultset_others.getString("value"));
+                            others_jsonArray.add(others_jsonObject);
+                        }
+                        jsonObject1.add("OthersJsonArray", others_jsonArray);
+                    }
+                }
                 jsonArray.add(jsonObject1);
                 while(Resultset.next())
                 {
@@ -509,6 +531,43 @@ public class DecommManageExecuteInfoService {
                     jsonObject2.addProperty("Type",Resultset.getString("type"));
                     jsonObject2.addProperty("Mandatory",Resultset.getString("mandatory"));
                     jsonObject2.addProperty("Value",Resultset.getString("value"));
+                    if(Resultset.getString("type").equals("Others"))
+                    {
+                        others_value_while=Resultset.getString("value").split(",");
+                        JsonArray others_jsonArray = new JsonArray();
+                        for(int index2=0;index2<others_value_while.length;index2++) {
+                            String OthersTableQuery = "select * from decomm_manage_service_categories_checklist_others where prj_name='" + projectname + "' and app_name='" + applicationname + "' and others='" + others_value_while[index2] + "';";
+                            Statement statement_others = connection.createStatement();
+                            ResultSet resultset_others = statement_others.executeQuery(OthersTableQuery);
+                            if(!others_value_while[index2].equals("Application Security")) {
+                                while (resultset_others.next()) {
+                                    JsonObject others_jsonobject = new JsonObject();
+                                    others_jsonobject.addProperty("Others", resultset_others.getString("others"));
+                                    others_jsonobject.addProperty("Questions", resultset_others.getString("questions"));
+                                    others_jsonobject.addProperty("Type", resultset_others.getString("type"));
+                                    others_jsonobject.addProperty("Value", resultset_others.getString("value"));
+                                    others_jsonArray.add(others_jsonobject);
+                                }
+                            }
+                            else
+                            {
+                                JsonObject jsonobjectothers=new JsonObject();
+                                jsonobjectothers.addProperty("Others","Application Security");
+                                JsonArray jsonarrayAppSec=new JsonArray();
+                                while (resultset_others.next()) {
+                                    JsonObject others_jsonobject = new JsonObject();
+                                    others_jsonobject.addProperty("Others", resultset_others.getString("others"));
+                                    others_jsonobject.addProperty("Questions", resultset_others.getString("questions"));
+                                    others_jsonobject.addProperty("Type", resultset_others.getString("type"));
+                                    others_jsonobject.addProperty("Value", resultset_others.getString("value"));
+                                    jsonarrayAppSec.add(others_jsonobject);
+                                }
+                                jsonobjectothers.add("values",jsonarrayAppSec);
+                                others_jsonArray.add(jsonobjectothers);
+                            }
+                            jsonObject2.add("OthersJsonArray", others_jsonArray);
+                        }
+                        }
                     jsonArray.add(jsonObject2);
                 }
             }
@@ -517,6 +576,180 @@ public class DecommManageExecuteInfoService {
             System.out.println("Exception......" + e);
         }
             return jsonArray;
+    }
+    public static void DecommManageServiceCategoriesAddService(String projectname,String applicationname,String label_name,String column_name,String mandatory,String type,int NumberofInputfields,String options) {
+        try {
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String select_query = "select * from decomm_manage_service_categories_checklist where prj_name='" + projectname + "' and app_name='" + applicationname + "' order by seq_num;";
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(select_query);
+            String name = "ServiceCategories";
+            int max_seq_num = 1;
+            if (rs.next()) {
+                String max_seqnum = "select max(seq_num) from decomm_manage_service_categories_checklist where prj_name='" + projectname + "'and app_name='" + applicationname + "';";
+                Statement st1 = connection.createStatement();
+                ResultSet rs1 = st1.executeQuery(max_seqnum);
+
+                if (rs1.next()) {
+                    max_seq_num = Integer.parseInt(rs1.getString(1));
+                    max_seq_num++;
+                }
+            }
+            if (!type.equals("Text box") && !type.equals("Datepicker")) {
+                options = options.substring(0, options.length() - 1);
+            }
+            String insert_query = "insert into decomm_manage_service_categories_checklist (seq_num,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?,?,?,?,?,?,?,?,?);";
+            PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
+            preparedStatement1.setInt(1, max_seq_num);
+            preparedStatement1.setString(2, projectname);
+            preparedStatement1.setString(3, applicationname);
+            preparedStatement1.setString(4, options);
+            preparedStatement1.setString(5, label_name);
+            preparedStatement1.setString(6, (name+max_seq_num));
+            preparedStatement1.setString(7, type);
+            preparedStatement1.setString(8, mandatory);
+            preparedStatement1.setString(9, "");
+            preparedStatement1.execute();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Exception---[info]------"+e);
+        }
+    }
+    public static void DecommManagerServiceCategoriesDeleteService(String projectname,String applicationname, int  delete_seqnum)
+    {
+        try{
+            int seqmax = 0;
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            ArrayList<Integer> arr_seqmax = new ArrayList<Integer>();
+            ArrayList<String> arr_prj = new ArrayList<String>();
+            ArrayList<String> arr_app = new ArrayList<String>();
+            ArrayList<String> arr_options = new ArrayList<String>();
+            ArrayList<String> arr_label_name = new ArrayList<String>();
+            ArrayList<String> arr_column_name = new ArrayList<String>();
+            ArrayList<String> arr_type = new ArrayList<String>();
+            ArrayList<String> arr_mandatory = new ArrayList<String>();
+            ArrayList<String> arr_value = new ArrayList<String>();
+
+            ArrayList<Integer> arr_seqmax_split = new ArrayList<Integer>();
+            ArrayList<String> arr_prj_split = new ArrayList<String>();
+            ArrayList<String> arr_app_split = new ArrayList<String>();
+            ArrayList<String> arr_options_split = new ArrayList<String>();
+            ArrayList<String> arr_label_name_split = new ArrayList<String>();
+            ArrayList<String> arr_column_name_split = new ArrayList<String>();
+            ArrayList<String> arr_type_split = new ArrayList<String>();
+            ArrayList<String> arr_mandatory_split = new ArrayList<String>();
+            ArrayList<String> arr_value_split = new ArrayList<String>();
+
+
+            String select_query="select max(seq_num) from decomm_manage_service_categories_checklist where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by seq_num;";
+            Statement st=connection.createStatement();
+            ResultSet rs=st.executeQuery(select_query);
+            if(rs.next()) {
+                seqmax = Integer.parseInt(rs.getString(1));
+            }
+
+            String query = "select * from decomm_manage_service_categories_checklist where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by seq_num;";
+            Statement st1=connection.createStatement();
+            ResultSet rs1=st1.executeQuery(query);
+            while(rs1.next()){
+                arr_seqmax.add(rs1.getInt(1));
+                arr_prj.add(rs1.getString(2));
+                arr_app.add(rs1.getString(3));
+                arr_options.add(rs1.getString(4));
+                arr_label_name.add(rs1.getString(5));
+                arr_column_name.add(rs1.getString(6));
+                arr_type.add(rs1.getString(7));
+                arr_mandatory.add(rs1.getString(8));
+                arr_value.add(rs1.getString(9));
+            }
+
+            for (int i=0; i<seqmax; i++)
+            {
+                if(arr_seqmax.get(i)< delete_seqnum )
+                {
+                    arr_seqmax_split.add(arr_seqmax.get(i));
+                    arr_prj_split.add(arr_prj.get(i));
+                    arr_app_split.add(arr_app.get(i));
+                    arr_options_split.add(arr_options.get(i));
+                    arr_label_name_split.add(arr_label_name.get(i));
+                    arr_column_name_split.add(arr_column_name.get(i));
+                    arr_type_split.add(arr_type.get(i));
+                    arr_mandatory_split.add(arr_mandatory.get(i));
+                    arr_value_split.add(arr_value.get(i));
+                }
+                else if(arr_seqmax.get(i)> delete_seqnum){
+                    arr_seqmax_split.add((arr_seqmax.get(i)-1));
+                    arr_prj_split.add(arr_prj.get(i));
+                    arr_app_split.add(arr_app.get(i));
+                    arr_options_split.add(arr_options.get(i));
+                    arr_label_name_split.add(arr_label_name.get(i));
+                    arr_column_name_split.add("ServiceCategories"+(arr_seqmax.get(i)-1));
+                    arr_type_split.add(arr_type.get(i));
+                    arr_mandatory_split.add(arr_mandatory.get(i));
+                    arr_value_split.add(arr_value.get(i));
+                }
+            }
+
+            String delete_query = "delete from decomm_manage_service_categories_checklist where prj_name='"+projectname+"' and app_name='"+applicationname+"' ";
+            Statement st2=connection.createStatement();
+            st2.executeUpdate(delete_query);
+            for  (int j=0; j<seqmax-1; j++){
+                String insert_query = "insert into decomm_manage_service_categories_checklist (seq_num,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?,?,?,?,?,?,?,?,?);";
+                PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
+                preparedStatement1.setInt(1,arr_seqmax_split.get(j));
+                preparedStatement1.setString(2, arr_prj_split.get(j));
+                preparedStatement1.setString(3, arr_app_split.get(j));
+                preparedStatement1.setString(4,arr_options_split.get(j));
+                preparedStatement1.setString(5, arr_label_name_split.get(j));
+                preparedStatement1.setString(6, arr_column_name_split.get(j));
+                preparedStatement1.setString(7, arr_type_split.get(j));
+                preparedStatement1.setString(8, arr_mandatory_split.get(j));
+                preparedStatement1.setString(9, arr_value_split.get(j));
+                preparedStatement1.execute();
+            }
+
+        }
+        catch(Exception e){
+            System.out.println("Exception---->>>"+e);
+        }
+    }
+    public static void DecommManageServiceCategoriesOthersSaveService(String projectname, String applicationname, String others, String questions, String type, String value) {
+        try {
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String select_query = "select * from decomm_manage_service_categories_checklist_others where prj_name = '" + projectname + "' and app_name = '" + applicationname + "'";
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(select_query);
+            if(rs.next()){
+                String update_query = "update decomm_manage_service_categories_checklist_others set others =?, questions=?, type=?, value=?, where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' ";
+                PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
+                preparedStmt1.setString(1, projectname);
+                preparedStmt1.setString(2, applicationname);
+                preparedStmt1.setString(3, others);
+                preparedStmt1.setString(4, questions);
+                preparedStmt1.setString(5, type);
+                preparedStmt1.setString(6, value);
+                preparedStmt1.execute();
+            }
+            else{
+                String insert_query = "insert into decomm_manage_service_categories_checklist_others (prj_name,app_name,others,questions,type,value) values(?,?,?,?,?,?);";
+                PreparedStatement preparedStmt2 = connection.prepareStatement(insert_query);
+                preparedStmt2.setString(1, projectname);
+                preparedStmt2.setString(2, applicationname);
+                preparedStmt2.setString(3, others);
+                preparedStmt2.setString(4, questions);
+                preparedStmt2.setString(5, type);
+                preparedStmt2.setString(6, value);
+                preparedStmt2.execute();
+            }
+        }
+
+        catch(Exception e){
+            System.out.println("Exception---->>>"+e);
+        }
     }
 
 }
