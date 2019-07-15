@@ -773,4 +773,79 @@ public class DecommManageExecuteInfoService {
         }
     }
 
+    public static JsonArray DecommManageKeyMileStoneDataRetrieveService(String projectname, String applicationname)
+    {
+        JsonArray jsonArray = new JsonArray();
+        try {
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            int arr_size[] = {7,5,11,4};
+            String arr_tab_size[] = {"CAPM","ETPM","APP TEAM","APP SLO"};
+            for (int i=0; i<arr_tab_size.length; i++){
+            String query = "select * from decomm_manage_key_mile_stone where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and tab_name ='"+arr_tab_size[i]+"' order by seq_num;";
+            Statement statementforcheck=connection.createStatement();
+            ResultSet Resultset=statementforcheck.executeQuery(query);
+            if(Resultset.next()) {
+                JsonObject jsonObject1 = new JsonObject();
+                jsonObject1.addProperty("Seq_Num", Resultset.getString("seq_num"));
+                jsonObject1.addProperty("Prj_Name", Resultset.getString("prj_name"));
+                jsonObject1.addProperty("App_Name", Resultset.getString("app_name"));
+                jsonObject1.addProperty("Tab_Name", Resultset.getString("tab_name"));
+                jsonObject1.addProperty("Tab_Name_Question", Resultset.getString("tab_name_question"));
+                jsonObject1.addProperty("Tab_Name_Value", Resultset.getString("tab_name_value"));
+                jsonArray.add(jsonObject1);
+                while(Resultset.next()) {
+                    JsonObject jsonObject2 = new JsonObject();
+                    jsonObject2.addProperty("Seq_Num", Resultset.getString("seq_num"));
+                    jsonObject2.addProperty("Prj_Name", Resultset.getString("prj_name"));
+                    jsonObject2.addProperty("App_Name", Resultset.getString("app_name"));
+                    jsonObject2.addProperty("Tab_Name", Resultset.getString("tab_name"));
+                    jsonObject2.addProperty("Tab_Name_Question", Resultset.getString("tab_name_question"));
+                    jsonObject2.addProperty("Tab_Name_Value", Resultset.getString("tab_name_value"));
+                    jsonArray.add(jsonObject2);
+                }
+            }
+            }
+        }
+        catch(Exception e){
+            System.out.println("Exception---->>>"+e);
+        }
+        return jsonArray;
+    }
+    public static JsonArray DecommManageSerCatCheckDtRetrieveService(String projectname, String applicationname)
+    {
+    JsonArray jsonArray = new JsonArray();
+    try{
+        DBconnection dBconnection = new DBconnection();
+        Connection connection = (Connection) dBconnection.getConnection();
+        String others_value = "";
+        String select_query = "select * from decomm_manage_service_categories_checklist where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and type = 'Others' ";
+        Statement st=connection.createStatement();
+        ResultSet rs=st.executeQuery(select_query);
+        if(rs.next()){
+            others_value = rs.getString("value");
+        }
+        String arr_value[] = others_value.split(",");
+        for(int i=0; i<arr_value.length; i++){
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("others",arr_value[i]);
+            String query = "select * from decomm_manage_service_categories_checklist_others where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and others = '"+arr_value[i]+"' ";
+            Statement st1=connection.createStatement();
+            ResultSet rs1=st1.executeQuery(query);
+            if(rs1.next()){
+                jsonObject.addProperty("Dev",rs1.getString("dev"));
+                jsonObject.addProperty("Test",rs1.getString("test"));
+                jsonObject.addProperty("Stage",rs1.getString("stage"));
+                jsonObject.addProperty("Prod",rs1.getString("prod"));
+                jsonArray.add(jsonObject);
+
+            }
+         }
+
+    }
+    catch(Exception e){
+        System.out.println("Exception--->>>"+e);
+    }
+    return jsonArray;
+    }
 }

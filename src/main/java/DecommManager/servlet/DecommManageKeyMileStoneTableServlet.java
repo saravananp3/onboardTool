@@ -79,7 +79,7 @@ public class DecommManageKeyMileStoneTableServlet extends HttpServlet {
         catch(Exception e){
             System.out.println("Exception---->>>"+e);
         }
-        response.sendRedirect("DecommManageKeyMileStone.jsp?appname="+ApplicationName+"&projectname="+ProjectName);
+        response.sendRedirect(".jsp?appname="+ApplicationName+"&projectname="+ProjectName);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
