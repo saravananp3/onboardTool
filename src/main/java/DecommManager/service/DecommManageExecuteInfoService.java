@@ -501,20 +501,39 @@ public class DecommManageExecuteInfoService {
 
                 if(Resultset.getString("type").equals("Others"))
                 {
-                    others_value_if=Resultset.getString("value").split(",");
+                    others_value_while=Resultset.getString("value").split(",");
                     JsonArray others_jsonArray = new JsonArray();
-                    for(int index1=0;index1<others_value_if.length;index1++) {
-                        String OthersTableQuery = "select * from decomm_manage_service_categories_checklist_others where prj_name='" + projectname + "' and app_name='" + applicationname + "'and others='"+others_value_if[index1]+"';";
+                    for(int index2=0;index2<others_value_while.length;index2++) {
+                        String OthersTableQuery = "select * from decomm_manage_service_categories_checklist_others where prj_name='" + projectname + "' and app_name='" + applicationname + "' and others='" + others_value_while[index2] + "';";
                         Statement statement_others = connection.createStatement();
                         ResultSet resultset_others = statement_others.executeQuery(OthersTableQuery);
-                        while (resultset_others.next()) {
-                            JsonObject others_jsonObject = new JsonObject();
-                            others_jsonObject.addProperty("Others", resultset_others.getString("others"));
-                            others_jsonObject.addProperty("Questions", resultset_others.getString("questions"));
-                            others_jsonObject.addProperty("Type", resultset_others.getString("type"));
-                            others_jsonObject.addProperty("Value", resultset_others.getString("value"));
-                            others_jsonArray.add(others_jsonObject);
+                        if(!others_value_while[index2].equals("Application Security")) {
+                            while (resultset_others.next()) {
+                                JsonObject others_jsonobject = new JsonObject();
+                                others_jsonobject.addProperty("Others", resultset_others.getString("others"));
+                                others_jsonobject.addProperty("Questions", resultset_others.getString("questions"));
+                                others_jsonobject.addProperty("Type", resultset_others.getString("type"));
+                                others_jsonobject.addProperty("Value", resultset_others.getString("value"));
+                                others_jsonArray.add(others_jsonobject);
+                            }
                         }
+                        else
+                        {
+                            JsonObject jsonobjectothers=new JsonObject();
+                            jsonobjectothers.addProperty("Others","Application Security");
+                            JsonArray jsonarrayAppSec=new JsonArray();
+                            while (resultset_others.next()) {
+                                JsonObject others_jsonobject = new JsonObject();
+                                others_jsonobject.addProperty("Others", resultset_others.getString("others"));
+                                others_jsonobject.addProperty("Questions", resultset_others.getString("questions"));
+                                others_jsonobject.addProperty("Type", resultset_others.getString("type"));
+                                others_jsonobject.addProperty("Value", resultset_others.getString("value"));
+                                jsonarrayAppSec.add(others_jsonobject);
+                            }
+                            jsonobjectothers.add("values",jsonarrayAppSec);
+                            others_jsonArray.add(jsonobjectothers);
+                        }
+                        System.out.println("jaon object in if"+others_jsonArray);
                         jsonObject1.add("OthersJsonArray", others_jsonArray);
                     }
                 }
@@ -565,6 +584,7 @@ public class DecommManageExecuteInfoService {
                                 jsonobjectothers.add("values",jsonarrayAppSec);
                                 others_jsonArray.add(jsonobjectothers);
                             }
+                            System.out.println("others_json_array in while"+others_jsonArray);
                             jsonObject2.add("OthersJsonArray", others_jsonArray);
                         }
                         }
@@ -575,6 +595,7 @@ public class DecommManageExecuteInfoService {
         catch (Exception e) {
             System.out.println("Exception......" + e);
         }
+        System.out.println("Decomm Execution Data Retrieve  Json Array---->"+jsonArray);
             return jsonArray;
     }
     public static void DecommManageServiceCategoriesAddService(String projectname,String applicationname,String label_name,String column_name,String mandatory,String type,int NumberofInputfields,String options) {
