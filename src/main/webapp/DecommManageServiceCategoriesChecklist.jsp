@@ -12,7 +12,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <link href="css/themes/infragistics/infragistics.theme.css" rel="stylesheet" type="text/css" />
+    <%--<link href="css/themes/infragistics/infragistics.theme.css" rel="stylesheet" type="text/css" />--%>
     <link href="http://cdn-na.infragistics.com/igniteui/2019.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
     <link href="http://cdn-na.infragistics.com/igniteui/2019.1/latest/css/structure/infragistics.css" rel="stylesheet" />
     <!-- ========== COMMON STYLES ========== -->
@@ -1038,7 +1038,7 @@ $(".add_question").hide();
                                     mainframe_val=element_value.split(",");
                                 }
                                 if (element_others == "Support Readiness") {
-                                    if (element_value == "yes")
+                                    if (element_value == "Yes")
                                         Support_Readiness_value_yes = "checked";
                                     else if (element_value == "No")
                                         Support_Readiness_value_No = "checked";
@@ -1148,12 +1148,12 @@ $(".add_question").hide();
                                 "IT Service Management (service/infrastructure performance monitoring)? </font></td>\n" +
                                 "</td>\n" +
                                 "<td>\n" +
-                                "<input type='radio' name='SupportReadiness' value='yes'"+Support_Readiness_value_yes+">yes\n" +
+                                "<input type='radio' name='SupportReadiness' value='Yes'"+Support_Readiness_value_yes+">yes\n" +
                                 "<input type='radio' name='SupportReadiness' value='No'"+Support_Readiness_value_No+">No\n" +
                                 "</td>\n" +
                                 "</tr>\n" +
                                 "</table>\n" +
-                                "<table class='Desktop_Software hidetable' "+Disaster_Recovery_check+">\n" +
+                                "<table class='Desktop_Software hidetable' "+Desktop_Software_check+">\n" +
                                 "<tr>\n" +
                                 "<td> <b>DESKTOP SOFTWARE</b> </td>\n" +
                                 "<td></td>\n" +
@@ -1161,12 +1161,12 @@ $(".add_question").hide();
                                 "<tr>\n" +
                                 "<td><font color='blue';> Is there any desktop or supporting desktop software? </font> </td>\n" +
                                 "<td>\n" +
-                                "<input type='radio' name='DesktopSoftware' value='yes'"+Desktop_Software_value_Yes+">yes\n" +
+                                "<input type='radio' name='DesktopSoftware' value='Yes'"+Desktop_Software_value_Yes+">yes\n" +
                                 "<input type='radio' name='DesktopSoftware' value='No'"+Desktop_Software_value_No+">No\n" +
                                 "</td>\n" +
                                 "</tr>\n" +
                                 "</table>\n" +
-                                "<table class='Disaster_Recovery hidetable' "+Desktop_Software_check+">\n" +
+                                "<table class='Disaster_Recovery hidetable' "+Disaster_Recovery_check+">\n" +
                                 "<tr>\n" +
                                 "<td><b>DISASTER RECOVERY</b></td>\n" +
                                 "<td>\n" +
@@ -1181,7 +1181,7 @@ $(".add_question").hide();
                                 "<tr>\n" +
                                 "<td> <font color='blue';> Does the application utilize any Citrix environments? </font> </td>\n" +
                                 "<td>\n" +
-                                "<input type='radio' name='Citrix' value='yes'"+Citrix_value_Yes+">yes\n" +
+                                "<input type='radio' name='Citrix' value='Yes'"+Citrix_value_Yes+">yes\n" +
                                 "<input type='radio' name='Citrix' value='No'"+Citrix_value_No+">No\n" +
                                 "</td>\n" +
                                 "</tr>\n" +
@@ -1220,8 +1220,8 @@ $(".add_question").hide();
                                 "<tr>\n" +
                                 "<td><font color='blue';> Are Final Backups Required?     </font></td>\n" +
                                 "<td>\n" +
-                                "<input type='radio' name='backup' class='backup' value='yes'"+Final_Backups_value_Yes+">yes\n" +
-                                "<input type='radio' name='backup' class='backup' value='no'"+Final_Backups_value_No+">No\n" +
+                                "<input type='radio' name='FinalBackups' class='backup' value='Yes'"+Final_Backups_value_Yes+">yes\n" +
+                                "<input type='radio' name='FinalBackups' class='backup' value='No'"+Final_Backups_value_No+">No\n" +
                                 "</td>\n" +
                                 "</tr>\n" +
                                 "</table>\n" +

@@ -25,8 +25,9 @@ public class DecommManageKeyMileStoneDbUpdateServlet extends HttpServlet {
                 for(int j=0; j<arr_size.length; j++){
                     int size = arr_size[j];
                     String tab_name = arr_tab_size[j];
+                    String tab_name_underscore = tab_name.replace(" ","_");
                 for (int i = 1; i <= size; i++){
-                    String vaule = request.getParameter(tab_name+i);
+                    String vaule = request.getParameter(tab_name_underscore+i);
                         String Updatequery = "update decomm_manage_key_mile_stone set tab_name_value=? where prj_name = '" + projectname + "' and app_name = '" + appname + "' and seq_num = '" + i + "' and tab_name = '" + tab_name + "';";
                         PreparedStatement preparedStmt1 = connection.prepareStatement(Updatequery);
                         preparedStmt1.setString(1, vaule);
@@ -37,6 +38,7 @@ public class DecommManageKeyMileStoneDbUpdateServlet extends HttpServlet {
             catch (Exception e){
                 System.out.println("Exception---->>>>"+e);
             }
+            response.sendRedirect("DecommManagePreview.jsp?appname="+appname+"&projectname="+projectname);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

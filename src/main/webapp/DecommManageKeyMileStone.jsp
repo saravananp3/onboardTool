@@ -362,9 +362,9 @@
                                                                     <h4><font color="red" size="5">CAPM</font></h4>
 
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Status is Targeted for Decommission ?</b></font></label>
-                                                                    <input type="radio" name="CAPM1" class="status" value="status_yes">yes
-                                                                    <input type="radio" name="CAPM1" class="status" value="status_no">No
-                                                                    <input type="radio" name="CAPM1" class="status" value="status_na">N/A
+                                                                    <input type="radio" name="CAPM1" class="status" value="Yes">Yes
+                                                                    <input type="radio" name="CAPM1" class="status" value="No">No
+                                                                    <input type="radio" name="CAPM1" class="status" value="NA">N/A
 
                                                                 </div>
                                                                 <div class="hint_1" style="display:none;">
@@ -372,33 +372,33 @@
                                                                 </div>
                                                                 <div>
                                                                     <label class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Service currently in Production ?</b></font></label>
-                                                                    <input type="radio" name="CAPM2" class="service" value="service_yes">Yes
-                                                                    <input type="radio" name="CAPM2" class="service" value="service_no">No
-                                                                    <input type="radio" name="CAPM2" class="service" value="service_na">N/A
+                                                                    <input type="radio" name="CAPM2" class="service" value="Yes">Yes
+                                                                    <input type="radio" name="CAPM2" class="service" value="No">No
+                                                                    <input type="radio" name="CAPM2" class="service" value="NA">N/A
                                                                 </div>
                                                                 <div class="hint_2" style="display:none;">
                                                                     <label><font color="red";>If no, Retired or if the service does not exist; No further steps required.</font></label>
                                                                 </div>
                                                                 <div>
                                                                     <label class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Change service priority needed ?</b></font></label>
-                                                                    <input type="radio" name="CAPM3" class="change" value="change_yes">Yes
-                                                                    <input type="radio" name="CAPM3" class="changes" value="change_no">No
-                                                                    <input type="radio" name="CAPM3" class="changes" value="change_na">N/A
+                                                                    <input type="radio" name="CAPM3" class="change" value="Yes">Yes
+                                                                    <input type="radio" name="CAPM3" class="change" value="No">No
+                                                                    <input type="radio" name="CAPM3" class="change" value="NA">N/A
                                                                 </div>
                                                                 <div class="hint_3" style="display:none;">
                                                                     <label><font color="brown";>Priority change request should be submitted in Service now or any ITSM</font></label>
                                                                 </div>
                                                                 <div>
                                                                     <label class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>CI Relationships exists?</b></font></label>
-                                                                    <input type="radio" name="CAPM4" class="relationship" value="relationship_yes">Yes
-                                                                    <input type="radio" name="CAPM4" class="relationship" value="relationship_no">No
-                                                                    <input type="radio" name="CAPM4" class="relationship" value="relationship_na">N/A
+                                                                    <input type="radio" name="CAPM4" class="relationship" value="Yes">Yes
+                                                                    <input type="radio" name="CAPM4" class="relationship" value="No">No
+                                                                    <input type="radio" name="CAPM4" class="relationship" value="NA">N/A
                                                                 </div>
-                                                                <div class ="addquestion" style="display:none;">
+                                                                <div class ="addquestion CAPM5" style="display:none;">
                                                                     <label class="control-label " for="formInput198" style="width:65%;"><font color="blue";>Item will be retired?</font></label>
-                                                                    <input type="radio" name="CAPM5" class="item" value="item_yes">Yes
-                                                                    <input type="radio" name="CAPM5" class="item" value="item_no">No
-                                                                    <input type="radio" name="CAPM5" class="item" value="item_na">N/A
+                                                                    <input type="radio" name="CAPM5" class="item" value="Yes">Yes
+                                                                    <input type="radio" name="CAPM5" class="item" value="No">No
+                                                                    <input type="radio" name="CAPM5" class="item" value="NA">N/A
                                                                 </div>
 
                                                                 <div class="hint_4" style="display:none;">
@@ -407,15 +407,15 @@
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>SLO has made Appropriate updates ?</b></font></label>
-                                                                    <input type="radio" name="CAPM6" value="slo_yes">Yes
-                                                                    <input type="radio" name="CAPM6" value="slo_no">No
-                                                                    <input type="radio" name="CAPM6" value="slo_na">N/A
+                                                                    <input type="radio" name="CAPM6" value="Yes">Yes
+                                                                    <input type="radio" name="CAPM6" value="No">No
+                                                                    <input type="radio" name="CAPM6" value="NA">N/A
                                                                 </div>
                                                                 <div>
                                                                     <label class="control-label " for="formInput198" style="width:65%;"><font size="4">Application part of EDR list?</font></label>
-                                                                    <input type="radio" name="CAPM7" value="edr_yes">Yes
-                                                                    <input type="radio" name="CAPM7" value="edr_no">No
-                                                                    <input type="radio" name="CAPM7" value="edr_na">N/A
+                                                                    <input type="radio" name="CAPM7" value="Yes">Yes
+                                                                    <input type="radio" name="CAPM7" value="No">No
+                                                                    <input type="radio" name="CAPM7" value="NA">N/A
                                                                 </div>
                                                             </div>
 
@@ -427,20 +427,20 @@
                                                                     <h4><font color="red" size="5">ET TEAM/ET PM TAB</font></h4>
 
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Final Artifact- Review and Approval</b></font></label>
-                                                                    <input type="radio" name="ETPM1" class="final_artifact" value="final_artifact_yes">yes
-                                                                    <input type="radio" name="ETPM1" class="final_artifact" value="final_artifact_no">No
-                                                                    <input type="radio" name="ETPM1" class="final_artifact" value="final_artifact_na">N/A
+                                                                    <input type="radio" name="ETPM1" class="final_artifact" value="Yes">Yes
+                                                                    <input type="radio" name="ETPM1" class="final_artifact" value="No">No
+                                                                    <input type="radio" name="ETPM1" class="final_artifact" value="NA">N/A
 
                                                                 </div>
 
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Provide Chargeback Validation Report</b></font></label>
-                                                                    <input type="radio" name="ETPM2" class="Provide" value="Provide_yes" onclick="provide_radio();">yes
-                                                                    <input type="radio" name="ETPM2" class="provide" value="provide_no">No
-                                                                    <input type="radio" name="ETPM2" class="provide" value="provide_na">N/A
+                                                                    <input type="radio" name="ETPM2" class="Provide" value="Yes" onclick="provide_radio();">Yes
+                                                                    <input type="radio" name="ETPM2" class="provide" value="No">No
+                                                                    <input type="radio" name="ETPM2" class="provide" value="NA">N/A
                                                                 </div>
 
-                                                                <div class="form-group" style="display:none;" id="et_team_provided_date">
+                                                                <div class="form-group ETPM3" style="display:none;" id="et_team_provided_date">
 
                                                                     <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Provided Date</b></font></label>
                                                                     <input type="text" name ="ETPM3" class="datepicker" id="datepicker1" placeholder="mm/dd/yyyy">
@@ -450,12 +450,12 @@
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Submit Decommission requests:
                                                                         Use ITG/Service Catalog for components / services listed in the Final Artifact</b></font></label>
-                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="submit_decom_req_yes" onclick="submit_decom_req_radio();">yes
-                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="submit_decom_req_no">No
-                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="submit_decom_req_na">N/A
+                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="Yes" onclick="submit_decom_req_radio();">Yes
+                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="No">No
+                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="NA">N/A
                                                                 </div>
 
-                                                                <div class="form-group" style="display:none;" id="et_team_submission_date">
+                                                                <div class="form-group ETPM5" style="display:none;" id="et_team_submission_date">
 
                                                                     <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
                                                                     <input type="text" name ="ETPM5" class="datepicker" id="datepicker2" placeholder="mm/dd/yyyy">
@@ -473,22 +473,22 @@
                                                                     <h4><font color="red" size="5">APP TEAM</font></h4>
 
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font  size="4"><b>Final Artifact (Decommission List) Review and Approval</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM1" class="decommission_list" value="final_artifact_yes">yes
-                                                                    <input type="radio" name="APP_TEAM1" class="decommission_list" value="final_artifact_no">No
-                                                                    <input type="radio" name="APP_TEAM1" class="decommission_list" value="final_artifact_na">N/A
+                                                                    <input type="radio" name="APP_TEAM1" class="decommission_list" value="Yes">Yes
+                                                                    <input type="radio" name="APP_TEAM1" class="decommission_list" value="No">No
+                                                                    <input type="radio" name="APP_TEAM1" class="decommission_list" value="NA">N/A
 
                                                                 </div>
 
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font  size="4"><b>Stop/Remove Jobs/Application Interfaces/SSIS Jobs etc.,
                                                                         to  impacted applications Stopping jobs and interaction with the app.</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="Stop_yes" onclick="stop_radio();">yes
-                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="Stop_no">No
-                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="Stop_na">N/A
+                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="Yes" onclick="stop_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="No">No
+                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="NA">N/A
                                                                 </div>
 
 
-                                                                <div class="form-group" style="display:none;" id="submission_date1">
+                                                                <div class="form-group APP_TEAM3" style="display:none;" id="submission_date1">
 
                                                                     <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
                                                                     <input type="text" name ="APP_TEAM3" class="datepicker" id="app_datepicker1" placeholder="mm/dd/yyyy">
@@ -497,14 +497,14 @@
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font size="4"><b>(Optional) Impact Analysis of Application Decommission</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="impact_analysis_yes" onclick="impact_analysis_radio();">yes
-                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="impact_analysis_no">No
-                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="impact_analysis_na">N/A
+                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="Yes" onclick="impact_analysis_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="No">No
+                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="NA">N/A
                                                                 </div>
 
 
 
-                                                                <div class="form-group" style="display:none;" id="app_submission_date2">
+                                                                <div class="form-group APP_TEAM5" style="display:none;" id="app_submission_date2">
 
                                                                     <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
                                                                     <input type="text" name ="APP_TEAM5" class="datepicker" id="app_datepicker2" placeholder="mm/dd/yyyy">
@@ -513,12 +513,12 @@
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font size="4"><b>ServiceNow: Change Request</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="service_now_yes" onclick="service_now_radio();">yes
-                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="service_now_no">No
-                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="service_now_na">N/A
+                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="Yes" onclick="service_now_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="No">No
+                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="NA">N/A
                                                                 </div>
 
-                                                                <div class="form-group" style="display:none;" id="app_submission_date3">
+                                                                <div class="form-group APP_TEAM7" style="display:none;" id="app_submission_date3">
 
                                                                     <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
                                                                     <input type="text" name ="APP_TEAM7"class="datepicker" id="app_datepicker3" placeholder="mm/dd/yyyy">
@@ -527,30 +527,30 @@
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font size="4"><b>Secure:   Remove Application</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="secure_yes" onclick="secure_radio();">yes
-                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="secure_no">No
-                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="secure_na">N/A
+                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="Yes" onclick="secure_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="No">No
+                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="NA">N/A
                                                                 </div>
 
-                                                                <div class="form-group" style="display:none;" id="app_submission_date4">
+                                                                <div class="form-group APP_TEAM9" style="display:none;" id="app_submission_date4">
 
-                                                                    <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
+                                                                    <label  class="control-label APP_TEAM9" for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
                                                                     <input type="text" name ="APP_TEAM9" class="datepicker" id="app_datepicker4" placeholder="mm/dd/yyyy">
 
                                                                 </div>
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font  size="4"><b>Global Groups:  Remove</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM10" class="global" value="global_yes">yes
-                                                                    <input type="radio" name="APP_TEAM10" class="global" value="global_no">No
-                                                                    <input type="radio" name="APP_TEAM10" class="global" value="global_na">N/A
+                                                                    <input type="radio" name="APP_TEAM10" class="global" value="Yes">Yes
+                                                                    <input type="radio" name="APP_TEAM10" class="global" value="No">No
+                                                                    <input type="radio" name="APP_TEAM10" class="global" value="NA">N/A
                                                                 </div>
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font  size="4"><b>Master Unique Identifier (MUI):  Remove</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM11" class="mui" value="mui_yes">yes
-                                                                    <input type="radio" name="APP_TEAM11" class="mui" value="mui_no">No
-                                                                    <input type="radio" name="APP_TEAM11" class="mui" value="mui_na">N/A
+                                                                    <input type="radio" name="APP_TEAM11" class="mui" value="Yes">Yes
+                                                                    <input type="radio" name="APP_TEAM11" class="mui" value="No">No
+                                                                    <input type="radio" name="APP_TEAM11" class="mui" value="NA">N/A
                                                                 </div>
                                                             </div>
 
@@ -564,13 +564,13 @@
                                                                     <h4><font color="red" size="5">APP SLO</font></h4>
 
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font  size="4"><b>Submit request to change the apps status</b></font></label>
-                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="submit_request_yes" onclick="submit_request_radio();">yes
-                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="submit_request_no">No
-                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="submit_request_na">N/A
+                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="Yes" onclick="submit_request_radio();">Yes
+                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="No">No
+                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="NA">N/A
 
                                                                 </div>
 
-                                                                <div class="form-group" style="display:none;" id="app_slo_submission_date1">
+                                                                <div class="form-group APP_SLO2" style="display:none;" id="app_slo_submission_date1">
 
                                                                     <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
                                                                     <input type="text" name ="APP_SLO2" class="datepicker" id="app_slo_datepicker1" placeholder="mm/dd/yyyy">
@@ -579,15 +579,15 @@
 
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Request submitted to Retire the Service or Service is Retired</b></font></label>
-                                                                    <input type="radio" name="APP_SLO3" class="retired" value="retired_yes" onclick="retired_radio();">yes
-                                                                    <input type="radio" name="APP_SLO3" class="retired" value="retired_no">No
-                                                                    <input type="radio" name="APP_SLO3" class="retired" value="retired_na">N/A
+                                                                    <input type="radio" name="APP_SLO3" class="retired" value="Yes" onclick="retired_radio();">Yes
+                                                                    <input type="radio" name="APP_SLO3" class="retired" value="No">No
+                                                                    <input type="radio" name="APP_SLO3" class="retired" value="NA">N/A
 
                                                                 </div>
 
-                                                                <div class="form-group" style="display:none;" id="app_slo_submission_date2">
+                                                                <div class="form-group APP_SLO4" style="display:none;" id="app_slo_submission_date2">
 
-                                                                    <label  class="control-label " for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
+                                                                    <label  class="control-label" for="formInput198"><font color="green" size="4"><b>Submission Date</b></font></label>
                                                                     <input type="text" name ="APP_SLO4" class="datepicker" id="app_slo_datepicker2" placeholder="mm/dd/yyyy">
 
                                                                 </div>
@@ -666,7 +666,7 @@
         $(".status").change(function()
             {
                 //alert(this.value);
-                if("status_no"==this.value)
+                if("No"==this.value)
                 {
                     $(".hint_1").show();
                 }
@@ -681,7 +681,7 @@
         $(".service").change(function()
             {
                 //alert(this.value);
-                if("service_no"==this.value)
+                if("No"==this.value)
                 {
                     $(".hint_2").show();
                 }
@@ -696,7 +696,7 @@
         $(".change").change(function()
             {
                 //alert(this.value);
-                if("change_yes"==this.value)
+                if("Yes"==this.value)
                 {
                     $(".hint_3").show();
                 }
@@ -711,12 +711,13 @@
         $(".relationship").change(function()
             {
                 //alert(this.value);
-                if("relationship_yes"==this.value)
+                if("Yes"==this.value)
                 {
                     $(".addquestion").show();
                 }
                 else{
                     $(".addquestion").hide();
+                    $(".hint_4").hide();
                 }
             }
         );
@@ -725,7 +726,7 @@
         $(".item").change(function()
             {
                 //alert(this.value);
-                if("item_no"==this.value)
+                if("No"==this.value)
                 {
                     $(".hint_4").show();
                 }
@@ -856,6 +857,60 @@
         f.action = "DecommManageKeyMileStoneDbUpdateServlet?appname="+appname+"&prjname="+projname;
         f.submit();
     }
+    $(document).ready(function(){
+        $.ajax({
+            url: "DecommManageKeyMileStoneDataRetrieveServlet",
+            type: 'POST',
+            data: {ApplicationName:appname,ProjectName: projname},
+            dataType: "json",
+            success: function (data) {
+                console.log("Data Retrieve json array----->",data);
+                var value_tab_name = ['CAPM3','CAPM4','ETPM2','ETPM4','APP_TEAM2','APP_TEAM4','APP_TEAM6','APP_TEAM8','APP_SLO1','APP_SLO3'];
+                var tab_hide_show =  ['hint_3','CAPM5','ETPM3','ETPM5','APP_TEAM3','APP_TEAM5','APP_TEAM7','APP_TEAM9','APP_SLO2','APP_SLO4'];
+                var k = 0;
+                var hint_no_tab = ['CAPM1','CAPM2','CAPM5'];
+                var hint_hide_show = ['hint_1','hint_2','hint_4'];
+                var n = 0;
+                for(var i=0; i<data.length; i++) {
+                    var tab_name =(data[i].Tab_Name).replace(' ','_');
+                    var seq_num = data[i].Seq_Num;
+                    var value = data[i].Tab_Name_Value;
+                    console.log("data check-->",value_tab_name.includes(tab_name));
+                    if (value_tab_name.includes(tab_name+seq_num)){
+                        if(value=='Yes'){
+                            $('.'+tab_hide_show[k]).show();
+                        }
+                        k++;
+                    }
+                    if(hint_no_tab.includes(tab_name+seq_num)){
+                        if(value='No'){
+                            $('.'+hint_hide_show[n]).show();
+                        }
+                        n++;
+                    }
+                    if(value==undefined){
+                        value = "";
+                    }
+                    if(value.includes('/'))
+                    {
+                     $('input[name=' + tab_name + seq_num + ']').val(value);
+
+                    }else {
+                        console.log("All Values", value, data[i].Seq_Num);
+                        /* console.log("All Values Index",data[i].Seq_Num);*/
+                        if (value != "") {
+                            var $radios = $('input:radio[name=' + tab_name + seq_num + ']');
+                            $radios.filter('[value=' + value + ']').prop('checked', true);
+                        }
+                    }
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    });
+
 </script>
 
     <!-- /.main-wrapper -->
