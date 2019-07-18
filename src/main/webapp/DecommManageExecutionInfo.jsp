@@ -1070,7 +1070,7 @@
                         var inputtext="<div class='form-group'>\n" +
                             "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
                             /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
-                             "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'></textarea>"+
+                             "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                             "</div>";
                         $('#inputFields').append(inputtext);
                     }

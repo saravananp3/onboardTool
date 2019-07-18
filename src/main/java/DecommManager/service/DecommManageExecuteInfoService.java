@@ -822,10 +822,17 @@ public class DecommManageExecuteInfoService {
         String select_query = "select * from decomm_manage_service_categories_checklist where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and type = 'Others' ";
         Statement st=connection.createStatement();
         ResultSet rs=st.executeQuery(select_query);
+        String select_query2 = "select * from decomm_manage_service_categories_checklist where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and type != 'Others' order by seq_num";
+        Statement st2=connection.createStatement();
+        ResultSet rs2=st.executeQuery(select_query2);
+        while(rs2.next()){
+
+        }
         if(rs.next()){
             others_value = rs.getString("value");
         }
         String arr_value[] = others_value.split(",");
+
         for(int i=0; i<arr_value.length; i++){
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("others",arr_value[i]);
@@ -848,4 +855,29 @@ public class DecommManageExecuteInfoService {
     }
     return jsonArray;
     }
+
+    public static JsonArray DecommManagePreviewDataRetrieveService(String projectname, String applicationname) {
+        JsonArray jsonArray = new JsonArray();
+
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            JsonArray jsonArrayExecutionInfo = new DecommManageExecuteInfoService().DecommManageExecuteInfoDataRetrieveService(projectname,applicationname);
+            JsonArray jsonArrayInfraComp = new DecommManageExecuteInfoService().DecommManageExecuteInfraCompDataRetrieveService(projectname,applicationname);
+            JsonArray jsonArrayServiceCategoriesChecklist = new DecommManageExecuteInfoService().DecommManageServiceCategoriesDataRetrieveService(projectname,applicationname);
+            JsonArray jsonArrayServiceCategoriesChecklistData =  new DecommManageExecuteInfoService().DecommManageSerCatCheckDtRetrieveService(projectname,applicationname);
+            JsonArray jsonArrayKeyMileStone = new DecommManageExecuteInfoService().DecommManageKeyMileStoneDataRetrieveService(projectname,applicationname);
+
+            jsonArray.add(jsonArrayExecutionInfo);
+            jsonArray.add(jsonArrayInfraComp);
+            jsonArray.add(jsonArrayServiceCategoriesChecklist);
+            jsonArray.add(jsonArrayServiceCategoriesChecklistData);
+            jsonArray.add(jsonArrayKeyMileStone);
+        }
+        catch(Exception e){
+            System.out.println("Exception--->" + e);
+        }
+        return jsonArray;
+    }
 }
+

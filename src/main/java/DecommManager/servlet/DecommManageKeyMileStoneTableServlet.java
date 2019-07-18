@@ -18,8 +18,8 @@ import java.sql.Statement;
 @WebServlet("/DecommManageKeyMileStoneTableServlet")
 public class DecommManageKeyMileStoneTableServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String ProjectName=request.getParameter("prjname");
-        String ApplicationName=request.getParameter("appname");
+        String ProjectName=request.getParameter("ProjectName");
+        String ApplicationName=request.getParameter("ApplicationName");
         JsonObject jsonObject=new JsonObject();
         try
         {
@@ -79,7 +79,7 @@ public class DecommManageKeyMileStoneTableServlet extends HttpServlet {
         catch(Exception e){
             System.out.println("Exception---->>>"+e);
         }
-        response.sendRedirect(".jsp?appname="+ApplicationName+"&projectname="+ProjectName);
+        response.sendRedirect("DecommManageKeyMileStone.jsp?appname="+ApplicationName+"&projectname="+ProjectName);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

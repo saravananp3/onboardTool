@@ -2,6 +2,7 @@ package DecommManager.servlet;
 
 import onboard.DBconnection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +51,9 @@ public class DecommManageSerCatCheckDtRetrieveSaveServlet extends HttpServlet {
     catch(Exception e){
         System.out.println("Exception--->>>"+e);
     }
-        response.sendRedirect("DecommManageKeyMileStone.jsp?appname="+applicationname+"&projectname="+projectname);
+        //response.sendRedirect("DecommManageKeyMileStone.jsp?appname="+applicationname+"&projectname="+projectname);
+        RequestDispatcher rd = request.getRequestDispatcher("DecommManageKeyMileStoneTableServlet");
+        rd.forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

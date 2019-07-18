@@ -840,6 +840,24 @@
 
     });
 </script>
+<script>
+    var url_string=window.location.href;
+    var url = new URL(url_string);
+    var appname = url.searchParams.get("appname");
+    var projname=url.searchParams.get("projectname");
+    console.log("Application:",appname,"Project:",projname);
+    $(document).ready(function(){
+        $.ajax({
+            url: "DecommManagePreviewServlet",
+            type: 'POST',
+            data: {ApplicationName:appname,ProjectName: projname},
+            dataType: "json",
+            success: function (data) {
+                console.log("Data----->",data);
+            },
 
+        });
+    });
+</script>
 </body>
 </html>

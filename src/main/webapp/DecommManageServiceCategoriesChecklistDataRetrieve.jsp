@@ -104,9 +104,7 @@
         color: #fff;
         top: 5px;
     }
-
-
-
+    ul {height:50px;overflow-y:scroll;}
 </style>
 <style>
     #mytable_1
@@ -309,19 +307,64 @@ $(".add_question").hide();
                                                         <table class="table table-bordered hidetable CrossApplicationTeamProjectManagerClass" id="mytable">
                                                             <thead style="color:white;background-color:DodgerBlue;">
                                                             <tr >
-                                                                <th scope="col" style="color:white;">Service Categories</th>
-                                                                <th scope="col" style="color:white;">Data Bases</th>
-                                                                <th scope="col" style="color:white;">Storage</th>
-                                                                <th scope="col" style="color:white;">Products</th>
-                                                                <th scope="col" style="color:white;">Services</th>
+                                                                <th scope="col" style="color:white;">Label</th>
+                                                                <th scope="col" style="color:white;">Data</th>
+                                                                <th scope="col" style="color:white;">Dev</th>
+                                                                <th scope="col" style="color:white;">Test</th>
+                                                                <th scope="col" style="color:white;">Stage</th>
+                                                                <th scope="col" style="color:white;">Prod</th>
+                                                                <th scope="col" style="color:white;">Additional Comments</th>
                                                             </tr>
                                                             </thead >
+
                                                             <tr>
-                                                                <td><input type="textbox" id = "ServiceCategories" name = "ServiceCategories" readonly> </td>
-                                                                <td><input type="textbox" id = "DataBases" name = "DataBases" readonly> </td>
-                                                                <td><input type="textbox" id = "Storage" name = "Storage" readonly></td>
-                                                                <td><input type="textbox" id="Products" name = "Products" readonly></td>
-                                                                <td><input type="textbox" id="Services" name = "Services" readonly></td>
+                                                                <td> <label> Service Categoteries </label></td>
+                                                                <td><input type="textbox" id="ServiceCategories" name="ServiceCategories"></td>
+                                                                <td> <input type="textbox" id="service_cat_dev" name="service_cat_dev"> </td>
+                                                                <td> <input type="textbox" id="service_cat_test" name="service_cat_test"> </td>
+                                                                <td> <input type="textbox" id="service_cat_stage" name="service_cat_stage"> </td>
+                                                                <td> <input type="textbox" id="service_cat_prod" name="servcie_cat_prod"> </td>
+                                                                <td><textarea maxlength="50" id="service_cat_additional"></textarea></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td> <label> Data Bases </label></td>
+                                                                <td><input type="textbox" id="DataBases" name="DataBases"></td>
+                                                                <td> <input type="textbox" id="database_dev" name="database_dev"> </td>
+                                                                <td> <input type="textbox" id="database_test" name="database_test"> </td>
+                                                                <td> <input type="textbox" id="database_stage" name="database_stage"> </td>
+                                                                <td> <input type="textbox" id="database_prod" name="database_prod"> </td>
+                                                                <td><textarea maxlength="50" id="database_additional"></textarea></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td> <label> Storage </label></td>
+                                                                <td><input type="textbox" id="Storage" name="Storage"></td>
+                                                                <td> <input type="textbox" id="storage_dev" name="storage_dev"> </td>
+                                                                <td> <input type="textbox" id="storage_test" name="storage_test"> </td>
+                                                                <td> <input type="textbox" id="storage_stage" name="storage_stage"> </td>
+                                                                <td> <input type="textbox" id="storage_prod" name="storage_prod"> </td>
+                                                                <td><textarea maxlength="50" id="storage_additional"></textarea></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td> <label> Products </label></td>
+                                                                <td><input type="textbox" id="Products" name="Products"></td>
+                                                                <td> <input type="textbox" id="products_dev" name="products_dev"> </td>
+                                                                <td> <input type="textbox" id="products_test" name="products_test"> </td>
+                                                                <td> <input type="textbox" id="products_stage" name="products_stage"> </td>
+                                                                <td> <input type="textbox" id="products_prod" name="products_prod"> </td>
+                                                                <td><textarea maxlength="50" id="products_additional"></textarea></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td> <label> Services </label></td>
+                                                                <td><input type="textbox" id="Services" name="Services"></td>
+                                                                <td> <input type="textbox" id="services_dev" name="services_dev"> </td>
+                                                                <td> <input type="textbox" id="services_test" name="services_test"> </td>
+                                                                <td> <input type="textbox" id="services_stage" name="services_stage"> </td>
+                                                                <td> <input type="textbox" id="services_prod" name="services_prod"> </td>
+                                                                <td><textarea maxlength="50" id="services_additional"></textarea></td>
                                                             </tr>
                                                         </table>
                                                         <div id="mytable_1">
@@ -517,7 +560,7 @@ $(".add_question").hide();
             success: function (data) {
                 console.log("Data Retrieve json array----->", data);
                 var data_value = ['Service Categories','Data Bases','Storage','Products','Services'];
-                var multidropdown=['Mainframe']
+                var multidropdown=['Mainframe'];
                 var Support_Readiness_value_yes="";
                 var Support_Readiness_value_No="";
                 for (var i=0; i<data.length; i++){

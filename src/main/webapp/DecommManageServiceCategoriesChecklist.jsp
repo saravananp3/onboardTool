@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
 
+    <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">--%>
+    <%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />--%>
+
     <!-- ========== PAGE STYLES ========== -->
     <link rel="stylesheet" href="css/prism/prism.css" media="screen">
     <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
@@ -41,8 +44,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
     <link rel="stylesheet" href="css/admin_module/admin_module_send_invites.css" media="screen">
-    <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
-    <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+    <%--<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
+   <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+--%>    <%--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>--%>
 </head>
 <style type="text/css">
     .breadcrumb-div {
@@ -496,9 +502,9 @@ $(".add_question").hide();
                                             </div>                                     <!-- <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="addothers();">Add</button> -->
                                                 <button type="button" style="margin:5px;" class="btn btn-success pull-left" id="myBtn" onclick="">Add</button>
                                                 <%--<button type="button" style="margin:5px;" class="btn btn-warning pull-left" onclick="">Modify</button>--%>
-                                                <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="Deletebtn"
+                                               <%-- <button type="button" style="margin:5px;" class="btn btn-danger  pull-left" id="Deletebtn"
                                                         onclick="">Delete
-                                                </button>
+                                                </button>--%>
                                                 <button type="button" class="btn btn-primary pull-right" onclick="Submit();">Save & Continue</button>
                                             </form>
                                         </div>
@@ -774,8 +780,8 @@ $(".add_question").hide();
                     }
                     else if(Type=="Dropdown")
                     {
-                        var inputdrop= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
-                            "<select style = 'width:100%;' value='"+Value+"' name='"+ColumnName+"'>";
+                        var inputdrop= "<div class='form-group col-md-12'><label class='control-label col-sm-4' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                            "<select  id = 'hi' class='selectpicker col-sm-8' multiple data-live-search='true' value='"+Value+"' name='"+ColumnName+"'>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
@@ -1024,6 +1030,22 @@ $(".add_question").hide();
                         var Final_Backups_Type="";
                         var Final_Backups_value_Yes="";
                         var Final_Backups_value_No="";
+                        var mainframeoptions= "  <option value='CICS Regions'>CICS Regions</option>\n" +
+                            "  <option value='DB2'>DB2</option>\n" +
+                            "  <option value='Endevor Flows'>Endevor Flows</option>\n" +
+                            '  <option value="HLQ\'s(high level qualifiers) to be eliminated">HLQ\'s (high level qualifiers) to be eliminated</option>\n' +
+                            "  <option value='IMS Regions'>IMS Regions</optionvalue>\n" +
+                            "  <option value='Mainframe  Storage'>Mainframe  Storage</optionvalue>\n" +
+                            "  <option value='Mainframe Batch Processing'>Mainframe Batch Processing</optionvalue>\n" +
+                            "  <option value='Mainframe Capacity'>Mainframe Capacity</option>\n" +
+                            "  <option value='Tape Media'>Tape Media</option>\n" +
+                            "  <option value='VSAM'>VSAM</option>\n";
+                        var disasterrecoveryoptions="  <option value='Rapid Recovery'>Rapid Recovery</option>\n" +
+                            "  <option value='SRM'>SRM</option>\n" +
+                            "  <option value='Tier 0'>Tier 0</option>\n" +
+                            "  <option value='Tier 1'>Tier 1</option>\n" +
+                            "  <option value='Tier 2'>Tier 2</option>\n" +
+                            "  <option value='Legacy Recovery'>Legacy Recovery</option>\n";
                         /*console.log("array array ----->",value.OthersJsonArray[0].Questions);
                         console.log("array array length----->",value.OthersJsonArray.length);*/
                         for(var n=0;n<value.OthersJsonArray.length;n++)
@@ -1036,6 +1058,16 @@ $(".add_question").hide();
                                 if (element_others == "Mainframe") {
                                     Mainframe_value = element_value;
                                     mainframe_val=element_value.split(",");
+                                    mainframeoptions="";
+                                    var arr_option_main = ['CICS Regions', 'DB2', 'Endevor Flows', "HLQ's (high level qualifiers) to be eliminated", 'IMS Regions', 'Mainframe  Storage', 'Mainframe Batch Processing', 'Mainframe Capacity', 'Tape Media', 'VSAM'];
+                                    for (var i = 0; i < arr_option_main.length; i++) {
+                                        var check = "";
+                                        if(Mainframe_value.includes(arr_option_main[i]))
+                                        {
+                                            check="selected";
+                                        }
+                                        mainframeoptions+="<option value='"+arr_option_main[i]+"' "+check+">"+arr_option_main[i]+"</option>";
+                                    }
                                 }
                                 if (element_others == "Support Readiness") {
                                     if (element_value == "Yes")
@@ -1051,6 +1083,22 @@ $(".add_question").hide();
                                 }
                                 if (element_others == "Disaster Recovery") {
                                     Disaster_Recovery_value = element_value;
+                                    disasterrecoveryoptions="";
+                                    var DisasterRecoveryOptions=Disaster_Recovery_value.split(",");
+                                    console.log("disaster recovery value ",Disaster_Recovery_value);
+                                    var arr_option_dis = ['Rapid Recovery', 'SRM', 'Tier 0', 'Tier 1', 'Tier 2', 'Legacy Recovery'];
+                                    console.log("array options disaster recovery ",arr_option_dis);
+                                    for(var i=0;i<arr_option_dis.length;i++)
+                                    {
+                                        var check="";
+                                        if(Disaster_Recovery_value.includes(arr_option_dis[i]))
+                                        {
+                                             check="selected";
+                                        }
+                                        console.log("check ",check);
+                                        disasterrecoveryoptions+="<option value='"+arr_option_dis[i]+"'"+check+">"+arr_option_dis[i]+"</option>";
+                                    }
+                                    console.log("disaster options ",disasterrecoveryoptions);
                                 }
                                 if (element_others == "Citrix") {
                                     if (element_value == "Yes")
@@ -1127,14 +1175,29 @@ $(".add_question").hide();
                                 option[i]+"</label>";
 
                         }
+
                         inputcheck +="</div>";
+
                         $('#inputFields').append(inputcheck);
                             var others= "<div class='form-group'>\n" +
                                 "<table  class='Mainframe hidetable' "+Mainframe_check+">\n" +
                                 "<tr>\n" +
                                 "<td><b>MAINFRAME</b></td>\n" +
                                 "<td>\n" +
-                                "<input class='form-control mainframe' id='mainframe' value='"+Mainframe_value+"'name='Mainframe' placeholder='select...' autocomplete='off' style='width:100%;'>\n" +
+                                /*"<input class='form-control mainframe' id='mainframe' value='"+Mainframe_value+"'name='Mainframe' placeholder='select...' autocomplete='off' style='width:100%;'>\n" +*/
+                                "<select id = 'hi' class='selectpicker' multiple data-live-search='true' value='"+Mainframe_value+"' name='Mainframe'>\n" +
+                               /* "  <option>CICS Regions</option>\n" +
+                                "  <option>DB2</option>\n" +
+                                "  <option>Endevor Flows</option>\n" +
+                                "  <option>HLQ\\'s (high level qualifiers) to be eliminated</option>\n" +
+                                "  <option>IMS Regions</option>\n" +
+                                "  <option>Mainframe  Storage</option>\n" +
+                                "  <option>Mainframe Batch Processing</option>\n" +
+                                "  <option>Mainframe Capacity</option>\n" +
+                                "  <option>Tape Media</option>\n" +
+                                "  <option>VSAM</option>\n" +*/
+                                mainframeoptions+
+                                "</select>"+
                                 "\n"+
                                 "</td>\n" +
                                 "</tr>\n" +
@@ -1170,7 +1233,10 @@ $(".add_question").hide();
                                 "<tr>\n" +
                                 "<td><b>DISASTER RECOVERY</b></td>\n" +
                                 "<td>\n" +
-                                "<input class='form-control disaster_rec' name='DisasterRecovery' id='disaster_rec' value='"+Disaster_Recovery_value+"' placeholder='select...' value='' autocomplete='off' style='width:100%;'>\n" +
+                               /* "<input class='form-control disaster_rec' name='DisasterRecovery' id='disaster_rec' value='"+Disaster_Recovery_value+"' placeholder='select...' value='' autocomplete='off' style='width:100%;'>\n" +*/
+                                "<select class='selectpicker' multiple data-live-search='true' name='DisasterRecovery' value='"+Disaster_Recovery_value+"'>\n" +
+                                disasterrecoveryoptions+
+                                "</select>"+
                                 "</td>\n" +
                                 "</tr>\n" +
                                 "</table>\n" +
@@ -1272,7 +1338,8 @@ $(".add_question").hide();
                     "$('.add_question_2').hide();" +
                     "}" +
                     "});<\/script>";
-                script+="<script>var mainframe_dropdown = [{Name:'CICS Regions'},{Name:'DB2'},{Name:'Endevor Flows'},{Name:'HLQ\\'s (high level qualifiers) to be eliminated'},{Name:'IMS Regions'},{Name:'Mainframe  Storage'},{Name:'Mainframe Batch Processing'},{Name:'Mainframe Capacity'},{Name:'Tape Media'},{Name:'VSAM'}, ];\n"+
+                script+="<script>$('.selectpicker').multiselect();<\/script>";
+                /*script+="<script>var mainframe_dropdown = [{Name:'CICS Regions'},{Name:'DB2'},{Name:'Endevor Flows'},{Name:'HLQ\\'s (high level qualifiers) to be eliminated'},{Name:'IMS Regions'},{Name:'Mainframe  Storage'},{Name:'Mainframe Batch Processing'},{Name:'Mainframe Capacity'},{Name:'Tape Media'},{Name:'VSAM'}, ];\n"+
                     "$('#mainframe').igCombo({\n" +
                     "width: 250," +
                     "dataSource: mainframe_dropdown," +
@@ -1291,7 +1358,7 @@ $(".add_question").hide();
                     "multiSelection: {" +
                     "enabled: true," +
                     "showCheckboxes: true" +
-                    "},dropDownOrientation: 'bottom'});<\/script>";
+                    "},dropDownOrientation: 'bottom'});*/
                 $('#scripttag').append(script);
                 },
             error: function (e) {
@@ -1555,6 +1622,7 @@ $(".add_question").hide();
 
 <script src="http://cdn-na.infragistics.com/igniteui/2019.1/latest/js/infragistics.core.js"></script>
 <script src="http://cdn-na.infragistics.com/igniteui/2019.1/latest/js/infragistics.lob.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 </body>
 
 </html>

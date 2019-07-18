@@ -1,5 +1,6 @@
 package service;
 
+import DecommManager.service.DecommManageExecuteInfoService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -628,5 +629,18 @@ public static JsonArray DecommContactInfoPreviewPageDataRetrieve(String projectn
     }
         return jsonArray;
     }
+    /*public static JsonArray DecommManagePreviewDataRetrieveService(String projectname, String applicationname) {
+        JsonArray jsonArray = new JsonArray();
 
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            JsonArray jsonArrayExecutionInfo = new DecommManageExecuteInfoService().DecommManageExecuteInfoDataRetrieveService(projectname,applicationname);
+            jsonArray.add(jsonArrayExecutionInfo);
+        }
+        catch(Exception e){
+            System.out.println("Exception--->" + e);
+        }
+        return jsonArray;
+    }*/
 }

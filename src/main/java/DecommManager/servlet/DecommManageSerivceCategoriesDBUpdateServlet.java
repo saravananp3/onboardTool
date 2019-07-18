@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.HashMap;
 
 @WebServlet("/DecommManageSerivceCategoriesDBUpdateServlet")
@@ -60,7 +61,7 @@ public class DecommManageSerivceCategoriesDBUpdateServlet extends HttpServlet {
                        String currentname=others_table_name_attribute.get(CheckBoxvalue);
                        if(!CheckBoxvalue.equals("Application Security"))
                        {
-                           String OtherTableValue=request.getParameter(currentname);
+                           String OtherTableValue=(Arrays.toString(request.getParameterValues(currentname)).replace("[","")).replace("]","");
                            String OthersUpdateQuery="update decomm_manage_service_categories_checklist_others set value=? where prj_name='"+projectname+"'and app_name='"+appname+"' and others='"+CheckBoxvalue+"'";
                            PreparedStatement preparedStmtotherstable = connection.prepareStatement(OthersUpdateQuery);
                            preparedStmtotherstable.setString(1,OtherTableValue);
@@ -106,6 +107,11 @@ public class DecommManageSerivceCategoriesDBUpdateServlet extends HttpServlet {
                        checkbox_values+=checkbox_value[j]+",";
                    }
                    value=checkbox_values;
+                }
+                else if(type.equals("Dropdown"))
+                {
+                    String[] values=request.getParameterValues("ServiceCategories"+i);
+                    value= (Arrays.toString(values).replace("[","")).replace("]","");
                 }
                 else
                 {
