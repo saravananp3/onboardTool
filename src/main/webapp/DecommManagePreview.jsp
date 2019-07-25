@@ -437,7 +437,7 @@
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            <table width='780' border='0' align='center'>
+<table id="inputFields" width='780' border='0' align='center'>
 
                                                                 <tbody>
 
@@ -458,140 +458,11 @@
                                                                 </tr>
                                                                 <tr align='left'>
                                                                     <td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-
-
                                                                         <span><h2
                                                                                 style='color: #848484; font-family: arial,sans-serif; font-size: 150%;'> Details</h2></span>
-                                                                        <div id="decomm_execution_info">
-                                                                            <h3>Decomm Execution Info</h3>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Decommission Target ID : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Decommission Status : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Project Number : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Project Name : </pre>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">Application Name : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Application ID : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Service Name : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Service ID : </pre>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">Version : </pre>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">Manufacturer : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Tier Level : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Segment : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">GL Code : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Read Only Date : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Hosting Method : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Business Owner : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Application Owner : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Service Owner : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">IT Development Owner : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Operational Support Owner : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Lead : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Other Contacts : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Production Deployed Date : </pre>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">Retention Review Status : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Content/Data Owner : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Migration Completion Date : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Data Classification Type : </pre>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">Legal Review Status : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Reviewer : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Legal Hold if Any : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Brief Description : </pre>
-
-                                                                        </div>
-                                                                        <div id="infrastructure_component_checklist">
-                                                                            <h3>Infrastructure Component CheckList</h3>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">Infrastructure Component Type : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Component Name : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Managed/Legacy : </pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Is the Server Shared with other applications : </pre>
-                                                                            <p> Environments </p>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Dev :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Test :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Stage :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Prod :</pre>
-                                                                        </div>
-
-                                                                        <div>
-                                                                            <h3>Services - Environment Information</h3>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">Service Categories :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Data Bases :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Storage :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Products :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Services :</pre>
-
-                                                                            <p>OTHERS</p>
-
-                                                                            <pre style="font-family:verdana;font-size:100%;">MAINFRAME :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">SUPPORT READINESS :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">DISASTER RECOVERY :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">DESKTOP SOFTWARE :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">CITRIX :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">APPLICATION SECURITY :</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">FINAL BACKUPS :</pre>
-
-                                                                        </div>
-
-
-                                                                        <div>
-                                                                            <h3>Key Mile Stones</h3>
-                                                                            <br>
-                                                                            <p><b>CAPM</b></p>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Status is Targeted for Decommission ?</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Service currently in Production ?</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Change service priority needed ?</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">CI Relationships exists?</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">SLO has made Appropriate updates ?</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Application part of EDR list?</pre>
-
-                                                                            <p><b>ET TEAM/ET PM TAB</b></p>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Final Artifact- Review and Approval</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Provide Chargeback Validation Report</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Submit Decommission requests: Use ITG/Service Catalog for components / services listed in the Final Artifact</pre>
-
-                                                                            <p><b>APP TEAM</b></p>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Final Artifact (Decommission List) Review and Approval</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Stop/Remove Jobs/Application Interfaces/SSIS Jobs etc.,to impacted applications Stopping jobs and interaction with the app.</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">(Optional) Impact Analysis of Application Decommission</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">ServiceNow: Change Request</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Secure: Remove Application</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Global Groups: Remove</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Master Unique Identifier (MUI): Remove</pre>
-
-                                                                            <p><b>APP SLO</b></p>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Submit request to change the apps status</pre>
-                                                                            <pre style="font-family:verdana;font-size:100%;">Request submitted to Retire the Service or Service is Retired</pre>
-
-                                                                        </div>
-
-
-
-
-
-
-
-
-                                                                        <%--<table width='0' border='0' align='left'--%>
-
-
-                                            </div>
-
 
                                             </td>
-
                                             </tr>
-
-
-                                        </div>
-
-
-
-
                                         </tr>
                                         </tbody>
 
@@ -854,7 +725,1150 @@
             dataType: "json",
             success: function (data) {
                 console.log("Data----->",data);
+                //Execution info success!!!!!
+                if (!$.isArray(data[0])) {
+                    data[0] = [data[0]];
+                }
+
+                $.each(data[0], function(key, value){
+                    /*console.log("FULL NAME " + value.Type);*/
+                    var manadatory="class='required_fie'";
+                    var Type=value.Type;
+                    var ColumnName=value.ColumnName;
+                    var LabelName=value.LabelName;
+                    var Value=value.Value;
+                    //var options=data[i].options.split(',');
+                    if(value.Mandatory=="No")
+                    {
+                        manadatory="";
+                    }
+                    if(Type=="Text box")
+                    {
+                        var inputtext="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            "<pre style='font-family:verdana;font-size:100%;' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"'> "+Value+"</pre>\n" +
+                            "</div>";
+                        $('#inputFields').append(inputtext);
+                    }
+                    else if(Type=="Datepicker")
+                    {
+                        var inputdate="<div class='form-group'>" +
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            "<pre style='font-family:verdana;font-size:100%;' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"'>"+Value+"</pre>" +
+                            "</div>";
+                        $('#inputFields').append(inputdate);
+
+                    }
+                    else if(Type=="Dropdown")
+                    {
+                        var inputdrop= "<div class='form-group'><label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                            /*"<select style = 'width:100%;' name='"+ColumnName+"'>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=sub_option.split(",");
+                        for(var i=0;i<option.length;i++) {
+                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'formInput198' >" + option[i] + "</option>";
+                        }
+                        inputdrop +="</select>*/
+                        "<pre style='font-family:verdana;font-size:100%;'>"+Value+"</pre></div>";
+                        $('#inputFields').append(inputdrop);
+
+                    }
+                    else if(Type=="Check box")
+                    {
+                        var inputcheck= "<div class='form-group'>"+
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=Options.split(",");
+                        for (var i=0; i<option.length; i++) {
+                            var check="";
+                            if(Value.includes(option[i]))
+                            {
+                                check="checked";
+                            }
+
+                            inputcheck += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value='"+option[i]+"' name='"+ColumnName+"'"+check+" disabled/>" +
+                                option[i]+"</label>";
+                        }
+                        inputcheck +="</div>";
+                        $('#inputFields').append(inputcheck);
+
+                    }
+                    else if(Type=="Radio box")
+                    {
+                        var inputdrop= "<div class='form-group'>"+
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=sub_option.split(",");
+                        for (var i=0; i<option.length; i++){
+                            var check="";
+                            if(Value.includes(option[i]))
+                            {
+                                check="checked";
+                            }
+                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+ColumnName+"'"+check+" disabled/>"+
+                                option[i]+"</label>";
+                        }
+                        inputdrop +="</div>";
+                        $('#inputFields').append(inputdrop);
+
+                    }
+                    else if(Type=="file")
+                    {
+                        inputfile="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div class='required_fie'>"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
+                            "<input type='file' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'>\n" +
+                            "</div>";
+                        $('#inputFields').append(inputfile);
+
+                    }
+                    else if(Type=="Text area")
+                    {
+                        var inputtext="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
+                            "<pre style='font-family:verdana;font-size:100%;' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</pre>"+
+                            "</div>";
+                        $('#inputFields').append(inputtext);
+                    }
+
+                });
+                var script="<script>$('.datepicker1').datepicker({\n" +
+                    "format: \"mm/dd/yyyy\",\n"+
+                    "autoclose: true\n"+
+                    "});<\/script>";
+                script+="<script>\n" +
+                    "$('.editpopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.editpopup');"+
+                    "$('#seq_num').val(seqnum);"+
+                    "modal1.style.display = \"block\";\n" +
+                    "});"+
+                    "<\/script>";
+                script+="<script> $('.deletepopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.deletepopup');"+
+                    //   "alert('sequence number '+seqnum);"+
+                    "$('#sequence1').val(seqnum);"+
+                    "modal2.style.display = \"block\";\n" +
+                    "});<\/script>";
+                $('#scripttag').append(script);
+
+                //Infra comp success!!!!
+
+                var tr = "  <table class='table table-bordered hidetable' id='mytable_infra'>\n" +
+                    "<tr style='color:white;background-color:DodgerBlue;'>\n" +
+                    "<th scope='col' style='color:white;'>Infrastructure Component Type </th>\n" +
+                    "<th scope='col' style='color:white;'>Component Name </th>\n" +
+                    "<th scope='col' style='color:white;'>Managed/Legacy </th>\n" +
+                    "<th scope='col' style='color:white;'> Is the Server Shared with other applications </th>\n" +
+                    "<td>\n" +
+                    "<table class='table table-bordered hidetable'>\n" +
+                    "<tr style='color:white;background-color:DodgerBlue;'>\n" +
+                    "<td scope='col' style='width:5px; float:center;' colspan='5'>ENVIRONMENTS</td>\n" +
+                    "</tr>\n" +
+                    "<tr>\n" +
+                    "<td scope='col' style='color:black;'>Dev</td>\n" +
+                    "<td scope='col' style='color:black;'>Test</td>\n" +
+                    "<td scope='col' style='color:black;'>Stage</td>\n" +
+                    "<td scope='col' style='color:black;'>Prod</td>\n" +
+                    "<td scope='col' style='color:black;'>Retired?</td>\n" +
+                    "</tr></table>\n" +
+                    "<th scope='col' style='color:white;background-color:DodgerBlue;'> Comments </th></tr>\n";
+                if(data[1][0].CheckExistance==true){
+                    for(var i=1; i<data[1].length; i++){
+                        var yes_server_app="";
+                        var no_server_app="";
+                        var yes_retired="";
+                        var no_retired="";
+                        var manage_drop="";
+                        var legacy_drop="";
+                        var style = "";
+                        if(data[1][i].Server_App=="Yes")
+                        {
+                            yes_server_app="checked";
+                        }
+                        else {
+                            no_server_app="checked";
+                        }
+                        if(data[1][i].Retired=="retired_yes")
+                        {
+                            yes_retired="checked";
+                        }
+                        else{
+                            no_retired="checked";
+                        }
+                        if(data[1][i].Managed_Legacy=="Managed"){
+                            manage_drop ="selected";
+                            style = "style = 'display:none;'";
+                        }
+                        else{
+                            legacy_drop ="selected";
+                            style = "style = 'display:block;'";
+                        }
+
+                       tr += "<tr>\n" +
+                            "<td> <input type='text' value='"+data[1][i].Infra_Comp_Type+"' name = 'infra_comp"+data[1][i].Seq_Num+"' placeholder='Infrastructure Component' style='width:66%;' readonly> </td>\n" +
+                            "<td> <input type='text' value='"+data[1][i].Comp_Name+"' name = 'comp_name"+data[1][i].Seq_Num+"' placeholder=' Component Name' style='width:66%;' readonly> </td>\n" +
+                            "<td>\n" +
+                            "<select style='width:66%;height:34px;' name = 'manage_legacy"+data[1][i].Seq_Num+"' onchange='manage_legacy(this.name,this.value);'  disabled>\n" +
+                            "<option value='Managed' "+manage_drop+">Managed</option>\n" +
+                            "<option value='Legacy' "+legacy_drop+">Legacy</option>\n" +
+                            "</select>\n" +
+                            "</td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' class = 'serverapp"+data[1][i].Seq_Num+"' value='Yes' "+style+" name = 'server_app"+data[1][i].Seq_Num+"'"+yes_server_app+" disabled><div class = 'serverapp"+data[1][i].Seq_Num+"' "+style+" >Yes</div>\n" +
+                            "<input type='radio' class = 'serverapp"+data[1][i].Seq_Num+"' value='No' "+style+" name = 'server_app"+data[1][i].Seq_Num+"'"+no_server_app+" disabled><div class = 'serverapp"+data[1][i].Seq_Num+"' "+style+">No</div>\n" +
+                            "</td>\n" +
+                            "<td>\n" +
+                            "<table>\n" +
+                            "<tr colspan='5'>\n" +
+                            "<td> <input type='text' class = 'class_access' value='"+data[1][i].Dev+"' name='dev"+data[1][i].Seq_Num+"' style='width:66%;' readonly> </td>\n" +
+                            "<td> <input type='text' class = 'class_access' value='"+data[1][i].Test+"' name='test"+data[1][i].Seq_Num+"' style='width:66%;' readonly> </td>\n" +
+                            "<td> <input type='text' class = 'class_access' value='"+data[1][i].Stage+"' name='stage"+data[1][i].Seq_Num+"' style='width:66%;' readonly> </td>\n" +
+                            "<td> <input type='text' class = 'class_access' value='"+data[1][i].Prod+"' name='prod"+data[1][i].Seq_Num+"' style='width:66%;'readonly> </td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' class = 'class_access1' name='retired"+data[1][i].Seq_Num+"' value='retired_yes' "+yes_retired+" disabled>Yes\n" +
+                            "<input type='radio' class = 'class_access1' name='retired"+data[1][i].Seq_Num+"' value='retired_no'"+no_retired+" disabled>No\n" +
+                            "</td>\n" +
+                            "\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "</td>\n" +
+                            "<td><textarea maxlength='120' name ='textarea"+data[1][i].Seq_Num+"' style='width:66%;' readonly>"+data[1][i].Comments+"</textarea><span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'></span></td>\n" +
+                            "</tr>";
+                    }
+                    tr+="</table>";
+                    $('#inputFields').append(tr);
+                }
+
+                var script ="<script> $('.deletepopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.deletepopup');"+
+                    //   "alert('sequence number '+seqnum);"+
+                    "$('#sequence1').val(seqnum);"+
+                    "modal2.style.display = \"block\";\n" +
+                    "});<\/script>";
+                $('#scripttag').append(script);
+
+                //Service categories Cheaklist jsp
+                if (!$.isArray(data[2])) {
+                    data[2] = [data[2]];
+                }
+                $.each(data[2], function(key, value){
+                    /*console.log("FULL NAME " + value.Type);*/
+                    var manadatory="class='required_fie'";
+                    var Type=value.Type;
+                    var ColumnName=value.ColumnName;
+                    var LabelName=value.LabelName;
+                    var Value=value.Value;
+                    //var options=data[i].options.split(',');
+                    if(value.Mandatory=="No")
+                    {
+                        manadatory="";
+                    }
+                    if(Type=="Text box")
+                    {
+                        var inputtext="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            "<pre style='font-family:verdana;font-size:100%;' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"'>"+Value+"</pre>\n" +
+                            "</div>";
+                        $('#inputFields').append(inputtext);
+                    }
+                    else if(Type=="Datepicker")
+                    {
+                        var inputdate="<div class='form-group'>" +
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            "<pre style='font-family:verdana;font-size:100%;' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"'>"+Value+"</pre>" +
+                            "</div>";
+                        $('#inputFields').append(inputdate);
+
+                    }
+                    else if(Type=="Dropdown")
+                    {
+                        var inputdrop= "<div class='form-group col-md-12'><label class='control-label col-sm-4' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                            "<pre style='font-family:verdana;font-size:100%;' name='"+ColumnName+"'> "+Value+" </pre>";
+                       /* var Options=value.options;
+                        //var sub_option = Options.substring(0, Options.length - 1);
+                        var option=Options.split(",");
+                        for(var i=0;i<option.length;i++) {
+                            var checkdropdown="";
+                            if(Value.includes(option[i]))
+                            {
+                                checkdropdown="selected";
+                            }
+                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'formInput198'"+checkdropdown+" >" + option[i] + "</option>";
+                        }
+                        inputdrop +="</select></div>";*/
+                        $('#inputFields').append(inputdrop);
+
+                    }
+                    else if(Type=="Check box")
+                    {
+                        var inputcheck= "<div class='form-group'>"+
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                        var Options=value.options;
+                        //var sub_option = Options.substring(0, Options.length - 1);
+                        var option=Options.split(",");
+                        for (var i=0; i<option.length; i++) {
+
+                            var Checking = "";
+                            if(Value.includes(option[i])){
+                                Checking = "checked";
+                            }
+                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol' id='"+((option[i]+(i + 1)).replace(/\s/g,""))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"' "+Checking+" disabled/>" +
+                                option[i]+"</label>&nbsp;&nbsp;";
+                        }
+                        inputcheck +="</div>";
+                        $('#inputFields').append(inputcheck);
+                    }
+                    else if(Type=="Radio box")
+                    {
+                        var inputdrop= "<div class='form-group'>"+
+                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
+                        var Options=value.options;
+                        //ar sub_option = Options.substring(0, Options.length - 1);
+                        var option=Options.split(",");
+                        for (var i=0; i<option.length; i++){
+
+                            var Checking = "";
+                            if(Value.includes(option[i])){
+                                Checking = "checked";
+                            }
+                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id='"+option[i]+(i+1)+"' value='"+option[i]+"' placeholder ='"+option[i]+"' name='"+ColumnName+"' "+Checking+" disabled/>"+
+                                option[i]+"</label>&nbsp;&nbsp;";
+                        }
+                        inputdrop +="</div>";
+                        $('#inputFields').append(inputdrop);
+
+                    }
+                    else if(Type=="file")
+                    {
+                        inputfile="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div class='required_fie'>"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
+                            "<pre style='font-family:verdana;font-size:100%;' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'></pre>\n" +
+                            "</div>";
+                        $('#inputFields').append(inputfile);
+
+                    }
+                    else if(Type=="Text area")
+                    {
+                        var inputtext="<div class='form-group'>\n" +
+                            "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
+                            "<pre style='font-family:verdana;font-size:100%;' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</pre>"+
+                            "</div>";
+                        $('#inputFields').append(inputtext);
+                    }
+                    else if(Type=="Others")
+                    {
+                        var inputcheck= "<div class='form-group'>"+
+                            "<label class='control-label deletepopup editpopup' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-pencil' style='float:right;display:none;'></span></div></label><br>";
+                        var Options=value.options;
+                        var sub_option = Options.substring(0, Options.length - 1);
+                        var option=sub_option.split(",");
+                        console.log("Testing:",value.Value);
+                        //var value_arr = Value.split(",");
+                        var Mainframe_check = "style = 'display:none;'";
+                        var Support_Readiness_check = "style = 'display:none;'";
+                        var Desktop_Software_check = "style = 'display:none;'";
+                        var Disaster_Recovery_check = "style = 'display:none;'";
+                        var Citrix_check = "style = 'display:none;'";
+                        var Application_Security_check = "style = 'display:none;'";
+                        var Final_Backups_check = "style = 'display:none;'";
+                        var Mainframe_others="";
+                        var Mainframe_Questions="";
+                        var Mainframe_Type="";
+                        var Mainframe_value="";
+                        var Support_Readiness_others="";
+                        var Support_Readiness_Questions="";
+                        var Support_Readiness_Type="";
+                        var Support_Readiness_value_yes="";
+                        var Support_Readiness_value_No="";
+                        var Desktop_Software_others="";
+                        var Desktop_Software_Questions="";
+                        var Desktop_Software_Type="";
+                        var Desktop_Software_value_Yes="";
+                        var Desktop_Software_value_No="";
+                        var Disaster_Recovery_others="";
+                        var Disaster_Recovery_Questions="";
+                        var Disaster_Recovery_Type="";
+                        var Disaster_Recovery_value="";
+                        var Citrix_others="";
+                        var Citrix_Questions="";
+                        var Citrix_Type="";
+                        var Citrix_value_Yes="";
+                        var Citrix_value_No="";
+                        var Application_Security_others="";
+                        var Application_Security_Questions="";
+                        var Application_Security_Type="";
+                        var Application_Security_value_Yes1="";
+                        var Application_Security_value_No1="";
+                        var Application_Security_value_Yes2="";
+                        var Application_Security_value_No2="";
+                        var Application_Security_value_Yes3="";
+                        var Application_Security_value_No3="";
+                        var Application_Security_Display1="Style='display:none';";
+                        var Application_Security_Display2="Style='display:none';";
+                        var Application_Security_Display3="Style='display:none';";
+                        var Final_Backups_others="";
+                        var Final_Backups_Questions="";
+                        var Final_Backups_Type="";
+                        var Final_Backups_value_Yes="";
+                        var Final_Backups_value_No="";
+                        var mainframeoptions= "  <option value='CICS Regions'>CICS Regions</option>\n" +
+                            "  <option value='DB2'>DB2</option>\n" +
+                            "  <option value='Endevor Flows'>Endevor Flows</option>\n" +
+                            '  <option >HLQ\'s (high level qualifiers) to be eliminated</option>\n' +
+                            "  <option value='IMS Regions'>IMS Regions</optionvalue>\n" +
+                            "  <option value='Mainframe  Storage'>Mainframe  Storage</optionvalue>\n" +
+                            "  <option value='Mainframe Batch Processing'>Mainframe Batch Processing</optionvalue>\n" +
+                            "  <option value='Mainframe Capacity'>Mainframe Capacity</option>\n" +
+                            "  <option value='Tape Media'>Tape Media</option>\n" +
+                            "  <option value='VSAM'>VSAM</option>\n";
+                        var disasterrecoveryoptions="  <option value='Rapid Recovery'>Rapid Recovery</option>\n" +
+                            "  <option value='SRM'>SRM</option>\n" +
+                            "  <option value='Tier 0'>Tier 0</option>\n" +
+                            "  <option value='Tier 1'>Tier 1</option>\n" +
+                            "  <option value='Tier 2'>Tier 2</option>\n" +
+                            "  <option value='Legacy Recovery'>Legacy Recovery</option>\n";
+                        /*console.log("array array ----->",value.OthersJsonArray[0].Questions);
+                        console.log("array array length----->",value.OthersJsonArray.length);*/
+                        for(var n=0;n<value.OthersJsonArray.length;n++)
+                        {
+                            var element_others=value.OthersJsonArray[n].Others;
+                            if(element_others!="Application Security") {
+                                var element_Questions = value.OthersJsonArray[n].Questions;
+                                var element_Type = value.OthersJsonArray[n].Type;
+                                var element_value = value.OthersJsonArray[n].Value;
+                                if (element_others == "Mainframe") {
+                                    Mainframe_value = element_value;
+                                    mainframe_val=element_value.split(",");
+                                    mainframeoptions="";
+                                    var arr_option_main = ['CICS Regions', 'DB2', 'Endevor Flows', "HLQ's (high level qualifiers) to be eliminated", 'IMS Regions', 'Mainframe  Storage', 'Mainframe Batch Processing', 'Mainframe Capacity', 'Tape Media', 'VSAM'];
+                                    for (var i = 0; i < arr_option_main.length; i++) {
+                                        var check = "";
+                                        if(Mainframe_value.includes(arr_option_main[i]))
+                                        {
+                                            check="selected";
+                                        }
+                                        mainframeoptions+="<option value='"+arr_option_main[i]+"' "+check+">"+arr_option_main[i]+"</option>";
+                                    }
+                                }
+                                if (element_others == "Support Readiness") {
+                                    if (element_value == "Yes")
+                                        Support_Readiness_value_yes = "checked";
+                                    else if (element_value == "No")
+                                        Support_Readiness_value_No = "checked";
+                                }
+                                if (element_others == "Desktop Software") {
+                                    if (element_value == "Yes")
+                                        Desktop_Software_value_Yes = "checked";
+                                    else if (element_value == "No")
+                                        Desktop_Software_value_No = "checked";
+                                }
+                                if (element_others == "Disaster Recovery") {
+                                    Disaster_Recovery_value = element_value;
+                                    disasterrecoveryoptions="";
+                                    var DisasterRecoveryOptions=Disaster_Recovery_value.split(",");
+                                    console.log("disaster recovery value ",Disaster_Recovery_value);
+                                    var arr_option_dis = ['Rapid Recovery', 'SRM', 'Tier 0', 'Tier 1', 'Tier 2', 'Legacy Recovery'];
+                                    console.log("array options disaster recovery ",arr_option_dis);
+                                    for(var i=0;i<arr_option_dis.length;i++)
+                                    {
+                                        var check="";
+                                        if(Disaster_Recovery_value.includes(arr_option_dis[i]))
+                                        {
+                                            check="selected";
+                                        }
+                                        console.log("check ",check);
+                                        disasterrecoveryoptions+="<option value='"+arr_option_dis[i]+"'"+check+">"+arr_option_dis[i]+"</option>";
+                                    }
+                                    console.log("disaster options ",disasterrecoveryoptions);
+                                }
+                                if (element_others == "Citrix") {
+                                    if (element_value == "Yes")
+                                        Citrix_value_Yes = "checked";
+                                    else if (element_value == "No")
+                                        Citrix_value_No = "checked";
+                                }
+
+                                if (element_others == "Final Backups") {
+                                    if (element_value == "Yes")
+                                        Final_Backups_value_Yes = "checked";
+                                    else if (element_value == "No")
+                                        Final_Backups_value_No = "checked";
+                                }
+                            }
+                            else {
+                                if(element_others=="Application Security")
+                                {
+                                    var element_value1 = value.OthersJsonArray[n].values[0].Value;
+                                    if(element_value1=="Yes") {
+                                        Application_Security_Display2="";
+                                        Application_Security_value_Yes1 = "checked";
+                                        var element_value2 = value.OthersJsonArray[n].values[1].Value;
+                                        if(element_value2=="Yes")
+                                        {
+                                            Application_Security_value_Yes2="checked";
+                                            Application_Security_Display3="";
+                                            var element_value3 = value.OthersJsonArray[n].values[2].Value;
+                                            if(element_value3=="Yes")
+                                            {
+                                                Application_Security_value_Yes3="checked";
+                                            }
+                                            else {
+                                                Application_Security_value_No3="checked";
+                                            }
+                                        }
+                                        else {
+                                            Application_Security_value_No2="checked";
+                                        }
+                                    }else if(element_value1=="No") {
+                                        Application_Security_value_No1 = "checked";
+                                    }
+                                }
+                            }
+                        }
+                        if (Value.includes("Mainframe")){
+                            Mainframe_check = "";
+                        }
+                        if (Value.includes("Support Readiness")){
+                            Support_Readiness_check = "";
+                        }
+                        if (Value.includes("Desktop Software")){
+                            Desktop_Software_check = "";
+                        }
+                        if (Value.includes("Disaster Recovery")){
+                            Disaster_Recovery_check = "";
+                        }
+                        if (Value.includes("Citrix")){
+                            Citrix_check = "";
+                        }
+                        if (Value.includes("Application Security")){
+                            Application_Security_check = "";
+                        }
+                        if (Value.includes("Final Backups")){
+                            Final_Backups_check = "";
+                        }
+
+                        for (var i=0; i<option.length; i++) {
+                            var Checking = "";
+                            if(Value.includes(option[i])){
+                                Checking = "checked";
+                            }
+                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol "+ColumnName+"' id='"+((option[i]).replace(/\s/g,''))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"' "+Checking+" disabled/>" +
+                                option[i]+"</label><br>";
+
+                        }
+
+                        inputcheck +="</div>";
+
+                        $('#inputFields').append(inputcheck);
+                        var others= "<div class='form-group'>\n" +
+                            "<table  class='Mainframe hidetable' "+Mainframe_check+">\n" +
+                            "<tr>\n" +
+                            "<td><b>MAINFRAME</b></td>\n" +
+                            "<td>\n" +
+                            /*"<input class='form-control mainframe' id='mainframe' value='"+Mainframe_value+"'name='Mainframe' placeholder='select...' autocomplete='off' style='width:100%;'>\n" +*/
+                            "<pre style='font-family:verdana;font-size:100%;' name='Mainframe'>\n" +
+                            Mainframe_value+
+                            "</pre>"+
+                            "\n"+
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Support_Readiness hidetable' "+Support_Readiness_check+">\n" +
+                            "<tr><td><b>SUPPORT READINESS</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td>\n" +
+                            "<font color='blue'>  Is the application supported by the United Support Center (Help Desk) and/or\n" +
+                            "IT Service Management (service/infrastructure performance monitoring)? </font></td>\n" +
+                            "</td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='SupportReadiness' value='Yes'"+Support_Readiness_value_yes+" disabled>yes\n" +
+                            "<input type='radio' name='SupportReadiness' value='No'"+Support_Readiness_value_No+" disabled>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Desktop_Software hidetable' "+Desktop_Software_check+">\n" +
+                            "<tr>\n" +
+                            "<td> <b>DESKTOP SOFTWARE</b> </td>\n" +
+                            "<td></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td><font color='blue';> Is there any desktop or supporting desktop software? </font> </td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='DesktopSoftware' value='Yes'"+Desktop_Software_value_Yes+" disabled>yes\n" +
+                            "<input type='radio' name='DesktopSoftware' value='No'"+Desktop_Software_value_No+" disabled>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Disaster_Recovery hidetable' "+Disaster_Recovery_check+">\n" +
+                            "<tr>\n" +
+                            "<td><b>DISASTER RECOVERY</b></td>\n" +
+                            "<td>\n" +
+                            /* "<input class='form-control disaster_rec' name='DisasterRecovery' id='disaster_rec' value='"+Disaster_Recovery_value+"' placeholder='select...' value='' autocomplete='off' style='width:100%;'>\n" +*/
+                            "<pre style='font-family:verdana;font-size:100%;' name='DisasterRecovery'>\n" +
+                            Disaster_Recovery_value+
+                            "</pre>"+
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Citrix hidetable' "+Citrix_check+">\n" +
+                            "<tr>\n" +
+                            "<td><b>CITRIX</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td> <font color='blue';> Does the application utilize any Citrix environments? </font> </td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='Citrix' value='Yes'"+Citrix_value_Yes+" disabled>yes\n" +
+                            "<input type='radio' name='Citrix' value='No'"+Citrix_value_No+" disabled>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Application_Security hidetable' "+Application_Security_check+">\n" +
+                            "<tr>\n" +
+                            "<td><b>APPLICATION SECURITY</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr >\n" +
+                            "<td> <font color='blue';> Does the application utilize Global Groups?</font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='ApplicationSecurity1' class='citrix' value='Yes'"+Application_Security_value_Yes1+" disabled>yes\n" +
+                            "<input type='radio' name='ApplicationSecurity1'  class='citrix' value='No'"+Application_Security_value_No1+" disabled>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "<tr class='add_question' "+Application_Security_Display2+">\n" +
+                            "<td><font color='blue';>Is the application in SECURE?</font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='ApplicationSecurity2' class='citrix_1' value='Yes'"+Application_Security_value_Yes2+" disabled>yes\n" +
+                            "<input type='radio' name='ApplicationSecurity2' class='citrix_1' value='No' "+Application_Security_value_No2+" disabled>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "<tr class='add_question_2' "+Application_Security_Display3+">\n" +
+                            "<td> <font color='blue';> Does the application have an Internally supported access mechanism or other not listed above\n" +
+                            "( e.g., your own directory)?</font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='ApplicationSecurity3' class='citrix_2' value='Yes'"+Application_Security_value_Yes3+" disabled>Yes\n" +
+                            "<input type='radio' name='ApplicationSecurity3' class='citrix_2' value='No'"+Application_Security_value_No3+" disabled>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "<table class='Final_Backups hidetable' "+Final_Backups_check+">\n" +
+                            "<tr>\n" +
+                            "<td><b>FINAL BACKUPS</b></td>\n" +
+                            "</tr>\n" +
+                            "<tr>\n" +
+                            "<td><font color='blue';> Are Final Backups Required?     </font></td>\n" +
+                            "<td>\n" +
+                            "<input type='radio' name='FinalBackups' class='backup' value='Yes'"+Final_Backups_value_Yes+" disabled>yes\n" +
+                            "<input type='radio' name='FinalBackups' class='backup' value='No'"+Final_Backups_value_No+" disabled>No\n" +
+                            "</td>\n" +
+                            "</tr>\n" +
+                            "</table>\n" +
+                            "</div>";
+                        $('#inputFields').append(others);
+                    }
+
+                });
+                var script="<script>$('.datepicker1').datepicker({\n" +
+                    "format: \"mm/dd/yyyy\",\n"+
+                    "autoclose: true\n"+
+                    "});<\/script>";
+                script+="<script>\n" +
+                    "$('.editpopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.editpopup');"+
+                    "$('#seq_num').val(seqnum);"+
+                    "modal1.style.display = \"block\";\n" +
+                    "});"+
+                    "<\/script>";
+                script+="<script> $('.deletepopup').click(function() {\n" +
+                    "var seqnum=$(this).index('.deletepopup');"+
+                    //   "alert('sequence number '+seqnum);"+
+                    "$('#sequence1').val(seqnum);"+
+                    "modal2.style.display = \"block\";\n" +
+                    "});<\/script>";
+                script+="<script> $('input[name=ServiceCategories6]').change(function(){" +
+                    "var answer = [];\n" +
+                    "$.each($('input[name=ServiceCategories6]:checked'), function(){\n" +
+                    "answer.push($(this).val());\n" +
+                    "});" +
+                    "$('.hidetable').hide();"+
+                    "for(var i=0;i<answer.length;i++)" +
+                    "{"+
+                    "$('.'+answer[i].replace(' ','_')).show();}});<\/script>";
+                script+="<script>$('input[name=\"ApplicationSecurity1\"]').on('change', function(){"+
+                    "if(this.value == 'Yes'){"+
+                    "$('.add_question').show();"+
+                    "}"+
+                    "else{"+
+                    "$('.add_question').hide();"+
+                    "}"+
+                    "});" +
+                    "$('input[name=\"ApplicationSecurity2\"]').on('change', function(){" +
+                    "if(this.value == 'Yes'){" +
+                    "$('.add_question_2').show();" +
+                    "}" +
+                    "else{" +
+                    "$('.add_question_2').hide();" +
+                    "}" +
+                    "});<\/script>";
+                script+="<script>$('.selectpicker').multiselect();<\/script>";
+                $('#scripttag').append(script);
+
+                //Service Categories Cheaklist Data jsp
+
+                var TableServiceCategoryChecklistDataRetrieve="<h3>SERVICES - ENVIRONMENT INFORMATION</h3>\n" +
+                    "<table class='table table-bordered hidetable CrossApplicationTeamProjectManagerClass' id='mytable'>\n" +
+                    "<thead style='color:white;background-color:DodgerBlue;'>\n" +
+                    "<tr >\n" +
+                    "<th scope='col' style='color:white;'>Label</th>\n" +
+                    "<th scope='col' style='color:white;'>Data</th>\n" +
+                    "<th scope='col' style='color:white;'>Dev</th>\n" +
+                    "<th scope='col' style='color:white;'>Test</th>\n" +
+                    "<th scope='col' style='color:white;'>Stage</th>\n" +
+                    "<th scope='col' style='color:white;'>Prod</th>\n" +
+                    "<th scope='col' style='color:white;'>Additional Comments</th>\n" +
+                    "</tr>\n" +
+                    "</thead ></table>";
+            TableServiceCategoryChecklistDataRetrieve +="<table class='table table-bordered hidetable' id='mytable1'>\n" +
+                "<thead style='color:white;background-color:DodgerBlue;'>\n" +
+                "<tr >\n" +
+                "<th scope='col' style='color:white;'>Label</th>\n" +
+                "<th scope='col' style='color:white;'>Data</th>\n" +
+                "<th scope='col' style='color:white;'>Values</th>\n" +
+                "<th scope='col' style='color:white;'>Dev</th>\n" +
+                "<th scope='col' style='color:white;'>Test</th>\n" +
+                "<th scope='col' style='color:white;'>Stage</th>\n" +
+                "<th scope='col' style='color:white;'>Prod</th>\n" +
+                "<th scope='col' style='color:white;'>Comments</th>\n" +
+                "</tr>\n" +
+                "</thead>\n" +
+                "<tr class = 'Mainframe hiderow'>\n" +
+                "<td scope='col' style='color:black;'>MAINFRAME</td>\n" +
+                "<td></td>\n" +
+                "<td> <input type='textbox' id='Mainframe1' name = 'Mainframe' readonly></td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='dev_mainframe' name = 'Mainframe_dev' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='test_mainframe' name = 'Mainframe_test' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='stage_mainframe' name = 'Mainframe_stage' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='prod_mainframe' name = 'Mainframe_prod' readonly> </td>\n" +
+                "<td> <textarea maxlength='50' id='comment_mainframe' name = 'Mainframe_comment' readonly></textarea> </td>\n" +
+                "</tr>\n" +
+                "\n" +
+                "<tr class = 'SupportReadiness hiderow'>\n" +
+                "<td scope='col' style='color:black;'>SUPPORT READINESS</td>\n" +
+                "<td> Is the application supported by the United Support Center (Help Desk)\n" +
+                "        and/or IT Service Management (service/infrastructure performance monitoring)? </td>\n" +
+                "<td>\n" +
+                "        <input type='radio' name='SupportReadiness' value='Yes' disabled>Yes\n" +
+                "        <input type='radio' name='SupportReadiness' value='No' disabled>No\n" +
+                "</td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='dev_support' name = 'SupportReadiness_dev' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='test_support' name =  'SupportReadiness_test' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='stage_support' name = 'SupportReadiness_stage' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='prod_support' name = 'SupportReadiness_prod' readonly> </td>\n" +
+                "<td> <textarea maxlength='50' id='comment_support' name = 'SuppertReadiness_comment' readonly></textarea> </td>\n" +
+                "</tr>\n" +
+                "\n" +
+                "<tr class = 'DisasterRecovery hiderow'>\n" +
+                "<td scope='col' style='color:black;'>DISASTER RECOVERY\n" +
+                "</td>\n" +
+                "<td></td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='DisasterRecovery' name = 'DisasterRecovery' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='dev_disaster' name = 'DisasterRecovery_dev' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='test_disaster' name = 'DisasterRecovery_test' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='stage_disaster' name = 'DisasterRecovery_stage' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='prod_disaster' name = 'DisasterRecovery_prod' readonly> </td>\n" +
+                "<td> <textarea maxlength='50' id='comment_disaster' name = 'DisasterRecovery_comment' readonly></textarea> </td>\n" +
+                "</tr>\n" +
+                "\n" +
+                "<tr class = 'DesktopSoftware hiderow'>\n" +
+                "<td scope='col' style='color:black;'>DESKTOP SOFTWARE</td>\n" +
+                "<td> Is there any desktop or supporting desktop software? </td>\n" +
+                "<td>\n" +
+                "        <input type='radio' name='DesktopSoftware' value='Yes' disabled>Yes\n" +
+                "        <input type='radio' name='DesktopSoftware' value='No' disabled>No\n" +
+                "</td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='dev_software' name = 'DesktopSoftware_dev' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='test_software' name = 'DesktopSoftware_test' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='stage_software' name = 'DesktopSoftware_stage' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='prod_software' name = 'DesktopSoftware_prod' readonly> </td>\n" +
+                "<td> <textarea maxlength='50' id='comment_software' name = 'DesktopSoftware_comment' readonly></textarea></td>\n" +
+                "</tr>\n" +
+                "\n" +
+                "<tr class = 'Citrix hiderow'>\n" +
+                "<td scope='col' style='color:black;'>CITRIX</td>\n" +
+                "<td> Does the application utilize any Citrix environments? </td>\n" +
+                "<td>\n" +
+                "        <input type='radio' name='Citrix' value='Yes' disabled>Yes\n" +
+                "        <input type='radio' name='Citrix' value='No' disabled>No\n" +
+                "\n" +
+                "</td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='dev_citrix' name = 'Citrix_dev' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='test_citrix' name = 'Citrix_test' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='stage_citrix' name = 'Citrix_stage' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='prod_citrix' name = 'Citrix_prod' readonly> </td>\n" +
+                "<td> <textarea maxlength='50' id='comment_citrix' name = 'Citrix_comment' readonly></textarea> </td>\n" +
+                "</tr>\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "<tr class = 'ApplicationSecurity hiderow'>\n" +
+                "<td scope='col' style='color:black;'>APPLICATION SECURITY</td>\n" +
+                "<td><div class='ApplicationSecurity1'> Does the application utilize Global Groups? <br></div>\n" +
+                "        <div class='ApplicationSecurity2'>\n" +
+                "            Is the application in SECURE? <br></div>\n" +
+                "        <div class='ApplicationSecurity3'>\n" +
+                "            Does the application have an Internally supported access mechanism or other not listed above\n" +
+                "            ( e.g., your own directory)?</div>\n" +
+                "</td>\n" +
+                "<td><div class='ApplicationSecurity1'><input type='radio' name='ApplicationSecurity1' value='Yes' disabled> Yes\n" +
+                "        <input type='radio' name='ApplicationSecurity1' value='No' disabled>No</div>\n" +
+                "        <br><br><br>\n" +
+                "        <div class='ApplicationSecurity2'>\n" +
+                "            <input type='radio' name='ApplicationSecurity2' value='Yes' disabled>Yes\n" +
+                "            <input type='radio' name='ApplicationSecurity2' value='No' disabled>No</div>\n" +
+                "        <br><br><br>\n" +
+                "        <div class='ApplicationSecurity3'>\n" +
+                "            <input type='radio' name='ApplicationSecurity3' value='Yes' disabled>Yes\n" +
+                "            <input type='radio' name='ApplicationSecurity3' value='No' disabled>No\n" +
+                "        </div>\n" +
+                "</td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='dev_citrix' name = 'ApplicationSecurity_dev' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='test_security' name = 'ApplicationSecurity_test' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='stage_security' name = 'ApplicationSecurity_stage' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='prod_security' name = 'ApplicationSecurity_prod' readonly> </td>\n" +
+                "<td> <textarea maxlength='50' id='comment_security' name = 'ApplicationSecurity_comment' readonly></textarea> </td>\n" +
+                "</tr>\n" +
+                "\n" +
+                "<tr class = 'FinalBackups hiderow'>\n" +
+                "\n" +
+                "<td scope='col' style='color:black;'>FINAL BACKUPS</td>\n" +
+                "<td> Are Final Backups Required? </td>\n" +
+                "<td>\n" +
+                "        <input type='radio' name='FinalBackups' value='Yes' disabled> yes\n" +
+                "        <input type='radio' name='FinalBackups' value='No' disabled>No\n" +
+                "\n" +
+                "</td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='dev_final' name = 'FinalBackups_dev' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='test_final' name = 'FinalBackups_test' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='stage_final' name = 'FinalBackups_stage' readonly> </td>\n" +
+                "<td> <input type='textbox' style='width:66%;' id='prod_final' name = 'FinalBackups_prod' readonly> </td>\n" +
+                "<td> <textarea maxlength='50' id='comment_final' name = 'FinalBackups_comment' readonly></textarea> </td>\n" +
+                "</tr>\n" +
+                "</table>";
+            $('#inputFields').append(TableServiceCategoryChecklistDataRetrieve);
+                for(var i=0; i<data[3][0].length; i++){
+                    var label = data[3][0][i].LabelName;
+                    var label_nospace = label.replace(" ","");
+                    var tr  = "<tr>\n" +
+                        "<td> <label>"+label+"</label></td>\n" +
+                        "<td><input type='textbox' id='"+label_nospace+i+"' name='"+label_nospace+i+"' value='"+data[3][0][i].Value+"' readonly></td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_dev"+i+"' style='width:66%;' name='"+label_nospace+"_dev"+i+"' value='"+data[3][0][i].Dev+"' readonly> </td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_test"+i+"' style='width:66%;' name='"+label_nospace+"_test"+i+"' value='"+data[3][0][i].Test+"' readonly> </td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_stage"+i+"' style='width:66%;' name='"+label_nospace+"_stage"+i+"' value='"+data[3][0][i].Stage+"' readonly> </td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_prod"+i+"' style='width:66%;' name='"+label_nospace+"_prod"+i+"' value='"+data[3][0][i].Prod+"' readonly> </td>\n" +
+                        "<td> <textarea maxlength='50' id='"+label_nospace+"_comment"+i+"' name='"+label_nospace+"_comment"+i+"' readonly>"+data[3][0][i].Comment+"</textarea></td>\n" +
+                        "</tr>";
+                    $('#mytable').append(tr);
+                }
+                $(".hiderow").hide();
+                for(var j=0;j<data[3][1].length;j++)
+                {
+                    var others_name=data[3][1][j].Others;
+                    var class_others=others_name.replace(" ","");
+                    var other_values = data[3][1][j].Value;
+                    $('.'+class_others).show();
+                    if(others_name=="Mainframe")
+                    {
+                        $('input[name="Mainframe"]').val(other_values);
+                    }
+                    else if(others_name == "Disaster Recovery"){
+                        $('input[name="DisasterRecovery"]').val(other_values);
+                    }
+                    else if(others_name == "Application Security")
+                    {
+                        var AppSec1_value=data[3][1][j].Value;
+                        var AppSec2_value=data[3][1][j+1].Value;
+                        var AppSec3_value=data[3][1][j+2].Value;
+                        if(AppSec1_value=="Yes")
+                        {
+
+                            $(".ApplicationSecurity2").show();
+                            if(AppSec2_value=="Yes")
+                            {
+                                $(".ApplicationSecurity3").show();
+                                if(AppSec3_value=="Yes")
+                                {
+
+                                }
+                                else {
+
+                                }
+                            }
+                            else {
+                                $(".ApplicationSecurity3").hide();
+                            }
+                        }
+                        else {
+                            $(".ApplicationSecurity2").hide();
+                            $(".ApplicationSecurity3").hide();
+                        }
+                        var $val1=$('input[name="ApplicationSecurity1"]');
+                        $val1.filter('[value='+AppSec1_value+']').prop('checked', true);
+                        var $val2=$('input[name="ApplicationSecurity2"]');
+                        $val2.filter('[value='+AppSec2_value+']').prop('checked', true);
+                        var $val3=$('input[name="ApplicationSecurity3"]');
+                        $val3.filter('[value='+AppSec3_value+']').prop('checked', true);
+
+                    }
+                    else {
+                        var $radios = $('input:radio[name='+class_others+']');
+                        $radios.filter('[value=' + other_values + ']').prop('checked', true);
+                    }
+                }
+                for(var k=0;k<data[3][2].length;k++)
+                {
+                    var options=data[3][2][k].Options;
+                    var value=data[3][2][k].Value;
+                    var label=data[3][2][k].label;
+                    var label_nospace=label.replace(" ","");
+                    var type=data[3][2][k].type;
+
+                    if(type=="Check box")
+                    {
+                        var inputcheck= "<tr><td><label class='control-label' for= 'formInput198'><div >"+label+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label></td>";
+                        inputcheck+="<td></td>";
+
+                        var option1=options.split(",");
+                        inputcheck+="<td><div class='form-group'>";
+                        for (var i=0; i<option1.length; i++) {
+
+                            var Checking = "";
+                            if(value.includes(option1[i])){
+                                Checking = "checked";
+                            }
+                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option1[i]+"' class = 'form-comtrol' id='"+(option1[i]+(i + 1)).replace(/\s/g,'')+"'  placeholder ='"+option1[i]+"' "+Checking+" disabled/>" +
+                                option1[i]+"</label>&nbsp;";
+                        }
+                        inputcheck +="</div></td>";
+                        inputcheck+="<td> <input type='textbox' id='"+label_nospace+"_dev' style='width:66%;' name='ServiceCategoriesSecondTable_dev"+k+"' value='"+data[3][2][k].Dev+"' readonly> </td>\n" +
+                            "<td> <input type='textbox' id='"+label_nospace+"_test' style='width:66%;' name='ServiceCategoriesSecondTable_test"+k+"' value='"+data[3][2][k].Test+"' readonly> </td>\n" +
+                            "<td> <input type='textbox' id='"+label_nospace+"_stage' style='width:66%;' name='ServiceCategoriesSecondTable_stage"+k+"' value='"+data[3][2][k].Stage+"' readonly> </td>\n" +
+                            "<td> <input type='textbox' id='"+label_nospace+"_prod' style='width:66%;' name='ServiceCategoriesSecondTable_prod"+k+"' value='"+data[3][2][k].Prod+"' readonly> </td>\n"+
+                            "<td> <textarea maxlength='50' id='"+label_nospace+"_comment' name='ServiceCategoriesSecondTable_comment"+k+"' readonly>"+data[3][2][k].Comment+"</textarea></td></tr>";
+
+                        $('#mytable1').append(inputcheck);
+                    }
+                    else if(type=="Radio box") {
+                        var inputcheck= "<tr><td><label class='control-label' for= 'formInput198'><div >"+label+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label></td>";
+                        inputcheck+="<td></td>";
+
+                        var option1=options.split(",");
+                        inputcheck+="<td><div class='form-group'>";
+                        for (var i=0; i<option1.length; i++) {
+
+                            var Checking = "";
+                            if(value.includes(option1[i])){
+                                Checking = "checked";
+                            }
+                            inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='radio' name='"+label_nospace+"' value = '"+option1[i]+"' class = 'form-comtrol' id='"+((option1[i]+(i + 1)).replace(/\s/g,''))+"' name='ServiceCategoriesSecondTable"+k+"' placeholder ='"+option1[i]+"' "+Checking+" disabled/>" +
+                                option1[i]+"</label>&nbsp;";
+                        }
+                        inputcheck +="</div></td>";
+                        inputcheck+="<td> <input type='textbox' id='"+label_nospace+"_dev' style='width:66%;' name='ServiceCategoriesSecondTable_dev"+k+"' value='"+data[3][2][k].Dev+"' readonly> </td>\n" +
+                            "<td> <input type='textbox' id='"+label_nospace+"_test' style='width:66%;' name='ServiceCategoriesSecondTable_test"+k+"' value='"+data[3][2][k].Test+"' readonly> </td>\n" +
+                            "<td> <input type='textbox' id='"+label_nospace+"_stage' style='width:66%;' name='ServiceCategoriesSecondTable_stage"+k+"' value='"+data[3][2][k].Stage+"' readonly> </td>\n" +
+                            "<td> <input type='textbox' id='"+label_nospace+"_prod' style='width:66%;' name='ServiceCategoriesSecondTable_prod"+k+"' value='"+data[3][2][k].Prod+"' readonly> </td>\n"+
+                            "<td> <textarea maxlength='50' id='"+label_nospace+"_comment' name='ServiceCategoriesSecondTable_comment"+k+"' readonly>"+data[3][2][k].Comment+"</textarea></td></tr>";
+
+                        $('#mytable1').append(inputcheck);
+                    }
+                }
+                for (var m=0; m<data[3][1].length; m++){
+                    var value = data[3][1][m].Others;
+                    var value_nospace = value.replace(" ","");
+                    $('input[name="'+value_nospace+'_dev"]').val(data[3][1][m].Dev);
+                    $('input[name="'+value_nospace+'_test"]').val(data[3][1][m].Test);
+                    $('input[name="'+value_nospace+'_stage"]').val(data[3][1][m].Stage);
+                    $('input[name="'+value_nospace+'_prod"]').val(data[3][1][m].Prod);
+                    $('textarea[name="'+value_nospace+'_comment"]').val(data[3][1][m].Comment);
+                }
+
+
+                // Key Mile Stone success
+
+                var camp_tab = " <div class='form-group hideclass' id='capm_data' >\n" +
+                    "<div>\n" +
+                    "    <h4><font color='red' size='5'>CAPM</font></h4>\n" +
+                    "\n" +
+                    "    <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Status is Targeted for Decommission ?</b></font></label>\n" +
+                    "    <input type='radio' name='CAPM1' class='status' value='Yes'>Yes\n" +
+                    "    <input type='radio' name='CAPM1' class='status' value='No'>No\n" +
+                    "    <input type='radio' name='CAPM1' class='status' value='NA'>N/A\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "<div class='hint_1' style='display:none;'>\n" +
+                    "    <label><font color='red';>If no then submit request to change the life cycle status to ' Targeted for Decommission'</font></label>\n" +
+                    "</div>\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Service currently in Production ?</b></font></label>\n" +
+                    "    <input type='radio' name='CAPM2' class='service' value='Yes'>Yes\n" +
+                    "    <input type='radio' name='CAPM2' class='service' value='No'>No\n" +
+                    "    <input type='radio' name='CAPM2' class='service' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "<div class='hint_2' style='display:none;'>\n" +
+                    "    <label><font color='red';>If no, Retired or if the service does not exist; No further steps required.</font></label>\n" +
+                    "</div>\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Change service priority needed ?</b></font></label>\n" +
+                    "    <input type='radio' name='CAPM3' class='change' value='Yes'>Yes\n" +
+                    "    <input type='radio' name='CAPM3' class='change' value='No'>No\n" +
+                    "    <input type='radio' name='CAPM3' class='change' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "<div class='hint_3' style='display:none;'>\n" +
+                    "    <label><font color='brown';>Priority change request should be submitted in Service now or any ITSM</font></label>\n" +
+                    "</div>\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>CI Relationships exists?</b></font></label>\n" +
+                    "    <input type='radio' name='CAPM4' class='relationship' value='Yes'>Yes\n" +
+                    "    <input type='radio' name='CAPM4' class='relationship' value='No'>No\n" +
+                    "    <input type='radio' name='CAPM4' class='relationship' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "<div class ='addquestion CAPM5' style='display:none;'>\n" +
+                    "    <label class='control-label ' for='formInput198' style='width:65%;'><font color='blue';>Item will be retired?</font></label>\n" +
+                    "    <input type='radio' name='CAPM5' class='item' value='Yes'>Yes\n" +
+                    "    <input type='radio' name='CAPM5' class='item' value='No'>No\n" +
+                    "    <input type='radio' name='CAPM5' class='item' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div class='hint_4' style='display:none;'>\n" +
+                    "    <label><font color='brown';>SLO to make appropriate updates?</font></label>\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>SLO has made Appropriate updates ?</b></font></label>\n" +
+                    "    <input type='radio' name='CAPM6' value='Yes'>Yes\n" +
+                    "    <input type='radio' name='CAPM6' value='No'>No\n" +
+                    "    <input type='radio' name='CAPM6' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'>Application part of EDR list?</font></label>\n" +
+                    "    <input type='radio' name='CAPM7' value='Yes'>Yes\n" +
+                    "    <input type='radio' name='CAPM7' value='No'>No\n" +
+                    "    <input type='radio' name='CAPM7' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "</div>";
+                var etpm_tab="\n" +
+                    "<div class='form-group hideclass' id='et_team_data'>\n" +
+                    "\n" +
+                    "    <div>\n" +
+                    "        <h4><font color='red' size='5'>ET TEAM/ET PM TAB</font></h4>\n" +
+                    "\n" +
+                    "        <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Final Artifact- Review and Approval</b></font></label>\n" +
+                    "        <input type='radio' name='ETPM1' class='final_artifact' value='Yes'>Yes\n" +
+                    "        <input type='radio' name='ETPM1' class='final_artifact' value='No'>No\n" +
+                    "        <input type='radio' name='ETPM1' class='final_artifact' value='NA'>N/A\n" +
+                    "\n" +
+                    "    </div>\n" +
+                    "\n" +
+                    "    <div>\n" +
+                    "        <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Provide Chargeback Validation Report</b></font></label>\n" +
+                    "        <input type='radio' name='ETPM2' class='Provide' value='Yes' onclick='provide_radio();'>Yes\n" +
+                    "        <input type='radio' name='ETPM2' class='provide' value='No'>No\n" +
+                    "        <input type='radio' name='ETPM2' class='provide' value='NA'>N/A\n" +
+                    "    </div>\n" +
+                    "\n" +
+                    "    <div class='form-group ETPM3' style='display:none;' id='et_team_provided_date'>\n" +
+                    "\n" +
+                    "        <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Provided Date</b></font></label>\n" +
+                    "        <input type='text' name ='ETPM3' class='datepicker' id='datepicker1' placeholder='mm/dd/yyyy'>\n" +
+                    "\n" +
+                    "    </div>\n" +
+                    "\n" +
+                    "    <div>\n" +
+                    "        <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Submit Decommission requests:\n" +
+                    "            Use ITG/Service Catalog for components / services listed in the Final Artifact</b></font></label>\n" +
+                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='Yes' onclick='submit_decom_req_radio();'>Yes\n" +
+                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='No'>No\n" +
+                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='NA'>N/A\n" +
+                    "    </div>\n" +
+                    "\n" +
+                    "    <div class='form-group ETPM5' style='display:none;' id='et_team_submission_date'>\n" +
+                    "\n" +
+                    "        <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "        <input type='text' name ='ETPM5' class='datepicker' id='datepicker2' placeholder='mm/dd/yyyy'>\n" +
+                    "\n" +
+                    "    </div>\n" +
+                    "\n" +
+                    "</div>";
+                var app_team_tab="<div class='form-group APP_TEAM7' id='app_submission_date3'>\n" +
+                    "\n" +
+                    "<label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "<input type='text' name ='APP_TEAM7'class='datepicker' id='app_datepicker3' placeholder='mm/dd/yyyy'>\n" +
+                    "\n" +
+                    "'</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "<label class='control-label ' for='formInput198'  style='width:65%;'><font size='4'><b>Secure:   Remove Application</b></font></label>\n" +
+                    "<input type='radio' name='APP_TEAM8' class='secure' value='Yes' onclick='secure_radio();'>Yes\n" +
+                    "<input type='radio' name='APP_TEAM8' class='secure' value='No'>No\n" +
+                    "<input type='radio' name='APP_TEAM8' class='secure' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div class='form-group APP_TEAM9' style='display:none;' id='app_submission_date4'>\n" +
+                    "\n" +
+                    "<label  class='control-label APP_TEAM9' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "'<input type='text' name ='APP_TEAM9' class='datepicker' id='app_datepicker4' placeholder='mm/dd/yyyy'>\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "<label class='control-label ' for='formInput198'  style='width:65%;'><font  size='4'><b>Global Groups:  Remove</b></font></label>\n" +
+                    "<input type='radio' name='APP_TEAM10' class='global' value='Yes'>Yes\n" +
+                    "<input type='radio' name='APP_TEAM10' class='global' value='No'>No\n" +
+                    "<input type='radio' name='APP_TEAM10' class='global' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "<label class='control-label ' for='formInput198'  style='width:65%;'><font  size='4'><b>Master Unique Identifier (MUI):  Remove</b></font></label>\n" +
+                    "<input type='radio' name='APP_TEAM11' class='mui' value='Yes'>Yes\n" +
+                    "<input type='radio' name='APP_TEAM11' class='mui' value='No'>No\n" +
+                    "<input type='radio' name='APP_TEAM11' class='mui' value='NA'>N/A\n" +
+                    "</div>\n" +
+                    "</div>";
+                var app_slo_tab="<div class='form-group APP_SLO2' id='app_slo_submission_date1'>\n" +
+                    "\n" +
+                    "<label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "<input type='text' name ='APP_SLO2' class='datepicker' id='app_slo_datepicker1' placeholder='mm/dd/yyyy'>\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "<label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Request submitted to Retire the Service or Service is Retired</b></font></label>\n" +
+                    "<input type='radio' name='APP_SLO3' class='retired' value='Yes' onclick='retired_radio();'>Yes\n" +
+                    "<input type='radio' name='APP_SLO3' class='retired' value='No'>No\n" +
+                    "<input type='radio' name='APP_SLO3' class='retired' value='NA'>N/A\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div class='form-group APP_SLO4' style='display:none;' id='app_slo_submission_date2'>\n" +
+                    "\n" +
+                    "<label  class='control-label' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "<input type='text' name ='APP_SLO4' class='datepicker' id='app_slo_datepicker2' placeholder='mm/dd/yyyy'>\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "</div>";
+                $('#inputFields').append(camp_tab);
+                $('#inputFields').append(etpm_tab);
+                $('#inputFields').append(app_team_tab);
+                $('#inputFields').append(app_slo_tab);
+
+
             },
+
+
 
         });
     });

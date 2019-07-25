@@ -113,9 +113,15 @@ public class DecommManageSerivceCategoriesDBUpdateServlet extends HttpServlet {
                     String[] values=request.getParameterValues("ServiceCategories"+i);
                     value= (Arrays.toString(values).replace("[","")).replace("]","");
                 }
+                else if(type.equals("Check box"))
+                {
+                    String checkbox_values[]=request.getParameterValues("ServiceCategories"+i);
+                    value= (Arrays.toString(checkbox_values).replace("[","")).replace("]","");
+                }
                 else
                 {
                     value=request.getParameter("ServiceCategories"+i);
+                    System.out.println("values-------->"+value);
                 }
 
                 String Updatequery="update decomm_manage_service_categories_checklist set value=? where prj_name = '" + projectname + "' and app_name = '" + appname + "' and column_name='"+"ServiceCategories"+i+"'";

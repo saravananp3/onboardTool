@@ -20,11 +20,11 @@ import java.sql.Statement;
 public class DecommManagerAddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JsonObject jsonobject = new JsonObject();
+        String applicationname = request.getParameter("ApplicationName");
+        String projectname = request.getParameter("ProjectName");
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            String applicationname = request.getParameter("ApplicationName");
-            String projectname = request.getParameter("ProjectName");
             String label_name = request.getParameter("LabelName");
             String column_name = request.getParameter("ColumnName");
             String mandatory = request.getParameter("Mandatory");
@@ -95,9 +95,10 @@ public class DecommManagerAddServlet extends HttpServlet {
             System.out.println("Exception----------[info]-----"+e);
         }
         String json = new Gson().toJson(jsonobject);
-        response.setContentType("application/json");
+        /*response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+        response.getWriter().write(json);*/
+        response.sendRedirect("DecommManageExecutionInfo.jsp?appname="+applicationname+"&projectname="+projectname);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

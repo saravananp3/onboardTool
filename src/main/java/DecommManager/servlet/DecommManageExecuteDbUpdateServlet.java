@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Arrays;
 
 @WebServlet("/DecommManageExecuteDbUpdateServlet")
 public class DecommManageExecuteDbUpdateServlet extends HttpServlet {
@@ -22,7 +25,24 @@ public class DecommManageExecuteDbUpdateServlet extends HttpServlet {
             System.out.println("I'm in Db");
             int classlength=Integer.parseInt(request.getParameter("classlength"));
             for (int i = 1; i <= classlength; i++){
-                String value = request.getParameter("ExecuteInfo"+i);
+                String value = "";
+                String type="";
+                String selectQuery="select * from decomm_manage_execution_info where prj_name='"+projectname+"' and app_name='"+appname+"' and seq_num='"+i+"';";
+                Statement statement=connection.createStatement();
+                ResultSet resultSet=statement.executeQuery(selectQuery);
+                if(resultSet.next())
+                {
+                    type=resultSet.getString("type");
+                }
+                if(type.equals("Check box"))
+                {
+                    String values[]=request.getParameterValues("ExecuteInfo"+i);
+                    value= (((Arrays.toString(values)).replace("[","")).replace("]","")).replace(" ","");
+                }
+                else
+                {
+                   value=request.getParameter("ExecuteInfo"+i);
+                }
                 String Updatequery="update decomm_manage_execution_info set value=? where prj_name = '" + projectname + "' and app_name = '" + appname + "' and column_name='"+"ExecuteInfo"+i+"'";
                 PreparedStatement preparedStmt1 = connection.prepareStatement(Updatequery);
                 preparedStmt1.setString(1, value);

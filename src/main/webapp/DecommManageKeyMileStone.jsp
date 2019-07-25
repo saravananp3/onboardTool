@@ -858,6 +858,8 @@
         f.submit();
     }
     $(document).ready(function(){
+        $('#capm_data').show();
+        $('#capm_tab_color').addClass('active');
         $.ajax({
             url: "DecommManageKeyMileStoneDataRetrieveServlet",
             type: 'POST',

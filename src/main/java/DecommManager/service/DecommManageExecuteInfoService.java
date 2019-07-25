@@ -723,7 +723,7 @@ public class DecommManageExecuteInfoService {
                 preparedStatement1.setInt(1,arr_seqmax_split.get(j));
                 preparedStatement1.setString(2, arr_prj_split.get(j));
                 preparedStatement1.setString(3, arr_app_split.get(j));
-                preparedStatement1.setString(4,arr_options_split.get(j));
+                preparedStatement1.setString(4, arr_options_split.get(j));
                 preparedStatement1.setString(5, arr_label_name_split.get(j));
                 preparedStatement1.setString(6, arr_column_name_split.get(j));
                 preparedStatement1.setString(7, arr_type_split.get(j));
@@ -825,9 +825,6 @@ public class DecommManageExecuteInfoService {
         String select_query2 = "select * from decomm_manage_service_categories_checklist where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and type != 'Others' order by seq_num";
         Statement st2=connection.createStatement();
         ResultSet rs2=st.executeQuery(select_query2);
-        while(rs2.next()){
-
-        }
         if(rs.next()){
             others_value = rs.getString("value");
         }
@@ -855,7 +852,125 @@ public class DecommManageExecuteInfoService {
     }
     return jsonArray;
     }
+    public static JsonArray DecommManageServiceCategoriesCheckServerService(String projectname, String applicationname){
+        JsonArray jsonArray = new JsonArray();
+        try{
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            JsonArray jsonArray1 = new JsonArray();
+            String select_query = "select * from decomm_manage_service_categories_checklist where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and type != 'Radio box' and type != 'Check box' and type != 'Others'order by seq_num";
+            Statement st=connection.createStatement();
+            ResultSet rs=st.executeQuery(select_query);
+            while(rs.next()){
+                String value = "";
+                String label,type= "";
+                value = rs.getString("value");
+                label = rs.getString("label_name");
 
+                type = rs.getString("type");
+                String arr_value[] = value.split(",");
+                for(int i =0; i<arr_value.length; i++){
+                    String dev="",test="",stage="",prod="",comment = "";
+                    JsonObject jsonObject = new JsonObject();
+                    String valuequery="select * from Decomm_Manage_Service_Categories_Checklist_Server where prj_name='"+projectname+"' and app_name = '"+applicationname+"' and label_name = '"+label+"' and value = '"+arr_value[i]+"' ";
+                    Statement st1=connection.createStatement();
+                    ResultSet rs1=st1.executeQuery(valuequery);
+                    if(rs1.next()){
+                        dev = rs1.getString("dev");
+                        test = rs1.getString("test");
+                        stage = rs1.getString("stage");
+                        prod = rs1.getString("prod");
+                        comment = rs1.getString("comments");
+                    }
+                    jsonObject.addProperty("Value",arr_value[i]);
+                    jsonObject.addProperty("LabelName",label);
+                    jsonObject.addProperty("Type",type);
+                    jsonObject.addProperty("Dev",dev);
+                    jsonObject.addProperty("Test",test);
+                    jsonObject.addProperty("Stage",stage);
+                    jsonObject.addProperty("Prod",prod);
+                    jsonObject.addProperty("Comment",comment);
+                    jsonArray1.add(jsonObject);
+                }
+            }
+            JsonArray jsonArray2 = new JsonArray();
+            String select_query1 = "select * from decomm_manage_service_categories_checklist where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and type = 'Others' order by seq_num";
+            Statement st1=connection.createStatement();
+            ResultSet rs1=st1.executeQuery(select_query1);
+            if(rs1.next()){
+                String other_value = "";
+                other_value = rs1.getString("value");
+                String arr_other_value[] = other_value.split(",");
+                for (int i=0; i<arr_other_value.length; i++){
+                    JsonObject jsonObject = new JsonObject();
+
+                    String select_query_other = "select * from decomm_manage_service_categories_checklist_others where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and others ='"+arr_other_value[i]+"' ";
+                    Statement st2=connection.createStatement();
+                    ResultSet rs2=st2.executeQuery(select_query_other);
+                        while(rs2.next()) {
+                         String type_other="", value_other="", dev="",test="",stage="",prod="",comment = "";
+                         type_other = rs2.getString("type");
+                         value_other = rs2.getString("value");
+                         dev  = rs2.getString("dev");
+                         test = rs2.getString("test");
+                         stage = rs2.getString("stage");
+                         prod = rs2.getString("prod");
+                         comment = rs2.getString("comments");
+                         jsonObject.addProperty("Others", arr_other_value[i]);
+                         jsonObject.addProperty("Type", type_other);
+                         jsonObject.addProperty("Value", value_other);
+                         jsonObject.addProperty("Dev",dev);
+                         jsonObject.addProperty("Test",test);
+                         jsonObject.addProperty("Stage",stage);
+                         jsonObject.addProperty("Prod",prod);
+                         jsonObject.addProperty("Comment",comment);
+                         jsonArray2.add(jsonObject);
+                        }
+                }
+            }
+            JsonArray jsonArray3=new JsonArray();
+            String selectRadioAndCheckboxQuery="select * from decomm_manage_service_categories_checklist where prj_name='"+projectname+"' and app_name='"+applicationname+"' and type!='Dropdown' and type!='Text box' and type!='Others' and type!='Datepicker';";
+            Statement statement=connection.createStatement();
+            ResultSet resultSet=statement.executeQuery(selectRadioAndCheckboxQuery);
+            String dev="",test="",stage="",prod="",comment="";
+            while(resultSet.next())
+            {
+                String options=resultSet.getString("options");
+                String value=resultSet.getString("value");
+                String type=resultSet.getString("type");
+                String label=resultSet.getString("label_name");
+                String query  = "select * from Decomm_Manage_Service_Categories_Checklist_Server where prj_name='"+projectname+"' and app_name='"+applicationname+"' and label_name = '"+label+"' and value = '"+value+"'";
+                Statement st4=connection.createStatement();
+                ResultSet rs4=st4.executeQuery(query);
+                if(rs4.next()){
+                    dev=rs4.getString("dev");
+                    test=rs4.getString("test");
+                    stage=rs4.getString("stage");
+                    prod=rs4.getString("prod");
+                    comment=rs4.getString("comments");
+                }
+                JsonObject jsonObject=new JsonObject();
+                jsonObject.addProperty("Options",options);
+                jsonObject.addProperty("Value",value);
+                jsonObject.addProperty("type",type);
+                jsonObject.addProperty("label",label);
+                jsonObject.addProperty("Dev",dev);
+                jsonObject.addProperty("Test",test);
+                jsonObject.addProperty("Stage",stage);
+                jsonObject.addProperty("Prod",prod);
+                jsonObject.addProperty("Comment",comment);
+                jsonArray3.add(jsonObject);
+            }
+            jsonArray.add(jsonArray1);
+            jsonArray.add(jsonArray2);
+            jsonArray.add(jsonArray3);
+        }
+
+        catch (Exception e) {
+            System.out.println("Exception......" + e);
+        }
+        return  jsonArray;
+    }
     public static JsonArray DecommManagePreviewDataRetrieveService(String projectname, String applicationname) {
         JsonArray jsonArray = new JsonArray();
 
@@ -865,7 +980,7 @@ public class DecommManageExecuteInfoService {
             JsonArray jsonArrayExecutionInfo = new DecommManageExecuteInfoService().DecommManageExecuteInfoDataRetrieveService(projectname,applicationname);
             JsonArray jsonArrayInfraComp = new DecommManageExecuteInfoService().DecommManageExecuteInfraCompDataRetrieveService(projectname,applicationname);
             JsonArray jsonArrayServiceCategoriesChecklist = new DecommManageExecuteInfoService().DecommManageServiceCategoriesDataRetrieveService(projectname,applicationname);
-            JsonArray jsonArrayServiceCategoriesChecklistData =  new DecommManageExecuteInfoService().DecommManageSerCatCheckDtRetrieveService(projectname,applicationname);
+            JsonArray jsonArrayServiceCategoriesChecklistData =  new DecommManageExecuteInfoService().DecommManageServiceCategoriesCheckServerService(projectname,applicationname);
             JsonArray jsonArrayKeyMileStone = new DecommManageExecuteInfoService().DecommManageKeyMileStoneDataRetrieveService(projectname,applicationname);
 
             jsonArray.add(jsonArrayExecutionInfo);

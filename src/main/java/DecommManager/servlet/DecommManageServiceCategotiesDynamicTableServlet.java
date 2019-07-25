@@ -27,12 +27,12 @@ public class DecommManageServiceCategotiesDynamicTableServlet extends HttpServle
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             DecommManageExecutionInfoTableUpdate tableupdate[]=new DecommManageExecutionInfoTableUpdate[9];
-            tableupdate[0]=new DecommManageExecutionInfoTableUpdate(1,ProjectName,ApplicationName,"UNIX / Linux Server,Windows Server,","Service Categories","ServiceCategories1","Dropdown","No","");
-            tableupdate[1]=new DecommManageExecutionInfoTableUpdate(2,ProjectName,ApplicationName,"DB2,MS SQL,MySQL,Oracle,Sybase,","Data Bases","ServiceCategories2","Dropdown","No","");
-            tableupdate[2]=new DecommManageExecutionInfoTableUpdate(3,ProjectName,ApplicationName,"Storage - SAN,Storage - NAS,Storage - NAS Mounts,","Storage","ServiceCategories3","Dropdown","No","");
-            tableupdate[3]=new DecommManageExecutionInfoTableUpdate(4,ProjectName,ApplicationName,"AWS,Azure,Backups,Citrix,DataStage (ETL),Desktop Software,","Products","ServiceCategories4","Dropdown","No","");
-            tableupdate[4]=new DecommManageExecutionInfoTableUpdate(5,ProjectName,ApplicationName,"DNS Entries,ECG - Electronic Customer Gateway (File Transfer),F5 / Load Balancing,Firewall Rules,HA (High Availability),IIS,Job Control,SharePoint,SQL Analysis Services,SQL Reporting Services  (SRS),SQL Server Integration Services  (SSIS),SSL Certificates,Team Foundation Server (TFS),URLs,Vignette (Web Content Management),Web Analytics,WebSphere,WMB,WMQ,","Services","ServiceCategories5","Dropdown","No","");
-            tableupdate[5]=new DecommManageExecutionInfoTableUpdate(6,ProjectName,ApplicationName,"Mainframe,Support Readiness,Desktop Software,Disaster Recovery,Citrix,Application Security,Final Backups,","Others","ServiceCategories6","Others","No","");
+            tableupdate[0]=new DecommManageExecutionInfoTableUpdate(1,ProjectName,ApplicationName,"UNIX / Linux Server,Windows Server","Service Categories","ServiceCategories1","Dropdown","No","");
+            tableupdate[1]=new DecommManageExecutionInfoTableUpdate(2,ProjectName,ApplicationName,"DB2,MS SQL,MySQL,Oracle,Sybase","Data Bases","ServiceCategories2","Dropdown","No","");
+            tableupdate[2]=new DecommManageExecutionInfoTableUpdate(3,ProjectName,ApplicationName,"Storage - SAN,Storage - NAS,Storage - NAS Mounts","Storage","ServiceCategories3","Dropdown","No","");
+            tableupdate[3]=new DecommManageExecutionInfoTableUpdate(4,ProjectName,ApplicationName,"AWS,Azure,Backups,Citrix,DataStage (ETL),Desktop Software","Products","ServiceCategories4","Dropdown","No","");
+            tableupdate[4]=new DecommManageExecutionInfoTableUpdate(5,ProjectName,ApplicationName,"DNS Entries,ECG - Electronic Customer Gateway (File Transfer),F5 / Load Balancing,Firewall Rules,HA (High Availability),IIS,Job Control,SharePoint,SQL Analysis Services,SQL Reporting Services  (SRS),SQL Server Integration Services  (SSIS),SSL Certificates,Team Foundation Server (TFS),URLs,Vignette (Web Content Management),Web Analytics,WebSphere,WMB,WMQ","Services","ServiceCategories5","Dropdown","No","");
+            tableupdate[5]=new DecommManageExecutionInfoTableUpdate(6,ProjectName,ApplicationName,"Mainframe,Support Readiness,Desktop Software,Disaster Recovery,Citrix,Application Security,Final Backups","Others","ServiceCategories6","Others","No","");
 
             String CheckQuery="select * from decomm_manage_service_categories_checklist where prj_name = '"+ProjectName+"' and app_name = '"+ApplicationName+"'";
             Statement st=connection.createStatement();

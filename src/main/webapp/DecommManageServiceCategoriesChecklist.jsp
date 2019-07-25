@@ -199,6 +199,17 @@
         height: 30px;
     }
 
+
+</style>
+
+<style>
+    .scrollbar
+    {
+
+        height: 700px;
+
+        overflow-y: auto;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script>
@@ -386,7 +397,7 @@ $(".add_question").hide();
                                     </div>
                                     <div id="collapse2" class="panel-collapse">
                                         <div class="panel-body text-left">
-                                            <form name="ServiceCategoriesForm">
+                                            <form name="ServiceCategoriesForm" class="scrollbar">
                                             <div id="inputFields">
                                                 <%--
                                                 <div class="form-group">
@@ -783,8 +794,8 @@ $(".add_question").hide();
                         var inputdrop= "<div class='form-group col-md-12'><label class='control-label col-sm-4' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
                             "<select  id = 'hi' class='selectpicker col-sm-8' multiple data-live-search='true' value='"+Value+"' name='"+ColumnName+"'>";
                         var Options=value.options;
-                        var sub_option = Options.substring(0, Options.length - 1);
-                        var option=sub_option.split(",");
+                        //var sub_option = Options.substring(0, Options.length - 1);
+                        var option=Options.split(",");
                         for(var i=0;i<option.length;i++) {
                             var checkdropdown="";
                             if(Value.includes(option[i]))
@@ -802,8 +813,8 @@ $(".add_question").hide();
                         var inputcheck= "<div class='form-group'>"+
                             "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                         var Options=value.options;
-                        var sub_option = Options.substring(0, Options.length - 1);
-                        var option=sub_option.split(",");
+                        //var sub_option = Options.substring(0, Options.length - 1);
+                        var option=Options.split(",");
                         for (var i=0; i<option.length; i++) {
 
                             var Checking = "";
@@ -811,7 +822,7 @@ $(".add_question").hide();
                                 Checking = "checked";
                             }
                             inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol' id="+((option[i]+(i + 1)).replace(/\s/g,''))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"' "+Checking+"/>" +
-                                option[i]+"</label>";
+                                option[i]+"</label>&nbsp;&nbsp;";
                         }
                         inputcheck +="</div>";
                         $('#inputFields').append(inputcheck);
@@ -941,16 +952,16 @@ $(".add_question").hide();
                         var inputdrop= "<div class='form-group'>"+
                             "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
                         var Options=value.options;
-                        var sub_option = Options.substring(0, Options.length - 1);
-                        var option=sub_option.split(",");
+                        //ar sub_option = Options.substring(0, Options.length - 1);
+                        var option=Options.split(",");
                         for (var i=0; i<option.length; i++){
 
                             var Checking = "";
                             if(Value.includes(option[i])){
                                 Checking = "checked";
                             }
-                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+ColumnName+"' "+Checking+"/>"+
-                                option[i]+"</label>";
+                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' value='"+option[i]+"' placeholder ='"+option[i]+"' name='"+ColumnName+"' "+Checking+"/>"+
+                                option[i]+"</label>&nbsp;&nbsp;";
                         }
                         inputdrop +="</div>";
                         $('#inputFields').append(inputdrop);
@@ -977,7 +988,7 @@ $(".add_question").hide();
                     else if(Type=="Others")
                     {
                         var inputcheck= "<div class='form-group'>"+
-                            "<label class='control-label deletepopup editpopup' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-pencil' style='float:right;display:none;'></span></div></label>";
+                            "<label class='control-label deletepopup editpopup' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-pencil' style='float:right;display:none;'></span></div></label><br>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
@@ -1033,7 +1044,7 @@ $(".add_question").hide();
                         var mainframeoptions= "  <option value='CICS Regions'>CICS Regions</option>\n" +
                             "  <option value='DB2'>DB2</option>\n" +
                             "  <option value='Endevor Flows'>Endevor Flows</option>\n" +
-                            '  <option value="HLQ\'s(high level qualifiers) to be eliminated">HLQ\'s (high level qualifiers) to be eliminated</option>\n' +
+                            '  <option >HLQ\'s (high level qualifiers) to be eliminated</option>\n' +
                             "  <option value='IMS Regions'>IMS Regions</optionvalue>\n" +
                             "  <option value='Mainframe  Storage'>Mainframe  Storage</optionvalue>\n" +
                             "  <option value='Mainframe Batch Processing'>Mainframe Batch Processing</optionvalue>\n" +
@@ -1172,7 +1183,7 @@ $(".add_question").hide();
                                 Checking = "checked";
                             }
                             inputcheck += "<label class = 'control-label others' for = 'fromInput198'><input type='checkbox'  value = '"+option[i]+"' class = 'form-comtrol "+ColumnName+"' id='"+((option[i]).replace(/\s/g,''))+ "' placeholder ='"+option[i]+"' name= '"+ColumnName+"' "+Checking+"/>" +
-                                option[i]+"</label>";
+                                option[i]+"</label><br>";
 
                         }
 
@@ -1493,8 +1504,8 @@ $(".add_question").hide();
                 input+= "<div class='form-group'>"+
                     "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                 var Options=data.Options;
-                var sub_option = Options.substring(0, Options.length - 1);
-                var option=sub_option.split(",");
+                //var sub_option = Options.substring(0, Options.length - 1);
+                var option=Options.split(",");
                 for (var i=0; i<option.length; i++){
 
                     input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+num+"'/>"+

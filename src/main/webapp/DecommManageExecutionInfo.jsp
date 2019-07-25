@@ -765,7 +765,11 @@
             }
 
         }
-        $.ajax({
+        var f=document.PopUpform;
+        f.method="post";
+        f.action="DecommManagerAddServlet?ProjectName="+projname+"&ApplicationName="+appname+"&LabelName="+labelname+"&ColumnName="+columnname+"&Type="+type+"&Mandatory="+mandatory+"&Number="+num+"&Options="+options;
+        f.submit();
+        /*$.ajax({
             url: "DecommManagerAddServlet",
             type: 'POST',
             data: {ApplicationName:appname,ProjectName: projname,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Number:num,Options:options},
@@ -813,7 +817,7 @@
                     var option=sub_option.split(",");
                     for (var i=0; i<option.length; i++){
 
-                        input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
+                        input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
                             option[i]+"</label>";
 
                     }
@@ -830,7 +834,7 @@
                     var option=sub_option.split(",");
                     for (var i=0; i<option.length; i++) {
 
-                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='" + data.ColumnName+num+"'/>" +
+                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='" + data.ColumnName+num+"'/>" +
                             option[i] + "</label>";
                     }
                     input +="</div>";
@@ -854,7 +858,7 @@
             error: function (e) {
                 console.log(e);
             }
-        });
+        });*/
         /* var f=document.PopUpform;
          f.method="post";
          f.action="DecommLegacyRetentionAddServlet?ProjectName"+projname+"&ApplicationName="+appname+"&LabelName="+labelname+"&ColumnName="+columnname+"&type="+type+"&mandatory="+mandatory;
@@ -1019,7 +1023,11 @@
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
                         for(var i=0;i<option.length;i++) {
-                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'formInput198' >" + option[i] + "</option>";
+                            var select = "";
+                            if(Value.includes(option[i])){
+                             select = "selected";
+                            }
+                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'formInput198' "+select+">" + option[i] + "</option>";
                         }
                         inputdrop +="</select></div>";
                         $('#inputFields').append(inputdrop);
@@ -1031,10 +1039,15 @@
                             "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
-                        var option=sub_option.split(",");
+                        var option=Options.split(",");
+                        var value_arr=Value.split(",");
                         for (var i=0; i<option.length; i++) {
-
-                            inputcheck += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='"+ColumnName+"'/>" +
+                            var check = "";
+                            var option_element=option[i];
+                            if(value_arr.includes(option_element)){
+                                check = "checked";
+                            }
+                            inputcheck += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>" +
                                 option[i]+"</label>";
                         }
                         inputcheck +="</div>";
@@ -1047,9 +1060,13 @@
                             "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
-                        var option=sub_option.split(",");
+                        var option=Options.split(",");
                         for (var i=0; i<option.length; i++){
-                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+ColumnName+"'/>"+
+                            var check = "";
+                            if(Value.includes(option[i])){
+                                check = "checked";
+                            }
+                            inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>"+
                                 option[i]+"</label>";
                         }
                         inputdrop +="</div>";
