@@ -725,7 +725,16 @@
             dataType: "json",
             success: function (data) {
                 console.log("Data----->",data);
+
                 //Execution info success!!!!!
+
+                var execute_info = "<br><br><h3>Decommission Execution Requirements</h3><br>";
+                var infra_comp = "<br><br><h3>Infrastructure Component CheckList</h3><br>";
+                var service_cat = "<br><br><h3>Service Categories Checklist</h3><br>";
+                var service_cat_data = "<br><br><h3>Service Categories Checklist Data Retrieve </h3><br>";
+                var key_mile_stone= "<br><br><h3>Key Mile Stones</h3><br>";
+                $('#inputFields').append(execute_info);
+
                 if (!$.isArray(data[0])) {
                     data[0] = [data[0]];
                 }
@@ -855,7 +864,7 @@
                 $('#scripttag').append(script);
 
                 //Infra comp success!!!!
-
+                $('#inputFields').append(infra_comp);
                 var tr = "  <table class='table table-bordered hidetable' id='mytable_infra'>\n" +
                     "<tr style='color:white;background-color:DodgerBlue;'>\n" +
                     "<th scope='col' style='color:white;'>Infrastructure Component Type </th>\n" +
@@ -950,7 +959,9 @@
                     "});<\/script>";
                 $('#scripttag').append(script);
 
-                //Service categories Cheaklist jsp
+                //Service categories Cheaklist success
+
+                $('#inputFields').append(service_cat);
                 if (!$.isArray(data[2])) {
                     data[2] = [data[2]];
                 }
@@ -1416,9 +1427,9 @@
                 script+="<script>$('.selectpicker').multiselect();<\/script>";
                 $('#scripttag').append(script);
 
-                //Service Categories Cheaklist Data jsp
-
-                var TableServiceCategoryChecklistDataRetrieve="<h3>SERVICES - ENVIRONMENT INFORMATION</h3>\n" +
+                //Service Categories Cheaklist Data success!!!!!
+                $('#inputFields').append(service_cat_data);
+                var TableServiceCategoryChecklistDataRetrieve="<h4>Services - Environment Information</h4>\n" +
                     "<table class='table table-bordered hidetable CrossApplicationTeamProjectManagerClass' id='mytable'>\n" +
                     "<thead style='color:white;background-color:DodgerBlue;'>\n" +
                     "<tr >\n" +
@@ -1431,7 +1442,8 @@
                     "<th scope='col' style='color:white;'>Additional Comments</th>\n" +
                     "</tr>\n" +
                     "</thead ></table>";
-            TableServiceCategoryChecklistDataRetrieve +="<table class='table table-bordered hidetable' id='mytable1'>\n" +
+                //$("#inputFields").append("");
+            TableServiceCategoryChecklistDataRetrieve +="<br><br><h4>Others</h4><br><table class='table table-bordered hidetable' id='mytable1'>\n" +
                 "<thead style='color:white;background-color:DodgerBlue;'>\n" +
                 "<tr >\n" +
                 "<th scope='col' style='color:white;'>Label</th>\n" +
@@ -1572,6 +1584,7 @@
                         "</tr>";
                     $('#mytable').append(tr);
                 }
+
                 $(".hiderow").hide();
                 for(var j=0;j<data[3][1].length;j++)
                 {
@@ -1698,65 +1711,208 @@
 
                 // Key Mile Stone success
 
+                $('#inputFields').append(key_mile_stone);
+                var arr_tab = ['CAPM','ETPM','APP TEAM','APP SLO'];
+                var arr_yes_capm = ['','','','','','',''];
+                var arr_no_capm = ['','','','','','',''];
+                var arr_na_capm = ['','','','','','',''];
+                var arr_yes_etpm=[];
+                var arr_no_etpm=[];
+                var arr_na_etpm=[];
+                var arr_valuedate_etpm=[];
+                var arr_valuedate_app_team=[];
+                var arr_valuedate_app_slo=[];
+                var arr_yes_app_team=[];
+                var arr_no_app_team=[];
+                var arr_na_app_team=[];
+                var arr_yes_app_slo=[];
+                var arr_no_app_slo=[];
+                var arr_na_app_slo=[];
+                var arr_capm_show = ['style=\'display:none;\'','style=\'display:none;\'','style=\'display:none;\'','style=\'display:none;\'','style=\'display:none;\''];
+                var arr_etpm_show = ['style=\'display:none;\'','style=\'display:none;\''];
+                var arr_app_team_show = ['style=\'display:none;\'','style=\'display:none;\'','style =\'display:none;\'','style =\'display:none;\''];
+                var arr_app_slo_show = ['style=\'display:none;\'','style=\'display:none;\''];
+                for(var i=0; i<data[4].length; i++){
+                    var data_tab_name = data[4][i].Tab_Name;
+                    var seq_num = data[4][i].Seq_Num;
+                    var tab_name_value = data[4][i].Tab_Name_Value;
+                    if(data_tab_name == "CAPM"){
+                        if(tab_name_value == "Yes"){
+                            arr_yes_capm[seq_num-1] = "Checked";
+                            if(seq_num=="3")
+                            {
+                                arr_capm_show[seq_num-1]="style = 'display:block;'";
+                            }
+                            if(seq_num=="4")
+                            {
+                                arr_capm_show[seq_num-1]="style = 'display:block;'";
+                            }
+                            if(seq_num=="5")
+                            {
+                                arr_capm_show[seq_num-1]="style = 'display:block;'";
+                            }
+                        }
+                        else if(tab_name_value == "No"){
+                            arr_no_capm[seq_num-1] = "Checked";
+                            if(seq_num == "1"){
+                                arr_capm_show[seq_num-1] = "style = 'display:block;'";
+                            }
+                            if(seq_num=="2"){
+                                arr_capm_show[seq_num-1]="style = 'display:block;'";
+                            }
+                        }
+                        else if(tab_name_value == "NA"){
+                            arr_na_capm[seq_num-1] = "Checked";
+                        }
+                    }
+                    else if(data_tab_name=="ETPM")
+                    {
+                        if(tab_name_value == "Yes")
+                        {
+                            if(seq_num == "2")
+                            {
+                                arr_etpm_show[0] = "style = 'display:block;'";
+                                arr_valuedate_etpm[0]=data[4][i+1].Tab_Name_Value;
+                            }
+                            if(seq_num == "4")
+                            {
+                                arr_etpm_show[1] = "style = 'display:block;'";
+                                arr_valuedate_etpm[1]=data[4][i+1].Tab_Name_Value;
+                            }
+
+                            arr_yes_etpm[seq_num-1]="checked";
+                        }
+                        else if(tab_name_value == "No")
+                        {
+                            arr_no_etpm[seq_num-1]="checked";
+                        }
+                        else if(tab_name_value=="NA")
+                        {
+                            arr_na_etpm[seq_num-1]="checked";
+                        }
+                    }
+                    else if(data_tab_name=="APP TEAM")
+                    {
+                        if(tab_name_value == "Yes")
+                        {
+                            arr_yes_app_team[seq_num-1]="checked";
+                            if(seq_num=="2")
+                            {
+                                arr_app_team_show[0]="style ='diaplay:block;'";
+                                arr_valuedate_app_team[0]=data[4][i+1].Tab_Name_Value;
+                            }
+                            else if(seq_num=="4")
+                            {
+                                arr_app_team_show[1]="style ='diaplay:block;'";
+                                arr_valuedate_app_team[1]=data[4][i+1].Tab_Name_Value;
+                            }
+                            else if(seq_num=="6")
+                            {
+                                arr_app_team_show[2]="style ='diaplay:block;'";
+                                arr_valuedate_app_team[2]=data[4][i+1].Tab_Name_Value;
+                            }
+                            else if(seq_num=="8")
+                            {
+                                arr_app_team_show[3]="style = 'display:block;'";
+                                arr_valuedate_app_team[3]=data[4][i+1].Tab_Name_Value;
+                            }
+                        }
+                        else if(tab_name_value == "No")
+                        {
+                            arr_no_app_team[seq_num-1]="checked";
+                        }
+                        else if(tab_name_value=="NA")
+                        {
+                            arr_na_app_team[seq_num-1]="checked";
+                        }
+                    }
+                    else if(data_tab_name=="APP SLO")
+                    {
+                        if(tab_name_value == "Yes")
+                        {
+                            arr_yes_app_slo[seq_num-1]="checked";
+                            if(seq_num=="1")
+                            {
+                           arr_app_slo_show[0]="style = 'display:block;'";
+                           arr_valuedate_app_slo[0]=data[4][i+1].Tab_Name_Value;
+                            }
+                            else if(seq_num=="3")
+                            {
+                                arr_app_slo_show[1]="style = 'display:block;'";
+                                arr_valuedate_app_slo[1]=data[4][i+1].Tab_Name_Value;
+                            }
+                        }
+                        else if(tab_name_value == "No")
+                        {
+                            arr_no_app_slo[seq_num-1]="checked";
+                        }
+                        else if(tab_name_value=="NA")
+                        {
+                            arr_na_app_slo[seq_num-1]="checked";
+                        }
+                    }
+                }
+                console.log("arr yes---> ",arr_yes_etpm,"etpm date value----> ",arr_valuedate_etpm);
+
                 var camp_tab = " <div class='form-group hideclass' id='capm_data' >\n" +
                     "<div>\n" +
                     "    <h4><font color='red' size='5'>CAPM</font></h4>\n" +
                     "\n" +
-                    "    <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Status is Targeted for Decommission ?</b></font></label>\n" +
-                    "    <input type='radio' name='CAPM1' class='status' value='Yes'>Yes\n" +
-                    "    <input type='radio' name='CAPM1' class='status' value='No'>No\n" +
-                    "    <input type='radio' name='CAPM1' class='status' value='NA'>N/A\n" +
+                    "    <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4' ><b>Status is Targeted for Decommission ?</b></font></label>\n" +
+                    "    <input type='radio' name='CAPM1' class='status' value='Yes' "+arr_yes_capm[0]+" disabled>Yes\n" +
+                    "    <input type='radio' name='CAPM1' class='status' value='No' "+arr_no_capm[0]+" disabled >No\n" +
+                    "    <input type='radio' name='CAPM1' class='status' value='NA' "+arr_na_capm[0]+" disabled>N/A\n" +
                     "\n" +
                     "</div>\n" +
-                    "<div class='hint_1' style='display:none;'>\n" +
+                    "<div class='hint_1' "+arr_capm_show[0]+">\n" +
                     "    <label><font color='red';>If no then submit request to change the life cycle status to ' Targeted for Decommission'</font></label>\n" +
                     "</div>\n" +
                     "<div>\n" +
                     "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Service currently in Production ?</b></font></label>\n" +
-                    "    <input type='radio' name='CAPM2' class='service' value='Yes'>Yes\n" +
-                    "    <input type='radio' name='CAPM2' class='service' value='No'>No\n" +
-                    "    <input type='radio' name='CAPM2' class='service' value='NA'>N/A\n" +
+                    "    <input type='radio' name='CAPM2' class='service' value='Yes' "+arr_yes_capm[1]+" disabled>Yes\n" +
+                    "    <input type='radio' name='CAPM2' class='service' value='No' "+arr_no_capm[1]+" disabled>No\n" +
+                    "    <input type='radio' name='CAPM2' class='service' value='NA' "+arr_na_capm[1]+" disabled>N/A\n" +
                     "</div>\n" +
-                    "<div class='hint_2' style='display:none;'>\n" +
+                    "<div class='hint_2' "+arr_capm_show[1]+">\n" +
                     "    <label><font color='red';>If no, Retired or if the service does not exist; No further steps required.</font></label>\n" +
                     "</div>\n" +
                     "<div>\n" +
                     "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Change service priority needed ?</b></font></label>\n" +
-                    "    <input type='radio' name='CAPM3' class='change' value='Yes'>Yes\n" +
-                    "    <input type='radio' name='CAPM3' class='change' value='No'>No\n" +
-                    "    <input type='radio' name='CAPM3' class='change' value='NA'>N/A\n" +
+                    "    <input type='radio' name='CAPM3' class='change' value='Yes' "+arr_yes_capm[2]+" disabled>Yes\n" +
+                    "    <input type='radio' name='CAPM3' class='change' value='No' "+arr_no_capm[2]+" disabled>No\n" +
+                    "    <input type='radio' name='CAPM3' class='change' value='NA' "+arr_na_capm[2]+" disabled>N/A\n" +
                     "</div>\n" +
-                    "<div class='hint_3' style='display:none;'>\n" +
+                    "<div class='hint_3' "+arr_capm_show[2]+">\n" +
                     "    <label><font color='brown';>Priority change request should be submitted in Service now or any ITSM</font></label>\n" +
                     "</div>\n" +
                     "<div>\n" +
                     "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>CI Relationships exists?</b></font></label>\n" +
-                    "    <input type='radio' name='CAPM4' class='relationship' value='Yes'>Yes\n" +
-                    "    <input type='radio' name='CAPM4' class='relationship' value='No'>No\n" +
-                    "    <input type='radio' name='CAPM4' class='relationship' value='NA'>N/A\n" +
+                    "    <input type='radio' name='CAPM4' class='relationship' value='Yes' "+arr_yes_capm[3]+" disabled>Yes\n" +
+                    "    <input type='radio' name='CAPM4' class='relationship' value='No' "+arr_no_capm[3]+" disabled>No\n" +
+                    "    <input type='radio' name='CAPM4' class='relationship' value='NA' "+arr_na_capm[3]+" disabled>N/A\n" +
                     "</div>\n" +
-                    "<div class ='addquestion CAPM5' style='display:none;'>\n" +
+                    "<div class ='addquestion CAPM5' "+arr_capm_show[3]+">\n" +
                     "    <label class='control-label ' for='formInput198' style='width:65%;'><font color='blue';>Item will be retired?</font></label>\n" +
-                    "    <input type='radio' name='CAPM5' class='item' value='Yes'>Yes\n" +
-                    "    <input type='radio' name='CAPM5' class='item' value='No'>No\n" +
-                    "    <input type='radio' name='CAPM5' class='item' value='NA'>N/A\n" +
+                    "    <input type='radio' name='CAPM5' class='item' value='Yes' "+arr_yes_capm[4]+" disabled>Yes\n" +
+                    "    <input type='radio' name='CAPM5' class='item' value='No' "+arr_no_capm[4]+" disabled>No\n" +
+                    "    <input type='radio' name='CAPM5' class='item' value='NA' "+arr_na_capm[4]+" disabled>N/A\n" +
                     "</div>\n" +
                     "\n" +
-                    "<div class='hint_4' style='display:none;'>\n" +
+                    "<div class='hint_4' "+arr_capm_show[4]+">\n" +
                     "    <label><font color='brown';>SLO to make appropriate updates?</font></label>\n" +
                     "</div>\n" +
                     "\n" +
                     "<div>\n" +
                     "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>SLO has made Appropriate updates ?</b></font></label>\n" +
-                    "    <input type='radio' name='CAPM6' value='Yes'>Yes\n" +
-                    "    <input type='radio' name='CAPM6' value='No'>No\n" +
-                    "    <input type='radio' name='CAPM6' value='NA'>N/A\n" +
+                    "    <input type='radio' name='CAPM6' value='Yes' "+arr_yes_capm[5]+" disabled>Yes\n" +
+                    "    <input type='radio' name='CAPM6' value='No' "+arr_no_capm[5]+" disabled>No\n" +
+                    "    <input type='radio' name='CAPM6' value='NA' "+arr_na_capm[5]+" disabled>N/A\n" +
                     "</div>\n" +
                     "<div>\n" +
                     "    <label class='control-label ' for='formInput198' style='width:65%;'><font size='4'>Application part of EDR list?</font></label>\n" +
-                    "    <input type='radio' name='CAPM7' value='Yes'>Yes\n" +
-                    "    <input type='radio' name='CAPM7' value='No'>No\n" +
-                    "    <input type='radio' name='CAPM7' value='NA'>N/A\n" +
+                    "    <input type='radio' name='CAPM7' value='Yes' "+arr_yes_capm[6]+" disabled>Yes\n" +
+                    "    <input type='radio' name='CAPM7' value='No' "+arr_no_capm[6]+" disabled>No\n" +
+                    "    <input type='radio' name='CAPM7' value='NA' "+arr_na_capm[6]+" disabled>N/A\n" +
                     "</div>\n" +
                     "</div>";
                 var etpm_tab="\n" +
@@ -1766,100 +1922,157 @@
                     "        <h4><font color='red' size='5'>ET TEAM/ET PM TAB</font></h4>\n" +
                     "\n" +
                     "        <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Final Artifact- Review and Approval</b></font></label>\n" +
-                    "        <input type='radio' name='ETPM1' class='final_artifact' value='Yes'>Yes\n" +
-                    "        <input type='radio' name='ETPM1' class='final_artifact' value='No'>No\n" +
-                    "        <input type='radio' name='ETPM1' class='final_artifact' value='NA'>N/A\n" +
+                    "        <input type='radio' name='ETPM1' class='final_artifact' value='Yes'"+arr_yes_etpm[0]+" disabled>Yes\n" +
+                    "        <input type='radio' name='ETPM1' class='final_artifact' value='No'"+arr_no_etpm[0]+" disabled>No\n" +
+                    "        <input type='radio' name='ETPM1' class='final_artifact' value='NA'"+arr_na_etpm[0]+" disabled>N/A\n" +
                     "\n" +
                     "    </div>\n" +
                     "\n" +
                     "    <div>\n" +
                     "        <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Provide Chargeback Validation Report</b></font></label>\n" +
-                    "        <input type='radio' name='ETPM2' class='Provide' value='Yes' onclick='provide_radio();'>Yes\n" +
-                    "        <input type='radio' name='ETPM2' class='provide' value='No'>No\n" +
-                    "        <input type='radio' name='ETPM2' class='provide' value='NA'>N/A\n" +
+                    "        <input type='radio' name='ETPM2' class='Provide' value='Yes' onclick='provide_radio();' "+arr_yes_etpm[1]+" disabled>Yes\n" +
+                    "        <input type='radio' name='ETPM2' class='provide' value='No'"+arr_no_etpm[1]+" disabled>No\n" +
+                    "        <input type='radio' name='ETPM2' class='provide' value='NA'"+arr_na_etpm[1]+" disabled>N/A\n" +
                     "    </div>\n" +
                     "\n" +
-                    "    <div class='form-group ETPM3' style='display:none;' id='et_team_provided_date'>\n" +
+                    "    <div class='form-group ETPM3' "+arr_etpm_show[0]+" id='et_team_provided_date'>\n" +
                     "\n" +
                     "        <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Provided Date</b></font></label>\n" +
-                    "        <input type='text' name ='ETPM3' class='datepicker' id='datepicker1' placeholder='mm/dd/yyyy'>\n" +
+                    "        <input type='text' name ='ETPM3' class='datepicker' id='datepicker1' placeholder='mm/dd/yyyy' value='"+arr_valuedate_etpm[0]+"' readonly>\n" +
                     "\n" +
                     "    </div>\n" +
                     "\n" +
                     "    <div>\n" +
                     "        <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Submit Decommission requests:\n" +
                     "            Use ITG/Service Catalog for components / services listed in the Final Artifact</b></font></label>\n" +
-                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='Yes' onclick='submit_decom_req_radio();'>Yes\n" +
-                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='No'>No\n" +
-                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='NA'>N/A\n" +
+                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='Yes' onclick='submit_decom_req_radio();' "+arr_yes_etpm[3]+" disabled>Yes\n" +
+                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='No' "+arr_no_etpm[3]+" disabled>No\n" +
+                    "        <input type='radio' name='ETPM4' class='submit_decom_req' value='NA'"+arr_na_etpm[3]+" disabled>N/A\n" +
                     "    </div>\n" +
                     "\n" +
-                    "    <div class='form-group ETPM5' style='display:none;' id='et_team_submission_date'>\n" +
+                    "    <div class='form-group ETPM5' "+arr_etpm_show[1]+" id='et_team_submission_date'>\n" +
                     "\n" +
                     "        <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
-                    "        <input type='text' name ='ETPM5' class='datepicker' id='datepicker2' placeholder='mm/dd/yyyy'>\n" +
+                    "        <input type='text' name ='ETPM5' class='datepicker' id='datepicker2' placeholder='mm/dd/yyyy' value='"+arr_valuedate_etpm[1]+"' readonly>\n" +
                     "\n" +
                     "    </div>\n" +
                     "\n" +
                     "</div>";
-                var app_team_tab="<div class='form-group APP_TEAM7' id='app_submission_date3'>\n" +
-                    "\n" +
-                    "<label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
-                    "<input type='text' name ='APP_TEAM7'class='datepicker' id='app_datepicker3' placeholder='mm/dd/yyyy'>\n" +
-                    "\n" +
-                    "'</div>\n" +
+                var app_team_tab="<div class='form-group hideclass' id='app_team_data'>\n" +
                     "\n" +
                     "<div>\n" +
-                    "<label class='control-label ' for='formInput198'  style='width:65%;'><font size='4'><b>Secure:   Remove Application</b></font></label>\n" +
-                    "<input type='radio' name='APP_TEAM8' class='secure' value='Yes' onclick='secure_radio();'>Yes\n" +
-                    "<input type='radio' name='APP_TEAM8' class='secure' value='No'>No\n" +
-                    "<input type='radio' name='APP_TEAM8' class='secure' value='NA'>N/A\n" +
-                    "</div>\n" +
+                    "    <h4><font color='red' size='5'>APP TEAM</font></h4>\n" +
                     "\n" +
-                    "<div class='form-group APP_TEAM9' style='display:none;' id='app_submission_date4'>\n" +
-                    "\n" +
-                    "<label  class='control-label APP_TEAM9' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
-                    "'<input type='text' name ='APP_TEAM9' class='datepicker' id='app_datepicker4' placeholder='mm/dd/yyyy'>\n" +
+                    "    <label  class='control-label ' for='formInput198' style='width:65%;'><font  size='4'><b>Final Artifact (Decommission List) Review and Approval</b></font></label>\n" +
+                    "    <input type='radio' name='APP_TEAM1' class='decommission_list' value='Yes' "+arr_yes_app_team[0]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_TEAM1' class='decommission_list' value='No'"+arr_no_app_team[0]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_TEAM1' class='decommission_list' value='NA'"+arr_na_app_team[0]+" disabled>N/A\n" +
                     "\n" +
                     "</div>\n" +
                     "\n" +
                     "<div>\n" +
-                    "<label class='control-label ' for='formInput198'  style='width:65%;'><font  size='4'><b>Global Groups:  Remove</b></font></label>\n" +
-                    "<input type='radio' name='APP_TEAM10' class='global' value='Yes'>Yes\n" +
-                    "<input type='radio' name='APP_TEAM10' class='global' value='No'>No\n" +
-                    "<input type='radio' name='APP_TEAM10' class='global' value='NA'>N/A\n" +
+                    "    <label  class='control-label ' for='formInput198' style='width:65%;'><font  size='4'><b>Stop/Remove Jobs/Application Interfaces/SSIS Jobs etc.,\n" +
+                    "        to  impacted applications Stopping jobs and interaction with the app.</b></font></label>\n" +
+                    "    <input type='radio' name='APP_TEAM2' class='Stop' value='Yes' onclick='stop_radio();'"+arr_yes_app_team[1]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_TEAM2' class='Stop' value='No'"+arr_no_app_team[1]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_TEAM2' class='Stop' value='NA'"+arr_na_app_team[1]+" disabled>N/A\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "\n" +
+                    "<div class='form-group APP_TEAM3' "+arr_app_team_show[0]+" id='submission_date1'>\n" +
+                    "\n" +
+                    "    <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "    <input type='text' name ='APP_TEAM3' class='datepicker' id='app_datepicker1' placeholder='mm/dd/yyyy' value='"+arr_valuedate_app_team[0]+"' readonly>\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198'  style='width:65%;'><font size='4'><b>(Optional) Impact Analysis of Application Decommission</b></font></label>\n" +
+                    "    <input type='radio' name='APP_TEAM4' class='impact_analysis' value='Yes' onclick='impact_analysis_radio();'"+arr_yes_app_team[3]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_TEAM4' class='impact_analysis' value='No'"+arr_no_app_team[3]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_TEAM4' class='impact_analysis' value='NA'"+arr_na_app_team[3]+" disabled>N/A\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "<div class='form-group APP_TEAM5' "+arr_app_team_show[1]+" id='app_submission_date2'>\n" +
+                    "\n" +
+                    "    <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "    <input type='text' name ='APP_TEAM5' class='datepicker' id='app_datepicker2' placeholder='mm/dd/yyyy' value='"+arr_valuedate_app_team[1]+"' readonly>\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198'  style='width:65%;'><font size='4'><b>ServiceNow: Change Request</b></font></label>\n" +
+                    "    <input type='radio' name='APP_TEAM6' class='service_now' value='Yes' onclick='service_now_radio();'"+arr_yes_app_team[5]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_TEAM6' class='service_now' value='No'"+arr_no_app_team[5]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_TEAM6' class='service_now' value='NA'"+arr_na_app_team[5]+" disabled>N/A\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div class='form-group APP_TEAM7' "+arr_app_team_show[2]+" id='app_submission_date3'>\n" +
+                    "\n" +
+                    "    <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "    <input type='text' name ='APP_TEAM7'class='datepicker' id='app_datepicker3' placeholder='mm/dd/yyyy' value='"+arr_valuedate_app_team[2]+"' readonly>\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198'  style='width:65%;'><font size='4'><b>Secure:   Remove Application</b></font></label>\n" +
+                    "    <input type='radio' name='APP_TEAM8' class='secure' value='Yes' onclick='secure_radio();'"+arr_yes_app_team[7]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_TEAM8' class='secure' value='No'"+arr_no_app_team[7]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_TEAM8' class='secure' value='NA'"+arr_na_app_team[7]+" disabled>N/A\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div class='form-group APP_TEAM9' "+arr_app_team_show[3]+" id='app_submission_date4'>\n" +
+                    "\n" +
+                    "    <label  class='control-label APP_TEAM9' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "    <input type='text' name ='APP_TEAM9' class='datepicker' id='app_datepicker4' placeholder='mm/dd/yyyy' value='"+arr_valuedate_app_team[3]+"' readonly>\n" +
+                    "\n" +
+                    "</div>\n" +
+                    "\n" +
+                    "<div>\n" +
+                    "    <label class='control-label ' for='formInput198'  style='width:65%;'><font  size='4'><b>Global Groups:  Remove</b></font></label>\n" +
+                    "    <input type='radio' name='APP_TEAM10' class='global' value='Yes'"+arr_yes_app_team[9]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_TEAM10' class='global' value='No'"+arr_no_app_team[9]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_TEAM10' class='global' value='NA'"+arr_na_app_team[9]+" disabled>N/A\n" +
                     "</div>\n" +
                     "\n" +
                     "<div>\n" +
                     "<label class='control-label ' for='formInput198'  style='width:65%;'><font  size='4'><b>Master Unique Identifier (MUI):  Remove</b></font></label>\n" +
-                    "<input type='radio' name='APP_TEAM11' class='mui' value='Yes'>Yes\n" +
-                    "<input type='radio' name='APP_TEAM11' class='mui' value='No'>No\n" +
-                    "<input type='radio' name='APP_TEAM11' class='mui' value='NA'>N/A\n" +
+                    "<input type='radio' name='APP_TEAM11' class='mui' value='Yes'"+arr_yes_app_team[10]+" disabled>Yes\n" +
+                    "<input type='radio' name='APP_TEAM11' class='mui' value='No'"+arr_no_app_team[10]+" disabled>No\n" +
+                    "<input type='radio' name='APP_TEAM11' class='mui' value='NA'"+arr_na_app_team[10]+" disabled>N/A\n" +
                     "</div>\n" +
-                    "</div>";
-                var app_slo_tab="<div class='form-group APP_SLO2' id='app_slo_submission_date1'>\n" +
-                    "\n" +
-                    "<label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
-                    "<input type='text' name ='APP_SLO2' class='datepicker' id='app_slo_datepicker1' placeholder='mm/dd/yyyy'>\n" +
-                    "\n" +
-                    "</div>\n" +
+                    "</div>\n";
+                var app_slo_tab="<div class='form-group hideclass' id='app_slo_data'>\n" +
                     "\n" +
                     "<div>\n" +
-                    "<label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Request submitted to Retire the Service or Service is Retired</b></font></label>\n" +
-                    "<input type='radio' name='APP_SLO3' class='retired' value='Yes' onclick='retired_radio();'>Yes\n" +
-                    "<input type='radio' name='APP_SLO3' class='retired' value='No'>No\n" +
-                    "<input type='radio' name='APP_SLO3' class='retired' value='NA'>N/A\n" +
+                    "    <h4><font color='red' size='5'>APP SLO</font></h4>\n" +
+                    "\n" +
+                    "    <label  class='control-label ' for='formInput198' style='width:65%;'><font  size='4'><b>Submit request to change the apps status</b></font></label>\n" +
+                    "    <input type='radio' name='APP_SLO1' class='submit_request' value='Yes' onclick='submit_request_radio();'"+arr_yes_app_slo[0]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_SLO1' class='submit_request' value='No'"+arr_no_app_slo[0]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_SLO1' class='submit_request' value='NA'"+arr_na_app_slo[0]+" disabled>N/A\n" +
                     "\n" +
                     "</div>\n" +
                     "\n" +
-                    "<div class='form-group APP_SLO4' style='display:none;' id='app_slo_submission_date2'>\n" +
+                    "<div class='form-group APP_SLO2' "+arr_app_slo_show[0]+" id='app_slo_submission_date1'>\n" +
                     "\n" +
-                    "<label  class='control-label' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
-                    "<input type='text' name ='APP_SLO4' class='datepicker' id='app_slo_datepicker2' placeholder='mm/dd/yyyy'>\n" +
+                    "    <label  class='control-label ' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "    <input type='text' name ='APP_SLO2' class='datepicker' id='app_slo_datepicker1' placeholder='mm/dd/yyyy' value='"+arr_valuedate_app_slo[0]+"' readonly>\n" +
                     "\n" +
                     "</div>\n" +
-                    "\n" +
-                    "</div>";
+                    "<div>\n" +
+                    "    <label  class='control-label ' for='formInput198' style='width:65%;'><font size='4'><b>Request submitted to Retire the Service or Service is Retired</b></font></label>\n" +
+                    "    <input type='radio' name='APP_SLO3' class='retired' value='Yes' onclick='retired_radio();' "+arr_yes_app_slo[2]+" disabled>Yes\n" +
+                    "    <input type='radio' name='APP_SLO3' class='retired' value='No' "+arr_no_app_slo[2]+" disabled>No\n" +
+                    "    <input type='radio' name='APP_SLO3' class='retired' value='NA' "+arr_na_app_slo[2]+" disabled>N/A\n" +
+                    "</div>\n" +
+                    "<div class='form-group APP_SLO4' "+arr_app_slo_show[1]+" id='app_slo_submission_date2'>\n" +
+                    "    <label  class='control-label' for='formInput198'><font color='green' size='4'><b>Submission Date</b></font></label>\n" +
+                    "    <input type='text' name ='APP_SLO4' class='datepicker' id='app_slo_datepicker2' placeholder='mm/dd/yyyy' value='"+arr_valuedate_app_slo[1]+"' readonly>\n" +
+                    "</div>\n" +
+                    "</div>\n";
                 $('#inputFields').append(camp_tab);
                 $('#inputFields').append(etpm_tab);
                 $('#inputFields').append(app_team_tab);

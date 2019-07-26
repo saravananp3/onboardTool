@@ -443,7 +443,7 @@ $(".add_question").hide();
                                                                     <td> <input type="textbox" style="width:66%;" id="test_support" name =  "SupportReadiness_test"> </td>
                                                                     <td> <input type="textbox" style="width:66%;" id="stage_support" name = "SupportReadiness_stage"> </td>
                                                                     <td> <input type="textbox" style="width:66%;" id="prod_support" name = "SupportReadiness_prod"> </td>
-                                                                    <td> <textarea maxlength='50' id="comment_support" name = "SuppertReadiness_comment"></textarea> </td>
+                                                                    <td> <textarea maxlength='50' id="comment_support" name = "SupportReadiness_comment"></textarea> </td>
                                                                 </tr>
 
                                                                 <tr class = "DisasterRecovery hiderow">
