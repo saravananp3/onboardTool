@@ -618,7 +618,7 @@ public class DecommManageExecuteInfoService {
                 }
             }
             if (!type.equals("Text box") && !type.equals("Datepicker")) {
-                options = options.substring(0, options.length() - 1);
+               // options = options.substring(0, options.length() - 1);
             }
             String insert_query = "insert into decomm_manage_service_categories_checklist (seq_num,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?,?,?,?,?,?,?,?,?);";
             PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);

@@ -1460,6 +1460,7 @@ $(".add_question").hide();
             }
 
         }
+        options=options.substring(0,options.length-1);
     $.ajax({
         url: "DecommManageServiceCategoriesAddServlet",
         type: 'POST',
@@ -1508,7 +1509,7 @@ $(".add_question").hide();
                 var option=Options.split(",");
                 for (var i=0; i<option.length; i++){
 
-                    input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
+                    input+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id='"+option[i]+(i+1)+"' placeholder ='"+option[i]+"' name='"+data.ColumnName+num+"' value='"+option[i]+"' />"+
                         option[i]+"</label>";
 
                 }
@@ -1521,11 +1522,11 @@ $(".add_question").hide();
                 input+= "<div class='form-group'>"+
                     "<label class='control-label' for= 'formInput198'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                 var Options=data.Options;
-                var sub_option = Options.substring(0, Options.length - 1);
-                var option=sub_option.split(",");
+                //var sub_option = Options.substring(0, Options.length - 1);
+                var option=Options.split(",");
                 for (var i=0; i<option.length; i++) {
 
-                    input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' name='" + data.ColumnName+num+"'/>" +
+                    input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value='"+option[i]+"' name='" + data.ColumnName+num+"'/>" +
                         option[i] + "</label>";
                 }
                 input +="</div>";
