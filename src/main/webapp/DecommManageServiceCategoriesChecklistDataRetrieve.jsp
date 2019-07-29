@@ -627,6 +627,7 @@ $(".add_question").hide();
             dataType: "json",
             success: function (data) {
                 console.log("Data Retrieve json array----->", data);
+                var application_security_check=true;
                 for(var i=0; i<data[0].length; i++){
                     var label = data[0][i].LabelName;
                     var label_nospace = label.replace(" ","");
@@ -657,39 +658,35 @@ $(".add_question").hide();
                     }
                     else if(others_name == "Application Security")
                     {
-                        var AppSec1_value=data[1][j].Value;
-                        var AppSec2_value=data[1][j+1].Value;
-                        var AppSec3_value=data[1][j+2].Value;
-                        if(AppSec1_value=="Yes")
-                        {
+                        if(application_security_check==true) {
+                            var AppSec1_value = data[1][j].Value;
+                            var AppSec2_value = data[1][j + 1].Value;
+                            var AppSec3_value = data[1][j + 2].Value;
+                            if (AppSec1_value == "Yes") {
 
-                            $(".ApplicationSecurity2").show();
-                            if(AppSec2_value=="Yes")
-                            {
-                                $(".ApplicationSecurity3").show();
-                                if(AppSec3_value=="Yes")
-                                {
+                                $(".ApplicationSecurity2").show();
+                                if (AppSec2_value == "Yes") {
+                                    $(".ApplicationSecurity3").show();
+                                    if (AppSec3_value == "Yes") {
 
+                                    } else {
+
+                                    }
+                                } else {
+                                    $(".ApplicationSecurity3").hide();
                                 }
-                                else {
-
-                                }
-                            }
-                            else {
+                            } else {
+                                $(".ApplicationSecurity2").hide();
                                 $(".ApplicationSecurity3").hide();
                             }
+                            var $val1 = $('input[name="ApplicationSecurity1"]');
+                            $val1.filter('[value=' + AppSec1_value + ']').prop('checked', true);
+                            var $val2 = $('input[name="ApplicationSecurity2"]');
+                            $val2.filter('[value=' + AppSec2_value + ']').prop('checked', true);
+                            var $val3 = $('input[name="ApplicationSecurity3"]');
+                            $val3.filter('[value=' + AppSec3_value + ']').prop('checked', true);
+                            application_security_check=false;
                         }
-                        else {
-                            $(".ApplicationSecurity2").hide();
-                            $(".ApplicationSecurity3").hide();
-                        }
-                        var $val1=$('input[name="ApplicationSecurity1"]');
-                        $val1.filter('[value='+AppSec1_value+']').prop('checked', true);
-                        var $val2=$('input[name="ApplicationSecurity2"]');
-                        $val2.filter('[value='+AppSec2_value+']').prop('checked', true);
-                        var $val3=$('input[name="ApplicationSecurity3"]');
-                        $val3.filter('[value='+AppSec3_value+']').prop('checked', true);
-
                     }
                     else {
                         var $radios = $('input:radio[name='+class_others+']');

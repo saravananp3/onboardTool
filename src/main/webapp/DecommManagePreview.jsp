@@ -1297,8 +1297,8 @@
                             "IT Service Management (service/infrastructure performance monitoring)? </font></td>\n" +
                             "</td>\n" +
                             "<td>\n" +
-                            "<input type='radio' name='SupportReadiness' value='Yes'"+Support_Readiness_value_yes+" disabled>yes\n" +
-                            "<input type='radio' name='SupportReadiness' value='No'"+Support_Readiness_value_No+" disabled>No\n" +
+                            "<input type='radio' name='SupportReadiness1' value='Yes' "+Support_Readiness_value_yes+" disabled>yes\n" +
+                            "<input type='radio' name='SupportReadiness1' value='No' "+Support_Readiness_value_No+" disabled>No\n" +
                             "</td>\n" +
                             "</tr>\n" +
                             "</table>\n" +
@@ -1310,8 +1310,8 @@
                             "<tr>\n" +
                             "<td><font color='blue';> Is there any desktop or supporting desktop software? </font> </td>\n" +
                             "<td>\n" +
-                            "<input type='radio' name='DesktopSoftware' value='Yes'"+Desktop_Software_value_Yes+" disabled>yes\n" +
-                            "<input type='radio' name='DesktopSoftware' value='No'"+Desktop_Software_value_No+" disabled>No\n" +
+                            "<input type='radio' name='DesktopSoftware1' value='Yes'"+Desktop_Software_value_Yes+" disabled>yes\n" +
+                            "<input type='radio' name='DesktopSoftware1' value='No'"+Desktop_Software_value_No+" disabled>No\n" +
                             "</td>\n" +
                             "</tr>\n" +
                             "</table>\n" +
@@ -1333,8 +1333,8 @@
                             "<tr>\n" +
                             "<td> <font color='blue';> Does the application utilize any Citrix environments? </font> </td>\n" +
                             "<td>\n" +
-                            "<input type='radio' name='Citrix' value='Yes'"+Citrix_value_Yes+" disabled>yes\n" +
-                            "<input type='radio' name='Citrix' value='No'"+Citrix_value_No+" disabled>No\n" +
+                            "<input type='radio' name='Citrix1' value='Yes'"+Citrix_value_Yes+" disabled>yes\n" +
+                            "<input type='radio' name='Citrix1' value='No'"+Citrix_value_No+" disabled>No\n" +
                             "</td>\n" +
                             "</tr>\n" +
                             "</table>\n" +
@@ -1345,23 +1345,23 @@
                             "<tr >\n" +
                             "<td> <font color='blue';> Does the application utilize Global Groups?</font></td>\n" +
                             "<td>\n" +
-                            "<input type='radio' name='ApplicationSecurity1' class='citrix' value='Yes'"+Application_Security_value_Yes1+" disabled>yes\n" +
-                            "<input type='radio' name='ApplicationSecurity1'  class='citrix' value='No'"+Application_Security_value_No1+" disabled>No\n" +
+                            "<input type='radio' name='ApplicationSecurity11' class='citrix' value='Yes'"+Application_Security_value_Yes1+" disabled>yes\n" +
+                            "<input type='radio' name='ApplicationSecurity11'  class='citrix' value='No'"+Application_Security_value_No1+" disabled>No\n" +
                             "</td>\n" +
                             "</tr>\n" +
                             "<tr class='add_question' "+Application_Security_Display2+">\n" +
                             "<td><font color='blue';>Is the application in SECURE?</font></td>\n" +
                             "<td>\n" +
-                            "<input type='radio' name='ApplicationSecurity2' class='citrix_1' value='Yes'"+Application_Security_value_Yes2+" disabled>yes\n" +
-                            "<input type='radio' name='ApplicationSecurity2' class='citrix_1' value='No' "+Application_Security_value_No2+" disabled>No\n" +
+                            "<input type='radio' name='ApplicationSecurity21' class='citrix_1' value='Yes'"+Application_Security_value_Yes2+" disabled>yes\n" +
+                            "<input type='radio' name='ApplicationSecurity21' class='citrix_1' value='No' "+Application_Security_value_No2+" disabled>No\n" +
                             "</td>\n" +
                             "</tr>\n" +
                             "<tr class='add_question_2' "+Application_Security_Display3+">\n" +
                             "<td> <font color='blue';> Does the application have an Internally supported access mechanism or other not listed above\n" +
                             "( e.g., your own directory)?</font></td>\n" +
                             "<td>\n" +
-                            "<input type='radio' name='ApplicationSecurity3' class='citrix_2' value='Yes'"+Application_Security_value_Yes3+" disabled>Yes\n" +
-                            "<input type='radio' name='ApplicationSecurity3' class='citrix_2' value='No'"+Application_Security_value_No3+" disabled>No\n" +
+                            "<input type='radio' name='ApplicationSecurity31' class='citrix_2' value='Yes'"+Application_Security_value_Yes3+" disabled>Yes\n" +
+                            "<input type='radio' name='ApplicationSecurity31' class='citrix_2' value='No'"+Application_Security_value_No3+" disabled>No\n" +
                             "</td>\n" +
                             "</tr>\n" +
                             "</table>\n" +
@@ -1372,8 +1372,8 @@
                             "<tr>\n" +
                             "<td><font color='blue';> Are Final Backups Required?     </font></td>\n" +
                             "<td>\n" +
-                            "<input type='radio' name='FinalBackups' class='backup' value='Yes'"+Final_Backups_value_Yes+" disabled>yes\n" +
-                            "<input type='radio' name='FinalBackups' class='backup' value='No'"+Final_Backups_value_No+" disabled>No\n" +
+                            "<input type='radio' name='FinalBackups1' class='backup' value='Yes'"+Final_Backups_value_Yes+" disabled>yes\n" +
+                            "<input type='radio' name='FinalBackups1' class='backup' value='No'"+Final_Backups_value_No+" disabled>No\n" +
                             "</td>\n" +
                             "</tr>\n" +
                             "</table>\n" +
@@ -1472,8 +1472,8 @@
                 "<td> Is the application supported by the United Support Center (Help Desk)\n" +
                 "        and/or IT Service Management (service/infrastructure performance monitoring)? </td>\n" +
                 "<td>\n" +
-                "        <input type='radio' name='SupportReadiness' value='Yes' disabled>Yes\n" +
-                "        <input type='radio' name='SupportReadiness' value='No' disabled>No\n" +
+                "        <input type='radio' name='SupportReadiness' value='Yes' >Yes\n" +
+                "        <input type='radio' name='SupportReadiness' value='No' >No\n" +
                 "</td>\n" +
                 "<td> <input type='textbox' style='width:66%;' id='dev_support' name = 'SupportReadiness_dev' readonly> </td>\n" +
                 "<td> <input type='textbox' style='width:66%;' id='test_support' name =  'SupportReadiness_test' readonly> </td>\n" +
@@ -1586,6 +1586,7 @@
                 }
 
                 $(".hiderow").hide();
+                var application_security_check=true;
                 for(var j=0;j<data[3][1].length;j++)
                 {
                     var others_name=data[3][1][j].Others;
@@ -1601,38 +1602,35 @@
                     }
                     else if(others_name == "Application Security")
                     {
-                        var AppSec1_value=data[3][1][j].Value;
-                        var AppSec2_value=data[3][1][j+1].Value;
-                        var AppSec3_value=data[3][1][j+2].Value;
-                        if(AppSec1_value=="Yes")
-                        {
+                        if(application_security_check==true) {
+                            var AppSec1_value = data[3][1][j].Value;
+                            var AppSec2_value = data[3][1][j + 1].Value;
+                            var AppSec3_value = data[3][1][j + 2].Value;
+                            if (AppSec1_value == "Yes") {
 
-                            $(".ApplicationSecurity2").show();
-                            if(AppSec2_value=="Yes")
-                            {
-                                $(".ApplicationSecurity3").show();
-                                if(AppSec3_value=="Yes")
-                                {
+                                $(".ApplicationSecurity2").show();
+                                if (AppSec2_value == "Yes") {
+                                    $(".ApplicationSecurity3").show();
+                                    if (AppSec3_value == "Yes") {
 
+                                    } else {
+
+                                    }
+                                } else {
+                                    $(".ApplicationSecurity3").hide();
                                 }
-                                else {
-
-                                }
-                            }
-                            else {
+                            } else {
+                                $(".ApplicationSecurity2").hide();
                                 $(".ApplicationSecurity3").hide();
                             }
+                            var $val1 = $('input[name="ApplicationSecurity1"]');
+                            $val1.filter('[value=' + AppSec1_value + ']').prop('checked', true);
+                            var $val2 = $('input[name="ApplicationSecurity2"]');
+                            $val2.filter('[value=' + AppSec2_value + ']').prop('checked', true);
+                            var $val3 = $('input[name="ApplicationSecurity3"]');
+                            $val3.filter('[value=' + AppSec3_value + ']').prop('checked', true);
+                        application_security_check=false;
                         }
-                        else {
-                            $(".ApplicationSecurity2").hide();
-                            $(".ApplicationSecurity3").hide();
-                        }
-                        var $val1=$('input[name="ApplicationSecurity1"]');
-                        $val1.filter('[value='+AppSec1_value+']').prop('checked', true);
-                        var $val2=$('input[name="ApplicationSecurity2"]');
-                        $val2.filter('[value='+AppSec2_value+']').prop('checked', true);
-                        var $val3=$('input[name="ApplicationSecurity3"]');
-                        $val3.filter('[value='+AppSec3_value+']').prop('checked', true);
 
                     }
                     else {
@@ -1694,7 +1692,7 @@
                             "<td> <input type='textbox' id='"+label_nospace+"_stage' style='width:66%;' name='ServiceCategoriesSecondTable_stage"+k+"' value='"+data[3][2][k].Stage+"' readonly> </td>\n" +
                             "<td> <input type='textbox' id='"+label_nospace+"_prod' style='width:66%;' name='ServiceCategoriesSecondTable_prod"+k+"' value='"+data[3][2][k].Prod+"' readonly> </td>\n"+
                             "<td> <textarea maxlength='50' id='"+label_nospace+"_comment' name='ServiceCategoriesSecondTable_comment"+k+"' readonly>"+data[3][2][k].Comment+"</textarea></td></tr>";
-
+                        console.log("radio box inputs---->",inputcheck);
                         $('#mytable1').append(inputcheck);
                     }
                 }
