@@ -827,7 +827,6 @@ $(".add_question").hide();
                         inputcheck +="</div>";
                         $('#inputFields').append(inputcheck);
                         /*if (LabelName=="Others" && ColumnName=="ServiceCategories6"){
-
                         var others= "<div class='form-group'>\n" +
                             "<table  class='Mainframe hidetable' style='display:none;'>\n" +
                             "<tr>\n" +
@@ -1196,7 +1195,7 @@ $(".add_question").hide();
                                 "<td><b>MAINFRAME</b></td>\n" +
                                 "<td>\n" +
                                 /*"<input class='form-control mainframe' id='mainframe' value='"+Mainframe_value+"'name='Mainframe' placeholder='select...' autocomplete='off' style='width:100%;'>\n" +*/
-                                "<select id = 'hi' class='selectpicker' multiple data-live-search='true' value='"+Mainframe_value+"' name='Mainframe'>\n" +
+                                "<select id = 'hi' class='selectpicker'  data-live-search='true' value='"+Mainframe_value+"' name='Mainframe'>\n" +
                                /* "  <option>CICS Regions</option>\n" +
                                 "  <option>DB2</option>\n" +
                                 "  <option>Endevor Flows</option>\n" +
@@ -1245,7 +1244,7 @@ $(".add_question").hide();
                                 "<td><b>DISASTER RECOVERY</b></td>\n" +
                                 "<td>\n" +
                                /* "<input class='form-control disaster_rec' name='DisasterRecovery' id='disaster_rec' value='"+Disaster_Recovery_value+"' placeholder='select...' value='' autocomplete='off' style='width:100%;'>\n" +*/
-                                "<select class='selectpicker' multiple data-live-search='true' name='DisasterRecovery' value='"+Disaster_Recovery_value+"'>\n" +
+                                "<select class='selectpicker'  data-live-search='true' name='DisasterRecovery' value='"+Disaster_Recovery_value+"'>\n" +
                                 disasterrecoveryoptions+
                                 "</select>"+
                                 "</td>\n" +

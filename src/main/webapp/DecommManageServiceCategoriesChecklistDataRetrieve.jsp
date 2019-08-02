@@ -198,7 +198,9 @@
     .disaster_rec{
         height: 30px;
     }
-
+    .scroll{
+        overflow-x: scroll;
+    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script>
@@ -391,6 +393,7 @@ $(".add_question").hide();
                                                 <div class="form-group">
 
                                                     <div>
+                                                        <div style="overflow-x:scroll;">
                                                         <h3>SERVICES - ENVIRONMENT INFORMATION</h3>
                                                         <table class="table table-bordered hidetable CrossApplicationTeamProjectManagerClass" id="mytable">
                                                             <thead style="color:white;background-color:DodgerBlue;">
@@ -405,7 +408,8 @@ $(".add_question").hide();
                                                             </tr>
                                                             </thead >
                                                         </table>
-                                                        <div id="mytable_1">
+                                                        </div>
+                                                        <div id="mytable_1" class = "scroll">
                                                             <h4>OTHERS</h4>
                                                             <table class="table table-bordered hidetable" id="mytable1">
                                                                 <thead style="color:white;background-color:DodgerBlue;">
@@ -424,10 +428,10 @@ $(".add_question").hide();
                                                                     <td scope="col" style="color:black;">MAINFRAME</td>
                                                                     <td></td>
                                                                     <td> <input type="textbox" id="Mainframe1" name = "Mainframe" readonly> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="dev_mainframe" name = "Mainframe_dev"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="test_mainframe" name = "Mainframe_test"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="stage_mainframe" name = "Mainframe_stage"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="prod_mainframe" name = "Mainframe_prod"> </td>
+                                                                    <td> <input type="textbox" id="dev_mainframe" name = "Mainframe_dev"> </td>
+                                                                    <td> <input type="textbox" id="test_mainframe" name = "Mainframe_test"> </td>
+                                                                    <td> <input type="textbox" id="stage_mainframe" name = "Mainframe_stage"> </td>
+                                                                    <td> <input type="textbox" id="prod_mainframe" name = "Mainframe_prod"> </td>
                                                                     <td> <textarea maxlength='50' id="comment_mainframe" name = "Mainframe_comment"></textarea> </td>
                                                                 </tr>
 
@@ -439,10 +443,10 @@ $(".add_question").hide();
                                                                         <input type="radio" name="SupportReadiness" value="Yes" disabled>Yes
                                                                         <input type="radio" name="SupportReadiness" value="No" disabled>No
                                                                     </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="dev_support" name = "SupportReadiness_dev"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="test_support" name =  "SupportReadiness_test"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="stage_support" name = "SupportReadiness_stage"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="prod_support" name = "SupportReadiness_prod"> </td>
+                                                                    <td> <input type="textbox" id="dev_support" name = "SupportReadiness_dev"> </td>
+                                                                    <td> <input type="textbox" id="test_support" name =  "SupportReadiness_test"> </td>
+                                                                    <td> <input type="textbox" id="stage_support" name = "SupportReadiness_stage"> </td>
+                                                                    <td> <input type="textbox" id="prod_support" name = "SupportReadiness_prod"> </td>
                                                                     <td> <textarea maxlength='50' id="comment_support" name = "SupportReadiness_comment"></textarea> </td>
                                                                 </tr>
 
@@ -450,11 +454,11 @@ $(".add_question").hide();
                                                                     <td scope="col" style="color:black;">DISASTER RECOVERY
                                                                     </td>
                                                                     <td></td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="DisasterRecovery" name = "DisasterRecovery" readonly> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="dev_disaster" name = "DisasterRecovery_dev"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="test_disaster" name = "DisasterRecovery_test"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="stage_disaster" name = "DisasterRecovery_stage"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="prod_disaster" name = "DisasterRecovery_prod"> </td>
+                                                                    <td> <input type="textbox" id="DisasterRecovery" name = "DisasterRecovery" readonly> </td>
+                                                                    <td> <input type="textbox" id="dev_disaster" name = "DisasterRecovery_dev"> </td>
+                                                                    <td> <input type="textbox" id="test_disaster" name = "DisasterRecovery_test"> </td>
+                                                                    <td> <input type="textbox" id="stage_disaster" name = "DisasterRecovery_stage"> </td>
+                                                                    <td> <input type="textbox" id="prod_disaster" name = "DisasterRecovery_prod"> </td>
                                                                     <td> <textarea maxlength='50' id="comment_disaster" name = "DisasterRecovery_comment"></textarea> </td>
                                                                 </tr>
 
@@ -465,10 +469,10 @@ $(".add_question").hide();
                                                                         <input type="radio" name="DesktopSoftware" value="Yes" disabled>Yes
                                                                         <input type="radio" name="DesktopSoftware" value="No" disabled>No
                                                                     </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="dev_software" name = "DesktopSoftware_dev"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="test_software" name = "DesktopSoftware_test"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="stage_software" name = "DesktopSoftware_stage"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="prod_software" name = "DesktopSoftware_prod"> </td>
+                                                                    <td> <input type="textbox" id="dev_software" name = "DesktopSoftware_dev"> </td>
+                                                                    <td> <input type="textbox" id="test_software" name = "DesktopSoftware_test"> </td>
+                                                                    <td> <input type="textbox" id="stage_software" name = "DesktopSoftware_stage"> </td>
+                                                                    <td> <input type="textbox" id="prod_software" name = "DesktopSoftware_prod"> </td>
                                                                     <td> <textarea maxlength='50' id="comment_software" name = "DesktopSoftware_comment"></textarea></td>
                                                                 </tr>
 
@@ -480,10 +484,10 @@ $(".add_question").hide();
                                                                         <input type="radio" name="Citrix" value="No" disabled>No
 
                                                                     </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="dev_citrix" name = "Citrix_dev"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="test_citrix" name = "Citrix_test"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="stage_citrix" name = "Citrix_stage"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="prod_citrix" name = "Citrix_prod"> </td>
+                                                                    <td> <input type="textbox" id="dev_citrix" name = "Citrix_dev"> </td>
+                                                                    <td> <input type="textbox" id="test_citrix" name = "Citrix_test"> </td>
+                                                                    <td> <input type="textbox" id="stage_citrix" name = "Citrix_stage"> </td>
+                                                                    <td> <input type="textbox" id="prod_citrix" name = "Citrix_prod"> </td>
                                                                     <td> <textarea maxlength='50' id="comment_citrix" name = "Citrix_comment"></textarea> </td>
                                                                 </tr>
 
@@ -510,10 +514,10 @@ $(".add_question").hide();
                                                                             <input type="radio" name="ApplicationSecurity3" value="No" disabled>No
                                                                         </div>
                                                                     </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="dev_citrix" name = "ApplicationSecurity_dev"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="test_security" name = "ApplicationSecurity_test"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="stage_security" name = "ApplicationSecurity_stage"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="prod_security" name = "ApplicationSecurity_prod"> </td>
+                                                                    <td> <input type="textbox" id="dev_citrix" name = "ApplicationSecurity_dev"> </td>
+                                                                    <td> <input type="textbox" id="test_security" name = "ApplicationSecurity_test"> </td>
+                                                                    <td> <input type="textbox" id="stage_security" name = "ApplicationSecurity_stage"> </td>
+                                                                    <td> <input type="textbox" id="prod_security" name = "ApplicationSecurity_prod"> </td>
                                                                     <td> <textarea maxlength='50' id="comment_security" name = "ApplicationSecurity_comment"></textarea> </td>
                                                                 </tr>
 
@@ -526,10 +530,10 @@ $(".add_question").hide();
                                                                         <input type="radio" name="FinalBackups" value="No" disabled>No
 
                                                                     </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="dev_final" name = "FinalBackups_dev"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="test_final" name = "FinalBackups_test"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="stage_final" name = "FinalBackups_stage"> </td>
-                                                                    <td> <input type="textbox" style="width:66%;" id="prod_final" name = "FinalBackups_prod"> </td>
+                                                                    <td> <input type="textbox" id="dev_final" name = "FinalBackups_dev"> </td>
+                                                                    <td> <input type="textbox" id="test_final" name = "FinalBackups_test"> </td>
+                                                                    <td> <input type="textbox" id="stage_final" name = "FinalBackups_stage"> </td>
+                                                                    <td> <input type="textbox" id="prod_final" name = "FinalBackups_prod"> </td>
                                                                     <td> <textarea maxlength='50' id="comment_final" name = "FinalBackups_comment"></textarea> </td>
                                                                 </tr>
 
@@ -634,10 +638,10 @@ $(".add_question").hide();
                     var tr  = "<tr>\n" +
                         "<td> <label>"+label+"</label></td>\n" +
                         "<td><input type='textbox' id='"+label_nospace+i+"' name='"+label_nospace+i+"' value='"+data[0][i].Value+"' readonly></td>\n" +
-                        "<td> <input type='textbox' id='"+label_nospace+"_dev"+i+"' style='width:66%;' name='"+label_nospace+"_dev"+i+"' value='"+data[0][i].Dev+"'> </td>\n" +
-                        "<td> <input type='textbox' id='"+label_nospace+"_test"+i+"' style='width:66%;' name='"+label_nospace+"_test"+i+"' value='"+data[0][i].Test+"'> </td>\n" +
-                        "<td> <input type='textbox' id='"+label_nospace+"_stage"+i+"' style='width:66%;' name='"+label_nospace+"_stage"+i+"' value='"+data[0][i].Stage+"'> </td>\n" +
-                        "<td> <input type='textbox' id='"+label_nospace+"_prod"+i+"' style='width:66%;' name='"+label_nospace+"_prod"+i+"' value='"+data[0][i].Prod+"'> </td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_dev"+i+"' name='"+label_nospace+"_dev"+i+"' value='"+data[0][i].Dev+"'> </td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_test"+i+"' name='"+label_nospace+"_test"+i+"' value='"+data[0][i].Test+"'> </td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_stage"+i+"' name='"+label_nospace+"_stage"+i+"' value='"+data[0][i].Stage+"'> </td>\n" +
+                        "<td> <input type='textbox' id='"+label_nospace+"_prod"+i+"' name='"+label_nospace+"_prod"+i+"' value='"+data[0][i].Prod+"'> </td>\n" +
                         "<td> <textarea maxlength='50' id='"+label_nospace+"_comment"+i+"' name='"+label_nospace+"_comment"+i+"' >"+data[0][i].Comment+"</textarea></td>\n" +
                         "</tr>";
                     $('#mytable').append(tr);

@@ -435,7 +435,7 @@
 
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Provide Chargeback Validation Report</b></font></label>
-                                                                    <input type="radio" name="ETPM2" class="Provide" value="Yes" onclick="provide_radio();">Yes
+                                                                    <input type="radio" name="ETPM2" class="Provide" value="Yes">Yes
                                                                     <input type="radio" name="ETPM2" class="provide" value="No">No
                                                                     <input type="radio" name="ETPM2" class="provide" value="NA">N/A
                                                                 </div>
@@ -450,7 +450,7 @@
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Submit Decommission requests:
                                                                         Use ITG/Service Catalog for components / services listed in the Final Artifact</b></font></label>
-                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="Yes" onclick="submit_decom_req_radio();">Yes
+                                                                    <input type="radio" name="ETPM4" class="submit_decom_req" value="Yes">Yes
                                                                     <input type="radio" name="ETPM4" class="submit_decom_req" value="No">No
                                                                     <input type="radio" name="ETPM4" class="submit_decom_req" value="NA">N/A
                                                                 </div>
@@ -482,7 +482,7 @@
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font  size="4"><b>Stop/Remove Jobs/Application Interfaces/SSIS Jobs etc.,
                                                                         to  impacted applications Stopping jobs and interaction with the app.</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="Yes" onclick="stop_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM2" class="Stop" value="Yes">Yes
                                                                     <input type="radio" name="APP_TEAM2" class="Stop" value="No">No
                                                                     <input type="radio" name="APP_TEAM2" class="Stop" value="NA">N/A
                                                                 </div>
@@ -497,7 +497,7 @@
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font size="4"><b>(Optional) Impact Analysis of Application Decommission</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="Yes" onclick="impact_analysis_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM4" class="impact_analysis" value="Yes">Yes
                                                                     <input type="radio" name="APP_TEAM4" class="impact_analysis" value="No">No
                                                                     <input type="radio" name="APP_TEAM4" class="impact_analysis" value="NA">N/A
                                                                 </div>
@@ -513,7 +513,7 @@
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font size="4"><b>ServiceNow: Change Request</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="Yes" onclick="service_now_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM6" class="service_now" value="Yes">Yes
                                                                     <input type="radio" name="APP_TEAM6" class="service_now" value="No">No
                                                                     <input type="radio" name="APP_TEAM6" class="service_now" value="NA">N/A
                                                                 </div>
@@ -527,7 +527,7 @@
 
                                                                 <div>
                                                                     <label class="control-label " for="formInput198"  style="width:65%;"><font size="4"><b>Secure:   Remove Application</b></font></label>
-                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="Yes" onclick="secure_radio();">Yes
+                                                                    <input type="radio" name="APP_TEAM8" class="secure" value="Yes">Yes
                                                                     <input type="radio" name="APP_TEAM8" class="secure" value="No">No
                                                                     <input type="radio" name="APP_TEAM8" class="secure" value="NA">N/A
                                                                 </div>
@@ -564,7 +564,7 @@
                                                                     <h4><font color="red" size="5">APP SLO</font></h4>
 
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font  size="4"><b>Submit request to change the apps status</b></font></label>
-                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="Yes" onclick="submit_request_radio();">Yes
+                                                                    <input type="radio" name="APP_SLO1" class="submit_request" value="Yes">Yes
                                                                     <input type="radio" name="APP_SLO1" class="submit_request" value="No">No
                                                                     <input type="radio" name="APP_SLO1" class="submit_request" value="NA">N/A
 
@@ -579,7 +579,7 @@
 
                                                                 <div>
                                                                     <label  class="control-label " for="formInput198" style="width:65%;"><font size="4"><b>Request submitted to Retire the Service or Service is Retired</b></font></label>
-                                                                    <input type="radio" name="APP_SLO3" class="retired" value="Yes" onclick="retired_radio();">Yes
+                                                                    <input type="radio" name="APP_SLO3" class="retired" value="Yes">Yes
                                                                     <input type="radio" name="APP_SLO3" class="retired" value="No">No
                                                                     <input type="radio" name="APP_SLO3" class="retired" value="NA">N/A
 
@@ -772,51 +772,102 @@
 
     <script>
 
-        function submit_decom_req_radio()
+        $("input[name='ETPM4']").change(function ()
         {
-            $("#et_team_submission_date").toggle()
-        }
+            var value=$("input:radio[name='ETPM4']:checked").val();
+            if(value=="Yes")
+            {
+                $('.ETPM5').show();
+            }
+            else
+            {
+                $('.ETPM5').hide();
 
-        function provide_radio()
+            }
+        });
+
+        $("input[name='ETPM2']").change(function()
         {
-            $("#et_team_provided_date").toggle()
-        }
+            var value=$("input:radio[name='ETPM2']:checked").val();
+            if(value=="Yes")
+            {
+                $('.ETPM3').show();
+            }
+            else
+            {
+                $('.ETPM3').hide();
+            }
+        });
     </script>
 
     <script>
-        function stop_radio()
+        $("input[name='APP_TEAM2']").change(function()
         {
-            $("#submission_date1").toggle()
-        }
-
-        function impact_analysis_radio()
+           var value=$("input:radio[name='APP_TEAM2']:checked").val();
+            if(value=="Yes")
+            {
+              $('.APP_TEAM3').show();
+            }
+            else {
+                $('.APP_TEAM3').hide();
+            }
+        });
+        $("input[name='APP_TEAM4']").change(function()
         {
-            $("#app_submission_date2").toggle()
-        }
-        function service_now_radio()
+           var value=$("input:radio[name='APP_TEAM4']:checked").val();
+            if(value=="Yes")
+            {
+              $('.APP_TEAM5').show();
+            }
+            else {
+                $('.APP_TEAM5').hide();
+            }
+        });$("input[name='APP_TEAM6']").change(function()
         {
-            $("#app_submission_date3").toggle()
-        }
-        function secure_radio()
+           var value=$("input:radio[name='APP_TEAM6']:checked").val();
+            if(value=="Yes")
+            {
+              $('.APP_TEAM7').show();
+            }
+            else {
+                $('.APP_TEAM7').hide();
+            }
+        });
+        $("input[name='APP_TEAM8']").change(function()
         {
-            $("#app_submission_date4").toggle()
-        }
+           var value=$("input:radio[name='APP_TEAM8']:checked").val();
+            if(value=="Yes")
+            {
+              $('.APP_TEAM9').show();
+            }
+            else {
+                $('.APP_TEAM9').hide();
+            }
+        });
+$("input[name='APP_SLO1']").change(function()
+        {
+           var value=$("input:radio[name='APP_SLO1']:checked").val();
+            if(value=="Yes")
+            {
+              $('.APP_SLO2').show();
+            }
+            else {
+                $('.APP_SLO2').hide();
+            }
+        });
+$("input[name='APP_SLO3']").change(function()
+        {
+           var value=$("input:radio[name='APP_SLO3']:checked").val();
+            if(value=="Yes")
+            {
+              $('.APP_SLO4').show();
+            }
+            else {
+                $('.APP_SLO4').hide();
+            }
+        });
 
     </script>
-
-    <script>
-        function submit_request_radio()
-        {
-            $("#app_slo_submission_date1").toggle()
-        }
-
-        function retired_radio()
-        {
-            $("#app_slo_submission_date2").toggle()
-        }
-    </script>
-
-
 
     <!-- <script>
     $(".capm").change(function()

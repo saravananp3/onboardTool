@@ -63,12 +63,8 @@
         background-color: #e7e7e7;
         color: #010101; }
     #button1{
-
         padding:20px;
-
-
     }
-
     #return-to-top {
         position: fixed;
         bottom: 20px;
@@ -109,7 +105,6 @@
         color: #fff;
         top: 5px;
     }
-
     /* The Close Button */
     .close {
         color: #aaaaaa;
@@ -117,14 +112,16 @@
         font-size: 28px;
         font-weight: bold;
     }
-
     .close:hover,
     .close:focus {
         color: #000;
         text-decoration: none;
         cursor: pointer;
     }
-
+    .floatclass
+    {
+        float:left;
+    }
 </style>
 
 <body class="top-navbar-fixed">
@@ -293,23 +290,28 @@
                                         <div class="panel-body text-left">
                                             <form name="InfraComp">
                                                 <div id="ScrollBar">
-                                                    <table class="table table-bordered hidetable" id="mytable_infra">
+                                                    <table class="table table-bordered hidetable" id="mytable_infra" style="width:2000px">
                                                         <tr style="color:white;background-color:DodgerBlue;">
                                                             <th scope="col" style="color:white;">Infrastructure Component Type </th>
                                                             <th scope="col" style="color:white;">Component Name </th>
                                                             <th scope="col" style="color:white;">Managed/Legacy </th>
-                                                            <th scope="col" style="color:white;"> Is the Server Shared with other applications </th>
-                                                            <td>
+                                                            <th scope="col"  style="color:white;"> Is the Server Shared with other applications </th>
+                                                            <td style="width:1000px">
                                                                 <table class="table table-bordered hidetable">
+                                                                  <%--  <col width = "1000%">
+                                                                    <col width = "2000%">--%>
                                                                     <tr style="color:white;background-color:DodgerBlue;">
-                                                                        <td scope="col" style="width:5px; float:center;" colspan="5">ENVIRONMENTS</td>
+                                                                        <td scope="col" style="width:20px; float:center;" colspan="5">ENVIRONMENTS</td>
                                                                     </tr>
+
                                                                     <tr>
-                                                                        <td scope="col" style="color:black;">Dev</td>
-                                                                        <td scope="col" style="color:black;">Test</td>
-                                                                        <td scope="col" style="color:black;">Stage</td>
-                                                                        <td scope="col" style="color:black;">Prod</td>
-                                                                        <td scope="col" style="color:black;">Retired?</td>
+
+                                                                        <td scope="col" style="color:black;width:22%;">Dev</td>
+                                                                        <td scope="col" style="color:black;width:22%;">Test</td>
+                                                                        <td scope="col" style="color:black;width:22%;">Stage</td>
+                                                                        <td scope="col" style="color:black;width:22%;">Prod</td>
+                                                                        <td scope="col" style="color:black;width:20%;">Retired?</td>
+
                                                                     </tr>
                                                                 </table>
                                                             </td>
@@ -453,16 +455,16 @@
                                     "</select>\n" +
                                     "</td>\n" +
                                     "<td>\n" +
-                                    "<input type='radio' class = 'serverapp"+data[i].Seq_Num+"' value='Yes' "+style+" name = 'server_app"+data[i].Seq_Num+"'"+yes_server_app+"><div class = 'serverapp"+data[i].Seq_Num+"' "+style+">Yes</div>\n" +
-                                    "<input type='radio' class = 'serverapp"+data[i].Seq_Num+"' value='No' "+style+" name = 'server_app"+data[i].Seq_Num+"'"+no_server_app+"><div class = 'serverapp"+data[i].Seq_Num+"' "+style+">No</div>\n" +
+                                    "<input type='radio'  class = 'floatclass serverapp"+data[i].Seq_Num+"' value='Yes' "+style+" name = 'server_app"+data[i].Seq_Num+"'"+yes_server_app+"><div  for='Yes' class = 'floatclass serverapp"+data[i].Seq_Num+"' "+style+">Yes&nbsp;</div>\n" +
+                                    "<input type='radio'  class = 'floatclass serverapp"+data[i].Seq_Num+"' value='No' "+style+" name = 'server_app"+data[i].Seq_Num+"'"+no_server_app+"><div  for='No' class = 'floatclass serverapp"+data[i].Seq_Num+"' "+style+">No&nbsp;</div>\n" +
                                     "</td>\n" +
                                     "<td>\n" +
                                     "<table>\n" +
                                     "<tr colspan='5'>\n" +
-                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Dev+"' name='dev"+data[i].Seq_Num+"' readonly> </td>\n" +
-                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Test+"' name='test"+data[i].Seq_Num+"' readonly> </td>\n" +
-                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Stage+"' name='stage"+data[i].Seq_Num+"' readonly> </td>\n" +
-                                    "<td> <input type='text' class = 'class_access' value='"+data[i].Prod+"' name='prod"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td> <input type='text' class = 'class_access' style='width:77%;' value='"+data[i].Dev+"' name='dev"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td> <input type='text' class = 'class_access' style='width:77%;' value='"+data[i].Test+"' name='test"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td> <input type='text' class = 'class_access' style='width:77%;' value='"+data[i].Stage+"' name='stage"+data[i].Seq_Num+"' readonly> </td>\n" +
+                                    "<td> <input type='text' class = 'class_access' style='width:77%;' value='"+data[i].Prod+"' name='prod"+data[i].Seq_Num+"' readonly> </td>\n" +
                                     "<td>\n" +
                                     "<input type='radio' class = 'class_access1' name='retired"+data[i].Seq_Num+"' value='retired_yes' "+yes_retired+" disabled>Yes\n" +
                                     "<input type='radio' class = 'class_access1' name='retired"+data[i].Seq_Num+"' value='retired_no'"+no_retired+" disabled>No\n" +
@@ -493,10 +495,10 @@
                             "<td>\n" +
                             "<table>\n" +
                             "<tr colspan='5'>\n" +
-                            "<td> <input type='text' class = 'class_access' value='' name='dev1' readonly> </td>\n" +
-                            "<td> <input type='text' class = 'class_access' value='' name='test1' readonly> </td>\n" +
-                        "<td> <input type='text' class = 'class_access' value='' name='stage1' readonly> </td>\n" +
-                        "<td> <input type='text' class = 'class_access' value='' name='prod1' readonly> </td>\n" +
+                            "<td> <input type='text' class = 'class_access' style='width:77%;' value='' name='dev1' readonly> </td>\n" +
+                            "<td> <input type='text' class = 'class_access' style='width:77%;' value='' name='test1' readonly> </td>\n" +
+                        "<td> <input type='text' class = 'class_access' style='width:77%;' value='' name='stage1' readonly> </td>\n" +
+                        "<td> <input type='text' class = 'class_access' style='width:77%;' value='' name='prod1' readonly> </td>\n" +
                         "<td>\n" +
                         "<input type='radio' class = 'class_access1' name='retired1' value='retired_yes' disabled>Yes\n" +
                         "<input type='radio' class = 'class_access1' name='retired1' value='retired_no' disabled>No\n" +
