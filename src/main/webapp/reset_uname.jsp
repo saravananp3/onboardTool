@@ -391,31 +391,36 @@
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%
+	System.out.println("start page");
 	String x=request.getParameter("email");
 	HttpSession passwd=request.getSession();
 	passwd.setAttribute("emailid",x);
 	String rl=request.getParameter("role");
 	String pj=request.getParameter("project");
+	System.out.println("in varaibles "+x+" "+rl+" "+pj);
 	String Qn="";
 	String ans="";
 	String uname="";
 	Class.forName("org.gjt.mm.mysql.Driver").newInstance();
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
-	String query = "SELECT * from Admin_UserDetails where email='"+x+"' and roles='"+rl+"' and projects='"+pj+"'";
+	String query = "SELECT * from Admin_UserDetails where email='"+x+"' and roles='"+rl+"' and projects like '%"+pj+"%'";
 	Statement st = conn.createStatement();
 	ResultSet rs = st.executeQuery(query);
+
 	if(rs.next()){
 		Qn=rs.getString(9);
 		ans=rs.getString(10);
 		uname=rs.getString(1);
+		System.out.println("uname ans qn "+Qn+" "+ans+" "+uname);
 
 	}
+	System.out.println("uname ans qn "+Qn+" "+ans+" "+uname);
 
 %>
 
 <div class="wrapper fadeInDown">
 	<!-- Login form -->
-	<form class=" vldauth" action="" method="POST">
+	<form class=" vldauth" name="RecoveryUnameForm">
 		<div id="formContent">
 			<!-- Tabs Titles -->
 
@@ -425,14 +430,14 @@
 
 
 			<!-- Login Form -->
-			<form>
-				<div><h1>Forgot username? </h1><p id="para"><%=Qn %></p></div>
+
+				<div><h1>Forgot username? </h1><p id="para" style='color:black;'><%=Qn %></p></div>
 
 				<input type="text" id="Answer" class="fadeIn second" name="answer" placeholder="Security Answer" required>
 				<input type="text" id="ans"  class="form-control input-lg" value="<%=ans %>" style="display:none;" />
 				<input type="text" id="uname"  class="form-control input-lg" value="<%=uname %>" style="display:none;" />
 				<input type="submit" class="fadeIn fourth" value="Submit"  onclick="reset_username()">
-			</form>
+
 
 
 
@@ -468,7 +473,12 @@
 		var y=document.getElementById("ans").value;
 		var name=document.getElementById("uname").value;
 		if(x==y){
-			window.location.href='mail_uname?uname='+name;
+			/*window.location.href='mail_uname?uname='+name;*/
+			var f = document.RecoveryUnameForm;
+			f.method="POST";
+			f.action='mail_uname?uname='+name;
+			f.submit();
+
 		}
 		else
 			window.alert("wrong answer");

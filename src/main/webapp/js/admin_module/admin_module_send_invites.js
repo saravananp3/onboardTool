@@ -76,7 +76,7 @@ function send_email() {
     if (ffname === "" || llname === "" || arr === "") {
         BootstrapDialog.show({
             title: 'INFORMATION',
-            message: 'Fill The Mandatory Fileds',
+            message: 'Fill The Mandatory Fields',
             buttons: [{
                 id: 'btn-ok',
                 icon: 'glyphicon glyphicon-check',

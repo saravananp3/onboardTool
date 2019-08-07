@@ -438,7 +438,7 @@
 						<footer class="page-footer font-small blue">
 
 							<!-- Copyright -->
-							<div class="footer-copyright text-center py-3">© 2018 Copyright:
+							<div class="footer-copyright text-center py-3">ï¿½ 2018 Copyright:
 								<a href="https://www.Platform3solutions.com">Platform3solutions</a>
 							</div>
 							<!-- Copyright -->
@@ -523,7 +523,7 @@
 						if (pass == cpass) {
 							var f = document.loginForm;
 							f.method = "post";
-							f.action = 'user_registration?email=' + reg_email;
+							f.action = 'user_registration?email=' + email;
 							f.submit();
 						} else
 							window.alert("password and confirm password are not same");

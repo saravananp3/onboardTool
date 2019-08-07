@@ -623,12 +623,17 @@
     //------------------------------Reset the user name Start------------------------------//
     function reset_uname() {
         var x = document.getElementById("neww_email").value;
-        var y = document.getElementById("neww_email").value;
+        var y = document.getElementById("neww_roles").value;
         var z = document.getElementById("neww_projects").value;
-        var f = document.reset_login;
-        f.method = "post";
-        f.action = "reset_uname.jsp?email=" + x + "&role=" + y + "&project=" + z;
-        f.submit();
+        if(x!=""&&y!=""&&z!="") {
+            var f = document.reset_login;
+            f.method = "post";
+            f.action = "reset_uname.jsp?email=" + x + "&role=" + y + "&project=" + z;
+            f.submit();
+        }
+        else {
+            alert("Please fill the input fields.");
+        }
     }
 
     //------------------------------Reset the user name End------------------------------//

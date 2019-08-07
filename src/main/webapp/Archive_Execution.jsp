@@ -523,7 +523,7 @@
         <div class="modal-content_add_popup">
             <%--<span class="close" style="color:white;">&times;</span>--%>
             <div class="modal-header" style="background-color:rgb(52, 152, 219);">
-                <h1 style="color:white;">Create Task</h1>
+                <h4 style="color:white;">Create Task</h4>
             </div>
             <div class="modal-body">
                 <table>
@@ -567,12 +567,12 @@
         <div class="modal-content1">
             <%--<span class="close" style="color:white;">&times;</span>--%>
             <div class="modal-header" style="background-color:rgb(52, 152, 219);">
-                <h1 style="color:white;">Delete Task</h1>
+                <h4 style="color:white;">Delete Task</h4>
             </div>
             <div class="modal-body">
-                <p style="font-size:24px;">Are you sure, you want to delete this <span id="taskdelete"
+                <p style="font-size:18px;">Are you sure, you want to delete this <span id="taskdelete"
                                                                                        style="font-size:24px;"></span>
-                <p style="font-size:24px;"> task and all relevant task permenantly?</p>
+                <p style="font-size:18px;"> task and all relevant task permenantly?</p>
                 <input type="hidden" id="sequence1"/>
             </div>
             <div class="modal-footer">
@@ -593,7 +593,7 @@
         <div class="modal-content2">
             <%--<span class="close" style="color:white;">&times;</span>--%>
             <div class="modal-header" style="background-color:rgb(52, 152, 219);">
-                <h1 style="color:white;">Edit Task</h1>
+                <h4 style="color:white;">Edit Task</h4>l
             </div>
             <div class="modal-body">
                 <table>

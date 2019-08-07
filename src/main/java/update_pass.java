@@ -1,5 +1,7 @@
 
 
+import onboard.encryption;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,8 +60,9 @@ public class update_pass extends HttpServlet {
 	        Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
 	      
 	        Statement st=conn.createStatement();
-		        
-		   st.executeUpdate("update Admin_UserDetails set pwd='"+pwd+"' where email='"+email+"'");     
+			  encryption et=new encryption();
+			  String passw=et.encrypt(pwd);
+		   st.executeUpdate("update Admin_UserDetails set pwd='"+passw+"' where email='"+email+"'");
 		             
 	        
 	        conn.close();
