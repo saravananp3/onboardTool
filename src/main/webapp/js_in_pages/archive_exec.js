@@ -488,7 +488,7 @@ function check_previous(seq_no, level, previous_level, initiate_seqno, plan_seqn
 		}
 	}
 	else {
-		BootstrapDialog.alert("Please fill all the above tasks of parent node");
+		BootstrapDialog.alert("Please try to fill all the above task.");
 	}
 /*}*/
 }
@@ -512,14 +512,19 @@ function createnode(seq,taskname,projectname,typeofnode)
 {
 //console.log("start");
 //alert(seq+" "+taskname+" "+projectname+" "+typeofnode);
-	var f = document.loginForm;
-	//console.log("after loginform");
-	f.method = "post";
-	//console.log("after post");
-	f.action = 'AddingNode?sequence='+ seq +'&task_name='+ taskname +'&project_name='+ projectname +'&type_of_node='+ typeofnode;
-	//console.log("after action");
-	f.submit();
-	//console.log("after submit");
+	if(taskname!="") {
+		var f = document.loginForm;
+		//console.log("after loginform");
+		f.method = "post";
+		//console.log("after post");
+		f.action = 'AddingNode?sequence=' + seq + '&task_name=' + taskname + '&project_name=' + projectname + '&type_of_node=' + typeofnode;
+		//console.log("after action");
+		f.submit();
+		//console.log("after submit");
+	}
+	else {
+		BootstrapDialog.alert("Please fill the task name.");
+	}
 }
 //adding task popups
 function popup(id)
@@ -622,10 +627,15 @@ function modify_popup(id)
 function editnode(seq,projectname,taskname)
 {
 //alert("sequence "+seq+" projectname "+projectname+" taskname "+taskname);
-	var f=document.loginForm;
-	f.method="post";
-	f.action="EditingNode?seq="+seq+"&projectname="+projectname+"&taskname="+taskname;
-	f.submit();
+	if(taskname!="") {
+		var f = document.loginForm;
+		f.method = "post";
+		f.action = "EditingNode?seq=" + seq + "&projectname=" + projectname + "&taskname=" + taskname;
+		f.submit();
+	}
+	else {
+		BootstrapDialog.alert("Please fill the task name.");
+	}
 }
 function Progressbar_ColorDesign(Initiate,Plan,Execute,Closure)
 {

@@ -393,7 +393,7 @@ var f=document.loginForm;
                                        <div class="form-group row log-date">
           <div class="col-md-12">
             <label >No of Applications</label>
-            <input placeholder="No of Applications" id="date" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text">
+            <input placeholder="No of Applications" id="date" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="number">
           </div>
           
         </div>  
@@ -401,7 +401,7 @@ var f=document.loginForm;
 		<div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label"><div class="required_fie">Initiate Start Date&nbsp;<span class="text-danger"></span></div></label>
-            <input placeholder="mm/dd/yyyy" id="Intdate" name="Intdate" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" required/>
+            <input placeholder="mm/dd/yyyy" id="Intdate" name="Intdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" required readonly/>
           </div>
         </div>  
         
@@ -410,28 +410,28 @@ var f=document.loginForm;
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required">Plan Start Date</label>
-            <input placeholder="mm/dd/yyyy" id="P_S_date" name="Plandate" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text">
+            <input placeholder="mm/dd/yyyy" id="P_S_date" name="Plandate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" readonly>
           </div>
         </div>    
         
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required">Execution Start Date</label>
-            <input placeholder="mm/dd/yyyy" id="Exec_start_date" name="Execdate" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text">
+            <input placeholder="mm/dd/yyyy" id="Exec_start_date" name="Execdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" readonly>
           </div>
         </div>            
         
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required">Hypercare Start Date</label>
-            <input placeholder="mm/dd/yyyy" id="Hyper_care_date" name="Hyperdate" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text">
+            <input placeholder="mm/dd/yyyy" id="Hyper_care_date" name="Hyperdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" readonly>
           </div>
         </div>  
         
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required"><div class="required_fie">Project End Date&nbsp;<span class="text-danger"></span></div></label>
-            <input placeholder="mm/dd/yyyy" id="Project_end_date" name="Enddate" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" required>
+            <input placeholder="mm/dd/yyyy" id="Project_end_date" name="Enddate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" required readonly>
           </div>
         </div>                 
                             

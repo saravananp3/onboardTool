@@ -276,6 +276,7 @@ public class Archive_execution_db_update {
                             if (node_count == 0) {
                                 progressbar.set(n, "0");
                                 statement.executeUpdate("update archiveexecution_details set progressbar='0' where projects='" + prjname + "' and seq_num=" + (n + 1) + ";");
+                                break;
                             } else if (check == true) {
                                 progressbar.set(n, "100");
                                 statement.executeUpdate("update archiveexecution_details set progressbar='100' where projects='" + prjname + "' and seq_num=" + (n + 1) + ";");

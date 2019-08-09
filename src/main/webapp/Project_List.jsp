@@ -231,18 +231,32 @@
             <!-- Projects List Start -->
             <%
                 {
-                    String projectCount="select count(*) from appemphazize_projectdetails";
-                    Statement projectCountst = con.createStatement();
-                    ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
-                    if(projectCountqyery.next()){
-
+                    int application_count=0;
+                    if(Projets=="all") {
+                        String projectCount = "select count(*) from appemphazize_projectdetails";
+                        Statement projectCountst = con.createStatement();
+                        ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
+                        if (projectCountqyery.next()) {
+                            application_count = Integer.parseInt(projectCountqyery.getString(1));
+                        }
+                    }
+                    else
+                    {
+                        String ProjCountQuery="select * from admin_userdetails where uname='"+uname+"'";
+                        Statement statement1=con.createStatement();
+                        ResultSet resultSet=statement1.executeQuery(ProjCountQuery);
+                        if(resultSet.next())
+                        {
+                            String[] prjs=(resultSet.getString("projects")).split(",");
+                            application_count=prjs.length;
+                        }
                     }
             %>
             <div class="main-page">
                 <div class="container">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h2 class="title">All Projects&nbsp;(<%=projectCountqyery.getString(1) %>)</h2>
+                            <h2 class="title">All Projects&nbsp;(<%= application_count%>)</h2>
                             <%} %>
                             <p class="sub-title">Create and manage your existing projects below</p>
                         </div>

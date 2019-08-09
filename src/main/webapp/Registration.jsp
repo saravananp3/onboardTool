@@ -344,7 +344,7 @@
 																<label class="col-sm-3 col-form-label">Project</label>
 																<div class="col-sm-9">
 																	<input type="text" class="form-control"
-																		   name="reg_projects" value="<%=project%>">
+																		   name="reg_projects" value="<%=project%>" readonly>
 																</div>
 															</div>
 														</div>
@@ -353,7 +353,7 @@
 																<label class="col-sm-3 col-form-label">Application</label>
 																<div class="col-sm-9">
 																	<input type="text" class="form-control"
-																		   name="reg_app" value="<%=app%>">
+																		   name="reg_app" value="<%=app%>" readonly>
 																</div>
 															</div>
 
@@ -528,7 +528,7 @@
 						} else
 							window.alert("password and confirm password are not same");
 					} else
-						window.alert("password must be less than 8 letters");
+						window.alert("password must be greater than 8 letters");
 				} else
 					window.alert("both emails are not same");
 			} else

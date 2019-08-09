@@ -808,11 +808,11 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="formInput664">Read Only Date</label>
-                <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()">
+                <input placeholder="mm/dd/yyyy" style = "background-color: white;" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()" readonly>
             </div>
             <div class="form-group">
                 <label class="control-label" for="formInput664">SME Availability Date</label>
-                <input placeholder="mm/dd/yyyy" type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()">
+                <input placeholder="mm/dd/yyyy" style = "background-color: white;" type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()" readonly>
             </div>
 
 
