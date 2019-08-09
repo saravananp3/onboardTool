@@ -531,7 +531,7 @@
 
                                                     <div class="form-group">
                                                         <label class="control-label ">No of Applications</label>
-                                                        <input placeholder="No of Applications" id="appno" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="text" value="<%=rs3.getString("appno")%>">
+                                                        <input placeholder="No of Applications" id="appno" name="appno" class="form-control ember-text-field zf-date-picker date-picker ember-view" type="number" value="<%=rs3.getString("appno")%>">
                                                     </div>
 
                                                     <div class="form-group">

@@ -113,7 +113,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
-                    <a class="navbar-brand" href="index.php">
+                    <a class="navbar-brand" href="Project_List.jsp">
                         <img src="images/logo1.png" alt="Options - Admin Template" class="logo">
                     </a>
                 </div>

@@ -14,7 +14,7 @@
 	<script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"
 			type="text/javascript"></script>
 	<link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-	<title>Onboard Tool</title>
+	<title>Decomm Manager Tool</title>
 </head>
 <style>
 	@import url('https://fonts.googleapis.com/css?family=Poppins');

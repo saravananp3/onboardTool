@@ -899,33 +899,55 @@ public class DecommManageExecuteInfoService {
             ResultSet rs1=st1.executeQuery(select_query1);
             if(rs1.next()){
                 String other_value = "";
+                String type_other = "", value_other = "", dev = "", test = "", stage = "", prod = "", comment = "", questions = "";
                 other_value = rs1.getString("value");
                 String arr_other_value[] = other_value.split(",");
                 for (int i=0; i<arr_other_value.length; i++){
                     JsonObject jsonObject = new JsonObject();
+                    if(! arr_other_value[i].equals ("Mainframe") || ! arr_other_value[i].equals ("'Disaster Recovery'")){
+                        String select_query_other = "select * from decomm_manage_service_categories_checklist_others where prj_name = '" + projectname + "' and app_name = '" + applicationname + "' and others ='" + arr_other_value[i] + "' ";
+                        Statement st2 = connection.createStatement();
+                        ResultSet rs2 = st2.executeQuery(select_query_other);
+                        while (rs2.next()) {
 
-                    String select_query_other = "select * from decomm_manage_service_categories_checklist_others where prj_name = '"+projectname+"' and app_name = '"+applicationname+"' and others ='"+arr_other_value[i]+"' ";
-                    Statement st2=connection.createStatement();
-                    ResultSet rs2=st2.executeQuery(select_query_other);
-                        while(rs2.next()) {
-                         String type_other="", value_other="", dev="",test="",stage="",prod="",comment = "";
-                         type_other = rs2.getString("type");
-                         value_other = rs2.getString("value");
-                         dev  = rs2.getString("dev");
-                         test = rs2.getString("test");
-                         stage = rs2.getString("stage");
-                         prod = rs2.getString("prod");
-                         comment = rs2.getString("comments");
-                         jsonObject.addProperty("Others", arr_other_value[i]);
-                         jsonObject.addProperty("Type", type_other);
-                         jsonObject.addProperty("Value", value_other);
-                         jsonObject.addProperty("Dev",dev);
-                         jsonObject.addProperty("Test",test);
-                         jsonObject.addProperty("Stage",stage);
-                         jsonObject.addProperty("Prod",prod);
-                         jsonObject.addProperty("Comment",comment);
-                         jsonArray2.add(jsonObject);
+                            type_other = rs2.getString("type");
+                            value_other = rs2.getString("value");
+                            dev = rs2.getString("dev");
+                            test = rs2.getString("test");
+                            stage = rs2.getString("stage");
+                            prod = rs2.getString("prod");
+                            comment = rs2.getString("comments");
+                            questions = rs2.getString("questions");
+                            jsonObject.addProperty("Others", arr_other_value[i]);
+                            jsonObject.addProperty("Type", type_other);
+                            jsonObject.addProperty("Value", value_other);
+                            jsonObject.addProperty("Dev", dev);
+                            jsonObject.addProperty("Test", test);
+                            jsonObject.addProperty("Stage", stage);
+                            jsonObject.addProperty("Prod", prod);
+                            jsonObject.addProperty("Comment", comment);
+                            jsonObject.addProperty("questions", questions);
+                            jsonArray2.add(jsonObject);
                         }
+                    }
+                    else {
+                        String query = "select * from decomm_manage_service_categories_checklist_server where prj_name = '" + projectname + "' and app_name = '" + applicationname + "' and label_name = '"+arr_other_value[i]+"'";
+                        Statement st3 = connection.createStatement();
+                        ResultSet rs3 = st3.executeQuery(query);
+                        if(rs3.next()){
+                            while(rs3.next())
+                            {
+                                dev = rs3.getString("dev");
+                                test = rs3.getString("test");
+                                stage = rs3.getString("stage");
+                                prod = rs3.getString("prod");
+                                comment = rs3.getString("comments");
+                            }
+                        }
+                        else{
+
+                        }
+                    }
                 }
             }
             JsonArray jsonArray3=new JsonArray();

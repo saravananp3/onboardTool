@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-    <title>Onboard Modules List</title>
+    <title>Decomm Manager Modules List</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

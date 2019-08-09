@@ -612,10 +612,16 @@
     //------------------------------Reset the Password Recovery Start------------------------------//
     function pwdrecovery() {
         var x = document.getElementById("new_email").value;
-        var f = document.forgot_login;
-        f.method = "post";
-        f.action = "reset_password?email=" + x;
-        f.submit();
+        if(x!=""){
+            var f = document.forgot_login;
+            f.method = "post";
+            f.action = "reset_password?email=" + x;
+            f.submit();
+        }
+        else{
+            alert("Please fill the Email Address");
+        }
+
     }
 
     //------------------------------Reset the Password Recovery  End------------------------------//
