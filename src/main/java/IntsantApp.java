@@ -243,7 +243,6 @@ public class IntsantApp extends HttpServlet {
                 this.dropdown_labels = dropdown_labels;
                 this.panels = panels;
                 this.idname = idname;
-
             }
         }
         Arch_Req ar[] = new Arch_Req[30];
@@ -353,10 +352,11 @@ public class IntsantApp extends HttpServlet {
             int i = 0;
 
             // the mysql insert statement
-            String query = " insert into AppEmphazize_ApplicationInfo (appname, prjname)"
+            //System.out.println("Application update "+appname+"prj name "+prjname);
+            String query_app = " insert into AppEmphazize_ApplicationInfo (appname, prjname)"
                     + " values (?,?)";
 
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            PreparedStatement preparedStmt = conn.prepareStatement(query_app);
             preparedStmt.setString(1, appname);
             preparedStmt.setString(2, prjname);
             preparedStmt.execute();

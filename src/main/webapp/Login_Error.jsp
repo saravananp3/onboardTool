@@ -168,13 +168,21 @@
 	
 	<div class="container"> 
 	<div class="well"> 
-	<h1> Invalid Username or Password </h1> 
+	<h1 id="ErrorMessage">  </h1>
 	<a href="Login.jsp"> Login </a>
 	
 	</div> 
 	
-	</div> 
-	
-	
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		var url_string=window.location.href;
+		var url = new URL(url_string);
+		var ErrorMessage = url.searchParams.get("ErrorMessage");
+		$(document).ready(function()
+		{
+			$('#ErrorMessage').html(ErrorMessage);
+		});
+	</script>
 	</body> 
 	</html>

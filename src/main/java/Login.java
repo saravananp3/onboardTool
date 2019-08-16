@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.sun.jersey.spi.inject.Errors;
 import org.apache.log4j.BasicConfigurator;
 
 import org.apache.log4j.Logger;
@@ -385,7 +386,7 @@ try
 			else 
 			{ 
 				
-				response.sendRedirect("Login_Error.jsp");
+				response.sendRedirect("Login_Error.jsp?ErrorMessage=Password is Incorrect");//pwd is incorrect
 			}
 			
 				
@@ -393,10 +394,16 @@ try
 	
 		
 	}
-		else 
-		{ 
-			//System.out.println("if");
-			response.sendRedirect("Login_Error.jsp");
+		else {
+            //System.out.println("if");
+            String msg = "";
+            if (!userid.equals("admin")) {
+                msg = "This user not yet registered.";
+            } else
+            {
+                msg="Password is Incorrect";
+            }
+			response.sendRedirect("Login_Error.jsp?ErrorMessage="+msg);// user you have entered not registered.
 		}
 		}
 	

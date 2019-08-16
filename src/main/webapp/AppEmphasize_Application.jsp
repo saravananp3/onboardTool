@@ -81,6 +81,7 @@
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection" %>
+<%@ page import="java.util.ArrayList" %>
 <%
 
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -124,7 +125,7 @@
 %>
 
 
-<form class="form-signin" name="loginForm" method="post" action="IntsantApp">
+<form class="form-signin" name="loginForm">
 
     <div class="main-wrapper">
 
@@ -443,8 +444,7 @@ if(hypercare == null)
                                                     </table>
                                                 </div>
                                                 <br />
-
-
+                                                </form>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -454,7 +454,7 @@ if(hypercare == null)
                                                                 <input type="hidden" class="form-control" id="formInput198" placeholder="Application Name" name="prjname" value="<%=rs3.getString("projectname") %>" >
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <input type="submit" id="bttn"  class="btn btn-primary btn pull-left" name ="p1" value="Add">
+                                                                <input type="button" id="bttn"  class="btn btn-primary btn pull-left" name ="p1" value="Add">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -474,7 +474,6 @@ if(hypercare == null)
 
 
 
-</form>
 
 
 <!-- /.row -->
@@ -533,6 +532,55 @@ if(hypercare == null)
             $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
             $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
         });
+    });
+    $('#bttn').click(function()
+    {
+        var app_name=$('#app_name').val();
+        var check=false;
+        <%try
+        {
+            DBconnection d=new DBconnection();
+            Connection con = (Connection)d.getConnection();
+            HttpSession details=request.getSession();
+            String Project_Id=(String)session.getAttribute("theName");
+            String query3 = "select * from AppEmphazize_ProjectDetails where id = "+Project_Id;
+            String Project_name="";
+        Statement st3 = con.createStatement();
+        ResultSet rs3 = st3.executeQuery(query3);
+        if(rs3.next())
+            Project_name=rs3.getString("projectname");
+
+            String AppnameQuery="select * from appemphazize_applicationinfo where prjname='"+Project_name+"';";
+            Statement statement=con.createStatement();
+            ResultSet resultSet=statement.executeQuery(AppnameQuery);
+            ArrayList<String> appname = new ArrayList<String>();
+            while(resultSet.next())
+                {
+                    appname.add(resultSet.getString("appname"));
+                }
+               for(int i=0;i<appname.size();i++)
+                   {%>
+                     if(app_name=="<%=appname.get(i)%>")
+                     {
+                         check=true;
+                     }
+                   <%}
+
+        }
+        catch(Exception e)
+        {
+         System.out.println("Exception------------[info]----------"+e);
+        }%>
+        if(check==true)
+        {
+            alert("Application name already taken.");
+        }
+        else {
+            var f = document.loginForm;
+            f.method = "post";
+            f.action = "IntsantApp?";
+            f.submit();
+        }
     });
 </script>
 
