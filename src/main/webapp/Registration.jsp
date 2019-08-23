@@ -356,10 +356,8 @@
 																		   name="reg_app" value="<%=app%>" readonly>
 																</div>
 															</div>
-
 														</div>
 													</div>
-
 													<div class="row">
 														<div class="col-md-6">
 															<div class="form-group row">
@@ -507,13 +505,15 @@
 		var pass = document.getElementById("reg_pwd").value;
 		var cpass = document.getElementById("reg_cpwd").value;
 		var confirm = document.getElementById("reg_cemail").value;
+		var SecurityQuestion=$('#reg_qn').val();
+		var SecurityAnswer=$('#reg_ans').val();
 		<% while(rs.next()){ %>
 		if (uuname == "<%=rs.getString(1)%>") {
 			window.alert("Project Name is already taken");
 			window.location.href = 'Registration.jsp';
 		}
 		<%}%>
-		if (ffname === "" || llname === "" || uuname === "")
+		if (ffname === "" || llname === "" || uuname === "" || SecurityQuestion == "" || SecurityAnswer == "")
 			window.alert("fill the mandatory fileds");
 		else {
 			if ((email.includes("@")) && (email.includes(".com"))) {

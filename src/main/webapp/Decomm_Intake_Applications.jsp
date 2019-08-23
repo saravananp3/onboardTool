@@ -355,7 +355,7 @@
                         <div class="row breadcrumb-div">
                             <div class="col-sm-6">
                                 <ul class="breadcrumb">
-                                    <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+                                    <li><a href="Project_List.jsp"><i class="fa fa-home"></i> Home</a></li>
                                     <li class="active">Applications</li>
                                 </ul>
                             </div>

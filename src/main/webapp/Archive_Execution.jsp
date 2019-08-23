@@ -502,7 +502,7 @@
 
                             </div>
                         </div>
-                        <input type="hidden" name="projectname" id="projectname" <%--value="<%=prjname%>"--%>>
+                        <input type="hidden" name="projectname" id="projectname" value="<%=prjname%>">
 
 </form>
 </div>
@@ -670,7 +670,7 @@
         $.ajax({
             url: 'Archive_User_List',
             type: 'post',
-            data: {projectname,projectname},
+            data: {projectname:projectname},
             dataType: 'json',
             success: function (data) {
                 console.log('json drop down data-----',data);

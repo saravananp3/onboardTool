@@ -7,7 +7,7 @@ function getID(lev, pln_srt, pln_end, act_srt, status, pln_hrs, act_hrs, progres
 	if (pln_srt == "" || pln_end == "" || act_srt == "" || actual_enddate == "") {
 
 		if (pln_srt == "" || pln_end == "") {
-			document.getElementById(pln_hrs.id).value = 0;
+			document.getElementById(pln_hrs.id).value = "";
 			if (pln_srt == "" && act_srt != "" && actual_enddate != "" || pln_end == "" && act_srt != "" && actual_enddate != "") {
 				console.log("sample");
 
@@ -35,7 +35,7 @@ function getID(lev, pln_srt, pln_end, act_srt, status, pln_hrs, act_hrs, progres
 
 		}
 		if (act_srt == "" || actual_enddate == "") {
-			document.getElementById(act_hrs.id).value = 0;
+			document.getElementById(act_hrs.id).value = "";
 			//alert("plan");
 			if(act_srt==""&&pln_srt!=""&&pln_end!=""||actual_enddate==""&&pln_srt!=""&&pln_end!="") {
 				//alert("plan1");

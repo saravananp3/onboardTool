@@ -439,7 +439,7 @@
                                                     <br><br>
 
                                                     <button type="button" id="add_btn" class="btn btn-primary"
-                                                            onclick="window.location.href='Registration.jsp'" style="margin:5px">
+                                                            onclick="window.location.href='AdminModuleAddUser.jsp'" style="margin:5px">
                                                         Add User
                                                     </button>
 

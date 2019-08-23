@@ -612,16 +612,21 @@
     //------------------------------Reset the Password Recovery Start------------------------------//
     function pwdrecovery() {
         var x = document.getElementById("new_email").value;
-        if(x!=""){
+        //var filter = /^[w-.+]+@[a-zA-Z0-9.-]+.[a-zA-z0-9]{2,4}$/;
+        var check=false;
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(x)) {
+        check=true;
+        }
+        if(x!=""&&check==true){
             var f = document.forgot_login;
             f.method = "post";
             f.action = "reset_password?email=" + x;
             f.submit();
         }
         else{
-            alert("Please fill the Email Address");
+            alert("Please fill the valid Email Address");
         }
-
+        arc
     }
 
     //------------------------------Reset the Password Recovery  End------------------------------//
