@@ -209,7 +209,7 @@
 %>
 
 
-<form class="form-signin" name="loginForm" method="post" action="EditProject">
+<form class="form-signin" name="loginForm">
 
     <div class="main-wrapper">
 
@@ -395,6 +395,27 @@
                 <!-- /.left-sidebar -->
 
                 <div class="main-page">
+ <div class="container-fluid">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                            <h2 class="title">Project Information</h2>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row breadcrumb-div">
+                        <div class="col-sm-6">
+                            <ul class="breadcrumb">
+                                <li><a href="Project_List.jsp"><i class="fa fa-home"></i> Home</a></li>
+                                 <li><a href="AppEmphasize_EditProject.jsp">Project Info</a></li>
+
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                    <!-- /.row -->
+                </div>
                     <section class="design-process-section" id="process-tab">
 
                         <div class="row">
@@ -560,7 +581,7 @@
                                                     </div>
                                                     <input type="hidden" id="pwqej" value="<%= info %>" hidden>
                                                     <br>
-                                                    <button type="submit" class="btn btn-primary pull-right" >Save & Continue</button>&nbsp;
+                                                    <button type="button" class="btn btn-primary pull-right" id="SaveContinue">Save & Continue</button>&nbsp;
 
                                                 </div>
                                             </div>
@@ -712,6 +733,22 @@ catch(Exception e){}
 
 <!-- ========== THEME JS ========== -->
 <script>
+    $('#SaveContinue').click(function(){
+        var int_date =$('#Intdate').val();
+        var end_date =$('#Enddate').val();
+        var intdate = new Date(int_date);
+        var enddate = new Date(end_date);
+
+        if(intdate.getTime() <= enddate.getTime()){
+            var f = document.loginForm;
+            f.method = "post";
+            f.action ="EditProject";
+            f.submit();
+        }
+            else {
+            alert("Initiate Date should be lesser than Project End date");
+        }
+    });
     $(function($) {
 
         // 1st  datepicker

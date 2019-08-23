@@ -486,7 +486,29 @@
                     <!-- /.sidebar-content -->
                 </div>
                 <!-- /.left-sidebar -->
+                <div class="container-fluid">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                            <h2 class="title">Application Prioritized</h2>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row breadcrumb-div">
+                        <div class="col-sm-6">
+                            <ul class="breadcrumb">
+                                <li><a href="Project_List.jsp"><i class="fa fa-home"></i> Home</a></li>
+                                <li><a href="AppEmphasize_EditProject.jsp">Project Info</a></li>
+                                <li><a href="AppEmphasize_Application.jsp">Application Info</a></li>
+                                <li><a href="AppEmphasize_CostCalculation.jsp">Application Complexity</a></li>
 
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                    <!-- /.row -->
+                </div>
 
 
 

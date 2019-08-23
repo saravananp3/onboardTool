@@ -365,6 +365,30 @@
                     <!-- /.sidebar-content -->
                 </div>
                 <!-- /.left-sidebar -->
+   <div class="container-fluid">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                            <h2 class="title">Final & Review</h2>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row breadcrumb-div">
+                        <div class="col-sm-8">
+                            <ul class="breadcrumb">
+                                <li><a href="Project_List.jsp"><i class="fa fa-home"></i> Home</a></li>
+                                 <li><a href="AppEmphasize_EditProject.jsp">Project Info</a></li>
+                                   <li><a href="AppEmphasize_Application.jsp">Application Info</a></li>
+                                   <li><a href="AppEmphasize_CostCalculation.jsp">Application Complexity</a></li>
+                                    <li><a href="AppEmphasize_PrioritizedApplications.jsp">Application Prioritized</a></li>
+                                    <li><a href="AppEmphasize_PrioritizedApplications.jsp">Final & Review Page</a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                    <!-- /.row -->
+                </div>
 
 
                 <section class="section">
