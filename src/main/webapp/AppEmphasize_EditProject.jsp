@@ -52,41 +52,54 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
+         display: block;
+        text-decoration: none;
+        display: none;
+        outline: none;
         background: rgb(0, 0, 0);
         background: rgba(0, 0, 0, 0.7);
+          }
+    #return-to-top i {
+        color: #fff;
+        margin: 0px;
+        position: relative;
+        left: -10px;
+         top: -4px;
+        font-size: 25px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    #return-to-top:hover i {
+        color: #fff;
+        top: 2px;
+        position: relative;
+        border: none;
+    }
+    #top{
+       position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #000;
         width: 50px;
         height: 50px;
         display: block;
         text-decoration: none;
         -webkit-border-radius: 35px;
         -moz-border-radius: 35px;
-        border-radius: 35px;
-        display: none;
-        -webkit-transition: all 0.3s linear;
-        -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        transition: all 0.3s ease;
+        border-radius: 40px;
+        outline: none;
+}
     }
-    #return-to-top i {
+    top:hover i {
         color: #fff;
-        margin: 0;
+        top: 10px;
         position: relative;
-        left: 16px;
-        top: 13px;
-        font-size: 19px;
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-    }
-    #return-to-top:hover {
-        background: rgba(0, 0, 0, 0.9);
-    }
-    #return-to-top:hover i {
-        color: #fff;
-        top: 5px;
+        border-radius: 35px;
     }
     .example-two {
         border-radius: 10px;
@@ -420,8 +433,8 @@
 
                         <div class="row">
                             <div class="container">
-                                <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
-
+                                <a href="javascript:" id="return-to-top"><button id="top" onclick="scroll()"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></button></a>
+								
 
                                 <%
                                     String initiate=(String)session.getAttribute("Ideation and Initiate");
@@ -533,10 +546,10 @@
                                             <div id="collapse2" class="panel-collapse">
                                                 <div class="panel-body text-left">
 
-                                                    <%--<div class="form-group">
-                                                        <label control-label" for="pid">Project ID&nbsp;</label>
-                                                        <input type="text"  class="form-control" id="pid"  placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
-                                                    </div>--%>
+                                                    <div class="form-group">
+                                                        <label control-label" for="pid" hidden>Project ID&nbsp;</label>
+                                                        <input type="hidden"  class="form-control" id="pid"  placeholder="Project ID" name="pid" value="<%=rs3.getString("id")%>" >
+                                                    </div>
 
                                                     <div class="form-group">
                                                         <label class="control-label" for="projectname"><div class="required"> Project Name </div></label>
@@ -669,15 +682,9 @@ catch(Exception e){}
             $('#return-to-top').fadeOut(200);   // Else fade out the arrow
         }
     });
-    $('#return-to-top').click(function() {      // When arrow is clicked
-        $('body,html').animate({
-            scrollTop : 0                       // Scroll to top of body
-        }, 500);
-    });
-
-
-
-
+function scroll() { 
+    $(window).scroll(0); 
+} 
 
 
 </script>
@@ -704,7 +711,7 @@ catch(Exception e){}
 <script src="js/pace/pace.min.js"></script>
 <script src="js/lobipanel/lobipanel.min.js"></script>
 <script src="js/iscroll/iscroll.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- ========== PAGE JS FILES ========== -->
 <script src="js/prism/prism.js"></script>
 <script src="js/waypoint/waypoints.min.js"></script>

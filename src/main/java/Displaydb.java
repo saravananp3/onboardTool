@@ -8,12 +8,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+
+import bean.PriorityComparator;
+import bean.ProjectComplexity;
+
 import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
@@ -108,11 +115,11 @@ public class Displaydb extends HttpServlet {
 		// System.out.println("complexitie is   s s  "+no_of_app_complexity);
 		//  System.out.println("est_scrn value is "+complexity);
 
-	      /*  HttpSession app_details=request.getSession();
+	        HttpSession app_details=request.getSession();
 	        app_details.setAttribute("proj_name",proj_name);
 	        app_details.setAttribute("complexity",complexity);
 	        app_details.setAttribute("est_db_size",est_db_size);
-	        app_details.setAttribute("est_cst",est_cst);*/
+	        app_details.setAttribute("est_cst",est_cst);
 
 
 
@@ -130,11 +137,12 @@ public class Displaydb extends HttpServlet {
 			Class.forName(myDriver);
 			Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
 
-			String query0="delete from AppEmphazize_ApplicationPrioritization where prj_name='"+prj_name+"' and IA_lic_cst=''";
-			PreparedStatement Stmt0 = conn.prepareStatement(query0);
-			Stmt0.executeUpdate(query0);
+//			String query0="delete from AppEmphazize_ApplicationPrioritization where prj_name='"+prj_name+"' and IA_lic_cst=''";
+//			PreparedStatement Stmt0 = conn.prepareStatement(query0);
+//			Stmt0.executeUpdate(query0);
 
-			String query2="select * from AppEmphazize_ApplicationPrioritization where proj_name='"+proj_name+"' and prj_name='"+prj_name+"'";
+			String query2 = "select * from AppEmphazize_ApplicationPrioritization where proj_name='" + proj_name
+					+ "' and prj_name='" + prj_name + "'";
 			PreparedStatement Stmt1 = conn.prepareStatement(query2);
 			ResultSet rs1 = Stmt1.executeQuery(query2);
 			if(rs1.next())
@@ -175,11 +183,13 @@ public class Displaydb extends HttpServlet {
 				preparedStmt1.execute();
 				// System.out.println("est_scrn value from if pstmt1 "+est_scrn);
 
-				PreparedStatement preparedStmt2 = conn.prepareStatement("update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_scrn=? where appname=?");
+				PreparedStatement preparedStmt2 = conn.prepareStatement(
+						"update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_scrn=? where appname=? and prjname=?");
 				preparedStmt2.setString(1, complexity);
 				preparedStmt2.setString(2, est_db_size);
 				preparedStmt2.setString(3, est_scrn);
 				preparedStmt2.setString(4, proj_name);
+				preparedStmt2.setString(5, prj_name);
 				preparedStmt2.execute();
 				//System.out.println("est_scrn value from if pstmt2 "+est_scrn);
 				// System.out.println(est_scrn);
@@ -222,20 +232,61 @@ public class Displaydb extends HttpServlet {
 				preparedStmt.setString(30,Decommission);
 				preparedStmt.execute();
 
-				//System.out.println("est_scrn value from else pstmt1 "+est_scrn);
-				PreparedStatement preparedStmt2 = conn.prepareStatement("update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_scrn=? where appname=?");
+				// System.out.println("est_scrn value from else pstmt1 "+est_scrn);
+				PreparedStatement preparedStmt2 = conn.prepareStatement(
+						"update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_scrn=? where appname=? and prjname=?");
 				preparedStmt2.setString(1, complexity);
 				preparedStmt2.setString(2, est_db_size);
 				preparedStmt2.setString(3, est_scrn);
 				preparedStmt2.setString(4, proj_name);
+				preparedStmt2.setString(5, prj_name);
 				preparedStmt2.execute();
 //System.out.println("est_scrn value from else pstmt2 "+est_scrn);
-				conn.close();
 
-			}}
-		catch (Exception e)
-		{
-			System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
+			}
+			PreparedStatement preparedStmt3 = conn.prepareStatement("SELECT appname, complexity, est_scrn "
+					+ "from AppEmphazize_ApplicationInfo where prjname=? and complexity is not null");
+			preparedStmt3.setString(1, prj_name);
+			ResultSet rs2 = preparedStmt3.executeQuery();
+			String appName = "";
+			String priority = "";
+			String est = "";
+			String complex = "";
+			String ptext ="";
+			int pr=0;
+			ArrayList projectPriorities = new ArrayList();
+			while(rs2.next()) {
+				appName = rs2.getString("appname");
+				complex = rs2.getString("complexity");
+				est = rs2.getString("est_scrn");
+				if(complex.equals("High")) {
+					priority="P1";
+					pr =1;
+				}
+				if(complex.equals("Medium to High")) {
+					priority="P2";
+					pr =2;
+				}
+				if(complex.equals("Medium")) {
+					priority="P3";
+					pr =3;
+				}
+				if(complex.equals("Low to Medium")) {
+					priority="P4";
+					pr=4;
+				}
+				if(complex.equals("Low")) {
+					priority="P5";
+					pr =5;
+				}	projectPriorities.add(new ProjectComplexity(appName, complex, est, pr, priority));
+			}
+			Collections.sort(projectPriorities, new PriorityComparator());
+			conn.close();
+			app_details.setAttribute("proj_priorities", projectPriorities);
+			
+		} catch (Exception e) {
+			System.err.println("[ERROR]-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage()
+					+ "----[ERROR]");
 			e.printStackTrace();
 		}
 		response.sendRedirect("AppEmphasize_PrioritizedApplications.jsp");

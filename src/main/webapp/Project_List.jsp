@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
     <link rel="stylesheet" href="css/icheck/skins/line/green.css" >
     <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css" >
-
+   <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
+   
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
     <script type="text/javascript" src="js_in_pages/project.js"></script>

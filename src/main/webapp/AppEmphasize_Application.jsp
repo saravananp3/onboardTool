@@ -594,7 +594,11 @@ if(hypercare == null)
         {
          System.out.println("Exception------------[info]----------"+e);
         }%>
-        if(check==true)
+        
+        if (app_name=="")        	
+	alert("Application name should not be blank");
+        
+        else if(check==true)
         {
             alert("Application name already taken.");
         }

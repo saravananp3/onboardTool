@@ -51,25 +51,25 @@ public class reset_password extends HttpServlet {
 
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.office365.com");
+        props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
         Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         //return new PasswordAuthentication("vkarun202@gmail.com","arun's@kumar");
-                        return new PasswordAuthentication("shankarganesh.n@platform3solutions.com", "Shankarganesh94");
+                        return new PasswordAuthentication("decom3sixtytool@gmail.com", "Decom360");
                     }
                 });
 
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("shankarganesh.n@platform3solutions.com"));
+            message.setFrom(new InternetAddress("decom3sixtytool@gmail.com"));
 
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email));
             message.setSubject("Recovery Mail");
-            message.setText("http://localhost:8081/reset_pass.jsp");
+            message.setText("http://localhost:8090/onboardTool/reset_pass.jsp");
             //message.setText("http://18.217.95.127:8080/Decomm_Manager/reset_pass.jsp");
             Transport.send(message);
             pw.println("<html><body>");

@@ -175,22 +175,31 @@
         var populate="";
         function del(cnt)
         {
+        	var checkboxvalidation = true;
             for(var i=0;i<cnt;i++){
                 if(document.getElementsByName('delete_check')[i].checked){
                     var name=document.getElementsByName('name_user'+i)[0].value;
                     populate=populate+name+",";
-
+                    var checkboxvalidation = false;
                 }
             }
+            if (checkboxvalidation){
+            	alert("Please select atleast one User!");
+            
+            } else {confirmation();}
         }
-        function deluser()
-        {
-
-            var f=document.loginForm;
-            f.method="post";
-            f.action='delete_users?array='+populate;
-            f.submit();
-
+        
+                   
+        function confirmation(){
+        	
+        	
+            var result = confirm("Are you sure to delete?");
+            if(result){
+            	var f=document.loginForm;
+                f.method="post";
+                f.action='delete_users?array='+populate;
+                f.submit();
+            }
         }
 
     </script>
@@ -451,7 +460,7 @@
                                                             class="btn btn-primary" style="margin:5px">
                                                         Submit
                                                     </button>--%>
-                                                    <input type="button" id="del_btn" class="btn btn-primary" onclick="del(<%=count %>);deluser();" value="DeleteUser" style="margin:5px">
+                                                    <input type="button" id="del_btn" class="btn btn-primary" onclick="del(<%=count %>);" value="Delete User" style="margin:5px">
                                                     &nbsp;&nbsp;
                                                     <button type="button" id="sub_btn" class="btn btn-primary" onclick="servlet_call();" style="margin:-5px">Submit</button>
 

@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.LinkedHashMap"%>
+<%@page import="bean.*" %>
 <html lang="en">
 <head>
 
@@ -136,7 +137,7 @@
                 background-color: transparent;
                 border: 0px solid;
                 height: 20px;
-                width: 35%;
+                width: 150%;
                 color: black;
 
             }
@@ -171,6 +172,12 @@
             .active, .btn:hover {
                 color: white;
             }
+            
+            .example-two {
+            
+       		 border-radius: 10px;
+        	border: 3px solid #e3e3e3;
+    		}
 
 
     /* Style the active class, and buttons on mouse-over */
@@ -227,6 +234,9 @@
         else
             query1 = "select * from AppEmphazize_ApplicationInfo where prjname = '"+Project_Name+"' and appname='"+Application_Name+"' and complexity is not null";
         ResultSet rs1 = st1.executeQuery(query1);
+        ArrayList projectPriorities = new ArrayList();
+        projectPriorities = (ArrayList)session.getAttribute("proj_priorities");
+        
         String query2= "select count(prjname) As total from AppEmphazize_ApplicationInfo where prjname='"+Project_name+"' and complexity is not null";
         ResultSet rs2 = st2.executeQuery(query2);
         {
@@ -522,7 +532,7 @@
                                         <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                                             <div class="text-center bs-wizard-stepnum">Final</div>
                                             <div class="progress"><div class="progress-bar"></div></div>
-                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <a href="#" class="bs-wizard-dot example-two"></a>
                                             <div class="bs-wizard-info text-center"> </div>
                                         </div>
                                     </div>
@@ -578,10 +588,10 @@
                                                     <table class="table table-striped">
                                                         <thead>
 
-                                                        <th>Application Name</th>
-                                                        <th>Complexity</th>
-                                                        <th>Estimated Number of Screens</th>
-                                                        <th>Priorities</th>
+                                                        <th><center>Application Name</center></th>
+                                                        <th><center>Complexity</center></th>
+                                                        <th><center>Estimated Number of Screens</center></th>
+                                                        <th><center>Priorities</center></th>
 
                                                         </thead>
 
@@ -589,10 +599,8 @@
 
 
 
-                                                        <%int i=0; %>
-
-
-                                                        <%! LinkedHashMap<Integer,String> SettingPriority(ArrayList<String> complexity){
+                                                        <%!int i=0; 
+                                                    		LinkedHashMap<Integer,String> SettingPriority(ArrayList<String> complexity){
 
                                                             ArrayList<String> indexes=new ArrayList<String>();
                                                             ArrayList<String> priorities=new ArrayList<String>();
@@ -685,41 +693,31 @@
                                                                 x[j]=(String)priorityMap.get(j);
                                                             }
                                                             Arrays.sort(x);
-                                                            // System.out.println("the elements are");
-                                                            for(int j=0;j<appname.size();j++)
-                                                                //    System.out.print(x[j]);
-
-
-                                                        %>
-
-
-
-                                                        <%
+                                                            System.out.println("the elements are");
+                                                            Iterator itr=projectPriorities.iterator();
+                                                            int j=0;
+                                                    		while(itr.hasNext()){ 
+                                                    			ProjectComplexity c = (ProjectComplexity)itr.next();
+                                                    			
                                                             //  System.out.println("appname.size  "+appname.size());
-                                                            for(int k=0;k<appname.size();k++){
-                                                                for(int j=0;j<appname.size();j++)
-                                                                {
-                                                                    if(x[k].equals((String)priorityMap.get(j))){
-
+                                                            
                                                         %>
                                                         <tr>
 
                                                             <td class="edit_row" style="cursor:pointer" id="11">
            <span class="test">
-           <input type="text" class="act" id="project_name<%=j%>" name="project_name<%=j%>" value="<%=appname.get(j) %>" readonly="readonly"></span>
+           <input type="text" class="act" id="project_name<%=j%>" name="project_name<%=j%>" value="<%=c.getAppName() %>" readonly="readonly"></span>
                                                             </td>
-                                                            <td class="row_s" style="cursor:pointer" id="22"><span class="test"><input type="text" class="act" id="complexity<%=j%>" name="complexity<%=j%>" value="<%=complexity.get(j) %>" readonly="readonly"></span></td>
-                                                            <td class="row_s" style="cursor:pointer" id="22"><span class="test"><input type="text" class="act" id="est_scrn<%=j%>" name="est_scrn<%=j%>" value="<%=screen.get(j) %>" readonly="readonly"></span></td>
+                                                            <td class="row_s" style="cursor:pointer" id="22"><span class="test"><input type="text" class="act" id="complexity<%=j%>" name="complexity<%=j%>" value="<%=c.getComplexity() %>" readonly="readonly"></span></td>
+                                                            <td class="row_s" style="cursor:pointer" id="22"><span class="test"><input type="text" class="act" id="est_scrn<%=j%>" name="est_scrn<%=j%>" value="<%=c.getEst() %>" readonly="readonly"></span></td>
                                                             <td class="row_d" id="55">
 
-                                                                <span class="test"><input type="text"   class="priority"  name="priority<%=j %>" id="priority<%=j %>" value="<%=priorityMap.get(j) %>"></span>
+                                                                <span class="test"><input type="text"   class="priority"  name="priority<%=j %>" id="priority<%=j %>" value="<%=c.getPtext() %>"></span>
                                                             </td>
 
                                                             <%
-                                                                            break;
+                                                            		j++;
                                                                         }
-                                                                    }
-                                                                }
                                                             %>
                                                             <input type="text" id="appname_size" name="appname_size" style="display:none" value="<%=appname.size() %>"/>
 

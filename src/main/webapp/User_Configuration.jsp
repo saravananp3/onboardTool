@@ -246,5 +246,8 @@
         </div>
     </form>
 </div>
+<!-- ========== THEME JS ========== -->
+<script src="js/main.js"></script>
+
 </body>
 </html>

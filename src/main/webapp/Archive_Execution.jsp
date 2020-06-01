@@ -882,7 +882,8 @@
                         tboady_id.append(level1);
                     }
                     else {
-
+						//console.log('Testing : ',(data[i].comments == 'null' || data[i].comments == null || data[i].comments == undefined)? '':data[i].comments);
+						var cmt = (data[i].comments == 'null' || data[i].comments == null || data[i].comments == undefined)? '':data[i].comments;
                         var child="<tr class='child-2479' style='text-align:center;' data-tt-id='"+data[i].id+"'\n" +
                             "data-tt-parent-id='"+data[i].ref_id+"'>\n" +
                             "&nbsp;&nbsp;\n" +
@@ -909,7 +910,7 @@
                             "style='background-color:transparent;width:20%;'\n" +
                             "id='status"+i+"'/></td>\n" +
                             "<td><input type='text' id='cmnts"+i+"' name='cmnts"+i+"'\n" +
-                            "value='"+data[i].comments+"'/></td>\n" +
+                            "value='"+cmt+"'/></td>\n" +
                             "<td>\n" +"\n" +
                             "<i class='fa fa-plus' aria-hidden='true' id='myBtn"+i+"'\n" +
                             "onclick=\"popup(this.id);\"></i>\n" +

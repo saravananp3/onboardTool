@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=1,initial-scale=1,user-scalable=1"/>
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <title>Decomm Manager</title>
+    <title>Decom3Sixty</title>
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins');

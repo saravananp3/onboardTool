@@ -514,7 +514,7 @@
         }
         <%}%>
         if (ffname === "" || llname === "" || uuname === "" || SecurityQuestion == "" || SecurityAnswer == "")
-            window.alert("fill the mandatory fileds");
+            window.alert("Fill the mandatory fields");
         else {
             if ((email.includes("@")) && (email.includes(".com"))) {
                 var confirm = document.getElementById("reg_cemail").value;

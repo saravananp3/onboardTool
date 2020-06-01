@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<%@page import="java.util.Arrays" %>
-<%@page import="java.util.ArrayList" %>
-<%@page import="java.util.List" %>
-<%@page import="java.util.Map" %>
-<%@page import="java.util.LinkedHashMap" %>
+<%@page import="java.util.*" %>
+<%@page import="bean.*" %>
 <html lang="en">
 <head>
     <title>AppEmphasize Preview</title>
@@ -186,8 +183,45 @@
         Statement st2 = conn.createStatement();
         Statement st3 = conn.createStatement();
         ResultSet rs3 = st3.executeQuery(query3);
-        String query1 = "SELECT * from AppEmphazize_ApplicationInfo where prjname='" + name + "'";
+        String query1 = "SELECT * from AppEmphazize_ApplicationInfo where prjname='" + name + "' and complexity is not null";
         ResultSet rs1 = st1.executeQuery(query1);
+        
+        //Order Prjects based on Priority
+        	String appName = "";
+			String priorty = "";
+			String est = "";
+			String complex = "";
+			String ptext ="";
+			int pr=0;
+			ArrayList projectPriorities = new ArrayList();
+			while(rs1.next()) {
+				appName = rs1.getString("appname");
+				complex = rs1.getString("complexity");
+				est = rs1.getString("est_scrn");
+				if(complex.equals("High")) {
+					priorty="P1";
+					pr =1;
+				}
+				if(complex.equals("Medium to High")) {
+					priorty="P2";
+					pr =2;
+				}
+				if(complex.equals("Medium")) {
+					priorty="P3";
+					pr =3;
+				}
+				if(complex.equals("Low to Medium")) {
+					priorty="P4";
+					pr=4;
+				}
+				if(complex.equals("Low")) {
+					priorty="P5";
+					pr =5;
+				}
+				projectPriorities.add(new ProjectComplexity(appName, complex, est, pr, priorty));
+			}
+			Collections.sort(projectPriorities, new PriorityComparator());
+
         String query2 = "select count(prjname) As total from AppEmphazize_ApplicationInfo where prjname='" + name + "'";
         ResultSet rs2 = st2.executeQuery(query2);
         {
@@ -626,36 +660,26 @@
                                                     x[j] = (String) priorityMap.get(j);
                                                 }
                                                 Arrays.sort(x);
-                                                System.out.println("the elements are");
-                                                for (int j = 0; j < appname.size(); j++)
-                                                    System.out.print(x[j]);
 
-                                            %>
-
-
-                                            <%
-                                                for (int k = 0; k < appname.size(); k++) {
-                                                    for (int j = 0; j < appname.size(); j++) {
-                                                        if (x[k].equals((String) priorityMap.get(j))) {
+                                                Iterator itr=projectPriorities.iterator();
+                                                int j=0;
+                                        		while(itr.hasNext()){ 
+                                        			ProjectComplexity c = (ProjectComplexity)itr.next();
                                             %>
                                             <tr>
 
                                                 <td class="edit_row" style="cursor:pointer" id="11"><span
-                                                        class="test"><%=appname.get(j) %></span></td>
+                                                        class="test"><%=c.getAppName() %></span></td>
                                                 <td class="row_s" style="cursor:pointer" id="22"><span
-                                                        class="test"><%=complexity.get(j) %></span></td>
+                                                        class="test"><%=c.getComplexity() %></span></td>
                                                 <td class="row_s" style="cursor:pointer" id="22"><span
-                                                        class="test"><%=screen.get(j) %></span></td>
+                                                        class="test"><%=c.getEst() %></span></td>
                                                 <td class="row_d" id="55">
 
-                                                    <span class="test"><%=priorityMap.get(j) %></span>
+                                                    <span class="test"><%=c.getPtext() %></span>
                                                 </td>
 
                                                 <%
-                                                                break;
-                                                            }
-                                                        }
-
 
                                                     } %>
 

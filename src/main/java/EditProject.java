@@ -120,7 +120,10 @@ try
           preparedStmt3.setString (1, projectname);
           preparedStmt3.setString   (2, prjname);
           preparedStmt3.execute();
-          
+          //HttpSession details=request.getSession()
+          if (!(projectname) .equals (prjname)) {
+        	 details.setAttribute("nameofproject",projectname); 
+          }
         }
   catch (Exception e)
         {

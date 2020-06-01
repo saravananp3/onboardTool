@@ -65,24 +65,24 @@ public class Admin_Module_Send_Invites_Mail extends HttpServlet {
 
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.office365.com");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         Session session = Session.getDefaultInstance(properties,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         //return new PasswordAuthentication("vkarun202@gmail.com","arun's@kumar");
-                        return new PasswordAuthentication("shankarganesh.n@platform3solutions.com", "Shankarganesh94");
+                        return new PasswordAuthentication("decom3sixtytool@gmail.com", "Decom360");
                     }
                 });
 
         try {
             Message mimeMessage = new MimeMessage(session);
-            mimeMessage.setFrom(new InternetAddress("shankarganesh.n@platform3solutions.com"));
+            mimeMessage.setFrom(new InternetAddress("decom3sixtytool@gmail.com"));
 
             mimeMessage.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email));
-            mimeMessage.setSubject("Access Granted - Register into Decomm Manager");
-            mimeMessage.setText("Dear " + first_name + " " + last_name + ",\nWe are pleased to inform that you are granted access to Onboarding Tool as " + role_name + " for the Project " + project + ".\nPlease login to the below url for registering your account\n http://localhost:8080/Registration.jsp\n" + message);
+            mimeMessage.setSubject("Access Granted - Register into Decom3Sixty");
+            mimeMessage.setText("Dear " + first_name + " " + last_name + ",\nWe are pleased to inform that you are granted access to Decom3Sixty Tool as " + role_name + " for the Project " + project + ".\nPlease login to the below url for registering your account\n http://localhost:8087/onboardTool/Registration.jsp\n" + message);
             //mimeMessage.setText("Dear " + first_name + " " + last_name + ",\nWe are pleased to inform that you are granted access to Onboarding Tool as " + role_name + " for the Project " + project + ".\nPlease login to the below url for registering your account\n http://18.217.95.127:8080/Decomm_Manager/Registration.jsp\n" + message);
 
             Transport.send(mimeMessage);

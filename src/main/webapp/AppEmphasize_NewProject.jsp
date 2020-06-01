@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- 
- <link rel="stylesheet" href="styles/styles.css" type="text/css" />
-    
-     <!-- ========== COMMON STYLES ========== -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Project Information</title>    <!-- newly added code by parthiban -->
+<link rel="stylesheet" href="styles/styles.css" type="text/css" />
+<!-- ========== COMMON STYLES ========== -->
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
         <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen" >
+        
+        <!-- Date Picker -->
+        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
+         rel = "stylesheet"><!-- newly added code by parthiban -->
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script><!-- newly added code by parthiban -->
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script><!-- newly added code by parthiban -->
+      
+    
 
         <!-- ========== PAGE STYLES ========== -->
         <link rel="stylesheet" href="css/prism/prism.css" media="screen" >
@@ -20,25 +26,12 @@
         <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
         <link rel="stylesheet" href="css/icheck/skins/line/green.css" >
         <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css" >
-
+        <link rel="stylesheet" href="css/UserInfo/userinfo.css" > 
         <!-- ========== THEME CSS ========== -->
         <link rel="stylesheet" href="css/main.css" media="screen" >
 
         <!-- ========== MODERNIZR ========== -->
         <script src="js/modernizr/modernizr.min.js"></script>
-    <style type="text/css">
-            .breadcrumb-div {
-                background-color: #e7e7e7;
-                color: #010101; }
-                #nav_userid{
-             color:green;
-             }
-               
-              #nav_role{
-              color:blue;
-              }  
-        </style>
-
 
 </head>
 <body class="top-navbar-fixed">
@@ -80,10 +73,12 @@ var project_name = document.getElementsByName("projectname")[0].value;
 var description = document.getElementsByName("descr")[0].value;
 var application_no = document.getElementsByName("appno")[0].value;
 var ProjectStartdate = document.getElementsByName("Intdate")[0].value;
+var StartDate = new Date($("#Intdate").val());
 var PlanStartdate = document.getElementsByName("Plandate")[0].value;
 var ExecuteStartdate = document.getElementsByName("Execdate")[0].value;
 var HyperStartdate = document.getElementsByName("Hyperdate")[0].value;
 var ProjectEnddate = document.getElementsByName("Enddate")[0].value;
+var EndDate = new Date($("#Project_end_date").val());
 var flag=0;
 
 <%
@@ -132,6 +127,10 @@ else if (flag == 1)
 {
 alert("Project Already Exists");
 return false;
+}
+else if(StartDate.getTime() > EndDate.getTime())
+{
+ alert("Initiate Date should be lesser than Project End date");	
 }
 else
 {
@@ -236,55 +235,6 @@ var f=document.loginForm;
                                             <li ><a href="AppEmphasize_Preview.jsp"> <span>Review Page</span></a></li>
                                         </ul>
                                     </li>
-                                    <%--<li class="has-children">
-                                        <a href="AppEmphasize_EditProject.jsp"><i class="fa fa-file-text"></i> <span>Project Details</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="AppEmphasize_EditProject.jsp"> <span>Project Information</span></a></li>
-                                            <li><a href="AppEmphasize_Application.jsp"> <span>Application Details</span></a></li>
-                                        </ul>
-                                    </li>--%>
-
-
-                                    <%--<li class="has-children">
-                                        <a href="AppEmphasize_CostCalculation.jsp"><i class="fa fa-paint-brush"></i> <span>Application Prioritization</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity </span></a></li>
-                                        </ul>
-                                    </li>--%>
-
-                                    <%--<li>
-                                        <a href="AppEmphasize_PrioritizedApplications.jsp"><i class="fa fa-map-signs"></i> <span>Application Prioritized</span> </a>
-                                    </li>--%>
-
-                                    <%-- <li class="nav-header">
-                                         <a href='Applications.jsp'><span class="">Intake Module</span></a>
-                                     </li>
-
-                                     <li class="has-children">
-                                         <a href="Applications.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
-                                         <ul class="child-nav">
-                                             <li><a href="Applications.jsp"> <span>Application Information</span></a></li>
-                                             <li><a href="Applications.jsp"> <span>Legacy Retention Information</span></a></li>
-                                             <li><a href="Applications.jsp"> <span>Archive Data Management</span></a></li>
-                                             <li><a href="Applications.jsp"> <span>System Requirements</span></a></li>
-                                         </ul>
-                                     </li>
-
-                                     <li class="has-children">
-                                         <a href="Applications.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
-                                         <ul class="child-nav">
-                                             <li><a href="Applications.jsp"> <span>Application Data Information</span></a></li>
-                                             <li><a href="Applications.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
-                                             <li><a href="Applications.jsp"> <span>Technical Information</span></a></li>
-                                         </ul>
-                                     </li>
-                                     <li class="has-children">
-                                         <a href="Applications.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
-                                         <ul class="child-nav">
-                                             <li><a href="Applications.jsp"> <span>Screen/Report Requirements</span></a></li>
-                                             <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
-                                         </ul>
-                                     </li>--%>
                                     <li class="has-children">
                                         <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                         <ul class="child-nav">
@@ -401,7 +351,7 @@ var f=document.loginForm;
 		<div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label"><div class="required_fie">Initiate Start Date&nbsp;<span class="text-danger"></span></div></label>
-            <input placeholder="mm/dd/yyyy" id="Intdate" name="Intdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" required readonly/>
+            <input placeholder="mm/dd/yyyy" id="Intdate" name="Intdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text"  required/>
           </div>
         </div>  
         
@@ -410,28 +360,28 @@ var f=document.loginForm;
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required">Plan Start Date</label>
-            <input placeholder="mm/dd/yyyy" id="P_S_date" name="Plandate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" readonly>
+            <input placeholder="mm/dd/yyyy" id="P_S_date" name="Plandate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" >
           </div>
         </div>    
         
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required">Execution Start Date</label>
-            <input placeholder="mm/dd/yyyy" id="Exec_start_date" name="Execdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" readonly>
+            <input placeholder="mm/dd/yyyy" id="Exec_start_date" name="Execdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" >
           </div>
         </div>            
         
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required">Hypercare Start Date</label>
-            <input placeholder="mm/dd/yyyy" id="Hyper_care_date" name="Hyperdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" readonly>
+            <input placeholder="mm/dd/yyyy" id="Hyper_care_date" name="Hyperdate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" >
           </div>
         </div>  
         
         <div class="form-group row log-date">
           <div class="col-md-12" id="basicExample">
             <label class="control-label required"><div class="required_fie">Project End Date&nbsp;<span class="text-danger"></span></div></label>
-            <input placeholder="mm/dd/yyyy" id="Project_end_date" name="Enddate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" required readonly>
+            <input placeholder="mm/dd/yyyy" id="Project_end_date" name="Enddate" style = "background-color: white;" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" type="text" required >
           </div>
         </div>                 
                             
@@ -513,12 +463,7 @@ var f=document.loginForm;
        
         <!-- ========== PAGE JS FILES ========== -->
         <script src="js/prism/prism.js"></script>
-        <script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
-        <script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
-        <script type="text/javascript" src="js/date-picker/datepair.js"></script>
-        <script type="text/javascript" src="js/date-picker/moment.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
+        
 
         <!-- ========== THEME JS ========== -->
         
@@ -529,53 +474,19 @@ var f=document.loginForm;
 });
 </script>
 
+ <script>
+         $(function() {
+            $( "#Intdate" ).datepicker();
+            $( "#P_S_date" ).datepicker();
+            $( "#Exec_start_date" ).datepicker();
+            $( "#Hyper_care_date" ).datepicker();
+            $( "#Project_end_date" ).datepicker();
+          
+          
+         });
+      </script>
 
-        <!-- ========== THEME JS ========== -->
-        <script>
-            $(function($) {
-
-                // 1st  datepicker
-                $('#basicExample .time').timepicker({
-                'showDuration': true,
-                'timeFormat': 'g:ia'
-                });
-
-                $('#basicExample .date').datepicker({
-                'format': 'm/d/yyyy',
-                'autoclose': true
-                });
-
-                var basicExampleEl = document.getElementById('basicExample');
-                var datepair = new Datepair(basicExampleEl);
-
-                // 2nd  datepicker
-                $('#datetimepicker1').datetimepicker({
-                    debug: true
-                });
-
-                // 3rd  datepicker
-                $('#datetimepicker9').datetimepicker({
-                viewMode: 'years'
-                });
-
-                // 4th  datepicker
-                $('#datetimepicker10').datetimepicker({
-                viewMode: 'years',
-                format: 'MM/YYYY'
-                });
-
-                // 5th  datepicker
-                $('#datetimepicker11').datetimepicker({
-                daysOfWeekDisabled: [0, 6]
-                });
-
-                // 6th  datepicker
-                $('#datetimepicker12').datetimepicker({
-                    inline: true,
-                    sideBySide: true
-                });
-            });
-        </script>
+    
        
 
 </body>

@@ -44,6 +44,10 @@
             float:right;
 
         }
+        .example-two {
+        border-radius: 10px;
+        border: 3px solid #e3e3e3;
+        }
 
 
         .bs-wizard {margin-top: 40px;}
@@ -599,14 +603,14 @@
                     <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                     <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                 <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot"></a>
+                <a href="#" class="bs-wizard-dot example-two"></a>
                     <div class="bs-wizard-info text-center"></div>
                     </div>
 
                     <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                     <div class="text-center bs-wizard-stepnum">Final</div>
                     <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot"></a>
+                <a href="#" class="bs-wizard-dot example-two"></a>
                     <div class="bs-wizard-info text-center"> </div>
                     </div>
                     </div>
@@ -708,8 +712,8 @@
                 <tr>
 
                 <td class="edit_row" style="cursor:pointer" id="1"><%=rs1.getString("appname") %></td>
-                    <td class="row_s" style="cursor:pointer" id="2"><%=rs1.getString("complexity") %></td>
-                    <td class="row_t" style="cursor:pointer" id="3"><%=rs1.getString("est_scrn") %></td>
+                    <td class="row_s" style="cursor:pointer" id="2"><%=rs1.getString("complexity") ==(null)? "-" : rs1.getString("complexity") %></td>
+                    <td class="row_t" style="cursor:pointer" id="3"><%=rs1.getString("est_scrn") ==(null)? "-" : rs1.getString("est_scrn") %></td>
 
 
 
@@ -741,23 +745,57 @@
                         {
 
                             knt++;
-
+                            document.getElementById('no_of_app_complexity').value = "<%= rs8.getString("no_of_app_complexity") %>";
                             document.getElementById('complexity').value = "<%= rs8.getString("complexity") %>";
                             document.getElementById('curnt_users').value = "<%= rs8.getString("curnt_users") %>";
                             document.getElementById('data_size').value = "<%= rs8.getString("data_size") %>";
+                            document.getElementById('data_source').value = "<%= rs8.getString("data_source") %>";
                             document.getElementById('RO_DATE').value = "<%= rs8.getString("read_date") %>";
                             document.getElementById('SME_DATE').value = "<%= rs8.getString("sme_date") %>";
                             document.getElementById('est_scrn').value = "<%= rs8.getString("est_scrn") %>";
+                        
+                           
+                            
+                        var data_retained = "<%= rs8.getString("data_retained") ==(null)? "" : rs8.getString("data_retained") %>";
+                        var Decommission = "<%= rs8.getString("Decommission") ==(null)? "" : rs8.getString("Decommission") %>";
+                        
+                        <%-- console.log("Data Source : ","<%= rs8.getString("data_source")%>");
+                        console.log("Data Retained : ",data_retained);
+                        console.log("Decommission : ",Decommission); --%>
+                        
+                         if (data_retained == 'true'){
+                        	 $("#checkbox_id_yes").prop("checked", true);
+                        	 $(".Q2").show();
+                             $(".radio1").attr('type','radio');
+                             if (Decommission == 'true')
+                            	 $("#yes").prop("checked", true);
+                             else if (Decommission == 'false')
+                            	 $("#no").prop("checked", true);
+                         }
+                         else if(data_retained == 'false')
+                         {
+                        	 $("#checkbox_id_no").prop("checked", true); 
+                         }
+                         
                         }
                         <% }
                          %>
                         if(knt==0){
                             document.getElementById('complexity').value = " ";
+                            document.getElementById('no_of_app_complexity').value = " ";
                             document.getElementById('curnt_users').value = " ";
                             document.getElementById('data_size').value = " ";
+                            document.getElementById('data_source').value = " ";
                             document.getElementById('RO_DATE').value = " ";
                             document.getElementById('SME_DATE').value = " ";
                             document.getElementById('est_scrn').value = " ";
+                            
+                            $("#checkbox_id_yes").prop("checked", false);
+                            $("#checkbox_id_no").prop("checked", false); 
+                            $("#yes").prop("checked", false);
+                            $("#no").prop("checked", false);
+                            $(".Q2").hide();
+                            $(".radio1").attr('type','hidden');
                         }
                     }, false);
                 }
@@ -792,8 +830,18 @@
                 </select>
             </div>
 
-
-            <div class="form-group">
+<div class="form-group">
+                <label class="control-label" for="formInput26">Data Source&nbsp;<span class="text-danger">*</span></label>
+                <select id="data_source" class="form-control" name="data_source">
+                    <option></option>
+                    <option>Regular DB</option>
+                    <option>ERP</option>
+                    <option>Product Based</option>
+                </select>
+            </div>
+            
+            
+           <%--  <div class="form-group">
                 <label class="control-label" for="formInput664"><b>Data Source</b></label>
             </div>
             <div class="checkbox">
@@ -802,7 +850,7 @@
                 <label class="Data Source">     <input type="checkbox" name="data_source" value="erp" <%=rs.getString("data_source")%>>ERP</label><br />
                 <label class="Data Source"> <input type="checkbox" name="data_source" value="product" <%=rs.getString("data_source")%>>Product based
                 </label>  <br />
-            </div>
+            </div> --%>
 
 
             <div class="form-group">
@@ -843,32 +891,32 @@
                 <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" >
             </div>
             <div class="form-group">
-                <label class="control-label" for="formInput664">Does the data needs to be Retained?</label>
+                <label class="control-label" for="formInput664">Does the data needs to be Retained?&nbsp;<span class="text-danger">*</span></label>
                 <p>
                     <label class="radio-inline">
 
-                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_yes" value="true"/>
+                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_yes" value="true" required/>
                         <b>Yes</b>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_no" value="false"/>
+                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_no" value="false" required/>
                         <b>No</b>
                     </label>
                 </p>
             </div>
             <div class="form-group">
-                <label class="Q2" for="formInput664" hidden>If the data is retained , do we need to decommission the application?</label>
+                <label class="Q2" for="formInput664" hidden>If the data is retained , do we need to decommission the application?&nbsp;<span class="text-danger Q2">*</span></label>
 
                 <p class="Q2" hidden>
                     <label class="radio-inline">
 
-                        <input type="hidden" id="yes" name="Decommission" class="radio1" value="true"/>
+                        <input type="hidden" id="yes" name="Decommission" class="radio1" value="true" required/>
                         <b>Yes</b>
 
                     </label>
                     <label class="radio-inline">
 
-                        <input type="hidden" id="no" name="Decommission" class="radio1" value="false"/>
+                        <input type="hidden" id="no" name="Decommission" class="radio1" value="false" required/>
                         <b>  No </b>
                     </label>
                 </p>

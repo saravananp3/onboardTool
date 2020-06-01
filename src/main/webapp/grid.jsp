@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-    <title>Decomm Manager Modules List</title>
+    <title>Decom3Sixty Modules List</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,33 +24,36 @@
 
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
-
+    <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
 
     <script src="js/multiplepages.js"></script>
     <style>
+    #sitetitle1{
+
+        color:DodgerBlue;
+        text-align:center;
+        float:right;
+
+    }
+    
+    
         .left-sidebar {
             position: relative;
             height: 100%;
         }
 
-        .breadcrumb-div {
-            background-color: #e7e7e7;
-            color: #010101; }
-        #nav_userid{
-            color:green;
-        }
-
-        #nav_role{
-            color:blue;
-        }
-        div div #testDecom
+                div div #testDecom
         {
             pointer-events: none;
             /* for "disabled" effect */
             opacity: 0.5;
 
+        }
+        
+        .fa {
+        display: inline;
         }
     </style>
 </head>
@@ -132,11 +135,12 @@
                     </button>
                 </div>
                 <!-- /.navbar-header -->
-                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=rs.getString("projectname") %></a>
+               
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
                     <!-- /.nav navbar-nav -->
                     <ul class="nav navbar-nav navbar-right">
+                     <a class="navbar-brand" href="Project_List.jsp" id="sitetitle1">PROJECT NAME -<%=rs.getString("projectname") %></a>
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>

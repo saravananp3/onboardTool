@@ -320,7 +320,7 @@
 																	<div class="required_fie">Password</div>
 																</label>
 																<div class="col-sm-9">
-																	<input type="password" class="form-control"
+																	<input type="password" data-toggle="tooltip" title="Password must contain 8 or More Character, LowerCase & UpperCase!" class="form-control"
 																		   name="reg_pwd" id="reg_pwd">
 																</div>
 															</div>
@@ -507,10 +507,14 @@
 		var confirm = document.getElementById("reg_cemail").value;
 		var SecurityQuestion=$('#reg_qn').val();
 		var SecurityAnswer=$('#reg_ans').val();
+		var CheckUserName = true;
 		<% while(rs.next()){ %>
 		if (uuname == "<%=rs.getString(1)%>") {
-			window.alert("Project Name is already taken");
-			window.location.href = 'Registration.jsp';
+			
+			CheckUserName = false;
+			
+			/* window.alert("User Name is already taken");
+			window.location.href = 'Registration.jsp'; */
 		}
 		<%}%>
 		if (ffname === "" || llname === "" || uuname === "" || SecurityQuestion == "" || SecurityAnswer == "")
@@ -518,8 +522,34 @@
 		else {
 			if ((email.includes("@")) && (email.includes(".com"))) {
 				var confirm = document.getElementById("reg_cemail").value;
+				var lowerCaseLetters = /[a-z]/g;
+				var upperCaseLetters = /[A-Z]/g;
+				var checkpassword = true;
+				var numbers = /[0-9]/g;
+				var popuptext = "password should contain : \n";
+				
+				if(!pass.match(lowerCaseLetters)){
+					checkpassword = false;
+					popuptext += "At least one Lower Case Character\n";
+				}
+				
+				if(!pass.match(upperCaseLetters)){
+					checkpassword = false;
+					popuptext += "At least one Upper Case Character\n";
+				}
+				
+				if(!pass.match(numbers)) {  
+					checkpassword = false;
+					popuptext += "At least one Numeric Value\n";
+				}
+				if(!pass.length >= 8){
+					checkpassword = false;
+					popuptext += "At least eight or More Characters\n";
+				}
+				
+				if (CheckUserName == true){
 				if (email == confirm) {
-					if (pass.length > 8) {
+					if (checkpassword == true) {
 						if (pass == cpass) {
 							var f = document.loginForm;
 							f.method = "post";
@@ -528,12 +558,19 @@
 						} else
 							window.alert("password and confirm password are not same");
 					} else
-						window.alert("password must be greater than 8 letters");
+						window.alert(popuptext);
 				} else
 					window.alert("both emails are not same");
+			} else
+				window.alert("User Name is already taken");
 			} else
 				window.alert("Invalid Email");
 		}
 	}
+</script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>
 </html>
