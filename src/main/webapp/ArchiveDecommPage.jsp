@@ -138,12 +138,12 @@
             <div class="main-page">
                 <div class="flex-row">
                     <div class="card">
-                        <label id="para">Archive Intake</label>
+                        <label id="para">Archive Requirements</label>
                         <a href="Applications.jsp"><img id="img2" src="images/Arhive_intake.png" width="200px"
                                                         class="center"></a>
                     </div>
                     <div class="card">
-                        <label id="para1">Decomm Intake </label>
+                        <label id="para1">Decomm Requirements</label>
                         <a href="Decomm_Intake_Applications.jsp"><img id="img3" src="images/Decomm_intake.png"
                                                                       width="200px" class="center"></a>
                     </div>

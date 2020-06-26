@@ -1,27 +1,29 @@
-
+package Opportunity.Servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import Opportunity.Service.NewOpportunityCreateService;
 
 /**
- * Servlet implementation class setid
+ * Servlet implementation class NewOpportunitySave
  */
-@WebServlet("/setid")
-public class setid extends HttpServlet {
+@WebServlet("/NewOpportunitySave")
+public class NewOpportunitySave extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public setid() {
+    public NewOpportunitySave() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,20 +40,16 @@ public class setid extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-	    Date date = new Date();  
-	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Setid servlet-----[INFO]"); 
-	String id=request.getParameter("id");
-	String name=request.getParameter("name");
-	HttpSession session=request.getSession();
-	session.setAttribute("ID",id);
-	   HttpSession details=request.getSession(); 
-       details.setAttribute("SelectedOpportunity",name);
-       //System.out.println("setid");
-
-       
-	response.sendRedirect("OpportunityGrid.jsp");
+		System.out.println("Im in save servlet");
+		JsonParser parser = new JsonParser();
+		JsonElement tradeElement = parser.parse(request.getParameter("Json_Sample"));
+		JsonArray jsonArray = tradeElement.getAsJsonArray();
+		System.out.println("jsonArray : "+jsonArray);
+		NewOpportunityCreateService.NewOpportunityDetailsSave(jsonArray);
+		response.sendRedirect("/onboardTool/OpportunityList.jsp");
+		
 	}
 
 }

@@ -121,6 +121,24 @@ public class Login extends HttpServlet {
 		
 	}
 	
+	class OpportunityDetails
+	{
+		int seq_num;
+		String project,app_name,label,column,options,type,mandatory,value;
+		OpportunityDetails(int seq_num, String project, String app_name, String options, String label, String column, String type, String mandatory, String value)
+		{
+			this.seq_num = seq_num;
+			this.project = project;
+			this.app_name = app_name;
+			this.options = options;
+			this.label = label;
+			this.column = column;
+			this.type = type;
+			this.mandatory = mandatory;
+			this.value = value;
+		}
+	}
+	
 	int i=0,exec_det=0,dum=0,lm=0;
 	
 		
@@ -325,7 +343,55 @@ try
 		}
 		
 	}
-
+	
+	String NewOpportunityQuery = "select * from Opportunity_Info_Template_Details";
+	Statement statement = con.createStatement();
+	ResultSet rs_opportunity = statement.executeQuery(NewOpportunityQuery);
+	
+	if(!rs_opportunity.next())
+	{
+		OpportunityDetails opportunity[] = new OpportunityDetails[20];
+		opportunity[0] = new OpportunityDetails(1,"","","","APM ID", "apmid", "Text box","Yes", "");
+		opportunity[1] = new OpportunityDetails(2,"","","","APM Name", "appName", "Text box", "Yes", "");
+		opportunity[2] = new OpportunityDetails(3,"","","","Creation Date", "creation_date", "Datepicker", "No", "");
+		opportunity[3] = new OpportunityDetails(4,"","","","Request Source", "source", "Text box", "No", "");
+		opportunity[4] = new OpportunityDetails(5,"","","","Status", "status", "Text box", "No", "");
+		opportunity[5] = new OpportunityDetails(6,"","","Decommission,Archive,To be retrived","Request Type", "request_type", "Dropdown", "No", "");
+		opportunity[6] = new OpportunityDetails(7,"","","","Requester", "requester", "Text box", "No", "");
+		opportunity[7] = new OpportunityDetails(8,"","","","Application Descrpition", "appdesc", "Text box", "No", "");
+		opportunity[8] = new OpportunityDetails(9,"","","","Application Owner", "appowner", "Text box", "No", "");
+		opportunity[9] = new OpportunityDetails(10,"","","","Business Owner", "businessowner", "Text box", "No", "");
+		opportunity[10] = new OpportunityDetails(11,"","","","Development Owner/SME", "sme", "Text box", "No", "");
+		opportunity[11] = new OpportunityDetails(12,"","","","Billing Code", "billcode", "Text box", "No", "");
+		opportunity[12] = new OpportunityDetails(13,"","","","Buisness Segment", "buisnesssegment", "Text box", "No", "");
+		opportunity[13] = new OpportunityDetails(14,"","","","Buisness Unit", "buisnessunit", "Text box", "No", "");
+		opportunity[14] = new OpportunityDetails(15,"","","","Key Function", "keyfunction", "Text box", "No", "");
+		opportunity[15] = new OpportunityDetails(16,"","","","Program or Segment Contact", "pscontact", "Text box", "No", "");
+		opportunity[16] = new OpportunityDetails(17,"","","EMR System,ERP Data,Financial Data,HealthCare Data,HR Data,MR/HR Data,Other Data","Data Type", "date_type", "Dropdown", "No", "");
+		opportunity[17] = new OpportunityDetails(18,"","","","If Other Data", "if_other_data", "Text box", "No", "");
+		opportunity[18] = new OpportunityDetails(19,"","","","Please describe your needs for Archival and Decommission Service", "arcdecomm", "Text box", "No", "");
+		opportunity[19] = new OpportunityDetails(20,"","","","Desired Completion Date", "completion_date", "Datepicker", "No", "");
+		
+		for (int index = 0; index<opportunity.length; index++)
+		{
+			String Opportunity_InsertQuery = "insert into Opportunity_Info_Template_Details (seq_no, prj_name, app_name, options, label_name, column_name, type, mandatory, value)"
+										+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+				  PreparedStatement prestmt = con.prepareStatement(Opportunity_InsertQuery);
+		          prestmt.setInt(1, opportunity[index].seq_num);
+				  prestmt.setString(2, opportunity[index].project);
+				  prestmt.setString(3, opportunity[index].app_name);
+				  prestmt.setString(4, opportunity[index].options);
+				  prestmt.setString(5, opportunity[index].label);
+				  prestmt.setString(6, opportunity[index].column);
+				  prestmt.setString(7, opportunity[index].type);
+				  prestmt.setString(8, opportunity[index].mandatory);
+				  prestmt.setString(9, opportunity[index].value);
+				  
+				prestmt.execute();
+		
+		}
+	}
 
 	Statement st= con.createStatement(); 
 	ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");
@@ -342,7 +408,7 @@ try
 		details.setAttribute("intake","X");
 		details.setAttribute("archive_exec","X");
 
-	    String redirectURL = "Project_List.jsp";
+	    String redirectURL = "OpportunityList.jsp";
 
 	    response.sendRedirect(redirectURL);
 	}
@@ -376,7 +442,7 @@ try
 		
 		
 		
-			        String redirectURL = "Project_List.jsp";
+			        String redirectURL = "OpportunityList.jsp";
 		
 			        response.sendRedirect(redirectURL);
 		

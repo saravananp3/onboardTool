@@ -1,9 +1,6 @@
-
+package Opportunity.OpportunityList.Servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,17 +8,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+
+import Opportunity.OpportunityList.Service.OpportunityListService;
+
+
+
 /**
- * Servlet implementation class setid
+ * Servlet implementation class OpportunityListServlet
  */
-@WebServlet("/setid")
-public class setid extends HttpServlet {
+@WebServlet("/OpportunityListServlet")
+public class OpportunityListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public setid() {
+    public OpportunityListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,20 +42,16 @@ public class setid extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-	    Date date = new Date();  
-	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Setid servlet-----[INFO]"); 
-	String id=request.getParameter("id");
-	String name=request.getParameter("name");
-	HttpSession session=request.getSession();
-	session.setAttribute("ID",id);
-	   HttpSession details=request.getSession(); 
-       details.setAttribute("SelectedOpportunity",name);
-       //System.out.println("setid");
-
-       
-	response.sendRedirect("OpportunityGrid.jsp");
+		// TODO Auto-generated method stub
+		HttpSession details = request.getSession();
+        String Projects=(String)details.getAttribute("projects");
+       System.out.println("projects"+Projects);
+		JsonArray jsonArray = OpportunityListService.OpportunityListDetails(Projects);
+		System.out.println("JSON ARRAY"+jsonArray);
+		 String json = new Gson().toJson(jsonArray);
+	        response.setContentType("application/json");
+	        response.setCharacterEncoding("UTF-8");
+	        response.getWriter().write(json);
 	}
 
 }
