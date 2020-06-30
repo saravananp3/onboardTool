@@ -209,7 +209,7 @@
 															<div class="col-md-1">
 																<button type="button" class="btn btn-primary"
 																	style="padding-top: 5px; padding-left: 10px; float: left;"
-																	location.href='Project_List.jsp';">Back</button>
+																	onclick="location.href='OpportunityGrid.jsp';">Back</button>
 															</div>
 															<div class="col-md-4 dropup"
 																style="padding-top: 10px; padding-right: 10px; float: right;">

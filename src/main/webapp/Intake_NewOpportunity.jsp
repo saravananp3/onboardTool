@@ -160,7 +160,7 @@ HttpSession details = request.getSession();
 	              
 	                      <div class="col-md-12">
                 <div class="col-md-1">
-	               <button type="button" class="btn btn-primary" style="padding-top:5px; padding-left:10px; float: left; onclick="location.href='OpportunityList.jsp';">Back</button>
+	               <button type="button" class="btn btn-primary" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='OpportunityList.jsp';">Back</button>
 	           </div>
 	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right;">
 
