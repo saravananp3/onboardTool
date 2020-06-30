@@ -31,7 +31,7 @@
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/IntakeDetails/IntakeOpportunity/IntakeOpportunity.js"></script>
 </head>
-<body class="top-navbar-fixed" onload="myFunction()">
+<body class="top-navbar-fixed">
 	<form class="form-signin" name="loginForm" method="post">
 		<div class="main-wrapper">
 			<!-- ========== TOP NAVBAR ========== -->
@@ -203,7 +203,7 @@
 												name="collapse">
 												<div class="panel-body">
 													<div id="inputFields">
-														
+														<input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/>
 													</div>
 													<div class="col-md-12">
 															<div class="col-md-1">
@@ -231,7 +231,7 @@
 																		style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
 																</ul>
 																<button type="submit" class="btn btn-primary"
-																	id="create">Create</button>
+																	id="create">Save</button>
 																<button type="button" class="btn btn-primary pull-right"
 																	id="editpopup_btn" data-toggle="modal"
 																	data-target="#EditPopUp" style="display: none;">Edit
@@ -240,6 +240,7 @@
 																	id="deletepopup_btn" data-toggle="modal"
 																	data-target="#DeletePopUp" style="display: none;">Delete
 																	PopUp</button>
+																	<button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
 															</div>
 														</div>
 													<!--  <div class="form-group">
@@ -306,7 +307,7 @@
 										</div>
 										<div id="collapse2" class="panel-collapse collapse">
 											<div class="panel-body">
-												<div class="form-group">
+												<!-- <div class="form-group">
 													<label class="control-label" for="oppourtunity">
 														APM ID </label> <input type="text" class="form-control" size="35"
 														id="apmid" name="apmid" placeholder="Enter App ID">
@@ -425,7 +426,7 @@
 													<button type="button"
 														class="btn btn-primary btn-lg pull-right" id="create">Submit</button>
 													&nbsp;
-												</div>
+												</div> -->
 
 
 											</div>
@@ -788,7 +789,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary"
+					<button type="button" class="btn btn-primary submitDisable"
 						onclick="validateForm()">Add Template</button>
 				</div>
 			</div>
@@ -980,13 +981,17 @@
       </div>
     </div>
   </div>
-</div>       
-       
+</div>      <!-- Date picker --> 
+       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
+         rel = "stylesheet"><!-- newly added code by parthiban -->
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="js/Opportunity/AddFeatureFunctionality.js"></script>
 	<script src="js/IntakeDetails/IntakeOpportunity/AddFeatureAjaxCall.js"></script>
 	<script src="js/IntakeDetails/IntakeOpportunity/EditDeleteToggle.js"></script>
 	<script src="js/IntakeDetails/IntakeOpportunity/EditDeleteAjaxCall.js"></script>
 	<script src="js/IntakeDetails/IntakeOpportunity/TemplateFeature.js"></script>
+	<script src="js/IntakeDetails/IntakeOpportunity/IntakeDetailsOpportunitySave.js"></script>
 	<!-- <script>
 		function myFunction() {
 			let today = new Date().toISOString().substr(0, 10);
@@ -1023,6 +1028,6 @@
 
 	<!-- ========== THEME JS ========== -->
 	<script src="js/main.js"></script>
-	
+	<script id ="scripttag"></script>
 	
 </html>

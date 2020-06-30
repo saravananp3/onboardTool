@@ -113,7 +113,8 @@ public class NewOpportunityAddServlet extends HttpServlet {
             {
             	//DecommIntakeServices.DecommIntakeAddOperation(projectname, applicationname, label_name, column_name, mandatory, type, NumberofInputfields, option);
             //DecommManageExecuteInfoService.DecommManagserAddOperationService(projectname, applicationname, label_name, column_name, mandatory, type, NumberofInputfields, option);
-            NewOpportunityService.NewOpportunityAddOperationService(applicationname, label_name, column_name, mandatory, type, NumberofInputfields, option);
+            int seq_num = NewOpportunityService.NewOpportunityAddOperationService(applicationname, label_name, column_name, mandatory, type, NumberofInputfields, option);
+            jsonobject.addProperty("Seq_Num", seq_num);
             }
 
         }

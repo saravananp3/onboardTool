@@ -113,7 +113,8 @@ public class IntakeOpportunityAddServlet extends HttpServlet {
             {
             	//DecommIntakeServices.DecommIntakeAddOperation(projectname, applicationname, label_name, column_name, mandatory, type, NumberofInputfields, option);
             //DecommManageExecuteInfoService.DecommManagserAddOperationService(projectname, applicationname, label_name, column_name, mandatory, type, NumberofInputfields, option);
-            IntakeOpportunityService.IntakeOpportunityAddOperationService(ID,label_name, column_name, mandatory, type, NumberofInputfields, option);
+            int seq_num =IntakeOpportunityService.IntakeOpportunityAddOperationService(ID,label_name, column_name, mandatory, type, NumberofInputfields, option);
+            jsonobject.addProperty("Seq_Num",seq_num);
             }
 
         }

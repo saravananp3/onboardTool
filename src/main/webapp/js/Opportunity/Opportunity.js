@@ -223,9 +223,11 @@ $(document).on('click', '.deletepopup', function () {
 });
 
 });
-function validateForm(){
+function validateForm(e){
 	/*try
 	{*/
+	$(".submitDisable").attr("disabled", true);
+	 $(this).prop('disabled', true);
 	$(".hidepencil").hide();
 	$(".hidedelete").hide();
 	var selected_seq = [];
@@ -388,8 +390,29 @@ function validateForm(){
             "});<\/script>";
         //$('#scripttag').html("");
         $('#scripttag').append(script);
-        	
+        for(var i = 0; i<$(".InputField").length;i++)
+    	{
+    	  var exist = $(".InputField").eq(i).find("input").length;
+    	  if($(".InputField").eq(i).find("input").length)
+    	 {
+    		var name = $(".InputField").eq(i).find("input").attr("name");
+    		 if(name.startsWith("OpportunityAddInfo"))
+    		 {
+    			 $(".InputField").eq(i).find("input").attr("name","OpportunityAddInfo"+(i+1));
+    		 }
+         } 
+    	else if($(".InputField").eq(i).find("select").length)
+         {
+    		var name = $(".InputField").eq(i).find("select").attr("name");
+   		   if(name.startsWith("OpportunityAddInfo"))
+   		   {
+   			 $(".InputField").eq(i).find("select").attr("name","OpportunityAddInfo"+(i+1));
+   		   }
+    	 }
+    		
+    	}
         	$("#temp_close_id").click();
+        	$(".submitDisable").attr("disabled", false);
         },
         error: function (e) {
             console.log(e);

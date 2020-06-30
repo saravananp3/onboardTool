@@ -384,7 +384,7 @@ HttpSession details = request.getSession();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="validateForm()">Add Template</button>
+        <button type="button" class="btn btn-primary submitDisable" onclick="validateForm()">Add Template</button>
       </div>
     </div>
   </div>

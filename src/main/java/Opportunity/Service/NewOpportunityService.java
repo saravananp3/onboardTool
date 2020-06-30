@@ -74,8 +74,9 @@ public class NewOpportunityService {
 		return jsonArray;
 	}
 
-	public static void NewOpportunityAddOperationService(String applicationname, String label_name, String column_name,
+	public static int NewOpportunityAddOperationService(String applicationname, String label_name, String column_name,
 			String mandatory, String type, int NumberofInputfields, String options) {
+		int max_seq_num = 1;
 		try {
 			DBconnection dBconnection = new DBconnection();
 			Connection connection = (Connection) dBconnection.getConnection();
@@ -84,7 +85,7 @@ public class NewOpportunityService {
 			ResultSet rs = st.executeQuery(select_query);
 			String name = "OpportunityAddInfo";
 			String randomNumber = OpportunityBean.getRecord_Number();
-			int max_seq_num = 1;
+			
 			if (rs.next()) {
 				String max_seqnum = "select max(seq_no) from Opportunity_Info_Details;";
 				Statement st1 = connection.createStatement();
@@ -114,6 +115,7 @@ public class NewOpportunityService {
 		} catch (Exception e) {
 			System.out.println("Exception---[info]------" + e);
 		}
+		return max_seq_num;
 	}
 
 	public static String RandomIdGenerator() {
@@ -351,7 +353,8 @@ public class NewOpportunityService {
 				preparedStatement1.setString(10, arr_value_split.get(j));
 				preparedStatement1.execute();
 			}
-
+			st2.close();
+			OrderingColumnNameBySeq();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Exception---->>>" + e);
@@ -423,7 +426,7 @@ public class NewOpportunityService {
 	    	  }
 	    	  else
 	    	  {
-	    		 NewOportunityDeleteOperationService(rs2.getInt(1)-1);
+	    		 NewOportunityDeleteOperationService(rs5.getInt(1)-1);
 	    	  }
 	        del_seq_num+=rs5.getInt(1)+",";
 	        }
@@ -488,7 +491,8 @@ public class NewOpportunityService {
       {
     	   ArrayList<Integer> seq_no = new ArrayList<Integer>(); 
     	   ArrayList<String> temp_column_name = new ArrayList<String>(); 
-    	   ArrayList<String> selected_temp_column_name = new ArrayList<String>(); DBconnection dBconnection = new DBconnection();
+    	   ArrayList<String> selected_temp_column_name = new ArrayList<String>(); 
+    	   DBconnection dBconnection = new DBconnection();
     	   Connection connection = (Connection) dBconnection.getConnection(); 
     	   String SelectedColumnQuery ="select * from opportunity_info_template_details;"; 
     	   Statement st1 =connection.createStatement(); 
@@ -509,16 +513,22 @@ public class NewOpportunityService {
     	   while(rs2.next())
     	   {
     		   String column_name = rs2.getString("column_name");
-    		   if(!selected_temp_column_name.contains(column_name))
+    		   if(!selected_temp_column_name.contains(column_name)&&!column_name.startsWith("OpportunityAddInfo"))
     		   {
-    			    if(check_first_occurance)   
-    			    {
-    		        NewOportunityDeleteOperationService(rs2.getInt(1)); 
-    			    check_first_occurance = false;
-    			    }else
-    			    {
-        		        NewOportunityDeleteOperationService(rs2.getInt(1)-1); 
-    			    }
+    			   String Seq_Num_Query  = "Select * from Opportunity_Info_Details where column_name ='"+column_name+"';";
+    			   Statement st3 = connection.createStatement();
+    			   ResultSet rs3 = st3.executeQuery(Seq_Num_Query);
+    			   int seq_num = 0;
+    			   if(rs3.next())
+    			   {
+    				seq_num = rs3.getInt(1);   
+    			   }
+    			   NewOportunityDeleteOperationService(seq_num);
+					/*
+					 * if(check_first_occurance) { NewOportunityDeleteOperationService(seq);
+					 * check_first_occurance = false; }else {
+					 * NewOportunityDeleteOperationService(rs2.getInt(1)-1); }
+					 */
     			    	
     			    System.out.println("DELETING COLUMN "+rs2.getString("column_name"));
                     delete_seq_num += rs2.getInt(1)+",";
@@ -600,4 +610,38 @@ public class NewOpportunityService {
       }
        return jsonArray;
       }
-}
+      public static void OrderingColumnNameBySeq()
+      {
+    	  try {  
+    		  DBconnection dBconnection = new DBconnection();
+       	      Connection connection = (Connection) dBconnection.getConnection(); 
+       	      String SelectQuery ="Select * from Opportunity_Info_Details order by seq_no";
+       	      Statement st = connection.createStatement();
+       	      ResultSet rs = st.executeQuery(SelectQuery);
+       	      String startStr = "OpportunityAddInfo";
+       	      while(rs.next())
+       	      {
+       	    	  if(rs.getString("column_name").startsWith("OpportunityAddInfo"))
+       	    	  {
+       	    		  String seqnum = rs.getString("seq_no");
+       	    		  String column_name = rs.getString("column_name");
+       	    		  String append_seq_num=column_name.substring(startStr.length(),column_name.length());
+       	    		  if(!seqnum.equals(append_seq_num))
+       	    		  {
+       	    			String updateColumnName = startStr+seqnum;
+       	    			String UpdateQuery = "Update Opportunity_Info_Details set column_name ='"+updateColumnName+"' where seq_no='"+seqnum+"';";  
+       	    			Statement st1 = connection.createStatement();
+       	       	        st1.executeUpdate(UpdateQuery);
+       	    		  }
+       	    	  }
+       	      }
+            rs.close();
+            st.close();
+    	  }
+    	  catch(Exception e)
+    	  {
+    		  e.printStackTrace();
+    		  System.out.println("Exception-----------[info]-------"+e);
+    	  }
+      }
+ }

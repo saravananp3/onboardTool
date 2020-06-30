@@ -41,7 +41,8 @@ $('#submit').click(function() {
 	            success: function (data) {
 	                var required = "";
 	                console.log("data add---->",data);
-	                var num=parseInt($('.editpopup').length)+1;
+	                var num=data.Seq_Num;
+	               // console.log("lentgth")
 	                var required_field = "";
 	                if (data.Mandatory == "Yes"){
 	                    required_field = "class = 'required_fie'";

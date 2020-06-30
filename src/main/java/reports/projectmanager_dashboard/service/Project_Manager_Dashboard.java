@@ -3,7 +3,6 @@ package reports.projectmanager_dashboard.service;
 import ArchiveExecution.Service.Weekday;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import javafx.application.Application;
 import onboard.DBconnection;
 import org.apache.log4j.Logger;
 

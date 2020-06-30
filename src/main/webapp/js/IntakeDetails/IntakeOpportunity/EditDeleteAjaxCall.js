@@ -38,9 +38,20 @@
     $('#submit2').click(function(){
     	
     	var Seq_Num=$('#sequence1').val();
+    	var check = DeleteAjax(Seq_Num);
+    	if(check)
+    	{
+    		$("#OpportunityListbtn").click();
+    	}
+    	
+    });
+    
+    function DeleteAjax(Seq_Num)
+    {
     	$.ajax({
             url: "IntakeOpportunityDeleteServlet",
             type: 'POST',
+            async: false,
             data : {seq_num:Seq_Num},
             dataType: "json",
             success: function (data) {
@@ -49,11 +60,12 @@
             	$(".InputField").eq(index).remove();
             	$("#delete_close").click();
             	$('.hidedelete').hide();
+            	//$("#OpportunityListbtn").click();
             },
             error: function (e) {
                 console.log(e);
             }
         });
-      	
-    });
+    	return true;
+    }
     

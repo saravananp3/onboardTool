@@ -11,6 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import Opportunity.OpportunityBean;
+import Opportunity.Service.NewOpportunityCreateService;
 import onboard.DBconnection;
 
 public class IntakeOpportunityService {
@@ -50,9 +51,9 @@ public class IntakeOpportunityService {
 		}
 		return jsonArray;
 	}
-	public static void IntakeOpportunityAddOperationService(String id,String label_name, String column_name, String mandatory, String type, int NumberofInputfields, String options )
+	public static int IntakeOpportunityAddOperationService(String id,String label_name, String column_name, String mandatory, String type, int NumberofInputfields, String options )
 	{
-
+		int max_seq_num = 1;
 			try {
 				DBconnection dBconnection = new DBconnection();
 				Connection connection = (Connection) dBconnection.getConnection();
@@ -60,7 +61,7 @@ public class IntakeOpportunityService {
 				Statement st = connection.createStatement();
 				ResultSet rs = st.executeQuery(select_query);
 				String name = "OpportunityAddInfo";
-				int max_seq_num = 1;
+				
 				if (rs.next()) {
 					String max_seqnum = "select max(seq_no) from Opportunity_Info where Id = '"+id+"' order by seq_no;";
 					Statement st1 = connection.createStatement();
@@ -90,6 +91,7 @@ public class IntakeOpportunityService {
 			} catch (Exception e) {
 				System.out.println("Exception---[info]------" + e);
 			}
+			return max_seq_num;
 	}
 	
 	public static JsonObject IntakeOpportunityEditService(String label_name, int sequencenumber,String id) {
@@ -220,6 +222,8 @@ public class IntakeOpportunityService {
 				preparedStatement1.setString(10, arr_value_split.get(j));
 				preparedStatement1.execute();
 			}
+			
+			OrderingColumnNameBySeq(Id,"Opportunity_Info");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -231,65 +235,112 @@ public class IntakeOpportunityService {
 	      try
 	      {
 	    	   ArrayList<Integer> seq_no = new ArrayList<Integer>(); 
+	    	   
 	    	   ArrayList<String> temp_column_name = new ArrayList<String>(); 
+	    	   
 	    	   ArrayList<String> selected_temp_column_name = new ArrayList<String>(); DBconnection dBconnection = new DBconnection();
+	    	   
 	    	   Connection connection = (Connection) dBconnection.getConnection(); 
+	    	   
+	    	   //Storing template fields column name in temp_column_name
+	    	   
 	    	   String SelectedColumnQuery ="select * from opportunity_info_template_details;"; 
+	    	   
 	    	   Statement st1 =connection.createStatement(); 
+	    	   
 	    	   ResultSet rs1 =st1.executeQuery(SelectedColumnQuery); 
+	    	   
 	    	   while(rs1.next()) {
-	    		temp_column_name.add(rs1.getString("column_name")); 
-	    		}
-	    	   for(int k=0;k<selected_index.length;k++) {
-	    	   selected_temp_column_name.add(temp_column_name.get(selected_index[k]-1)); 
+	    		
+	    		   temp_column_name.add(rs1.getString("column_name")); 
+	    		
 	    	   }
+	    	   
+	    	   //Storing the selected temp column name in selected_temp_column_name
+	    	   
+	    	   for(int k=0;k<selected_index.length;k++) {
+	    	   
+	    		   selected_temp_column_name.add(temp_column_name.get(selected_index[k]-1)); 
+	    	   
+	    	   }
+	    	   
 	    	   String delete_seq_num = ""; 
-	    	   String delete_column_name ="";
+	    	   
+	    	   String delete_column_name = "";
+	    	   
+	    	   //
+	    	   
 	    	   String CheckQuery = "select * from opportunity_info where id='"+id+"' order by seq_no";
+	    	   
 	    	   Statement st2 = connection.createStatement();
+	    	   
 	    	   ResultSet rs2 = st2.executeQuery(CheckQuery);
+	    	   
 	    	   boolean check_first_occurance = true;
 	    	   
 	    	   while(rs2.next())
 	    	   {
 	    		   String column_name = rs2.getString("column_name");
-	    		   if(!selected_temp_column_name.contains(column_name))
+	    		   if(!selected_temp_column_name.contains(column_name)&&!column_name.startsWith("OpportunityAddInfo"))
 	    		   {
-	    			    if(check_first_occurance)   
-	    			    {
-	    			    	IntakeOpportunityDeleteService(rs2.getInt(1),id); 
-	    			    check_first_occurance = false;
-	    			    }else
-	    			    {
-	    			    	IntakeOpportunityDeleteService(rs2.getInt(1)-1,id); 
-	    			    }
-	    			    	
-	    			    System.out.println("DELETING COLUMN "+rs2.getString("column_name"));
+	    			 String Seq_Num_Query = "Select * from Opportunity_Info where id = '"+id+"' and column_name = '"+column_name+"';";
+	    			 Statement st3 = connection.createStatement();
+	    			 ResultSet rs3 = st3.executeQuery(Seq_Num_Query);
+	    			 int seq_num = 0;
+	    			 if(rs3.next())
+	    			 {
+	    				 seq_num =rs3.getInt(1);
+	    			 }
+	    			 IntakeOpportunityDeleteService(seq_num,id);
+					/*
+					 * if(check_first_occurance) { IntakeOpportunityDeleteService(rs2.getInt(1),id);
+					 * check_first_occurance = false; }else {
+					 * IntakeOpportunityDeleteService(rs2.getInt(1)-1,id); }
+					 * 
+					 */	    			    System.out.println("DELETING COLUMN "+rs2.getString("column_name"));
 	                    delete_seq_num += rs2.getInt(1)+",";
 	                    delete_column_name +=rs2.getString("column_name")+",";
 	    		   }
 	    	   }
+	    	   
 	    	   if(delete_seq_num.contains(","))
-	    	   delete_seq_num = delete_seq_num.substring(0,delete_seq_num.length()-1);
+	    	   
+	    		   delete_seq_num = delete_seq_num.substring(0,delete_seq_num.length()-1);
+	    	   
 	    	   if(delete_column_name.contains(","))
-	        	   delete_column_name = delete_column_name.substring(0,delete_column_name.length()-1);
+	        	
+	    		   delete_column_name = delete_column_name.substring(0,delete_column_name.length()-1);
 
 			   jsonArray.add(delete_column_name);
-	    	   String MaxSeqnoQuery = "select max(seq_no) from opportunity_info where Id = '"+id+"' order by seq_no"; 
-				  Statement st = connection.createStatement(); 
-				  ResultSet rs = st.executeQuery(MaxSeqnoQuery); 
-				  int max_seq = 1; 
-				  if(rs.next()) { 
-					  max_seq = rs.getInt(1); 
-					  } 
-	    	   for(String col_name : selected_temp_column_name)
-	    	   {
-	    		   String SelectedQuery = "select * from opportunity_info where id='"+id+"' and column_name ='"+col_name+"';";
-	    		   Statement st3 = connection.createStatement();
-	        	   ResultSet rs3 = st3.executeQuery(SelectedQuery);
-	        	   if(!rs3.next())
-	        	   {
-	        		   
+	    	   
+			   String MaxSeqnoQuery = "select max(seq_no) from opportunity_info where Id = '"+id+"' order by seq_no"; 
+				
+			   Statement st = connection.createStatement(); 
+				
+			   ResultSet rs = st.executeQuery(MaxSeqnoQuery); 
+				
+			   int max_seq = 1; 
+				
+			   if(rs.next()) { 
+				
+				   max_seq = rs.getInt(1); 
+					
+			   } 
+	    	   
+			   for(String col_name : selected_temp_column_name)
+			   {
+	    		
+				   String SelectedQuery = "select * from opportunity_info where id='"+id+"' and column_name ='"+col_name+"';";
+	    		   
+				   Statement st3 = connection.createStatement();
+	        	   
+				   ResultSet rs3 = st3.executeQuery(SelectedQuery);
+	        	   
+				   if(!rs3.next())
+	        	   
+				   {
+	        		
+					   
 	        			  String SelectDetailsQuery = "select * from opportunity_info_template_details where column_name='"+col_name+"';";
 	        			  Statement st4 = connection.createStatement();
 	        		      ResultSet rs4 = st3.executeQuery(SelectDetailsQuery);
@@ -344,5 +395,141 @@ public class IntakeOpportunityService {
 	      }
 	       return jsonArray;
 	      }
+	public static JsonObject intakeDetailsOpportunityValidation(String AppName,JsonArray jsonArray,boolean checkMandatory,String APMID,String id)
+	{
+		JsonObject jsonObject = new JsonObject();
+		try
+		{
+			boolean checkAPMID = false;
+			boolean checkAppName = false;
+			boolean CheckAPP = false,Checkapmid = false;
+			DBconnection dBconnection = new DBconnection();
+			Connection connection = (Connection) dBconnection.getConnection();
+			String SelectQuery = "SELECT * FROM OPPORTUNITY_INFO WHERE ID = '"+id+"' and  column_name = 'apmid' and value = '"+APMID+"';";
+			Statement st2 = connection.createStatement();
+			ResultSet rs2 = st2.executeQuery(SelectQuery);
+			if(rs2.next())
+			{
+				Checkapmid =true;
+			}
+			String SelectQuery1 = "SELECT * FROM OPPORTUNITY_INFO WHERE ID = '"+id+"' and  column_name = 'appName' and value = '"+AppName+"';";
+			Statement st3 = connection.createStatement();
+			ResultSet rs3 = st2.executeQuery(SelectQuery1);
+			if(rs3.next())
+			{
+				CheckAPP = true;
+			}
+			if(!Checkapmid)
+			{
+			String CheckQueryAmpid = "SELECT * FROM OPPORTUNITY_INFO WHERE column_name='apmid' and value='"+APMID+"';";
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(CheckQueryAmpid);
+			if(rs.next())
+			{
+				checkAPMID = true;
+			}
+			}
+			if(!CheckAPP)
+			{
+			String CheckQueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName';";
+			Statement st1 = connection.createStatement();
+			ResultSet rs1 = st1.executeQuery(CheckQueryAppName);
+			while(rs1.next()) {
+				if(rs1.getString("value").equals(AppName))
+				{
+					checkAppName =true;
+				}
+			}
+			}
+			jsonObject.addProperty("APMID_VALIDATION", checkAPMID);
+			jsonObject.addProperty("AppName_VALIDATION",checkAppName);
+			if(checkMandatory==true && checkAPMID == false && checkAppName == false)
+			{
+				IntakeOpportunityService.IntakeDetailsOpportunityDetailsSave(jsonArray,id);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("Exception----------[info]--------"+e);
+		}
+		return jsonObject;
+	}
+	
+	
+	public static void IntakeDetailsOpportunityDetailsSave(JsonArray jsonArr,String id) {
+		 try {
+			 
+			 DBconnection con = new DBconnection();
+			 Connection connection = (Connection) con.getConnection();
+			 
+			  for(int i=0;i<jsonArr.size();i++)
+			 {
+			JsonObject jsonObj = jsonArr.get(i).getAsJsonObject();
+			String name = jsonObj.get("Name").getAsString();
+			String value = jsonObj.get("Value").getAsString();
+			String SelectQuery = "select * from opportunity_info where id ='"+id+"' and column_name='"+name+"';";
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(SelectQuery);
+			if(rs.next())
+			{
+				String UpdateQuery = "update opportunity_info set value='"+value+"' where column_name ='"+name+"'";
+				Statement st1 = connection.createStatement();
+                st1.executeUpdate(UpdateQuery);
+                
+			}
+			 }
+			  connection.close();
+      
+		 }
+		 catch(Exception e) {
+			 e.printStackTrace();
+			System.out.println("Exception----------[info]--------"+e);
+		 }
+	}
+
+	 public static void OrderingColumnNameBySeq(String ID,String table)
+     {
+   	  String table1="";
+   	  String table2 ="";
+   	  if(table.equals("Opportunity_Info"))
+   	  {
+   		  table1 ="Opportunity_Info where id='"+ID+"'";
+   	  }else if(table.equals("Opportunity_Info_Details"))
+   	  {
+   		  table1 = "Opportunity_Info_Details";
+   	  }
+   		  try {
+   		  
+   		  DBconnection dBconnection = new DBconnection();
+      	      Connection connection = (Connection) dBconnection.getConnection(); 
+      	      String SelectQuery ="Select * from "+table1+"order by seq_no";
+      	      Statement st = connection.createStatement();
+      	      ResultSet rs = st.executeQuery(SelectQuery);
+      	      String startStr = "OpportunityAddInfo";
+      	      while(rs.next())
+      	      {
+      	    	  if(rs.getString("column_name").startsWith("OpportunityAddInfo"))
+      	    	  {
+      	    		  String seqnum = rs.getString("seq_no");
+      	    		  String column_name = rs.getString("column_name");
+      	    		  String append_seq_num=column_name.substring(startStr.length(),column_name.length());
+      	    		  if(!seqnum.equals(append_seq_num))
+      	    		  {
+      	    			String updateColumnName = startStr+seqnum;
+      	    			String UpdateQuery = "Update "+table+" set column_name ='"+updateColumnName+"' where id = '"+ID+"' and seq_no='"+seqnum+"';";  
+      	    			Statement st1 = connection.createStatement();
+      	       	        st1.executeUpdate(UpdateQuery);
+      	    		  }
+      	    	  }
+      	      }
+   
+   	  }
+   	  catch(Exception e)
+   	  {
+   		  e.printStackTrace();
+   		  System.out.println("Exception-----------[info]-------"+e);
+   	  }
+     }
 
 }

@@ -20,7 +20,6 @@ $("#create").click(function(e)
     			   console.log("input console",$(this).find("input").length);
     			   if($(this).find("input").length)
     				   {
-    				   
     				     var val1 =$(this).find("input").val();
     				     if (val1 == ""){
     				    	 checkMandatory = false;
@@ -66,7 +65,7 @@ $("#create").click(function(e)
     				     nameAttr.push(name1);
     				     console.log("name in input : ",name1);
     		        		}
-    		        		}
+    		        }
     			   else if($(this).find("select").length)
     				   {
     				     var name2 =$(this).find("select").attr("name");
@@ -152,10 +151,11 @@ function AjaxCallUpdate(AppName,JsonString,checkMandatory,CheckAPPID,checkAppnam
 	e.preventDefault();
 	var JsonObject=[];
 	var checkAjax =false;
+	var APMID =$("#apmid").val();
 	$.ajax({
-        url: "NewOpportunityCreateValidationAndUpdate",
+        url: "IntakeDetailsOpportunityValidationAndUpdate",
         type: 'POST',
-        data : {AppName:AppName, JsonString : JsonString, checkMandatory : checkMandatory},
+        data : {AppName:AppName, JsonString : JsonString, checkMandatory : checkMandatory, APMID : APMID},
         async: false,
         dataType: "json",
         success: function (data) {

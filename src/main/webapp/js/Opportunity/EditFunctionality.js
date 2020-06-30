@@ -41,6 +41,7 @@
     	$.ajax({
             url: "NewOpportunityDeleteOperation",
             type: 'POST',
+            async: false,
             data : {seq_num:Seq_Num},
             dataType: "json",
             success: function (data) {
@@ -49,6 +50,27 @@
             	$(".InputField").eq(index).remove();
             	$("#delete_close").click();
             	$('.hidedelete').hide();
+            	for(var i = index; i<$(".InputField").length;i++)
+            	{
+            	  var exist = $(".InputField").eq(i).find("input").length;
+            	  if($(".InputField").eq(i).find("input").length)
+            	 {
+            		var name = $(".InputField").eq(i).find("input").attr("name");
+            		 if(name.startsWith("OpportunityAddInfo"))
+            		 {
+            			 $(".InputField").eq(i).find("input").attr("name","OpportunityAddInfo"+(i+1));
+            		 }
+                 } 
+            	else if($(".InputField").eq(i).find("select").length)
+                 {
+            		var name = $(".InputField").eq(i).find("select").attr("name");
+           		   if(name.startsWith("OpportunityAddInfo"))
+           		   {
+           			 $(".InputField").eq(i).find("select").attr("name","OpportunityAddInfo"+(i+1));
+           		   }
+            	 }
+            		
+            	}
             },
             error: function (e) {
                 console.log(e);
