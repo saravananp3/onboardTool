@@ -466,7 +466,7 @@
 										class="Template_Field" value="" disabled="disabled" checked="">
 								</div>
 								<div class="col-md-2">
-									<label class="control-label" for="opportunity">APM ID</label>
+									<label class="control-label" for="opportunity">Application Id</label>
 								</div>
 								<div class="col-md-6">
 									<input type="text" class="form-control" size="35"
@@ -480,7 +480,7 @@
 										class="Template_Field" value="" disabled="disabled" checked="">
 								</div>
 								<div class="col-md-2">
-									<label class="control-label" for="opportunity">APM Name</label>
+									<label class="control-label" for="opportunity">Application Name</label>
 								</div>
 								<div class="col-md-6">
 									<input type="text" class="form-control" size="35"
@@ -537,7 +537,7 @@
 							<div class="row">
 								<div class="col-md-1">
 									<input type="checkbox" id="request_type_temp"
-										name="request_type_temp" class="Template_Field" value="">
+										name="request_type_temp" class="Template_Field" value="" disabled="disabled" checked =""> 
 								</div>
 								<div class="col-md-2">
 									<label class="control-label" for="opportunity">Request
@@ -559,7 +559,7 @@
 							<div class="row">
 								<div class="col-md-1">
 									<input type="checkbox" id="requester_temp"
-										name="requester_temp" class="Template_Field" value="">
+										name="requester_temp" class="Template_Field" value="" disabled="disabled" checked ="">
 								</div>
 								<div class="col-md-2">
 									<label class="control-label" for="opportunity">Requester</label>
@@ -588,7 +588,7 @@
 							<div class="row">
 								<div class="col-md-1">
 									<input type="checkbox" id="appowner_temp" name="appowner_temp"
-										class="Template_Field" value="">
+										class="Template_Field" value="" disabled="disabled" checked ="">
 								</div>
 								<div class="col-md-2">
 									<label class="control-label" for="opportunity">Application
@@ -618,7 +618,7 @@
 							<div class="row">
 								<div class="col-md-1">
 									<input type="checkbox" id="sme_temp" name="sme_temp"
-										class="Template_Field" value="" >
+										class="Template_Field" value="" disabled="disabled" checked ="">
 								</div>
 								<div class="col-md-2">
 									<label class="control-label" for="opportunity">Development

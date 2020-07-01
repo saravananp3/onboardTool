@@ -39,8 +39,9 @@ public class NewOpportunityService {
 			Statement statementforcheck = connection.createStatement();
 			ResultSet Resultset = statementforcheck.executeQuery(query);
 			if (Resultset.next()) {
-				String value = Resultset.getString("column_name").equals("apmid") ? randomNumber
-						: Resultset.getString("value");
+				//String value = Resultset.getString("column_name").equals("apmid") ? randomNumber
+					//	: Resultset.getString("value");
+				String value = Resultset.getString("value");
 				JsonObject jsonObject1 = new JsonObject();
 				jsonObject1.addProperty("seq_num", Resultset.getString("seq_no"));
 				jsonObject1.addProperty("Project_Name", Resultset.getString("prj_name"));
@@ -53,8 +54,9 @@ public class NewOpportunityService {
 				jsonObject1.addProperty("Value", value);
 				jsonArray.add(jsonObject1);
 				while (Resultset.next()) {
-					String value1 = Resultset.getString("column_name").equals("apmid") ? randomNumber
-							: Resultset.getString("value");
+					//String value1 = Resultset.getString("column_name").equals("apmid") ? randomNumber
+						//	: Resultset.getString("value");
+					String value1 = Resultset.getString("value");
 					JsonObject jsonObject2 = new JsonObject();
 					jsonObject2.addProperty("seq_num", Resultset.getString("seq_no"));
 					jsonObject2.addProperty("Project_Name", Resultset.getString("prj_name"));

@@ -351,17 +351,17 @@ try
 	if(!rs_opportunity.next())
 	{
 		OpportunityDetails opportunity[] = new OpportunityDetails[20];
-		opportunity[0] = new OpportunityDetails(1,"","","","APM ID", "apmid", "Text box","Yes", "");
-		opportunity[1] = new OpportunityDetails(2,"","","","APM Name", "appName", "Text box", "Yes", "");
+		opportunity[0] = new OpportunityDetails(1,"","","","Application Id", "apmid", "Text box","Yes", "");
+		opportunity[1] = new OpportunityDetails(2,"","","","Application Name", "appName", "Text box", "Yes", "");
 		opportunity[2] = new OpportunityDetails(3,"","","","Creation Date", "creation_date", "Datepicker", "No", "");
 		opportunity[3] = new OpportunityDetails(4,"","","","Request Source", "source", "Text box", "No", "");
 		opportunity[4] = new OpportunityDetails(5,"","","","Status", "status", "Text box", "No", "");
-		opportunity[5] = new OpportunityDetails(6,"","","Decommission,Archive,To be retrived","Request Type", "request_type", "Dropdown", "No", "");
-		opportunity[6] = new OpportunityDetails(7,"","","","Requester", "requester", "Text box", "No", "");
+		opportunity[5] = new OpportunityDetails(6,"","","Decommission,Archive,To be retrived","Request Type", "request_type", "Dropdown", "Yes", "");
+		opportunity[6] = new OpportunityDetails(7,"","","","Requester", "requester", "Text box", "Yes", "");
 		opportunity[7] = new OpportunityDetails(8,"","","","Application Descrpition", "appdesc", "Text box", "No", "");
-		opportunity[8] = new OpportunityDetails(9,"","","","Application Owner", "appowner", "Text box", "No", "");
+		opportunity[8] = new OpportunityDetails(9,"","","","Application Owner", "appowner", "Text box", "Yes", "");
 		opportunity[9] = new OpportunityDetails(10,"","","","Business Owner", "businessowner", "Text box", "No", "");
-		opportunity[10] = new OpportunityDetails(11,"","","","Development Owner/SME", "sme", "Text box", "No", "");
+		opportunity[10] = new OpportunityDetails(11,"","","","Development Owner/SME", "sme", "Text box", "Yes", "");
 		opportunity[11] = new OpportunityDetails(12,"","","","Billing Code", "billcode", "Text box", "No", "");
 		opportunity[12] = new OpportunityDetails(13,"","","","Buisness Segment", "buisnesssegment", "Text box", "No", "");
 		opportunity[13] = new OpportunityDetails(14,"","","","Buisness Unit", "buisnessunit", "Text box", "No", "");

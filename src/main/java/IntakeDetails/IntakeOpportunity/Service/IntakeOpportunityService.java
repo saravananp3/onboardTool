@@ -473,7 +473,7 @@ public class IntakeOpportunityService {
 			ResultSet rs = st.executeQuery(SelectQuery);
 			if(rs.next())
 			{
-				String UpdateQuery = "update opportunity_info set value='"+value+"' where column_name ='"+name+"'";
+				String UpdateQuery = "update opportunity_info set value='"+value+"' where id ='"+id+"' and column_name ='"+name+"'";
 				Statement st1 = connection.createStatement();
                 st1.executeUpdate(UpdateQuery);
                 

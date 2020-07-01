@@ -24,18 +24,18 @@ $(document).ready(function(){
                 var Type=value.Type;
                 var ColumnName=value.ColumnName;
                 var LabelName=value.LabelName;
-                var delete_edit_icon="<div class='editpopup deletepopup' style='display:none;'></div>";
+                var delete_icon="<div class='deletepopup' style='display:none;'></div>";
                 var Value=value.Value;
-                if(LabelName=="APM ID")
+                /*if(LabelName=="APM ID")
             	{
                 	$("#Record_No").val(Value);
-            	}
+            	}*/
                 //var options=data[i].options.split(',');
                 if(value.Mandatory=="No")
                 {
                     manadatory="";
                     disable_property = "";
-                    delete_edit_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>";
+                    delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
                 }
                 if(Type=="Text box")
                 {
@@ -43,7 +43,7 @@ $(document).ready(function(){
                 	if(seq_num<=16)
                 		{
                     var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
-                        "<label class='control-label' for='opportunity'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>\n" +
+                        "<label class='control-label' for='opportunity'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
                         "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                         "</div>";
                     $('#inputFields').append(inputtext);
@@ -68,7 +68,7 @@ $(document).ready(function(){
                 	if(seq_num<=16)
                 		{
                     var inputdate="<div class='form-group InputField' id='"+ColumnName+"_Row'>" +
-                        "<label class='control-label' for= 'opportunity'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>\n" +
+                        "<label class='control-label' for= 'opportunity'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
                         "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";
                     $('#inputFields').append(inputdate);
@@ -92,7 +92,7 @@ $(document).ready(function(){
                 	var template_check=""; 
                 	if(seq_num<=16)
                 		{
-                    var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'opportunity'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>"+
+                    var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'opportunity'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
                         "<select style = 'width:100%;' class ='form-control' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
@@ -135,7 +135,7 @@ $(document).ready(function(){
                 else if(Type=="Check box")
                 {
                     var inputcheck= "<div class='form-group'>"+
-                        "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                        "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -156,7 +156,7 @@ $(document).ready(function(){
                 else if(Type=="Radio box")
                 {
                     var inputdrop= "<div class='form-group'>"+
-                        "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
+                        "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -175,7 +175,7 @@ $(document).ready(function(){
                 else if(Type=="file")
                 {
                     inputfile="<div class='form-group'>\n" +
-                        "<label class='control-label' for='formInput198'><div class='required_fie'>"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
+                        "<label class='control-label' for='formInput198'><div class='required_fie'>"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
                         "<input type='file' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'>\n" +
                         "</div>";
                     $('#inputFields').append(inputfile);
@@ -184,7 +184,7 @@ $(document).ready(function(){
                 else if(Type=="Text area")
                 {
                     var inputtext="<div class='form-group'>\n" +
-                        "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                        "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
                         /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
                          "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                         "</div>";

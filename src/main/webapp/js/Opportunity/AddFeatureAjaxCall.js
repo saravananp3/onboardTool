@@ -44,8 +44,10 @@ $('#submit').click(function() {
 	                var num=data.Seq_Num;
 	                //cosole.log("length of editpopup class",$('.editpopup').length);
 	                var required_field = "";
+                    var delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";	
 	                if (data.Mandatory == "Yes"){
 	                    required_field = "class = 'required_fie'";
+	                    delete_icon="<div class='deletepopup' style='display:none;'></div>";
 	                }
 	                if (data.LabelDuplicateCheck == "true")
 	                {
@@ -60,7 +62,7 @@ $('#submit').click(function() {
 	                else if(data.Type=="Text box")
 	               {
 	                    var inputtext="<div class='form-group InputField'>"+
-	                        "<label class='control-label' for='opportunity'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+	                        "<label class='control-label' for='opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
 	                        "<input type='text' class='form-control' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
 	                        "</div>";
 	                    
@@ -69,7 +71,7 @@ $('#submit').click(function() {
 	                else if(data.Type=="Datepicker")
 	                {
 	                    var inputdate="<div class='form-group InputField'>"+
-	                        "<label class='control-label' for= 'opportuity'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+	                        "<label class='control-label' for= 'opportuity'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
 	                        "<input type='text' class='form-control datepicker1' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
 	                        "</div>";
 	                    $('#inputFields').append(inputdate);
@@ -83,7 +85,7 @@ $('#submit').click(function() {
 	                {
 	                    var input="";
 	                    input+= "<div class='form-group InputField'>"+
-	                        "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+	                        "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");
@@ -100,7 +102,7 @@ $('#submit').click(function() {
 	                {
 	                    var input="";
 	                    input+= "<div class='form-group InputField'>"+
-	                        "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+	                        "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");
@@ -115,7 +117,7 @@ $('#submit').click(function() {
 	                else if(data.Type=="Dropdown")
 	                {
 	                    var select="";
-	                    select+= "<div class='form-group InputField'><label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+	                    select+= "<div class='form-group InputField'><label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
 	                        "<select style = 'width:100%;' name = "+data.ColumnName+num+">";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
