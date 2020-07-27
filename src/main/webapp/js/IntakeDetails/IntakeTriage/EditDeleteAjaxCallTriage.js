@@ -52,7 +52,7 @@
     $('#TriageDeleteSubmit').click(function(){
     	
     	var Seq_Num=$('#sequenceTriageDelete').val();
-    	var check = DeleteAjax(Seq_Num);
+    	var check = TriageDeleteAjax(Seq_Num);
     	if(check)
     	{
     		$("#OpportunityListbtn").click();
@@ -60,7 +60,7 @@
     	
     });
     
-    function DeleteAjax(Seq_Num)
+    function TriageDeleteAjax(Seq_Num)
     {
     	$.ajax({
             url: "IntakeTriageDeleteServlet",

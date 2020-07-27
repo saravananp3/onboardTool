@@ -38,11 +38,11 @@
     $('#TriSummDeleteSubmit').click(function(){
     	
     	var Seq_Num=$('#TriSummSequence').val();
-    	var check = DeleteAjax(Seq_Num);
+    	var check = TriageSummaryDeleteAjax(Seq_Num);
     	
     });
     
-    function DeleteAjax(Seq_Num)
+    function TriageSummaryDeleteAjax(Seq_Num)
     {
     	$.ajax({
             url: "IntakeTriageSummaryDeleteFeature",
