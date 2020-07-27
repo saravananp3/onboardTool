@@ -111,7 +111,7 @@ public class Archive_execution_db_update {
          {
              String myDriver = "org.gjt.mm.mysql.Driver";
 
-             String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
+             String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
 
              Class.forName(myDriver);
 
@@ -196,7 +196,7 @@ public class Archive_execution_db_update {
     	{
     	String myDriver = "org.gjt.mm.mysql.Driver";
 
-        String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
+        String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
 
         Class.forName(myDriver);
 

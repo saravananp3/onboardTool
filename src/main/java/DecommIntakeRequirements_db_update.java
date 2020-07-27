@@ -65,7 +65,7 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
         String applicationname = request.getParameter("appname");
         try {
             final String myDriver = "org.gjt.mm.mysql.Driver";
-            final String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
+            final String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
 
             Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
             DBconnection dBconnection = new DBconnection();

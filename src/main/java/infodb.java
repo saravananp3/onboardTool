@@ -47,7 +47,7 @@ public class infodb extends HttpServlet {
 		
 	         
 	        final String myDriver = "org.gjt.mm.mysql.Driver";
-	          final String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
+	          final String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
 	       
 	        try
 	        {

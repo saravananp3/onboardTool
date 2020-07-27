@@ -245,7 +245,7 @@
     String info=(String)details.getAttribute("admin");
     String prjname=(String)details.getAttribute("nameofproject");
     Class.forName("com.mysql.jdbc.Driver");
-    java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding","root","password123");
+    java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123");
     String query="select * from Admin_UserDetails";
     Statement s=conn.createStatement();
     ResultSet rs=s.executeQuery(query);

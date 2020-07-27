@@ -1,4 +1,3 @@
-
 import java.sql.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -139,13 +138,49 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	class Triage
+	{
+		int seq_num;
+		String project,app_name,label,column,options,type,mandatory,value;
+		Triage(int seq_num, String project, String app_name, String options, String label, String column, String type, String mandatory, String value)
+		{
+			this.seq_num = seq_num;
+			this.project = project;
+			this.app_name = app_name;
+			this.options = options;
+			this.label = label;
+			this.column = column;
+			this.type = type;
+			this.mandatory = mandatory;
+			this.value = value;
+		}
+	}
+	
+	class TriageSummary
+	{
+		int seq_num;
+		String project,app_name,label,column,options,type,mandatory,value;
+		TriageSummary(int seq_num, String project, String app_name, String options, String label, String column, String type, String mandatory, String value)
+		{
+			this.seq_num = seq_num;
+			this.project = project;
+			this.app_name = app_name;
+			this.options = options;
+			this.label = label;
+			this.column = column;
+			this.type = type;
+			this.mandatory = mandatory;
+			this.value = value;
+		}
+	}
+	
 	int i=0,exec_det=0,dum=0,lm=0;
 	
 		
 try
 {
 	Class.forName("com.mysql.jdbc.Driver"); 
-	java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding","root","password123");
+	java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123");
 
 	
 	
@@ -392,7 +427,111 @@ try
 		
 		}
 	}
+	
+	String Triage_Query = "select * from Triage_Info_Template_Details";
+	Statement statement1 = con.createStatement();
+	ResultSet rs_Triage = statement1.executeQuery(Triage_Query);
+	
+	
+	if(!rs_Triage.next())
+	{
+		Triage Details[] = new Triage[41];
+		Details[0] = new Triage(1,"","","","Application Id", "appId", "Text box","No", "");
+		Details[1] = new Triage(2,"","","","Application Name", "applicationName", "Text box", "No", "");
+		Details[2] = new Triage(3,"","","","Application Description", "applicationDesc", "Text box", "No", "");
+		Details[3] = new Triage(4,"","","","Application Owner", "applicationOwner", "Text box", "No", "");
+		Details[4] = new Triage(5,"","","","Business Owner", "busOwner", "Text box", "No", "");
+		Details[5] = new Triage(6,"","","","Developement Owner or SME", "devOwner", "Text box", "No", "");
+		Details[6] = new Triage(7,"","","","Billing Code", "billing_Code", "Text box", "No", "");
+		Details[7] = new Triage(8,"","","","Business Segement", "business_Segment", "Text box", "No", "");
+		Details[8] = new Triage(9,"","","","Business Unit", "busUnit", "Text box", "No", "");
+		Details[9] = new Triage(10,"","","","Program or Segement Contact", "segment_contact", "Text box", "No", "");
+		Details[10] = new Triage(11,"","","","Logical Grouping", "logic_Grp", "Text box", "No", "");
+		Details[11] = new Triage(12,"","","","Preliminary CBA", "Preliminary_CBA", "Text box", "No", "");
+		Details[12] = new Triage(13,"","","Yes,No","Funding Available", "funding_Avl", "Dropdown", "No", "");
+		Details[13] = new Triage(14,"","","","Program Funder", "prgFunder", "Text box", "No", "");
+		Details[14] = new Triage(15,"","","","Project Portfolio Information", "PrjInfo", "Text box", "No", "");
+		Details[15] = new Triage(16,"","","","Project Decomission Date", "Decom_date", "Datepicker", "No", "");
+		Details[16] = new Triage(17,"","","Yes,No","Infrastructure Impact","infrastructure_impact", "Dropdown", "No", "");
+		Details[17] = new Triage(18,"","","","Number of Infrastructure Components", "nmbr_of_infrastructure_components", "Text box", "No", "");
+		Details[18] = new Triage(19,"","","Yes,No","Archival Solution", "archival_Sol", "Dropdown", "No", "");
+		Details[19] = new Triage(20,"","","","Status/Notes", "Status", "Text box", "No", "");
+		Details[20] = new Triage(21,"","","","Decom Analyst", "decomAnalyst", "Text box", "No", "");
+		Details[21] = new Triage(22,"",""," Replace,Retire,Combine,Other","Rationalization Type", "rationalization_type", "Dropdown", "No", "");
+		Details[22] = new Triage(23,"","","","If other, please describe ", "If_other_please_describe", "HiddenText", "Yes", "");
+		Details[23] = new Triage(24,"","","Mainframe,Distibuted - Unix,Windows,hybrid,Others","Application platform", "appPlatfrm", "Dropdown", "Yes", "");
+		Details[24] = new Triage(25,"","","","If Other,please describe ", "If_Other_describe", "HiddenText", "Yes", "");
+		Details[25] = new Triage(26,"","","Yes,No","Is application and Data hosted externally?", "app_and_data_hosted", "Radio box", "No", "");
+		Details[26] = new Triage(27,"","","","If yes,vendor?Location?", "vendor", "Text box", "No", "");
+		Details[27] = new Triage(28,"","","Yes,No","Are there any compliance or legal drivers determining retirement by a certain date ", "compliance", "Radio box", "No", "");
+		Details[28] = new Triage(29,"","","","If yes above,please describe", "describe", "Text box", "No", "");
+		Details[29] = new Triage(30,"","","Yes,No","Are there any business or financial drivers determining retirement by a certain date?Eg.,contract expiring", "Financialdate", "Radio box", "No", "");
+		Details[30] = new Triage(31,"","","","If Yes above,please describe", "plsdescribe", "Text box", "No", "");
+		Details[31] = new Triage(32,"","","Yes,No","Are there any technical drivers determining retirement by a certain date?.(Eg server end of life ,support,software,end of life,support)", "TechincalDeterminingdate", "Radio box", "No", "");
+		Details[32] = new Triage(33,"","","","If Yes above, please describe ", "pls_describe", "Text box", "No", "");
+		Details[33] = new Triage(34,"","","","Please describe business need/use for Archival", "useforArchival", "Text box", "No", "");
+		Details[34] = new Triage(35,"","","","Please describe at high-level your applications data ", "highlevelapplicationdata", "Text box", "No", "");
+		Details[35] = new Triage(36,"","","","Idea Number", "ideaNmbr", "Text box", "No", "");
+		Details[36] = new Triage(37,"","","","Demand Number ", "DemandNmbr", "Text box", "No", "");
+		Details[37] = new Triage(38,"","","","Project Number ", "PrjNmbr", "Text box", "No", "");
+		Details[38] = new Triage(39,"","","","Project Task Number ", "PrjctTaskNmbr", "Text box", "No", "");
+		Details[39] = new Triage(40,"","","Yes,No","Big Rock ", "Bigrock", "Radio box", "No", "");
+		Details[40] = new Triage(41,"","","","Denial Reason ", "DenialRsn", "Text box", "No", "");
+		int j=1;
+		for (int index = 0; index<Details.length; index++)
+		{
+			String Triage_InsertQuery = "insert into Triage_Info_Template_Details (seq_no, prj_name, app_name, options, label_name, column_name, type, mandatory, value)"
+										+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+				  PreparedStatement prestmt = con.prepareStatement(Triage_InsertQuery);
+		          prestmt.setInt(1, Details[index].seq_num);
+				  prestmt.setString(2, Details[index].project);
+				  prestmt.setString(3, Details[index].app_name);
+				  prestmt.setString(4, Details[index].options);
+				  prestmt.setString(5, Details[index].label);
+				  prestmt.setString(6, Details[index].column);
+				  prestmt.setString(7, Details[index].type);
+				  prestmt.setString(8, Details[index].mandatory);
+				  prestmt.setString(9, Details[index].value);
+		          prestmt.execute();
+		}
+	}
+	
+	String TriageSummary = "select * from Triage_Summary_Info_Template_Details";
+	Statement stTriSumm = con.createStatement();
+	ResultSet rsTriSumm = stTriSumm.executeQuery(TriageSummary);
+	
+	if(!rsTriSumm.next())
+	{
+		TriageSummary Trisumm[] = new TriageSummary[6];
+		Trisumm[0] = new TriageSummary(1,"","","","Idea Number", "ideaNumber", "Text box", "No", "");
+		Trisumm[1] = new TriageSummary(2,"","","","Demand Number ", "DemandNumber", "Text box", "No", "");
+		Trisumm[2] = new TriageSummary(3,"","","","Project Number ", "PrjNumber", "Text box", "No", "");
+		Trisumm[3] = new TriageSummary(4,"","","","Project Task Number ", "PrjctTaskNumber", "Text box", "No", "");
+		Trisumm[4] = new TriageSummary(5,"","","Yes,No","Big Rock ", "BigrockSumm", "Radio box", "No", "");
+		Trisumm[5] = new TriageSummary(6,"","","","Denial Reason ", "DenialReason", "Text box", "No", "");
+		
+		for (int index = 0; index<Trisumm.length; index++)
+		{
+			String Triage_Summary_InsertQuery = "insert into Triage_Summary_Info_Template_Details (seq_no, prj_name, app_name, options, label_name, column_name, type, mandatory, value)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+			PreparedStatement prestmt1 = con.prepareStatement(Triage_Summary_InsertQuery);
+			prestmt1.setInt(1, Trisumm[index].seq_num);
+			prestmt1.setString(2, Trisumm[index].project);
+			prestmt1.setString(3, Trisumm[index].app_name);
+			prestmt1.setString(4, Trisumm[index].options);
+			prestmt1.setString(5, Trisumm[index].label);
+			prestmt1.setString(6, Trisumm[index].column);
+			prestmt1.setString(7, Trisumm[index].type);
+			prestmt1.setString(8, Trisumm[index].mandatory);
+			prestmt1.setString(9, Trisumm[index].value);
+			prestmt1.execute();
+		
+		}
+	}
+	
+	
 	Statement st= con.createStatement(); 
 	ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");
 
@@ -482,6 +621,7 @@ try
    
 				logger.info("Logged In"); 
 }
+	
 catch( Exception e)
 {
 	  System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");

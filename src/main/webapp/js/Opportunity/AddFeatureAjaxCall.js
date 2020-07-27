@@ -91,7 +91,7 @@ $('#submit').click(function() {
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++){
 
-	                        input+= "<label class = 'control-label' for = 'opportunity'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
+	                        input+= "<label class = 'control-label' for = 'opportunity'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+data.ColumnName+num+"'/>&nbsp;&nbsp;"+
 	                            option[i]+"</label>";
 
 	                    }
@@ -108,7 +108,7 @@ $('#submit').click(function() {
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++) {
 
-	                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='" + data.ColumnName+num+"'/>" +
+	                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='" + data.ColumnName+num+"'/>&nbsp;&nbsp;" +
 	                            option[i] + "</label>";
 	                    }
 	                    input +="</div>";
@@ -130,6 +130,12 @@ $('#submit').click(function() {
 	                }
 	                $('#label').val("");
 	                $('#idname').val("");
+	                $('#types').val("Text box");
+	                $('#number').val("");
+	                $('.hidefield').hide();
+	                $('#radio_number').val("");
+	                $('#drop_number').val("");
+	                $('#mandatory').val("Yes");
 	              $("#add_close_id").click();
 	             
 	            },

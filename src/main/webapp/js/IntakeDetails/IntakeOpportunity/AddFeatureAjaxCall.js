@@ -26,7 +26,7 @@ $('#submit').click(function() {
 	            num = $('#drop_number').val();
 	            var length = $('.dropclass').length;
 	            for (var i = 1; i <= length; i++) {
-	                var drplabel = $('#drp_label' + i).val();
+	                var drplabel = $('#drp_label'+i).val();
 	                options += drplabel + ",";
 	            }
 
@@ -89,7 +89,7 @@ $('#submit').click(function() {
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++){
 
-	                        input+= "<label class = 'control-label' for = 'opportunity'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+data.ColumnName+num+"'/>"+
+	                        input+= "<label class = 'control-label' for = 'opportunity'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+data.ColumnName+num+"'/>&nbsp;&nbsp;"+
 	                            option[i]+"</label>";
 
 	                    }
@@ -106,7 +106,7 @@ $('#submit').click(function() {
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++) {
 
-	                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='" + data.ColumnName+num+"'/>" +
+	                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='" + data.ColumnName+num+"'/>&nbsp;&nbsp;" +
 	                            option[i] + "</label>";
 	                    }
 	                    input +="</div>";
@@ -128,6 +128,12 @@ $('#submit').click(function() {
 	                }
 	                $('#label').val("");
 	                $('#idname').val("");
+	                $('#types').val("Text box");
+	                $(".hidefield").hide();
+	                $("#number").val("");
+	                $("#radio_number").val("");
+	                $("#drop_number").val("");
+	                $("#mandatory").val("Yes");
 	              $("#add_close_id").click();
 	             
 	            },

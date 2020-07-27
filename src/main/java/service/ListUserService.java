@@ -23,7 +23,7 @@ public class ListUserService {
         JsonObject infoJson = new JsonObject();
         try {
             Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
             String user_query = "select * from admin_userdetails /*where stats='active'*/";
             /*String user_query = "select * from admin_userdetails where uname ='" + uname+ "'";*/
             Statement user_st = connection.createStatement();
@@ -50,7 +50,7 @@ public class ListUserService {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             //Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-            //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
+            //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
             String user_query = "select id,uname,email from admin_userdetails where id in (" + StringUtils.join(recepientsId, ',') + ")";
             /*String user_query = "select * from admin_userdetails where uname ='" + uname+ "'";*/
             Statement user_st = connection.createStatement();

@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -229,6 +231,54 @@ public class IntakeOpportunityService {
 			e.printStackTrace();
 			System.out.println("Exception---->>>" + e);
 		}
+	}
+	public static HashMap<String,String> KeyValuePairForOpportunityTriage()
+	{
+    	  HashMap<String,String> KeyValue = new HashMap<String,String>(); 
+    	  KeyValue.put("apmid","appId");
+    	  KeyValue.put("appName","applicationName");
+    	  KeyValue.put("appdesc","applicationDesc");
+    	  KeyValue.put("appowner","applicationOwner");
+    	  KeyValue.put("businessowner","busOwner");
+    	  KeyValue.put("sme","devOwner");
+    	  KeyValue.put("billcode","billing_Code");
+    	  KeyValue.put("buisnesssegment","business_Segment");
+    	  KeyValue.put("buisnessunit","busUnit");
+    	  KeyValue.put("pscontact","segment_contact");
+		return KeyValue;
+	}
+	public static String getTriageColumnName(String OpportunityColumnName)
+	{
+		HashMap<String,String> KeyValue = KeyValuePairForOpportunityTriage();
+		return KeyValue.get(OpportunityColumnName); 
+	}
+	public static boolean isTriageField(String column_name)
+	{
+		HashMap<String,String> OpportunityTriageKeyValuePair = KeyValuePairForOpportunityTriage();
+		return OpportunityTriageKeyValuePair.containsKey(column_name);
+	}
+	public static String getValue(String column_name,String id)
+	{
+		String value="";
+		try
+		{
+		HashMap<String,String> OpportunityTriageKeyValuePair = KeyValuePairForOpportunityTriage();
+		 DBconnection dBconnection = new DBconnection();   
+    	 Connection connection = (Connection) dBconnection.getConnection(); 
+		String SelectQuery = "select * from opportunity_info where id='"+id+"' and column_name='"+OpportunityTriageKeyValuePair.get(column_name)+"'";	
+		 Statement st =connection.createStatement();
+		 ResultSet rs = st.executeQuery(SelectQuery);
+		 if(rs.next())
+		 {
+			 value =rs.getString("value");
+		 }
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("Exception------------[info]----------"+e);
+		}
+		 return value; 
 	}
 	public static JsonArray IntakeDetailsOpportunityAddTemplateFields1(int[] selected_index,String id) {
 	      JsonArray jsonArray = new JsonArray();
@@ -476,7 +526,8 @@ public class IntakeOpportunityService {
 				String UpdateQuery = "update opportunity_info set value='"+value+"' where id ='"+id+"' and column_name ='"+name+"'";
 				Statement st1 = connection.createStatement();
                 st1.executeUpdate(UpdateQuery);
-                
+                if(isTriageField(name))
+                TriageDetailsUpdate(id,name,value);
 			}
 			 }
 			  connection.close();
@@ -531,5 +582,27 @@ public class IntakeOpportunityService {
    		  System.out.println("Exception-----------[info]-------"+e);
    	  }
      }
-
+	 private static void TriageDetailsUpdate(String id,String name,String value) throws SQLException
+		{
+			Statement st = null;
+			Connection connection = null;
+			try
+			{
+				DBconnection con = new DBconnection();
+			    connection = (Connection) con.getConnection();
+				String TriagecolumnName = getTriageColumnName(name);
+				String UpdateQuery = "update Triage_info set value='"+value+"' where id = '"+id+"' and column_name='"+TriagecolumnName+"';";
+				st = connection.createStatement();
+				st.executeUpdate(UpdateQuery);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			finally
+			{
+				st.close();
+				connection.close();
+			}
+		}
 }

@@ -10,7 +10,7 @@
     System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed TableCreation JSP PAGE-----[INFO]"); %>
 
 <%
-    String connectionURL = "jdbc:mysql://localhost:3306/Onboarding";
+    String connectionURL = "jdbc:mysql://localhost:3306/decom3sixtytool";
     Connection connection = null;
     Statement statement = null;
     try {
@@ -100,6 +100,14 @@
         statement.executeUpdate(query32);
         String query33 = "CREATE TABLE `Opportunity_Info_Details` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query33);
+        String query34 = "CREATE TABLE `Triage_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query34);
+        String query35 = "CREATE TABLE `Triage_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query35);
+        String query36 = "CREATE TABLE `Triage_Summary_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query36);
+        String query37 = "CREATE TABLE `Triage_Summary_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query37);
 %>
 <% } catch (Exception ex) {
 

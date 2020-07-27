@@ -21,9 +21,33 @@ $("#create").click(function(e)
     			   if($(this).find("input").length)
     				   {
     				     var val1 =$(this).find("input").val();
-    				     if (val1 == ""){
-    				    	 checkMandatory = false;
-    				     }
+    				     var type = $(this).find("input").attr("type");
+    				     if(type == 'radio')
+  		        		{
+  		        			var nameRadio = $(this).find("input").attr("name");
+  		        			var radioValue = $("input[name='"+nameRadio+"']:checked").val();
+  		        			if(radioValue==""||radioValue==undefined)
+  		        				{
+  		        				checkMandatory = false;
+  		        				}
+  		        			
+  		        		}
+  		        	else if(type == 'checkbox'){
+  		        		var nameCheckbox = $(this).find("input").attr("name");
+		        			var CheckboxValue = "";
+		        			$.each($("input[name='"+nameCheckbox+"']:checked"), function(){
+		        				CheckboxValue += $(this).val()+",";
+		                    });
+		        			CheckboxValue = CheckboxValue.substring(0,CheckboxValue.length-1);
+		        			if(CheckboxValue=="")
+		        				{
+		        				checkMandatory = false;
+		        				}
+  		        	}
+  		        	else if (val1 == ""){
+ 				    	 checkMandatory = false;
+ 				     }
+ 				     console.log("value in input : ",val1);
     				     console.log("value in input : ",val1);
     				   }
     			   else if($(this).find("select").length)
@@ -86,7 +110,7 @@ $("#create").click(function(e)
     	$('#Json_sample_id').val(JSON.stringify(jsonObj));
     	
     	var checkAjax;
-        var validationCheck_json = AjaxCallUpdate(AppName,JsonString,checkMandatory,CheckAPPID,CheckAppname,e);
+        var validationCheck_json = TriageSummaryAjaxCallUpdate(AppName,JsonString,checkMandatory,CheckAPPID,CheckAppname,e);
         var checkAPMID =validationCheck_json.APMID_VALIDATION;
     	var checkAppName = validationCheck_json.AppName_VALIDATION;
     	if(checkAPMID==true)
@@ -130,23 +154,7 @@ else
 		 return false;
 }
 });
-function DbUpdate(checkMandatory,CheckAPPID,CheckAppname)
-{
-	if (checkMandatory == true && CheckAPPID == true && CheckAppname == true){
-		var f=document.OpportunityForm;
-        f.method="post";
-        f.action="NewOpportunitySave?";
-        f.submit;
-	}
-	else{
-		e.preventDefault();
-		alert("Please fill all Mandatory fields.");
-		 
-		return false;
-		
-	}	
-}
-function AjaxCallUpdate(AppName,JsonString,checkMandatory,CheckAPPID,checkAppname,e)
+function TriageSummaryAjaxCallUpdate(AppName,JsonString,checkMandatory,CheckAPPID,checkAppname,e)
 {
 	e.preventDefault();
 	var JsonObject=[];

@@ -53,7 +53,7 @@ public class Update_User_registration extends HttpServlet {
             /*            String update_registration = new Update_User_Registration_Service().Update_Service_Registration(uname,fname,lname,email_val,project_id,application_id,id);*/
             logger.info("queryyyy" + update_user_registration_service);
             /*String myDriver = "org.gjt.mm.mysql.Driver";
-            String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
+            String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
             Class.forName(myDriver);
             Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
             Statement st = conn.createStatement();

@@ -28,7 +28,7 @@ Class.forName("com.mysql.jdbc.Driver");
 con = DriverManager.getConnection(url, "root", "password123"); 
 
 stmt = con.createStatement();
-stmt.executeUpdate("CREATE DATABASE Onboarding");
+stmt.executeUpdate("CREATE DATABASE decom3sixtytool");
 con.close();
 }
 catch(Exception e)

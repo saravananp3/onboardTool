@@ -173,7 +173,7 @@
         String roles = (String) details.getAttribute("role");
         String det = (String) session.getAttribute("theName");
         Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
 
         String query3 = "select * from AppEmphazize_ProjectDetails where id = " + det;
         String name = (String) session.getAttribute("newname");
