@@ -16,7 +16,7 @@ import IntakeDetails.IntakeTriageSummary.service.IntakeTriageSummaryService;
 /**
  * Servlet implementation class AddTemplateFieldsIntakeTriageSummary
  */
-//@WebServlet("/AddTemplateFieldsIntakeTriageSummary")
+@WebServlet("/AddTemplateFieldsIntakeTriageSummary")
 public class AddTemplateFieldsIntakeTriageSummary extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
