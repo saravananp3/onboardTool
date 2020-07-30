@@ -26,10 +26,30 @@
 <style>
 
     body{
+            background:#fff;
+        }
 
-        background:white;
+        .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+    
+.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
 
-    }
+#panels1{
+margin:60px auto;
+
+
+}
     
 
 
@@ -66,71 +86,64 @@ HttpSession details = request.getSession();
 <div class="main-wrapper">
 
         <!-- ========== TOP NAVBAR ========== -->
-        <nav class="navbar top-navbar bg-white box-shadow">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="navbar-header no-padding">
-                        <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                            <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
-                        </a>
-                        
-                        
-                    </div>
-                    <!-- /.navbar-header -->
+    <nav class="navbar top-navbar bg-white box-shadow">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="navbar-header no-padding">
+                    <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
+                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                    </a>
 
                    
 
 
-                    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                </div>
+                <!-- /.navbar-header -->
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		      <li><a href="#">Administration</a></li>
+		      <li><a href="#">Governance/Finance</a></li>
+		        <li><a href="#">Dashboards</a></li>
+		    </ul>
+		         <ul class="nav navbar-nav navbar-right">
+                        <%
+                            String uname=(String)details.getAttribute("username");
+                            String role=(String)details.getAttribute("role");%>
 
-                        <!-- /.nav navbar-nav -->
-                        <ul class="nav navbar-nav navbar-right">
-                              <%
-                         String uname=(String)details.getAttribute("username");
-                         String role=(String)details.getAttribute("role");%>   
-                            
-                            <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
-                            <li> <a href="Logout" class="text-center"><i class="fa fa-sign-out"></i> Logout</a> </li>
-                        </ul>
+                        <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
+                    </ul>
+                </div>
+                
+                
+                
+                
+            </div>
+            <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                            <h4 class="title" style="color:#fff">Create Opportunity</h4>
+                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                        </div>
+                       
 
                     </div>
-                    <!-- /.navbar-collapse -->
+
                 </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
-
-
+			</nav>
+        </div>
+        <!-- /.container-fluid -->
+    </nav >
 
         <div class="content-wrapper">
             <div class="content-container">
 
                
                 <div class="main-page">
- <div class="container-fluid">
-                    <div class="row page-title-div">
-                        <div class="col-sm-6">
-                            <h2 class="title">Create Opportunity</h2>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="row breadcrumb-div">
-                        <div class="col-sm-6">
-                            <ul class="breadcrumb">
-                                <li><a href="OpportunityList.jsp"><i class="fa fa-home"></i> Home</a></li>
-                                 <li><a href="Intake_NewOpportunity.jsp">Opportunity</a></li>
-                                 
-                                 
-                            </ul>
-                           
-                        </div>
 
-
-
-                    </div>
-                    <!-- /.row -->
-                </div>
                     <section class="design-process-section" id="process-tab">
  
                           

@@ -31,33 +31,175 @@
 
     <script src="js/multiplepages.js"></script>
     <style>
-    #sitetitle1{
-
-        color:DodgerBlue;
-        text-align:center;
-        float:right;
-
+  body{
+     
+     background-color: #fff;
+   
+   
     }
-    
-    
-        .left-sidebar {
-            position: relative;
-            height: 100%;
-        }
+   .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+	.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
+  
+  .title {
+  color:#fff;
+  } 
+  
+ #module_header{
+ 
+ margin-top:200px;
+ }
 
-                div div #testDecom
-        {
-            pointer-events: none;
-            /* for "disabled" effect */
-            opacity: 0.5;
 
-        }
-        
-        .fa {
-        display: inline;
-        }
-        
-         img.filtered {
+
+/* Steps timeline*/
+.steps-timeline {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.step-title,
+.step-description {
+  margin: 0;
+  display: block;
+  text-align: center;
+}
+
+.step-title{
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ste-description {
+  overflow: hidden;
+  line-height:20px;
+}
+
+.steps-timeline .step {
+  outline: 1px dashed rgba(0, 128, 0, 0);
+  margin-bottom: 200px;
+}
+
+.img-rounded{
+
+padding-top:20px;
+transition: width 2s, height 2s, transform 2s;
+}
+
+.step-milestone1{
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border: 10px solid DodgerBlue;
+  border-radius: 50%;
+  margin: 100px auto;
+  box-sizing: border-box;
+  transition: width 2s, height 2s, transform 2s;
+}
+
+
+
+
+.step-milestone2{
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border: 10px solid DodgerBlue;
+  border-radius: 50%;
+  margin: 15px auto;
+  box-sizing: border-box;
+   transition: width 2s, height 2s, transform 2s;
+}
+.step-milestone3{
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border: 10px solid DodgerBlue;
+  border-radius: 50%;
+  margin: 15px auto;
+  box-sizing: border-box;
+   transition: width 2s, height 2s, transform 2s;
+}
+.step-milestone4{
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border: 10px solid DodgerBlue;
+  border-radius: 50%;
+  margin: 100px auto;
+  box-sizing: border-box;
+   transition: width 2s, height 2s, transform 2s;
+}
+
+@media screen and (max-width: 678px) {
+  .steps-timeline {
+    border-left: 5px dotted #bbb;
+    border-radius:25%;
+    margin-left: 200px;
+    margin-top: -100px;
+  }
+
+  .steps-timeline  .step {
+    margin-top:50px;
+    margin-left: -290px;
+    display: block;
+    overflow: auto;
+  }
+
+  .step-milestone {
+    float: left;
+    margin-left: 100px;
+  }
+
+
+
+}
+@media screen and (min-width: 678px) {
+
+  .steps-timeline {
+    border-top: 5px dotted #bbb;
+    border-radius:50%;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .steps-timeline .step {
+    margin-top: -60px;
+    -webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */    
+    flex: 1;
+    transition: width 2s, height 2s, transform 2s;
+  }
+
+}
+
+
+
+ img.filtered {
 			filter: sepia(100%) hue-rotate(190deg) saturate(1000%);
 		}
 
@@ -102,7 +244,7 @@
             HttpSession details=request.getSession();
             Connection con = null;
             String url = "jdbc:mysql://localhost:3306/";
-            String db = "Onboarding";
+            String db = "decom3sixtytool";
             String driver = "com.mysql.jdbc.Driver";
             String userName ="root";
             String password="password123";
@@ -129,1461 +271,140 @@
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
-                <%
-                    //details.setAttribute("nameofproject",rs.getString("projectname"));
-                %>
                 <div class="navbar-header no-padding">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
 
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <button type="button" class="navbar-toggle mobile-nav-toggle" >
-                        <i class="fa fa-bars"></i>
-                    </button>
+                   
+
+
                 </div>
                 <!-- /.navbar-header -->
-               
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-                    <!-- /.nav navbar-nav -->
-                    <ul class="nav navbar-nav navbar-right">
-                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle1">Opportunity Name -<%=OpportunityName%></a>
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		      <li><a href="#">Administration</a></li>
+		      <li><a href="#">Governance/Finance</a></li>
+		        <li><a href="#">Dashboards</a></li>
+		    </ul>
+		         <ul class="nav navbar-nav navbar-right">
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>
-                        <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
-                        <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
-                        </li>
-                    </ul>
 
+                        <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
+                    </ul>
                 </div>
-                <!-- /.navbar-collapse -->
+                
+                
+                
+                
             </div>
             <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                        
+                             <h4 class="title" style="color:#fff">Modules</h4>
+                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                         <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%></p>
+                        </div>
+                       
+                    </div>
+
+                </div>
+			</nav>
         </div>
         <!-- /.container-fluid -->
-    </nav>
-
-
+    </nav >
     <div class="content-wrapper">
         <div class="content-container">
 
             <!-- ========== LEFT SIDEBAR ========== -->
             <div class="main-page">
-                <div class="container-fluid">
-                    <div class="row page-title-div">
-                        <div class="col-sm-6">
-                            <h2 class="title">Modules List</h2>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="row breadcrumb-div">
-                        <div class="col-sm-6">
-                            <ul class="breadcrumb">
-                                <li><a href="OpportunityList.jsp"><i class="fa fa-home"></i> Home</a></li>
-
-                            </ul>
-                        </div>
-
-
-
-                    </div>
-                    <!-- /.row -->
-                </div>
+                
                 <!-- /.container-fluid -->
-
+              <div class="container-fluid" id="module_header">
 
                 <%
                     if(roles.equals("admin")){
                 %>
                 <!--  admin Role -->
                 <section>
-
-                    <div class="row mt-50 grid1">
-                        <div class="container">
-
-                            <div class="col-md-12" id="box">
-                                <div class="container-fluid" >
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-
-                                    <a href="IntakeDetails.jsp">
+                        <div class="steps-timeline">
+  <div class="step">
+    <div class="step-milestone1"/>
+    
+                                   <a href="IntakeDetails.jsp">
                                         <center>
-                                            <img src="images/grid/NewIntake.png" class="img-rounded filtered"  height="100" width="100" alt="I am a plant">
-                                            <h6 class="mt-5">Intake</h6>
+                                            <img src="images/grid/NewIntake.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
+
                                         </center>
 
                                     </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-
-                                    <a href="AppEmphasize_EditProject.jsp">
+    </div>
+   <span class="step-title">
+      Intake <br> 
+    </span>
+    
+    
+     </div>
+     <div class="step">
+    <div class="step-milestone2"/>
+    
+    
+    <a href="AppEmphasize_EditProject.jsp">
                                         <center>
                                             <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Plan and Pirority</h6>
+
                                         </center>
 
                                     </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-
-                                    <a href="ArchiveDecommPage.jsp">
+    
+    </div>
+     <span class="step-title">
+      Plan  <br> and <br> Priority 
+    </span>
+  </div>
+  <div class="step">
+    <div class="step-milestone3"/>
+    
+    <a href="ArchiveDecommPage.jsp">
                                         <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Requirements</h6>
+                                          <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+
                                         </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Archive_Execution.jsp">
-                                        <center>
-                                            <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Archival Execution</h6>
-                                        </center> </a>
-                                </div>                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-5"></div>
-                    <div class="col-md-2 col-sm-2" id="varrow">
-                        <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
 
-                    </div>
-
-                    <div class="row mt-50 grid2">
-                        <div class="container">
-                            <div class="col-md-12" id="box1">
- 									<div class="col-md-2 col-sm-2">
-                                    <a href="DecommManageApplication.jsp">
+    </div>
+     <span class="step-title">
+     Requirements  <br> 
+    </span>
+  </div>
+    <div class="step">
+    <div class="step-milestone4"/>
+    <a href="#">
                                         <center>
-                                            <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Decommission Execution</h6>
+                                             <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
+
                                         </center>
+
                                     </a>
-                                </div>
-									
-								<div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="User_Configuration.jsp">
-                                        <center>
-                                            <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Admin</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="RoleUIDashboard.jsp">
-                                        <center>
-                                            <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Reports and Governance</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                               <!--  <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div> -->
-                                <%--<div class="col-md-2 col-sm-2">
-                                  <a href="#">
-                                 <center>
-                                   <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                   <h6 class="mt-5">Reports Governance</h6>
-                                 </center>
-                                  </a>
-                                </div>--%>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Finance & Contract Management</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
+    
+    
+    </div>
+     <span class="step-title">
+      Decommission  <br> Execution
+    </span>
+  </div>
+                 
                 </section>
                 <!-- /.section -->
 
 
-                <%
-                }
-                else if(roles.equals("TestLead"))
-                {
-                %>
-                <!-- Test Lead -->
-                <section>
-
-                    <div class="row mt-50 grid1">
-                        <div class="container">
-                            <div class="col-md-12" id="box">
-
-                                <div class="container-fluid" >
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="AppEmphasize_EditProject.jsp">
-                                        <center>
-                                            <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Plan and Pirority</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="Applications.jsp" >
-                                        <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Intake</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Archive_Execution.jsp">
-                                        <center>
-                                            <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Archival Execution</h6>
-                                        </center> </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Decommission Execution</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-5"></div>
-                    <div class="col-md-2 col-sm-2" id="varrow">
-                        <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
-
-                    </div>
-                    <div class="row mt-50 grid2">
-                        <div class="container">
-                            <div class="col-md-12" id="box1">
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="User_Configuration.jsp">
-                                        <center>
-                                            <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Admin</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-
-
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="RoleUIDashboard.jsp">
-                                        <center>
-                                            <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Reports and Governance</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <%--<div class="col-md-2 col-sm-2" id="testDecom">
-                                  <a href="#">
-                                 <center>
-                                   <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                   <h6 class="mt-5">Reports Governance</h6>
-                                 </center>
-                                  </a>
-                                </div>--%>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Finance & Contract Management</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </section>
-                <!-- /.section -->
-
-                <%
-                }
-                else if(roles.equals("ArchivalAdmin"))
-                {
-                %>
-                <!-- Archival Admin -->
-                <section>
-
-                    <div class="row mt-50 grid1">
-                        <div class="container">
-                            <div class="col-md-12" id="box">
-                                <div class="container-fluid" >
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="AppEmphasize_EditProject.jsp">
-                                        <center>
-                                            <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Plan and Pirority</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Applications.jsp" >
-                                        <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Intake</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Archive_Execution.jsp">
-                                        <center>
-                                            <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Archival Execution</h6>
-                                        </center> </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Decommission Execution</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-5"></div>
-                    <div class="col-md-2 col-sm-2" id="varrow">
-                        <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
-
-                    </div>
-
-                    <div class="row mt-50 grid2">
-                        <div class="container">
-                            <div class="col-md-12" id="box1">
-
-
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="User_Configuration.jsp">
-                                        <center>
-                                            <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Admin</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="RoleUIDashboard.jsp">
-                                        <center>
-                                            <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Reports and Governance</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <%--<div class="col-md-2 col-sm-2">
-                                  <a href="#">
-                                 <center>
-                                   <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                   <h6 class="mt-5">Reports Governance</h6>
-                                 </center>
-                                  </a>
-                                </div>--%>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Finance & Contract Management</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </section>
-                <%}
-
-                else if(roles.equals("ArchivalProgramManager"))
-                {
-                %>
-                <!-- Archival Program Manager -->
-                <section>
-
-                    <div class="row mt-50 grid1">
-                        <div class="container">
-                            <div class="col-md-12" id="box">
-
-                                <div class="container-fluid" >
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="AppEmphasize_EditProject.jsp">
-                                        <center>
-                                            <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Plan and Pirority</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Applications.jsp" >
-                                        <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Intake</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Archive_Execution.jsp">
-                                        <center>
-                                            <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Archival Execution</h6>
-                                        </center> </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Decommission Execution</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5 col-sm-5"></div>
-                    <div class="col-md-2 col-sm-2" id="varrow">
-                        <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
-
-                    </div>
-
-                    <div class="row mt-50 grid2">
-                        <div class="container">
-                            <div class="col-md-12" id="box1">
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="User_Configuration.jsp">
-                                        <center>
-                                            <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Admin</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="ProjectManager_dashboard.jsp">
-                                        <center>
-                                            <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Reports and Governance</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-
-                                <%--<div class="col-md-2 col-sm-2">
-                                  <a href="#">
-                                 <center>
-                                   <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                   <h6 class="mt-5">Reports Governance</h6>
-                                 </center>
-                                  </a>
-                                </div>
-                 --%>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Finance & Contract Management</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </section>
-                <%
-                }
-                else if(roles.equals("LegacyBusinessSME"))
-                {
-                %>
-                <!-- Technical BUsiness SME -->
-
-                <section>
-
-                    <div class="row mt-50 grid1">
-                        <div class="container">
-                            <div class="col-md-12" id="box">
-                                <div class="container-fluid" >
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="AppEmphasize_EditProject.jsp">
-                                        <center>
-                                            <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Plan and Pirority</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Applications.jsp" >
-                                        <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Intake</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Archive_Execution.jsp">
-                                        <center>
-                                            <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Archival Execution</h6>
-                                        </center> </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Decommission Execution</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5 col-sm-5"></div>
-                    <div class="col-md-2 col-sm-2" id="varrow">
-                        <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
-
-                    </div>
-
-
-                    <div class="row mt-50 grid2">
-                        <div class="container">
-                            <div class="col-md-12" id="box1">
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="User_Configuration.jsp">
-                                        <center>
-                                            <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Admin</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="RoleUIDashboard.jsp">
-                                        <center>
-                                            <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Reports and Governance</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <%--<div class="col-md-2 col-sm-2" id="testDecom">
-                                  <a href="#">
-                                 <center>
-                                   <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                   <h6 class="mt-5">Reports Governance</h6>
-                                 </center>
-                                  </a>
-                                </div>--%>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Finance & Contract Management</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </section>
-
-
-                <%
-                }
-                else if(roles.equals("LegacyTechnicalSME"))
-                {
-                %>
-                <!-- Legacy Technical SME -->
-                <section>
-
-                    <div class="row mt-50 grid1">
-                        <div class="container">
-                            <div class="col-md-12" id="box">
-
-                                <div class="container-fluid" >
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="AppEmphasize_EditProject.jsp">
-                                        <center>
-                                            <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Plan and Pirority</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Applications.jsp" >
-                                        <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Intake</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Archive_Execution.jsp">
-                                        <center>
-                                            <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Archival Execution</h6>
-                                        </center> </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-
-
-
-
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Decommission Execution</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-5"></div>
-                    <div class="col-md-2 col-sm-2" id="varrow">
-                        <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
-
-                    </div>
-                    <div class="row mt-50 grid2">
-                        <div class="container">
-                            <div class="col-md-12" id="box1">
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="User_Configuration.jsp">
-                                        <center>
-                                            <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Admin</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="RoleUIDashboard.jsp">
-                                        <center>
-                                            <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Reports and Governance</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <%--<div class="col-md-2 col-sm-2" id="testDecom">
-                                  <a href="#">
-                                 <center>
-                                   <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                   <h6 class="mt-5">Reports Governance</h6>
-                                 </center>
-                                  </a>
-                                </div>--%>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-3 col-sm-3" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Finance & Contract Management</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </section>
-                <%}
-                else if(roles.equals("LegacyProgramManager"))
-                {
-                %>
-                <!-- LegacyProgramManager -->
-                <section>
-
-                    <div class="row mt-50 grid1">
-                        <div class="container">
-                            <div class="col-md-12" id="box">
-                                <div class="container-fluid" >
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="AppEmphasize_EditProject.jsp">
-                                        <center>
-                                            <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Plan and Pirority</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Applications.jsp" >
-                                        <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Intake</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-
-                                <div class="col-md-2 col-sm-2">
-                                    <a href="Archive_Execution.jsp">
-                                        <center>
-                                            <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Archival Execution</h6>
-                                        </center> </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-                                    <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                </div>
-
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Decommission Execution</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-5 col-sm-5"></div>
-                    <div class="col-md-2 col-sm-2" id="varrow">
-                        <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                    </div>
-                    <div class="col-md-5 col-sm-5">
-
-                    </div>
-
-                    <div class="row mt-50 grid2">
-                        <div class="container">
-                            <div class="col-md-12" id="box1">
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="User_Configuration.jsp">
-                                        <center>
-                                            <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Admin</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-
-                                <div class="col-md-2 col-sm-2" >
-                                    <a href="ProjectManager_dashboard.jsp">
-                                        <center>
-                                            <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Reports and Governance</h6>
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <%--<div class="col-md-2 col-sm-2" id="testDecom">
-                                  <a href="#">
-                                 <center>
-                                   <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                   <h6 class="mt-5">Reports Governance</h6>
-                                 </center>
-                                  </a>
-                                </div>--%>
-                                <div class="col-md-1 col-sm-1" id="arrow">
-
-                                </div>
-                                <div class="col-md-2 col-sm-2" id="testDecom">
-                                    <a href="#">
-                                        <center>
-                                            <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                            <h6 class="mt-5">Finance & Contract Management</h6>
-                                        </center>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                        <%
-  
-         }
-else if(roles.equals("ArchivalBusinessAnalyst"))
-{
-         %>
-
-                    <!-- Archival Business Analyst -->
-                    <section>
-
-                        <div class="row mt-50 grid1">
-                            <div class="container">
-                                <div class="col-md-12" id="box">
-
-                                    <div class="container-fluid" >
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-4">
-                                            </div>
-
-                                            <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="AppEmphasize_EditProject.jsp">
-                                            <center>
-                                                <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Plan and Pirority</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="Applications.jsp" >
-                                            <center>
-                                                <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Intake</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="Archive_Execution.jsp">
-                                            <center>
-                                                <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Archival Execution</h6>
-                                            </center> </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Decommission Execution</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 col-sm-5"></div>
-                        <div class="col-md-2 col-sm-2" id="varrow">
-                            <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-
-                        </div>
-
-                        <div class="row mt-50 grid2">
-                            <div class="container">
-                                <div class="col-md-12" id="box1">
-
-
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="User_Configuration.jsp">
-                                            <center>
-                                                <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Admin</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <div class="col-md-2 col-sm-2" >
-                                        <a href="RoleUIDashboard.jsp">
-                                            <center>
-                                                <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Reports and Governance</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <%--<div class="col-md-2 col-sm-2" id="testDecom">
-                                      <a href="#">
-                                     <center>
-                                       <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                       <h6 class="mt-5">Reports Governance</h6>
-                                     </center>
-                                      </a>
-                                    </div>--%>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Finance & Contract Management</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </section>
-                        <%
-}
-else if(roles.equals("ArchivalTechnicalLead"))
-{
-%>
-                    <section>
-
-                        <div class="row mt-50 grid1">
-                            <div class="container">
-                                <div class="col-md-12" id="box">
-
-                                    <div class="container-fluid" >
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-4">
-                                            </div>
-
-                                            <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="AppEmphasize_EditProject.jsp">
-                                            <center>
-                                                <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Plan and Pirority</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="Applications.jsp">
-                                            <center>
-                                                <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Intake</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="Archive_Execution.jsp">
-                                            <center>
-                                                <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Archival Execution</h6>
-                                            </center> </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Decommission Execution</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 col-sm-5"></div>
-                        <div class="col-md-2 col-sm-2" id="varrow">
-                            <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-
-                        </div>
-
-
-
-
-
-                        <div class="row mt-50 grid2">
-                            <div class="container">
-                                <div class="col-md-12" id="box1">
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="User_Configuration.jsp">
-                                            <center>
-                                                <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Admin</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-
-
-
-                                    <div class="col-md-2 col-sm-2" >
-                                        <a href="RoleUIDashboard.jsp">
-                                            <center>
-                                                <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Reports and Governance</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-
-                                    <%--<div class="col-md-2 col-sm-2" id="testDecom">
-                                      <a href="#">
-                                     <center>
-                                       <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                       <h6 class="mt-5">Reports Governance</h6>
-                                     </center>
-                                      </a>
-                                    </div>--%>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Finance & Contract Management</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </section>
-                        <%
-}
-else if(roles.equals("ArchivalProjectManager"))
-{
-	%>
-                    <!-- Archival Program Manager -->
-                    <section>
-
-                        <div class="row mt-50 grid1">
-                            <div class="container">
-                                <div class="col-md-12" id="box">
-
-                                    <div class="container-fluid" >
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-4">
-                                            </div>
-
-                                            <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="AppEmphasize_EditProject.jsp">
-                                            <center>
-                                                <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Plan and Pirority</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="ArchiveDecommPage.jsp" >
-                                            <center>
-                                                <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Intake</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="Archive_Execution.jsp">
-                                            <center>
-                                                <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Archival Execution</h6>
-                                            </center> </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Decommission Execution</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5 col-sm-5"></div>
-                        <div class="col-md-2 col-sm-2" id="varrow">
-                            <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-
-                        </div>
-
-
-
-                        <div class="row mt-50 grid2">
-                            <div class="container">
-                                <div class="col-md-12" id="box1">
-                                    <div class="col-md-2 col-sm-2" >
-                                        <a href="User_Configuration.jsp">
-                                            <center>
-                                                <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Admin</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-2" >
-                                        <a href="ProjectManager_dashboard.jsp">
-                                            <center>
-                                                <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Reports and Governance</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <%--<div class="col-md-2 col-sm-2">
-                                      <a href="#">
-                                     <center>
-                                       <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                       <h6 class="mt-5">Reports Governance</h6>
-                                     </center>
-                                      </a>
-                                    </div>
-                    --%>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Finance & Contract Management</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </section>
-
+               
                         <%
 }
 else if(roles.equals("ArchivalDeveloper"))
@@ -1591,135 +412,8 @@ else if(roles.equals("ArchivalDeveloper"))
 %>
                     <section>
 
-                        <div class="row mt-50 grid1">
-                            <div class="container">
-                                <div class="col-md-12" id="box">
-
-                                    <div class="container-fluid" >
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-4">
-                                            </div>
-
-                                            <div class="col-md-6 col-sm-6">
-<span>
-
-<div></i><span><hr class="hr-primary" /></i></span></div>
-<div><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-25px 6px"><i class="fa fa-arrow-down" style="font-size:24px;color:rgba(66,133,244,.8); margin:-10px 378px"></i></i></div>
-<span>
-
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-2 col-sm-2" >
-                                        <a href="AppEmphasize_EditProject.jsp">
-                                            <center>
-                                                <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Plan and Pirority</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="Applications.jsp" >
-                                            <center>
-                                                <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Intake</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-2">
-                                        <a href="Archive_Execution.jsp">
-                                            <center>
-                                                <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Archival Execution</h6>
-                                            </center> </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-                                        <i class="fa fa-arrows-h" style="font-size:48px;color:#3D7DDE"></i>
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Decommission Execution</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-sm-5"></div>
-                        <div class="col-md-2 col-sm-2" id="varrow">
-                            <i class="fa fa-arrows-v" style="font-size:48px;color:#3D7DDE"></i>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-
-                        </div>
-
-                        <div class="row mt-50 grid2">
-                            <div class="container">
-                                <div class="col-md-12" id="box1">
-
-
-                                    <div class="col-md-2 col-sm-2"  id="testDecom" >
-                                        <a href="User_Configuration.jsp">
-                                            <center>
-                                                <img src="images/grid/admin.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Admin</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <div class="col-md-2 col-sm-2" >
-                                        <a href="RoleUIDashboard.jsp">
-                                            <center>
-                                                <img src="images/grid/reporting.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Reports and Governance</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <%--<div class="col-md-2 col-sm-2" id="testDecom">
-                                      <a href="#">
-                                     <center>
-                                       <img src="images/grid/program-governance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                       <h6 class="mt-5">Reports Governance</h6>
-                                     </center>
-                                      </a>
-                                    </div>--%>
-                                    <div class="col-md-1 col-sm-1" id="arrow">
-
-                                    </div>
-                                    <div class="col-md-2 col-sm-2" id="testDecom">
-                                        <a href="#">
-                                            <center>
-                                                <img src="images/grid/finance.png" class="img-rounded" height="100" width="100" alt="Avatar">
-                                                <h6 class="mt-5">Finance & Contract Management</h6>
-                                            </center>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </section>
-
+                      </section>
+                        
                         <%} %>
 
 

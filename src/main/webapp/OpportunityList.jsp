@@ -31,38 +31,170 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/Opportunity/OpportunityList/OpportunityList.js"></script>
     <style type="text/css">
-        body{
-            background:#f5f5f5;
+         body{
+            background:#fff;
         }
 
-        .page-title-div{
-            background:#f5f5f5;
-        }
+        .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+	.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
 
-        .cbp-vm-view-grid ul li {
-            width: 30%;
-            padding: 3%;
-            margin: 10px;
-            display: inline-block;
-            min-height: 220px;
-            background-color:#fff;
-            box-shadow: 5px 5px 10px 12px #dbdbdb;
-            transition: all 0.4s;
-            float: left;
-        }
+.cbp-vm-switcher {
+	padding: 20px;
+	
+}
 
-        .cbp-vm-title{
-            color:DodgerBlue;
-            font-family: Proxima Nova,'Source Sans Pro',Helvetica,Arial,sans-serif;
 
-        }
-        .cbp-vm-view-grid .cbp-vm-title {
-            font-size: 1.4em ;
-            padding-bottom: 17px;
+.cbp-vm-options {
+	text-align: right;
+	padding-bottom: 10px;
+	
+}
 
-        }
+.cbp-vm-options a {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #d0d0d0;
+	margin: 2px;
+}
 
-        .cbp-vm-view-list .right-col {
+.cbp-vm-options a:hover,
+.cbp-vm-options a.cbp-vm-selected {
+	color: #47a3da;
+}
+
+.cbp-vm-options a:before {
+	width: 20px;
+	height: 20px;
+	line-height: 40px;
+	font-size: 20px;
+	text-align: center;
+	display: inline-block;
+}
+
+/* General style of switch items' list */
+
+.cbp-vm-switcher ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Clear eventual floats */
+.cbp-vm-switcher ul:before, 
+.cbp-vm-switcher ul:after { 
+	content: " "; 
+	display: table; 
+}
+
+.cbp-vm-switcher ul:after { 
+	clear: both; 
+}
+
+.cbp-vm-switcher ul li {
+	display: block;
+	position: relative;
+}
+
+.cbp-vm-image {
+	display: block;
+	margin: 0 auto;
+}
+
+.cbp-vm-image img {
+	display: inline-block;
+	max-width: 100%;
+}
+
+.cbp-vm-title {
+	margin: 0;
+	padding: 0;
+}
+
+.cbp-vm-price {
+	color: #c0c0c0;
+}
+
+.cbp-vm-add {
+	color: #fff;
+	background: #47a3da;
+	padding: 10px 20px;
+	border-radius: 2px;
+	margin: 20px 0 0;
+	display: inline-block;
+	transition: background 0.2s;
+}
+
+.cbp-vm-add:hover {
+	color: #fff;
+	background: #02639d;
+}
+
+.cbp-vm-add:before {
+	margin-right: 5px;
+}
+
+/* Common icon styles */
+.cbp-vm-icon:before {
+	font-family: 'fontawesome';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+
+/* Individual view mode styles */
+
+/* Large grid view */
+.cbp-vm-view-grid ul {
+	text-align: center;
+}
+
+.cbp-vm-view-grid ul li {
+	width: 20%;
+	text-align: center;
+	  box-shadow:5px 5px 5px 5px  #dbdbdb;
+	
+	display: inline-block;
+	
+	vertical-align: top;
+}
+
+.cbp-vm-view-grid .cbp-vm-title {
+	font-size: 2em;
+}
+
+.cbp-vm-view-grid .cbp-vm-details {
+	max-width: 300px;
+	min-height: 70px;
+	margin: 0 auto;
+} 
+
+.cbp-vm-view-grid .cbp-vm-price {
+	margin: 10px 0;
+	font-size: 1.5em;
+}
+
+.cbp-vm-view-list .right-col {
             float: left;
             width: 25%;
         }
@@ -86,12 +218,61 @@
             padding: 12px 0;
             white-space: nowrap;
             background-color: #fff;
-            box-shadow: 5px 5px  #dbdbdb;
+            box-shadow:5px 5px 5px 5px  #dbdbdb;
             margin:13px;
+            padding-top:10px;
         }
 
 
         .cbp-vm-view-list li:focus {
+            display: block;
+            border:2px solid red;
+        }
+
+@media screen and (max-width: 66.7em) {
+	.cbp-vm-view-list .cbp-vm-details  {
+		width: 30%;
+	}
+} 
+
+@media screen and (max-width: 57em) {
+	.cbp-vm-view-grid ul li {
+		width: 49%;
+	}
+}
+
+@media screen and (max-width: 47.375em) {
+	.cbp-vm-view-list .cbp-vm-image {
+		width: 20%;
+	}
+
+	.cbp-vm-view-list .cbp-vm-title {
+		width: auto;
+	}
+
+	.cbp-vm-view-list .cbp-vm-details  {
+		display: block;
+		width: 100%;
+		margin: 10px 0;
+	}
+
+	.cbp-vm-view-list .cbp-vm-add  {
+		margin: 10px;
+	}
+}
+
+@media screen and (max-width: 40.125em) {
+	.cbp-vm-view-grid ul li {
+		width: 100%;
+	}
+}
+        
+       
+        .grid{
+  margin-top:80px;
+  
+  }
+	.cbp-vm-view-list li:focus {
             display: block;
             border:2px solid red;
         }
@@ -103,8 +284,6 @@
          .cologen{
              color: #1c95f8 !important;
          }
-
-
     </style>
 
 </head>
@@ -193,7 +372,7 @@
 <div class="main-wrapper">
 
 
-    <!-- ========== TOP NAVBAR ========== -->
+     <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
@@ -202,32 +381,55 @@
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
 
-
+                   
 
 
                 </div>
                 <!-- /.navbar-header -->
-
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-                    <!-- /.nav navbar-nav -->
-                    <ul class="nav navbar-nav navbar-right">
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		      <li><a href="#">Administration</a></li>
+		      <li><a href="#">Governance/Finance</a></li>
+		        <li><a href="#">Dashboards</a></li>
+		    </ul>
+		         <ul class="nav navbar-nav navbar-right">
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>
 
                         <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
-                        <li> <a href="Logout" class="text-center"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
-
                 </div>
-                <!-- /.navbar-collapse -->
+                
+                
+                
+                
             </div>
             <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                             <h4 class="title" style="color:#fff">Applications</h4>
+                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                        </div>
+                        <!-- /.col-sm-6 -->
+                        <div class="col-sm-6 right-side">
+                            <button type="button" class="btn btn-primary pull-right" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                New Opportunity
+                            </button>
+                        </div>
+                        <!-- /.col-sm-6 text-right -->
+
+                    </div>
+
+                </div>
+			</nav>
         </div>
         <!-- /.container-fluid -->
-    </nav>
-
+    </nav >
     <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
     <div class="content-wrapper">
         <div class="content-container">
@@ -255,23 +457,10 @@
                         }
                     }
             %>
+             <%} %>
             <div class="main-page">
                 <div class="container">
-                    <div class="row page-title-div">
-                        <div class="col-sm-6">
-                            <h2 class="title" id = "title_id"></h2>
-                            <%} %>
-                            <p class="sub-title">Create and manage your existing projects below</p>
-                        </div>
-                        <!-- /.col-sm-6 -->
-                        <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                New Opportunity
-                            </button>
-                        </div>
-                        <!-- /.col-sm-6 text-right -->
-
-                    </div>
+                  
 
                 </div>
 
@@ -280,23 +469,23 @@
                     <section>
 
                         <div class="row">
-                            <div class="container">
+                            <div class="container-fluid grid">
                                 <div class="main">
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                                         <div class="cbp-vm-options">
-                                            <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid">Grid View</a>
-                                            <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list">List View</a>
+                                            <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid"></a>
+                                            <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list"></a>
                                         </div>
 
 
 
-
-
+ 
+                                      <div class='col-md-12'>
                                         <ul id = "ul_id">
                                             
 
                                         </ul>
-
+                                      </div>
                                         <%
                                                 con.close();
                                                 visit_st.close();

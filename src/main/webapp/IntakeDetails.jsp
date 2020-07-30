@@ -13,7 +13,7 @@
     media="screen">
 <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css"
     media="screen">
-
+ <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
 <!-- ========== PAGE STYLES ========== -->
 <link rel="stylesheet" href="css/prism/prism.css" media="screen">
 <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
@@ -27,124 +27,96 @@
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/IntakeDetails/IntakeOpportunity/IntakeOpportunity.js"></script>
 <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummary.js"></script>
+<style>
+ body{
+            background:#fff;
+        }
+
+        .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+	.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
+	
+	#module_header{
+ 
+ margin-top:120px;
+ }
+
+	
+</style>
 </head>
 <body class="top-navbar-fixed">
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
-            <!-- ========== TOP NAVBAR ========== -->
-            <nav class="navbar top-navbar bg-white box-shadow">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="navbar-header no-padding">
-                            <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                                <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
-                            </a> <span class="small-nav-handle hidden-sm hidden-xs"><i
-                                class="fa fa-outdent"></i></span>
-                            <button type="button" class="navbar-toggle collapsed"
-                                data-toggle="collapse" data-target="#navbar-collapse-1"
-                                aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span> <i
-                                    class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <button type="button" class="navbar-toggle mobile-nav-toggle">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                        </div>
+              <!-- ========== TOP NAVBAR ========== -->
+    <nav class="navbar top-navbar bg-white box-shadow">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="navbar-header no-padding">
+                    <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
+                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                    </a>
 
-                        <input type="text" id="project_name" name="project_name"
-                            style="display: none;"> <input type="text"
-                            id="appln_name" name="appln_name" style="display: none;">
-                        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                            <!-- /.nav navbar-nav -->
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#"><span id="nav_userid"></span>logged in
-                                        as &nbsp;<span id='nav_role'></span></a></li>
-                                <li><a href="logout.jsp" class=" text-center"><i
-                                        class="fa fa-sign-out"></i> Logout</a></li>
-                            </ul>
-                        </div>
-                        <!-- /.navbar-collapse -->
-                    </div>
-                    <!-- /.row -->
+                   
+
+
                 </div>
-                <!-- /.container-fluid -->
-            </nav>
-            <div class="content-wrapper">
-                <div class="content-container">
-                    <!-- ========== LEFT SIDEBAR ========== -->
-                    <div
-                        class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
-                        <div class="sidebar-content" id='jqxWidget'>
-                            <div class="sidebar-nav">
-                                <ul class="side-nav color-gray">
-                                    <li class="nav-header"><span class="">Main Category</span>
-                                    </li>
-                                    <li id='home' item-selected='true'><a
-                                        href="OpportunityList.jsp"><i class="fa fa-home"></i> <span>Home</span>
-                                    </a></li>
-                                    <%--   <li class="nav-header">
-                                       <a href="AppEmphasize_EditProject.jsp"><span class="">Plan and pirority</span></a>
-                                   </li>--%>
-                                    <li class="has-children"><a href=""><i
-                                            class="fa fa-archive"></i> <span>Plan and pirority</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="AppEmphasize_EditProject.jsp" class="active-menu"> <span>Project Information</span></a></li>
-                                            <li><a href="AppEmphasize_Application.jsp" class="active-menu"> <span>Application Information</span></a></li>
-                                            <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity</span></a></li>
-                                            <li><a href="AppEmphasize_PrioritizedApplications.jsp"> <span>Prioritized Applications</span>
-                                            </a></li>
-                                            <li><a href="AppEmphasize_Preview.jsp"> <span>Review Page</span></a></li>
-                                        </ul></li>
-                                    <li class="has-children"><a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="Applications.jsp" class="active-menu"> <span>Application Details</span> </a></li>
-                                            <li><a href="Intake_Business.jsp"> <span>Business Details</span></a></li>
-                                            <li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
-                                            <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
-                                            <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>
-                                        </ul></li>
-                                    <li class="has-children"><a href=""><i class="fa fa-map-signs"></i> <span>Archive Execution Module</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="Archive_Execution.jsp" class="active-menu"> <span>Archive Execution</span>
-                                            </a></li>
-                                            <li><a href="archivesummary.jsp"> <span>Archive summary</span></a></li>
-                                        </ul></li>
-                                    <li class="has-children"><a href=""><i class="fa fa-paint-brush"></i> <span>Report Module</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="RoleUIDashboard.jsp" class="active-menu"> <span>Reports Dashboard</span> </a></li>
-                                            <li><a href="RoleDashboard.jsp" class="active-menu"> <span>Role Dashboard</span> </a></li>
-                                            <li><a href="ProjectDashboard.jsp"> <span>Project Dashboard</span></a></li>
-                                            <li><a href="ApplicationDashboard.jsp"> <span>Application Dashboard</span></a></li>
-                                        </ul></li>
-                                </ul>
-                            </div>
-                            <!-- /.sidebar-nav -->
+                <!-- /.navbar-header -->
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		      <li><a href="#">Administration</a></li>
+		      <li><a href="#">Governance/Finance</a></li>
+		        <li><a href="#">Dashboards</a></li>
+		    </ul>
+		         <ul class="nav navbar-nav navbar-right">
+                       
+
+                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
+                    </ul>
+                </div>
+                
+                
+                
+                
+            </div>
+            <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                             <h4 class="title" style="color:#fff">Opportunity</h4>
+                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                               <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <a href="#" style="color:#fff"> Opportunity</a></p>
                         </div>
-                        <!-- /.sidebar-content -->
+                       
+
                     </div>
-                    <!-- /.left-sidebar -->
+
+                </div>
+			</nav>
+        </div>
+        <!-- /.container-fluid -->
+    </nav >
+            <div class="content-wrapper">
+                <div class="content-container" >
+                   
                     <div class="main-page">
-                        <div class="container-fluid">
-                            <div class="row page-title-div">
-                                <div class="col-sm-6">
-                                    <h2 class="title">Intake Information</h2>
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                            <div class="row breadcrumb-div">
-                                <div class="col-sm-6">
-                                    <ul class="breadcrumb">
-                                        <li><a href="OpportunityList.jsp"><i class="fa fa-home"></i>
-                                                Home</a></li>
-                                        <li><a href="AppEmphasize_EditProject.jsp">Intake</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                        </div>
+                        
                         <section>
                             <div class="row">
-                                <div class="container">
+                                <div class="container" id="module_header">
                                     <div class="main">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
