@@ -108,6 +108,26 @@
         statement.executeUpdate(query36);
         String query37 = "CREATE TABLE `Triage_Summary_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query37);
+        String query38 = "CREATE TABLE `Assessment_Compliance_Char_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query38);
+        String query39 = "CREATE TABLE `Assessment_Compliance_Char_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query39);
+        String query40 = "CREATE TABLE `Assessment_Application_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query40);
+        String query41 = "CREATE TABLE `Assessment_Application_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query41);
+        String query42 = "CREATE TABLE `Assessment_Contract_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query42);
+        String query43 = "CREATE TABLE `Assessment_Contract_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query43);
+         String query44 = "CREATE TABLE `Assessment_Data_Char_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query44);
+        String query45 = "CREATE TABLE `Assessment_Data_Char_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query45);
+        String query46 = "CREATE TABLE `Assessment_Archival_Consumption_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query46);
+        String query47 = "CREATE TABLE `Assessment_Archival_Consumption_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query47);
 %>
 <% } catch (Exception ex) {
 

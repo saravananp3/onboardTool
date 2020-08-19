@@ -1,6 +1,7 @@
-package IntakeDetails.IntakeTriage.Servlet;
+package IntakeDetails.IntakeAssessment.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,22 +12,20 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
-import IntakeDetails.IntakeTriage.Service.IntakeTriageService;
-
+import IntakeDetails.IntakeAssessment.service.IntakeAssessmentService;
 
 /**
- * Servlet implementation class IntakeTriageDeleteServlet
+ * Servlet implementation class IntakeAssessmentContractInformationServlet
  */
-@WebServlet("/IntakeTriageDeleteServlet")
-public class IntakeTriageDeleteServlet extends HttpServlet {
+@WebServlet("/IntakeAssessmentContractInformationServlet")
+public class IntakeAssessmentContractInformationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IntakeTriageDeleteServlet() {
+    public IntakeAssessmentContractInformationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,20 +42,24 @@ public class IntakeTriageDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JsonArray jsonArray = new JsonArray();
-		JsonObject jsonobj = new JsonObject();
 		HttpSession details = request.getSession();
         String Id=(String)details.getAttribute("ID");
-       System.out.println("Triage Id "+Id);
-		int seq_num = Integer.parseInt(request.getParameter("seq_num"))+1;
-		jsonobj.addProperty("index",seq_num-1);
-		jsonArray.add(jsonobj);
-       	jsonArray.add(new IntakeTriageService().deleteField(seq_num, Id));
-		String json = new Gson().toJson(jsonArray);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+        String value = (String)request.getParameter("Value");
+       System.out.println("Opportunity Id "+Id);
+		JsonArray jsonArray = null;
+		try {
+			jsonArray = new IntakeAssessmentService().ContractInfomationDataOperation(Id, value);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("JSON ARRAY"+jsonArray);
+		 String json = new Gson().toJson(jsonArray);
+	        response.setContentType("application/json");
+	        response.setCharacterEncoding("UTF-8");
+	        response.getWriter().write(json);
+
 	}
 
 }
-

@@ -1,6 +1,7 @@
 $("#createbtn").click(function(e)
 {
 	var checkMandatory = true;
+	var DepedentColumnNameCheck =['If_Other_describe','If_other_please_describe','vendor','describe','plsdescribe','pls_describe'];
 	var nameAttr = [];
 	var jsonObj = [];
 		$(".Inputvalue").each(function(i) {
@@ -38,7 +39,7 @@ $("#createbtn").click(function(e)
   		        	}
   		        	else if (val1 == ""){
   		        		var name_attr = $(this).find("input").attr("name");
-  		        		if(name_attr != "If_other_please_describe" && name_attr != "If_Other_describe")
+  		        		if(!DepedentColumnNameCheck.includes(name_attr))
  				    	 checkMandatory = false;
  				     }
  				     console.log("value in input : ",val1);
@@ -62,7 +63,7 @@ $("#createbtn").click(function(e)
     		        			var nameRadio = $(this).find("input").attr("name");
     		        			var radioValue = $("input[name='"+nameRadio+"']:checked").val();
     		        			inputs["Name"]=nameRadio;
-    	    				    inputs["Value"]=radioValue;
+    	    				    inputs["Value"]=(radioValue == undefined)?"":radioValue;
     		        			
     		        		}
     		        	else if(type == 'checkbox'){
@@ -73,14 +74,14 @@ $("#createbtn").click(function(e)
 		                    });
 		        			CheckboxValue = CheckboxValue.substring(0,CheckboxValue.length-1);
 		        			inputs["Name"]=nameCheckbox;
-	    				    inputs["Value"]=CheckboxValue;
+	    				    inputs["Value"]=(CheckboxValue == undefined)?"":CheckboxValue;
     		        	}
     		        	else
     		        		{
     				     var name1 =$(this).find("input").attr("name");
     				     var val1 =$(this).find("input").val();
     				     inputs["Name"]=name1;
-    				     inputs["Value"]=val1;
+    				     inputs["Value"]= (val1 == undefined)?"":val1;
     				     nameAttr.push(name1);
     				     console.log("name in input : ",name1);
     		        		}
@@ -90,7 +91,7 @@ $("#createbtn").click(function(e)
     				     var name2 =$(this).find("select").attr("name");
     				     var val2 =$(this).find("select").val();
     				     inputs["Name"]=name2;
-    				     inputs["Value"]=val2;
+    				     inputs["Value"]= (val2  == undefined) ?"":val2;;
     				     nameAttr.push(name2);
     				     console.log("name in select : ",name2);
     				   }
@@ -107,7 +108,7 @@ $("#createbtn").click(function(e)
     	var checkAjax;
       	if(checkMandatory==true)
 	    {
-      		if(CheckRationalizationField()&&CheckApplicationPlatformField())
+      		if(CheckRationalizationField()&&CheckApplicationPlatformField()&&CheckDependencyField())
       	    {
       		alert("Details which are common, will be reflected  in Intake Opportunity.");
 	    	var validationCheck_json = TriageAjaxCallUpdate(JsonString,checkMandatory,e);
@@ -195,5 +196,28 @@ function CheckApplicationPlatformField()
 			 }
 	   }
 	}
+	return check;
+}
+function CheckDependencyField()
+{
+	var check= true;
+	var YesNoDependencyColumnName =['app_and_data_hosted','compliance','Financialdate','TechincalDeterminingdate'];
+	var DepedentColumnName =['vendor','describe','plsdescribe','pls_describe'];
+	for(var i=0;i<YesNoDependencyColumnName.length;i++)
+	{
+	var DependencyField = $("input[name="+YesNoDependencyColumnName[i]+"]").length;
+	 if(DependencyField)
+	 {
+	   var value = $("input[name="+YesNoDependencyColumnName[i]+"]:checked").val();
+	   if(value=="Yes")
+	   {
+		 var other_val = $("#"+DepedentColumnName[i]).val();
+		 if(other_val==""||other_val==undefined)
+			 {
+			   check =false;
+			 }
+	   }
+	}
+   }
 	return check;
 }

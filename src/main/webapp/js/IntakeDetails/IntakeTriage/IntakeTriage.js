@@ -9,8 +9,10 @@ $(document).ready(function(){
             if (!$.isArray(data)) {
                 data = [data];
             }
+            var DepedentColumnName =['vendor','describe','plsdescribe','pls_describe'];
             var checkVisibility= false;
             var template_values=['appId','appName','appDesc','appOwner','busOwner','devOwner','billing_Code','biling_Segment','busUnit','segment_contact','logic_Grp','Preliminary_CBA','funding_Avl','prgFunder','PrjInfo','Decom_date','infrastructure_impact','nmbr_of_infrastructure_components','archival_Sol','Status','decomAnalyst','rationalization_type','If other_please describe','appPlatfrm','If Other_please describe ','app_and_data_hosted','vendor','compliance','describe','Financialdate','plsdescribe','TechincalDeterminingdate','pls_describe','useforArchival','highlevelapplicationdata','ideaNmbr','DemandNmbr','PrjNmbr','PrjctTaskNmbr','Bigrock','DenialRsn'];
+            var YesNoDependencyColumnName =['rationalization_type','appPlatfrm','app_and_data_hosted','compliance','Financialdate','TechincalDeterminingdate'];
             $.each(data, function(key, value){
                 /*console.log("FULL NAME " + value.Type);*/
                 var manadatory="class='required_fie'";
@@ -35,16 +37,16 @@ $(document).ready(function(){
                     delete_icon = "<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span>";
                     //delete_edit_icon = "<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span>";
                 }
-                if(template_values.includes(ColumnName))
+                /*if(template_values.includes(ColumnName))
                 {
                 	
                 	$("input[name='"+ColumnName+"_temp']").prop("checked",true);
                 	
-                }
+                }*/
                 
-               if(ColumnName=="rationalization_type"||ColumnName=="appPlatfrm")
+               if(YesNoDependencyColumnName.includes(ColumnName))
             	{
-            	     if(Value=="Other"||Value=="Others")
+            	     if(Value=="Other"||Value=="Others"||Value=="Yes")
             	    	 checkVisibility= true; 
             	}
                      
@@ -155,6 +157,7 @@ $(document).ready(function(){
                     $('#inputValue').append(inputtext);
                     checkVisibility= false;
             		}
+            	if(!DepedentColumnName.includes(ColumnName))
             		$("#"+ColumnName+"_temp").prop( "checked", true );
             		}
 
@@ -211,5 +214,29 @@ $(document).on('change', '#appPlatfrm', function () {
 	$("#If_Other_describe_Row").show();
     else
     $("#If_Other_describe_Row").hide();
+});
+$(document).on('change', 'input[name=app_and_data_hosted]', function () {
+    if($(this).val()=="Yes")
+	$("#vendor_Row").show();
+    else
+    $("#vendor_Row").hide();
+});
+$(document).on('change', 'input[name=compliance]', function () {
+    if($(this).val()=="Yes")
+	$("#describe_Row").show();
+    else
+    $("#describe_Row").hide();
+});
+$(document).on('change', 'input[name=Financialdate]', function () {
+    if($(this).val()=="Yes")
+	$("#plsdescribe_Row").show();
+    else
+    $("#plsdescribe_Row").hide();
+});
+$(document).on('change', 'input[name=TechincalDeterminingdate]', function () {
+    if($(this).val()=="Yes")
+	$("#pls_describe_Row").show();
+    else
+    $("#pls_describe_Row").hide();
 });
 });

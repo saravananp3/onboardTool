@@ -27,6 +27,7 @@
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/IntakeDetails/IntakeOpportunity/IntakeOpportunity.js"></script>
 <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummary.js"></script>
+<script src="js/IntakeDetails/IntakeAssessment/Common/IntakeAssessmentDataRetrieve.js"></script>
 <style>
  body{
             background:#fff;
@@ -249,6 +250,148 @@
 					</div>
                                     </div>
                                     
+                                </div>
+                            </div>
+                            <!-- Assessment Table -->
+                            <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4" onclick="switchColors();">Assessment</a></h4>
+                                        </div>
+                                        <div id="collapse4" class="panel-collapse collapse">
+                                          
+                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                                <div class="panel-body">
+                                                    <div id="inputFieldsAssessment">
+                                      <!-- Application Information -->
+                                     <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse5" onclick="switchColors();">Application information</a></h4>
+                                        </div>
+                                        <div id="collapse5" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                               <div class="panel-body">
+                                                 <div id="inputFieldsAppInfo">
+												 </div>   
+											    </div>
+											<div class="col-md-12">
+                                                 <div class="col-md-1">
+                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+								                 </div>
+					                        </div>
+                                            </div>
+                                       </div>
+							         </div>   
+                                                   
+                               <!-- Data Characteristics -->
+                                     <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6" onclick="switchColors();">Data Characteristics</a></h4>
+                                        </div>
+                                        <div id="collapse6" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                               <div class="panel-body">
+                                                 <div id="inputFieldsDataChar">
+												 </div>   
+											    </div>
+											<div class="col-md-12">
+                                                 <div class="col-md-1">
+                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+								                 </div>
+					                        </div>
+                                            </div>
+                                       </div>
+							         </div>         
+                                                    
+                             <!-- Compliance Characteristics -->
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse7" onclick="switchColors();">Compliance Characteristics</a></h4>
+                                        </div>
+                                        <div id="collapse7" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                               <div class="panel-body">
+                                                 <div id="inputFieldsComplianceChar">
+												 </div>   
+											    </div>
+											<div class="col-md-12">
+                                                 <div class="col-md-1">
+                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+								                 </div>
+					                        </div>
+                                            </div>
+                                       </div>
+							         </div>
+							         
+							      <!-- Archival Consumption -->
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse8" onclick="switchColors();">Archival Consumption</a></h4>
+                                        </div>
+                                        <div id="collapse8" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                               <div class="panel-body">
+                                                 <div id="inputFieldsArchivConsump">
+												 </div>   
+											    </div>
+											<div class="col-md-12">
+                                                 <div class="col-md-1">
+                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+								                 </div>
+					                        </div>
+                                            </div>
+                                       </div>
+							         </div>
+							         
+							         <!-- Contract Information-->
+							         <div id ="ContractInformation" style="display:none;">
+							           <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse9" onclick="switchColors();">Contract Information</a></h4>
+                                        </div>
+                                        <div id="collapse9" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                               <div class="panel-body">
+                                                 <div id="inputFieldsContInfo">
+												 </div>   
+											    </div>
+											<div class="col-md-12">
+                                                 <div class="col-md-1">
+                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+								                 </div>
+					                        </div>
+                                            </div>
+                                       </div>
+							         </div>
+							         </div>
+							         <div class="col-md-12">
+                                       <div class="col-md-1">
+                                       <button type="button" class="btn btn-primary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button></div>
+                                       <div class="col-md-4 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                       <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
+                                       <ul class="dropdown-menu">
+                                       <li><a href="#" id="AddAssess" data-toggle="modal" data-target="#AssessAddPopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
+                                       <li><a href="#" id="EditAssess" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
+                                       <li><a href="#" id="DeleteAssess" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
+                                       </ul>
+                                       <button type="button" class="btn btn-primary" id="AssessmentSaveBtn">Save</button>
+                                       <button type="button" class="btn btn-primary pull-right" id="editpopupAssess_btn" data-toggle="modal" data-target="#AssessEditPopUp" style="display: none;">Edit PopUp</button>
+                                       <button type="button" class="btn btn-primary pull-right" id="deletepopupAssess_btn" data-toggle="modal" data-target="#AssessDeletePopUp" style="display: none;">Delete PopUp</button>
+                                       <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
+                                       </div>
+                                     </div>
+								</div>
+					           </div>     
                                 </div>
                             </div>
                     </div>
@@ -587,7 +730,7 @@
                             </div>    
                              <br>
                              <div class="row" style = "display:none;">
-                                <div class="col-md-1"> <input type="hidden" id="If_other_please_describe_temp" name="If other_pleasedescribe " class="Template_Values" value="" > </div>
+                                <div class="col-md-1"> <input type="hidden" id="If_other_please_describe_temp" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">If other, please describe </label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35"> </div>
                              </div>    
@@ -606,55 +749,55 @@
                             </div>            
                             <br>
                             <div class="row" style="display:none;">
-                                <div class="col-md-1"> <input type="hidden" id="If_Other_describe_temp" name="If_Other_describe" class="Template_Values" value="" > </div>
+                                <div class="col-md-1"> <input type="hidden" id="If_Other_describe_temp" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">If Other,please describe </label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35"> </div>
                             </div>    
                             <br>
                             <div class="row">
-                                <div class="col-md-1"> <input type="checkbox" id="app_and_data_hosted_temp" name="appData" class="Template_Values" value="" > </div>
+                                <div class="col-md-1"> <input type="checkbox" id="app_and_data_hosted_temp" name="app_and_data_hosted_temp" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">Is application and Data hosted externally?</label> </div>
                                 <div class="col-md-6"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">&nbsp;Yes &nbsp;<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">&nbsp;No           </div>        
                             </div>           
                             <br>
-                            <div class="row">
-                                <div class="col-md-1"> <input type="checkbox" id="vendor_temp" name="vendor " class="Template_Values" value="" > </div>
+                            <div class="row" style="display:none;">
+                                <div class="col-md-1"> <input type="hidden" id="vendor_temp" name="" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">If yes,vendor?Location?</label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35"> </div>
                             </div>    
                             <br>
                             <div class="row">
-                                <div class="col-md-1"> <input type="checkbox" id="compliance_temp" name="complianceLegal" class="Template_Values" value="" > </div>
+                                <div class="col-md-1"> <input type="checkbox" id="compliance_temp" name="compliance_temp" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">Are there any compliance or legal drivers determining retirement by a certain date </label> </div>
                                 <div class="col-md-6"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">&nbsp;Yes &nbsp;<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">&nbsp;No </div>        
                             </div>    
                             <br>
-                            <div class="row">
-								<div class="col-md-1"><input type="checkbox" id="describe_temp" name="describe " class="Template_Values" value="" > </div>
+                            <div class="row" style="display:none;">
+								<div class="col-md-1"><input type="hidden" id="describe_temp" name="" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">If yes above,please describe</label></div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35"> </div>
                             </div>    
                              <br>
                             <div class="row">
-                                <div class="col-md-1"> <input type="checkbox" id="Financialdate_temp" name="Financialdate" class="Template_Values" value="" > </div>
+                                <div class="col-md-1"> <input type="checkbox" id="Financialdate_temp" name="Financialdate_temp" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">Are there any business or financial drivers determining retirement by a certain date?Eg.,contract expiring</label> </div>
                                 <div class="col-md-6"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">&nbsp;Yes &nbsp;<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">&nbsp;No </div>        
                             </div>    
                             <br>
-                            <div class="row">
-                                    <div class="col-md-1"><input type="checkbox" id="plsdescribe_temp" name="plsdescribe " class="Template_Values" value="" > </div>
+                            <div class="row" style="display:none;">
+                                    <div class="col-md-1"><input type="hidden" id="plsdescribe_temp" name="" class="Template_Values" value="" > </div>
                                     <div class="col-md-2"> <label class="control-label" for="Triage">If Yes above,please describe</label> </div>
                                     <div class="col-md-6"> <input type="text" class="form-control" size="35"> </div>
                                 </div>    
                             <br>
                             <div class="row">
-                                <div class="col-md-1"> <input type="checkbox" id="TechincalDeterminingdate_temp" name="TechincalDeterminingdate" class="Template_Values" value="" > </div>
+                                <div class="col-md-1"> <input type="checkbox" id="TechincalDeterminingdate_temp" name="TechincalDeterminingdate_temp" class="Template_Values" value="" > </div>
                                 <div class="col-md-2"> <label class="control-label" for="Triage">Are there any technical drivers determining retirement by a certain date?.(Eg server end of life ,support,software,end of life,support)</label> </div>
                                 <div class="col-md-6"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Yes">&nbsp;Yes &nbsp;<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No">&nbsp;No </div>        
                             </div>    
                             <br>
-                            <div class="row">
-                             <div class="col-md-1"> <input type="checkbox" id="pls_describe_temp" name="pls_describe" class="Template_Values" value="" > </div>
+                            <div class="row" style="display:none;">
+                             <div class="col-md-1"> <input type="hidden" id="pls_describe_temp" name="" class="Template_Values" value="" > </div>
                             <div class="col-md-2"> <label class="control-label" for="Triage">If Yes above,please describe</label> </div>
                             <div class="col-md-6"> <input type="text" class="form-control" size="35"> </div>
                             </div>    
@@ -1129,6 +1272,142 @@
     </div>
   </div>
 </div>        
+ 
+ <!-- Assessment Common Add Popup -->
+ 
+     <div class="modal" id="AssessAddPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Input Fields</h5>
+        <button type="button" class="close" id = "AssessAddCloseId" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div id="scrollbar">
+             <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Section:</label>
+                            <select id="AssessSection" class="form-control" name="AssessSection" required >
+                                <option value="ApplicationInformation" selected>Application Information</option>
+                                <option value="DataCharacteristics">Data Characteristics</option>
+                                <option value="ComplianceCharacteristics">Compliance Characteristics</option>
+                                <option value="ArchivalConsumption">Archival Consumption</option>
+                                <option value="ContractInformation">Contract Information</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Label:</label>
+                            <input type="text" class="form-control" id="AssessLabel"  name="AssessLabel" required>
+                        </div>
+                    </div>
+                </div><br/>
+                <input type="hidden" id="project_name" name="project_name" value="">
+                <input type="text" id="appln_name" name="appln_name" value="" style="display:none;">
+                <input type="text" id="servlet_name" name="servlet_name" value="" style="display:none;">
+
+                <!-- <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Column name:</label>
+                            <input type="text" class="form-control" id="idname"  name="idname" required>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Type:</label>
+                            <select id="AssessTypes" class="form-control" name="AssessTypes" required >
+                                <option value="Text box">Text box</option>
+                                <option value="Check box">Check box</option>
+                                <option value="Radio box">Radio box</option>
+                                <option value="Dropdown">Dropdown</option>
+                                <option value="Datepicker">Datepicker</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row AssessHideField" id="AssessCheck" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of check boxes:</label>
+                            <input type="text" class="form-control" id="AssessCheckNumber"  name="AssessCheckNumber1">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row AssessHideField" id="AssessRadio" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Radio boxes:</label>
+                            <input type="text" class="form-control" id="AssessRadioNumber"  name="AssessRadioNumber">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row AssessHideField" id="AssessDrop" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Options:</label>
+                            <input type="text" class="form-control" id="AssessDropNumber"  name="AssessDropNumber">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="AssessOptions">
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Mandatory:</label>
+                            <select id="AssessMandatory" class="form-control" name="AssessMandatory" required >
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id ="AssessAddSubmit" class="btn btn-primary">Add Fields</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>    
+ 
   <!--Delete pop up-->
          <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -1204,6 +1483,35 @@
     </div>
   </div>
 </div>    
+
+<!-- AssessmentCommon Delete Pop Up -->
+
+<div class="modal" id="AssessDeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="AssessDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p style="font-size:20px;">Do you want to delete this input field permanently?</p>
+                    <input type="hidden" id="AssessSequence"/>
+                    <input type="hidden" id="DeleteSection"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="AssessDeleteSubmit" class="btn btn-primary" >Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>  
+
 <!-- Edit pop up -->
     <div class="modal" id="EditPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -1307,6 +1615,39 @@
   </div>
 </div>  
 
+<!--  Assessment Common Edit Pop up -->
+
+ <div class="modal" id="AssessEditPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Input Field</h5>
+        <button type="button" id="AssessEditClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="Assessment">Label:</label>
+                            <input type="text" class="form-control" id="AssessLabelModify"  name="Assesslabel" required>
+                        </div>
+                    </div>
+                </div><br/><input type="text" id="AssessSeqNum" name="" value="" style="display:none;">
+                <input type="text" id="EditSection" name="" value="" style="display:none;">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="AssessEditSubmit" class="btn btn-primary" >Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+
     <!-- Date picker --> 
     
        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
@@ -1337,7 +1678,16 @@
      <script src="js/IntakeDetails/IntakeTriageSummary/AddFeatureFunctionality.js"></script>
      <script src="js/IntakeDetails/IntakeTriageSummary/TriageSummaryAddFeatureAjaxCall.js"></script>
      <script src="js/IntakeDetails/IntakeTriageSummary/EditDeleteToggle.js"></script>
-     <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummaryTemplate.js"></script>     
+     <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummaryTemplate.js"></script>
+     
+     <!-- Intake Assessment -->
+     <script src="js/IntakeDetails/IntakeAssessment/ApplicationInformation/ApplicationDetailsFieldFunctionality.js"></script>  
+     <script src="js/IntakeDetails/IntakeAssessment/Common/AssessmentAddAjaxCall.js"></script>  
+     <script src="js/IntakeDetails/IntakeAssessment/Common/AssessmentAddFunctionality.js"></script>
+     <script src="js/IntakeDetails/IntakeAssessment/Common/EditDeleteToggle.js"></script>
+     <script src="js/IntakeDetails/IntakeAssessment/Common/AssessEditDeleteAjaxCall.js"></script>
+     <script src="js/IntakeDetails/IntakeAssessment/Common/IntakeAssessmentSave.js"></script>
+     
     <!-- <script>
         function myFunction() {
             let today = new Date().toISOString().substr(0, 10);

@@ -174,6 +174,25 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	class Assessment
+	{
+		int seq_num;
+		String project,app_name,section,label,column,options,type,mandatory,value;
+		Assessment(int seq_num, String project, String app_name,String section, String options, String label, String column, String type, String mandatory, String value)
+		{
+			this.seq_num = seq_num;
+			this.project = project;
+			this.app_name = app_name;
+			this.section = section;
+			this.options = options;
+			this.label = label;
+			this.column = column;
+			this.type = type;
+			this.mandatory = mandatory;
+			this.value = value;
+		}
+	}
+	
 	int i=0,exec_det=0,dum=0,lm=0;
 	
 		
@@ -462,13 +481,13 @@ try
 		Details[23] = new Triage(24,"","","Mainframe,Distibuted - Unix,Windows,hybrid,Others","Application platform", "appPlatfrm", "Dropdown", "Yes", "");
 		Details[24] = new Triage(25,"","","","If Other,please describe ", "If_Other_describe", "HiddenText", "Yes", "");
 		Details[25] = new Triage(26,"","","Yes,No","Is application and Data hosted externally?", "app_and_data_hosted", "Radio box", "No", "");
-		Details[26] = new Triage(27,"","","","If yes,vendor?Location?", "vendor", "Text box", "No", "");
+		Details[26] = new Triage(27,"","","","If yes,vendor?Location?", "vendor", "HiddenText", "Yes", "");
 		Details[27] = new Triage(28,"","","Yes,No","Are there any compliance or legal drivers determining retirement by a certain date ", "compliance", "Radio box", "No", "");
-		Details[28] = new Triage(29,"","","","If yes above,please describe", "describe", "Text box", "No", "");
+		Details[28] = new Triage(29,"","","","If yes above,please describe", "describe", "HiddenText", "Yes", "");
 		Details[29] = new Triage(30,"","","Yes,No","Are there any business or financial drivers determining retirement by a certain date?Eg.,contract expiring", "Financialdate", "Radio box", "No", "");
-		Details[30] = new Triage(31,"","","","If Yes above,please describe", "plsdescribe", "Text box", "No", "");
+		Details[30] = new Triage(31,"","","","If Yes above,please describe", "plsdescribe", "HiddenText", "Yes", "");
 		Details[31] = new Triage(32,"","","Yes,No","Are there any technical drivers determining retirement by a certain date?.(Eg server end of life ,support,software,end of life,support)", "TechincalDeterminingdate", "Radio box", "No", "");
-		Details[32] = new Triage(33,"","","","If Yes above, please describe ", "pls_describe", "Text box", "No", "");
+		Details[32] = new Triage(33,"","","","If Yes above, please describe ", "pls_describe", "HiddenText", "Yes", "");
 		Details[33] = new Triage(34,"","","","Please describe business need/use for Archival", "useforArchival", "Text box", "No", "");
 		Details[34] = new Triage(35,"","","","Please describe at high-level your applications data ", "highlevelapplicationdata", "Text box", "No", "");
 		Details[35] = new Triage(36,"","","","Idea Number", "ideaNmbr", "Text box", "No", "");
@@ -531,6 +550,228 @@ try
 		}
 	}
 	
+	String AssessmentDataChar = "select * from Assessment_Data_Char_Info_Template_Details";
+	Statement AssDataCharst = con.createStatement();
+	ResultSet AssDataCharrs = AssDataCharst.executeQuery(AssessmentDataChar);
+	
+	if(!AssDataCharrs.next())
+	{
+		String DataChar = "DataCharacteristics";
+		Assessment Assdata[] = new Assessment[23];
+		Assdata[0] = new Assessment(1,"","",DataChar,"DB2, MS SQL, MySQL, Oracle, Sybase, Other","Database type", "DatabaseType", "Dropdown", "Yes", "");
+		Assdata[1] = new Assessment(2,"","",DataChar,"Flat File, Structured, Unstructured, Hybrid, Other","Data Type Characteristics ", "DataTypeCharacteristics", "Dropdown", "Yes", "");
+		Assdata[2] = new Assessment(3,"","",DataChar,"","Structured Data - Database size of the Application (stated in GB) ", "StrucDBsize", "Text box", "Yes", "");
+		Assdata[3] = new Assessment(4,"","",DataChar,"","Structured Data - Number of tables (if known) ", "StrucNoofTables", "Text box", "No", "");
+		Assdata[4] = new Assessment(5,"","",DataChar,"","Unstructured Data - Volume of data (stated in GB) ", "UnstrucDataVolume", "Text box", "Yes", "");
+        Assdata[5] = new Assessment(6,"","",DataChar,"","Unstructured Data - Number of files (E.g Attachments) ", "UnstrucNoofFiles", "Text box", "No", "");
+        Assdata[6] = new Assessment(7,"","",DataChar,"","Database Server Name (Data Location) ", "DBServerName", "Text box", "No", "");
+        Assdata[7] = new Assessment(8,"","",DataChar,"","Database Names ", "DBNames", "Text box", "No", "");
+        Assdata[8] = new Assessment(9,"","",DataChar,"","Table Names if appropriate ", "TableNames", "Text box", "No", "");
+        Assdata[9] = new Assessment(10,"","",DataChar,"","DBA Contact ", "DBAContact", "Text box", "No", "");
+        Assdata[10] = new Assessment(11,"","",DataChar,"Yes,No","Are there any datasets on Mainframe  that this application uses? ", "DataSetMainframe", "RadioBoxDependencyYes", "No", "");
+        Assdata[11] = new Assessment(12,"","",DataChar,"","If yes, please provide additional information","plsprovideinfo","TextBoxDependencyYes","No","");
+        Assdata[12] = new Assessment(13,"","",DataChar,"Yes,No","Does this application generate any reports to other systems? ", "ReportGeneration", "RadioBoxDependencyYes", "No", "");
+        Assdata[13] = new Assessment(14,"","",DataChar,"","If yes, please provide details ", "plsprovidedetails", "TextBoxDependencyYes", "No", "");
+        Assdata[14] = new Assessment(15,"","",DataChar,"","File share location (unstructured) ", "FileShareLocation", "Text box", "No", "");
+        Assdata[15] = new Assessment(16,"","",DataChar,"Yes,No","Data is static (no updates are being made) ", "StaticData", "Radio box", "Yes", "");        
+        Assdata[16] = new Assessment(17,"","",DataChar,"Yes,No","Data is in Read Only state (no updates CAN be made) ", "ReadonlyData", "Radio box", "No", "");
+        Assdata[17] = new Assessment(18,"","",DataChar,"","If yes, when was the last updates made? ", "LastUpdateMade", "DatepickerDependency", "No", "");
+        Assdata[18] = new Assessment(19,"","",DataChar,"","If no, when is it expected to be read only? ", "ExpectedDate", "DatepickerDependency", "No", "");
+        Assdata[19] = new Assessment(20,"","",DataChar,"PCI, SOX, Consumer PII, Customer PII, Associate PII, SSN","Application  Data ", "ApplicationData", "Dropdown", "Yes", "");
+        Assdata[20] = new Assessment(21,"","",DataChar,"Yes,No","Upstream/Downstream dependencies ", "UpDownStream", "RadioBoxDependencyYes", "Yes", "");
+        Assdata[21] = new Assessment(22,"","",DataChar,"","If yes, please decsribe ", "plsdescribeStreams", "TextBoxDependencyYes", "No", "");
+        Assdata[22] = new Assessment(23,"","",DataChar,"","Date Range (age of records, e.g., 2009 - May, 2019) ", "Datepicker", "Text box", "No", "");
+        
+		for (int index = 0; index<Assdata.length; index++)
+		{
+			String AssessmentDataChar_InsertQuery = "insert into Assessment_Data_Char_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			PreparedStatement prestmt2 = con.prepareStatement(AssessmentDataChar_InsertQuery);
+			prestmt2.setInt(1, Assdata[index].seq_num);
+			prestmt2.setString(2, Assdata[index].project);
+			prestmt2.setString(3, Assdata[index].app_name);
+			prestmt2.setString(4, Assdata[index].section);
+			prestmt2.setString(5, Assdata[index].options);
+			prestmt2.setString(6, Assdata[index].label);
+			prestmt2.setString(7, Assdata[index].column);
+			prestmt2.setString(8, Assdata[index].type);
+			prestmt2.setString(9, Assdata[index].mandatory);
+			prestmt2.setString(10, Assdata[index].value);
+			prestmt2.execute();
+		
+		}
+	}
+	
+	
+	String AssessmentQuery = "Select * from Assessment_Compliance_Char_Info_Template_Details;";
+	
+	Statement AssessmentSt = con.createStatement();
+	
+	ResultSet AssessmentRs = AssessmentSt.executeQuery(AssessmentQuery);
+	
+	if(!AssessmentRs.next())
+	{
+		String ComplianceChar = "ComplianceCharacteristics";
+		Assessment AssessmentDetails[] = new Assessment[12];
+		AssessmentDetails[0] = new Assessment(1,"","",ComplianceChar,"","Retention Category","retentioncategory","Text box","No","");
+		AssessmentDetails[1] = new Assessment(2,"","",ComplianceChar,"","Record Type","recordtype","Text box","No","");
+		AssessmentDetails[2] = new Assessment(3,"","",ComplianceChar,"","Retention Period","retentionperiod","Text box","No","");
+		AssessmentDetails[3] = new Assessment(4,"","",ComplianceChar,"Yes,No","Archival Required?","archivalrequired","Radio box","No","");
+		AssessmentDetails[4] = new Assessment(5,"","",ComplianceChar,"","Remaining Retention Period (if applicable)","remainingretentionperiod","Datepicker","Yes","");
+		AssessmentDetails[5] = new Assessment(6,"","",ComplianceChar,"","Special Data Retention Requirements","specialdataretention","Text box","No","");
+		AssessmentDetails[6] = new Assessment(7,"","",ComplianceChar,"Yes,No","Legal Hold","legalhold","RadioBoxDependencyYes","Yes","");
+		AssessmentDetails[7] = new Assessment(8,"","",ComplianceChar,"","If any, please describe details","ifanypleasedescribe","TextBoxDependencyYes","Yes","");
+		AssessmentDetails[8] = new Assessment(9,"","",ComplianceChar,"Yes,No","Are there any pending litigations that impacts the retirment of the application and data","retirementappanddata","Radio box","Yes","");
+		AssessmentDetails[9] = new Assessment(10,"","",ComplianceChar,"On Hold, Pending review, Cleared","Legal Status","legalstatus","Dropdown","Yes","");
+		AssessmentDetails[10] = new Assessment(11,"","",ComplianceChar,"Yes,No","Any specific Purge requirements?","specificpurgerequirements","RadioBoxDependencyYes","Yes","");
+		AssessmentDetails[11] = new Assessment(12,"","",ComplianceChar,"","If any, please describe details","describedetails","TextBoxDependencyYes","Yes","");		
+		for (int index = 0; index<AssessmentDetails.length; index++)
+		{
+			String ComplianceChar_InsertQuery = "insert into Assessment_Compliance_Char_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			PreparedStatement prestmt1 = con.prepareStatement(ComplianceChar_InsertQuery);			
+			prestmt1.setInt(1, AssessmentDetails[index].seq_num);
+			prestmt1.setString(2, AssessmentDetails[index].project);			
+			prestmt1.setString(3, AssessmentDetails[index].app_name);
+			prestmt1.setString(4, AssessmentDetails[index].section);
+			prestmt1.setString(5, AssessmentDetails[index].options);
+			prestmt1.setString(6, AssessmentDetails[index].label);
+			prestmt1.setString(7,  AssessmentDetails[index].column);
+			prestmt1.setString(8, AssessmentDetails[index].type);
+			prestmt1.setString(9, AssessmentDetails[index].mandatory);
+			prestmt1.setString(10, AssessmentDetails[index].value);
+			prestmt1.execute();
+		}
+	}
+	
+	String AssessmentArchival = "Select * from Assessment_Archival_Consumption_Info_Template_Details";	
+	Statement AssArchivalst = con.createStatement();	
+	ResultSet AssArchivalrs = AssArchivalst.executeQuery(AssessmentArchival);
+	
+	if(!AssArchivalrs.next())
+	{
+		String ArchivConsump = "ArchivalConsumption";
+		Assessment AssessmentArchiv[] = new Assessment[10];
+		AssessmentArchiv[0] = new Assessment(1,"","",ArchivConsump,"Frequent users with Online Inquiry, Retention for Audit purposes, Ad-hoc reporting, Long-term Retention Only","Archival needs","archiveneed","Dropdown","Yes","");
+		AssessmentArchiv[1] = new Assessment(2,"","",ArchivConsump,"","How many users are expected to use the InfoArchive system after archival?","archivalusercount","Text box","Yes","");
+		AssessmentArchiv[2] = new Assessment(3,"","",ArchivConsump,"","Number of concurrent users","concurrentuser","Text box","No","");
+		AssessmentArchiv[3] = new Assessment(4,"","",ArchivConsump,"","Estimated number of Search Forms (screens) needed in the archive ","noofsearch","Text box","Yes","");
+		AssessmentArchiv[4] = new Assessment(5,"","",ArchivConsump,"","Please describe any known Search screen requirements","plsdescscrreq","Text box","Yes","");
+		AssessmentArchiv[5] = new Assessment(6,"","",ArchivConsump,"","Frequency of Search","searchfreq","Text box","No","");
+		AssessmentArchiv[6] = new Assessment(7,"","",ArchivConsump,"","Format of results (e.g., online, report, etc.)","resformat","Text box","Yes","");
+		AssessmentArchiv[7] = new Assessment(8,"","",ArchivConsump,"","Response time requirement","responsetime","Text box","No","");
+		AssessmentArchiv[8] = new Assessment(9,"","",ArchivConsump,"Yes,No","Encryption?","enc","Radio box","Yes","");
+		AssessmentArchiv[9] = new Assessment(10,"","",ArchivConsump,"Yes,No","Data Masking?","datamask","Radio box","Yes","");
+		for (int index = 0; index<AssessmentArchiv.length; index++)
+		{
+			String Archival_InsertQuery = "insert into Assessment_Archival_Consumption_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			PreparedStatement prestmt3 = con.prepareStatement(Archival_InsertQuery);			
+			prestmt3.setInt(1, AssessmentArchiv[index].seq_num);
+			prestmt3.setString(2, AssessmentArchiv[index].project);			
+			prestmt3.setString(3, AssessmentArchiv[index].app_name);
+			prestmt3.setString(4, AssessmentArchiv[index].section);
+			prestmt3.setString(5, AssessmentArchiv[index].options);
+			prestmt3.setString(6, AssessmentArchiv[index].label);
+			prestmt3.setString(7,  AssessmentArchiv[index].column);
+			prestmt3.setString(8, AssessmentArchiv[index].type);
+			prestmt3.setString(9, AssessmentArchiv[index].mandatory);
+			prestmt3.setString(10, AssessmentArchiv[index].value);
+			prestmt3.execute();
+		}
+	}
+	
+	 String AssessAppInfoQuery = "Select * from Assessment_Application_Info_Template_Details;";
+		
+		Statement AssessAppInfoSt = con.createStatement();
+		
+		ResultSet AssessAppInfoRs = AssessAppInfoSt.executeQuery(AssessAppInfoQuery);
+		
+		if(!AssessAppInfoRs.next())
+		{
+			String AppInfo = "ApplicationInformation";
+			Assessment AssessmentDetails[] = new Assessment[19];
+			AssessmentDetails[0] = new Assessment(1,"","",AppInfo,"Shrink Wrap,Third Party,Internally Developed","Application Details","AppDetails","Dropdown","No","");
+			AssessmentDetails[1] = new Assessment(2,"","",AppInfo,"Currently supported, Nearing end of life, End of life with extended support/maintenance, unsupported","Lifecycle","Lifecycle","Dropdown","No","");
+			AssessmentDetails[2] = new Assessment(3,"","",AppInfo,"Yes,No","Is this a currently supported application?","SupportedApp","RadioBoxDependencyNo","No","");
+			AssessmentDetails[3] = new Assessment(4,"","",AppInfo,"","If NO,who supports this Application?","SupportApp","TextBoxDependencyNo","No","");
+			AssessmentDetails[4] = new Assessment(5,"","",AppInfo,"Yes,No","Operational support staff/SME's available for analysis?","OperationalSupportStaff","Radio box","No","");
+			AssessmentDetails[5] = new Assessment(6,"","",AppInfo,"Mainframe,Distibuted - Unix,Windows,hybrid,Others","Application platform","AssessAppPlatform","Dropdown","Yes","");
+			AssessmentDetails[6]= new Assessment(7,"","",AppInfo,"","If Other,please describe ", "OtherPleaseDescribe", "Text box", "Yes", "");
+			AssessmentDetails[7] = new Assessment(8,"","",AppInfo,"","Brief architecture description","BriefArchitectureDescription","TextAreaFile","Yes","");
+			AssessmentDetails[8] = new Assessment(9,"","",AppInfo,"","Application Hosting Vendor","AppHost","Text box","No","");
+			AssessmentDetails[9] = new Assessment(10,"","",AppInfo,"","Application Supporting Vendor","AppSupport","Text box","No","");
+			AssessmentDetails[10] = new Assessment(11,"","",AppInfo,"","Decommission Readiness Date","DecomReadiness","Datepicker","No","");
+			AssessmentDetails[11] = new Assessment(12,"","",AppInfo,"","Data Migration complete","DataMigrationComplete","Datepicker","No","");
+			AssessmentDetails[12] = new Assessment(13,"","",AppInfo,"","Data Migrated to <application name>:","DataMigrateApp","Text box","No","");
+			AssessmentDetails[13] = new Assessment(14,"","",AppInfo,"Yes,No","Are there any compliance or legal drivers determining retirement by a certain date?","ComplianceLegalDrivers","RadioBoxDependencyYes","No","");
+			AssessmentDetails[14] = new Assessment(15,"","",AppInfo,"","If Yes above, please describe","PleaseDescribe1","TextBoxDependencyYes","No","");
+			AssessmentDetails[15] = new Assessment(16,"","",AppInfo,"Yes,No","Are there any business or financial drivers determining retirement by a certain date?","BusinessDriversDrivers","RadioBoxDependencyYes","No","");
+			AssessmentDetails[16] = new Assessment(17,"","",AppInfo,"","If Yes above, please describe","PleaseDescribe2","TextBoxDependencyYes","No","");
+			AssessmentDetails[17] = new Assessment(18,"","",AppInfo,"Yes,No","Are there any technical drivers determining retirement by a certain date?","TechnicalDrivers","RadioBoxDependencyYes","No","");
+			AssessmentDetails[18] = new Assessment(19,"","",AppInfo,"","If Yes above, please describe","PleaseDescribe3","TextBoxDependencyYes","No","");
+
+		for (int index = 0; index<AssessmentDetails.length; index++)
+		{
+			String AppInfo_InsertQuery = "insert into Assessment_Application_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			PreparedStatement prestmt1 = con.prepareStatement(AppInfo_InsertQuery);			
+			prestmt1.setInt(1, AssessmentDetails[index].seq_num);
+			prestmt1.setString(2, AssessmentDetails[index].project);			
+			prestmt1.setString(3, AssessmentDetails[index].app_name);
+			prestmt1.setString(4, AssessmentDetails[index].section);
+			prestmt1.setString(5, AssessmentDetails[index].options);
+			prestmt1.setString(6, AssessmentDetails[index].label);
+			prestmt1.setString(7,  AssessmentDetails[index].column);
+			prestmt1.setString(8, AssessmentDetails[index].type);
+			prestmt1.setString(9, AssessmentDetails[index].mandatory);
+			prestmt1.setString(10, AssessmentDetails[index].value);
+			prestmt1.execute();
+		}
+	}
+
+    //Template tale for Assessment Contract Information
+	
+    String AssessContractInfoQuery = "Select * from Assessment_Contract_Info_Template_Details;";
+	
+	Statement AssessContractInfoSt = con.createStatement();
+	
+	ResultSet AssessContractInfoRs = AssessContractInfoSt.executeQuery(AssessContractInfoQuery);
+	
+	if(!AssessContractInfoRs.next())
+	{
+		String ContractInfo = "ContractInformation";
+		Assessment AssessmentDetails[] = new Assessment[5];
+		AssessmentDetails[0] = new Assessment(1,"","",ContractInfo,"","Contract:  Vendor Name","VendorName","Text box","Yes","");
+		AssessmentDetails[1] = new Assessment(2,"","",ContractInfo,"","Contract:  Vendor Contact Name","VendorContactName","Text box","No","");
+		AssessmentDetails[2] = new Assessment(3,"","",ContractInfo,"","Contract:  App Name","ContractAppName","Text box","Yes","");
+		AssessmentDetails[3] = new Assessment(4,"","",ContractInfo,"","Contract:  Expiration Date","ExpirationDate","Datepicker","Yes","");
+		AssessmentDetails[4] = new Assessment(5,"","",ContractInfo,"","Contract Termination Notice Period","TerminationNoticePeriod","Text box","No","");
+
+		for (int index = 0; index<AssessmentDetails.length; index++)
+		{
+			String ContractInfo_InsertQuery = "insert into Assessment_Contract_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			PreparedStatement prestmt1 = con.prepareStatement(ContractInfo_InsertQuery);			
+			prestmt1.setInt(1, AssessmentDetails[index].seq_num);
+			prestmt1.setString(2, AssessmentDetails[index].project);			
+			prestmt1.setString(3, AssessmentDetails[index].app_name);
+			prestmt1.setString(4, AssessmentDetails[index].section);
+			prestmt1.setString(5, AssessmentDetails[index].options);
+			prestmt1.setString(6, AssessmentDetails[index].label);
+			prestmt1.setString(7,  AssessmentDetails[index].column);
+			prestmt1.setString(8, AssessmentDetails[index].type);
+			prestmt1.setString(9, AssessmentDetails[index].mandatory);
+			prestmt1.setString(10, AssessmentDetails[index].value);
+			prestmt1.execute();
+		}
+	}
+
 	
 	Statement st= con.createStatement(); 
 	ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");

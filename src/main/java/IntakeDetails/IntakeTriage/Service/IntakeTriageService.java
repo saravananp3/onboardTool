@@ -205,8 +205,9 @@ public class IntakeTriageService extends DynamicFields {
 			return jsonobj;
 		}
 		
-		@Override
-		public void delete(int delete_seqnum, String Id) {
+		
+		public JsonArray deleteField(int delete_seqnum, String Id) {
+			JsonArray jsonArray= new JsonArray();
 			try {
 				int seqmax = 0;
 				DBconnection dBconnection = new DBconnection();
@@ -303,15 +304,18 @@ public class IntakeTriageService extends DynamicFields {
 				
 				OrderingColumnNameBySeq(Id);
 				String column_name =arr_column_name.get(arr_seqmax.indexOf(delete_seqnum));
-				 if(column_name.equals("rationalization_type")||column_name.contentEquals("appPlatfrm"))
+				 if(isDependecyColumnName(column_name))
 				 {
-					 String col_name = column_name.contentEquals("rationalization_type")?"If_other_please_describe":"If_Other_describe";
+					 String col_name = getDependencyColumnNamePair().get(column_name);
 					 delete(arr_column_name_split.indexOf(col_name)+1, Id);
 				 }
+				 IntakeAssessmentDependencyField DependencyFieldObj = new IntakeAssessmentDependencyField(Id, column_name);
+				  jsonArray = DependencyFieldObj.AddAssessmentDependentField();
 				 } catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("Exception---->>>" + e);
 			}
+			return jsonArray;
 		}
 		public static HashMap<String,String> KeyValuePairForOpportunityTriage()
 		{
@@ -361,9 +365,36 @@ public class IntakeTriageService extends DynamicFields {
 			}
 			 return value; 
 		}
+		
+		public HashMap<String,String> getDependencyColumnNamePair()
+		{
+		HashMap<String,String> KeyValuePair = new HashMap<String,String>();
+		try
+		{
+			KeyValuePair.put("rationalization_type","If_other_please_describe");
+			KeyValuePair.put("appPlatfrm","If_Other_describe");
+			KeyValuePair.put("app_and_data_hosted","vendor");
+			KeyValuePair.put("compliance","describe");
+			KeyValuePair.put("Financialdate","plsdescribe");
+			KeyValuePair.put("TechincalDeterminingdate","pls_describe");
+		}
+	   catch(Exception e)
+		{
+		  e.printStackTrace();
+		}
+		return KeyValuePair;
+		}
+		
+		public boolean isDependecyColumnName(String ColumnName)
+		{
+		    return getDependencyColumnNamePair().containsKey(ColumnName);
+		}
+		
 		@Override
 		public JsonArray AddTemplateFields(int[] selected_index,String id) {
 		      JsonArray jsonArray = new JsonArray();
+		      JsonArray FinalJson = new JsonArray();
+		      JsonArray jsonAssessment = new JsonArray();
 		      try
 		      {
 		    	  
@@ -403,7 +434,9 @@ public class IntakeTriageService extends DynamicFields {
 		    	   
 		    	   String delete_column_name = "";
 		    	   
-		    	   //
+		    	   // Deleting the unchecked fields
+		    	   
+		    	   JsonArray jsonArrayAdd = new JsonArray();
 		    	   
 		    	   String CheckQuery = "select * from triage_info where id='"+id+"' order by seq_no";
 		    	   
@@ -416,7 +449,7 @@ public class IntakeTriageService extends DynamicFields {
 		    	   while(rs2.next())
 		    	   {
 		    		   String column_name = rs2.getString("column_name");
-		    		   if(!selected_temp_column_name.contains(column_name)&&!column_name.startsWith("TriageAddInfo")&&!column_name.equals("If_other_please_describe")&&!column_name.equals("If_Other_describe"))
+		    		   if(!selected_temp_column_name.contains(column_name)&&!column_name.startsWith("TriageAddInfo")&&!getDependencyColumnNamePair().containsValue(column_name))
 		    		   {
 		    			 String Seq_Num_Query = "Select * from triage_info where id = '"+id+"' and column_name = '"+column_name+"';";
 		    			 Statement st3 = connection.createStatement();
@@ -437,13 +470,15 @@ public class IntakeTriageService extends DynamicFields {
 		    			 System.out.println("DELETING COLUMN "+rs2.getString("column_name"));
 		                    delete_seq_num += rs2.getInt(1)+",";
 		                    delete_column_name +=rs2.getString("column_name")+",";
-		                    if(column_name.equals("rationalization_type")||column_name.equals("appPlatfrm"))
+		                    JsonArray jsonAdd  =   new IntakeAssessmentDependencyField(id,column_name).AddAssessmentDependentField();
+		                    jsonArrayAdd.addAll(jsonAdd);
+		                    if(isDependecyColumnName(column_name))
 			    			 {
-		                    	delete_column_name += column_name.equals("rationalization_type")?"If_other_please_describe,":"If_Other_describe,";
+		                    	delete_column_name += getDependencyColumnNamePair().get(column_name)+",";
 			    			 }
 		    		   }
 		    	   }
-		    	   
+		    	   System.out.println("jsonArray add all :"+jsonArrayAdd);
 		    	   if(delete_seq_num.contains(","))
 		    	   
 		    		   delete_seq_num = delete_seq_num.substring(0,delete_seq_num.length()-1);
@@ -467,7 +502,7 @@ public class IntakeTriageService extends DynamicFields {
 					   max_seq = rs.getInt(1); 
 						
 				   } 
-		    	   
+		    	   String AssessmentDeleteColumnName = "";
 				   for(String col_name : selected_temp_column_name)
 				   {
 		    		
@@ -524,10 +559,11 @@ public class IntakeTriageService extends DynamicFields {
 		        		  jsonObj.addProperty("Mandatory",mandatory);
 		        		  jsonObj.addProperty("Value",value); 
 		        		  jsonArray.add(jsonObj);
-		        		  
-		        		  if(column_name.equals("rationalization_type")||column_name.equals("appPlatfrm"))
+		        		  IntakeAssessmentDependencyField intakeObj = new IntakeAssessmentDependencyField(id, column_name);
+		        		  AssessmentDeleteColumnName += intakeObj.DeleteAssessmentDependentField();
+		        		  if(isDependecyColumnName(column_name))
 		        		  {
-		        			String ColumnName = column_name.equals("rationalization_type")?"If_other_please_describe":"If_Other_describe"; 
+		        			String ColumnName = getDependencyColumnNamePair().get(column_name); 
 		          		    String selectQuery = "select * from triage_info_template_details where column_name='"+ColumnName+"';";
 		          		    Statement st5 = connection.createStatement();
 		          		    ResultSet rs5 =st5.executeQuery(selectQuery);
@@ -562,7 +598,6 @@ public class IntakeTriageService extends DynamicFields {
 				        		  jsonObj1.addProperty("Value",rs5.getString("value")); 
 				        		  jsonArray.add(jsonObj1);	
 		          		    }
-		          		    
 		        		  }
 		        		  max_seq++; 
 		        	   }
@@ -570,13 +605,20 @@ public class IntakeTriageService extends DynamicFields {
 					
 				}
 		      }
+				   System.out.println("Assessment Delete Column Name :"+AssessmentDeleteColumnName);
+		      jsonAssessment.add(AssessmentDeleteColumnName);//0
+		      jsonAssessment.addAll(jsonArrayAdd);//add all [1] : 1,2 0 , add 1,2
+		      System.out.println("json Assessment : "+jsonAssessment);
+		      FinalJson.add(jsonArray);
+		      FinalJson.add(jsonAssessment);
+		      System.out.println("Finaljson : "+FinalJson);
 		      }
 		      catch(Exception e)
 		      {
 		    	  e.printStackTrace();
 		    	  System.out.println("Exception---------[info]---------"+e);
 		      }
-		       return jsonArray;
+		       return FinalJson;
 		      }
 		public static JsonObject intakeDetailsTriageValidation(String AppName,JsonArray jsonArray,boolean checkMandatory,String APMID,String id)
 		{
@@ -796,5 +838,10 @@ public class IntakeTriageService extends DynamicFields {
 		  e.printStackTrace();
 	  }
 	return check;
+	}
+	@Override
+	public void delete(int seq_num, String id) {
+		// TODO Auto-generated method stub
+		
 	}
    }
