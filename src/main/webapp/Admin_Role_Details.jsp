@@ -31,16 +31,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen">
-
+   <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
 
     <style type="text/css">
-        .breadcrumb-div {
-            background-color: #fff;
-            color: #010101;
-        }
-
+      
         .glyphicon.glyphicon-asterisk {
             color: red;
             font-size: 6px;
@@ -67,11 +63,7 @@
             color: #252422;
             font-weight: 300;
         }
-        h4, .h4 {
-            font-size: 1.5em;
-            font-weight: 600;
-            line-height: 1.2em;
-        }
+       
 
         .card .content {
             padding: 15px 15px 10px 15px;
@@ -170,6 +162,95 @@
                 input.act:focus {
                     outline-width: 0;
                 }
+                
+                  body{
+            background:#f1f1f1;
+        }
+body{
+            background:#f1f1f1;
+        }
+
+        .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+	.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
+
+ .btn {
+
+        margin-left: 50px;
+
+    }
+  
+    .card .card-body {
+        padding: 1.88rem 1.81rem;
+    }
+
+   
+    
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.3125rem;
+        margin-top:50px;
+    }
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+
+    .card-title {
+        margin-bottom: 0.75rem;
+    }
+
+    form {
+        display: inner-block;
+        margin-top: 0em;
+    }
+
+
+  .navbar-nav .nav-link {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid transparent;
+}        
+
+ .navbar-nav .nav-link.active {
+    /* border-top: none; */
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid rgba(255,255,255,.5)!important;
+}
+
+.navbar-nav .nav-link {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid transparent;
+}
+
+.link:hover{
+
+background:#1565c0 important;
+
+}
+         
 
     </style>
 
@@ -213,50 +294,72 @@
 
 <div class="main-wrapper">
 
-    <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+
+ <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">
+                    <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
-                    <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <button type="button" class="navbar-toggle mobile-nav-toggle">
-                        <i class="fa fa-bars"></i>
-                    </button>
+
+                   
+
+
                 </div>
                 <!-- /.navbar-header -->
-                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=prjname %>
-                </a>
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		      <li ><a href="OpportunityList.jsp" >Applications</a></li>
+		      <li class="active"><a href="Admin_Module_Send_Invites.jsp" style="color:#fff">Administration</a></li>
+		      <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
+		    </ul>
+		         <ul class="nav navbar-nav navbar-right">
+                       
 
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-                    <!-- /.nav navbar-nav -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <%
-                            String uname = (String) details.getAttribute("username");
-                            String role = (String) details.getAttribute("role");%>
-                        <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span
-                                id='nav_role'><%=role%></span></a></li>
-
-                        <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
-                        </li>
+                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin</span></a></li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
-
                 </div>
-                <!-- /.navbar-collapse -->
+                
+                
+                
+                
             </div>
             <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-12">
+                             <!--  <h4 class="title" style="color:#fff">User Configuration</h4>
+                               <p class="sub-title">Create and manage your Opportunities here</p>-->
+                               <ul class="nav navbar-nav " >
+						      <li class=" nav-link "><a class="link" href="Admin_Module_Send_Invites.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Send Invites</a></li>
+						      <li class="nav-link" ><a class="link" href="Modify_Admin_Users_list.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Modify User</a></li>
+						      <li class="nav-link"><a class="link" href="Admin_Userslist.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">UserList</a></li>
+						        <li class="nav-link active"><a class="link" href="Admin_Role_Details.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Permissions</a></li>
+		    </ul>
+                          
+                        </div>
+                       
+                         <div class="container-fluid ">
+                         <ul class="nav navbar-nav" >
+						      <li ></li>
+						        <li ></li>
+		                   </ul>
+                         </div>
+                    </div>
+
+                </div>
+			</nav>
         </div>
         <!-- /.container-fluid -->
-    </nav>
-
+    </nav >
+ 
+      
 
     <form class="form-signin" name="loginForm" method="post" action="Authorization_Role_details">
 
@@ -264,74 +367,13 @@
             <div class="content-container">
 
 
-                <!-- ========== LEFT SIDEBAR for UserConfiguration ========== -->
-                <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
-                    <div class="sidebar-content" id='jqxWidget'>
-
-
-                        <div class="sidebar-nav">
-                            <ul class="side-nav color-gray">
-                                <li class="nav-header">
-                                    <span class="">Main Category</span>
-                                </li>
-                                <li id='home' item-selected='true'>
-                                    <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
-                                </li>
-
-                                <li class="nav-header">
-                                    <a><span class="">User Module</span></a>
-                                </li>
-                                <li>
-                                    <a href="User_Configuration.jsp"><i class="fa fa-file-text"></i> <span>User Configuration</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="Admin_Userslist.jsp"><i class="fa fa-paint-brush"></i>
-                                        <span>Users List</span> </a>
-                                </li>
-
-                                <li>
-                                    <a href="Admin_Role_Details.jsp"><i class="fa fa-map-signs"></i>
-                                        <span>Authorization </span> </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                        <!-- /.sidebar-nav -->
-                    </div>
-                    <!-- /.sidebar-content -->
-                </div>
-                <!-- /.left-sidebar -->
-
-
+               
                 <!-- Projects List Start -->
 
                 <div class="main-page">
                     <div class="container-fluid">
-                        <div class="row page-title-div">
-                            <div class="col-sm-6">
-                                <h2 class="title">Authorization List</h2>
-                            </div>
-                            <!-- /.col-sm-6
-                            <div class="col-sm-6 right-side">
-                                <a class="btn bg-black toggle-code-handle tour-four" role="button">Toggle Code!</a>
-                            </div>
-                             /.col-sm-6 text-right -->
-                        </div>
-                        <!-- /.row -->
-                        <div class="row breadcrumb-div">
-                            <div class="col-sm-6">
-                                <ul class="breadcrumb">
-                                    <li><a href="Project_List.jsp"><i class="fa fa-home"></i> Home</a></li>
-                                    <li class="active">Permissions</li>
-                                </ul>
-                            </div>
-                            <!-- /.col-sm-6 -->
-
-                            <!-- /.col-sm-6 -->
-                        </div>
-                        <!-- /.row -->
+                        
+                        
                     </div>
                     <section class="section">
                         <div class="container-fluid">

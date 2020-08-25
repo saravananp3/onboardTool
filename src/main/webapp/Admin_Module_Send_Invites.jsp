@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
+ <meta charset="utf-8"/>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>UserConfiguration Page</title>
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+   
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css"/>
     <script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
     <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
+       <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
     <!-- ========== PAGE STYLES ========== -->
 
     <!-- ========== THEME CSS ========== -->
@@ -28,37 +29,45 @@
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+ 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
 
 
-
 </head>
 <style>
-    .btn {
+   body{
+            background:#f1f1f1;
+        }
+
+        .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+	.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
+
+ .btn {
 
         margin-left: 50px;
 
     }
-    body {
-        font-size: 14px;;
-        font-family: "pt-sans-regular", sans-serif;
-        font-weight: initial;
-        background:#F6F8FA;
-    }
+  
     .card .card-body {
         padding: 1.88rem 1.81rem;
     }
 
-    .grid-margin {
-        margin-bottom: 1.875rem;
-    }
-    .col-12 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
+   
+    
     .card {
         position: relative;
         display: flex;
@@ -69,6 +78,7 @@
         background-clip: border-box;
         border: 1px solid rgba(0, 0, 0, 0.125);
         border-radius: 0.3125rem;
+        margin-top:50px;
     }
     .card-body {
         flex: 1 1 auto;
@@ -80,24 +90,37 @@
     }
 
     form {
-        display: block;
+        display: inner-block;
         margin-top: 0em;
     }
 
 
-    #container {
+  .navbar-nav .nav-link {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid transparent;
+}        
 
-        animation: rotateStuff 1.5s steps(20) infinite;
-    }
-    .loading {
-        position: absolute;
-        align-self: center;
-        width: 3vh;
-        height: 3vh;
-        border-radius: 50%;
-    }
+ .navbar-nav .nav-link.active {
+    /* border-top: none; */
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid rgba(255,255,255,.5)!important;
+}
 
+.navbar-nav .nav-link {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid transparent;
+}
 
+.link:hover{
+
+background:#1565c0 important;
+
+}
 </style>
 <body class="top-navbar-fixed">
 <%
@@ -108,126 +131,82 @@
 
 <div class="main-wrapper">
 
-    <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+   <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">
+                    <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
-                    <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <button type="button" class="navbar-toggle mobile-nav-toggle">
-                        <i class="fa fa-bars"></i>
-                    </button>
+
+                   
+
+
                 </div>
                 <!-- /.navbar-header -->
-                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">
-                </a>
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		      <li ><a href="OpportunityList.jsp" >Applications</a></li>
+		      <li class="active"><a href="Admin_Module_Send_Invites.jsp" style="color:#fff">Administration</a></li>
+		      <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
+		    </ul>
+		         <ul class="nav navbar-nav navbar-right">
+                       
 
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-                    <!-- /.nav navbar-nav -->
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
-                        </li>
+                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin</span></a></li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
-
                 </div>
-                <!-- /.navbar-collapse -->
+                
+                
+                
+                
             </div>
             <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-12">
+                             <!--  <h4 class="title" style="color:#fff">User Configuration</h4>
+                               <p class="sub-title">Create and manage your Opportunities here</p>-->
+                               <ul class="nav navbar-nav " >
+						      <li class=" nav-link active"><a class="link" href="Admin_Module_Send_Invites.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Send Invites</a></li>
+						      <li class="nav-link" ><a class="link" href="Modify_Admin_Users_list.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Modify User</a></li>
+						      <li class="nav-link"><a class="link" href="Admin_Userslist.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">UserList</a></li>
+						        <li class="nav-link"><a class="link" href="Admin_Role_Details.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Permissions</a></li>
+		    </ul>
+                          
+                        </div>
+                       
+                         <div class="container-fluid ">
+                         <ul class="nav navbar-nav" >
+						      <li ></li>
+						        <li ></li>
+		                   </ul>
+                         </div>
+                    </div>
+
+                </div>
+			</nav>
         </div>
         <!-- /.container-fluid -->
-    </nav>
-
+    </nav >
 
     <form class="form-signin" name="loginForm" method="post">
 
         <div class="content-wrapper">
             <div class="content-container">
 
-                <!-- ========== LEFT SIDEBAR for UserConfiguration ========== -->
-                <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
-                    <div class="sidebar-content" id='jqxWidget'>
-
-
-                        <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
-                            <div class="sidebar-content" id='jqxWidget'>
-
-
-                                <div class="sidebar-nav">
-                                    <ul class="side-nav color-gray">
-                                        <li class="nav-header">
-                                            <br>
-                                            <span class="">Main Category</span>
-                                        </li>
-                                        <li id='home' item-selected='true'>
-                                            <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
-                                        </li>
-
-                                        <li class="nav-header">
-                                            <a><span class="">User Module</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="User_Configuration.jsp"><i class="fa fa-file-text"></i> <span>User Configuration</span> </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="Admin_Userslist.jsp"><i class="fa fa-paint-brush"></i> <span>Users List</span> </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="Admin_Role_Details.jsp"><i class="fa fa-map-signs"></i> <span>Authorization </span> </a>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                                <!-- /.sidebar-nav -->
-                            </div>
-                            <!-- /.sidebar-content -->
-                        </div>
-                        <!-- /.sidebar-nav -->
-                    </div>
-                    <!-- /.sidebar-content -->
-                </div>
-                <!-- /.left-sidebar -->
-
+  
 
                 <!-- Projects List Start -->
 
                 <div class="main-page">
 
-                    <div class="container-fluid">
-
-                        <div class="row page-title-div">
-                            <div class="col-sm-6">
-                                <h2 class="title">User Profile
-
-                                </h2>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                        <div class="row breadcrumb-div">
-                            <div class="col-sm-6">
-                                <ul class="breadcrumb">
-                                    <li><a href="Project_List.jsp"><i class="fa fa-home"></i>Home</a></li>
-                                    <li class="active">Admin</li>
-
-                                </ul>
-                            </div>
-
-
-
-                        </div>
-                        <!-- /.row -->
-                    </div>
+                
 
                     <section class="section">
                         <div class="row">

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <title>Decom3Sixty - Intake</title>
 
 <!-- ========== COMMON STYLES ========== -->
@@ -33,15 +32,11 @@
             background:#fff;
         }
 
-        .active{
-        background:#1565c0;
-         }
-      .page-title-div {
-	 background:#1565c0;
-	  padding: 15px;
-	  
-	  
-	}
+       .active{
+          background: transparent;
+       
+       }
+      
 	.fixed-top{
 	width:100%;
 	padding-left: 0px;
@@ -50,10 +45,359 @@
 	
 	#module_header{
  
- margin-top:120px;
+ margin-top:-120px;
  }
 
-	
+/*------------------------*/
+input:focus,
+button:focus,
+.form-control:focus{
+	outline: none;
+	box-shadow: none;
+}
+.form-control:disabled, .form-control[readonly]{
+	background-color: #fff;
+}
+/*----------step-wizard------------*/
+
+
+/*---------signup-step-------------*/
+.bg-color{
+	background-color: #333;
+}
+.signup-step-container{
+	padding: 150px 0px;
+	padding-bottom: 60px;
+}
+
+
+
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin-bottom: 0;
+        border-bottom-color: transparent;
+    }
+
+    .wizard > div.wizard-inner {
+            position: relative;
+    margin-bottom: 50px;
+    text-align: center;
+    }
+
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width:75%;
+    margin: 0 auto;
+    left: -70px;
+    right: 0;
+    top: 36px;
+    z-index: 0.0;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #fff;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #0e214b;
+    font-weight: 500;
+    border: 1px solid #ddd;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+        background: #0db02b;
+    color: #fff;
+    border-color: #0db02b;
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+.wizard .nav-tabs > li.active > a i{
+	color: #0db02b;
+}
+
+.wizard .nav-tabs > li {
+    width: 15%;
+}
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: red;
+    transition: 0.1s ease-in-out;
+}
+
+
+
+.wizard .nav-tabs > li a {
+    width: 30px;
+    height: 30px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+    background-color: transparent;
+    position: relative;
+    top: 0;
+}
+.wizard .nav-tabs > li a i{
+	position: absolute;
+    top: -15px;
+    font-style: normal;
+    font-weight: 400;
+    white-space: nowrap;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    
+}
+
+
+.wizard h3 {
+    margin-top: 0;
+}
+.prev-step,
+.next-step{
+    font-size: 13px;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+.next-step{
+	background-color: #0db02b;
+}
+.skip-btn{
+	background-color: #cec12d;
+}
+.step-head{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.term-check{
+	font-size: 14px;
+	font-weight: 400;
+}
+.custom-file {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 0;
+}
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    opacity: 0;
+}
+.custom-file-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 40px;
+    padding: .375rem .75rem;
+    font-weight: 400;
+    line-height: 2;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.custom-file-label::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    height: 38px;
+    padding: .375rem .75rem;
+    line-height: 2;
+    color: #495057;
+    content: "Browse";
+    background-color: #e9ecef;
+    border-left: inherit;
+    border-radius: 0 .25rem .25rem 0;
+}
+.footer-link{
+	margin-top: 30px;
+}
+.all-info-container{
+
+}
+.list-content{
+	margin-bottom: 10px;
+}
+.list-content a{
+	padding: 10px 15px;
+    width: 100%;
+    display: inline-block;
+    background-color: #f5f5f5;
+    position: relative;
+    color: #565656;
+    font-weight: 400;
+    border-radius: 4px;
+}
+.list-content a[aria-expanded="true"] i{
+	transform: rotate(180deg);
+}
+.list-content a i{
+	text-align: right;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: 0.5s;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fdfdfd;
+}
+.list-box{
+	padding: 10px;
+}
+.signup-logo-header .logo_area{
+	width: 200px;
+}
+.signup-logo-header .nav > li{
+	padding: 0;
+}
+.signup-logo-header .header-flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.list-inline li{
+    display: inline-block;
+}
+.pull-right{
+    float: right;
+}
+/*-----------custom-checkbox-----------*/
+/*----------Custom-Checkbox---------*/
+input[type="checkbox"]{
+    position: relative;
+    display: inline-block;
+    margin-right: 5px;
+}
+input[type="checkbox"]::before,
+input[type="checkbox"]::after {
+    position: absolute;
+    content: "";
+    display: inline-block;   
+}
+input[type="checkbox"]::before{
+    height: 16px;
+    width: 16px;
+    border: 1px solid #999;
+    left: 0px;
+    top: 0px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+input[type="checkbox"]::after{
+    height: 5px;
+    width: 9px;
+    left: 4px;
+    top: 4px;
+}
+input[type="checkbox"]:checked::after{
+    content: "";
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transform: rotate(-45deg);
+}
+input[type="checkbox"]:checked::before{
+    background-color: #18ba60;
+    border-color: #18ba60;
+}
+
+
+
+
+
+
+@media (max-width: 767px){
+	.sign-content h3{
+		font-size: 40px;
+	}
+	.wizard .nav-tabs > li a i{
+		display: none;
+	}
+	.signup-logo-header .navbar-toggle{
+		margin: 0;
+		margin-top: 8px;
+	}
+	.signup-logo-header .logo_area{
+		margin-top: 0;
+	}
+	.signup-logo-header .header-flex{
+		display: block;
+	}
+}
+
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 35px;
+    
+    border-radius:50%;
+    background:Gray;
+}
+
+.fa{
+padding-left:3px;
+padding-top:-3px;
+padding-bottom:10px;
+margin:0 auto;
+font-size:14x;
+color:#fff;
+
+}
+
+
+
+
+
 </style>
 </head>
 <body class="top-navbar-fixed">
@@ -74,11 +418,13 @@
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
-		      <li><a href="#">Administration</a></li>
-		      <li><a href="#">Governance/Finance</a></li>
-		        <li><a href="#">Dashboards</a></li>
+          <ul class="nav navbar-nav">
+		      <li class="active"><a href="OpportunityList.jsp" style="color:#fff; background:#1565c0; ">Applications</a></li>
+		      <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		     <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
 		    </ul>
 		         <ul class="nav navbar-nav navbar-right">
                        
@@ -93,20 +439,7 @@
                 
             </div>
             <!-- /.row -->
-            <nav class="navbar navbar-down">
-				  <div class="container-fluid fixed-top">
-                    <div class="row page-title-div">
-                        <div class="col-sm-6">
-                             <h4 class="title" style="color:#fff">Opportunity</h4>
-                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
-                               <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <a href="#" style="color:#fff"> Opportunity</a></p>
-                        </div>
-                       
-
-                    </div>
-
-                </div>
-			</nav>
+            
         </div>
         <!-- /.container-fluid -->
     </nav >
@@ -115,17 +448,45 @@
                    
                     <div class="main-page">
                         
-                        <section>
-                            <div class="row">
-                                <div class="container" id="module_header">
-                                    <div class="main">
-                                        <div class="panel panel-default">
+                        <section class="signup-step-container">
+        <div class="container" id="module_header">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="wizard">
+                        <div class="wizard-inner">
+                            <div class="connecting-line"></div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" >
+                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i>Opportunity</i></a>
+                                </li>
+                                <li role="presentation" >
+                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>Triage</i></a>
+                                </li>
+                                <li role="presentation" >
+                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Triage Summary</i></a>
+                                </li>
+                                <li role="presentation" >
+                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Assessment</i></a>
+                                </li>
+                                 <li role="presentation" >
+                                    <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab"><span class="round-tab">5</span> <i>Stake Holder</i></a>
+                                </li>
+                                 <li role="presentation" >
+                                    <a href="#step6" data-toggle="tab" aria-controls="step6" role="tab"><span class="round-tab">6</span> <i>Preview</i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                          <form role="form" action="index.html" class="login-box">
+                            <div class="tab-content" id="main_form">
+                                <div class="tab-pane active" role="tabpanel" id="step1">
+                                       <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" data-toggle="collapse"
-                                                        data-parent="#panels1" href="#collapse1">Opportunity</a> </h4>
+                                                        data-parent="#panels1" >Opportunity</a> </h4>
                                             </div>
-                                            <div id="collapse1" class="panel-collapse collapse in"
+                                            <div id="collapse1" class="panel-collapse "
                                                 name="collapse">
                                                 <div class="panel-body">
                                                     <div id="inputFields">
@@ -133,20 +494,24 @@
                                                     </div>                                                
                                                     <div class="col-md-12">
                                                             <div class="col-md-1">
-                                                                <button type="button" class="btn btn-primary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button>
+                                                                <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button>
                                                             </div>
-                                                            <div class="col-md-4 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
-                                                                <button type="button" class="btn btn-primary" id="template" data-toggle="modal" data-target=".bd-example-modal-lg">Template</button>
+                                                            <div class="col-md-5 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                                <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".bd-example-modal-lg">Template</button>
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                                                 <ul class="dropdown-menu">
                                                                     <li><a href="#" id="add" data-toggle="modal" data-target="#AddPopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
                                                                     <li><a href="#" id="Edit" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
                                                                     <li><a href="#" id="Delete" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
-                                                                <button type="submit" class="btn btn-primary" id="create">Save</button>
+                                                               
+                                                                <button type="submit" class="btn btn-success" id="create">Save</button>
+                                                                 <a href="#step2"  aria-controls="step2" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
+                                                                
+                                                              
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
-                                                                <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
+                                                               <!--  <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button> -->
                                                             </div>
                                                     </div>
                                                     <!--  <div class="form-group">
@@ -155,8 +520,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Modal -->
+                                </div>
+                                
+                                <!-- Modal -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -185,28 +551,32 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel panel-default">
+                                
+                                    <div class="tab-pane" role="tabpanel" id="step2">
+                                    
+                                             <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">Triage Information</a>  </h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">Triage Information</a>  </h4>
                                         </div>
-                                        <div id="collapse2" class="panel-collapse collapse">
+                                        <div id="collapse2" class="panel-collapse ">
                                             <div class="panel-body">
                                             <div id="inputValue">
                                                         <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/>
                                              </div>
                                             <div class="col-md-12">
                                                 <div class="col-md-1">
-                                                     <button type="button" class="btn btn-primary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button> </div>
-                                                            <div class="col-md-4 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
-                                                                <button type="button" class="btn btn-primary" id="template" data-toggle="modal" data-target=".triage-example-modal-lg">Template</button>
+                                                     <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button> </div>
+                                                            <div class="col-md-5 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                                <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".triage-example-modal-lg">Template</button>
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span> </button>
                                                                 <ul class="dropdown-menu">
                                                                     <li><a href="#" id="add" data-toggle="modal" data-target="#AddTriagePopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
                                                                     <li><a href="#" id="EditTriage" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
                                                                     <li><a href="#" id="DeleteTriage" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
-                                                                <button type="submit" class="btn btn-primary" id="createbtn">Save</button>
+                                                                <button type="submit" class="btn btn-success" id="createbtn">Save</button>
+                                                                <a href="#step3"  aria-controls="step3" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn1" data-toggle="modal" data-target="#EditTriagePopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn1" data-toggle="modal" data-target="#DeleteTriagePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
@@ -215,13 +585,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Triage Summary -->
+                                    
+                                    
+                                    
+                                    </div>
+                                
+                                 
+                                  <div class="tab-pane" role="tabpanel" id="step3">
+                                                        <!-- Triage Summary -->
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3" onclick="switchColors();">Triage Summary</a></h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">Triage Summary</a></h4>
                                         </div>
-                                        <div id="collapse3" class="panel-collapse collapse">
+                                        <div id="collapse3" class="panel-collapse ">
                                             <div class="panel-body">
                                             <div id="inputFieldsSummary">
                                                     <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/> </div>
@@ -231,16 +608,17 @@
                                                         <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/></div>                                           
                                                     <div class="col-md-12">
                                                        <div class="col-md-1">
-                                                          <button type="button" class="btn btn-primary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button></div>
-                                                       <div class="col-md-4 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
-                                                          <button type="button" class="btn btn-primary" id="template" data-toggle="modal" data-target=".triage-summary-example-modal-lg">Template</button>
+                                                          <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;"><a href="#step2">Back</a></button></div>
+                                                       <div class="col-md-5 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                          <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".triage-summary-example-modal-lg">Template</button>
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                                                 <ul class="dropdown-menu">
                                                                     <li><a href="#" id="addSummary" data-toggle="modal" data-target="#TiageSummAddPopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
                                                                     <li><a href="#" id="EditSummary" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
                                                                     <li><a href="#" id="DeleteSummary" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
-                                                                <button type="submitBtn" class="btn btn-primary" id="createTriSummary">Save</button>
+                                                                <button type="submitBtn" class="btn btn-success" id="createTriSummary">Save</button>
+                                                                <a href="#step4"  aria-controls="step4" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopupSummary_btn" data-toggle="modal" data-target="#TriSummEditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopupSummary_btn" data-toggle="modal" data-target="#TriageSummaryDeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
@@ -252,26 +630,32 @@
                                     
                                 </div>
                             </div>
-                            <!-- Assessment Table -->
+                                  </div>
+                                  
+                                  
+                                  
+                                  
+                                  <div class="tab-pane" role="tabpanel" id="step4">
+                                     <!-- Assessment Table -->
                             <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4" onclick="switchColors();">Assessment</a></h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">Assessment</a></h4>
                                         </div>
-                                        <div id="collapse4" class="panel-collapse collapse">
+                                        <div id="collapse4" class="panel-collapse ">
                                           
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                            <div id="collapse1" class="panel-collapse " name="collapse">
                                                 <div class="panel-body">
                                                     <div id="inputFieldsAssessment">
                                       <!-- Application Information -->
                                      <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse5" onclick="switchColors();">Application information</a></h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">Application information</a></h4>
                                         </div>
-                                        <div id="collapse5" class="panel-collapse collapse">
+                                        <div id="collapse5" class="panel-collapse ">
                                             <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                            <div id="collapse1" class="panel-collapse " name="collapse">
                                                <div class="panel-body">
                                                  <div id="inputFieldsAppInfo">
 												 </div>   
@@ -374,9 +758,10 @@
                                        </div>
 							         </div>
 							         </div>
+							         <br>
 							         <div class="col-md-12">
                                        <div class="col-md-1">
-                                       <button type="button" class="btn btn-primary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button></div>
+                                       <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button></div>
                                        <div class="col-md-4 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
                                        <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                        <ul class="dropdown-menu">
@@ -384,7 +769,8 @@
                                        <li><a href="#" id="EditAssess" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
                                        <li><a href="#" id="DeleteAssess" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                        </ul>
-                                       <button type="button" class="btn btn-primary" id="AssessmentSaveBtn">Save</button>
+                                       <button type="button" class="btn btn-success" id="AssessmentSaveBtn">Save</button>
+                                       <a href="#step5"  aria-controls="step5" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
                                        <button type="button" class="btn btn-primary pull-right" id="editpopupAssess_btn" data-toggle="modal" data-target="#AssessEditPopUp" style="display: none;">Edit PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="deletepopupAssess_btn" data-toggle="modal" data-target="#AssessDeletePopUp" style="display: none;">Delete PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
@@ -395,14 +781,35 @@
                                 </div>
                             </div>
                     </div>
-                </div>
-                </section>
-            </div>
-        </div>
-        </div>
-        </div>
-    </form>
-    <!-- Intake OpportunityTemplate modal-->
+                                  
+                                  
+                                  
+                                  </div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                </div>
+                                 <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" ><i class="fa fa-arrow-up"></i></a> 
+                               </form>
+        
+         <!-- Intake OpportunityTemplate modal-->
     <div class="modal fade bd-example-modal-lg" id="myFormModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -1647,6 +2054,30 @@
     </div>
   </div>
 </div> 
+        
+        
+        
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                        
+                        
+                        
+                   </div>
+                 </div>
+                       
+             </div>                   
+                                          
+                                          
+                                          
+                                          
+                                    
+                                    
+                                    
+                                    
 
     <!-- Date picker --> 
     
@@ -1688,12 +2119,25 @@
      <script src="js/IntakeDetails/IntakeAssessment/Common/AssessEditDeleteAjaxCall.js"></script>
      <script src="js/IntakeDetails/IntakeAssessment/Common/IntakeAssessmentSave.js"></script>
      
-    <!-- <script>
-        function myFunction() {
-            let today = new Date().toISOString().substr(0, 10);
-            document.getElementById('creation_date').value = today;
-        }
-    </script> -->
+  
+     <script>
+    $(document).ready(function(){
+    	$(window).scroll(function () {
+    			if ($(this).scrollTop() > 50) {
+    				$('#back-to-top').fadeIn();
+    			} else {
+    				$('#back-to-top').fadeOut();
+    			}
+    		});
+    		// scroll body to 0px on click
+    		$('#back-to-top').click(function () {
+    			$('body,html').animate({
+    				scrollTop: 0
+    			}, 400);
+    			return false;
+    		});
+    });
+    </script>
     </body>
     <!-- ========== COMMON JS FILES ========== -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>

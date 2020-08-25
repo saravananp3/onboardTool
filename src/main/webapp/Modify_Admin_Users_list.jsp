@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/icheck/skins/line/red.css">
     <link rel="stylesheet" href="css/icheck/skins/line/green.css">
     <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
-
+   <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen">
 
@@ -35,61 +35,89 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
 
     <style type="text/css">
-        body {
-            font-size: 14px;;
-            font-family: "pt-sans-regular", sans-serif;
-            font-weight: initial;
-            background:#F6F8FA;
-        }
-        .card .card-body {
-            padding: 1.88rem 1.81rem;
+body{
+            background:#f1f1f1;
         }
 
-        .grid-margin {
-            margin-bottom: 1.875rem;
-        }
-        .col-12 {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-        .card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 1px solid rgba(0, 0, 0, 0.125);
-            border-radius: 0.3125rem;
-        }
-        .card-body {
-            flex: 1 1 auto;
-            padding: 1.25rem;
-        }
+        .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+	.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
 
-        .card-title {
-            margin-bottom: 0.75rem;
-        }
+ .btn {
 
-        form {
-            display: block;
-            margin-top: 0em;
-        }
+        margin-left: 20px;
+
+    }
+  
+    
+   
+    
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+    
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 0.3125rem;
+        margin-top:50px;
+    }
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+    }
+
+    .card-title {
+        margin-bottom: 0.75rem;
+    }
+
+    
 
 
-        #container {
+  .navbar-nav .nav-link {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid transparent;
+}        
 
-            animation: rotateStuff 1.5s steps(20) infinite;
-        }
-        .loading {
-            position: absolute;
-            align-self: center;
-            width: 3vh;
-            height: 3vh;
-            border-radius: 50%;
-        }
+ .navbar-nav .nav-link.active {
+    /* border-top: none; */
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid rgba(255,255,255,.5)!important;
+}
 
+.navbar-nav .nav-link {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid transparent;
+}
+
+.link:hover{
+
+background:#1565c0 important;
+
+}
+
+.table-responsive {
+    overflow-x: 0 important;
+    min-height: .01%;
+}
 
     </style>
 
@@ -192,7 +220,7 @@
     String info = (String) details.getAttribute("admin");
     String prjname = (String) details.getAttribute("nameofproject");
     Class.forName("com.mysql.jdbc.Driver");
-    java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
+    java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
     String query = "select * from Admin_UserDetails";
     Statement s = conn.createStatement();
     ResultSet rs = s.executeQuery(query);
@@ -201,93 +229,75 @@
 <div class="main-wrapper">
 
 
-    <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">
+                    <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
-                    <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-ellipsis-v"></i>
-                    </button>
-                    <button type="button" class="navbar-toggle mobile-nav-toggle">
-                        <i class="fa fa-bars"></i>
-                    </button>
+
+                   
+
+
                 </div>
                 <!-- /.navbar-header -->
-                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=prjname %>
-                </a>
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		      <li ><a href="OpportunityList.jsp" >Applications</a></li>
+		      <li class="active"><a href="Admin_Module_Send_Invites.jsp" style="color:#fff">Administration</a></li>
+		      <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
+		    </ul>
+		         <ul class="nav navbar-nav navbar-right">
+                       
 
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-                    <!-- /.nav navbar-nav -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <%
-                            String uname = (String) details.getAttribute("username");
-                            String role = (String) details.getAttribute("role");%>
-                        <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span
-                                id='nav_role'><%=role%></span></a></li>
-                        <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
-                        </li>
+                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin</span></a></li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
-
                 </div>
-                <!-- /.navbar-collapse -->
+                
+                
+                
+                
             </div>
             <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-12">
+                             <!--  <h4 class="title" style="color:#fff">User Configuration</h4>
+                               <p class="sub-title">Create and manage your Opportunities here</p>-->
+                               <ul class="nav navbar-nav " >
+						      <li class=" nav-link "><a class="link" href="Admin_Module_Send_Invites.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Send Invites</a></li>
+						      <li class="nav-link active" ><a class="link" href="Modify_Admin_Users_list.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Modify User</a></li>
+						      <li class="nav-link"><a class="link" href="Admin_Userslist.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">UserList</a></li>
+						        <li class="nav-link"><a class="link" href="Admin_Role_Details.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Permissions</a></li>
+		    </ul>
+                          
+                        </div>
+                       
+                         <div class="container-fluid ">
+                         <ul class="nav navbar-nav" >
+						      <li ></li>
+						        <li ></li>
+		                   </ul>
+                         </div>
+                    </div>
+
+                </div>
+			</nav>
         </div>
         <!-- /.container-fluid -->
-    </nav>
-
+    </nav >
     <form class="form-signin" name="loginForm" method="post">
 
         <div class="content-wrapper">
             <div class="content-container">
 
-                <!-- ========== LEFT SIDEBAR for UserConfiguration ========== -->
-                <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
-                    <div class="sidebar-content" id='jqxWidget'>
-
-
-                        <div class="sidebar-nav">
-                            <ul class="side-nav color-gray">
-                                <li class="nav-header">
-                                    <span class="">Main Category</span>
-                                </li>
-                                <li id='home' item-selected='true'>
-                                    <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
-                                </li>
-
-                                <li class="nav-header">
-                                    <a><span class="">User Module</span></a>
-                                </li>
-                                <li>
-                                    <a href="User_Configuration.jsp"><i class="fa fa-file-text"></i> <span>User Configuration</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="Admin_Userslist.jsp"><i class="fa fa-paint-brush"></i>
-                                        <span>Users List</span> </a>
-                                </li>
-
-                                <li>
-                                    <a href="Admin_Role_Details.jsp"><i class="fa fa-map-signs"></i>
-                                        <span>Authorization </span> </a>
-                                </li>
-                            </ul>
-
-                        </div>
-                        <!-- /.sidebar-nav -->
-                    </div>
-                    <!-- /.sidebar-content -->
-                </div>
-                <!-- /.left-sidebar -->
+              
 
 
                 <!-- Projects List Start -->
@@ -296,28 +306,8 @@
 
                     <div class="container-fluid">
 
-                        <div class="row page-title-div">
-                            <div class="col-sm-6">
-                                <h2 class="title">Modify the List Of User
-
-                                </h2>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                        <div class="row breadcrumb-div">
-                            <div class="col-sm-6">
-                                <ul class="breadcrumb">
-                                    <li><a href="Project_List.jsp"><i class="fa fa-home"></i>Home</a></li>
-                                    <li class="active">Admin</li>
-                                    <li class="active">User List</li>
-
-                                </ul>
-                            </div>
-
-
-
-                        </div>
-                        <!-- /.row -->
+                        
+                        
                     </div>
 
                     <section class="section">
@@ -335,8 +325,8 @@
                                                     <p class="card-description">
 
                                                     </p>
-                                                    <div class="content table-responsive table-full-width">
-                                                        <table class="table table-hover table-striped" id="datatable">
+                                                    <div class="content table-responsive">
+                                                        <table class="table table-bordered table-striped" id="datatable">
                                                             <thead>
 
                                                             <th>UserName</th>

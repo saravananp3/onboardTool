@@ -121,7 +121,7 @@ transition: width 2s, height 2s, transform 2s;
   background-color: #fff;
   border: 10px solid DodgerBlue;
   border-radius: 50%;
-  margin: 15px auto;
+  margin: 30px auto;
   box-sizing: border-box;
    transition: width 2s, height 2s, transform 2s;
 }
@@ -132,7 +132,7 @@ transition: width 2s, height 2s, transform 2s;
   background-color: #fff;
   border: 10px solid DodgerBlue;
   border-radius: 50%;
-  margin: 15px auto;
+  margin: 0 auto;
   box-sizing: border-box;
    transition: width 2s, height 2s, transform 2s;
 }
@@ -148,6 +148,17 @@ transition: width 2s, height 2s, transform 2s;
    transition: width 2s, height 2s, transform 2s;
 }
 
+.step-milestone5{
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border: 10px solid DodgerBlue;
+  border-radius: 50%;
+  margin: 100px auto;
+  box-sizing: border-box;
+   transition: width 2s, height 2s, transform 2s;
+}
 @media screen and (max-width: 678px) {
   .steps-timeline {
     border-left: 5px dotted #bbb;
@@ -283,10 +294,12 @@ transition: width 2s, height 2s, transform 2s;
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
-		      <li><a href="#">Administration</a></li>
-		      <li><a href="#">Governance/Finance</a></li>
-		        <li><a href="#">Dashboards</a></li>
+		    <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
 		    </ul>
 		         <ul class="nav navbar-nav navbar-right">
                         <%
@@ -383,8 +396,24 @@ transition: width 2s, height 2s, transform 2s;
      Requirements  <br> 
     </span>
   </div>
+  <div class="step">
+    <div class="step-milestone2"/>
+    <a href="#">
+                                        <center>
+                                             <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
+
+                                        </center>
+
+                                    </a>
+    
+    
+    </div>
+     <span class="step-title">
+      Archive  <br> Execution
+    </span>
+  </div>
     <div class="step">
-    <div class="step-milestone4"/>
+    <div class="step-milestone5"/>
     <a href="#">
                                         <center>
                                              <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">

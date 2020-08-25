@@ -49,6 +49,31 @@
 	padding-left: 0px;
     padding-right: 0px;
 	}
+	
+	
+	
+.search{
+
+margin-top:-40px;
+}
+
+hr{
+
+border-top: 3px solid #dce8f1;
+}
+ input[type=search]{
+  outline: 0;
+  
+  border-width: 0 0 3px 0;
+  border-color: #d2d2d2;
+}
+input[type=search]:focus {
+  border-color: #1565c0;
+}
+.cbp-vm-switcher {
+	padding: 20px;
+	
+}
 
 .cbp-vm-switcher {
 	padding: 20px;
@@ -388,11 +413,13 @@
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
-		      <li><a href="#">Administration</a></li>
-		      <li><a href="#">Governance/Finance</a></li>
-		        <li><a href="#">Dashboards</a></li>
-		    </ul>
+		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
+		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
                         <%
                             String uname=(String)details.getAttribute("username");
@@ -476,7 +503,21 @@
                                             <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid"></a>
                                             <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list"></a>
                                         </div>
+                                        <div class="row search">
+                                      <div class="col-md-6">
+                                                            <div class="form-group row">
+                                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                                             <div class="col-md-5">
+                                                             
+                                                               <input type="search" placeholder="Search the application.."  class="form-control searchbox-input">
+                                                             </div>      
+                                                                  
+                                                            
+                                                            
+                                                            </div>
 
+                                                        </div>
+                                 </div>
 
 
  
@@ -605,7 +646,31 @@
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+ <script>
+$(document).ready(function() {
+    $('.searchbox-input').keyup(function(){
+        search_text($(this).val());
+    });
 
+    function search_text(value){
+        $('#ul_id .cbp-vm-title').each(function(){
+            var found = 'false';
+            $(this).each(function(){
+                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                {
+                    found = 'true';
+                }
+            });
+            if(found == 'true'){
+                $(this).parent().css('display','');
+            }
+            else {
+                $(this).parent().css('display','none');
+            }
+        })
+    }
+});
+</script>
 
 </body>
 </html>

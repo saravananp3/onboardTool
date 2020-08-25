@@ -173,11 +173,11 @@ HttpSession details = request.getSession();
 	              
 	                      <div class="col-md-12">
                 <div class="col-md-1">
-	               <button type="button" class="btn btn-primary" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='OpportunityList.jsp';">Back</button>
+	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='OpportunityList.jsp';">Back</button>
 	           </div>
 	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right;">
 
-	                <button type="button" class="btn btn-primary" id="template" data-toggle="modal" data-target=".bd-example-modal-lg">Template</button>
+	                <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".bd-example-modal-lg">Template</button>
                             <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
                               <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
@@ -185,7 +185,7 @@ HttpSession details = request.getSession();
                                 <li><a href="#" id = "Edit" class="fa fa-edit" style="font-size:19px;color:black">&nbsp;&nbsp;&nbsp;Edit</a></li>
                                 <li><a href="#" id = "Delete" class="fa fa-trash" style="font-size:18px;color:black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                 </ul>
-	                       <button type="submit" class="btn btn-primary" id="create">Create</button>
+	                       <button type="submit" class="btn btn-success" id="create">Create</button>
 	                       <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display:none;">Edit PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display:none;">Delete PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='OpportunityList.jsp';"style="display:none;"></button>
