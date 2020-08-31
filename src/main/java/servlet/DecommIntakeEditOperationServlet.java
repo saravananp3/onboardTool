@@ -20,7 +20,7 @@ public class DecommIntakeEditOperationServlet extends HttpServlet {
         String[] options =request.getParameterValues("Options");*/
         int SequenceNumber=Integer.parseInt(request.getParameter("Seq_num"));
        DecommIntakeServices.DecommIntakeEditOperation(projectname,applicationname,label_name,SequenceNumber);
-        response.sendRedirect("legency_retention.jsp?appname="+applicationname+"&prjname="+projectname);
+        response.sendRedirect("legency_retention.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

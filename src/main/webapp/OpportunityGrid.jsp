@@ -414,7 +414,7 @@ transition: width 2s, height 2s, transform 2s;
   </div>
     <div class="step">
     <div class="step-milestone5"/>
-    <a href="#">
+    <a href="DecommManageExecutionInfo.jsp">
                                         <center>
                                              <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
 

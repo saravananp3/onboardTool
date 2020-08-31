@@ -220,8 +220,8 @@
                             <li class="has-children">
                                 <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                 <ul class="child-nav">
-                                    <li><a href="Applications.jsp" > <span>Archive Intake</span></a></li>
-                                    <li><a href="Decomm_Intake_Applications.jsp" > <span>Decomm Intake</span></a></li>
+                                    <li><a href="Intake_Business.jsp" > <span>Archive Requirements</span></a></li>
+                                    <li><a href="Decomm_Requirements_Applications.jsp" > <span>Decomm Requirements</span></a></li>
                                     <%--<li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
                                     <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
                                     <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>--%>
@@ -264,7 +264,7 @@
 
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h2 class="title">Decomm Intake Requirements</h2>
+                            <h2 class="title">Decomm Requirements</h2>
                         </div>
                     </div>
                     <!-- /.row -->

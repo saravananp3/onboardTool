@@ -355,7 +355,7 @@
                         <div class="row breadcrumb-div">
                             <div class="col-sm-6">
                                 <ul class="breadcrumb">
-                                    <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
+                                    <li><a href="Project_List.jsp"><i class="fa fa-home"></i> Home</a></li>
                                     <li class="active">Applications</li>
                                 </ul>
                             </div>
@@ -606,7 +606,7 @@
                         "<script>if("+data[i].applicationpercentage+"<35){document.getElementById('prog_bar"+i+"').className = 'progress-bar progress-bar-danger progress-bar-striped';}else if("+data[i].applicationpercentage+"<65)" +
                         "{document.getElementById('prog_bar"+i+"').className = 'progress-bar progress-bar-warning progress-bar-striped';}<\/script>"+
                         "<button type='button' class='btn btn-primary'\n" +
-                        "onClick=\"decomm_manage_edit('"+data[i].applicationname+"');\">\n" +
+                        "onClick=\"decomm_intake_edit('"+data[i].applicationname+"');\">\n" +
                         "View/Update\n"+
                         "</button></li>";
                     ulid.append(li);
@@ -657,20 +657,6 @@
             sideBySide: true
         });
     });
-</script>
-
-<script>
-    function UpdateTable(){
-        var url_string=window.location.href;
-        var url = new URL(url_string);
-        var appname = url.searchParams.get("appname");
-        var projname=url.searchParams.get("prjname");
-        console.log("application name",appname,"project name ",projname);
-        var f=document.TableSubmitForm;
-        f.method="post";
-        f.action="DecommManageExecutionInfoServlet?ProjectName="+projname+"&ApplicationName="+appname+"&RoleName="+check1+"&RowLength="+rowlength;
-        f.submit();
-    }
 </script>
 
 <script>

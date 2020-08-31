@@ -17,7 +17,7 @@ public class DecommManageInfraCompAddServlet extends HttpServlet {
         String projectname = request.getParameter("ProjectName");
         String applicationname = request.getParameter("ApplicationName");
         DecommManageExecuteInfoService.DecommManageInfraCompDataAddService(projectname,applicationname);
-        response.sendRedirect("DecommManageInfraComp.jsp?projectname="+projectname+"&appname="+applicationname);
+        response.sendRedirect("DecommManageInfraComp.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

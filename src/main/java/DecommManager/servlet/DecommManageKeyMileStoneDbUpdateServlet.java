@@ -38,7 +38,7 @@ public class DecommManageKeyMileStoneDbUpdateServlet extends HttpServlet {
             catch (Exception e){
                 System.out.println("Exception---->>>>"+e);
             }
-            response.sendRedirect("DecommManagePreview.jsp?appname="+appname+"&projectname="+projectname);
+            response.sendRedirect("DecommManagePreview.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

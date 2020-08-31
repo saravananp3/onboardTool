@@ -187,7 +187,7 @@ public class DecommManageSerivceCategoriesDBUpdateServlet extends HttpServlet {
                 }*/
         /*RequestDispatcher rd = request.getRequestDispatcher("DecommManageKeyMileStoneTableServlet");
         rd.forward(request,response);*/
-        response.sendRedirect("DecommManageServiceCategoriesChecklistDataRetrieve.jsp?appname="+appname+"&projectname="+projectname);
+        response.sendRedirect("DecommManageServiceCategoriesChecklistDataRetrieve.jsp");
 
     }
 

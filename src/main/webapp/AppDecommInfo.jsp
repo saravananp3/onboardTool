@@ -80,21 +80,70 @@
         color: #fff;
         top: 5px;
     }
-
-
-
 </style>
 
 <body class="top-navbar-fixed">
 
-
-
 <div class="main-wrapper">
 
+<%@ page import="java.text.SimpleDateFormat"%>
+    <%@ page import="java.util.Date"%>
+    <%
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed AppDecommInfo JSP PAGE-----[INFO]");  %>
+    <%@page language="java"%>
+    <%@page import="java.sql.*"%>
+    <%@page import="java.text.DateFormat" %>
+    <%@page import="java.text.SimpleDateFormat" %>
+    <%@page import="java.util.Date" %>
+    <%@page import="java.util.Calendar" %>
+    <%
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setHeader("Expires", "0"); // Proxies.
+
+        if (session.getAttribute("username")==null)
+        {
+            response.sendRedirect("Login.jsp");
+
+        }
+        else{
+            String name=(String)session.getAttribute("ID");
+            String Opportunityname=(String)session.getAttribute("SelectedOpportunity");
+            HttpSession details=request.getSession();
+            Connection con = null;
+            String url = "jdbc:mysql://localhost:3306/";
+            String db = "Onboarding";
+            String driver = "com.mysql.jdbc.Driver";
+            String userName ="root";
+            String password="password123";
+            session.setAttribute("theName", name);
+            String roles=(String)details.getAttribute("role");
+            int sumcount=0;
+            Statement st,st2;
+            try{
+                Class.forName(driver).newInstance();
+                con = DriverManager.getConnection(url+db,userName,password);
+                Statement st1;
+
+
+             //   String query1 = "select * from AppEmphazize_ProjectDetails where id = "+name;
+             //   st1 = con.createStatement();
+             //   ResultSet rs = st1.executeQuery(query1);
+              //  if(rs.next())
+               // {
+                	 %>
+                	 
     <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
+            
+            	<%
+                  //      details.setAttribute("nameofproject",rs.getString("projectname"));
+                %>
+            
                 <div class="navbar-header no-padding">
 
                     <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">
@@ -116,7 +165,12 @@
 
                     <!-- /.nav navbar-nav -->
                     <ul class="nav navbar-nav navbar-right">
-
+					<a class="navbar-brand" href="Project_List.jsp" id="sitetitle1">OPPORTUNITY NAME -<%= Opportunityname %></a>
+                   <%
+                            String uname=(String)details.getAttribute("username");
+                            String role=(String)details.getAttribute("role");
+                            %>
+                    
                         <li><a href="#"><span id="nav_userid">&nbsp;</span>logged in as &nbsp;<span id='nav_role'></span></a></li>
                         <li><a href="Logout" class="text-center"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
@@ -214,8 +268,8 @@
                             <li class="has-children">
                                 <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                 <ul class="child-nav">
-                                    <li><a href="Applications.jsp" > <span>Archive Intake</span></a></li>
-                                    <li><a href="Decomm_Intake_Applications.jsp" > <span>Decomm Intake</span></a></li>
+                                    <li><a href="Applications.jsp" > <span>Archive Requirements</span></a></li>
+                                    <li><a href="Decomm_Requirements_Applications.jsp" > <span>Decomm Requirements</span></a></li>
                                     <%--<li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
                                     <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
                                     <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>--%>
@@ -258,7 +312,7 @@
 
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h2 class="title">Decomm Intake Requirements</h2>
+                            <h2 class="title">Decomm Requirements</h2>
                         </div>
                     </div>
                     <!-- /.row -->
@@ -293,8 +347,8 @@
                                         <div id="collapse2" class="panel-collapse">
                                             <div class="panel-body text-left">
                                                 <div class="form-group">
-                                                    <label class="control-label" for="formInput198"> Application Name</label>
-                                                    <input type="text" class="form-control" id="app_name" placeholder="Application Name" name="appname" readonly >
+                                                    <label class="control-label" for="formInput198"> Opportunity Name</label>
+                                                    <input type="text" class="form-control" id="app_name" placeholder="Opportunity Name" name="appname" readonly >
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label" for="formInput198"><div class="required_fie"> Legacy Application Name</div></label>
@@ -394,18 +448,24 @@
                         </div>
                     </div>
 
-
-
-
-
-
                 </section>
 
-
-            </div>
-
+           </div>
 
         </div>
+
+		      <%
+
+ //   }
+%>
+
+<%
+        }
+       catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+%>
 
 
         <script>

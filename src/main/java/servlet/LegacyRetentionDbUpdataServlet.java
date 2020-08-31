@@ -84,7 +84,7 @@ public class LegacyRetentionDbUpdataServlet extends HttpServlet {
                 catch(Exception e){
                     System.out.println("Exception....."+e);
                 }*/
-                response.sendRedirect("DecommIntakePreviewPage.jsp?appname="+appname+"&projname="+projectname);
+                response.sendRedirect("DecommRequirementsPreviewPage.jsp");
 
     }
 

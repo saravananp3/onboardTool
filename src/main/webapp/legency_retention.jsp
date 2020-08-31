@@ -304,7 +304,7 @@
 
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h2 class="title">Decomm Intake Requirements</h2>
+                            <h2 class="title">Decomm Requirements</h2>
                         </div>
                     </div>
                     <!-- /.row -->

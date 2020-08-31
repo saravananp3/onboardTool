@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Archive-Decomm Intake</title>
+    <title>Archive-Decomm Requirements</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -139,12 +139,12 @@
                 <div class="flex-row">
                     <div class="card">
                         <label id="para">Archive Requirements</label>
-                        <a href="Applications.jsp"><img id="img2" src="images/Arhive_intake.png" width="200px"
+                        <a href="Intake_Business.jsp"><img id="img2" src="images/Arhive_intake.png" width="200px"
                                                         class="center"></a>
                     </div>
                     <div class="card">
                         <label id="para1">Decomm Requirements</label>
-                        <a href="Decomm_Intake_Applications.jsp"><img id="img3" src="images/Decomm_intake.png"
+                        <a href="AppDecommInfo.jsp"><img id="img3" src="images/Decomm_intake.png"
                                                                       width="200px" class="center"></a>
                     </div>
 

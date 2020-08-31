@@ -67,7 +67,7 @@ public class DecommIntakeLegacyRetentionTableUpdateServlet extends HttpServlet {
      {
       System.out.println("Exception----[info]-------"+e);
      }
-     response.sendRedirect("legency_retention.jsp?appname="+ApplicationName+"&prjname="+ProjectName);
+     response.sendRedirect("legency_retention.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

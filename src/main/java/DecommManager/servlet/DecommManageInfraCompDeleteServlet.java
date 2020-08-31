@@ -17,7 +17,7 @@ public class DecommManageInfraCompDeleteServlet extends HttpServlet {
         int deleteseqnum=Integer.parseInt(request.getParameter("DeleteNumber"));
         //DecommIntakeServices.DecommIntakeDeleteOperation(projectname,applicationname,deleteseqnum);
         DecommManageExecuteInfoService.DecommManagerInfraCompDeleteService(projectname,applicationname,deleteseqnum);
-        response.sendRedirect("DecommManageInfraComp.jsp?appname="+applicationname+"&projectname="+projectname);
+        response.sendRedirect("DecommManageInfraComp.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

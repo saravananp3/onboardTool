@@ -102,7 +102,7 @@ public class DecommManageExecuteDbUpdateServlet extends HttpServlet {
                 catch(Exception e){
                     System.out.println("Exception....."+e);
                 }*/
-        response.sendRedirect("DecommManageInfraComp.jsp?appname="+appname+"&projectname="+projectname);
+        response.sendRedirect("DecommManageInfraComp.jsp");
 
     }
 

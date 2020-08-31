@@ -114,7 +114,7 @@ public class DecommManageServiceCategotiesDynamicTableServlet extends HttpServle
             System.out.println("Exception----[info]-------"+e);
         }
 
-        response.sendRedirect("DecommManageServiceCategoriesChecklist.jsp?appname="+ApplicationName+"&projectname="+ProjectName);
+        response.sendRedirect("DecommManageServiceCategoriesChecklist.jsp");
 
 
     }

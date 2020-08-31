@@ -198,17 +198,17 @@ input:checked + .slider:before {
   													<table class="table table-bordered">
     												<thead>
       												<tr>
-        											<th>Approver Name</th>
-        											<th>Approver Role</th>
-        											<th>Approval</th>
-        											<th>Action</th>
+        											<th style = "text-align:center">Approver Name</th>
+        											<th style = "text-align:center">Approver Role</th>
+        											<th style = "text-align:center">Approval</th>
+        											<th style = "text-align:center">Action</th>
       												</tr>
     												</thead>
     												<tbody id="ApprovalDetails">
     												 <tr>
-      												 <td>SatyaDev</td>
-      												 <td>Business Owner</td>
-      												 <td>Approved</td>
+      												 <td style = "text-align: center; vertical-align: middle;">SatyaDev</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Business Owner</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Approved</td>
       												 <td>
       												 <div class="wrapper">
     												 <label class="btn_container">
@@ -228,9 +228,9 @@ input:checked + .slider:before {
       												 </tr>		
       												 	
       												 <tr>
-      												 <td>Vinoth</td>
-      												 <td>Development Owner</td>
-      												 <td>Not Approved</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Vinoth</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Development Owner</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Not Approved</td>
       												 <td>
       												 <div class="wrapper">
     												 <label class="btn_container">
@@ -249,9 +249,9 @@ input:checked + .slider:before {
       												</td>
       												 </tr>	
       												<tr>
-      												 <td>Poornima</td>
-      												 <td>Application Owner</td>
-      												 <td>Not Yet</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Poornima</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Application Owner</td>
+      												 <td style = "text-align: center; vertical-align: middle;">Not Yet</td>
       												 <td>
       												 <div class="wrapper">
     												 <label class="btn_container">

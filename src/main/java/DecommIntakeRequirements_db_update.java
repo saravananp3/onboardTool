@@ -176,7 +176,7 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
         } catch (Exception e) {
             System.out.println("Exception..." + e);
         }
-        response.sendRedirect("ContactInfo.jsp?appname="+applicationname+"&prjname="+projectname);
+        response.sendRedirect("ContactInfo.jsp");
 
     }
 }
