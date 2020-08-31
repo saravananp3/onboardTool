@@ -96,7 +96,8 @@ function AssessmentDataRetrieveAjaxCall()
             	$("#"+InputFieldName).html("");
             	var RadioYesValue = "";
             	var RadioNoValue = "";
-            	var HideShow = "style:display:none";
+            	var HideShow = "";
+            	var readonlyColumnname = "style:display:none";
             $.each(data[SectionIndex], function(key, value){
                 /*console.log("FULL NAME " + value.Type);*/
                 var manadatory="class='required_fie'";
@@ -117,6 +118,17 @@ function AssessmentDataRetrieveAjaxCall()
                 {
                   	HideShow = (Value=="Others")?"":"style='display:none;'";
                 }
+                if(Section=="DataCharacteristics"&&ColumnName=="ReadonlyData"){
+                	
+                	if(Value=="Yes"){
+                		readonlyColumnname = "LastUpdateMade";
+                	}
+                	else if(Value=="No"){
+                		readonlyColumnname = "ExpectedDate";
+                	}
+                }
+                
+               
                 //var options=data[i].options.split(',');
                 if(value.Mandatory=="No")
                 {
@@ -143,6 +155,7 @@ function AssessmentDataRetrieveAjaxCall()
                         "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                         "</div>";
                     $('#'+InputFieldName).append(inputtext);
+                    HideShow = "";
                  }
                 else if(Type=="Datepicker")
                 {
@@ -327,8 +340,8 @@ function AssessmentDataRetrieveAjaxCall()
                  else if(Type=="DatepickerDependency")
                 {
                 	var template_check=""; 
-                	
-                    var inputdate="<div class='form-group InputFieldAssessment "+Section+"' id='"+ColumnName+"_AssessmentRow' style=display:none;>" +
+                	var hideshow = (ColumnName==readonlyColumnname)? "":"style='display:none;'";
+                    var inputdate="<div class='form-group InputFieldAssessment "+Section+"' id='"+ColumnName+"_AssessmentRow' "+hideshow+">" +
                         "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>\n" +
                         "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";

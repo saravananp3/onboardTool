@@ -32,6 +32,7 @@ $('#AssessAddSubmit').click(function() {
 	        }
 	      if(labelname != '' && type !='' && mandatory !=''&& AssessmentSection!='')
 	      {
+	    	  var checkNotify = true;
 	        $.ajax({
 	            url: "IntakeAssessmentAddFeatureServlet",
 	            type: 'POST',
@@ -59,7 +60,9 @@ $('#AssessAddSubmit').click(function() {
 	                }
 	                if (data.LabelDuplicateCheck == true)
 	                {
-	                    alert("Label name is already exist.");
+	                	checkNotify = false;
+	                	notification("warning","Label name is already exist.","Warning");
+	                    //alert("Label name is already exist.");
 	                }
 	                else if(data.Type=="Text box")
 	               {
@@ -139,8 +142,15 @@ $('#AssessAddSubmit').click(function() {
 	                $("#AssessMandatory").val("Yes");
 	                $("#AssessSection").val("ApplicationInformation");
 	                
-	              $("#AssessAddCloseId").click();
+	              
 	             
+	              if(checkNotify){
+	            	  notification("success","Field is added successfully to " +Section+".","Note");
+	            	  $("#AssessAddCloseId").click();
+	              }
+	              else
+	            	  notification("error","Field not added to " +Section+".","Error");
+	              
 	            },
 	        
 	       
@@ -151,8 +161,8 @@ $('#AssessAddSubmit').click(function() {
 	      }
 	      
 	      else{
-	        	
-	        	alert("Please fill the value in fields");
+	    	  notification("warning","Please fill the value in fields.","Warning");
+	        	//alert("Please fill the value in fields");
 	        	
 	        }
 	        });

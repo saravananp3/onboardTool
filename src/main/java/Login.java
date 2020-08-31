@@ -410,7 +410,7 @@ try
 		opportunity[2] = new OpportunityDetails(3,"","","","Creation Date", "creation_date", "Datepicker", "No", "");
 		opportunity[3] = new OpportunityDetails(4,"","","","Request Source", "source", "Text box", "No", "");
 		opportunity[4] = new OpportunityDetails(5,"","","","Status", "status", "Text box", "No", "");
-		opportunity[5] = new OpportunityDetails(6,"","","Decommission,Archive,To be retrived","Request Type", "request_type", "Dropdown", "Yes", "");
+		opportunity[5] = new OpportunityDetails(6,"","","Decommission,Archive,To be retired","Request Type", "request_type", "Dropdown", "Yes", "");
 		opportunity[6] = new OpportunityDetails(7,"","","","Requester", "requester", "Text box", "Yes", "");
 		opportunity[7] = new OpportunityDetails(8,"","","","Application Descrpition", "appdesc", "Text box", "No", "");
 		opportunity[8] = new OpportunityDetails(9,"","","","Application Owner", "appowner", "Text box", "Yes", "");

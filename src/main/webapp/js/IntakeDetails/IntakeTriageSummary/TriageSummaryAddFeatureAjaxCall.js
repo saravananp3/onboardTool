@@ -32,6 +32,7 @@ $('#TriSummSubmit').click(function() {
 	        }
 	      if(labelname != '' && type !='' && mandatory !='')
 	      {
+	    	  var checkNotify = true;
 	        $.ajax({
 	            url: "IntakeTriageSummaryAddFeatureServlet",
 	            type: 'POST',
@@ -51,7 +52,9 @@ $('#TriSummSubmit').click(function() {
 	                }
 	                if (data.LabelDuplicateCheck == "true")
 	                {
-	                    alert("Label name is already exist.");
+	                	checkNotify = false;
+	                	notification("warning","Label name is already exist.","Warning");
+	                    //alert("Label name is already exist.");
 	                }
 	                else if(data.Type=="Text box")
 	               {
@@ -132,6 +135,11 @@ $('#TriSummSubmit').click(function() {
 	                
 	              $("#TriageSummAddCloseId").click();
 	             
+	              if(checkNotify)
+	            	  notification("success","Field is added successfully to Triage Summary.","Note");
+	              else
+	            	  notification("error","Field not added to Triage Summary.","Error");
+	              
 	            },
 	        
 	       
@@ -142,8 +150,8 @@ $('#TriSummSubmit').click(function() {
 	      }
 	      
 	      else{
-	        	
-	        	alert("Please fill the value in fields");
+	    	  notification("warning","Please fill the value in fields.","Warning");
+	        	//alert("Please fill the value in fields");
 	        	
 	        }
 	        });

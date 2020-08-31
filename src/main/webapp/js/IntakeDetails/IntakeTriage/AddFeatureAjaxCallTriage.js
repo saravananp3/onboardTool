@@ -33,6 +33,7 @@ $('#submitTriage').click(function() {
 	        }
 	      if(labelname != '' && type !='' && mandatory !='')
 	      {
+	    	  var checkNotify = true;
 	        $.ajax({
 	            url: "IntakeTriageAddServlet",
 	            type: 'POST',
@@ -51,11 +52,15 @@ $('#submitTriage').click(function() {
 	                }
 	                if (data.LabelDuplicateCheck == "true")
 	                {
-	                    alert("Label name is already exist.");
+	                	checkNotify = false;
+	                	notification("warning","Label name is already exist.","Warning");
+	                   // alert("Label name is already exist.");
 	                }
 	                else if(data.ColumnDuplicateCheck == "true")
 	                	{
-	                	alert("Column name is already exist.");
+	                	checkNotify = false;
+	                	notification("warning","Column name is already exist.","Warning");
+	                	//alert("Column name is already exist.");
 	                	}
 	                else if(data.Type=="Text box")
 	               {
@@ -135,6 +140,11 @@ $('#submitTriage').click(function() {
 	                $("#Triagemandatory").val("Yes");
 	              $("#add_Triage_close_id").click();
 	             
+	              
+	              if(checkNotify)
+	            	  notification("success","Field is added successfully to Triage.","Note");
+	              else
+	            	  notification("error","Field not added to Triage.","Error");
 	            },
 	        
 	       
@@ -145,8 +155,8 @@ $('#submitTriage').click(function() {
 	      }
 	      
 	      else{
-	        	
-	        	alert("Please fill the value in fields");
+	    	  notification("warning","Please fill the value in fields.","Warning");
+	        	//alert("Please fill the value in fields");
 	        	
 	        }
 	        });

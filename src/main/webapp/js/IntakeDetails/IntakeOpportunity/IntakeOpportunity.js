@@ -75,7 +75,7 @@ $(document).ready(function(){
                         if(Value.includes(option[i])){
                          select = "selected";
                         }
-                        inputdrop += "<option label=" + option[i] + " class='control-label' for= 'opportunity' "+select+">" + option[i] + "</option>";
+                        inputdrop += "<option label='" + option[i] + "' class='control-label' for= 'opportunity' "+select+">" + option[i] + "</option>";
                     }
                     inputdrop +="</select></div>";
                     $('#inputFields').append(inputdrop);

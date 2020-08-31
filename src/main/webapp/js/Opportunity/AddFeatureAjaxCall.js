@@ -33,6 +33,7 @@ $('#submit').click(function() {
 	        }
 	      if(labelname != '' && columnname !='' && type !='' && mandatory !='')
 	      {
+	    	  var checkNotify = true;
 	        $.ajax({
 	            url: "NewOpportunityAddServlet",
 	            type: 'POST',
@@ -51,12 +52,16 @@ $('#submit').click(function() {
 	                }
 	                if (data.LabelDuplicateCheck == "true")
 	                {
-	                    alert("Label name is already exist.");
+	                	checkNotify = false;
+	                	notification("warning","Label name is already exist.","Warning");
+	                    //alert("Label name is already exist.");
 	                    return false;
 	                }
 	                else if(data.ColumnDuplicateCheck == "true")
 	                	{
-	                	alert("Column name is already exist.");
+	                	checkNotify = false;
+	                	notification("warning","Column name is already exist.","Warning");
+	                	//alert("Column name is already exist.");
 	                	return false;
 	                	}
 	                else if(data.Type=="Text box")
@@ -138,6 +143,10 @@ $('#submit').click(function() {
 	                $('#mandatory').val("Yes");
 	              $("#add_close_id").click();
 	             
+	              if(checkNotify)
+	            	  notification("success","Field is added successfully to New Opportunity.","Note");
+	              else
+	            	  notification("error","Field not added to Oppurtunity.","Error");
 	            },
 	        
 	       
@@ -148,8 +157,8 @@ $('#submit').click(function() {
 	      }
 	      
 	      else{
-	        	
-	        	alert("Please fill the value in fields");
+	    	  notification("warning","Please fill the value in fields.","Warning");
+	        	//alert("Please fill the value in fields");
 	        	return false;
 	        	
 	        }

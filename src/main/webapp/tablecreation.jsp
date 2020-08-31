@@ -128,6 +128,8 @@
         statement.executeUpdate(query46);
         String query47 = "CREATE TABLE `Assessment_Archival_Consumption_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query47);
+        String query48 = "CREATE TABLE `Intake_Stake_Holder_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `name` varchar(255),`emailId` varchar(255), `username` varchar(255),`role` varchar(255),`approvalId` varchar(255),`intakeApproval` varchar(255),`moduleId` varchar(255))";
+        statement.executeUpdate(query48);
 %>
 <% } catch (Exception ex) {
 

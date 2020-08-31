@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
+    <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
   
 
    
@@ -505,8 +506,10 @@ $('.deletepopup').click(function() {
          rel = "stylesheet"><!-- newly added code by parthiban -->
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <script src="js/toastr/toastr.min.js"></script>
 
 <!-- ========== THEME JS ========== -->
+<script src="js/notification/notification.js"></script>
 <script src="js/Opportunity/AddFeatureFunctionality.js"></script>
 <script src="js/Opportunity/AddFeatureAjaxCall.js"></script>
 <script src="js/Opportunity/EditDeleteToggle.js"></script>

@@ -770,7 +770,7 @@ color:#fff;
                                        <li><a href="#" id="DeleteAssess" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                        </ul>
                                        <button type="button" class="btn btn-success" id="AssessmentSaveBtn">Save</button>
-                                       <a href="#step5"  aria-controls="step5" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
+                                       <a href="#step5"  aria-controls="step5" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info" onclick = "window.location.href='IntakeStakeHolder.jsp';">Next</button></a>
                                        <button type="button" class="btn btn-primary pull-right" id="editpopupAssess_btn" data-toggle="modal" data-target="#AssessEditPopUp" style="display: none;">Edit PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="deletepopupAssess_btn" data-toggle="modal" data-target="#AssessDeletePopUp" style="display: none;">Delete PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
@@ -2085,6 +2085,9 @@ color:#fff;
          rel = "stylesheet"><!-- newly added code by parthiban -->
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <script src="js/toastr/toastr.min.js"></script>
+      
+      <script src="js/notification/notification.js"></script>
     <script src="js/Opportunity/AddFeatureFunctionality.js"></script>
     <script src="js/IntakeDetails/IntakeOpportunity/AddFeatureAjaxCall.js"></script>
     <script src="js/IntakeDetails/IntakeOpportunity/EditDeleteToggle.js"></script>
@@ -2156,7 +2159,7 @@ color:#fff;
     <link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
         type="text/css" media="all" />
     <script src="js/amcharts/themes/light.js"></script>
-    <script src="js/toastr/toastr.min.js"></script>
+   
     <script src="js/icheck/icheck.min.js"></script>
     <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
     <!-- ========== THEME JS ========== -->
