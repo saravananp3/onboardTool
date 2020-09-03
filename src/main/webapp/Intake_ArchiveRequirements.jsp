@@ -161,23 +161,10 @@
         String roles = (String) details.getAttribute("role");
         String det = (String) session.getAttribute("theName");
         String idd = (String) session.getAttribute("appidd");
+        String Opportunityname=(String)session.getAttribute("SelectedOpportunity");
         DBconnection d = new DBconnection();
         Connection conn = (Connection) d.getConnection();
-        String query3 = "select * from AppEmphazize_ProjectDetails where id = " + det;
-        Statement st3 = conn.createStatement();
-        ResultSet rs3 = st3.executeQuery(query3);
-        String query4 = "select * from AppEmphazize_ApplicationInfo where appname ='" + idd + "'";
-        Statement st4 = conn.createStatement();
-        ResultSet rs4 = st4.executeQuery(query4);
-        String query7 = "select requirements from Intake_NewRequirements where appname ='" + idd + "'";
-        Statement st7 = conn.createStatement();
-        ResultSet rs7 = st7.executeQuery(query7);
-        String imp_id = "";
-        String sequenceNumber = "";
-        int actualHours = 0, plannedHours = 0, actualHours1 = 0, plannedHours1 = 0;
-        if (rs3.next()) {
-            String project_NAME = rs3.getString("projectname");
-            {
+        
 %>
 <form class="form-signin" name="loginForm" method="post">
 
@@ -204,91 +191,18 @@
                     </div>
                     <!-- /.navbar-header -->
 
-                    <% if (rs4.next()) {
-                        String rowCount = "";
-                        String query11 = "select * from Intake_ArchivalRequirement where appname='" + rs4.getString("appname") + "' and projectname='" + rs3.getString("projectname") + "' and id=(select max(id) from Intake_ArchivalRequirement where appname='" + rs4.getString("appname") + "' and projectname='" + rs3.getString("projectname") + "')";
-                        Statement st11 = conn.createStatement();
-                        ResultSet rs11 = st11.executeQuery(query11);
-                        //System.out.println(query11);
-                        String query12 = "select count(*) from Intake_ArchivalRequirement where appname='" + rs4.getString("appname") + "' and projectname='" + rs3.getString("projectname") + "'";
-                        Statement st12 = conn.createStatement();
-                        ResultSet rs12 = st12.executeQuery(query12);
-                        if (rs12.next())
-                            rowCount = rs12.getString(1);
-
-                    %>
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding
-                        Tool-<%=rs3.getString("projectname") %>-<%=rs4.getString("appname") %>
+                   <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Decom3Sixty
+                        Tool-<%=Opportunityname%>
                     </a>
-                    <input type="hidden" id="project_name" name="project_name" value="<%=rs3.getString("projectname")%>"
-                           hidden>
-                    <input type="text" id="appln_name" name="appln_name" value="<%= idd %>" style="display:none;">
-
-
-                    <%
-                        String quer2 = "select * from ArchiveExecution_Details where level=1 and projects='" + rs3.getString("projectname") + "'order by seq_num";
-                        Statement s2 = conn.createStatement();
-                        ResultSet rss = s2.executeQuery(quer2);
-                        while (rss.next())
-                            session.setAttribute(rss.getString(3), rss.getString(15));
-
-                        String quer3 = "select id from ArchiveExecution_Details where name='" + rs4.getString("appname") + "' and projects='" + rs3.getString("projectname") + "'order by seq_num";
-                        Statement s3 = conn.createStatement();
-                        ResultSet rss1 = s3.executeQuery(quer3);
-                        while (rss1.next())
-                            imp_id = rss1.getString(1);
-                        //  System.out.println(imp_id);
-                        String quer4 = "select * from ArchiveExecution_Details where ref_id='" + imp_id + "' and projects='" + rs3.getString("projectname") + "'order by seq_num";
-                        Statement s4 = conn.createStatement();
-                        ResultSet rss2 = s4.executeQuery(quer4);
-
-                        while (rss2.next()) {
-                            session.setAttribute(rss2.getString(3), rss2.getString(15));
-                            //  	System.out.println(rss2.getString(3));
-                        }
-
-                        String quer5 = "select seq_num from ArchiveExecution_Details where name='Build and Test'";
-                        Statement s5 = conn.createStatement();
-                        ResultSet rss3 = s5.executeQuery(quer5);
-                        if (rss3.next())
-                            sequenceNumber = rss3.getString(1);
-                        // System.out.println(sequenceNumber);
-                        String quer6 = "select * from ArchiveExecution_Details where projects='" + rs3.getString("projectname") + "' and seq_num>" + sequenceNumber + " and seq_num<" + (sequenceNumber + 33) + " and level=4";
-                        Statement s6 = conn.createStatement();
-                        ResultSet rss4 = s6.executeQuery(quer6);
-                        int knt = 0;
-
-                        while (rss4.next()) {
-                            if (knt > 2) {
-                                if (rss4.getString(9).equals(""))
-                                    actualHours1 += 0;
-                                else
-                                    actualHours1 += Integer.parseInt(rss4.getString(9));
-                                if (rss4.getString(13).equals(""))
-                                    plannedHours1 += 0;
-                                else
-                                    plannedHours1 += Integer.parseInt(rss4.getString(13));
-                            } else {
-                                if (rss4.getString(9).equals(""))
-                                    actualHours += 0;
-                                else
-                                    actualHours += Integer.parseInt(rss4.getString(9));
-                                if (rss4.getString(13).equals(""))
-                                    plannedHours += 0;
-                                else
-                                    plannedHours += Integer.parseInt(rss4.getString(13));
-                                // System.out.println(actualHours);
-                            }
-                            knt++;
-                        }
-                    %>
-
-
+                    
                     <div class="collapse navbar-collapse" id="navbar-collapse-1" style="background-color:#fff ">
 
                         <!-- /.nav navbar-nav -->
                         <ul class="nav navbar-nav navbar-right">
                             <ul class="nav navbar-nav navbar-right">
+                            
+                            <a class="navbar-brand" href="Project_List.jsp" id="sitetitle2">OPPORTUNITY NAME -<%=Opportunityname%>
+                            <li>
                                 <%
                                     String uname = (String) details.getAttribute("username");
                                     String role = (String) details.getAttribute("role");%>
@@ -514,10 +428,6 @@
                                             int dev = 0, test = 0;
                                             String requirements = (String) session.getAttribute("Requirements");
                                             String implement = (String) session.getAttribute("Implement");
-                                            if (plannedHours != 0)
-                                                dev = (actualHours * 100) / plannedHours;
-                                            if (plannedHours1 != 0)
-                                                test = (actualHours1 * 100) / plannedHours1;
                                             String development = String.valueOf(dev);
                                             String testing = String.valueOf(test);
                                             if (requirements == null)
@@ -648,12 +558,6 @@
                                                 <div class="panel-body">
                                                     <!-- The Modal -->
 
-                                                    <% while (rs7.next()) { %>
-                                                    <div class="form-group">
-                                                        <span><input type="checkbox"
-                                                                     value="<%=rs7.getString("requirements")%>" checked>&nbsp;<%=rs7.getString("requirements")%></span>
-                                                    </div>
-                                                    <% }%>
                                                     <button type="button" class="btn btn-primary  pull-left"><a
                                                             class="button" href="#popup1">Add Requirements</a></button>
 
@@ -698,11 +602,6 @@
                                                 </div>
                                             </div>
 
-                                            <%
-                                                String qury = "select * from Intake_ArchivalRequirementCustomization where panels='P9' and appname='" + rs4.getString("appname") + "' and projectname='" + rs3.getString("projectname") + "'";
-                                                Statement stm = conn.createStatement();
-                                                ResultSet Rs = stm.executeQuery(qury);
-                                                if (rs11.next() || rowCount.equals("0")) {%>
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title"><a class="collapsed" data-toggle="collapse"
@@ -711,125 +610,15 @@
                                                 </div>
                                                 <div id="collapse1" class="panel-collapse collapse in" name="collapse">
                                                     <div class="panel-body">
-                                                        <%
-                                                            int k = 0, Count = 0, Count_1 = 0, Del_count = 1;
-                                                            while (Rs.next()) {
-
-                                                        %>
-                                                        <div class="form-group">
-                                                            <label class="control-label" for="formInput198">
-
-                                                                <%if (Rs.getString(3).equals("Yes") && !Rs.getString(1).equals("")) {%>
-                                                                <div class="required"><%=Rs.getString(1) %>&nbsp; <input
-                                                                        type="checkbox" id="c1<%= Count_1 %>"
-                                                                        name="<%= Rs.getString("idname") %>1"
-                                                                        style="float:right;display:none"
-                                                                        value="yes"><span
-                                                                        class="glyphicon glyphicon-pencil"
-                                                                        style="float:right;display:none;"
-                                                                        id="d1<%= Count_1 %>"
-                                                                        onclick="edit_page('<%= Rs.getString(1) %>','<%= Rs.getString("idname") %>');"></span>
-                                                                </div>
-                                                                <%} else if (!Rs.getString(1).equals("")) { %>
-                                                                <div><%=Rs.getString(1) %>&nbsp;<input type="checkbox"
-                                                                                                       id="c1<%= Count_1 %>"
-                                                                                                       name="<%= Rs.getString("idname")%>1"
-                                                                                                       style="float:right;display:none;"
-                                                                                                       value="yes">
-                                                                </div>
-                                                                <span class="glyphicon glyphicon-pencil"
-                                                                      style="float:right;display:none;"
-                                                                      id="d1<%= Count_1 %>"
-                                                                      onclick="edit_page('<%= Rs.getString(1) %>','<%= Rs.getString("idname") %>');"></span>
-                                                                <%
-                                                                    }
-                                                                %>
-
-                                                            </label>
-                                                            <%
-                                                                if (Rs.getString(2).equals("Text box")) {
-
-                                                            %>
-                                                            <input type="text" class="form-control" id="legappname"
-                                                                   name="<%= Rs.getString("idname") %>"
-                                                                   <% if(rowCount.equals("0")) {%>value=""
-                                                                   <%} else {if(rs11.getString(Rs.getString("idname"))==null){ %>value=""<%} else { %>
-                                                                   value="<%=  rs11.getString(Rs.getString("idname"))%>" <%
-                                                                    }
-                                                                }
-                                                            %>/>
-
-                                                            <%
-                                                            } else if (Rs.getString(2).equals("Dropdown")) {
-                                                                String box[] = Rs.getString(9).split("/");
-                                                                int number_of_boxes = Integer.parseInt(Rs.getString(8));
-                                                            %>
-                                                            <select id="type" class="form-control"
-                                                                    name="<%= Rs.getString("idname") %>" required>
-                                                                <%
-                                                                    for (int i = 0; i < number_of_boxes; i++) {
-                                                                %>
-                                                                <option value="<%=box[i] %>"><%=box[i] %>
-                                                                </option>
-                                                                <%}%></select><%
-                                                        } else if (Rs.getString(2).equals("Radio box")) {
-                                                            String box[] = Rs.getString(7).split("/");
-                                                            int number_of_boxes = Integer.parseInt(Rs.getString(6));
-                                                        %>
-                                                            <div class="radio"><%
-                                                                for (int i = 0; i < number_of_boxes; i++) {
-                                                            %>
-                                                                <input type="radio" style="margin-left:20px;"
-                                                                       name="<%= Rs.getString("idname") %>" <% if(!rowCount.equals("0") && rs11.getString(Rs.getString("idname")).equals(box[i])){ %>
-                                                                       value="<%= box[i] %>" checked
-                                                                       <%} else{%>value="<%= box[i] %>"<%} %> ><span
-                                                                        style="margin-left:35px;"><%=box[i] %></span><br/>
-
-                                                                <%}%></div>
-                                                            <%} else if (Rs.getString(2).equals("Datepicker")) {%>
-
-                                                            <input placeholder="mm/dd/yyyy" id="rod<%=k %>"
-                                                                   name="<%= Rs.getString("idname") %>"
-                                                                   class="form-control ember-text-field zf-date-picker date-picker ember-view"
-                                                                   <% if(rowCount.equals("0")) {%>value=""
-                                                                   <%} else {if(rs11.getString(Rs.getString("idname"))==null){ %>value=""<%} else { %>
-                                                                   value="<%=  rs11.getString(Rs.getString("idname"))%>" <%}} %>>
-                                                            <%
-                                                                k++;
-                                                            } else if (Rs.getString(2).equals("Check box")) {
-                                                                String box[] = Rs.getString(5).split("/");
-                                                                int number_of_boxes = Integer.parseInt(Rs.getString(4));%>
-                                                            <div class="checkbox"><%
-                                                                for (int i = 0; i < number_of_boxes; i++) {
-                                                            %>
-                                                                <input type="checkbox" style="margin-left:20px;"
-                                                                       name="<%= Rs.getString("idname") %>" <% if(!rowCount.equals("0") && rs11.getString(Rs.getString("idname")).equals("Yes")){ %>
-                                                                       value="Yes" checked
-                                                                       <%} else{%>value="Yes"<%} %> ><span
-                                                                        style="margin-left:35px;"><%=box[i] %></span>
-
-                                                                <% } %></div>
-                                                            <% } %></div>
-
-                                                        <%
-                                                                Count_1++;
-                                                            } %>
-
 
                                                         <button type="button" class="btn btn-success  pull-left"><a
                                                                 class="button" href="#popup2">Add</a></button> &nbsp;
-                                                        <button type="button" class="btn btn-danger  pull-left"
-                                                                id="Del1"
-                                                                onclick="deletee('c1',<%=Count_1%>,'Del1','Del2')">
-                                                            Delete
-                                                        </button>&nbsp;
+                                                        
                                                         <button type="button" class="btn btn-danger  pull-left"
                                                                 id="Del2" style='display:none;'
                                                                 onclick="validateform9();">Delete
                                                         </button>&nbsp;
-                                                        <button type="button" class="btn btn-primary  pull-left"
-                                                                id="Ed1" onclick="edit_form('d1',<%=Count_1%>);">Edit
-                                                        </button>
+                                                        
                                                         <button type="button" class="btn btn-primary  pull-right"
                                                                 data-toggle="modal" data-target="#myModal" id="btt"
                                                                 onclick=" validateform()"> Previous<span
@@ -875,19 +664,7 @@
 
                                             function validateform() {
                                                 var count = 0;
-                                                <%
-                                                String q1="select * from intake_archivalrequirementcustomization where panels='P9'";
-                                                Statement stq = conn.createStatement();
-                                                ResultSet rsq = stq.executeQuery(q1);
-                                                while(rsq.next())
-                                                {
-                                                %>
-                                                if ('<%=rsq.getString("mandatory") %>' == "Yes") {
-                                                    if (document.getElementsByName('<%=rsq.getString("idname") %>')[0].value == "") {
-                                                        count++;
-                                                    }
-                                                }
-                                                <%}%>
+                                                
                                                 if (count > 0)
                                                     alert("fill the mandatory fields");
                                                 else
@@ -941,19 +718,20 @@
 
 
     <%
-            }
-        }
+       //     }
+    //    }
     %></form>
 <jsp:include page="samp_forms.jsp">
-    <jsp:param name="ProjectName" value="<%=project_NAME %>"/>
+    <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
     <jsp:param name="AppName" value="<%=idd %>"/>
     <jsp:param name="number" value="2"/>
     <jsp:param name="servlet" value="Requirements"/>
 </jsp:include>
 <%
-            }
-        }
-    } catch (Exception e) {
+     //       }
+    //    }
+    } 
+    catch (Exception e) {
     }
 %>
 
