@@ -26,7 +26,7 @@ $("#save").click(function(e)
     	inputs["emailid"] = email;
         if(IsEmail(email)==false)
         {
-          alert("Invalid emailid.");
+          notification("warning","Invalid emailid.","Warning!");
           $(".emailid").eq(i).focus();
           return false;
         }
@@ -43,18 +43,41 @@ $("#save").click(function(e)
 	{
 	console.log("JSON Array save --->",jsonArr);
 	var jsonObj = SaveAjaxCall(jsonArr);
-	if(!jsonObj.CheckUser)
+	
+	if(!jsonObj.checkUser)
 	{
 		e.preventDefault();
-		notification("warning","Username is already exist for this opportunity.","Warning!!");
+		notification("warning","Username already exist for this opportunity.","Warning!!");
 	
 	}
-	 else if(jsonObj.CheckSave)
+	if(!jsonObj.checkName)
+	{
+		e.preventDefault();
+		notification("warning","Name already exist for this opportunity.","Warning!!");
+	}
+	if(!jsonObj.checkEmail)
+	{
+		e.preventDefault();
+		notification("warning","EmailId already exist for this opportunity.","Warning!!");
+	}
+	if(!jsonObj.checkRole)
+	{
+		e.preventDefault();
+		notification("warning","Role already exist for this opportunity.","Warning!!");
+	}
+    if(jsonObj.CheckSave)
      {
 		 //e.preventDefault();
 		 notification("success","Saved Successfully.","Note");
-		 $("#NextStakeHolder").click();
-		 console.log("Checking Close");
+		 try
+		 {
+			 $("#NextStakeHolder").click();	 
+		 }
+		 catch(err)
+		 {
+			 console.log(err);	 
+		 }
+		 
      }
 	}
 	else

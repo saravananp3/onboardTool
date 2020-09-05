@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -312,6 +313,7 @@ public class IntakeStakeHolderService extends  DynamicFields
     	boolean check = false;
     	try
     	{
+    		String approvalId = generateRandomApprovalId();
     		String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId)"
 					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -324,8 +326,8 @@ public class IntakeStakeHolderService extends  DynamicFields
           prestmt.setString(6, "");
           prestmt.setString(7, "");
           prestmt.setString(8, "");
-          prestmt.setString(9, "");
-          prestmt.setString(10, "");
+          prestmt.setString(9, approvalId);
+          prestmt.setString(10, "Decision pending");
           prestmt.setString(11, "");
           prestmt.execute();
           check = true;
@@ -367,27 +369,59 @@ public class IntakeStakeHolderService extends  DynamicFields
 		}
 	}
 	
-	public boolean CheckUserDetails(JsonArray jsonArray,String id)
+	public JsonObject CheckUserDetails(JsonArray jsonArray,String id)
 	{
+		JsonObject jsonObjCheck = new JsonObject();
 		boolean checkUser = true;
+		boolean checkName = true;
+		boolean checkEmail = true;
+		boolean checkRole = true;
 		ArrayList<String> UserName = new ArrayList<String>();
+		ArrayList<String> Name = new ArrayList<String>();
+		ArrayList<String> Email = new ArrayList<String>();
+		ArrayList<String> Role = new ArrayList<String>();
 		try
 		{
 			for(int i=0;i<jsonArray.size();i++)
 			{
 				JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
 				String username = jsonObj.get("username").getAsString();
+				String name = jsonObj.get("name").getAsString();
+				String emailId = jsonObj.get("emailid").getAsString();
+				String role = jsonObj.get("role").getAsString();
+				
 				if(!UserName.contains(username))
 				UserName.add(username);
 				else
-				checkUser = false;
+					checkUser = false;
+				
+				if(!Name.contains(name))
+					Name.add(name);				
+				else
+					checkName = false;
+				
+				if(!Email.contains(emailId))
+					Email.add(emailId);				
+				else
+					checkEmail = false;
+				
+				if(!Role.contains(role))
+					Role.add(role);				
+				else
+					checkRole = false;
 			}
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		return checkUser;
+		
+		jsonObjCheck.addProperty("checkUser", checkUser);
+		jsonObjCheck.addProperty("checkName", checkName);
+		jsonObjCheck.addProperty("checkEmail", checkEmail);
+		jsonObjCheck.addProperty("checkRole", checkRole);
+		
+		return jsonObjCheck;
 	}
 	@Override
     protected void finalize() throws Throwable 
@@ -400,4 +434,132 @@ public class IntakeStakeHolderService extends  DynamicFields
 		// TODO Auto-generated method stub
 		return null;
 	} 
-}
+	public void CheckForStakeHolderField(String columnname,String value,String Id)
+	{
+		try
+		{
+		String RoleName = changeRoleName(columnname);
+		if(!value.isEmpty()&&!value.equals(null))
+		{
+			boolean checkInsert = true;
+			String selectQuery = "select * from intake_stake_holder_info where oppid='"+Id+"' and role ='"+RoleName+"'";
+			Statement st1 = con.createStatement();
+			ResultSet rs1= st1.executeQuery(selectQuery);
+			if(rs1.next())
+				checkInsert = false;
+			
+			if(!checkInsert)
+			{
+			 String UpdateQuery = "update intake_stake_holder_info set username ='"+value+"' where role ='"+RoleName+"' and oppid = '"+Id+"'";
+			 Statement st2 = con.createStatement();
+			 st2.executeUpdate(UpdateQuery);
+			}
+			else
+			{
+			  int seq_num =0;
+			  String SeqNumQuery = "select max(seq_no) from intake_stake_holder_info where oppid='"+Id+"';"; 
+			  Statement st3 = con.createStatement();
+			  ResultSet rs3 = st3.executeQuery(SeqNumQuery);
+			  if(rs3.next())
+			  {
+				 String seqnum = rs3.getString(1);
+			if(seqnum!=null)
+			  seq_num = Integer.parseInt(rs3.getString(1));
+			  }
+			  String approvalId = generateRandomApprovalId();
+			  String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
+	          prestmt.setInt(1, seq_num+1);
+	          prestmt.setString(2, Id);
+	          prestmt.setString(3, "");
+	          prestmt.setString(4, "");
+	          prestmt.setString(5, value);
+	          prestmt.setString(6, "");
+	          prestmt.setString(7, "");
+	          prestmt.setString(8, RoleName);
+	          prestmt.setString(9, approvalId);
+	          prestmt.setString(10, "Decision pending");
+	          prestmt.setString(11, "");
+	          prestmt.execute();
+			}     
+		 }
+		else
+		{
+			String checkQuery ="";
+			int seq_num = 0;
+			String selectSeqNum ="select seq_no from intake_stake_holder_info where oppid='"+Id+"' and role='"+RoleName+"';";
+			Statement st4 = con.createStatement();
+			ResultSet rs4 = st4.executeQuery(selectSeqNum);
+		     if(rs4.next())
+			      seq_num = Integer.parseInt(rs4.getString(1));
+		    if(seq_num!=0)
+		    delete(seq_num,Id);
+		     
+		}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public static String changeRoleName(String column)
+	{
+       String role ="";
+    switch(column)
+    {
+    
+    case "appowner":
+    	role = "Application Owner";
+    	break;
+    	
+    case "businessowner":
+    	role = "Business Owner";
+    	break;
+    	
+    case "sme":
+    	role = "Development Owner";
+    	break;
+    
+    }
+       return role;
+   }
+	
+	public String generateRandomApprovalId() throws SQLException {
+		
+		String uniqueID = "";
+		boolean checkTermination = true;
+		
+		while(checkTermination) {
+		
+			uniqueID = UUID.randomUUID().toString();
+			System.out.println("Approval Id : " + uniqueID);
+			
+			boolean checkDupilcateId = checkDuplicateApprovalId(uniqueID);
+		
+			if(checkDupilcateId == false) {
+				checkTermination = false;
+				}
+		}
+		
+		return uniqueID;
+	}
+		
+	public boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
+		
+		boolean checkDuplicate = false;
+		
+		String selectQuery = "select * from intake_stake_holder_info order by seq_no;";
+		Statement state = con.createStatement();
+		ResultSet result = state.executeQuery(selectQuery);
+		
+		while(result.next()) {
+			String checkApprovalId = result.getString("approvalId");
+			if(checkApprovalId == uniqueID) {
+				checkDuplicate = true;
+			}	
+		}
+		return checkDuplicate;
+	}
+ }

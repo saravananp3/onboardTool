@@ -30,7 +30,8 @@
     <script src="js/modernizr/modernizr.min.js"></script>
 
     <script src="js/multiplepages.js"></script>
-    <style>
+    <script src ="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>   
+     <style>
   body{
      
      background-color: #fff;
@@ -351,7 +352,7 @@ transition: width 2s, height 2s, transform 2s;
   <div class="step">
     <div class="step-milestone1"/>
     
-                                   <a href="IntakeDetails.jsp">
+                                   <a id="IntakeNavigation" href="IntakeDetails.jsp">
                                         <center>
                                             <img src="images/grid/NewIntake.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
 

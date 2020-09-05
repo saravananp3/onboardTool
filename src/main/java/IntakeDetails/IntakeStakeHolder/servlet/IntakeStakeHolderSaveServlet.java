@@ -56,11 +56,8 @@ public class IntakeStakeHolderSaveServlet extends HttpServlet {
 		{
 			IntakeStakeHolderService intake = new IntakeStakeHolderService();
 			
-			boolean CheckUser = intake.CheckUserDetails(jsonArray, id);
-			
-			jsonObj.addProperty("CheckUser",CheckUser);
-			
-			if(CheckUser)
+			jsonObj = intake.CheckUserDetails(jsonArray, id);
+			if(jsonObj.get("checkUser").getAsBoolean() && jsonObj.get("checkName").getAsBoolean() && jsonObj.get("checkEmail").getAsBoolean() && jsonObj.get("checkRole").getAsBoolean())
 			{
 			 intake.Save(jsonArray, id);
 			 CheckSave = true;

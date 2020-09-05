@@ -25,7 +25,7 @@
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
-<script src ="js/IntakeDetails/StakeHolder/StakeHolderDataRetrieve.js"></script>
+
 
 <!--  ========== Three Toggle ========= -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" />
@@ -188,7 +188,6 @@ input:checked + .slider:before {
                                                         data-parent="#panels1">Intake Approval</a> </h4>
                                             </div>
                                             <div ng-app="btn" ng-controller="MainCtrl">
-{{$scope.teste}}
 </div>
                                             <div class="panel-collapse collapse in"
                                                 name="collapse">
@@ -198,78 +197,14 @@ input:checked + .slider:before {
   													<table class="table table-bordered">
     												<thead>
       												<tr>
-        											<th style = "text-align:center">Approver Name</th>
-        											<th style = "text-align:center">Approver Role</th>
-        											<th style = "text-align:center">Approval</th>
-        											<th style = "text-align:center">Action</th>
+        											<th style='text-align:center;vertical-align: middle;'>Approver Name</th>
+        											<th style='text-align:center;vertical-align: middle;'>Approver Role</th>
+        											<th style='text-align:center;vertical-align: middle;'>Approval</th>
+        											<th style='text-align:center;vertical-align: middle;'>Action</th>
       												</tr>
     												</thead>
     												<tbody id="ApprovalDetails">
-    												 <tr>
-      												 <td style = "text-align: center; vertical-align: middle;">SatyaDev</td>
-      												 <td style = "text-align: center; vertical-align: middle;">Business Owner</td>
-      												 <td style = "text-align: center; vertical-align: middle;">Approved</td>
-      												 <td>
-      												 <div class="wrapper">
-    												 <label class="btn_container">
-      												 <input type="radio" class="yes" name="radio2" ng-model="$scope.teste" value="yes" checked>
-      												 <div class="checkmark"><i class="ion-checkmark-round"></i></div>
-    												 </label>
-    												<label class="btn_container" >
-      												<input type="radio" class="neutral" name="radio2" model="$scope.teste" value="neutral">
-      												<div class="checkmark"><i class="ion-record"></i></div>
-    											    </label>
-    												<label class="btn_container">
-      												<input type="radio" class="no" name="radio2" ng-model="$scope.teste" value="no">
-      												<div class="checkmark "><i class="ion-close-round"></i></div>
-    												</label>
-  													</div>
-      												</td>
-      												 </tr>		
-      												 	
-      												 <tr>
-      												 <td style = "text-align: center; vertical-align: middle;">Vinoth</td>
-      												 <td style = "text-align: center; vertical-align: middle;">Development Owner</td>
-      												 <td style = "text-align: center; vertical-align: middle;">Not Approved</td>
-      												 <td>
-      												 <div class="wrapper">
-    												 <label class="btn_container">
-      												 <input type="radio" class="yes" name="radio1" ng-model="$scope.teste" value="yes" disabled>
-      												 <div class="checkmark"><i class="ion-checkmark-round"></i></div>
-    												 </label>
-    												<label class="btn_container" >
-      												<input type="radio" class="neutral" name="radio1" model="$scope.teste" value="neutral" disabled>
-      												<div class="checkmark"><i class="ion-record"></i></div>
-    											    </label>
-    												<label class="btn_container">
-      												<input type="radio" class="no" name="radio1" ng-model="$scope.teste" value="no" checked disabled>
-      												<div class="checkmark "><i class="ion-close-round"></i></div>
-    												</label>
-  													</div>
-      												</td>
-      												 </tr>	
-      												<tr>
-      												 <td style = "text-align: center; vertical-align: middle;">Poornima</td>
-      												 <td style = "text-align: center; vertical-align: middle;">Application Owner</td>
-      												 <td style = "text-align: center; vertical-align: middle;">Not Yet</td>
-      												 <td>
-      												 <div class="wrapper">
-    												 <label class="btn_container">
-      												 <input type="radio" class="yes" name="radio" ng-model="$scope.teste" value="yes" disabled>
-      												 <div class="checkmark"><i class="ion-checkmark-round"></i></div>
-    												 </label>
-    												<label class="btn_container" >
-      												<input type="radio" class="neutral" name="radio" model="$scope.teste" value="neutral" checked disabled>
-      												<div class="checkmark"><i class="ion-record"></i></div>
-    											    </label>
-    												<label class="btn_container">
-      												<input type="radio" class="no" name="radio" ng-model="$scope.teste" value="no" disabled>
-      												<div class="checkmark "><i class="ion-close-round"></i></div>
-    												</label>
-  													</div>
-      												</td>
-      												 </tr>						
-      												</tbody>
+    												</tbody>
   													</table>
                                                     </div>                                                
                                                     <div class="col-md-12">
@@ -277,7 +212,8 @@ input:checked + .slider:before {
                                                                 <button type="button" class="btn btn-primary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button>
                                                             </div>
                                                             <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right;">
-                                                                <button type="submit" class="btn btn-primary" id="save">Finish</button>
+                                                                <button type="button" class="btn btn-primary" id="ApprovalSave">Finish</button>
+                                                                <button type="button" class="btn btn-primary pull-right" id="ConfirmationPopUp_Btn" data-toggle="modal" data-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
                                                                 </div>
                                                     </div>
                                                 </div>
@@ -292,26 +228,25 @@ input:checked + .slider:before {
         </div>
     </form>
     <!-- Delete Row Pop Up  -->
-    <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog">
+    <div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="DeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title">Confirmation for Approval</h5>
+        <button type="button" id ="ConfirmationClose" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
-                    <p style="font-size:20px;">Do you want to delete this Row permanently?</p>
-                    <input type="hidden" id="Sequence"/>
+                    <p style="font-size:20px;">By Approving this opportunity overall approval for intake module will be confirmed as approved.</p><br/><p style="font-size:20px;"> Do you want to allow this?</p>
                 </div>
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="DeleteSubmit" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="ConfirmationYes" class="btn btn-primary" >Yes</button>
+        <button type="button" class="btn btn-default" id="ConfirmationNo">No</button>
       </div>
     </div>
   </div>
@@ -331,8 +266,7 @@ input:checked + .slider:before {
       <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
        <script src="js/toastr/toastr.min.js"></script>
         <script src="js/notification/notification.js"></script>
-      <script src ="js/IntakeDetails/StakeHolder/IntakeStakeHolderAddRow.js"></script>
-      <script src ="js/IntakeDetails/StakeHolder/IntakeStakeHolderSave.js"></script>
+         <script src ="js/IntakeDetails/IntakeApproval/IntakeApprovalSave.js"></script>
       
       <script>
       var app = angular.module("btn", []);
@@ -367,6 +301,9 @@ input:checked + .slider:before {
     <script src="js/amcharts/plugins/export/export.min.js"></script>
     <link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
         type="text/css" media="all" />
+        
+        <script src="js/IntakeDetails/IntakeApproval/IntakeApprovalDataRetrieve.js"></script>
+        
     <script src="js/amcharts/themes/light.js"></script>
    
     <script src="js/icheck/icheck.min.js"></script>

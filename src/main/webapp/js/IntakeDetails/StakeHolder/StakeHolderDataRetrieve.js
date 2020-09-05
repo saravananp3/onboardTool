@@ -86,9 +86,21 @@ function ReadOnlyPropertyConfig(index,prop)
 	var fieldClass =['name','emailid','username','role'];
 	for(var i=0;i<fieldClass.length;i++)
 	{
-		$("."+fieldClass[i]).eq(index).attr('Readonly','');
-		$("."+fieldClass[i]).eq(index).attr('Readonly',prop);
-	}
+		var checkrole = true;
+		var role=fieldClass[i].toString();
+		if(role=="role")
+		{
+		var userRole=$(".role").eq(index).val();
+		
+		if(userRole=="Application Owner"||userRole=="Development Owner"||userRole=="Business Owner")
+			checkrole = false;
+		}
+		if(checkrole)
+	    {
+		  $("."+fieldClass[i]).eq(index).attr('Readonly','');
+		  $("."+fieldClass[i]).eq(index).attr('Readonly',prop);
+	    }
+	  }
 	
 	if(prop==false)
 	$(".name").eq(index).focus();

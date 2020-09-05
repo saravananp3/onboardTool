@@ -130,7 +130,10 @@
         statement.executeUpdate(query47);
         String query48 = "CREATE TABLE `Intake_Stake_Holder_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `name` varchar(255),`emailId` varchar(255), `username` varchar(255),`role` varchar(255),`approvalId` varchar(255),`intakeApproval` varchar(255),`moduleId` varchar(255))";
         statement.executeUpdate(query48);
-%>
+        String query49 = "CREATE TABLE `Module_Approval_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`moduleName` varchar(255),`overAllApproval` varchar(255))";
+        statement.executeUpdate(query49);
+        
+       %>
 <% } catch (Exception ex) {
 
     System.err.println("[ERROR]-----Got an exception!-----Tables are already created----[ERROR]");

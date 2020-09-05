@@ -12,6 +12,7 @@ import java.util.HashMap;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import IntakeDetails.IntakeStakeHolder.service.IntakeStakeHolderService;
 import Opportunity.OpportunityBean;
 import Opportunity.Service.NewOpportunityCreateService;
 import onboard.DBconnection;
@@ -528,8 +529,17 @@ public class IntakeOpportunityService {
                 st1.executeUpdate(UpdateQuery);
                 if(isTriageField(name))
                 TriageDetailsUpdate(id,name,value);
+                
+                if(checkIntakeStakeHolderFields(name))
+                 {
+                	IntakeStakeHolderService IntakeStake = new IntakeStakeHolderService();
+                	IntakeStake.CheckForStakeHolderField(name, value, id);
+                	IntakeStake = null;
+                	System.gc();
+                 }
+                
+			  }
 			}
-			 }
 			  connection.close();
       
 		 }
@@ -538,7 +548,16 @@ public class IntakeOpportunityService {
 			System.out.println("Exception----------[info]--------"+e);
 		 }
 	}
-
+    private static boolean checkIntakeStakeHolderFields(String name)
+    {
+    	
+    		ArrayList<String> stakeFields = new ArrayList<String>();
+    		stakeFields.add("appowner");
+    		stakeFields.add("businessowner");
+    		stakeFields.add("sme");
+    		
+            return stakeFields.contains(name);
+    }
 	 public static void OrderingColumnNameBySeq(String ID,String table)
      {
    	  String table1="";
