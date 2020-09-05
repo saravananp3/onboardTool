@@ -57,7 +57,7 @@ DBconnection dBconnection =null;
 			while(rs1.next()) {
 				
 				String intakeApprovalValue = rs1.getString("intakeApproval");
-				if(intakeApprovalValue != "Approved")
+				if(!intakeApprovalValue.equals("Approved"))
 					checkStatus = false;
 				
 			}	
