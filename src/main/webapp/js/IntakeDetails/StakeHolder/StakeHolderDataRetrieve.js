@@ -39,9 +39,11 @@ function StakeHolderDataRetrieveAjaxCall()
                if(index==0)
             	{
             	   checkData = value.checkExistence;
+            	   $("#UserList").html("");
             	}
                else if(checkData&&index!=0)
             	{
+            	   
             	   var name =(value.name == undefined)?"":value.name;
             	   var emailid =(value.emailId==undefined)?"":value.emailId;
             	   var username =(value.username==undefined)?"":value.username;

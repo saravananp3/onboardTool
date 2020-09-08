@@ -124,7 +124,7 @@ $("#createbtn").click(function(e)
 	    	}
 	    	else
 	    	{
-	    	$("#OpportunityListbtn").click();
+	    	//$("#OpportunityListbtn").click();
 	    	}
       	    }
       		else

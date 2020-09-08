@@ -67,17 +67,18 @@ $("#save").click(function(e)
 	}
     if(jsonObj.CheckSave)
      {
-		 //e.preventDefault();
-		 notification("success","Saved Successfully.","Note");
-		 try
-		 {
-			 $("#NextStakeHolder").click();	 
-		 }
-		 catch(err)
-		 {
-			 console.log(err);	 
-		 }
-		 
+    	   e.preventDefault();
+            notification("success","Saved Successfully.","Note");
+       
+  
+            IntakePreviewDataRetrieveAjaxCall();
+           
+            IntakeApprovalDataRetrieveAjaxCall();
+            
+    	
+    	
+    	
+    	
      }
 	}
 	else

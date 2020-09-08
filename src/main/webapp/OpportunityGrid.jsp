@@ -30,8 +30,7 @@
     <script src="js/modernizr/modernizr.min.js"></script>
 
     <script src="js/multiplepages.js"></script>
-    <script src ="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>   
-     <style>
+    <style>
   body{
      
      background-color: #fff;
@@ -65,10 +64,7 @@
 
 
 /* Steps timeline*/
-.steps-timeline {
-    font-size: 14px;
-    line-height: 16px;
-}
+
 
 .step-title,
 .step-description {
@@ -89,10 +85,7 @@
   line-height:20px;
 }
 
-.steps-timeline .step {
-  outline: 1px dashed rgba(0, 128, 0, 0);
-  margin-bottom: 200px;
-}
+
 
 .img-rounded{
 
@@ -107,7 +100,7 @@ transition: width 2s, height 2s, transform 2s;
   background-color: #fff;
   border: 10px solid DodgerBlue;
   border-radius: 50%;
-  margin: 100px auto;
+  margin: 15px auto;
   box-sizing: border-box;
   transition: width 2s, height 2s, transform 2s;
 }
@@ -122,7 +115,7 @@ transition: width 2s, height 2s, transform 2s;
   background-color: #fff;
   border: 10px solid DodgerBlue;
   border-radius: 50%;
-  margin: 30px auto;
+  margin: 15px auto;
   box-sizing: border-box;
    transition: width 2s, height 2s, transform 2s;
 }
@@ -133,7 +126,7 @@ transition: width 2s, height 2s, transform 2s;
   background-color: #fff;
   border: 10px solid DodgerBlue;
   border-radius: 50%;
-  margin: 0 auto;
+  margin: 15px auto;
   box-sizing: border-box;
    transition: width 2s, height 2s, transform 2s;
 }
@@ -144,7 +137,7 @@ transition: width 2s, height 2s, transform 2s;
   background-color: #fff;
   border: 10px solid DodgerBlue;
   border-radius: 50%;
-  margin: 100px auto;
+  margin: 15px auto;
   box-sizing: border-box;
    transition: width 2s, height 2s, transform 2s;
 }
@@ -156,57 +149,9 @@ transition: width 2s, height 2s, transform 2s;
   background-color: #fff;
   border: 10px solid DodgerBlue;
   border-radius: 50%;
-  margin: 100px auto;
+  margin: 15px auto;
   box-sizing: border-box;
    transition: width 2s, height 2s, transform 2s;
-}
-@media screen and (max-width: 678px) {
-  .steps-timeline {
-    border-left: 5px dotted #bbb;
-    border-radius:25%;
-    margin-left: 200px;
-    margin-top: -100px;
-  }
-
-  .steps-timeline  .step {
-    margin-top:50px;
-    margin-left: -290px;
-    display: block;
-    overflow: auto;
-  }
-
-  .step-milestone {
-    float: left;
-    margin-left: 100px;
-  }
-
-
-
-}
-@media screen and (min-width: 678px) {
-
-  .steps-timeline {
-    border-top: 5px dotted #bbb;
-    border-radius:50%;
-    margin-top: 50px;
-    margin-left: 10%;
-    margin-right: 10%;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .steps-timeline .step {
-    margin-top: -60px;
-    -webkit-flex: 1;  /* Safari 6.1+ */
-    -ms-flex: 1;  /* IE 10 */    
-    flex: 1;
-    transition: width 2s, height 2s, transform 2s;
-  }
-
 }
 
 
@@ -219,6 +164,154 @@ transition: width 2s, height 2s, transform 2s;
             
             filter: blue(100%);
         }
+        
+        
+.container {
+    display: block;
+    position: relative;
+}
+.flow {
+    width: 1300px;
+    height: 100px;
+}
+.process{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    float: left;
+    margin: 10px;
+    
+    background-color: #fff;
+}
+.flow .process{
+    position: absolute;
+}
+.report .process{
+    position: relative;
+    margin-right: 50px;
+}
+
+.process .name {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+.process .action {
+    width: 100%;
+    text-align: center;
+}
+.process .action a {
+    padding: 5px 5px;
+    color: #ba0a3b;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+.process .action a:hover {
+    color: #0abab5;
+}
+.process:hover {
+    background-color: #e2e2e2;
+}
+.process.endpoint {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #2179a5;
+}
+.process.endpoint .name{
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    line-height: 30px;
+    padding: 0px;
+}
+.arrow {
+    padding: 0px 5px;
+    position: absolute;
+}
+.arrow.vert{
+    transform: rotate(90deg);
+}
+.arrow.vert .line{
+    width: 30px;
+}
+.arrow .line {
+    width: 60px;
+    height: 11px;
+    border-bottom: 4px solid #999;
+    float: left;
+}
+.arrow .triangle {
+    border-top: 10px solid white;
+    border-left: 10px solid #999;
+    border-bottom: 10px solid white;
+    float: left;
+}
+.process.start {
+    top: 0px;
+    left: 75px;
+}
+.process.job, .process.candidate {
+    top: 95px;
+}
+.process.job {
+    left: 0px;
+}
+.process.candidate {
+    left: 290px;
+}
+.process.interview, .process.assessment, .process.finalDecision {
+    top: 95px;
+}
+.process.interview {
+    left: 580px;
+}
+.process.assessment {
+    left: 870px;
+}
+.process.finalDecision {
+    left: 1170px;
+}
+.process.finish {
+    top: 595px;
+    left: 368px;
+}
+.arrow.job {
+    top: 65px;
+    left: 78px;
+}
+.arrow.candidate{
+    top: 190px;
+    left: 200px;
+}
+.arrow.assessment, .arrow.finalDecision,.arrow.final{
+    top: 190px;
+}
+.arrow.assessment{
+    left: 490px;
+}
+.arrow.finalDecision{
+    left: 780px;
+}
+.arrow.final{
+    left: 1070px;
+}
+.arrow.interview, .arrow.finish{
+    left: 370px;
+}
+.arrow.interview{
+    top: 310px;
+}
+.arrow.finish{
+    top: 560px;
+}        
+        
+        
+        
+        
     </style>
 </head>
 <body class="top-navbar-fixed">
@@ -348,11 +441,12 @@ transition: width 2s, height 2s, transform 2s;
                 %>
                 <!--  admin Role -->
                 <section>
-                        <div class="steps-timeline">
-  <div class="step">
+ <div class="flow container">
+   <div class="process job">
+        <div class="step">
     <div class="step-milestone1"/>
     
-                                   <a id="IntakeNavigation" href="IntakeDetails.jsp">
+                                   <a href="IntakeDetails.jsp">
                                         <center>
                                             <img src="images/grid/NewIntake.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
 
@@ -360,13 +454,20 @@ transition: width 2s, height 2s, transform 2s;
 
                                     </a>
     </div>
+    <br>
    <span class="step-title">
-      Intake <br> 
+      Intake  
     </span>
     
     
      </div>
-     <div class="step">
+    </div>
+    <div class="arrow candidate">
+        <div class="line"></div>
+        <div class="triangle"></div>
+    </div>
+    <div class="process candidate">
+        <div class="step">
     <div class="step-milestone2"/>
     
     
@@ -379,11 +480,18 @@ transition: width 2s, height 2s, transform 2s;
                                     </a>
     
     </div>
+    <br>
      <span class="step-title">
-      Plan  <br> and <br> Priority 
+      Plan   and  Priority 
     </span>
   </div>
-  <div class="step">
+    </div>
+    <div class="arrow final">
+        <div class="line"></div>
+        <div class="triangle"></div>
+    </div>
+    <div class="process interview">
+        <div class="step">
     <div class="step-milestone3"/>
     
     <a href="ArchiveDecommPage.jsp">
@@ -393,11 +501,18 @@ transition: width 2s, height 2s, transform 2s;
                                         </center>
 
     </div>
+    <br>
      <span class="step-title">
      Requirements  <br> 
     </span>
   </div>
-  <div class="step">
+    </div>
+    <div class="arrow assessment">
+        <div class="line"></div>
+        <div class="triangle"></div>
+    </div>
+    <div class="process assessment">
+        <div class="step">
     <div class="step-milestone2"/>
     <a href="#">
                                         <center>
@@ -409,13 +524,20 @@ transition: width 2s, height 2s, transform 2s;
     
     
     </div>
+    <br>
      <span class="step-title">
-      Archive  <br> Execution
+      Archive   Execution
     </span>
   </div>
-    <div class="step">
+    </div>
+    <div class="arrow finalDecision">
+        <div class="line"></div>
+        <div class="triangle"></div>
+    </div>
+    <div class="process finalDecision">
+       <div class="step">
     <div class="step-milestone5"/>
-    <a href="DecommManageExecutionInfo.jsp">
+    <a href="#">
                                         <center>
                                              <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
 
@@ -425,11 +547,18 @@ transition: width 2s, height 2s, transform 2s;
     
     
     </div>
+    <br>
      <span class="step-title">
-      Decommission  <br> Execution
+      Decommission Execution
     </span>
   </div>
-                 
+    </div>
+    
+ 
+ 
+ 
+
+</div>    
                 </section>
                 <!-- /.section -->
 

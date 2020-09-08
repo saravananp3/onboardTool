@@ -52,10 +52,6 @@
 	
 	
 	
-.search{
-
-margin-top:-40px;
-}
 
 hr{
 
@@ -71,14 +67,11 @@ input[type=search]:focus {
   border-color: #1565c0;
 }
 .cbp-vm-switcher {
-	padding: 20px;
+	padding: 42px;
 	
 }
 
-.cbp-vm-switcher {
-	padding: 20px;
-	
-}
+
 
 
 .cbp-vm-options {
@@ -205,7 +198,7 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid .cbp-vm-title {
-	font-size: 2em;
+	font-size: 21px;
 }
 
 .cbp-vm-view-grid .cbp-vm-details {
@@ -309,6 +302,82 @@ input[type=search]:focus {
          .cologen{
              color: #1c95f8 !important;
          }
+         
+         
+         
+    .right-side{
+    
+     position: absolute;
+    right: 10%;
+    top: 80px;
+    z-index: 1;
+    }    
+    
+    #button{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid #dd6a2c;
+    background-color: #dd6a2c;
+    color: #fff;
+    outline-width: 0;
+    font-size: 20px;
+    padding: 12px;
+    text-align: center;
+    
+        
+    
+    } 
+    
+    .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.search-input {
+    min-width: 150px;
+    max-width: 290px;
+    flex: 1;
+    position: relative;
+}
+
+
+#myInput{
+
+
+    border: none;
+    border-bottom: 1px solid #959595;
+    -o-border-image: initial;
+    border-image: initial;
+    border-radius: 0;
+    color: #fff!important;
+    font-size: .875rem;
+    text-indent: 12px;
+    background-color: transparent!important;
+    box-shadow: none;
+    height: 25px;
+    margin-top: 5px;
+    padding-bottom: 3px;
+
+
+}
+
+
+.fa-search{
+
+color:#fff;
+
+}
+
+
+#apptype{
+
+ font-size: .875rem;
+ color:#fff;
+}
+         
     </style>
 
 </head>
@@ -439,13 +508,42 @@ input[type=search]:focus {
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                             <h4 class="title" style="color:#fff">Applications</h4>
+                             <h5 class="title" style="color:#fff">Applications</h5>
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
-                        <!-- /.col-sm-6 -->
+                        <div class="col-md-12">
+                             <div class="row form-row">
+                               <div class="col-md-2 search-input">
+		                                <div class="row form-row">
+		                               <div class="col-md-1">
+		                               <i class="fa fa-search" aria-hidden="true"></i>
+		                               </div>
+		                               <div class="col-md-10">
+		                               <input class="form-control searchbox-input" id="myInput" type="text" placeholder="Search the application.."></div>
+		                               
+		                               </div>
+                               </div>
+                               
+                               
+                               <div class="col-md-6 ">
+		                                <div class="row ">
+		                               <div class="col-md-5">
+		                              <label class="col-md-2" id="apptype" title="Application Type"></label>
+		                               </div>
+                              
+                               </div>
+                               
+                               
+                               
+                              
+                              
+                               </div>
+                             </div>
+                        </div>
+                       
                         <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                New Opportunity
+                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                               
                             </button>
                         </div>
                         <!-- /.col-sm-6 text-right -->
@@ -503,21 +601,7 @@ input[type=search]:focus {
                                             <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid"></a>
                                             <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list"></a>
                                         </div>
-                                        <div class="row search">
-                                      <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                                             <div class="col-md-5">
-                                                             
-                                                               <input type="search" placeholder="Search the application.."  class="form-control searchbox-input">
-                                                             </div>      
-                                                                  
-                                                            
-                                                            
-                                                            </div>
-
-                                                        </div>
-                                 </div>
+                                        
 
 
  

@@ -1,380 +1,298 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html >
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<title>Decom3Sixty - Intake</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Decom3Sixty - Intake</title>
+    <!-- ========== COMMON STYLES ========== -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
+    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
+    <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
+    <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen" >
 
-<!-- ========== COMMON STYLES ========== -->
-<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-<link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-<link rel="stylesheet" href="css/animate-css/animate.min.css"
-    media="screen">
-<link rel="stylesheet" href="css/lobipanel/lobipanel.min.css"
-    media="screen">
- <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
-<!-- ========== PAGE STYLES ========== -->
-<link rel="stylesheet" href="css/prism/prism.css" media="screen">
-<link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
-<link rel="stylesheet" href="css/icheck/skins/line/blue.css">
-<link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
-<!-- ========== THEME CSS ========== -->
-<link rel="stylesheet" href="css/main.css" media="screen">
-<link rel="stylesheet" href="css/Intake/Intake.css" type="text/css" />
+    <!-- ========== PAGE STYLES ========== -->
+    <link rel="stylesheet" href="css/prism/prism.css" media="screen" > <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+    <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen" >
+    <link rel="stylesheet" href="css/icheck/skins/line/blue.css" >
+    <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
+    <link rel="stylesheet" href="css/icheck/skins/line/green.css" >
+    <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css" >
+   <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
+  
+    <!-- ========== THEME CSS ========== -->
+    <link rel="stylesheet" href="css/main.css" media="screen" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+ 
+   
+    <!-- ========== MODERNIZR ========== -->
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/IntakeDetails/IntakeOpportunity/IntakeOpportunity.js"></script>
 <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummary.js"></script>
 <script src="js/IntakeDetails/IntakeAssessment/Common/IntakeAssessmentDataRetrieve.js"></script>
-<style>
- body{
-            background:#fff;
-        }
-
-       .active{
-          background: transparent;
-       
-       }
-      
-	.fixed-top{
-	width:100%;
-	padding-left: 0px;
-    padding-right: 0px;
-	}
-	
-	#module_header{
  
- margin-top:-120px;
- }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 
-/*------------------------*/
-input:focus,
-button:focus,
-.form-control:focus{
-	outline: none;
-	box-shadow: none;
-}
-.form-control:disabled, .form-control[readonly]{
-	background-color: #fff;
-}
-/*----------step-wizard------------*/
-
-
-/*---------signup-step-------------*/
-.bg-color{
-	background-color: #333;
-}
-.signup-step-container{
-	padding: 150px 0px;
-	padding-bottom: 60px;
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/toggleSwitch/toggleSwitch.css">
+ 
+   
+<style type="text/css">
+         
+body{
+background:#fff;
 }
 
 
+.page-title-div {
+background:#1565c0;
+padding: 15px; 
+}
+.fixed-top{
+width:100%;
+padding-left: 0px;
+padding-right: 0px;
+}
+<!-- Wizard-->
 
-
-    .wizard .nav-tabs {
-        position: relative;
-        margin-bottom: 0;
-        border-bottom-color: transparent;
-    }
-
-    .wizard > div.wizard-inner {
-            position: relative;
-    margin-bottom: 50px;
-    text-align: center;
-    }
-
-.connecting-line {
-    height: 2px;
-    background: #e0e0e0;
-    position: absolute;
-    width:75%;
-    margin: 0 auto;
-    left: -70px;
-    right: 0;
-    top: 36px;
-    z-index: 0.0;
+body {
+  background-color: #ffffff;
+  color: #444444;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+.wizard-content-left {
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-image: url("https://i.ibb.co/X292hJF/form-wizard-bg-2.jpg");
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  padding: 30px;
+}
+.wizard-content-left h1 {
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 600;
+  padding: 12px 20px;
+  text-align: center;
 }
 
-.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
-    color: #555555;
-    cursor: default;
-    border: 0;
-    border-bottom-color: transparent;
+.form-wizard {
+  color: #888888;
+  
+}
+.form-wizard .wizard-form-radio {
+  display: inline-block;
+  margin-left: 5px;
+  position: relative;
+}
+.form-wizard .wizard-form-radio input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background-color: #dddddd;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:focus {
+  outline: 0;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked {
+  background-color: #fb1647;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 50%;
+  left: 1px;
+  right: 0;
+  margin: 0 auto;
+  top: 8px;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::after {
+  content: "";
+  display: inline-block;
+  webkit-animation: click-radio-wave 0.65s;
+  -moz-animation: click-radio-wave 0.65s;
+  animation: click-radio-wave 0.65s;
+  background: #000000;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+  border-radius: 50%;
+}
+.form-wizard .wizard-form-radio input[type="radio"] ~ label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+.form-wizard .form-wizard-header {
+  text-align: center;
 }
 
-span.round-tab {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    display: inline-block;
-    border-radius: 50%;
-    background: #fff;
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    text-align: center;
-    font-size: 16px;
-    color: #0e214b;
-    font-weight: 500;
-    border: 1px solid #ddd;
+.form-wizard .wizard-fieldset {
+  display: none;
 }
-span.round-tab i{
-    color:#555555;
+.form-wizard .wizard-fieldset.show {
+  display: block;
 }
-.wizard li.active span.round-tab {
-        background: #0db02b;
-    color: #fff;
-    border-color: #0db02b;
-}
-.wizard li.active span.round-tab i{
-    color: #5bc0de;
-}
-.wizard .nav-tabs > li.active > a i{
-	color: #0db02b;
-}
-
-.wizard .nav-tabs > li {
-    width: 15%;
-}
-
-.wizard li:after {
-    content: " ";
-    position: absolute;
-    left: 46%;
-    opacity: 0;
-    margin: 0 auto;
-    bottom: 0px;
-    border: 5px solid transparent;
-    border-bottom-color: red;
-    transition: 0.1s ease-in-out;
+.form-wizard .wizard-form-error {
+  display: none;
+  background-color: #d70b0b;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
 }
 
 
-
-.wizard .nav-tabs > li a {
-    width: 30px;
-    height: 30px;
-    margin: 20px auto;
-    border-radius: 100%;
-    padding: 0;
-    background-color: transparent;
+.form-wizard .form-control:focus {
+  box-shadow: none;
+}
+.form-wizard .form-group {
+  position: relative;
+  margin: 25px 0;
+}
+.form-wizard .wizard-form-text-label {
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  transition: 0.2s linear all;
+}
+.form-wizard .focus-input .wizard-form-text-label {
+  color: #d65470;
+  top: -18px;
+  transition: 0.2s linear all;
+  font-size: 12px;
+}
+.form-wizard .form-wizard-steps {
+  margin: 30px 0;
+}
+.form-wizard .form-wizard-steps li {
+  width: 14%;
+  float: left;
+  position: relative;
+}
+.form-wizard .form-wizard-steps li::after {
+  background-color: #f3f3f3;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+.form-wizard .form-wizard-steps li span {
+  background-color: #dddddd;
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+  z-index: 1;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  width: 50%;
+}
+.form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
+  background-color: #0db02b;
+  color: #ffffff;
+}
+.form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
+  background-color: #0db02b;
+  left: 50%;
+  width: 50%;
+  border-color:#0db02b ;
+}
+.form-wizard .form-wizard-steps li.activated::after {
+  width: 100%;
+  border-color: #0db02b;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  left: 0;
+}
+.form-wizard .wizard-password-eye {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+@keyframes click-radio-wave {
+  0% {
+    width: 25px;
+    height: 25px;
+    opacity: 0.35;
     position: relative;
-    top: 0;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    margin-left: -15px;
+    margin-top: -15px;
+    opacity: 0.0;
+  }
 }
-.wizard .nav-tabs > li a i{
+@media screen and (max-width: 767px) {
+  .wizard-content-left {
+    height: auto;
+  }
+}
+
+
+
+fieldset {
+    padding: 0.875em 1.75em 1.75em;
+    border-width: 1px #fff;
+    border-style: solid;
+    max-width: 141%;
+    margin-bottom: 1.875em;
+}
+
+.form-wizard-steps li  i{
 	position: absolute;
-    top: -15px;
+    top: -22px;
     font-style: normal;
     font-weight: 400;
     white-space: nowrap;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     color: #000;
 }
 
-    .wizard .nav-tabs > li a:hover {
-        background: transparent;
-    }
-
-.wizard .tab-pane {
-    position: relative;
-    
+.form-wizard-steps li  i{
+	color: #d65470;
 }
-
-
-.wizard h3 {
-    margin-top: 0;
-}
-.prev-step,
-.next-step{
-    font-size: 13px;
-    padding: 8px 24px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 30px;
-}
-.next-step{
-	background-color: #0db02b;
-}
-.skip-btn{
-	background-color: #cec12d;
-}
-.step-head{
-    font-size: 20px;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-.term-check{
-	font-size: 14px;
-	font-weight: 400;
-}
-.custom-file {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 40px;
-    margin-bottom: 0;
-}
-.custom-file-input {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: 40px;
-    margin: 0;
-    opacity: 0;
-}
-.custom-file-label {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1;
-    height: 40px;
-    padding: .375rem .75rem;
-    font-weight: 400;
-    line-height: 2;
-    color: #495057;
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-}
-.custom-file-label::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    display: block;
-    height: 38px;
-    padding: .375rem .75rem;
-    line-height: 2;
-    color: #495057;
-    content: "Browse";
-    background-color: #e9ecef;
-    border-left: inherit;
-    border-radius: 0 .25rem .25rem 0;
-}
-.footer-link{
-	margin-top: 30px;
-}
-.all-info-container{
-
-}
-.list-content{
-	margin-bottom: 10px;
-}
-.list-content a{
-	padding: 10px 15px;
-    width: 100%;
-    display: inline-block;
-    background-color: #f5f5f5;
-    position: relative;
-    color: #565656;
-    font-weight: 400;
-    border-radius: 4px;
-}
-.list-content a[aria-expanded="true"] i{
-	transform: rotate(180deg);
-}
-.list-content a i{
-	text-align: right;
-    position: absolute;
-    top: 15px;
-    right: 10px;
-    transition: 0.5s;
-}
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-    background-color: #fdfdfd;
-}
-.list-box{
-	padding: 10px;
-}
-.signup-logo-header .logo_area{
-	width: 200px;
-}
-.signup-logo-header .nav > li{
-	padding: 0;
-}
-.signup-logo-header .header-flex{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.list-inline li{
-    display: inline-block;
-}
-.pull-right{
-    float: right;
-}
-/*-----------custom-checkbox-----------*/
-/*----------Custom-Checkbox---------*/
-input[type="checkbox"]{
-    position: relative;
-    display: inline-block;
-    margin-right: 5px;
-}
-input[type="checkbox"]::before,
-input[type="checkbox"]::after {
-    position: absolute;
-    content: "";
-    display: inline-block;   
-}
-input[type="checkbox"]::before{
-    height: 16px;
-    width: 16px;
-    border: 1px solid #999;
-    left: 0px;
-    top: 0px;
-    background-color: #fff;
-    border-radius: 2px;
-}
-input[type="checkbox"]::after{
-    height: 5px;
-    width: 9px;
-    left: 4px;
-    top: 4px;
-}
-input[type="checkbox"]:checked::after{
-    content: "";
-    border-left: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    transform: rotate(-45deg);
-}
-input[type="checkbox"]:checked::before{
-    background-color: #18ba60;
-    border-color: #18ba60;
-}
-
-
-
-
-
-
-@media (max-width: 767px){
-	.sign-content h3{
-		font-size: 40px;
-	}
-	.wizard .nav-tabs > li a i{
-		display: none;
-	}
-	.signup-logo-header .navbar-toggle{
-		margin: 0;
-		margin-top: 8px;
-	}
-	.signup-logo-header .logo_area{
-		margin-top: 0;
-	}
-	.signup-logo-header .header-flex{
-		display: block;
-	}
-}
-
-
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -393,93 +311,174 @@ font-size:14x;
 color:#fff;
 
 }
+	#module_header{
+ 
+ margin-top:75px;
+ }
+ 
+ 
+table {
+    width: 92%;
+    border-spacing: 0;
+    
+    margin-bottom: 2.375em;
+    border-style:none;
+} 
 
 
+.pdf{
+
+float:right;
+    margin-top: -36px;
+
+}
+.pdf{
+background:#1565c0;
+}
 
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.userlist{
+
+width:95%;
+
+}
+
+input[type="text"]{
+
+font-size:12px;
+
+}
 </style>
+
 </head>
 <body class="top-navbar-fixed">
-    <form class="form-signin" name="loginForm" method="post">
-        <div class="main-wrapper">
-              <!-- ========== TOP NAVBAR ========== -->
+
+<div class="main-wrapper">
+ <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/logo1.png" alt="Decomm3Sixty" class="logo">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-          <ul class="nav navbar-nav">
-		      <li class="active"><a href="OpportunityList.jsp" style="color:#fff; background:#1565c0; ">Applications</a></li>
-		      <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		     <li><a href="Archive_Execution.jsp">Governance</a></li>
+                  <ul class="nav navbar-nav">
+		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		              <li><a href="Archive_Execution.jsp">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
-		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
-		    </ul>
+		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
-                       
-
-                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
+                      <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
                 </div>
-                
-                
-                
-                
-            </div>
-            <!-- /.row -->
-            
+      </div>
+      <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                             <div class="col-sm-6">
+                        
+                            
+                         <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >>Opportunity</p>
+                     
+                    
+
+                    </div>
+
+                </div>
+			</nav>
+      
         </div>
         <!-- /.container-fluid -->
     </nav >
-            <div class="content-wrapper">
-                <div class="content-container" >
-                   
-                    <div class="main-page">
-                        
-                        <section class="signup-step-container">
-        <div class="container" id="module_header">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-12">
-                    <div class="wizard">
-                        <div class="wizard-inner">
-                            <div class="connecting-line"></div>
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" >
-                                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i>Opportunity</i></a>
-                                </li>
-                                <li role="presentation" >
-                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>Triage</i></a>
-                                </li>
-                                <li role="presentation" >
-                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Triage Summary</i></a>
-                                </li>
-                                <li role="presentation" >
-                                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Assessment</i></a>
-                                </li>
-                                 <li role="presentation" >
-                                    <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab"><span class="round-tab">5</span> <i>Stake Holder</i></a>
-                                </li>
-                                 <li role="presentation" >
-                                    <a href="#step6" data-toggle="tab" aria-controls="step6" role="tab"><span class="round-tab">6</span> <i>Preview</i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                          <form role="form" action="index.html" class="login-box">
-                            <div class="tab-content" id="main_form">
-                                <div class="tab-pane active" role="tabpanel" id="step1">
+<div class="content-wrapper">
+ <div class="content-container" >
+  <div class="main-page">
+       <section class="wizard-section">
+		<div class="container" id="module_header">
+			<div class=" col-md-12">
+				<div class="form-wizard">
+					<form action="" method="post" role="form">
+						<div class="form-wizard-header">
+							<p>Fill all the required fields to go next step</p>
+							<ul class="list-unstyled form-wizard-steps clearfix">
+								<li class="active"><span>1</span><i>Opportunity</i></li>
+								<li><span>2</span><i>Triage</i></li>
+								<li><span>3</span><i>Triage Summary</i></li>
+								<li><span>4</span><i>Assessment</i></li>
+								<li><span>5</span> <i>Stake Holder</i></li>
+								<li><span>6</span><i>Review</i></li>
+								<li><span>7</span><i>Approval</i></li>
+							</ul>
+						</div>
+						<fieldset class="wizard-fieldset show" style="border-style: none">
+							   <div class="tab-pane active" role="tabpanel" id="step1">
                                        <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
@@ -489,14 +488,14 @@ color:#fff;
                                             <div id="collapse1" class="panel-collapse "
                                                 name="collapse">
                                                 <div class="panel-body">
-                                                    <div id="inputFields">
+                                                    <div id="inputFields" >
                                                         <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/>
                                                     </div>                                                
                                                     <div class="col-md-12">
                                                             <div class="col-md-1">
                                                                 <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button>
                                                             </div>
-                                                            <div class="col-md-5 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                            <div class="col-md-6 dropup" style="padding-right: 10px; float: right;  width: 43%;">
                                                                 <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".bd-example-modal-lg">Template</button>
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                                                 <ul class="dropdown-menu">
@@ -506,7 +505,7 @@ color:#fff;
                                                                 </ul>
                                                                
                                                                 <button type="submit" class="btn btn-success" id="create">Save</button>
-                                                                 <a href="#step2"  aria-controls="step2" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
+                                                                 <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info">Next</a>
                                                                 
                                                               
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
@@ -514,45 +513,21 @@ color:#fff;
                                                                <!--  <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button> -->
                                                             </div>
                                                     </div>
-                                                    <!--  <div class="form-group">
-                   <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary  pull-right" id="create">Use Exists Que</button>
-                   </div> -->
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                 </div>
                                 
-                                <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel"> Questions :</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <div class="form-check form-check-inline">
-                                                                <div class="col-md-1">
-                                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label class="form-check-label" for="inlineCheckbox1">Add developer Name</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Add</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                               
                                 
-                                    <div class="tab-pane" role="tabpanel" id="step2">
+                                
+                                
+                                
+                                
+						</fieldset>	
+						<fieldset class="wizard-fieldset" style="border-style: none">
+							  <div class="tab-pane" role="tabpanel" id="step2">
                                     
                                              <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -566,8 +541,8 @@ color:#fff;
                                              </div>
                                             <div class="col-md-12">
                                                 <div class="col-md-1">
-                                                     <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button> </div>
-                                                            <div class="col-md-5 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                     <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" >Prev</button> </div>
+                                                            <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width: 43%;">
                                                                 <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".triage-example-modal-lg">Template</button>
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span> </button>
                                                                 <ul class="dropdown-menu">
@@ -576,7 +551,8 @@ color:#fff;
                                                                     <li><a href="#" id="DeleteTriage" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
                                                                 <button type="submit" class="btn btn-success" id="createbtn">Save</button>
-                                                                <a href="#step3"  aria-controls="step3" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
+                                                                
+                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info">Next</a>
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn1" data-toggle="modal" data-target="#EditTriagePopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn1" data-toggle="modal" data-target="#DeleteTriagePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
@@ -589,9 +565,9 @@ color:#fff;
                                     
                                     
                                     </div>
-                                
-                                 
-                                  <div class="tab-pane" role="tabpanel" id="step3">
+						</fieldset>	
+						<fieldset class="wizard-fieldset" style="border-style: none">
+							      <div class="tab-pane" role="tabpanel" id="step3">
                                                         <!-- Triage Summary -->
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -608,8 +584,8 @@ color:#fff;
                                                         <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/></div>                                           
                                                     <div class="col-md-12">
                                                        <div class="col-md-1">
-                                                          <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;"><a href="#step2">Back</a></button></div>
-                                                       <div class="col-md-5 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                           <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" >Prev</button></div>
+                                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right;width: 45%;">
                                                           <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".triage-summary-example-modal-lg">Template</button>
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                                                 <ul class="dropdown-menu">
@@ -618,7 +594,7 @@ color:#fff;
                                                                     <li><a href="#" id="DeleteSummary" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
                                                                 <button type="submitBtn" class="btn btn-success" id="createTriSummary">Save</button>
-                                                                <a href="#step4"  aria-controls="step4" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info">Next</button></a>
+                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info">Next</a>
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopupSummary_btn" data-toggle="modal" data-target="#TriSummEditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopupSummary_btn" data-toggle="modal" data-target="#TriageSummaryDeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
@@ -631,10 +607,9 @@ color:#fff;
                                 </div>
                             </div>
                                   </div>
-                                  
-                                  
-                                  
-                                  
+						</fieldset>	
+						<fieldset class="wizard-fieldset" style="border-style: none">
+							  
                                   <div class="tab-pane" role="tabpanel" id="step4">
                                      <!-- Assessment Table -->
                             <div class="panel panel-default">
@@ -662,7 +637,7 @@ color:#fff;
 											    </div>
 											<div class="col-md-12">
                                                  <div class="col-md-1">
-                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>														
 								                 </div>
 					                        </div>
                                             </div>
@@ -673,7 +648,7 @@ color:#fff;
                                      <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6" onclick="switchColors();">Data Characteristics</a></h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6" ">Data Characteristics</a></h4>
                                         </div>
                                         <div id="collapse6" class="panel-collapse collapse">
                                             <div class="panel-body">
@@ -684,7 +659,7 @@ color:#fff;
 											    </div>
 											<div class="col-md-12">
                                                  <div class="col-md-1">
-                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+                                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>														
 								                 </div>
 					                        </div>
                                             </div>
@@ -695,7 +670,7 @@ color:#fff;
                                       <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse7" onclick="switchColors();">Compliance Characteristics</a></h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse7">Compliance Characteristics</a></h4>
                                         </div>
                                         <div id="collapse7" class="panel-collapse collapse">
                                             <div class="panel-body">
@@ -706,18 +681,19 @@ color:#fff;
 											    </div>
 											<div class="col-md-12">
                                                  <div class="col-md-1">
-                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+                                                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>														
 								                 </div>
 					                        </div>
                                             </div>
                                        </div>
+							         </div>
 							         </div>
 							         
 							      <!-- Archival Consumption -->
                                       <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse8" onclick="switchColors();">Archival Consumption</a></h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse8" ">Archival Consumption</a></h4>
                                         </div>
                                         <div id="collapse8" class="panel-collapse collapse">
                                             <div class="panel-body">
@@ -728,7 +704,7 @@ color:#fff;
 											    </div>
 											<div class="col-md-12">
                                                  <div class="col-md-1">
-                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+                                                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse9" aria-expanded="false" >Next</button></div>														
 								                 </div>
 					                        </div>
                                             </div>
@@ -751,18 +727,21 @@ color:#fff;
 											    </div>
 											<div class="col-md-12">
                                                  <div class="col-md-1">
-                                                 <button type="button" class="btn btn-primary pull-right" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Next</button></div>														
+                                                 </div>														
 								                 </div>
 					                        </div>
                                             </div>
                                        </div>
 							         </div>
 							         </div>
+							         </div>
+							         </div>
+							         <br>
 							         <br>
 							         <div class="col-md-12">
                                        <div class="col-md-1">
-                                       <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button></div>
-                                       <div class="col-md-4 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                       <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" >Prev</button></div>
+                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:31%">
                                        <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                        <ul class="dropdown-menu">
                                        <li><a href="#" id="AddAssess" data-toggle="modal" data-target="#AssessAddPopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
@@ -770,12 +749,13 @@ color:#fff;
                                        <li><a href="#" id="DeleteAssess" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                        </ul>
                                        <button type="button" class="btn btn-success" id="AssessmentSaveBtn">Save</button>
-                                       <a href="#step5"  aria-controls="step5" role="tab" data-toggle="tab" aria-expanded="false"><button class="btn btn-info" onclick = "window.location.href='IntakeStakeHolder.jsp';">Next</button></a>
+                                        <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" >Next</a>
                                        <button type="button" class="btn btn-primary pull-right" id="editpopupAssess_btn" data-toggle="modal" data-target="#AssessEditPopUp" style="display: none;">Edit PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="deletepopupAssess_btn" data-toggle="modal" data-target="#AssessDeletePopUp" style="display: none;">Delete PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        </div>
                                      </div>
+                                     
 								</div>
 					           </div>     
                                 </div>
@@ -785,31 +765,222 @@ color:#fff;
                                   
                                   
                                   </div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                </div>
-                                 <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" ><i class="fa fa-arrow-up"></i></a> 
-                               </form>
-        
-         <!-- Intake OpportunityTemplate modal-->
+						</fieldset>	
+						<!-- Stake Holder -->
+						<fieldset class="wizard-fieldset" style="border-style: none">	
+						
+						       <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse"
+                                                        data-parent="#panels1">Stake Holder</a> </h4>
+                                            </div>
+                                            <div class="panel-collapse collapse in"
+                                                name="collapse">
+                                                <div class="panel-body">
+                                                    <div class="col-md-12">
+                                                    <h3 class="panel-title">User List</h3>           
+  													<table class="table table-bordered userlist">
+    												<thead>
+      												<tr>
+        											<th>Name</th>
+        											<th>Email</th>
+        											<th>User Name</th>
+        											<th>Role</th>
+        											<th>Action</th>
+      												</tr>
+    												</thead>
+    												<tbody id ="UserList">
+      												    												
+      												</tbody>
+  													</table>
+                                                    </div>                                                
+                                                    <div class="col-md-12">
+                                                            <div class="col-md-1">
+                                                                <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" >Prev</button>
+                                                            </div>
+                                                           <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
+                                                                <button class="btn btn-primary" type="button" id="AddStakeUserBtn">Add</button>
+
+                                                                <button type="submit" class="btn btn-success" id="save">Save</button>
+                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info">Next</a>
+                                                               
+                                                                <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
+                                                                <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
+                                                                <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" style="display:none;"></button>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+						
+						
+						</fieldset>	
+						
+						<fieldset class="wizard-fieldset" style="border-style: none">
+						  <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                 <h4 class="panel-title">Intake Summary</h4>
+                                                
+                                                 <button id="intake_module" class="btn pdf"><span
+                                                    class="glyphicon glyphicon-download-alt"></span> Export Pdf
+                                                 </button>
+                                              
+                                            </div>
+                                            <div class="panel-collapse collapse in"
+                                                name="collapse">
+                                                <div class="panel-body">
+						 <div class="col-md-6">
+                        
+                            
+                             
+                               <div class="container">
+
+                                            <div bgcolor='#e4e4e4' style='font-family:Arial,Helvetica,sans-serif;'
+                                                 id="table-scroll">
+
+                                                <table>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <table width='780' border='0' align='center'>
+
+                                                                <tbody>
+
+                                                        
+                                                <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                        <div id="OpportunityInfoPreview"> <h3 class="panel-title"><strong>Opportunity Information</strong></h3>  <br></div> </div> </td> </tr>
+                                                        
+                                                <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                        <div id="TriageInfoPreview"> <h3 class="panel-title"><strong>Triage Information</strong></h3> <br> </div> </div> </td> </tr>
+                                                        
+                                                <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                        <div id="TriageSummInfoPreview"> <h3 class="panel-title"><strong>Triage Summary Information</strong></h3> <br> </div> </div> </td> </tr>
+                                                        
+                                                <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                        <div id="AssessInfoPreview"> <h2 class="panel-title"><strong>Assessment Information</strong></h2> <br> <br> 
+                                                         <div id="ApplicationInformationPreview"> <h4 class="panel-title"><strong>Application Information</strong></h3> <br> </div>
+                                                          <div id="DataCharacteristicsPreview"> <h4 class="panel-title"><strong>Data Characteristics</strong></h3> <br> </div>
+                                                           <div id="ComplianceCharacteristicsPreview"> <h4 class="panel-title"><strong>Compliance Characteristics</strong></h3> <br> </div>
+                                                            <div id="ArchivalConsumptionPreview"> <h4 class="panel-title"><strong>Archival Consumption</strong></h3> <br></div>
+                                                            <div id="ContractInformationPreview" style = "display:none;"> <h3>Contract Consumption</h3> <br> </div></div> 
+                                                        </div> </td> </tr>
+                                                        
+                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                        <div id="StakeHolderInfoPreview"> <h3 class="panel-title" ><strong>Stake Holder</strong></h3>  <br></div> </div> </td> </tr>
+                                                        </tbody>
+                                    </table>
+ 								</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+                            
+                         </div>
+                         
+                          <div class="col-md-12">
+                                                            <div class="col-md-1">
+                                                                 <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" >Prev</button>
+                                                            </div>
+                                                           <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
+                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary">
+                        Request Sign
+                    </button>
+                   
+                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info">Next</a>
+                                                                
+
+                                                               
+                                                            </div>
+                                                    </div>
+                         
+                         
+                         
+                         </div>
+                         </div>
+                         </div>
+						</fieldset>	
+						
+						<fieldset class="wizard-fieldset" style="border-style: none">
+						<div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse"
+                                                        data-parent="#panels1">Intake Approval</a> </h4>
+                                            </div>
+                                            <div ng-app="btn" ng-controller="MainCtrl">
+</div>
+                                            <div class="panel-collapse collapse in"
+                                                name="collapse">
+                                                <div class="panel-body">
+                                                    <div>
+                                                    <h2 class="panel-title">Approver List</h2>
+                                                    <br>        
+  													<table class="table table-bordered">
+    												<thead>
+      												<tr>
+        											<th style='text-align:center;vertical-align: middle;'>Approver Name</th>
+        											<th style='text-align:center;vertical-align: middle;'>Approver Role</th>
+        											<th style='text-align:center;vertical-align: middle;'>Approval</th>
+        											<th style='text-align:center;vertical-align: middle;'>Action</th>
+      												</tr>
+    												</thead>
+    												<tbody id="ApprovalDetails">
+    												</tbody>
+  													</table>
+                                                    </div>                                                
+                                                    <div class="col-md-12">
+                                                            <div class="col-md-1">
+                                                                 <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" >Prev</button>
+                                                            </div>
+                                                            <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                                <button type="button" class="btn btn-primary" id="ApprovalSave"  onclick ="window.location.href='OpportunityList.jsp';">Finish</button>
+                                                                <button type="button" class="btn btn-primary pull-right" id="ConfirmationPopUp_Btn" data-toggle="modal" data-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+						</fieldset>
+						
+						
+						
+						
+						
+						
+						
+			  <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel"> Questions :</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <div class="form-check form-check-inline">
+                                                                <div class="col-md-1">
+                                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label class="form-check-label" for="inlineCheckbox1">Add developer Name</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>			
+						
+						     <!-- Intake OpportunityTemplate modal-->
     <div class="modal fade bd-example-modal-lg" id="myFormModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -2055,39 +2226,111 @@ color:#fff;
   </div>
 </div> 
         
-        
-        
-                       
-                    </div>
+	 <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" ><i class="fa fa-arrow-up"></i></a> 					
+						
+					</form>
+					
+					
+					
+					 
+				</div>
+			</div>
+		</div>
+	</section>
+  <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="DeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p style="font-size:20px;">Do you want to delete this Row permanently?</p>
+                    <input type="hidden" id="Sequence"/>
                 </div>
-            </div>
-        </div>
-    </section>
-                        
-                        
-                        
-                   </div>
-                 </div>
-                       
-             </div>                   
-                                          
-                                          
-                                          
-                                          
-                                    
-                                    
-                                    
-                                    
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="DeleteSubmit" class="btn btn-primary" >Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>  
+  <!-- Modal -->
+                    <div class="modal fade" id="myModal modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" style="width:1000px">
+                            <div id="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel" style="text-align: center"><b>List of
+                                        Users</b></h4>
+                                    <input type="checkbox" name="signorder" id="signorder" style="margin-left: 245px;"> <b>Set signing order</b>
+                                    <input class="searchbox" id="search_bar" type="text" placeholder="Search User"
+                                           name="search" style="font-size: 15px"/>
+                                </div>
+                                <div class="modal-body" style="width: 500px" id="user_list_div_id_name">
 
-    <!-- Date picker --> 
-    
-       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
+                                </div>
+                                <div class="modal-footer" style="height: 80px;padding: 20px">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" name="email_id" id="email_id"
+                                            data-dismiss="modal">Send Email
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+  
+    <div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation for Approval</h5>
+        <button type="button" id ="ConfirmationClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p style="font-size:20px;">By Approving this opportunity overall approval for intake module will be confirmed as approved.</p><br/><p style="font-size:20px;"> Do you want to allow this?</p>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="ConfirmationYes" class="btn btn-primary" >Yes</button>
+        <button type="button" class="btn btn-default" id="ConfirmationNo">No</button>
+      </div>
+    </div>
+  </div>
+</div>  
+  
+  
+  
+  </div> <!-- main-page -->
+ </div>  <!-- content-container -->
+</div>   <!-- content-wrapper -->
+
+</div> <!-- main-wrapper -->
+<script src ="js/IntakeDetails/StakeHolder/StakeHolderDataRetrieve.js"></script>
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
          rel = "stylesheet"><!-- newly added code by parthiban -->
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-      <script src="js/toastr/toastr.min.js"></script>
+      <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+      <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+       <script src="js/toastr/toastr.min.js"></script>
+       <!-- Intake Stakeholder -->
+     
+     
       
-      <script src="js/notification/notification.js"></script>
     <script src="js/Opportunity/AddFeatureFunctionality.js"></script>
     <script src="js/IntakeDetails/IntakeOpportunity/AddFeatureAjaxCall.js"></script>
     <script src="js/IntakeDetails/IntakeOpportunity/EditDeleteToggle.js"></script>
@@ -2122,8 +2365,26 @@ color:#fff;
      <script src="js/IntakeDetails/IntakeAssessment/Common/AssessEditDeleteAjaxCall.js"></script>
      <script src="js/IntakeDetails/IntakeAssessment/Common/IntakeAssessmentSave.js"></script>
      
-  
-     <script>
+    
+     
+      
+      
+      <script src ="js/IntakeDetails/StakeHolder/IntakeStakeHolderAddRow.js"></script>
+      <script src ="js/IntakeDetails/StakeHolder/IntakeStakeHolderSave.js"></script>
+      
+             <script src="js/IntakeDetails/IntakeApproval/IntakeApprovalSave.js"></script>
+       <script src="js/IntakeDetails/IntakeApproval/IntakeApprovalDataRetrieve.js"></script>
+     
+     
+      
+      
+ 
+      
+       
+     
+     
+
+ <script>
     $(document).ready(function(){
     	$(window).scroll(function () {
     			if ($(this).scrollTop() > 50) {
@@ -2141,33 +2402,183 @@ color:#fff;
     		});
     });
     </script>
-    </body>
-    <!-- ========== COMMON JS FILES ========== -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/pace/pace.min.js"></script>
-    <script src="js/lobipanel/lobipanel.min.js"></script>
-    <script src="js/iscroll/iscroll.js"></script>
-    <!-- ========== PAGE JS FILES ========== -->
-    <script src="js/prism/prism.js"></script>
-    <script src="js/waypoint/waypoints.min.js"></script>
-    <script src="js/counterUp/jquery.counterup.min.js"></script>
-    <script src="js/amcharts/amcharts.js"></script>
-    <script src="js/amcharts/serial.js"></script>
-    <script src="js/amcharts/plugins/export/export.min.js"></script>
-    <link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
-        type="text/css" media="all" />
-    <script src="js/amcharts/themes/light.js"></script>
-   
-    <script src="js/icheck/icheck.min.js"></script>
-    <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
-    <!-- ========== THEME JS ========== -->
-    <script src="js/production-chart.js"></script>
-    <script src="js/traffic-chart.js"></script>
-    <script src="js/task-list.js"></script>
-    <!-- ========== THEME JS ========== -->
-    <script src="js/main.js"></script>
-    <script id ="scripttag"></script>
-    
+
+
+
+
+
+
+
+
+
+<!-- ========== COMMON JS FILES ========== -->
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/lobipanel/lobipanel.min.js"></script>
+<script src="js/iscroll/iscroll.js"></script>
+
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script src="js/waypoint/waypoints.min.js"></script>
+<script src="js/counterUp/jquery.counterup.min.js"></script>
+<script src="js/amcharts/amcharts.js"></script>
+<script src="js/amcharts/serial.js"></script>
+<script src="js/amcharts/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
+<script src="js/amcharts/themes/light.js"></script>
+<script src="js/toastr/toastr.min.js"></script>
+<script src="js/icheck/icheck.min.js"></script>
+<script src="js/bootstrap-tour/bootstrap-tour.js"></script>
+
+<!-- ========== THEME JS ========== -->
+<script src="js/production-chart.js"></script>
+<script src="js/traffic-chart.js"></script>
+<script src="js/task-list.js"></script>
+
+<!-- ========== THEME JS ========== -->
+<script src="js/main.js"></script>
+ <script id ="scripttag"></script>
+ <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
+         rel = "stylesheet"><!-- newly added code by parthiban -->
+         
+         <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+         <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+          <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js"></script>
+         
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+      <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+       <script src="js/toastr/toastr.min.js"></script>
+     <script src="js/notification/notification.js"></script>
+     
+       
+      
+      <script>
+      var app = angular.module("btn", []);
+
+      app.controller("MainCtrl", function($scope) {
+          
+
+        
+      });
+
+      </script>
+      
+  <!-- Intake preview -->
+      <script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
+  
+  
+<script>
+
+jQuery(document).ready(function() {
+	// click on next button
+	jQuery('.form-wizard-next-btn').click(function() {
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		var next = jQuery(this);
+		var nextWizardStep = true;
+		parentFieldset.find('.wizard-required').each(function(){
+			var thisValue = jQuery(this).val();
+
+			if( thisValue == "") {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+				nextWizardStep = false;
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+		if( nextWizardStep) {
+			next.parents('.wizard-fieldset').removeClass("show","400");
+			currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
+			next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
+			jQuery(document).find('.wizard-fieldset').each(function(){
+				if(jQuery(this).hasClass('show')){
+					var formAtrr = jQuery(this).attr('data-tab-content');
+					jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+						if(jQuery(this).attr('data-attr') == formAtrr){
+							jQuery(this).addClass('active');
+							var innerWidth = jQuery(this).innerWidth();
+							var position = jQuery(this).position();
+							jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+						}else{
+							jQuery(this).removeClass('active');
+						}
+					});
+				}
+			});
+		}
+	});
+	//click on previous button
+	jQuery('.form-wizard-previous-btn').click(function() {
+		var counter = parseInt(jQuery(".wizard-counter").text());;
+		var prev =jQuery(this);
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		prev.parents('.wizard-fieldset').removeClass("show","400");
+		prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show","400");
+		currentActiveStep.removeClass('active').prev().removeClass('activated').addClass('active',"400");
+		jQuery(document).find('.wizard-fieldset').each(function(){
+			if(jQuery(this).hasClass('show')){
+				var formAtrr = jQuery(this).attr('data-tab-content');
+				jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+					if(jQuery(this).attr('data-attr') == formAtrr){
+						jQuery(this).addClass('active');
+						var innerWidth = jQuery(this).innerWidth();
+						var position = jQuery(this).position();
+						jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+					}else{
+						jQuery(this).removeClass('active');
+					}
+				});
+			}
+		});
+	});
+	//click on form submit button
+	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		parentFieldset.find('.wizard-required').each(function() {
+			var thisValue = jQuery(this).val();
+			if( thisValue == "" ) {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+	});
+	// focus on input field check empty or not
+	jQuery(".form-control").on('focus', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().addClass("focus-input");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+		}
+	}).on('blur', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().removeClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideDown("3000");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideUp("3000");
+		}
+	});
+});
+
+
+
+
+
+</script>
+
+
+
+</body>
 </html>

@@ -111,7 +111,7 @@ $("#createTriSummary").click(function(e)
     	if(checkMandatory==true)
 	    {
     		 var validationCheck_json = AjaxCallUpdate(JsonString,e);
-	    	$("#OpportunityListbtn").click();
+	    	 //$("#OpportunityListbtn").click();
 	    	/*var f=document.loginForm;
             f.method="post";
             f.action="IntakeTriageSummarySaveFeature?JsonString="+JsonString;

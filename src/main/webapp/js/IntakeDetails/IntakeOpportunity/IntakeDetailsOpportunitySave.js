@@ -139,7 +139,8 @@ $("#create").click(function(e)
 	    
     	if(checkMandatory==true && checkAjax == true && checkAjax !=undefined)
 	    {
-	    	$("#OpportunityListbtn").click();
+	    	StakeHolderDataRetrieveAjaxCall();
+			//$("#OpportunityListbtn").click();
 	    	/*var f=document.OpportunityForm;
             f.method="post";
             f.action="OpportunityList.jsp?";

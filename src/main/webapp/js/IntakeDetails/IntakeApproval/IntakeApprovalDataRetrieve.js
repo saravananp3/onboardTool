@@ -1,26 +1,5 @@
 $(document).ready(function(){
-	StakeHolderDataRetrieveAjaxCall();
-	$(document).on('click', '.DeleteRow', function () {
-	    var seqnum=$(this).index('.DeleteRow');
-	    $("#Sequence").val(seqnum);
-       $("#deletepopup_btn").click();	    
-	});
-	$(document).on('click', '.EditRow', function () {
-	    var seqnum=$(this).index('.EditRow');
-	    var ReadOnly = $('.name').eq(seqnum).is('[readonly]');
-	    if(ReadOnly){
-	    	ReadOnlyPropertyConfig(seqnum,false);
-	    	notification("info","Selected row is editable.","Info");
-	    }
-	    else{
-	    	ReadOnlyPropertyConfig(seqnum,true);
-	    	notification("info","Selected row is non editable","Info");
-	    }
-	    });
-	$(document).on('click', '#DeleteSubmit', function () {
-		var DeleteSeqNum =  $("#Sequence").val();
-		DeleteRowAjaxCall(DeleteSeqNum);
-	});
+	IntakeApprovalDataRetrieveAjaxCall();
 	$(document).on('change', '.approval', function () {
 		var name =  $(this).attr('name');
 		
@@ -63,7 +42,7 @@ $(document).ready(function(){
 	    	}
 	});
       });
-function StakeHolderDataRetrieveAjaxCall()
+function IntakeApprovalDataRetrieveAjaxCall()
 {
 	$.ajax({
         url: "IntakeStakeHolderDataRetrieveServlet",
@@ -80,6 +59,7 @@ function StakeHolderDataRetrieveAjaxCall()
             $.each(data, function(key, value){
                if(index==0)
             	{
+            	   $("#ApprovalDetails").html("");
             	   checkData = value.checkExistence;
             	   CurrentUser = value.username;
             	}
@@ -178,56 +158,4 @@ function StakeHolderDataRetrieveAjaxCall()
 
     });
 	
-}
-function ReadOnlyPropertyConfig(index,prop)
-{
-	var fieldClass =['name','emailid','username','role'];
-	for(var i=0;i<fieldClass.length;i++)
-	{
-		var checkrole = true;
-		var role=fieldClass[i].toString();
-		if(role=="role")
-		{
-		var userRole=$(".role").eq(index).val();
-		
-		if(userRole=="Application Owner"||userRole=="Development Owner"||userRole=="Business Owner")
-			checkrole = false;
-		}
-		if(checkrole)
-	    {
-		  $("."+fieldClass[i]).eq(index).attr('Readonly','');
-		  $("."+fieldClass[i]).eq(index).attr('Readonly',prop);
-	    }
-	  }
-	
-	if(prop==false)
-	$(".name").eq(index).focus();
-}
-function DeleteRowAjaxCall(DeleteSeqNum)
-{
-	$.ajax({
-        url: "IntakeStakeHolderDeleteRowServlet",
-        type: 'POST',
-        async: false,
-        data : {DeleteSeqNum:DeleteSeqNum},
-        dataType: "json",
-        success: function (data) {
-            console.log("delete row --> ",data);
-            if(data.checkExistence)
-           {
-            $(".UserRow").eq(DeleteSeqNum).remove();
-            notification("success","Row deleted successfully.","Note");
-              
-           }
-            else
-            notification("error","Delete failed.","Error");
-            $("#DeleteClose").click();
-            $("#Sequence").val("");
-        },
-        error: function (e) {
-            console.log(e);
-        }
-
-    });
-	return false;
 }

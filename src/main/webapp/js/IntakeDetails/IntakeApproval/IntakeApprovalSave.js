@@ -18,6 +18,7 @@ $('#ApprovalSave').click(function(){
 	if(checkOverAllAapproval==true)
 	{
 		$("#ConfirmationPopUp_Btn").click();
+	
 		
 	}
 	else
@@ -43,17 +44,20 @@ function IntakeApprovalMessage(IntakeApproval,username)
 	{
 	case "Approved":
 		notification("info",username+" has approved.","Status");
+		
 		break;
 	case "Rejected":
 		notification("error",username+" has Rejected.","Status");
-		break;
+			break;
 		
 	case "Decision pending":
 	      notification("warning",username+" is yet to decide.","Status");
+	    
 	      break;
 		
 	}
 	notification("success","Saved successfully.","Status");
+	
 }
 function ApprovalSaveAjaxCall(seq_num,IntakeApproval)
 {

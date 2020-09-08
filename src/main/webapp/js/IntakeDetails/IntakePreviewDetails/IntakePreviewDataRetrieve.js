@@ -16,7 +16,17 @@ function IntakePreviewDataRetrieveAjaxCall()
             console.log("Data Retrieve Preview json array----->",data);
             
             var inputs = {};
-           
+           $("#OpportunityInfoPreview").html("");
+		   $("#TriageInfoPreview").html("");
+		   $("#TriageSummInfoPreview").html("");
+		   $("#ApplicationInformationPreview").html("");
+		   $("#DataCharacteristicsPreview").html("");
+		   $("#ComplianceCharacteristicsPreview").html("");
+		   $("#ArchivalConsumptionPreview").html("");
+		   $("#ContractInformationPreview").html("");
+		   $("#StakeHolderInfoPreview").html("");
+		   
+		   
             for(var i = 0; i<data[0].length; i++){
             	var OppTag = "<pre style='font-family:verdana;font-size:100%;' class = 'OppInfoPreview'><b>"+data[0][i].LabelName+"</b> : "+data[0][i].Value+" </pre>";
             	$("#OpportunityInfoPreview").append(OppTag);

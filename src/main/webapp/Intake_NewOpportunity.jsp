@@ -102,11 +102,13 @@ HttpSession details = request.getSession();
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
-		      <li><a href="#">Administration</a></li>
-		      <li><a href="#">Governance/Finance</a></li>
-		        <li><a href="#">Dashboards</a></li>
-		    </ul>
+		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
+		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
                         <%
                             String uname=(String)details.getAttribute("username");
