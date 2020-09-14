@@ -186,6 +186,7 @@ function validateTriageSummary(){
         
         	$("#TriageTempSummaryCloseId").click();
         	$(".SubmitDisableTriSumm").attr("disabled", false);
+        	notification("success","Template fields are reflected in Triage Summary.","Note");
         },
         error: function (e) {
             console.log(e);

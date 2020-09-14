@@ -111,16 +111,13 @@ $("#createTriSummary").click(function(e)
     	if(checkMandatory==true)
 	    {
     		 var validationCheck_json = AjaxCallUpdate(JsonString,e);
-	    	 //$("#OpportunityListbtn").click();
-	    	/*var f=document.loginForm;
-            f.method="post";
-            f.action="IntakeTriageSummarySaveFeature?JsonString="+JsonString;
-            f.submit;*/
+    		 notification("success","Triage Summary details saved successfully.","Note");
 	    }
     	else
     		{
     		e.preventDefault();
-    		alert("Please fill the mandatory field.");
+    		notification("warning","Please fill the Mandatory Fields.","Warning");
+    		//alert("Please fill the mandatory field.");
     		}
     	
 
@@ -154,6 +151,7 @@ return JsonObject;
 }
 function AlertBox()
 {
-	alert("Please fill all the mandatory fields.");
+	notification("warning","Please fill the Mandatory Fields.","Warning");
+	//alert("Please fill all the mandatory fields.");
 return false;
 }

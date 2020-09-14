@@ -116,7 +116,8 @@ $("#create").click(function(e)
     	if(checkAPMID==true)
     		{
     		checkAjax=false;
-    		alert("APM ID already exist. Please provide the unique APM ID.");    		
+    		notification("warning","Application Id already exist. Please provide the unique Application Id.","Warning");
+    		//alert("APM ID already exist. Please provide the unique APM ID.");    		
     		}
     	else
     		{
@@ -125,7 +126,8 @@ $("#create").click(function(e)
     	if(checkAppName==true)
     		{
     		checkAjax = false;
-    		alert("Application Name already exist.");
+    		notification("warning","Application Name already exist.","Warning");
+    		//alert("Application Name already exist.");
     		}
     	else
     	{
@@ -134,24 +136,21 @@ $("#create").click(function(e)
     	if(checkMandatory==false)
 		{
 		checkAjax = false;
-		alert("Please fill all the mandatory fields.");
+		notification("warning","Please fill all the mandatory fields.","Warning");
+		//alert("Please fill all the mandatory fields.");
 		}
 	    
     	if(checkMandatory==true && checkAjax == true && checkAjax !=undefined)
 	    {
-	    	StakeHolderDataRetrieveAjaxCall();
-			//$("#OpportunityListbtn").click();
-	    	/*var f=document.OpportunityForm;
-            f.method="post";
-            f.action="OpportunityList.jsp?";
-            f.submit;*/
+    		notification("success","Opportunity details saved successfully.","Note");
 	    } 
     	
 }
 else
 {
 		e.preventDefault();
-		 alert("Please fill the application name field.");
+		notification("warning","Please fill the application name field.","Warning");
+		 //alert("Please fill the application name field.");
 		 return false;
 }
 });
@@ -220,6 +219,7 @@ return JsonObject;
 }
 function AlertBox()
 {
-	alert("Please fill all the mandatory fields.");
+	notification("warning","Please fill the application name field.","Warning");
+	//alert("Please fill all the mandatory fields.");
 return false;
 }

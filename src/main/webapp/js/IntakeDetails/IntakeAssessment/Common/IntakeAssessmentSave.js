@@ -29,14 +29,16 @@ $("#AssessmentSaveBtn").click(function(e){
 		var JsonString = JSON.stringify(JsonArray);
 		var jsonobj = AssessmentAjaxCallUpdate(JsonString,e);
 		if(jsonobj.CheckExistence)
-			alert("Saved Successfully!");
+			notification("success","Assessment section's detail are saved successfully.","Note");
+			//alert("Saved Successfully!");
 		else
-			alert("Details not saved");
+			notification("error","Failed to save.","Error");
 	}
 	else
 	{
 	var ValidationMsg = ValidationMsgMandatoryFields();
-	alert(ValidationMsg);	
+	notification("warning",ValidationMsg,"Warning");
+	//alert(ValidationMsg);	
 	}	
 });
 
@@ -180,22 +182,23 @@ function CheckMandatoryContractInfo()
 	var appDetailsValue=$("#AppDetails").val();
     if(appDetailsValue=="Third Party")
     {
+    	 checkMandatoryFields = true;
     	CheckMandatoryCommonFields("ContractInformation");
     }
 }
 function ValidationMsgMandatoryFields()
 {
-var msg = "please fill the mandatory fields in ";
+var msg = "Please fill the mandatory fields in ";
 for(var j=0;j<UnfilledSections.length;j++)
 {
    if(UnfilledSections.length==1)
-	msg += UnfilledSections[j]+".";
+	msg += sectionMsg(UnfilledSections[j])+".";
    else if(j==UnfilledSections.length-1)
-	msg += "and "+UnfilledSections[j]+".";
+	msg += "and "+sectionMsg(UnfilledSections[j])+".";
    else if(j==UnfilledSections.length-2)
-	msg += UnfilledSections[j]+" ";
+	msg += sectionMsg(UnfilledSections[j])+" ";
    else
-	msg +=  UnfilledSections[j]+", ";
+	msg += sectionMsg(UnfilledSections[j])+", ";
 	 
 }
 return msg;
@@ -249,6 +252,36 @@ function getDependencyDetails(Section)
 	
 	}	
 }
+
+function sectionMsg(section){
+	
+	var sectionName = "";
+	switch(section){
+	
+	case "ApplicationInformation":
+		sectionName = "Application Information";
+		break;
+		
+	case "DataCharacteristics":
+		sectionName = "Data Characteristics";
+		break;
+		
+	case "ComplianceCharacteristics":
+		sectionName = "Compliance Characteristics";
+		break;
+		
+	case "ArchivalConsumption":
+		sectionName = "Archival Consumption";
+		break;
+		
+	case "ContractInformation":
+		sectionName = "Contract Information";
+		break;
+	}
+	
+	return sectionName;
+}
+
 function CheckingCurrentSectionDependencyValue(Section)
 {
 	for(var i = 0; i< DependencyFields.length; i++)

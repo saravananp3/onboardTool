@@ -339,6 +339,7 @@ function validateTriage(){
         
         	$("#triage_temp_close_id").click();
         	$(".submitDisable").attr("disabled", false);
+        	notification("success","Template fields are reflected in Triage.","Note");
         },
         error: function (e) {
             console.log(e);

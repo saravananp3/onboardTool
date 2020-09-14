@@ -27,29 +27,301 @@
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src ="js/IntakeDetails/StakeHolder/StakeHolderDataRetrieve.js"></script>
 <style>
- body{
-            background:#fff;
-        }
+ <style type="text/css">
+         
+body{
+background:#fff;
+}
 
-        .active{
-        background:#1565c0;
-         }
-      .page-title-div {
-	 background:#1565c0;
-	  padding: 15px;
-	  
-	  
-	}
-	.fixed-top{
-	width:100%;
-	padding-left: 0px;
-    padding-right: 0px;
-	}
-	
+
+.page-title-div {
+background:#1565c0;
+padding: 15px; 
+}
+.fixed-top{
+width:100%;
+padding-left: 0px;
+padding-right: 0px;
+}
+<!-- Wizard-->
+
+body {
+  background-color: #ffffff;
+  color: #444444;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+.wizard-content-left {
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-image: url("https://i.ibb.co/X292hJF/form-wizard-bg-2.jpg");
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  padding: 30px;
+}
+.wizard-content-left h1 {
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 600;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.form-wizard {
+  color: #888888;
+  
+}
+.form-wizard .wizard-form-radio {
+  display: inline-block;
+  margin-left: 5px;
+  position: relative;
+}
+.form-wizard .wizard-form-radio input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background-color: #dddddd;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:focus {
+  outline: 0;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked {
+  background-color: #fb1647;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 50%;
+  left: 1px;
+  right: 0;
+  margin: 0 auto;
+  top: 8px;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::after {
+  content: "";
+  display: inline-block;
+  webkit-animation: click-radio-wave 0.65s;
+  -moz-animation: click-radio-wave 0.65s;
+  animation: click-radio-wave 0.65s;
+  background: #000000;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+  border-radius: 50%;
+}
+.form-wizard .wizard-form-radio input[type="radio"] ~ label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+.form-wizard .form-wizard-header {
+  text-align: center;
+}
+
+.form-wizard .wizard-fieldset {
+  display: none;
+}
+.form-wizard .wizard-fieldset.show {
+  display: block;
+}
+.form-wizard .wizard-form-error {
+  display: none;
+  background-color: #d70b0b;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+
+
+.form-wizard .form-control:focus {
+  box-shadow: none;
+}
+.form-wizard .form-group {
+  position: relative;
+  margin: 25px 0;
+}
+.form-wizard .wizard-form-text-label {
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  transition: 0.2s linear all;
+}
+.form-wizard .focus-input .wizard-form-text-label {
+  color: #d65470;
+  top: -18px;
+  transition: 0.2s linear all;
+  font-size: 12px;
+}
+.form-wizard .form-wizard-steps {
+  margin: 30px 0;
+}
+.form-wizard .form-wizard-steps li {
+  width: 14%;
+  float: left;
+  position: relative;
+}
+.form-wizard .form-wizard-steps li::after {
+  background-color: #f3f3f3;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+.form-wizard .form-wizard-steps li span {
+  background-color: #dddddd;
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+  z-index: 1;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  width: 50%;
+}
+.form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
+  background-color: #0db02b;
+  color: #ffffff;
+}
+.form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
+  background-color: #0db02b;
+  left: 50%;
+  width: 50%;
+  border-color:#0db02b ;
+}
+.form-wizard .form-wizard-steps li.activated::after {
+  width: 100%;
+  border-color: #0db02b;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  left: 0;
+}
+.form-wizard .wizard-password-eye {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+@keyframes click-radio-wave {
+  0% {
+    width: 25px;
+    height: 25px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    margin-left: -15px;
+    margin-top: -15px;
+    opacity: 0.0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .wizard-content-left {
+    height: auto;
+  }
+}
+
+
+
+fieldset {
+    padding: 0.875em 1.75em 1.75em;
+    border-width: 1px #fff;
+    border-style: solid;
+    max-width: 141%;
+    margin-bottom: 1.875em;
+}
+
+.form-wizard-steps li  i{
+	position: absolute;
+    top: -22px;
+    font-style: normal;
+    font-weight: 400;
+    white-space: nowrap;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+
+.form-wizard-steps li  i{
+	color: #d65470;
+}
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 35px;
+    
+    border-radius:50%;
+    background:Gray;
+}
+
+.fa{
+padding-left:3px;
+padding-top:-3px;
+padding-bottom:10px;
+margin:0 auto;
+font-size:14x;
+color:#fff;
+
+}
 	#module_header{
  
- margin-top:120px;
+ margin-top:75px;
  }
+ 
+ 
+table {
+    width: 92%;
+    border-spacing: 0;
+    
+    margin-bottom: 2.375em;
+    border-style:none;
+} 
+
+
+.pdf{
+
+float:right;
+    margin-top: -36px;
+
+}
+.pdf{
+background:#1565c0;
+}
+
+
 .switch {
   position: relative;
   display: inline-block;
@@ -110,59 +382,76 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.userlist{
+
+width:95%;
+
+}
+
+input[type="text"]{
+
+font-size:12px;
+
+}
+</style>
+
 </style>
 </head>
 <body class="top-navbar-fixed">
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
+   <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/logo1.png" alt="Decomm3Sixty" class="logo">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		      <li class="active"><a href="#" style="color:#fff">Applications</a></li>
-		      <li><a href="#">Administration</a></li>
-		      <li><a href="#">Governance/Finance</a></li>
-		      <li><a href="#">Dashboards</a></li>
-		    </ul>
+		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
+		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
-                       
-
-                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
+                      <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
                 </div>
-                
-                
-                
-                
-            </div>
-            <!-- /.row -->
-            <nav class="navbar navbar-down">
+      </div>
+      <nav class="navbar navbar-down">
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
-                        <div class="col-sm-6">
-                             <h4 class="title" style="color:#fff">Intake Stake Holder</h4>
-                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
-                               <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <a href="#" style="color:#fff"> Intake Stake Holder</a></p>
-                        </div>
-                       
+                             <div class="col-sm-6">
+                        
+                            
+                          <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
+                          <span class="glyphicon glyphicon-home"></span> Home</a> >> 
+                         
+                          <a  href="IntakeOpportunity.jsp" id="sitetitle1" style="color:#fff">
+                           Opportunity</a> >>
+                          <a  href="IntakeTriage.jsp" id="sitetitle1" style="color:#fff">
+                           Triage</a> >>
+                            <a  href="IntakeTriageSummary.jsp" id="sitetitle1" style="color:#fff">
+                           TriageSummary</a> >>
+                            <a  href="IntakeAssessment.jsp" id="sitetitle1" style="color:#fff">
+                           Assessment</a> >>
+                            <a  href="IntakeStakeHolder.jsp" id="sitetitle1" style="color:#fff">
+                           StakeHolder</a>
+                         </p>
 
                     </div>
 
                 </div>
 			</nav>
+      
         </div>
         <!-- /.container-fluid -->
     </nav >
@@ -174,8 +463,22 @@ input:checked + .slider:before {
                         <section>
                             <div class="row">
                                 <div class="container" id="module_header">
-                                    <div class="main" style = "width:1000px;" >
-                                        <div class="panel panel-default">
+                                  <div class=" col-md-12">
+				<div class="form-wizard">
+					<form action="" method="post" role="form">
+                                    <div class="form-wizard-header">
+											<p>Fill all the required fields to go next step</p>
+											<ul class="list-unstyled form-wizard-steps clearfix">
+												<li class="activated" ><span>1</span><i>Opportunity</i></li>
+												<li class="activated"><span>2</span><i>Triage</i></li>
+												<li class="activated"><span>3</span><i>Triage Summary</i></li>
+												<li class="activated"><span>4</span><i>Assessment</i></li>
+												<li class="active"><span>5</span> <i>Stake Holder</i></li>
+												<li><span>6</span><i>Review</i></li>
+												<li><span>7</span><i>Approval</i></li>
+											</ul>
+						           </div>
+                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" data-toggle="collapse"
@@ -185,7 +488,7 @@ input:checked + .slider:before {
                                                 name="collapse">
                                                 <div class="panel-body">
                                                     <div>
-                                                    <h2>User List</h2>           
+                                                    <h4>User List</h4>           
   													<table class="table table-bordered">
     												<thead>
       												<tr>
@@ -203,13 +506,14 @@ input:checked + .slider:before {
                                                     </div>                                                
                                                     <div class="col-md-12">
                                                             <div class="col-md-1">
-                                                                <button type="button" class="btn btn-primary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button>
+                                                                <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='IntakeAssessment.jsp';">Prev</button>
                                                             </div>
-                                                            <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right;">
+                                                            <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
                                                                 <button class="btn btn-primary" type="button" id="AddStakeUserBtn">Add</button>
 
-                                                                <button type="submit" class="btn btn-primary" id="save">Save</button>
-                                                                <button type = "button"class="btn btn-info" id = "NextStakeHolder" onclick ="window.location.href='IntakeReviewDetails.jsp';" style="display:none;">Next</button>
+                                                                <button type="submit" class="btn btn-success" id="save">Save</button>
+                                                                <button type = "button"class="btn btn-info" id = "NextStakeHolder"  style="display:none;">Next</button>
+                                                                        <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick="location.href='IntakeReviewDetails.jsp';" >Next</a>
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
@@ -251,6 +555,8 @@ input:checked + .slider:before {
     </div>
   </div>
 </div>  
+</div>
+</div>
     <!-- Date picker --> 
     
        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
@@ -297,5 +603,110 @@ input:checked + .slider:before {
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
     <script id ="scripttag"></script>
-    
+    <script>
+
+jQuery(document).ready(function() {
+	// click on next button
+	jQuery('.form-wizard-next-btn').click(function() {
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		var next = jQuery(this);
+		var nextWizardStep = true;
+		parentFieldset.find('.wizard-required').each(function(){
+			var thisValue = jQuery(this).val();
+
+			if( thisValue == "") {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+				nextWizardStep = false;
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+		if( nextWizardStep) {
+			next.parents('.wizard-fieldset').removeClass("show","400");
+			currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
+			next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
+			jQuery(document).find('.wizard-fieldset').each(function(){
+				if(jQuery(this).hasClass('show')){
+					var formAtrr = jQuery(this).attr('data-tab-content');
+					jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+						if(jQuery(this).attr('data-attr') == formAtrr){
+							jQuery(this).addClass('active');
+							var innerWidth = jQuery(this).innerWidth();
+							var position = jQuery(this).position();
+							jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+						}else{
+							jQuery(this).removeClass('active');
+						}
+					});
+				}
+			});
+		}
+	});
+	//click on previous button
+	jQuery('.form-wizard-previous-btn').click(function() {
+		var counter = parseInt(jQuery(".wizard-counter").text());;
+		var prev =jQuery(this);
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		prev.parents('.wizard-fieldset').removeClass("show","400");
+		prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show","400");
+		currentActiveStep.removeClass('active').prev().removeClass('activated').addClass('active',"400");
+		jQuery(document).find('.wizard-fieldset').each(function(){
+			if(jQuery(this).hasClass('show')){
+				var formAtrr = jQuery(this).attr('data-tab-content');
+				jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+					if(jQuery(this).attr('data-attr') == formAtrr){
+						jQuery(this).addClass('active');
+						var innerWidth = jQuery(this).innerWidth();
+						var position = jQuery(this).position();
+						jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+					}else{
+						jQuery(this).removeClass('active');
+					}
+				});
+			}
+		});
+	});
+	//click on form submit button
+	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		parentFieldset.find('.wizard-required').each(function() {
+			var thisValue = jQuery(this).val();
+			if( thisValue == "" ) {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+	});
+	// focus on input field check empty or not
+	jQuery(".form-control").on('focus', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().addClass("focus-input");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+		}
+	}).on('blur', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().removeClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideDown("3000");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideUp("3000");
+		}
+	});
+});
+
+
+
+
+
+</script>
 </html>

@@ -23,6 +23,7 @@
             	$("#Label_modify").val("");
             	$("#edit_close").click();
             	$('.hidepencil').hide();
+            	notification("success","Selected field is edited successfully in Opportunity.","Note");
             	//$('#Record_No').val(data.RandomNumber);
             },
             error: function (e) {
@@ -31,8 +32,8 @@
         });
     	}
     	else {
-    		
-    		alert("Please fill the value in field");
+    		notification("warning","Please fill the field.","Warning");
+    		//alert("Please fill the value in field");
     	}
     });
     $('#submit2').click(function(){
@@ -61,6 +62,7 @@
             	$("#delete_close").click();
             	$('.hidedelete').hide();
             	//$("#OpportunityListbtn").click();
+            	notification("success","Selected field is deleted successfully in Opportunity.","Note");
             },
             error: function (e) {
                 console.log(e);

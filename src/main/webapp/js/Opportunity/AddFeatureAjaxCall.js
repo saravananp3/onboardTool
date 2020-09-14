@@ -144,9 +144,9 @@ $('#submit').click(function() {
 	              $("#add_close_id").click();
 	             
 	              if(checkNotify)
-	            	  notification("success","Field is added successfully to New Opportunity.","Note");
+	            	  notification("success","Field is added successfully.","Note");
 	              else
-	            	  notification("error","Field not added to Oppurtunity.","Error");
+	            	  notification("error","Field not added.","Error");
 	            },
 	        
 	       

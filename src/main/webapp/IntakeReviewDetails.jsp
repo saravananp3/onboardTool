@@ -1,330 +1,503 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onboarding Tool</title>
-</head>
-
-
-<link rel="stylesheet" href="styles/styles.css" type="text/css"/>
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decom3Sixty - Intake</title>
 
 <!-- ========== COMMON STYLES ========== -->
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-<link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen">
-<link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="css/animate-css/animate.min.css"
+    media="screen">
+<link rel="stylesheet" href="css/lobipanel/lobipanel.min.css"
+    media="screen">
+ <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
 <!-- ========== PAGE STYLES ========== -->
 <link rel="stylesheet" href="css/prism/prism.css" media="screen">
 <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
 <link rel="stylesheet" href="css/icheck/skins/line/blue.css">
-<link rel="stylesheet" href="css/icheck/skins/line/red.css">
-<link rel="stylesheet" href="css/icheck/skins/line/green.css">
 <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
-
 <!-- ========== THEME CSS ========== -->
 <link rel="stylesheet" href="css/main.css" media="screen">
-
+<link rel="stylesheet" href="css/Intake/Intake.css" type="text/css" />
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
-
-<meta name="keywords" content="jQuery Tree, Tree Widget, TreeView"/>
-<meta name="description" content="The jqxTree displays a hierarchical collection of items. You
-        can populate it from 'UL' or by using its 'source' property."/>
-
 <style>
-    .newspaper {
-        -webkit-column-count: 3; /* Chrome, Safari, Opera */
-        -moz-column-count: 3; /* Firefox */
-        column-count: 3;
-        -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
-        -moz-column-gap: 40px; /* Firefox */
-        column-gap: 40px;
-        -webkit-column-rule: 1px solid lightblue; /* Chrome, Safari, Opera */
-        -moz-column-rule: 1px solid lightblue; /* Firefox */
-        column-rule: 1px solid lightblue;
-    }
 
-    #cmd {
-        float: right;
-    }
-
-    #table {
-        width: 90%;
-        margin: 50px;
-
-        background: #fff;
-        padding-left: 10px;
-        border: 2px solid #E6E9ED;
-        -webkit-column-break-inside: avoid;
-        -moz-column-break-inside: avoid;
-        column-break-inside: avoid;
-        opacity: 1;
-        transition: all .2s ease;
-    }
-
-    #wizard {
-        padding-left: 20px;
-    }
-
-    .text-white {
-        color: #fff !important;
-    }
-
-    .btn {
-        background: gray;
-        color: #fff;
-    }
-
-    .bs-wizard {
-        margin-top: 40px;
-    }
-
-    /*Form Wizard*/
-    .bs-wizard {
-        border-bottom: solid 1px #e0e0e0;
-        padding: 0 0 10px 0;
-    }
-
-    .bs-wizard > .bs-wizard-step {
-        padding: 0;
-        position: relative;
-    }
-
-    .bs-wizard > .bs-wizard-step + .bs-wizard-step {
-    }
-
-    .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {
-        color: #428bca;
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
-
-    .bs-wizard > .bs-wizard-step .bs-wizard-info {
-        color: #999;
-        font-size: 14px;
-    }
-
-    .bs-wizard > .bs-wizard-step > .bs-wizard-dot {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        display: block;
-        background: #1a92f6;
-        top: 45px;
-        left: 50%;
-        margin-top: -15px;
-        margin-left: -15px;
-        border-radius: 100%;
-    }
-
-    .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
-        content: ' ';
-        width: 14px;
-        height: 14px;
-        background: lightblue;
-        border-radius: 50px;
-        position: absolute;
-        top: 8px;
-        left: 8px;
-    }
-
-    .bs-wizard > .bs-wizard-step > .progress {
-        position: relative;
-        border-radius: 0px;
-        height: 8px;
-        box-shadow: none;
-        margin: 20px 0;
-    }
-
-    .bs-wizard > .bs-wizard-step > .progress > .progress-bar {
-        width: 0px;
-        box-shadow: none;
-        background: #1a92f5;
-    }
-
-    .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
-        width: 100%;
-    }
-
-    .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {
-        width: 50%;
-    }
-
-    .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {
-        width: 0%;
-    }
-
-    .bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {
-        width: 100%;
-    }
-
-    .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {
-        background-color: #f5f5f5;
-    }
-
-    .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {
-        opacity: 0;
-    }
-
-    .bs-wizard > .bs-wizard-step:first-child > .progress {
-        left: 50%;
-        width: 50%;
-    }
-
-    .bs-wizard > .bs-wizard-step:last-child > .progress {
-        width: 50%;
-    }
-
-    .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot {
-        pointer-events: none;
-    }
-
-    /*END Form Wizard*/
-    .modal-body {
-        margin: auto;
-        width: 20%;
-        border: 3px;
-        padding: 10px;
-        font-size: large;
-
-    }
-
-    .bootstrap-dialog-message {
-        width: 250px;
-        border: 3px;
-        padding: 0px;
-        margin: auto;
-    }
-
-    .searchbox {
-        float: right;
-
-    }
-    .checkbox
-    {
-        height: 130px;
-        width: 700px;
-        overflow-y: scroll;
-    }
+         
+body{
+background:#fff;
+}
 
 
+.page-title-div {
+background:#1565c0;
+padding: 15px; 
+}
+.fixed-top{
+width:100%;
+padding-left: 0px;
+padding-right: 0px;
+}
+<!-- Wizard-->
+
+body {
+  background-color: #ffffff;
+  color: #444444;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+.wizard-content-left {
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-image: url("https://i.ibb.co/X292hJF/form-wizard-bg-2.jpg");
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  padding: 30px;
+}
+.wizard-content-left h1 {
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 600;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.form-wizard {
+  color: #888888;
+  
+}
+.form-wizard .wizard-form-radio {
+  display: inline-block;
+  margin-left: 5px;
+  position: relative;
+}
+.form-wizard .wizard-form-radio input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background-color: #dddddd;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:focus {
+  outline: 0;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked {
+  background-color: #fb1647;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 50%;
+  left: 1px;
+  right: 0;
+  margin: 0 auto;
+  top: 8px;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::after {
+  content: "";
+  display: inline-block;
+  webkit-animation: click-radio-wave 0.65s;
+  -moz-animation: click-radio-wave 0.65s;
+  animation: click-radio-wave 0.65s;
+  background: #000000;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+  border-radius: 50%;
+}
+.form-wizard .wizard-form-radio input[type="radio"] ~ label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+.form-wizard .form-wizard-header {
+  text-align: center;
+}
+
+.form-wizard .wizard-fieldset {
+  display: none;
+}
+.form-wizard .wizard-fieldset.show {
+  display: block;
+}
+.form-wizard .wizard-form-error {
+  display: none;
+  background-color: #d70b0b;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+
+
+.form-wizard .form-control:focus {
+  box-shadow: none;
+}
+.form-wizard .form-group {
+  position: relative;
+  margin: 25px 0;
+}
+.form-wizard .wizard-form-text-label {
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  transition: 0.2s linear all;
+}
+.form-wizard .focus-input .wizard-form-text-label {
+  color: #d65470;
+  top: -18px;
+  transition: 0.2s linear all;
+  font-size: 12px;
+}
+.form-wizard .form-wizard-steps {
+  margin: 30px 0;
+}
+.form-wizard .form-wizard-steps li {
+  width: 14%;
+  float: left;
+  position: relative;
+}
+.form-wizard .form-wizard-steps li::after {
+  background-color: #f3f3f3;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+.form-wizard .form-wizard-steps li span {
+  background-color: #dddddd;
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+  z-index: 1;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  width: 50%;
+}
+.form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
+  background-color: #0db02b;
+  color: #ffffff;
+}
+.form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
+  background-color: #0db02b;
+  left: 50%;
+  width: 50%;
+  border-color:#0db02b ;
+}
+.form-wizard .form-wizard-steps li.activated::after {
+  width: 100%;
+  border-color: #0db02b;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  left: 0;
+}
+.form-wizard .wizard-password-eye {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+@keyframes click-radio-wave {
+  0% {
+    width: 25px;
+    height: 25px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    margin-left: -15px;
+    margin-top: -15px;
+    opacity: 0.0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .wizard-content-left {
+    height: auto;
+  }
+}
+
+
+
+fieldset {
+    padding: 0.875em 1.75em 1.75em;
+    border-width: 1px #fff;
+    border-style: solid;
+    max-width: 141%;
+    margin-bottom: 1.875em;
+}
+
+.form-wizard-steps li  i{
+	position: absolute;
+    top: -22px;
+    font-style: normal;
+    font-weight: 400;
+    white-space: nowrap;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+}
+
+.form-wizard-steps li  i{
+	color: #d65470;
+}
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 35px;
+    
+    border-radius:50%;
+    background:Gray;
+}
+
+.fa{
+padding-left:3px;
+padding-top:-3px;
+padding-bottom:10px;
+margin:0 auto;
+font-size:14x;
+color:#fff;
+
+}
+	#module_header{
+ 
+ margin-top:75px;
+ }
+ 
+ 
+table {
+    width: 92%;
+    border-spacing: 0;
+    
+    margin-bottom: 2.375em;
+    border-style:none;
+} 
+
+
+.pdf{
+
+float:right;
+    margin-top: -36px;
+
+}
+.pdf{
+background:#1565c0;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.userlist{
+
+width:95%;
+
+}
+
+input[type="text"]{
+
+font-size:12px;
+
+}
+</style>
 
 </style>
-<style>
-    /* The Modal (background) */
-    #modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding: 20px; /* Location of the box */
-        left: 700px;
-        top: 100px;
-        right: 700px;
-        width: 60%; /* Full width */
-        height: 50%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80px;
-
-    }
-
-    /* The Close Button */
-    .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
+</head>
 <body class="top-navbar-fixed">
-
-<form class="form-signin" name="loginForm" id="loginForm" onsubmit="ExportPdf()" method="post">
-    <input type="hidden" name="data_submit" id="data_submit" value="false"/>
-    <div class="main-wrapper">
-
-        <nav class="navbar top-navbar bg-white box-shadow">
+    <form class="form-signin" name="loginForm" method="post">
+        <div class="main-wrapper">
+              <!-- ========== TOP NAVBAR ========== -->
+<nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/logo1.png" alt="Decomm3Sixty" class="logo">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-          <ul class="nav navbar-nav">
-		      <li class="active"><a href="OpportunityList.jsp" style="color:#fff; background:#1565c0; ">Applications</a></li>
-		      <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		     <li><a href="Archive_Execution.jsp">Governance</a></li>
+                  <ul class="nav navbar-nav">
+		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		              <li><a href="Archive_Execution.jsp">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
-		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
-		    </ul>
+		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
-                       
-
-                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
+                      <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
                 </div>
-                
-                
-                
-                
-            </div>
-            <!-- /.row -->
-            
+      </div>
+      <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                             <div class="col-sm-12">
+                        
+                            
+                        <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
+                          <span class="glyphicon glyphicon-home"></span> Home</a> >> 
+                         
+                          <a  href="IntakeOpportunity.jsp" id="sitetitle1" style="color:#fff">
+                           Opportunity</a> >>
+                          <a  href="IntakeTriage.jsp" id="sitetitle1" style="color:#fff">
+                           Triage</a> >>
+                            <a  href="IntakeTriageSummary.jsp" id="sitetitle1" style="color:#fff">
+                           TriageSummary</a> >>
+                            <a  href="IntakeAssessment.jsp" id="sitetitle1" style="color:#fff">
+                           Assessment</a> >>
+                            <a  href="IntakeStakeHolder.jsp" id="sitetitle1" style="color:#fff">
+                           StakeHolder</a> >>
+                           <a  href="IntakeReviewDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Review Details</a>
+                         </p>
+                    
+
+                    </div>
+
+                </div>
+			</nav>
+      
         </div>
         <!-- /.container-fluid -->
     </nav >
-
-        <div class="content-wrapper">
-
-            <div class="content-container">
-
-                
-
-
-                <div class="main-page">
-                    <section>
-                        <div class="row">
-                            <div class="container-fluid">
-                                <div class="col-md-12">
-                                    <div class="row" id="wizard">
-                                        <div class="container">
-                                            
-
-                                               
-                                        </div>
-                                       
-                                        <div class="container">
+      
+        </div>
+        <!-- /.container-fluid -->
+    </nav >
+            <div class="content-wrapper">
+                <div class="content-container" >
+                   
+                    <div class="main-page">
+                        
+                        <section>
+                            <div class="row">
+                                <div class="container" id="module_header">
+                                  <div class=" col-md-12">
+				<div class="form-wizard">
+					<form action="" method="post" role="form">
+                                    <div class="form-wizard-header">
+											<p>Fill all the required fields to go next step</p>
+											<ul class="list-unstyled form-wizard-steps clearfix">
+												<li class="activated" ><span>1</span><i>Opportunity</i></li>
+												<li class="activated"><span>2</span><i>Triage</i></li>
+												<li class="activated"><span>3</span><i>Triage Summary</i></li>
+												<li class="activated"><span>4</span><i>Assessment</i></li>
+												<li class="activated"><span>5</span> <i>Stake Holder</i></li>
+												<li class="active"><span>6</span><i>Review</i></li>
+												<li><span>7</span><i>Approval</i></li>
+											</ul>
+						           </div>
+                                         <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse"
+                                                        data-parent="#panels1">Intake summary</a> </h4>
+                                                        <button id="intake_module" class="btn pdf"><span
+                                                    class="glyphicon glyphicon-download-alt"></span> Export Pdf
+                                                 </button>
+                                            </div>
+                                            <div class="panel-collapse collapse in"
+                                                name="collapse">
+                                                <div class="panel-body">
+                                                      
+                                                      <div class="container">
 
                                             <div bgcolor='#e4e4e4' style='font-family:Arial,Helvetica,sans-serif;'
                                                  id="table-scroll">
@@ -338,44 +511,37 @@
                                                                 <tbody>
 
 
-                                                                <tr>
-                                                                    <td valign='top'
-                                                                        style='color:#404041;line-height:16px;padding:25px 20px 0px 20px'>
-                                                                        <p>
-                                                                            <section
-                                                                                    style='position: relative;clear: both;margin: 5px 0;height: 1px;border-top: 1px solid #cbcbcb;margin-bottom: 25px;margin-top: 10px;text-align: center;'>
-                                                                                <h3 align='center'
-                                                                                    style='margin-top: -12px;background-color: #FFF;clear: both;width: 30%;margin-right: auto;margin-left: auto;padding-left: 15px;padding-right: 15px; font-family: arial,sans-serif;'>
-                                                                                    <span>Summary & Review</span>
-                                                                                </h3>
-                                                                            </section>
-                                                                        </p>
-                                                                    </td>
-                                                                </tr>
-                                                                
-                                                   <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <div id="IntakePreview"> <h2>Intake Details</h2> </div> </div> </td> </tr>
+                                                
                                                         
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <div id="OpportunityInfoPreview"> <h3>Opportunity Information</h3> </div> </div> </td> </tr>
+                                                 <h3 class="panel-title">Opportunity Information</h3><br>
+                                                        <div id="OpportunityInfoPreview"> </div> </div> </td> </tr>
                                                         
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <div id="TriageInfoPreview"> <h3>Triage Information</h3> </div> </div> </td> </tr>
+                                                        <h3 class="panel-title">Triage Information</h3> <br>
+                                                        <div id="TriageInfoPreview"> </div> </div> </td> </tr>
                                                         
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <div id="TriageSummInfoPreview"> <h3>Triage Summary Information</h3> </div> </div> </td> </tr>
+                                                       <h3 class="panel-title">Triage Summary Information</h3> <br>
+                                                        <div id="TriageSummInfoPreview">  <br></div> </div> </td> </tr>
                                                         
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <div id="AssessInfoPreview"> <h2>Assessment Information</h2> 
-                                                         <div id="ApplicationInformationPreview"> <h3>Application Information</h3> </div>
-                                                          <div id="DataCharacteristicsPreview"> <h3>Data Characteristics</h3> </div>
-                                                           <div id="ComplianceCharacteristicsPreview"> <h3>Compliance Characteristics</h3> </div>
-                                                            <div id="ArchivalConsumptionPreview"> <h3>Archival Consumption</h3></div>
-                                                            <div id="ContractInformationPreview" style = "display:none;"> <h3>Contract Consumption</h3> </div></div> 
+                                                        <div id="AssessInfoPreview"> <h2 class="panel-title">Assessment Information</h2> <br>
+                                                        <h3 class="panel-title">Application Information</h3><br>
+                                                         <div id="ApplicationInformationPreview">  </div>
+                                                         <h3 class="panel-title">Data Characteristics</h3><br>
+                                                          <div id="DataCharacteristicsPreview">  </div>
+                                                          <h3 class="panel-title">Compliance Characteristics</h3><br>
+                                                           <div id="ComplianceCharacteristicsPreview">  </div>
+                                                           <h3 class="panel-title">Archival Consumption</h3><br>
+                                                            <div id="ArchivalConsumptionPreview"> </div>
+                                                           
+                                                            <div id="ContractInformationPreview" style = "display:none;"> <h3 class="panel-title">Contract Consumption</h3> <br> </div></div> 
                                                         </div> </td> </tr>
                                                         
                                                  <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <div id="StakeHolderInfoPreview"> <h3>Stake Holder</h3> </div> </div> </td> </tr>
+                                                       <h3 class="panel-title">Stake Holder</h3><br><br>
+                                                        <div id="StakeHolderInfoPreview">  </div> </div> </td> </tr>
                                                         </tbody>
                                     </table>
  								</td>
@@ -384,23 +550,37 @@
  </table>
  </div>
  </div>
- </div>
- </div></div></div>
-                                                                            
-                                                                               <!-- /.row -->
-                <div class="container">
-                    <!-- Button trigger modal -->
-                    <button type="button" id="button_id" name="button_id" class="btn btn-primary btn-lg pull-right">
+                                                      
+                                                                                                   
+                                                    <div class="col-md-12">
+                                                            <div class="col-md-1">
+                                                                <button type="button" class="btn btn-light" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='IntakeStakeHolder.jsp';" >Prev</button>
+                                                            </div>
+                                                         <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
+                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary">
                         Request Sign
                     </button>
-                    <button type="button" id="NextId" name="NextReview" class="btn btn-primary btn-lg pull-right" onclick ="window.location.href='IntakeApproval.jsp';">
-                        Next
-                    </button>
-                     <button id="intake_module" class="btn btn-primary pull-left"><span
-                                                    class="glyphicon glyphicon-download-alt"></span> Export Pdf
-                                            </button>
-					</br>
-                    <!-- Modal -->
+                   
+                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" id = "ReviewNextBtn" onclick="location.href='IntakeApproval.jsp';">Next</a>
+                                                                
+
+                                                               
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                             </div>
+                </section>
+            </div>
+        </div>
+        </div>
+        </div>
+    </form>
+
+
+<!-- Modal -->
                     <div class="modal fade" id="myModal modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog" style="width:1000px">
@@ -427,186 +607,51 @@
                         </div>
                     </div>
 
+ 
+</div>
+</div>
+    <!-- Date picker --> 
+    
+       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
+         rel = "stylesheet"><!-- newly added code by parthiban -->
 
-                </div>
+ <script src="js/toastr/toastr.min.js"></script>
+     <script src="js/notification/notification.js"></script>
+     
 
-</br>
-                </section>
-
-
-            </div>
-
-
-            <!-- /.main-page -->
-
-        </div>
-
-        <!-- /.content-container -->
-
-    </div>
-    <!-- /.content-wrapper -->
-
-
-    </div>
-    <!-- /.main-wrapper -->
-
-</form>
-<!-- ========== COMMON JS FILES ========== -->
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
-<script src="js/jquery-ui/jquery-ui.min.js"></script>
-<script src="js/bootstrap/bootstrap.min.js"></script>
-<script src="js/pace/pace.min.js"></script>
-<script src="js/lobipanel/lobipanel.min.js"></script>
-<script src="js/iscroll/iscroll.js"></script>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
-<script src="validation.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-
-
-<!-- ========== PAGE JS FILES ========== -->
-<script src="js/prism/prism.js"></script>
-<script src="js/waypoint/waypoints.min.js"></script>
-<script src="js/counterUp/jquery.counterup.min.js"></script>
-<script src="js/amcharts/amcharts.js"></script>
-<script src="js/amcharts/serial.js"></script>
-<script src="js/amcharts/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all"/>
-<script src="js/amcharts/themes/light.js"></script>
-<script src="js/toastr/toastr.min.js"></script>
-<script src="js/icheck/icheck.min.js"></script>
-<script src="js/bootstrap-tour/bootstrap-tour.js"></script>
-
-<!-- ========== THEME JS ========== -->
-<script src="js/production-chart.js"></script>
-<script src="js/traffic-chart.js"></script>
-<script src="js/task-list.js"></script>
-
-<!-- ========== THEME JS ========== -->
-<script src="js/main.js"></script>
+    </body>
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/pace/pace.min.js"></script>
+    <script src="js/lobipanel/lobipanel.min.js"></script>
+    <script src="js/iscroll/iscroll.js"></script>
+    <!-- ========== PAGE JS FILES ========== -->
+    <script src="js/prism/prism.js"></script>
+    <script src="js/waypoint/waypoints.min.js"></script>
+    <script src="js/counterUp/jquery.counterup.min.js"></script>
+    <script src="js/amcharts/amcharts.js"></script>
+    <script src="js/amcharts/serial.js"></script>
+    <script src="js/amcharts/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
+        type="text/css" media="all" />
+    <script src="js/amcharts/themes/light.js"></script>
+   
+    <script src="js/icheck/icheck.min.js"></script>
+    <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
+    <!-- ========== THEME JS ========== -->
+    <script src="js/production-chart.js"></script>
+    <script src="js/traffic-chart.js"></script>
+    <script src="js/task-list.js"></script>
+    <!-- ========== THEME JS ========== -->
+    <script src="js/main.js"></script>
+    <script id ="scripttag"></script>
+    <script>
 
 
-<!-- ========== PAGE JS FILES ========== -->
-<script src="js/prism/prism.js"></script>
-<script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
-<script type="text/javascript" src="js/date-picker/datepair.js"></script>
-<script type="text/javascript" src="js/date-picker/moment.js"></script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
 
-<!-- ========== THEME JS ========== -->
 
-<script type="text/javascript">
-    $('.datepicker').datepicker({
-        format: 'mm/dd/yyyy',
-        startDate: '-3d'
-    });
 </script>
-
-
-<!-- ========== THEME JS ========== -->
-<script>
-    $(function ($) {
-
-        // 1st  datepicker
-        $('#basicExample .time').timepicker({
-            'showDuration': true,
-            'timeFormat': 'g:ia'
-        });
-
-        $('#basicExample .date').datepicker({
-            'format': 'm/d/yyyy',
-            'autoclose': true
-        });
-
-        var basicExampleEl = document.getElementById('basicExample');
-        var datepair = new Datepair(basicExampleEl);
-
-        // 2nd  datepicker
-        $('#datetimepicker1').datetimepicker({
-            debug: true
-        });
-
-        // 3rd  datepicker
-        $('#datetimepicker9').datetimepicker({
-            viewMode: 'years'
-        });
-
-        // 4th  datepicker
-        $('#datetimepicker10').datetimepicker({
-            viewMode: 'years',
-            format: 'MM/YYYY'
-        });
-
-        // 5th  datepicker
-        $('#datetimepicker11').datetimepicker({
-            daysOfWeekDisabled: [0, 6]
-        });
-
-        // 6th  datepicker
-        $('#datetimepicker12').datetimepicker({
-            inline: true,
-            sideBySide: true
-        });
-    });
-</script>
-
-<script>
-    var doc = new jsPDF();
-
-    var options = {
-        background: 'blue',
-        pagesplit: true
-    };
-    var specialElementHandlers = {
-        '#editor': function (element, renderer) {
-            return true;
-        }
-    };
-
-    $('#cmd').click(function () {
-
-        doc.fromHTML($('#table1').html(), 15, 15, {
-            'width': 170,
-            'pagesplit': true,
-            'elementHandlers': specialElementHandlers
-        });
-
-        doc.addPage();
-
-        doc.fromHTML($('#table2').html(), 15, 15, {
-            'width': 170,
-            'pagesplit': true,
-            'elementHandlers': specialElementHandlers
-        });
-
-        doc.addPage();
-        doc.fromHTML($('#table3').html(), 15, 15, {
-            'width': 170,
-            'pagesplit': true,
-            'elementHandlers': specialElementHandlers
-        });
-        doc.addPage();
-        doc.fromHTML($('#table4').html(), 15, 15, {
-            'width': 170,
-            'pagesplit': true,
-            'elementHandlers': specialElementHandlers
-        });
-        var d = new Date().toISOString().slice(0, 19);
-        filename = 'Intake' + "_" + d + '.pdf';
-        doc.save(filename);
-
-    });
-</script>
-
-</body>
 </html>

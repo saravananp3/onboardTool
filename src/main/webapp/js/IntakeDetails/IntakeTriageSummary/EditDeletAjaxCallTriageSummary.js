@@ -23,6 +23,7 @@
             	$("#TriSummLabelModify").val("");
             	$("#TriSummEditClose").click();
             	$('.hidepencilSummary').hide();
+            	notification("success","Selected field is edited successfully in Triage Summary.","Note");
             	//$('#Record_No').val(data.RandomNumber);
             },
             error: function (e) {
@@ -31,8 +32,8 @@
         });
     	}
     	else {
-    		
-    		alert("Please fill the value in field");
+    		notification("warning","Please fill the value in field.","Warning");
+    		//alert("Please fill the value in field");
     	}
     });
     $('#TriSummDeleteSubmit').click(function(){
@@ -56,6 +57,7 @@
             	$(".InputFieldSummary").eq(index).remove();
             	$("#TriSummDeleteClose").click();
             	$('.hidedeleteSummary').hide();
+            	notification("success","Selected field is deleted successfully in Triage Summary.","Note");
             	//$("#OpportunityListbtn").click();
             },
             error: function (e) {

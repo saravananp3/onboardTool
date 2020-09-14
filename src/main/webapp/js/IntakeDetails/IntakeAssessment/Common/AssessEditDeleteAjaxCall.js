@@ -24,6 +24,7 @@
             	$("#AssessLabelModify").val("");
             	$("#AssessEditClose").click();
             	$('.hidepencilAssessment').hide();
+            	notification("success","Selected field is edited successfully in "+EditSection+" section.","Note");
             	//$('#Record_No').val(data.RandomNumber);
             },
             error: function (e) {
@@ -32,8 +33,8 @@
         });
     	}
     	else {
-    		
-    		alert("Please fill the value in field");
+    		notification("warning","Please fill the value in field.","Note");
+    		//alert("Please fill the value in field");
     	}
     });
     $('#AssessDeleteSubmit').click(function(){
@@ -73,6 +74,7 @@
             	}
             	$("#AssessDeleteClose").click();
             	$('.hidedeleteAssessment').hide();
+            	notification("success","Selected field is deleted successfully in "+DeleteSection+" section.","Note");
             	//$("#OpportunityListbtn").click();
             },
             error: function (e) {

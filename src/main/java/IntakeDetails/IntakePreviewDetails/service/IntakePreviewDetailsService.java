@@ -1,10 +1,12 @@
 package IntakeDetails.IntakePreviewDetails.service;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.google.gson.JsonArray;
-
+import com.google.gson.JsonObject;
 import IntakeDetails.IntakeAssessment.service.IntakeAssessmentService;
 import IntakeDetails.IntakeOpportunity.Service.IntakeOpportunityService;
 import IntakeDetails.IntakeStakeHolder.service.IntakeStakeHolderService;
@@ -33,7 +35,7 @@ public class IntakePreviewDetailsService {
 			jsonArray.add(new IntakeTriageSummaryService().DataRetrieve(Id));
 			jsonArray.add(new IntakeAssessmentService().DataRetrieve(Id));
 			jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,""));
-			
+			jsonArray.add(CheckOverallApproval(Id));
 			intakeStake = null;
 			System.gc();
 		}
@@ -45,6 +47,27 @@ public class IntakePreviewDetailsService {
 		
 		return jsonArray;
 		
+	}
+	private JsonObject CheckOverallApproval(String Id)
+	{
+		JsonObject jsonObject = new JsonObject();
+		try
+		{
+			boolean checkOverallApproval = false;
+			String SelectQuery="Select * from module_approval_info where oppid='"+Id+"' and moduleName='Intake' ";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(SelectQuery);
+			if(rs.next())
+			{
+				checkOverallApproval = Boolean.parseBoolean(rs.getString(4));
+			}
+			jsonObject.addProperty("CheckExistence",checkOverallApproval);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return jsonObject;
 	}
 
 }

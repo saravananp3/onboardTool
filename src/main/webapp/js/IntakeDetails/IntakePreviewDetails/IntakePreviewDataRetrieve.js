@@ -114,9 +114,18 @@ function IntakePreviewDataRetrieveAjaxCall()
             table += "</tbody>"+
             		"</table>";
             $("#StakeHolderInfoPreview").append(table);
+            notification("info","Review of previous details.","Info");
+            var checkReviewPage = data[5].CheckExistence;
+            if(checkReviewPage==true)
+            {
+             $("#ReviewNextBtn").hide();
+             $("#ReviewPrevBtn").hide();
+            // $("#button_id").hide();
+            }
         },
         error: function (e) {
             console.log(e);
+            
         }
 
     });

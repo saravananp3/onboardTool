@@ -23,6 +23,7 @@
             	$("#Label_modify").val("");
             	$("#edit_close").click();
             	$('.hidepencil').hide();
+            	notification("success","Selected field is edited successfully.","Note");
             	//$('#Record_No').val(data.RandomNumber);
             },
             error: function (e) {
@@ -31,8 +32,8 @@
         });
     	}
     	else {
-    		
-    		alert("Please fill the value in field");
+    		notification("warning","Please fill the value in field.","Warning");
+    		//alert("Please fill the value in field");
     	}
     });
     $('#submit2').click(function(){
@@ -50,6 +51,7 @@
             	$(".InputField").eq(index).remove();
             	$("#delete_close").click();
             	$('.hidedelete').hide();
+            	
             	for(var i = index; i<$(".InputField").length;i++)
             	{
             	  var exist = $(".InputField").eq(i).find("input").length;
@@ -71,6 +73,7 @@
             	 }
             		
             	}
+            	notification("success","Selected field is deleted successfully.","Note");
             },
             error: function (e) {
                 console.log(e);

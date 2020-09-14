@@ -186,6 +186,7 @@ function validateForm(){
         
         	$("#temp_close_id").click();
         	$(".submitDisable").attr("disabled", false);
+        	notification("success","Template fields are reflected in Opportunity.","Note");
         },
         error: function (e) {
             console.log(e);

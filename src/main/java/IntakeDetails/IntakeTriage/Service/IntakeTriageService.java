@@ -94,7 +94,7 @@ public class IntakeTriageService extends DynamicFields {
 			{
 				DBconnection dBconnection = new DBconnection();
 				Connection con = (Connection) dBconnection.getConnection();
-				
+				System.out.println("Triage Insert : ");
 				// selecting the defaiult set from triage template 
 				
 				String SelectRecords = "select * from triage_info_template_details where seq_no>='11' and seq_no<='21'";

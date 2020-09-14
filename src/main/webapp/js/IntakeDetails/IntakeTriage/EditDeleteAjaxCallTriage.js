@@ -6,6 +6,7 @@
     	{
     		
     	$.ajax({
+    		
             url: "IntakeTriageEditServlet",
             type: 'POST',
             data : {seq_num:Seq_Num,label:Label,Mandatory:Mandatory},
@@ -37,6 +38,7 @@
             	$("#TriageLabelModify").val("");
             	$("#TriageEditClose").click();
             	$('.hidepen').hide();
+            	notification("success","Selected field is edited successfully in Triage.","Note");
             	//$('#Record_No').val(data.RandomNumber);
             },
             error: function (e) {
@@ -45,8 +47,8 @@
         });
     	}
     	else {
-    		
-    		alert("Please fill the value in field");
+    		notification("warning","Please fill the value in field.","Warning");
+    		//alert("Please fill the value in field");
     	}
     });
     $('#TriageDeleteSubmit').click(function(){
@@ -56,6 +58,7 @@
     	if(check)
     	{
     		$("#OpportunityListbtn").click();
+    		notification("success","Selected field is deleted successfully in Triage.","Note");
     	}
     	
     });

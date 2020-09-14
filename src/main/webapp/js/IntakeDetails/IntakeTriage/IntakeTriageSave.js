@@ -110,34 +110,39 @@ $("#createbtn").click(function(e)
 	    {
       		if(CheckRationalizationField()&&CheckApplicationPlatformField()&&CheckDependencyField())
       	    {
-      		alert("Details which are common, will be reflected  in Intake Opportunity.");
+      			notification("info","Details which are common, will be reflected  in Intake Opportunity.","Info");
+      		//alert("Details which are common, will be reflected  in Intake Opportunity.");
 	    	var validationCheck_json = TriageAjaxCallUpdate(JsonString,checkMandatory,e);
 	    	if(validationCheck_json.appId==false)
 	    	{
-	    	 alert("Application Id is already used. PLease provide Unique Application ID.");
+	    		notification("warning","Application Id is already exist. Please provide Unique Application ID.","Warning");
+	    	 //alert("Application Id is already used. PLease provide Unique Application ID.");
 	    	 e.preventDefault();
 	    	}
 	    	else if(validationCheck_json.applicationName == false)
 	    	{
-	    		alert("Application Name is already used. PLease provide Unique Application Name.");
+	    		notification("warning","Application Name is already exist. Please provide Unique Application Name.","Warning");
+	    		//alert("Application Name is already used. PLease provide Unique Application Name.");
 		    	 e.preventDefault();
 	    	}
 	    	else
 	    	{
 	    	//$("#OpportunityListbtn").click();
+	    		notification("success","Triage details saved successfully.","Note");
 	    	}
       	    }
       		else
       		{
-      			
-       		   alert("Please fill the Mandatory Fields.");	
+      			notification("warning","Please fill the Mandatory Fields.","Warning");
+       		   //alert("Please fill the Mandatory Fields.");	
        		e.preventDefault();
       		}
 	    	} 
 	    else 
 	    {
 		e.preventDefault();
-	    alert("Please fill the Mandatory Fields.");
+		notification("warning","Please fill the Mandatory Fields.","Warning");
+	    //alert("Please fill the Mandatory Fields.");
 	    }
 }); 
 function TriageAjaxCallUpdate(JsonString,checkMandatory,e)

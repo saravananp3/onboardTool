@@ -413,6 +413,7 @@ function validateForm(e){
     	}
         	$("#temp_close_id").click();
         	$(".submitDisable").attr("disabled", false);
+        	notification("success","Template fields are reflected.","Note");
         },
         error: function (e) {
             console.log(e);
