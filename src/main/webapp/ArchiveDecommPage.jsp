@@ -25,131 +25,229 @@
     <script type="text/javascript" src="js_in_pages/project.js"></script>
     <script src="js/modernizr/modernizr.min.js"></script>
     <style type="text/css">
-
-        * {
-            box-sizing: border-box;
+    body{
+           background:#f8f9fc;
         }
 
+        .active{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+		#module_header{
+ 
+ margin-top:75px;
+ }
+ .ptitle{
+ 
+  margin-right:-182px;
+  margin-top:65px;
+  font-size:24px;
+ }
+ 
+ .sub-ptitle{
+  margin-right:-336px;
+  margin-top:95px;
+  font-size:14px;
+ 
+ }
+	.fixed-top{
+	width:100%;
+	padding-left: 0px;
+    padding-right: 0px;
+	}
+	
+a{
 
-        .flex-row {
-            display: flex;
-            justify-content: center;
-            position: relative;
-            width: 100%;
-            flex-flow: row wrap;
-            overflow: hidden;
-        }
+font-size:14px;
+}	
+ 
 
-        /*Use this class as wrapper to keep content INSIDE the card*/
-        .flex-wrapper {
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-        }
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 
-        .card {
-            position: relative;
-            background-color: #fff;
-            display: inline-block;
-            max-width: 300px;
-            min-width: 150px;
-            min-height: 200px;
-            content: "";
-            margin: 10rem 10rem 0 0;
-            box-shadow: 0 1px 3px 0 rgba(58, 62, 75, 0.25);
-            flex: 0 0 25%;
-            align-items: flex-start;
-            align-content: flex-start;
-            border-radius: .2rem;
-        @include transition(all, 250 ms, ease-in-out);
-        }
-        #img2 {
+h3 {
+  color: #262626;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
 
-            padding: 10px;
-            width: 300px;
-            height: 270px;
+p {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #666666;
+  margin:auto 10px;
+  &.small {
+    font-size: 14px;
+  }
+}
 
-        }
-        #img3 {
+.card1 {
+    display: block;
+    top: 120px;
+    position: relative;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 32px 7px;
+    margin: 12px;
+    text-decoration: none;
+    overflow: hidden;
+    border: 1px solid dodgerblue;
+     box-shadow: 1px 1px 5px 5px #dbdbdb;
+}
 
-            width: 250px;
-            height: 250px;
-        }
-        .card:hover {
+ .card1:hover {
+    border: 3px solid #228B22;
+   
+  }
+  
+  h3 {margin-top: 8px;}
 
-            box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.5);
-        }
+}
 
-        .center {
-            display: block;
-            margin-left: 20px;
-            margin-bottom: 20px;
 
-        }
 
-        #para {
-            text-align: center;
-            padding-top: 30px;
-            font-size: 20px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-style: italic;
-            font-size: 25px;
-        }
+.card2 {
+    display: block;
+    top: 100px;
+    position: relative;
+    max-width: 490px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 32px 7px;
+    margin: 12px;
+    text-decoration: none;
+    overflow: hidden;
+   border: 1px solid dodgerblue;
+}
+.card2:hover {
+    border: 3px solid #CD3D73;
+  }
+  
+ 
 
-        #para1 {
-            text-align: center;
-            padding-top: 30px;
-            font-size: 20px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-style: italic;
-            font-size: 25px;
-        }
+
     </style>
 </head>
 <body class="top-navbar-fixed">
 
 <div class="main-wrapper">
+     <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
-                    <a class="navbar-brand" href="Project_List.jsp">
-                        <img src="images/logo1.png" alt="Options - Admin Template" class="logo">
+                    <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
+                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
+
+                   
+
+
                 </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
-
-
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li><a href="#"><span id="nav_userid">&nbsp;</span>logged in as &nbsp;<span
-                                id='nav_role'></span></a></li>
-                        <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
-                        </li>
+                <!-- /.navbar-header -->
+                <div class="tabs-content">
+                  <ul class="nav navbar-nav">
+		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
+		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="#">Finance</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
+		              <li><a href="#">Compliance</a></li>
+		          </ul>
+		         <ul class="nav navbar-nav navbar-right">
+                      
+                        <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
+                        <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
+                </div>
+                
+           
+                
+            </div>
+            <!-- /.row -->
+            <nav class="navbar navbar-down">
+				  <div class="container-fluid fixed-top">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                             <h5 class="title" style="color:#fff">Requirements</h5>
+                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                               <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
+                               <span class="glyphicon glyphicon-home"></span> Home</a> >> 
+                               <a  href="OpportunityGrid.jsp" id="sitetitle1" style="color:#fff"> Modules</a> >>
+                                <a  href="ArchiveDecommPage.jsp" id="sitetitle1" style="color:#fff"> Requirements</a> </p>
+                        </div>
+                    
+                       
+                      
+
+                    </div>
 
                 </div>
-            </div>
+			</nav>
         </div>
-    </nav>
+        <!-- /.container-fluid -->
+    </nav >
 
     <div class="content-wrapper">
         <div class="content-container">
             <div class="main-page">
-                <div class="flex-row">
-                    <div class="card">
-                        <label id="para">Archive Requirements</label>
-                        <a href="Intake_Business.jsp"><img id="img2" src="images/Arhive_intake.png" width="200px"
-                                                        class="center"></a>
-                    </div>
-                    <div class="card">
-                        <label id="para1">Decomm Requirements</label>
-                        <a href="AppDecommInfo.jsp"><img id="img3" src="images/Decomm_intake.png"
-                                                                      width="200px" class="center"></a>
-                    </div>
+          
+<div class="container" id="module_header">
+   
+  	<p class="ptitle">Requirements</p>
+	<p class="sub-ptitle">Select the option to update the information</p>
+ 
+  <a class="card1" href="Intake_Business.jsp">
+    
+                                   
+                                   
+                                            <img src="images/grid/Archivereq.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
 
-                </div>
+                                     
 
+                              
+
+    <h3>Archive  Requirements</h3>
+    <p class="small">Archive data consists of older data that remains important to the organization or must be retained for future reference or regulatory compliance reasons.</p>
+    
+    
+  </a>
+  
+  <a class="card1" href="AppDecommInfo.jsp">
+    
+                                   
+                                   
+                                            <img src="images/grid/decomm.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
+
+                                     
+
+                              
+
+    <h3>Decommision Requirements</h3>
+    <p class="small">Decommissioning is a general term for a formal process to remove something from an active status. <br></p>
+    <br> 
+    
+    <div class="row"> 
+    
+    </div>
+    
+  </a>
+</div>
             </div>
 
         </div>
