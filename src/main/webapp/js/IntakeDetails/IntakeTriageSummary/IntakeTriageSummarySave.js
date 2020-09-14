@@ -112,6 +112,7 @@ $("#createTriSummary").click(function(e)
 	    {
     		 var validationCheck_json = AjaxCallUpdate(JsonString,e);
     		 notification("success","Triage Summary details saved successfully.","Note");
+    		 document.getElementById("next").disabled = false;
 	    }
     	else
     		{
@@ -120,7 +121,7 @@ $("#createTriSummary").click(function(e)
     		//alert("Please fill the mandatory field.");
     		}
     	
-
+    	 
 
 });
 

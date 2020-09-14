@@ -153,6 +153,7 @@ else
 		 //alert("Please fill the application name field.");
 		 return false;
 }
+	document.getElementById("next").disabled = false;
 });
 function TriageSummaryAjaxCallUpdate(AppName,JsonString,checkMandatory,CheckAPPID,checkAppname,e)
 {

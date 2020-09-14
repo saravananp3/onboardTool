@@ -133,8 +133,12 @@
                                                                     <li><a href="#" id="DeleteTriage" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
                                                                 <button type="submit" class="btn btn-success" id="createbtn">Save</button>
-                                                                
-                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeTriageSummary.jsp';">Next</a>
+                                                                 <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriageSummary.jsp';" id="next" disabled="true">
+                                                                 
+                                                                 <a href="javascript:;">Next</a>
+                                                                 
+                                                                 </button>
+                                                              <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeTriageSummary.jsp';">Next</a> -->  
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn1" data-toggle="modal" data-target="#EditTriagePopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn1" data-toggle="modal" data-target="#DeleteTriagePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn"  style="display:none;"></button>

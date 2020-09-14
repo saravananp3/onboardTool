@@ -31,6 +31,7 @@ $("#AssessmentSaveBtn").click(function(e){
 		if(jsonobj.CheckExistence)
 			notification("success","Assessment section's detail are saved successfully.","Note");
 			//alert("Saved Successfully!");
+		    
 		else
 			notification("error","Failed to save.","Error");
 	}
@@ -40,6 +41,7 @@ $("#AssessmentSaveBtn").click(function(e){
 	notification("warning",ValidationMsg,"Warning");
 	//alert(ValidationMsg);	
 	}	
+	document.getElementById("next").disabled = false;
 });
 
 function CheckMandatoryCommonFields(InputFieldClass)

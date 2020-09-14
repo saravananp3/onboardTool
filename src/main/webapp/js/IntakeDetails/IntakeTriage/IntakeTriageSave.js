@@ -112,6 +112,7 @@ $("#createbtn").click(function(e)
       	    {
       			notification("info","Details which are common, will be reflected  in Intake Opportunity.","Info");
       		//alert("Details which are common, will be reflected  in Intake Opportunity.");
+      			document.getElementById("next").disabled = false;
 	    	var validationCheck_json = TriageAjaxCallUpdate(JsonString,checkMandatory,e);
 	    	if(validationCheck_json.appId==false)
 	    	{

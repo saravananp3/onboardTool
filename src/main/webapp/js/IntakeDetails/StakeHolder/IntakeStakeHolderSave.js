@@ -67,6 +67,7 @@ $("#save").click(function(e)
 	}
     if(jsonObj.CheckSave)
      {
+    	   document.getElementById("next").disabled = false;
     	   e.preventDefault();
             notification("success","Saved Successfully.","Note");
        
@@ -74,6 +75,8 @@ $("#save").click(function(e)
             IntakePreviewDataRetrieveAjaxCall();
            
             IntakeApprovalDataRetrieveAjaxCall();
+            
+            
             
     	
     	
@@ -86,6 +89,7 @@ $("#save").click(function(e)
 	  e.preventDefault();
 	  notification("warning","Please fill the fields.","Warning");
 	}
+	
 });
 function IsEmail(email) {			
 	  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;

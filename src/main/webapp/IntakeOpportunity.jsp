@@ -128,8 +128,12 @@
                                                                 </ul>
                                                                
                                                                 <button type="submit" class="btn btn-success" id="create">Save</button>
-                                                                 <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a>
-                                                                
+                                                                <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
+                                                                 <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';" id="next" disabled="true">
+                                                                 
+                                                                 <a href="javascript:;">Next</a>
+                                                                 
+                                                                 </button>
                                                               
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display: none;">Delete PopUp</button>

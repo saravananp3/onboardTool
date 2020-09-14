@@ -264,7 +264,12 @@
                                        <li><a href="#" id="DeleteAssess" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                        </ul>
                                        <button type="button" class="btn btn-success" id="AssessmentSaveBtn">Save</button>
-                                        <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick="location.href='IntakeStakeHolder.jsp';">Next</a>
+                                      <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick="location.href='IntakeStakeHolder.jsp';">Next</a> -->  
+                                       <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeStakeHolder.jsp';" id="next" disabled="true">
+                                                                 
+                                                                 <a href="javascript:;">Next</a>
+                                                                 
+                                                                 </button>
                                        <button type="button" class="btn btn-primary pull-right" id="editpopupAssess_btn" data-toggle="modal" data-target="#AssessEditPopUp" style="display: none;">Edit PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="deletepopupAssess_btn" data-toggle="modal" data-target="#AssessDeletePopUp" style="display: none;">Delete PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>

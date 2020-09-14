@@ -144,7 +144,12 @@
                                                                     <li><a href="#" id="DeleteSummary" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
                                                                 <button type="submitBtn" class="btn btn-success" id="createTriSummary">Save</button>
-                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeAssessment.jsp';" >Next</a>
+                                                              <!--  <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeAssessment.jsp';" >Next</a> --> 
+                                                                <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeAssessment.jsp';" id="next" disabled="true">
+                                                                 
+                                                                 <a href="javascript:;">Next</a>
+                                                                 
+                                                                 </button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopupSummary_btn" data-toggle="modal" data-target="#TriSummEditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopupSummary_btn" data-toggle="modal" data-target="#TriageSummaryDeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>

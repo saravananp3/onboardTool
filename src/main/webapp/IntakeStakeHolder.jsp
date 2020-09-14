@@ -513,7 +513,15 @@ font-size:12px;
 
                                                                 <button type="submit" class="btn btn-success" id="save">Save</button>
                                                                 <button type = "button"class="btn btn-info" id = "NextStakeHolder"  style="display:none;">Next</button>
-                                                                        <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick="location.href='IntakeReviewDetails.jsp';" >Next</a>
+                                                                   
+                                                                   
+                                                             <!--   <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick="location.href='IntakeReviewDetails.jsp';" >Next</a> -->         
+                                                                
+                                                                <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeReviewDetails.jsp';" id="next" disabled="true">
+                                                                 
+                                                                 <a href="javascript:;">Next</a>
+                                                                 
+                                                                 </button> 
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
