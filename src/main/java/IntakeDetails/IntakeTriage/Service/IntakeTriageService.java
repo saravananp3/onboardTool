@@ -13,6 +13,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import IntakeDetails.Common.DynamicFields;
+import IntakeDetails.IntakeAssessment.service.IntakeAssessmentService;
 import IntakeDetails.IntakeTriage.Service.IntakeTriageService;
 import onboard.DBconnection;
 
@@ -54,6 +55,7 @@ public class IntakeTriageService extends DynamicFields {
 						
 					}
 					IntakeTriageInfoRecordsStorage(Id);
+					new IntakeAssessmentService().DataRetrieve(Id);
 				}
 				else
 				{
