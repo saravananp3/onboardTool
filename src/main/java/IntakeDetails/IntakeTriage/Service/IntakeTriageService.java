@@ -309,7 +309,7 @@ public class IntakeTriageService extends DynamicFields {
 				 if(isDependecyColumnName(column_name))
 				 {
 					 String col_name = getDependencyColumnNamePair().get(column_name);
-					 delete(arr_column_name_split.indexOf(col_name)+1, Id);
+					 deleteField(arr_column_name_split.indexOf(col_name)+1, Id);
 				 }
 				 IntakeAssessmentDependencyField DependencyFieldObj = new IntakeAssessmentDependencyField(Id, column_name);
 				  jsonArray = DependencyFieldObj.AddAssessmentDependentField();
@@ -461,7 +461,7 @@ public class IntakeTriageService extends DynamicFields {
 		    			 {
 		    				 seq_num =rs3.getInt(1);
 		    			 }
-		    			 delete(seq_num,id);
+		    			 deleteField(seq_num,id);
 						/*
 						 * if(check_first_occurance) { IntakeTriageDeleteService(rs2.getInt(1),id);
 						 * check_first_occurance = false; }else {
