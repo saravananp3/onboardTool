@@ -133,6 +133,12 @@
         String query49 = "CREATE TABLE `Module_Approval_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`moduleName` varchar(255),`overAllApproval` varchar(255))";
         statement.executeUpdate(query49);
         
+        String query50 = "CREATE TABLE `Archive_Execution_Info` (`seq_no` INTEGER (255),`oppId` varchar(255),`oppName` varchar(255),`level` varchar(255),`taskId` varchar(255),`taskGroup` varchar(255),`taskName` varchar(255),`taskType` varchar(255),`majorDependencies` varchar(255),`assignedTo` varchar(255),`planSrt` varchar(255),`planEnd` varchar(255),`actSrt` varchar(255),`actEnd` varchar(255),`completion` varchar(255),`status` varchar(255),`remark` varchar(255))";
+        statement.executeUpdate(query50);
+        
+        String query51 = "CREATE TABLE `Archive_Execution_Template_Info` (`seq_no` INTEGER (255),`level` varchar(255),`taskGroup` varchar(255),`taskName` varchar(255),`taskType` varchar(255),`majorDependencies` varchar(255),`assignedTo` varchar(255),`planSrt` varchar(255),`planEnd` varchar(255),`actSrt` varchar(255),`actEnd` varchar(255),`completion` varchar(255),`status` varchar(255),`remark` varchar(255))";
+        statement.executeUpdate(query51);
+        
        %>
 <% } catch (Exception ex) {
 

@@ -5,10 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.ws.rs.GET;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionTemplateService;
 import Opportunity.OpportunityBean;
 import onboard.DBconnection;
 
@@ -45,6 +48,10 @@ public class NewOpportunityCreateService {
 			if(checkMandatory==true && checkAPMID == false && checkAppName == false)
 			{
 				NewOpportunityCreateService.NewOpportunityDetailsSave(jsonArray);
+				ArchiveExecutionTemplateService archiveExecObj = new ArchiveExecutionTemplateService(OpportunityBean.getRecord_Number());
+				archiveExecObj.archiveTemplateToArchiveInfo();
+				archiveExecObj = null;
+				System.gc();
 			}
 		}
 		catch(Exception e)
