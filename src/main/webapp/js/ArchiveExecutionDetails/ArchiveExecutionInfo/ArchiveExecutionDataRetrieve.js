@@ -91,6 +91,7 @@ $(document).ready(function()
             $(".circle").eq(index).attr('class',progress);
             var seqNo = parseInt(index)+1;
             var columnName = "completion";
+            fieldName = "";
             saveFunction(seqNo, columnName, value1);
             //statusColor(parseInt(value1),statusIndex);
         });
@@ -108,6 +109,7 @@ $(document).ready(function()
 		           $(".circle").eq(index).attr('class',progress);
 		           var seqNo = parseInt(index)+1;
 		           var columnName = "completion";
+		           fieldName = "";
 		           saveFunction(seqNo, columnName, value1);
 	           //statusColor(parseInt(value1),statusIndex);
 	            });

@@ -247,7 +247,7 @@ if(!checkPrevParent||!checkPrevChild)
         			if(data.CheckParentDate)
         			updateParentDate(seqNo, columnName, data.ResultDate);
         		}
-        		if(fieldName != 'colorCode')
+        		if(fieldName != 'colorCode'&&fieldName!="")
         		$("."+fieldName).eq(seqNo-1).val(value);
 	        		SaveInfoNotification(seqNo, columnName, value);
 	        		
