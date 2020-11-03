@@ -24,7 +24,10 @@
     <!-- ========== MODERNIZR ========== -->
     <script type="text/javascript" src="js_in_pages/project.js"></script>
     <script src="js/modernizr/modernizr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src = "js/Requirements/RequestType/ToBeRetire.js"></script>
     <style type="text/css">
+    
     body{
            background:#f8f9fc;
         }
@@ -154,11 +157,7 @@ p {
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
-
-                   
-
-
-                </div>
+ </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
@@ -212,23 +211,15 @@ p {
   	<p class="ptitle">Requirements</p>
 	<p class="sub-ptitle">Select the option to update the information</p>
  
-  <a class="card1" href="Intake_Business.jsp">
-    
-                                   
-                                   
-                                            <img src="images/grid/Archivereq.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
-
-                                     
-
-                              
-
-    <h3>Archive  Requirements</h3>
+  <a class="card1" href="ArchiveRequirementsIntroDetails.jsp" id = "archiveReq">
+    <img src="images/grid/Archivereq.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
+<h3>Archive  Requirements</h3>
     <p class="small">Archive data consists of older data that remains important to the organization or must be retained for future reference or regulatory compliance reasons.</p>
     
     
   </a>
   
-  <a class="card1" href="AppDecommInfo.jsp">
+  <a class="card1" href="AppDecommInfo.jsp" id = "decomReq">
     
                                    
                                    
@@ -256,5 +247,15 @@ p {
     </div>
 </div>
 </div>
+
+  <!-- ========== COMMON JS FILES ========== -->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="js/jquery-ui/jquery-ui.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/pace/pace.min.js"></script>
+        <script src="js/lobipanel/lobipanel.min.js"></script>
+        <script src="js/iscroll/iscroll.js"></script>
+        
+		
 </body>
 </html>

@@ -10,6 +10,7 @@ import java.util.Date;
 import com.sun.jersey.spi.inject.Errors;
 
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionTemplateService;
+import NewArchiveRequirements.LegacyApplicationInfo.Service.archiveReqLegacyAppTemplateService;
 
 import org.apache.log4j.BasicConfigurator;
 
@@ -195,6 +196,20 @@ public class Login extends HttpServlet {
 			this.value = value;
 		}
 	}
+	
+	class rolesRespons{
+		int seq_no;
+		String role, name, title, approverpurpose;
+		rolesRespons(int seq_no, String role, String name, String title, String approverpurpose){
+			this.seq_no = seq_no;
+			this.role = role;
+			this.name = name;
+			this.title = title;
+			this.approverpurpose = approverpurpose;
+		}
+	}
+	
+	
 	
 	int i=0,exec_det=0,dum=0,lm=0;
 	
@@ -420,6 +435,36 @@ try
 		}
 	}
 	
+	
+			// Archive Requirement - Role&Response
+	
+			 String roleRes = "select * from ArchiveReq_Roles_Info_Template_Details";
+			 Statement stRoleRes = con.createStatement();
+			 ResultSet RsroleRes = stRoleRes.executeQuery(roleRes);
+			 
+			 if(!RsroleRes.next()) {
+				 rolesRespons RoleResponse[] = new rolesRespons[5];
+				 RoleResponse[0] = new rolesRespons(1,"Project Sponsor","","","Approves the document from an overall program perspective");
+				 RoleResponse[1] = new rolesRespons(2,"Business Owner","","","Approves the document from an overall project perspective");
+				 RoleResponse[2] = new rolesRespons(3,"Project Manager","","","Approves the document from an overall project perspective");
+				 RoleResponse[3] = new rolesRespons(4,"System Architect","","","Approves the document from an architecture perspective");
+				 RoleResponse[4] = new rolesRespons(5,"Technical Lead","","","Approves the document from a technical perspective");	 
+			 
+				 for (int index = 0; index<RoleResponse.length; index++) {
+					 String RolesResponse_InsertQuery = "insert into ArchiveReq_Roles_Info_Template_Details(seq_no, role, name, title, approverpurpose)"
+							 +" value(?,?,?,?,?)";
+					 PreparedStatement prestmtResponse = con.prepareStatement(RolesResponse_InsertQuery);
+					 prestmtResponse.setInt(1, RoleResponse[index].seq_no);
+					 prestmtResponse.setString(2, RoleResponse[index].role);
+					 prestmtResponse.setString(3, RoleResponse[index].name);
+					 prestmtResponse.setString(4, RoleResponse[index].title);
+					 prestmtResponse.setString(5, RoleResponse[index].approverpurpose);
+					 prestmtResponse.execute();
+				 }
+			 }
+	
+			 
+			 
 	String AssessmentDataChar = "select * from Assessment_Data_Char_Info_Template_Details";
 	Statement AssDataCharst = con.createStatement();
 	ResultSet AssDataCharrs = AssDataCharst.executeQuery(AssessmentDataChar);
@@ -648,6 +693,10 @@ try
 	archiveExecObj = null;
 	System.gc();
 	
+	archiveReqLegacyAppTemplateService archiveReqLegacyObj = new archiveReqLegacyAppTemplateService("");
+	archiveReqLegacyObj.archiveReqLegacyAppTemplate();
+	archiveReqLegacyObj = null;
+	System.gc();
 	Statement st= con.createStatement(); 
 	ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");
 
