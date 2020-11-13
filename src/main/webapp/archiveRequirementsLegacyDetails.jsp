@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
 <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 <title>Decom3Sixty - Archive Requirements</title>
 <!-- ========== PAGE STYLES ========== -->
@@ -24,7 +26,15 @@
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>   
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+
+
+<!-- LegacyApplicationInfo -->
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyApplicationInfo/archiveLegacyDataRetrieveAjaxCall.js"></script>
+
+<!-- Archive Environment Info  -->
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/ArchiveEnvironmentInfo/archiveEnvironmentInfoDataRetrieve.js"></script>
+
+
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -310,7 +320,7 @@ padding: 15px;
                                            
                                   <div class="tab-pane" role="tabpanel" id="step4">
                                     
-                                     <!-- Archive Requirement Table -->
+                                     <!-- Legacy Application Informations -->
                             <div class="panel panel-default" style='width:1000px;'>
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
@@ -322,7 +332,7 @@ padding: 15px;
                                             <div id="collapse1" class="panel-collapse " name="collapse">
                                                 <div class="panel-body">
                                                     <div id="inputFieldsAssessment">
-                                      <!-- Purpose & Scope -->
+                                      <!-- Application Info -->
                                         <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
@@ -335,19 +345,17 @@ padding: 15px;
                                                  <div id="inputFieldsAppInfo">
 												 </div>
                                                  <div class="col-md-12">
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='OpportunityGrid.jsp';">Back</button>
-                                                            </div>
+                                                           
                                                             <div class="col-md-6 dropup" style="padding-right: 10px; float: right;  width: 30%;">
                                                                 
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                                                 <ul class="dropdown-menu">
-                                                                    <li><a href="#" id="add" data-toggle="modal" data-target="#AddPopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
-                                                                    <li><a href="#" id="Edit" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
-                                                                    <li><a href="#" id="Delete" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
+                                                                    <li><a href="#" id="add" data-toggle="modal" data-target="#LegacyAddPopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
+                                                                    <li><a href="#" id="EditLegacy" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
+                                                                    <li><a href="#" id="DeleteLegacy" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul>
                                                                
-                                                                <button type="submit" class="btn btn-success" id="create">Save</button>
+                                                                <button type="submit" class="btn btn-success" id="legacyAppInfoSave">Save</button>
                                                                 <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
                                                                  <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';" id="next" disabled="true">
                                                                  
@@ -355,8 +363,8 @@ padding: 15px;
                                                                  
                                                                  </button>
                                                               
-                                                                <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
-                                                                <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
+                                                                <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#LegacyEditPopUp" style="display: none;">Edit PopUp</button>
+                                                                <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#LegacyDeletePopUp" style="display: none;">Delete PopUp</button>
                                                                <!--  <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button> -->
                                                             </div>
                                                     </div>
@@ -367,7 +375,7 @@ padding: 15px;
                                        </div>
 							         </div>  
                                                    
-                               <!-- Roles & Responsibilites -->
+                               <!-- Archive Environment Information -->
 							    <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
@@ -377,27 +385,121 @@ padding: 15px;
                                         	<div class="panel-body">
                                         		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
                                                		<div class="panel-body">
-                                                 		<div id="inputFieldsRoles">
-                                                 			
-												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
-												 <button class="btn btn-primary" type="button" id="AddRoleResponse">Add</button>
-												 <button type="submit" class="btn btn-success" id="saveRoleResponse">Save</button>
-												 <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>
+                                                 		<div id="inputFieldsEnv">
+                                                 			<div>
+                                                   				<h4 class="title1">Archive Environment</h4>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Dev Name</th>
+																		<th style='text-align:center;vertical-align: middle;'>Test Name</th>
+																		<th style='text-align:center;vertical-align: middle;'>Stage Name</th>
+																		<th style='text-align:center;vertical-align: middle;'>Production Name</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="EnvironmentName">
+      												    												
+      															</tbody>
+      															<button type="button" class="btn btn-primary pull-right" id="EnvmntNameDeleteId" data-toggle="modal" data-target="#EnvmntNameDeletePopUp" style="display: none;">Delete PopUp</button>
+																</table>
+																 <div class="col-md-6" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
+																	 <button class="btn btn-primary" type="button" id="AddEnvmntName">Add</button>
+																	 <button type="submit" class="btn btn-success" id="saveEnvmntName">Save</button>
+												
+					                                       			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
+					                                       			</div>
+																<br/>
+																<br/>
+																</div>
+																<br/>
+																<div>
+																<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Dev Server IP</th>
+																		<th style='text-align:center;vertical-align: middle;'>Test Server IP</th>
+																		<th style='text-align:center;vertical-align: middle;'>Stage Server IP</th>
+																		<th style='text-align:center;vertical-align: middle;'>Production Server IP</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="EnvironmentServer">
+      												    												
+      															</tbody>
+      															<button type="button" class="btn btn-primary pull-right" id="EnvmntServerDeleteId" data-toggle="modal" data-target="#EnvmntServerDeletePopUp" style="display: none;">Delete PopUp</button>
+																</table>
+																
+																 <div class="col-md-6" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
+												 <button class="btn btn-primary" type="button" id="AddEnvmntServer">Add</button>
+												 <button type="submit" class="btn btn-success" id="saveEnvmntServer">Save</button>
+												 
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        			</div>
+  																</div>
+												  
+												
 											    </div>
 										 		</div>
                                             </div>
                                        </div>
-							         </div>         
+							         </div>  
+							               
                                             </div> 
+                                            <!-- Legacy Application Screenshot -->
+                                            <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">Legacy Application Screenshots</a></h4>
+                                        </div>
+                                        <div id="collapse3" class="panel-collapse collapse">
+                                        	<div class="panel-body">
+                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                               		<div class="panel-body">
+                                                 		<div id="inputFieldsRoles">
+                                                  <!-- <form action="legacyApplicationScreenshotsUpload" method="post" enctype="multipart/form-data">                                                 			
+												 <input type="file" name="file" id = "fileUpload" value="D:/abc.png" multiple/>
+												 <input type="button" class="btn btn-success" id="UploadFiles" value="upload"/>
+												</form> -->
+												<div class="container fileClass">
+												<form action="" method="post" enctype="multipart/form-data">
+												<div class="fileClass">
+											<label for="upload"> <input type="file" id="fileUpload" multiple> Upload Files</label>
+											</div>
+									        <div class="files fileClass">
+											<h2>Files Selected</h2>
+											<ul id="FileList"></ul>
+											</div>
+											<input type="button" value="Upload" class="btn btn-success" name="submit" id="UploadFiles" />
+											</form>
+											</div>
+											</div>
+											    </div>
+										 		</div>
+                                            </div>
+                                       </div>
+                                       <div class="col-md-12">
+                                        	<br/>
+                                        <div class="col-md-1"> 
+                                    
+                                       <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="" >Prev</button></div>
+                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
+                                       
+                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" id="rolesNext" >
+                                                                 <a href="javascript:;">Next</a></button>
+                                     
+                                       </div>
+                                     </div>  
+							         </div> 
+                                            
                                             </div> 
                                             </div> 
                                     
 					            </div>
                                   </div>
 					            </div>
+					            
+					            
 					        </div>
                         </div>
                 </div>
@@ -435,13 +537,162 @@ padding: 15px;
     %>
     </div></div></form>
    
-  <!-- Archive Req Intro Roles & Response Delete PopUp -->  
-  <div class="modal" id="ArchiveDeletePopUp" tabindex="-1" role="dialog">
+   <!-- Legacy Application Information Add popup -->
+   
+    <div class="modal" id="LegacyAddPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Input Fields</h5>
+        <button type="button" class="close" id = "Legacyaddclose_id" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div id="scrollbar">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Label:</label>
+                            <input type="text" class="form-control" id="Legacyaddlabel"  name="Legacylabel" required>
+                        </div>
+                    </div>
+                </div><br/>
+                <input type="hidden" id="Legacyproject_name" name="project_name" value="">
+                <input type="text" id="Legacyappln_name" name="appln_name" value="" style="display:none;">
+                <input type="text" id="Legacyservlet_name" name="servlet_name" value="" style="display:none;">  
+
+             
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Type:</label>
+                            <select id="Legacytypes" class="form-control" name="types" required >
+                                <option value="Text box">Text box</option>
+                                <option value="Check box">Check box</option>
+                                <option value="Radio box">Radio box</option>
+                                <option value="Dropdown">Dropdown</option>
+                                <option value="Datepicker">Datepicker</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row Legacyhidefield" id="Legacycheck" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of check boxes:</label>
+                            <input type="text" class="form-control" id="Legacycheck_number"  name="Legacycheck_number">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row Legacyhidefield" id="Legacyradio" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Radio boxes:</label>
+                            <input type="text" class="form-control" id="Legacyradio_number"  name="Legacyradio_number">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row Legacyhidefield" id="Legacydrop" style="display:none;">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label" for="formInput526">Number of Options:</label>
+                            <input type="text" class="form-control" id="Legacydrop_number"  name="Legacydrop_number">
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Legacyoptions">
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div id="demo2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Mandatory:</label>
+                            <select id="Legacymandatory" class="form-control" name="mandatory" required >
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br/><br/>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id ="Legacysubmit" class="btn btn-primary">Add Fields</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="Legacyclose">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+   <!-- Legacy Edit Popup -->
+   
+   <div class="modal" id="LegacyEditPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Input Field</h5>
+        <button type="button" id="LegacyEditClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="Legacy">Label:</label>
+                            <input type="text" class="form-control" id="LegacyLabelModify"  name="Legacylabel" required>
+                        </div>
+                    </div>
+                </div><br/><input type="text" id="LegacySeqNum" name="" value="" style="display:none;">
+                <input type="text" id="EditSection" name="" value="" style="display:none;">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="LegacyEditSubmit" class="btn btn-primary" >Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+   
+   
+   
+  <!-- Legacy Delete PopUp -->  
+  <div class="modal" id="LegacyDeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="ArchiveDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id ="LegacyDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -449,18 +700,69 @@ padding: 15px;
         <form name="DeleteForm">
                 <div class="modal-body">
                     <p>Do you want to delete this Row permanently?</p>
-                    <input type="hidden" id="ArchiveDeleteSeq"/>
+                    <input type="hidden" id="LegacyDeleteSeq"/>
                 </div>
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="ArchiveDeleteSubmit" class="btn btn-primary submitDisableDelete" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="LegacyDeleteSubmit" class="btn btn-primary submitDisableDelete" >Yes</button>
+        <button type="button" class="btn btn-default" id = "closeLegacyIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
 </div>
 
+ <!-- Environment Name Delete PopUp -->  
+  <div class="modal" id="EnvmntNameDeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="EnvmntNameDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p>Do you want to delete this Row permanently?</p>
+                    <input type="hidden" id="EnvmntNameDeleteSeq"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="EnvmntNameDeleteSubmit" class="btn btn-primary submitDisableEnvmntName" >Yes</button>
+        <button type="button" class="btn btn-default" id = "closeEnvmntNameIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Environment Server Delete PopUp -->  
+  <div class="modal" id="EnvmntServerDeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="EnvmntServerDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p>Do you want to delete this Row permanently?</p>
+                    <input type="hidden" id="EnvmntServerDeleteSeq"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="EnvmntServerDeleteSubmit" class="btn btn-primary submitDisableEnvmntServer" >Yes</button>
+        <button type="button" class="btn btn-default" id = "closeEnvmntServerIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
@@ -517,6 +819,23 @@ padding: 15px;
 
 <script src="js/notification/notification.js"></script>
 
+<!-- Legacy Application Info  -->
+
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyApplicationInfo/EditDeleteToggleLegacy.js"></script>
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyApplicationInfo/LegacyAddFeatureFunctionality.js"></script>
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyApplicationInfo/archiveLegacyAddAjaxcall.js"></script>
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyApplicationInfo/archiveReqLegacyEditDeleteAjaxCall.js"></script>
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyApplicationInfo/archiveLegacyAppInfoSaveAjaxCall.js"></script>
+
+<!-- Archive Environment Info  -->
+
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/ArchiveEnvironmentInfo/archiveEnvironmentInfoSaveAjaxCall.js"></script>
+
+<!-- Legacy Application Screenshot -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/legacyAppScreenshot/legacyApplicationScreenshotsUploadAjaxCall.js"></script>
+
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/legacyAppScreenshot/legacyAppInfoFileUpload.js"></script>
 
 </body>
 </html>

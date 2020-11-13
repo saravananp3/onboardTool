@@ -142,7 +142,9 @@ p {
   }
   
  
-
+a.disabled:hover {
+    cursor:not-allowed
+ }
 
     </style>
 </head>

@@ -11,6 +11,7 @@ import com.sun.jersey.spi.inject.Errors;
 
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionTemplateService;
 import NewArchiveRequirements.LegacyApplicationInfo.Service.archiveReqLegacyAppTemplateService;
+import NewArchiveRequirements.LegacyApplicationInfo.retentionDetails.Service.archiveRetentionTemplateDetailsService;
 
 import org.apache.log4j.BasicConfigurator;
 
@@ -209,6 +210,16 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	class BusinessReqInScope{
+		int seq_no;
+		String req_in_scope, description;
+		BusinessReqInScope(int seq_no, String req_in_scope, String description){
+			this.seq_no = seq_no;
+			this.req_in_scope = req_in_scope;
+			this.description = description;
+			
+		}
+	}
 	
 	
 	int i=0,exec_det=0,dum=0,lm=0;
@@ -686,6 +697,29 @@ try
 			prestmt1.execute();
 		}
 	}
+	
+	
+	// Business Requirements
+	
+	 String BusReqInScope = "select * from BusinessReqinscope_Info_template_details";
+	 Statement stBusReqInScope = con.createStatement();
+	 ResultSet RsBusReqInScope = stBusReqInScope.executeQuery(BusReqInScope);
+	 
+	 if(!RsBusReqInScope.next()) {
+		 BusinessReqInScope BusreqinscopeDetails[] = new BusinessReqInScope[2];
+		 BusreqinscopeDetails[0] = new BusinessReqInScope(1,"Yes/Y","Requirements in-scope for this archive project and is marked in Requirement Table accordingly");
+		 BusreqinscopeDetails[1] = new BusinessReqInScope(2,"No/N","Requirements out-scope for this archive project and is marked in Requirement Table accordingly");
+		
+		 for (int index = 0; index<BusreqinscopeDetails.length; index++) {
+			 String BusinessReqInScope_InsertQuery = "insert into BusinessReqinscope_Info_template_details(seq_no, req_in_scope, description)"
+					 +" value(?,?,?)";
+			 PreparedStatement prestmtBusReq = con.prepareStatement(BusinessReqInScope_InsertQuery);
+			 prestmtBusReq.setInt(1, BusreqinscopeDetails[index].seq_no);
+			 prestmtBusReq.setString(2, BusreqinscopeDetails[index].req_in_scope);
+			 prestmtBusReq.setString(3, BusreqinscopeDetails[index].description);
+			 prestmtBusReq.execute();
+		 }
+	 }
 
 	//calling Archive Execution Template function 
 	ArchiveExecutionTemplateService archiveExecObj = new ArchiveExecutionTemplateService("");
@@ -693,10 +727,18 @@ try
 	archiveExecObj = null;
 	System.gc();
 	
+	// Archive Legacy Application Info
 	archiveReqLegacyAppTemplateService archiveReqLegacyObj = new archiveReqLegacyAppTemplateService("");
 	archiveReqLegacyObj.archiveReqLegacyAppTemplate();
 	archiveReqLegacyObj = null;
 	System.gc();
+	
+	//Archive Retention Details
+	archiveRetentionTemplateDetailsService archiveRetentionObj = new archiveRetentionTemplateDetailsService();
+	archiveRetentionObj.archiveRetentionTemplate();
+	archiveRetentionObj = null;
+	System.gc();
+	
 	Statement st= con.createStatement(); 
 	ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");
 

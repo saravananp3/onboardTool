@@ -10,10 +10,10 @@ $(document).ready(function(){
                 data = [data];
                 AddTemplateData=[data];
             }
-
+           var dependencyValue="";
             $.each(data, function(key, value){
                 /*console.log("FULL NAME " + value.Type);*/
-                var manadatory="class='required_fie'";
+            	var manadatory="class='required_fie LabelName'";
                 var disable_property = "disabled='disabled'";
                 var seq_num =value.seq_num;
                 var Type=value.Type;
@@ -21,20 +21,21 @@ $(document).ready(function(){
                 var LabelName=value.LabelName;
                 var delete_icon="<div class='deletepopup' style='display:none;'></div>";
                 var Value=value.Value;
-                /*if(LabelName=="APM ID")
+                if(ColumnName=="thirdpartyvendor" || ColumnName == "listcountry")
             	{
-                	$("#Record_No").val(Value);
-            	}*/
+                	dependencyValue = Value;
+                	if(Value=="Internally Developed")
+                		Value="Internal";
+            	}
                 //var options=data[i].options.split(',');
-                if(value.Mandatory=="No")
+                if(value.mandatory=="No")
                 {
-                    manadatory="";
+                	manadatory="class = 'LabelName'";
                     disable_property = "";
                     delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
                 }
                 if(Type=="Text box")
-                {
-                	var template_check=""; 
+                { 
                 	
                     var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
                         "<label class='control-label' for='archiveLegacy'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
@@ -46,7 +47,6 @@ $(document).ready(function(){
                 }
                 else if(Type=="Datepicker")
                 {
-                	var template_check=""; 
                 	
                     var inputdate="<div class='form-group InputField' id='"+ColumnName+"_Row'>" +
                         "<label class='control-label' for= 'archiveLegacy'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
@@ -78,7 +78,7 @@ $(document).ready(function(){
                    }
                 else if(Type=="Check box")
                 {
-                    var inputcheck= "<div class='form-group'>"+
+                    var inputcheck= "<div class='form-group InputField'>"+
                         "<label class='control-label' for= 'archiveLegacy'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
@@ -99,7 +99,7 @@ $(document).ready(function(){
                 }
                 else if(Type=="Radio box")
                 {
-                    var inputdrop= "<div class='form-group'>"+
+                    var inputdrop= "<div class='form-group InputField'>"+
                         "<label class='control-label' for= 'archiveLegacy'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
@@ -118,7 +118,7 @@ $(document).ready(function(){
                 }
                 else if(Type=="file")
                 {
-                    inputfile="<div class='form-group'>\n" +
+                    inputfile="<div class='form-group InputField'>\n" +
                         "<label class='control-label' for='archiveLegacy'><div class='required_fie'>"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
                         "<input type='file' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'>\n" +
                         "</div>";
@@ -127,19 +127,37 @@ $(document).ready(function(){
                 }
                 else if(Type=="Text area")
                 {
-                    var inputtext="<div class='form-group'>\n" +
+                    var inputtext="<div class='form-group InputField'>\n" +
                         "<label class='control-label' for='archiveLegacy'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
                         /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
                          "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                         "</div>";
                     $('#inputFieldsAppInfo').append(inputtext);
                 }
+                else if(Type=="HiddenText")
+                {
+                	var style = (dependencyValue=="Internally Developed" || dependencyValue=="Yes")?"style='display:block;'":"style='display:none;'";
+                	dependencyValue = ""; 
+                	var inputtext="<div class='form-group InputField hiddenText1' id ='"+ColumnName+"_Row' "+style+">\n" +
+                     "<label class='control-label' for='archiveLegacy'><div "+manadatory+">"+LabelName+"<div class='deletepopup' style='display:none;'></div><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                     "<input type='text' class='form-control hiddenText' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
+                     "</div>";
+                 $('#inputFieldsAppInfo').append(inputtext);
+                }
 
             });
-            var script="<script>$('.datepicker1').datepicker({\n" +
+            
+            /*var script="<script>$('.datepicker1').datepicker({\n" +
                 "format: \"mm/dd/yyyy\",\n"+
                 "autoclose: true\n"+
-                "});<\/script>";
+                "});<\/script>";*/
+            
+            var script="<script>$('.datepicker1').datepicker({\n" +
+            "format: \"mm/dd/yyyy\",\n"+
+            "clearBtn:true,"+
+            "autoclose: true,\n"+
+            "orientation: 'bottom',"+
+            "});<\/script>";
             
             $('#scripttag').append(script);
         },
@@ -150,20 +168,36 @@ $(document).ready(function(){
     $(document).on('click', '.editpopup', function () {
     	$('#editpopup_btn').click();
     var seqnum=$(this).index('.editpopup');
+    var prevLabel = $('.LabelName').eq(seqnum).html().split('<')[0];
+    $("#LegacyLabelModify").val(prevLabel);
     //alert('seq_num in js file '+seqnum);
-    $('#seq_num').val(seqnum);
-    //alert('seq num field in js file'+$('#seq_num').val());
-    $('#EditPopUp').on('shown.bs.modal', function () {
-    });
+    $('#LegacySeqNum').val(seqnum);
+    
+    //alert('seq num field in js file'+$('#LegacySeqNum').val());
+    
     });
 //$('.deletepopup').click(function() {
 $(document).on('click', '.deletepopup', function () {
      $('#deletepopup_btn').click();
     var seqnum=$(this).index('.deletepopup');
-    $('#sequence1').val(seqnum);
-    $('#DeletePopUp').on('shown.bs.modal', function () {
-    });
+    $('#LegacyDeleteSeq').val(seqnum);
+    
 
 });
+$(document).on('change','#thirdpartyvendor',function()
+{
+	if($(this).val()=="Internal")
+		$("#locationcenter_Row").show();
+	else
+		$("#locationcenter_Row").hide();
+});
+
+$(document).on('change','input[name = dataloclaw]',function()
+		{
+			if($(this).val()=="Yes")
+				$("#listcountry_Row").show();
+			else
+				$("#listcountry_Row").hide();
+		});
 
 });

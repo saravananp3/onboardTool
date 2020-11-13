@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServlet;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import IntakeDetails.IntakeAssessment.service.IntakeAssessmentService;
 import onboard.DBconnection;
 
 public class LegacyAppInfoService {

@@ -1,0 +1,109 @@
+package NewArchiveRequirements.LegacyApplicationInfo.Servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import NewArchiveRequirements.LegacyApplicationInfo.Service.archiveReqlegacyAddFeatureService;
+import onboard.DBconnection;
+
+/**
+ * Servlet implementation class archiveLegacyAppAddServlet
+ */
+@WebServlet("/archiveLegacyAppAddServlet")
+public class archiveLegacyAppAddServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public archiveLegacyAppAddServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession details = request.getSession();
+		String Id = (String) details.getAttribute("ID");
+		JsonObject jsonobject = new JsonObject();
+        
+        try {
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            String label_name = request.getParameter("LabelName");
+           // String column_name = request.getParameter("ColumnName");
+            String mandatory = request.getParameter("Mandatory");
+            String type = request.getParameter("Type");
+            String option=request.getParameter("Options");
+
+            int NumberofInputfields=Integer.parseInt(request.getParameter("Number"));
+            jsonobject.addProperty("LabelName", label_name);
+            jsonobject.addProperty("ColumnName","LegacyAddInfo");
+            jsonobject.addProperty("Mandatory", mandatory);
+            jsonobject.addProperty("Type", type);
+            jsonobject.addProperty("Options",option);
+            if (type.equals("Text box") || type.equals("Datepicker")) {
+                jsonobject.addProperty("CheckExistance", true);
+            } else if (type.equals("Check box")) {
+                jsonobject.addProperty("CheckboxExistance", true);
+            } else if (type.equals("Radio box")) {
+                jsonobject.addProperty("RadioCheckExistance", true);
+            } else if (type.equals("Dropdown")) {
+                jsonobject.addProperty("OptionCheckExistance", true);
+            }
+
+            String select_lab = "select * from archivereq_legacyapp_info where Id = '"+Id+"' and  label_name = '"+label_name+"' ";
+            Statement st1=connection.createStatement();
+            ResultSet rs1=st1.executeQuery(select_lab);
+            
+            boolean labelcheck=false;
+            
+            if(rs1.next()){
+                labelcheck = true;
+                jsonobject.addProperty("LabelDuplicateCheck", "true");
+            }
+            
+            if(!labelcheck)
+            {
+            int seq_num =archiveReqlegacyAddFeatureService.ArchiveReqLegacyAddOperationService(Id, label_name, mandatory, type, NumberofInputfields, option);
+            jsonobject.addProperty("Seq_Num",seq_num);
+            }
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Exception----------[info]-----"+e);
+        }
+        String json = new Gson().toJson(jsonobject);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+       
+
+	}
+	}
+
+
+

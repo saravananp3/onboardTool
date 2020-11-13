@@ -68,7 +68,6 @@ public class archiveReqLegacyDataRetrieveService {
 		return jsonArray;
 	}
 	
-	
 	public JsonArray archiveLegacyDataRetrieve() {
 		
 		JsonArray jsonArray = new JsonArray();
@@ -91,7 +90,7 @@ public class archiveReqLegacyDataRetrieveService {
 				jsonObject.addProperty("ColumnName", rs.getString("column_name"));
 				jsonObject.addProperty("Type", rs.getString("type"));
 				jsonObject.addProperty("mandatory", rs.getString("mandatory"));
-				jsonObject.addProperty("Value", columnDetails.containsKey(column)&&rs.getString("value").equals("")?getAutoPopulateValue(columnDetails.get(column)):rs.getString("value"));
+				jsonObject.addProperty("Value", columnDetails.containsKey(column)&&rs.getString("value").equals("")?getAutoPopulateValue(columnDetails.get(column),column):rs.getString("value"));
 				jsonArray.add(jsonObject);
 				
 			}
@@ -106,7 +105,7 @@ public class archiveReqLegacyDataRetrieveService {
 	public LinkedHashMap<String, String> getAutoPopulateFields(){
 		LinkedHashMap<String, String> columnDet =new LinkedHashMap<String,String>(); 
 		try {
-			columnDet.put("legacyappname","appName-opportunity_info_details");
+			columnDet.put("legacyappname","appName-opportunity_info");
 			columnDet.put("srcdb","AssessAppPlatform-assessment_application_info");
 			columnDet.put("readonly","ReadonlyData-assessment_data_char_info");
 			columnDet.put("ifYesDate","LastUpdateMade-assessment_data_char_info");
@@ -116,6 +115,7 @@ public class archiveReqLegacyDataRetrieveService {
 			//columnDet.put("srcdb","AssessAppPlatform-assessment_application_info");
 			columnDet.put("nooftables","StrucNoofTables-assessment_data_char_info");
 			columnDet.put("estimatestrucsize","StrucDBsize-assessment_data_char_info");
+			columnDet.put("totalsize","StrucDBsize-assessment_data_char_info");
 			columnDet.put("estimateunstrucsize","UnstrucDataVolume-assessment_data_char_info");
 			columnDet.put("estimatefile","UnstrucNoofFiles-assessment_data_char_info");
 			columnDet.put("datahold","legalhold-assessment_compliance_char_info");
@@ -129,7 +129,7 @@ public class archiveReqLegacyDataRetrieveService {
 		return columnDet;
 	}
 	
-	public String getAutoPopulateValue(String columnTablePair)
+	public String getAutoPopulateValue(String columnTablePair,String key)
 	{
 		String value="";
 		try
@@ -146,6 +146,42 @@ public class archiveReqLegacyDataRetrieveService {
 			 checkValue = true;
 	         value= rs.getString("value");		 
 		 }
+		 rs.close();
+		 st.close();
+		 if(columnName.equals("AssessAppPlatform")) {
+			 columnName = "DatabaseType";
+			 tableName = "assessment_data_char_info";
+			 String selectQueryDB = "select * from "+tableName+" where column_name = '"+columnName+"' and Id = '"+Id+"'";
+			 Statement stDb = con.createStatement();
+			 ResultSet rsDb = stDb.executeQuery(selectQueryDB);
+			 if(rsDb.next()) {
+				 value = value.equals("")?rsDb.getString("value"):value+","+rsDb.getString("value");
+			 }
+			 stDb.close();
+			 rsDb.close();
+			 
+		 }
+		 if(checkValue&&columnName.equals("ReadonlyData"))
+		 {
+			 if(value.equals("Yes"))
+			 columnName = "LastUpdateMade";
+			 else if(value.equals("No"))
+			 columnName ="ExpectedDate";
+			 String selectQueryDate = "select * from "+tableName+" where column_name = '"+columnName+"' and Id = '"+Id+"'";
+			 Statement st2 = con.createStatement();
+			 ResultSet rs2 = st2.executeQuery(selectQueryDate);
+			 if(rs2.next())
+			 {
+				 checkValue = true;
+		         value= rs2.getString("value");		 
+			 }
+			 st2.close();
+			 rs2.close();
+		 }
+		 if(key.equals("totalsize"))
+		 {
+			 value=getTotalSize(value,tableName);
+		 }
 		 if(!checkValue&&columnName.equals("AssessAppPlatform"))
 		 {
 			 tableName = "triage_info";
@@ -158,15 +194,46 @@ public class archiveReqLegacyDataRetrieveService {
 				 checkValue = true;
 		         value= rs1.getString("value");		 
 			 } 
+			 rs1.close();
+			 st1.close();
 		 }
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
+		System.out.println();
 		return value;
 	}
 	
+	private String getTotalSize(String structDbSize,String tableName)
+	{
+		String totalSize ="";
+		try
+		{
+			boolean checkValue =false;
+		    String value = "";
+			int structureDataSize = !structDbSize.equals("")?Integer.parseInt(structDbSize):0;
+			String selectQueryDate = "select * from "+tableName+" where column_name = 'UnstrucDataVolume' and Id = '"+Id+"'";
+			 Statement st2 = con.createStatement();
+			 ResultSet rs2 = st2.executeQuery(selectQueryDate);
+			 if(rs2.next())
+			 {
+				 checkValue = true;
+		         value= rs2.getString("value");		 
+			 }
+			 st2.close();
+			 rs2.close();
+			 int unstructureDataSize = !value.equals("")?Integer.parseInt(value):0;
+			totalSize=String.valueOf(structureDataSize+unstructureDataSize);
+			 
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return totalSize;
+	}
 	
 	protected void finalize() throws Throwable {
 		 con.close();

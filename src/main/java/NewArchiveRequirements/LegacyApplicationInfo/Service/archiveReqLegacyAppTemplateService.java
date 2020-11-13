@@ -33,31 +33,29 @@ public class archiveReqLegacyAppTemplateService {
 			
 			if(!rs_legacy.next())
 			{
-				archiveReqLegacyTemplateInfo legacy[] = new archiveReqLegacyTemplateInfo[24];
+				archiveReqLegacyTemplateInfo legacy[] = new archiveReqLegacyTemplateInfo[22];
 				legacy[0] = new archiveReqLegacyTemplateInfo(1,"","Legacy Application Name", "legacyappname", "Text box","Yes", "");
 				legacy[1] = new archiveReqLegacyTemplateInfo(2,"","Source Platform/Databases", "srcdb", "Text box", "Yes", "");
 				legacy[2] = new archiveReqLegacyTemplateInfo(3,"","Legacy Application Description(High level Usage)", "legacyappdesc", "Text box", "No", "");
-				legacy[3] = new archiveReqLegacyTemplateInfo(4,"Yes,No","Data is in Read Only state?", "readonly", "Radio box", "No", "");
-				legacy[4] = new archiveReqLegacyTemplateInfo(5,"","If yes, when was the last updates made?", "ifYesDate", "HiddenDate", "No", "");
-				legacy[5] = new archiveReqLegacyTemplateInfo(6,"","If no, when is it expected to be read only??", "ifNoDate", "HiddenDate", "No", "");
-				legacy[6] = new archiveReqLegacyTemplateInfo(7,"","Is this application the only source of truth for the data?", "onlysrcdata", "Text box", "No", "");
-				legacy[7] = new archiveReqLegacyTemplateInfo(8,"Internal,Third Party","Is the legacy application hosted internally or with an third-party  vendor?", "thirdpartyvendor", "Dropdown", "Yes", "");
-				legacy[8] = new archiveReqLegacyTemplateInfo(9,"City,State,Country","If hosted internally, where is the data center location?(City, State,Country)", "locationcenter", "HiddenText", "Yes", "");
-				legacy[9] = new archiveReqLegacyTemplateInfo(10,"","Name of the DBA who will grant access to the database", "dbaaccess", "Text box", "No", "");
-				legacy[10] = new archiveReqLegacyTemplateInfo(11,"Yes,No","Is the legacy application following data localization laws?", "dataloclaw", "Radio box", "Yes", "");
-				legacy[11] = new archiveReqLegacyTemplateInfo(12,"","If yes, List out the countries where the regulations apply?", "listcountry", "HiddenText", "No", "");
-				legacy[12] = new archiveReqLegacyTemplateInfo(13,"Structured,Unstructured, Hybrid","Data Type Charecteristics:", "datachar", "Dropdown", "Yes", "");
-				legacy[13] = new archiveReqLegacyTemplateInfo(14,"","What is the total data size?(MB,GB ,TB)", "totalsize", "Text box", "Yes", "");
-				legacy[14] = new archiveReqLegacyTemplateInfo(15,"","What is the estimated number of tables?", "nooftables", "Text box", "No", "");
-				legacy[15] = new archiveReqLegacyTemplateInfo(16,"","What is the estimated size of Structured data ?( MB,GB, TB)", "estimatestrucsize", "Text box", "No", "");
-				legacy[16] = new archiveReqLegacyTemplateInfo(17,"","What is the estimated size of UnStructured data ?( MB,GB, TB)", "estimateunstrucsize", "Text box", "No", "");
-				legacy[17] = new archiveReqLegacyTemplateInfo(18,"","If Unstructured/Hybrid the estimated number of files/documents", "estimatefile", "Text box", "No", "");
-				legacy[18] = new archiveReqLegacyTemplateInfo(19,"","What languages are represented in the data?","datalang", "Text box", "No", "");
-				legacy[19] = new archiveReqLegacyTemplateInfo(20,"Yes,No","Are there legal hold on any of the data?", "datahold", "Radio box", "Yes", "");
-				legacy[20] = new archiveReqLegacyTemplateInfo(21,"","List out any dependencies that will interrupt the archival process", "archivalprocess", "Text box", "No", "");
-				legacy[21] = new archiveReqLegacyTemplateInfo(22,"Yes,No","Encryption required on data?", "encreq", "Radio box", "No", "");
-				legacy[22] = new archiveReqLegacyTemplateInfo(23,"Yes,No","Masking  required on data?", "makreq", "Radio box", "Yes", "");
-				legacy[23] = new archiveReqLegacyTemplateInfo(24,"","Additional Questions", "addque", "Text box", "Yes", "");
+				legacy[3] = new archiveReqLegacyTemplateInfo(4,"","What is the read-only date?", "readonly", "Datepicker", "Yes", "");
+				legacy[4] = new archiveReqLegacyTemplateInfo(5,"","Is this application the only source of truth for the data?", "onlysrcdata", "Text box", "No", "");
+				legacy[5] = new archiveReqLegacyTemplateInfo(6," ,Internal,Third Party","Is the legacy application hosted internally or with an third-party  vendor?", "thirdpartyvendor", "Dropdown", "No", "");
+				legacy[6] = new archiveReqLegacyTemplateInfo(7,"City,State,Country","If hosted internally, where is the data center location?(City, State,Country)", "locationcenter", "HiddenText", "No", "");
+				legacy[7] = new archiveReqLegacyTemplateInfo(8,"","Name of the DBA who will grant access to the database", "dbaaccess", "Text box", "No", "");
+				legacy[8] = new archiveReqLegacyTemplateInfo(9,"Yes,No","Is the legacy application following data localization laws?", "dataloclaw", "Radio box", "No", "");
+				legacy[9] = new archiveReqLegacyTemplateInfo(10,"","If yes, List out the countries where the regulations apply?", "listcountry", "HiddenText", "No", "");
+				legacy[10] = new archiveReqLegacyTemplateInfo(11,"Structured,Unstructured, Hybrid","Data Type Charecteristics:", "datachar", "Dropdown", "Yes", "");
+				legacy[11] = new archiveReqLegacyTemplateInfo(12,"","What is the total data size?(MB,GB ,TB)", "totalsize", "Text box", "Yes", "");
+				legacy[12] = new archiveReqLegacyTemplateInfo(13,"","What is the estimated number of tables?", "nooftables", "Text box", "No", "");
+				legacy[13] = new archiveReqLegacyTemplateInfo(14,"","What is the estimated size of Structured data ?( MB,GB, TB)", "estimatestrucsize", "Text box", "No", "");
+				legacy[14] = new archiveReqLegacyTemplateInfo(15,"","What is the estimated size of UnStructured data ?( MB,GB, TB)", "estimateunstrucsize", "Text box", "No", "");
+				legacy[15] = new archiveReqLegacyTemplateInfo(16,"","If Unstructured/Hybrid the estimated number of files/documents", "estimatefile", "Text box", "No", "");
+				legacy[16] = new archiveReqLegacyTemplateInfo(17,"","What languages are represented in the data?","datalang", "Text box", "No", "");
+				legacy[17] = new archiveReqLegacyTemplateInfo(18,"Yes,No","Are there legal hold on any of the data?", "datahold", "Radio box", "Yes", "");
+				legacy[18] = new archiveReqLegacyTemplateInfo(19,"","List out any dependencies that will interrupt the archival process", "archivalprocess", "Text box", "No", "");
+				legacy[19] = new archiveReqLegacyTemplateInfo(20,"Yes,No","Encryption required on data?", "encreq", "Radio box", "Yes", "");
+				legacy[20] = new archiveReqLegacyTemplateInfo(21,"Yes,No","Masking  required on data?", "makreq", "Radio box", "Yes", "");
+				legacy[21] = new archiveReqLegacyTemplateInfo(22,"","Additional Questions", "addque", "Text box", "No", "");
 				
 				for (int index = 0; index<legacy.length; index++)
 				{
