@@ -88,7 +88,7 @@ var typingTimer;                //timer identifier
 				var yes_value = $('.description').eq(0).val();
 				var no_value = $('.description').eq(1).val();
 				 
-				if(!checkFieldValues(yes_value, no_value))
+				if(!checkBusinessReqValues(yes_value, no_value))
 					validation = false;
 				inputs["Yes/Y"] = yes_value;
 				inputs["No/N"] = no_value;
@@ -103,7 +103,7 @@ var typingTimer;                //timer identifier
 	});
 		
 		
-	function checkFieldValues(req_in_scope, description){
+	function checkBusinessReqValues(req_in_scope, description){
 		
 		var validationFlag = false;
 		if((req_in_scope != '' && req_in_scope != undefined && req_in_scope != null) && (description != '' && description != undefined && description != null))

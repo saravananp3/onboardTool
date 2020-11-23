@@ -178,6 +178,35 @@
         String query67 = "CREATE TABLE `BusinessReqinscope_Info_template_details` (`seq_no` INTEGER (255), `req_in_scope` varchar(255),`description` varchar(255))";
         statement.executeUpdate(query67);
         
+        String query68 = "CREATE TABLE `Archive_DataReq_Template_Details` (`seq_no` INTEGER (255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `req` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query68);
+        
+        String query69 = "CREATE TABLE `Archive_DataReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `req` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query69);
+        
+        String query70 = "CREATE TABLE `Archive_RetentionLegalReq_Template_Details` (`seq_no` INTEGER (255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query70);
+        
+        String query71 = "CREATE TABLE `Archive_RetentionLegalReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query71);
+        
+        String query72 = "CREATE TABLE `Archive_SecurityReq_Template_Details` (`seq_no` INTEGER (255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query72);
+        
+        String query73 = "CREATE TABLE `Archive_SecurityReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query73);
+        
+        String query74 = "CREATE TABLE `Archive_UsabilityReq_Template_Details` (`seq_no` INTEGER (255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query74);
+        
+        String query75 = "CREATE TABLE `Archive_UsabilityReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query75);
+        
+        String query76 = "CREATE TABLE `Archive_AuditlReq_Template_Details` (`seq_no` INTEGER (255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query76);
+        
+        String query77 = "CREATE TABLE `Archive_AuditReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        statement.executeUpdate(query77);
        %>
 <% } catch (Exception ex) {
 

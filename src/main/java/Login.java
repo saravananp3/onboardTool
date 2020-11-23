@@ -12,6 +12,7 @@ import com.sun.jersey.spi.inject.Errors;
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionTemplateService;
 import NewArchiveRequirements.LegacyApplicationInfo.Service.archiveReqLegacyAppTemplateService;
 import NewArchiveRequirements.LegacyApplicationInfo.retentionDetails.Service.archiveRetentionTemplateDetailsService;
+import NewArchiveRequirements.businessRequirementsDetails.functionalReqInfo.dataReq.Service.archiveFunDataReqTemplate;
 
 import org.apache.log4j.BasicConfigurator;
 
@@ -739,6 +740,15 @@ try
 	archiveRetentionObj = null;
 	System.gc();
 	
+	//Archive Function Data Req Details
+	String[] tableNamesFunctionReq = {"Archive_DataReq_Template_Details","Archive_RetentionLegalReq_Template_Details","Archive_SecurityReq_Template_Details","Archive_UsabilityReq_Template_Details","Archive_AuditlReq_Template_Details"};
+	for(int index=0;index<tableNamesFunctionReq.length;index++)
+	{
+	archiveFunDataReqTemplate archiveDataReqObj = new archiveFunDataReqTemplate(tableNamesFunctionReq[index]);
+	archiveDataReqObj.archiveDataReqTemplate();
+	archiveDataReqObj = null;
+	System.gc();
+	}
 	Statement st= con.createStatement(); 
 	ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");
 

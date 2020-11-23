@@ -26,6 +26,8 @@
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
 <script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/businessReqInfo/businessReqDataRetrieveAjaxCall.js"></script>
 
+<script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqDataRetrieveAjaxCall.js"></script>
+
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -313,7 +315,7 @@ padding: 15px;
                                     
                                      <!-- Business Requirements Table -->
                                      
-                            <div class="panel panel-default" style='width:1000px;'>
+                            <div class="panel panel-default" style='width:1200px;'>
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
                                                 <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">Business Requirements</a></h4>
@@ -365,7 +367,7 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:25%;">
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
 												 
 												 <button type="submit" class="btn btn-success" id="SaveReqInScope">Save</button>
 												 
@@ -377,6 +379,167 @@ padding: 15px;
                                             </div> 
                                             </div> 
                                             
+                                                      
+                               <!-- Data Req -->
+							    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6">Functional Requirements</a></h4>
+                                        </div>
+                                        
+                                            <div class="panel-body">
+                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        			<div id="inputFieldsReqinscope">
+                                               		
+                                                 			<div>
+                                                 			<h4 class="title1">4.1.1 Data Requirements</h4>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
+																		<th style='text-align:center;vertical-align: middle;'>Req In-Scope Y/N</th>
+																		<th style='text-align:center;vertical-align: middle;'>Requirement Type</th>
+																		<th style='text-align:center;vertical-align: middle;'>Requirement</th>
+																		<th style='text-align:center;vertical-align: middle;'>Additional Info</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="DataReqId">
+      												    												
+      															</tbody>
+																</table>
+  																</div> 
+												  
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 <button class="btn btn-primary addClass" type="button" id="dataReqAdd">Add</button>
+												 <button type="submit" class="btn btn-success dataSaveClass" id="dataSaveReq">Save</button>
+												 
+                                       	
+                                       			</div>
+                                            </div>
+                                            
+                                            <div id="inputFieldsReqinscope">
+                                               		
+                                                 			<div>
+                                                 			<h4 class="title1">4.1.2 Retention and Legal Requirements</h4>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
+																		<th style='text-align:center;vertical-align: middle;'>Req In-Scope Y/N</th>
+																		<th style='text-align:center;vertical-align: middle;'>Requirement Type</th>
+																		<th style='text-align:center;vertical-align: middle;'>Description</th>
+																		<th style='text-align:center;vertical-align: middle;'>Additional Info</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="LegalReqId">
+      												    												
+      															</tbody>
+																</table>
+  																</div> 
+												  
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 <button class="btn btn-primary addClass" type="button" id="legalReqSaveAdd">Add</button>
+												 <button type="submit" class="btn btn-success dataSaveClass" id="legalReqSaveReq">Save</button>
+												 
+                                       	
+                                       			</div>
+                                            </div>
+                                              
+                                              <div id="inputFieldsReqinscope">
+                                               		
+                                                 			<div>
+                                                 			<h4 class="title1">4.1.3 Security Requirements</h4>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
+																		<th style='text-align:center;vertical-align: middle;'>Req In-Scope Y/N</th>
+																		<th style='text-align:center;vertical-align: middle;'>Requirement Type</th>
+																		<th style='text-align:center;vertical-align: middle;'>Description</th>
+																		<th style='text-align:center;vertical-align: middle;'>Additional Info</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="SecurityReqId">
+      												    												
+      															</tbody>
+																</table>
+  																</div> 
+												  
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 <button class="btn btn-primary addClass" type="button" id="securityReqAdd">Add</button>
+												 <button type="submit" class="btn btn-success dataSaveClass" id="securityReqSaveReq">Save</button>
+												 
+                                       	
+                                       			</div>
+                                            </div>
+                                              
+                                              <div id="inputFieldsReqinscope">
+                                               		
+                                                 			<div>
+                                                 			<h4 class="title1">4.1.4 Usability Requirements</h4>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
+																		<th style='text-align:center;vertical-align: middle;'>Req In-Scope Y/N</th>
+																		<th style='text-align:center;vertical-align: middle;'>Requirement Type</th>
+																		<th style='text-align:center;vertical-align: middle;'>Description</th>
+																		<th style='text-align:center;vertical-align: middle;'>Additional Info</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="UsabilityReqId">
+      												    												
+      															</tbody>
+																</table>
+  																</div> 
+												  
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 <button class="btn btn-primary addClass" type="button" id="UsabilityReqAdd">Add</button>
+												 <button type="submit" class="btn btn-success dataSaveClass" id="UsabilityReqSaveReq">Save</button>
+												 
+                                       	
+                                       			</div>
+                                            </div>
+                                              
+                                              <div id="inputFieldsReqinscope">
+                                               		
+                                                 			<div>
+                                                 			<h4 class="title1">4.1.5 Audit Requirements</h4>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
+																		<th style='text-align:center;vertical-align: middle;'>Req In-Scope Y/N</th>
+																		<th style='text-align:center;vertical-align: middle;'>Requirement Type</th>
+																		<th style='text-align:center;vertical-align: middle;'>Description</th>
+																		<th style='text-align:center;vertical-align: middle;'>Additional Info</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="AuditReqId">
+      												    												
+      															</tbody>
+																</table>
+  																</div> 
+												  
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 <button class="btn btn-primary addClass" type="button" id="auditReqAdd">Add</button>
+												 <button type="submit" class="btn btn-success dataSaveClass" id="auditReqSaveReq">Save</button>
+												 
+                                       	
+                                       			</div>
+                                            </div>
+                                              
+                                            </div> 
+                                            </div> 
+                                            </div> 
+                                        
+                                            
+                                            <button type="button" class="btn btn-primary pull-right" id="DataDeleteId" data-toggle="modal" data-target="#DataDeletePopUp" style="display: none;">Delete PopUp</button>
                                         <div class="col-md-12">
                                         	<br/>
                                         <div class="col-md-1"> 
@@ -433,7 +596,31 @@ padding: 15px;
     %>
     </div></div></form>
    
- 
+ <!-- Data Req Delete PopUp -->  
+  <div class="modal" id="DataDeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="DataDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p>Do you want to delete this Row permanently?</p>
+                    <input type="hidden" id="DataDeleteSeq"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="DataDeleteSubmit" class="btn btn-primary submitDisableData" >Yes</button>
+        <button type="button" class="btn btn-default" id = "closeDataIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
@@ -491,5 +678,8 @@ padding: 15px;
 <script src="js/notification/notification.js"></script>
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/businessRequirementsDetails/businessReqInfo/businessReqSave.js"></script>
 
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqAddAjaxCall.js"></script>
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqDeleteAjaxCall.js"></script>
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqSaveAjaxCall.js"></script>
 </body>
 </html>

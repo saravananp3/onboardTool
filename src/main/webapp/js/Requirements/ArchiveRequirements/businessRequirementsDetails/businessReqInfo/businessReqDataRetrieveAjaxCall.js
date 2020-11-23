@@ -3,9 +3,9 @@ $(document).ready(function(){
 	businessReqDataRetrieve();
 	businessReqInScopeDataRetrieve();
 	
-$(document).on('click','.EditRow', function(){
+$(document).on('click','.EditRowBusiness', function(){
 		
-		var seqNum = $(this).index(".EditRow");
+		var seqNum = $(this).index(".EditRowBusiness");
 		var nameReadOnly = $(".description").eq(seqNum).attr("readonly");
 		if(nameReadOnly)
 		{
@@ -73,7 +73,7 @@ function businessReqInScopeDataRetrieve(){
             	 "<td>"+
             	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu'>"+
-                            "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
+                            "<li><a  class='fa fa-edit EditRowBusiness' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
                             "</ul>"+
                             "</div>"+
             	 "</td>" +
