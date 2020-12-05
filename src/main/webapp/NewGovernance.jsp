@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>New Opportunity</title>
+    <title>New Wave</title>
     <meta charset="UTF-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,9 +102,9 @@ HttpSession details = request.getSession();
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li ><a href="OpportunityList.jsp">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="GovernanceList.jsp">Governance</a></li>
+		              <li class="active"><a href="#" style="color:#fff">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
 		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
@@ -128,7 +128,7 @@ HttpSession details = request.getSession();
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h4 class="title" style="color:#fff">Create Opportunity</h4>
+                            <h4 class="title" style="color:#fff">Create Wave</h4>
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
                        
@@ -160,7 +160,7 @@ HttpSession details = request.getSession();
  <div class="panel-group" id="panels1">
      <div class="panel panel-default">
          <div class="panel-heading">
-             <h4 class="panel-title"> <a  data-parent="#panels1" > New Opportunity  </a> </h4>
+             <h4 class="panel-title"> <a  data-parent="#panels1" > New Wave  </a> </h4>
          </div>
          <%@ page import="java.sql.*"%>
          <div id="collapse2" class="panel-collapse">
@@ -176,11 +176,11 @@ HttpSession details = request.getSession();
 	              
 	                      <div class="col-md-12">
                 <div class="col-md-1">
-	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='OpportunityList.jsp';">Back</button>
+	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='GovernanceList.jsp';">Back</button>
 	           </div>
 	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right;">
 
-	                <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".bd-example-modal-lg">Template</button>
+	                
                             <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
                               <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
@@ -380,37 +380,7 @@ HttpSession details = request.getSession();
     </div>
   </div>
 </div>               
-	               <!-- Modal -->
-	               
-<div class="modal fade bd-example-modal-lg" id="myFormModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Opportunity Template</h5>
-        <button type="button" class="close" id="temp_close_id" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form name = "myForm">
-            <div class="form-group" id="TemplateFields">
-            </div>
-	        	        
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary submitDisable" onclick="validateForm()">Add Template</button>
-      </div>
-    </div>
-  </div>
-</div>
-	               
-	               
-	               
-	               
-              
-              
+	         
            </div>
            
            

@@ -51,7 +51,7 @@
                   <ul class="nav navbar-nav">
 		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="GovernanceList.jsp">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
 		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
@@ -71,11 +71,11 @@
                          <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
                           <span class="glyphicon glyphicon-home"></span> Home</a> >> 
                          
-                          <a  href="IntakeOpportunity.jsp" id="sitetitle1" style="color:#fff">
-                           Opportunity</a> >>
-                          <a  href="IntakeTriage.jsp" id="sitetitle1" style="color:#fff">
-                           Triage</a> 
-                         </p>
+                          <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Introduction</a> >>
+                          <a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Legacy application Information</a> >> Triage Information
+                           </a></p>
                      
                     
 
@@ -98,9 +98,9 @@
 						<div class="form-wizard-header">
 							<p>Fill all the required fields to go next step</p>
 							<ul class="list-unstyled form-wizard-steps clearfix">
-								<li class="activated"><span>1</span><i>Opportunity</i></li>
-								<li class="active"><span>2</span><i>Triage</i></li>
-								<li><span>3</span><i>Triage Summary</i></li>
+								<li class="activated"><span>1</span><i>Introduction</i></li>
+								<li class="active"><span>2</span><i>Legacy app Info</i></li>
+								<li><span>3</span><i>Triage Info</i></li>
 								<li><span>4</span><i>Assessment</i></li>
 								<li><span>5</span> <i>Stake Holder</i></li>
 								<li><span>6</span><i>Review</i></li>
@@ -123,7 +123,7 @@
                                              </div>
                                             <div class="col-md-12">
                                                 <div class="col-md-1">
-                                                     <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick ="window.location.href='IntakeOpportunity.jsp';">Prev</button> </div>
+                                                     <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick ="window.location.href='archiveRequirementsLegacyDetails.jsp';">Prev</button> </div>
                                                             <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width: 43%;">
                                                                 <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".triage-example-modal-lg">Template</button>
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span> </button>

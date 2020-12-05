@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Opportunity List</title>
+    <title>Dashboard</title>
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
@@ -20,7 +20,10 @@
     <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
     <link rel="stylesheet" href="css/icheck/skins/line/green.css" >
     <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css" >
-   <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
+   	<link rel="stylesheet" href="css/UserInfo/userinfo.css" >
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+   
    
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
@@ -29,8 +32,142 @@
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/Opportunity/OpportunityList/OpportunityList.js"></script>
+    
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['DatabaseSize', 'size'],
+          ["Peolesoft", 233338787],
+          ["JBA", 385656755],
+          ["COPS", 1455767524],
+          
+         
+        ]);
+
+        var options = {
+          title: '',
+          width: 1000,
+          legend: { position: 'none' },
+          chart: { title: '',
+                   subtitle: '' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'DB Size In MB'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "500%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+    
+    
+    <script language="JavaScript">
+        google.charts.load('current', {packages: ['corechart']});
+
+        function drawChart() {
+            // Define the chart to be drawn.
+            var data = google.visualization.arrayToDataTable([
+                ['Tasks', 'completion'],
+                ['Intake', 100],
+                ['Plan & priority', 40],
+                ['Requirements', 20],
+                ['Archive exrcution', 10],
+                ['Decommision', 5],
+                
+
+            ]);
+
+            var options = {title: ''};
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('container'));
+            chart.draw(data, options);
+        }
+
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
+    
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['gantt']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Task ID');
+      data.addColumn('string', 'Task Name');
+      data.addColumn('string', 'Resource');
+      data.addColumn('date', 'Start Date');
+      data.addColumn('date', 'End Date');
+      data.addColumn('number', 'Duration');
+      data.addColumn('number', 'Percent Complete');
+      data.addColumn('string', 'Dependencies');
+
+      data.addRows([
+        ['2014Spring', 'Project Kickoff Meeting', '--',
+         new Date(2020, 2, 22), new Date(2020, 5, 20), null, 100, null],
+        ['2014Summer', 'Stakeholder/Project Team Identification', 'summer',
+         new Date(2020, 4, 21), new Date(2020, 7, 20), null, 100, null],
+        ['2014Autumn', 'Consultants Remote access setup', 'autumn',
+         new Date(2020, 4, 21), new Date(2020, 7, 20), null, 100, null],
+        ['2014Winter', 'Secure link Access, Applications enablement', 'winter',
+         new Date(2020, 5, 21), new Date(2020, 8, 21), null, 100, null],
+        ['2015Spring', 'Project Plan, Implementation Roadmap', 'spring',
+         new Date(2020, 6, 22), new Date(2020, 10, 20), null, 50, null],
+       
+      ]);
+
+      var options = {
+        height: 250,
+        gantt: {
+          trackHeight: 30
+        }
+      };
+
+      var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+  </script>
+    
+   <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['How many application are in intake',     5],
+          ['how many app in requirement phase',      4],
+          ['implementation phase',  3],
+          ['decomission', 2],
+        
+        ]);
+
+        var options = {
+          
+          pieHole: 0.4,width: 1250,
+          
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    
+    
     <style type="text/css">
+         
+         
+        
+         
          body{
             background:#fff;
         }
@@ -50,7 +187,56 @@
     padding-right: 0px;
 	}
 	
-	
+	h1 { 
+        color: green; 
+    } 
+            
+    /* toggle in label designing */
+    .toggle { 
+        position: absolute;
+    display: inline-block;
+    width: 85px;
+    margin-top: 115px;
+   margin-left: 1205px;
+    height: 36px;
+   background-color: #ffffff;
+    border-radius: 30px;
+    border: 2px solid #1287ea; 
+    } 
+            
+    /* After slide changes */
+    .toggle:after { 
+        content: '';
+    position: absolute;
+    width: 31px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #1389eb;
+    top: 1px;
+    left: 1px;
+    transition: all 0.5s;
+    } 
+            
+    /* Toggle text */
+    p { 
+        font-family: Arial, Helvetica, sans-serif; 
+        font-weight: bold; 
+    } 
+            
+    /* Checkbox cheked effect */
+    .checkbox:checked + .toggle::after { 
+        left : 49px;  
+    } 
+            
+    /* Checkbox cheked toggle label bg color */
+    .checkbox:checked + .toggle { 
+      background-color: #ffffff;
+    } 
+            
+    /* Checkbox vanished */
+    .checkbox {  
+        display : none; 
+    } 
 	
 
 hr{
@@ -370,14 +556,29 @@ input[type=search]:focus {
 color:#fff;
 
 }
+/* toggle */
 
-
+/* toggle */
 #apptype{
 
  font-size: .875rem;
  color:#fff;
 }
-         
+      
+      .paneldashboard{box-shadow: 0 1px 7px rgb(76 89 103);
+    margin-top: 14px;
+      }
+     
+      .font_icon{
+      font-size: 20px;
+      }
+      .totcounter{
+      font-size: 43px;
+    margin-bottom: 14px;
+    text-align: center;}
+    .headercharts{
+    margin-left: 22px; margin-bottom: 21px;
+    }
     </style>
 
 </head>
@@ -482,11 +683,11 @@ color:#fff;
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li ><a href="OpportunityList.jsp">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
 		              <li><a href="GovernanceList.jsp">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
-		              <li ><a href="DashBoard.jsp">Dashboards</a></li>
+		              <li class="active"><a href="#" style="color:#fff">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
 		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
@@ -508,45 +709,13 @@ color:#fff;
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                             <h5 class="title" style="color:#fff">Applications</h5>
-                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                             <h5 class="title" style="color:#fff">Dashboard</h5>
+                             
+                              <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> Dashboard</p>
                         </div>
-                        <div class="col-md-12">
-                             <div class="row form-row">
-                               <div class="col-md-2 search-input">
-		                                <div class="row form-row">
-		                               <div class="col-md-1">
-		                               <i class="fa fa-search" aria-hidden="true"></i>
-		                               </div>
-		                               <div class="col-md-10">
-		                               <input class="form-control searchbox-input" id="myInput" type="text" placeholder="Search the application.."></div>
-		                               
-		                               </div>
-                               </div>
-                               
-                               
-                               <div class="col-md-6 ">
-		                                <div class="row ">
-		                               <div class="col-md-5">
-		                              <label class="col-md-2" id="apptype" title="Application Type"></label>
-		                               </div>
-                              
-                               </div>
-                               
-                               
-                               
-                              
-                              
-                               </div>
-                             </div>
+                        
                         </div>
-                       
-                        <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                               
-                            </button>
-                        </div>
-                        <!-- /.col-sm-6 text-right -->
+                      
 
                     </div>
 
@@ -556,60 +725,71 @@ color:#fff;
         <!-- /.container-fluid -->
     </nav >
     <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+   
     <div class="content-wrapper">
+     
+        
+        
+
         <div class="content-container">
-            <!-- Projects List Start -->
-            <%
-                {
-                    int application_count=0;
-                    if(Projets=="all") {
-                        String projectCount = "select count(*) from appemphazize_projectdetails";
-                        Statement projectCountst = con.createStatement();
-                        ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
-                        if (projectCountqyery.next()) {
-                            application_count = Integer.parseInt(projectCountqyery.getString(1));
-                        }
-                    }
-                    else
-                    {
-                        String ProjCountQuery="select * from admin_userdetails where uname='"+uname+"'";
-                        Statement statement1=con.createStatement();
-                        ResultSet resultSet=statement1.executeQuery(ProjCountQuery);
-                        if(resultSet.next())
-                        {
-                            String[] prjs=(resultSet.getString("projects")).split(",");
-                            application_count=prjs.length;
-                        }
-                    }
-            %>
-             <%} %>
+           
             <div class="main-page">
-                <div class="container">
-                  
-
-                </div>
-
-
-                <form method="post" name="form" action="Appin">
-                    <section>
-
-                        <div class="row">
+               <div class="paneldashboard" style="margin-top: 21px;  margin-bottom: 75px;">
+                             <input type="checkbox" id="switch"
+                    class="checkbox" /> 
+        <label for="switch" class="toggle"> 
+        </label>                           
+                                                    </div> 
+                 
+              <div style="margin-top: 80px;"class="col-md-12 ">
+                                                        <div class="paneldashboard">
+              
                             <div class="container-fluid grid">
                                 <div class="main">
+                                
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
-                                        <div class="cbp-vm-options">
-                                            <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid"></a>
-                                            <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list"></a>
-                                        </div>
-                                        
-
-
- 
-                                      <div class='col-md-12'>
-                                        <ul id = "ul_id">
-                                            
-
-                                        </ul>
+                                       
+                                 
+                                <div style="margin-bottom: 38px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter">10</p>
+                                         <span><i class="fa fa-file-text-o" style="font-size: 30px; " aria-hidden="true"></i></span>
+                                        <span class="font_icon">Opportunities</span>
+                                    </a>
+                               
+                                </div>
+                                
+                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter">16</p>
+                                        </span><i class="fa fa-remove" style="font-size: 30px;" aria-hidden="true"></i>
+                                        <span class="font_icon">Decommision Apps</span>
+                                    </a>
+                                    
+                               
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter">22</p>
+                                        <span><i class="fa fa-archive" style="font-size: 30px;" aria-hidden="true"></i>
+                                       <span class="font_icon">Archive Apps</span></span>
+                                    </a>
+                               
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter">34</p>
+                             <span ><i class="fa fa-get-pocket" style="font-size: 30px;" aria-hidden="true"></i>
+                                        <span class="font_icon">Apps To Retrived</span></span>
+                                    </a>
+                                    
+                                    
+                               
+                                </div>
+               
+                            </div> 
+                            </div>
+                  
                                       </div>
                                         <%
                                                 con.close();
@@ -627,44 +807,115 @@ color:#fff;
 
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                        <!-- /.row -->
-                    </section>
-
-                </form>
-
-
-
-
-            </div>
-            <!-- /.mainPage -->
-
-
-
-
-
-
-
-
-
-
-
+                                
+                                       <div class="col-md-12 ">
+                                                        <div class="paneldashboard">
+                                                            <!-- <div>
+                                                                <h4 class="headercharts">Application Statistics</h4>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <label class="col-md-3 col-form-label">Project</label>
+                                                                        <div class="col-md-9">
+                                                                            <select class="form-control">
+                                                                                <option>BPCS</option>
+                                                                                <option>Microsiga</option>
+                                                                                <option>SEEKGIT</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
+                                                            <br>
+                                                            <br>
+                                                            <div class="content">
+                                                                <div id="donutchart" style="width: 900px; height: 500px;"></div>
 
 
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                    
+                                               
+
+												<div class="col-md-12">
+		
+		                                                        <div class="paneldashboard">
+		                                                            <div>
+		                                                                <h4 class="headercharts">Opportunity Timeline</h4>
+																		
+		                                                            
+		                                                            <div class="content">
+		                                                                
+																	<div id="chart_div" ></div>
+		
+		                                                            </div>
+		                                                        
+		                                                            </div>
+		
+		                                                            
+		                                                        </div>
+		                                                    </div>
+                        
+                                        <div class="col-md-12">
+                                            <div class="card">
 
 
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
+                                                        <div class="paneldashboard">
+                                                            <div >
+                                                                <h4 class="headercharts">Application Breakdown</h4>
+																<div class="card1">
+                                                            
+                                                            <div class="content">
+                                                                
+															<div id="top_x_div" style="width: 900px; height: 400px;"></div>
+
+                                                            </div>
+                                                        </div>
+
+                                                            </div>
+
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
 
 
+                                                    
+                                              
+                                                    <!-- <div class="col-md-12">
+                                                        <div class="paneldashboard">
+                                                            <div >
+                                                                <h4 class="headercharts">Project Statistics</h4>
+
+                                                            </div>
+                                                            <div class="content">
+                                                                <div id="container"
+                                                                     style="width: 550px; height: 400px; margin: 0 auto"></div>
 
 
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                    
+                                                </div>
+                     
+                    
 
-            <!-- Project List End -->
-
-        </div>
-        <!-- /.content-container -->
-    </div>
+   					</div>
+  					  </div>
+					  
+		
+		
+		
+					  
+		
     <!-- /.content-wrapper -->
 
 </div>

@@ -392,7 +392,7 @@ transition: width 2s, height 2s, transform 2s;
                   <ul class="nav navbar-nav">
 		    <li class="active"><a href="#" style="color:#fff">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="GovernanceList.jsp">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
 		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>

@@ -296,7 +296,7 @@
                                         <%--<span class="number counter" id="application_count"></span>--%>
                                         <h1 class="ui-valuet" id="applive"></h1>
                                         <span class="name"> Applications in  live </span>
-                                        <span class="bg-icon"><i class="fa fa-list-alt"></i></span>
+                                        <span class="bg-icon"><i class="fa fa-archive" aria-hidden="true"></i></span>
                                     </a>
                                     <!-- /.dashboard-stat -->
 

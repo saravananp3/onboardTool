@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Opportunity List</title>
+    <title>Governance List</title>
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
@@ -482,11 +482,11 @@ color:#fff;
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li><a href="OpportunityList.jsp">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="GovernanceList.jsp">Governance</a></li>
+		              <li class="active"><a href="#" style="color:#fff">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
-		              <li ><a href="DashBoard.jsp">Dashboards</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
 		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
@@ -508,10 +508,11 @@ color:#fff;
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                             <h5 class="title" style="color:#fff">Applications</h5>
+                             <h5 class="title" style="color:#fff">Waves / Projects</h5>
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
-                        <div class="col-md-12">
+                  
+                         <div class="col-md-12">
                              <div class="row form-row">
                                <div class="col-md-2 search-input">
 		                                <div class="row form-row">
@@ -541,8 +542,18 @@ color:#fff;
                              </div>
                         </div>
                        
+                         <div class="container-fluid ">
+                         <ul class="nav navbar-nav" >
+						      <li ></li>
+						        <li ></li>
+		                   </ul>
+                         </div>
+                 
+
+			
+                       
                         <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                
                             </button>
                         </div>

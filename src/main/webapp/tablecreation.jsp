@@ -216,6 +216,9 @@
 	
 	String query80 = "CREATE TABLE `Archive_DocumentRevision_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `date` varchar(255), `version` varchar(255), `documentChanges` varchar(255), `changeAuthor` varchar(255))";
         statement.executeUpdate(query80);
+	
+	String query81 = "CREATE TABLE `Governance_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query81);
 		
 	  %>
 <% } catch (Exception ex) {

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
 <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
 
-<title>Decom3Sixty - Archive Requirements</title>
+<title>Decom3Sixty - Business Requirements</title>
 <!-- ========== PAGE STYLES ========== -->
 <link rel="stylesheet" href="css/prism/prism.css" media="screen" > <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
  <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen" >
@@ -200,7 +200,7 @@ padding: 15px;
 	}
 
 .panelSize {
-  display: flex;
+  display: inline-grid;
   justify-content: center;
 }
 
@@ -253,7 +253,7 @@ padding: 15px;
                   <ul class="nav navbar-nav">
 		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="Archive_Execution.jsp">Governance</a></li>
+		              <li><a href="GovernanceList.jsp">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
 		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
@@ -270,7 +270,12 @@ padding: 15px;
                              <div class="col-sm-6">
                         
                             
-                         <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> Archive Requirements</p>
+                         <p class="sub-title" style="color:#fff ; margin-right: -26px; "> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Introduction</a> >>
+                           <a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Legacy Application Info</a> >>
+                           <a  href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Retention Details</a> >> Business Requirements</p>
                      
                     
 
@@ -284,6 +289,28 @@ padding: 15px;
     </nav>
     
         <div class="content-wrapper">
+        <div class="col-md-12">
+								<div style="margin-bottom: -138px;" class="form-wizard">
+						<div class="form-wizard-header">
+							
+							<ul class="list-unstyled form-wizard-steps clearfix">
+							<p style="margin-top: 30px; margin-bottom: -52px;">Fill all the required fields to go next step</p>
+								<li class="activated"><span>1</span><i>Introduction</i></li>
+								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated"><span>3</span><i>Retention Details</i></li>
+								<li class="active"><span>4</span><i>Business requirements</i></li>
+								<li><span>5</span><i>Abbreviations</i></li>
+								<li><span>6</span><i>Revisions</i></li>
+								<li><span>7</span><i>Addendumns</i></li>
+								<li><span>8</span><i>StakeHolders</i></li>
+								<li><span>9</span><i>Review</i></li>
+								<li><span>10</span><i>Approval</i></li>
+						
+							</ul>
+						</div>
+						</div></div>
+						<br/>
+						<br/>
             <div class="content-container">
 
       
@@ -291,13 +318,11 @@ padding: 15px;
 
                 <div class="main-page">
 
-                    <section>
+                    <section class="wizard-section">
 
                         <div class="row">
-<div class="container" id="module_header">
-                                <div class="panelSize col-md-12 col-sm-12">
-										<div class="form-wizard">
-
+							<div class="container" id="module_header">
+							<div class="panelSize col-md-12 col-sm-12">
                                     <%
                                         String initiate = (String) session.getAttribute("Ideation and Initiate");
                                         String plan = (String) session.getAttribute("Plan");
@@ -374,7 +399,7 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:25%;">
 												 
 												 <button type="submit" class="btn btn-success" id="SaveReqInScope">Save</button>
 												 
@@ -623,7 +648,7 @@ padding: 15px;
                                         	<br/>
                                         <div class="col-md-1"> 
                                     
-                                       <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="" >Prev</button></div>
+                                       <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" >Prev</button></div>
                                        <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
                                        
                                       <button class="form-wizard-next-btn float-right btn-info btn btn-info"  id="busreqNext" disabled="true">
@@ -639,8 +664,7 @@ padding: 15px;
                                   </div>
 					            </div>
 					        </div>
-                        </div>
-                </div>
+                
                 <!-- /.row -->
             </div>
             </div>

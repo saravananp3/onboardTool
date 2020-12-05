@@ -194,11 +194,10 @@ padding: 15px;
 	table.table td .add {
     display: none;
 	}
-
-.panelSize {
-  display: flex;
-  justify-content: center;
+td{
+	font-weight: bold;
 }
+
 
 /* table { 
 	box-shadow: 5px 5px 5px #999; 
@@ -336,8 +335,14 @@ padding: 15px;
                                                    				<table class="table table-bordered">
 														  		 <thead> 												
 																	<tr>
+																
 																		<th style='text-align:center;vertical-align: middle;'>Abbrevation/Acronym</th>
 																		<th style='text-align:center;vertical-align: middle;'>Description</th>
+																	
+																	</tr>
+																		</thead>
+																		<tbody>
+																		
 																		<tr>
 																		<td>AD</td>
 																		<td>Active Directory Group</td>
@@ -373,11 +378,8 @@ padding: 15px;
 																			It is a "metalanguage" that can be used to create markup languages for specific applications</td>
 																		</tr>
 																		
-																	</tr>
-																</thead>
-																<tbody id ="abbrevationInfo">
-      												    												
-      															</tbody>
+																	</tbody>
+																
 																</table>
   																</div> 
 													</div>
