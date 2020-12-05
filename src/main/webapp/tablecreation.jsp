@@ -207,9 +207,15 @@
         
         String query77 = "CREATE TABLE `Archive_AuditReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
         statement.executeUpdate(query77);
-      
-		String query78 = "CREATE TABLE `Archive_DocumentRevision_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `date` varchar(255), `version` varchar(255), `documentChanges` varchar(255), `changeAuthor` varchar(255))";
+	
+        String query78 = "CREATE TABLE `Archive_ScreenReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `screenDisplay` varchar(255), `purpose` varchar(255), `equivalentLegacy` varchar(255))";
         statement.executeUpdate(query78);
+        
+        String query79 = "CREATE TABLE `Archive_ScreenReq_SearchForm` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `searchForm` varchar(255), `searchField` varchar(255), `fieldFormat` varchar(255), `dataType` varchar(255), `dataRetrieval` varchar(255), `requiredField` varchar(255), `additionalInfo` varchar(255))";
+        statement.executeUpdate(query79);
+	
+	String query80 = "CREATE TABLE `Archive_DocumentRevision_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `date` varchar(255), `version` varchar(255), `documentChanges` varchar(255), `changeAuthor` varchar(255))";
+        statement.executeUpdate(query80);
 		
 	  %>
 <% } catch (Exception ex) {

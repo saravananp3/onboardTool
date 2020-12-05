@@ -28,6 +28,8 @@
 
 <script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqDataRetrieveAjaxCall.js"></script>
 
+<script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqDataRetrieveAjaxCall.js"></script>
+
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -197,6 +199,11 @@ padding: 15px;
     display: none;
 	}
 
+.panelSize {
+  display: flex;
+  justify-content: center;
+}
+
 /* table { 
 	box-shadow: 5px 5px 5px #999; 
 	} */
@@ -288,8 +295,8 @@ padding: 15px;
 
                         <div class="row">
 <div class="container" id="module_header">
-                                <div class="col-md-12">
-
+                                <div class="panelSize col-md-12 col-sm-12">
+										<div class="form-wizard">
 
                                     <%
                                         String initiate = (String) session.getAttribute("Ideation and Initiate");
@@ -315,7 +322,7 @@ padding: 15px;
                                     
                                      <!-- Business Requirements Table -->
                                      
-                            <div class="panel panel-default" style='width:1200px;'>
+                            <div class="panel panel-default" style='width:1500px;'>
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
                                                 <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">Business Requirements</a></h4>
@@ -538,8 +545,80 @@ padding: 15px;
                                             </div> 
                                             </div> 
                                         
+                                        <!-- Screen Requirements -->
+							    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6">Screen Requirements</a></h4>
+                                        </div>
+                                        
+                                            <div class="panel-body">
+                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        			<div id="inputFieldsReqinscope">
+                                               		
+                                                 			<div>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
+																		<th style='text-align:center;vertical-align: middle;'>Screen Display Name in Infoarchive</th>
+																		<th style='text-align:center;vertical-align: middle;'>Purpose</th>
+																		<th style='text-align:center;vertical-align: middle;'>Equivalent in the Legacy Application</th>	
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="screenReqInfo">
+      												    												
+      															</tbody>
+																</table>
+  																</div> 
+  																<div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 
+												 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#screenReqAddPopUp">Add</button>
+												 <button type="submit" class="btn btn-success" id="saveScreenReqId">Save</button>
+												 
+                                       			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='archiveRequirementsLegacyDetails.jsp';"style="display:none;"></button>
+                                       			</div>
+  																
+  																<br/>
+  																<br/>
+  																<br/>
+  																<div>
+                                                   				<table class="table table-bordered">
+														  		 <thead> 												
+																	<tr>
+																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
+																		<th style='text-align:center;vertical-align: middle;'>Search Form Name</th>
+																		<th style='text-align:center;vertical-align: middle;'>Search Field Name</th>
+																		<th style='text-align:center;vertical-align: middle;'>Field Format</th>	
+																		<th style='text-align:center;vertical-align: middle;'>Data Type</th>
+																		<th style='text-align:center;vertical-align: middle;'>Date Retrieval Requirement</th>
+																		<th style='text-align:center;vertical-align: middle;'>Required Field</th>
+																		<th style='text-align:center;vertical-align: middle;'>Search Field Additional Information</th>
+																		<th style='text-align:center;vertical-align: middle;'>Action</th>
+																	</tr>
+																</thead>
+																<tbody id ="searchFormInfo">
+      												    												
+      															</tbody>
+																</table>
+  																</div> 
+												  
+												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+												 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#searchFormAddPopUp">Add</button>
+												 <button type="submit" class="btn btn-success" id="saveSearchFormId">Save</button>
+												 
+                                       			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='archiveRequirementsLegacyDetails.jsp';"style="display:none;"></button>
+                                       			</div>
+                                            </div>
+                                              
+                                            </div> 
+                                            </div> 
+                                            </div> 
                                             
                                             <button type="button" class="btn btn-primary pull-right" id="DataDeleteId" data-toggle="modal" data-target="#DataDeletePopUp" style="display: none;">Delete PopUp</button>
+                                            
+                                            <button type="button" class="btn btn-primary pull-right" id="screenInfoDeleteId" data-toggle="modal" data-target="#screenInfoDeletePopUp" style="display: none;">Delete PopUp</button>
                                         <div class="col-md-12">
                                         	<br/>
                                         <div class="col-md-1"> 
@@ -547,8 +626,8 @@ padding: 15px;
                                        <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="" >Prev</button></div>
                                        <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
                                        
-                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="busreqNext" disabled="true">
-                                                                 <a href="archiveRequirementsLegacyDetails.jsp">Next</a></button>
+                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info"  id="busreqNext" disabled="true">
+                                                                 <a href="archiveReqAbbrevation.jsp">Next</a></button>
                                      
                                        </div>
                                      </div>
@@ -622,6 +701,101 @@ padding: 15px;
   </div>
 </div>
 
+<!-- Screen Req Info Add Popup  -->
+
+<div class="modal" id="screenReqAddPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Input Field</h5>
+        <button type="button" id="screenReqAddClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="Legacy">Screen Display Name in Infoarchive:</label>
+                            <input type="text" class="form-control" id="screenReqAddId"  name="screenReqAddName" required>
+                        </div>
+                    </div>
+                </div><br/><input type="text" id="screenReqAddSeqNum" name="" value="" style="display:none;"/>
+                <input type="text" id="screenReqAddSection" name="" value="" style="display:none;"/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="screenReqAddSubmit" class="btn btn-primary" >Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdScreenInfo" aria-label="Close">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+   
+   <!-- Search Form Add popup -->
+   <div class="modal" id="searchFormAddPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Input Field</h5>
+        <button type="button" id="searchFormAddClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Type:</label>
+                            <select id="searchFormTypesId" class="form-control" name="searchFormTypesName" required >
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <input type="text" id="searchFormAddSeqNum" name="" value="" style="display:none;"/>
+                <input type="text" id="searchFormAddSection" name="" value="" style="display:none;"/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="searchFormAddSubmit" class="btn btn-primary" >Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdsearchForm" aria-label="Close">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!-- Screen Req Info Delete PopUp -->  
+  <div class="modal" id="screenInfoDeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="screenInfoDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p>Do you want to delete this Row permanently?</p>
+                    <input type="hidden" id="screenInfoDeleteSeq"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="screenInfoDeleteSubmit" class="btn btn-primary submitDisableScreenInfo" >Yes</button>
+        <button type="button" class="btn btn-default" id = "closeScreenInfoDelete" data-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
     <jsp:param name="AppName" value="<%=idd %>"/>
@@ -681,5 +855,11 @@ padding: 15px;
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqAddAjaxCall.js"></script>
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqDeleteAjaxCall.js"></script>
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/businessRequirementsDetails/funtionalReqInfo/archiveFunctionalReqSaveAjaxCall.js"></script>
+
+<script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqAddAjaxCall.js"></script>
+<script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqSearchFormAddAjaxCall.js"></script>
+<script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqEditDeleteAjaxCall.js"></script>
+<script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqSaveAjaxCall.js"></script>
+<script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqSearchFormSaveAjaxCall.js"></script>
 </body>
 </html>
