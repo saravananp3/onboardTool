@@ -207,7 +207,11 @@
         
         String query77 = "CREATE TABLE `Archive_AuditReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
         statement.executeUpdate(query77);
-       %>
+      
+		String query78 = "CREATE TABLE `Archive_DocumentRevision_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `date` varchar(255), `version` varchar(255), `documentChanges` varchar(255), `changeAuthor` varchar(255))";
+        statement.executeUpdate(query78);
+		
+	  %>
 <% } catch (Exception ex) {
 
     System.err.println("[ERROR]-----Got an exception!-----Tables are already created----[ERROR]");
