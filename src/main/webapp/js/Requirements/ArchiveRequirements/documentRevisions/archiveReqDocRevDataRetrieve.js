@@ -38,6 +38,14 @@ function archiveReqDocRevDataRetrieve(){
             	 "</tr>";
             	 $("#docRevInfo").append(Row);
             	 });
+             var script="<script>$('.datepicker1').datepicker({\n" +
+             "format: \"mm/dd/yyyy\",\n"+
+             "clearBtn:true,"+
+             "autoclose: true,\n"+
+             "orientation: 'bottom',"+
+             "});";
+             
+             $('#scripttag').append(script);
             	 }
         	 
             else{
@@ -57,7 +65,7 @@ function archiveReqDocRevDataRetrieve(){
                 	 "</tr>";
                 	 $("#docRevInfo").append(Row);
             	 }
-        	 
+        	
         	     },
         error: function (e) {
             console.log(e);

@@ -45,6 +45,7 @@ public class businessReqSaveServlet extends HttpServlet {
 		String appName = (String)details.getAttribute("SelectedOpportunity");
 		String columnName = request.getParameter("columnName");
 		String value=request.getParameter("value");
+                System.out.println("val: "+value);
 		System.out.println("val: "+value);
 		JsonObject jsonObj = new JsonObject();
 		try {

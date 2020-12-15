@@ -368,8 +368,8 @@ padding: 15px;
                                        <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="" >Prev</button></div>
                                        <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
                                        
-                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="busreqNext" disabled="true">
-                                                                 <a href="archiveRequirementsLegacyDetails.jsp">Next</a></button>
+                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsAddendum.jsp';" id="busreqNext" disabled="true">
+                                                                 <a href="archiveRequirementsAddendum.jsp">Next</a></button>
                                      
                                        </div>
                                      </div>

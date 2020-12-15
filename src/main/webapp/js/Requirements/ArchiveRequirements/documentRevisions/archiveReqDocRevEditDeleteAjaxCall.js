@@ -7,7 +7,10 @@ $(document).ready(function(){
 		var nameReadOnly = $(".date").eq(seqNum).attr("readonly");
 		if(nameReadOnly)
 		{
+			
+			$(".date").eq(seqNum).addClass("datepicker1");
 			$(".date").eq(seqNum).removeAttr("readonly");
+			$( ".datepicker1" ).datepicker("refresh");
 			$(".version").eq(seqNum).removeAttr("readonly");
 			$(".documentChanges").eq(seqNum).removeAttr("readonly");
 			$(".changeAuthor").eq(seqNum).removeAttr("readonly");
@@ -16,6 +19,7 @@ $(document).ready(function(){
 		else
 		{
 			$(".date").eq(seqNum).prop("readonly", true);
+			$(".date").eq(seqNum).removeClass("datepicker1");
 			$(".version").eq(seqNum).prop("readonly", true);
 			$(".documentChanges").eq(seqNum).prop("readonly", true);
 			$(".changeAuthor").eq(seqNum).prop("readonly", true);

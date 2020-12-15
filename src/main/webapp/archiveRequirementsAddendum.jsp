@@ -24,6 +24,7 @@
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>   
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+<script src = "js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js">
 
 
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -194,10 +195,19 @@ padding: 15px;
 	table.table td .add {
     display: none;
 	}
-td{
-	font-weight: bold;
+
+.panelSize {
+  display: flex;
+  justify-content: center;
 }
 
+.editable
+    {
+      display: inline-block;
+      min-width: 30px;
+      min-height: 30px;
+      overflow: hidden;
+    }
 
 /* table { 
 	box-shadow: 5px 5px 5px #999; 
@@ -317,80 +327,35 @@ td{
                                     
                                      <!-- Business Requirements Table -->
                                      
-                            <div class="panel panel-default">
+                            <div class="panel panel-default" style='width:1000px;'>
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">Abbreviations, Acronyms, Definitions</a></h4>
+                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">Addendum	</a></h4>
                                         </div>
                                         
                                         <div id="collapse4" class="panel-collapse ">
                                           
                                             <div id="collapse1" class="panel-collapse " name="collapse">
                                                 <div class="panel-body">
-                                                    <div id="inputFieldsBusiness">
-                                                 <div class="modal-body">
-                    <form name="myForm">
-                        <div class="form-group" id="TemplateFields">
-                          <div>
-                                                   				<table class="table table-bordered">
-														  		 <thead> 												
-																	<tr>
-																
-																		<th style='text-align:center;vertical-align: middle;'>Abbreviation/Acronym</th>
-																		<th style='text-align:center;vertical-align: middle;'>Description</th>
-																	
-																	</tr>
-																		</thead>
-																		<tbody>
-																		
-																		<tr>
-																		<td>AD</td>
-																		<td>Active Directory Group</td>
-																		</tr>
-																		<tr>
-																		<td>BI</td>
-																		<td>Business Intelligence</td>
-																		</tr>
-																		<tr>
-																		<td>IA</td>
-																		<td>InfoArchive: InfoArchive is a repository that compresses and maintains data from business applications and data sources. 
-																			Data contained within the archive is no longer transactional and immutable (unable to be changed). 
-																			Access to the archive is normally confined to a small group of users defined by security rules and roles. 
-																			Data retention policies may be applied to data contained within the archive</td>
-																		</tr>
-																		<tr>
-																		<td>Read-Only</td>
-																		<td>Date at which the legacy application data has been set to static use. 
-																			There are no changes to be made to the data, no integration jobs running to alter the status of the data, 
-																			nor will any future changes be made to the data</td>
-																		</tr>
-																		<tr>
-																		<td>REQ</td>
-																		<td>Requirement</td>
-																		</tr>
-																		<tr>
-																		<td>UAT</td>
-																		<td>User Acceptance Testing</td>
-																		</tr>
-																		<tr>
-																		<td>XML</td>
-																		<td>Extensible Markup Format is used to define documents with a standard format that can be read by any XML-compatible application. 
-																			It is a "metalanguage" that can be used to create markup languages for specific applications</td>
-																		</tr>
-																		
-																	</tbody>
-																
-																</table>
-  																</div> 
-													</div>
-												</form>	
-												 </div>   
+                                                    <div id="inputFieldsAddendum">
+                                                 
 											    </div>
 									              
                                           
-                                            <button type="button" class="btn btn-primary pull-right" id="DataDeleteId" data-toggle="modal" data-target="#DataDeletePopUp" style="display: none;">Delete PopUp</button>
+                                            <button type="button" class="btn btn-primary pull-right" id="addendumAddId" data-toggle="modal" data-target="#addendumAddPopUp" style="display: none;">Delete PopUp</button>
                                             
+                                            <button type="button" class="btn btn-primary pull-right" id="addendumDeleteId" data-toggle="modal" data-target="#addendumDeletePopUp" style="display: none;">Delete PopUp</button>
                                             
+                                            <div class="col-md-6" style="padding-top: 10px; padding-right: 10px; float: right; width:20%;">
+                                            <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
+                              <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                <li><a href="#" id = "addendumAdd" data-toggle="modal" data-target="#AddPopUp" class="fa fa-plus" style="font-size:19px;color:black;">&nbsp;&nbsp;&nbsp;Add</a></li>
+                                <li><a href="#" id = "addendumDelete" class="fa fa-trash" style="font-size:18px;color:black">&nbsp;&nbsp;&nbsp;Delete</a></li>
+                                </ul>
+																	 
+								<button type="submit" class="btn btn-success" id="addendumSave">Save</button>
+					            </div>
                                         <div class="col-md-12">
                                         	<br/>
                                         <div class="col-md-1"> 
@@ -398,8 +363,8 @@ td{
                                        <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="" >Prev</button></div>
                                        <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
                                        
-                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsDocumentRevisions.jsp';" id="busreqNext">
-                                                                 <a href="archiveRequirementsDocumentRevisions.jsp">Next</a></button>
+                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" id="addendumNext" disabled="true">
+                                                                 <a href='archiveRequirementsReviewDetails.jsp'>Next</a></button>
                                      
                                        </div>
                                      </div>
@@ -447,7 +412,67 @@ td{
     %>
     </div></div></form>
    
-
+    <!-- Add popup -->
+   <div class="modal" id="addendumAddPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Input Field</h5>
+        <button type="button" id="addendumAddClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Label:</label>
+                            <input type = "text" id="addendumLabelId" class="form-control" name="addendumLabelName" required >
+                                
+                            </input>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <input type="text" id="addendumAddSeqNum" name="" value="" style="display:none;"/>
+               
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="addendumAddSubmit" class="btn btn-primary" >Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdAddendum" aria-label="Close">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+   
+<!-- Delete PopUp -->  
+  <div class="modal" id="addendumDeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="addendumDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p>Do you want to delete this Row permanently?</p>
+                    <input type="hidden" id="addendumDeleteSeq"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="addendumDeleteSubmit" class="btn btn-primary submitDisableAddendum" >Yes</button>
+        <button type="button" class="btn btn-default" id = "closeAddendumIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
@@ -503,5 +528,10 @@ td{
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 
 <script src="js/notification/notification.js"></script>
+
+<script src = "js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumAddAjaxCall.js"></script>
+<script src = "js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDeleteAjaxCall.js"></script>
+<script src = "js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumSaveAjaxCall.js"></script>
+
 </body>
 </html>

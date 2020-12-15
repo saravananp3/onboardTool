@@ -23,7 +23,7 @@ function archiveReqDecRevAddAjaxCall(seqNum){
         	
         	if(data.AddStatus){
         		var Row="<tr class = 'rowClassDoc'>"+
-           	 "<td><input type ='text' class='date' value='' readonly></td>" +
+           	 "<td><input type ='text' class='date' value='' disabled></td>" +
            	 "<td><input type ='text' class='version' value='' readonly></td>" +
            	 "<td><input type ='text' class='documentChanges' value='' readonly></td>" +
            	 "<td><input type ='text' class='changeAuthor' value='' readonly></td>" +

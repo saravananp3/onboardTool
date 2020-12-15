@@ -1,0 +1,68 @@
+package NewArchiveRequirements.addendumInfo.service;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.mysql.jdbc.Connection;
+
+import onboard.DBconnection;
+
+public class archiveReqAddendumSaveService {
+
+	DBconnection dBconnection;
+	Connection con;
+	String Id;
+	JsonArray jsonArray ;
+	
+	public archiveReqAddendumSaveService(String Id, JsonArray jsonArray) throws ClassNotFoundException, SQLException {
+		dBconnection = new DBconnection();
+		 con = (Connection) dBconnection.getConnection();
+		 this.Id = Id;
+		 this.jsonArray = jsonArray;
+		
+	}
+	
+	public JsonObject archiveReqAddendumSave()
+	{
+		JsonObject jsonObject = new JsonObject();
+		boolean statusFlag =false;
+		try
+		{	
+			for(int i=0;i<jsonArray.size();i++)
+			{
+				JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
+		  		String seqNum = jsonObj.get("seq_no").getAsString();	
+		  		String label = jsonObj.get("label").getAsString();
+		  		String addendumInfo =  jsonObj.get("addendumInfo").getAsString();
+		  		
+		  		
+			  String UpdateQuery = "update Archive_Req_Addendum_Info set labelName = ?, addendumInfo =? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
+	          prestmt.setString(1, label);
+	          prestmt.setString(2, addendumInfo);
+	          
+	          prestmt.execute();
+			}
+			statusFlag =true;
+			
+			
+		}
+		
+		catch(Exception e)
+		{
+			statusFlag =false;
+			e.printStackTrace();
+		}
+		jsonObject.addProperty("SaveStatus", statusFlag);
+		return jsonObject;
+		
+	}
+	
+	
+	protected void finalize() throws Throwable {
+	      con.close();
+		}
+	
+}

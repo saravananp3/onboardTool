@@ -119,6 +119,7 @@ DBconnection dBconnection =null;
 				 jsonObject.addProperty("name", rs2.getString(6));
 				 jsonObject.addProperty("title", rs2.getString(7));
 				 jsonObject.addProperty("approverpurpose", rs2.getString(8));
+				 jsonObject.addProperty("ApprovalStatus",getApprovalStatus(rs2.getString(5)));
 				 jsonArray.add(jsonObject);
 			 }
 			 st2.close();
@@ -132,6 +133,32 @@ DBconnection dBconnection =null;
 		
 	}
 	
+	private boolean getApprovalStatus(String Role)
+	{
+		boolean checkStatus = true;
+		try
+		{
+		  	String roleQuery = "select * from archiverequirements_stake_holder_info where OppId='"+Id+"' and role='"+Role+"';";
+		  	Statement st = con.createStatement();
+		  	System.out.println(roleQuery);
+
+		  	ResultSet rs = st.executeQuery(roleQuery);
+		  	if(rs.next())
+		  	{
+		  		if(rs.getString("ArchiveRequirementApproval").equals("Decision pending"))
+		  		checkStatus = false;
+		  	}
+		  	else
+		  	checkStatus = false;
+		  	rs.close();
+		  	st.close();
+		 }
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return checkStatus;
+	}
 	
 	protected void finalize() throws Throwable {
 		 con.close();

@@ -28,10 +28,10 @@ var typingTimer;                //timer identifier
 		if(value.length >= 100)
 			checkValue = true;
 			if(checkValue && fieldname == 'scope')
-				$('#rolesNext').attr('disabled', false);
+				checkScope = true;
 			else
-				$('#rolesNext').attr('disable', true);
-		}
+				checkScope = false;
+			}
 		else{
 			checkValue = true;
 			var length=$("."+classnameattr).find("li").length;
@@ -47,7 +47,8 @@ var typingTimer;                //timer identifier
 			else 
 				ArchiveIntroSaveAjaxcall(fieldname,value.replace("<br>",""));
 			
-		
+			if(fieldname == 'scope')
+        		checkNextButton();
 		//ArchiveIntroSaveAjaxcall(fieldname,value.replace("<br>",""));
 	}
 	function getfieldname(classname) {
@@ -81,9 +82,19 @@ var typingTimer;                //timer identifier
 	        	console.log("SAVE DATA:",data);
 	        	JsonObject = data;
 	        	if(data.checkUpdate)
-	        		notification("success","Saved successfully.","Note:");
+	        		{
+	        		
+	        		if(columnName == 'scope')
+	        			checkScope = true;
+	    			notification("success","Saved successfully.","Note:");
+	        		
+	        		}
 	        	else
+	        		{
+	        		if(columnName == 'scope')
+	        			checkScope = true;
 	        		notification("error","Error occured while saving.","Error:");
+	        		}
 	        },
 	        error: function (e) {
 	            console.log(e);
@@ -94,30 +105,46 @@ var typingTimer;                //timer identifier
 	
 		//$(document).on('click','#saveRoleResponse', function(){
 	$("#saveRoleResponse").click( function(e){		
-	var validation = true;
+	        var validation = false;
 			var JsonArray = [];
+			var roleNameArray = [];
+			var checkDuplicateRole = true;
 			for(var i = 0; i<$('.rowClass').length; i++){
 				var inputs = {};
 				var role = $('.role').eq(i).val();
 				var name = $('.name').eq(i).val();
 				var title = $('.title').eq(i).val();
 				var approver = $('.approverpurpose').eq(i).val();
+				if(!roleNameArray.includes(role))
+					 roleNameArray.push(role);
+				else
+					checkDuplicateRole=false;
 				 
-				if(!checkFieldValues(role, name, title, approver))
-					validation = false;
+				if(checkFieldValues(role, name, title, approver))
+					validation = true;
 				inputs['seq_no'] = i+1;
 				inputs['role'] = role;
 				inputs['name'] = name;
 				inputs['title'] = title;
 				inputs['approverpurpose'] = approver;
 				JsonArray.push(inputs);
-				
 			}
-			if(validation)
+			if(validation&&checkDuplicateRole)
 				archiveRolesResponseSaveAjaxcall(JsonArray);
 			else
-				notification("warning","Please fill the all fields.","Warning");
-	        e.preventDefault();	
+				{
+				
+				if(!validation)
+				notification("warning","Please fill atleast one row fields.","Warning");
+	            
+				if(!checkDuplicateRole)
+	            	notification("warning","Please provide unique roles.","Warning");
+	            
+	            e.preventDefault();
+	            checkRoles = false;	
+				}
+			checkNextButton();
+			e.preventDefault();
 	});
 		
 		
@@ -145,13 +172,26 @@ var typingTimer;                //timer identifier
 		        	console.log("SAVE DATA:",data);
 		        	JsonObject = data;
 		        	if(data.SaveStatus)
+		        		{
 		        		notification("success","Saved successfully.","Note:");
+		        		checkRoles = true;
+		        		}
 		        	else
+		        		{
 		        		notification("error","Error occured while saving.","Error:");
-		        },
+		        		checkRoles = false;
+		        		}
+		        	
+		      },
 		        error: function (e) {
 		            console.log(e);
 		        }
 			});
 		}
-	
+	function checkNextButton()
+	{
+		if(checkScope&&checkRoles)
+			$("#rolesNext").attr('disabled',false);	
+		else
+			$("#rolesNext").attr('disabled',true);
+	}

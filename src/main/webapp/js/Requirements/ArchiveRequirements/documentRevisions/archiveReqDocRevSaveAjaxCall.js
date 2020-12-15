@@ -58,8 +58,10 @@ function archiveReqDocRevSaveAjaxcall(JsonArray){
 		        success: function (data) {
 		        	console.log("SAVE DATA:",data);
 		        	JsonObject = data;
-		        	if(data.SaveStatus)
+		        	if(data.SaveStatus){
 		        		notification("success","Saved successfully.","Note:");
+		        		$("#docRevNext").removeAttr("disabled");
+		        	}
 		        	else
 		        		notification("error","Error occured while saving.","Error:");
 		        },

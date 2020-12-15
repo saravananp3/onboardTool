@@ -51,10 +51,10 @@
         String query11 = "CREATE TABLE `AppEmphazize_ApplicationPrioritization` ( `prj_name` varchar(255) DEFAULT NULL, `IA_lic_cst` varchar(255) DEFAULT NULL, `IA_maint_cst` varchar(255) DEFAULT NULL, `Infrastrct_cst` varchar(255) DEFAULT NULL, `strg_est` varchar(255) DEFAULT NULL, `lab_cst` varchar(255) DEFAULT NULL, `proj_name` varchar(255) DEFAULT NULL, `data_size` varchar(255) DEFAULT NULL, `data_source` varchar(255) DEFAULT NULL, `curnt_users` varchar(255) DEFAULT NULL, `complexity` varchar(255) DEFAULT NULL, `est_archive` varchar(255) DEFAULT NULL, `est_scrn` varchar(255) DEFAULT NULL, `est_db_size` varchar(255) DEFAULT NULL, `est_hrs` varchar(255) DEFAULT NULL, `est_cst` varchar(255) DEFAULT NULL, `ttl_IA_cst` varchar(255) DEFAULT NULL, `ttl_infra_cst` varchar(255) DEFAULT NULL, `ttl_IA_prdct_cst` varchar(255) DEFAULT NULL, `ttl` varchar(255) DEFAULT NULL, `ttl_cst_fr_app` varchar(255) DEFAULT NULL, `add_cst_fr_contigency` varchar(255) DEFAULT NULL, `add_cst` varchar(255) DEFAULT NULL, `IA_app_sprt_cst` varchar(255) DEFAULT NULL, `est_archive_cst` varchar(255) DEFAULT NULL, `id` int(4) NOT NULL AUTO_INCREMENT, `sum` int(11) DEFAULT NULL, `read_date` varchar(255) DEFAULT NULL, `sme_date` varchar(255) DEFAULT NULL, `priorities` varchar(255) DEFAULT NULL, `no_of_app_complexity` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`), `data_retained` varchar(50) DEFAULT NULL, `Decommission` varchar(50) DEFAULT NULL)";
         statement.executeUpdate(query11);
 
-        String query12 = "CREATE TABLE `logs` (   `USER_ID` varchar(20) NOT NULL,   `DATED` varchar(25) NOT NULL,   `LOGGER` varchar(50) NOT NULL,   `LEVEL` varchar(10) NOT NULL,   `MESSAGE` varchar(1000) NOT NULL,   `roles` varchar(255) DEFAULT NULL )";
+        String query12 = "CREATE TABLE `logs` (`USER_ID` varchar(20) NOT NULL,   `DATED` varchar(25) NOT NULL,   `LOGGER` varchar(50) NOT NULL,   `LEVEL` varchar(10) NOT NULL,   `MESSAGE` varchar(1000) NOT NULL,   `roles` varchar(255) DEFAULT NULL )";
         statement.executeUpdate(query12);
 
-        String query13 = "CREATE TABLE `visits` (   `uname` varchar(255) NOT NULL,   `date` varchar(255) NOT NULL,   `module` varchar(255) NOT NULL,   `count` varchar(255) NOT NULL, `time` varchar(255) NOT NULL, `Projects` varchar(255) NOT NULL, `Applications` varchar(255) NOT NULL)";
+        String query13 = "CREATE TABLE `visits` (`uname` varchar(255) NOT NULL,   `date` varchar(255) NOT NULL,   `module` varchar(255) NOT NULL,   `count` varchar(255) NOT NULL, `time` varchar(255) NOT NULL, `Projects` varchar(255) NOT NULL, `Applications` varchar(255) NOT NULL)";
         statement.executeUpdate(query13);
 
         String query14 = " CREATE TABLE `Intake_ArchivalRequirement` ( `legalholds` varchar(255) DEFAULT NULL, `dataapp` varchar(255) DEFAULT NULL, `dataloc` varchar(255) DEFAULT NULL, `reconsttools` varchar(255) DEFAULT NULL, `viewblob` varchar(255) DEFAULT NULL, `fieldprop` varchar(255) DEFAULT NULL, `fieldtype` varchar(255) DEFAULT NULL, `splchars` varchar(255) DEFAULT NULL, `foreignlang` varchar(255) DEFAULT NULL, `clob` varchar(255) DEFAULT NULL, `unstructarch` varchar(255) DEFAULT NULL, `accrole` varchar(255) DEFAULT NULL, `dataview` varchar(255) DEFAULT NULL, `complctrl` varchar(255) DEFAULT NULL, `errctrl` varchar(255) DEFAULT NULL, `metadata` varchar(255) DEFAULT NULL, `advsearch` varchar(255) DEFAULT NULL, `searchparam` varchar(255) DEFAULT NULL, `appname` varchar(255) DEFAULT NULL, `projectname` varchar(255) DEFAULT NULL, `id` int(11) NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`) )";
@@ -219,7 +219,14 @@
 	
 	String query81 = "CREATE TABLE `Governance_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query81);
-		
+        
+        String query82 = "CREATE TABLE `Archive_Req_Addendum_Info` (`seq_no` INTEGER (255),`oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255),`labelName` varchar(255), `addendumInfo` varchar(255))";
+        statement.executeUpdate(query82);
+        
+        String query83 = "CREATE TABLE `ArchiveRequirements_Stake_Holder_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `OppName` varchar(255), `name` varchar(255), `role` varchar(255),`approvalId` varchar(255),`ArchiveRequirementApproval` varchar(255),`moduleId` varchar(255))";
+        statement.executeUpdate(query83);
+        
+        
 	  %>
 <% } catch (Exception ex) {
 

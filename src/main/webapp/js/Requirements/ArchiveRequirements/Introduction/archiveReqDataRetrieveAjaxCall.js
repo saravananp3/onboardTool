@@ -1,8 +1,10 @@
+var checkScope = false;
+var checkRoles = false;
 $(document).ready(function(){
 	
 	archiveReqDataRetrieve();
 	archiveReqRolesResponseDataRetrieve();
-	
+	checkNextButton();
 	
 	$(document).on('click','#AddRoleResponse', function(){
 		
@@ -17,11 +19,17 @@ $(document).on('click','.EditRow', function(){
 		var nameReadOnly = $(".name").eq(seqNum).attr("readonly");
 		if(nameReadOnly)
 		{
+			var checkEdit=$(".ArchiveApproval").eq(seqNum).val();
+			if(checkEdit!="true")
+			{
 			$(".name").eq(seqNum).removeAttr("readonly");
 			$(".role").eq(seqNum).removeAttr("readonly");
 			$(".title").eq(seqNum).removeAttr("readonly");
 			$(".approverpurpose").eq(seqNum).removeAttr("readonly");
 			notification("info","Seleted row is editable.","Info:");
+			}
+			else
+				notification("info","Decision has taken already for this role","Info:");
 		}
 		else
 		{
@@ -91,7 +99,7 @@ function archiveReqAddAjaxCall(seqNum){
         	console.log("Add Row Retrieve--->",data);
         	if(data.AddStatus){
         		var Row="<tr class = 'rowClass'>"+
-           	 "<td><input type ='text' class='role' value=''></td>" +
+           	 "<td><input type ='text' class='role' value=''><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
            	 "<td><input type ='text' class='name' value=''></td>" +
            	 "<td><input type ='text' class='title' value=''></td>" +
            	 "<td><input type ='text' class='approverpurpose' value=''></td>" +
@@ -133,7 +141,7 @@ function archiveReqDataRetrieve(){
         		$('.Purpose').html(data.Purpose);
         		$('.Scope').html(data.Scope);
         		if(data.Scope != '')
-        			$('#rolesNext').attr('disabled', false);
+        			checkScope = true;
         		var assumptionList = data.Assumption.split("::");
         		var assumptionValue = "";
         		for(var i = 0; i<assumptionList.length; i++)
@@ -165,9 +173,10 @@ function archiveReqRolesResponseDataRetrieve(){
                  data = [data];
              }
         	 $("#Approver").html("");
+        	 //var checkValidation = false;
              $.each(data, function(key, value){
             	 var Row="<tr class = 'rowClass'>"+
-            	 "<td><input type ='text' class='role' value='"+value.role+"' readonly></td>" +
+            	 "<td><input type ='text' class='role' value='"+value.role+"' readonly><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
             	 "<td><input type ='text' class='name' value='"+value.name+"' readonly></td>" +
             	 "<td><input type ='text' class='title' value='"+value.title+"' readonly></td>" +
             	 "<td><input type ='text' class='approverpurpose' value='"+value.approverpurpose+"' readonly></td>" +
@@ -181,6 +190,9 @@ function archiveReqRolesResponseDataRetrieve(){
             	 "</td>" +
             	 "</tr>";
             	 $("#Approver").append(Row);
+            	 if(checkFieldValues(value.role, value.name, value.title, value.approverpurpose))
+            		 checkRoles = true;
+            		 //checkValidation = true;
              });
         },
         error: function (e) {
