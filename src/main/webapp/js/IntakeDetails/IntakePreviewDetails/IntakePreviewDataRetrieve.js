@@ -96,6 +96,7 @@ function IntakePreviewDataRetrieveAjaxCall()
         				"<th>Email</th>"+
         				"<th>User Name</th>"+
         				"<th>Role</th>"+
+        				"<th>Approval Status</th>"+
       					"</tr>"+
     					"</thead>"+
             			"<tbody id = 'StakeHolder'>";
@@ -109,6 +110,7 @@ function IntakePreviewDataRetrieveAjaxCall()
             				"<td>"+data[4][n].emailId+"</td>"+
             				"<td>"+data[4][n].username+"</td>"+
             				"<td>"+data[4][n].role+"</td>"+
+            				"<td>"+data[4][n].intakeApproval+"</td>"+
             			  "</tr>";
             }
             table += "</tbody>"+
@@ -120,7 +122,7 @@ function IntakePreviewDataRetrieveAjaxCall()
             {
              $("#ReviewNextBtn").hide();
              $("#ReviewPrevBtn").hide();
-            // $("#button_id").hide();
+             $("#button_id").hide();
             }
         },
         error: function (e) {

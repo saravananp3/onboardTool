@@ -9,6 +9,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mysql.jdbc.Connection;
 
+import NewArchiveRequirements.ApprovalInfo.service.archiveReqApprovalDataRetrieveService;
 import NewArchiveRequirements.Introduction.service.ApproverRoles_Service;
 import NewArchiveRequirements.Introduction.service.archiveReqIntroDataRetrieveService;
 import NewArchiveRequirements.Introduction.service.archiveReqIntroRolesResponseTemplateService;
@@ -118,6 +119,10 @@ public JsonArray archiveReqReviewDataRetrieve(){
 			//over all status
 		    jsonArray.add(getOverAllApproval());	
 			
+		    //approval 
+		    archiveReqApprovalDataRetrieveService approvalData = new archiveReqApprovalDataRetrieveService(Id, OppName);
+		    jsonArray.add(approvalData.ApprovalDataRetrieve());
+		    
 		}
 		catch(Exception e) {
 			e.printStackTrace();

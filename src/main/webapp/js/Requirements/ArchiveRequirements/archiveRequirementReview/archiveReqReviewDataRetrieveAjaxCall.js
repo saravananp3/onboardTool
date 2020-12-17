@@ -198,7 +198,21 @@ function reviewDataRetrieveAjaxCall()
                 	});
             	  }
             if(data[9].checkOverAllStatus)
+            	{
             	  $("#ReviewNextBtn").hide();
+            	  $("#button_id").hide();
+            	  $("#ReviewPrevBtn").attr('onclick','location.href="ArchiveDecommPage.jsp";');
+            	}
+            var indexCount =0;
+            $.each(data[10],function(key,value){
+            	if(indexCount!=0)
+            	{
+      		  var input = "<tr><td width='80px;'>"+value.name+"</td><td>"+value.role+"</td><td>"+data[0][1][indexCount].title+"</td><td>"+value.approvalStatus+"</td></tr>";
+		         $("#approvalInfoPreview").append(input);
+            	}
+            	indexCount++;
+      	 });
+            
         	     },
         error: function (e) {
             console.log(e);

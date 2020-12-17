@@ -540,7 +540,7 @@ font-size:12px;
                                                         </div> </td> </tr>
                                                         
                                                  <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                       <h3 class="panel-title">Stake Holder</h3><br><br>
+                                                       <h3 class="panel-title">Approval</h3><br><br>
                                                         <div id="StakeHolderInfoPreview">  </div> </div> </td> </tr>
                                                         </tbody>
                                     </table>

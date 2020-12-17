@@ -675,6 +675,19 @@ font-size:12px;
                                                         <div id = "addendumInfoPreview">
                                                         </div>
                                                         </td> </tr>
+                                                        <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                       <h3 class="panel-title">8 Approval Details</h3><br><br>
+                                                        <table class='table-bordered'>
+                                                          <thead>
+                                                          <th>Name</th>
+                                                          <th>Role</th>
+                                                          <th>Title</th>
+                                                          <th>Approval Status</th>
+                                                          </thead>
+                                                          <tbody id='approvalInfoPreview'>
+                                                          </tbody>
+                                                          </table></div> </td> </tr>
+                                                 
                                                         </tbody>
                                     </table>
  								</td>
@@ -687,7 +700,7 @@ font-size:12px;
                                                                                                    
                                                     <div class="col-md-12">
                                                             <div class="col-md-1">
-                                                                <button type="button" class="btn btn-light" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='IntakeStakeHolder.jsp';" >Prev</button>
+                                                                <button type="button" class="btn btn-light" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsAddendum.jsp';" >Prev</button>
                                                             </div>
                                                          <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
                                                                <button type="button" id="button_id" name="button_id" class="btn btn-primary">

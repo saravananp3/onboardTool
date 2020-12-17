@@ -76,7 +76,7 @@ DBconnection dBconnection =null;
 		int seq_num = getSequenceNumber();
 		
 		try {
-				String selectQuery = "select * from Module_Approval_Info where OppId = '"+Id+"' order by seq_no;";
+				String selectQuery = "select * from Module_Approval_Info where OppId = '"+Id+"' and moduleName ='Intake' order by seq_no;";
 				Statement st =con.createStatement();
 				ResultSet rs = st.executeQuery(selectQuery);
 				if(rs.next()) {

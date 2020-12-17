@@ -1,6 +1,7 @@
 var seq_num = "";
 var currentIntakeApproval = "";
 var username="";
+var checkOverAllAapproval;
 $('#ApprovalSave').click(function(){
 	seq_num = "";
 	currentIntakeApproval = "";
@@ -8,7 +9,7 @@ $('#ApprovalSave').click(function(){
 	 seq_num = parseInt($(".CurrentUser").eq(0).val());
 	 currentIntakeApproval = $(".intakeApproval").eq(seq_num-1).val();
 	username =$(".UserName").eq(seq_num-1).html();
-	var checkOverAllAapproval = true;
+	checkOverAllAapproval = true;
 	for(var i =0;i<$(".intakeApproval").length;i++)
 	{
 	   var val = $(".intakeApproval").eq(i).val();
@@ -86,6 +87,12 @@ $("#ConfirmationYes").click(function()
 			{
 				IntakeApprovalMessage(currentIntakeApproval,username);
 				notification("info","All the users approved.","");
+				if(checkOverAllAapproval)
+				{
+				   setTimeout(function(){
+					   location.href = "OpportunityGrid.jsp";
+				   },1000);	
+				}
 			}
 			else if(checkStatus.CheckSave==false)
 			{
