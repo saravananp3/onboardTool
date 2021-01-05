@@ -39,8 +39,6 @@ $(document).on('click','#ArchiveParentSubmit', function(){
 	var seq = $('#seqNumParId').val();
 	var checkRow = false;
 	var planSrtDateFlag=$("#checkPlanStartDate").val();
-	var rowTypeFlag = false;
-	
 	if(rowType == 'Parent'){
 		if(taskGroup!=''&&taskGroup!=undefined&&taskGroup!=null)
 			checkRow = true;
@@ -49,16 +47,14 @@ $(document).on('click','#ArchiveParentSubmit', function(){
 			
 	}
 	else if(rowType == 'Child'){
-		if(planSrtDateFlag=='false' && taskName!='' && taskName!=undefined && taskName!=null)
+		if(planSrtDateFlag=='false')
 			checkRow = true;
-		else if(planSrtDateFlag=='true' && taskName!='' && taskName!=undefined && taskName!=null && planSrtDate!='' && planSrtDate!=undefined && planSrtDate!=null)
+		else if(taskName!=''&&taskName!=undefined&&taskName!=null && planSrtDate!=''&&planSrtDate!=undefined&&planSrtDate!=null)
 			checkRow = true;
 		else
 			checkRow = false;
 			
 	}
-	else 
-		checkRow = false;
 	
 	if(checkRow){
 		addFunction(seq, taskName, taskGroup, rowType, planSrtDate);
@@ -67,13 +63,12 @@ $(document).on('click','#ArchiveParentSubmit', function(){
 			if(rowType == 'Parent')
 				notification("warning","Please fill Task Group for Parent Row.","Warning");
 			else if(rowType == 'Child'){
-				if(planSrtDateFlag=='true' && planSrtDate == '')
+				if(planSrtDate == '')
 					notification("warning","Please fill Plan Start Date for Child Row.","Warning");
-				if(taskName == '' || taskName == undefined || taskName == null)
-					notification("warning","Please fill Task Name for Child Row.","Warning");
+				else
+				notification("warning","Please fill Task Name for Child Row.","Warning");
 			}
-			else
-				notification("warning","Please select Parent or Child.","Warning");
+			
 	}
 		
 	$('.submitDisable').attr('disabled',false);

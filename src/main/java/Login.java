@@ -147,12 +147,10 @@ public class Login extends HttpServlet {
 	class GovernanceDetails
 	{
 		int seq_num;
-		String project,app_name,label,column,options,type,mandatory,value;
-		GovernanceDetails(int seq_num, String project, String app_name, String options, String label, String column, String type, String mandatory, String value)
+		String label,column,options,type,mandatory,value;
+		GovernanceDetails(int seq_num, String options, String label, String column, String type, String mandatory, String value)
 		{
 			this.seq_num = seq_num;
-			this.project = project;
-			this.app_name = app_name;
 			this.options = options;
 			this.label = label;
 			this.column = column;
@@ -372,30 +370,28 @@ try
 	
 	if(!rs_governance.next())
 	{
-		GovernanceDetails governance[] = new GovernanceDetails[4];
-		governance[0] = new GovernanceDetails(1,"","","","Wave Id", "wvid", "Text box","Yes", "");
-		governance[1] = new GovernanceDetails(2,"","","","Wave Name", "waveName", "Text box", "Yes", "");
-		governance[2] = new GovernanceDetails(3,"","","","Creation Date", "creation_date", "Datepicker", "No", "");
-		governance[3] = new GovernanceDetails(6,"",""," ","Request Type", "request_type", "Dropdown", "Yes", "");
-		
+		GovernanceDetails governance[] = new GovernanceDetails[5];
+		governance[0] = new GovernanceDetails(1,"","Wave Id", "waveId", "Text box","Yes", "");
+		governance[1] = new GovernanceDetails(2,"","Wave Name", "waveName", "Text box", "Yes", "");
+		governance[2] = new GovernanceDetails(3,"","Creation Date", "creation_date", "Datepicker", "No", "");
+		governance[3] = new GovernanceDetails(4,"","Planned Completion Date", "completion_date", "Datepicker", "No", "");
+		governance[4] = new GovernanceDetails(5,"","Applications", "apps", "MultiselectDropdown", "Yes", "");
+
 		for (int index = 0; index<governance.length; index++)
 		{
-			String Opportunity_InsertQuery = "insert into Governance_Info_Template_Details (seq_no, prj_name, app_name, options, label_name, column_name, type, mandatory, value)"
-										+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String Opportunity_InsertQuery = "insert into Governance_Info_Template_Details (seq_no, options, label_name, column_name, type, mandatory, value)"
+										+ "value(?, ?, ?, ?, ?, ?, ?)";
 		
 				  PreparedStatement prestmt = con.prepareStatement(Opportunity_InsertQuery);
 		          prestmt.setInt(1, governance[index].seq_num);
-				  prestmt.setString(2, governance[index].project);
-				  prestmt.setString(3, governance[index].app_name);
-				  prestmt.setString(4, governance[index].options);
-				  prestmt.setString(5, governance[index].label);
-				  prestmt.setString(6, governance[index].column);
-				  prestmt.setString(7, governance[index].type);
-				  prestmt.setString(8, governance[index].mandatory);
-				  prestmt.setString(9, governance[index].value);
-				  
+				  prestmt.setString(2, governance[index].options);
+				  prestmt.setString(3, governance[index].label);
+				  prestmt.setString(4, governance[index].column);
+				  prestmt.setString(5, governance[index].type);
+				  prestmt.setString(6, governance[index].mandatory);
+				  prestmt.setString(7, governance[index].value);			  
 				prestmt.execute();
-		
+		        prestmt.close();
 		}
 	}
 	

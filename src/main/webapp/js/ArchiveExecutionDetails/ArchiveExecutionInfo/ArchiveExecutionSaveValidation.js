@@ -27,14 +27,11 @@ function checkPreviousRows(currentIndex,validationType,value){
 	  for(var i =currentIndex; i>=0;i--)
 		{
 		  var level = parseInt($(".archiveLevel").eq(i).val());
-		  if(level==1&&levelone_count!=0)
+		  if(level==1)
 		  {
-			  if(!checkFieldValues(i+1))
-				  checkAboveFields = false;
+			  checkAboveFields =  checkFieldValues(i+11);
 			  levelone_count++;
-    	  }
-		  else if(level==1&&levelone_count==0)
-			  levelone_count++;
+		  }
 		  
 		}  
 	  if(levelone_count==1)

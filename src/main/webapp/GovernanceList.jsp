@@ -29,7 +29,7 @@
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/Opportunity/OpportunityList/OpportunityList.js"></script>
+    <script src="js/governance/governanceList/governanceList.js"></script>
     <style type="text/css">
          body{
             background:#fff;

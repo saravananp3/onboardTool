@@ -24,7 +24,10 @@
    
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <script type="text/javascript" src="js_in_pages/project.js"></script>
+
+<link rel="stylesheet" href="css/threeDots/threeDots.css" media="screen" >
 
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
@@ -378,6 +381,31 @@ color:#fff;
  color:#fff;
 }
          
+         
+ .vertical-alignment-helper {
+display:table;
+height: 100%;
+width: 100%;
+pointer-events:none;
+}
+
+.vertical-align-center {
+/* To center vertically */
+display: table-cell;
+vertical-align: middle;
+pointer-events:none;
+}
+
+.modal-content {
+/* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+width:inherit;
+max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching 
+full width */
+height:inherit;
+/* To center horizontally */
+margin: 0 auto;
+pointer-events:all;
+}
     </style>
 
 </head>
@@ -545,6 +573,9 @@ color:#fff;
                             <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                
                             </button>
+                            
+                            <button type="button" class="btn btn-primary pull-right" id="addWaveBtnId" style="color:DodgerBlue; display:none;" name="newpr" data-toggle='modal' data-target='#existWavePopUp'>
+                            </button>
                         </div>
                         <!-- /.col-sm-6 text-right -->
 
@@ -669,6 +700,45 @@ color:#fff;
 
 </div>
 <!-- end of main wrapper -->
+<!-- Add to Existing Wave Popup -->
+   
+   
+   <div class="modal" id="existWavePopUp" tabindex="-1" role="dialog">
+  <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add To Existing Wave</h5>
+        <button type="button" id="existWaveClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="formInput526">Select Wave Name:</label>
+                            <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <input type="text" id="existWaveSeqNum" name="" value="" style="display:none;"/>
+                <input type="text" id="oppNameId" name="" value="" style="display:none;"/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="existWaveSubmit" class="btn btn-primary" >Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdExistWave" aria-label="Close">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+</div>
 
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -730,7 +800,12 @@ color:#fff;
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
- <script>
+<script type="text/javascript" src="js/threeDotOptions/threeDotOptions.js"></script>
+<script src="js/notification/notification.js"></script>
+<script src="js/Opportunity/OpportunityList/addToExistWaveAjaxCall.js"></script>
+
+
+<script>
 $(document).ready(function() {
     $('.searchbox-input').keyup(function(){
         search_text($(this).val());
