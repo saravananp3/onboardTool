@@ -33,133 +33,9 @@
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawStuff);
-
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['DatabaseSize', 'size'],
-          ["Peolesoft", 233338787],
-          ["JBA", 385656755],
-          ["COPS", 1455767524],
-          
-         
-        ]);
-
-        var options = {
-          title: '',
-          width: 1000,
-          legend: { position: 'none' },
-          chart: { title: '',
-                   subtitle: '' },
-          bars: 'horizontal', // Required for Material Bar Charts.
-          axes: {
-            x: {
-              0: { side: 'top', label: 'DB Size In MB'} // Top x-axis.
-            }
-          },
-          bar: { groupWidth: "500%" }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-        chart.draw(data, options);
-      };
-    </script>
+    <script src = "js/dashboard/dashboardAjaxCall.js"></script>
     
-    
-    <script language="JavaScript">
-        google.charts.load('current', {packages: ['corechart']});
-
-        function drawChart() {
-            // Define the chart to be drawn.
-            var data = google.visualization.arrayToDataTable([
-                ['Tasks', 'completion'],
-                ['Intake', 100],
-                ['Plan & priority', 40],
-                ['Requirements', 20],
-                ['Archive exrcution', 10],
-                ['Decommision', 5],
-                
-
-            ]);
-
-            var options = {title: ''};
-
-            // Instantiate and draw the chart.
-            var chart = new google.visualization.ColumnChart(document.getElementById('container'));
-            chart.draw(data, options);
-        }
-
-        google.charts.setOnLoadCallback(drawChart);
-    </script>
-    
-    <script type="text/javascript">
-    google.charts.load('current', {'packages':['gantt']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Task ID');
-      data.addColumn('string', 'Task Name');
-      data.addColumn('string', 'Resource');
-      data.addColumn('date', 'Start Date');
-      data.addColumn('date', 'End Date');
-      data.addColumn('number', 'Duration');
-      data.addColumn('number', 'Percent Complete');
-      data.addColumn('string', 'Dependencies');
-
-      data.addRows([
-        ['2014Spring', 'Project Kickoff Meeting', '--',
-         new Date(2020, 2, 22), new Date(2020, 5, 20), null, 100, null],
-        ['2014Summer', 'Stakeholder/Project Team Identification', 'summer',
-         new Date(2020, 4, 21), new Date(2020, 7, 20), null, 100, null],
-        ['2014Autumn', 'Consultants Remote access setup', 'autumn',
-         new Date(2020, 4, 21), new Date(2020, 7, 20), null, 100, null],
-        ['2014Winter', 'Secure link Access, Applications enablement', 'winter',
-         new Date(2020, 5, 21), new Date(2020, 8, 21), null, 100, null],
-        ['2015Spring', 'Project Plan, Implementation Roadmap', 'spring',
-         new Date(2020, 6, 22), new Date(2020, 10, 20), null, 50, null],
-       
-      ]);
-
-      var options = {
-        height: 250,
-        gantt: {
-          trackHeight: 30
-        }
-      };
-
-      var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
-
-      chart.draw(data, options);
-    }
-  </script>
-    
-   <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['How many application are in intake',     5],
-          ['how many app in requirement phase',      4],
-          ['implementation phase',  3],
-          ['decomission', 2],
         
-        ]);
-
-        var options = {
-          
-          pieHole: 0.4,width: 1250,
-          
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
-    </script>
     
     
     
@@ -752,7 +628,7 @@ color:#fff;
                                  
                                 <div style="margin-bottom: 38px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter">10</p>
+                                       <p class="totcounter"></p>
                                          <span><i class="fa fa-file-text-o" style="font-size: 30px; " aria-hidden="true"></i></span>
                                         <span class="font_icon">Opportunities</span>
                                     </a>
@@ -761,7 +637,7 @@ color:#fff;
                                 
                                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter">16</p>
+                                       <p class="totcounter"></p>
                                         </span><i class="fa fa-remove" style="font-size: 30px;" aria-hidden="true"></i>
                                         <span class="font_icon">Decommision Apps</span>
                                     </a>
@@ -770,7 +646,7 @@ color:#fff;
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter">22</p>
+                                       <p class="totcounter"></p>
                                         <span><i class="fa fa-archive" style="font-size: 30px;" aria-hidden="true"></i>
                                        <span class="font_icon">Archive Apps</span></span>
                                     </a>
@@ -778,7 +654,7 @@ color:#fff;
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter">34</p>
+                                       <p class="totcounter"></p>
                              <span ><i class="fa fa-get-pocket" style="font-size: 30px;" aria-hidden="true"></i>
                                         <span class="font_icon">Apps To Retrived</span></span>
                                     </a>
@@ -843,9 +719,18 @@ color:#fff;
 		                                                            <div>
 		                                                                <h4 class="headercharts">Opportunity Timeline</h4>
 																		
-		                                                            
 		                                                            <div class="content">
-		                                                                
+		                                                                <div class="row">
+														                    <div class="form-group">
+														                        <div class="col-lg-8">
+														                            <label class="control-label" for="GanttChart" style="margin-left: 30px;">Select Opportunity :</label>
+														                            <select id="oppNameDrop" class="form-control" name="ganttChartTypesName" style = "width:250px;margin-left: 30px;" required >
+														                                
+														                            </select>
+														                        </div>
+														                    </div>
+														                </div>
+		                                                            <br/>
 																	<div id="chart_div" ></div>
 		
 		                                                            </div>
@@ -981,6 +866,10 @@ color:#fff;
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+ 
+ <script src = "js/dashboard/dashboardGanttChartAjaxCall.js"></script>
+ 
+ 
  <script>
 $(document).ready(function() {
     $('.searchbox-input').keyup(function(){
