@@ -231,6 +231,17 @@
         
         String query85 = "CREATE TABLE `ArchiveRequirements_Stake_Holder_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `OppName` varchar(255), `name` varchar(255), `role` varchar(255),`approvalId` varchar(255),`ArchiveRequirementApproval` varchar(255),`moduleId` varchar(255))";
         statement.executeUpdate(query85);
+        
+        String query86 = "CREATE TABLE `Phase_Info_Template_Details` (`seq_no` INTEGER (255),`options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query86);
+    
+        String query87 = "CREATE TABLE `Phase_Info_Details` (`seq_no` INTEGER (255), `phaseId` varchar(255), `phaseName` varchar(255), `prj_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query87);
+        
+        String query88 = "CREATE TABLE `Phase_Info` (`seq_no` INTEGER (255), `phaseId` varchar(255), `phaseName` varchar(255), `prj_name` varchar(255), `options` varchar(255), `label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        statement.executeUpdate(query88);
+        
+        
 	  %>
 <% } catch (Exception ex) {
     ex.printStackTrace();

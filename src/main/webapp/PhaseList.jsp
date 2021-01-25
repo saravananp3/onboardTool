@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Opportunity List</title>
+    <title>Governance List</title>
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
@@ -24,16 +24,12 @@
    
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <script type="text/javascript" src="js_in_pages/project.js"></script>
-
-<link rel="stylesheet" href="css/threeDots/threeDots.css" media="screen" >
 
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/Opportunity/OpportunityList/OpportunityList.js"></script>
-    
+    <script src="js/governance/phaseList/phaseList.js"></script>
     <style type="text/css">
          body{
             background:#fff;
@@ -308,6 +304,10 @@ input[type=search]:focus {
          }
          
          
+         .options
+         {
+          color:#000000;
+         }
          
     .right-side{
     
@@ -348,7 +348,7 @@ input[type=search]:focus {
 }
 
 
-#myInput{
+.topBarInput{
 
 
     border: none;
@@ -382,31 +382,6 @@ color:#fff;
  color:#fff;
 }
          
-         
- .vertical-alignment-helper {
-display:table;
-height: 100%;
-width: 100%;
-pointer-events:none;
-}
-
-.vertical-align-center {
-/* To center vertically */
-display: table-cell;
-vertical-align: middle;
-pointer-events:none;
-}
-
-.modal-content {
-/* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
-width:inherit;
-max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching 
-full width */
-height:inherit;
-/* To center horizontally */
-margin: 0 auto;
-pointer-events:all;
-}
     </style>
 
 </head>
@@ -511,11 +486,11 @@ pointer-events:all;
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li><a href="OpportunityList.jsp">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="Governance.jsp">Governance</a></li>
+		              <li class="active"><a href="#" style="color:#fff">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
-		              <li ><a href="DashBoard.jsp">Dashboards</a></li>
+		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
 		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
@@ -536,11 +511,14 @@ pointer-events:all;
             <nav class="navbar navbar-down">
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
-                        <div class="col-sm-6">
-                             <h5 class="title" style="color:#fff">Applications</h5>
+                        <div class="col-sm-2">
+                             <h5 class="title" style="color:#fff">Waves / Projects</h5>
+                             
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
-                        <div class="col-md-12">
+            
+                        
+                         <div class="col-md-12">
                              <div class="row form-row">
                                <div class="col-md-2 search-input">
 		                                <div class="row form-row">
@@ -548,11 +526,44 @@ pointer-events:all;
 		                               <i class="fa fa-search" aria-hidden="true"></i>
 		                               </div>
 		                               <div class="col-md-10">
-		                               <input class="form-control searchbox-input" id="myInput" type="text" placeholder="Search the application.."></div>
+		                               <input class="form-control searchbox-input topBarInput"  type="text" placeholder="Search the application.."></div>
 		                               
 		                               </div>
+		                               
                                </div>
-                               
+                               <label style="color:#fff">Category:</label>
+                               <div class="row form-row">
+                                
+
+		                               <div class="col-md-10">
+		                               <select class="form-control topBarInput" id="category" style ="width:200px;">
+		                               <option value='Phase' class='options'>Phase</option>
+		                               <option value='Wave' class='options'>Wave</option>
+		                               <option value='Application' class='options'>Application</option>
+		                               </select></div>
+		                               </div>
+		                               <label class = "PhaseRow" style="color:#fff;">Phase:</label>
+                               <div class="row form-row PhaseRow">
+		                               
+		                               <div class="col-md-10">
+		                               
+		                               <select class="form-control topBarInput" id="phase" style ="width:200px;">
+		                               <option value='All' class='options'>All</option>
+		                               <option value='Phase1' class='options'>Phase1</option>
+		                               <option value='Phase2' class='options'>Phase2</option>
+		                               <option value='Phase3' class='options'>Phase3</option>
+		                               </select></div>
+		                               </div>
+		                               <label class="WaveRow" style="color:#fff;">Wave:</label>
+		                               <div class="row form-row WaveRow">
+		                               <div class="col-md-10">
+		                               <select class="form-control topBarInput" id="wave" style ="width:200px;">
+		                               <option value='All' class='options'>All</option>
+		                               <option value='wave1' class='options'>wave1</option>
+		                               <option value='wave2' class='options'>wave2</option>
+		                               <option value='wave3' class='options'>wave3</option>
+		                               </select></div>
+		                               </div>
                                
                                <div class="col-md-6 ">
 		                                <div class="row ">
@@ -570,14 +581,19 @@ pointer-events:all;
                              </div>
                         </div>
                        
+                         <div class="container-fluid ">
+                         <ul class="nav navbar-nav" >
+						      <li ></li>
+						        <li ></li>
+		                   </ul>
+                         </div>
+                 
+
+			
+                       
                         <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='Intake_NewOpportunity.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                
-                            </button>
-                            
-                            <button type="button" class="btn btn-primary pull-right" id="addWaveBtnId" style="color:DodgerBlue; display:none;" name="newpr" data-toggle='modal' data-target='#existWavePopUp'>
-                            </button>
-                            <button type="button" class="btn btn-primary pull-right" id="deleteBtn" style="color:DodgerBlue; display:none;" name="newpr" data-toggle='modal' data-target='#deletePopUp'>
                             </button>
                         </div>
                         <!-- /.col-sm-6 text-right -->
@@ -703,83 +719,7 @@ pointer-events:all;
 
 </div>
 <!-- end of main wrapper -->
-<!-- Add to Existing Wave Popup -->
-   
-   
-   <div class="modal" id="existWavePopUp" tabindex="-1" role="dialog">
-  <div class="vertical-alignment-helper">
-  <div class="modal-dialog vertical-align-center" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add To Existing Wave</h5>
-        <button type="button" id="existWaveClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form name="PopUpform">
-            <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
-                            <label class="control-label" for="formInput526">Select Wave Name:</label>
-                            <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
-                                
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <br/>
-                <input type="text" id="existWaveSeqNum" name="" value="" style="display:none;"/>
-                <input type="text" id="oppNameId" name="" value="" style="display:none;"/>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="existWaveSubmit" class="btn btn-primary" >Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdExistWave" aria-label="Close">Cancel</button>
-        
-      </div>
-    </div>
-  </div>
-</div> 
-</div>
-<!-- Delete Pop Up -->
 
-   <div class="modal" id="deletePopUp" tabindex="-1" role="dialog">
-  <div class="vertical-alignment-helper">
-  <div class="modal-dialog vertical-align-center" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Application</h5>
-        <button type="button" id="deleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form name="PopUpform">
-            <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
-                            <!-- <label class="control-label" for="formInput526">Select Wave Name:</label>
-                            <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
-                                
-                            </select>
-    -->                     
-    <p>Are you sure, </br>want to delete the application permanently?</p>
-    </div>
-                    </div>
-                </div>
-                <br/>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="deleteYesBtn" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
-        
-      </div>
-    </div>
-  </div>
-</div> 
-</div>
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/jquery-ui/jquery-ui.min.js"></script>
@@ -840,13 +780,9 @@ pointer-events:all;
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="js/threeDotOptions/threeDotOptions.js"></script>
-<script src="js/notification/notification.js"></script>
-<script src="js/Opportunity/OpportunityList/addToExistWaveAjaxCall.js"></script>
-<script src="js/Opportunity/OpportunityList/deleteOpportunity.js"></script>
+<script type="text/javascript" src="js/governance/phaseList/phaseCategorySelection.js"></script>
 
-
-<script>
+ <script>
 $(document).ready(function() {
     $('.searchbox-input').keyup(function(){
         search_text($(this).val());

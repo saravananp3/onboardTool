@@ -394,8 +394,42 @@ try
 		        prestmt.close();
 		}
 	}
+
+	// phase template info
+	String NewPhaseQuery = "select * from Phase_Info_Template_Details";
+	Statement PhaseStatement = con.createStatement();
+	ResultSet rs_phase = statements.executeQuery(NewPhaseQuery);
 	
-	//
+	if(!rs_phase.next())
+	{
+		GovernanceDetails governance[] = new GovernanceDetails[5];
+		governance[0] = new GovernanceDetails(1,"","Phase Id", "phaseId", "Text box","Yes", "");
+		governance[1] = new GovernanceDetails(2,"","Phase Name", "phaseName", "Text box", "Yes", "");
+		governance[2] = new GovernanceDetails(3,"","Creation Date", "creation_date", "Datepicker", "No", "");
+		governance[3] = new GovernanceDetails(4,"","Planned Completion Date", "completion_date", "Datepicker", "No", "");
+		governance[4] = new GovernanceDetails(5,"","Waves", "waves", "MultiselectDropdown", "No", "");
+
+		for (int index = 0; index<governance.length; index++)
+		{
+			String phase_InsertQuery = "insert into Phase_Info_Template_Details (seq_no, options, label_name, column_name, type, mandatory, value)"
+										+ "value(?, ?, ?, ?, ?, ?, ?)";
+		
+				  PreparedStatement prestmt = con.prepareStatement(phase_InsertQuery);
+		          prestmt.setInt(1, governance[index].seq_num);
+				  prestmt.setString(2, governance[index].options);
+				  prestmt.setString(3, governance[index].label);
+				  prestmt.setString(4, governance[index].column);
+				  prestmt.setString(5, governance[index].type);
+				  prestmt.setString(6, governance[index].mandatory);
+				  prestmt.setString(7, governance[index].value);			  
+				prestmt.execute();
+		        prestmt.close();
+		}
+	}
+	rs_phase.close();
+	PhaseStatement.close();
+
+	
 	String Triage_Query = "select * from Triage_Info_Template_Details";
 	Statement statement1 = con.createStatement();
 	ResultSet rs_Triage = statement1.executeQuery(Triage_Query);

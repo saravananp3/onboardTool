@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>New Opportunity</title>
+    <title>New Wave</title>
     <meta charset="UTF-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
     <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen">
   
-
+   <!-- ========== multiselect dropdown ========== -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css"/>
    
 
     <!-- ========== THEME CSS ========== -->
@@ -22,7 +23,6 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
-    <script src="js/Opportunity/Opportunity.js"></script>
 </head>
 <style>
 
@@ -102,9 +102,9 @@ HttpSession details = request.getSession();
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                   <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
+		              <li ><a href="OpportunityList.jsp">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="Governance.jsp">Governance</a></li>
+		              <li class="active"><a href="#" style="color:#fff">Governance</a></li>
 		              <li><a href="#">Finance</a></li>
 		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
 		              <li><a href="#">Compliance</a></li>
@@ -128,7 +128,7 @@ HttpSession details = request.getSession();
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h4 class="title" style="color:#fff">Create Opportunity</h4>
+                            <h4 class="title" style="color:#fff">Create Wave</h4>
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
                        
@@ -160,7 +160,7 @@ HttpSession details = request.getSession();
  <div class="panel-group" id="panels1">
      <div class="panel panel-default">
          <div class="panel-heading">
-             <h4 class="panel-title"> <a  data-parent="#panels1" > New Opportunity  </a> </h4>
+             <h4 class="panel-title"> <a  data-parent="#panels1" > New Wave  </a> </h4>
          </div>
          <%@ page import="java.sql.*"%>
          <div id="collapse2" class="panel-collapse">
@@ -168,7 +168,7 @@ HttpSession details = request.getSession();
              <form class="form-signin" name="OpportunityForm" enctype='application/json'>
              <div id ="inputFields">
                    <div class='form-group'>
-                        <input type='hidden' class='form-control' size='35' id="Record_No" placeholder='' name="RecordNo" value=""/>
+                        <input type='hidden' class='form-control' size='35' id="wave_Id" placeholder='' name="wave_Id" value=""/>
                        <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/>
                         </div>	               
               </div>     
@@ -176,11 +176,11 @@ HttpSession details = request.getSession();
 	              
 	                      <div class="col-md-12">
                 <div class="col-md-1">
-	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='OpportunityList.jsp';">Back</button>
+	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='GovernanceList.jsp';">Back</button>
 	           </div>
 	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right;">
 
-	                <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".bd-example-modal-lg">Template</button>
+	                
                             <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
                               <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
@@ -191,7 +191,8 @@ HttpSession details = request.getSession();
 	                       <button type="submit" class="btn btn-success" id="create">Create</button>
 	                       <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display:none;">Edit PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display:none;">Delete PopUp</button>
-	                      <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='OpportunityList.jsp';"style="display:none;"></button>
+	                      <button type="button" class="btn btn-primary pull-right" id="infopopup_btn" data-toggle="modal" data-target="#InfoPopUp" style="display:none;">Info PopUp</button>	                      
+	                      <button type="button" class="btn btn-primary pull-right" id="governanceListId" onclick ="window.location.href='GovernanceList.jsp';"style="display:none;"></button>
 	                      </div>
 	                      </div>
 	                      </form>
@@ -222,6 +223,27 @@ HttpSession details = request.getSession();
   </div>
 </div>                         
 	               
+ <!-- Info Pop Up-->
+	     <div class="modal" id="InfoPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Information</h5>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p style="font-size:20px;">No Opportunity found to create new wave.</p>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="infoSubmit" onclick="location.href='OpportunityList.jsp'"class="btn btn-primary" >OK</button>
+      </div>
+    </div>
+  </div>
+</div>                         
 
 	<!-- Edit pop up -->
 	<div class="modal" id="EditPopUp" tabindex="-1" role="dialog">
@@ -380,37 +402,7 @@ HttpSession details = request.getSession();
     </div>
   </div>
 </div>               
-	               <!-- Modal -->
-	               
-<div class="modal fade bd-example-modal-lg" id="myFormModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document" >
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Opportunity Template</h5>
-        <button type="button" class="close" id="temp_close_id" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form name = "myForm">
-            <div class="form-group" id="TemplateFields">
-            </div>
-	        	        
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary submitDisable" onclick="validateForm()">Add Template</button>
-      </div>
-    </div>
-  </div>
-</div>
-	               
-	               
-	               
-	               
-              
-              
+	         
            </div>
            
            
@@ -508,27 +500,21 @@ $('.deletepopup').click(function() {
          rel = "stylesheet"><!-- newly added code by parthiban -->
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-      <script src="js/toastr/toastr.min.js"></script>
-
 <!-- ========== THEME JS ========== -->
 <script src="js/notification/notification.js"></script>
+<!-- ========== multiselect dopdown ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+<script src="js/toastr/toastr.min.js"></script>
 <script src="js/Opportunity/AddFeatureFunctionality.js"></script>
-<script src="js/Opportunity/AddFeatureAjaxCall.js"></script>
 <script src="js/Opportunity/EditDeleteToggle.js"></script>
-<script src="js/Opportunity/EditFunctionality.js"></script>
-<script src="js/Opportunity/NewOpportunityCreate.js"></script>
+<script src="js/Opportunity/edit_delete_popup.js"></script>
+<script src="js/governance/newPhase/phaseDataRetrieveAjaxCall.js"></script>
+<script src="js/governance/newPhase/newPhaseAddAjaxCall.js"></script>
+<script src="js/governance/newPhase/phaseEditDeleteAjaxCall.js"></script>
+<script src="js/governance/newPhase/phaseSaveAjaxCall.js"></script>
 <script id ="scripttag">
 </script>
 <script id ="scripttag1">
 </script>
-
-
-
-
-
-
-
-
-
 </body>
 </html>
