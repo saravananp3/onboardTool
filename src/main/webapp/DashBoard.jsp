@@ -36,7 +36,7 @@
     <script src = "js/dashboard/dashboardAjaxCall.js"></script>
     
         
-    
+    <link rel="stylesheet" href="css/demoDashboard/demoDashCSS.css" >
     
     
     <style type="text/css">
@@ -46,6 +46,7 @@
          
          body{
             background:#fff;
+            zoom:250%%;
         }
 
         .active{
@@ -449,13 +450,16 @@ color:#fff;
       font-size: 20px;
       }
       .totcounter{
-      font-size: 43px;
+      font-size: 25px;
     margin-bottom: 14px;
     text-align: center;}
     .headercharts{
     margin-left: 22px; margin-bottom: 21px;
     }
     </style>
+    
+    
+    
 
 </head>
 <body class="top-navbar-fixed">
@@ -541,8 +545,6 @@ color:#fff;
 
 <!-- main wrapper -->
 <div class="main-wrapper">
-
-
      <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -551,10 +553,6 @@ color:#fff;
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
@@ -595,79 +593,140 @@ color:#fff;
 
                     </div>
 
-                </div>
+                
 			</nav>
         </div>
         <!-- /.container-fluid -->
     </nav >
+    <div class="content-wrapper">
+
+    <div class="container-fluid">
+  <div class="row content">
+    
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-sm-3" style = "margin-top: 12%;">
+          <div class="well">
+          
+          <div class="card text-center" style="background-color:#f1f2f1;">
+  <div class="card-header mask">Governance</div>
+  </br>
+  <div class="card-body">
+    <div class="goverCard">
+    <span><img src="images/dashboard/gover.png" /></span>
+    </div>
+    </br>
+    <p class="card-text">
+      Number of Applications : 16
+    </p>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+          
+                     </div>
+        </div>
+        <div class="col-sm-3" style = "margin-top: 12%;">
+          <div class="well">
+            <div class="card text-center" style="background-color:#f1f2f1;">
+  <div class="card-header mask">Intake</div>
+   </br>
+  <div class="card-body">
+    <div class="intakeCard">
+    <span><img src="images/dashboard/in.png" /></span>
+    </div>
+     </br>
+    <p class="card-text">
+      Number of Applications : 6
+    </p>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+          </div>
+        </div>
+        <div class="col-sm-3" style = "margin-top: 12%;">
+          <div class="well">
+            <div class="card text-center" style="background-color:#f1f2f1;">
+  <div class="card-header mask">Requirements</div>
+   </br>
+  <div class="card-body">
+    <div class="ReqCard">
+    <span><img src="images/dashboard/requirement.png" /></span>
+    </div>
+     </br>
+    <p class="card-text">
+      Number of Applications : 2
+    </p>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+          </div>
+        </div>
+        
+         <div class="col-sm-3" style = "margin-top: 12%;">
+          <div class="well">
+            <div class="card text-center" style="background-color:#f1f2f1;">
+  <div class="card-header mask">Archive Execution</div>
+  </br>
+  <div class="card-body">
+    <div class="archiveCard">
+    <span><img src="images/dashboard/archive.png" /></span>
+    </div>
+    </br>
+    <p class="card-text">
+      Number of Applications : 5
+    </p>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+          </div>
+        </div>
+        
+         <div class="col-sm-3">
+          <div class="well">
+            <div class="card text-center" style="background-color:#f1f2f1;">
+  <div class="card-header mask">Decommission Execution</div>
+  </br>
+  <div class="card-body">
+    <div class="decomCard">
+    <span><img src="images/dashboard/decommissionExecution.png" /></span>
+    </div>
+    </br>
+    <p class="card-text">
+      Number of Applications : 7
+    </p>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+          </div>
+        </div>
+        
+        <div class="col-sm-3">
+          <div class="well">
+            <div class="card text-center" style="background-color:#f1f2f1;">
+  <div class="card-header mask">Financial</div>
+  <div class="card-body">
+    <div class="finCard">
+    </br>
+    <span><img src="images/dashboard/financial.png" /></span>
+    </div>
+    </br>
+    <p class="card-text">
+      Number of Applications : 9
+    </p>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+      
+    </div>
+  </div>
     <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
    
-    <div class="content-wrapper">
-     
-        
-        
-
-        <div class="content-container">
-           
-            <div class="main-page">
-               <div class="paneldashboard" style="margin-top: 21px;  margin-bottom: 75px;">
-                             <input type="checkbox" id="switch"
-                    class="checkbox" /> 
-        <label for="switch" class="toggle"> 
-        </label>                           
-                                                    </div> 
-                 
-              <div style="margin-top: 80px;"class="col-md-12 ">
-                                                        <div class="paneldashboard">
-              
-                            <div class="container-fluid grid">
-                                <div class="main">
-                                
-                                    <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
-                                       
-                                 
-                                <div style="margin-bottom: 38px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                                         <span><i class="fa fa-file-text-o" style="font-size: 30px; " aria-hidden="true"></i></span>
-                                        <span class="font_icon">Opportunities</span>
-                                    </a>
-                               
-                                </div>
-                                
-                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                                        </span><i class="fa fa-remove" style="font-size: 30px;" aria-hidden="true"></i>
-                                        <span class="font_icon">Decommision Apps</span>
-                                    </a>
-                                    
-                               
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                                        <span><i class="fa fa-archive" style="font-size: 30px;" aria-hidden="true"></i>
-                                       <span class="font_icon">Archive Apps</span></span>
-                                    </a>
-                               
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                             <span ><i class="fa fa-get-pocket" style="font-size: 30px;" aria-hidden="true"></i>
-                                        <span class="font_icon">Apps To Retrived</span></span>
-                                    </a>
-                                    
-                                    
-                               
-                                </div>
-               
-                            </div> 
-                            </div>
-                  
-                                      </div>
-                                        <%
+                                           <%
                                                 con.close();
                                                 visit_st.close();
     }
@@ -679,98 +738,7 @@ color:#fff;
                                         %>
 
 
-                                        </ul>
-
-                                    </div>
-                                </div>
-                                
-                                       <div class="col-md-12 ">
-                                                        <div class="paneldashboard">
-                                                            <!-- <div>
-                                                                <h4 class="headercharts">Application Statistics</h4>
-                                                                <div class="col-md-6">
-                                                                    <div class="form-group row">
-                                                                        <label class="col-md-3 col-form-label">Project</label>
-                                                                        <div class="col-md-9">
-                                                                            <select class="form-control">
-                                                                                <option>BPCS</option>
-                                                                                <option>Microsiga</option>
-                                                                                <option>SEEKGIT</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div> -->
-                                                            <br>
-                                                            <br>
-                                                            <div class="content">
-                                                                <div id="donutchart" style="width: 900px; height: 500px;"></div>
-
-
-                                                            </div>
-                                                        </div>
-                                                    </div> 
-                                                    
-                                               
-
-												<div class="col-md-12">
-		
-		                                                        <div class="paneldashboard">
-		                                                            <div>
-		                                                                <h4 class="headercharts">Opportunity Timeline</h4>
-																		
-		                                                            <div class="content">
-		                                                                <div class="row">
-														                    <div class="form-group">
-														                        <div class="col-lg-8">
-														                            <label class="control-label" for="GanttChart" style="margin-left: 30px;">Select Opportunity :</label>
-														                            <select id="oppNameDrop" class="form-control" name="ganttChartTypesName" style = "width:250px;margin-left: 30px;" required >
-														                                
-														                            </select>
-														                        </div>
-														                    </div>
-														                </div>
-		                                                            <br/>
-																	<div id="chart_div" ></div>
-		
-		                                                            </div>
-		                                                        
-		                                                            </div>
-		
-		                                                            
-		                                                        </div>
-		                                                    </div>
-                        
-                                        <div class="col-md-12">
-                                            <div class="card">
-
-
-                                                
-                                                <div class="row">
-                                                    <div class="col-md-12">
-
-                                                        <div class="paneldashboard">
-                                                            <div >
-                                                                <h4 class="headercharts">Application Breakdown</h4>
-																<div class="card1">
-                                                            
-                                                            <div class="content">
-                                                                
-															<div id="top_x_div" style="width: 900px; height: 400px;"></div>
-
-                                                            </div>
-                                                        </div>
-
-                                                            </div>
-
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
+   
 
                                                     
                                               
@@ -802,8 +770,6 @@ color:#fff;
 					  
 		
     <!-- /.content-wrapper -->
-
-</div>
 <!-- end of main wrapper -->
 
 <!-- ========== COMMON JS FILES ========== -->
@@ -813,7 +779,6 @@ color:#fff;
 <script src="js/pace/pace.min.js"></script>
 <script src="js/lobipanel/lobipanel.min.js"></script>
 <script src="js/iscroll/iscroll.js"></script>
-
 
 <script type="text/javascript">
     $('#list').click(function()
