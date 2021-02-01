@@ -552,7 +552,40 @@ pointer-events:all;
 		                               
 		                               </div>
                                </div>
-                               
+                                <label style="color:#fff">Category:</label>
+                               <div class="row form-row">
+                                
+
+		                               <div class="col-md-10">
+		                               <select class="" id="category" style ="width:200px;">
+		                               <option value='none' class='options'>none</option>
+		                               <option value='Intake' class='options'>Intake</option>
+		                               <option value='Triage' class='options'>Triage</option>
+		                               <option value='Assessment' class='options'>Assessment</option>
+		                               <option value='Requirement' class='options'>Requirement</option>
+		                               <option value='Execution' class='options'>Execution</option>
+		                               <option value='Closure' class='options'>Closure</option>
+		                               </select></div>
+		                               </div>
+		                               <label class = "PhaseRow" style="color:#fff;">Phase:</label>
+                               <div class="row form-row PhaseRow">
+		                               
+		                               <div class="col-md-10">
+		                               
+		                               <select class="" id="phase" style ="width:200px;">
+		                              <option value='none' class='options'>none</option>
+		                               <option value='Phase1' class='options'>Phase1</option>
+		                               <option value='Phase2' class='options'>Phase2</option>
+		                               </select></div>
+		                               </div>
+		                               <label class="WaveRow" style="color:#fff;">Wave:</label>
+		                               <div class="row form-row WaveRow">
+		                               <div class="col-md-10">
+		                               <select class="" id="wave" style ="width:200px;">
+		                                <option value='none' class='options'>none</option>
+		                               <option value='Wave1' class='options'>Wave1</option>
+		                               <option value='Wave2' class='options'>Wave2</option>
+		                               </select></div>
                                
                                <div class="col-md-6 ">
 		                                <div class="row ">
