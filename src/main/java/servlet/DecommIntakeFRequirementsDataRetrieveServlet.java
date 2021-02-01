@@ -10,15 +10,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 @WebServlet("/DecommIntakeFRequirementsDataRetrieveServlet")
 public class DecommIntakeFRequirementsDataRetrieveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String applicationname=request.getParameter("ApplicationName");
-        String projectname=request.getParameter("ProjectName");
-        JsonArray jsonArray=new IntakeInformationService().DecommIntakeRequirementsDataRetrieve(projectname,applicationname);
+    	HttpSession details = request.getSession();
+        String Id=(String)details.getAttribute("ID");
+        String oppName=(String)details.getAttribute("SelectedOpportunity");
+        JsonArray jsonArray=new IntakeInformationService().DecommIntakeRequirementsDataRetrieve(Id,oppName);
         System.out.println("Im here"+jsonArray);
         String json = new Gson().toJson(jsonArray);
         response.setContentType("application/json");

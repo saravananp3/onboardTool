@@ -473,9 +473,9 @@ transition: width 2s, height 2s, transform 2s;
     <div class="step-milestone2"/>
     
     
-    <a href="AppEmphasize_EditProject.jsp">
+    <a href="ArchiveDecommPage.jsp">
                                         <center>
-                                            <img src="images/grid/app.png" class="img-rounded" height="100" width="100" alt="Avatar">
+                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
 
                                         </center>
 
@@ -484,28 +484,25 @@ transition: width 2s, height 2s, transform 2s;
     </div>
     <br>
      <span class="step-title">
-      Plan   and  Priority 
+      Requirements
     </span>
   </div>
     </div>
-    <div class="arrow final">
-        <div class="line"></div>
-        <div class="triangle"></div>
-    </div>
+    
     <div class="process interview">
         <div class="step">
     <div class="step-milestone3"/>
     
-    <a href="ArchiveDecommPage.jsp">
+    <a id="ArchiveExecutionNavigation" href="ArchiveExecutionDetails.jsp">
                                         <center>
-                                          <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+                                          <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
 
                                         </center>
 
     </div>
     <br>
      <span class="step-title">
-     Requirements  <br> 
+     Archive   Execution  <br> 
     </span>
   </div>
     </div>
@@ -516,29 +513,6 @@ transition: width 2s, height 2s, transform 2s;
     <div class="process assessment">
         <div class="step">
     <div class="step-milestone2"/>
-    <a id="ArchiveExecutionNavigation" href="ArchiveExecutionDetails.jsp">
-                                        <center>
-                                             <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
-
-                                        </center>
-
-                                    </a>
-    
-    
-    </div>
-    <br>
-     <span class="step-title">
-      Archive   Execution
-    </span>
-  </div>
-    </div>
-    <div class="arrow finalDecision">
-        <div class="line"></div>
-        <div class="triangle"></div>
-    </div>
-    <div class="process finalDecision">
-       <div class="step">
-    <div class="step-milestone5"/>
     <a href="#">
                                         <center>
                                              <img src="images/grid/decommission-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
@@ -555,6 +529,11 @@ transition: width 2s, height 2s, transform 2s;
     </span>
   </div>
     </div>
+    <div class="arrow finalDecision">
+        <div class="line"></div>
+        <div class="triangle"></div>
+    </div>
+        </div>
     
  
  

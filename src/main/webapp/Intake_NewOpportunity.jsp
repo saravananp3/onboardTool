@@ -158,6 +158,8 @@ HttpSession details = request.getSession();
                                 
 
  <div class="panel-group" id="panels1">
+ <br/>
+ <br/>
      <div class="panel panel-default">
          <div class="panel-heading">
              <h4 class="panel-title"> <a  data-parent="#panels1" > New Opportunity  </a> </h4>

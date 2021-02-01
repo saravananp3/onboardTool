@@ -232,13 +232,13 @@ public class IntakeInformationService {
         return jsonArray;
 
     }
-    public JsonArray DecommIntakeRequirementsDataRetrieve(String projectname,String applicationname)
+    public JsonArray DecommIntakeRequirementsDataRetrieve(String Id,String oppName)
     {
         JsonArray jsonArray=new JsonArray();
         try{
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            String existing_data_query="  select * from Decomm_BusinessUnit_GeographicCode where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by id;";
+            String existing_data_query="  select * from Decomm_BusinessUnit_GeographicCode where oppId='"+Id+"' and oppName='"+oppName+"' order by id;";
             Statement st=connection.createStatement();
             ResultSet existingdata=st.executeQuery(existing_data_query);
             int i=0;
@@ -281,13 +281,13 @@ public class IntakeInformationService {
         return jsonArray;
     }
 
-    public JsonArray DecommSiteLocationDataRetrieve(String projectname,String applicationname)
+    public JsonArray DecommSiteLocationDataRetrieve(String Id,String oppName)
     {
         JsonArray jsonArray=new JsonArray();
         try{
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            String existing_data_query="  select * from Decomm_Sitelocation_Assets where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by id;";
+            String existing_data_query="  select * from Decomm_Sitelocation_Assets where oppId='"+Id+"' and oppName='"+oppName+"' order by id;";
             Statement st=connection.createStatement();
             ResultSet existingdata=st.executeQuery(existing_data_query);
             int i=0;
@@ -331,13 +331,13 @@ public class IntakeInformationService {
         return jsonArray;
     }
 
-    public JsonObject DecommIntakeRequirementDataRetrieve(String projectname,String applicationname)
+    public JsonObject DecommIntakeRequirementDataRetrieve(String Id,String oppName)
     {
         JsonObject jsonobject=new JsonObject();
         try{
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            String existing_data_query="  select * from decomm_intake_req where prj_name='"+projectname+"' and app_name='"+applicationname+"' order by id;";
+            String existing_data_query="  select * from decomm_intake_req where oppId='"+Id+"' and oppName='"+oppName+"' order by id;";
             Statement st=connection.createStatement();
             ResultSet existingdata=st.executeQuery(existing_data_query);
             if(existingdata.next())
@@ -355,12 +355,16 @@ public class IntakeInformationService {
             else{
                 jsonobject.addProperty("CheckExistance",false);
             }
-            String readOnly_query = "Select * from AppEmphazize_ApplicationPrioritization where prj_name='"+projectname+"' and proj_name='"+applicationname+"'";
-            Statement st1=connection.createStatement();
-            ResultSet existingdata1=st1.executeQuery(readOnly_query);
-            if(existingdata1.next()) {
-                jsonobject.addProperty("Read_Only", existingdata1.getString("read_date"));
-            }
+			/*
+			 * String readOnly_query =
+			 * "Select * from AppEmphazize_ApplicationPrioritization where prj_name='"
+			 * +projectname+"' and proj_name='"+applicationname+"'"; Statement
+			 * st1=connection.createStatement(); ResultSet
+			 * existingdata1=st1.executeQuery(readOnly_query); if(existingdata1.next()) {
+			 * jsonobject.addProperty("Read_Only", existingdata1.getString("read_date")); }
+			 */
+            jsonobject.addProperty("Read_Only", "");
+            
             //int i=0;
             /*if(existingdata.next())
             {
