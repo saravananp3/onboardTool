@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>New Wave</title>
+    <title>New Phase</title>
     <meta charset="UTF-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,7 +128,7 @@ HttpSession details = request.getSession();
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h4 class="title" style="color:#fff">Create Wave</h4>
+                            <h4 class="title" style="color:#fff">Create Phase</h4>
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
                        
@@ -158,11 +158,11 @@ HttpSession details = request.getSession();
                                 
 
  <div class="panel-group" id="panels1">
- <br/>
- <br/>
+  <br/>
+  <br/>
      <div class="panel panel-default">
          <div class="panel-heading">
-             <h4 class="panel-title"> <a  data-parent="#panels1" > New Wave  </a> </h4>
+             <h4 class="panel-title"> <a  data-parent="#panels1" > New Phase  </a> </h4>
          </div>
          <%@ page import="java.sql.*"%>
          <div id="collapse2" class="panel-collapse">
@@ -170,7 +170,7 @@ HttpSession details = request.getSession();
              <form class="form-signin" name="OpportunityForm" enctype='application/json'>
              <div id ="inputFields">
                    <div class='form-group'>
-                        <input type='hidden' class='form-control' size='35' id="wave_Id" placeholder='' name="wave_Id" value=""/>
+                        <input type='hidden' class='form-control' size='35' id="Id" placeholder='' name="Id" value=""/>
                        <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/>
                         </div>	               
               </div>     
@@ -194,7 +194,7 @@ HttpSession details = request.getSession();
 	                       <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display:none;">Edit PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display:none;">Delete PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="infopopup_btn" data-toggle="modal" data-target="#InfoPopUp" style="display:none;">Info PopUp</button>	                      
-	                      <button type="button" class="btn btn-primary pull-right" id="governanceListId" onclick ="window.location.href='GovernanceList.jsp';"style="display:none;"></button>
+	                      <button type="button" class="btn btn-primary pull-right" id="ListId" onclick ="window.location.href='PhaseList.jsp';"style="display:none;"></button>
 	                      </div>
 	                      </div>
 	                      </form>
@@ -236,7 +236,7 @@ HttpSession details = request.getSession();
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
-                    <p style="font-size:20px;">No Opportunity found to create new wave.</p>
+                    <p style="font-size:20px;">No Wave found to create new wave.</p>
                 </div>
             </form>
       </div>

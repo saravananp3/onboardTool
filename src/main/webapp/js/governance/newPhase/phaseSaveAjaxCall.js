@@ -1,11 +1,11 @@
 $("#create").click(function(e)
 {
-	var waveName = $("#waveName").val();
-	var waveId = $("#waveId").val();
+	var phaseName = $("#phaseName").val();
+	var phaseId = $("#phaseId").val();
 	var checkMandatory = true;
 	var nameAttr = [];
 	var jsonObj = [];
-	if(waveName!=""&&waveId!="")
+	if(phaseName!=""&&phaseId!="")
 		{
 		$(".InputField").each(function(i) {
     		var inputs = {};
@@ -38,6 +38,8 @@ $("#create").click(function(e)
   				   {
   				     var name2 =$(this).find("select").attr("name");
   				     var val2 =$(this).find("select").val();
+  	  				 var multiselectValue = $(this).find("select").val();
+
   				   var classNames =$(this).find("select").attr('class');
   				   if(classNames.includes("multiselect"))
 			    	 {
@@ -99,7 +101,7 @@ $("#create").click(function(e)
     	
     	var checkAjax;
     	if(checkMandatory)
-        var validationCheck_json = AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e);
+        var validationCheck_json = AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,e);
     	else
     		{
     		notification("warning","Please fill the mandatory fields.","Warning");
@@ -109,20 +111,20 @@ $("#create").click(function(e)
 else
 {
 		e.preventDefault();
-		notification("warning","Wave name or Wave Id field should not be empty.","Warning");
+		notification("warning","Phase name or Phase Id field should not be empty.","Warning");
 		 return false;
 }
 });
 
-function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e)
+function AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,e)
 {
 	e.preventDefault();
 	var JsonObject=[];
 	var checkAjax =false;
 	$.ajax({
-        url: "governanceSaveServlet",
+        url: "phaseSaveServlet",
         type: 'POST',
-        data : {waveName:waveName, waveId:waveId ,JsonString : JsonString, checkMandatory : checkMandatory},
+        data : {phaseName:phaseName, phaseId:phaseId ,JsonString : JsonString, checkMandatory : checkMandatory},
         async: false,
         dataType: "json",
         success: function (data) {
@@ -130,18 +132,18 @@ function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e)
         	JsonObject = data;
         	if(data.SaveStatus)
         		{
-        		notification("success","New Wave successfully created.","Note:");
+        		notification("success","New Phase successfully created.","Note:");
         		setTimeout(function()
         				{
-        			      $("#governanceListId").click();
+        			      $("#ListId").click();
         				},1000);
         		}
         	else
         	{
-           		if(data.checkWaveName)
-        			notification("warning","Wave Name already exist.","Warning:");
-        		else if(data.checkWaveId)
-        			notification("warning","Wave Id already exist.","Warning:");
+           		if(data.checkphaseName)
+        			notification("warning","Phase Name already exist.","Warning:");
+        		else if(data.checkphaseId)
+        			notification("warning","Phase Id already exist.","Warning:");
         		else
         		notification("error","Error occured while saving.","Error:");
         	}

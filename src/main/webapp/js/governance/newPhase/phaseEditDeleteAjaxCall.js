@@ -5,7 +5,7 @@
     	{
     		
     	$.ajax({
-            url: "governanceEditServlet",
+            url: "phaseEditServlet",
             type: 'POST',
             data : {seq_num:Seq_Num,label:Label},
             dataType: "json",
@@ -50,7 +50,7 @@
     	
     	var Seq_Num=$('#sequence1').val();
     	$.ajax({
-            url: "governanceDeleteServlet",
+            url: "phaseDeleteServlet",
             type: 'POST',
             async: false,
             data : {seq_num:Seq_Num},

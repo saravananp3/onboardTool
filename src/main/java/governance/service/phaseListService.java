@@ -27,7 +27,7 @@ public class phaseListService {
 			
 			if(waves.equals("all"))
 			{
-			 String selectQuery ="select * from phase_info where column_name = 'waveName'";
+			 String selectQuery ="select * from phase_info where column_name = 'phaseName'";
 			 Statement st = con.createStatement();
 			 ResultSet rs = st.executeQuery(selectQuery);
 			 

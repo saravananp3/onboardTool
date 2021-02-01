@@ -10,58 +10,61 @@ import com.google.gson.JsonObject;
 
 import onboard.DBconnection;
 
-public class governanceListService {
+public class selectCategory {
+
 	DBconnection dBconnection;
 	Connection con;
-	String waves;
-	
-	public governanceListService(String waves) throws ClassNotFoundException, SQLException {
+	String Category;
+	String Phase;
+	String Wave;
+	public selectCategory() throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
-		 this.waves = waves;
 	}
-
-	public  JsonArray governanceListDetails() {
+	
+	public JsonArray WavesDropdown()
+	{
 		JsonArray jsonArray = new JsonArray();
-		try {
-			
-			if(waves.equals("all"))
-			{
-			 String selectQuery ="select * from governance_info where column_name = 'waveName'";
+		
+		try
+		{
+			String selectQuery ="select * from governance_info where column_name = 'waveName'";
 			 Statement st = con.createStatement();
 			 ResultSet rs = st.executeQuery(selectQuery);
 			 
 			 while(rs.next()) {
 				 JsonObject jsonObj = new JsonObject();
+				 String waveName = rs.getString("value");
+				 
 				 jsonObj.addProperty("WaveId", rs.getString("waveid"));
-				 jsonObj.addProperty("WaveName", rs.getString("value"));
-				 jsonObj.addProperty("phaseName", rs.getString("value"));
+				 jsonObj.addProperty("WaveName", waveName);
+				 jsonObj.addProperty("phaseName", getPhaseName(waveName));
+				 
 				 jsonArray.add(jsonObj);
-			 }
-			 
-			}
+			 }	
 		}
-		catch(Exception e) {
+		catch(Exception e)
+		{
 			e.printStackTrace();
-			System.out.println("Exception------->>>>>--------" + e);
 		}
+		
 		return jsonArray;
 	}
-	
 	
 	private String getPhaseName(String waveName)
 	{
 		String phaseName = "";
 		try
 		{
-			String selectQuery ="select * from phase_info where column_name='waves' and values like '%"+waveName+"%'";
+			String selectQuery  = "select * from phase_info where column_name = 'waves' and value like '%"+waveName+"%'";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
-			if(rs.next())
-				phaseName += rs.getString("phaseName");
 			
-			rs.close();
+			if(rs.next())
+				phaseName = rs.getString("phaseName");
+			
 			st.close();
+			rs.close();	
 		}
 		catch(Exception e)
 		{
@@ -69,5 +72,8 @@ public class governanceListService {
 		}
 		
 		return phaseName;
+	}
+	protected void finalize() throws Throwable {
+	con.close();
 	}
 }

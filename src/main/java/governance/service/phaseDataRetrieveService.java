@@ -135,34 +135,34 @@ public class phaseDataRetrieveService {
 	
 	private void updateApplications()
 	{
-		String appNames = "";
+		String waveNames = "";
 		try
 		{
 			boolean checkApp = false;
-			String selectQuery="select * from opportunity_info where column_name='appName';";
+			String selectQuery="select * from governance_info where column_name='waveName';";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
 			while(rs.next())
 			{
 				checkApp =true;
-				String selectQuery1 = "select * from phase_info where column_name='apps' and value like '%"+rs.getString("value")+"%'";
+				String selectQuery1 = "select * from phase_info where column_name='waves' and value like '%"+rs.getString("value")+"%'";
 				Statement st1 = con.createStatement();
 				ResultSet rs1 = st1.executeQuery(selectQuery1);
 				if(!rs1.next())
-				  appNames+=rs.getString("value")+",";	
+					waveNames += rs.getString("value")+",";	
 			  rs1.close();
 			  st1.close();
 			}
 			rs.close();
 			st.close();
-			if(!appNames.equals(""))
-				appNames=appNames.substring(0,appNames.length()-1);
+			if(!waveNames.equals(""))
+				waveNames=waveNames.substring(0,waveNames.length()-1);
 			
-			String updateQuery ="update phase_info_details set options ='"+appNames+"' where column_name = 'apps';";
+			String updateQuery ="update phase_info_details set options ='"+waveNames+"' where column_name = 'waves';";
 			Statement st2 = con.createStatement();
 			st2.executeUpdate(updateQuery);
 			st2.close();
-			System.out.println("appNames : "+appNames);
+			System.out.println("waveNames : "+waveNames);
 			
 		}
 		catch(Exception e)

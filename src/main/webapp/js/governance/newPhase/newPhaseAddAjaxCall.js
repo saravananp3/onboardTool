@@ -1,6 +1,6 @@
 $('#submit').click(function() {
 	    	var projname = "";
-	    	var waveName = $('#waveName').val();
+	    	var phaseName = $('#phaseName').val();
 	        var labelname = $('#label').val();
 	        var columnname = $('#idname').val();
 	        var type = $('#types').val();
@@ -34,11 +34,11 @@ $('#submit').click(function() {
 	      if(labelname != '' && columnname !='' && type !='' && mandatory !='')
 	      {
 	    	  var checkNotify = true;
-	    	  var waveId = $("#wave_Id").val();
+	    	  var phaseId = $("#Id").val();
 	        $.ajax({
-	            url: "governanceAddServlet",
+	            url: "phaseAddServlet",
 	            type: 'POST',
-	            data: {waveId:waveId,waveName:waveName,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Options:options},
+	            data: {phaseId:phaseId,phaseName:phaseName,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Options:options},
 	            dataType: "json",
 	            success: function (data) {
 	                var required = "";

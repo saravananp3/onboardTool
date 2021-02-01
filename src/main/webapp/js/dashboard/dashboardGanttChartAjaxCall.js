@@ -52,8 +52,8 @@ function ganttChartDetails(data)
 	    	  row.push(rowCount.toString());
 	    	  row.push(value.taskGroup);
 	    	  row.push(rowCount.toString());
-	    	  row.push(new Date(startDate[2], startDate[0], startDate[1]));
-	    	  row.push(new Date(endDate[2], endDate[0], endDate[1]));
+	    	  row.push(new Date(startDate[2], parseInt(startDate[0])-1, startDate[1]));
+	    	  row.push(new Date(endDate[2], parseInt(endDate[0])-1, endDate[1]));
 	    	  row.push(null);
 	    	  row.push(100);
 	    	  row.push(null);

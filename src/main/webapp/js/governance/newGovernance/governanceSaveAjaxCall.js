@@ -39,9 +39,10 @@ $("#create").click(function(e)
   				     var name2 =$(this).find("select").attr("name");
   				     var val2 =$(this).find("select").val();
   				   var classNames =$(this).find("select").attr('class');
+  				 var multiselectValue = $(this).find("select").val();
   				   if(classNames.includes("multiselect"))
 			    	 {
-  					   val2="";
+  					   val2 = "";
 			    	 for(var i=0;i<multiselectValue.length;i++)
 			    		 val2=val2+multiselectValue[i]+",";
 			    	 

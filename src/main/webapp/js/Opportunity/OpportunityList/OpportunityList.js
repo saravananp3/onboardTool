@@ -6,7 +6,6 @@ $(document).ready(function(){
 		var oppName = $('.oppName').eq(index).val();
 		$('#oppNameId').val(oppName);
 		$('#existWaveSeqNum').val(index);
-		
 		$('#addWaveBtnId').click();
 	});
 	
@@ -36,16 +35,17 @@ $(document).ready(function(){
 	            	 if(checkWave || data[0].length == 0)
 	            		 optionWave = "display:none;";	 
 	            	
-	        	var li_element ="<li>"+
+	        	var li_element ="<li class='opportunityCard'>"+
 	        					"<div class='drophide'>"+
 	        					"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 	        					"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
 	        					"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
 	        					"<a class = 'options addClass' style = 'text-align:left;"+optionWave+"' href='#'>Add to Wave</a>"+
-	        					"<a class = 'options' style = 'text-align:left;' href='#'>Delete</a>"+
+	        					"<a class = 'options deleteClass' style = 'text-align:left;' href='#'>Delete</a>"+
 	        					"</div>"+
 	        					"</i>"+
 	        					"<input type = 'hidden' class = 'oppName' value = '"+opportunityName+"'>"+
+	        					"<input type = 'hidden' class = 'oppId' value = '"+OpportunityId+"'>"+
 	        					"</div>"+
                                  "<h3 class='cbp-vm-title left-col primary' name='name'>"+opportunityName+"</h3>"+
                                  "<p class='right-col primary' >In Test</p>"+

@@ -6,7 +6,7 @@ $(document).ready(function()
 function phaseDataretrieveAjaxCall()
 {
     $.ajax({
-        url: "governanceDataRetrieveServlet",
+        url: "phaseDataRetrieveServlet",
         type: 'POST',
         dataType: "json",
         success: function (data) {
@@ -18,14 +18,14 @@ function phaseDataretrieveAjaxCall()
                 AddTemplateData=[data];
             }
             
-            var waveId = "";
+            var phaseId = "";
             
             $.each(data, function(key, value){
                 /*console.log("FULL NAME " + value.Type);*/
                 var manadatory="class='required_fie'";
                 var disable_property = "disabled='disabled'";
                 var seq_num =value.seq_num;
-                waveId = value.WaveId;
+                phaseId = value.phaseId;
                 var Type=value.Type;
                 var ColumnName=value.ColumnName;
                 var LabelName=value.LabelName;
@@ -138,6 +138,8 @@ function phaseDataretrieveAjaxCall()
                 
                 var sub_option = Options.substring(0, Options.length - 1);
                 var option=Options.split(",");
+                if(option.length==0)
+                	inputdrop +="<option></option>";
                 for(var i=0;i<option.length;i++) {
                     var select = "";
                     if(Value.includes(option[i])){
@@ -147,14 +149,14 @@ function phaseDataretrieveAjaxCall()
                 }
                 inputdrop +="</select></div>";
                 $('#inputFields').append(inputdrop);
-                if(Options==""){
+               /* if(Options==""){
                 $("#infopopup_btn").click();
                 return false;
-                }
+                }*/
             }
             });
             
-            $("#wave_Id").val(waveId);
+            $("#Id").val(phaseId);
             $(".multiselect").selectpicker();
             
             var script="<script>$('.datepicker1').datepicker({\n" +
