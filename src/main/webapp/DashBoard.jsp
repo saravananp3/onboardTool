@@ -36,7 +36,7 @@
     <script src = "js/dashboard/dashboardAjaxCall.js"></script>
     
         
-    <link rel="stylesheet" href="css/demoDashboard/demoDashCSS.css" >
+    
     
     
     <style type="text/css">
@@ -46,7 +46,6 @@
          
          body{
             background:#fff;
-            zoom:250%%;
         }
 
         .active{
@@ -450,16 +449,13 @@ color:#fff;
       font-size: 20px;
       }
       .totcounter{
-      font-size: 25px;
+      font-size: 43px;
     margin-bottom: 14px;
     text-align: center;}
     .headercharts{
     margin-left: 22px; margin-bottom: 21px;
     }
     </style>
-    
-    
-    
 
 </head>
 <body class="top-navbar-fixed">
@@ -545,6 +541,8 @@ color:#fff;
 
 <!-- main wrapper -->
 <div class="main-wrapper">
+
+
      <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -553,6 +551,10 @@ color:#fff;
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
                         <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
                     </a>
+
+                   
+
+
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
@@ -593,140 +595,72 @@ color:#fff;
 
                     </div>
 
-                
+                </div>
 			</nav>
         </div>
         <!-- /.container-fluid -->
     </nav >
-    <div class="content-wrapper">
-
-    <div class="container-fluid">
-  <div class="row content">
-    
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-sm-3" style = "margin-top: 12%;">
-          <div class="well">
-          
-          <div class="card text-center" style="background-color:#f1f2f1;">
-  <div class="card-header mask">Governance</div>
-  </br>
-  <div class="card-body">
-    <div class="goverCard">
-    <span><img src="images/dashboard/gover.png" /></span>
-    </div>
-    </br>
-    <p class="card-text">
-      Number of Applications : 16
-    </p>
-  </div>
-  <div class="card-footer text-muted"></div>
-</div>
-          
-                     </div>
-        </div>
-        <div class="col-sm-3" style = "margin-top: 12%;">
-          <div class="well">
-            <div class="card text-center" style="background-color:#f1f2f1;">
-  <div class="card-header mask">Intake</div>
-   </br>
-  <div class="card-body">
-    <div class="intakeCard">
-    <span><img src="images/dashboard/in.png" /></span>
-    </div>
-     </br>
-    <p class="card-text">
-      Number of Applications : 6
-    </p>
-  </div>
-  <div class="card-footer text-muted"></div>
-</div>
-          </div>
-        </div>
-        <div class="col-sm-3" style = "margin-top: 12%;">
-          <div class="well">
-            <div class="card text-center" style="background-color:#f1f2f1;">
-  <div class="card-header mask">Requirements</div>
-   </br>
-  <div class="card-body">
-    <div class="ReqCard">
-    <span><img src="images/dashboard/requirement.png" /></span>
-    </div>
-     </br>
-    <p class="card-text">
-      Number of Applications : 2
-    </p>
-  </div>
-  <div class="card-footer text-muted"></div>
-</div>
-          </div>
-        </div>
-        
-         <div class="col-sm-3" style = "margin-top: 12%;">
-          <div class="well">
-            <div class="card text-center" style="background-color:#f1f2f1;">
-  <div class="card-header mask">Archive Execution</div>
-  </br>
-  <div class="card-body">
-    <div class="archiveCard">
-    <span><img src="images/dashboard/archive.png" /></span>
-    </div>
-    </br>
-    <p class="card-text">
-      Number of Applications : 5
-    </p>
-  </div>
-  <div class="card-footer text-muted"></div>
-</div>
-          </div>
-        </div>
-        
-         <div class="col-sm-3">
-          <div class="well">
-            <div class="card text-center" style="background-color:#f1f2f1;">
-  <div class="card-header mask">Decommission Execution</div>
-  </br>
-  <div class="card-body">
-    <div class="decomCard">
-    <span><img src="images/dashboard/decommissionExecution.png" /></span>
-    </div>
-    </br>
-    <p class="card-text">
-      Number of Applications : 7
-    </p>
-  </div>
-  <div class="card-footer text-muted"></div>
-</div>
-          </div>
-        </div>
-        
-        <div class="col-sm-3">
-          <div class="well">
-            <div class="card text-center" style="background-color:#f1f2f1;">
-  <div class="card-header mask">Financial</div>
-  <div class="card-body">
-    <div class="finCard">
-    </br>
-    <span><img src="images/dashboard/financial.png" /></span>
-    </div>
-    </br>
-    <p class="card-text">
-      Number of Applications : 9
-    </p>
-  </div>
-  <div class="card-footer text-muted"></div>
-</div>
-          </div>
-        </div>
-        
-        </div>
-      </div>
-      
-    </div>
-  </div>
     <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
    
-                                           <%
+    <div class="content-wrapper">
+     
+        
+        
+
+        <div class="content-container">
+           
+            <div class="main-page">
+              <div style="margin-top: 80px;"class="col-md-12 ">
+                                                        <div class="paneldashboard">
+              
+                            <div class="container-fluid grid">
+                                <div class="main">
+                                
+                                    <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                                       
+                                 
+                                <div style="margin-bottom: 38px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter"></p>
+                                         <span><i class="fa fa-file-text-o" style="font-size: 30px; " aria-hidden="true"></i></span>
+                                        <span class="font_icon">Opportunities</span>
+                                    </a>
+                               
+                                </div>
+                                
+                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter"></p>
+                                        </span><i class="fa fa-remove" style="font-size: 30px;" aria-hidden="true"></i>
+                                        <span class="font_icon">Decommision Apps</span>
+                                    </a>
+                                    
+                               
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter"></p>
+                                        <span><i class="fa fa-archive" style="font-size: 30px;" aria-hidden="true"></i>
+                                       <span class="font_icon">Archive Apps</span></span>
+                                    </a>
+                               
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat bg-primary" href="#">
+                                       <p class="totcounter"></p>
+                             <span ><i class="fa fa-get-pocket" style="font-size: 30px;" aria-hidden="true"></i>
+                                        <span class="font_icon">Apps To Retire</span></span>
+                                    </a>
+                                    
+                                    
+                               
+                                </div>
+               
+                            </div> 
+                            </div>
+                  
+                                      </div>
+                                        <%
                                                 con.close();
                                                 visit_st.close();
     }
@@ -738,25 +672,90 @@ color:#fff;
                                         %>
 
 
-   
+                                        </ul>
 
-                                                    
-                                              
-                                                    <!-- <div class="col-md-12">
-                                                        <div class="paneldashboard">
-                                                            <div >
-                                                                <h4 class="headercharts">Project Statistics</h4>
-
-                                                            </div>
+                                    </div>
+                                </div>
+                                
+                                       <div class="col-md-12 ">
+                                          <div class="row">
+		                                      <div class="col-sm-3 col-md-6 col-lg-4">
+                                                  <div class="paneldashboard">
+                                                            <br/>
+                                                            <br/>
                                                             <div class="content">
-                                                                <div id="container"
-                                                                     style="width: 550px; height: 400px; margin: 0 auto"></div>
+                                                            <h6 style="margin-left:30px;">Module Details</h6>
+                                                                <div id="donutchart" style="width: 650px; height: 500px;"></div>
 
 
                                                             </div>
-                                                        </div>
-                                                    </div> -->
-                                                    
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-9 col-md-6 col-lg-8">
+		
+		                                                        <div class="paneldashboard">
+		                                                            
+		                                                            <div class="content">
+		                                                                
+														                    <div class="form-group">
+														                        
+														                            <label class="control-label" for="GanttChart" style="margin-left: 30px;">Select Application :</label>
+														                            <select id="oppNameDrop" class="form-control" name="ganttChartTypesName" style = "width:250px;margin-left: 30px;" required >
+														                                
+														                            </select>
+														                        
+														                    </div>
+														                
+		                                                            <br/>
+		                                                            <br/>
+		                                                            <h6 style="margin-left:30px;">Archive Execution Details</h6>
+		                                                            <br/>
+																	<div id="chart_div" style="width: 700px; height: 400px; margin-left:50px;"></div>
+		                                                             
+		                                                            </div>
+		                                                        
+		                                                            
+		
+		                                                            
+		                                                        </div>
+		                                                    </div>
+		
+                                          </div>
+                                        </div> 
+                                                      <div class="col-md-12">
+		                                                    <div class="row">
+		                                                       <div class="col-sm-3 col-md-6 col-lg-4">
+		                                                        <div class="paneldashboard">
+		                                                            <div>
+		                                                            <div class="content">
+		                                                            <h6 style="margin-left:30px;">Cost Benefit Analysis</h6>
+		                                                            <br/>
+																	<div id="pieChartId" style="width: 650px; height: 500px;"></div>
+		
+		                                                            </div>
+		                                                        
+		                                                            </div>
+		
+		                                                            
+		                                                        </div>
+		                                                        </div>
+		                                                       <div class="col-sm-3 col-md-6 col-lg-8">
+		                                                        <div class="paneldashboard">
+		                                                            <div>
+		                                                            <div class="content">
+		                                                            <h6 style="margin-left:30px;">Cost Benefit Analysis</h6>
+		                                                            <br/>
+																	<div id="columnChartId" style="width: 700px; height: 500px;"></div>
+		
+		                                                            </div>
+		                                                        
+		                                                            </div>
+		
+		                                                            
+		                                                        </div>
+		                                                    </div>
+		                                                    </div>
+		                                                    </div>                                                    
                                                 </div>
                      
                     
@@ -770,6 +769,8 @@ color:#fff;
 					  
 		
     <!-- /.content-wrapper -->
+
+</div>
 <!-- end of main wrapper -->
 
 <!-- ========== COMMON JS FILES ========== -->
@@ -779,6 +780,7 @@ color:#fff;
 <script src="js/pace/pace.min.js"></script>
 <script src="js/lobipanel/lobipanel.min.js"></script>
 <script src="js/iscroll/iscroll.js"></script>
+
 
 <script type="text/javascript">
     $('#list').click(function()
@@ -860,6 +862,87 @@ $(document).ready(function() {
     }
 });
 </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['State', '$'],
+          ['Sum of Realized',      110000.00],
+          ['Sum of in Process',  365000],
+          ['Sum of Intake/Opportunity', 192000.00]
+        ]);
+
+        var options = {
+          title: 'Total'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pieChartId'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+    	var data = google.visualization.arrayToDataTable([
+            ['State', '$', { role: 'style' }],
+            ['Sum of Realized',      110000.00, 'blue'],     
+            ['Sum of in Process',  365000, 'blue'],          
+            ['Sum of Intake/Opportunity', 192000.00, 'blue']
+         ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Total",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barChartId"));
+      chart.draw(view, options);
+  }
+  </script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["State", "$", { role: "style" } ],
+        ['Sum of Realized',      110000.00, 'blue'],     
+        ['Sum of in Process',  365000, 'blue'],          
+        ['Sum of Intake/Opportunity', 192000.00, 'blue']      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Total",
+        width: 1200,
+        height: 400,
+        bar: {groupWidth: "25%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnChartId"));
+      chart.draw(view, options);
+  }
+  </script>
 </body>
 </html>
