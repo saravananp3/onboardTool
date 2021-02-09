@@ -12,6 +12,9 @@ $(document).ready(function(){
 	$(document).on('change','#phase',function(){
 		var phaseName = $(this).val();
 		$(".waveOption").hide();
+		if(phaseName=="none")
+			$(".waveOption").show();
+		else
 		$("."+((phaseName).replace(" ","").replace("-",""))).show();
     });
 });
@@ -27,11 +30,11 @@ function selectCategoryAjaxCall(operation)
         	 if (!$.isArray(data)) {
                  data = [data];
              }
-        	 $("#wave").append("<option  class='none' value='none' style='display:none;'>none</option>");
+        	 $("#wave").append("<option  class='none' value='none'>none</option>");
         	 $.each(data,function(key,value){
         		 var phaseName = ((value.phaseName).replace(" ","").replace("-",""));
         		 var waveName = value.WaveName;
-        	    $("#wave").append("<option  class='waveOption "+phaseName+"' value='"+waveName+"' style='display:none;'>"+waveName+"</option>");
+        	    $("#wave").append("<option  class='waveOption "+phaseName+"' value='"+waveName+"' >"+waveName+"</option>");
         	 })
         	 
         	  
@@ -63,6 +66,7 @@ function selectCategory(category)
 		break;
 		
 	case "Application":
+		$(".waveOption").show();
 		opportunityListAjaxCall();
 		break;
 	
@@ -80,29 +84,36 @@ function selectCategory(category)
 	                 data = [data];
 	                 
 	             }
-              var i = 1;
-	             $.each(data, function(key, value){
-	            	 var waveName = value.WaveName; 
-	            	 var WaveId = value.WaveId; 
-	            	
-	        	var li_element ="<li>"+
-                              "<h3 class='cbp-vm-title left-col primary' name='name'>"+waveName+"</h3>"+
-                              "<p class='right-col primary' >In Test</p>"+
-                             
-                               "<button type='button' class='btn btn-primary' name='btn' onClick=\"editWave('"+WaveId+"','"+waveName+"')\";>"+
-                               "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
-                               "</button>"+
-                               "</li>";
-	        	$('#ul_id').append(li_element);
-	        	
-	        	i++;
-	             });
-	             $('#title_id').html("Number of Wave &nbsp;("+(i-1)+")");
+              
+	        	 displayWaveList(data);
+	            
 	        },
 	        error: function (e) {
 	            console.log(e);
 	        }
 });
+ }
+ function displayWaveList(data)
+ {
+	 var i = 1;
+	 $('#ul_id').html("");
+     $.each(data, function(key, value){
+    	 var waveName = value.WaveName; 
+    	 var WaveId = value.WaveId; 
+    	
+	var li_element ="<li>"+
+                  "<h3 class='cbp-vm-title left-col primary' name='name'>"+waveName+"</h3>"+
+                  "<p class='right-col primary' >In Test</p>"+
+                 
+                   "<button type='button' class='btn btn-primary' name='btn' onClick=\"editWave('"+WaveId+"','"+waveName+"')\";>"+
+                   "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
+                   "</button>"+
+                   "</li>";
+	$('#ul_id').append(li_element);
+	
+	i++;
+     });
+     $('#title_id').html("Number of Wave &nbsp;("+(i-1)+")");
  }
 function opportunityListAjaxCall()
 {

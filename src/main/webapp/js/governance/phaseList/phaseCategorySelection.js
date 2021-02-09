@@ -10,7 +10,8 @@ switchValue(selectedValue);
 });
  function switchValue(value)
  {
-	 
+	 $("#phase").val('none');
+	 $("#wave").val('none');
 	 switch(value)
 	 {
 	 case 'Phase':

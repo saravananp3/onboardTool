@@ -33,6 +33,7 @@
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/governance/phaseList/phaseList.js"></script>
+    <script src="js/governance/phaseList/FilteringList.js"></script>
     <style type="text/css">
          body{
             background:#fff;
@@ -575,14 +576,14 @@ pointer-events:all;
 		                               
 		                               <div class="col-md-10">
 		                               
-		                               <select class="" id="phase" style ="width:200px;">
+		                               <select class="filter" id="phase" style ="width:200px;">
 		                              
 		                               </select></div>
 		                               </div>
 		                               <label class="WaveRow" style="color:#fff;">Wave:</label>
 		                               <div class="row form-row WaveRow">
 		                               <div class="col-md-10">
-		                               <select class="" id="wave" style ="width:200px;">
+		                               <select class="filter" id="wave" style ="width:200px;">
 		                               </select></div>
 		                               </div>
                                

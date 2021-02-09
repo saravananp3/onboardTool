@@ -44,6 +44,8 @@ $("#create").click(function(e)
   				   if(classNames.includes("multiselect"))
 			    	 {
   					   val2="";
+  					   if(multiselectValue==undefined||multiselectValue==null)
+  						 multiselectValue = "";
 			    	 for(var i=0;i<multiselectValue.length;i++)
 			    		 val2=val2+multiselectValue[i]+",";
 			    	 

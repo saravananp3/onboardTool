@@ -375,7 +375,7 @@ try
 		governance[1] = new GovernanceDetails(2,"","Wave Name", "waveName", "Text box", "Yes", "");
 		governance[2] = new GovernanceDetails(3,"","Creation Date", "creation_date", "Datepicker", "No", "");
 		governance[3] = new GovernanceDetails(4,"","Planned Completion Date", "completion_date", "Datepicker", "No", "");
-		governance[4] = new GovernanceDetails(5,"","Applications", "apps", "MultiselectDropdown", "Yes", "");
+		governance[4] = new GovernanceDetails(5,"","Applications", "apps", "MultiselectDropdown", "No", "");
 
 		for (int index = 0; index<governance.length; index++)
 		{
