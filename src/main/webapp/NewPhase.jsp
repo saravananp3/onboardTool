@@ -180,8 +180,8 @@ HttpSession details = request.getSession();
                 <div class="col-md-1">
 	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='GovernanceList.jsp';">Back</button>
 	           </div>
-	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right;">
-
+	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right; width: 35%;">
+							<button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target="#addWavePopUp">Add Wave</button>
 	                
                             <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
                               <span class="caret"></span></button>
@@ -467,6 +467,46 @@ HttpSession details = request.getSession();
 </div>
 </div>
 
+<div class="modal" id="addWavePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Wave Name</h5>
+        <button type="button" id="addWaveEditClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <label class="control-label" for="addWavePopUp">Wave Name</label>
+                            <input type="text" class="form-control" id="addWaveModify"  name="addWavelabel" required>
+                        
+                    </div>
+                </div>
+                <br/><br/><input type="text" id="addWaveSeqNum" name="" value="" style="display:none;">
+                
+                 
+                     <div class="row" style = "width:150px;">
+                          <ul style = "margin-left : 50px; " id ="addId"></ul></div>
+                </div><button type="button" id="addWave" class="btn btn-primary" >Add</button>
+               
+        </form>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div>  
+
+
+
+
 <!-- <script>
 $('.deletepopup').click(function() {
     alert("Testing index"+$(this).index('.deletepopup'));
@@ -514,6 +554,7 @@ $('.deletepopup').click(function() {
 <script src="js/governance/newPhase/newPhaseAddAjaxCall.js"></script>
 <script src="js/governance/newPhase/phaseEditDeleteAjaxCall.js"></script>
 <script src="js/governance/newPhase/phaseSaveAjaxCall.js"></script>
+<script src="js/governance/newPhase/dynamicWaveCreation.js"></script>
 <script id ="scripttag">
 </script>
 <script id ="scripttag1">

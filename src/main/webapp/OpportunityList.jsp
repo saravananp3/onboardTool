@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="css/main.css" media="screen" >
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <script type="text/javascript" src="js_in_pages/project.js"></script>
+    
+    <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
 
 <link rel="stylesheet" href="css/threeDots/threeDots.css" media="screen" >
 
@@ -407,6 +409,14 @@ height:inherit;
 margin: 0 auto;
 pointer-events:all;
 }
+
+.iconColor{
+display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
     </style>
 
 </head>
@@ -510,14 +520,16 @@ pointer-events:all;
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
+                <div>
                   <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="color:#fff">Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="Governance.jsp">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li ><a href="DashBoard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
+		              <li class="active"><a href="#" style="color:#fff"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+		              <li><a href="Governance.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
+		          </div>
 		         <ul class="nav navbar-nav navbar-right">
                         <%
                             String uname=(String)details.getAttribute("username");

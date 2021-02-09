@@ -622,6 +622,9 @@ pointer-events:all;
                             </button>
                             <button type="button" class="btn btn-primary pull-right" id="deleteBtn" style="color:DodgerBlue; display:none;" name="newpr" data-toggle='modal' data-target='#deletePopUp'>
                             </button>
+                            
+                            <button type="button" class="btn btn-primary pull-right" id="deleteBtn" style="color:DodgerBlue; display:none;" name="newpr" data-toggle='modal' data-target='#deletePhasePopUp'>
+                            </button>
                         </div>
                         <!-- /.col-sm-6 text-right -->
 
@@ -785,7 +788,7 @@ pointer-events:all;
   </div>
 </div> 
 </div>
-<!-- Delete Pop Up -->
+<!-- Application Delete Pop Up -->
 
    <div class="modal" id="deletePopUp" tabindex="-1" role="dialog">
   <div class="vertical-alignment-helper">
@@ -807,7 +810,7 @@ pointer-events:all;
                                 
                             </select>
     -->                     
-    <p>Are you sure, </br>want to delete the application permanently?</p>
+    <p>Are you sure, want to delete the Application permanently?</p>
     </div>
                     </div>
                 </div>
@@ -823,6 +826,46 @@ pointer-events:all;
   </div>
 </div> 
 </div>
+
+<!-- Phase Delete Pop Up -->
+
+   <div class="modal" id="deletePhasePopUp" tabindex="-1" role="dialog">
+  <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Application</h5>
+        <button type="button" id="deleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="PopUpform">
+            <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-8">
+                            <!-- <label class="control-label" for="formInput526">Select Wave Name:</label>
+                            <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
+                                
+                            </select>
+    -->                     
+    <p>Are you sure, want to delete the Phase permanently?</p>
+    </div>
+                    </div>
+                </div>
+                <br/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="deleteYesBtn" class="btn btn-primary" >Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+</div>
+
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/jquery-ui/jquery-ui.min.js"></script>

@@ -101,7 +101,17 @@ function selectCategory(category)
     	 var waveName = value.WaveName; 
     	 var WaveId = value.WaveId; 
     	
-	var li_element ="<li>"+
+	var li_element ="<li class = 'waveCard'>"+
+					"<div class='drophide'>"+
+					"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
+					"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
+					"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
+					"<a class = 'options deleteClass' style = 'text-align:left;' href='#'>Delete</a>"+
+					"</div>"+
+					"</i>"+
+					"<input type = 'hidden' class = 'waveName' value = '"+waveName+"'>"+
+					"<input type = 'hidden' class = 'waveId' value = '"+WaveId+"'>"+
+					"</div>"+
                   "<h3 class='cbp-vm-title left-col primary' name='name'>"+waveName+"</h3>"+
                   "<p class='right-col primary' >In Test</p>"+
                  
@@ -191,7 +201,17 @@ function phaseListAjaxCall()
             	 var phaseName = value.phaseName; 
             	 var phaseId = value.phaseId; 
             	
-        	var li_element ="<li>"+
+        	var li_element ="<li class = 'phaseCard'>"+
+				        	"<div class='drophide'>"+
+							"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
+							"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
+							"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
+							"<a class = 'options deleteClass' style = 'text-align:left;' href='#'>Delete</a>"+
+							"</div>"+
+							"</i>"+
+							"<input type = 'hidden' class = 'phaseName' value = '"+phaseName+"'>"+
+							"<input type = 'hidden' class = 'phaseId' value = '"+phaseId+"'>"+
+							"</div>"+
                              "<h3 class='cbp-vm-title left-col primary' name='name'>"+phaseName+"</h3>"+
                              "<p class='right-col primary' >In Test</p>"+
                             

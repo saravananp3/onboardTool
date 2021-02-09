@@ -64,4 +64,17 @@ $(document).ready(function(){
 	            console.log(e);
 	        }
 });
+	 
+	 $(document).on('mouseenter','.active', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+	 
 });

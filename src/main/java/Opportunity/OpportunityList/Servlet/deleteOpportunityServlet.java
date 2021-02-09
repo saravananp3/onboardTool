@@ -22,8 +22,8 @@ public class deleteOpportunityServlet extends HttpServlet {
 		  try
 		  {
 			  
-		  deleteOpportunityService deleteService =  new deleteOpportunityService(oppId,oppName);  
-		  jsonObject.addProperty("deleteStatus",deleteService.deleteOpportunity());
+		  deleteOpportunityService deleteService =  new deleteOpportunityService(oppId,oppName,"Application", true);  
+		  jsonObject.addProperty("deleteStatus",deleteService.delete());
 		  deleteService =null;
 		 
 		  System.gc();

@@ -19,20 +19,28 @@ public class deleteOpportunityService {
 	String Id;
 	DBconnection dBconnection;
 	Connection con;
-	String oppName;
-	public deleteOpportunityService(String Id,String oppName) throws ClassNotFoundException, SQLException {
+	String Name;
+	String deleteType;
+	boolean includeAll;
+	
+	public deleteOpportunityService(String Id,String Name, String deleteType, boolean includeAll) throws ClassNotFoundException, SQLException {
 	 this.Id = Id;
-	 this.oppName = oppName;
+	 this.Name = Name;
+	 this.deleteType = deleteType;
+	 this.includeAll = includeAll;
+	 
 	 dBconnection = new DBconnection();
 	 con = (Connection) dBconnection.getConnection();
 	}
 	
-	public boolean deleteOpportunity()
+	
+	
+	public boolean delete()
 	{
 		boolean deleteFlag = false;
 		try
 		{
-			deleteFromWave(oppName);
+			deleteFromWave(Name);
 			LinkedHashMap<String,String> tableNames = getTableNames(); 
 			Set entrySet = tableNames.entrySet();
 			Iterator it = entrySet.iterator();     
@@ -57,6 +65,34 @@ public class deleteOpportunityService {
 	}
 	
 	private LinkedHashMap<String,String> getTableNames()
+	{ 
+		LinkedHashMap<String,String> tableNames = new LinkedHashMap<String,String>();
+		try
+		{
+			switch(deleteType) {
+			
+			case "Phase" :
+				tableNames = getPhaseTableNames();
+				break;
+				
+			case "Wave" :
+				tableNames = getWaveTableNames();
+				break;
+			
+			case "Application" :
+				tableNames = getAppTableNames();
+				break;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return tableNames;
+	}
+	
+	
+	private LinkedHashMap<String,String> getAppTableNames()
 	{ 
 		LinkedHashMap<String,String> tableNames = new LinkedHashMap<String,String>();
 		try
@@ -102,6 +138,37 @@ public class deleteOpportunityService {
 
 
 
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return tableNames;
+	}
+	private LinkedHashMap<String,String> getPhaseTableNames()
+	{ 
+		LinkedHashMap<String,String> tableNames = new LinkedHashMap<String,String>();
+		try
+		{
+			//phase
+			tableNames.put("phase_info","phaseId");
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return tableNames;
+	}
+	
+	private LinkedHashMap<String,String> getWaveTableNames()
+	{ 
+		LinkedHashMap<String,String> tableNames = new LinkedHashMap<String,String>();
+		try
+		{
+			//wave
+			tableNames.put("governance_info","waveId");
+			
 		}
 		catch(Exception e)
 		{
