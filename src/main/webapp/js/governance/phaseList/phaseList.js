@@ -17,7 +17,75 @@ $(document).ready(function(){
 		else
 		$("."+((phaseName).replace(" ","").replace("-",""))).show();
     });
+	
+	$(document).on('click','.deletePhaseClass',function(){
+		$("#deletePhaseBtn").click();
+		var index =  $(this).index(".deletePhaseClass");
+		$("#phaseIndex").val(index);
+	});
+	$(document).on('click','#deletePhaseYesBtn',function(){
+		var index = $("#phaseIndex").val();
+		var phaseName = $('.phaseName').eq(index).val();
+		var phaseId = $('.phaseId').eq(index).val();
+		var includeAll=$("#includePhaseAll").is(":checked");
+		deleteAjaxCall(phaseId,phaseName,"Phase",index,includeAll);
+		$("#deletePhaseClose").click();
+	});
+	$(document).on('click','.deleteWaveClass',function(){
+		$("#deleteWaveBtn").click();
+		var index =  $(this).index(".deleteWaveClass");
+		$("#waveIndex").val(index);
+	});
+	$(document).on('click','#deleteWaveYesBtn',function(){
+		var index = $("#waveIndex").val();
+		var waveName = $('.waveName').eq(index).val();
+		var waveId = $('.waveId').eq(index).val();
+		var includeAll=$("#includeWaveAll").is(":checked");
+		deleteAjaxCall(waveId,waveName,"Wave",index,includeAll);
+		$("#deleteWaveClose").click();
+	});
+	
 });
+function deleteAjaxCall(Id,Name,deleteType,index,includeAll)
+{
+	$.ajax({
+        url: "deleteGovernanceServlet",
+        type: 'POST',
+        async:false,
+        data : {Id:Id, Name:Name,deleteType:deleteType,includeAll:includeAll},
+        dataType: "json",
+        success: function (data) {
+        	console.log("data: ",data);
+          if(data.deleteStatus)
+          {
+        	notification("success",Name+" deleted successfully","Note:");
+        	if(deleteType=="Phase")
+        		{
+        	       $(".phaseCard").eq(index).remove();
+        	       $("#phase option[value='"+Name+"']").remove();
+        		}
+        	else if(deleteType=="Wave")
+        		{
+        	           $(".waveCard").eq(index).remove();
+        	           $("#wave option[value='"+Name+"']").remove();
+        		}
+        	for(var i=0;i<data.waves.length;i++)
+        	{
+        		$("#wave option[value='"+data.waves[i]+"']").remove();
+        	}
+        	
+          }
+          else if(!data.deleteStatus)
+          {
+        	  notification("error","Problem occured while deleting.","Error:");
+          }
+        
+        },
+        error: function (e) {
+            console.log(e);
+       }
+	});
+}
 function selectCategoryAjaxCall(operation)
 {
 	$.ajax({
@@ -106,7 +174,7 @@ function selectCategory(category)
 					"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 					"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
 					"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
-					"<a class = 'options deleteClass' style = 'text-align:left;' href='#'>Delete</a>"+
+					"<a class = 'options deleteWaveClass' style = 'text-align:left;' href='#'>Delete</a>"+
 					"</div>"+
 					"</i>"+
 					"<input type = 'hidden' class = 'waveName' value = '"+waveName+"'>"+
@@ -206,11 +274,11 @@ function phaseListAjaxCall()
 							"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 							"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
 							"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
-							"<a class = 'options deleteClass' style = 'text-align:left;' href='#'>Delete</a>"+
+							"<a class = 'options deletePhaseClass' style = 'text-align:left;' href='#'>Delete</a>"+
 							"</div>"+
 							"</i>"+
-							"<input type = 'hidden' class = 'phaseName' value = '"+phaseName+"'>"+
-							"<input type = 'hidden' class = 'phaseId' value = '"+phaseId+"'>"+
+							"<input type = 'hidden' class = 'phaseName' value = '"+phaseName+"'/>"+
+							"<input type = 'hidden' class = 'phaseId' value = '"+phaseId+"'/>"+
 							"</div>"+
                              "<h3 class='cbp-vm-title left-col primary' name='name'>"+phaseName+"</h3>"+
                              "<p class='right-col primary' >In Test</p>"+

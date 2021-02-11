@@ -47,8 +47,11 @@ public class governanceSaveService {
 			oppNames = rs1.getString("value");
 			rs1.close();
 			st1.close();
-			
-			String updateQuery = "update governance_info set value='"+oppNames+","+oppName+"' where column_name='apps' and waveName = '"+waveName+"';";
+			if(oppNames.equals(""))
+				oppNames=oppName;
+			else
+			   oppNames += ","+oppName;
+			String updateQuery = "update governance_info set value='"+oppNames+"' where column_name='apps' and waveName = '"+waveName+"';";
             Statement st = con.createStatement();
             st.executeUpdate(updateQuery);
             st.close();

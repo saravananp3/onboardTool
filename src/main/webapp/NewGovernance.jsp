@@ -194,7 +194,7 @@ HttpSession details = request.getSession();
 	                       <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display:none;">Edit PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display:none;">Delete PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="infopopup_btn" data-toggle="modal" data-target="#InfoPopUp" style="display:none;">Info PopUp</button>	                      
-	                      <button type="button" class="btn btn-primary pull-right" id="governanceListId" onclick ="window.location.href='GovernanceList.jsp';"style="display:none;"></button>
+	                      <button type="button" class="btn btn-primary pull-right" id="governanceListId" onclick ="window.location.href='PhaseList.jsp';"style="display:none;"></button>
 	                      </div>
 	                      </div>
 	                      </form>

@@ -147,10 +147,11 @@ function governanceDataretrieveAjaxCall()
                 }
                 inputdrop +="</select></div>";
                 $('#inputFields').append(inputdrop);
-                if(Options==""){
-                $("#infopopup_btn").click();
-                return false;
-                }
+                //validation for empty app multiselect dropdown
+//                if(Options==""){
+//                $("#infopopup_btn").click();
+//                return false;
+//                }
             }
             });
             

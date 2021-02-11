@@ -23,7 +23,7 @@ public class deleteOpportunityServlet extends HttpServlet {
 		  {
 			  
 		  deleteOpportunityService deleteService =  new deleteOpportunityService(oppId,oppName,"Application", true);  
-		  jsonObject.addProperty("deleteStatus",deleteService.delete());
+		  jsonObject = deleteService.deleteService();
 		  deleteService =null;
 		 
 		  System.gc();
