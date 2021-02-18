@@ -1,22 +1,28 @@
 $(document).on('change','.filter', function(){
+
 	var id = $(this).attr("id");
+	
 	if(id=="phase")
 	{
-	  $("#wave").val("none");
+	  $("#wave").val("All");
 	}
-var category = $("#category").val();
-var phase = $("#phase").val();
-var wave = $("#wave").val();
-getList(phase,wave,category);
+    else if(id=="wave")
+    {
+    	$("#application").val("All");
+    }
+    var phase = $("#phase").val();
+    var wave = $("#wave").val();
+    var application = $("#application").val();
+    getList(phase,wave,application ,"Phase");
 });
 
-function getList(phase,wave,category)
+function getList(phase,wave,application ,category)
 {
 	$.ajax({
         url: "filteringListServlet",
         type: 'POST',
         dataType: "json",
-        data:{wave:wave,category:category,phase:phase},
+        data:{wave:wave,category:category,phase:phase, application:application},
         success: function (data) {
         	console.log("Wave Options:", data);
         	 if (!$.isArray(data)) {
@@ -30,7 +36,9 @@ function getList(phase,wave,category)
         	 case "Application":
         		 getOpportunityList(data);
         		 break;
-        	 
+        	 case "Phase":
+        		 getPhaseList(data);
+        		 break;
         	 }
         	 
         },
@@ -40,6 +48,30 @@ function getList(phase,wave,category)
 });
 }
 
+function getPhaseList(data)
+{
+	$("#ul_id").html("");
+    $.each(data, function(key, value){
+   	 var phaseName = value.phaseName; 
+   	 var phaseId = value.phaseId; 
+   	
+	var li_element ="<li class = 'phaseCard' >"+
+		        	"<div class='drophide'>"+
+					"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
+					"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
+					"<a class = 'options editPhaseClass' style = 'text-align:left;' href='#'>Edit</a>"+
+					"<a class = 'options deletePhaseClass' style = 'text-align:left;' href='#'>Delete</a>"+
+					"</div>"+
+					"</i>"+
+					"<input type = 'hidden' class = 'phaseName' value = '"+phaseName+"'/>"+
+					"<input type = 'hidden' class = 'phaseId' value = '"+phaseId+"'/>"+
+					"</div>"+
+					"<h3 class='cbp-vm-title' style='display:none;'>"+value.apps+"</h3>"+
+                    "<h3 class='left-col primary phaseHeadingName' name='name' contenteditable='false'>"+phaseName+"</h3>"+
+                    "</li>";
+	$('#ul_id').append(li_element);
+    });
+}
 function getOpportunityList(data)
 {
 	$('#ul_id').html("");

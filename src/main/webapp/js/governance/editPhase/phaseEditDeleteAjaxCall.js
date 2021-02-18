@@ -7,7 +7,7 @@
     	$.ajax({
             url: "phaseEditServlet",
             type: 'POST',
-            data : {seq_num:Seq_Num,label:Label,operation:"NewPhase"},
+            data : {seq_num:Seq_Num,label:Label,operation:"EditPhase",phaseId:phaseId},
             dataType: "json",
             success: function (data) {
             	
@@ -53,7 +53,7 @@
             url: "phaseDeleteServlet",
             type: 'POST',
             async: false,
-            data : {seq_num:Seq_Num,operation:"NewPhase"},
+            data : {seq_num:Seq_Num,phaseId:phaseId,operation:"EditPhase"},
             dataType: "json",
             success: function (data) {
             	console.log("index"+data.index);

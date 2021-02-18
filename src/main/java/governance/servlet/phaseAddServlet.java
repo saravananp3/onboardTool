@@ -16,8 +16,11 @@ import governance.service.phaseAddService;
 
 public class phaseAddServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String phaseId = request.getParameter("phaseId");
-	     
+	    
+		String operation = request.getParameter("operation");
+		
 	     String type = request.getParameter("Type");
 	     
 	     String column_name = request.getParameter("ColumnName");
@@ -45,7 +48,7 @@ public class phaseAddServlet extends HttpServlet {
 	    	 
 	    	 jsonObject.addProperty("Mandatory",mandatory);
 
-	    	 phaseAddService phase = new phaseAddService(phaseId);
+	    	 phaseAddService phase = new phaseAddService(phaseId,operation);
 	    	 
 	    	 
 	    	 boolean checkLabel =  phase.checkLabelName(label_name);

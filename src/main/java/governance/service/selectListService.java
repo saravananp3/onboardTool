@@ -18,13 +18,15 @@ public class selectListService {
 	String categoryName;
 	String phaseName;
 	String waveName;
+	String applicationName;
 	
-	public selectListService(String categoryName,String phaseName, String waveName) throws ClassNotFoundException, SQLException {
+	public selectListService(String categoryName,String phaseName, String waveName,String applicationName) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
 		this.categoryName = categoryName;
 		this.phaseName =  phaseName;
 		this.waveName = waveName;
+		this.applicationName = applicationName;
 	}
 	
 	
@@ -33,9 +35,14 @@ public class selectListService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
+			
 		switch(categoryName)
 		{
 		
+		case "Phase":
+			jsonArray = getPhaseList();
+			break;
+			
 		case "Wave":
 			jsonArray = getWaveList();
 			break;
@@ -43,7 +50,7 @@ public class selectListService {
 		case "Application":
 			jsonArray = getApplicationList();
 			break;
-			
+		
 		}
 			
 		}
@@ -53,7 +60,132 @@ public class selectListService {
 		}
 		return jsonArray;
 	}
-	
+    public JsonArray getPhaseList()
+    {
+    	JsonArray jsonArray = new JsonArray();
+    	try
+    	{
+    		if(!phaseName.equals("All"))
+    		{
+    			jsonArray=getPhase(phaseName);
+    		}
+    		else if(!waveName.equals("All"))
+    		{
+    			jsonArray = getPhaseFromWave(waveName);
+    		}
+    		else if(!applicationName.equals("All"))
+    		{
+    			jsonArray = getPhaseFromApplication(applicationName);
+    		}
+    		else if(phaseName.equals("All"))
+    		{
+    			jsonArray = getAllPhase();
+    		}
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	return jsonArray;
+    }
+    public JsonArray getAllPhase()
+    {
+    	JsonArray jsonArray = new JsonArray(); 
+    	try
+    	{
+    		String selectPhase= "select * from phase_info where column_name='phaseName';";
+    		Statement st = con.createStatement();
+    		ResultSet rs = st.executeQuery(selectPhase);
+    		while(rs.next())
+    		{
+    			JsonObject jsonObject = new JsonObject();
+    			jsonObject.addProperty("phaseName",rs.getString("phaseName"));
+    			jsonObject.addProperty("phaseId",rs.getString("phaseId"));
+    			jsonObject.addProperty("apps", new phaseListService("all").getPhaseApps(rs.getString("phaseName")));
+    			jsonArray.add(jsonObject);
+    		}
+    		
+    		rs.close();
+    		st.close();
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	return jsonArray;
+    }
+    public JsonArray getPhaseFromApplication(String app)
+    {
+    	JsonArray jsonArray = new JsonArray();
+    	try
+    	{
+    		String selectPhase = "select * from governance_info where column_name='apps' and value like '%"+app+"%'";
+    		Statement st = con.createStatement();
+    		ResultSet rs = st.executeQuery(selectPhase);
+    		if(rs.next())
+    		{
+    			jsonArray = getPhaseFromWave(rs.getString("waveName"));
+    		}
+    		rs.close();
+    		st.close();
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	return jsonArray;
+    }
+    
+    public JsonArray getPhaseFromWave(String wave)
+    {
+    	JsonArray jsonArray = new JsonArray();
+    	try
+    	{
+    		String selectPhase = "select * from phase_info where column_name='waves' and value like '%"+wave+"%'";
+    		Statement st = con.createStatement();
+    		ResultSet rs = st.executeQuery(selectPhase);
+    		if(rs.next())
+    		{
+    			JsonObject jsonObject = new JsonObject();
+    			jsonObject.addProperty("phaseName",rs.getString("phaseName"));
+    			jsonObject.addProperty("phaseId",rs.getString("phaseId"));
+    			jsonObject.addProperty("apps", new phaseListService("all").getPhaseApps(rs.getString("phaseName")));
+    			jsonArray.add(jsonObject);
+    		}
+    		rs.close();
+    		st.close();
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	return jsonArray;
+    }
+    public JsonArray getPhase(String phase)
+    {
+    	JsonArray jsonArray = new JsonArray();
+    	try
+    	{
+    		String selectPhase = "select * from phase_info where column_name='phaseName' and value='"+phase+"'";
+    		Statement st = con.createStatement();
+    		ResultSet rs = st.executeQuery(selectPhase);
+    		if(rs.next())
+    		{
+    			JsonObject jsonObject = new JsonObject();
+    			jsonObject.addProperty("phaseName",rs.getString("phaseName"));
+    			jsonObject.addProperty("phaseId",rs.getString("phaseId"));
+    			jsonObject.addProperty("apps", new phaseListService("all").getPhaseApps(rs.getString("phaseName")));
+    			jsonArray.add(jsonObject);
+    		}
+    		rs.close();
+    		st.close();
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	return jsonArray;
+    }
 	public JsonArray getWaveList()
 	{
 		JsonArray jsonArray = new JsonArray();

@@ -38,7 +38,7 @@ $('#submit').click(function() {
 	        $.ajax({
 	            url: "phaseAddServlet",
 	            type: 'POST',
-	            data: {phaseId:phaseId,phaseName:phaseName,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Options:options,operation:"NewPhase"},
+	            data: {phaseId:phaseId,phaseName:phaseName,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Options:options,operation:"EditPhase"},
 	            dataType: "json",
 	            success: function (data) {
 	                var required = "";

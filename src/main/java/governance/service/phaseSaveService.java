@@ -20,12 +20,21 @@ public class phaseSaveService {
 	String phaseName;
 	String oppName;
 	
-	public phaseSaveService(String Id,String phaseName,JsonArray jsonArray) throws ClassNotFoundException, SQLException {
+	String tableName;
+	String idWhereCond;
+	String idAndCond;
+	String operation;
+	String id;
+	
+	public phaseSaveService(String Id,String phaseName,JsonArray jsonArray,String id,String operation) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
 		this.Id = Id;
+		this.id = id;
 		this.phaseName = phaseName;
 		this.jsonArray = jsonArray;
+		this.operation = operation;
+		getTableProperty(operation);
 	}
 	
 	public phaseSaveService(String phaseName, String oppName) throws ClassNotFoundException, SQLException
@@ -34,6 +43,31 @@ public class phaseSaveService {
 		con = (Connection) dBconnection.getConnection();
 		this.phaseName = phaseName;
 		this.oppName = oppName;
+	}
+	
+	public void getTableProperty(String operation)
+	{
+		try
+		{
+			switch(operation)
+			{
+			case "EditPhase":
+				  tableName = "phase_info";
+				  idAndCond = " and phaseId='"+id+"'";
+				  idWhereCond = " where phaseId='"+id+"'";
+				break;
+				
+			case "NewPhase":
+				tableName = "phase_info_details";
+				idWhereCond = "";
+				idAndCond = "";
+				break;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	public boolean AddOpportunityToExistingWave()
 	{
@@ -75,12 +109,13 @@ public class phaseSaveService {
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
 				
-	            String updateQuery = "update phase_info_details set value='"+value+"',phaseName='"+phaseName+"' where column_name='"+name+"';";
+	            String updateQuery = "update "+tableName+" set value='"+value+"',phaseName='"+phaseName+"' where column_name='"+name+"' "+idAndCond+";";
 	            Statement st = con.createStatement();
 	            st.executeUpdate(updateQuery);
 	            st.close();
 	            
 			}
+			if(operation.equals("NewPhase"))
 			moveInfoDetailsToInfo();
 			saveStatus = true;
 		}
@@ -129,6 +164,8 @@ public class phaseSaveService {
 		boolean statusFlag  = false;
 		try
 		{
+			if(operation.equals("NewPhase"))
+			{
 			String selectQuery = "select * from phase_info where column_name='"+columnName+"' and value='"+value+"';";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
@@ -140,6 +177,22 @@ public class phaseSaveService {
 			}
 			st.close();
 			rs.close();
+			}
+			else if(operation.equals("EditPhase"))
+			{
+				String selectQuery = "select * from phase_info where column_name='"+columnName+"' and value='"+value+"';";
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(selectQuery);
+				System.out.println("Query : "+selectQuery);
+				while(rs.next())
+				{
+					if(value.equals(rs.getString("value"))&&!rs.getString("phaseId").equals(id))
+					statusFlag =  true;
+					
+				}
+				st.close();
+				rs.close();
+			}
 		}
 		catch(Exception e)
 		{

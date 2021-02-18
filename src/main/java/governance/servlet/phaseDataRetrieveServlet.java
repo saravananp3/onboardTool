@@ -17,9 +17,11 @@ import governance.service.phaseDataRetrieveService;
 public class phaseDataRetrieveServlet extends HttpServlet {
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			JsonArray jsonArray = new JsonArray(); 
+			String operation = request.getParameter("operation");
+			String phaseId = request.getParameter("phaseId");
 		    try
 		     {
-		    	 phaseDataRetrieveService phase = new phaseDataRetrieveService();
+		    	 phaseDataRetrieveService phase = new phaseDataRetrieveService(phaseId,operation);
 		    	 jsonArray=phase.phaseDataRetrieve();
 		    	 phase=null;
 		    	 System.gc();
@@ -28,9 +30,11 @@ public class phaseDataRetrieveServlet extends HttpServlet {
 		     {
 		    	 e.printStackTrace();
 		     }
+		    
 				String json = new Gson().toJson(jsonArray);
 				response.setContentType("application/json");
 		        response.setCharacterEncoding("UTF-8");
-		        response.getWriter().write(json);	}
+		        response.getWriter().write(json);	
+			}
 
 }

@@ -14,12 +14,42 @@ public class phaseEditService {
 	String Id;
 	String labelName;
 	int seqNum;
-	public phaseEditService(String labelName,int seqNum) throws ClassNotFoundException, SQLException
+	String tableName;
+	String idWhereCond;
+	String idAndCond;
+	String id;
+	public phaseEditService(String labelName,int seqNum,String id,String operation) throws ClassNotFoundException, SQLException
 	{
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
 		this.labelName = labelName;
 		this.seqNum = seqNum;
+		this.id = id;
+		getTableProperty(operation);
+		
+	}
+	
+	public void getTableProperty(String operation)
+	{
+		try
+		{
+			switch(operation)
+			{
+			case "EditPhase":
+				  tableName = "phase_info";
+				  idAndCond = " and phaseId='"+id+"'";
+				break;
+				
+			case "NewPhase":
+				tableName = "phase_info_details";
+				idAndCond = "";
+				break;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean EditService()
@@ -27,7 +57,7 @@ public class phaseEditService {
 		boolean editStatus  = false;
 		try
 		{
-			String updateQuery ="update phase_info_details set label_name='"+labelName+"' where  seq_no='"+seqNum+"'; ";
+			String updateQuery ="update "+tableName+" set label_name='"+labelName+"' where  seq_no='"+seqNum+"' "+idAndCond+"; ";
 			Statement st = con.createStatement();
 			st.executeUpdate(updateQuery);
 			st.close();
@@ -45,7 +75,7 @@ public class phaseEditService {
 		String previousLabel ="";
 		try
 		{
-			String selectQuery = "select * from phase_info_details where seq_no='"+seqNum+"'";
+			String selectQuery = "select * from "+tableName+" where seq_no='"+seqNum+"' "+idAndCond+";";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
 			if(rs.next())
@@ -64,7 +94,7 @@ public class phaseEditService {
 		boolean checkDuplicateLabel = false;
 		try
 		{
-			String selectQuery = "select * from phase_info_details where label_name='"+labelName+"'";
+			String selectQuery = "select * from "+tableName+" where label_name='"+labelName+"' "+idAndCond+";";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
 			if(rs.next())

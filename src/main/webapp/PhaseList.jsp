@@ -560,17 +560,6 @@ pointer-events:all;
 		                               </div>
 		                               
                                </div>
-                               <label style="color:#fff">Category:</label>
-                               <div class="row form-row">
-                                
-
-		                               <div class="col-md-10">
-		                               <select class="" id="category" style ="width:200px;">
-		                               <option value='Phase' class='options'>Phase</option>
-		                               <option value='Wave' class='options'>Wave</option>
-		                               <option value='Application' class='options'>Application</option>
-		                               </select></div>
-		                               </div>
 		                               <label class = "PhaseRow" style="color:#fff;">Phase:</label>
                                <div class="row form-row PhaseRow">
 		                               
@@ -584,6 +573,12 @@ pointer-events:all;
 		                               <div class="row form-row WaveRow">
 		                               <div class="col-md-10">
 		                               <select class="filter" id="wave" style ="width:200px;">
+		                               </select></div>
+		                               </div>
+		                               <label class="ApplicationRow" style="color:#fff;">Application:</label>
+		                               <div class="row form-row ApplicationRow">
+		                               <div class="col-md-10">
+		                               <select  class="filter" id="application" style ="width:200px;">
 		                               </select></div>
 		                               </div>
                                
@@ -614,7 +609,7 @@ pointer-events:all;
 			
                        
                         <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewPhase.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                
                             </button>
                             
@@ -845,14 +840,14 @@ pointer-events:all;
         <form name="PopUpform">
             <div class="row">
                     <div class="form-group">
-                        <div class="col-lg-8">
+                        <div class="col-lg-10">
                             <!-- <label class="control-label" for="formInput526">Select Wave Name:</label>
                             <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
                                 
                             </select>
     -->                     
                <p>Are you sure, want to delete the Phase permanently?</p>
-               <input type="checkbox" id ="includePhaseAll"  value="true"/>&nbsp;&nbsp;include phase content
+               <input type="checkbox" id ="includePhaseAll"  value="true"/>&nbsp;&nbsp;Include Phase content (Associated Wave and Application)
                <input type="textbox" id="phaseIndex" value="" style="display:none;"/>
                     </div>
                     </div>
@@ -886,14 +881,14 @@ pointer-events:all;
         <form name="PopUpform">
             <div class="row">
                     <div class="form-group">
-                        <div class="col-lg-8">
+                        <div class="col-lg-10">
                             <!-- <label class="control-label" for="formInput526">Select Wave Name:</label>
                             <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
                                 
                             </select>
     -->                     
                <p>Are you sure, want to delete the Wave permanently?</p>
-               <input type="checkbox" id ="includeWaveAll"  value="true"/>&nbsp;&nbsp;include wave content
+               <input type="checkbox" id ="includeWaveAll"  value="true"/>&nbsp;&nbsp;Include Wave content (Associated Application)
                <input type="textbox" id="waveIndex" value="" style="display:none;"/>
                     </div>
                     </div>
@@ -972,6 +967,7 @@ pointer-events:all;
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="js/governance/phaseList/phaseCategorySelection.js"></script>
+<script type="text/javascript" src="js/governance/phaseList/governanceEditFunctionality.js"></script>
 <script type="text/javascript" src="js/threeDotOptions/threeDotOptions.js"></script>
 <script src="js/notification/notification.js"></script>
 <script src="js/Opportunity/OpportunityList/addToExistWaveAjaxCall.js"></script>

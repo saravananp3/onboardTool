@@ -1,6 +1,13 @@
 $(document).ready(function(){
+	
 	selectCategory("Phase");
+	
 	selectCategoryAjaxCall("WAVE_OPTIONS");
+	
+	selectCategoryAjaxCall("APPLICATION_OPTIONS");
+
+	//$(".filter").selectpicker('refresh');
+	
 	$(document).on('click', '.addClass', function(){
 		var index = $(this).index('.addClass');
 		$(".myDropdown").eq(index).hide();
@@ -12,12 +19,28 @@ $(document).ready(function(){
 	$(document).on('change','#phase',function(){
 		var phaseName = $(this).val();
 		$(".waveOption").hide();
-		if(phaseName=="none")
-			$(".waveOption").show();
+		$(".appOption").hide();
+		if(phaseName=="All")
+		{
+			  $(".waveOption").show();
+			  $(".appOption").show();
+		}
 		else
 		$("."+((phaseName).replace(" ","").replace("-",""))).show();
     });
 	
+	$(document).on('change','#wave',function(){
+		var waveName =$(this).val();
+		var phaseName = $("#wave").val();
+		$(".appOption").hide();
+		
+		if(phaseName=="All"&&waveName=="All")
+			$(".appOption").show();
+		else if(phaseName!="All"&&waveName=="All")
+			$("."+((phaseName).replace(" ","").replace("-",""))).show();
+		else if((phaseName=="All"&&waveName!="All")||(phaseName!="All"&&waveName!="All"))
+			$("."+((waveName).replace(" ","").replace("-",""))).show();
+    });
 	$(document).on('click','.deletePhaseClass',function(){
 		$("#deletePhaseBtn").click();
 		var index =  $(this).index(".deletePhaseClass");
@@ -92,18 +115,32 @@ function selectCategoryAjaxCall(operation)
         url: "selectCategoryServlet",
         type: 'POST',
         dataType: "json",
+        async:false,
         data:{operation:operation},
         success: function (data) {
         	console.log("Wave Options:", data);
         	 if (!$.isArray(data)) {
                  data = [data];
              }
-        	 $("#wave").append("<option  class='none' value='none'>none</option>");
+        	 if(operation=="WAVE_OPTIONS")
+        		 {
+        	 $("#wave").append("<option  class='none' value='All'>All</option>");
         	 $.each(data,function(key,value){
         		 var phaseName = ((value.phaseName).replace(" ","").replace("-",""));
         		 var waveName = value.WaveName;
         	    $("#wave").append("<option  class='waveOption "+phaseName+"' value='"+waveName+"' >"+waveName+"</option>");
-        	 })
+        	 });
+        	 }
+        	 else if(operation=="APPLICATION_OPTIONS")
+        	{
+        		 $("#application").append("<option  class='none' value='All'>All</option>");
+        		 $.each(data,function(key,value){
+            		 var phaseName = ((value.phaseName).replace(" ","").replace("-",""));
+            		 var waveName = ((value.waveName).replace(" ","").replace("-",""));
+            		 var appName = value.appName;
+            	    $("#application").append("<option  class='appOption "+phaseName+" "+waveName+"' value='"+appName+"' >"+appName+"</option>");
+            	 });
+        	}
         	 
         	  
         },
@@ -113,9 +150,9 @@ function selectCategoryAjaxCall(operation)
 });
 
 }
-$(document).on('change','#category',function(){
+/*$(document).on('change','#category',function(){
 	selectCategory($(this).val());
-});
+});*/
 function selectCategory(category)
 {
 	$("#ul_id").html("");
@@ -180,13 +217,8 @@ function selectCategory(category)
 					"<input type = 'hidden' class = 'waveName' value = '"+waveName+"'>"+
 					"<input type = 'hidden' class = 'waveId' value = '"+WaveId+"'>"+
 					"</div>"+
-                  "<h3 class='cbp-vm-title left-col primary' name='name'>"+waveName+"</h3>"+
-                  "<p class='right-col primary' >In Test</p>"+
-                 
-                   "<button type='button' class='btn btn-primary' name='btn' onClick=\"editWave('"+WaveId+"','"+waveName+"')\";>"+
-                   "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
-                   "</button>"+
-                   "</li>";
+                  "<h3 class='cbp-vm-title left-col primary waveHeadingName' name='name' contenteditable='false'>"+waveName+"</h3>"+
+                  "</li>";
 	$('#ul_id').append(li_element);
 	
 	i++;
@@ -233,12 +265,7 @@ function opportunityListAjaxCall()
         					"<input type = 'hidden' class = 'oppName' value = '"+opportunityName+"'>"+
         					"<input type = 'hidden' class = 'oppId' value = '"+OpportunityId+"'>"+
         					"</div>"+
-                             "<h3 class='cbp-vm-title left-col primary' name='name'>"+opportunityName+"</h3>"+
-                             "<p class='right-col primary' >In Test</p>"+
-                            
-                              "<button type='button' class='btn btn-primary' name='btn' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>"+
-                              "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
-                              "</button>"+
+                             "<h3 class='cbp-vm-title left-col primary opportunityHeadingName' name='name' contenteditable='false'>"+opportunityName+"</h3>"+
                               "</li>";
         	$('#ul_id').append(li_element);
         	
@@ -257,6 +284,7 @@ function phaseListAjaxCall()
         url: "phaseListServlet",
         type: 'POST',
         dataType: "json",
+        async:false,
         success: function (data) {
         	console.log("Data GovernanceList", data);
         	 if (!$.isArray(data)) {
@@ -264,28 +292,25 @@ function phaseListAjaxCall()
                  
              }
              var i = 1;
-             var option ="<option class='options' value='none'>none</option>"
+             var option ="<option class='options' value='All'>All</option>";
              $.each(data, function(key, value){
             	 var phaseName = value.phaseName; 
             	 var phaseId = value.phaseId; 
             	
-        	var li_element ="<li class = 'phaseCard'>"+
+        	var li_element ="<li class = 'phaseCard' >"+
 				        	"<div class='drophide'>"+
 							"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 							"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
-							"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
+							"<a class = 'options editPhaseClass' style = 'text-align:left;' href='#'>Edit</a>"+
 							"<a class = 'options deletePhaseClass' style = 'text-align:left;' href='#'>Delete</a>"+
 							"</div>"+
 							"</i>"+
 							"<input type = 'hidden' class = 'phaseName' value = '"+phaseName+"'/>"+
 							"<input type = 'hidden' class = 'phaseId' value = '"+phaseId+"'/>"+
 							"</div>"+
-                             "<h3 class='cbp-vm-title left-col primary' name='name'>"+phaseName+"</h3>"+
-                             "<p class='right-col primary' >In Test</p>"+
-                            
-                              "<button type='button' class='btn btn-primary' name='btn' onClick=\"editWave('"+phaseId+"','"+phaseName+"')\";>"+
-                              "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
-                              "</button>"+
+							"<h3 class='cbp-vm-title' style='display:none;'>"+value.apps+"</h3>"+
+                             "<h3 class='left-col primary phaseHeadingName' name='name' contenteditable='false'>"+phaseName+"</h3>"+
+                             
                               "</li>";
         	$('#ul_id').append(li_element);
         	 option +="<option class='options' value='"+phaseName+"'>"+phaseName+"</option>";

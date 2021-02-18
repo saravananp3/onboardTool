@@ -17,10 +17,12 @@ public class phaseDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JsonObject jsonObject = new JsonObject();
 	    int seqNum = Integer.parseInt(request.getParameter("seq_num"))+1;
+	    String id = request.getParameter("phaseId");
+	    String operation = request.getParameter("operation");
 	    //String Id = request.getParameter("waveId");
 	    try
 	    {
-	    	phaseDeleteService phase = new phaseDeleteService(seqNum);
+	    	phaseDeleteService phase = new phaseDeleteService(seqNum,id,operation);
 	      jsonObject.addProperty("DeleteStatus",phase.DeleteService());
 	      phase=null;
 	      System.gc();

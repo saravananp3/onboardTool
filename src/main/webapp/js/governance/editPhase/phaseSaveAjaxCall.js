@@ -1,5 +1,7 @@
+
 $("#create").click(function(e)
 {
+	var id=$("#Id").val();
 	var phaseName = $("#phaseName").val();
 	var phaseId = $("#phaseId").val();
 	var checkMandatory = true;
@@ -103,7 +105,7 @@ $("#create").click(function(e)
     	
     	var checkAjax;
     	if(checkMandatory)
-        var validationCheck_json = AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,e);
+        var validationCheck_json = AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,id,e);
     	else
     		{
     		notification("warning","Please fill the mandatory fields.","Warning");
@@ -118,7 +120,7 @@ else
 }
 });
 
-function AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,e)
+function AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,id,e)
 {
 	e.preventDefault();
 	var JsonObject=[];
@@ -126,7 +128,7 @@ function AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,e)
 	$.ajax({
         url: "phaseSaveServlet",
         type: 'POST',
-        data : {phaseName:phaseName, phaseId:phaseId ,JsonString : JsonString, checkMandatory : checkMandatory,operation:"NewPhase"},
+        data : {phaseName:phaseName, phaseId:phaseId ,JsonString : JsonString, checkMandatory : checkMandatory, id:id, operation:"EditPhase"},
         async: false,
         dataType: "json",
         success: function (data) {

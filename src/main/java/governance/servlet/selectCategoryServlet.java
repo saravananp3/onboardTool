@@ -27,11 +27,17 @@ public class selectCategoryServlet extends HttpServlet {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
+			selectCategory category = new selectCategory();
 			switch(selectOperation)
 			{
 				case "WAVE_OPTIONS":
-					selectCategory category = new selectCategory();
+					
 					jsonArray = category.WavesDropdown();
+					category = null;
+					System.gc();
+					break;
+				case "APPLICATION_OPTIONS":
+					jsonArray = category.AppsDropdown();
 					category = null;
 					System.gc();
 					break;

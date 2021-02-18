@@ -22,12 +22,14 @@ public class filteringListServlet extends HttpServlet {
 	
 	String wave = request.getParameter("wave");
 	
+	String application = request.getParameter("application");
+	
 	JsonArray jsonArray = new JsonArray();
 	
 	try
 	{
 		
-		selectListService service = new selectListService(category, phase, wave);
+		selectListService service = new selectListService(category, phase, wave, application);
 		
 		jsonArray = service.getList();
 		

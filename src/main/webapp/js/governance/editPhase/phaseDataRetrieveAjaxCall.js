@@ -1,15 +1,21 @@
+var phaseId = "";
 $(document).ready(function()
 {
-	phaseDataretrieveAjaxCall();
+	var url_string=window.location.href;
+    var url = new URL(url_string);
+    phaseId = url.searchParams.get("phaseId").replaceAll("'","");
+    console.log("phase id:",phaseId);
+	phaseDataretrieveAjaxCall(phaseId);
 });
 
-function phaseDataretrieveAjaxCall()
+function phaseDataretrieveAjaxCall(phaseId)
 {
+	
     $.ajax({
         url: "phaseDataRetrieveServlet",
         type: 'POST',
         dataType: "json",
-        data:{operation:"NewPhase"},
+        data: {phaseId:phaseId,operation:"EditPhase"},
         success: function (data) {
             console.log("Data Retrieve json array----->",data);
             AddTemplateData = data;
@@ -33,6 +39,10 @@ function phaseDataretrieveAjaxCall()
                 var delete_icon="<div class='deletepopup' style='display:none;'></div>";
                 var Value=value.Value;
                 
+                var disable =""
+                if(ColumnName=="phaseId")
+                 disable = "disabled";
+               
                 if(value.Mandatory=="No")
                 {
                     manadatory="";
@@ -44,7 +54,7 @@ function phaseDataretrieveAjaxCall()
                 {
                     var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
                         "<label class='control-label' for='governance'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
-                        "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
+                        "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"' "+disable+" />\n" +
                         "</div>";
                     $('#inputFields').append(inputtext);
                 }

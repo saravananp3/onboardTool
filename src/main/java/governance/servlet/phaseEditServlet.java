@@ -18,10 +18,11 @@ public class phaseEditServlet extends HttpServlet {
 		JsonObject jsonObject = new JsonObject();
 		int seqNum = Integer.parseInt(request.getParameter("seq_num"))+1;
 		String labelName = request.getParameter("label");
-		
+		String phaseId= request.getParameter("phaseId");
+		String operation = request.getParameter("operation");
 	    try
 		{
-		phaseEditService phase = new phaseEditService( labelName, seqNum);	
+		phaseEditService phase = new phaseEditService( labelName, seqNum, phaseId, operation);	
 		jsonObject.addProperty("previous_label_name", phase.getPreviousLabelName());
 		boolean checkLabel = phase.checkDuplicateLabelName();
 		jsonObject.addProperty("checkDuplicate",checkLabel);

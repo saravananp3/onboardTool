@@ -23,8 +23,10 @@ import governance.service.phaseSaveService;
 
 public class phaseSaveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("phaseId");
+		String phaseId = request.getParameter("phaseId");
+		String id =request.getParameter("id");
 		String phaseName =request.getParameter("phaseName");
+		String operation = request.getParameter("operation");
 		boolean checkMandatory = Boolean.parseBoolean(request.getParameter("checkMandatory"));
         String JsonString= (String)request.getParameter("JsonString");
         JsonParser parser = new JsonParser();
@@ -32,7 +34,7 @@ public class phaseSaveServlet extends HttpServlet {
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
 		JsonObject jsonObject = new JsonObject();
 		try {
-			phaseSaveService phase = new phaseSaveService(id, phaseName, jsonArray);
+			phaseSaveService phase = new phaseSaveService(phaseId, phaseName, jsonArray,id,operation);
 			boolean checkphaseName = phase.checkDuplicateData("phaseName", phaseName);
 			boolean checkphaseId = phase.checkDuplicateData("phaseId", id);
 			jsonObject.addProperty("checkphaseName", checkphaseName);

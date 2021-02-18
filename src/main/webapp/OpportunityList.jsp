@@ -524,7 +524,7 @@ display: flex;
                   <ul class="nav navbar-nav">
 		              <li class="active"><a href="#" style="color:#fff"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
-		              <li><a href="Governance.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
 		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
 		              <li><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
 		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
