@@ -22,6 +22,8 @@ function dynamicWave(waveName, creationType){
         		  notification("success","Wave added successfully","Note : ");
 		          var li = "<li>"+waveName+"</li>";
 			      $("#addId").append(li);
+			      $("#waves").append("<option value='"+waveName+"'>"+waveName+"</option>");
+			      $("select.multiselect").selectpicker("refresh");
         	}
         	
         	else{
