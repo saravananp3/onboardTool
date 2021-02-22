@@ -162,7 +162,7 @@ HttpSession details = request.getSession();
   <br/>
      <div class="panel panel-default">
          <div class="panel-heading">
-             <h4 class="panel-title"> <a  data-parent="#panels1" > New Phase  </a> </h4>
+             <h4 class="panel-title"> <a  data-parent="#panels1" > Edit Phase  </a> </h4>
          </div>
          <%@ page import="java.sql.*"%>
          <div id="collapse2" class="panel-collapse">
