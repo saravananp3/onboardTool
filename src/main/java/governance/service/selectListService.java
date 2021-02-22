@@ -19,14 +19,16 @@ public class selectListService {
 	String phaseName;
 	String waveName;
 	String applicationName;
+	boolean searchByApp;
 	
-	public selectListService(String categoryName,String phaseName, String waveName,String applicationName) throws ClassNotFoundException, SQLException {
+	public selectListService(String categoryName,String phaseName, String waveName,String applicationName,boolean searchByApp) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
 		this.categoryName = categoryName;
 		this.phaseName =  phaseName;
 		this.waveName = waveName;
 		this.applicationName = applicationName;
+		this.searchByApp = searchByApp;
 	}
 	
 	
@@ -122,10 +124,15 @@ public class selectListService {
     		String selectPhase = "select * from governance_info where column_name='apps' and value like '%"+app+"%'";
     		Statement st = con.createStatement();
     		ResultSet rs = st.executeQuery(selectPhase);
-    		if(rs.next())
+    		if(!searchByApp)
     		{
+    		if(rs.next())
     			jsonArray = getPhaseFromWave(rs.getString("waveName"));
     		}
+    		else
+    			while(rs.next())
+        			jsonArray .addAll( getPhaseFromWave(rs.getString("waveName")));
+    			
     		rs.close();
     		st.close();
     	}

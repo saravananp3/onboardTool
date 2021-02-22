@@ -24,12 +24,14 @@ public class filteringListServlet extends HttpServlet {
 	
 	String application = request.getParameter("application");
 	
+	boolean searchByApp = Boolean.parseBoolean(request.getParameter("searchByApp"));
+	
 	JsonArray jsonArray = new JsonArray();
 	
 	try
 	{
 		
-		selectListService service = new selectListService(category, phase, wave, application);
+		selectListService service = new selectListService(category, phase, wave, application,searchByApp);
 		
 		jsonArray = service.getList();
 		

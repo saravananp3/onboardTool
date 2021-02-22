@@ -124,21 +124,21 @@ function selectCategoryAjaxCall(operation)
              }
         	 if(operation=="WAVE_OPTIONS")
         		 {
-        	 $("#wave").append("<option  class='none' value='All'>All</option>");
+        	 $("#wave").append("<option  class='all options' value='All'>All</option>");
         	 $.each(data,function(key,value){
         		 var phaseName = ((value.phaseName).replace(" ","").replace("-",""));
         		 var waveName = value.WaveName;
-        	    $("#wave").append("<option  class='waveOption "+phaseName+"' value='"+waveName+"' >"+waveName+"</option>");
+        	    $("#wave").append("<option  class='waveOption "+phaseName+" options' value='"+waveName+"' >"+waveName+"</option>");
         	 });
         	 }
         	 else if(operation=="APPLICATION_OPTIONS")
         	{
-        		 $("#application").append("<option  class='none' value='All'>All</option>");
+        		 $("#application").append("<option  class='all options' value='All'>All</option>");
         		 $.each(data,function(key,value){
             		 var phaseName = ((value.phaseName).replace(" ","").replace("-",""));
             		 var waveName = ((value.waveName).replace(" ","").replace("-",""));
             		 var appName = value.appName;
-            	    $("#application").append("<option  class='appOption "+phaseName+" "+waveName+"' value='"+appName+"' >"+appName+"</option>");
+            	    $("#application").append("<option  class='appOption "+phaseName+" "+waveName+" options' value='"+appName+"' >"+appName+"</option>");
             	 });
         	}
         	 

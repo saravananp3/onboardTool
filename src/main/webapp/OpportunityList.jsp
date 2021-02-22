@@ -416,7 +416,18 @@ display: flex;
 	justify-content: center;
 }
 
+.selectInput{
 
+
+    border: none;
+    border-bottom: 1px solid #959595;
+    color: #fff!important;
+    background-color: transparent!important;
+  }
+   .options
+         {
+          color:#000000;
+         }
     </style>
 
 </head>
@@ -569,7 +580,7 @@ display: flex;
                                 
 
 		                               <div class="col-md-10">
-		                               <select class="" id="category" style ="width:200px;">
+		                               <select class="selectInput" id="category" style ="width:200px;">
 		                               <option value='none' class='options'>none</option>
 		                               <option value='Intake' class='options'>Intake</option>
 		                               <option value='Triage' class='options'>Triage</option>
@@ -584,7 +595,7 @@ display: flex;
 		                               
 		                               <div class="col-md-10">
 		                               
-		                               <select class="" id="phase" style ="width:200px;">
+		                               <select class="selectInput" id="phase" style ="width:200px;">
 		                              <option value='none' class='options'>none</option>
 		                               <option value='Phase1' class='options'>Phase1</option>
 		                               <option value='Phase2' class='options'>Phase2</option>
@@ -593,7 +604,7 @@ display: flex;
 		                               <label class="WaveRow" style="color:#fff;">Wave:</label>
 		                               <div class="row form-row WaveRow">
 		                               <div class="col-md-10">
-		                               <select class="" id="wave" style ="width:200px;">
+		                               <select class="selectInput" id="wave" style ="width:200px;">
 		                                <option value='none' class='options'>none</option>
 		                               <option value='Wave1' class='options'>Wave1</option>
 		                               <option value='Wave2' class='options'>Wave2</option>

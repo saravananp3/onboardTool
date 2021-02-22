@@ -372,6 +372,15 @@ input[type=search]:focus {
 
 }
 
+.selectInput{
+
+
+    border: none;
+    border-bottom: 1px solid #959595;
+    color: #fff!important;
+    background-color: transparent!important;
+  }
+
 
 .fa-search{
 
@@ -541,7 +550,7 @@ pointer-events:all;
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-2">
-                             <h5 class="title" style="color:#fff">Waves / Projects</h5>
+                             <h5 class="title" style="color:#fff">Application</h5>
                              
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
@@ -555,7 +564,7 @@ pointer-events:all;
 		                               <i class="fa fa-search" aria-hidden="true"></i>
 		                               </div>
 		                               <div class="col-md-10">
-		                               <input class="form-control searchbox-input topBarInput"  type="text" placeholder="Search the application.."></div>
+		                               <input class="form-control topBarInput"  id="appFilter" type="text" placeholder="Search the Phase.."></div>
 		                               
 		                               </div>
 		                               
@@ -565,20 +574,20 @@ pointer-events:all;
 		                               
 		                               <div class="col-md-10">
 		                               
-		                               <select class="filter" id="phase" style ="width:200px;">
+		                               <select class="filter selectInput" id="phase" style ="width:200px;">
 		                              
 		                               </select></div>
 		                               </div>
 		                               <label class="WaveRow" style="color:#fff;">Wave:</label>
 		                               <div class="row form-row WaveRow">
 		                               <div class="col-md-10">
-		                               <select class="filter" id="wave" style ="width:200px;">
+		                               <select class="filter selectInput" id="wave" style ="width:200px;">
 		                               </select></div>
 		                               </div>
 		                               <label class="ApplicationRow" style="color:#fff;">Application:</label>
 		                               <div class="row form-row ApplicationRow">
 		                               <div class="col-md-10">
-		                               <select  class="filter" id="application" style ="width:200px;">
+		                               <select  class="filter selectInput" id="application" style ="width:200px;">
 		                               </select></div>
 		                               </div>
                                
@@ -967,6 +976,7 @@ pointer-events:all;
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="js/governance/phaseList/phaseCategorySelection.js"></script>
+<script type="text/javascript" src="js/governance/phaseList/phaseFilterByApp.js"></script>
 <script type="text/javascript" src="js/governance/phaseList/governanceEditFunctionality.js"></script>
 <script type="text/javascript" src="js/threeDotOptions/threeDotOptions.js"></script>
 <script src="js/notification/notification.js"></script>

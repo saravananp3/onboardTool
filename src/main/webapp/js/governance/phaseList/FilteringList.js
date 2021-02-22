@@ -13,16 +13,16 @@ $(document).on('change','.filter', function(){
     var phase = $("#phase").val();
     var wave = $("#wave").val();
     var application = $("#application").val();
-    getList(phase,wave,application ,"Phase");
+    getList(phase,wave,application ,"Phase",false);
 });
 
-function getList(phase,wave,application ,category)
+function getList(phase,wave,application ,category,searchByApp)
 {
 	$.ajax({
         url: "filteringListServlet",
         type: 'POST',
         dataType: "json",
-        data:{wave:wave,category:category,phase:phase, application:application},
+        data:{wave:wave,category:category,phase:phase, application:application,searchByApp:searchByApp},
         success: function (data) {
         	console.log("Wave Options:", data);
         	 if (!$.isArray(data)) {
