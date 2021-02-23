@@ -22,6 +22,11 @@
 <!-- ========== THEME CSS ========== -->
 <link rel="stylesheet" href="css/main.css" media="screen">
 <link rel="stylesheet" href="css/Intake/Intake.css" type="text/css" />
+
+<!-- =========== Header Icon ========= -->
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+ <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -398,6 +403,15 @@ input[type="text"]{
 font-size:12px;
 
 }
+
+ .active1{
+    background:#1565c0;
+}
+ .page-title-div {
+    background:#1565c0;
+	padding: 15px;  
+}
+
 </style>
 </head>
 <body class="top-navbar-fixed">
@@ -414,15 +428,15 @@ font-size:12px;
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="GovernanceList.jsp">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
+                 <ul class="nav navbar-nav headerTab navAlign">
+		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
+		              <li><a href="#"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
-		         <ul class="nav navbar-nav navbar-right">
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                       <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
@@ -434,8 +448,22 @@ font-size:12px;
                              <div class="col-sm-6">
                         
                             
-                         <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
-                          <span class="glyphicon glyphicon-home"></span> Home</a> >> 
+                          <p class="sub-title" style="color:#fff ; margin-right: -26px; "> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Introduction</a> >>
+                           <a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Legacy Application Info</a> >>
+                           <a  href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Retention Details</a> >> 
+                           <a  href="ArchiveBusinessRequirements.jsp" id="sitetitle1" style="color:#fff">
+                           Business Requirements</a> >>
+                            <a  href="archiveReqAbbrevation.jsp" id="sitetitle1" style="color:#fff">
+                           Abbreviations</a> >>
+                           <a  href="archiveRequirementsDocumentRevisions.jsp" id="sitetitle1" style="color:#fff">
+                           Document Revision</a> >> 
+                            <a  href="archiveRequirementsAddendum.jsp" id="sitetitle1" style="color:#fff">
+                           Addendum</a> >>
+                           <a  href="archiveRequirementsApprovalDetails.jsp" id="sitetitle1" style="color:#fff">
+                           Review</a> >> Approval </p>
                          
                          
                          </p>
@@ -448,6 +476,10 @@ font-size:12px;
         </div>
         <!-- /.container-fluid -->
     </nav >
+    <br/>
+    <br/>
+    <br/>
+    <br/>
             <div class="content-wrapper">
                 <div class="content-container" >
                    
@@ -562,12 +594,20 @@ font-size:12px;
       });
 
       </script>
-    <!-- <script>
-        function myFunction() {
-            let today = new Date().toISOString().substr(0, 10);
-            document.getElementById('creation_date').value = today;
-        }
-    </script> -->
+    <!-- Active Icon Color changes  -->
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
     </body>
     <!-- ========== COMMON JS FILES ========== -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>

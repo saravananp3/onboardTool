@@ -19,7 +19,11 @@
 <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
 <!-- ========== THEME CSS ========== -->
 <link rel="stylesheet" href="css/main.css" media="screen" >
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+<!-- =========== Header Icon ========= -->
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+ <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>   
@@ -202,7 +206,13 @@ padding: 15px;
 	} */
     /*END Form Wizard*/
    
-   
+     .active1{
+    background:#1565c0;
+}
+ .page-title-div {
+    background:#1565c0;
+	padding: 15px;  
+}
 </style>
 
 <body class="top-navbar-fixed">
@@ -243,15 +253,15 @@ padding: 15px;
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="GovernanceList.jsp">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
+                 <ul class="nav navbar-nav headerTab navAlign">
+		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
+		              <li><a href="#"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
-		         <ul class="nav navbar-nav navbar-right">
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                       <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
@@ -279,7 +289,9 @@ padding: 15px;
         </div>
         <!-- /.container-fluid -->
     </nav>
-    
+    <br/>
+    <br/>
+    <br/>
         <div class="content-wrapper">
         <div class="col-md-12">
 								<div style="margin-bottom: -138px;" class="form-wizard">
@@ -293,7 +305,7 @@ padding: 15px;
 								<li><span>4</span><i>Business requirements</i></li>
 								<li><span>5</span><i>Abbreviations</i></li>
 								<li><span>6</span><i>Revisions</i></li>
-								<li><span>7</span><i>Addendumns</i></li>
+								<li><span>7</span><i>Addendum</i></li>
 								<li><span>8</span><i>StakeHolders</i></li>
 								<li><span>9</span><i>Review</i></li>
 								<li><span>10</span><i>Approval</i></li>
@@ -443,6 +455,21 @@ padding: 15px;
     catch (Exception e) {
     }
 %>
+
+<!-- Active Icon Color changes  -->
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
 
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>

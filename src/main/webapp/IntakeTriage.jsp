@@ -26,12 +26,31 @@
     <link rel="stylesheet" href="css/main.css" media="screen" >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
  
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+<link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
 
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <!-- <script src="js/IntakeDetails/IntakeOpportunity/IntakeOpportunity.js"></script> -->
 <link rel="stylesheet" href="css/Intake/IntakeOpportunity.css" media="screen" > 
+
+
+<style type="text/css">
+         body{
+            background:#fff;
+        }
+
+        .active1{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+	  
+	  
+	}
+</style>
 
 </head>
 <body class="top-navbar-fixed">
@@ -48,15 +67,15 @@
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		              <li class="active"><a href="#" style="background:#1565c0;color:white;">Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li><a href="GovernanceList.jsp">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
+                  <ul class="nav navbar-nav navAlign">
+		              <li class="active1"><a href="OpportunityList.jsp" style="color:white;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
+		              <li><a href="#"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
-		         <ul class="nav navbar-nav navbar-right">
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                       <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
@@ -71,10 +90,9 @@
                          <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
                           <span class="glyphicon glyphicon-home"></span> Home</a> >> 
                          
-                          <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
-                           Introduction</a> >>
+                          
                           <a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
-                           Legacy application Information</a> >> Triage Information
+                           Opportunity </a> >> Triage Information
                            </a></p>
                      
                     
@@ -95,12 +113,14 @@
 			<div class=" col-md-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
+					<br/>
+					<br/>
 						<div class="form-wizard-header">
 							<p>Fill all the required fields to go next step</p>
 							<ul class="list-unstyled form-wizard-steps clearfix">
 								<li class="activated"><span>1</span><i>Introduction</i></li>
-								<li class="active"><span>2</span><i>Legacy app Info</i></li>
-								<li><span>3</span><i>Triage Info</i></li>
+								<li class="active"><span>2</span><i>Triage Info</i></li>
+								<li><span>3</span><i>Triage Summary</i></li>
 								<li><span>4</span><i>Assessment</i></li>
 								<li><span>5</span> <i>Stake Holder</i></li>
 								<li><span>6</span><i>Review</i></li>
@@ -126,12 +146,13 @@
                                                      <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick ="window.location.href='archiveRequirementsLegacyDetails.jsp';">Prev</button> </div>
                                                             <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width: 43%;">
                                                                 <button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target=".triage-example-modal-lg">Template</button>
+                                                                <div class = "btn-group dropup dropright">
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span> </button>
-                                                                <ul class="dropdown-menu">
+                                                                <ul class="dropdown-menu"  style = "min-width: inherit;" >
                                                                     <li><a href="#" id="add" data-toggle="modal" data-target="#AddTriagePopUp" class="fa fa-plus" style="font-size: 19px; color: black;">&nbsp;&nbsp;&nbsp;Add</a></li>
                                                                     <li><a href="#" id="EditTriage" class="fa fa-edit" style="font-size: 19px; color: black">&nbsp;&nbsp;&nbsp;Edit</a></li>
                                                                     <li><a href="#" id="DeleteTriage" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
-                                                                </ul>
+                                                                </ul></div>
                                                                 <button type="submit" class="btn btn-success" id="createbtn">Save</button>
                                                                  <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriageSummary.jsp';" id="next" disabled="true">
                                                                  
@@ -1527,6 +1548,23 @@
 </div>   <!-- content-wrapper -->
 
 </div> <!-- main-wrapper -->
+
+<!-- Active Icon Color changes  -->
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
+
 <!-- <script src ="js/IntakeDetails/StakeHolder/StakeHolderDataRetrieve.js"></script> -->
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
          rel = "stylesheet"><!-- newly added code by parthiban -->

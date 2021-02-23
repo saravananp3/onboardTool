@@ -24,7 +24,10 @@ li a .activeIcon :hover{
 
 li a{
 	text-align : center;
-	
+	font-size: 15px;  
+}
+.navAlign{
+margin-left : 150px;
 }
 
 /*  .navbar .navbar-nav > li > a:hover,

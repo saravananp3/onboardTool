@@ -34,6 +34,12 @@
     <link rel="stylesheet" href="css/icheck/skins/line/green.css">
     <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    
+    <!-- =========== Header Icon ========= -->
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+ <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+    
+    
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen">
    <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
@@ -132,115 +138,16 @@
 background:#1565c0 important;
 
 }
+    .active1{
+    background:#1565c0;
+}
+ .page-title-div {
+    background:#1565c0;
+	padding: 15px;  
+}
     
 
     </style>
-
-    <script>
-        var har=[];
-        var his=[];
-        function selectCheck(name)
-        {
-
-            if(har.indexOf(name)>=0)
-            {
-                var i = har.indexOf(name);
-                if(i != -1) {
-                    har.splice(i, 1);
-                }
-            }
-            else
-                har.push(name);
-        }
-        function selectCheckDeac(name)
-        {
-
-            if(his.indexOf(name)>=0)
-            {
-                var i = his.indexOf(name);
-                if(i != -1) {
-                    his.splice(i, 1);
-                }
-            }
-            else
-                his.push(name);
-        }
-
-
-        function servlet_call()
-        {
-            var f=document.loginForm;
-            f.method="post";
-            f.action='deactivate?values='+har+'&values2='+his;
-            f.submit();
-        }
-    </script>
-    <script>
-        var arr="";
-        function ooo()
-        {
-            var e=document.getElementById("dates-field2");
-            for(i=0;i<9;i++)
-            {
-                if(e[i].selected==true){
-                    arr=arr+(e[i].value);
-                }
-            }
-
-        }
-        function qq()
-        {				 var f=document.loginForm;
-            f.method="post";
-            f.action="Admin_Module_Send_Invites_Mail?roless="+arr+"&mailid="+email;
-            f.submit();
-
-        }
-    </script>
-    <script>
-        var populate="";
-        function del(cnt)
-        {
-        	var checkboxvalidation = true;
-            for(var i=0;i<cnt;i++){
-                if(document.getElementsByName('delete_check')[i].checked){
-                    var name=document.getElementsByName('name_user'+i)[0].value;
-                    populate=populate+name+",";
-                    var checkboxvalidation = false;
-                }
-            }
-            if (checkboxvalidation){
-            	alert("Please select atleast one User!");
-            
-            } else {confirmation();}
-        }
-        
-                   
-        function confirmation(){
-        	
-        	
-            var result = confirm("Are you sure to delete?");
-            if(result){
-            	var f=document.loginForm;
-                f.method="post";
-                f.action='delete_users?array='+populate;
-                f.submit();
-            }
-        }
-
-    </script>
-    <script>
-        function checkk()
-        {
-
-            document.getElementById('add_btn').disabled = true;
-            document.getElementById('del_btn').disabled = true;
-            document.getElementById('sub_btn').disabled = true;
-            for(i=0;i<50;i++){
-                document.getElementsByName('delete_check')[i].disabled = true;
-                document.getElementsByName('chek')[i].disabled = true;
-            }
-        }
-    </script>
 
 </head>
 <body class="top-navbar-fixed">
@@ -293,15 +200,15 @@ background:#1565c0 important;
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		      <li ><a href="OpportunityList.jsp" >Applications</a></li>
-		      <li class="active"><a href="Admin_Module_Send_Invites.jsp" style="color:#fff">Administration</a></li>
-		      <li><a href="GovernanceList.jsp">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
-		    </ul>
-		         <ul class="nav navbar-nav navbar-right">
+                   <ul class="nav navbar-nav headerTab navAlign">
+		              <li><a href="OpportunityList.jsp"><i class="fad fa-folders fa-2x iconAlign iconColor"></i>Applications</a></li>
+		              <li class="active1"><a href="Admin_Module_Send_Invites.jsp" style= "color:#fff;"><i class="fad fa-user-cog iconAlign activeIcon fa-2x"></i>Administration</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
+		          </ul> 
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                        
 
                         <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin</span></a></li>
@@ -499,6 +406,19 @@ background:#1565c0 important;
 </div>
 <!-- /.main-wrapper -->
 
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
 
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>

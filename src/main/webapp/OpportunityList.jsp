@@ -532,7 +532,7 @@ display: flex;
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
                 <div>
-                  <ul class="nav navbar-nav">
+                  <ul class="nav navbar-nav navAlign">
 		              <li class="active"><a href="#" style="color:#fff"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
 		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
@@ -541,7 +541,7 @@ display: flex;
 		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
 		          </div>
-		         <ul class="nav navbar-nav navbar-right">
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>
@@ -685,6 +685,9 @@ display: flex;
 
                         <div class="row">
                             <div class="container-fluid grid">
+                            <br/>
+                            <br/>
+                            <br/>
                                 <div class="main">
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                                         <div class="cbp-vm-options">
@@ -839,7 +842,7 @@ display: flex;
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/jquery-ui/jquery-ui.min.js"></script>
-<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="js/pace/pace.min.js"></script>
 <script src="js/lobipanel/lobipanel.min.js"></script>
 <script src="js/iscroll/iscroll.js"></script>

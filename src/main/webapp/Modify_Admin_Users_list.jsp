@@ -30,6 +30,10 @@
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen">
 
+<!-- =========== Header Icon ========= -->
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+ <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
@@ -119,74 +123,19 @@ background:#1565c0 important;
     min-height: .01%;
 }
 
+.active1{
+    background:#1565c0;
+}
+ .page-title-div {
+    background:#1565c0;
+	padding: 15px;  
+}
+
     </style>
 
-    <script>
-
-        var datatable;
-        /*var har = [];
-        var his = [];*/
-
-        /* function selectCheck(name) {
-
-             if (har.indexOf(name) >= 0) {
-                 var i = har.indexOf(name);
-                 if (i != -1) {
-                     har.splice(i, 1);
-                 }
-             } else
-                 har.push(name);
-         }*/
-
-        /*  function selectCheckDeac(name) {
-
-              if (his.indexOf(name) >= 0) {
-                  var i = his.indexOf(name);
-                  if (i != -1) {
-                      his.splice(i, 1);
-                  }
-              } else
-                  his.push(name);
-          }*/
-
-
-    </script>
-
-    <script>
-        /*  var populate = "";
-
-          function del(cnt) {
-              for (var i = 0; i < cnt; i++) {
-                  if (document.getElementsByName('delete_check')[i].checked) {
-                      var name = document.getElementsByName('name_user' + i)[0].value;
-                      populate = populate + name + ",";
-
-                  }
-              }
-          }*/
-
-        /* function deluser() {
-
-             var f = document.loginForm;
-             f.method = "post";
-             f.action = 'delete_users?array=' + populate;
-             f.submit();
-
-         }*/
-
-    </script>
-    <%--<script>
-        function checkk() {
-
-            document.getElementById('add_btn').disabled = true;
-            document.getElementById('del_btn').disabled = true;
-            document.getElementById('sub_btn').disabled = true;
-            for (i = 0; i < 50; i++) {
-                document.getElementsByName('delete_check')[i].disabled = true;
-                document.getElementsByName('chek')[i].disabled = true;
-            }
-        }
-    </script>--%>
+   
+    
+  
 
 </head>
 <body class="top-navbar-fixed">
@@ -195,37 +144,7 @@ background:#1565c0 important;
     String info = (String) details.getAttribute("admin");
     String prjname = (String) details.getAttribute("nameofproject");
 %>
-<%--<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>--%>
-<%--<%
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    Date date = new Date();
-    System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Admin_UsersList JSP PAGE-----[INFO]"); %>
 
-
-<%@ page import="java.sql.*" %>
-<%@ page import="javax.sql.*" %>--%>
-<%--<%
-
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-    response.setHeader("Expires", "0"); // Proxies.
-
-    if (session.getAttribute("username") == null) {
-        response.sendRedirect("Login.jsp");
-    }
-%>--%>
-<%--<%
-    HttpSession details = request.getSession();
-    String info = (String) details.getAttribute("admin");
-    String prjname = (String) details.getAttribute("nameofproject");
-    Class.forName("com.mysql.jdbc.Driver");
-    java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding", "root", "password123");
-    String query = "select * from Admin_UserDetails";
-    Statement s = conn.createStatement();
-    ResultSet rs = s.executeQuery(query);
-
-%>--%>
 <div class="main-wrapper">
 
 
@@ -243,15 +162,15 @@ background:#1565c0 important;
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		      <li ><a href="OpportunityList.jsp" >Applications</a></li>
-		      <li class="active"><a href="Admin_Module_Send_Invites.jsp" style="color:#fff">Administration</a></li>
-		      <li><a href="GovernanceList.jsp">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
-		    </ul>
-		         <ul class="nav navbar-nav navbar-right">
+                  <ul class="nav navbar-nav headerTab navAlign">
+		              <li><a href="OpportunityList.jsp"><i class="fad fa-folders fa-2x iconAlign iconColor"></i>Applications</a></li>
+		              <li class="active1"><a href="Admin_Module_Send_Invites.jsp" style= "color:#fff;"><i class="fad fa-user-cog iconAlign activeIcon fa-2x"></i>Administration</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
+		          </ul>
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                        
 
                         <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin</span></a></li>
@@ -535,60 +454,21 @@ background:#1565c0 important;
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
-<%--<script type="text/javascript">
-    $('.datepicker').datepicker({
-        format: 'mm/dd/yyyy',
-        startDate: '-3d'
-    });
-</script>--%>
 
-
-<!-- ========== THEME JS ========== -->
-<%--<script>
-    $(function ($) {
-
-        // 1st  datepicker
-        $('#basicExample .time').timepicker({
-            'showDuration': true,
-            'timeFormat': 'g:ia'
-        });
-
-        $('#basicExample .date').datepicker({
-            'format': 'm/d/yyyy',
-            'autoclose': true
-        });
-
-        var basicExampleEl = document.getElementById('basicExample');
-        var datepair = new Datepair(basicExampleEl);
-
-        // 2nd  datepicker
-        $('#datetimepicker1').datetimepicker({
-            debug: true
-        });
-
-        // 3rd  datepicker
-        $('#datetimepicker9').datetimepicker({
-            viewMode: 'years'
-        });
-
-        // 4th  datepicker
-        $('#datetimepicker10').datetimepicker({
-            viewMode: 'years',
-            format: 'MM/YYYY'
-        });
-
-        // 5th  datepicker
-        $('#datetimepicker11').datetimepicker({
-            daysOfWeekDisabled: [0, 6]
-        });
-
-        // 6th  datepicker
-        $('#datetimepicker12').datetimepicker({
-            inline: true,
-            sideBySide: true
-        });
-    });
-</script>--%>
+<!-- Active Icon Color changes  -->
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
 
 
 </body>

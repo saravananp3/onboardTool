@@ -32,6 +32,11 @@
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen">
    <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
+   
+    <!-- =========== Header Icon ========= -->
+ <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+ <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+   
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
 
@@ -250,7 +255,13 @@ body{
 background:#1565c0 important;
 
 }
-         
+ .active1{
+    background:#1565c0;
+}
+ .page-title-div {
+    background:#1565c0;
+	padding: 15px;  
+}
 
     </style>
 
@@ -309,15 +320,15 @@ background:#1565c0 important;
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		      <li ><a href="OpportunityList.jsp" >Applications</a></li>
-		      <li class="active"><a href="Admin_Module_Send_Invites.jsp" style="color:#fff">Administration</a></li>
-		      <li><a href="GovernanceList.jsp">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
-		    </ul>
-		         <ul class="nav navbar-nav navbar-right">
+                  <ul class="nav navbar-nav headerTab navAlign">
+		              <li><a href="OpportunityList.jsp"><i class="fad fa-folders fa-2x iconAlign iconColor"></i>Applications</a></li>
+		              <li class="active1"><a href="Admin_Module_Send_Invites.jsp" style= "color:#fff;"><i class="fad fa-user-cog iconAlign activeIcon fa-2x"></i>Administration</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
+		          </ul> 
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                        
 
                         <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin</span></a></li>
@@ -582,6 +593,19 @@ background:#1565c0 important;
     });
 </script>
 
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
 
 <!-- ========== PAGE JS FILES ========== -->
 <script src="js/prism/prism.js"></script>
