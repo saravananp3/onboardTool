@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, maximum-scale=1.0, user-scalable=no" name="viewport">
     <title>Opportunity List</title>
     <!-- ========== COMMON STYLES ========== -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
@@ -417,9 +417,6 @@ display: flex;
 }
 
 .selectInput{
-
-
-    border: none;
     border-bottom: 1px solid #959595;
     color: #fff!important;
     background-color: transparent!important;
@@ -520,14 +517,10 @@ display: flex;
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
-                <div class="navbar-header no-padding">
+                <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
@@ -575,7 +568,7 @@ display: flex;
 		                               
 		                               </div>
                                </div>
-                                <label style="color:#fff">Category:</label>
+                                <label style="color:#fff">Category </label>
                                <div class="row form-row">
                                 
 
@@ -590,7 +583,7 @@ display: flex;
 		                               <option value='Closure' class='options'>Closure</option>
 		                               </select></div>
 		                               </div>
-		                               <label class = "PhaseRow" style="color:#fff;">Phase:</label>
+		                               <label class = "PhaseRow" style="color:#fff;">Phase </label>
                                <div class="row form-row PhaseRow">
 		                               
 		                               <div class="col-md-10">
@@ -601,7 +594,7 @@ display: flex;
 		                               <option value='Phase2' class='options'>Phase2</option>
 		                               </select></div>
 		                               </div>
-		                               <label class="WaveRow" style="color:#fff;">Wave:</label>
+		                               <label class="WaveRow" style="color:#fff;">Wave </label>
 		                               <div class="row form-row WaveRow">
 		                               <div class="col-md-10">
 		                               <select class="selectInput" id="wave" style ="width:200px;">

@@ -18,6 +18,11 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css"/>
    
 
+ <!-- =========== Header Icon ========= -->
+ 
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> 
+ 
+
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -30,7 +35,7 @@
             background:#fff;
         }
 
-        .active{
+        .active1{
         background:#1565c0;
          }
       .page-title-div {
@@ -48,7 +53,39 @@
 
 #panels1{
 margin:60px auto;
+}
 
+.iconAlign{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    width : 100px;
+    margin-bottom: 10px;
+    
+}
+.iconColor{
+	color: #1565c0;
+}
+
+.textColor:hover{
+	text-color: #1565c0;
+}
+
+li a .iconColor:hover{
+	color: #1565c0;
+}
+
+li a .activeIcon :hover{
+	color: #1565c0;
+}
+
+li a.alignCenter{
+	text-align : center;
+	font-size: 15px;  
+}
+.navAlign{
+margin-left : 150px;
+}
 
 }
     
@@ -90,26 +127,22 @@ HttpSession details = request.getSession();
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
-                <div class="navbar-header no-padding">
+                 <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		              <li ><a href="OpportunityList.jsp">Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li class="active"><a href="#" style="color:#fff">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
+                   <ul class="nav navbar-nav headerTab navAlign">
+		              <li><a class = "alignCenter" href="OpportunityList.jsp"><i class="fad fa-folders fa-2x iconAlign iconColor"></i>Applications</a></li>
+		              <li><a class = "alignCenter" href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+		              <li class="active1"><a class = "alignCenter" href="PhaseList.jsp" style= "color:#fff;"><i class="fad fa-desktop iconAlign activeIcon fa-2x"></i>Governance</a></li>
+		              <li><a class = "alignCenter" href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a class = "alignCenter" href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a class = "alignCenter" href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
-		         <ul class="nav navbar-nav navbar-right">
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>
@@ -140,7 +173,7 @@ HttpSession details = request.getSession();
         </div>
         <!-- /.container-fluid -->
     </nav >
-
+ <br/><br/>
         <div class="content-wrapper">
             <div class="content-container">
 
@@ -182,14 +215,14 @@ HttpSession details = request.getSession();
 	           </div>
 	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right; width: 35%;">
 							<button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target="#addWavePopUp">Add Wave</button>
-	                
+	                <div class = "btn-group dropup dropright">
                             <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
                               <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" style = "min-width: inherit;">
                                 <li><a href="#" id = "add" data-toggle="modal" data-target="#AddPopUp" class="fa fa-plus" style="font-size:19px;color:black;">&nbsp;&nbsp;&nbsp;Add</a></li>
                                 <li><a href="#" id = "Edit" class="fa fa-edit" style="font-size:19px;color:black">&nbsp;&nbsp;&nbsp;Edit</a></li>
                                 <li><a href="#" id = "Delete" class="fa fa-trash" style="font-size:18px;color:black">&nbsp;&nbsp;&nbsp;Delete</a></li>
-                                </ul>
+                                </ul></div>
 	                       <button type="submit" class="btn btn-success" id="create">Create</button>
 	                       <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display:none;">Edit PopUp</button>
 	                      <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display:none;">Delete PopUp</button>
@@ -504,7 +537,20 @@ HttpSession details = request.getSession();
   </div>
 </div>  
 
-
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
 
 
 <!-- <script>

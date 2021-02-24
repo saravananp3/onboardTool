@@ -549,26 +549,22 @@ color:#fff;
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
-                <div class="navbar-header no-padding">
+                 <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
+                  <ul class="nav navbar-nav navAlign">
 		              <li ><a href="OpportunityList.jsp"><i class="fad fa-folders fa-2x iconAlign iconColor"></i>Applications</a></li>
-		              <li><a href="#"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
-		              <li><a href="Governance.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
 		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
 		              <li class="active"><a href="#" style="color:#fff"><i class="fad fa-chart-pie iconAlign activeIcon fa-2x"></i>Dashboards</a></li>
 		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
-		         <ul class="nav navbar-nav navbar-right">
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>

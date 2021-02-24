@@ -385,14 +385,10 @@ transition: width 2s, height 2s, transform 2s;
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
-                <div class="navbar-header no-padding">
+                <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">

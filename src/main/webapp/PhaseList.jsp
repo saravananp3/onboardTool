@@ -29,6 +29,11 @@
 
 <link rel="stylesheet" href="css/threeDots/threeDots.css" media="screen" >
 
+<!-- =========== Header Icon ========= -->
+ 
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> 
+ <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -373,9 +378,6 @@ input[type=search]:focus {
 }
 
 .selectInput{
-
-
-    border: none;
     border-bottom: 1px solid #959595;
     color: #fff!important;
     background-color: transparent!important;
@@ -420,6 +422,14 @@ height:inherit;
 margin: 0 auto;
 pointer-events:all;
 }
+
+.active1{
+        background:#1565c0;
+         }
+      .page-title-div {
+	 background:#1565c0;
+	  padding: 15px;
+
     </style>
 
 </head>
@@ -512,26 +522,22 @@ pointer-events:all;
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
-                <div class="navbar-header no-padding">
+                 <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/logo1.png" alt="Onboarding Tool" class="logo">
+                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
-
-                   
-
-
                 </div>
                 <!-- /.navbar-header -->
                 <div class="tabs-content">
-                  <ul class="nav navbar-nav">
-		              <li><a href="OpportunityList.jsp">Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
-		              <li class="active"><a href="#" style="color:#fff">Governance</a></li>
-		              <li><a href="#">Finance</a></li>
-		              <li ><a href="ProjectManager_dashboard.jsp">Dashboards</a></li>
-		              <li><a href="#">Compliance</a></li>
+                   <ul class="nav navbar-nav headerTab navAlign">
+		              <li><a href="OpportunityList.jsp"><i class="fad fa-folders fa-2x iconAlign iconColor"></i>Applications</a></li>
+		              <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+		              <li class="active1"><a href="PhaseList.jsp" style= "color:#fff;"><i class="fad fa-desktop iconAlign activeIcon fa-2x"></i>Governance</a></li>
+		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
-		         <ul class="nav navbar-nav navbar-right">
+		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>
@@ -569,7 +575,7 @@ pointer-events:all;
 		                               </div>
 		                               
                                </div>
-		                               <label class = "PhaseRow" style="color:#fff;">Phase:</label>
+		                               <label class = "PhaseRow" style="color:#fff;">Phase </label>
                                <div class="row form-row PhaseRow">
 		                               
 		                               <div class="col-md-10">
@@ -578,13 +584,13 @@ pointer-events:all;
 		                              
 		                               </select></div>
 		                               </div>
-		                               <label class="WaveRow" style="color:#fff;">Wave:</label>
+		                               <label class="WaveRow" style="color:#fff;">Wave </label>
 		                               <div class="row form-row WaveRow">
 		                               <div class="col-md-10">
 		                               <select class="filter selectInput" id="wave" style ="width:200px;">
 		                               </select></div>
 		                               </div>
-		                               <label class="ApplicationRow" style="color:#fff;">Application:</label>
+		                               <label class="ApplicationRow" style="color:#fff;">Application </label>
 		                               <div class="row form-row ApplicationRow">
 		                               <div class="col-md-10">
 		                               <select  class="filter selectInput" id="application" style ="width:200px;">
@@ -681,6 +687,9 @@ pointer-events:all;
 
                         <div class="row">
                             <div class="container-fluid grid">
+                            <br/>
+                            <br/>
+                            <br/>
                                 <div class="main">
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                                         <div class="cbp-vm-options">
@@ -946,6 +955,22 @@ pointer-events:all;
         });
     });
 </script>
+
+<script>
+$(document).on('mouseenter','.active1', function(){
+		
+		 $('.activeIcon').css('color','#1565c0');
+		 
+		 
+	 });
+	 
+	 $(document).on('mouseleave','.active1', function(){
+			
+		 $('.activeIcon').css('color','#fff');
+		 
+	 });
+</script>
+
 <!-- ========== PAGE JS FILES ========== -->
 <script src="js/prism/prism.js"></script>
 <script src="js/waypoint/waypoints.min.js"></script>
