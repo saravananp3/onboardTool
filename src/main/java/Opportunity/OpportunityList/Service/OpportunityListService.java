@@ -35,7 +35,7 @@ public class OpportunityListService {
 				 jsonArray.add(jsonObj);
 			 }
 			 jsonArray1.add(jsonArray);
-			 
+			 jsonArray1.add(new OpportunityDropdownOptions().getOptions());
 			}
 		}
 		catch(Exception e) {

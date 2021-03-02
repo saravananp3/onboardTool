@@ -58,6 +58,21 @@ $(document).ready(function(){
 	        	
 	        	i++;
 	             });
+	             var phaseOptions ="<option class='options All' value='All'>All</option>"
+	             $.each(data[2][0], function(key, value){
+	        		  phaseOptions += "<option class='phaseOptions options' value='"+value.phaseName+"'>"+value.phaseName+"</option>";
+	        		 
+	        	 });
+	             $('#phase').append(phaseOptions);
+	             
+	             var waveOptions ="<option class='options All' value='All'>All</option>"
+		             $.each(data[2][1], function(key, value){
+		            	 var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
+		        		  waveOptions += "<option class='options waveOptions "+phase+"' value='"+value.waveName+"'>"+value.waveName+"</option>";
+		        		 
+		        	 });
+	             $('#wave').append(waveOptions);
+	        	
 	             $('#title_id').html("Number of Opportunities &nbsp;("+(i-1)+")");
 	        },
 	        error: function (e) {

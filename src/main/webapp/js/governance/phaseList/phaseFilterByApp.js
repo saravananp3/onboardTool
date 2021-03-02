@@ -1,5 +1,5 @@
 var typingTimer;                
-var doneTypingInterval = 1000;  
+var doneTypingInterval = 500;  
 
 $(document).on('keyup','#appFilter', function () {
 	      clearTimeout(typingTimer);

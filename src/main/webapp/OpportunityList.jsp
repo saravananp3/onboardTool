@@ -35,7 +35,7 @@
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/Opportunity/OpportunityList/OpportunityList.js"></script>
-    
+    <script src="js/Opportunity/OpportunityList/opportunityFilterList.js"></script>
     <style type="text/css">
          body{
             background:#fff;
@@ -319,7 +319,7 @@ input[type=search]:focus {
     z-index: 1;
     }    
     
-    #button{
+    #appFilter{
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -564,7 +564,7 @@ display: flex;
 		                               <i class="fa fa-search" aria-hidden="true"></i>
 		                               </div>
 		                               <div class="col-md-10">
-		                               <input class="form-control searchbox-input" id="myInput" type="text" placeholder="Search the application.."></div>
+		                               <input class="form-control" id="appFilter" type="text" placeholder="Search the application.."></div>
 		                               
 		                               </div>
                                </div>
@@ -573,14 +573,16 @@ display: flex;
                                 
 
 		                               <div class="col-md-10">
-		                               <select class="selectInput" id="category" style ="width:200px;">
-		                               <option value='none' class='options'>none</option>
-		                               <option value='Intake' class='options'>Intake</option>
-		                               <option value='Triage' class='options'>Triage</option>
-		                               <option value='Assessment' class='options'>Assessment</option>
-		                               <option value='Requirement' class='options'>Requirement</option>
-		                               <option value='Execution' class='options'>Execution</option>
-		                               <option value='Closure' class='options'>Closure</option>
+		                               <select class="selectInput filter" id="category" style ="width:200px;">
+		                               <option  class='options' value='All' >All</option>
+		                               <option  class='options' value='Intake' >Intake</option>
+		                               <option  class='options' value='Triage' >Triage</option>
+		                               <option  class='options' value='Assessment' >Assessment</option>
+		                               <option  class='options' value='Archive_Requirement' >Archive Requirement</option>
+		                               <option  class='options' value='Decomm_Requirement' >Decomm Requirement</option>
+		                               <option  class='options' value='DecommissionExecution' >Decommission Execution</option>
+		                               <option  class='options' value='ArchiveExecution' >Archive Execution</option>
+		                               <option  class='options' value='Closure' >Closure</option>
 		                               </select></div>
 		                               </div>
 		                               <label class = "PhaseRow" style="color:#fff;">Phase </label>
@@ -588,19 +590,13 @@ display: flex;
 		                               
 		                               <div class="col-md-10">
 		                               
-		                               <select class="selectInput" id="phase" style ="width:200px;">
-		                              <option value='none' class='options'>none</option>
-		                               <option value='Phase1' class='options'>Phase1</option>
-		                               <option value='Phase2' class='options'>Phase2</option>
+		                               <select class="selectInput filter" id="phase" style ="width:200px;">
 		                               </select></div>
 		                               </div>
 		                               <label class="WaveRow" style="color:#fff;">Wave </label>
 		                               <div class="row form-row WaveRow">
 		                               <div class="col-md-10">
-		                               <select class="selectInput" id="wave" style ="width:200px;">
-		                                <option value='none' class='options'>none</option>
-		                               <option value='Wave1' class='options'>Wave1</option>
-		                               <option value='Wave2' class='options'>Wave2</option>
+		                               <select class="selectInput filter" id="wave" style ="width:200px;">	                                
 		                               </select></div>
                                
                                <div class="col-md-6 ">
@@ -896,7 +892,7 @@ display: flex;
 <script src="js/notification/notification.js"></script>
 <script src="js/Opportunity/OpportunityList/addToExistWaveAjaxCall.js"></script>
 <script src="js/Opportunity/OpportunityList/deleteOpportunity.js"></script>
-
+<script src="js/Opportunity/OpportunityList/opportunitySearchList.js"></script>
 
 <script>
 $(document).ready(function() {

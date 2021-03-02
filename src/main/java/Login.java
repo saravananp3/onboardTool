@@ -453,7 +453,7 @@ try
 		Details[12] = new Triage(13,"","","Yes,No","Funding Available", "funding_Avl", "Dropdown", "No", "");
 		Details[13] = new Triage(14,"","","","Program Funder", "prgFunder", "Text box", "No", "");
 		Details[14] = new Triage(15,"","","","Project Portfolio Information", "PrjInfo", "Text box", "No", "");
-		Details[15] = new Triage(16,"","","","Project Decomission Date", "Decom_date", "Datepicker", "No", "");
+		Details[15] = new Triage(16,"","","","Project Decomission Date", "Decom_date", "Datepicker", "Yes", "");
 		Details[16] = new Triage(17,"","","Yes,No","Infrastructure Impact","infrastructure_impact", "Dropdown", "No", "");
 		Details[17] = new Triage(18,"","","","Number of Infrastructure Components", "nmbr_of_infrastructure_components", "Text box", "No", "");
 		Details[18] = new Triage(19,"","","Yes,No","Archival Solution", "archival_Sol", "Dropdown", "No", "");
