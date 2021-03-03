@@ -319,7 +319,7 @@ input[type=search]:focus {
     z-index: 1;
     }    
     
-    #appFilter{
+    #button{
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -350,7 +350,7 @@ input[type=search]:focus {
 }
 
 
-#myInput{
+#appFilter{
 
 
     border: none;
