@@ -15,12 +15,45 @@ public class governanceEditService {
 	String Id;
 	String labelName;
 	int seqNum;
-	public governanceEditService(String labelName,int seqNum) throws ClassNotFoundException, SQLException
+	String tableName;
+	String idWhereCond;
+	String idAndCond;
+	String id;
+	private String operation;
+	
+	public governanceEditService(String labelName,int seqNum, String id, String operation) throws ClassNotFoundException, SQLException
 	{
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
 		this.labelName = labelName;
 		this.seqNum = seqNum;
+		this.id = id;
+		
+		getTableProperty(operation);
+		
+	}
+	
+	public void getTableProperty(String operation)
+	{
+		try
+		{
+			switch(operation)
+			{
+			case "EditWave":
+				  tableName = "governance_info";
+				  idAndCond = " and waveId='"+id+"'";
+				break;
+				
+			case "NewWave":
+				tableName = "governance_info_details";
+				idAndCond = "";
+				break;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean EditService()
@@ -28,7 +61,7 @@ public class governanceEditService {
 		boolean editStatus  = false;
 		try
 		{
-			String updateQuery ="update governance_info_details set label_name='"+labelName+"' where  seq_no='"+seqNum+"'; ";
+			String updateQuery ="update "+tableName+" set label_name='"+labelName+"' where  seq_no='"+seqNum+"' "+idAndCond+"; ";
 			Statement st = con.createStatement();
 			st.executeUpdate(updateQuery);
 			st.close();
@@ -46,7 +79,7 @@ public class governanceEditService {
 		String previousLabel ="";
 		try
 		{
-			String selectQuery = "select * from governance_info_details where seq_no='"+seqNum+"'";
+			String selectQuery = "select * from "+tableName+" where seq_no='"+seqNum+"' "+idAndCond+";";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
 			if(rs.next())
@@ -65,7 +98,7 @@ public class governanceEditService {
 		boolean checkDuplicateLabel = false;
 		try
 		{
-			String selectQuery = "select * from governance_info_details where label_name='"+labelName+"'";
+			String selectQuery = "select * from "+tableName+" where label_name='"+labelName+"' "+idAndCond+";";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
 			if(rs.next())
@@ -79,8 +112,10 @@ public class governanceEditService {
 		}
 		return checkDuplicateLabel;
 	}
+	
 	protected void finalize() throws Throwable {
 	 con.close();
 	 System.out.println("Db connection closed.");
 	}
+	
 }

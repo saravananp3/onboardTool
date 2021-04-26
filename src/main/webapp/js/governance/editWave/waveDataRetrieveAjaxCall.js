@@ -1,21 +1,21 @@
-var phaseId = "";
+var waveId = "";
 $(document).ready(function()
 {
 	var url_string=window.location.href;
     var url = new URL(url_string);
-    phaseId = url.searchParams.get("phaseId").replaceAll("'","");
-    console.log("phase id:",phaseId);
-	phaseDataretrieveAjaxCall(phaseId);
+    waveId = url.searchParams.get("waveId").replaceAll("'","");
+    console.log("wave id:",waveId);
+	waveDataretrieveAjaxCall(waveId);
 });
 
-function phaseDataretrieveAjaxCall(phaseId)
+function waveDataretrieveAjaxCall(waveId)
 {
 	
     $.ajax({
-        url: "phaseDataRetrieveServlet",
+        url: "governanceDataRetrieveServlet",
         type: 'POST',
         dataType: "json",
-        data: {phaseId:phaseId,operation:"EditPhase"},
+        data: {waveId:waveId,operation:"EditWave"},
         success: function (data) {
             console.log("Data Retrieve json array----->",data);
             AddTemplateData = data;
@@ -32,7 +32,7 @@ function phaseDataretrieveAjaxCall(phaseId)
                 var manadatory="class='required_fie'";
                 var disable_property = "disabled='disabled'";
                 var seq_num =value.seq_num;
-                phaseId = value.phaseId;
+                waveId = value.waveId;
                 var Type=value.Type;
                 var ColumnName=value.ColumnName;
                 var LabelName=value.LabelName;
@@ -40,7 +40,7 @@ function phaseDataretrieveAjaxCall(phaseId)
                 var Value=value.Value;
                 
                 var disable =""
-                if(ColumnName=="phaseId")
+                if(ColumnName=="waveId")
                  disable = "disabled";
                
                 if(value.Mandatory=="No")
@@ -167,7 +167,7 @@ function phaseDataretrieveAjaxCall(phaseId)
             }
             });
             
-            $("#Id").val(phaseId);
+            $("#Id").val(waveId);
             $(".multiselect").selectpicker();
             
             var script="<script>$('.datepicker1').datepicker({\n" +

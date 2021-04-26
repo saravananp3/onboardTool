@@ -70,17 +70,17 @@
             	  if($(".InputField").eq(i).find("select").length)
                   {
              		var name = $(".InputField").eq(i).find("select").attr("name");
-            		   if(name.startsWith("GovernanceAddInfo"))
+            		   if(name.startsWith("phaseAddInfo"))
             		   {
-            			 $(".InputField").eq(i).find("select").attr("name","GovernanceAddInfo"+(i+1));
+            			 $(".InputField").eq(i).find("select").attr("name","phaseAddInfo"+(i+1));
             		   }
              	 }
             	  else  if($(".InputField").eq(i).find("input").length)
             	 {
             		var name = $(".InputField").eq(i).find("input").attr("name");
-            		 if(name.startsWith("GovernanceAddInfo"))
+            		 if(name.startsWith("phaseAddInfo"))
             		 {
-            			 $(".InputField").eq(i).find("input").attr("name","GovernanceAddInfo"+(i+1));
+            			 $(".InputField").eq(i).find("input").attr("name","phaseAddInfo"+(i+1));
             		 }
                  } 
             	

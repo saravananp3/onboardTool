@@ -34,11 +34,11 @@ $('#submit').click(function() {
 	      if(labelname != '' && columnname !='' && type !='' && mandatory !='')
 	      {
 	    	  var checkNotify = true;
-	    	  var waveId = $("#wave_Id").val();
+	    	  var waveId = $("#Id").val();
 	        $.ajax({
 	            url: "governanceAddServlet",
 	            type: 'POST',
-	            data: {waveId:waveId,waveName:waveName,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Options:options,operation:"NewWave"},
+	            data: {waveId:waveId,waveName:waveName,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Options:options,operation:"EditWave"},
 	            dataType: "json",
 	            success: function (data) {
 	                var required = "";

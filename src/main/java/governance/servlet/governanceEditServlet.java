@@ -19,10 +19,12 @@ public class governanceEditServlet extends HttpServlet {
 	JsonObject jsonObject = new JsonObject();
 	int seqNum = Integer.parseInt(request.getParameter("seq_num"))+1;
 	String labelName = request.getParameter("label");
+	String waveId = request.getParameter("waveId");
+	String operation = request.getParameter("operation");
 	
     try
 	{
-	governanceEditService governance = new governanceEditService( labelName, seqNum);	
+	governanceEditService governance = new governanceEditService( labelName, seqNum,waveId,operation);	
 	jsonObject.addProperty("previous_label_name", governance.getPreviousLabelName());
 	boolean checkLabel = governance.checkDuplicateLabelName();
 	jsonObject.addProperty("checkDuplicate",checkLabel);
@@ -34,6 +36,7 @@ public class governanceEditServlet extends HttpServlet {
 	jsonObject.addProperty("label_name", labelName);
 	governance =null;
 	System.gc();
+	
 	}
 	catch(Exception e)
 	{

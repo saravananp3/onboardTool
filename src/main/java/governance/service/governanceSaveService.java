@@ -19,12 +19,20 @@ public class governanceSaveService {
 	JsonArray jsonArray;
 	String waveName;
 	String oppName;
-	public governanceSaveService(String Id,String waveName,JsonArray jsonArray) throws ClassNotFoundException, SQLException {
+        String tableName;
+	String idWhereCond;
+	String idAndCond;
+	String operation;
+	String id;
+	public governanceSaveService(String Id,String waveName,JsonArray jsonArray,String id,String operation) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
 		this.Id = Id;
+		this.id = id;
 		this.waveName = waveName;
 		this.jsonArray = jsonArray;
+		this.operation = operation;
+		getTableProperty(operation);
 	}
 	public governanceSaveService(String waveName, String oppName) throws ClassNotFoundException, SQLException
 	{
@@ -32,6 +40,31 @@ public class governanceSaveService {
 		con = (Connection) dBconnection.getConnection();
 		this.waveName = waveName;
 		this.oppName = oppName;
+	}
+	
+	public void getTableProperty(String operation)
+	{
+		try
+		{
+			switch(operation)
+			{
+			case "EditWave":
+				  tableName = "governance_info";
+				  idAndCond = " and waveId='"+id+"'";
+				  idWhereCond = " where waveId='"+id+"'";
+				break;
+				
+			case "NewWave":
+				tableName = "governance_info_details";
+				idWhereCond = "";
+				idAndCond = "";
+				break;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	public boolean AddOpportunityToExistingWave()
 	{
@@ -76,12 +109,13 @@ public class governanceSaveService {
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
 				
-	            String updateQuery = "update governance_info_details set value='"+value+"',waveName='"+waveName+"' where column_name='"+name+"';";
+	            String updateQuery = "update "+tableName+" set value='"+value+"',waveName='"+waveName+"' where column_name='"+name+"' "+idAndCond+";";
 	            Statement st = con.createStatement();
-	            st.executeUpdate(updateQuery);
+                st.executeUpdate(updateQuery);
 	            st.close();
 	            
 			}
+			if(operation.equals("NewWave"))
 			moveInfoDetailsToInfo();
 			saveStatus = true;
 		}
@@ -130,6 +164,8 @@ public class governanceSaveService {
 		boolean statusFlag  = false;
 		try
 		{
+			if(operation.equals("NewPhase"))
+			{
 			String selectQuery = "select * from governance_info where column_name='"+columnName+"' and value='"+value+"';";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
@@ -141,6 +177,22 @@ public class governanceSaveService {
 			}
 			st.close();
 			rs.close();
+			}
+			else if(operation.equals("EditPhase"))
+			{
+				String selectQuery = "select * from governance_info where column_name='"+columnName+"' and value='"+value+"';";
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(selectQuery);
+				System.out.println("Query : "+selectQuery);
+				while(rs.next())
+				{
+					if(value.equals(rs.getString("value"))&&!rs.getString("waveId").equals(id))
+					statusFlag =  true;
+					
+				}
+				st.close();
+				rs.close();
+			}
 		}
 		catch(Exception e)
 		{

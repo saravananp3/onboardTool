@@ -67,7 +67,26 @@ $(document).ready(function(){
 		deleteAjaxCall(waveId,waveName,"Wave",index,includeAll);
 		$("#deleteWaveClose").click();
 	});
+	$(document).on('click','.phaseCard',function(){
+		var index = $(this).index('.phaseCard');
+		var phaseId = $('.phaseId').eq(index).val();
+		var phaseName = $('.phaseName').eq(index).val();
+		
+		var f=document.form;
+		f.method="post";
+		f.action="setPhaseId?phaseId="+phaseId+"&phaseName="+phaseName;
+		f.submit();
+	});
 	
+	$(document).on('mouseenter','.dropClass',function(){
+	var index = $(this).index('.dropClass');
+	$('.cardClass').eq(index).removeClass('phaseCard');
+	
+	});
+	$(document).on('mouseleave','.dropClass',function(){
+		var index = $(this).index('.dropClass');
+		$('.cardClass').eq(index).addClass('phaseCard');
+		});
 });
 function deleteAjaxCall(Id,Name,deleteType,index,includeAll)
 {
@@ -297,7 +316,7 @@ function phaseListAjaxCall()
             	 var phaseName = value.phaseName; 
             	 var phaseId = value.phaseId; 
             	
-        	var li_element ="<li class = 'phaseCard' >"+
+        	var li_element ="<li class = 'phaseCard cardClass' >"+
 				        	"<div class='drophide'>"+
 							"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 							"<div class='dropdown-content myDropdown' style = 'float:right;'>"+

@@ -8,6 +8,7 @@ function governanceDataretrieveAjaxCall()
     $.ajax({
         url: "governanceDataRetrieveServlet",
         type: 'POST',
+        data: {waveId:"",operation:"NewWave"},
         dataType: "json",
         success: function (data) {
             console.log("Data Retrieve json array----->",data);

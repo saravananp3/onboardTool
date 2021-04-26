@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>Edit Phase</title>
+    <title>Edit Wave</title>
     <meta charset="UTF-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -161,7 +161,7 @@ HttpSession details = request.getSession();
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                            <h4 class="title" style="color:#fff">Edit Phase</h4>
+                            <h4 class="title" style="color:#fff">Edit Wave</h4>
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
                         </div>
                        
@@ -195,7 +195,7 @@ HttpSession details = request.getSession();
   <br/>
      <div class="panel panel-default">
          <div class="panel-heading">
-             <h4 class="panel-title"> <a  data-parent="#panels1" > Edit Phase  </a> </h4>
+             <h4 class="panel-title"> <a  data-parent="#panels1" > Edit Wave  </a> </h4>
          </div>
          <%@ page import="java.sql.*"%>
          <div id="collapse2" class="panel-collapse">
@@ -214,7 +214,6 @@ HttpSession details = request.getSession();
 	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='GovernanceList.jsp';">Back</button>
 	           </div>
 	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right; width: 35%;">
-							<button type="button" class="btn btn-warning" id="template" data-toggle="modal" data-target="#addWavePopUp">Add Wave</button>
 	                <div class = "btn-group dropup dropright">
                             <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
                               <span class="caret"></span></button>
@@ -596,11 +595,10 @@ $('.deletepopup').click(function() {
 <script src="js/Opportunity/AddFeatureFunctionality.js"></script>
 <script src="js/Opportunity/EditDeleteToggle.js"></script>
 <script src="js/Opportunity/edit_delete_popup.js"></script>
-<script src="js/governance/editPhase/phaseDataRetrieveAjaxCall.js"></script>
-<script src="js/governance/editPhase/editPhaseAddAjaxCall.js"></script>
-<script src="js/governance/editPhase/phaseEditDeleteAjaxCall.js"></script>
-<script src="js/governance/editPhase/phaseSaveAjaxCall.js"></script>
-<script src="js/governance/editPhase/dynamicWaveCreation.js"></script>
+<script src="js/governance/editWave/waveDataRetrieveAjaxCall.js"></script>
+<script src="js/governance/editWave/editWaveAddAjaxCall.js"></script>
+<script src="js/governance/editWave/waveEditDeleteAjaxCall.js"></script>
+<script src="js/governance/editWave/waveSaveAjaxCall.js"></script>
 <script id ="scripttag">
 </script>
 <script id ="scripttag1">

@@ -15,10 +15,35 @@ public class governanceAddService {
 	DBconnection dBconnection;
 	Connection con;
 	String Id;
-public governanceAddService(String Id) throws ClassNotFoundException, SQLException {
+	String tableName;
+	String IdWhereCond;
+	String IdAndCond;
+public governanceAddService(String Id,String operation) throws ClassNotFoundException, SQLException {
 	dBconnection = new DBconnection();
 	 con = (Connection) dBconnection.getConnection();
      this.Id =Id;
+     getTableProp(operation);
+}
+
+private void getTableProp(String operation) {
+	
+	switch(operation)
+	{
+	
+	case "EditWave":
+		tableName =" governance_info";
+		IdWhereCond =  " where waveId='"+Id+"'";
+		IdAndCond = " and waveId='"+Id+"'";
+		break;
+	
+	case "NewWave":
+		tableName =" governance_info_details";
+		IdWhereCond =  "";
+		IdAndCond = "";
+		break;
+	}
+	
+	
 }
 
 public boolean governanceAdd(String type,String label_name,String options,String mandatory)
@@ -27,7 +52,7 @@ public boolean governanceAdd(String type,String label_name,String options,String
      try
      {
     	 int max_seq_num = 0;
-    	 String select_query = "select * from  governance_info_details order by seq_no;";
+    	 String select_query = "select * from  "+tableName+IdWhereCond+" order by seq_no;";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(select_query);
 			String name = "GovernanceAddInfo";
@@ -38,7 +63,7 @@ public boolean governanceAdd(String type,String label_name,String options,String
 			if (!type.equals("Text box") && !type.equals("Datepicker")) {
 				options = options.substring(0, options.length() - 1);
 			}
-			String insert_query = "insert into governance_info_details (seq_no,waveId,waveName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String insert_query = "insert into "+tableName+" (seq_no,waveId,waveName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement preparedStatement1 = con.prepareStatement(insert_query);
 			preparedStatement1.setInt(1, max_seq_num);
 			preparedStatement1.setString(2,Id);
@@ -66,7 +91,7 @@ public int getSeqNum()
 	int max_seq_num = 0;
 	try
 	{
-	String max_seqnum = "select max(seq_no) from governance_info_details order by seq_no;";
+	String max_seqnum = "select max(seq_no) from "+tableName+IdWhereCond+" order by seq_no;";
 	Statement st1 = con.createStatement();
 	ResultSet rs1 = st1.executeQuery(max_seqnum);
 
@@ -86,7 +111,7 @@ public boolean checkLabelName(String labelName)
 	boolean checkDuplicate = false;
 	try
 	{
-      String labelQuery = "select * from governance_info_details where label_name = '"+labelName+"'";
+      String labelQuery = "select * from "+tableName+" where label_name = '"+labelName+"'"+ IdAndCond;
       Statement st = con.createStatement();
       ResultSet rs = st.executeQuery(labelQuery);
       if(rs.next())
@@ -98,8 +123,10 @@ public boolean checkLabelName(String labelName)
 	}
 	return checkDuplicate;
 }
+
 protected void finalize() throws Throwable {
 con.close();
 System.out.println("Db connection closed.");
 }
+
 }

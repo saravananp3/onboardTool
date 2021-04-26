@@ -22,6 +22,7 @@ public class governanceAddServlet extends HttpServlet {
 		 
 	     String waveId = request.getParameter("waveId");
 	     	     
+	     String operation = request.getParameter("operation");
 	     String type = request.getParameter("Type");
 	     
 	     String column_name = request.getParameter("ColumnName");
@@ -49,7 +50,7 @@ public class governanceAddServlet extends HttpServlet {
 	    	 
 	    	 jsonObject.addProperty("Mandatory",mandatory);
 
-	    	 governanceAddService governance = new governanceAddService(waveId);
+	    	 governanceAddService governance = new governanceAddService(waveId,operation);
 	    	 
 	    	 
 	    	 boolean checkLabel =  governance.checkLabelName(label_name);

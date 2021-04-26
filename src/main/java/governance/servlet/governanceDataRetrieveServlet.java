@@ -16,9 +16,11 @@ import governance.service.governanceDataRetrieveService;
 public class governanceDataRetrieveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     JsonArray jsonArray = new JsonArray(); 
+    String waveId = request.getParameter("waveId");
+    String purpose = request.getParameter("operation");
     try
      {
-    	 governanceDataRetrieveService governance = new governanceDataRetrieveService();
+    	 governanceDataRetrieveService governance = new governanceDataRetrieveService(waveId,purpose);
     	 jsonArray=governance.governanceDataRetrieve();
     	 governance=null;
     	 System.gc();

@@ -7,7 +7,7 @@
     	$.ajax({
             url: "governanceEditServlet",
             type: 'POST',
-            data : {seq_num:Seq_Num,label:Label,operation:"EditWave",waveId:""},
+            data : {seq_num:Seq_Num,label:Label,operation:"EditWave",waveId:waveId},
             dataType: "json",
             success: function (data) {
             	
@@ -53,7 +53,7 @@
             url: "governanceDeleteServlet",
             type: 'POST',
             async: false,
-            data : {seq_num:Seq_Num,waveId:"",operation:"NewWave"},
+            data : {seq_num:Seq_Num,waveId:waveId,operation:"EditWave"},
             dataType: "json",
             success: function (data) {
             	console.log("index"+data.index);

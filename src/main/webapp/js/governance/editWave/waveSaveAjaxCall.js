@@ -1,5 +1,6 @@
 $("#create").click(function(e)
 {
+	var id=$("#Id").val();
 	var waveName = $("#waveName").val();
 	var waveId = $("#waveId").val();
 	var checkMandatory = true;
@@ -38,13 +39,14 @@ $("#create").click(function(e)
   				   {
   				     var name2 =$(this).find("select").attr("name");
   				     var val2 =$(this).find("select").val();
+  	  				 var multiselectValue = $(this).find("select").val();
+
   				   var classNames =$(this).find("select").attr('class');
-  				 var multiselectValue = $(this).find("select").val();
   				   if(classNames.includes("multiselect"))
 			    	 {
-  					   val2 = "";
-  					   if(multiselectValue==null||multiselectValue==undefined)
-  						 multiselectValue="";
+  					   val2="";
+  					   if(multiselectValue==undefined||multiselectValue==null)
+  						 multiselectValue = "";
 			    	 for(var i=0;i<multiselectValue.length;i++)
 			    		 val2=val2+multiselectValue[i]+",";
 			    	 
@@ -102,7 +104,7 @@ $("#create").click(function(e)
     	
     	var checkAjax;
     	if(checkMandatory)
-        var validationCheck_json = AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e);
+        var validationCheck_json = AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,id,e);
     	else
     		{
     		notification("warning","Please fill the mandatory fields.","Warning");
@@ -117,7 +119,7 @@ else
 }
 });
 
-function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e)
+function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,id,e)
 {
 	e.preventDefault();
 	var JsonObject=[];
@@ -125,7 +127,7 @@ function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e)
 	$.ajax({
         url: "governanceSaveServlet",
         type: 'POST',
-        data : {waveName:waveName, waveId:waveId ,JsonString : JsonString, checkMandatory : checkMandatory,operation:"NewWave"},
+        data : {waveName:waveName, waveId:waveId ,JsonString : JsonString, checkMandatory : checkMandatory, id:id, operation:"EditWave"},
         async: false,
         dataType: "json",
         success: function (data) {
@@ -133,10 +135,10 @@ function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e)
         	JsonObject = data;
         	if(data.SaveStatus)
         		{
-        		notification("success","New Wave successfully created.","Note:");
+        		notification("success","Edited Wave successfully created.","Note:");
         		setTimeout(function()
         				{
-        			      $("#governanceListId").click();
+        			      $("#ListId").click();
         				},1000);
         		}
         	else

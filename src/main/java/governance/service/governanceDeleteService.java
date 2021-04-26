@@ -14,10 +14,42 @@ public class governanceDeleteService {
 	DBconnection dBconnection;
 	Connection con;
 	int seqNum;
-	public governanceDeleteService(int seqNum) throws ClassNotFoundException, SQLException {
+	String tableName;
+	String idWhereCond;
+	String idAndCond;
+	String id;
+	public governanceDeleteService(int seqNum,String  id,String operation) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
 	     this.seqNum = seqNum;
+	     this.id = id;
+	     getTableProperty(operation);
+	}
+	
+	
+	public void getTableProperty(String operation)
+	{
+		try
+		{
+			switch(operation)
+			{
+			case "EditWave":
+				  tableName = "governance_info";
+				  idWhereCond = " where waveId='"+id+"'";
+				  idAndCond = " and waveId='"+id+"'";
+				break;
+				
+			case "NewWave":
+				tableName = "governance_info_details";
+				idWhereCond = "";
+				idAndCond = "";
+				break;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean DeleteService()
@@ -48,7 +80,7 @@ public class governanceDeleteService {
 		ArrayList<String> arr_mandatory_split = new ArrayList<String>();
 		ArrayList<String> arr_value_split = new ArrayList<String>();
 
-		String select_query = "select max(seq_no) from governance_info_details  order by seq_no;";
+		String select_query = "select max(seq_no) from "+tableName+idWhereCond+"  order by seq_no;";
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(select_query);
 		if (rs.next()) {
@@ -56,7 +88,7 @@ public class governanceDeleteService {
 		}
         st.close();
         rs.close();
-		String query = "select * from governance_info_details order by seq_no;";
+		String query = "select * from "+tableName+idWhereCond+" order by seq_no;";
 		Statement st1 = con.createStatement();
 		ResultSet rs1 = st1.executeQuery(query);
 		while (rs1.next()) {
@@ -99,12 +131,12 @@ public class governanceDeleteService {
 			}
 		}
 
-		String delete_query = "delete from governance_info_details;";
+		String delete_query = "delete from "+tableName+idWhereCond+";";
 		Statement st2 = con.createStatement();
 		st2.executeUpdate(delete_query);
 		st2.close();
 		for (int j = 0; j < seqmax - 1; j++) {
-			String insert_query = "insert into governance_info_details (seq_no,waveId,waveName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String insert_query = "insert into "+tableName+" (seq_no,waveId,waveName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement preparedStatement1 = con.prepareStatement(insert_query);
 			preparedStatement1.setInt(1, arr_seqmax_split.get(j));
 			preparedStatement1.setString(2, arr_id_split.get(j));
@@ -134,7 +166,7 @@ public class governanceDeleteService {
   	  
   		  try {
   		  
-     	      String SelectQuery ="Select * from governance_Info_details order by seq_no";
+     	      String SelectQuery ="Select * from "+tableName+idWhereCond+" order by seq_no";
      	      Statement st = con.createStatement();
      	      ResultSet rs = st.executeQuery(SelectQuery);
      	      String startStr = "GovernanceAddInfo";
@@ -148,7 +180,7 @@ public class governanceDeleteService {
      	    		  if(!seqnum.equals(append_seq_num))
      	    		  {
      	    			String updateColumnName = startStr+seqnum;
-     	    			String UpdateQuery = "Update governance_Info_details set column_name ='"+updateColumnName+"' where seq_no='"+seqnum+"';";  
+     	    			String UpdateQuery = "Update "+tableName+" set column_name ='"+updateColumnName+"' where seq_no='"+seqnum+"' "+idAndCond+";";  
      	    			Statement st1 = con.createStatement();
      	       	        st1.executeUpdate(UpdateQuery);
      	       	        st1.close();

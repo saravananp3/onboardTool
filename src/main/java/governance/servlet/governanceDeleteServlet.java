@@ -17,10 +17,12 @@ public class governanceDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     JsonObject jsonObject = new JsonObject();
     int seqNum = Integer.parseInt(request.getParameter("seq_num"))+1;
+    String id = request.getParameter("waveId");
+    String operation = request.getParameter("operation");
     //String Id = request.getParameter("waveId");
     try
     {
-    	governanceDeleteService governance = new governanceDeleteService(seqNum);
+    	governanceDeleteService governance = new governanceDeleteService(seqNum,id,operation);
       jsonObject.addProperty("DeleteStatus",governance.DeleteService());
       governance=null;
       System.gc();

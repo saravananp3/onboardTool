@@ -18,9 +18,13 @@ public class governanceDataRetrieveService {
 
 	DBconnection dBconnection;
 	Connection con;
-	public governanceDataRetrieveService() throws ClassNotFoundException, SQLException {
+	private String waveId;
+	private String purpose;
+	public governanceDataRetrieveService(String waveId, String purpose) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
+		 this.waveId = waveId;
+		 this.purpose = purpose;
 	}
 	
 	public JsonArray governanceDataRetrieve()
@@ -28,11 +32,16 @@ public class governanceDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
+			if(purpose.equals("NewWave")) {
 			moveTemptoInfo();
-			
 			updateApplications();
 			jsonArray = getInfoDetails();
-			
+			}
+			else if(purpose.equals("EditWave"))
+			{
+				updateApplicationsEditWave();
+				jsonArray = getInfoEditDetails();
+			}
 		}
 		catch(Exception e)
 		{
@@ -136,6 +145,38 @@ public class governanceDataRetrieveService {
 		return jsonArray;
 	}
 	
+	public JsonArray getInfoEditDetails()
+	{
+		JsonArray jsonArray = new JsonArray();
+		try
+		{
+			String selectQuery = "select * from governance_Info where waveId = '"+waveId+"';";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(selectQuery);
+			while(rs.next())
+			{
+			JsonObject jsonObject = new JsonObject();
+			jsonObject.addProperty("seq_num",rs.getInt("seq_no"));
+			jsonObject.addProperty("waveId",rs.getString("waveId"));
+			jsonObject.addProperty("waveName", rs.getString("waveName"));
+			jsonObject.addProperty("options",rs.getString("options"));
+			jsonObject.addProperty("LabelName",rs.getString("label_name"));
+			jsonObject.addProperty("ColumnName",rs.getString("column_name"));
+			jsonObject.addProperty("Type",rs.getString("type"));
+			jsonObject.addProperty("Mandatory",rs.getString("mandatory"));
+			jsonObject.addProperty("Value",rs.getString("value"));
+			jsonArray.add(jsonObject);
+		}
+			rs.close();
+			st.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return jsonArray;
+	}
+	
 	private void updateApplications()
 	{
 		String appNames = "";
@@ -173,6 +214,54 @@ public class governanceDataRetrieveService {
 			e.printStackTrace();
 		}
 	}
+	private void updateApplicationsEditWave()
+	{
+		String appNames = "";
+		try
+		{
+			boolean checkApp = false;
+			String selectQuery="select * from opportunity_info where column_name='appName';";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(selectQuery);
+			while(rs.next())
+			{
+				checkApp =true;
+				String selectQuery1 = "select * from governance_info where column_name='apps' and value like '%"+rs.getString("value")+"%'";
+				Statement st1 = con.createStatement();
+				ResultSet rs1 = st1.executeQuery(selectQuery1);
+				if(!rs1.next())
+					appNames += rs.getString("value")+",";	
+			  rs1.close();
+			  st1.close();
+			}
+			rs.close();
+			st.close();
+			System.out.println("appNames : "+appNames);
+
+			String selectWaves = "select * from governance_info where column_name='apps' and waveId='"+waveId+"'";
+			Statement st3 = con.createStatement();
+			ResultSet rs3 =st3.executeQuery(selectWaves);
+			if(rs3.next())
+			{
+				String app = ((rs3.getString("value").equals(""))?"":rs3.getString("value")+",");
+				appNames = app+appNames;
+			}
+			if(!appNames.equals(""))
+				appNames=appNames.substring(0,appNames.length()-1);
+			
+			String updateQuery ="update governance_info set options ='"+appNames+"' where column_name = 'apps' and waveId='"+waveId+"';";
+			Statement st2 = con.createStatement();
+			st2.executeUpdate(updateQuery);
+			st2.close();
+			System.out.println("appNames : "+appNames);
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 	protected void finalize() throws Throwable {
 		con.close();
 		System.out.println("New Wave data retrieve Db connection closed");
