@@ -617,42 +617,39 @@ color:#fff;
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                                        
                                  
-                                <div style="margin-bottom: 38px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                                         <span><i class="fa fa-file-text-o" style="font-size: 30px; " aria-hidden="true"></i></span>
-                                        <span class="font_icon">Opportunities</span>
+                                <div style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);" href="#">
+                                       <div class="col-md-3" style="height: 100%;">
+                                       <p class="totcounter" style="height: 80%; color: white;"></p>
+                                        <span class="font_icon" style="height: 20%; color: white;">Phases</span>
+                                       </div> 
+                                       <div class="col-md-9">Phases can be described as a project that is scheduled over a period of time Which consists of multiple waves.</div>     
                                     </a>
                                
                                 </div>
                                 
-                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                                        </span><i class="fa fa-remove" style="font-size: 30px;" aria-hidden="true"></i>
-                                        <span class="font_icon">Decommision Apps</span>
-                                    </a>
-                                    
-                               
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                                        <span><i class="fa fa-archive" style="font-size: 30px;" aria-hidden="true"></i>
-                                       <span class="font_icon">Archive Apps</span></span>
+                                <div style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);" href="#">
+                                       <div class="col-md-3" style="height: 100%;">
+                                       <p class="totcounter" style="height: 80%; color: white;"></p>
+                                        <span class="font_icon" style="height: 20%; color: white;">Waves</span>
+                                       </div> 
+                                       <div class="col-md-9">Waves can be comprised of set of applications that are ready for implementation over a period of time.</div>     
                                     </a>
                                
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat bg-primary" href="#">
-                                       <p class="totcounter"></p>
-                             <span ><i class="fa fa-get-pocket" style="font-size: 30px;" aria-hidden="true"></i>
-                                        <span class="font_icon">Apps To Retire</span></span>
+                                
+                                <div style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);" href="#">
+                                       <div class="col-md-3" style="height: 100%;">
+                                       <p class="totcounter" style="height: 80%; color: white;padding-right: 10px;"></p>
+                                        <span class="font_icon" style="height: 20%; color: white;">Apps</span>
+                                       </div> 
+                                       <div class="col-md-9">Applications are the opportunities provided within the organization for Archival or Decommission or Retiring purpose.</div>     
                                     </a>
-                                    
-                                    
                                
                                 </div>
+                              
                
                             </div> 
                             </div>
