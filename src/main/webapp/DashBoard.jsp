@@ -617,7 +617,7 @@ color:#fff;
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                                        
                                  
-                                <div style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <card style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);" href="#">
                                        <div class="col-md-3" style="height: 100%;">
                                        <p class="totcounter" style="height: 80%; color: white;"></p>
@@ -626,7 +626,7 @@ color:#fff;
                                        <div class="col-md-9">Phases can be described as a project that is scheduled over a period of time Which consists of multiple waves.</div>     
                                     </a>
                                
-                                </div>
+                                </card>
                                 
                                 <div style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);" href="#">
