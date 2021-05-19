@@ -1012,6 +1012,7 @@ $(document).on('mouseenter','.active1', function(){
 
 <!-- <script type="text/javascript" src="js/governance/phaseList/phaseFilterByApp.js"></script> -->
 <script type="text/javascript" src="js/governance/waveList/governanceEditFunctionality.js"></script>
+<script type="text/javascript" src="js/governance/waveList/selectWave.js"></script>
 <script type="text/javascript" src="js/threeDotOptions/threeDotOptions.js"></script>
 <script src="js/notification/notification.js"></script><!-- 
 <script src="js/Opportunity/OpportunityList/addToExistWaveAjaxCall.js"></script>

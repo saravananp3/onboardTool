@@ -3,6 +3,16 @@ $(document).ready(function(){
 	waveListAjaxCall();
 	
 });
+$(document).on('mouseenter','.dropClass',function(){
+	var index = $(this).index('.dropClass');
+	$(".waveCard").eq(index).removeClass("waveCard")
+});
+
+$(document).on('mouseleave','.dropClass',function(){
+	var index = $(this).index('.dropClass');
+	$(".listCard").eq(index).addClass("waveCard")
+});
+
 
 function waveListAjaxCall()
 {
@@ -38,7 +48,7 @@ function waveListAjaxCall()
 	    	 var WaveId = value.WaveId; 
 	    	 var app =value.Apps;
 	       	 
-	    	 var li_element ="<li class = 'waveCard'>"+
+	    	 var li_element ="<li class = 'waveCard listCard'>"+
 						"<div class='drophide'>"+
 						"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 						"<div class='dropdown-content myDropdown' style = 'float:right;'>"+

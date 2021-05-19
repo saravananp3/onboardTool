@@ -1,3 +1,4 @@
+<%@page import="onboard.DBconnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@ page import="java.sql.*" %>
@@ -10,12 +11,15 @@
     System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed TableCreation JSP PAGE-----[INFO]"); %>
 
 <%
-    String connectionURL = "jdbc:mysql://localhost:3306/decom3sixtytool";
+    //String connectionURL = "jdbc:mysql://localhost:3306/decom3sixtytool";
     Connection connection = null;
     Statement statement = null;
     try {
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        connection = DriverManager.getConnection(connectionURL, "root", "password123");
+    	DBconnection dbConnection = new DBconnection();
+    	connection = (Connection) dbConnection.getConnection();
+        
+    	//Class.forName("com.mysql.jdbc.Driver").newInstance();
+        //connection = DriverManager.getConnection(connectionURL, "root", "password123");
 
         statement = connection.createStatement();
 
@@ -241,7 +245,11 @@
         String query88 = "CREATE TABLE `Phase_Info` (`seq_no` INTEGER (255), `phaseId` varchar(255), `phaseName` varchar(255), `prj_name` varchar(255), `options` varchar(255), `label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query88);
         
+        String query89 = "CREATE TABLE `Archive_Execution_Governance_Info` (`seq_no` INTEGER (255),`waveId` varchar(255),`waveName` varchar(255),`level` varchar(255),`taskId` varchar(255),`taskGroup` varchar(255),`taskName` varchar(255),`taskType` varchar(255),`majorDependencies` varchar(255),`assignedTo` varchar(255),`planSrt` varchar(255),`planEnd` varchar(255),`actSrt` varchar(255),`actEnd` varchar(255),`completion` varchar(255),`status` varchar(255),`remark` varchar(255))";
+        statement.executeUpdate(query89);
         
+        String query90 = "CREATE TABLE `Archive_Execution_Governance_Template_Info` (`seq_no` INTEGER (255),`level` varchar(255),`taskGroup` varchar(255),`taskName` varchar(255),`taskType` varchar(255),`majorDependencies` varchar(255),`assignedTo` varchar(255),`planSrt` varchar(255),`planEnd` varchar(255),`actSrt` varchar(255),`actEnd` varchar(255),`completion` varchar(255),`status` varchar(255),`remark` varchar(255))";
+        statement.executeUpdate(query90);
 	  %>
 <% } catch (Exception ex) {
     ex.printStackTrace();

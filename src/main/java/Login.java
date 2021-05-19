@@ -9,6 +9,8 @@ import java.util.Date;
 
 import com.sun.jersey.spi.inject.Errors;
 
+import ArchiveExecutionGovernanceModule.service.ArchiveExecutionGovernanceTemplateDetails;
+import ArchiveExecutionGovernanceModule.service.ArchiveExecutionGovernanceTemplateService;
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionTemplateService;
 import NewArchiveRequirements.LegacyApplicationInfo.Service.archiveReqLegacyAppTemplateService;
 import NewArchiveRequirements.LegacyApplicationInfo.retentionDetails.Service.archiveRetentionTemplateDetailsService;
@@ -27,6 +29,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import onboard.DBconnection;
 import onboard.encryption;
 
 /**
@@ -246,10 +250,11 @@ public class Login extends HttpServlet {
 		
 try
 {
-	Class.forName("com.mysql.jdbc.Driver"); 
-	java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123");
+	//Class.forName("com.mysql.jdbc.Driver"); 
+	//java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123");
 
-	
+	DBconnection dbConnection = new DBconnection();
+	Connection con = (Connection) dbConnection.getConnection();
 	
 	Statement st5= con.createStatement(); 
 	ResultSet rs5=st5.executeQuery("select * from ArchiveExecution_Defaultvalues");
@@ -814,6 +819,12 @@ try
 	archiveExecObj = null;
 	System.gc();
 	
+	//calling archive Execution Governance Template Function
+	ArchiveExecutionGovernanceTemplateService archiveExecGovObj = new ArchiveExecutionGovernanceTemplateService("");
+	archiveExecGovObj.archiveExecutionDefaultRecords();
+	archiveExecGovObj=null;
+    System.gc();
+    
 	// Archive Legacy Application Info
 	archiveReqLegacyAppTemplateService archiveReqLegacyObj = new archiveReqLegacyAppTemplateService("");
 	archiveReqLegacyObj.archiveReqLegacyAppTemplate();

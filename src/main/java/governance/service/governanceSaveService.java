@@ -4,11 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mysql.jdbc.Connection;
 
+import ArchiveExecutionGovernanceModule.service.ArchiveExecutionGovernanceTemplateService;
 import onboard.DBconnection;
 
 public class governanceSaveService {
@@ -23,6 +27,8 @@ public class governanceSaveService {
 	String idWhereCond;
 	String idAndCond;
 	String operation;
+	String previousApps = "";
+	String selectedApps = "";
 	String id;
 	public governanceSaveService(String Id,String waveName,JsonArray jsonArray,String id,String operation) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
@@ -52,12 +58,14 @@ public class governanceSaveService {
 				  tableName = "governance_info";
 				  idAndCond = " and waveId='"+id+"'";
 				  idWhereCond = " where waveId='"+id+"'";
+				  previousApps = getApps();
 				break;
 				
 			case "NewWave":
 				tableName = "governance_info_details";
 				idWhereCond = "";
 				idAndCond = "";
+				
 				break;
 			}
 		}
@@ -65,6 +73,29 @@ public class governanceSaveService {
 		{
 			e.printStackTrace();
 		}
+	}
+	private String getApps() {
+		String Apps = "";
+		try
+		{
+			String selectPreviousApps = "select * from governance_info where column_name='apps' and waveId='"+id+"';";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(selectPreviousApps);
+			
+			if(rs.next())
+			{
+				 Apps = rs.getString("Value");
+			}
+			
+			rs.close();
+			st.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return Apps;
 	}
 	public boolean AddOpportunityToExistingWave()
 	{
@@ -97,6 +128,7 @@ public class governanceSaveService {
 		}
 		return statusFlag;
 	}
+	
 	public boolean SaveService()
 	{
 		boolean saveStatus = false;
@@ -115,8 +147,17 @@ public class governanceSaveService {
 	            st.close();
 	            
 			}
-			if(operation.equals("NewWave"))
+			String waveName = jsonArray.get(1).getAsJsonObject().get("Value").getAsString();
+			
+			if(operation.equals("NewWave")) {
 			moveInfoDetailsToInfo();
+			archiveExecGovTempInfoToGovInfoTable(waveName);
+		  }
+			else 
+			{
+				ArchiveExecutionGovernanceTemplateService ArchObj = new ArchiveExecutionGovernanceTemplateService(id);
+				ArchObj.ArchiveExecutionEditApplicationParentNode(waveName);
+			}
 			saveStatus = true;
 		}
 		catch(Exception e)
@@ -124,6 +165,65 @@ public class governanceSaveService {
 			e.printStackTrace();
 		}
 		return saveStatus;
+	}
+	
+	private void getChangesInArchiveImplementation() {
+		String currentApps[] = getApps().split(",");
+		String prevApps[] =  previousApps.split(",");
+		List<String> Apps = Arrays.asList(currentApps);
+		for(int i=0;i<prevApps.length;i++) {
+			
+			boolean matchFlag = false;
+			
+			for(int j=0;j<currentApps.length;j++)
+			{
+				if(prevApps[i].equals(currentApps[j]))
+				{
+					matchFlag = true;
+					Apps.remove(prevApps[i]);
+				}
+			}
+			if(!matchFlag) {
+				System.out.println("delete: "+prevApps[i]);
+			}
+		}
+		
+		for(String app:Apps)
+		{
+			System.out.println("Insert :"+app);
+		}
+	}
+	private String getWaveId(String waveName)
+	{
+		String waveId="";
+		try {
+			String selectQuery = "select * from governance_info where column_name ='waveName' and value ='"+waveName+"';";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(selectQuery);
+			if(rs.next()) {
+				waveId = rs.getString("waveId");
+			}
+			st.close();
+			rs.close();
+		}
+		catch (Exception e) {
+         e.printStackTrace();
+		}
+		return waveId;
+	}
+	
+	public void archiveExecGovTempInfoToGovInfoTable(String waveName)
+	{
+		try {
+			String waveId = getWaveId(waveName);
+			ArchiveExecutionGovernanceTemplateService archiveExec =  new ArchiveExecutionGovernanceTemplateService(waveId);
+			archiveExec.archiveTemplateToArchiveInfo(waveName);
+			archiveExec.con.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	public boolean moveInfoDetailsToInfo()
 	{
