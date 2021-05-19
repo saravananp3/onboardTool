@@ -5695,9 +5695,9 @@ code:not(.language-html) {
   bottom: 0;
 }
 
-.dashboard-stat:hover {
+/* .dashboard-stat:hover {
   background: #292929 !important;
-}
+} */
 
 .dashboard-stat-2 {
   display: block;
