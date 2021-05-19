@@ -27,64 +27,114 @@ public class dashboardService {
 			con = (Connection) dBconnection.getConnection();
 		}
 	
-		public JsonObject dashboardCardDetails() {
-			
+//		public JsonObject dashboardCardDetails() {
+//			
+//			JsonObject jsonObject = new JsonObject();
+//			try {
+//				
+//				//Opportunity Count 
+//				String oppQuery = "select count(*) from opportunity_info where column_name = 'appName';";
+//				Statement st = con.createStatement();
+//				ResultSet rs = st.executeQuery(oppQuery);
+//				
+//				if(rs.next()) 
+//					jsonObject.addProperty("opportunityCount", rs.getInt(1));
+//				
+//				rs.close();
+//				st.close();
+//				
+//				//Decommission Count 
+//				String decommQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Decommission';";
+//				Statement st1 = con.createStatement();
+//				ResultSet rs1 = st1.executeQuery(decommQuery);
+//				
+//				if(rs1.next()) 
+//					jsonObject.addProperty("decommissionCount", rs1.getInt(1));
+//				
+//				rs1.close();
+//				st1.close();
+//				
+//				
+//				//Archive Count 
+//				String archiveQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Archive';";
+//				Statement st2 = con.createStatement();
+//				ResultSet rs2 = st2.executeQuery(archiveQuery);
+//				
+//				if(rs2.next()) 
+//					jsonObject.addProperty("archiveCount", rs2.getInt(1));
+//				
+//				rs2.close();
+//				st2.close();
+//				
+//				//To be retire Count 
+//				String retireQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'To be retire';";
+//				Statement st3 = con.createStatement();
+//				ResultSet rs3 = st3.executeQuery(retireQuery);
+//				
+//				if(rs3.next()) 
+//					jsonObject.addProperty("retireCount", rs3.getInt(1));
+//				
+//				rs3.close();
+//				st3.close();
+//				
+//			}
+//			catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+//			return jsonObject;
+//		}
+		
+		public JsonObject dashboardCardDetails()
+		{
 			JsonObject jsonObject = new JsonObject();
-			try {
-				
-				//Opportunity Count 
-				String oppQuery = "select count(*) from opportunity_info where column_name = 'appName';";
+			try
+			{
+				String selectQuery = "select count(*) from phase_info where column_name = 'phaseName';";
 				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(oppQuery);
+				ResultSet rs = st.executeQuery(selectQuery);
 				
-				if(rs.next()) 
-					jsonObject.addProperty("opportunityCount", rs.getInt(1));
+				int countPhase = 0;
+				
+				if(rs.next())
+				countPhase = rs.getInt(1);
 				
 				rs.close();
 				st.close();
 				
-				//Decommission Count 
-				String decommQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Decommission';";
+				String selectQuery1 = "select count(*) from governance_info where column_name = 'waveName';";
 				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(decommQuery);
+				ResultSet rs1 = st1.executeQuery(selectQuery1);
 				
-				if(rs1.next()) 
-					jsonObject.addProperty("decommissionCount", rs1.getInt(1));
+				int countWave = 0;
+				
+				if(rs1.next())
+				countWave = rs1.getInt(1);
 				
 				rs1.close();
 				st1.close();
 				
-				
-				//Archive Count 
-				String archiveQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Archive';";
+				String selectQuery2 = "select count(*) from opportunity_info where column_name = 'appName';";
 				Statement st2 = con.createStatement();
-				ResultSet rs2 = st2.executeQuery(archiveQuery);
+				ResultSet rs2 = st2.executeQuery(selectQuery2);
+				int countOpportunity = 0;
 				
-				if(rs2.next()) 
-					jsonObject.addProperty("archiveCount", rs2.getInt(1));
+				if(rs2.next())
+				countOpportunity = rs2.getInt(1);
 				
 				rs2.close();
 				st2.close();
 				
-				//To be retire Count 
-				String retireQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'To be retire';";
-				Statement st3 = con.createStatement();
-				ResultSet rs3 = st3.executeQuery(retireQuery);
-				
-				if(rs3.next()) 
-					jsonObject.addProperty("retireCount", rs3.getInt(1));
-				
-				rs3.close();
-				st3.close();
-				
+				jsonObject.addProperty("phaseCount", countPhase);
+				jsonObject.addProperty("waveCount",countWave);
+				jsonObject.addProperty("appCount", countOpportunity);
 			}
-			catch(Exception e) {
+			catch(Exception e)
+			{
 				e.printStackTrace();
 			}
-			
 			return jsonObject;
 		}
-		
 		public JsonObject donetChartDetails() {
 			
 			JsonObject jsonObject = new JsonObject();

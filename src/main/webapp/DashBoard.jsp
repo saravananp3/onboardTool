@@ -154,10 +154,10 @@ input[type=search]:focus {
 	margin: 2px;
 }
 
-.cbp-vm-options a:hover,
+/* .cbp-vm-options a:hover,
 .cbp-vm-options a.cbp-vm-selected {
 	color: #47a3da;
-}
+} */
 
 .cbp-vm-options a:before {
 	width: 20px;
@@ -351,7 +351,7 @@ input[type=search]:focus {
         
        
         .grid{
-  margin-top:80px;
+  margin-top:10%;
   
   }
 	.cbp-vm-view-list li:focus {
@@ -564,7 +564,7 @@ color:#fff;
 		              <li class="active"><a href="#" style="color:#fff"><i class="fad fa-chart-pie iconAlign activeIcon fa-2x"></i>Dashboards</a></li>
 		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		          </ul>
-		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
+		         <ul class="nav navbar-nav navbar-right">
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>

@@ -15,10 +15,18 @@ function dashboardDetails(){
         dataType: "json",
         success: function (data) {
         	console.log("Data : ", data);
-        	$('.totcounter').eq(0).html(data[0].opportunityCount);
-        	$('.totcounter').eq(1).html(data[0].decommissionCount);
-        	$('.totcounter').eq(2).html(data[0].archiveCount);
-        	$('.totcounter').eq(3).html(data[0].retireCount);
+        	if(data[0].phaseCount == 0 || data[0].phaseCount == 1)
+        		$(".font_icon").eq(0).html('Phase');
+            
+        	if(data[0].waveCount == 0 || data[0].waveCount== 1)
+            	$(".font_icon").eq(1).html('Wave');
+            
+        	if(data[0].appCount == 0 || data[0].appCount== 1)
+            	$(".font_icon").eq(2).html('App');
+        	
+        	$('.totcounter').eq(0).html(data[0].phaseCount);
+        	$('.totcounter').eq(1).html(data[0].waveCount);
+        	$('.totcounter').eq(2).html(data[0].appCount);
         	
         	google.charts.load("current", {packages:["corechart"]});
             google.charts.setOnLoadCallback(drawChart);
