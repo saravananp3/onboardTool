@@ -496,7 +496,7 @@ transition: width 2s, height 2s, transform 2s;
         <div class="step">
     <div class="step-milestone3"/>
     
-    <a id="ArchiveExecutionNavigation" href="ArchiveExecutionDetails.jsp">
+    <a id="ArchiveExecutionNavigation" href="ArchiveExecutionDetails_Governance.jsp">
                                         <center>
                                           <img src="images/grid/archival-execution.png" class="img-rounded" height="100" width="100" alt="Avatar">
 

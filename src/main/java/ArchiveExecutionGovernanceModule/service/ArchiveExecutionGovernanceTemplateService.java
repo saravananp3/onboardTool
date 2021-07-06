@@ -5,9 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 import java.util.UUID;
 
+
+import ArchiveExecutionGovernanceModule.bean.ArchiveExecBean;
 import onboard.DBconnection;
 
 public class ArchiveExecutionGovernanceTemplateService {
@@ -318,14 +324,15 @@ seqNo++;
  }
  public void getDataRetrieveBasedOnApps() {
 	 try {
-		 
-		 String selectNodeQuery = "select * from Archve_Execution_Governance_Info order by seq_no";
+		 String apps[] = getApps();		 
+		 String selectNodeQuery = "select * from Archive_Execution_Governance_Info order by seq_no";
 		 Statement st1 = con.createStatement();
 		 ResultSet rs1 = st1.executeQuery(selectNodeQuery);
 		 while(rs1.next()) {
 			 String taskGroup = "";
 			 String taskName = "";
 			 int level = rs1.getInt("level");
+			 
 			 if(level == 1) {
         		 taskGroup = rs1.getString("taskGroup");
         		 
@@ -333,30 +340,189 @@ seqNo++;
         	 else {
         		 taskName = rs1.getString("taskName");
         	 }
+			 
+		 if(taskGroup.startsWith("Archive Implementation"))
+			 break;
 		 
-		 String apps[] = null;
-		 String selectApps = "select * from Governance_Info where waveId='"+Id+"' and column_name = 'apps';";
-		 Statement st = con.createStatement();
-		 ResultSet rs = st.executeQuery(selectApps);
-		 if(rs.next()) 
-			 apps = rs.getString("value").split(",");
-		 rs.close();
-		 st.close();
+//		 String selectApps = "select * from Governance_Info where waveId='"+Id+"' and column_name = 'apps';";
+//		 Statement st = con.createStatement();
+//		 ResultSet rs = st.executeQuery(selectApps);
+//		 if(rs.next()) 
+//			 apps = rs.getString("value").split(",");
+//		 rs.close();
+//		 st.close();
 		 
-         for(String app: apps) {
-        	 if(level==1) {
-        		 
-        	 } else {
-        		 
-        	 }
-		 }
+		 getDateDetails(apps, taskGroup,taskName, level);
 	   }
+		 rs1.close();
+		 st1.close();
+		 
+	  updateClosureNodes(apps);
+	  
 	 }
 	 catch(Exception e) {
 		 e.printStackTrace();
 	 }
  }
- public void ArchiveExecutionEditApplicationParentNode(String waveName)
+
+ private String[] getApps() {
+	 
+	 String apps[] = null;
+	 try {
+		   
+			 String selectApps = "select * from Governance_Info where waveId='"+Id+"' and column_name = 'apps';";
+			 Statement st = con.createStatement();
+			 ResultSet rs = st.executeQuery(selectApps);
+			 if(rs.next()) 
+				 apps = rs.getString("value").split(",");
+			 rs.close();
+			 st.close();
+			   
+	   }
+	   catch (Exception e) {
+		   e.printStackTrace();
+	   }
+	 return apps;
+	}
+
+ private int getSeqNo() {
+	 int seq_no = -1;
+	 try {
+		 String selectSeqNo ="select * from Archive_Execution_Governance_Info where waveId='"+Id+"' and taskGroup = 'Closure';";
+		 Statement st = con.createStatement();
+		 ResultSet rs = st.executeQuery(selectSeqNo);
+		 if(rs.next())
+			 seq_no = rs.getInt(1);
+		 rs.close();
+		 st.close();
+	 }
+	 catch(Exception e) {
+		 e.printStackTrace();
+	 }
+	 return seq_no;
+ }
+ private void updateClosureNodes(String apps[]) {
+   try {
+	   
+	   int fromSeqNo = getSeqNo();
+	   String selectQuery = "select * from Archive_Execution_Governance_Info where waveId='"+Id+"' and seq_no >="+fromSeqNo+" order by seq_no;";  
+	   Statement st = con.createStatement();
+	   ResultSet rs = st.executeQuery(selectQuery);
+	   
+	   while(rs.next()) {
+		
+		   String taskGroup = "";
+		   
+		   String taskName = "";
+		   
+		   int level = rs.getInt("level");
+			 
+			 if(level == 1) {
+      		 taskGroup = rs.getString("taskGroup"); 
+      	     }
+      	     else {
+      		 taskName = rs.getString("taskName");
+      	    }
+			 
+		 getDateDetails(apps, taskGroup,taskName, level);
+		 
+	   }
+	   rs.close();
+	   st.close();
+     }
+   catch (Exception e) {
+	   e.printStackTrace();
+   }
+}
+
+public ArchiveExecBean getDateDetails(String apps[],String taskGroup,String taskName, int level) {
+	 ArchiveExecBean bean = null;
+	 try {
+		 bean = new ArchiveExecBean();
+         SimpleDateFormat fmt = new SimpleDateFormat("MM/dd/yyyy");
+		 ArrayList<Date> minPlanDate = new ArrayList<Date>();
+		 ArrayList<Date> maxPlanDate = new ArrayList<Date>();
+		 ArrayList<Date> minActDate = new ArrayList<Date>();
+		 ArrayList<Date> maxActDate = new ArrayList<Date>();
+		 
+		 for(String app:apps) {
+			 String appId = getApplicationIdByName(app);
+			 ResultSet rs = getDate(appId,taskGroup,taskName,level);
+			 if(rs.next()) {
+				 if(!rs.getString("planSrt").equals(""))
+				 minPlanDate.add(fmt.parse(rs.getString("planSrt")));
+				 if(!rs.getString("planEnd").equals(""))
+				 maxPlanDate.add(fmt.parse(rs.getString("planEnd")));
+				 if(!rs.getString("actSrt").equals(""))
+				 minActDate.add(fmt.parse(rs.getString("actSrt")));
+				 if(!rs.getString("actEnd").equals(""))
+				 maxActDate.add(fmt.parse(rs.getString("actEnd")));
+				 
+			 }
+			 rs.close();
+		 }
+		 
+		 String minDate =minPlanDate.isEmpty()?"":fmt.format(Collections.min(minPlanDate));
+		 String maxDate =maxPlanDate.isEmpty()?"":fmt.format(Collections.max(maxPlanDate));
+		 String minDate1 =minActDate.isEmpty()?"":fmt.format(Collections.min(minActDate));
+		 String maxDate1 =maxActDate.isEmpty()?"":fmt.format(Collections.max(maxActDate));
+		 
+		updateWaveNodeDate(minDate,maxDate,minDate1,maxDate1,taskGroup,taskName,level);
+		
+	 }
+	 catch(Exception e) {
+		 e.printStackTrace();
+	 }
+	 return bean;
+ }
+  
+ private void updateWaveNodeDate(String min, String max, String min2, String max2, String taskGroup, String taskName, int level) {
+
+	 try {
+		 String cond = "";
+		 if(level ==1)
+		 {
+			 cond = "taskGroup='"+taskGroup+"';";
+		 }
+		 else
+		 {
+			 cond = "taskName='"+taskName+"';";
+		 }
+		 
+		 String updateQuery = "update Archive_Execution_Governance_Info set planSrt = '"+min.toString()+"', planEnd='"+max.toString()+"', actSrt='"+min2.toString()+"', actEnd='"+max2.toString()+"' where waveId ='"+Id+"' and "+cond;
+		 Statement st = con.createStatement();
+		 st.executeUpdate(updateQuery);
+		 
+		 st.close();
+	 }
+	 catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+private ResultSet getDate(String appId, String taskGroup, String taskName, int level) {
+	ResultSet rs = null;
+	 try {
+		 String cond = "";
+		 if(level ==1)
+		 {
+			 cond = "taskGroup='"+taskGroup+"';";
+		 }
+		 else
+		 {
+			 cond = "taskName='"+taskName+"';";
+		 }
+		String selectQuery = "select * from archive_execution_info where oppId = '"+appId+"' and "+cond;
+		Statement st = con.createStatement();
+		 rs = st.executeQuery(selectQuery);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return rs;
+}
+
+public void ArchiveExecutionEditApplicationParentNode(String waveName)
  {
 	 try
 	 {

@@ -234,7 +234,7 @@ if(!checkPrevParent||!checkPrevChild)
 }
  if(checkPrevChild&&checkPrevParent){
 	$.ajax({
-        url: "archiveExecutionSaveServlet",
+        url: "archiveExecutionGovernanceSaveServlet",
         type: 'POST',
         data: {seqNum:seqNo, colName:columnName, Value:value},
         async: false,
@@ -264,7 +264,7 @@ if(!checkPrevParent||!checkPrevChild)
         }
         
 	});
-	updateGovArchiveExec(seqNo, columnName, value);
+	//updateGovArchiveExec(seqNo, columnName, value);
 }
 
 

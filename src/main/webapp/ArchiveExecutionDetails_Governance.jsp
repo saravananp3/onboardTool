@@ -55,7 +55,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
 
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionStatus/archiveExecStatus.css" />
-<script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionDataRetrieve.js"></script>
+<script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceDataRetrieve.js"></script>
 
 
 <style>
@@ -587,11 +587,11 @@ background:#1565c0 important;
 						<br/>
                                    <div class="wrapper">
 													   
-													   <a href="#" class="btn10 coloring" id = "oppName">
-													     Opportunity Name : </br>
+													   <a href="#" class="btn10 coloring" id = "waveName">
+													     Wave Name : </br>
 													  </a>
-													    <a href="#" class="btn10 coloring" id = "oppId">
-													     P3 Project Id : </br>
+													    <a href="#" class="btn10 coloring" id = "waveId">
+													     P3 Wave Id : </br>
 													  </a>
 													    <a href="#" class="btn10 coloring" id = "startDate">
 													    Start Date : </br> 15-04-2020
@@ -896,11 +896,11 @@ $(document).on('mouseenter','.active1', function(){
       <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
        <script src="js/toastr/toastr.min.js"></script>
         <script src="js/notification/notification.js"></script>
-        <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionSaveValidation.js"></script>
-        <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionSave.js"></script>
-         <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionAddAjaxCall.js"></script>
-         <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionEdit.js"></script>
-         <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionDeleteAjaxCall.js"></script>
+        <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceSaveValidation.js"></script>
+        <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceSave.js"></script>
+         <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceAddAjaxCall.js"></script>
+         <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceEdit.js"></script>
+         <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceDeleteAjaxCall.js"></script>
         
           
           <!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->

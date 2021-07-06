@@ -157,6 +157,8 @@ public class governanceSaveService {
 			{
 				ArchiveExecutionGovernanceTemplateService ArchObj = new ArchiveExecutionGovernanceTemplateService(id);
 				ArchObj.ArchiveExecutionEditApplicationParentNode(waveName);
+				ArchObj.getDataRetrieveBasedOnApps();
+				ArchObj.con.close();
 			}
 			saveStatus = true;
 		}
@@ -218,6 +220,7 @@ public class governanceSaveService {
 			String waveId = getWaveId(waveName);
 			ArchiveExecutionGovernanceTemplateService archiveExec =  new ArchiveExecutionGovernanceTemplateService(waveId);
 			archiveExec.archiveTemplateToArchiveInfo(waveName);
+			archiveExec.getDataRetrieveBasedOnApps();
 			archiveExec.con.close();
 		}
 		catch(Exception e)

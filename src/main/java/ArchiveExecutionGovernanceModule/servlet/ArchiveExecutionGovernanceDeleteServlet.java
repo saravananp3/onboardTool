@@ -1,4 +1,4 @@
-package ArchiveExecutionModule.ArchiveExecutionDetails.servlet;
+package ArchiveExecutionGovernanceModule.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,19 +14,20 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import ArchiveExecutionGovernanceModule.service.ArchiveExecutionGovernanceDeleteService;
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionDeleteService;
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionDetailService;
 
-@WebServlet("/ArchiveExecutionDeleteServlet")
-public class ArchiveExecutionDeleteServlet extends HttpServlet {
+@WebServlet("/ArchiveExecutionGovernanceDeleteServlet")
+public class ArchiveExecutionGovernanceDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession details = request.getSession();
-        String Id=(String)details.getAttribute("ID");
-        String oppName =(String)details.getAttribute("SelectedOpportunity");
+        String waveId=(String)details.getAttribute("selectedWaveId");
+        String waveName =(String)details.getAttribute("selectedWaveName");
         int seqNum = Integer.parseInt((String)request.getParameter("seqNum"));
         JsonArray jsonArray = new JsonArray();
         try {
-			ArchiveExecutionDeleteService archiveExecution =  new ArchiveExecutionDeleteService(Id,oppName,seqNum);
+        	ArchiveExecutionGovernanceDeleteService archiveExecution =  new ArchiveExecutionGovernanceDeleteService(waveId,waveName,seqNum);
 			jsonArray = archiveExecution.archiveExecutionDeleteService();
 			archiveExecution =null;
 			//calling finalize method and garabage collector
