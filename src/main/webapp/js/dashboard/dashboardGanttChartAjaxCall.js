@@ -112,7 +112,7 @@ function ganttChartDetails(data)
 
 	      var options = {
 	    		  
-	    		  width: 1200,
+	    		  width: 600,
 	                height: 350,
 	        gantt: {
 	          trackHeight: 30

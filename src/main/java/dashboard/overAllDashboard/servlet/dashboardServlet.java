@@ -30,7 +30,8 @@ public class dashboardServlet extends HttpServlet {
 			jsonArray.add(dashboard.donetChartDetails());
 			jsonArray.add(dashboard.getOppNameList());
 			jsonArray.add(dashboard.GanttChartJsonArray);
-			
+			jsonArray.add(dashboard.getApplicationFromPhaseDataTable("All"));
+			jsonArray.add(dashboard.getPieChartDetails());
 			dashboard = null;
 			System.gc();
 			

@@ -85,6 +85,108 @@ public class dashboardService {
 //			return jsonObject;
 //		}
 		
+		
+		
+		public JsonArray getApplicationFromPhaseDataTable(String phaseFilter) {
+			JsonArray jsonArray = new JsonArray();
+			try {
+				
+				String whereCondn = phaseFilter.equals("All")?"":" where phaseName like '"+phaseFilter+"%'";
+				
+				String selectPhases = "select * from phase_info"+whereCondn;
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(selectPhases);
+				while(rs.next()) {
+					if(rs.getString("column_name").equals("waves")) {
+					String waves[] = rs.getString("value").split(",");
+					jsonArray.addAll(getWaveDetails(waves,rs.getString("phaseName")));
+					}
+				}
+				rs.close();
+				st.close();
+				
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			return jsonArray;
+		}
+		
+		private JsonArray getWaveDetails(String[] waves,String phase) {
+         JsonArray jsonArray = new JsonArray();
+			try {
+			for(String wave:waves) {
+				String selectWaves = "select * from governance_info where waveName='"+wave+"'";
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(selectWaves);
+				while(rs.next()) {
+					if(rs.getString("column_name").equals("apps")) {
+					String apps[] = rs.getString("value").split(",");
+					jsonArray .addAll(getApplicationDetails(apps,rs.getString("waveName"),phase));
+					}
+				}
+				rs.close();
+				st.close();
+				
+			}
+	      }
+	      catch(Exception e) {
+	    	  e.printStackTrace();
+	      }
+         return jsonArray;
+        }
+
+
+
+
+		private JsonArray getApplicationDetails(String[] apps, String wave,String phase) {
+			JsonArray jsonArray = new JsonArray();
+			try {
+			for(String app:apps) {
+				JsonObject jsonObject = new JsonObject();
+				String selectApp = "select * from opportunity_info where column_name='appName' and value = '"+app+"'";
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(selectApp);
+				while(rs.next()) {
+					
+					jsonObject.addProperty("appName",app);
+					jsonObject.addProperty("phaseName",phase);
+					jsonObject.addProperty("waveName", wave);
+					
+					String Id = rs.getString("Id");
+					String selectAppType = "select * from opportunity_info where column_name='request_type' and  Id = '"+Id+"'";
+					Statement st1 = con.createStatement();
+					ResultSet rs1 = st1.executeQuery(selectAppType);
+					if(rs1.next())
+						jsonObject.addProperty("appType",rs1.getString("value"));
+					rs1.close();
+					st1.close();
+					
+					String selectAppOwner = "select * from opportunity_info where column_name='appowner' and  Id = '"+Id+"'";
+					Statement st2 = con.createStatement();
+					ResultSet rs2 = st2.executeQuery(selectAppOwner);
+					if(rs2.next())
+						jsonObject.addProperty("owner",rs2.getString("value"));
+					rs1.close();
+					st1.close();
+					
+					jsonArray.add(jsonObject);
+				}
+				rs.close();
+				st.close();
+			}
+	      }
+	      catch(Exception e) {
+	    	  e.printStackTrace();
+	      }
+         return jsonArray;
+        }
+
+
+
+
 		public JsonObject dashboardCardDetails()
 		{
 			JsonObject jsonObject = new JsonObject();
@@ -331,6 +433,42 @@ public class dashboardService {
 			
 			return jsonArray;
 		}
+		
+		public JsonObject getPieChartDetails() {
+			JsonArray jsonArray = new JsonArray();
+			JsonObject jsonObject = new JsonObject();
+			try {
+				int archiveCount=0,decomissionCount=0,retiredCount=0;
+				String selectQuery = "SELECT * FROM opportunity_info where column_name='request_type';";
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(selectQuery);
+				while(rs.next()) {
+					String value = rs.getString("value");
+					if(value.equals("Archive")) {
+						archiveCount++;
+					}
+					
+					if(value.equals("Decommission")) {
+						decomissionCount++;
+					}
+					
+					if(value.equals("To be retired")) {
+						retiredCount++;
+					}
+				}
+				jsonObject.addProperty("archiveCount",archiveCount);
+				jsonObject.addProperty("decommissionCount",decomissionCount);
+				jsonObject.addProperty("retiredCount", retiredCount);
+				jsonArray.add(jsonObject);
+				rs.close();
+				st.close();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			return jsonObject;
+		}
+		
 		
 		protected void finalize() throws Throwable 
     	{ 

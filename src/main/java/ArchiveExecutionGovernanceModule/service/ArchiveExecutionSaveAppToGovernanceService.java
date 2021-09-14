@@ -220,7 +220,8 @@ DBconnection dBconnection =null;
 				Date date1 = getAppDate(app, taskGroup, taskName);
 				
 				System.out.println(((date1!=null&&!date1.equals(""))?simpleDateFormat.format(date1):""));
-			    Date.add(date1);
+				if(date1!=null&&!date1.equals(""))
+				Date.add(date1);
 			    
 			}
 			

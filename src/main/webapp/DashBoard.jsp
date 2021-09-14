@@ -22,8 +22,6 @@
     <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css" >
    	<link rel="stylesheet" href="css/UserInfo/userinfo.css" >
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
-   
    
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
@@ -674,19 +672,31 @@ color:#fff;
                                 
                                        <div class="col-md-12 ">
                                           <div class="row">
-		                                      <div class="col-sm-3 col-md-6 col-lg-4">
+		                                      <div class="col-sm-3 col-md-6 col-lg-7">
                                                   <div class="paneldashboard">
                                                             <br/>
                                                             <br/>
                                                             <div class="content">
-                                                            <h6 style="margin-left:30px;">Module Details</h6>
-                                                                <div id="donutchart" style="width: 650px; height: 500px;"></div>
-
-
-                                                            </div>
+                                                            <h6 style="margin-left:30px;">Application Status</h6>
+                                                                <!-- <div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div> -->
+                                                                <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>App</th>
+                <th>AppOwner</th>
+                <th>Phase</th>
+                <th>Wave</th>
+                <th>AppType</th>
+            </tr>
+        </thead>
+        <tbody id="dataTableId">
+            
+            </tbody>
+            </table>
+            </div>
                                                   </div>
                                               </div>
-                                              <div class="col-sm-9 col-md-6 col-lg-8">
+                                              <div class="col-sm-9 col-md-6 col-lg-7">
 		
 		                                                        <div class="paneldashboard">
 		                                                            
@@ -830,9 +840,11 @@ color:#fff;
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
  
  <script src = "js/dashboard/dashboardGanttChartAjaxCall.js"></script>
- 
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
  <!-- Active Icon Color changes  -->
 <script>
+
 $(document).on('mouseenter','.active', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');
@@ -840,7 +852,7 @@ $(document).on('mouseenter','.active', function(){
 	 });
 	 
 	 $(document).on('mouseleave','.active', function(){
-			
+	
 		 $('.activeIcon').css('color','#fff');
 		 
 	 });
@@ -872,28 +884,6 @@ $(document).ready(function() {
 });
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['State', '$'],
-          ['Sum of Realized',      110000.00],
-          ['Sum of in Process',  365000],
-          ['Sum of Intake/Opportunity', 192000.00]
-        ]);
-
-        var options = {
-          title: 'Total'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('pieChartId'));
-
-        chart.draw(data, options);
-      }
-    </script>
     <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
