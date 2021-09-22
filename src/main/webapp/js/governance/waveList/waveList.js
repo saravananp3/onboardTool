@@ -3,6 +3,11 @@ $(document).ready(function(){
 	waveListAjaxCall();
 	
 });
+$(document).on('click','.deleteWaveClass',function(){
+	$("#deleteWaveBtn").click();
+	var index =  $(this).index(".deleteWaveClass");
+	$("#waveIndex").val(index);
+});
 $(document).on('mouseenter','.dropClass',function(){
 	var index = $(this).index('.dropClass');
 	$(".waveCard").eq(index).removeClass("waveCard")
@@ -12,7 +17,14 @@ $(document).on('mouseleave','.dropClass',function(){
 	var index = $(this).index('.dropClass');
 	$(".listCard").eq(index).addClass("waveCard")
 });
-
+$(document).on('click','#deleteWaveYesBtn',function(){
+	var index = $("#waveIndex").val();
+	var waveName = $('.waveName').eq(index).val();
+	var waveId = $('.waveId').eq(index).val();
+	var includeAll=$("#includeWaveAll").is(":checked");
+	deleteAjaxCall(waveId,waveName,"Wave",index,includeAll);
+	$("#deleteWaveClose").click();
+});
 
 function waveListAjaxCall()
 {
@@ -80,4 +92,43 @@ function waveListAjaxCall()
 	     });
 	     $('#title_id').html("Number of Wave &nbsp;("+(i-1)+")");
 	 }
-	
+	function deleteAjaxCall(Id,Name,deleteType,index,includeAll)
+	{
+		$.ajax({
+	        url: "deleteGovernanceServlet",
+	        type: 'POST',
+	        async:false,
+	        data : {Id:Id, Name:Name,deleteType:deleteType,includeAll:includeAll},
+	        dataType: "json",
+	        success: function (data) {
+	        	console.log("data: ",data);
+	          if(data.deleteStatus)
+	          {
+	        	notification("success",Name+" deleted successfully","Note:");
+	        	if(deleteType=="Phase")
+	        		{
+	        	       $(".phaseCard").eq(index).remove();
+	        	       $("#phase option[value='"+Name+"']").remove();
+	        		}
+	        	else if(deleteType=="Wave")
+	        		{
+	        	           $(".waveCard").eq(index).remove();
+	        	           $("#wave option[value='"+Name+"']").remove();
+	        		}
+	        	for(var i=0;i<data.waves.length;i++)
+	        	{
+	        		$("#wave option[value='"+data.waves[i]+"']").remove();
+	        	}
+	        	
+	          }
+	          else if(!data.deleteStatus)
+	          {
+	        	  notification("error","Problem occured while deleting.","Error:");
+	          }
+	        
+	        },
+	        error: function (e) {
+	            console.log(e);
+	       }
+		});
+	}

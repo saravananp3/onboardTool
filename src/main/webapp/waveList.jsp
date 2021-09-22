@@ -849,47 +849,6 @@ pointer-events:all;
 </div> 
 </div>
 
-<!-- Phase Delete Pop Up -->
-
-   <div class="modal" id="deletePhasePopUp" tabindex="-1" role="dialog">
-  <div class="vertical-alignment-helper">
-  <div class="modal-dialog vertical-align-center" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Phase</h5>
-        <button type="button" id="deletePhaseClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form name="PopUpform">
-            <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-10">
-                            <!-- <label class="control-label" for="formInput526">Select Wave Name:</label>
-                            <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
-                                
-                            </select>
-    -->                     
-               <p>Are you sure, want to delete the Phase permanently?</p>
-               <input type="checkbox" id ="includePhaseAll"  value="true"/>&nbsp;&nbsp;Include Phase content (Associated Wave and Application)
-               <input type="textbox" id="phaseIndex" value="" style="display:none;"/>
-                    </div>
-                    </div>
-                </div>
-                <br/>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="deletePhaseYesBtn" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
-        
-      </div>
-    </div>
-  </div>
-</div> 
-</div>
-
 <!-- Wave Delete Pop Up -->
 
    <div class="modal" id="deleteWavePopUp" tabindex="-1" role="dialog">
@@ -913,7 +872,7 @@ pointer-events:all;
                             </select>
     -->                     
                <p>Are you sure, want to delete the Wave permanently?</p>
-               <input type="checkbox" id ="includeWaveAll"  value="true"/>&nbsp;&nbsp;Include Wave content (Associated Application)
+               <input type="checkbox" id ="includeWaveAll"  value="true"/>&nbsp;&nbsp;Include Wave content (Associated Applications)
                <input type="textbox" id="waveIndex" value="" style="display:none;"/>
                     </div>
                     </div>

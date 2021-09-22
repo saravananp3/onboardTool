@@ -54,19 +54,6 @@ $(document).ready(function(){
 		deleteAjaxCall(phaseId,phaseName,"Phase",index,includeAll);
 		$("#deletePhaseClose").click();
 	});
-	$(document).on('click','.deleteWaveClass',function(){
-		$("#deleteWaveBtn").click();
-		var index =  $(this).index(".deleteWaveClass");
-		$("#waveIndex").val(index);
-	});
-	$(document).on('click','#deleteWaveYesBtn',function(){
-		var index = $("#waveIndex").val();
-		var waveName = $('.waveName').eq(index).val();
-		var waveId = $('.waveId').eq(index).val();
-		var includeAll=$("#includeWaveAll").is(":checked");
-		deleteAjaxCall(waveId,waveName,"Wave",index,includeAll);
-		$("#deleteWaveClose").click();
-	});
 	$(document).on('click','.phaseCard',function(){
 		var index = $(this).index('.phaseCard');
 		var phaseId = $('.phaseId').eq(index).val();
