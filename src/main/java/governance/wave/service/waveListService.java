@@ -42,6 +42,7 @@ public class waveListService {
 		 waves = rs.getString("value").split(",");
 		for(String wave : waves)
 		{
+			if(!wave.isEmpty())
 			jsonArray1.add(getWave(wave));
 		}
 		}

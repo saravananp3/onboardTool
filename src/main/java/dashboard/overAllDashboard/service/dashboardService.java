@@ -452,7 +452,7 @@ public class dashboardService {
 						decomissionCount++;
 					}
 					
-					if(value.equals("To be retired")) {
+					if(value.equals("To be retire")) {
 						retiredCount++;
 					}
 				}
