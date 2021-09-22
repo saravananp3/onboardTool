@@ -213,6 +213,7 @@ public class deleteOpportunityService {
 		{
 			//wave
 			tableNames.put("governance_info","waveId");
+			tableNames.put("archive_execution_governance_info", "waveId");
 			
 		}
 		catch(Exception e)
