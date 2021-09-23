@@ -861,7 +861,7 @@ try
 		details.setAttribute("intake","X");
 		details.setAttribute("archive_exec","X");
 
-	    String redirectURL = "OpportunityList.jsp";
+	    String redirectURL = "DashBoard.jsp";
 
 	    response.sendRedirect(redirectURL);
 	}
@@ -895,7 +895,7 @@ try
 		
 		
 		
-			        String redirectURL = "OpportunityList.jsp";
+			        String redirectURL = "DashBoard.jsp";
 		
 			        response.sendRedirect(redirectURL);
 		
