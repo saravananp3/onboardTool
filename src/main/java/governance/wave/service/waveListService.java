@@ -32,9 +32,9 @@ public class waveListService {
 	JsonArray jsonArray1 = new JsonArray();
 	try
 	{
-		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("phaseName", phaseName);
-		jsonArray.add(jsonObject);
+		//JsonObject jsonObject = new JsonObject();
+		//jsonObject.addProperty("phaseName", phaseName);
+		//jsonArray.add(jsonObject);
 		String selectWaves = "select * from phase_info where column_name='waves' and phaseId='"+phaseId+"'";
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(selectWaves);
@@ -58,6 +58,35 @@ public class waveListService {
 	
 	}
 	
+	
+	public JsonArray getAllWaveList()
+	{
+	
+	JsonArray jsonArray = new JsonArray();
+	JsonArray jsonArray1 = new JsonArray();
+	try
+	{
+		String selectWaves = "select * from governance_info where column_name='waveName';";
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(selectWaves);
+		while(rs.next()) {
+		String wave = rs.getString("value");
+			if(!wave.isEmpty())
+			jsonArray1.add(getWave(wave));
+		}
+		st.close();
+		rs.close();
+		jsonArray.add(jsonArray1);
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+	return jsonArray;
+	
+	}
+	
+	
 	public JsonObject getWave(String wave)
 	{
 		JsonObject jsonObject = new JsonObject();
@@ -67,6 +96,7 @@ public class waveListService {
 		Statement st = con.createStatement();
 		ResultSet rs = st.executeQuery(selectWaves);
 		if(rs.next()) {
+			 jsonObject.addProperty("phaseName",getPhaseName(wave));
 		     jsonObject.addProperty("WaveId", rs.getString("waveId"));
 		     jsonObject.addProperty("WaveName", rs.getString("waveName"));
 		     jsonObject.addProperty("Apps",getWaveOptions(rs.getString("waveName")));
@@ -81,6 +111,23 @@ public class waveListService {
 	return jsonObject;
 	}
 	
+	private String getPhaseName(String wave) {
+		String phaseName = "";
+		try {
+			String selectQuery = "select * from phase_info where column_name = 'waves' and value like '%"+wave+"%'";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(selectQuery);
+			if(rs.next())
+				phaseName = rs.getString("phaseName");
+			rs.close();
+			st.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return phaseName;
+	}
+
 	public String getWaveOptions(String wave)
 	{
 		String app = "";

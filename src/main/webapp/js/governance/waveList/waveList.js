@@ -28,9 +28,15 @@ $(document).on('click','#deleteWaveYesBtn',function(){
 
 function waveListAjaxCall()
 {
+	var currentUrl = window.location.href;
+	var url = new URL(currentUrl);
+	var waves = url.searchParams.get("waves");
+	if(waves==undefined)
+		waves = "individual";
 	$.ajax({
         url: "waveListServlet",
         type: 'POST',
+        data : {waves:waves},
         dataType: "json",
         success: function (data) {
         	console.log("Data:", data);
@@ -51,15 +57,15 @@ function waveListAjaxCall()
 	 {
 		 var i = 1;
 		 $('#ul_id').html("");
-		 var phaseName = data[0].phaseName;
-		 $("#phase").append("<option>"+phaseName+"</option>");
+		 //var phaseName = data[0].phaseName;
 		 $("#wave").append("<option class='all options' value='All'>All</option>");
 		 $("#application").append("<option class='all options' value='All'>All</option>");
-	     $.each(data[1], function(key, value){
+	     $.each(data[0], function(key, value){
 	    	 var waveName = value.WaveName; 
 	    	 var WaveId = value.WaveId; 
 	    	 var app =value.Apps;
-	       	 
+			 var phaseName = value.phaseName;
+			 $("#phase").append("<option>"+phaseName+"</option>");
 	    	 var li_element ="<li class = 'waveCard listCard'>"+
 						"<div class='drophide'>"+
 						"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+

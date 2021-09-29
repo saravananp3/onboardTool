@@ -18,7 +18,7 @@ function getTableInfo(index){
 	switch(index)
 	{
 	case 0:
-		tableSaveName="archive_datareq_info";
+		tableSaveName="Archive_DataReq_Info";
 		classSaveName = "dataReqRowClass";
 		Table_Name_Save = "Data Requirements";
 	    break;

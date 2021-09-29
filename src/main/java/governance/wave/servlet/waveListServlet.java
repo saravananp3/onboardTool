@@ -23,13 +23,17 @@ public class waveListServlet extends HttpServlet {
       
       String phaseName = (String)details.getAttribute("phaseName");
       
+      String waveList =  request.getParameter("waves");
+      
       JsonArray jsonArray = new JsonArray();
       try
       {
+    	  
     	  waveListService service = new waveListService(phaseId,phaseName);
-    	  
+    	  if(!waveList.equals("all"))
     	  jsonArray = service.getWaveList();
-    	  
+    	  else
+    		 jsonArray = service.getAllWaveList();
     	  System.gc();
       }
       catch(Exception e)

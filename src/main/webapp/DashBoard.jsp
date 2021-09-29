@@ -616,7 +616,7 @@ color:#fff;
                                        
                                  
                                 <card style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);" href="#">
+                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);" href="PhaseList.jsp">
                                        <div class="col-md-3" style="height: 100%;">
                                        <p class="totcounter" style="height: 80%; color: white;"></p>
                                         <span class="font_icon" style="height: 20%; color: white;">Phases</span>
@@ -627,7 +627,7 @@ color:#fff;
                                 </card>
                                 
                                 <div style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);" href="#">
+                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);" href="waveList.jsp?waves=all">
                                        <div class="col-md-3" style="height: 100%;">
                                        <p class="totcounter" style="height: 80%; color: white;"></p>
                                         <span class="font_icon" style="height: 20%; color: white;">Waves</span>
@@ -638,7 +638,7 @@ color:#fff;
                                 </div>
                                 
                                 <div style="margin-bottom: 38px;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);" href="#">
+                                    <a class="dashboard-stat col-md-12" style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);" href="OpportunityList.jsp">
                                        <div class="col-md-3" style="height: 100%;">
                                        <p class="totcounter" style="height: 80%; color: white;padding-right: 10px;"></p>
                                         <span class="font_icon" style="height: 20%; color: white;">Apps</span>
