@@ -58,6 +58,8 @@ function waveListAjaxCall()
 		 var i = 1;
 		 $('#ul_id').html("");
 		 //var phaseName = data[0].phaseName;
+		 $("#phase").append("<option></option>");
+
 		 $("#wave").append("<option class='all options' value='All'>All</option>");
 		 $("#application").append("<option class='all options' value='All'>All</option>");
 	     $.each(data[0], function(key, value){
@@ -65,6 +67,8 @@ function waveListAjaxCall()
 	    	 var WaveId = value.WaveId; 
 	    	 var app =value.Apps;
 			 var phaseName = value.phaseName;
+			 
+			 if(phaseName!="")
 			 $("#phase").append("<option>"+phaseName+"</option>");
 	    	 var li_element ="<li class = 'waveCard listCard'>"+
 						"<div class='drophide'>"+
