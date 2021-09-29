@@ -48,6 +48,7 @@ public class waveListService {
 		}
 		st.close();
 		rs.close();
+		if(jsonArray1.size()!=0)
 		jsonArray.add(jsonArray1);
 	}
 	catch(Exception e)
@@ -76,6 +77,7 @@ public class waveListService {
 		}
 		st.close();
 		rs.close();
+		if(jsonArray1.size()!=0)
 		jsonArray.add(jsonArray1);
 	}
 	catch(Exception e)
