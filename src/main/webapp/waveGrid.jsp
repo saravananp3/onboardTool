@@ -447,38 +447,14 @@ transition: width 2s, height 2s, transform 2s;
                 <!--  admin Role -->
                 <section>
  <div class="flow container">
-   <div class="process job">
-        <div class="step">
-    <div class="step-milestone1"/>
-    
-                                   <a id="IntakeNavigation" href="IntakeOpportunity.jsp">
-                                        <center>
-                                            <img src="images/grid/NewIntake.png" class="img-rounded filtered" height="100" width="100" alt="Avatar">
-
-                                        </center>
-
-                                    </a>
-    </div>
-    <br>
-   <span class="step-title">
-      Intake  
-    </span>
-    
-    
-     </div>
-    </div>
-    <div class="arrow candidate">
-        <div class="line"></div>
-        <div class="triangle"></div>
-    </div>
-    <div class="process candidate">
+       <div class="process candidate">
         <div class="step">
     <div class="step-milestone2"/>
     
     
     <a href="ArchiveDecommPage.jsp">
                                         <center>
-                                            <img src="images/grid/intake.png" class="img-rounded" height="100" width="100" alt="Avatar">
+                                            <img src="images/grid/NewIntake.png" class="filtered img-rounded" height="100" width="100" alt="Avatar">
 
                                         </center>
 
@@ -487,7 +463,7 @@ transition: width 2s, height 2s, transform 2s;
     </div>
     <br>
      <span class="step-title">
-      Requirements
+      Plan and Priority
     </span>
   </div>
     </div>
