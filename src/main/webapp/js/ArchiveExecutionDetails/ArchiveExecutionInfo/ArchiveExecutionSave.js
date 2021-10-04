@@ -59,7 +59,7 @@ $(document).ready(function (){
 		    	fieldName = 'majorDep';
 				columnName = 'majorDependencies';
 		    }
-		    else if(className.includes('remark'))
+		    else if(className.includes('RemarksPoints'))
 		    {
 		    	fieldName = 'remark';
 				columnName = 'remark';
@@ -116,7 +116,13 @@ $(document).ready(function (){
 	    var classname = $(event).attr('class');
 	    getFieldName(classname);
 	    var index = $(event).index("."+fieldName);
-	    var value = $('.'+fieldName).eq(index).val();
+	    var value ="";
+	    if(fieldName=="remark"){
+	    value = getRemarksValue();
+	    index = $("#ArchiveRemarksSeq").val();
+	    }
+	    else
+	    value = $('.'+fieldName).eq(index).val();
 		var seqNo = parseInt(index)+1;
 	    saveFunction(seqNo, columnName, value,"");
 	} 
@@ -134,6 +140,15 @@ $(document).ready(function (){
 
 	});
 
+function getRemarksValue(){
+	var value="";
+	var length=$(".RemarksPoints").eq(0).find("li").length;
+	for(var i=0; i<length; i++){
+				value+=$(".RemarksPoints").eq(0).find("li").eq(i).html()+":=:";
+				}
+	value=value.substring(0,value.length-3);
+   return value;
+}
 function MultiSelectDropDownValues(ValuesArray)
 {
 	var value ="";
