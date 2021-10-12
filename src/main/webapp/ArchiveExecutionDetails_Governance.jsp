@@ -659,7 +659,8 @@ background:#1565c0 important;
                                                     
                                                    <!-- Delete Button -->
 													<button type="button" class="btn btn-primary pull-right" id="ArchExecDeleteId" data-toggle="modal" data-target="#ArchiveDeletePopUp" style="display: none;">Delete PopUp</button>                                                               
-                                                    
+                                                    <!-- Remarks Button -->
+													<button type="button" class="btn btn-primary pull-right" id="ArchExecRemarksId" data-toggle="modal" data-target="#ArchiveRemarksPopUp" style="display: none;">Remarks PopUp</button>
                                                                                                         
                                                 </div>
                                             </div>
@@ -868,6 +869,34 @@ background:#1565c0 important;
   </div>
 </div>  
 
+<!-- Archive Execution Remarks Popup -->
+
+<div class="modal" id="ArchiveRemarksPopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#269af8;color:white">
+        <h5 class="modal-title" style="color:white">Remarks</h5>
+        <button type="button" id ="ArchiveRemarksClose" style="color:white" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="remarksTaskGroup" style="color:white">Task Group:</h5>
+        <h5 class="modal-title" id="remarksTaskName" style="color:white">Task Name:</h5>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+             <div id="remarkPts" class="row changeText RemarksPoints" contenteditable="true" spellcheck="false">
+			 </div>
+             <input type="hidden" id="ArchiveRemarksSeq"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id = "closeIdRemarks" data-dismiss="modal" aria-label="Close" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>  
 </div>
 </div>
 
@@ -900,6 +929,7 @@ $(document).on('mouseenter','.active1', function(){
          <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceAddAjaxCall.js"></script>
          <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceEdit.js"></script>
          <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceDeleteAjaxCall.js"></script>
+         <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionRemarks.js"></script>
         
           
           <!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
