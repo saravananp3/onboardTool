@@ -21,11 +21,86 @@ $(document).ready(function (){
 		var value = $('.'+fieldName).eq(index).val();
 		var seqNo = parseInt(index)+1;
 		//var valuePrev = $(this).data('val');
-		saveFunction(seqNo,columnName,value,valuePrev);
+    var dateValidationFlag = dateValidation(fieldName, index, value);
+    if (dateValidationFlag)
+  	saveFunction(seqNo,columnName,value,valuePrev);
 		});
+    function dateValidation(fieldName, index, value) {
+						if (fieldName.includes("Start")) {
+							var startDate = new Date(DateConverter(value));
+							if (fieldName.includes("plan")) {
+								var end_date = DateConverter($('.planEnd').eq(index).val());
+								var endDate = new Date(end_date);
+								if (end_date == null || end_date == undefined
+										|| end_date == "" || value == null
+										|| value == undefined || value == "")
+									return true;
+								else if (startDate <= endDate)
+									return true;
+								else {
+									notification("warning","Please fill the date lesser than or equal to plan end date.","Warning");
+									$('.planStart').eq(index).val("");
+									return false;
+								}
+
+							} else if (fieldName.includes("act")) {
+								var end_date = DateConverter($('.actEnd').eq(
+										index).val());
+								var endDate = new Date(end_date);
+								if (end_date == null || end_date == undefined
+										|| end_date == "" || value == null
+										|| value == undefined || value == "")
+									return true;
+								else if (startDate <= endDate)
+									return true;
+								else {
+									notification("warning","Please fill the date lesser than or equal to actual end date.","Warning");
+									$('.actStart').eq(index).val("");
+									return false;
+								}
+							}
+						} else if (fieldName.includes("End")) {
+							var endDate = new Date(DateConverter(value));
+							if (fieldName.includes("plan")) {
+								var start_date = DateConverter($('.planStart')
+										.eq(index).val());
+								var startDate = new Date(start_date);
+								if (start_date == null || start_date == undefined || start_date == "" || value == null || value == undefined || value == "")
+									return true;
+								else if (startDate <= endDate)
+									return true;
+								else {
+									notification("warning","Please fill the date greater than or equal to plan start date.","Warning");
+									$('.planEnd').eq(index).val("");
+									return false;
+								}
+							} else if (fieldName.includes("act")) {
+								var start_date = DateConverter($('.actStart').eq(index).val());
+								var startDate = new Date(start_date);
+								if (start_date == null || start_date == undefined || start_date == "" || value == null || value == undefined || value == "")
+									return true;
+								else if (startDate <= endDate)
+									return true;
+								else {
+									notification("warning","Please fill the date greater than or equal to actual start date.","Warning");
+									$('.actEnd').eq(index).val("");
+									return false;
+								}
+							}
+						}
+						return true;
+					}
+					function DateConverter(date) {
+						var convertedDate = "";
+						var splittedDate = date.split("/");
+						if (splittedDate.length == 3)
+							convertedDate = splittedDate[2] + "-"
+									+ splittedDate[0] + "-" + splittedDate[1];
+						return convertedDate;
+					}
 
 	
-	function getFieldName(className){
+function getFieldName(className){
 			if(className.includes('taskTypeDrop')){
 				 fieldName = 'taskTypeDrop';
 				 columnName = 'taskType';
