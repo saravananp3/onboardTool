@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 import NewArchiveRequirements.LegacyApplicationInfo.retentionDetails.Service.archiveRetentionTemplateService;
 import onboard.DBconnection;
@@ -83,8 +83,8 @@ public void getRetentionLegcalTemplate() {
 	
 	try {
 		dataReq = new archiveFunDataReqTemplateDetails[2];
-		dataReq[0] = new archiveFunDataReqTemplateDetails(1,"FR-R-001","","Data Retention","Data from the application must be retained based on Company’s Retention Policy and should be set at the:Application Level,Table Level,Record Level","N/A");
-		dataReq[1] = new archiveFunDataReqTemplateDetails(2,"FR-R-002","","Legal Hold","Current Legal hold on the application data will be applied to the application’s archived data to override the Retention schedule.","N/A");
+		dataReq[0] = new archiveFunDataReqTemplateDetails(1,"FR-R-001","","Data Retention","Data from the application must be retained based on Companyï¿½s Retention Policy and should be set at the:Application Level,Table Level,Record Level","N/A");
+		dataReq[1] = new archiveFunDataReqTemplateDetails(2,"FR-R-002","","Legal Hold","Current Legal hold on the application data will be applied to the applicationï¿½s archived data to override the Retention schedule.","N/A");
 		
 	}
 
@@ -98,9 +98,9 @@ public void getSecurityTemplate() {
 	try {
 		dataReq = new archiveFunDataReqTemplateDetails[6];
 		dataReq[0] = new archiveFunDataReqTemplateDetails(1,"FR-S-001","","Access - Admin","Access is role based and controlled by the active directory: Admin role. Admin Role will be created for an Admin to view data, run purge jobs, and make updates to specific areas in the archive","N/A");
-		dataReq[1] = new archiveFunDataReqTemplateDetails(2,"FR-S-002","","Access – End User","Access is role based and controlled by the active directory: End User role. End User Role will be created for users to view data but do not have permissions to make any administrative changes to the archive","N/A");
-		dataReq[2] = new archiveFunDataReqTemplateDetails(3,"FR-S-003","","Access – Unauthorized Login","Access to the Archive is role based and controlled through Active Directory - access is denied for any unauthorized user","N/A");
-		dataReq[3] = new archiveFunDataReqTemplateDetails(4,"FR-S-004","","Access – Company Code","Users will be assigned to an Active Directory (AD) group","N/A");
+		dataReq[1] = new archiveFunDataReqTemplateDetails(2,"FR-S-002","","Access ï¿½ End User","Access is role based and controlled by the active directory: End User role. End User Role will be created for users to view data but do not have permissions to make any administrative changes to the archive","N/A");
+		dataReq[2] = new archiveFunDataReqTemplateDetails(3,"FR-S-003","","Access ï¿½ Unauthorized Login","Access to the Archive is role based and controlled through Active Directory - access is denied for any unauthorized user","N/A");
+		dataReq[3] = new archiveFunDataReqTemplateDetails(4,"FR-S-004","","Access ï¿½ Company Code","Users will be assigned to an Active Directory (AD) group","N/A");
 		dataReq[4] = new archiveFunDataReqTemplateDetails(5,"FR-S-005","","Encrypted Data: Personal/Confidential","Archived data must remain encrypted for data classified as Personal Sensitive or Personal Confidential (ie. SSN, Name, Bank Information, etc.)","N/A");
 		dataReq[5] = new archiveFunDataReqTemplateDetails(6,"FR-S-006","","Data Masking","Data masking must be applied to archived data that is classified as Business Restricted (ie. Email)","N/A");
 	}

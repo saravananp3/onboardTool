@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 import ArchiveExecutionGovernanceModule.service.ArchiveExecutionGovernanceTemplateService;
 import onboard.DBconnection;

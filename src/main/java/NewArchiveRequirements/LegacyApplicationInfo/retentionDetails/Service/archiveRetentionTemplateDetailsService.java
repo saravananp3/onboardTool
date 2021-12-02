@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 import NewArchiveRequirements.LegacyApplicationInfo.Service.archiveReqLegacyTemplateInfo;
 import onboard.DBconnection;
@@ -20,7 +20,7 @@ public archiveRetentionTemplateDetailsService() throws ClassNotFoundException, S
 		
 		dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
-		 
+		 System.out.println("*******Getting connection ******");
 	}
 
 public void archiveRetentionTemplate() {
