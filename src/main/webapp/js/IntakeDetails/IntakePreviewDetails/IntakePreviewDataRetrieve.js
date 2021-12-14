@@ -1,9 +1,50 @@
 var dependencyColumn = "";
 var readOnlyValue = "";
 var finalCheck;
-
+var exportContent = [];
 $(document).ready (function(){
+	// @Html.Partial("_WaitModal");
+	var progressCss = $("#emailProgress");
+	//complete:function showSpin(){$("#loading-overlay").hide();}
 	IntakePreviewDataRetrieveAjaxCall();
+	
+	$(document).on('click','#exportPdf',function(){
+	$.ajax({ 
+		 url: "exportPdfServlet",
+		 type: 'POST',
+		 async: false,
+	     dataType: "json",
+	     data: {jsonContent:JSON.stringify(exportContent)},
+	     success: function (data) {
+	    	 console.log("Data : ",data); 
+	    },
+	  error: function (e) { console.log(e); }
+	  
+	  });
+	});
+	$(document).on('click','#button_id',function(){
+		// $("#loading_overlay").show();
+		//showSpin();
+		//$("#loading_overlay").attr("style","display:block;");
+		//$("#loading_overlay").html(progressCss.val());
+		
+		 $.ajax({ 
+			 url: "intakeMailApproval",
+			 type: 'POST',
+			 async: false,
+		     dataType: "json",
+		     success: function (data) {
+		    	 console.log("Data : ",data); 
+		    	 if(data.checkStatus){
+		    		 $("#loading-overlay").hide();
+		             notification("info","Please check your email for Approval.","Info");
+		             }
+		    },
+		  error: function (e) { console.log(e); }
+		  
+		  });
+		 
+	});
 });
 
 function IntakePreviewDataRetrieveAjaxCall()
@@ -14,7 +55,7 @@ function IntakePreviewDataRetrieveAjaxCall()
         dataType: "json",
         success: function (data) {
             console.log("Data Retrieve Preview json array----->",data);
-            
+            exportContent = data;
             var inputs = {};
            $("#OpportunityInfoPreview").html("");
 		   $("#TriageInfoPreview").html("");
@@ -104,7 +145,10 @@ function IntakePreviewDataRetrieveAjaxCall()
             
             for(var n = 1; n<data[4].length; n++){
             
-            	//var stakeHolderTag = "<pre style='font-family:verdana;font-size:100%;' class = 'stakeHolderInfoPreview'><b>"+data[4][n].LabelName+"</b> : "+data[4][n].Value+" </pre>";
+            	// var stakeHolderTag = "<pre
+				// style='font-family:verdana;font-size:100%;' class =
+				// 'stakeHolderInfoPreview'><b>"+data[4][n].LabelName+"</b> :
+				// "+data[4][n].Value+" </pre>";
             	table += "<tr>"+
             				"<td>"+data[4][n].name+"</td>"+
             				"<td>"+data[4][n].emailId+"</td>"+
@@ -117,7 +161,9 @@ function IntakePreviewDataRetrieveAjaxCall()
             		"</table>";
             $("#StakeHolderInfoPreview").append(table);
             notification("info","Review of previous details.","Info");
-            var checkReviewPage = data[5].CheckExistence;
+            // var onclick_attr = $("#ReviewNextBtn").attr("onclick");
+            $("#ReviewNextBtn").attr("onclick","location.href='IntakeApproval.jsp?a_id="+data[5].a_id+"';");
+            var checkReviewPage = data[data.length-1].CheckExistence;
             if(checkReviewPage==true)
             {
              $("#ReviewNextBtn").hide();
@@ -138,7 +184,7 @@ function dependencyKeyValuePair(){
 	
 	var inputs = {};
 	
-	//Triage Dependency
+	// Triage Dependency
 	inputs["rationalization_type"] = "Other";
 	inputs["appPlatfrm"] = "Other";
 	inputs["app_and_data_hosted"] = "Yes";
@@ -146,21 +192,21 @@ function dependencyKeyValuePair(){
 	inputs["Financialdate"] = "Yes";
 	inputs["TechincalDeterminingdate"] = "Yes";
 	
-	//Application Info Dependency
+	// Application Info Dependency
 	inputs["AssessAppPlatform"] = "Others";
 	inputs["ComplianceLegalDrivers"] = "Yes";
 	inputs["BusinessDriversDrivers"] = "Yes";
 	inputs["TechnicalDrivers"] = "Yes";
 	inputs["SupportedApp"] = "No";
 	
-	//DataChar Dependency
+	// DataChar Dependency
 	inputs["DataSetMainframe"] = "Yes";
 	inputs["ReportGeneration"] = "Yes";
-	//inputs["ReadonlyData"] = "Yes";
-	//inputs["ReadonlyData"] = "No";
+	// inputs["ReadonlyData"] = "Yes";
+	// inputs["ReadonlyData"] = "No";
 	inputs["UpDownStream"] = "Yes";
 	
-	//Archival Dependency
+	// Archival Dependency
 	inputs["legalhold"] = "Yes";
 	inputs["specificpurgerequirements"] = "Yes";
 	
@@ -171,7 +217,7 @@ function dependencyKeyValueColumnPair(){
 	
 	var inputs = {};
 	
-	//Triage Dependency
+	// Triage Dependency
 	inputs["rationalization_type"] = "If_other_please_describe";
 	inputs["appPlatfrm"] = "If_Other_describe";
 	inputs["app_and_data_hosted"] = "vendor";
@@ -179,21 +225,21 @@ function dependencyKeyValueColumnPair(){
 	inputs["Financialdate"] = "plsdescribe";
 	inputs["TechincalDeterminingdate"] = "pls_describe";
 	
-	//Application Info Dependency
+	// Application Info Dependency
 	inputs["AssessAppPlatform"] = "OtherPleaseDescribe";
 	inputs["ComplianceLegalDrivers"] = "PleaseDescribe1";
 	inputs["BusinessDriversDrivers"] = "PleaseDescribe2";
 	inputs["TechnicalDrivers"] = "PleaseDescribe3";
 	inputs["SupportedApp"] = "SupportApp";
 	
-	//DataChar Dependency
+	// DataChar Dependency
 	inputs["DataSetMainframe"] = "plsprovideinfo";
 	inputs["ReportGeneration"] = "plsprovidedetails";
-	//inputs["ReadonlyData"] = "LastUpdateMade";
-	//inputs["ReadonlyData"] = "ExpectedDate";
+	// inputs["ReadonlyData"] = "LastUpdateMade";
+	// inputs["ReadonlyData"] = "ExpectedDate";
 	inputs["UpDownStream"] = "plsdescribeStreams";
 	
-	//Archival Dependency
+	// Archival Dependency
 	inputs["legalhold"] = "ifanypleasedescribe";
 	inputs["specificpurgerequirements"] = "describedetails";
 	
@@ -234,8 +280,6 @@ function checkDependency(ColumnName,Value){
 	return boolean;
 	
 }
-
-
 function checkReadOnlyData(ColumnName){
 	
 	var checkBoolean = false;
@@ -247,3 +291,4 @@ function checkReadOnlyData(ColumnName){
 	return checkBoolean;
 	
 }
+

@@ -241,7 +241,7 @@ DBconnection d=new DBconnection();
 Connection conn = (Connection)d.getConnection();
 
 String Project_Name=(String)details.getAttribute("nameofproject");
-String username=(String)details.getAttribute("u_Name");
+String username=(String)details.getAttribute("username");
 
 
 

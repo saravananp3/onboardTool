@@ -79,7 +79,7 @@ public class Login extends HttpServlet {
 		String userid=request.getParameter("usr");
 		String pwd=request.getParameter("pwd"); 
 		session.setAttribute("username",userid);
-		details.setAttribute("u_Name",userid);
+		//details.setAttribute("u_Name",userid);
 		
 	
 	class Samp

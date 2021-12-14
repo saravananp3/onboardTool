@@ -184,7 +184,7 @@
         Connection conn = (Connection) d.getConnection();
         String Projects = (String) details.getAttribute("projects");
         String Applications = (String) details.getAttribute("applications");
-        String username = (String) details.getAttribute("u_Name");
+        String username = (String) details.getAttribute("username");
         String Project_Name = (String) details.getAttribute("nameofproject");
         String visit_query = "select * from visits";
         Statement visit_st = conn.createStatement();

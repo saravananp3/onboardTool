@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
 <style>
 
@@ -396,7 +396,6 @@ font-size:12px;
 
 }
 </style>
-</style>
   <style type="text/css">
          body{
             background:#fff;
@@ -411,7 +410,6 @@ font-size:12px;
 	  
 	  
 	}
-</style>
 </style>
 </head>
 <body class="top-navbar-fixed">
@@ -509,7 +507,7 @@ font-size:12px;
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" data-toggle="collapse"
                                                         data-parent="#panels1">Intake summary</a> </h4>
-                                                        <button id="intake_module" class="btn pdf"><span
+                                                        <button id="exportPdf" class="btn pdf"><span
                                                     class="glyphicon glyphicon-download-alt"></span> Export Pdf
                                                  </button>
                                             </div>
@@ -647,6 +645,8 @@ font-size:12px;
     <script src="js/pace/pace.min.js"></script>
     <script src="js/lobipanel/lobipanel.min.js"></script>
     <script src="js/iscroll/iscroll.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <!-- ========== PAGE JS FILES ========== -->
     <script src="js/prism/prism.js"></script>
     <script src="js/waypoint/waypoints.min.js"></script>

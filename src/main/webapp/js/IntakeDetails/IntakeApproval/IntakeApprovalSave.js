@@ -67,7 +67,7 @@ function ApprovalSaveAjaxCall(seq_num,IntakeApproval)
         url: "IntakeApprovalSaveServlet",
         type: 'POST',
         async: false,
-        data : {seq_no:seq_num,IntakeApproval:IntakeApproval},
+        data : {seq_no:seq_num,IntakeApproval:IntakeApproval,approverId:a_Id,isApproval:"true"},
         dataType: "json",
         success: function (data) {
         console.log("data save  -->",data);

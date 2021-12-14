@@ -146,7 +146,7 @@
         int flag=1,knt=0;
         Date date = new Date();
         SimpleDateFormat ft,ft1;
-        String username=(String)details.getAttribute("u_Name");
+        String username=(String)details.getAttribute("username");
 
         ft=new SimpleDateFormat ("yyyy-MM-dd");
         ft1=new SimpleDateFormat ("hh:mm:ss");

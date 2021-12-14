@@ -28,6 +28,7 @@ function StakeHolderDataRetrieveAjaxCall()
         url: "IntakeStakeHolderDataRetrieveServlet",
         type: 'POST',
         dataType: "json",
+        data:{isApprover:"false"},
         success: function (data) {
             console.log("Data Retrieve Stake Holder json array----->",data);
             if (!$.isArray(data)) {
@@ -35,7 +36,7 @@ function StakeHolderDataRetrieveAjaxCall()
             }
             var index=0;
             var checkData = false;
-            $.each(data, function(key, value){
+            $.each(data[0], function(key, value){
                if(index==0)
             	{
             	   checkData = value.checkExistence;

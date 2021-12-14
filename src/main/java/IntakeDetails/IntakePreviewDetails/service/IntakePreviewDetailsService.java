@@ -16,13 +16,16 @@ import onboard.DBconnection;
 
 public class IntakePreviewDetailsService {
 	
-	 DBconnection dBconnection =null;
-		
+	    DBconnection dBconnection =null;
 		Connection con = null;
+		private String username;
+		private String oppId;
 		
-		public IntakePreviewDetailsService() throws ClassNotFoundException, SQLException {
+		public IntakePreviewDetailsService(String oppId,String username) throws ClassNotFoundException, SQLException {
 			dBconnection = new DBconnection();
 			con = (Connection) dBconnection.getConnection();
+			this.oppId = oppId;
+			this.username = username;
 		}
 		
 		public JsonArray IntakePreviewDataRetrieve(String Id) throws ClassNotFoundException, SQLException {
@@ -34,8 +37,10 @@ public class IntakePreviewDetailsService {
 			jsonArray.add(new IntakeTriageService().DataRetrieve(Id));
 			jsonArray.add(new IntakeTriageSummaryService().DataRetrieve(Id));
 			jsonArray.add(new IntakeAssessmentService().DataRetrieve(Id));
-			jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,""));
+			jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,"","",false));
+			jsonArray.add(getCurrentUserApproverId());
 			jsonArray.add(CheckOverallApproval(Id));
+			
 			intakeStake = null;
 			System.gc();
 		}
@@ -47,6 +52,25 @@ public class IntakePreviewDetailsService {
 		
 		return jsonArray;
 		
+	}
+		
+	private JsonObject getCurrentUserApproverId() {
+		JsonObject approverId = null;
+		try {
+		   	approverId = new JsonObject();
+		   	String selectQuery = "select * from intake_stake_holder_info  where oppId='"+oppId+"' and username ='"+username+"'";
+		   	Statement st = con.createStatement();
+		   	ResultSet rs = st.executeQuery(selectQuery);
+		   	if(rs.next()) {
+		   		approverId.addProperty("a_id", rs.getString("approvalId"));
+		   	}
+		   	st.close();
+		   	rs.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return approverId;
 	}
 	private JsonObject CheckOverallApproval(String Id)
 	{
@@ -61,6 +85,8 @@ public class IntakePreviewDetailsService {
 			{
 				checkOverallApproval = Boolean.parseBoolean(rs.getString(4));
 			}
+			rs.close();
+			st.close();
 			jsonObject.addProperty("CheckExistence",checkOverallApproval);
 		}
 		catch(Exception e)

@@ -147,7 +147,8 @@ function drawPieChart() {
   var pieData = google.visualization.arrayToDataTable(pieChartData);
 
   var pieOptions = {
-    title: 'Applocatio'
+    title: 'Applocation',
+    colors:['#6699ff','#9fbfdf','#d6e0f5']
   };
 
   var pieChart = new google.visualization.PieChart(document.getElementById('pieChartId'));

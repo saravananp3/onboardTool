@@ -20,6 +20,9 @@ public class IntakeStakeHolderService extends  DynamicFields
 	
 	Connection con = null;
 	
+	public String oppId="";
+	public String userName="";
+	
 	public IntakeStakeHolderService() throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
@@ -162,10 +165,16 @@ public class IntakeStakeHolderService extends  DynamicFields
 
 	
 	
-	public JsonArray IntakeStakeHolderDataRetrieve(String Id, String UserName) {
+	public JsonArray IntakeStakeHolderDataRetrieve(String Id, String UserName,String approverId,boolean isApprover) {
 		JsonArray jsonArray1 = new JsonArray();
 		try
 		{
+		if(isApprover) {
+			getOppIdAndUserName(approverId);
+		  Id = oppId;
+		  UserName = userName;
+		}
+		
 	    JsonArray jsonArray = new JsonArray();
 		boolean checkExistence =  false;
 		String CheckQuery = "select * from intake_stake_holder_info where OppId ='"+Id+"' order by seq_no;";
@@ -204,7 +213,24 @@ public class IntakeStakeHolderService extends  DynamicFields
 		}
 		return jsonArray1;
 	}
-        
+     private void getOppIdAndUserName(String approverId) {
+    	  oppId=null;
+    	 try {
+    		 String selectQuery = "select * from intake_stake_holder_info where approvalId = '"+approverId+"'";
+    		 Statement st = con.createStatement();
+    		 ResultSet rs = st.executeQuery(selectQuery);
+    		 if(rs.next()) {
+    			 oppId = rs.getString("oppId");
+    			 userName =rs.getString("username");
+    		 }
+    		 rs.close();
+    		 st.close();
+    	 }
+    	 catch(Exception e) {
+    		 e.printStackTrace();
+    	 }
+     }
+	
 	private JsonArray getOpportunityInfo(String Id) {
 		
 		JsonArray jsonArray = new JsonArray();

@@ -51,6 +51,27 @@ body {
 	background: #fff;
 }
 
+.boxedRed {
+  font-size: 20px;
+  height:40px;
+  text-align:center;
+  border: 3px solid red ;
+}
+
+.boxedOrange {
+  font-size: 20px;
+  height:40px;
+  text-align:center;
+  border: 3px solid orange ;
+}
+
+.boxedBlue {
+  font-size: 20px;
+  height:40px;
+  text-align:center;
+  border: 3px solid blue ;
+}
+
 .active {
 	background: #1565c0;
 }
@@ -420,6 +441,11 @@ input[type=search]:focus {
 	box-shadow: 0 1px 7px rgb(76, 89, 103);
 	margin-top: 14px;
 }
+div.paneldashboard1 {
+	box-shadow: 0 1px 7px rgb(76, 89, 103);
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
 
 .font_icon {
 	font-size: 20px;
@@ -478,7 +504,7 @@ input[type=search]:focus {
         int flag=1,knt=0;
         Date date = new Date();
         SimpleDateFormat ft,ft1;
-        String username=(String)details.getAttribute("u_Name");
+        String username=(String)details.getAttribute("username");
 
         ft=new SimpleDateFormat ("yyyy-MM-dd");
         ft1=new SimpleDateFormat ("hh:mm:ss");
@@ -674,13 +700,64 @@ input[type=search]:focus {
 
 					</div>
 				</div>
+                <div class="d-flex align-items-center">
+                <div class="col-md-12">
+					<div class="row">
+						
+						<!-- <div class="col-sm-8 col-md-8 col-lg-8 col-xs-4"> -->
+							<div class="paneldashboard">
+							<div class="content d-inline-block">
+								<div class = "col-sm-4 col-md-4 col-lg-4 col-xs-4">
+								<div class="paneldashboard1">
+									<!-- <div class="content"> -->
+										<h6 style="margin-left: 30px;">Phases</h6>
+										<br />
+										<div id="donutchart1" style="width: 650px; height: 500px;"></div>
+									<!-- </div> -->
+									</div>
+							   </div>
+							   </div>
+							   <div class="content d-inline-block">
+							  <!-- </div> -->
+<!-- 							<div class="paneldashboard"> -->			
+							<div class = "col-sm-4 col-md-4 col-lg-4 col-xs-4">
+							<div class="paneldashboard1">
+									<!-- <div class="content"> -->
+										<h6 style="margin-left: 30px;">Waves</h6>
+										<br />
+										<div id="donutchart2" style="width: 650px; height: 500px;"></div>
+
+									</div>
+									<!-- </div> -->
+							</div>
+					      </div>
+					      </div>
+						<!-- </div> -->
+						<div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
+							<div class="paneldashboard">
+								<div>
+									<div class="content d-inline-block">
+										<h6 style="margin-left: 30px;">Application Categories</h6>
+										<br />
+										<div id="pieChartId" style="width: 650px; height: 500px;"></div>
+
+									</div>
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
 
 				<div class="">
 					<div class="row">
-						<div class=" col-md-6 col-lg-9">
-							<div class="paneldashboard" style= "width:1500px;border:5px;padding:50px;margin-left:50px;margin-top:25px;">
+						<div class=" col-md-8 col-lg-8">
+							<div class="paneldashboard" style= "border:5px;padding:50px;margin-left:50px;margin-top:25px;">
 								<div class="content">
-									<!-- <h6 style="margin-left: 30px;">Application Status</h6> -->
+									<!-- <h6 style="margin-left: 30px;">Application Status</h6>
 									<!-- <div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div> -->
 									<table id="example" class="display" >
 										<thead>
@@ -699,59 +776,111 @@ input[type=search]:focus {
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6 col-lg-3">
+						<div class="col-md-4 col-lg-4">
 
-							<div class="paneldashboard" style= "width:450px;border:5px;padding:50px;margin-top:25px;margin-left:25px;margin-right:40px">
+							<div class="paneldashboard" style= "border:5px;padding:50px;margin-top:25px;margin-left:25px;margin-right:40px">
 								<div class="content">
-								<h3> <b>Risk, Issues and Dead Lines</b></h3>
-								<h4>5 Risk</h4>
-								<h4>6 Overdue Task</h4>
-								<h4>2 Employee overbudget </h4>
-								</div>
+								<h3> <b>Risk, Issues and Dead Lines</b></h3><br/>
+								<div class="boxedRed">
+								<div style="width: 70%;height:38px;padding:5px;float:left;display:inline;">Risks</div>
+                                <div style="width: 30%;height:38px;padding:5px;float:right;display:inline;float:right;background-color:red;color:white;">05</div>
+								</div><br/>
+								<div class="boxedOrange">
+								<div style="width: 70%;height:38px;padding:5px;float:left;display:inline;">Issues</div>
+                                <div style="width: 30%;height:38px;padding:5px;float:right;display:inline;float:right;background-color:Orange;color:white;">06</div>
+								</div><br/>
+								<div class="boxedBlue"><div style="width: 70%;height:38px;padding:5px;float:left;display:inline;">Deadlines</div>
+                                <div style="width: 30%;height:38px;padding:5px;float:right;display:inline;float:right;background-color:blue;color:white;">02</div></div>
+     							</div>
 							</div>
 						</div>
 
 					</div>
 				</div>
-				<div class="col-md-12">
+				<div class="">
 					<div class="row">
-						
-						<div class="col-sm-3 col-md-6 col-lg-8">
-							<div class="paneldashboard">
-								<div>
-									<div class="content">
-										<h6 style="margin-left: 30px;">Cost Benefit Analysis</h6>
-										<br />
-										<div id="columnChartId" style="width: 700px; height: 500px;"></div>
+						<div class=" col-md-8 col-lg-8">
+							<div class="paneldashboard" style= "border:5px;padding:50px;margin-left:50px;margin-top:25px;">
+								<div class="content">
+									<!-- <h6 style="margin-left: 30px;">Application Status</h6> -->
+									<!-- <div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div> -->
+									<table id="example" class="display" >
+										<thead>
+											<tr>
+												<th>App Name</th>
+												<th>Module</th>
+												<th>Due Date</th>
+												<th>Resource</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody id="dataTableId">
 
-									</div>
-
+										</tbody>
+									</table>
 								</div>
-
-
 							</div>
 						</div>
-						<div class="col-sm-3 col-md-6 col-lg-4">
-							<div class="paneldashboard">
-								<div>
-									<div class="content">
-										<h6 style="margin-left: 30px;">Application Categories</h6>
-										<br />
-										<div id="pieChartId" style="width: 650px; height: 500px;"></div>
+						<div class="col-md-4 col-lg-4">
 
-									</div>
-
+							<div class="paneldashboard" style= "border:5px;padding:50px;margin-top:25px;margin-left:25px;margin-right:40px">
+								<div class="content">
+								<h6 style="margin-left: 30px;">Data Characteristics</h6>
+										<br/>
+								<div id ="columnChartId" style= "width:500px;height:200px;">
 								</div>
-
-
+								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
-			</div>
+								<div class="">
+					<div class="row">
+						<div class=" col-md-8 col-lg-8">
+							<div class="paneldashboard" style= "border:5px;padding:50px;margin-left:50px;margin-top:25px;">
+								<div class="content">
+									<!-- <h6 style="margin-left: 30px;">Application Status</h6> -->
+									<!-- <div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div> -->
+									<table id="example" class="display" >
+										<thead>
+											<tr>
+												<th>App Name</th>
+												<th>Phase</th>
+												<th>Wave</th>
+												<th>Complexity</th>
+												<th>Priority</th>
+												<th>Start date</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody id="dataTableId">
 
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-lg-4">
 
-
+							<div class="paneldashboard" style= "border:5px;padding:50px;margin-top:25px;margin-left:25px;margin-right:40px">
+								<div class="content">
+								<h6 style="margin-left: 30px;">Cost Benefit Analysis</h6>
+										<br/>
+								<div id ="pieChart1" style= "width:500px;height:300px;">
+								</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="">
+				<div class="row">
+				
+				</div>
+				</div>
+				</div>
 		</div>
 	</div>
 
@@ -876,8 +1005,6 @@ $(document).ready(function() {
     }
 });
 </script>
-	<script type="text/javascript"
-		src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
@@ -913,10 +1040,11 @@ $(document).ready(function() {
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
-        ["State", "$", { role: "style" } ],
-        ['Sum of Realized',      110000.00, 'blue'],     
-        ['Sum of in Process',  365000, 'blue'],          
-        ['Sum of Intake/Opportunity', 192000.00, 'blue']      ]);
+        ["Db", "Db size", { role: "style" } ],
+        ['Db2', 10, '#6699ff'],     
+        ['Oracle18c',  4, '#6699ff'],          
+        ['FileShare', 7, '#6699ff'],
+        ['Sybase', 20, '#6699ff'] ]);
 
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
@@ -928,8 +1056,6 @@ $(document).ready(function() {
 
       var options = {
         title: "Total",
-        width: 1200,
-        height: 400,
         bar: {groupWidth: "25%"},
         legend: { position: "none" },
       };
@@ -937,5 +1063,68 @@ $(document).ready(function() {
       chart.draw(view, options);
   }
   </script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'Percentage'],
+          ['Yet to start',     4],
+          ['InProgress',      3],
+          ['Completed',  2]
+        ]);
+
+        var options = {
+          title: 'Phases',
+          pieHole: 0.4,
+          colors:['#6699ff','#9fbfdf','#d6e0f5']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'Percentage'],
+          ['Yet to start',     4],
+          ['InProgress',      3],
+          ['Completed',  2]
+        ]);
+
+        var options = {
+          title: 'Waves',
+          pieHole: 0.4,
+          colors:['#6699ff','#9fbfdf','#d6e0f5']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'Percentage'],
+          ['Sum of Intake/Opportunity',     4],
+          ['Sum of realized',      3],
+          ['Sum of In Process',  2]
+        ]);
+
+        var options = {
+          title: 'Cost Benefit Analysis',
+          colors:['#6699ff','#9fbfdf','#d6e0f5']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pieChart1'));
+        chart.draw(data, options);
+      }
+    </script>
+    
 </body>
 </html>

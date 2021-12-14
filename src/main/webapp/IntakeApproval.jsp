@@ -471,131 +471,396 @@ font-size:12px;
                            Approval</a>
                          </p>
 
-                    </div>
+								</div>
 
-                </div>
+							</div>
+					</nav>
+
+				</div>
+				<!-- /.container-fluid -->
 			</nav>
-      
-        </div>
-        <!-- /.container-fluid -->
-    </nav >
-            <div class="content-wrapper">
-                <div class="content-container" >
-                   
-                    <div class="main-page">
-                        
-                        <section>
-                            <div class="row">
-                                <div class="container" id="module_header">
-                                
-                                                    <div class=" col-md-12">
-				<div class="form-wizard">
-					<form action="" method="post" role="form">
-					<br/>
-					<br/>
-					<br/>
-                                      <div class="form-wizard-header">
-											<p>Fill all the required fields to go next step</p>
-											<ul class="list-unstyled form-wizard-steps clearfix">
-												<li class="activated" ><span>1</span><i>Opportunity</i></li>
-												<li class="activated"><span>2</span><i>Triage</i></li>
-												<li class="activated"><span>3</span><i>Triage Summary</i></li>
-												<li class="activated"><span>4</span><i>Assessment</i></li>
-												<li class="activated"><span>5</span> <i>Stake Holder</i></li>
-												<li class="activated"><span>6</span><i>Review</i></li>
-												<li class="active"><span>7</span><i>Approval</i></li>
-											</ul>
-						             </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse"
-                                                        data-parent="#panels1">Intake Approval</a> </h4>
-                                            </div>
-                                            <div ng-app="btn" ng-controller="MainCtrl">
-</div>
-                                            <div class="panel-collapse collapse in"
-                                                name="collapse">
-                                                <div class="panel-body">
-                                                    <div>
-                                                    <h2>Approver List</h2>           
-  													<table class="table table-bordered">
-    												<thead>
-      												<tr>
-        											<th style='text-align:center;vertical-align: middle;'>Approver Name</th>
-        											<th style='text-align:center;vertical-align: middle;'>Approver Role</th>
-        											<th style='text-align:center;vertical-align: middle;'>Approval</th>
-        											<th style='text-align:center;vertical-align: middle;'>Action</th>
-      												</tr>
-    												</thead>
-    												<tbody id="ApprovalDetails">
-    												</tbody>
-  													</table>
-                                                    </div>                                                
-                                                    <div class="col-md-12">
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='IntakeReviewDetails.jsp';">Prev</button>
-                                                            </div>
-                                                            <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right;">
-                                                                <button type="button" class="btn btn-success" id="ApprovalSave">Finish</button>
-                                                                <button type="button" class="btn btn-primary pull-right" id="ConfirmationPopUp_Btn" data-toggle="modal" data-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
-                                                                </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                             </div>
-                </section>
-            </div>
-        </div>
-        </div>
-        </div>
-       
-    </form>
-    <!-- Delete Row Pop Up  -->
-    <div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmation for Approval</h5>
-        <button type="button" id ="ConfirmationClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form name="DeleteForm">
-                <div class="modal-body">
-                    <p style="font-size:20px;">By Approving this opportunity overall approval for intake module will be confirmed as approved.</p><br/><p style="font-size:20px;"> Do you want to allow this?</p>
-                </div>
-            </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="ConfirmationYes" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" id="ConfirmationNo">No</button>
-      </div>
-    </div>
-  </div>
-</div>  
-    <!-- Date picker --> 
-    
-       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
-         rel = "stylesheet"><!-- newly added code by parthiban -->
-         
-         <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
-         <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
-          <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js"></script>
-         
-      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-      <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-      <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-       <script src="js/toastr/toastr.min.js"></script>
-        <script src="js/notification/notification.js"></script>
-         <script src ="js/IntakeDetails/IntakeApproval/IntakeApprovalSave.js"></script>
-      
-       <!-- Active Icon Color changes  -->
-<script>
+			<div class="content-wrapper">
+				<div class="content-container">
+
+					<div class="main-page">
+
+						<section>
+							<div class="row">
+								<div class="container" id="module_header">
+
+									<div class=" col-md-12">
+										<div class="form-wizard">
+											<form action="" method="post" role="form">
+												<br /> <br /> <br />
+												<div class="form-wizard-header">
+													<p>Fill all the required fields to go next step</p>
+													<ul class="list-unstyled form-wizard-steps clearfix">
+														<li class="activated"><span>1</span><i>Opportunity</i></li>
+														<li class="activated"><span>2</span><i>Triage</i></li>
+														<li class="activated"><span>3</span><i>Triage
+																Summary</i></li>
+														<li class="activated"><span>4</span><i>Assessment</i></li>
+														<li class="activated"><span>5</span> <i>Stake
+																Holder</i></li>
+														<li class="activated"><span>6</span><i>Review</i></li>
+														<li class="active"><span>7</span><i>Approval</i></li>
+													</ul>
+												</div>
+												   
+												<div class="panel panel-default">
+												 <!-- Opportunity Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse1">
+																Opportunity Details</a>
+														</h4>
+													</div>
+													<div id="collapse1" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse11" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="OpportunityInfoPreview">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- Triage Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse2">
+																Triage Details</a>
+														</h4>
+													</div>
+													<div id="collapse2" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse12" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="TriageInfoPreview">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- Triage Summary Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse3">
+																Triage Summary Details</a>
+														</h4>
+													</div>
+													<div id="collapse3" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse13" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="TriageSummInfoPreview">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- Intake Assessment Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse4">
+																Intake Assessment</a>
+														</h4>
+													</div>
+													<div id="collapse4" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse14" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																<div class="panel panel-default">
+																	<!-- Application Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse41">
+																Application Details</a>
+														</h4>
+													</div>
+													<div id="collapse41" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse141" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="ApplicationInformationPreview">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+															<!-- Data Characteristics Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse42">
+																Data Characteristics</a>
+														</h4>
+													</div>
+													<div id="collapse42" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse142" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="DataCharacteristicsPreview">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<!-- Compliance Characteristics Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse43">
+																Compliance Characteristics</a>
+														</h4>
+													</div>
+													<div id="collapse43" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse143" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="ComplianceCharacteristicsPreview">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+															
+													<!-- Archival Consumption Details -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse44">
+																Archival Consumption</a>
+														</h4>
+													</div>
+													<div id="collapse44" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse144" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="ArchivalConsumptionPreview">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+															
+					
+													<!-- Contract Information Details -->
+													<div class="panel-heading ContractInformationPreview" style="display:none;">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse45">
+																Contract Information</a>
+														</h4>
+													</div>
+													<div id="collapse45" class="panel-collapse collapse" >
+														<div class="panel-body">
+															<div id="collapse145" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div>
+																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
+																	<tbody id="ContractInformationPreview" style="display:none;">
+																	
+																	</tbody>
+																	</table>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													</div>
+													</div>
+																</div>
+															</div>
+														</div>
+														<!-- Stake Holder -->
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a class="collapsed" data-toggle="collapse"
+																data-parent="#panels1" href="#collapse5">
+																Stake Holder</a>
+														</h4>
+													</div>
+													<div id="collapse5" class="panel-collapse collapse">
+														<div class="panel-body">
+															<div id="collapse15" class="panel-collapse collapse in"
+																name="collapse">
+																<div class="panel-body">
+																	<div id="StakeHolderInfoPreview">
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															<h4 class="panel-title">
+																<a class="collapsed" data-toggle="collapse"
+																	data-parent="#panels1">Intake Approval</a>
+															</h4>
+														</div>
+														<div ng-app="btn" ng-controller="MainCtrl"></div>
+														<div class="panel-collapse collapse in" name="collapse">
+															<div class="panel-body">
+																<div>
+																	<h2>Approver List</h2>
+																	<table class="table table-bordered">
+																		<thead>
+																			<tr>
+																				<th
+																					style='text-align: center; vertical-align: middle;'>Approver
+																					Name</th>
+																				<th
+																					style='text-align: center; vertical-align: middle;'>Approver
+																					Role</th>
+																				<th
+																					style='text-align: center; vertical-align: middle;'>Approval</th>
+																				<th
+																					style='text-align: center; vertical-align: middle;'>Action</th>
+																			</tr>
+																		</thead>
+																		<tbody id="ApprovalDetails">
+																		</tbody>
+																	</table>
+																</div>
+																<div class="col-md-12">
+																	<div class="col-md-1">
+																		<button type="button" class="btn btn-light"
+																			style="padding-top: 5px; padding-left: 10px; float: left;"
+																			onclick="location.href='IntakeReviewDetails.jsp';">Prev</button>
+																	</div>
+																	<div class="col-md-2"
+																		style="padding-top: 10px; padding-right: 10px; float: right;">
+																		<button type="button" class="btn btn-success"
+																			id="ApprovalSave">Finish</button>
+																		<button type="button"
+																			class="btn btn-primary pull-right"
+																			id="ConfirmationPopUp_Btn" data-toggle="modal"
+																			data-target="#ConfirmationPopUp"
+																			style="display: none;">Delete PopUp</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+	<!-- Delete Row Pop Up  -->
+	<div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Confirmation for Approval</h5>
+					<button type="button" id="ConfirmationClose" class="close"
+						data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form name="DeleteForm">
+						<div class="modal-body">
+							<p style="font-size: 20px;">By Approving this opportunity
+								overall approval for intake module will be confirmed as
+								approved.</p>
+							<br />
+							<p style="font-size: 20px;">Do you want to allow this?</p>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="ConfirmationYes" class="btn btn-primary">Yes</button>
+					<button type="button" class="btn btn-default" id="ConfirmationNo">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Date picker -->
+
+	<link
+		href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+		rel="stylesheet">
+	<!-- newly added code by parthiban -->
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js"></script>
+
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<link
+		href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+		rel="stylesheet">
+	<script
+		src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<script src="js/toastr/toastr.min.js"></script>
+	<script src="js/notification/notification.js"></script>
+	<script src="js/IntakeDetails/IntakeApproval/IntakeApprovalSave.js"></script>
+
+	<!-- Active Icon Color changes  -->
+	<script>
 $(document).on('mouseenter','.active1', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');

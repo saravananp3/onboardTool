@@ -101,7 +101,7 @@
         Connection con = (Connection) d.getConnection();
         String Project_name = (String) details.getAttribute("projects");
         String Applications = (String) details.getAttribute("applications");
-        String username = (String) details.getAttribute("u_Name");
+        String username = (String) details.getAttribute("username");
         String visit_query = "select * from visits";
         Statement visit_st = con.createStatement();
         ResultSet visit_rs = visit_st.executeQuery(visit_query);
