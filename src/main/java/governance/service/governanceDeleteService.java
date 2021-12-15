@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 import onboard.DBconnection;
 

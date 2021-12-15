@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 import NewArchiveRequirements.LegacyApplicationInfo.retentionDetails.Service.archiveRetentionTemplateService;
 import onboard.DBconnection;

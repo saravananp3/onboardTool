@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.google.gson.JsonObject;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 import onboard.DBconnection;
 
