@@ -43,6 +43,25 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/Opportunity/OpportunityList/OpportunityList.js"></script>
 <script src="js/Opportunity/OpportunityList/opportunityFilterList.js"></script>
+<!-- ========== BootstrapV5 ========== -->
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
 <style type="text/css">
 body {
 	background: #fff;
@@ -50,10 +69,10 @@ body {
 	max-width: 100%;
 }
 
-.active {
+/* .active {
 	background: #1565c0;
 }
-
+ */
 .page-title-div {
 	background: #1565c0;
 	padding: 15px;
@@ -416,9 +435,10 @@ full width */
 	<%@ page import="java.text.SimpleDateFormat"%>
 	<%@ page import="java.util.Date"%>
 	<%
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    Date date1 = new Date();
-    System.out.println("[INFO]-----"+formatter.format(date1)+"-----Accessed OpportunityList JSP PAGE-----[INFO]"); %>
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date date1 = new Date();
+	System.out.println("[INFO]-----" + formatter.format(date1) + "-----Accessed OpportunityList JSP PAGE-----[INFO]");
+	%>
 	<%@page language="java"%>
 	<%@page import="java.text.DateFormat"%>
 	<%@page import="java.text.SimpleDateFormat"%>
@@ -426,79 +446,176 @@ full width */
 	<%@page import="java.sql.*"%>
 	<%@ page import="onboard.DBconnection"%>
 	<%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
-    if (session.getAttribute("username")==null){
-        response.sendRedirect("Login.jsp");
-    }
-%>
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Expires", "0");
+	if (session.getAttribute("username") == null) {
+		response.sendRedirect("Login.jsp");
+	}
+	%>
 	<%
-    HttpSession role_ses=request.getSession();
-    String frole=(String)role_ses.getAttribute("role");
-    int sumcount=0;
-    Statement st,st1;
-    try{
-        String query;
-        HttpSession details=request.getSession();
-        String Projets=(String)details.getAttribute("projects");
-        System.out.println("projects-------------"+Projets);
-        String roles=(String)details.getAttribute("role");
-        DBconnection d=new DBconnection();
-        Connection con = (Connection)d.getConnection();
-        String visit_query="select * from visits";
-        Statement visit_st = con.createStatement();
-        ResultSet visit_rs = visit_st.executeQuery(visit_query);
-        int flag=1,knt=0;
-        Date date = new Date();
-        SimpleDateFormat ft,ft1;
-        String username=(String)details.getAttribute("u_Name");
+	HttpSession role_ses = request.getSession();
+	String frole = (String) role_ses.getAttribute("role");
+	int sumcount = 0;
+	Statement st, st1;
+	try {
+		String query;
+		HttpSession details = request.getSession();
+		String Projets = (String) details.getAttribute("projects");
+		System.out.println("projects-------------" + Projets);
+		String roles = (String) details.getAttribute("role");
+		DBconnection d = new DBconnection();
+		Connection con = (Connection) d.getConnection();
+		String visit_query = "select * from visits";
+		Statement visit_st = con.createStatement();
+		ResultSet visit_rs = visit_st.executeQuery(visit_query);
+		int flag = 1, knt = 0;
+		Date date = new Date();
+		SimpleDateFormat ft, ft1;
+		String username = (String) details.getAttribute("u_Name");
 
-        ft=new SimpleDateFormat ("yyyy-MM-dd");
-        ft1=new SimpleDateFormat ("hh:mm:ss");
-        String strDate=ft.format(date);
-        String strTime=ft1.format(date);
-        while(visit_rs.next())
-        {
-            if(visit_rs.getString(6)!=null)
-            {
-                if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Logged in"))
-                {
-                    Statement stmtt = con.createStatement();
-                    String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Logged in'  and date ='"+strDate+"'";
-                    int count = stmtt.executeUpdate(queryy);
-                    flag=0;
-                    break;
-                }
-            }
+		ft = new SimpleDateFormat("yyyy-MM-dd");
+		ft1 = new SimpleDateFormat("hh:mm:ss");
+		String strDate = ft.format(date);
+		String strTime = ft1.format(date);
+		while (visit_rs.next()) {
+			if (visit_rs.getString(6) != null) {
+		if (visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate)
+				&& visit_rs.getString(3).equals("Logged in")) {
+			Statement stmtt = con.createStatement();
+			String queryy = "update visits set count=count+1,time='" + strTime + "' where uname='" + username
+					+ "' and module='Logged in'  and date ='" + strDate + "'";
+			int count = stmtt.executeUpdate(queryy);
+			flag = 0;
+			break;
+		}
+			}
 
-        }
-        //System.out.println("the flag value is "+flag);
-        if(flag==1)
-        {
-            String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
-                    + " values (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStmt = con.prepareStatement(ins_query);
-            preparedStmt.setString (1, username);
-            preparedStmt.setString (2, strDate);
-            preparedStmt.setString(3, "Logged in");
-            preparedStmt.setString(4, "1");
-            preparedStmt.setString(5, strTime);
-            preparedStmt.setString(6, "None");
-            preparedStmt.setString(7, "");
+		}
+		//System.out.println("the flag value is "+flag);
+		if (flag == 1) {
+			String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
+			+ " values (?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement preparedStmt = con.prepareStatement(ins_query);
+			preparedStmt.setString(1, username);
+			preparedStmt.setString(2, strDate);
+			preparedStmt.setString(3, "Logged in");
+			preparedStmt.setString(4, "1");
+			preparedStmt.setString(5, strTime);
+			preparedStmt.setString(6, "None");
+			preparedStmt.setString(7, "");
 
-            // execute the preparedstatement
-            preparedStmt.execute();
-        }%>
-
+			// execute the preparedstatement
+			preparedStmt.execute();
+		}
+	%>
 
 
+	<%@include file="Nav-Bar.jspf"%>
+
+	<nav class="nav nav-down-height" id="bg-color">
+		<div class="container-fluid" id="container-fluid-margin">
+			<div class="row" id="d3s-mt-20">
+				<div class="col-lg-12 col-md-12">
+					<h5 id="title">Applications</h5>
+				</div>
+			</div>
+			<div class="row" id="d3s-mt-10">
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<i class="fa fa-search search-icon" aria-hidden="true"></i>
+						</div>
+						<div class="col-auto">
+							<input id="appFilter" type="text"
+								placeholder="Search the application...">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<label class="col-form-label" id="title">Category</label>
+						</div>
+
+						<div class="col-auto">
+							<select class="selectInput filter" id="category dropDown-width">
+								<option class='options' value='All'>All</option>
+								<option class='options' value='Intake'>Intake</option>
+								<option class='options' value='Triage'>Triage</option>
+								<option class='options' value='Assessment'>Assessment</option>
+								<option class='options' value='Archive_Requirement'>Archive
+									Requirement</option>
+								<option class='options' value='Decomm_Requirement'>Decomm
+									Requirement</option>
+								<option class='options' value='DecommissionExecution'>Decommission
+									Execution</option>
+								<option class='options' value='ArchiveExecution'>Archive
+									Execution</option>
+								<option class='options' value='Closure'>Closure</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<label class="col-form-label" id="title">Phase</label>
+						</div>
+						<div class="col-auto">
+							<select class="selectInput filter" id="dropDown-width">
+								<option class='options' value='All'>All</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<label class="col-form-label" id="title">Wave</label>
+						</div>
+						<div class="col-auto">
+							<select class="selectInput filter" id="dropDown-width">
+								<option class='options' value='All'>All</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 right-side">
+				<button type="button" class="btn btn-primary pull-right" id="button"
+					style="color: DodgerBlue;" name="newpr"
+					onclick="location.href='Intake-NewOpportunity.jsp';">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+				</button>
+
+				<button type="button" class="btn btn-primary pull-right"
+					id="addWaveBtnId" style="color: DodgerBlue; display: none;"
+					name="newpr" data-toggle='modal' data-target='#existWavePopUp'>
+				</button>
+				<button type="button" class="btn btn-primary pull-right"
+					id="deleteBtn" style="color: DodgerBlue; display: none;"
+					name="newpr" data-toggle='modal' data-target='#deletePopUp'>
+				</button>
+			</div>
+		</div>
+	</nav>
+	<%
+	String uname = (String) details.getAttribute("username");
+	String role = (String) details.getAttribute("role");
+	%>
+	
 	<!-- main wrapper -->
 	<div class="main-wrapper">
 
 
 		<!-- ========== TOP NAVBAR ========== -->
-		<nav class="navbar top-navbar bg-white box-shadow">
+		<%-- <nav class="navbar top-navbar bg-white box-shadow">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="navbar-header no-padding" style="height: 100px;">
@@ -527,9 +644,7 @@ full width */
 						</div>
 						<div class="login-user">
 							<ul class="nav navbar-nav navbar-right" style="margin-top: 50px;">
-								<%
-                            	String uname=(String)details.getAttribute("username");
-                            	String role=(String)details.getAttribute("role");%>
+								
 
 								<li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged
 										in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
@@ -647,35 +762,35 @@ full width */
 				</nav>
 			</div>
 			<!-- /.container-fluid -->
-		</nav>
+		</nav> --%>
+
 		<!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
 		<div class="content-wrapper">
 			<div class="content-container">
 				<!-- Projects List Start -->
 				<%
-                {
-                    int application_count=0;
-                    if(Projets=="all") {
-                        String projectCount = "select count(*) from appemphazize_projectdetails";
-                        Statement projectCountst = con.createStatement();
-                        ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
-                        if (projectCountqyery.next()) {
-                            application_count = Integer.parseInt(projectCountqyery.getString(1));
-                        }
-                    }
-                    else
-                    {
-                        String ProjCountQuery="select * from admin_userdetails where uname='"+uname+"'";
-                        Statement statement1=con.createStatement();
-                        ResultSet resultSet=statement1.executeQuery(ProjCountQuery);
-                        if(resultSet.next())
-                        {
-                            String[] prjs=(resultSet.getString("projects")).split(",");
-                            application_count=prjs.length;
-                        }
-                    }
-            %>
-				<%} %>
+				{
+					int application_count = 0;
+					if (Projets == "all") {
+						String projectCount = "select count(*) from appemphazize_projectdetails";
+						Statement projectCountst = con.createStatement();
+						ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
+						if (projectCountqyery.next()) {
+					application_count = Integer.parseInt(projectCountqyery.getString(1));
+						}
+					} else {
+						String ProjCountQuery = "select * from admin_userdetails where uname='" + uname + "'";
+						Statement statement1 = con.createStatement();
+						ResultSet resultSet = statement1.executeQuery(ProjCountQuery);
+						if (resultSet.next()) {
+					String[] prjs = (resultSet.getString("projects")).split(",");
+					application_count = prjs.length;
+						}
+					}
+				%>
+				<%
+				}
+				%>
 				<div class="main-page">
 					<div class="container"></div>
 
@@ -685,7 +800,7 @@ full width */
 
 							<div class="row">
 								<div class="container-fluid grid">
-									<br /> <br /> <br />
+									
 									<div class="main">
 										<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
 											<div class="cbp-vm-options">
@@ -706,15 +821,14 @@ full width */
 												</ul>
 											</div>
 											<%
-                                                con.close();
-                                                visit_st.close();
-    }
+											con.close();
+											visit_st.close();
+											}
 
-
-                                            catch(Exception e){
-                                                e.printStackTrace();
-                                            }
-                                        %>
+											catch (Exception e) {
+											e.printStackTrace();
+											}
+											%>
 
 
 											</ul>
@@ -858,27 +972,25 @@ full width */
 
 
 	<script type="text/javascript">
-    $('#list').click(function()
-    {
-        $('#grid').removeClass('cologen');
-        $('#list').addClass('cologen');
-    });
-    $('#grid').click(function()
-    {
-        $('#list').removeClass('cologen');
-        $('#grid').addClass('cologen');
-    });
-    $(document).ready(function() {
-        $(".lis").click(function() {
-            $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
-            $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
-        });
-        $(".gr").click(function() {
-            $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
-            $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
-        });
-    });
-</script>
+		$('#list').click(function() {
+			$('#grid').removeClass('cologen');
+			$('#list').addClass('cologen');
+		});
+		$('#grid').click(function() {
+			$('#list').removeClass('cologen');
+			$('#grid').addClass('cologen');
+		});
+		$(document).ready(function() {
+			$(".lis").click(function() {
+				$(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
+				$(".cbp-vm-switcher").addClass("cbp-vm-view-list");
+			});
+			$(".gr").click(function() {
+				$(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
+				$(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
+			});
+		});
+	</script>
 	<!-- ========== PAGE JS FILES ========== -->
 	<script src="js/prism/prism.js"></script>
 	<script src="js/waypoint/waypoints.min.js"></script>
@@ -920,30 +1032,43 @@ full width */
 	<script src="js/Opportunity/OpportunityList/opportunitySearchList.js"></script>
 
 	<script>
-$(document).ready(function() {
-    $('.searchbox-input').keyup(function(){
-        search_text($(this).val());
-    });
+		$(document)
+				.ready(
+						function() {
+							$('.searchbox-input').keyup(function() {
+								search_text($(this).val());
+							});
 
-    function search_text(value){
-        $('#ul_id .cbp-vm-title').each(function(){
-            var found = 'false';
-            $(this).each(function(){
-                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
-                {
-                    found = 'true';
-                }
-            });
-            if(found == 'true'){
-                $(this).parent().css('display','');
-            }
-            else {
-                $(this).parent().css('display','none');
-            }
-        })
-    }
-});
-</script>
-
+							function search_text(value) {
+								$('#ul_id .cbp-vm-title')
+										.each(
+												function() {
+													var found = 'false';
+													$(this)
+															.each(
+																	function() {
+																		if ($(
+																				this)
+																				.text()
+																				.toLowerCase()
+																				.indexOf(
+																						value
+																								.toLowerCase()) >= 0) {
+																			found = 'true';
+																		}
+																	});
+											if (found == 'true') {
+												$(this).parent().css(
+													'display', '');
+										} else {
+											$(this).parent().css(
+											'display',
+												'none');
+									}
+								})
+							}
+						});
+	</script>
+	<script src="js/navigation/navigation.js"></script>
 </body>
 </html>

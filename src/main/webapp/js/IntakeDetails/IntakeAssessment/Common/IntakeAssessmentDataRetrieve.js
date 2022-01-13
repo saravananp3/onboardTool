@@ -151,7 +151,7 @@ function AssessmentDataRetrieveAjaxCall()
                 {
                 	var template_check=""; 
                     var inputtext="<div class='form-group InputFieldAssessment "+Section+"' id ='"+ColumnName+"_AssessmentRow'"+HideShow+">\n" +
-                        "<label class='control-label' for='Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>\n" +
+                        "<label class='control-label' for='Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span>\n" +
                         "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                         "</div>";
                     $('#'+InputFieldName).append(inputtext);
@@ -162,7 +162,7 @@ function AssessmentDataRetrieveAjaxCall()
                 	var template_check=""; 
                 	
                     var inputdate="<div class='form-group InputFieldAssessment "+Section+"' id='"+ColumnName+"_AssessmentRow' >" +
-                        "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>\n" +
+                        "<label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span>\n" +
                         "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";
                     $('#'+InputFieldName).append(inputdate);
@@ -170,8 +170,8 @@ function AssessmentDataRetrieveAjaxCall()
                 else if(Type=="Dropdown")
                 {
                 	var template_check=""; 
-                    var inputdrop= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'><label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>"+
-                        "<select style = 'width:100%;' class ='form-control' id='"+ColumnName+"'name='"+ColumnName+"'>";
+                    var inputdrop= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'><label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span>"+
+                        "<select style = 'width:100%;' class ='form-select' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -188,7 +188,7 @@ function AssessmentDataRetrieveAjaxCall()
                 else if(Type=="Check box")
                 {
                     var inputcheck= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>"+
-                        "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>";
+                        "<label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span><br/>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -200,7 +200,7 @@ function AssessmentDataRetrieveAjaxCall()
                             check = "checked";
                         }
                         inputcheck += "<label class = 'control-label' for = 'Assessment'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>&nbsp;&nbsp;" +
-                            option[i]+"</label>";
+                            option[i]+"</label><br/>";
                     }
                     inputcheck +="</div>";
                     $('#'+InputFieldName).append(inputcheck);
@@ -209,7 +209,7 @@ function AssessmentDataRetrieveAjaxCall()
                 else if(Type=="Radio box")
                 {
                     var inputdrop= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>"+
-                        "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>";
+                        "<label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span><br/>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -219,7 +219,7 @@ function AssessmentDataRetrieveAjaxCall()
                             check = "checked";
                         }
                         inputdrop+= "<label class = 'control-label' for = 'Assessment'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>&nbsp;&nbsp;"+
-                            option[i]+"</label>";
+                            option[i]+"</label><br/>";
                     }
                     inputdrop +="</div>";
                     $('#'+InputFieldName).append(inputdrop);
@@ -237,7 +237,7 @@ function AssessmentDataRetrieveAjaxCall()
                 else if(Type=="Text area")
                 {
                     var inputtext="<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>\n" +
-                        "<label class='control-label' for='Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>\n" +
+                        "<label class='control-label' for='Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span>\n" +
                         /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
                          "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                         "</div>";
@@ -247,7 +247,7 @@ function AssessmentDataRetrieveAjaxCall()
                 {
                 	YesColumnName = ColumnName;
                 	var inputdrop= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>"+
-                    "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>";
+                    "<label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span><br/>";
                 var Options=value.options;
                 var sub_option = Options.substring(0, Options.length - 1);
                 var option=Options.split(",");
@@ -257,7 +257,7 @@ function AssessmentDataRetrieveAjaxCall()
                         check = "checked";
                     }
                     inputdrop+= "<label class = 'control-label' for = 'Assessment'><input type='radio' class = 'form-comtrol RadioBoxDependencyYesClass' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='DepedencyTextBoxYes"+YesColumnName+"' "+check+"/>&nbsp;&nbsp;"+
-                        option[i]+"</label>";
+                        option[i]+"</label><br/>";
                 }
                 inputdrop +="</div>";
                 RadioYesValue = Value;
@@ -288,7 +288,7 @@ function AssessmentDataRetrieveAjaxCall()
                 {
                 	NoColumnName =  ColumnName;
                 	var inputdrop= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>"+
-                    "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>";
+                    "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label><br/>";
                 var Options=value.options;
                 var sub_option = Options.substring(0, Options.length - 1);
                 var option=Options.split(",");
@@ -298,7 +298,7 @@ function AssessmentDataRetrieveAjaxCall()
                         check = "checked";
                     }
                     inputdrop+= "<label class = 'control-label' for = 'Assessment'><input type='radio' class = 'form-comtrol RadioBoxDependencyNoClass' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"'  value = '"+option[i]+"' name='DepedencyTextBoxNo"+NoColumnName+"' "+check+"/>&nbsp;&nbsp;"+
-                        option[i]+"</label>";
+                        option[i]+"</label><br/>";
                     
                 }
                 inputdrop +="</div>";

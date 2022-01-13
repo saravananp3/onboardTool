@@ -42,6 +42,7 @@ $("#AssessmentSaveBtn").click(function(e){
 	//alert(ValidationMsg);	
 	}	
 	document.getElementById("next").disabled = false;
+   	e.preventDefault();
 });
 
 function CheckMandatoryCommonFields(InputFieldClass)

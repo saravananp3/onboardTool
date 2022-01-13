@@ -47,7 +47,7 @@ function validateTriageSummary(){
                     if(Type=="Text box")
                     {
                         var inputtext="<div class='form-group InputFieldSummary' id ='"+ColumnName+"_Row'>\n" +
-                            "<label class='control-label' for='TriageSummary'><div "+manadatory+">"+LabelName+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span></div></label>\n" +
+                            "<label class='control-label' for='TriageSummary'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span>\n" +
                             "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                             "</div>";
                         if(!$('#'+ColumnName).length){
@@ -57,7 +57,7 @@ function validateTriageSummary(){
                     else if(Type=="Datepicker")
                     {
                         var inputdate="<div class='form-group InputFieldSummary' id = '"+ColumnName+"_Row'>" +
-                            "<label class='control-label' for= 'TriageSummary'><div "+manadatory+">"+LabelName+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span></div></label>\n" +
+                            "<label class='control-label' for= 'TriageSummary'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span>\n" +
                             "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                             "</div>";
                         if(!$('#'+ColumnName).length){
@@ -66,8 +66,8 @@ function validateTriageSummary(){
                     }
                     else if(Type=="Dropdown")
                     {
-                        var inputdrop= "<div class='form-group InputFieldSummary' id = '"+ColumnName+"_Row'><label class='control-label' for= 'TriageSummary'><div "+manadatory+">"+LabelName+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span></div></label>"+
-                            "<select style = 'width:100%;' class ='form-control' id = '"+ColumnName+"' name='"+ColumnName+"'>";
+                        var inputdrop= "<div class='form-group InputFieldSummary' id = '"+ColumnName+"_Row'><label class='control-label' for= 'TriageSummary'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span>"+
+                            "<select style = 'width:100%;' class ='form-select' id = '"+ColumnName+"' name='"+ColumnName+"'>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
@@ -86,7 +86,7 @@ function validateTriageSummary(){
                     else if(Type=="Check box")
                     {
                         var inputcheck= "<div class='form-group InputFieldSummary' id = '"+ColumnName+"_Row'>"+
-                            "<label class='control-label' for= 'TriageSummary'><div "+manadatory+">"+LabelName+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span></div></label>";
+                            "<label class='control-label' for= 'TriageSummary'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=Options.split(",");
@@ -98,7 +98,7 @@ function validateTriageSummary(){
                                 check = "checked";
                             }
                             inputcheck += "<label class = 'control-label' for = 'TriageSummary'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>" +
-                                option[i]+"</label>";
+                                option[i]+"</label><br/>";
                         }
                         inputcheck +="</div>";
                         $('#inputFieldsSummary').append(inputcheck);
@@ -107,7 +107,7 @@ function validateTriageSummary(){
                     else if(Type=="Radio box")
                     {
                         var inputdrop= "<div class='form-group InputFieldSummary' id = '"+ColumnName+"_Row'>"+
-                            "<label class='control-label' for= 'TriageSummary'><div "+manadatory+">"+LabelName+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;' '></span></div></label>";
+                            "<label class='control-label' for= 'TriageSummary'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;' '></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=Options.split(",");
@@ -117,7 +117,7 @@ function validateTriageSummary(){
                                 check = "checked";
                             }
                             inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>"+
-                                option[i]+"</label>";
+                                option[i]+"</label><br/>";
                         }
                         inputdrop +="</div>";
                         $('#inputFieldsSummary').append(inputdrop);
@@ -135,7 +135,7 @@ function validateTriageSummary(){
                     else if(Type=="Text area")
                     {
                         var inputtext="<div class='form-group'>\n" +
-                            "<label class='control-label' for='TriageSummary'><div "+manadatory+">"+LabelName+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span></div></label>\n" +
+                            "<label class='control-label' for='TriageSummary'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"<span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span>\n" +
                             "<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                              "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                             "</div>";

@@ -452,7 +452,7 @@ font-size:12px;
   
 }
 
-.active{
+.active-1{
         background:#1565c0;
          }
       .page-title-div {
@@ -467,25 +467,25 @@ font-size:12px;
 	padding-left: 0px;
     padding-right: 0px;
 	}
- .navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
-}        
-
- .navbar-nav .nav-link.active {
-    /* border-top: none; */
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid rgba(255,255,255,.5)!important;
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
 }
 
-.navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
+.navbar-nav-1 #nav-link.active-1 {
+	/* border-top: none; */
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid rgba(255, 255, 255, .5) !important;
+}
+
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
 }
 
 .link:hover{
@@ -509,11 +509,29 @@ background:#1565c0 important;
 
 </head>
 <body class="top-navbar-fixed">
+
+<%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav-1 mt-3">
+						<li class="active-1" id="nav-link"><a class="link"
+							href="ArchiveExecutionDetails.jsp"
+							style="color: #fff; padding: 7px 10px; height: 35px;">Project
+								Plan</a></li>
+						<li id="nav-link"><a class="link"
+							href="#"
+							style="color: #fff; padding: 7px 10px; height: 35px;">Project
+								Plan Summary</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
    <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+   <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                  <div class="navbar-header no-padding" style = "height : 100px;">
@@ -521,7 +539,7 @@ background:#1565c0 important;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -541,8 +559,8 @@ background:#1565c0 important;
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-12">
-                             <!--  <h4 class="title" style="color:#fff">User Configuration</h4>
-                               <p class="sub-title">Create and manage your Opportunities here</p>-->
+                              <h4 class="title" style="color:#fff">User Configuration</h4>
+                               <p class="sub-title">Create and manage your Opportunities here</p>
                                <ul class="nav navbar-nav " >
 						      <li class=" nav-link active"><a class="link" href="ArchiveExecutionDetails.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan</a></li>
 						      <li class="nav-link" ><a class="link" href="#" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan Summary</a></li>
@@ -560,11 +578,11 @@ background:#1565c0 important;
                     </div>
 
                 </div>
-			</nav>
+			</nav>	
       
         </div>
-        <!-- /.container-fluid -->
-    </nav >
+        /.container-fluid
+    </nav > -->
             <div class="content-wrapper">
                 <div class="content-container" >
                    
@@ -975,4 +993,5 @@ $(document).on('mouseenter','.active1', function(){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+    <script src="js/navigation/navigation.js"></script>
 </html>

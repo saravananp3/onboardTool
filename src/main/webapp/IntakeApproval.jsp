@@ -34,6 +34,38 @@
 <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="css/toggleSwitch/toggleSwitch.css">
+
+<!-- ========== BootstrapV5 ========== -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
 <style type="text/css">
          
 body{
@@ -215,18 +247,18 @@ body {
   width: 50%;
 }
 .form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
-  background-color: #0db02b;
+  background-color: #1565c0;
   color: #ffffff;
 }
 .form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
-  background-color: #0db02b;
+  background-color: #1565c0;
   left: 50%;
   width: 50%;
-  border-color:#0db02b ;
+  border-color: #1565c0;
 }
 .form-wizard .form-wizard-steps li.activated::after {
   width: 100%;
-  border-color: #0db02b;
+  border-color: #1565c0;
 }
 .form-wizard .form-wizard-steps li:last-child::after {
   left: 0;
@@ -278,12 +310,12 @@ fieldset {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 14px;
-    font-weight: 700;
+  /*   font-weight: 700; */
     color: #000;
 }
 
 .form-wizard-steps li  i{
-	color: #d65470;
+	color: rgba(0,0,0,.9);
 }
 .back-to-top {
     position: fixed;
@@ -419,10 +451,36 @@ font-size:12px;
 </style>
 </head>
 <body class="top-navbar-fixed">
+
+<%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+					<div class="col-lg-12 col-md-12">
+						<div class="sub-title" style="color: #fff">
+								<a href="OpportunityList.jsp" id="sitetitle1"
+									style="color: #fff"><span class="glyphicon glyphicon-home"></span>
+									Home</a> >> <a href="IntakeOpportunity.jsp" id="sitetitle1"
+									style="color: #fff"> Opportunity </a> >> <a
+									href="IntakeTriageSummary.jsp" id="sitetitle1"
+									style="color: #fff"> Triage Summary</a> <a
+									href="IntakeAssessment.jsp" id="sitetitle1" style="color: #fff">
+									Assessment</a> >> <a href="IntakeStakeHolder.jsp"
+									id="sitetitle1" style="color: #fff"> StakeHolder</a>
+									<a  href="IntakeReviewDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Review Details</a> >>
+                                	<a  href="IntakeReviewDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Approval</a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</nav>
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
-   <nav class="navbar top-navbar bg-white box-shadow">
+  <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
@@ -430,7 +488,7 @@ font-size:12px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav navAlign">
 		             <li class="active1"><a href="OpportunityList.jsp" style="color:white;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -477,8 +535,8 @@ font-size:12px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
-    </nav >
+        /.container-fluid
+    </nav > -->
             <div class="content-wrapper">
                 <div class="content-container" >
                    
@@ -486,16 +544,16 @@ font-size:12px;
                         
                         <section>
                             <div class="row">
-                                <div class="container" id="module_header">
+                                <div class="container">
                                 
                                                     <div class=" col-md-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
 					<br/>
 					<br/>
-					<br/>
-                                      <div class="form-wizard-header">
-											<p>Fill all the required fields to go next step</p>
+					
+                                      <div class="form-wizard-header nav-font">
+											<p style="font-size: 14px;">Fill all the required fields to go next step</p>
 											<ul class="list-unstyled form-wizard-steps clearfix">
 												<li class="activated" ><span>1</span><i>Opportunity</i></li>
 												<li class="activated"><span>2</span><i>Triage</i></li>
@@ -506,20 +564,16 @@ font-size:12px;
 												<li class="active"><span>7</span><i>Approval</i></li>
 											</ul>
 						             </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse"
-                                                        data-parent="#panels1">Intake Approval</a> </h4>
-                                            </div>
+                                        <div class="card-container card">
+                                           <div class="card-header" id="cd-header">Intake Approval</div>
                                             <div ng-app="btn" ng-controller="MainCtrl">
 </div>
-                                            <div class="panel-collapse collapse in"
+                                            <div class="panel-collapse"
                                                 name="collapse">
                                                 <div class="panel-body">
                                                     <div>
                                                     <h2>Approver List</h2>           
-  													<table class="table table-bordered">
+  													<table class="table-bordered" style="width: 100%;">
     												<thead>
       												<tr>
         											<th style='text-align:center;vertical-align: middle;'>Approver Name</th>
@@ -532,14 +586,14 @@ font-size:12px;
     												</tbody>
   													</table>
                                                     </div>                                                
-                                                    <div class="col-md-12">
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='IntakeReviewDetails.jsp';">Prev</button>
+                                                    <div class="row">
+                                                            <div class="col-6">
+                                                                <button type="button" class="btn btn-secondary"onclick="location.href='IntakeReviewDetails.jsp';">Prev</button>
                                                             </div>
-                                                            <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right;">
-                                                                <button type="button" class="btn btn-success" id="ApprovalSave">Finish</button>
+                                                            <div class="col-6" align="end">
+                                                                <button type="button" class="btn btn-primary" id="ApprovalSave">Finish</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="ConfirmationPopUp_Btn" data-toggle="modal" data-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
-                                                                </div>
+                                                             </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -660,5 +714,9 @@ $(document).on('mouseenter','.active1', function(){
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
     <script id ="scripttag"></script>
+    <script src="js/navigation/navigation.js"></script>
+    <!-- ========== Toastr ========== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     
 </html>

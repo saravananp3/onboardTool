@@ -4446,9 +4446,9 @@ code:not(.language-html) {
     left: 0;
     z-index: 10;
   }
-  .top-navbar-fixed .content-wrapper {
+/*   .top-navbar-fixed .content-wrapper {
     margin-top: 50px;
-  }
+  } */
 }
 
 /*--------------------------------------------------------------

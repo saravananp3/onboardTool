@@ -39,6 +39,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 
 <link rel="stylesheet" href="css/Intake/IntakeOpportunity.css" media="screen" > 
+
+<!-- ========== BootstrapV5 ========== -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+
    
    <style type="text/css">
          body{
@@ -60,9 +93,27 @@
 </head>
 <body class="top-navbar-fixed">
 
+ <%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+					<div class="col-lg-12 col-md-12">
+						<div class="sub-title" style="color: #fff">
+							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								href="IntakeOpportunity.jsp" id="sitetitle1" style="color: #fff">
+								Opportunity </a> >> <a href="IntakeTriageSummary.jsp"
+								id="sitetitle1" style="color: #fff"> Triage Summary</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
 <div class="main-wrapper">
  <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+   <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
 				<div class="navbar-header no-padding" style = "height : 100px;">
@@ -70,7 +121,7 @@
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style="color:white;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -85,8 +136,8 @@
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
                 </div>
-      </div>
-      <nav class="navbar navbar-down">
+      </div> -->
+      <!-- <nav class="navbar navbar-down">
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                              <div class="col-sm-6">
@@ -109,20 +160,20 @@
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
-    </nav >
+        /.container-fluid
+    </nav > -->
 <div class="content-wrapper">
  <div class="content-container" >
   <div class="main-page">
        <section class="wizard-section">
-		<div class="container" id="module_header">
+		<div class="container">
 			<div class=" col-md-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
 					<br/>
 					<br/>
-						<div class="form-wizard-header">
-							<p>Fill all the required fields to go next step</p>
+						<div class="form-wizard-header nav-font">
+							<p style="font-size: 14px;">Fill all the required fields to go next step</p>
 							<ul class="list-unstyled form-wizard-steps clearfix">
 								<li class="activated"><span>1</span><i>Opportunity</i></li>
 								<li class="activated"><span>2</span><i>Triage</i></li>
@@ -137,20 +188,14 @@
 						<fieldset class="wizard-fieldset show" style="border-style: none">
 							      <div class="tab-pane" role="tabpanel" id="step3">
                                                         <!-- Triage Summary -->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">Triage Summary</a></h4>
-                                        </div>
+                                    <div class="card-container card">
+                                        <div class="card-header" id="cd-header">Triage Summary</div>
                                         <div id="collapse3" class="panel-collapse ">
-                                            <div class="panel-body">
+                                            <div class="card-body">
                                             <div id="inputFieldsSummary">
                                                     <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/> </div>
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
-                                                <div class="panel-body">
-                                                    <div id="inputFieldsSummary">
-                                                        <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/></div>                                           
-                                                    <div class="col-md-12">
+                                                                                              
+                                                   <!--  <div class="col-md-12">
                                                        <div class="col-md-1">
                                                            <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick ="window.location.href='IntakeTriage.jsp';" >Prev</button></div>
                                                        <div class="col-md-6 dropup" style=" padding-right: 10px; float: right;width: 45%;">
@@ -163,7 +208,7 @@
                                                                     <li><a href="#" id="DeleteSummary" class="fa fa-trash" style="font-size: 18px; color: black">&nbsp;&nbsp;&nbsp;Delete</a></li>
                                                                 </ul></div>
                                                                 <button type="submitBtn" class="btn btn-success" id="createTriSummary">Save</button>
-                                                              <!--  <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeAssessment.jsp';" >Next</a> --> 
+                                                               <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeAssessment.jsp';" >Next</a> 
                                                                 <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeAssessment.jsp';" id="next" disabled="true">
                                                                  
                                                                  <a href="javascript:;">Next</a>
@@ -173,9 +218,64 @@
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopupSummary_btn" data-toggle="modal" data-target="#TriageSummaryDeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                                             </div>
-                                                        </div>
-								</div>
-					</div>
+                                                        </div> -->
+                                                        
+                                                      <div class="row">
+																<div class="col-4">
+																	<button type="button" class="btn btn-secondary"
+																		onclick ="window.location.href='IntakeTriage.jsp';">Prev</button>
+																</div>
+																<div class="col-8" align="end">
+																	<button type="button" class="btn btn-secondary"
+																		id="template" data-bs-toggle="modal"
+																		data-bs-target=".triage-summary-example-modal-lg">Template</button>
+																	<div class="dropdown">
+																		<button type="button"
+																			class="btn btn-secondary dropdown-toggle"
+																			id="dropdownMenuButton1" data-bs-toggle="dropdown"
+																			aria-expanded="false">Actions</button>
+																		<ul class="dropdown-menu"
+																			aria-labelledby="dropdownMenuButton1">
+																			<li><a class="dropdown-item dropDown-font"
+																				id="addSummary" href="#" data-bs-toggle="modal"
+																				data-bs-target="#TiageSummAddPopUp"> <i
+																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+																						</i>Add</a></li>
+																			<li><a class="dropdown-item dropDown-font"
+																				id="EditSummary" href="#"><i class="fas fa-edit"
+																					aria-hidden="true">&nbsp;&nbsp; </i>Edit</a></li>
+																			<li><a class="dropdown-item dropDown-font"
+																				id="DeleteSummary" href="#"><i class="fas fa-trash"
+																					aria-hidden="true">&nbsp;&nbsp;&nbsp; </i>Delete</a></li>
+
+																		</ul>
+																	</div>
+																	<button type="submit" class="btn btn-primary"
+																		id="createTriSummary">Save</button>
+																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
+																	<button
+																		class="form-wizard-next-btn float-right btn-info btn btn-info"
+																		onclick="location.href='IntakeAssessment.jsp';" id="next"
+																		disabled="true">
+
+																		<a href="javascript:;"  style="color: #fff;">Next</a>
+
+																	</button>
+
+																	<button type="button"
+																		class="btn btn-primary pull-right" id="editpopupSummary_btn"
+																		data-bs-toggle="modal" data-bs-target="#TriSummEditPopUp"
+																		style="display: none;">Edit PopUp</button>
+																	<button type="button"
+																		class="btn btn-primary pull-right"
+																		id="deletepopupSummary_btn" data-bs-toggle="modal"
+																		data-bs-target="#TriageSummaryDeletePopUp" style="display: none;">Delete
+																		PopUp</button>
+																	<!--  <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button> -->
+																</div>
+															</div>
+						
+				
                                     </div>
                                     
                                 </div>
@@ -189,16 +289,18 @@
 						
 
 	<!-- Triage Ssummary Template modal-->                                        
-	 <div class="modal fade triage-summary-example-modal-lg" id="myFormModal"
+	 <div class="modal triage-summary-example-modal-lg" id="myFormModal"
                    tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                       aria-hidden="true">
                    <div class="modal-dialog modal-lg" role="document">
                      <div class="modal-content">
                       <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Triage Summary Template</h5>
-                    <button type="button" class="close" id="TriageTempSummaryCloseId" data-dismiss="modal" aria-label="Close">
+                   <!--  <button type="button" class="close" id="TriageTempSummaryCloseId" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form name="myForm">
@@ -241,8 +343,8 @@
                                        </form>
                                        </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary SubmitDisableTriSumm" onclick="validateTriageSummary()">Add Template</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary SubmitDisableTriSumm" onclick="validateTriageSummary()"data-bs-dismiss="modal">Add Template</button>
                 </div>
 		</div>
 		</div>
@@ -253,9 +355,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Input Fields</h5>
-        <button type="button" class="close" id = "add_close_id" data-dismiss="modal" aria-label="Close">
+       <!--  <button type="button" class="close" id = "add_close_id" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
+         <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="PopUpform">
@@ -284,7 +388,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Type:</label>
-                            <select id="types" class="form-control" name="types" required >
+                            <select id="types" class="form-select" name="types" required >
                                 <option value="Text box">Text box</option>
                                 <option value="Check box">Check box</option>
                                 <option value="Radio box">Radio box</option>
@@ -301,7 +405,7 @@
                             <input type="text" class="form-control" id="number"  name="number1">
                         </div>
                     </div>
-                    <br/>
+                   
                 </div>
                 <div class="row hidefield" id="rdo" style="display:none;">
                     <div class="form-group">
@@ -310,7 +414,7 @@
                             <input type="text" class="form-control" id="radio_number"  name="radio_number">
                         </div>
                     </div>
-                    <br/>
+                   
                 </div>
                 <div class="row hidefield" id="drop" style="display:none;">
                     <div class="form-group">
@@ -319,7 +423,7 @@
                             <input type="text" class="form-control" id="drop_number"  name="drop_number">
                         </div>
                     </div>
-                    <br/>
+                    
                 </div>
                 <div class="row">
                     <div class="form-group">
@@ -348,20 +452,20 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Mandatory:</label>
-                            <select id="mandatory" class="form-control" name="mandatory" required >
+                            <select id="mandatory" class="form-select" name="mandatory" required >
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <br/><br/>
+              
             </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id ="submit" class="btn btn-primary">Add Fields</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id ="submit" class="btn btn-primary"  data-bs-dismiss="modal">Add Fields</button>
+        <button type="button" class="btn btn-secondary">Close</button>
       </div>
     </div>
   </div>
@@ -372,9 +476,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Input Fields</h5>
-        <button type="button" class="close" id = "add_Triage_close_id" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="PopUpform">
@@ -403,7 +506,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Type:</label>
-                            <select id="Triagetypes" class="form-control" name="types" required >
+                            <select id="Triagetypes" class="form-select" name="types" required >
                                 <option value="Text box">Text box</option>
                                 <option value="Check box">Check box</option>
                                 <option value="Radio box">Radio box</option>
@@ -467,7 +570,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Mandatory:</label>
-                            <select id="Triagemandatory" class="form-control" name="mandatory" required >
+                            <select id="Triagemandatory" class="form-select" name="mandatory" required >
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
@@ -479,8 +582,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id ="submitTriage" class="btn btn-primary">Add Fields</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id ="submitTriage" class="btn btn-primary" data-bs-dismiss="modal">Add Fields</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -491,9 +594,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Input Fields</h5>
-        <button type="button" class="close" id = "TriageSummAddCloseId" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+         <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="PopUpform">
@@ -522,7 +624,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="TriageSummary">Type:</label>
-                            <select id="TriSummTypes" class="form-control" name="TriSummTypes" required >
+                            <select id="TriSummTypes" class="form-select" name="TriSummTypes" required >
                                 <option value="Text box">Text box</option>
                                 <option value="Check box">Check box</option>
                                 <option value="Radio box">Radio box</option>
@@ -586,7 +688,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="TriageSummary">Mandatory:</label>
-                            <select id="TriSummMandatory" class="form-control" name="TriSummMandatory" required >
+                            <select id="TriSummMandatory" class="form-select" name="TriSummMandatory" required >
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
@@ -598,8 +700,8 @@
         </form>   
       </div>
       <div class="modal-footer">
-        <button type="button" id ="TriSummSubmit" class="btn btn-primary">Add Fields</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id ="TriSummSubmit" class="btn btn-primary" data-bs-dismiss="modal">Add Fields</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -623,7 +725,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Section:</label>
-                            <select id="AssessSection" class="form-control" name="AssessSection" required >
+                            <select id="AssessSection" class="form-select" name="AssessSection" required >
                                 <option value="ApplicationInformation" selected>Application Information</option>
                                 <option value="DataCharacteristics">Data Characteristics</option>
                                 <option value="ComplianceCharacteristics">Compliance Characteristics</option>
@@ -657,7 +759,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Type:</label>
-                            <select id="AssessTypes" class="form-control" name="AssessTypes" required >
+                            <select id="AssessTypes" class="form-select" name="AssessTypes" required >
                                 <option value="Text box">Text box</option>
                                 <option value="Check box">Check box</option>
                                 <option value="Radio box">Radio box</option>
@@ -721,7 +823,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Mandatory:</label>
-                            <select id="AssessMandatory" class="form-control" name="AssessMandatory" required >
+                            <select id="AssessMandatory" class="form-select" name="AssessMandatory" required >
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
@@ -796,9 +898,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="TriSummDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="DeleteForm">
@@ -809,8 +910,8 @@
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="TriSummDeleteSubmit" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="TriSummDeleteSubmit" class="btn btn-primary" data-bs-dismiss="modal" >Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -899,7 +1000,7 @@
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Mandatory:</label>
-                            <select id="TriageEditMandatory" class="form-control" name="TraigeEditMandatory" required >
+                            <select id="TriageEditMandatory" class="form-select" name="TraigeEditMandatory" required >
                                 <option value = "Yes" >Yes</option>
                             </select>
                         </div>
@@ -922,9 +1023,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Edit Input Field</h5>
-        <button type="button" id="TriSummEditClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="PopUpform">
@@ -939,8 +1039,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="TriSummEditSubmit" class="btn btn-primary" >Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+        <button type="button" id="TriSummEditSubmit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
         
       </div>
     </div>
@@ -1186,13 +1286,9 @@ $(document).on('mouseenter','.active1', function(){
  <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-  
- 
-       
-  
-
-
-
-
+ <script src="js/navigation/navigation.js"></script>
+ <!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </body>
 </html>

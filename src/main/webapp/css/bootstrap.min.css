@@ -3816,7 +3816,7 @@ tbody.collapse.in {
 	display: block;
 	padding: 3px 20px;
 	clear: both;
-	font-weight: 400;
+	font-weight: 700;
 	line-height: 1.428571429;
 	color: #333;
 	white-space: nowrap
@@ -4271,13 +4271,9 @@ tbody.collapse.in {
 }
 
 .nav>li>a {
-	padding: 10px 10px;
+	padding: 10px 15px
 }
 
-.login-user {
-	padding-right: 20px;
-}
-	
 .nav>li>a:focus, .nav>li>a:hover {
 	text-decoration: none;
 	background-color: #eee

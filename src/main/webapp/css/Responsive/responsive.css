@@ -1,0 +1,363 @@
+body {
+	margin: 0 auto;
+	width: 100%;
+	background: #f1f1f1;
+	font-family: 'Poppins', sans-serif;
+}
+
+.nav-font {
+	font-family: 'Poppins', sans-serif;
+	color: #494949;
+	letter-spacing: 0.5px;
+	line-height: 1.75em;
+	font-size: 12px;
+}
+
+#title {
+	color: #fff;
+}
+
+.d3s-logo {
+	height: 50px;
+	margin-top: 10px;
+}
+
+.nav-height {
+	height: 100px;
+}
+
+.nav-height-50 {
+	height: 50px;
+}
+
+.nav-height-70 {
+	height: 70px;
+}
+
+.nav-down-height {
+	height: 140px;
+}
+
+.d3s-mr-10 {
+	margin-right: 10px;
+}
+
+.d3s-mr-20 {
+	margin-right: 20px;
+}
+
+.d3s-mr-30 {
+	margin-right: 30px;
+}
+
+.d3s-mr-40 {
+	margin-right: 40px;
+}
+
+.d3s-mr-50 {
+	margin-right: 50px;
+}
+
+.d3s-mr-60 {
+	margin-right: 60px;
+}
+
+.d3s-mr-70 {
+	margin-right: 70px;
+}
+
+.d3s-mr-80 {
+	margin-right: 80px;
+}
+
+.d3s-mr-90 {
+	margin-right: 80px;
+}
+
+.d3s-mr-100 {
+	margin-right: 100px;
+}
+
+.d3s-ml-10 {
+	margin-left: 10px;
+}
+
+.d3s-ml-20 {
+	margin-left: 20px;
+}
+
+.d3s-ml-30 {
+	margin-left: 30px;
+}
+
+.d3s-ml-40 {
+	margin-left: 40px;
+}
+
+.d3s-ml-50 {
+	margin-left: 50px;
+}
+
+.d3s-ml-60 {
+	margin-left: 60px;
+}
+
+.d3s-ml-70 {
+	margin-left: 70px;
+}
+
+.d3s-ml-80 {
+	margin-left: 80px;
+}
+
+.d3s-ml-90 {
+	margin-left: 80px;
+}
+
+.d3s-ml-100 {
+	margin-left: 100px;
+}
+
+.d3s-ml-10 {
+	margin-left: 10px;
+}
+
+.d3s-ml-20 {
+	margin-left: 20px;
+}
+
+.d3s-ml-30 {
+	margin-left: 30px;
+}
+
+.d3s-ml-40 {
+	margin-left: 40px;
+}
+
+.d3s-ml-50 {
+	margin-left: 50px;
+}
+
+.d3s-ml-60 {
+	margin-left: 60px;
+}
+
+.d3s-ml-70 {
+	margin-left: 70px;
+}
+
+.d3s-ml-80 {
+	margin-left: 80px;
+}
+
+.d3s-ml-90 {
+	margin-left: 80px;
+}
+
+.d3s-ml-100 {
+	margin-left: 100px;
+}
+
+.d3s-ml-10 {
+	margin-left: 10px;
+}
+
+.d3s-ml-20 {
+	margin-left: 20px;
+}
+
+.d3s-ml-30 {
+	margin-left: 30px;
+}
+
+.d3s-ml-40 {
+	margin-left: 40px;
+}
+
+.d3s-ml-50 {
+	margin-left: 50px;
+}
+
+.d3s-ml-60 {
+	margin-left: 60px;
+}
+
+.d3s-ml-70 {
+	margin-left: 70px;
+}
+
+.d3s-ml-80 {
+	margin-left: 80px;
+}
+
+.d3s-ml-90 {
+	margin-left: 80px;
+}
+
+.d3s-ml-100 {
+	margin-left: 100px;
+}
+
+#d3s-mt-10 {
+	margin-top: 10px;
+}
+
+#d3s-mt-20 {
+	margin-top: 20px;
+}
+
+#d3s-mt-30 {
+	margin-top: 30px;
+}
+
+#d3s-mt-40 {
+	margin-top: 40px;
+}
+
+#d3s-mb-10 {
+	margin-bottom: 10px;
+}
+
+#d3s-mb-20 {
+	margin-bottom: 20px;
+}
+
+#d3s-mb-30 {
+	margin-bottom: 30px;
+}
+
+#d3s-mb-40 {
+	margin-bottom: 40px;
+}
+#container-fluid-margin {
+	margin: 0px 20px 0px 20px;
+}
+
+#space-evenly {
+	padding-right: 20px;
+}
+
+#bg-color {
+	background-color: #1565c0;
+}
+
+.selected {
+	background-color: #1565c0;
+	color: #fff;
+}
+
+#appFilter {
+	border: none;
+	border-bottom: 1px solid #959595;
+	-o-border-image: initial;
+	border-image: initial;
+	border-radius: 0;
+	color: #fff !important;
+	text-indent: 12px;
+	background-color: transparent !important;
+	box-shadow: none;
+	height: 28px;
+	padding-bottom: 3px;
+	width: 240px;
+	margin-left: -25px;
+}
+.selectInput {
+	border-bottom: 1px solid #959595;
+	color: #fff !important;
+	background-color: transparent !important;
+}
+
+#dropDown-width {
+	width: 200px;
+}
+
+.phase-dropDown-width {
+	width: 200px;
+}
+
+.options {
+	color: #000000;
+}
+
+.right-side {
+	position: absolute;
+	right: 12%;
+	top: 210px;
+	left: 47%;
+	z-index: 1;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+#button {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 1px solid #dd6a2c;
+	background-color: #dd6a2c;
+	color: #fff;
+	outline-width: 0;
+	font-size: 20px;
+	padding: 9px;
+	text-align: center;
+}
+
+.glyphicon {
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-family: Glyphicons Halflings;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.search-icon {
+	position: relative;
+    left: 10px;
+    bottom: 5px;
+    color: #fff;
+}
+
+.li-align {
+	position: relative;
+	bottom: 12px;
+}
+
+#textAlign {
+	text-align: center;
+}
+
+#dropDownMenu {
+	margin: 0;
+	padding: 0;
+	left: -20px;
+}
+
+#dropDownMenu>li>a {
+	margin: 0;
+	padding: 0;
+}
+
+.align-right {
+	float: right;
+}
+
+#accordion-button-clr {
+	background-color: #1565c0;
+	color: #fff;
+}
+
+.btn-export {
+	float: right;
+	background-color: #31d2f2;
+	color: #fff;
+	margin-top: -5px;
+}
+
+
+
+

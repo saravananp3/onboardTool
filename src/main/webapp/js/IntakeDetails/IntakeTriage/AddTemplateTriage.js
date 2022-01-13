@@ -46,12 +46,12 @@ function validateTriage(){
                     {
                         manadatory="";
                         disable_property = "";
-                        delete_edit_icon = "<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span>";
+                        delete_edit_icon = "<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'></span>";
                     }
                     if(Type=="Text box")
                     {
                         var inputtext="<div class='form-group Inputvalue' id ='"+ColumnName+"_Row'>\n" +
-                            "<label class='control-label' for='triage'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>\n" +
+                            "<label class='control-label' for='triage'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"\n" +
                             "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                             "</div>";
                         if(!$('#'+ColumnName).length){
@@ -61,7 +61,7 @@ function validateTriage(){
                     else if(Type=="Datepicker")
                     {
                         var inputdate="<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>" +
-                            "<label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>\n" +
+                            "<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"\n" +
                             "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                             "</div>";
                         if(!$('#'+ColumnName).length){
@@ -71,8 +71,8 @@ function validateTriage(){
                     else if(Type=="Dropdown")
                     {
                         var inputdrop= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>" + 
-							"<label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>\n"+
-                            "<select style = 'width:100%;' class ='form-control' id = '"+ColumnName+"' name='"+ColumnName+"'>";
+							"<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"\n"+
+                            "<select style = 'width:100%;' class ='form-select' id = '"+ColumnName+"' name='"+ColumnName+"'>";
                         var Options=value.options;
                         //var sub_option = Options.substring(0, Options.length - 1);
                         var option=Options.split(",");
@@ -91,7 +91,7 @@ function validateTriage(){
                     else if(Type=="Check box")
                     {
                         var inputcheck= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>"+
-                            "<label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>";
+                            "<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label><span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=Options.split(",");
@@ -103,7 +103,7 @@ function validateTriage(){
                                 check = "checked";
                             }
                             inputcheck += "<label class = 'control-label' for = 'triage'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>" +
-                                option[i]+"</label>";
+                                option[i]+"</label><br/>";
                         }
                         inputcheck +="</div>";
                         $('#inputValue').append(inputcheck);
@@ -112,7 +112,7 @@ function validateTriage(){
                     else if(Type=="Radio box")
                     {
                         var inputdrop= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>"+
-                            "<label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;' '></span></div></label>";
+                            "<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label><span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;' '></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=Options.split(",");
@@ -122,7 +122,7 @@ function validateTriage(){
                                 check = "checked";
                             }
                             inputdrop+= "<label class = 'control-label' for = 'triage'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>&nbsp;&nbsp;"+
-                                option[i]+"</label>";
+                                option[i]+"</label><br/>";
                         }
                         inputdrop +="</div>";
                         $('#inputValue').append(inputdrop);
@@ -131,7 +131,7 @@ function validateTriage(){
                     else if(Type=="file")
                     {
                         inputfile="<div class='form-group Inputvalue'>\n" +
-                            "<label class='control-label' for='triage'><div class='required_fie'>"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'' ></span></div></label>\n" +
+                            "<label class='control-label' for='triage'><div class='required_fie'>"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
                             "<input type='file' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'>\n" +
                             "</div>";
                         $('#inputValue').append(inputfile);
@@ -140,7 +140,7 @@ function validateTriage(){
                     else if(Type=="Text area")
                     {
                         var inputtext="<div class='form-group Inputvalue'>\n" +
-                            "<label class='control-label' for='triage'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>\n" +
+                            "<label class='control-label' for='triage'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'></span></div></label>\n" +
                             "<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                              "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                             "</div>";

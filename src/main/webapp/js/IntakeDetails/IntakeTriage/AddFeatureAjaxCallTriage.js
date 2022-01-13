@@ -65,7 +65,7 @@ $('#submitTriage').click(function() {
 	                else if(data.Type=="Text box")
 	               {
 	                    var inputtext="<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
-	                        "<label class='control-label' for='triage'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>"+
+	                        "<label class='control-label' for='opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
 	                        "<input type='text' class='form-control' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
 	                        "</div>";
 	                    
@@ -74,7 +74,7 @@ $('#submitTriage').click(function() {
 	                else if(data.Type=="Datepicker")
 	                {
 	                    var inputdate="<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
-	                        "<label class='control-label' for= 'triage'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>"+
+	                        "<label class='control-label' for= 'opportuity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
 	                        "<input type='text' class='form-control datepicker1' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
 	                        "</div>";
 	                    $('#inputValue').append(inputdate);
@@ -88,14 +88,14 @@ $('#submitTriage').click(function() {
 	                {
 	                    var input="";
 	                    input+= "<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
-	                        "<label class='control-label' for= 'triage'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>";
+	                       "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++){
 
 	                        input+= "<label class = 'control-label' for = 'triage'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+data.ColumnName+num+"'/>&nbsp;&nbsp;"+
-	                            option[i]+"</label>";
+	                            option[i]+"</label><br/>";
 
 	                    }
 	                    input +="</div>";
@@ -105,14 +105,14 @@ $('#submitTriage').click(function() {
 	                {
 	                    var input="";
 	                    input+= "<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
-	                        "<label class='control-label' for= 'triage'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>";
+	                        "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++) {
 
 	                        input += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='" + data.ColumnName+num+"'/>&nbsp;&nbsp;" +
-	                            option[i] + "</label>";
+	                            option[i] + "</label><br/>";
 	                    }
 	                    input +="</div>";
 	                    $('#inputValue').append(input);
@@ -120,7 +120,7 @@ $('#submitTriage').click(function() {
 	                else if(data.Type=="Dropdown")
 	                {
 	                    var select="";
-	                    select+= "<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'><label class='control-label' for= 'triage'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>"+
+	                    select+= "<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'><label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
 	                        "<select style = 'width:100%;' name = "+data.ColumnName+num+">";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);

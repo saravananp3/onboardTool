@@ -233,10 +233,24 @@ padding: 15px;
         Connection conn = (Connection) d.getConnection();
         
 %>
-<form class="form-signin" name="loginForm" method="post">
+
+<%@include file="Nav-Bar.jspf"%>
+	<nav class="nav nav-height-70 nav-font" id="bg-color" style="font-size: 14px;">
+		<div class="container-fluid" id="container-fluid-margin">
+			<div class="row">
+				<div class="col-lg-12 col-md-12" id="d3s-mt-10">
+					<div class="sub-title" style="color: #fff">
+						<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+							class="glyphicon glyphicon-home"></span> Home</a> >> Introduction
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<form class="form-signin" name="loginForm" method="post">
 
     <div class="main-wrapper">
-
+<!-- 
            <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
@@ -245,7 +259,7 @@ padding: 15px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -277,8 +291,8 @@ padding: 15px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
-    </nav>
+        /.container-fluid
+    </nav> -->
     <br/>
     <br/>
     <br/>
@@ -629,6 +643,7 @@ $(document).on('mouseenter','.active1', function(){
 
 <script src="js/notification/notification.js"></script>
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/Introduction/ArchiveIntroSave.js"></script>
+<script src="js/navigation/navigation.js"></script>
 
 </body>
 </html>
