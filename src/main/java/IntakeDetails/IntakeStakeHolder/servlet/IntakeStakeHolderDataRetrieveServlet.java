@@ -31,7 +31,7 @@ public class IntakeStakeHolderDataRetrieveServlet extends HttpServlet {
 			jsonArray = new JsonArray();
 			jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,UserName,approverId,isApprover));
 			if(isApprover) {
-				jsonArray.add(new IntakePreviewDetailsService(intakeStake.oppId,intakeStake.userName).IntakePreviewDataRetrieve(Id));
+				jsonArray.add(new IntakePreviewDetailsService(intakeStake.oppId,intakeStake.userName).IntakeApprovalPreviewDataRetrieve(Id,intakeStake.role));
 			}
 			intakeStake =null;
 			//calling finalize method and garabage collector

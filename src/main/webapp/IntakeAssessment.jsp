@@ -1704,8 +1704,8 @@
      <script src="js/IntakeDetails/IntakeAssessment/Common/EditDeleteToggle.js"></script>
      <script src="js/IntakeDetails/IntakeAssessment/Common/AssessEditDeleteAjaxCall.js"></script>
      <script src="js/IntakeDetails/IntakeAssessment/Common/IntakeAssessmentSave.js"></script>
-     
-    
+     <script src="js/documentUpload/documentUploadAjaxCall.js"></script>
+
      
      
       

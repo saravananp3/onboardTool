@@ -329,12 +329,14 @@ function AssessmentDataRetrieveAjaxCall()
                 }
                 else if(Type=="TextAreaFile")
                 {
-                	var inputtext="<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>\n" +
+                	var inputtext="<form action='' method='POST' enctype='multipart/form-data'><div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>\n" +
                     "<label class='control-label' for='Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>\n" +
                     /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
                      "<textarea class='form-control' name='"+ColumnName+"_text' id='"+ColumnName+"'>"+Value+"</textarea>"+
                      "<input type='file' name='"+ColumnName+"_file' accept='image/!*' id ='choosen_file_name'>\n" +
-                    "</div>";
+                    "</div>"+
+                    "<input type='button' value='Upload' class='btn btn-success' name='submit' id='UploadFiles' style='display:none;' />" +
+                      "</form>";
                 $('#'+InputFieldName).append(inputtext);
                 }
                  else if(Type=="DatepickerDependency")

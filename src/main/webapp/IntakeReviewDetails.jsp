@@ -27,7 +27,11 @@
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/common/email/emailAjaxCall.js"></script>
+<script src ="js/pdf/downloadPDF_AjaxCall.js"></script>
+<script src ="js/pdf/deletePDF_AjaxCall.js"></script>
 <script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
+
 <style>
 
          
@@ -507,6 +511,8 @@ font-size:12px;
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" data-toggle="collapse"
                                                         data-parent="#panels1">Intake summary</a> </h4>
+                                                        <!-- <a href="" id ='downloadPDF'> download</a> -->
+                                                        <!-- <a href="downloadPDFservlet?path='S://sample.pdf'">download</a> -->
                                                         <button id="exportPdf" class="btn pdf"><span
                                                     class="glyphicon glyphicon-download-alt"></span> Export Pdf
                                                  </button>

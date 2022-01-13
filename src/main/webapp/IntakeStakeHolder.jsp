@@ -484,7 +484,7 @@ font-size:12px;
 					<form action="" method="post" role="form">
 					<br/>
 					<br/>
-                                    <div class="form-wizard-header">
+                                    <div class="form-wizard-header" style = "width:117%;">
 											<p>Fill all the required fields to go next step</p>
 											<ul class="list-unstyled form-wizard-steps clearfix">
 												<li class="activated" ><span>1</span><i>Opportunity</i></li>
@@ -496,7 +496,7 @@ font-size:12px;
 												<li><span>7</span><i>Approval</i></li>
 											</ul>
 						           </div>
-                                         <div class="panel panel-default">
+                                         <div class="panel panel-default" style = "width:115%;">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" data-toggle="collapse"
@@ -514,6 +514,7 @@ font-size:12px;
         											<th>Email</th>
         											<th>User Name</th>
         											<th>Role</th>
+        											<th>Priority Order No.</th>
         											<th>Action</th>
       												</tr>
     												</thead>

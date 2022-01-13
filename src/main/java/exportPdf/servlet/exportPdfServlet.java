@@ -31,14 +31,16 @@ public class exportPdfServlet extends HttpServlet {
 		JsonElement tradeElement = parser.parse(jsonContent);
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
 		exportPdfService export = null;
+		JsonObject jsonObject = null;
 		try {
+			jsonObject = new JsonObject();
 			export = new exportPdfService(jsonArray,appName,appId); 
-		  	export.startExportPdf();
+			jsonObject.addProperty("path",export.startExportPdf());
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		String json = new Gson().toJson(jsonArray);
+		String json = new Gson().toJson(jsonObject);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);

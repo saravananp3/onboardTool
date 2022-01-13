@@ -10,6 +10,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
 
+import common.constant.APPROVAL_CONSTANT;
 import onboard.DBconnection;
 
 public class archiveReqApprovalDataRetrieveService {
@@ -87,14 +88,14 @@ public class archiveReqApprovalDataRetrieveService {
 				preparedStatement1.setString(5, role);
 				preparedStatement1.setString(6, name);
 				preparedStatement1.setString(7,approvalId);
-				preparedStatement1.setString(8,"Decision pending");
+				preparedStatement1.setString(8,APPROVAL_CONSTANT.DECISION_PENDING);
 				preparedStatement1.setString(9,"");
 				preparedStatement1.execute();
 				preparedStatement1.close();
 				jsonObject.addProperty("seqNum",seqNum);
 				jsonObject.addProperty("name", name);
 				jsonObject.addProperty("role",role);
-				jsonObject.addProperty("approvalStatus","Decision pending");
+				jsonObject.addProperty("approvalStatus",APPROVAL_CONSTANT.DECISION_PENDING);
 	
 		}
 		catch(Exception e)

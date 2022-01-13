@@ -9,6 +9,7 @@ import java.sql.Statement;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import common.constant.APPROVAL_CONSTANT;
 import onboard.DBconnection;
 
 public class archiveReqIntroRolesResponseTemplateService {
@@ -145,7 +146,7 @@ DBconnection dBconnection =null;
 		  	ResultSet rs = st.executeQuery(roleQuery);
 		  	if(rs.next())
 		  	{
-		  		if(rs.getString("ArchiveRequirementApproval").equals("Decision pending"))
+		  		if(rs.getString("ArchiveRequirementApproval").equals(APPROVAL_CONSTANT.DECISION_PENDING))
 		  		checkStatus = false;
 		  	}
 		  	else

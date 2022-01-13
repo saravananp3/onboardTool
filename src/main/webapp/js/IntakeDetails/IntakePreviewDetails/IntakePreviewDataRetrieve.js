@@ -8,7 +8,7 @@ $(document).ready (function(){
 	//complete:function showSpin(){$("#loading-overlay").hide();}
 	IntakePreviewDataRetrieveAjaxCall();
 	
-	$(document).on('click','#exportPdf',function(){
+	$(document).on('click','#exportPdf',function(o){
 	$.ajax({ 
 		 url: "exportPdfServlet",
 		 type: 'POST',
@@ -16,8 +16,14 @@ $(document).ready (function(){
 	     dataType: "json",
 	     data: {jsonContent:JSON.stringify(exportContent)},
 	     success: function (data) {
-	    	 console.log("Data : ",data); 
-	    },
+	    	 var pdfPath = data.path;
+	    	 pdfPath =pdfPath.replaceAll("\\","//");
+	    	 window.location.href = "downloadPDFservlet?path='"+pdfPath+"'";
+	    	 //downloadPDFAjaxCall(pdfPath);
+	    	 //setTimeout(deletePDFAjaxCall(pdfPath), 2000);
+	    	 //deletePDFAjaxCall(pdfPath);
+	         o.preventDefault();
+	     },
 	  error: function (e) { console.log(e); }
 	  
 	  });
@@ -28,21 +34,7 @@ $(document).ready (function(){
 		//$("#loading_overlay").attr("style","display:block;");
 		//$("#loading_overlay").html(progressCss.val());
 		
-		 $.ajax({ 
-			 url: "intakeMailApproval",
-			 type: 'POST',
-			 async: false,
-		     dataType: "json",
-		     success: function (data) {
-		    	 console.log("Data : ",data); 
-		    	 if(data.checkStatus){
-		    		 $("#loading-overlay").hide();
-		             notification("info","Please check your email for Approval.","Info");
-		             }
-		    },
-		  error: function (e) { console.log(e); }
-		  
-		  });
+		emailAjaxCall("INTAKE");
 		 
 	});
 });
@@ -163,6 +155,13 @@ function IntakePreviewDataRetrieveAjaxCall()
             notification("info","Review of previous details.","Info");
             // var onclick_attr = $("#ReviewNextBtn").attr("onclick");
             $("#ReviewNextBtn").attr("onclick","location.href='IntakeApproval.jsp?a_id="+data[5].a_id+"';");
+            
+            if(data[5].checkRequestSign==1){
+            	$("#button_id").show();
+            }
+            else{
+            	$("#button_id").hide();
+            }
             var checkReviewPage = data[data.length-1].CheckExistence;
             if(checkReviewPage==true)
             {

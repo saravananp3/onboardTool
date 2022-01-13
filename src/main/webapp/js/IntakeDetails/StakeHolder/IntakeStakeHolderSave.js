@@ -14,8 +14,10 @@ $("#save").click(function(e)
       var username = $('.username').eq(i).val();
       
       var role = $(".role").eq(i).val();
+      
+      var priorityNum = $(".priorityNum").eq(i).val();
      
-      if( name=="" || email=="" || username=="" || role=="")
+      if( name=="" || email=="" || username=="" || role=="" || priorityNum=="")
     	{
     	  checkMandatory = false;
     	}
@@ -34,6 +36,7 @@ $("#save").click(function(e)
     	
     	inputs["role"] = role;
     	
+    	inputs["priorityNum"] = priorityNum;
     	jsonArr.push(inputs);
        }
       
@@ -48,7 +51,6 @@ $("#save").click(function(e)
 	{
 		e.preventDefault();
 		notification("warning","Username already exist for this opportunity.","Warning!!");
-	
 	}
 	if(!jsonObj.checkName)
 	{

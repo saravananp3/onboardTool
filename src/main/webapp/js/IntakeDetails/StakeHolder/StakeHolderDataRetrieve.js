@@ -36,6 +36,7 @@ function StakeHolderDataRetrieveAjaxCall()
             }
             var index=0;
             var checkData = false;
+            var options_arr = ['Development Owner','Application Owner','Project Sponsor','Project Manager','Business Owner','Technical S.M.E'];
             $.each(data[0], function(key, value){
                if(index==0)
             	{
@@ -49,17 +50,28 @@ function StakeHolderDataRetrieveAjaxCall()
             	   var emailid =(value.emailId==undefined)?"":value.emailId;
             	   var username =(value.username==undefined)?"":value.username;
             	   var role = (value.role==undefined)?"":value.role;
+            	   var priorityNum = (value.priorityNum==undefined)?"":value.priorityNum;
             	   var readonly ="readonly";
+            	   var disable = "disabled";
             	   
-            	   if(role==undefined||role == "" && emailid==undefined || emailid=="" && username == undefined || username =="" && name =="" ||name == undefined)
+            	   var options ="";
+            	   for(var n=0;n<options_arr.length;n++){
+            		   var selected = (role==options_arr[n])? "selected":"";
+            		   options += "<option value='"+options_arr[n]+"' "+selected+">"+options_arr[n]+"</option>";
+            	   }
+            	   if(role==undefined||role == "" && emailid==undefined || emailid=="" && username == undefined || username =="" && name =="" ||name == undefined){
             		   readonly ="";
-            	   
+            		   disable = "";
+            	}
             	  var Row = "<tr class='UserRow'>"+
         		            "<td><input type='text' class ='name' value='"+name+"' "+readonly+"></td>"+
         				    "<td><input type='text' class ='emailid' value='"+emailid+"' "+readonly+"></td>"+
         	                "<td><input type='text' class='username' value='"+username+"' "+readonly+"></td>"+
-        				    "<td><input type='text'class='role' value='"+role+"' "+readonly+"></td>"+
-                            "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
+        				    "<td><select type='text'class='role' value='"+role+"' >"+
+        				    options
+        				    +"</select></td>"
+        				    +"<td><input type='text' class='priorityNum' value='"+priorityNum+"' "+readonly+"/></td>"
+                            +"<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu' style = 'min-width: inherit;'>"+
                             "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black;'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
                             "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black;'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
@@ -86,7 +98,7 @@ function StakeHolderDataRetrieveAjaxCall()
 }
 function ReadOnlyPropertyConfig(index,prop)
 {
-	var fieldClass =['name','emailid','username','role'];
+	var fieldClass =['name','emailid','username','role','priorityNum'];
 	for(var i=0;i<fieldClass.length;i++)
 	{
 		var checkrole = true;

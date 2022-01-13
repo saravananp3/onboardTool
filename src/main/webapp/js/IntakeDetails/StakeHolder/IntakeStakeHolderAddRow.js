@@ -16,7 +16,15 @@ function AddRowAjaxCall()
 	                    "<td><input type='text' class ='name' value='' ></td>"+
 			            "<td><input type='text' class ='emailid' value='' ></td>"+
                         "<td><input type='text' class='username' value='' ></td>"+
-			            "<td><input type='text'class='role' value='' ></td>"+
+			            "<td><select type='text' class='role' value=''>"+
+                             "<option value='Development Owner'>Development Owner</option>"+
+                             "<option value='Application Owner'>Application Owner</option>"+
+                             "<option value='Project Sponsor'>Project Sponsor</option>"+
+                             "<option value='Project Manager'>Project Manager</option>"+
+                             "<option value='Business Owner'>Business Owner</option>"+
+                             "<option value='Technical S.M.E'>Technical S.M.E</option>"+
+                             "</select></td>"+
+         				    "<td><input type='text' class='priorityNum' value=''/></td>"+
                         "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                         "<ul class='dropdown-menu' style = 'min-width: inherit;'>"+
                         "<li><a   class='fa fa-edit EditRow' style='font-size: 19px; color: black;'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+

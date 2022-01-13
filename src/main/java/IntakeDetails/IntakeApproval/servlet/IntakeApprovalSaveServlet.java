@@ -28,16 +28,21 @@ public class IntakeApprovalSaveServlet extends HttpServlet {
 		//String OppId = (String)details.getAttribute("ID");
 		String approvalId = request.getParameter("approverId");
 		String IntakeApproval = request.getParameter("IntakeApproval");
+		String comments = request.getParameter("ApprovalComments");
 		boolean check = false;
 		try {
 			IntakeApprovalService intake = new IntakeApprovalService(approvalId);		
-		check = intake.IntakeApprovalUpdate(IntakeApproval, seq_no);
+		check = intake.IntakeApprovalUpdate(IntakeApproval, seq_no,comments);
+		
 		intake.IntakeApprovalModuleInfo();
 		intake=null;
 		System.gc();
 				} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			JsonObject jsonObj = new JsonObject();

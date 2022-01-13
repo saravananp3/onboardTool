@@ -509,7 +509,7 @@ font-size:12px;
 												   
 												<div class="panel panel-default">
 												 <!-- Opportunity Details -->
-													<div class="panel-heading">
+													<div class="panel-heading OpportunityInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse1">
@@ -533,7 +533,7 @@ font-size:12px;
 														</div>
 													</div>
 													<!-- Triage Details -->
-													<div class="panel-heading">
+													<div class="panel-heading TriageInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse2">
@@ -557,7 +557,7 @@ font-size:12px;
 														</div>
 													</div>
 													<!-- Triage Summary Details -->
-													<div class="panel-heading">
+													<div class="panel-heading TriageSummInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse3">
@@ -581,7 +581,7 @@ font-size:12px;
 														</div>
 													</div>
 													<!-- Intake Assessment Details -->
-													<div class="panel-heading">
+													<div class="panel-heading AssessmentInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse4">
@@ -595,7 +595,7 @@ font-size:12px;
 																<div class="panel-body">
 																<div class="panel panel-default">
 																	<!-- Application Details -->
-													<div class="panel-heading">
+													<div class="panel-heading ApplicationInformationPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse41">
@@ -620,7 +620,7 @@ font-size:12px;
 													</div>
 
 															<!-- Data Characteristics Details -->
-													<div class="panel-heading">
+													<div class="panel-heading DataCharacteristicsPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse42">
@@ -645,7 +645,7 @@ font-size:12px;
 													</div>
 
 													<!-- Compliance Characteristics Details -->
-													<div class="panel-heading">
+													<div class="panel-heading ComplianceCharacteristicsPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse43">
@@ -670,7 +670,7 @@ font-size:12px;
 													</div>
 															
 													<!-- Archival Consumption Details -->
-													<div class="panel-heading">
+													<div class="panel-heading ArchivalConsumptionPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse44">
@@ -696,7 +696,7 @@ font-size:12px;
 															
 					
 													<!-- Contract Information Details -->
-													<div class="panel-heading ContractInformationPreview" style="display:none;">
+													<div class="panel-heading ContractInformationPreview intakeSection" style="display:none;">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse45">
@@ -725,7 +725,7 @@ font-size:12px;
 															</div>
 														</div>
 														<!-- Stake Holder -->
-													<div class="panel-heading">
+													<div class="panel-heading StakeHolderInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
 																data-parent="#panels1" href="#collapse5">
@@ -770,6 +770,8 @@ font-size:12px;
 																					style='text-align: center; vertical-align: middle;'>Approval</th>
 																				<th
 																					style='text-align: center; vertical-align: middle;'>Action</th>
+																					<th
+																					style='text-align: center; vertical-align: middle;'>Comments</th>
 																			</tr>
 																		</thead>
 																		<tbody id="ApprovalDetails">
@@ -791,6 +793,8 @@ font-size:12px;
 																			id="ConfirmationPopUp_Btn" data-toggle="modal"
 																			data-target="#ConfirmationPopUp"
 																			style="display: none;">Delete PopUp</button>
+																		<!-- comment popup button -->
+																		<button type="button" id="ApprovalComments" data-toggle="modal" data-target="#ApprovalCommentsPopUp" style="display: none;">Comments PopUp</button>
 																	</div>
 																</div>
 															</div>
@@ -834,6 +838,33 @@ font-size:12px;
 			</div>
 		</div>
 	</div>
+	
+	<!-- Comment Pop Up -->
+	<div class="modal" id="ApprovalCommentsPopUp"   tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#269af8;color:white">
+        <h5 class="modal-title" style="color:white">Remarks</h5>
+        <button type="button" id ="ApprovalCommentClose" style="color:white" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                <div class="modal-body">
+                <label>comments</label>
+             <textarea id="ApprovalCommentId" name="ApprovalCommentSection" rows="4" cols="70"></textarea>
+			 </div>
+             <input type="hidden" id="ApprovalCommentSeq"/>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" id = "ApprovalCommentOKBtn" >Ok</button>
+        <button type="button" class="btn btn-default" id = "ApprovalCommentCancelBtn" >Cancel</button>
+      </div>
+      </div>
+    </div>
+  </div>
+	
+	
 	<!-- Date picker -->
 
 	<link

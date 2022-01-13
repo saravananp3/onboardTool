@@ -8,7 +8,7 @@ var DependencykeyValuePair = [];
 var DependencyType=[];
 var JsonArray =[];
 $("#AssessmentSaveBtn").click(function(e){
-	
+	uploadFiles();
 	var section =['ApplicationInformation','DataCharacteristics','ComplianceCharacteristics','ArchivalConsumption'];
 	//var section =['ApplicationInformation'];
 	UnfilledSections = [];

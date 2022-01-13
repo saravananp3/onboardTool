@@ -74,6 +74,28 @@ public class IntakeAssessSectionDataRetrieveService {
 		}
 		
 	}
+	
+	public boolean checkForContractInformation() {
+		boolean flag = false;
+		try {
+			String SelectQuery = "SELECT * FROM "+SectionInfoTable+" WHERE ID = '"+id+"' AND COLUMN_NAME = 'AppDetails' AND VALUE = 'Third Party' ORDER BY SEQ_NO;";
+			 
+			 Statement st1 = con.createStatement();
+			 
+			 ResultSet rs1 = st1.executeQuery(SelectQuery);
+			 if(rs1.next()) {
+				flag =true;
+			 }
+			 rs1.close();
+			 st1.close();
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
+	
 	public JsonArray DataRetrieveTableInfo()
 	 {
 		 JsonArray jsonArray = new JsonArray();

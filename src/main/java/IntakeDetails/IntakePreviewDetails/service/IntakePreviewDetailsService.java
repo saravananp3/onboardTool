@@ -7,11 +7,16 @@ import java.sql.Statement;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import IntakeDetails.IntakeAssessment.service.IntakeAssessSectionDataRetrieveService;
 import IntakeDetails.IntakeAssessment.service.IntakeAssessmentService;
 import IntakeDetails.IntakeOpportunity.Service.IntakeOpportunityService;
 import IntakeDetails.IntakeStakeHolder.service.IntakeStakeHolderService;
 import IntakeDetails.IntakeTriage.Service.IntakeTriageService;
 import IntakeDetails.IntakeTriageSummary.service.IntakeTriageSummaryService;
+import common.constant.APPLICATION_ROLES;
+import common.constant.MODULE_NAME;
+import common.email.service.EmailApprovalService;
 import onboard.DBconnection;
 
 public class IntakePreviewDetailsService {
@@ -28,6 +33,96 @@ public class IntakePreviewDetailsService {
 			this.username = username;
 		}
 		
+		
+		public JsonArray IntakeApprovalPreviewDataRetrieve(String Id,String role) throws ClassNotFoundException, SQLException {
+			JsonArray jsonArray = new JsonArray();
+			IntakeStakeHolderService intakeStake =  new IntakeStakeHolderService();
+			try {
+				JsonObject jsonObj = new JsonObject();
+				
+			switch(role) {
+			
+			   case APPLICATION_ROLES.PROJECT_SPONSOR:
+				jsonArray.add(IntakeOpportunityService.IntakeOpportunityDataRetrieveService(Id));
+				jsonArray.add(new IntakeTriageService().DataRetrieve(Id));
+				jsonArray.add(new IntakeTriageSummaryService().DataRetrieve(Id));
+				jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,"","",false));
+				jsonObj.addProperty("userRole",APPLICATION_ROLES.PROJECT_SPONSOR );
+				jsonArray.add(jsonObj);
+				break;
+				
+			   case APPLICATION_ROLES.PROJECT_MANAGER:
+					jsonArray.add(IntakeOpportunityService.IntakeOpportunityDataRetrieveService(Id));
+					jsonArray.add(new IntakeTriageService().DataRetrieve(Id));
+					jsonArray.add(new IntakeTriageSummaryService().DataRetrieve(Id));
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("APPLICATIONINFO",Id).DataRetrieveTableInfo());
+					boolean checkContractInfo = new IntakeAssessSectionDataRetrieveService("CONTRACTINFO", Id).CheckAppInfoThirdParty();
+					
+					if(checkContractInfo)
+						jsonArray.add(new IntakeAssessSectionDataRetrieveService("CONTRACTINFO", Id).DataRetrieveTableInfo());
+					
+					jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,"","",false));
+					jsonObj.addProperty("userRole",APPLICATION_ROLES.PROJECT_MANAGER );
+					jsonObj.addProperty("contractInfo", checkContractInfo);
+					jsonArray.add(jsonObj);
+					break;
+					
+			   case APPLICATION_ROLES.BUSINESS_OWNER:
+				    jsonArray.add(IntakeOpportunityService.IntakeOpportunityDataRetrieveService(Id));
+					jsonArray.add(new IntakeTriageService().DataRetrieve(Id));
+					jsonArray.add(new IntakeTriageSummaryService().DataRetrieve(Id));
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("APPLICATIONINFO",Id).DataRetrieveTableInfo());
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("COMPLIANCE",Id).DataRetrieveTableInfo());
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("ARCHIVALCONSUMPTION",Id).DataRetrieveTableInfo());
+                    boolean checkContractInfo1 = new IntakeAssessSectionDataRetrieveService("CONTRACTINFO", Id).CheckAppInfoThirdParty();
+					if(checkContractInfo1)
+						jsonArray.add(new IntakeAssessSectionDataRetrieveService("CONTRACTINFO", Id).DataRetrieveTableInfo());
+					jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,"","",false));
+					jsonObj.addProperty("userRole",APPLICATION_ROLES.BUSINESS_OWNER );
+					jsonObj.addProperty("contractInfo", checkContractInfo1);
+					jsonArray.add(jsonObj);
+					break;
+			
+			   case APPLICATION_ROLES.TECHNICAL_SME:
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("DATACHARACTERISTICS",Id).DataRetrieveTableInfo());
+					jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,"","",false));
+					jsonObj.addProperty("userRole",APPLICATION_ROLES.TECHNICAL_SME );
+					jsonArray.add(jsonObj);
+				   break;
+				   
+			   case APPLICATION_ROLES.APPLICATION_OWNER:	   
+			   case APPLICATION_ROLES.DEVELOPMENT_OWNER:
+				    jsonArray.add(IntakeOpportunityService.IntakeOpportunityDataRetrieveService(Id));
+					jsonArray.add(new IntakeTriageService().DataRetrieve(Id));
+					jsonArray.add(new IntakeTriageSummaryService().DataRetrieve(Id));
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("APPLICATIONINFO",Id).DataRetrieveTableInfo());
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("DATACHARACTERISTICS",Id).DataRetrieveTableInfo());
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("COMPLIANCE",Id).DataRetrieveTableInfo());
+					jsonArray.add(new IntakeAssessSectionDataRetrieveService("ARCHIVALCONSUMPTION",Id).DataRetrieveTableInfo());
+					boolean checkContractInfo2 = new IntakeAssessSectionDataRetrieveService("CONTRACTINFO", Id).CheckAppInfoThirdParty();
+					if(checkContractInfo2)
+						jsonArray.add(new IntakeAssessSectionDataRetrieveService("CONTRACTINFO", Id).DataRetrieveTableInfo());
+					jsonArray.add(new IntakeAssessmentService().DataRetrieve(Id));
+					jsonArray.add(intakeStake.IntakeStakeHolderDataRetrieve(Id,"","",false));
+					jsonArray.add(getCurrentUserApproverId());
+					jsonArray.add(CheckOverallApproval(Id));
+					jsonObj.addProperty("userRole", APPLICATION_ROLES.APPLICATION_OWNER+"|"+APPLICATION_ROLES.DEVELOPMENT_OWNER);
+					jsonObj.addProperty("contractInfo", checkContractInfo2);
+
+					jsonArray.add(jsonObj);
+				   break;
+			}
+			
+				intakeStake = null;
+				System.gc();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				System.out.println("Exception--------[info]----------"+e);
+			}
+			
+			return jsonArray;
+		}
 		public JsonArray IntakePreviewDataRetrieve(String Id) throws ClassNotFoundException, SQLException {
 		JsonArray jsonArray = new JsonArray();
 		IntakeStakeHolderService intakeStake =  new IntakeStakeHolderService();
@@ -63,6 +158,8 @@ public class IntakePreviewDetailsService {
 		   	ResultSet rs = st.executeQuery(selectQuery);
 		   	if(rs.next()) {
 		   		approverId.addProperty("a_id", rs.getString("approvalId"));
+		   		EmailApprovalService mailService = new EmailApprovalService(oppId, "", MODULE_NAME.INTAKE_MODULE);
+		   		approverId.addProperty("checkRequestSign", mailService.getMailPriorityNumber());
 		   	}
 		   	st.close();
 		   	rs.close();

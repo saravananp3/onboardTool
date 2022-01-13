@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.Set;
 import com.google.gson.JsonArray;
 import com.itextpdf.html2pdf.ConverterProperties;
@@ -32,6 +35,7 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.VerticalAlignment;
 
+import common.resource.resourceUtils;
 import exportPdf.waterMarkConditions;
 import net.sf.dynamicreports.report.constant.FontName;
 
@@ -45,19 +49,23 @@ public class exportPdfService extends jsonToHtmlContent {
 	private String appName;
 	private String appId;
 	private static String waterMarkLogo = "classpath:/D3S.png";
-	
-	
+	private Properties properties;
+	private String pdfPath;
 	public exportPdfService(JsonArray jsonArray,String appName,String appId) {
 	this.home = System.getProperty("user.home");
 	this.downloadDirectory = new File(home+"/Downloads");
 	this.appName = appName;
 	this.appId = appId;
 	this.htmlContent = getHtmlContentFromJson(jsonArray);
+	this.properties = new resourceUtils("/fileUpload.properties").loadProperties();
+	this.pdfPath = properties.getProperty("FILE.PDF.PATH")+File.separator;
 	}
 	
-   public boolean startExportPdf() {
+   public String startExportPdf() {
 	   boolean flag =false;
+	   String filePath = "";
 	   try {
+		   String finalPdfPath = pdfPath+"final.pdf";
 		   String pdfName = getPdfFileName("intake_summary_"+appName)+".pdf";
 		   String coverPage = createCoverPage(appId,appName);
 		   String detailsPage = convertHtmltoPdf();
@@ -65,24 +73,28 @@ public class exportPdfService extends jsonToHtmlContent {
 		   Map<String, waterMarkConditions> fileSet = new LinkedHashMap<>();
 	        fileSet.put(coverPage,new  waterMarkConditions(appName,appId,true));
 	        fileSet.put(detailsPage,new  waterMarkConditions(appName,appId,true));
-	        mergeAndWaterMark( "final.pdf", fileSet);
-	        manipulatePdf("final.pdf", downloadDirectory+File.separator+pdfName);
+	        mergeAndWaterMark( finalPdfPath, fileSet);
+	        Path TempFilePath = Files.createTempDirectory("TempPDF");
+	        System.out.println("PDF temp file path:"+TempFilePath.toString());
+	        filePath = TempFilePath.toString()+File.separator+pdfName;
+	        manipulatePdf(finalPdfPath, filePath);
 	        flag = true;
 	   }
 	   catch(Exception e) {
 		   e.printStackTrace();
 	   }
-	   return flag;
+	   //filePath = filePath.replaceAll(File.separator,File.separator+File.separator );
+	   return filePath;
    }
 	
 	public String convertHtmltoPdf() throws IOException {
-		
-    	PdfDocument pdfDocument = new PdfDocument(new PdfWriter("htmlContent.pdf"));
+		String htmlPdfPath = pdfPath+"htmlContent.pdf";
+    	PdfDocument pdfDocument = new PdfDocument(new PdfWriter(htmlPdfPath));
     	ConverterProperties properties = new ConverterProperties();
     	pdfDocument.setDefaultPageSize(PageSize.A4);
     	HtmlConverter.convertToPdf(htmlContent,pdfDocument, properties);
     	pdfDocument.close();
-    	return "htmlContent.pdf";
+    	return htmlPdfPath;
     	
 	}
 	
@@ -104,7 +116,10 @@ public class exportPdfService extends jsonToHtmlContent {
 	}
 	
 	public String createCoverPage(String appId, String appName) throws IOException {
-        PdfWriter pdfWriter = new PdfWriter("front_page.pdf");
+        
+		String coverPagePath =  pdfPath+"front_page.pdf";
+		PdfWriter pdfWriter = new PdfWriter(new File(coverPagePath));
+        
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
         Document coverDoc = new Document(pdfDocument, PageSize.A4);
         coverDoc.setMargins(30, 30, 30, 30);
@@ -127,7 +142,7 @@ public class exportPdfService extends jsonToHtmlContent {
         //coverDoc.add(new Paragraph(new Text("This is a system generated Report").setFontSize(6)));
         coverDoc.close();
         
-        return "front_page.pdf";
+        return coverPagePath;
     }
 	
 	private void mergeAndWaterMark(String destFilePath, Map<String, waterMarkConditions> filesInfo) throws Exception {

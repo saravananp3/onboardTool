@@ -8,6 +8,7 @@ import java.sql.Statement;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
 
+import common.constant.APPROVAL_CONSTANT;
 import onboard.DBconnection;
 
 public class archiveReqApprovalSaveService {
@@ -58,7 +59,7 @@ public class archiveReqApprovalSaveService {
 			ResultSet rs1 = st1.executeQuery(checkQuery);
 			while(rs1.next())
 			{
-				if(!rs1.getString("ArchiveRequirementApproval").equals("Approved"))
+				if(!rs1.getString("ArchiveRequirementApproval").equals(APPROVAL_CONSTANT.APPROVED))
 					checkOverallStatus = false;
 			}
 			

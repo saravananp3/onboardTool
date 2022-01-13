@@ -12,6 +12,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import IntakeDetails.Common.DynamicFields;
+import common.constant.APPROVAL_CONSTANT;
+import common.constant.MODULE_NAME;
+import common.email.service.EmailApprovalService;
 import onboard.DBconnection;
 
 public class IntakeStakeHolderService extends  DynamicFields
@@ -22,6 +25,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 	
 	public String oppId="";
 	public String userName="";
+	public String role = "";
 	
 	public IntakeStakeHolderService() throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
@@ -48,9 +52,12 @@ public class IntakeStakeHolderService extends  DynamicFields
 			ArrayList<String> arr_username = new ArrayList<String>();
 			ArrayList<String> arr_role = new ArrayList<String>();
 			ArrayList<String> arr_ApprovalId = new ArrayList<String>();
-			ArrayList<String> arr_IntakeApproval = new ArrayList<String>();
 			ArrayList<String> arr_moduleId =  new ArrayList<String>();
 			ArrayList<String> arr_intakeApproval = new ArrayList<String>();
+			ArrayList<String> arr_comments = new ArrayList<String>();
+			ArrayList<String> arr_priority = new ArrayList<String>();
+			ArrayList<String> arr_mail_flag = new ArrayList<String>();
+
 
 			ArrayList<Integer> arr_seqmax_split = new ArrayList<Integer>();
 			ArrayList<String> arr_Oppid_split = new ArrayList<String>();
@@ -61,9 +68,14 @@ public class IntakeStakeHolderService extends  DynamicFields
 			ArrayList<String> arr_username_split = new ArrayList<String>();
 			ArrayList<String> arr_role_split = new ArrayList<String>();
 			ArrayList<String> arr_ApprovalId_split = new ArrayList<String>();
-			ArrayList<String> arr_IntakeApproval_split = new ArrayList<String>();
 			ArrayList<String> arr_moduleId_split =  new ArrayList<String>();
 			ArrayList<String> arr_intakeApproval_split = new ArrayList<String>();
+			ArrayList<String> arr_comments_split = new ArrayList<String>();
+			ArrayList<String> arr_priority_split = new ArrayList<String>();
+			ArrayList<String> arr_mail_flag_split = new ArrayList<String>();
+
+
+
 			
 			String select_query = "select max(seq_no) from intake_stake_holder_info where OppId = '"+Id+"' order by seq_no;";
 			Statement st = connection.createStatement();
@@ -87,8 +99,13 @@ public class IntakeStakeHolderService extends  DynamicFields
 				arr_ApprovalId.add(rs1.getString(9));
 				arr_intakeApproval.add(rs1.getString(10));
 				arr_moduleId.add(rs1.getString(11));
+				arr_comments.add(rs1.getString(12));
+				arr_priority.add(rs1.getString(13));
+				arr_mail_flag.add(rs1.getString(14));
 			}
 
+			rs1.close();
+			st1.close();
 			for (int i = 0; i < seqmax; i++) {
 				if (arr_seqmax.get(i) < seq_num) {
 					arr_seqmax_split.add(arr_seqmax.get(i));
@@ -102,6 +119,9 @@ public class IntakeStakeHolderService extends  DynamicFields
 					arr_ApprovalId_split.add(arr_ApprovalId.get(i));
 					arr_intakeApproval_split.add(arr_intakeApproval.get(i));
 					arr_moduleId_split.add(arr_moduleId.get(i));
+					arr_comments_split.add(arr_comments.get(i));
+					arr_priority_split.add(arr_priority.get(i));
+					arr_mail_flag_split.add(arr_mail_flag.get(i));
 				} else if (arr_seqmax.get(i) > seq_num) {
 					arr_seqmax_split.add((arr_seqmax.get(i) - 1));
 					arr_Oppid_split.add(arr_Oppid.get(i));
@@ -114,6 +134,9 @@ public class IntakeStakeHolderService extends  DynamicFields
 					arr_ApprovalId_split.add(arr_ApprovalId.get(i));
 					arr_intakeApproval_split.add(arr_intakeApproval.get(i));
 					arr_moduleId_split.add(arr_moduleId.get(i));
+					arr_comments_split.add(arr_comments.get(i));
+					arr_priority_split.add(arr_priority.get(i));
+					arr_mail_flag_split.add(arr_mail_flag.get(i));
 				}
 			}
 
@@ -121,7 +144,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 			Statement st2 = connection.createStatement();
 			st2.executeUpdate(delete_query);
 			for (int j = 0; j < seqmax - 1; j++) {
-				String insert_query = "insert into intake_stake_holder_info (seq_no,Oppid,prj_name,app_name,name,emailId,username,role,approvalid,intakeApproval,moduleid) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				String insert_query = "insert into intake_stake_holder_info (seq_no,Oppid,prj_name,app_name,name,emailId,username,role,approvalid,intakeApproval,moduleid,comments,priority_order_num,mail_flag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 				PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 				preparedStatement1.setInt(1, arr_seqmax_split.get(j));
 				preparedStatement1.setString(2, arr_Oppid_split.get(j));
@@ -134,8 +157,12 @@ public class IntakeStakeHolderService extends  DynamicFields
 				preparedStatement1.setString(9, arr_ApprovalId_split.get(j));
 				preparedStatement1.setString(10, arr_intakeApproval_split.get(j));
 				preparedStatement1.setString(11,arr_moduleId_split.get(j));
+				preparedStatement1.setString(12, arr_comments_split.get(j));
+				preparedStatement1.setString(13,arr_priority_split.get(j));
+				preparedStatement1.setString(14, arr_mail_flag_split.get(j));
 				preparedStatement1.execute();
 			}
+			st2.close();
 		}
 		catch(Exception e)
 		{
@@ -193,6 +220,9 @@ public class IntakeStakeHolderService extends  DynamicFields
 			jsonObj.addProperty("approvalId",rs.getString(9));
 			jsonObj.addProperty("intakeApproval",rs.getString(10));
 			jsonObj.addProperty("moduleId",rs.getString(11));
+			jsonObj.addProperty("comments",rs.getString(12));
+			jsonObj.addProperty("priorityNum",rs.getString(13));
+			jsonObj.addProperty("mail_flag",rs.getString(14));
 			jsonArray.add(jsonObj);
 		}
 		rs.close();
@@ -201,6 +231,8 @@ public class IntakeStakeHolderService extends  DynamicFields
 		  JsonObject jsonObject = new JsonObject();
 		  jsonObject.addProperty("checkExistence",checkExistence);
 		  jsonObject.addProperty("username",UserName);
+		  EmailApprovalService mailService = new EmailApprovalService(Id, "", MODULE_NAME.INTAKE_MODULE);
+		  jsonObject.addProperty("checkDecision", mailService.checkCurrentApproverCanDecide(approverId));
 		  jsonArray1.add(jsonObject);
 			/*
 			 * if(!checkExistence) jsonArray.addAll(getOpportunityInfo(Id)); else
@@ -222,6 +254,7 @@ public class IntakeStakeHolderService extends  DynamicFields
     		 if(rs.next()) {
     			 oppId = rs.getString("oppId");
     			 userName =rs.getString("username");
+    			 role =  rs.getString("role");
     		 }
     		 rs.close();
     		 st.close();
@@ -245,8 +278,8 @@ public class IntakeStakeHolderService extends  DynamicFields
 	         
 	         String UserName = rs1.getString("value");
 	         
-	         String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+	         String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, seq_num+1);
@@ -260,6 +293,9 @@ public class IntakeStakeHolderService extends  DynamicFields
 	          prestmt.setString(9, "");
 	          prestmt.setString(10, "");
 	          prestmt.setString(11, "");
+	          prestmt.setString(12, "");
+	          prestmt.setString(13, "");
+	          prestmt.setString(14, "");
 	          prestmt.execute();
 	          JsonObject jsonObj = new JsonObject();
 				jsonObj.addProperty("seq_no",seq_num+1);
@@ -271,6 +307,9 @@ public class IntakeStakeHolderService extends  DynamicFields
 				jsonObj.addProperty("approvalId","");
 				jsonObj.addProperty("intakeApproval","");
 				jsonObj.addProperty("moduleId","");
+				jsonObj.addProperty("comments", "");
+				jsonObj.addProperty("prorityNum","");
+				jsonObj.addProperty("mail_flag","");
 				jsonArray.add(jsonObj);
 			seq_num++;
 			}
@@ -340,8 +379,8 @@ public class IntakeStakeHolderService extends  DynamicFields
     	try
     	{
     		String approvalId = generateRandomApprovalId();
-    		String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId)"
-					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    		String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
           PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
           prestmt.setInt(1, seq_num+1);
@@ -353,8 +392,11 @@ public class IntakeStakeHolderService extends  DynamicFields
           prestmt.setString(7, "");
           prestmt.setString(8, "");
           prestmt.setString(9, approvalId);
-          prestmt.setString(10, "Decision pending");
+          prestmt.setString(10, APPROVAL_CONSTANT.DECISION_PENDING);
           prestmt.setString(11, "");
+          prestmt.setString(12, "");
+          prestmt.setString(13, "");
+          prestmt.setString(14, "false");
           prestmt.execute();
           check = true;
     	}
@@ -375,9 +417,9 @@ public class IntakeStakeHolderService extends  DynamicFields
 				String email = jsonObj.get("emailid").getAsString();
 				String username = jsonObj.get("username").getAsString();
   				String role = jsonObj.get("role").getAsString();
+  				String priorityNum =jsonObj.get("priorityNum").getAsString();
   			
-  			
-  			String StakeHolderUpdateQuery = "update intake_stake_holder_info set name = ?, emailId = ?, username = ?, role = ? where seq_no='"+(i+1)+"' and oppid='"+id+"'";
+  			String StakeHolderUpdateQuery = "update intake_stake_holder_info set name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ? where seq_no='"+(i+1)+"' and oppid='"+id+"'";
 
   	          PreparedStatement prestmt = con.prepareStatement(StakeHolderUpdateQuery);
   	        
@@ -385,7 +427,8 @@ public class IntakeStakeHolderService extends  DynamicFields
   	          prestmt.setString(2, email);
   	          prestmt.setString(3, username);
   	          prestmt.setString(4, role);
-  	          
+  	          prestmt.setString(5, priorityNum);
+
   	          prestmt.execute();
 		  	}
 		}
@@ -493,8 +536,8 @@ public class IntakeStakeHolderService extends  DynamicFields
 			  seq_num = Integer.parseInt(rs3.getString(1));
 			  }
 			  String approvalId = generateRandomApprovalId();
-			  String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			  String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, seq_num+1);
 	          prestmt.setString(2, Id);
@@ -505,8 +548,11 @@ public class IntakeStakeHolderService extends  DynamicFields
 	          prestmt.setString(7, "");
 	          prestmt.setString(8, RoleName);
 	          prestmt.setString(9, approvalId);
-	          prestmt.setString(10, "Decision pending");
+	          prestmt.setString(10, APPROVAL_CONSTANT.DECISION_PENDING);
 	          prestmt.setString(11, "");
+	          prestmt.setString(12, "");
+	          prestmt.setString(13, "");
+	          prestmt.setString(14, "false");
 	          prestmt.execute();
 			}     
 		 }

@@ -132,7 +132,7 @@
         statement.executeUpdate(query46);
         String query47 = "CREATE TABLE IF NOT EXISTS `Assessment_Archival_Consumption_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255),`Section` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query47);
-        String query48 = "CREATE TABLE IF NOT EXISTS `Intake_Stake_Holder_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `name` varchar(255),`emailId` varchar(255), `username` varchar(255),`role` varchar(255),`approvalId` varchar(255),`intakeApproval` varchar(255),`moduleId` varchar(255))";
+        String query48 = "CREATE TABLE IF NOT EXISTS `Intake_Stake_Holder_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `name` varchar(255),`emailId` varchar(255), `username` varchar(255),`role` varchar(255),`approvalId` varchar(255),`intakeApproval` varchar(255),`moduleId` varchar(255),`comments` varchar(500),`priority_order_num` varchar(55),`mail_flag` varchar(100))";
         statement.executeUpdate(query48);
         String query49 = "CREATE TABLE IF NOT EXISTS `Module_Approval_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`moduleName` varchar(255),`overAllApproval` varchar(255))";
         statement.executeUpdate(query49);
@@ -250,6 +250,12 @@
         
         String query90 = "CREATE TABLE IF NOT EXISTS `Archive_Execution_Governance_Template_Info` (`seq_no` INTEGER (255),`level` varchar(255),`taskGroup` varchar(255),`taskName` varchar(255),`taskType` varchar(255),`majorDependencies` varchar(255),`assignedTo` varchar(255),`planSrt` varchar(255),`planEnd` varchar(255),`actSrt` varchar(255),`actEnd` varchar(255),`completion` varchar(255),`status` varchar(255),`remark` varchar(255))";
         statement.executeUpdate(query90);
+        
+        String query91 ="CREATE TABLE IF NOT EXISTS `Legacy_Application_Screenshot` ( seq_num INTEGER, AppId VARCHAR(255), File_Name VARCHAR(255), doc LONGBLOB);";
+        statement.executeUpdate(query91);
+        
+        String query92 ="CREATE TABLE IF NOT EXISTS `Intake_Assessment_Application_Info_Doc` ( seq_num INTEGER, AppId VARCHAR(255), File_Name VARCHAR(255), doc LONGBLOB);";
+        statement.executeUpdate(query92);
 	  %>
 <% } catch (Exception ex) {
     ex.printStackTrace();

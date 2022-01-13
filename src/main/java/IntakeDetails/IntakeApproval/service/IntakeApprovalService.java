@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import common.constant.APPROVAL_CONSTANT;
+import common.constant.MODULE_NAME;
+import common.email.service.EmailApprovalService;
 import onboard.DBconnection;
 
 public class IntakeApprovalService {
@@ -16,11 +19,13 @@ public class IntakeApprovalService {
 	
 	private String oppId = "";
 	private String approverId;
+	private String appName;
 	public IntakeApprovalService(String approverId) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
 		this.approverId = approverId;
 		getOppId();
+		getAppName();
 	}
 	
 	
@@ -38,17 +43,45 @@ public class IntakeApprovalService {
 			e.printStackTrace();
 		}
 	}
-	public boolean IntakeApprovalUpdate(String IntakeApproval, int seq_no) {
+	
+	private void getAppName(){
+		try {
+			String selectQuery ="select * from opportunity_info where Id='"+oppId+"' and column_name ='appName'";
+			Statement st =con.createStatement();
+			ResultSet rs = st.executeQuery(selectQuery);
+			if(rs.next()) {
+				appName =rs.getString("value");
+			}
+			st.close();
+			rs.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public boolean IntakeApprovalUpdate(String IntakeApproval, int seq_no,String comments) throws Throwable {
 	
 		boolean check = false;
 		
 		try
 		{
-			String UpdateQuery ="update intake_stake_holder_info set intakeApproval ='"+IntakeApproval+"' where approvalId='"+approverId+"';";
+			String UpdateQuery ="update intake_stake_holder_info set intakeApproval ='"+IntakeApproval+"', comments ='"+comments+"' where approvalId='"+approverId+"';";
             Statement st = con.createStatement();
             st.executeUpdate(UpdateQuery);
             st.close();
             check=true;
+            
+            
+            if(IntakeApproval.equals(APPROVAL_CONSTANT.APPROVED)) {
+             EmailApprovalService MailService = new EmailApprovalService(oppId,appName,MODULE_NAME.INTAKE_MODULE);
+             MailService.getUserListAndSendApprovalMail();
+             MailService.finalize();
+             }
+          //else if(IntakeApproval.equals(APPROVAL_CONSTANT.REJECTED)) {
+            	//IntakeMailService.setFlagAndDecision("false","Decision pending");
+                //IntakeMailService.finalize();
+            //}
+            
 		}
 		catch(Exception e)
 		{
@@ -70,7 +103,7 @@ public class IntakeApprovalService {
 			while(rs1.next()) {
 				
 				String intakeApprovalValue = rs1.getString("intakeApproval");
-				if(!intakeApprovalValue.equals("Approved"))
+				if(!intakeApprovalValue.equals(APPROVAL_CONSTANT.APPROVED))
 					checkStatus = false;
 				
 			}	
