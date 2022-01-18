@@ -1,0 +1,80 @@
+var path = window.location.pathname;
+var page = path.split("/").pop();
+console.log(page);
+$(document).ready(function() {
+
+	switchActiveModule();
+
+});
+
+function switchActiveModule() {
+	switch (page) {
+		case "OpportunityList.jsp":
+		case "Intake-NewOpportunity.jsp":
+		case "OpportunityGrid.jsp":
+		case "IntakeOpportunity.jsp":
+		case "IntakeTriage.jsp":
+		case "archiveRequirementsLegacyDetails.jsp":
+		case "IntakeTriageSummary.jsp":
+		case "IntakeAssessment.jsp":
+		case "IntakeStakeHolder.jsp":
+		case "IntakeReviewDetails.jsp":
+		case "IntakeApproval.jsp":
+		case "ArchiveDecommPage.jsp":
+		case "ArchiveRequirementsIntroDetails.jsp":
+		case "ArchiveExecutionDetails.jsp":
+			selectiveActiveIcon(0);
+			break;
+		case "Admin_Module_Send_Invites.jsp":
+		case "Modify_Admin_Users_list.jsp":
+		case "Admin_Userslist.jsp":
+		case "Admin_Role_Details.jsp":
+			selectiveActiveIcon(1);
+			break;
+		case "PhaseList.jsp":
+		case "NewPhase.jsp":
+			selectiveActiveIcon(2);
+			break;
+		case "DashBoard.jsp":
+			selectiveActiveIcon(4);
+			break;
+	}
+}
+
+function selectiveActiveIcon(index) {
+	$(".moduleIcon").eq(index).addClass("selected");
+	$(".moduleIcon i").eq(index).removeClass("iconColor");
+	$(".moduleIcon i").eq(index).addClass("activeIcon");
+	$(".moduleIcon a").eq(index).attr("id", "title");
+	var iconLength = $(".moduleIcon").length;
+	for (var i = 0; i < iconLength; i++) {
+		if (i != index)
+			$(".moduleIcon a").eq(i).addClass("iconColor1");
+	}
+}
+$(document).on('mouseenter', '.selected', function() {
+
+	$('.activeIcon').css('color', '#1565c0');
+	var index = $(this).index('.selected');
+	$('.selected').eq(index).css('background-color', '#f8f9fa');
+
+});
+
+$(document).on('mouseleave', '.selected', function() {
+
+	$('.activeIcon').css('color', '#fff');
+	var index = $(this).index('.selected');
+	$('.selected').eq(index).css('background-color', '#1565c0');
+	$('.selected a').eq(index).css('color', '#fff');
+});
+$(document).on('mouseenter', '.iconColor1', function() {
+	var index = $(this).index('.iconColor1');
+	$('.iconColor1').eq(index).css('background-color', '#f8f9fa');
+
+});
+
+$(document).on('mouseleave', '.iconColor1', function() {
+	var index = $(this).index('.iconColor1')
+	$('.iconColor1').eq(index).css('background-color', '#fff');
+
+});

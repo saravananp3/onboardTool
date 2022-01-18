@@ -55,8 +55,8 @@ $(document).ready(function(){
             	if(Type=="Text box")
                 {
                 	var template_check=""; 
-                    var inputtext="<div class='form-group Inputvalue' id ='"+ColumnName+"_Row'>\n" +
-                        "<label class='control-label' for='triage'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>\n" +
+                    var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
+                        "<label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
                         "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                         "</div>";
                     $('#inputValue').append(inputtext);
@@ -65,8 +65,8 @@ $(document).ready(function(){
                 {
                 	var template_check=""; 
                 	
-                    var inputdate="<div class='form-group Inputvalue' id='"+ColumnName+"_Row'>" +
-                        "<label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>\n" +
+                    var inputdate="<div class='form-group InputField' id='"+ColumnName+"_Row'>" +
+                        "<label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
                         "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";
                     $('#inputValue').append(inputdate);
@@ -74,8 +74,8 @@ $(document).ready(function(){
                 else if(Type=="Dropdown")
                 {
                 	var template_check=""; 
-                    var inputdrop= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'><label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>"+
-                        "<select style = 'width:100%;' class ='form-control' id='"+ColumnName+"'name='"+ColumnName+"'>";
+                    var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
+                        "<select style = 'width:100%;' class ='form-select mb-3' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
                     //var sub_option = Options.substring(0, Options.length);
                     var option=Options.split(",");
@@ -91,8 +91,8 @@ $(document).ready(function(){
                 }
                 else if(Type=="Check box")
                 {
-                    var inputcheck= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>"+
-                        "<label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>";
+                    var inputcheck= "<div class='form-group InputField'  id = '"+ColumnName+"_Row'>"+
+                        "<label class='control-label' for='formInput198'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -104,7 +104,7 @@ $(document).ready(function(){
                             check = "checked";
                         }
                         inputcheck += "<label class = 'control-label' for = 'triage'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>&nbsp;&nbsp;" +
-                            option[i]+"</label>";
+                            option[i]+"</label><br/>";
                     }
                     inputcheck +="</div>";
                     $('#inputValue').append(inputcheck);
@@ -112,8 +112,8 @@ $(document).ready(function(){
                 }
                 else if(Type=="Radio box")
                 {
-                    var inputdrop= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>"+
-                        "<label class='control-label' for= 'triage'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>";
+                    var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'>"+
+                        "<label class='control-label' for='formInput198'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -123,7 +123,7 @@ $(document).ready(function(){
                             check = "checked";
                         }
                         inputdrop+= "<label class = 'control-label' for = 'triage'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>&nbsp;&nbsp;"+
-                            option[i]+"</label>";
+                            option[i]+"</label><br/>";
                     }
                     inputdrop +="</div>";
                     $('#inputValue').append(inputdrop);
@@ -132,7 +132,7 @@ $(document).ready(function(){
                 else if(Type=="file")
                 {
                     inputfile="<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>\n" +
-                        "<label class='control-label' for='triage'><div class='required_fie'>"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'' ></span></div></label>\n" +
+                        "<label class='control-label' for='triage'><div class='required_fie'>"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepen' style='float:right;display:none;'' ></span></div></label>\n" +
                         "<input type='file' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'>\n" +
                         "</div>";
                     $('#inputValue').append(inputfile);
@@ -140,8 +140,8 @@ $(document).ready(function(){
                 }
                 else if(Type=="Text area")
                 {
-                    var inputtext="<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>\n" +
-                        "<label class='control-label' for='triage'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil edit hidepen' style='float:right;display:none;'></span></div></label>\n" +
+                    var inputtext="<div class='form-group'>\n" +
+                        "<label class='control-label' for='formInput198'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div>\n" +
                         /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
                          "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                         "</div>";
@@ -175,9 +175,9 @@ $(document).ready(function(){
         }
 
     });
-    $(document).on('click', '.edit', function () {
+    $(document).on('click', '.editpopup', function () {
     	$('#editpopup_btn1').click();
-    var seqnum=$(this).index('.edit');
+    var seqnum=$(this).index('.editpopup');
     console.log($('.Inputvalue').eq(seqnum).find('.required_fie').length);
     $('.Inputvalue').eq(seqnum).find('.required_fie').length;
     if($('.Inputvalue').eq(seqnum).find('label:first .required_fie').length)

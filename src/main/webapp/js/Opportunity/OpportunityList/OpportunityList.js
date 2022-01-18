@@ -80,16 +80,16 @@ $(document).ready(function(){
 	        }
 });
 	 
-	 $(document).on('mouseenter','.active', function(){
-		
-		 $('.activeIcon').css('color','#1565c0');
-		 
-	 });
-	 
-	 $(document).on('mouseleave','.active', function(){
-			
-		 $('.activeIcon').css('color','#fff');
-		 
-	 });
+//	 $(document).on('mouseenter','.active', function(){
+//		
+//		 $('.activeIcon').css('color','#1565c0');
+//		 
+//	 });
+//	 
+//	 $(document).on('mouseleave','.active', function(){
+//			
+//		 $('.activeIcon').css('color','#fff');
+//		 
+//	 });
 	 
 });

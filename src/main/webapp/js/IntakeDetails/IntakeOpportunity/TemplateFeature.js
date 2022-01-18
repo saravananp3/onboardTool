@@ -47,27 +47,27 @@ function validateForm(){
                     if(Type=="Text box")
                     {
                         var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
-                            "<label class='control-label' for='opportunity'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>\n" +
-                            "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
-                            "</div>";
+                        "<label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
+                        "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
+                        "</div>";
                         if(!$('#'+ColumnName).length){
                         $('#inputFields').append(inputtext);
                          }
                         }
                     else if(Type=="Datepicker")
                     {
-                        var inputdate="<div class='form-group InputField' id = '"+ColumnName+"_Row'>" +
-                            "<label class='control-label' for= 'opportunity'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>\n" +
-                            "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
-                            "</div>";
+                        var inputdate="<div class='form-group InputField' id='"+ColumnName+"_Row'>" +
+                        "<label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
+                        "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
+                        "</div>";
                         if(!$('#'+ColumnName).length){
                         $('#inputFields').append(inputdate);
                         }
                     }
                     else if(Type=="Dropdown")
                     {
-                        var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'opportunity'><div "+manadatory+">"+LabelName+delete_edit_icon+"</div></label>"+
-                            "<select style = 'width:100%;' class ='form-control' id = '"+ColumnName+"' name='"+ColumnName+"'>";
+                        var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
+                        "<select style = 'width:100%;' class ='form-select' id='"+ColumnName+"'name='"+ColumnName+"'>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=sub_option.split(",");
@@ -86,7 +86,7 @@ function validateForm(){
                     else if(Type=="Check box")
                     {
                         var inputcheck= "<div class='form-group'>"+
-                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                        "<label class='control-label' for='formInput198'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=Options.split(",");
@@ -98,7 +98,7 @@ function validateForm(){
                                 check = "checked";
                             }
                             inputcheck += "<label class = 'control-label' for = 'fromInput198'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>" +
-                                option[i]+"</label>";
+                                option[i]+"</label><br/>";
                         }
                         inputcheck +="</div>";
                         $('#inputFields').append(inputcheck);
@@ -107,7 +107,7 @@ function validateForm(){
                     else if(Type=="Radio box")
                     {
                         var inputdrop= "<div class='form-group'>"+
-                            "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
+                        "<label class='control-label' for='formInput198'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
                         var option=Options.split(",");
@@ -117,7 +117,7 @@ function validateForm(){
                                 check = "checked";
                             }
                             inputdrop+= "<label class = 'control-label' for = 'fromInput198'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+ColumnName+"' "+check+"/>"+
-                                option[i]+"</label>";
+                                option[i]+"</label><br/>";
                         }
                         inputdrop +="</div>";
                         $('#inputFields').append(inputdrop);
@@ -135,7 +135,7 @@ function validateForm(){
                     else if(Type=="Text area")
                     {
                         var inputtext="<div class='form-group'>\n" +
-                            "<label class='control-label' for='formInput198'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                            "<label class='control-label' for='formInput198'>"+LabelName+"<span "+manadatory+"></span></label><span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
                             "<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                              "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
                             "</div>";

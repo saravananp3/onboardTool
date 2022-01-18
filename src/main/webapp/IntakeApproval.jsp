@@ -28,12 +28,24 @@
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
-
 <!--  ========== Three Toggle ========= -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" />
 <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" href="css/toggleSwitch/toggleSwitch.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
 <style type="text/css">
          
 body{
@@ -215,18 +227,18 @@ body {
   width: 50%;
 }
 .form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
-  background-color: #0db02b;
+  background-color: #1565c0;
   color: #ffffff;
 }
 .form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
-  background-color: #0db02b;
+  background-color: #1565c0;
   left: 50%;
   width: 50%;
-  border-color:#0db02b ;
+  border-color: #1565c0;
 }
 .form-wizard .form-wizard-steps li.activated::after {
   width: 100%;
-  border-color: #0db02b;
+  border-color: #1565c0;
 }
 .form-wizard .form-wizard-steps li:last-child::after {
   left: 0;
@@ -278,12 +290,12 @@ fieldset {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 14px;
-    font-weight: 700;
+  /*   font-weight: 700; */
     color: #000;
 }
 
 .form-wizard-steps li  i{
-	color: #d65470;
+	color: rgba(0,0,0,.9);
 }
 .back-to-top {
     position: fixed;
@@ -419,10 +431,36 @@ font-size:12px;
 </style>
 </head>
 <body class="top-navbar-fixed">
+
+<%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+					<div class="col-lg-12 col-md-12">
+						<div class="sub-title" style="color: #fff">
+								<a href="OpportunityList.jsp" id="sitetitle1"
+									style="color: #fff"><span class="glyphicon glyphicon-home"></span>
+									Home</a> >> <a href="IntakeOpportunity.jsp" id="sitetitle1"
+									style="color: #fff"> Opportunity </a> >> <a
+									href="IntakeTriageSummary.jsp" id="sitetitle1"
+									style="color: #fff"> Triage Summary</a> <a
+									href="IntakeAssessment.jsp" id="sitetitle1" style="color: #fff">
+									Assessment</a> >> <a href="IntakeStakeHolder.jsp"
+									id="sitetitle1" style="color: #fff"> StakeHolder</a>
+									<a  href="IntakeReviewDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Review Details</a> >>
+                                	<a  href="IntakeReviewDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Approval</a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</nav>
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
-   <nav class="navbar top-navbar bg-white box-shadow">
+  <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
@@ -430,7 +468,7 @@ font-size:12px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav navAlign">
 		             <li class="active1"><a href="OpportunityList.jsp" style="color:white;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -471,14 +509,14 @@ font-size:12px;
                            Approval</a>
                          </p>
 
-								</div>
+                    </div>
 
-							</div>
-					</nav>
-
-				</div>
-				<!-- /.container-fluid -->
+                </div>
 			</nav>
+      
+        </div>
+        /.container-fluid
+    </nav > -->
 			<div class="content-wrapper">
 				<div class="content-container">
 
@@ -486,14 +524,15 @@ font-size:12px;
 
 						<section>
 							<div class="row">
-								<div class="container" id="module_header">
+								<div class="container">
 
 									<div class=" col-md-12">
 										<div class="form-wizard">
 											<form action="" method="post" role="form">
-												<br /> <br /> <br />
-												<div class="form-wizard-header">
-													<p>Fill all the required fields to go next step</p>
+												<br/>
+				                                                        	<br/>
+												<div class="form-wizard-header nav-font">
+													<p style="font-size: 14px;">Fill all the required fields to go next step</p>
 													<ul class="list-unstyled form-wizard-steps clearfix">
 														<li class="activated"><span>1</span><i>Opportunity</i></li>
 														<li class="activated"><span>2</span><i>Triage</i></li>
@@ -506,9 +545,12 @@ font-size:12px;
 														<li class="active"><span>7</span><i>Approval</i></li>
 													</ul>
 												</div>
-												   
-												<div class="panel panel-default">
-												 <!-- Opportunity Details -->
+												
+
+												
+
+										<!-- 		<div class="panel panel-default">
+												 Opportunity Details
 													<div class="panel-heading OpportunityInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -532,7 +574,7 @@ font-size:12px;
 															</div>
 														</div>
 													</div>
-													<!-- Triage Details -->
+													Triage Details
 													<div class="panel-heading TriageInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -556,7 +598,7 @@ font-size:12px;
 															</div>
 														</div>
 													</div>
-													<!-- Triage Summary Details -->
+													Triage Summary Details
 													<div class="panel-heading TriageSummInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -580,7 +622,7 @@ font-size:12px;
 															</div>
 														</div>
 													</div>
-													<!-- Intake Assessment Details -->
+													Intake Assessment Details
 													<div class="panel-heading AssessmentInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -594,7 +636,7 @@ font-size:12px;
 																name="collapse">
 																<div class="panel-body">
 																<div class="panel panel-default">
-																	<!-- Application Details -->
+																	Application Details
 													<div class="panel-heading ApplicationInformationPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -619,7 +661,7 @@ font-size:12px;
 														</div>
 													</div>
 
-															<!-- Data Characteristics Details -->
+															Data Characteristics Details
 													<div class="panel-heading DataCharacteristicsPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -644,7 +686,7 @@ font-size:12px;
 														</div>
 													</div>
 
-													<!-- Compliance Characteristics Details -->
+													Compliance Characteristics Details
 													<div class="panel-heading ComplianceCharacteristicsPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -669,7 +711,7 @@ font-size:12px;
 														</div>
 													</div>
 															
-													<!-- Archival Consumption Details -->
+													Archival Consumption Details
 													<div class="panel-heading ArchivalConsumptionPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -695,7 +737,7 @@ font-size:12px;
 													</div>
 															
 					
-													<!-- Contract Information Details -->
+													Contract Information Details
 													<div class="panel-heading ContractInformationPreview intakeSection" style="display:none;">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -724,7 +766,7 @@ font-size:12px;
 																</div>
 															</div>
 														</div>
-														<!-- Stake Holder -->
+														Stake Holder
 													<div class="panel-heading StakeHolderInfoPreview intakeSection">
 														<h4 class="panel-title">
 															<a class="collapsed" data-toggle="collapse"
@@ -743,64 +785,278 @@ font-size:12px;
 															</div>
 														</div>
 													</div>
+													</div> -->
+																	
+								
+												<div class="card-container card">											 
+											<!-- ========== Opportunity Details ========== -->
+							         <div class="accordion" id="accordionPanelsStayOpenExample">
+							          	<div class="accordion-item">
+							          		<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+							          			<button class="accordion-button" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
+							          				data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+							          				aria-controls="panelsStayOpen-collapseOne">Opportunity Details</button>
+							          		</h2>
+							          		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne"
+							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          			<div class="accordion-body">
+													<div>
+														<table class="IntakePreviewClass"
+															style="border-collapse: collapse; width: 100%;">
+															<tbody id="OpportunityInfoPreview"></tbody>
+														</table>
 													</div>
+												</div>
+							          		</div>
+							          	</div>
+							          <!-- ========== Triage Details ========== -->
+							          <div class="accordion-item">
+							          		<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+							          			<button class="accordion-button collapsed" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
+							          				data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">Triage Details</button>
+							          		</h2>
+							          		<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo"
+							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          			<div class="accordion-body">
+							          		 		<div>
+														<table class="IntakePreviewClass"
+															style="border-collapse: collapse; width: 100%;">
+															<tbody id="TriageInfoPreview"></tbody>
+														</table>
 													</div>
-													<div class="panel panel-default">
-														<div class="panel-heading">
-															<h4 class="panel-title">
-																<a class="collapsed" data-toggle="collapse"
-																	data-parent="#panels1">Intake Approval</a>
-															</h4>
-														</div>
-														<div ng-app="btn" ng-controller="MainCtrl"></div>
-														<div class="panel-collapse collapse in" name="collapse">
-															<div class="panel-body">
-																<div>
-																	<h2>Approver List</h2>
-																	<table class="table table-bordered">
-																		<thead>
-																			<tr>
-																				<th
-																					style='text-align: center; vertical-align: middle;'>Approver
-																					Name</th>
-																				<th
-																					style='text-align: center; vertical-align: middle;'>Approver
-																					Role</th>
-																				<th
-																					style='text-align: center; vertical-align: middle;'>Approval</th>
-																				<th
-																					style='text-align: center; vertical-align: middle;'>Action</th>
-																					<th
-																					style='text-align: center; vertical-align: middle;'>Comments</th>
-																			</tr>
-																		</thead>
-																		<tbody id="ApprovalDetails">
-																		</tbody>
-																	</table>
-																</div>
-																<div class="col-md-12">
-																	<div class="col-md-1">
-																		<button type="button" class="btn btn-light"
-																			style="padding-top: 5px; padding-left: 10px; float: left;"
-																			onclick="location.href='IntakeReviewDetails.jsp';">Prev</button>
+							          			</div>
+							          		</div>
+							          </div>
+							          <!-- ========== Triage Summary Details ========== -->
+							           <div class="accordion-item">
+							          		<h2 class="accordion-header" id="panelsStayOpen-headingThree">
+							          			<button class="accordion-button collapsed" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
+							          				data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">Triage Summary Details</button>
+							          		</h2>
+							          		<div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree"
+							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          			<div class="accordion-body">
+							          		 		<div>
+														<table class="IntakePreviewClass"
+															style="border-collapse: collapse; width: 100%;">
+															<tbody id="TriageSummInfoPreview"></tbody>
+														</table>
+													</div> 
+							          			</div>
+							          		</div>
+							          </div>
+							          <!-- ========== Intake Assessment Details ========== -->
+							           <div class="accordion-item">
+							          		<h2 class="accordion-header" id="panelsStayOpen-headingFour">
+							          			<button class="accordion-button collapsed" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
+							          				data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">Intake Assessment</button>
+							          		</h2>
+							          		<div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour"
+							          			data-bs-parent="#accordionPanelsStayOpenExample">
+																	<div class="accordion-body">
+																	<div class="accordion"   id="accordionPanelsStayOpenEx">
+																	<!-- ========== Application Details ========== -->
+																	
+																		<div class="accordion-item">
+																			<h2 class="accordion-header"
+																				id="panelsStayOpen-heading-4">
+																				<button class="accordion-button collapsed"
+																					id="accordion-button-clr" type="button"
+																					data-bs-toggle="collapse"
+																					data-bs-target="#panelsStayOpen-collapse-4"
+																					aria-expanded="false"
+																					aria-controls="panelsStayOpen-collapse-4">Application Details</button>
+																			</h2>
+																			<div id="panelsStayOpen-collapse-4"
+																				class="accordion-collapse collapse"
+																				aria-labelledby="panelsStayOpen-heading-4"
+																				data-bs-parent="#accordionPanelsStayOpenEx">
+																				<div class="accordion-body">
+																					<div>
+																						<table class="IntakePreviewClass"
+																							style="border-collapse: collapse; width: 100%;">
+																							<tbody id="ApplicationInformationPreview"></tbody>
+																						</table>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		
+																		<!-- ========== Data Characteristics Details========== -->
+																		<div class="accordion-item">
+																			<h2 class="accordion-header"
+																				id="panelsStayOpen-heading-5">
+																				<button class="accordion-button collapsed"
+																					id="accordion-button-clr" type="button"
+																					data-bs-toggle="collapse"
+																					data-bs-target="#panelsStayOpen-collapse-5"
+																					aria-expanded="false"
+																					aria-controls="panelsStayOpen-collapse-5">Data Characteristics</button>
+																			</h2>
+																			<div id="panelsStayOpen-collapse-5"
+																				class="accordion-collapse collapse"
+																				aria-labelledby="panelsStayOpen-heading-5"
+																				data-bs-parent="#accordionPanelsStayOpenEx">
+																				<div class="accordion-body">
+																					<div>
+																						<table class="IntakePreviewClass"
+																							style="border-collapse: collapse; width: 100%;">
+																							<tbody id="DataCharacteristicsPreview"></tbody>
+																						</table>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																			<!-- ==========Compliance Characteristics Details========== -->
+																		<div class="accordion-item">
+																			<h2 class="accordion-header"
+																				id="panelsStayOpen-heading-6">
+																				<button class="accordion-button collapsed"
+																					id="accordion-button-clr" type="button"
+																					data-bs-toggle="collapse"
+																					data-bs-target="#panelsStayOpen-collapse-6"
+																					aria-expanded="false"
+																					aria-controls="panelsStayOpen-collapse-6">Compliance Characteristics</button>
+																			</h2>
+																			<div id="panelsStayOpen-collapse-6"
+																				class="accordion-collapse collapse"
+																				aria-labelledby="panelsStayOpen-heading-6"
+																				data-bs-parent="#accordionPanelsStayOpenEx">
+																				<div class="accordion-body">
+																					<div>
+																						<table class="IntakePreviewClass"
+																							style="border-collapse: collapse; width: 100%;">
+																							<tbody id="ComplianceCharacteristicsPreview"></tbody>
+																						</table>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+
+																<!-- ==========Archival Consumption Details========== -->
+																		<div class="accordion-item">
+																			<h2 class="accordion-header"
+																				id="panelsStayOpen-heading-7">
+																				<button class="accordion-button collapsed"
+																					id="accordion-button-clr" type="button"
+																					data-bs-toggle="collapse"
+																					data-bs-target="#panelsStayOpen-collapse-7"
+																					aria-expanded="false"
+																					aria-controls="panelsStayOpen-collapse-7">Archival Consumption</button>
+																			</h2>
+																			<div id="panelsStayOpen-collapse-7"
+																				class="accordion-collapse collapse"
+																				aria-labelledby="panelsStayOpen-heading-7"
+																				data-bs-parent="#accordionPanelsStayOpenEx">
+																				<div class="accordion-body">
+																					<div>
+																						<table class="IntakePreviewClass"
+																							style="border-collapse: collapse; width: 100%;">
+																							<tbody id="ArchivalConsumptionPreview"></tbody>
+																						</table>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+
+																
+															<!-- ==========Contract Information Details========== -->
+																		<div class="accordion-item">
+																			<h2 class="accordion-header"
+																				id="panelsStayOpen-heading-8">
+																				<button class="accordion-button collapsed"
+																					id="accordion-button-clr" type="button"
+																					data-bs-toggle="collapse"
+																					data-bs-target="#panelsStayOpen-collapse-8"
+																					aria-expanded="false"
+																					aria-controls="panelsStayOpen-collapse-8">Contract Information</button>
+																			</h2>
+																			<div id="panelsStayOpen-collapse-8"
+																				class="accordion-collapse collapse"
+																				aria-labelledby="panelsStayOpen-heading-8"
+																				data-bs-parent="#accordionPanelsStayOpenEx">
+																				<div class="accordion-body">
+																					<div>
+																						<table class="IntakePreviewClass"
+																							style="border-collapse: collapse; width: 100%;">
+																							<tbody id="ContractInformationPreview"></tbody>
+																						</table>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		</div>
+																		
+																		</div>
 																	</div>
-																	<div class="col-md-2"
-																		style="padding-top: 10px; padding-right: 10px; float: right;">
-																		<button type="button" class="btn btn-success"
-																			id="ApprovalSave">Finish</button>
-																		<button type="button"
-																			class="btn btn-primary pull-right"
-																			id="ConfirmationPopUp_Btn" data-toggle="modal"
-																			data-target="#ConfirmationPopUp"
-																			style="display: none;">Delete PopUp</button>
-																		<!-- comment popup button -->
-																		<button type="button" id="ApprovalComments" data-toggle="modal" data-target="#ApprovalCommentsPopUp" style="display: none;">Comments PopUp</button>
+																	
 																	</div>
+															
+																
+															
+							           <!-- ========== Stake Holder ========== -->
+														<div class="accordion-item">
+															<h2 class="accordion-header"
+																id="panelsStayOpen-headingFive">
+																<button class="accordion-button collapsed"
+																	id="accordion-button-clr" type="button"
+																	data-bs-toggle="collapse"
+																	data-bs-target="#panelsStayOpen-collapseFive"
+																	aria-expanded="false"
+																	aria-controls="panelsStayOpen-collapseFive">Stake
+																	Holder</button>
+															</h2>
+															<div id="panelsStayOpen-collapseFive"
+																class="accordion-collapse collapse"
+																aria-labelledby="panelsStayOpen-headingFive"
+																data-bs-parent="#accordionPanelsStayOpenExample">
+																<div class="accordion-body">
+																	<div id="StakeHolderInfoPreview"></div>
 																</div>
 															</div>
 														</div>
+
+														<div class="card-header d3s-mt-40" id="cd-header">Intake Approval</div>
+											<div ng-app="btn" ng-controller="MainCtrl"></div>
+											<div class="panel-collapse" name="collapse">
+												<div class="panel-body">
+													<div>
+														<h2>Approver List</h2>
+														<table class="table-bordered" style="width: 100%;">
+															<thead>
+																<tr>
+																	<th style='text-align: center; vertical-align: middle;'>Approver
+																		Name</th>
+																	<th style='text-align: center; vertical-align: middle;'>Approver
+																		Role</th>
+																	<th style='text-align: center; vertical-align: middle;'>Approval</th>
+																	<th style='text-align: center; vertical-align: middle;'>Action</th>
+																</tr>
+															</thead>
+															<tbody id="ApprovalDetails">
+															</tbody>
+														</table>
+													</div>
+													<div class="row">
+														<div class="col-6">
+															<button type="button" class="btn btn-secondary"
+																onclick="location.href='IntakeReviewDetails.jsp';">Prev</button>
+														</div>
+														<div class="col-6" align="end">
+															<button type="button" class="btn btn-primary"
+																id="ApprovalSave">Finish</button>
+															<button type="button" class="btn btn-primary pull-right"
+																id="ConfirmationPopUp_Btn" data-bs-toggle="modal"
+																data-bs-target="#ConfirmationPopUp" style="display: none;">Delete
+																PopUp</button>
+														</div>
 													</div>
 												</div>
+											</div>
+										
+										   </div>
+							          </div>
+									</div>
 										</div>
 						</section>
 					</div>
@@ -809,14 +1065,14 @@ font-size:12px;
 		</div>
 
 	</form>
-	<!-- Delete Row Pop Up  -->
+	<!-- confirmation Row Pop Up  -->
 	<div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">Confirmation for Approval</h5>
 					<button type="button" id="ConfirmationClose" class="close"
-						data-dismiss="modal" aria-label="Close">
+						data-bs-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -833,19 +1089,20 @@ font-size:12px;
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="ConfirmationYes" class="btn btn-primary">Yes</button>
-					<button type="button" class="btn btn-default" id="ConfirmationNo">No</button>
+					<button type="button" class="btn btn-secondary" id="ConfirmationNo">No</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<!-- Comment Pop Up -->
+ 
+<!-- Comment Pop Up -->
 	<div class="modal" id="ApprovalCommentsPopUp"   tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color:#269af8;color:white">
         <h5 class="modal-title" style="color:white">Remarks</h5>
-        <button type="button" id ="ApprovalCommentClose" style="color:white" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id ="ApprovalCommentClose" style="color:white" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -863,35 +1120,25 @@ font-size:12px;
       </div>
     </div>
   </div>
-	
-	
-	<!-- Date picker -->
-
-	<link
-		href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-		rel="stylesheet">
-	<!-- newly added code by parthiban -->
-
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js"></script>
-
-	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<link
-		href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
-		rel="stylesheet">
-	<script
-		src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-	<script src="js/toastr/toastr.min.js"></script>
-	<script src="js/notification/notification.js"></script>
-	<script src="js/IntakeDetails/IntakeApproval/IntakeApprovalSave.js"></script>
-
-	<!-- Active Icon Color changes  -->
-	<script>
+    <!-- Date picker --> 
+    
+       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
+         rel = "stylesheet"><!-- newly added code by parthiban -->
+         
+         <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
+         <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+          <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js"></script>
+         
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+      <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+       <script src="js/toastr/toastr.min.js"></script>
+        <script src="js/notification/notification.js"></script>
+         <script src ="js/IntakeDetails/IntakeApproval/IntakeApprovalSave.js"></script>
+      
+       <!-- Active Icon Color changes  -->
+<script>
 $(document).on('mouseenter','.active1', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');
@@ -956,5 +1203,28 @@ $(document).on('mouseenter','.active1', function(){
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
     <script id ="scripttag"></script>
+    <script src="js/navigation/navigation.js"></script>
+    <!-- ========== Toastr ========== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	
+	<!-- ========== BootstrapV5 ========== -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>
     
 </html>

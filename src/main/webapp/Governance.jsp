@@ -533,21 +533,6 @@ else if(roles.equals("ArchivalDeveloper"))
     });
 </script>
 
-<!-- Active Icon Color changes  -->
-<script>
-$(document).on('mouseenter','.active', function(){
-		
-		 $('.activeIcon').css('color','#1565c0');
-		 
-	 });
-	 
-	 $(document).on('mouseleave','.active', function(){
-			
-		 $('.activeIcon').css('color','#fff');
-		 
-	 });
-</script>
-
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/jquery-ui/jquery-ui.min.js"></script>

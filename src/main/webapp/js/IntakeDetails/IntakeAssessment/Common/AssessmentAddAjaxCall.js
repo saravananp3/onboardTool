@@ -90,14 +90,14 @@ $('#AssessAddSubmit').click(function() {
 	                {
 	                    var input="";
 	                    input+= "<div class='form-group InputFieldAssessment "+Section+"'>"+
-	                        "<label class='control-label' for= 'Assessment'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>";
+	                        "<label class='control-label' for= 'Assessment'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label><br/>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++){
 
 	                        input+= "<label class = 'control-label' for = 'Assessment'><input type='radio' class = 'form-comtrol' id="+option[i]+(i+1)+"' placeholder ='"+option[i]+"' value = '"+option[i]+"' name='"+data.ColumnName+num+"'/>&nbsp;&nbsp;"+
-	                            option[i]+"</label>";
+	                            option[i]+"</label><br/>";
 
 	                    }
 	                    input +="</div>";
@@ -107,14 +107,14 @@ $('#AssessAddSubmit').click(function() {
 	                {
 	                    var input="";
 	                    input+= "<div class='form-group InputFieldAssessment "+Section+"'>"+
-	                        "<label class='control-label' for= 'Assessment'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>";
+	                        "<label class='control-label' for= 'Assessment'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label><br/>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");
 	                    for (var i=0; i<option.length; i++) {
 
 	                        input += "<label class = 'control-label' for = 'Assessment'><input type='checkbox' class = 'form-comtrol' id=" + option[i] + (i + 1) + "' placeholder ='" + option[i] + "' value = '"+option[i]+"' name='" + data.ColumnName+num+"'/>&nbsp;&nbsp;" +
-	                            option[i] + "</label>";
+	                            option[i] + "</label><br/>";
 	                    }
 	                    input +="</div>";
 	                    $('#'+InputFieldName).append(input);
@@ -123,7 +123,7 @@ $('#AssessAddSubmit').click(function() {
 	                {
 	                    var select="";
 	                    select+= "<div class='form-group InputFieldAssessment "+Section+"'><label class='control-label' for= 'Assessment'><div "+required_field+">"+data.LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>"+
-	                        "<select style = 'width:100%;' name = "+data.ColumnName+num+">";
+	                        "<select  class='form-select' style = 'width:100%;' name = "+data.ColumnName+num+">";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");

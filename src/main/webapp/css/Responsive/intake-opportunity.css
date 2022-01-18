@@ -1,0 +1,44 @@
+body {
+	margin: 0 auto;
+	width: 100%;
+	background: #f1f1f1;
+	font-family: 'Poppins', sans-serif;
+}
+.card-container-1 {
+	font-family: 'Poppins', sans-serif;
+	width: 70%;
+    margin-left: 15%;
+}
+
+.card-container {
+	font-family: 'Poppins', sans-serif;
+	width: 85%;
+    margin-left: 6.5%;
+}
+#cd-header {
+	font-size: 16px;
+	color: #fff;
+	height: 50px;
+	padding-top:12px;
+	background-color: #1565c0;
+}
+
+.modal-header {
+	background-color: #1565c0;
+}
+
+.modal-title {
+	color: #fff;
+}
+
+.dropDown-font {
+	font-family: 'Poppins', sans-serif;
+	font-size: 14px;
+	color: #000;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+

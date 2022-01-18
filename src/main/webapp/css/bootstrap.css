@@ -3859,14 +3859,14 @@ fieldset[disabled] .btn-info.focus {
 
 .btn-warning {
   color: #fff;
-  background-color: #f0ad4e;
-  border-color: #eea236;
+  background-color:#1565c0;
+  border-color: #1565c0;
 }
 
 .btn-warning:focus, .btn-warning.focus {
   color: #fff;
-  background-color: #ec971f;
-  border-color: #985f0d;
+  background-color: #1565c0;
+  border-color: #1565c0;
 }
 
 .btn-warning:hover {
@@ -3878,8 +3878,8 @@ fieldset[disabled] .btn-info.focus {
 .btn-warning:active, .btn-warning.active,
 .open > .btn-warning.dropdown-toggle {
   color: #fff;
-  background-color: #ec971f;
-  border-color: #d58512;
+  background-color: #1565c0;
+  border-color: #1565c0;
 }
 
 .btn-warning:active:hover, .btn-warning:active:focus, .btn-warning:active.focus, .btn-warning.active:hover, .btn-warning.active:focus, .btn-warning.active.focus,
@@ -3887,8 +3887,8 @@ fieldset[disabled] .btn-info.focus {
 .open > .btn-warning.dropdown-toggle:focus,
 .open > .btn-warning.dropdown-toggle.focus {
   color: #fff;
-  background-color: #d58512;
-  border-color: #985f0d;
+  background-color: #1565c0;
+  border-color: #1565c0;
 }
 
 .btn-warning:active, .btn-warning.active,
@@ -3905,7 +3905,7 @@ fieldset[disabled] .btn-warning.focus {
 }
 
 .btn-warning .badge {
-  color: #f0ad4e;
+  color: #1565c0;
   background-color: #fff;
 }
 

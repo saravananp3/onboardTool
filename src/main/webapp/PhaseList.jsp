@@ -44,9 +44,9 @@
             background:#fff;
         }
 
-        .active{
+       /*  .active{
         background:#1565c0;
-         }
+         } */
       .page-title-div {
 	 background:#1565c0;
 	  padding: 15px;
@@ -512,14 +512,16 @@ pointer-events:all;
             preparedStmt.execute();
         }%>
 
-
+ <%
+                            String uname=(String)details.getAttribute("username");
+                            String role=(String)details.getAttribute("role");%>
 
 <!-- main wrapper -->
 <div class="main-wrapper">
 
 
      <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+    <%-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                  <div class="navbar-header no-padding" style = "height : 100px;">
@@ -646,7 +648,83 @@ pointer-events:all;
 			</nav>
         </div>
         <!-- /.container-fluid -->
-    </nav >
+    </nav > --%>
+    
+     <%@include file="Nav-Bar.jspf"%>
+ 
+ <nav class="nav nav-down-height" id="bg-color">
+		<div class="container-fluid" id="container-fluid-margin">
+			<div class="row" id="d3s-mt-20">
+				<div class="col-lg-12 col-md-12">
+					<h5 id="title">Applications</h5>
+				</div>
+			</div>
+			<div class="row" id="d3s-mt-10">
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<i class="fa fa-search search-icon" aria-hidden="true"></i>
+						</div>
+						<div class="col-auto">
+							<input id="appFilter" type="text" placeholder="Search the Phase...">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<label class="col-form-label" id="title">Phase</label>
+						</div>
+
+						<div class="col-auto">
+							<select class="selectInput filter phase-dropDown-width" id="phase"></select>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<label class="col-form-label" id="title">Wave</label>
+						</div>
+						<div class="col-auto">
+							<select class="selectInput filter phase-dropDown-width" id="wave"></select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6">
+					<div class="row align-items-center">
+						<div class="col-auto">
+							<label class="col-form-label" id="title">Application</label>
+						</div>
+						<div class="col-auto">
+							<select class="selectInput filter phase-dropDown-width" id="application"></select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 right-side">
+				<button type="button" class="btn btn-primary pull-right" id="button"
+					style="color: DodgerBlue;" name="newpr"
+					onclick="location.href='NewPhase.jsp';">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+				</button>
+
+				<button type="button" class="btn btn-primary pull-right"
+					id="addWaveBtnId" style="color: DodgerBlue; display: none;"
+					name="newpr" data-toggle='modal' data-target='#existWavePopUp'>
+				</button>
+				<button type="button" class="btn btn-primary pull-right"
+					id="deleteBtn" style="color: DodgerBlue; display: none;"
+					name="newpr" data-toggle='modal' data-target='#deletePopUp'>
+				</button>
+			</div>
+		</div>
+	</nav>'
     <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
     <div class="content-wrapper">
         <div class="content-container">
@@ -687,9 +765,7 @@ pointer-events:all;
 
                         <div class="row">
                             <div class="container-fluid grid">
-                            <br/>
-                            <br/>
-                            <br/>
+                            
                                 <div class="main">
                                     <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                                         <div class="cbp-vm-options">
@@ -993,6 +1069,6 @@ $(document).ready(function() {
     }
 });
 </script>
-
+<script src="js/navigation/navigation.js"></script>
 </body>
 </html>
