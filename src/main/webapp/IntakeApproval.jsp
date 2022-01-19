@@ -1047,8 +1047,10 @@ font-size:12px;
 																id="ApprovalSave">Finish</button>
 															<button type="button" class="btn btn-primary pull-right"
 																id="ConfirmationPopUp_Btn" data-bs-toggle="modal"
-																data-bs-target="#ConfirmationPopUp" style="display: none;">Delete
+																data-bs-target="#ConfirmationPopUp" style="display: none;">Confirmation
 																PopUp</button>
+															<!-- comment popup button -->
+															<button type="button" id="ApprovalComments" data-bs-toggle="modal" data-bs-target="#ApprovalCommentsPopUp" style="display: none;">Comments PopUp</button>
 														</div>
 													</div>
 												</div>
@@ -1100,12 +1102,12 @@ font-size:12px;
 	<div class="modal" id="ApprovalCommentsPopUp"   tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color:#269af8;color:white">
-        <h5 class="modal-title" style="color:white">Remarks</h5>
-        <button type="button" id ="ApprovalCommentClose" style="color:white" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      
+      <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+			<button type="button" class="btn-close" id ="ApprovalCommentClose" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+		</div>
       <div class="modal-body">
                 <div class="modal-body">
                 <label>comments</label>
@@ -1114,8 +1116,8 @@ font-size:12px;
              <input type="hidden" id="ApprovalCommentSeq"/>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" id = "ApprovalCommentOKBtn" >Ok</button>
-        <button type="button" class="btn btn-default" id = "ApprovalCommentCancelBtn" >Cancel</button>
+        <button type="button" class="btn btn-primary" id = "ApprovalCommentOKBtn" >Ok</button>
+        <button type="button" class="btn btn-secondary" id = "ApprovalCommentCancelBtn" >Cancel</button>
       </div>
       </div>
     </div>
