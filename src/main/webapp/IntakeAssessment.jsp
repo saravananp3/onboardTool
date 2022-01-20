@@ -1749,7 +1749,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="AssessEditSubmit" class="btn btn-primary" data-bs-dismiss="modal>Submit</button>
+        <button type="button" id="AssessEditSubmit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
         
       </div>
