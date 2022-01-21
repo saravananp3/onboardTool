@@ -4,7 +4,7 @@ $("#createbtn").click(function(e)
 	var DepedentColumnNameCheck =['If_Other_describe','If_other_please_describe','vendor','describe','plsdescribe','pls_describe'];
 	var nameAttr = [];
 	var jsonObj = [];
-		$(".Inputvalue").each(function(i) {
+		$(".InputField").each(function(i) {
     		var inputs = {};
     		var req=$(this).find(".required_fie").length;  
     		console.log("requied field check: ",req);
