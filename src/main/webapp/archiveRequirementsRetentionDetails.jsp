@@ -36,6 +36,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
 
     
 
@@ -243,7 +247,7 @@ padding: 15px;
 
     <div class="main-wrapper">
 
-           <nav class="navbar top-navbar bg-white box-shadow">
+          <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                  <div class="navbar-header no-padding" style = "height : 100px;">
@@ -251,7 +255,7 @@ padding: 15px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                  <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -287,18 +291,35 @@ padding: 15px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
+        /.container-fluid
     </nav>
     <br/>
     <br/>
-    <br/>
+    <br/> -->
+     <%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+						<div class="col-lg-12 col-md-12">
+							<div class="sub-title" style="color: #fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >>
+                         		 >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                           		Introduction</a> >>
+                   				<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                           		Legacy Application Info</a> >> RetentionDetails
+							</div>
+						</div>
+					</div>
+			</div>
+		</nav>
         <div class="content-wrapper">
         <div class="col-md-12">
 								<div style="margin-bottom: -138px;" class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix">
-							<p style="margin-top: 30px; margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<p style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
 								<li class="activated"><span>1</span><i>Introduction</i></li>
 								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
 								<li class="active"><span>3</span><i>Retention Details</i></li>
@@ -343,12 +364,8 @@ padding: 15px;
                                   
                                     
                                      <!-- Archive Requirement Table -->
-                                   <div class="panel panel-default" style='width:1000px;'>
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse"
-                                                        data-parent="#panels1" >Retention Details</a> </h4>
-                                            </div>
+                                   <div class="card-container-2 card">
+                                            <div class="card-header" id="cd-header">Retention Details </div>
                                             <div id="collapse1" class="panel-collapse "
                                                 name="collapse">
                                                 <div class="panel-body">
@@ -369,7 +386,7 @@ padding: 15px;
 													 
 													 <div>
                                                    				<h4 class="title1"></h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Retention Level (Select all Used)</th>
@@ -387,19 +404,19 @@ padding: 15px;
 																 
 																</div>
 												    </div>                                               
-                                                    <div class="col-md-12">
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsLegacyDetails.jsp';">Back</button>
+                                                    <div class="col-12">
+                                                            <div class="col-4">
+                                                                <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsLegacyDetails.jsp';">Back</button>
                                                             </div>
-                                                            <div class="col-md-6 dropup" style="padding-right: 10px; float: right;  width: 20%;">
+                                                            <div class="col-12" align="end">
                                                                 
                                                                 
                                                                
-                                                                <button type="submit" class="btn btn-success" id="saveRetentionId">Save</button>
+                                                                <button type="submit" class="btn btn-primary" id="saveRetentionId">Save</button>
                                                                 <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
                                                                  <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='ArchiveBusinessRequirements.jsp';" id="next" disabled="true">
                                                                  
-                                                                 <a href="javascript:;">Next</a>
+                                                                 <a href="javascript:;" style="color: #fff;">Next</a>
                                                                  
                                                                  </button>
                                                               
@@ -512,6 +529,10 @@ $(document).on('mouseenter','.active1', function(){
 
 <script src="js/notification/notification.js"></script>
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/retentionDetails/archiveRetentionSave.js"></script>
+<script src="js/navigation/navigation.js"></script>
+	<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
 </body>
 </html>

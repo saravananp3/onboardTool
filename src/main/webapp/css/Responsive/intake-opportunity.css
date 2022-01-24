@@ -15,6 +15,18 @@ body {
 	width: 85%;
     margin-left: 6.5%;
 }
+
+.card-container-2 {
+	font-family: 'Poppins', sans-serif;
+	width: 85%;
+    margin-left: 8%;
+}
+
+.card-container-3 {
+	font-family: 'Poppins', sans-serif;
+	width: 95%;
+    margin-left: 2.5%;
+}
 #cd-header {
 	font-size: 16px;
 	color: #fff;
@@ -41,4 +53,8 @@ body {
 	float: right !important;
 }
 
+.margin-text-area {
+	 margin-left: -10px;
+	 margin-bottom: 10px;
+}
 

@@ -22,6 +22,13 @@ function switchActiveModule() {
 		case "IntakeApproval.jsp":
 		case "ArchiveDecommPage.jsp":
 		case "ArchiveRequirementsIntroDetails.jsp":
+		case "archiveRequirementsRetentionDetails.jsp":
+		case "ArchiveBusinessRequirements.jsp":
+		case "archiveReqAbbrevation.jsp":
+		case "archiveRequirementsDocumentRevisions.jsp":
+		case "archiveRequirementsAddendum.jsp":
+		case "archiveRequirementsReviewDetails.jsp":
+		case "archiveRequirementsApprovalDetails.jsp":
 		case "ArchiveExecutionDetails.jsp":
 			selectiveActiveIcon(0);
 			break;

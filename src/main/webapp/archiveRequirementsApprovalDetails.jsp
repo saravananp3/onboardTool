@@ -6,6 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Decom3Sixty - Intake</title>
 
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+<link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
+
 <!-- ========== COMMON STYLES ========== -->
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -38,6 +44,8 @@
 
 <link rel="stylesheet" href="css/toggleSwitch/toggleSwitch.css">
 <style type="text/css">
+
+
          
 body{
 background:#fff;
@@ -81,7 +89,7 @@ body {
   text-align: center;
 }
 
-.form-wizard {
+/* .form-wizard {
   color: #888888;
   
 }
@@ -240,7 +248,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-}
+} */
 @keyframes click-radio-wave {
   0% {
     width: 25px;
@@ -272,7 +280,7 @@ fieldset {
     margin-bottom: 1.875em;
 }
 
-.form-wizard-steps li  i{
+/* .form-wizard-steps li  i{
 	position: absolute;
     top: -22px;
     font-style: normal;
@@ -287,7 +295,7 @@ fieldset {
 
 .form-wizard-steps li  i{
 	color: #d65470;
-}
+} */
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -418,7 +426,7 @@ font-size:12px;
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
-   <nav class="navbar top-navbar bg-white box-shadow">
+  <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
@@ -426,7 +434,7 @@ font-size:12px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                  <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -474,13 +482,62 @@ font-size:12px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
+        /.container-fluid
     </nav >
     <br/>
     <br/>
     <br/>
-    <br/>
+    <br/> -->
+    
+    <%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+					<div class="col-lg-12 col-md-12">
+						<div class="sub-title" style="color: #fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Introduction</a> >>
+                           		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Legacy Application Info</a> >>
+                           		<a  href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Retention Details</a> >> 
+                           		<a  href="ArchiveBusinessRequirements.jsp" id="sitetitle1" style="color:#fff">
+                           			Business Requirements</a> >>
+                            	<a  href="archiveReqAbbrevation.jsp" id="sitetitle1" style="color:#fff">
+                           			Abbreviations</a> >>
+                           		<a  href="archiveRequirementsDocumentRevisions.jsp" id="sitetitle1" style="color:#fff">
+                           			Document Revision</a> >> 
+                            	<a  href="archiveRequirementsAddendum.jsp" id="sitetitle1" style="color:#fff">
+                           			Addendum</a> >>
+                           		<a  href="archiveRequirementsApprovalDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Review</a> >> Approval
+							</div>
+					</div>
+				</div>
+			</div>
+		</nav>
             <div class="content-wrapper">
+             <div class="col-md-12">
+								<div style="margin-bottom: -138px;" class="form-wizard">
+						<div class="form-wizard-header">
+							
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
+								<li class="activated"><span>1</span><i>Introduction</i></li>
+								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated"><span>3</span><i>Retention Details</i></li>
+								<li class="activated"><span>4</span><i>Business requirements</i></li>
+								<li class="activated"><span>5</span><i>Abbreviations</i></li>
+								<li class="activated"><span>6</span><i>Revisions</i></li>
+								<li class="activated"><span>7</span><i>Addendum</i></li>
+								<li class="activated"><span>8</span><i>StakeHolders</i></li>
+								<li class="activated"><span>9</span><i>Review</i></li>
+								<li class="active"><span>10</span><i>Approval</i></li>
+						
+							</ul>
+						</div>
+						</div></div>
                 <div class="content-container" >
                    
                     <div class="main-page">
@@ -495,20 +552,20 @@ font-size:12px;
                                       <div class="form-wizard-header">
 											
 						             </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse"
-                                                        data-parent="#panels1">Archive Requirement Approval</a> </h4>
+                                        <div class="card-container-1 card" id="d3s-mt-80">
+                                            <div class="card-header" id="cd-header">
+                                            	
+                                            	Archive Requirement Approval
+                                                
                                             </div>
                                             <div ng-app="btn" ng-controller="MainCtrl">
 </div>
-                                            <div class="panel-collapse collapse in"
+                                            <div class="panel-collapse"
                                                 name="collapse">
                                                 <div class="panel-body">
                                                     <div>
                                                     <h2>Approver List</h2>           
-  													<table class="table table-bordered">
+  													<table class="table-bordered" style="width: 100%;">
     												<thead>
       												<tr>
         											<th style='text-align:center;vertical-align: middle;'>Approver Name</th>
@@ -521,13 +578,13 @@ font-size:12px;
     												</tbody>
   													</table>
                                                     </div>                                                
-                                                    <div class="col-md-12">
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='IntakeReviewDetails.jsp';">Prev</button>
+                                                    <div class="col-12">
+                                                            <div class="col-4">
+                                                                <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsReviewDetails.jsp';">Prev</button>
                                                             </div>
-                                                            <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right;">
-                                                                <button type="button" class="btn btn-success" id="ApprovalSave">Finish</button>
-                                                                <button type="button" class="btn btn-primary pull-right" id="archiveReqConfirmationPopUp_Btn" data-toggle="modal" data-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
+                                                            <div class="col-12" align="end">
+                                                                <button type="button" class="btn btn-primary" id="ApprovalSave">Finish</button>
+                                                                <button type="button" class="btn btn-primary pull-right" id="archiveReqConfirmationPopUp_Btn" data-bs-toggle="modal" data-bs-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="hidden" class="form-wizard-next-btn float-right btn-info btn btn-info" id="NavigationId" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" style="display: none;">
                                                                 </div>
                                                     </div>
@@ -548,11 +605,12 @@ font-size:12px;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Confirmation for Approval</h5>
-        <button type="button" id ="archiveReqConfirmationClose" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation for Approval</h5>
+        <button type="button" id ="archiveReqConfirmationClose"  class="btn-close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+     
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -561,8 +619,8 @@ font-size:12px;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="archiveReqConfirmationYes" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" id="archiveReqConfirmationNo">No</button>
+        <button type="button" id="archiveReqConfirmationYes" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" id="archiveReqConfirmationNo" data-bs-dismiss="modal">No</button>
       </div>
     </div>
   </div>
@@ -643,5 +701,9 @@ $(document).on('mouseenter','.active1', function(){
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
     <script id ="scripttag"></script>
+    <script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     
 </html>

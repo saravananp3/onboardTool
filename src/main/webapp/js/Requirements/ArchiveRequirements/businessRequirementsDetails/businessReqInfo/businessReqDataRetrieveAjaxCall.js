@@ -71,7 +71,7 @@ function businessReqInScopeDataRetrieve(){
             	 "<td style='text-align:center'>"+value.req_in_scope+"</td>" +
             	 "<td><textarea style='width: 100%' class='description' readonly>"+value.description+"</textarea></td>" +
             	 "<td>"+
-            	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
+            	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-bs-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu'>"+
                             "<li><a  class='fa fa-edit EditRowBusiness' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
                             "</ul>"+

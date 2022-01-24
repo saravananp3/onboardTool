@@ -44,7 +44,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
-
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
     
 
 
@@ -252,7 +255,7 @@ padding: 15px;
 
     <div class="main-wrapper">
 
-           <nav class="navbar top-navbar bg-white box-shadow">
+           <!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
  				<div class="navbar-header no-padding" style = "height : 100px;">
@@ -260,7 +263,7 @@ padding: 15px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -294,18 +297,33 @@ padding: 15px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <br/>
-    <br/>
-    <br/>
+        /.container-fluid
+    </nav> -->
+    <%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+						<div class="col-lg-12 col-md-12">
+							<div class="sub-title" style="color: #fff">
+								<a href="OpportunityList.jsp" id="sitetitle1"
+									style="color: #fff"><span class="glyphicon glyphicon-home"></span>
+									Home</a> >> <a href="ArchiveRequirementsIntroDetails.jsp"
+									id="sitetitle1" style="color: #fff"> Introduction</a> >> Legacy
+									Application Information</a>
+							</div>
+						</div>
+					</div>
+			</div>
+		</nav>
+    
         <div class="content-wrapper">
         <div class="col-md-12">
 								<div style="margin-bottom: -138px;"class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix">
-							<p style="margin-top: 30px; margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
 								<li class="activated"><span>1</span><i>Introduction</i></li>
 								<li class="active"><span>2</span><i>Legacy Application Info</i></li>
 								<li><span>3</span><i>Retention Details</i></li>
@@ -357,10 +375,9 @@ padding: 15px;
                                   <div class="tab-pane" role="tabpanel" id="step4">
                                     
                                      <!-- Legacy Application Informations -->
-                            <div class="panel panel-default" style='width:1000px;'>
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1">Legacy Application Information</a></h4>
+                            <div class="card-container-2 card">
+                                        <div class="card-header" id="cd-header">
+                                            Legacy Application Information
                                         </div>
                                         
                                         <div id="collapse4" class="panel-collapse ">
@@ -370,19 +387,19 @@ padding: 15px;
                                                     <div id="inputFieldsAssessment">
                                       <!-- Application Info -->
                                         <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="">Application Info</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="">Application Info</a></h4>
                                         </div>
                                         <div id="collapse5" class="panel-collapse ">
                                             <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                            <div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                                <div class="panel-body">
                                                  <div id="inputFieldsAppInfo">
 												 </div>
                                                  <div class="col-md-12">
                                                            
-                                                            <div class="col-md-6 dropup" style="padding-right: 10px; float: right;  width: 30%;">
+                                                          <!--   <div class="col-md-6 dropup" style="padding-right: 10px; float: right;  width: 30%;">
                                                                 <div class = "btn-group dropup dropright">
                                                                 <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown"> Actions <span class="caret"></span></button>
                                                                 <ul class="dropdown-menu" style = "min-width: inherit;" >
@@ -392,7 +409,7 @@ padding: 15px;
                                                                 </ul>
                                                                </div>
                                                                 <button type="submit" class="btn btn-success" id="legacyAppInfoSave">Save</button>
-                                                                <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href=' ';">Next</a> -->
+                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href=' ';">Next</a>
                                                                  <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='';" id="next" disabled="true">
                                                                  
                                                                  <a href="javascript:;">Next</a>
@@ -401,8 +418,54 @@ padding: 15px;
                                                               
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#LegacyEditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#LegacyDeletePopUp" style="display: none;">Delete PopUp</button>
-                                                               <!--  <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button> -->
-                                                            </div>
+                                                                <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
+                                                            </div> -->
+                                                           <div class="col-12" align="end">
+																	
+																	<div class="dropdown">
+																		<button type="button"
+																			class="btn btn-secondary dropdown-toggle"
+																			id="dropdownMenuButton1" data-bs-toggle="dropdown"
+																			aria-expanded="false">Actions</button>
+																		<ul class="dropdown-menu"
+																			aria-labelledby="dropdownMenuButton1">
+																			<li><a class="dropdown-item dropDown-font"
+																				id="add" href="#" data-bs-toggle="modal"
+																				data-bs-target="#LegacyAddPopUp"> <i
+																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+																						</i>Add</a></li>
+																			<li><a class="dropdown-item dropDown-font"
+																				id="EditLegacy" href="#"><i class="fas fa-edit"
+																					aria-hidden="true">&nbsp;&nbsp; </i>Edit</a></li>
+																			<li><a class="dropdown-item dropDown-font"
+																				id="DeleteLegacy" href="#"><i class="fas fa-trash"
+																					aria-hidden="true">&nbsp;&nbsp;&nbsp; </i>Delete</a></li>
+
+																		</ul>
+																	</div>
+																	<button type="submit" class="btn btn-primary"
+																		id="legacyAppInfoSave">Save</button>
+																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
+																	<button
+																		class="form-wizard-next-btn float-right btn-info btn btn-info"
+																		onclick="location.href='';" id="next"
+																		disabled="true">
+
+																		<a href="javascript:;"  style="color: #fff;">Next</a>
+
+																	</button>
+
+																	<button type="button"
+																		class="btn btn-primary pull-right" id="editpopup_btn"
+																		data-bs-toggle="modal" data-bs-target="#LegacyEditPopUp"
+																		style="display: none;">Edit PopUp</button>
+																	<button type="button"
+																		class="btn btn-primary pull-right"
+																		id="deletepopup_btn" data-bs-toggle="modal"
+																		data-bs-target="#LegacyDeletePopUp" style="display: none;">Delete
+																		PopUp</button>
+																	<!--  <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button> -->
+																</div>
                                                     </div>
                                                       
 											    
@@ -413,18 +476,18 @@ padding: 15px;
                                                    
                                <!-- Archive Environment Information -->
 							    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6">Archive Environment Information</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="#collapse6">Archive Environment Information</a></h4>
                                         </div>
                                         <div id="collapse6" class="panel-collapse collapse">
                                         	<div class="panel-body">
-                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                                		<div class="panel-body">
                                                  		<div id="inputFieldsEnv">
                                                  			<div>
                                                    				<h4 class="title1">Archive Environment</h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Dev Name</th>
@@ -437,11 +500,11 @@ padding: 15px;
 																<tbody id ="EnvironmentName">
       												    												
       															</tbody>
-      															<button type="button" class="btn btn-primary pull-right" id="EnvmntNameDeleteId" data-toggle="modal" data-target="#EnvmntNameDeletePopUp" style="display: none;">Delete PopUp</button>
+      															<button type="button" class="btn btn-primary pull-right" id="EnvmntNameDeleteId" data-bs-toggle="modal" data-bs-target="#EnvmntNameDeletePopUp" style="display: none;">Delete PopUp</button>
 																</table>
-																 <div class="col-md-6" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
-																	 <button class="btn btn-primary" type="button" id="AddEnvmntName">Add</button>
-																	 <button type="submit" class="btn btn-success" id="saveEnvmntName">Save</button>
+																 <div class="col-12" align="end">
+																	 <button class="btn btn-secondary" type="button" id="AddEnvmntName">Add</button>
+																	 <button type="submit" class="btn btn-primary" id="saveEnvmntName">Save</button>
 												
 					                                       			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
 					                                       			</div>
@@ -450,7 +513,7 @@ padding: 15px;
 																</div>
 																<br/>
 																<div>
-																<table class="table table-bordered">
+																<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Dev Server IP</th>
@@ -463,12 +526,12 @@ padding: 15px;
 																<tbody id ="EnvironmentServer">
       												    												
       															</tbody>
-      															<button type="button" class="btn btn-primary pull-right" id="EnvmntServerDeleteId" data-toggle="modal" data-target="#EnvmntServerDeletePopUp" style="display: none;">Delete PopUp</button>
+      															<button type="button" class="btn btn-primary pull-right" id="EnvmntServerDeleteId" data-bs-toggle="modal" data-bs-target="#EnvmntServerDeletePopUp" style="display: none;">Delete PopUp</button>
 																</table>
 																
-																 <div class="col-md-6" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
-												 <button class="btn btn-primary" type="button" id="AddEnvmntServer">Add</button>
-												 <button type="submit" class="btn btn-success" id="saveEnvmntServer">Save</button>
+																 <div class="col-12" align="end">
+												 <button class="btn btn-secondary" type="button" id="AddEnvmntServer">Add</button>
+												 <button type="submit" class="btn btn-primary" id="saveEnvmntServer">Save</button>
 												 
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        			</div>
@@ -484,13 +547,13 @@ padding: 15px;
                                             </div> 
                                             <!-- Legacy Application Screenshot -->
                                             <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse3">Legacy Application Screenshots</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="#collapse3">Legacy Application Screenshots</a></h4>
                                         </div>
                                         <div id="collapse3" class="panel-collapse collapse">
                                         	<div class="panel-body">
-                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                                		<div class="panel-body">
                                                  		<div id="inputFieldsRoles">
                                                   <!-- <form action="legacyApplicationScreenshotsUpload" method="post" enctype="multipart/form-data">                                                 			
@@ -518,10 +581,10 @@ padding: 15px;
                                         	<br/>
                                         <div class="col-md-1"> 
                                     
-                                       <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='ArchiveRequirementsIntroDetails.jsp';" >Prev</button></div>
+                                       <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='ArchiveRequirementsIntroDetails.jsp';" >Prev</button></div>
                                        <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
                                        
-                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" id="rolesNext" >
+                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" id="rolesNext" >
                                                                  <a href="javascript:;">Next</a></button>
                                      
                                        </div>
@@ -579,11 +642,11 @@ padding: 15px;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Input Fields</h5>
-        <button type="button" class="close" id = "Legacyaddclose_id" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+			<h5 class="modal-title" id="exampleModalLabel">Add
+				Input Fields</h5>
+			<button type="button" class="btn-close" id = "Legacyaddclose_id"
+				data-bs-dismiss="modal" aria-label="Close"></button>
+	 </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -604,7 +667,7 @@ padding: 15px;
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Type:</label>
-                            <select id="Legacytypes" class="form-control" name="types" required >
+                            <select id="Legacytypes" class="form-select" name="types" required >
                                 <option value="Text box">Text box</option>
                                 <option value="Check box">Check box</option>
                                 <option value="Radio box">Radio box</option>
@@ -668,7 +731,7 @@ padding: 15px;
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Mandatory:</label>
-                            <select id="Legacymandatory" class="form-control" name="mandatory" required >
+                            <select id="Legacymandatory" class="form-select" name="mandatory" required >
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
@@ -681,7 +744,7 @@ padding: 15px;
       </div>
       <div class="modal-footer">
         <button type="button" id ="Legacysubmit" class="btn btn-primary">Add Fields</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="Legacyclose">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="Legacyclose">Close</button>
       </div>
     </div>
   </div>
@@ -693,11 +756,11 @@ padding: 15px;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Input Field</h5>
-        <button type="button" id="LegacyEditClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+		<h5 class="modal-title" id="exampleModalLabel">Edit
+			Input Field</h5>
+		<button type="button" id="LegacyEditClose" class="btn-close"
+			data-bs-dismiss="modal" aria-label="Close"></button>
+	 </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div class="row">
@@ -712,8 +775,8 @@ padding: 15px;
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="LegacyEditSubmit" class="btn btn-primary" >Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+        <button type="button" id="LegacyEditSubmit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
         
       </div>
     </div>
@@ -727,11 +790,10 @@ padding: 15px;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="LegacyDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+		<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
+		<button type="button" id="LegacyEditClose" class="btn-close"
+			data-bs-dismiss="modal" aria-label="Close"></button>
+	 </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -741,8 +803,8 @@ padding: 15px;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="LegacyDeleteSubmit" class="btn btn-primary submitDisableDelete" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeLegacyIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="LegacyDeleteSubmit" class="btn btn-primary submitDisableDelete" data-bs-dismiss="modal" >Yes</button>
+        <button type="button" class="btn btn-secondary" id = "closeLegacyIdDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -752,12 +814,11 @@ padding: 15px;
   <div class="modal" id="EnvmntNameDeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="EnvmntNameDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+       <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
+		<button type="button" id="EnvmntNameDeleteClose" class="btn-close"
+			data-bs-dismiss="modal" aria-label="Close"></button>
+	 </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -767,8 +828,8 @@ padding: 15px;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="EnvmntNameDeleteSubmit" class="btn btn-primary submitDisableEnvmntName" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeEnvmntNameIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="EnvmntNameDeleteSubmit" class="btn btn-primary submitDisableEnvmntName" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" id = "closeEnvmntNameIdDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -779,11 +840,10 @@ padding: 15px;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="EnvmntServerDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+		<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
+		<button type="button" id="EnvmntNameDeleteClose" class="btn-close"
+			data-bs-dismiss="modal" aria-label="Close"></button>
+	 </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -793,8 +853,8 @@ padding: 15px;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="EnvmntServerDeleteSubmit" class="btn btn-primary submitDisableEnvmntServer" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeEnvmntServerIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="EnvmntServerDeleteSubmit" class="btn btn-primary submitDisableEnvmntServer" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" id = "closeEnvmntServerIdDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -887,6 +947,10 @@ $(document).on('mouseenter','.active1', function(){
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/legacyAppScreenshot/legacyApplicationScreenshotsUploadAjaxCall.js"></script>
 
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/legacyAppScreenshot/legacyAppInfoFileUpload.js"></script>
+<script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
 </body>
 </html>
