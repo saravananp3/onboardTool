@@ -67,7 +67,27 @@
                 	var column = data.columnName;
             	if(column == "locationcenter" || column == "listcountry")
             		$(".InputField").eq(index).remove();
-            	
+            	for(var i = index; i<$(".InputField").length;i++)
+            	{
+            	  var exist = $(".InputField").eq(i).find("input").length;
+            	  if($(".InputField").eq(i).find("input").length)
+            	 {
+            		var name = $(".InputField").eq(i).find("input").attr("name");
+            		 if(name.startsWith("LegacyAddInfo"))
+            		 {
+            			 $(".InputField").eq(i).find("input").attr("name","LegacyAddInfo"+(i+1));
+            		 }
+                 } 
+            	else if($(".InputField").eq(i).find("select").length)
+                 {
+            		var name = $(".InputField").eq(i).find("select").attr("name");
+           		   if(name.startsWith("LegacyAddInfo"))
+           		   {
+           			 $(".InputField").eq(i).find("select").attr("name","LegacyAddInfo"+(i+1));
+           		   }
+            	 }
+            		
+            	}
             	notification("success","Selected field is deleted successfully in Archive Application Info.","Note : ");
             	
             	}
