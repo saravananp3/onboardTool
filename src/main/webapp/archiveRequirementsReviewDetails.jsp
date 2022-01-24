@@ -31,6 +31,13 @@
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
+
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+
 
 <style>
 
@@ -77,7 +84,7 @@ body {
   text-align: center;
 }
 
-.form-wizard {
+/* .form-wizard {
   color: #888888;
   
 }
@@ -212,12 +219,12 @@ body {
 }
 .form-wizard .form-wizard-steps li:last-child::after {
   width: 50%;
-}
-.form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
+} */
+/* .form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
   background-color: #0db02b;
   color: #ffffff;
-}
-.form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
+} */
+/* .form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
   background-color: #0db02b;
   left: 50%;
   width: 50%;
@@ -235,7 +242,7 @@ body {
   right: 32px;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer;
+  cursor: pointer; */
 }
 @keyframes click-radio-wave {
   0% {
@@ -268,7 +275,7 @@ fieldset {
     margin-bottom: 1.875em;
 }
 
-.form-wizard-steps li  i{
+/* .form-wizard-steps li  i{
 	position: absolute;
     top: -22px;
     font-style: normal;
@@ -283,7 +290,7 @@ fieldset {
 
 .form-wizard-steps li  i{
 	color: #d65470;
-}
+} */
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -415,7 +422,7 @@ font-size:12px;
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
-<nav class="navbar top-navbar bg-white box-shadow">
+<!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                <div class="navbar-header no-padding" style = "height : 100px;">
@@ -423,7 +430,7 @@ font-size:12px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -464,15 +471,63 @@ font-size:12px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
+        /.container-fluid
     </nav >
       
         </div>
-        <!-- /.container-fluid -->
+        /.container-fluid
    <br/>
    <br/>
-   <br/>
+   <br/> -->
+   
+   <%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+						<div class="col-lg-12 col-md-12">
+							<div class="sub-title" style="color: #fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Introduction</a> >>
+                           		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Legacy Application Info</a> >>
+                           		<a  href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Retention Details</a> >> 
+                           		<a  href="ArchiveBusinessRequirements.jsp" id="sitetitle1" style="color:#fff">
+                           			Business Requirements</a> >>
+                            	<a  href="archiveReqAbbrevation.jsp" id="sitetitle1" style="color:#fff">
+                           			Abbreviations</a> >>
+                           		<a  href="archiveRequirementsDocumentRevisions.jsp" id="sitetitle1" style="color:#fff">
+                           			Document Revision</a> >> 
+                            	<a  href="archiveRequirementsAddendum.jsp" id="sitetitle1" style="color:#fff">
+                           			Addendum</a> >> Review 
+							</div>
+						</div>
+					</div>
+			</div>
+		</nav>
             <div class="content-wrapper">
+            <div class="col-md-12">
+								<div style="margin-bottom: -138px;" class="form-wizard">
+						<div class="form-wizard-header">
+							
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
+								<li class="activated"><span>1</span><i>Introduction</i></li>
+								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated"><span>3</span><i>Retention Details</i></li>
+								<li class="activated"><span>4</span><i>Business requirements</i></li>
+								<li class="activated"><span>5</span><i>Abbreviations</i></li>
+								<li class="activated"><span>6</span><i>Revisions</i></li>
+								<li class="activated"><span>7</span><i>Addendum</i></li>
+								<li class="activated"><span>8</span><i>StakeHolders</i></li>
+								<li class="active"><span>9</span><i>Review</i></li>
+								<li><span>10</span><i>Approval</i></li>
+						
+							</ul>
+						</div>
+						</div></div>
+						
                 <div class="content-container" >
                    
                     <div class="main-page">
@@ -484,16 +539,15 @@ font-size:12px;
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
                                     
-                                         <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" data-toggle="collapse"
-                                                        data-parent="#panels1">Archive Requirements Summary</a> </h4>
-                                                        <button id="intake_module" class="btn pdf"><span
+                                         <div class="card-container-1 card" id="d3s-mt-80">
+                                            <div class="card-header" id="cd-header">
+                                               
+                                                  Archive Requirements Summary
+                                                <button id="intake_module" class="btn btn-primary align-right" style="margin-top: -4px;" ><span
                                                     class="glyphicon glyphicon-download-alt"></span> Export Pdf
                                                  </button>
                                             </div>
-                                            <div class="panel-collapse collapse in"
+                                            <div class="panel-collapse"
                                                 name="collapse">
                                                 <div class="panel-body">
                                                       
@@ -730,7 +784,7 @@ font-size:12px;
                                                                                                    
                                                     <div class="col-md-12">
                                                             <div class="col-md-1">
-                                                                <button type="button" class="btn btn-light" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsAddendum.jsp';" >Prev</button>
+                                                                <button type="button" class="btn btn-secondary" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsAddendum.jsp';" >Prev</button>
                                                             </div>
                                                          <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
                                                                <button type="button" id="button_id" name="button_id" class="btn btn-primary">
@@ -738,7 +792,7 @@ font-size:12px;
                     </button>
                    
                                                                 <button class="form-wizard-next-btn float-right btn-info btn btn-info" id="ReviewNextBtn" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" disabled="true">
-                                                                <a href="javascript:;" id="nextBtn">Next</a></button>
+                                                                <a href="javascript:;" id="nextBtn" style="color: #fff;">Next</a></button>
                                                                
                                                             </div>
                                                     </div>
@@ -822,6 +876,7 @@ font-size:12px;
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
     <script id ="scripttag"></script>
+    
     <!-- Active Icon Color changes  -->
 <script>
 $(document).on('mouseenter','.active1', function(){
@@ -835,5 +890,11 @@ $(document).on('mouseenter','.active1', function(){
 		 $('.activeIcon').css('color','#fff');
 		 
 	 });
+	
 </script>
+<script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
 </html>

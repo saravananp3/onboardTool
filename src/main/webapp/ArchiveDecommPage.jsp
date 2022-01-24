@@ -36,9 +36,9 @@
            background:#f8f9fc;
         }
 
-        .active{
+       /*  .active{
         background:#1565c0;
-         }
+         } */
       .page-title-div {
 	 background:#1565c0;
 	  padding: 15px;
@@ -154,9 +154,32 @@ a.disabled:hover {
 </head>
 <body class="top-navbar-fixed">
 
+<%@include file="Nav-Bar.jspf"%>
+	<nav class="nav nav-height nav-font" id="bg-color">
+		<div class="container-fluid" id="container-fluid-margin">
+			<div class="row" id="d3s-mt-10">
+				<div class="col-lg-12 col-md-12">
+					<h5 id="title">Requirements</h5>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="sub-title" style="color: #fff">
+					<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff">
+						<span class="glyphicon glyphicon-home"></span> Home
+					</a> >> <a href="OpportunityGrid.jsp" id="sitetitle1"
+						style="color: #fff"> Modules</a> >> <a
+						href="ArchiveDecommPage.jsp" id="sitetitle1" style="color: #fff">
+						Requirements</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</nav>
+	
 <div class="main-wrapper">
      <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+   <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
@@ -164,7 +187,7 @@ a.disabled:hover {
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav navAlign">
 		    		  <li class="active"><a href="#" style="color:#fff"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -184,13 +207,13 @@ a.disabled:hover {
            
                 
             </div>
-            <!-- /.row -->
+            /.row
             <nav class="navbar navbar-down">
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
                              <h5 class="title" style="color:#fff">Requirements</h5>
-                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                              <p class="sub-title">Create and manage your Opportunities here</p>
                                <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
                                <span class="glyphicon glyphicon-home"></span> Home</a> >> 
                                <a  href="OpportunityGrid.jsp" id="sitetitle1" style="color:#fff"> Modules</a> >>
@@ -205,15 +228,14 @@ a.disabled:hover {
                 </div>
 			</nav>
         </div>
-        <!-- /.container-fluid -->
-    </nav >
+        /.container-fluid
+    </nav > -->
 
     <div class="content-wrapper">
         <div class="content-container">
             <div class="main-page">
-          <br/>
-          <br/>
-<div class="container" id="module_header">
+         
+<div class="container">
    
   	<p class="ptitle">Requirements</p>
 	<p class="sub-ptitle">Select the option to update the information</p>
@@ -254,20 +276,7 @@ a.disabled:hover {
     </div>
 </div>
 </div>
-<!-- Active Icon Color changes  -->
-<script>
-$(document).on('mouseenter','.active', function(){
-		
-		 $('.activeIcon').css('color','#1565c0');
-		 
-	 });
-	 
-	 $(document).on('mouseleave','.active', function(){
-			
-		 $('.activeIcon').css('color','#fff');
-		 
-	 });
-</script>
+
   <!-- ========== COMMON JS FILES ========== -->
         <script src="js/jquery/jquery-2.2.4.min.js"></script>
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
@@ -275,7 +284,6 @@ $(document).on('mouseenter','.active', function(){
         <script src="js/pace/pace.min.js"></script>
         <script src="js/lobipanel/lobipanel.min.js"></script>
         <script src="js/iscroll/iscroll.js"></script>
-        
-		
+        <script src="js/navigation/navigation.js"></script>
 </body>
 </html>

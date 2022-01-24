@@ -35,6 +35,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+
 
     
 
@@ -246,7 +251,7 @@ td{
 
     <div class="main-wrapper">
 
-           <nav class="navbar top-navbar bg-white box-shadow">
+<!--            <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
 				<div class="navbar-header no-padding" style = "height : 100px;">
@@ -254,7 +259,7 @@ td{
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -292,19 +297,39 @@ td{
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
+        /.container-fluid
     </nav>
     <br/>
     <br/>
-    <br/>
+    <br/> -->
+    <%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+						<div class="col-lg-12 col-md-12">
+							<div class="sub-title" style="color: #fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                          			Introduction</a> >>
+                          		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Legacy Application Info</a> >>
+                           		<a  href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Retention Details</a> >> 
+                           		<a  href="ArchiveBusinessRequirements.jsp" id="sitetitle1" style="color:#fff">
+                           			Business Requirements</a> >>Abbreviations
+							</div>
+						</div>
+					</div>
+			</div>
+		</nav>
         <div class="content-wrapper">
         
         <div class="col-md-12">
 								<div style="margin-bottom: -138px;" class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix">
-							<p style="margin-top: 30px; margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
 								<li class="activated"><span>1</span><i>Introduction</i></li>
 								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
 								<li class="activated"><span>3</span><i>Retention Details</i></li>
@@ -360,10 +385,9 @@ td{
                                     
                                      <!-- Business Requirements Table -->
                                      
-                            <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">Abbreviations, Acronyms, Definitions</a></h4>
+                            <div class="card-container-2 card">
+                                        <div class="card-header" id="cd-header"> 
+                                       		 Abbreviations, Acronyms, Definitions     
                                         </div>
                                         
                                         <div id="collapse4" class="panel-collapse ">
@@ -375,7 +399,7 @@ td{
                     <form name="myForm">
                         <div class="form-group" id="TemplateFields">
                           <div>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																
@@ -434,14 +458,14 @@ td{
                                             <button type="button" class="btn btn-primary pull-right" id="DataDeleteId" data-toggle="modal" data-target="#DataDeletePopUp" style="display: none;">Delete PopUp</button>
                                             
                                             
-                                        <div class="col-md-12">
+                                        <div class="col-12">
                                         	<br/>
-                                        <div class="col-md-1"> 
+                                        <div class="col-4"> 
                                     
-                                       <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="" >Prev</button></div>
-                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
+                                       <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='ArchiveBusinessRequirements.jsp';" >Prev</button></div>
+                                       <div class="col-12" align="end">
                                        
-                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsDocumentRevisions.jsp';" id="busreqNext">
+                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsDocumentRevisions.jsp';" id="busreqNext">
                                                                  <a href="archiveRequirementsDocumentRevisions.jsp">Next</a></button>
                                      
                                        </div>
@@ -559,7 +583,10 @@ $(document).on('mouseenter','.active1', function(){
 <script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
-
 <script src="js/notification/notification.js"></script>
+<script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </body>
 </html>

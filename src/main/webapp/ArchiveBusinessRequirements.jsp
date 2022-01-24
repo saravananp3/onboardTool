@@ -38,9 +38,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
 
     
-
 
 </head><!--from  w  w w  . ja  va 2 s.co  m-->
 
@@ -251,7 +254,7 @@ padding: 15px;
 
     <div class="main-wrapper">
 
-           <nav class="navbar top-navbar bg-white box-shadow">
+          <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
@@ -259,7 +262,7 @@ padding: 15px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decomm3Sixty" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                  <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -296,18 +299,36 @@ padding: 15px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
+        /.container-fluid
     </nav>
      <br/>
     <br/>
-    <br/>
+    <br/> -->
+     <%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-10">
+						<div class="col-lg-12 col-md-12">
+							<div class="sub-title" style="color: #fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+                          			 Introduction</a> >>
+                           		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
+                          			 Legacy Application Info</a> >>
+                         		<a href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color:#fff">
+                           			Retention Details</a> >> Business Requirements
+							</div>
+						</div>
+					</div>
+			</div>
+		</nav>
         <div class="content-wrapper">
         <div class="col-md-12">
 								<div style="margin-bottom: -138px;" class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix">
-							<p style="margin-top: 30px; margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
 								<li class="activated"><span>1</span><i>Introduction</i></li>
 								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
 								<li class="activated"><span>3</span><i>Retention Details</i></li>
@@ -360,10 +381,10 @@ padding: 15px;
                                     
                                      <!-- Business Requirements Table -->
                                      
-                            <div class="panel panel-default" style='width:1500px;'>
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse4">Business Requirements</a></h4>
+                            <div class="card-container-3 card">
+                                        <div class="card-header" id="cd-header">
+                                        Business Requirements
+                                         
                                         </div>
                                         
                                         <div id="collapse4" class="panel-collapse ">
@@ -387,17 +408,18 @@ padding: 15px;
 									              
                                <!-- Req in scope -->
 							    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                         <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6">Requirement In Scope</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="#collapse6">Requirement In Scope</a></h4>
                                         </div>
                                         
+                                         <div id="collapse6" class="panel-collapse collapse">
                                             <div class="panel-body">
-                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                         			<div id="inputFieldsReqinscope">
                                                		
                                                  			<div>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>REQ IN-SCOPE(Y/N)</th>
@@ -412,9 +434,9 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:25%;">
+												 <div class="col-12" align="end">
 												 
-												 <button type="submit" class="btn btn-success" id="SaveReqInScope">Save</button>
+												 <button type="submit" class="btn btn-primary" id="SaveReqInScope">Save</button>
 												 
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='archiveRequirementsLegacyDetails.jsp';"style="display:none;"></button>
                                        			</div>
@@ -423,22 +445,24 @@ padding: 15px;
                                             </div> 
                                             </div> 
                                             </div> 
+                                            </div>
                                             
                                                       
                                <!-- Data Req -->
 							    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                         <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6">Functional Requirements</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="#collapse6">Functional Requirements</a></h4>
                                         </div>
                                         
+                                        <div id="collapse6" class="panel-collapse collapse">
                                             <div class="panel-body">
-                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                         			<div id="inputFieldsReqinscope">
                                                		
                                                  			<div>
                                                  			<h4 class="title1">4.1.1 Data Requirements</h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
@@ -455,9 +479,9 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
-												 <button class="btn btn-primary addClass" type="button" id="dataReqAdd">Add</button>
-												 <button type="submit" class="btn btn-success dataSaveClass" id="dataSaveReq">Save</button>
+												 <div class="col-12" align="end">
+												 <button class="btn btn-secondary addClass" type="button" id="dataReqAdd">Add</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="dataSaveReq">Save</button>
 												 
                                        	
                                        			</div>
@@ -467,7 +491,7 @@ padding: 15px;
                                                		
                                                  			<div>
                                                  			<h4 class="title1">4.1.2 Retention and Legal Requirements</h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
@@ -484,9 +508,9 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
-												 <button class="btn btn-primary addClass" type="button" id="legalReqSaveAdd">Add</button>
-												 <button type="submit" class="btn btn-success dataSaveClass" id="legalReqSaveReq">Save</button>
+												 <div class="col-12" align="end">
+												 <button class="btn btn-secondary addClass" type="button" id="legalReqSaveAdd">Add</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="legalReqSaveReq">Save</button>
 												 
                                        	
                                        			</div>
@@ -496,7 +520,7 @@ padding: 15px;
                                                		
                                                  			<div>
                                                  			<h4 class="title1">4.1.3 Security Requirements</h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
@@ -513,9 +537,9 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
-												 <button class="btn btn-primary addClass" type="button" id="securityReqAdd">Add</button>
-												 <button type="submit" class="btn btn-success dataSaveClass" id="securityReqSaveReq">Save</button>
+												 <div class="col-12" align="end">
+												 <button class="btn btn-secondary addClass" type="button" id="securityReqAdd">Add</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="securityReqSaveReq">Save</button>
 												 
                                        	
                                        			</div>
@@ -525,7 +549,7 @@ padding: 15px;
                                                		
                                                  			<div>
                                                  			<h4 class="title1">4.1.4 Usability Requirements</h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
@@ -542,9 +566,9 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
-												 <button class="btn btn-primary addClass" type="button" id="UsabilityReqAdd">Add</button>
-												 <button type="submit" class="btn btn-success dataSaveClass" id="UsabilityReqSaveReq">Save</button>
+												 <div class="col-12" align="end">
+												 <button class="btn btn-secondary addClass" type="button" id="UsabilityReqAdd">Add</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="UsabilityReqSaveReq">Save</button>
 												 
                                        	
                                        			</div>
@@ -554,7 +578,7 @@ padding: 15px;
                                                		
                                                  			<div>
                                                  			<h4 class="title1">4.1.5 Audit Requirements</h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
@@ -571,9 +595,9 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
-												 <button class="btn btn-primary addClass" type="button" id="auditReqAdd">Add</button>
-												 <button type="submit" class="btn btn-success dataSaveClass" id="auditReqSaveReq">Save</button>
+												 <div class="col-12" align="end">
+												 <button class="btn btn-secondary addClass" type="button" id="auditReqAdd">Add</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="auditReqSaveReq">Save</button>
 												 
                                        	
                                        			</div>
@@ -582,20 +606,21 @@ padding: 15px;
                                             </div> 
                                             </div> 
                                             </div> 
+                                            </div>
                                         
                                         <!-- Screen Requirements -->
 							    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                         <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6">Screen Requirements</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="#collapse6">Screen Requirements</a></h4>
                                         </div>
-                                        
+                                        <div id="collapse6" class="panel-collapse collapse">
                                             <div class="panel-body">
-                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                         			<div id="inputFieldsReqinscope">
                                                		
                                                  			<div>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
@@ -610,10 +635,10 @@ padding: 15px;
       															</tbody>
 																</table>
   																</div> 
-  																<div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
+  																<div class="col-12" align="end">
 												 
-												 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#screenReqAddPopUp">Add</button>
-												 <button type="submit" class="btn btn-success" id="saveScreenReqId">Save</button>
+												 <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#screenReqAddPopUp">Add</button>
+												 <button type="submit" class="btn btn-primary" id="saveScreenReqId">Save</button>
 												 
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='archiveRequirementsLegacyDetails.jsp';"style="display:none;"></button>
                                        			</div>
@@ -622,7 +647,7 @@ padding: 15px;
   																<br/>
   																<br/>
   																<div>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Req Id</th>
@@ -642,9 +667,9 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 40px; float: right; width:21%;">
-												 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#searchFormAddPopUp">Add</button>
-												 <button type="submit" class="btn btn-success" id="saveSearchFormId">Save</button>
+												 <div class="col-12" align="end">
+												 <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#searchFormAddPopUp">Add</button>
+												 <button type="submit" class="btn btn-primary" id="saveSearchFormId">Save</button>
 												 
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='archiveRequirementsLegacyDetails.jsp';"style="display:none;"></button>
                                        			</div>
@@ -653,18 +678,19 @@ padding: 15px;
                                             </div> 
                                             </div> 
                                             </div> 
+                                            </div>
                                             
-                                            <button type="button" class="btn btn-primary pull-right" id="DataDeleteId" data-toggle="modal" data-target="#DataDeletePopUp" style="display: none;">Delete PopUp</button>
+                                            <button type="button" class="btn btn-primary pull-right" id="DataDeleteId" data-bs-toggle="modal" data-bs-target="#DataDeletePopUp" style="display: none;">Delete PopUp</button>
                                             
-                                            <button type="button" class="btn btn-primary pull-right" id="screenInfoDeleteId" data-toggle="modal" data-target="#screenInfoDeletePopUp" style="display: none;">Delete PopUp</button>
-                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-primary pull-right" id="screenInfoDeleteId" data-bs-toggle="modal" data-bs-target="#screenInfoDeletePopUp" style="display: none;">Delete PopUp</button>
+                                        <div class="col-12">
                                         	<br/>
-                                        <div class="col-md-1"> 
+                                        <div class="col-4"> 
                                     
-                                       <button type="button" class="form-wizard-previous-btn btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" >Prev</button></div>
-                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
+                                       <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" >Prev</button></div>
+                                       <div class="col-12" align="end">
                                        
-                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info"  id="busreqNext" disabled="true">
+                                      <button class="btn btn-primary"  id="busreqNext" disabled="true">
                                                                  <a href="archiveReqAbbrevation.jsp">Next</a></button>
                                      
                                        </div>
@@ -716,12 +742,12 @@ padding: 15px;
   <div class="modal" id="DataDeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="DataDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      
+       <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
+			<button type="button"  id ="DataDeleteClose" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+	  </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -731,8 +757,8 @@ padding: 15px;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="DataDeleteSubmit" class="btn btn-primary submitDisableData" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeDataIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="DataDeleteSubmit" class="btn btn-primary submitDisableData" data-bs-dismiss="modal" >Yes</button>
+        <button type="button" class="btn btn-secondary" id = "closeDataIdDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -743,12 +769,12 @@ padding: 15px;
 <div class="modal" id="screenReqAddPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      
       <div class="modal-header">
-        <h5 class="modal-title">Add Input Field</h5>
-        <button type="button" id="screenReqAddClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+			<h5 class="modal-title" id="exampleModalLabel">Add Input Fields</h5>
+			<button type="button"  id="screenReqAddClose" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+	  </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div class="row">
@@ -763,8 +789,8 @@ padding: 15px;
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="screenReqAddSubmit" class="btn btn-primary" >Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdScreenInfo" aria-label="Close">Cancel</button>
+        <button type="button" id="screenReqAddSubmit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id = "closeIdScreenInfo" aria-label="Close">Cancel</button>
         
       </div>
     </div>
@@ -775,19 +801,19 @@ padding: 15px;
    <div class="modal" id="searchFormAddPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Input Field</h5>
-        <button type="button" id="searchFormAddClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+     
+       <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Add Input Fields</h5>
+			<button type="button"  id="searchFormAddClose" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+	  </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Type:</label>
-                            <select id="searchFormTypesId" class="form-control" name="searchFormTypesName" required >
+                            <select id="searchFormTypesId" class="form-select" name="searchFormTypesName" required >
                                 
                             </select>
                         </div>
@@ -799,8 +825,8 @@ padding: 15px;
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="searchFormAddSubmit" class="btn btn-primary" >Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdsearchForm" aria-label="Close">Cancel</button>
+        <button type="button" id="searchFormAddSubmit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id = "closeIdsearchForm" aria-label="Close">Cancel</button>
         
       </div>
     </div>
@@ -811,12 +837,11 @@ padding: 15px;
   <div class="modal" id="screenInfoDeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="screenInfoDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+       <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
+			<button type="button"  id ="screenInfoDeleteClose" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+	  </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -826,8 +851,8 @@ padding: 15px;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="screenInfoDeleteSubmit" class="btn btn-primary submitDisableScreenInfo" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeScreenInfoDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="screenInfoDeleteSubmit" class="btn btn-primary submitDisableScreenInfo" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" id = "closeScreenInfoDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -913,5 +938,9 @@ $(document).on('mouseenter','.active1', function(){
 <script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqEditDeleteAjaxCall.js"></script>
 <script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqSaveAjaxCall.js"></script>
 <script src = "js/Requirements/ArchiveRequirements/businessRequirementsDetails/screenReqInfo/screenReqSearchFormSaveAjaxCall.js"></script>
+<script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </body>
 </html>

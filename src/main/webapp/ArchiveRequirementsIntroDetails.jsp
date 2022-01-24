@@ -34,7 +34,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>	
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
-
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
     
 
 
@@ -233,10 +236,24 @@ padding: 15px;
         Connection conn = (Connection) d.getConnection();
         
 %>
-<form class="form-signin" name="loginForm" method="post">
+
+<%@include file="Nav-Bar.jspf"%>
+	<nav class="nav nav-height-70 nav-font" id="bg-color" style="font-size: 14px;">
+		<div class="container-fluid" id="container-fluid-margin">
+			<div class="row">
+				<div class="col-lg-12 col-md-12" id="d3s-mt-10">
+					<div class="sub-title" style="color: #fff">
+						<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+							class="glyphicon glyphicon-home"></span> Home</a> >> Introduction
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<form class="form-signin" name="loginForm" method="post">
 
     <div class="main-wrapper">
-
+<!-- 
            <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
@@ -245,7 +262,7 @@ padding: 15px;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -277,19 +294,17 @@ padding: 15px;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <br/>
-    <br/>
-    <br/>
+        /.container-fluid
+    </nav> -->
+   
         <div class="content-wrapper">
         
         <div class="col-md-12">
                                 <div class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix">
-							<p style="margin-top: 30px; margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
 								<li class="active"><span>1</span><i>Introduction</i></li>
 								<li><span>2</span><i>Legacy Application Info</i></li>
 								<li><span>3</span><i>Retention Details</i></li>
@@ -335,7 +350,7 @@ padding: 15px;
                                         if (hypercare == null)
                                             hypercare = "0";
                                     %>
-                                    <br/><br/><br/>
+                                    <br/><br/>
                  
 
                          
@@ -344,11 +359,8 @@ padding: 15px;
                                   <div class="tab-pane" role="tabpanel" id="step4">
                                     
                                      <!-- Archive Requirement Table -->
-                            <div class="panel panel-default" style='width:1000px;'>
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1">Introduction</a></h4>
-                                        </div>
+                            		<div class="card-container-2 card">
+                                        <div class="card-header" id="cd-header">Introduction</div>
                                         
                                         <div id="collapse4" class="panel-collapse ">
                                           
@@ -357,13 +369,13 @@ padding: 15px;
                                                     <div id="inputFieldsAssessment">
                                       <!-- Purpose & Scope -->
                                         <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="">Purpose & Scope</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="">Purpose & Scope</a></h4>
                                         </div>
                                         <div id="collapse5" class="panel-collapse ">
                                             <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                            <div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                                <div class="panel-body">
                                                  <div id="inputFieldsPurpose">
                                                  <div class="modal-body">
@@ -371,7 +383,7 @@ padding: 15px;
                         <div class="form-group" id="TemplateFields">
                             <div class="row">
                              <!--     <div class="col-md-1"> <input type="checkbox" id="purpose_temp" name="purpose_temp" class="Template_Field" value="" disabled="disabled" checked=""> </div> -->
-                                <div class="col-md-2"> <label class="control-label" for="opportunity">Purpose</label> </div>
+                                <div class="col-md-2"> <label class="control-label" for="opportunity" style="margin-left: -10px;margin-bottom: 10px;">Purpose</label> </div>
                                 <textarea rows="3" class="changeText Purpose" cols="50">The scope of this document is to gather information pertinent for data archiving, including creating custom screen/display views, with data that is specified to be non-transactional and is static/read-only. Retention policies will be applied according to Company Policies.
  A job aid will be provided for general navigation, performing searches, and basic functionality within the Archive.  
                                 </textarea>
@@ -379,14 +391,14 @@ padding: 15px;
                             </div>
                             <div class="row">
                              <!--     <div class="col-md-1"> <input type="checkbox" id="scope_temp" name="scope_temp" class="Template_Field" value="" disabled="disabled" checked=""> </div> -->
-                                <div class="col-md-2"> <label class="control-label" for="opportunity">Scope</label> </div>
+                                <div class="col-md-2 margin-text-area "> <label class="control-label" for="opportunity" style="margin-top: 10px;">Scope</label> </div>
                                 <textarea id="todolist" class="changeText Scope" name="todolist" rows="3" cols="50" id ="scope_temp">Read-only data will be archived</textarea>
                               <!--  <div class="col-md-6"> <textarea type="text" class="form-control" size="35" id="scope_temp1" name="scope"> </div> -->
                             </div>
                            				 </div>
                            				 
                         			 </form>
-                        			  <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>
+                        			  <button class="btn btn-primary" style="margin-left: -10px;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>
 												 </div>   
 											    </div>
 										    </div>
@@ -396,18 +408,18 @@ padding: 15px;
                                                    
                                <!-- Roles & Responsibilites -->
 							    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6">Roles & Responsibilites</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="#collapse6">Roles & Responsibilites</a></h4>
                                         </div>
                                         <div id="collapse6" class="panel-collapse collapse">
                                         	<div class="panel-body">
-                                        		<div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                        		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                                		<div class="panel-body">
                                                  		<div id="inputFieldsRoles">
                                                  			<div>
                                                    				<h4 class="title1">Approvers</h4>
-                                                   				<table class="table table-bordered">
+                                                   				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Role</th>
@@ -423,10 +435,10 @@ padding: 15px;
 																</table>
   																</div> 
 												  
-												 <div class="col-md-6" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
-												 <button class="btn btn-primary" type="button" id="AddRoleResponse">Add</button>
-												 <button type="submit" class="btn btn-success" id="saveRoleResponse">Save</button>
-												 <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>
+												 <div class="col-12" align="end">
+												 <button class="btn btn-secondary" type="button" id="AddRoleResponse">Add</button>
+												 <button type="submit" class="btn btn-primary" id="saveRoleResponse">Save</button>
+												 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="multiCollapseExample2" style="color: #fff;">Next</button>
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        			</div>
 											    </div>
@@ -440,13 +452,13 @@ padding: 15px;
                                             
                              <!-- Assumptions -->
                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                        <div class="card-header" id="cd-header">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse7">Assumptions</a></h4>
+                                                <a class="collapsed" data-bs-toggle="collapse" data-bs-parent="#panels1" href="#collapse7">Assumptions</a></h4>
                                         </div>
                                         <div id="collapse7" class="panel-collapse collapse">
                                             <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
+                                            <div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                                <div class="panel-body">
                                                  <div id="inputFieldsAssumptions">
                                                  <div class="modal-body">
@@ -468,7 +480,7 @@ padding: 15px;
 											     <div class="col-md-3 dropup" style="padding-top: 10px; padding-right: 10px; float: right;">
                                     
                                        
-                                       <button type="button" class="btn btn-primary pull-right" id="ArchReqDeleteId" data-toggle="modal" data-target="#ArchiveDeletePopUp" style="display: none;">Delete PopUp</button>
+                                       <button type="button" class="btn btn-primary pull-right" id="ArchReqDeleteId" data-bs-toggle="modal" data-bs-target="#ArchiveDeletePopUp" style="display: none;">Delete PopUp</button>
                                        <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        </div>
 										    </div>
@@ -482,10 +494,11 @@ padding: 15px;
                                         <div class="col-md-12">
                                         	<br/>
                                         
-                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
+                                       <div class="col-12 dropup" align="end">
                                        
-                                      <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true">
+                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true">
                                                                  <a href="javascript:;">Next</a></button>
+                                                                 
                                      
                                        </div>
                                      </div>
@@ -536,12 +549,12 @@ padding: 15px;
   <div class="modal" id="ArchiveDeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      
       <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="ArchiveDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+			<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
+			<button type="button" id ="ArchiveDeleteClose" class="btn-close"
+				data-bs-dismiss="modal" aria-label="Close"></button>
+	 </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -552,7 +565,7 @@ padding: 15px;
       </div>
       <div class="modal-footer">
         <button type="button" id="ArchiveDeleteSubmit" class="btn btn-primary submitDisableDelete" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -629,6 +642,9 @@ $(document).on('mouseenter','.active1', function(){
 
 <script src="js/notification/notification.js"></script>
 <script type="text/javascript" src="js/Requirements/ArchiveRequirements/Introduction/ArchiveIntroSave.js"></script>
-
+<script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </body>
 </html>
