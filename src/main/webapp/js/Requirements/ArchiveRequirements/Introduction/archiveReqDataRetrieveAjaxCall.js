@@ -24,8 +24,9 @@ $(document).on('click','.EditRow', function(){
 			{
 			$(".name").eq(seqNum).removeAttr("readonly");
 			$(".role").eq(seqNum).removeAttr("readonly");
-			$(".title").eq(seqNum).removeAttr("readonly");
-			$(".approverpurpose").eq(seqNum).removeAttr("readonly");
+			$(".emailId").eq(seqNum).removeAttr("readonly");
+			$(".username").eq(seqNum).removeAttr("readonly");
+			$(".priority_order_num").eq(seqNum).removeAttr("readonly");
 			notification("info","Seleted row is editable.","Info:");
 			}
 			else
@@ -35,8 +36,9 @@ $(document).on('click','.EditRow', function(){
 		{
 			$(".name").eq(seqNum).prop("readonly", true);
 			$(".role").eq(seqNum).prop("readonly", true);
-			$(".title").eq(seqNum).prop("readonly", true);
-			$(".approverpurpose").eq(seqNum).prop("readonly", true);
+			$(".emailId").eq(seqNum).prop("readonly", true);
+			$(".username").eq(seqNum).prop("readonly", true);
+			$(".priority_order_num").eq(seqNum).prop("readonly", true);
 			notification("info","Seleted row is non-editable.","Info:");
 		}	
 			
@@ -101,8 +103,9 @@ function archiveReqAddAjaxCall(seqNum){
         		var Row="<tr class = 'rowClass'>"+
            	 "<td><input type ='text' class='role' value=''><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
            	 "<td><input type ='text' class='name' value=''></td>" +
-           	 "<td><input type ='text' class='title' value=''></td>" +
-           	 "<td><input type ='text' class='approverpurpose' value=''></td>" +
+           	 "<td><input type ='text' class='emailId' value=''></td>" +
+           	 "<td><input type ='text' class='username' value=''></td>" +
+            "<td><input type ='text' class='priority_order_num' value=''></td>" +
            	 "<td>"+
            	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                            "<ul class='dropdown-menu'>"+
@@ -178,8 +181,9 @@ function archiveReqRolesResponseDataRetrieve(){
             	 var Row="<tr class = 'rowClass'>"+
             	 "<td><input type ='text' class='role' value='"+value.role+"' readonly><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
             	 "<td><input type ='text' class='name' value='"+value.name+"' readonly></td>" +
-            	 "<td><input type ='text' class='title' value='"+value.title+"' readonly></td>" +
-            	 "<td><input type ='text' class='approverpurpose' value='"+value.approverpurpose+"' readonly></td>" +
+            	 "<td><input type ='text' class='emailId' value='"+value.emailId+"' readonly></td>" +
+            	 "<td><input type ='text' class='username' value='"+value.username+"' readonly></td>" +
+            	 "<td><input type ='text' class='priority_order_num' value='"+value.priority_order_num+"' readonly></td>" +
             	 "<td>"+
             	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu'>"+
@@ -190,7 +194,7 @@ function archiveReqRolesResponseDataRetrieve(){
             	 "</td>" +
             	 "</tr>";
             	 $("#Approver").append(Row);
-            	 if(checkFieldValues(value.role, value.name, value.title, value.approverpurpose))
+            	 if(checkFieldValues(value.role,  value.name, value.email, value.username, value.priority))
             		 checkRoles = true;
             		 //checkValidation = true;
              });

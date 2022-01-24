@@ -26,6 +26,7 @@
  <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
 
 <!-- ========== MODERNIZR ========== -->
+<script src="js/common/email/emailAjaxCall.js"></script>
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>   
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
@@ -412,8 +413,9 @@ padding: 15px;
 																	<tr>
 																		<th style='text-align:center;vertical-align: middle;'>Role</th>
 																		<th style='text-align:center;vertical-align: middle;'>Name</th>
-																		<th style='text-align:center;vertical-align: middle;'>Title</th>
-																		<th style='text-align:center;vertical-align: middle;'>Approver Purpose</th>
+																		<th style='text-align:center;vertical-align: middle;'>Email</th>
+																		<th style='text-align:center;vertical-align: middle;'>User Name</th>
+																		<th style='text-align:center;vertical-align: middle;'>Priority</th>
 																		<th style='text-align:center;vertical-align: middle;'>Action</th>
 																	</tr>
 																</thead>

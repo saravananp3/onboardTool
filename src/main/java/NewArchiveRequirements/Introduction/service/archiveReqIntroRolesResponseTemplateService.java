@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -36,7 +37,6 @@ DBconnection dBconnection =null;
 		 try {
 			 
 			 String oppName = "";
-			 
 			 String QueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName' and Id = '"+Id+"';";
 			 Statement st = con.createStatement();
 			 ResultSet rs = st.executeQuery(QueryAppName);
@@ -54,8 +54,9 @@ DBconnection dBconnection =null;
 			 ResultSet rs1 = st1.executeQuery(selectQuery);
 			 
 			 while(rs1.next()) {
-				 String RolesResponse_InsertQuery = "insert into ArchiveReq_Roles_Info (seq_no, OppId, prj_name, OppName, role, name, title, approverpurpose)"
-						 +" value(?,?,?,?,?,?,?,?)";
+				 String approval_id=generateRandomApprovalId();
+				 String RolesResponse_InsertQuery = "insert into ArchiveReq_Roles_Info (seq_no, OppId, prj_name, app_name,role, name, emailId, username, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag) "
+					  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 				 
 				 PreparedStatement preparedStatement1 = con.prepareStatement(RolesResponse_InsertQuery);
 					preparedStatement1.setInt(1, rs1.getInt(1));
@@ -64,9 +65,17 @@ DBconnection dBconnection =null;
 					preparedStatement1.setString(4, oppName);
 					preparedStatement1.setString(5, rs1.getString(2));
 					preparedStatement1.setString(6, rs1.getString(3));
-					preparedStatement1.setString(7, rs1.getString(4));
-					preparedStatement1.setString(8, rs1.getString(5));
+					preparedStatement1.setString(7, "");
+					preparedStatement1.setString(8, "");
+					preparedStatement1.setString(9, approval_id);
+					preparedStatement1.setString(10, APPROVAL_CONSTANT.DECISION_PENDING);
+					preparedStatement1.setString(11, "");
+					preparedStatement1.setString(12, "");
+					preparedStatement1.setString(13, "");
+					preparedStatement1.setString(14, "false");
 					preparedStatement1.execute();
+					
+					
 			 	}
 				 st1.close();
 				 rs1.close();
@@ -112,15 +121,16 @@ DBconnection dBconnection =null;
 			 
 			 while(rs2.next()) {
 				 JsonObject jsonObject = new JsonObject();
-				 jsonObject.addProperty("seqNum", rs2.getInt(1));
-				 jsonObject.addProperty("OppId", rs2.getString(2));
-				 jsonObject.addProperty("prj_name", rs2.getString(3));
-				 jsonObject.addProperty("OppName", rs2.getString(4));
-				 jsonObject.addProperty("role", rs2.getString(5));
-				 jsonObject.addProperty("name", rs2.getString(6));
-				 jsonObject.addProperty("title", rs2.getString(7));
-				 jsonObject.addProperty("approverpurpose", rs2.getString(8));
-				 jsonObject.addProperty("ApprovalStatus",getApprovalStatus(rs2.getString(5)));
+				 jsonObject.addProperty("seq_no", rs2.getInt("seq_no"));
+				 jsonObject.addProperty("OppId", rs2.getString("OppId"));
+				 jsonObject.addProperty("prj_name", rs2.getString("prj_name"));
+				 jsonObject.addProperty("app_name", rs2.getString("app_name"));
+				 jsonObject.addProperty("role", rs2.getString("role"));
+				 jsonObject.addProperty("name", rs2.getString("name"));
+				 jsonObject.addProperty("emailId", rs2.getString("emailId"));
+				 jsonObject.addProperty("username", rs2.getString("username"));
+				 jsonObject.addProperty("priority_order_num", rs2.getString("priority_order_num"));
+			//	 jsonObject.addProperty("ApprovalStatus",getApprovalStatus(rs2.getString(5)));
 				 jsonArray.add(jsonObject);
 			 }
 			 st2.close();
@@ -165,5 +175,41 @@ DBconnection dBconnection =null;
 		 con.close();
 		 System.out.println("DB connection closed");
 		}
-	
+public String generateRandomApprovalId() throws SQLException {
+		
+		String uniqueID = "";
+		boolean checkTermination = true;
+		
+		while(checkTermination) {
+		
+			uniqueID = UUID.randomUUID().toString();
+			System.out.println("Approval Id : " + uniqueID);
+			
+			boolean checkDupilcateId = checkDuplicateApprovalId(uniqueID);
+		
+			if(checkDupilcateId == false) {
+				checkTermination = false;
+				}
+		}
+		
+		return uniqueID;
+	}
+		
+	public boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
+		
+		boolean checkDuplicate = false;
+		
+		String selectQuery = "select * from ArchiveReq_Roles_Info order by seq_no;";
+		Statement state = con.createStatement();
+		ResultSet result = state.executeQuery(selectQuery);
+		
+		while(result.next()) {
+			String checkApprovalId = result.getString("approvalId");
+			if(checkApprovalId == uniqueID) {
+				checkDuplicate = true;
+			}	
+		}
+		return checkDuplicate;
+	}
+
 }

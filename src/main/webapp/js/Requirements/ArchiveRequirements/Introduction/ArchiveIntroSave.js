@@ -113,20 +113,23 @@ var typingTimer;                //timer identifier
 				var inputs = {};
 				var role = $('.role').eq(i).val();
 				var name = $('.name').eq(i).val();
-				var title = $('.title').eq(i).val();
-				var approver = $('.approverpurpose').eq(i).val();
+				var emailId = $('.emailId').eq(i).val();
+				var username = $('.username').eq(i).val();
+				var priority_order_num = $('.priority_order_num').eq(i).val();
 				if(!roleNameArray.includes(role))
 					 roleNameArray.push(role);
 				else
 					checkDuplicateRole=false;
 				 
-				if(checkFieldValues(role, name, title, approver))
+				if(checkFieldValues(role, name, emailId,username,priority_order_num))
 					validation = true;
 				inputs['seq_no'] = i+1;
 				inputs['role'] = role;
 				inputs['name'] = name;
-				inputs['title'] = title;
-				inputs['approverpurpose'] = approver;
+				inputs['emailId'] = emailId;
+				inputs['username'] = username;
+				inputs['priority_order_num'] = priority_order_num;
+				
 				JsonArray.push(inputs);
 			}
 			if(validation&&checkDuplicateRole)
@@ -148,11 +151,12 @@ var typingTimer;                //timer identifier
 	});
 		
 		
-	function checkFieldValues(role, name, title, approver){
+	function checkFieldValues(role, name, emailId, username,priority_order_num){
 		
 		var validationFlag = false;
 		if((role != '' && role != undefined && role != null) && (name != '' && name != undefined && name != null) && 
-				(title != '' && title != undefined && title != null) && (approver != '' && approver != undefined && approver != null))
+				(emailId != '' && emailId != undefined && emailId != null) && (username != '' && username != undefined && username != null)
+				 && (priority_order_num != '' && priority_order_num != undefined && priority_order_num != null))
 				validationFlag = true;
 		
 		return validationFlag;

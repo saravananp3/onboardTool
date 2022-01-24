@@ -5,4 +5,5 @@ public class EMAIL_SERVICE_CONSTANT {
 	public static final String MAIL_PROPS = "/mail.properties";
 	
 	public static final String INTAKE_APPROVAL_SUBJECT = "INTAKE APPROVAL";
+	public static final String ROLES_RESPONSE_APPROVAL_SUBJECT = "ROLES AND RESPONSIBILITY APPROVAL";
 }

@@ -35,15 +35,17 @@ public class ApproverRolesSaveService {
 		  		String seqNum = jsonObj.get("seq_no").getAsString();	
 		  		String role = jsonObj.get("role").getAsString();
 		  		String name =  jsonObj.get("name").getAsString();
-		  		String title =  jsonObj.get("title").getAsString();
-		  		String approverPurpose =  jsonObj.get("approverpurpose").getAsString();
+		  		String emailId =  jsonObj.get("emailId").getAsString();
+		  		String username =  jsonObj.get("username").getAsString();
+		  		String priority_order_num =  jsonObj.get("priority_order_num").getAsString();
 		  		
-			  String UpdateQuery = "update ArchiveReq_Roles_Info set role = ?, name =?, title=?, approverpurpose=? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			  String UpdateQuery = "update ArchiveReq_Roles_Info set role = ?, name =?, emailId=?, username=?,priority_order_num=? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, role);
 	          prestmt.setString(2, name);
-	          prestmt.setString(3, title);
-	          prestmt.setString(4, approverPurpose);
+	          prestmt.setString(3, emailId);
+	          prestmt.setString(4, username);
+	          prestmt.setString(5, priority_order_num);
 	          prestmt.execute();
 	          statusFlag =true;
 			}

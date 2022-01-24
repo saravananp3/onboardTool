@@ -33,16 +33,18 @@ public class ApproverRolesDeleteService {
 			ArrayList<String> seqNum = new ArrayList<String>();
 			ArrayList<String> role = new ArrayList<String>();
 			ArrayList<String> name = new ArrayList<String>();
-			ArrayList<String> title = new ArrayList<String>();
-			ArrayList<String> approverPurpose = new ArrayList<String>();
+			ArrayList<String> emailId = new ArrayList<String>();
+			ArrayList<String> username = new ArrayList<String>();
+			ArrayList<String> priority = new ArrayList<String>();
 			
 			ArrayList<String> seqNumRes = new ArrayList<String>();
 			ArrayList<String> roleRes = new ArrayList<String>();
 			ArrayList<String> nameRes = new ArrayList<String>();
-			ArrayList<String> titleRes = new ArrayList<String>();
-			ArrayList<String> approverPurposeRes = new ArrayList<String>();
+			ArrayList<String> emailIdRes = new ArrayList<String>();
+			ArrayList<String> usernameRes = new ArrayList<String>();
+			ArrayList<String> priorityRes = new ArrayList<String>();
 			
-			String oppName ="";
+			String appname ="";
 			int newSeqNum = SeqNum+1;
 			String selectQuery = "select * from archivereq_roles_info where oppid='"+Id+"' order by seq_no;";
 			Statement st = con.createStatement();
@@ -53,9 +55,10 @@ public class ApproverRolesDeleteService {
 			   seqNum.add(rs.getString("seq_no"));
 			   role.add(rs.getString("role"));
 			   name.add(rs.getString("name"));
-			   title.add(rs.getString("title"));
-			   approverPurpose.add(rs.getString("approverpurpose"));
-			  oppName = rs.getString("OppName");
+			   emailId.add(rs.getString("emailId"));
+			   username.add(rs.getString("username"));
+			   appname=(rs.getString("app_name"));
+			  priority.add(rs.getString("priority_order_num"));
 			}
 			
 			for(int i=0;i<seqNum.size();i++)
@@ -65,22 +68,22 @@ public class ApproverRolesDeleteService {
 					seqNumRes.add(seqNum.get(i));
 					roleRes.add(role.get(i));
 					nameRes.add(name.get(i));
-					titleRes.add(title.get(i));
-					approverPurposeRes.add(approverPurpose.get(i));
+					emailIdRes.add(emailId.get(i));
+					usernameRes.add(username.get(i));
+					priorityRes.add(priority.get(i));
 				}
 				else if(SeqNum>Integer.parseInt(seqNum.get(i)))
 				{
 					seqNumRes.add(String.valueOf(Integer.parseInt(seqNum.get(i))-1));
 					roleRes.add(role.get(i));
 					nameRes.add(name.get(i));
-					titleRes.add(title.get(i));
-					approverPurposeRes.add(approverPurpose.get(i));
+					emailIdRes.add(emailId.get(i));
+					usernameRes.add(username.get(i));
+					priorityRes.add(priority.get(i));
+
 				}
 			}
-			for(int i=0;i<seqNumRes.size();i++)
-			{
-			  System.out.println(seqNumRes.get(i)+" "+roleRes.get(i)+" "+nameRes.get(i)+" "+titleRes.get(i)+" "+approverPurposeRes.get(i)+" ");	
-			}
+	
 			
 			String deleteQuery ="delete from archivereq_roles_info where oppid='"+Id+"';";
 			Statement st1 = con.createStatement();
@@ -89,18 +92,19 @@ public class ApproverRolesDeleteService {
 			
 			for(int i=0;i<seqNumRes.size();i++)
 			{
-			  System.out.println(seqNumRes.get(i)+" "+roleRes.get(i)+" "+nameRes.get(i)+" "+titleRes.get(i)+" "+approverPurposeRes.get(i)+" ");	
-			  String StakeHolderInsertQuery = "insert into ArchiveReq_Roles_Info (seq_no, OppId, prj_name, OppName, role, name, title, approverpurpose)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?);";
+			  System.out.println(seqNumRes.get(i)+" "+roleRes.get(i)+" "+nameRes.get(i)+" "+emailIdRes.get(i)+" "+usernameRes.get(i)+" "+priorityRes.get(i)+" ");	
+			  String StakeHolderInsertQuery = "insert into ArchiveReq_Roles_Info (seq_no, OppId, prj_name, app_name, role, name, emailId,username ,priority_order_num)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?,?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, Integer.parseInt(seqNum.get(i)));
 	          prestmt.setString(2, Id);
 	          prestmt.setString(3, "");
-	          prestmt.setString(4, oppName);
+	          prestmt.setString(4, appname);
 	          prestmt.setString(5, roleRes.get(i));
 	          prestmt.setString(6, nameRes.get(i));
-	          prestmt.setString(7, titleRes.get(i));
-	          prestmt.setString(8, approverPurpose.get(i));
+	          prestmt.setString(7, emailIdRes.get(i));
+	          prestmt.setString(8, usernameRes.get(i));
+	          prestmt.setString(9, priorityRes.get(i));
 	          prestmt.execute();
 	          statusFlag =true;
 			}

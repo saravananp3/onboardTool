@@ -5,9 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import common.constant.APPROVAL_CONSTANT;
+
 import java.sql.Connection;
 
 import onboard.DBconnection;
@@ -33,8 +37,9 @@ public class ApproverRolesAddService {
 		try
 		{
 			boolean statusFlag = false;
-			  String StakeHolderInsertQuery = "insert into ArchiveReq_Roles_Info (seq_no, OppId, prj_name, OppName, role, name, title, approverpurpose)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?);";
+    		String approvalId = generateRandomApprovalId();
+			  String StakeHolderInsertQuery = "insert into ArchiveReq_Roles_Info (seq_no, OppId, prj_name, app_name, role,name, emailId, username, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag) "
+			  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, SeqNum+1);
 	          prestmt.setString(2, Id);
@@ -44,6 +49,12 @@ public class ApproverRolesAddService {
 	          prestmt.setString(6, "");
 	          prestmt.setString(7, "");
 	          prestmt.setString(8, "");
+	          prestmt.setString(9, approvalId);
+	          prestmt.setString(10, APPROVAL_CONSTANT.DECISION_PENDING);
+	          prestmt.setString(11, "");
+	          prestmt.setString(12, "");
+	          prestmt.setString(13, "");
+	          prestmt.setString(14, "false");
 	          prestmt.execute();
 	          statusFlag =true;
 			
@@ -164,4 +175,42 @@ public class ApproverRolesAddService {
       con.close();
       System.out.println("Db connection Closed");
 	}
+	
+public String generateRandomApprovalId() throws SQLException {
+		
+		String uniqueID = "";
+		boolean checkTermination = true;
+		
+		while(checkTermination) {
+		
+			uniqueID = UUID.randomUUID().toString();
+			System.out.println("Approval Id : " + uniqueID);
+			
+			boolean checkDupilcateId = checkDuplicateApprovalId(uniqueID);
+		
+			if(checkDupilcateId == false) {
+				checkTermination = false;
+				}
+		}
+		
+		return uniqueID;
+	}
+		
+	public boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
+		
+		boolean checkDuplicate = false;
+		
+		String selectQuery = "select * from ArchiveReq_Roles_Info order by seq_no;";
+		Statement state = con.createStatement();
+		ResultSet result = state.executeQuery(selectQuery);
+		
+		while(result.next()) {
+			String checkApprovalId = result.getString("approvalId");
+			if(checkApprovalId == uniqueID) {
+				checkDuplicate = true;
+			}	
+		}
+		return checkDuplicate;
+	}
+
 }

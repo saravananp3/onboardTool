@@ -32,6 +32,9 @@ public class EmailApprovalService extends EmailService {
 	private String appName = null;
 	private String tableName = null;
 	private String approval_Link = null;
+	private String subject = null;
+	
+	
 
 	public EmailApprovalService(String oppId, String appName, String module)
 			throws ClassNotFoundException, SQLException {
@@ -48,9 +51,17 @@ public class EmailApprovalService extends EmailService {
 		case MODULE_NAME.INTAKE_MODULE:
 			tableName = INTAKE_TABLE.STAKE_HOLDER_TABLE;
 			this.approval_Link = "'http://" + properties.getProperty("EMAIL.LINK.HOST") + ":"
-					+ properties.getProperty("EMAIL.LINK.PORT") + properties.getProperty("EMAIL.JSP.LINK");
+					+ properties.getProperty("EMAIL.LINK.PORT") + properties.getProperty("EMAIL.INTAKE.JSP.LINK");
+			subject=EMAIL_SERVICE_CONSTANT.INTAKE_APPROVAL_SUBJECT;
+			break;
+		case MODULE_NAME.ARCHIVE_REQUIREMENTS_MODULE:
+			tableName = INTAKE_TABLE.ROLES_RESPONSIBILITIES_TABLE;
+			this.approval_Link = "'http://" + properties.getProperty("EMAIL.LINK.HOST") + ":"
+					+ properties.getProperty("EMAIL.LINK.PORT") + properties.getProperty("EMAIL.ROLES_RESPONSE.JSP.LINK");
+			subject=EMAIL_SERVICE_CONSTANT.ROLES_RESPONSE_APPROVAL_SUBJECT;
 			break;
 		}
+		
 	}
 
 	public JsonObject getUserListAndSendApprovalMail() {
@@ -73,7 +84,7 @@ public class EmailApprovalService extends EmailService {
 				Object[] replaceValues = new Object[] { user_name, appName, approvalLink };
 				System.out.println(user_name + " : " + user_mail);
 				sendApprovalEmail(user_name, user_mail, approvalLink, mailCont,
-						EMAIL_SERVICE_CONSTANT.INTAKE_APPROVAL_SUBJECT, replaceValues);
+						subject, replaceValues);
 				setFlagAndDecisionForApproverId("true", APPROVAL_CONSTANT.DECISION_PENDING, approval_id);
 			}
 
