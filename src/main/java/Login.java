@@ -223,13 +223,15 @@ public class Login extends HttpServlet {
 	
 	class rolesRespons{
 		int seq_no;
-		String role, name, title, approverpurpose;
-		rolesRespons(int seq_no, String role, String name, String title, String approverpurpose){
+		String role, name, email, username, priority,approverPurpose;
+		rolesRespons(int seq_no, String role, String name, String email, String username,String priority,String approverPurpose){
 			this.seq_no = seq_no;
 			this.role = role;
 			this.name = name;
-			this.title = title;
-			this.approverpurpose = approverpurpose;
+			this.email = email;
+			this.username = username;
+			this.priority = priority;
+			this.approverPurpose = approverPurpose;
 		}
 	}
 	
@@ -547,21 +549,23 @@ try
 			 
 			 if(!RsroleRes.next()) {
 				 rolesRespons RoleResponse[] = new rolesRespons[5];
-				 RoleResponse[0] = new rolesRespons(1,"Project Sponsor","","","Approves the document from an overall program perspective");
-				 RoleResponse[1] = new rolesRespons(2,"Business Owner","","","Approves the document from an overall project perspective");
-				 RoleResponse[2] = new rolesRespons(3,"Project Manager","","","Approves the document from an overall project perspective");
-				 RoleResponse[3] = new rolesRespons(4,"System Architect","","","Approves the document from an architecture perspective");
-				 RoleResponse[4] = new rolesRespons(5,"Technical Lead","","","Approves the document from a technical perspective");	 
+				 RoleResponse[0] = new rolesRespons(1,"Project Sponsor","","","","","Approves theï¿½documentï¿½from an overallï¿½programï¿½perspective");
+				 RoleResponse[1] = new rolesRespons(2,"Business Owner","","","","","Approves theï¿½documentï¿½from an overall project perspective");
+				 RoleResponse[2] = new rolesRespons(3,"Project Manager","","","","","Approves theï¿½documentï¿½from an overall project perspective");
+				 RoleResponse[3] = new rolesRespons(4,"System Architect","","","","","Approves theï¿½documentï¿½from anï¿½architectureï¿½perspective");
+				 RoleResponse[4] = new rolesRespons(5,"Technical Lead","","","","","Approves theï¿½documentï¿½from aï¿½technicalï¿½perspective");	 
 			 
 				 for (int index = 0; index<RoleResponse.length; index++) {
-					 String RolesResponse_InsertQuery = "insert into ArchiveReq_Roles_Info_Template_Details(seq_no, role, name, title, approverpurpose)"
-							 +" value(?,?,?,?,?)";
+					 String RolesResponse_InsertQuery = "insert into ArchiveReq_Roles_Info_Template_Details(seq_no, role, name, email, username,priority,approverPurpose)"
+							 +" value(?,?,?,?,?,?,?)";
 					 PreparedStatement prestmtResponse = con.prepareStatement(RolesResponse_InsertQuery);
 					 prestmtResponse.setInt(1, RoleResponse[index].seq_no);
 					 prestmtResponse.setString(2, RoleResponse[index].role);
 					 prestmtResponse.setString(3, RoleResponse[index].name);
-					 prestmtResponse.setString(4, RoleResponse[index].title);
-					 prestmtResponse.setString(5, RoleResponse[index].approverpurpose);
+					 prestmtResponse.setString(4, RoleResponse[index].email);
+					 prestmtResponse.setString(5, RoleResponse[index].username);
+					 prestmtResponse.setString(6, RoleResponse[index].priority);
+					 prestmtResponse.setString(7, RoleResponse[index].approverPurpose);
 					 prestmtResponse.execute();
 				 }
 			 }
