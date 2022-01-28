@@ -18,8 +18,6 @@
     	DBconnection dbConnection = new DBconnection();
     	connection = (Connection) dbConnection.getConnection();
         
-    	//Class.forName("com.mysql.jdbc.Driver").newInstance();
-        //connection = DriverManager.getConnection(connectionURL, "root", "password123");
 
         statement = connection.createStatement();
 

@@ -142,7 +142,9 @@ function checkk()
 		<%@ page import="javax.sql.*"%>
 		<%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
+		<%@page import="onboard.DBconnection"%>
 		<%
+		DBconnection dBconnection=new DBconnection();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Admin_RoleDetails JSP PAGE-----[INFO]");  %>
@@ -159,8 +161,7 @@ if (session.getAttribute("username")==null)
 HttpSession details=request.getSession();
 String info=(String)details.getAttribute("admin");
 String prjname=(String)details.getAttribute("nameofproject");
-Class.forName("com.mysql.jdbc.Driver"); 
-java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123"); 
+java.sql.Connection conn = dBconnection.getConnection(); 
 String query="select * from Role_Details";
 String query1="select * from Admin_UserDetails";
 Statement s=conn.createStatement();

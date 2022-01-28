@@ -30,6 +30,8 @@
 
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
+<script src="js/common/email/emailAjaxCall.js"></script>
+
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
 
@@ -577,8 +579,9 @@ font-size:12px;
                                                          <thead>
                                                          <th scope='col'>Role</th>
                                                          <th scope='col'>Name</th>
-                                                         <th scope='col'>Title</th>
-                                                         <th scope='col'>Approver Purpose</th>
+                                                         <th scope='col'>Email</th>
+                                                         <th scope='col'>Username </th>
+                                                         <th scope='col'>Priority </th>
                                                          </thead>
                                                         	<tbody id="roleResponseInfoPreview">  </tbody>
                                                         	</table></td></tr>
@@ -763,11 +766,14 @@ font-size:12px;
                                                        <h3 class="panel-title">8 Approval Details</h3><br><br>
                                                         <table class='table-bordered'>
                                                           <thead>
-                                                          <th>Name</th>
                                                           <th>Role</th>
-                                                          <th>Title</th>
+                                                          <th>Name</th>
+                                                          <th>Email</th>
+                                                          <th>Username</th>
+                                                          <th>Priority</th>
                                                           <th>Approval Status</th>
-                                                          </thead>
+                                                          
+  </thead>
                                                           <tbody id='approvalInfoPreview'>
                                                           </tbody>
                                                           </table></div> </td> </tr>

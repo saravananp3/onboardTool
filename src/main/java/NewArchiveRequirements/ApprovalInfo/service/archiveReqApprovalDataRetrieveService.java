@@ -33,7 +33,7 @@ public class archiveReqApprovalDataRetrieveService {
 		try
 		{
 			boolean checkData = false;
-			String selectQuery ="select * from ArchiveRequirements_Stake_Holder_Info where oppid='"+Id+"';";
+			String selectQuery ="select * from ArchiveReq_Roles_Info where oppid='"+Id+"';";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
 			while(rs.next())
@@ -43,7 +43,7 @@ public class archiveReqApprovalDataRetrieveService {
 				jsonObject.addProperty("seqNum",rs.getString("seq_no"));
 				jsonObject.addProperty("name", rs.getString("name"));
 				jsonObject.addProperty("role",rs.getString("role"));
-				jsonObject.addProperty("approvalStatus",rs.getString("ArchiveRequirementApproval"));
+				jsonObject.addProperty("approvalStatus",rs.getString("intakeApproval"));
 				jsonArray.add(jsonObject);
 			}
 			rs.close();

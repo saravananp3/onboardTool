@@ -25,6 +25,8 @@ $('#ApprovalSave').click(function(){
 		if(checkStatus.statusFlag==true)
 		{
 			archiveReqApprovalMessage(currentArchiveReqApproval,username);
+					emailAjaxCall("ARCHIVE_REQUIREMENTS");
+
 		}		
 		else if(checkStatus.statusFlag==false)
 		{

@@ -1,6 +1,15 @@
 $(document).ready(function()
 {
 	reviewDataRetrieveAjaxCall();
+	$(document).on('click','#button_id',function(){
+		// $("#loading_overlay").show();
+		//showSpin();
+		//$("#loading_overlay").attr("style","display:block;");
+		//$("#loading_overlay").html(progressCss.val());
+		
+		emailAjaxCall("ARCHIVE_REQUIREMENTS");
+		 
+	});
 });
 
 function reviewDataRetrieveAjaxCall()
@@ -37,10 +46,11 @@ function reviewDataRetrieveAjaxCall()
         		 var row ="<tr >"+
         		           "<td>"+value.role+" </td>"+
         		           "<td>"+value.name+"</td>"+
-        		           "<td>"+value.title+"</td>"+
-        		           "<td>"+value.approverpurpose+"</td>"+
+        		           "<td>"+value.emailId+"</td>"+
+        		           "<td>"+value.username+"</td>"+
+        		           "<td>"+value.priority_order_num+"</td>"+
         		           "</tr>";
-        		  if(!checkFieldValues(value.role, value.name, value.title, value.approverpurpose))
+        		  if(!checkFieldValues(value.role, value.name, value.emailId, value.username,value.priority_order_num))
                         checkRoles =false;
         			  $("#roleResponseInfoPreview").append(row);
         	  });
@@ -207,7 +217,7 @@ function reviewDataRetrieveAjaxCall()
             $.each(data[10],function(key,value){
             	if(indexCount!=0)
             	{
-      		  var input = "<tr><td width='80px;'>"+value.name+"</td><td>"+value.role+"</td><td>"+data[0][1][indexCount].title+"</td><td>"+value.approvalStatus+"</td></tr>";
+      		  var input = "<tr><td width='80px;'>"+value.role+"</td><td>"+value.name+"</td><td>"+value.emailId+"</td><td>"+value.username+"</td><td>"+value.priority_order_num+"</td><td>"+value.approvalStatus+"</td></tr>";
 		         $("#approvalInfoPreview").append(input);
             	}
             	indexCount++;
@@ -219,11 +229,12 @@ function reviewDataRetrieveAjaxCall()
         }
     });	
 }
-function checkFieldValues(role, name, title, approver){
+function checkFieldValues(role, name, emailId, username,priority_order_num){
 	
 	var validationFlag = false;
-	if((role != '' && role != undefined && role != null) && (name != '' && name != undefined && name != null) && 
-			(title != '' && title != undefined && title != null) && (approver != '' && approver != undefined && approver != null))
+	if((role != '' && role != undefined && role != null) && (name != '' && name != undefined && name != null) &&  
+			(emailId != '' && emailId != undefined && emailId != null) && (username != '' && username != undefined && username != null)
+			&&(priority_order_num != '' && priority_order_num != undefined && priority_order_num != null))
 			validationFlag = true;
 	
 	return validationFlag;

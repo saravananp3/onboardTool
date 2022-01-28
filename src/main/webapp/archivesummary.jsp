@@ -551,8 +551,10 @@ function remove(x)
 <body class="top-navbar-fixed">
 <%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
+		<%@ page import="onboard.DBconnection"%>
 		<%
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+        DBconnection dBconnection = new DBconnection();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed ArchiveSummary JSP PAGE-----[INFO]");  %>
 <%@ page import="java.sql.*"%>
@@ -739,8 +741,7 @@ function remove(x)
 <%
 
 String det=(String)session.getAttribute("theName");
-Class.forName("com.mysql.jdbc.Driver"); 
-java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123"); 
+java.sql.Connection conn = dBconnection.getConnection(); 
 
 String query = "select * from AppEmphazize_ProjectDetails where id = "+det;
 Statement st = conn.createStatement();
