@@ -210,7 +210,7 @@ function appendRowFunction(data){
 				  "<span class='statusRed statusCode colorCode'></span>"+
 				  "</td>"+
 				  "<td style='text-align:center;vertical-align: middle;'><i class='fas fa-comment-alt fa-2x remarksIcon' style='color:#87CEEB;' role='button' ></i><input type='hidden' class ='remark changeText' value='"+remark+"' disabled></td>"+
-                  "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
+                  "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-bs-toggle='dropdown'></img>"+
                   "<ul class='dropdown-menu'>"+
                   "<li><a  class='fa fa-plus AddRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Add</a></li>"+
                   "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
@@ -287,7 +287,7 @@ function appendRowFunction(data){
     		var headerOppId = value.Opp_Id;
     		var headerOppName = value.appName;
     		$('#oppName').html("Opportunity Name : </br>"+headerOppName);
-    		$('#oppId').html("P3 Project Id : </br>"+headerOppId);
+    		$('#oppId').html("Opportunity Id : </br>"+headerOppId);
     		
     	}
 		

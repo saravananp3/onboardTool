@@ -56,6 +56,10 @@
 
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionStatus/archiveExecStatus.css" />
 <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionDataRetrieve.js"></script>
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
 
 
 <style>
@@ -77,7 +81,7 @@ padding-right: 0px;
 }
 <!-- Wizard-->
 
-body {
+/* body {
   background-color: #ffffff;
   color: #444444;
   font-family: 'Roboto', sans-serif;
@@ -85,7 +89,10 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
-}
+} */
+
+
+
 .wizard-content-left {
   background-blend-mode: darken;
   background-color: rgba(0, 0, 0, 0.45);
@@ -334,13 +341,13 @@ color:#fff;
  }
  
  
-table {
+/* table {
     width: 92%;
     border-spacing: 0;
     
     margin-bottom: 2.375em;
     border-style:none;
-} 
+}  */
 
 
 .pdf{
@@ -452,7 +459,7 @@ font-size:12px;
   
 }
 
-.active{
+.active-1{
         background:#1565c0;
          }
       .page-title-div {
@@ -467,25 +474,25 @@ font-size:12px;
 	padding-left: 0px;
     padding-right: 0px;
 	}
- .navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
-}        
-
- .navbar-nav .nav-link.active {
-    /* border-top: none; */
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid rgba(255,255,255,.5)!important;
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
 }
 
-.navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
+.navbar-nav-1 #nav-link.active-1 {
+	/* border-top: none; */
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid rgba(255, 255, 255, .5) !important;
+}
+
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
 }
 
 .link:hover{
@@ -509,11 +516,29 @@ background:#1565c0 important;
 
 </head>
 <body class="top-navbar-fixed">
+
+<%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav-1 mt-3">
+						<li class="active-1" id="nav-link"><a class="link"
+							href="ArchiveExecutionDetails.jsp"
+							style="color: #fff; padding: 7px 10px; height: 35px;">Project
+								Plan</a></li>
+						<li id="nav-link"><a class="link"
+							href="#"
+							style="color: #fff; padding: 7px 10px; height: 35px;">Project
+								Plan Summary</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
    <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+   <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                  <div class="navbar-header no-padding" style = "height : 100px;">
@@ -521,7 +546,7 @@ background:#1565c0 important;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -541,8 +566,8 @@ background:#1565c0 important;
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-12">
-                             <!--  <h4 class="title" style="color:#fff">User Configuration</h4>
-                               <p class="sub-title">Create and manage your Opportunities here</p>-->
+                              <h4 class="title" style="color:#fff">User Configuration</h4>
+                               <p class="sub-title">Create and manage your Opportunities here</p>
                                <ul class="nav navbar-nav " >
 						      <li class=" nav-link active"><a class="link" href="ArchiveExecutionDetails.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan</a></li>
 						      <li class="nav-link" ><a class="link" href="#" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan Summary</a></li>
@@ -560,11 +585,11 @@ background:#1565c0 important;
                     </div>
 
                 </div>
-			</nav>
+			</nav>	
       
         </div>
-        <!-- /.container-fluid -->
-    </nav >
+        /.container-fluid
+    </nav > -->
             <div class="content-wrapper">
                 <div class="content-container" >
                    
@@ -572,7 +597,7 @@ background:#1565c0 important;
                         
                         <section>
                             <div class="row">
-                                <div class="container" id="module_header">
+                                <div class="container">
                                   <div class="panelSize col-md-12 col-sm-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
@@ -583,15 +608,14 @@ background:#1565c0 important;
 								<li><span>2</span><i>Project Summary</i></li>
 							</ul>
 						</div> -->
-						<br/>
-						<br/>
+						
                                    <div class="wrapper">
 													   
 													   <a href="#" class="btn10 coloring" id = "oppName">
 													     Opportunity Name : </br>
 													  </a>
 													    <a href="#" class="btn10 coloring" id = "oppId">
-													     P3 Project Id : </br>
+													     Opportunity Id : </br>
 													  </a>
 													    <a href="#" class="btn10 coloring" id = "startDate">
 													    Start Date : </br> 15-04-2020
@@ -603,38 +627,36 @@ background:#1565c0 important;
 													  </div>
 													  
 													  
-                                         <div class="panel panel-default" style='width:1900px;'>
-                                            <div class="panel-heading" >
-                                                <h4 class="panel-title" >
-                                                    <a class="collapsed" data-toggle="collapse"  data-parent="#panels1">Archive Execution</a> </h4>
-                                            </div>
-                                            <div class="panel-collapse collapse in"
-                                                name="collapse">
-                                                <div class="panel-body">
+                                         <div class="card-container-4 card">
+                                           
+                                            <div class="card-header" id="cd-header">Archive Execution</div>
+                                            <!-- <div class="panel-collapse collapse show"
+                                                name="collapse"> -->
+                                                <div class="card-body">
                                                 
                                                     <div>
                                                     <!-- <h4>Task List</h4>   -->
-                                                            <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
-      													<div class="panel">         
-  													<table class="table table-bordered">
+                                                           <!--  <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+      													<div class="panel">     -->     
+  													<table class="table-bordered" style="width:100%; font-size:11px; font-family: 'Poppins', sans-serif;">
   													
     												<thead >
       												<tr>
       												
-      												<th style='text-align:center;vertical-align: middle;'>Task Id</th>
-        											<th style='text-align:center;vertical-align: middle;'>Task Group</th>
-        											<th style='text-align:center;vertical-align: middle;'>Task Name</th>
-        											<th style='text-align:center;vertical-align: middle;'>Task Type</th>
-        											<th style='text-align:center;vertical-align: middle;'>Pred/Major Dependencies</th>
-        											<th style='text-align:center;vertical-align: middle;'>Assigned To</th>
-        											<th style='text-align:center;vertical-align: middle;'>Planned Start</th>
-        											<th style='text-align:center;vertical-align: middle;'>Planned End</th>
-        											<th style='text-align:center;vertical-align: middle;'>Actual Start</th>
-        											<th style='text-align:center;vertical-align: middle;'>Actual End</th>
-        											<th style='text-align:center;vertical-align: middle;'>% Completion</th>
-        											<th style='text-align:center;vertical-align: middle;'>Status</th>
-        											<th style='text-align:center;vertical-align: middle;'>Remarks</th>
-        											<th style='text-align:center;vertical-align: middle;'>Action</th>
+      												<th style='text-align:center;vertical-align: middle;' scope="col">Task Id</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Task Group</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Task Name</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Task Type</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Pred/Major Dependencies</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Assigned To</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Planned Start</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Planned End</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Actual Start</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Actual End</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">% Completion</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Status</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Remarks</th>
+        											<th style='text-align:center;vertical-align: middle;' scope="col">Action</th>
       												</tr>
     												</thead>
     												<tbody id ="ArchiveExecutionList">
@@ -648,19 +670,19 @@ background:#1565c0 important;
                                                     </div>          
                                                     
                                                     <!-- Parent  -->                                      
-                                                    <button type="button" class="btn btn-primary pull-right" id="ArchExecParentId" data-toggle="modal" data-target="#ArchiveParentAddPopUp" style="display: none;">Parent Add PopUp</button>
+                                                    <button type="button" class="btn btn-primary pull-right" id="ArchExecParentId" data-bs-toggle="modal" data-bs-target="#ArchiveParentAddPopUp" style="display: none;">Parent Add PopUp</button>
                                                      
                                                       <!-- Child  -->   
                                                                
-                                                     <button type="button" class="btn btn-primary pull-right" id="ArchExecChildId" data-toggle="modal" data-target="#ArchiveChildAddPopUp" style="display: none;">Child Add PopUp</button>
+                                                     <button type="button" class="btn btn-primary pull-right" id="ArchExecChildId" data-bs-toggle="modal" data-bs-target="#ArchiveChildAddPopUp" style="display: none;">Child Add PopUp</button>
                                                      
                                                     <!-- Edit Button -->
-													<button type="button" class="btn btn-primary pull-right" id="ArchExecEditId" data-toggle="modal" data-target="#ArchiveEditPopUp" style="display: none;">Edit PopUp</button>                                                               
+													<button type="button" class="btn btn-primary pull-right" id="ArchExecEditId" data-bs-toggle="modal" data-bs-target="#ArchiveEditPopUp" style="display: none;">Edit PopUp</button>                                                               
                                                     
                                                    <!-- Delete Button -->
-													<button type="button" class="btn btn-primary pull-right" id="ArchExecDeleteId" data-toggle="modal" data-target="#ArchiveDeletePopUp" style="display: none;">Delete PopUp</button>                                                               
+													<button type="button" class="btn btn-primary pull-right" id="ArchExecDeleteId" data-bs-toggle="modal" data-bs-target="#ArchiveDeletePopUp" style="display: none;">Delete PopUp</button>                                                               
                                                     <!-- Remarks Button -->
-													<button type="button" class="btn btn-primary pull-right" id="ArchExecRemarksId" data-toggle="modal" data-target="#ArchiveRemarksPopUp" style="display: none;">Delete PopUp</button>
+													<button type="button" class="btn btn-primary pull-right" id="ArchExecRemarksId" data-bs-toggle="modal" data-bs-target="#ArchiveRemarksPopUp" style="display: none;">Delete PopUp</button>
                                                                                                         
                                                 </div>
                                             </div>
@@ -681,11 +703,12 @@ background:#1565c0 important;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Input Fields</h5>
-        <button type="button" class="close" id = "ArchiveParentAddCloseId" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+			<h5 class="modal-title" id="exampleModalLabel">Add Input Fields</h5>
+			<button type="button" id = "ArchiveParentAddCloseId" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+	 </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -732,8 +755,8 @@ background:#1565c0 important;
         </form>   
       </div>
       <div class="modal-footer">
-        <button type="button" id ="ArchiveParentSubmit" class="btn btn-primary submitDisable">Add Fields</button>
-        <button type="button" class="btn btn-secondary" id = "closeIdParent" data-dismiss="modal">Close</button>
+        <button type="button" id ="ArchiveParentSubmit" class="btn btn-primary submitDisable" data-bs-dismiss="modal">Add Fields</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdParent" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -743,12 +766,13 @@ background:#1565c0 important;
        <div class="modal" id="ArchiveChildAddPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Child Input Fields</h5>
-        <button type="button" class="close" id = "ArchiveChildAddCloseId" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+       <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Add Child Input Fields</h5>
+			<button type="button" id = "ArchiveChildAddCloseId" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+	   </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -784,8 +808,8 @@ background:#1565c0 important;
         </form>   
       </div>
       <div class="modal-footer">
-        <button type="button" id ="ArchiveChildSubmit" class="btn btn-primary submitDisable">Add Fields</button>
-        <button type="button" class="btn btn-secondary" id = "closeIdChild" data-dismiss="modal">Close</button>
+        <button type="button" id ="ArchiveChildSubmit" class="btn btn-primary submitDisable" data-bs-dismiss="modal">Add Fields</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdChild" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -796,12 +820,13 @@ background:#1565c0 important;
  <div class="modal" id="ArchiveEditPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Input Fields</h5>
-        <button type="button" class="close" id = "ArchiveEditCloseId" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+       <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Edit Input Fields</h5>
+			<button type="button" id = "ArchiveEditCloseId" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+	   </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -835,8 +860,8 @@ background:#1565c0 important;
         </form>   
       </div>
       <div class="modal-footer">
-        <button type="button" id ="ArchiveEditSubmit" class="btn btn-primary submitEditDisable">Submit</button>
-        <button type="button" class="btn btn-secondary" id = "closeIdEdit" data-dismiss="modal">Close</button>
+        <button type="button" id ="ArchiveEditSubmit" class="btn btn-primary submitEditDisable" data-bs-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdEdit" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -848,12 +873,13 @@ background:#1565c0 important;
 <div class="modal" id="ArchiveDeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="ArchiveDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+       <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
+			<button type="button" id = "ArchiveDeleteClose" class="btn-close" data-bs-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+	   </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -863,8 +889,8 @@ background:#1565c0 important;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="ArchiveDeleteSubmit" class="btn btn-primary submitDisableDelete" >Yes</button>
-        <button type="button" class="btn btn-default" id = "closeIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="ArchiveDeleteSubmit" class="btn btn-primary submitDisableDelete" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -876,8 +902,8 @@ background:#1565c0 important;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color:#269af8;color:white">
-        <h5 class="modal-title" style="color:white">Remarks</h5>
-        <button type="button" id ="ArchiveRemarksClose" style="color:white" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" style="color:white" id="exampleModalLabel">Remarks</h5>
+        <button type="button" id ="ArchiveRemarksClose" style="color:white" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h5 class="modal-title" id="remarksTaskGroup" style="color:white">Task Group:</h5>
@@ -893,7 +919,7 @@ background:#1565c0 important;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id = "closeIdRemarks" data-dismiss="modal" aria-label="Close" >Close</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdRemarks" data-bs-dismiss="modal" aria-label="Close" >Close</button>
       </div>
     </div>
   </div>
@@ -975,4 +1001,8 @@ $(document).on('mouseenter','.active1', function(){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+    <script src="js/navigation/navigation.js"></script>
+    <!-- ========== Toastr ========== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </html>
