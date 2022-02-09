@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!---<h1 th:text="'Welcome'+ ${Firstname}+''"</h1>---->
+
+<ul>
+    <li th:if="${Email}" th:text="'Email :'+ ${Email}"></li>
+    <li th:if="${Firstname}" th:text="'First Name :'+ ${Firstname}"></li>
+    <li th:if="${Lastname}" th:text="'Last Name :'+ ${Lastname}"></li>
+    <li th:if="${Userlogin}" th:text="'User Login :'+ ${Userlogin}"></li>
+    <li th:if="${Group}" th:text="'Group :'+ ${Group}"></li>
+
+</ul>
+</body>
+</html>
