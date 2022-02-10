@@ -5,15 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-<!---<h1 th:text="'Welcome'+ ${Firstname}+''"</h1>---->
 
-<ul>
-    <li th:if="${Email}" th:text="'Email :'+ ${Email}"></li>
-    <li th:if="${Firstname}" th:text="'First Name :'+ ${Firstname}"></li>
-    <li th:if="${Lastname}" th:text="'Last Name :'+ ${Lastname}"></li>
-    <li th:if="${Userlogin}" th:text="'User Login :'+ ${Userlogin}"></li>
-    <li th:if="${Group}" th:text="'Group :'+ ${Group}"></li>
+<form action="http://localhost:8080/postgresrole/getparam.jsp" name="testForm">
+    <input type="text" id="user_email" name="user_email" th:value="${Email}" />
+    <input type="text" id="user_fname" name="user_fname" th:value="${Firstname}" />
+    <input type="text" id="user_lname" name="user_lname" th:value="${Lastname}" />
+    <input type="text" id="user_group" name="user_group" th:value="${DECOM_ADMIN}" />
 
-</ul>
+    <script>
+    window.onload = function(){
+    document.forms['testForm'].submit();
+    }
+    </script>
+</form>
+
 </body>
 </html>

@@ -39,7 +39,10 @@ public class IndexController
                     case "Userlogin" :
                         model.addAttribute(data.getName(),credential.getAttributeAsString(data.getName()));
                         break;
-                    case "Group" :
+                    case "DECOM_SUPER_ADMIN" :
+                        model.addAttribute(data.getName(),credential.getAttributeAsString(data.getName()));
+                        break;
+                    case "DECOM_ADMIN" :
                         model.addAttribute(data.getName(),credential.getAttributeAsString(data.getName()));
                         break;
                     default:
