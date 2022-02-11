@@ -21,6 +21,7 @@ public class archiveReqApprovalDataRetrieveServlet extends HttpServlet {
 	    String Id = (String)details.getAttribute("ID");
 	    String OppName = (String)details.getAttribute("SelectedOpportunity");
 	    String username = (String)details.getAttribute("role");
+		/* String approverId = request.getParameter("aproverId"); */
 	    JsonArray jsonArray = new JsonArray();
 	    JsonObject jsonObject = new JsonObject();
 	    jsonObject.addProperty("role", username);

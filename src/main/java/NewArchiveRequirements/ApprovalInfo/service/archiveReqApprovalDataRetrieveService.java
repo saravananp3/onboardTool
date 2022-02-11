@@ -11,6 +11,8 @@ import com.google.gson.JsonObject;
 import java.sql.Connection;
 
 import common.constant.APPROVAL_CONSTANT;
+import common.constant.MODULE_NAME;
+import common.email.service.EmailApprovalService;
 import onboard.DBconnection;
 
 public class archiveReqApprovalDataRetrieveService {
@@ -43,7 +45,14 @@ public class archiveReqApprovalDataRetrieveService {
 				jsonObject.addProperty("seqNum",rs.getString("seq_no"));
 				jsonObject.addProperty("name", rs.getString("name"));
 				jsonObject.addProperty("role",rs.getString("role"));
+				jsonObject.addProperty("approvalId",rs.getString("approvalId"));
 				jsonObject.addProperty("approvalStatus",rs.getString("intakeApproval"));
+				jsonObject.addProperty("priority_order_num",rs.getString("priority_order_num"));
+				jsonObject.addProperty("CheckExistence",checkData);
+
+                EmailApprovalService mailService = new EmailApprovalService(Id, "", MODULE_NAME.ARCHIVE_REQUIREMENTS_MODULE);
+
+                jsonObject.addProperty("checkDecision", mailService.checkCurrentApproverCanDecide(rs.getString("approvalId")));
 				jsonArray.add(jsonObject);
 			}
 			rs.close();
@@ -56,7 +65,6 @@ public class archiveReqApprovalDataRetrieveService {
 					ResultSet rs1 = st1.executeQuery(selectQuery1);
 					while(rs1.next())
 					{
-					   	
 						jsonArray.add(InsertApprovalRow(rs1.getString("role"),rs1.getString("name"), ++seq_no));
 					}
 					rs1.close();

@@ -1,3 +1,7 @@
+var currentUrl = window.location.href;
+var url = new URL(currentUrl);
+var a_Id = url.searchParams.get("a_id");
+var currentUserDecision = "";
 $(document).ready(function(){
 	archiveRequirementApprovalDataRetrieveAjaxCall();
 	$(document).on('change', '.approval', function () {
@@ -48,11 +52,13 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
         url: "archiveReqApprovalDataRetrieveServlet",
         type: 'POST',
         dataType: "json",
+        data: {aproverId: a_Id},
         success: function (data) {
             console.log("Data Retrieve Stake Holder json array----->",data);
             if (!$.isArray(data)) {
                 data = [data];
             }
+            
             var index=0;
             var checkData = false;
             var CurrentRole;
@@ -60,7 +66,6 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
                if(index==0)
             	{
             	   $("#ApprovalDetails").html("");
-            	   
             	   CurrentRole = value.role;
             	}
                else if(index!=0)
@@ -70,7 +75,7 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
             	   //var username =(value.username==undefined)?"":value.name;
             	   var role = (value.role==undefined)?"":value.role;
             	   var archiveRequirementApproval = value.approvalStatus;
-   
+            	   var approvalId = value.approvalId;
             	   var checkToggleApprove = "";
             	   
             	   var checkToggleNotApprove = "";
@@ -82,6 +87,8 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
             	   var RejectedStatus = "";
             	   
             	   var YettoDecideStatus = "";
+            	   
+            	   console.log(typeof(value.priority_order_num));
             	   
             	   switch(archiveRequirementApproval)
             	   {
@@ -103,10 +110,11 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
             	   var CurrentRoleClass="";
             	   var checkDisable = "disabled";
             	   var toolTip ="";
-            	   if("Project Manager"==role)
+            	   if(a_Id == approvalId)
             	   {
             	     checkDisable = "";
             	     CurrentRoleClass="CurrentRole";
+            	     currentUserDecision = archiveRequirementApproval;
             	     toolTip ="data-toggle='tooltip' data-placement='right' title='Suggested Role'";
             	   }
             	   
@@ -115,7 +123,7 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
             	   
             	   if(role==undefined||role == "" && name =="" ||name == undefined)
             		   readonly ="";
-            	   
+            	  
             	  var Row = "<tr class='"+CurrentRoleClass+"Class' "+toolTip+">"+
       						"<td style='text-align:center;vertical-align: middle;'class='UserName' >"+name+"</td>"+
       						"<td style='text-align:center;vertical-align: middle;'>"+role+"</td>"+
@@ -144,10 +152,18 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
   							"</div>"+
       						"</td>"+
       						"</tr>";
-            	  $("#ApprovalDetails").append(Row);
-            	  
+      						 var priority = value.priority_order_num;
+
+            	   
+if(value.priority_order_num!=undefined && value.priority_order_num!="")	
+{	
+
+	          $("#ApprovalDetails").append(Row);
+
+}
             	}
             	index++;
+            	
             });
             if(!checkData)
             {

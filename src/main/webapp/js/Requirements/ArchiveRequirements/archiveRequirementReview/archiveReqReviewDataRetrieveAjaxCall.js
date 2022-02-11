@@ -1,3 +1,7 @@
+var dependencyColumn = "";
+var readOnlyValue = "";
+var finalCheck;
+var exportContent = [];
 $(document).ready(function()
 {
 	reviewDataRetrieveAjaxCall();
@@ -10,7 +14,51 @@ $(document).ready(function()
 		emailAjaxCall("ARCHIVE_REQUIREMENTS");
 		 
 	});
-});
+})
+
+$(document).on('click','#exportPdf',function(o){
+	$.ajax({ 
+		 url: "exportPdfServlet",
+		 type: 'POST',
+		 async: false,
+	     dataType: "json",
+	     data: {jsonContent:JSON.stringify(exportContent),modulename:"ARCHIVE_REQUIREMENTS"},
+	     success: function (data) {
+	    	 var pdfPath = data.path;
+	    	 pdfPath =pdfPath.replaceAll("\\","//");
+	    	 window.location.href = "downloadPDFservlet?path='"+pdfPath+"'";
+	    	 //downloadPDFAjaxCall(pdfPath);
+	    	 //setTimeout(deletePDFAjaxCall(pdfPath), 2000);
+	    	 //deletePDFAjaxCall(pdfPath);
+	         o.preventDefault();
+	     },
+	  error: function (e) { console.log(e); }
+	  
+	  });
+	});
+	
+	
+/*	var doc = new jsPDF('p','pt','a4');
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+   
+$('#exportPdf').click(function () {
+	debugger;
+ doc.fromHTML($('#d1').html(), 15, 15, {
+        'width': 500,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+    
+})*/
+
+
+
+	
+	
 
 function reviewDataRetrieveAjaxCall()
 {
@@ -21,6 +69,7 @@ function reviewDataRetrieveAjaxCall()
         dataType: "json",
         success: function (data) {
         	console.log("Review data --->",data);
+        	exportContent = data;
         	 if (!$.isArray(data)) {
                  data = [data];
              }

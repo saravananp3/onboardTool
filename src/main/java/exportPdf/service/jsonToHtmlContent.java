@@ -13,6 +13,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import IntakeDetails.IntakePreviewDetails.service.intakePreviewHtmlContentService;
+import NewArchiveRequirements.archiveRequirementReview.service.archivePreviewHtmlContentService;
+import common.constant.APPROVAL_CONSTANT;
+import common.constant.MODULE_NAME;
 
 public class jsonToHtmlContent {
 	private static StringBuffer buffer = null;
@@ -20,11 +23,19 @@ public class jsonToHtmlContent {
 	private String imagePath="S:/Decom3Sixty/D3S_21092021/D3S/src/main/webapp/images/Decom3Sixty_logo.png";
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy");
 
-	public String getHtmlContentFromJson(JsonArray jsonArray) {
+	public String getHtmlContentFromJson(JsonArray jsonArray,String modulename) {
 		System.out.println("htmlContent:"+jsonArray);
 		//int index=0;
+		
 		buffer = new StringBuffer();
+		if(modulename.equals(MODULE_NAME.INTAKE_MODULE))
+		{
 		new intakePreviewHtmlContentService(jsonArray).getHtmlContent();
+		}
+		else if(modulename.equals(MODULE_NAME.ARCHIVE_REQUIREMENTS_MODULE))
+		{
+			new archivePreviewHtmlContentService(jsonArray).getHtmlContent();
+		}
 		return buffer.toString();
 	}
 	
@@ -78,7 +89,7 @@ public class jsonToHtmlContent {
 	protected void writeTableHeadingTags(String[] columnNames) {
 		buffer.append("<thead>");
 		for(String column:columnNames)
-			buffer.append("<th style='text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>"+column+"</th>\n");
+			buffer.append("<th style='text-align:left; background-color:#737373;color:white;table-layout:fixed;padding: 10px;'>"+column+"</th>\n");
 		buffer.append("</thead>");
 	}
 	protected void writeTableDataTags(String[] values) {
@@ -88,7 +99,7 @@ public class jsonToHtmlContent {
 		buffer.append("</thead>");
 	}
 	protected void writeTableStartTags() {
-		   buffer.append("<table style=\"width:100%\">\n");
+		   buffer.append("<table style=\"width:100%;\">\n");
 //		   buffer.append("<thead>\n");
 //		   buffer.append("<th style='text-align: center;'>Fields</th>\n");
 //		   buffer.append("<th style='text-align: center;'>Value</th>\n");
@@ -131,6 +142,15 @@ public class jsonToHtmlContent {
 	protected void writeSectionHeader(String header) {
 		buffer.append("<h5 class='subHeader' >"+header+"</h5>\n");
 	}
+	
+	protected void writeSectionInfo(String Info) {
+		 String[] contentInfo = (Info).split("::");
+		 for(int i=0;i<contentInfo.length;i++)
+		 {
+		 buffer.append("<li>"+contentInfo[i]+"</li>");
+		 }
+	}
+	
 	
 	private String encodeImageFileToBase64Binary(){
 		   File file = null;
