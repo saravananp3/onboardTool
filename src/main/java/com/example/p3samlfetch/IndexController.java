@@ -1,6 +1,9 @@
 package com.example.p3samlfetch;
 
+import org.apache.catalina.Group;
 import org.opensaml.saml2.core.Attribute;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.providers.ExpiringUsernameAuthenticationToken;
 import org.springframework.security.saml.SAMLCredential;
 import org.springframework.stereotype.Controller;
@@ -19,9 +22,12 @@ public class IndexController
         SAMLCredential credential=(SAMLCredential) userToken.getCredentials();
         List<Attribute> attributes=credential.getAttributes();
         System.out.println("userToken.getName()"+userToken.getName());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         for(Attribute data:attributes)
         {
             System.out.println(data.getName() + "==" +credential.getAttributeAsString(data.getName()));
+
             if(!StringUtils.isEmpty(data.getName()))
             {
                 switch(data.getName().trim())
@@ -39,11 +45,9 @@ public class IndexController
                     case "Userlogin" :
                         model.addAttribute(data.getName(),credential.getAttributeAsString(data.getName()));
                         break;
-                    case "DECOM_SUPER_ADMIN" :
-                        model.addAttribute(data.getName(),credential.getAttributeAsString(data.getName()));
-                        break;
-                    case "DECOM_ADMIN" :
-                        model.addAttribute(data.getName(),credential.getAttributeAsString(data.getName()));
+                    case "Group" :
+
+                   model.addAttribute(data.getName(),credential.getAttributeAsString(data.getName()));
                         break;
                     default:
                         break;
