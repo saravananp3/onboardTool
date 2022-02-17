@@ -22,6 +22,11 @@ body {
 	margin-top: 10px;
 }
 
+.d3s-logo-1 {
+	height: 50px;
+	margin-top: 60px;
+}
+
 .nav-height {
 	height: 100px;
 }
@@ -118,6 +123,10 @@ body {
 	margin-left: 100px;
 }
 
+.d3s-ml-110 {
+	margin-left: 110px;
+}
+
 .d3s-ml-10 {
 	margin-left: 10px;
 }
@@ -180,6 +189,10 @@ body {
 
 .d3s-ml-60 {
 	margin-left: 60px;
+}
+
+.d3s-pl-15 {
+	padding-left: 15px;
 }
 
 .d3s-ml-70 {
@@ -370,6 +383,11 @@ body {
 	margin-top: -5px;
 }
 
+.caret {
+	bottom: 35px;
+    position: relative;
+    color: #1565c0;
+}
 
 
 

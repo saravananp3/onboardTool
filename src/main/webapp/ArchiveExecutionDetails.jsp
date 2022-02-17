@@ -46,6 +46,9 @@
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveCircleStatus/circle.css" />
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionHeaderInfo/archiveExecHeaderInfo.css" />
 
+<script type="text/javascript" src="js_in_pages/project.js"></script>
+
+
 
 
 
@@ -56,11 +59,29 @@
 
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionStatus/archiveExecStatus.css" />
 <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionDataRetrieve.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
 	media="screen">
 <link rel="stylesheet" href="css/Responsive/responsive.css"
 	media="screen">
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/main.css" media="screen">
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
+
+<link rel="stylesheet" href="css/headerIcon/headerIcon.css"
+	media="screen">
 
 <style>
  <style type="text/css">
@@ -481,11 +502,11 @@ font-size:12px;
 	border-bottom: 4px solid transparent;
 }
 
-.navbar-nav-1 #nav-link.active-1 {
-	/* border-top: none; */
-	border-left: none;
-	border-right: none;
-	border-bottom: 4px solid rgba(255, 255, 255, .5) !important;
+ .navbar-nav .nav-link-2.active-2 {
+    /* border-top: none; */
+    border-left: none;
+    border-right: none;
+    border-bottom: 4px solid rgba(255,255,255,.5)!important;
 }
 
 .navbar-nav-1 #nav-link {
@@ -517,24 +538,81 @@ background:#1565c0 important;
 </head>
 <body class="top-navbar-fixed">
 
-<%@include file="Nav-Bar.jspf"%>
-		<nav class="nav nav-height-70 nav-font" id="bg-color">
-			<div class="container-fluid">
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav-1 mt-3">
-						<li class="active-1" id="nav-link"><a class="link"
-							href="ArchiveExecutionDetails.jsp"
-							style="color: #fff; padding: 7px 10px; height: 35px;">Project
-								Plan</a></li>
-						<li id="nav-link"><a class="link"
-							href="#"
-							style="color: #fff; padding: 7px 10px; height: 35px;">Project
-								Plan Summary</a></li>
-					</ul>
-				</div>
+<nav class="navbar navbar-expand-md navbar-light bg-white nav-height nav-font">
+	<div class="container-fluid" id="container-fluid-margin">
+		<a class="navbar-brand" href="OpportunityList.jsp"> <img
+				src="images/Decom360-logo.png" class="d3s-logo-1" alt="Decom3Sxity">
+			</a>
+		<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav mr-auto d3s-ml-110">
+					<li class="nav-item moduleIcon"><a
+						class="nav-link active" aria-current="page" href="OpportunityList.jsp"><i
+							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
+					</li>
+					
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="Admin_Module_Send_Invites.jsp"><i
+							class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
+					</li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="PhaseList.jsp"><i
+							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="#"><i
+							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="DashBoard.jsp"><i
+							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
+					</li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="#"><i
+							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
+					</li>
+
+				</ul>
+				
+			<div class="dropdown" align="end">
+				<a class="dropdown-toggle" href="#" role="button"
+					 data-toggle="dropdown"
+					aria-expanded="false"><i
+					class="fas fa-user-circle iconAlign iconColor fa-3x"  style="margin-top:25px; padding-left: 140px;"></i><span class="caret"></span> </a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="#" id="textAlign"><i
+							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
+							in as <br/><b>admin</b></a></li>
+					<hr/>
+					<li><a class="dropdown-item li-align" href="#" id="textAlign"
+						onclick="location.href='Login.jsp';"><i
+							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
+				</ul>
 			</div>
-		</nav>
-    <form class="form-signin" name="loginForm" method="post">
+
+
+			</div>
+		
+			
+	</div>
+	
+</nav>
+
+<%-- <%@include file="Nav-Bar.jspf"%> --%>
+	<nav class="nav nav-height-70 nav-font" id="bg-color">
+		<div class="container-fluid">
+			<div class="col-sm-12" id="d3s-mt-20">
+				<ul class="nav navbar-nav">
+					<li class=" nav-link-2 active-2"><a class="link"
+						href="ArchiveExecutionDetails.jsp"
+						style="color: #fff; padding: 7px 10px; height: 35px;">Project
+							Plan</a></li>
+					<li class="nav-link-2"><a class="link" href="archiveExeIssueRiskTracker.jsp"
+						style="color: #fff; padding: 7px 10px; height: 35px;">Issue/Risk
+							Tracker</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
    <!-- ========== TOP NAVBAR ========== -->
@@ -625,38 +703,38 @@ background:#1565c0 important;
 													    Estimated Completion : </br> 31-12-2020
 													  </a>
 													  </div>
-													  
-													  
-                                         <div class="card-container-4 card">
-                                           
-                                            <div class="card-header" id="cd-header">Archive Execution</div>
-                                            <!-- <div class="panel-collapse collapse show"
-                                                name="collapse"> -->
+
+
+												<div class="card-container-4 card">
+                                            <div class="card-header d3s-pl-15" id="cd-header">Archive Execution</div>
+                                                    
+                                            <div class="panel-collapse collapse in"
+                                                name="collapse">
                                                 <div class="card-body">
                                                 
                                                     <div>
                                                     <!-- <h4>Task List</h4>   -->
-                                                           <!--  <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
-      													<div class="panel">     -->     
-  													<table class="table-bordered" style="width:100%; font-size:11px; font-family: 'Poppins', sans-serif;">
+                                                            <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+      													<div class="panel">         
+  													<table class="table table-bordered" style="width: 100%;font-size: 9px;">
   													
     												<thead >
       												<tr>
       												
-      												<th style='text-align:center;vertical-align: middle;' scope="col">Task Id</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Task Group</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Task Name</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Task Type</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Pred/Major Dependencies</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Assigned To</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Planned Start</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Planned End</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Actual Start</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Actual End</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">% Completion</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Status</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Remarks</th>
-        											<th style='text-align:center;vertical-align: middle;' scope="col">Action</th>
+      												<th style='text-align:center;vertical-align: middle;'>Task Id</th>
+        											<th style='text-align:center;vertical-align: middle;'>Task Group</th>
+        											<th style='text-align:center;vertical-align: middle;'>Task Name</th>
+        											<th style='text-align:center;vertical-align: middle;'>Task Type</th>
+        											<th style='text-align:center;vertical-align: middle;'>Pred/Major Dependencies</th>
+        											<th style='text-align:center;vertical-align: middle;'>Assigned To</th>
+        											<th style='text-align:center;vertical-align: middle;'>Planned Start</th>
+        											<th style='text-align:center;vertical-align: middle;'>Planned End</th>
+        											<th style='text-align:center;vertical-align: middle;'>Actual Start</th>
+        											<th style='text-align:center;vertical-align: middle;'>Actual End</th>
+        											<th style='text-align:center;vertical-align: middle;'>% Completion</th>
+        											<th style='text-align:center;vertical-align: middle;'>Status</th>
+        											<th style='text-align:center;vertical-align: middle;'>Remarks</th>
+        											<th style='text-align:center;vertical-align: middle;'>Action</th>
       												</tr>
     												</thead>
     												<tbody id ="ArchiveExecutionList">
@@ -670,19 +748,19 @@ background:#1565c0 important;
                                                     </div>          
                                                     
                                                     <!-- Parent  -->                                      
-                                                    <button type="button" class="btn btn-primary pull-right" id="ArchExecParentId" data-bs-toggle="modal" data-bs-target="#ArchiveParentAddPopUp" style="display: none;">Parent Add PopUp</button>
+                                                    <button type="button" class="btn btn-primary pull-right" id="ArchExecParentId" data-toggle="modal" data-target="#ArchiveParentAddPopUp" style="display: none;">Parent Add PopUp</button>
                                                      
                                                       <!-- Child  -->   
                                                                
-                                                     <button type="button" class="btn btn-primary pull-right" id="ArchExecChildId" data-bs-toggle="modal" data-bs-target="#ArchiveChildAddPopUp" style="display: none;">Child Add PopUp</button>
+                                                     <button type="button" class="btn btn-primary pull-right" id="ArchExecChildId" data-toggle="modal" data-target="#ArchiveChildAddPopUp" style="display: none;">Child Add PopUp</button>
                                                      
                                                     <!-- Edit Button -->
-													<button type="button" class="btn btn-primary pull-right" id="ArchExecEditId" data-bs-toggle="modal" data-bs-target="#ArchiveEditPopUp" style="display: none;">Edit PopUp</button>                                                               
+													<button type="button" class="btn btn-primary pull-right" id="ArchExecEditId" data-toggle="modal" data-target="#ArchiveEditPopUp" style="display: none;">Edit PopUp</button>                                                               
                                                     
                                                    <!-- Delete Button -->
-													<button type="button" class="btn btn-primary pull-right" id="ArchExecDeleteId" data-bs-toggle="modal" data-bs-target="#ArchiveDeletePopUp" style="display: none;">Delete PopUp</button>                                                               
+													<button type="button" class="btn btn-primary pull-right" id="ArchExecDeleteId" data-toggle="modal" data-target="#ArchiveDeletePopUp" style="display: none;">Delete PopUp</button>                                                               
                                                     <!-- Remarks Button -->
-													<button type="button" class="btn btn-primary pull-right" id="ArchExecRemarksId" data-bs-toggle="modal" data-bs-target="#ArchiveRemarksPopUp" style="display: none;">Delete PopUp</button>
+													<button type="button" class="btn btn-primary pull-right" id="ArchExecRemarksId" data-toggle="modal" data-target="#ArchiveRemarksPopUp" style="display: none;">Delete PopUp</button>
                                                                                                         
                                                 </div>
                                             </div>
@@ -703,12 +781,11 @@ background:#1565c0 important;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Add Input Fields</h5>
-			<button type="button" id = "ArchiveParentAddCloseId" class="btn-close" data-bs-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-	 </div>
+        <h5 class="modal-title">Add Input Fields</h5>
+        <button type="button" class="close" id = "ArchiveParentAddCloseId" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -755,8 +832,8 @@ background:#1565c0 important;
         </form>   
       </div>
       <div class="modal-footer">
-        <button type="button" id ="ArchiveParentSubmit" class="btn btn-primary submitDisable" data-bs-dismiss="modal">Add Fields</button>
-        <button type="button" class="btn btn-secondary" id = "closeIdParent" data-bs-dismiss="modal">Close</button>
+        <button type="button" id ="ArchiveParentSubmit" class="btn btn-primary submitDisable">Add Fields</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdParent" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -766,13 +843,12 @@ background:#1565c0 important;
        <div class="modal" id="ArchiveChildAddPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-       <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Add Child Input Fields</h5>
-			<button type="button" id = "ArchiveChildAddCloseId" class="btn-close" data-bs-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-	   </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Add Child Input Fields</h5>
+        <button type="button" class="close" id = "ArchiveChildAddCloseId" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -808,8 +884,8 @@ background:#1565c0 important;
         </form>   
       </div>
       <div class="modal-footer">
-        <button type="button" id ="ArchiveChildSubmit" class="btn btn-primary submitDisable" data-bs-dismiss="modal">Add Fields</button>
-        <button type="button" class="btn btn-secondary" id = "closeIdChild" data-bs-dismiss="modal">Close</button>
+        <button type="button" id ="ArchiveChildSubmit" class="btn btn-primary submitDisable">Add Fields</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdChild" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -820,13 +896,12 @@ background:#1565c0 important;
  <div class="modal" id="ArchiveEditPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-       <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Edit Input Fields</h5>
-			<button type="button" id = "ArchiveEditCloseId" class="btn-close" data-bs-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-	   </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Input Fields</h5>
+        <button type="button" class="close" id = "ArchiveEditCloseId" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -860,8 +935,8 @@ background:#1565c0 important;
         </form>   
       </div>
       <div class="modal-footer">
-        <button type="button" id ="ArchiveEditSubmit" class="btn btn-primary submitEditDisable" data-bs-dismiss="modal">Submit</button>
-        <button type="button" class="btn btn-secondary" id = "closeIdEdit" data-bs-dismiss="modal">Close</button>
+        <button type="button" id ="ArchiveEditSubmit" class="btn btn-primary submitEditDisable">Submit</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdEdit" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -873,13 +948,12 @@ background:#1565c0 important;
 <div class="modal" id="ArchiveDeletePopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-       <div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
-			<button type="button" id = "ArchiveDeleteClose" class="btn-close" data-bs-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-	   </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+        <button type="button" id ="ArchiveDeleteClose" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -889,8 +963,8 @@ background:#1565c0 important;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="ArchiveDeleteSubmit" class="btn btn-primary submitDisableDelete" data-bs-dismiss="modal">Yes</button>
-        <button type="button" class="btn btn-secondary" id = "closeIdDelete" data-bs-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="ArchiveDeleteSubmit" class="btn btn-primary submitDisableDelete" >Yes</button>
+        <button type="button" class="btn btn-default" id = "closeIdDelete" data-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -902,8 +976,8 @@ background:#1565c0 important;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color:#269af8;color:white">
-        <h5 class="modal-title" style="color:white" id="exampleModalLabel">Remarks</h5>
-        <button type="button" id ="ArchiveRemarksClose" style="color:white" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" style="color:white">Remarks</h5>
+        <button type="button" id ="ArchiveRemarksClose" style="color:white" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h5 class="modal-title" id="remarksTaskGroup" style="color:white">Task Group:</h5>
@@ -919,7 +993,7 @@ background:#1565c0 important;
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id = "closeIdRemarks" data-bs-dismiss="modal" aria-label="Close" >Close</button>
+        <button type="button" class="btn btn-default" id = "closeIdRemarks" data-dismiss="modal" aria-label="Close" >Close</button>
       </div>
     </div>
   </div>
@@ -928,7 +1002,7 @@ background:#1565c0 important;
 </div>
 
 <!-- Active Icon Color changes  -->
-<script>
+<!-- <script>
 $(document).on('mouseenter','.active1', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');
@@ -1001,7 +1075,31 @@ $(document).on('mouseenter','.active1', function(){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+    <!-- ========== BootstrapV5 ========== -->
+
+<!-- <link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script> -->
     <script src="js/navigation/navigation.js"></script>
+   <script src="js/jquery-1.9.1.min.js"></script>
+   
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	 
     <!-- ========== Toastr ========== -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">

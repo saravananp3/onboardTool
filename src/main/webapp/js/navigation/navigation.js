@@ -30,6 +30,7 @@ function switchActiveModule() {
 		case "archiveRequirementsReviewDetails.jsp":
 		case "archiveRequirementsApprovalDetails.jsp":
 		case "ArchiveExecutionDetails.jsp":
+		case "archiveExeIssueRiskTracker.jsp":
 			selectiveActiveIcon(0);
 			break;
 		case "Admin_Module_Send_Invites.jsp":
