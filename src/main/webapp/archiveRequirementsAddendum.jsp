@@ -447,8 +447,8 @@ padding: 15px;
                                        <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsDocumentRevisions.jsp';" >Prev</button></div>
                                        <div class="col-12" align="end">
                                        
-                                      <button class="btn btn-primary" id="addendumNext" disabled="true">
-                                                                 <a href='archiveRequirementsReviewDetails.jsp'>Next</a></button>
+                                     <a href='archiveRequirementsReviewDetails.jsp' class="btn btn-primary" id="addendumNext" disabled="true">
+                                                                 Next</a>
                                      
                                        </div>
                                      </div>

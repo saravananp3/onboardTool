@@ -498,9 +498,9 @@ padding: 15px;
                                         
                                        <div class="col-12 dropup" align="end">
                                        
-                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true">
-                                                                 <a href="javascript:;">Next</a></button>
-                                                                 
+                                      
+                                      <a href="javascript:;" class="btn btn-primary" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true">
+                                                                  Next</a>
                                      
                                        </div>
                                      </div>

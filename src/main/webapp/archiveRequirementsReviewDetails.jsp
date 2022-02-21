@@ -791,8 +791,8 @@ font-size:12px;
                         Request Sign
                     </button>
                    
-                                                                <button class="form-wizard-next-btn float-right btn-info btn btn-info" id="ReviewNextBtn" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" disabled="true">
-                                                                <a href="javascript:;" id="nextBtn" style="color: #fff;">Next</a></button>
+                                                               <a href="javascript:;" id="nextBtn" style="color: #fff;" class="form-wizard-next-btn float-right btn-info btn btn-info" id="ReviewNextBtn" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" disabled="true">
+                                                                Next</a>
                                                                
                                                             </div>
                                                     </div>

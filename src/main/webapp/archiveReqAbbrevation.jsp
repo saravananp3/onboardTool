@@ -465,8 +465,8 @@ td{
                                        <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='ArchiveBusinessRequirements.jsp';" >Prev</button></div>
                                        <div class="col-12" align="end">
                                        
-                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsDocumentRevisions.jsp';" id="busreqNext">
-                                                                 <a href="archiveRequirementsDocumentRevisions.jsp">Next</a></button>
+                                      <a href="archiveRequirementsDocumentRevisions.jsp" class="btn btn-primary" onclick="location.href='archiveRequirementsDocumentRevisions.jsp';" id="busreqNext">
+                                                                 Next</a>
                                      
                                        </div>
                                      </div>

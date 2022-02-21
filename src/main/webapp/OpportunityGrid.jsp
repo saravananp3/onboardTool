@@ -358,7 +358,7 @@ img.filtered {
 		<%@page import="java.text.DateFormat"%>
 		<%@page import="java.text.SimpleDateFormat"%>
 		<%@page import="java.util.Date"%>
-		<%@page import="java.util.Calendar"%>
+		<%@page import="onboard.DBconnection"%>
 		<%
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -372,20 +372,22 @@ img.filtered {
         else{
             String name=(String)session.getAttribute("ID");
             HttpSession details=request.getSession();
-            Connection con = null;
+            DBconnection d = new DBconnection();
+            Connection con = (Connection) d.getConnection();
+            /* Connection con = null;
             String url = "jdbc:mysql://localhost:3306/";
             String db = "decom3sixtytool";
             String driver = "com.mysql.jdbc.Driver";
-            String userName ="root";
-            String password="password123";
+            String userName ="root"; */
+            /* String password="Adminpwd@123"; */
             session.setAttribute("theName", name);
             String roles=(String)details.getAttribute("role");
             String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
             int sumcount=0;
             Statement st,st2;
             try{
-                Class.forName(driver).newInstance();
-                con = DriverManager.getConnection(url+db,userName,password);
+               /*  Class.forName(driver).newInstance();
+                con = DriverManager.getConnection(url+db,userName,password); */
                 Statement st1;
 
 
