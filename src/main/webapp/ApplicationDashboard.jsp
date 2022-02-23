@@ -182,8 +182,8 @@
 
 <%
     DBconnection d = new DBconnection();
-    Connection con = (Connection) d.getConnection();
-    Statement st_distinct = con.createStatement();
+    Connection conn = (Connection) d.getConnection();
+    Statement st_distinct = conn.createStatement();
     HttpSession details = request.getSession();
     String roles = (String) details.getAttribute("role");
     String uname = (String) details.getAttribute("username");
@@ -193,8 +193,6 @@
 
     try {
         String det = (String) session.getAttribute("theName");
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
         String query = "select * from AppEmphazize_ProjectDetails";
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(query);

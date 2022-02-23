@@ -35,6 +35,9 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.VerticalAlignment;
 
+import IntakeDetails.IntakePreviewDetails.service.intakePreviewHtmlContentService;
+import NewArchiveRequirements.archiveRequirementReview.service.archivePreviewHtmlContentService;
+import common.constant.MODULE_NAME;
 import common.resource.resourceUtils;
 import exportPdf.waterMarkConditions;
 import net.sf.dynamicreports.report.constant.FontName;
@@ -45,20 +48,22 @@ public class exportPdfService extends jsonToHtmlContent {
 
 	private String htmlContent;
 	private String home;
+	private String modulename;
 	private File downloadDirectory;
 	private String appName;
 	private String appId;
 	private static String waterMarkLogo = "classpath:/D3S.png";
 	private Properties properties;
 	private String pdfPath;
-	public exportPdfService(JsonArray jsonArray,String appName,String appId) {
+	public exportPdfService(JsonArray jsonArray,String appName,String appId,String modulename) {
 	this.home = System.getProperty("user.home");
 	this.downloadDirectory = new File(home+"/Downloads");
 	this.appName = appName;
 	this.appId = appId;
-	this.htmlContent = getHtmlContentFromJson(jsonArray);
+	this.htmlContent = getHtmlContentFromJson(jsonArray,modulename);
 	this.properties = new resourceUtils("/fileUpload.properties").loadProperties();
 	this.pdfPath = properties.getProperty("FILE.PDF.PATH")+File.separator;
+	this.modulename=modulename;
 	}
 	
    public String startExportPdf() {
@@ -66,8 +71,16 @@ public class exportPdfService extends jsonToHtmlContent {
 	   String filePath = "";
 	   try {
 		   String finalPdfPath = pdfPath+"final.pdf";
-		   String pdfName = getPdfFileName("intake_summary_"+appName)+".pdf";
-		   String coverPage = createCoverPage(appId,appName);
+		   String pdfName="";
+		   if(modulename.equals(MODULE_NAME.INTAKE_MODULE))
+			{
+			   pdfName= getPdfFileName("intake_summary_"+appName)+".pdf";			}
+			else if(modulename.equals(MODULE_NAME.ARCHIVE_REQUIREMENTS_MODULE))
+			{
+				 pdfName = getPdfFileName("archive_requirements_summary_"+appName)+".pdf";
+  		     }
+		   
+		   String coverPage = createCoverPage(appId,appName,modulename);
 		   String detailsPage = convertHtmltoPdf();
 		   String srcPath = downloadDirectory+File.separator+"sample.pdf";
 		   Map<String, waterMarkConditions> fileSet = new LinkedHashMap<>();
@@ -115,7 +128,7 @@ public class exportPdfService extends jsonToHtmlContent {
 		return file_name;
 	}
 	
-	public String createCoverPage(String appId, String appName) throws IOException {
+	public String createCoverPage(String appId, String appName,String modulename) throws IOException {
         
 		String coverPagePath =  pdfPath+"front_page.pdf";
 		PdfWriter pdfWriter = new PdfWriter(new File(coverPagePath));
@@ -134,7 +147,15 @@ public class exportPdfService extends jsonToHtmlContent {
         int y = (int) ((pageSize.getTop() + pageSize.getBottom()) / 2);
         //coverDoc.add(new Image(ImageDataFactory.create(waterMarkLogo), x - (w / 2), y - (h / 2)));
         System.out.println((x - (w / 2))+":"+( y - (h / 2)));
-        coverDoc.add(new Paragraph(new Text(appName+" - Intake Summary").setFontSize(28)).setTextAlignment(TextAlignment.CENTER).setFixedPosition(100,450,350));
+        if(modulename.equals(MODULE_NAME.INTAKE_MODULE))
+		{
+        	coverDoc.add(new Paragraph(new Text(appName+" - Intake Summary").setFontSize(28)).setTextAlignment(TextAlignment.CENTER).setFixedPosition(100,450,350));
+		}
+		else if(modulename.equals(MODULE_NAME.ARCHIVE_REQUIREMENTS_MODULE))
+		{
+			coverDoc.add(new Paragraph(new Text(appName+" - Archive Requirements Summary").setFontSize(28)).setTextAlignment(TextAlignment.CENTER).setFixedPosition(100,450,350));
+		}
+        
         coverDoc.setFont(PdfFontFactory.createFont(StandardFontFamilies.HELVETICA));
         coverDoc.add(new Paragraph(new Text("Application Id : " + appId).setFontSize(8)));
         coverDoc.add(new Paragraph(new Text("Application Name : " + appName).setFontSize(8)));

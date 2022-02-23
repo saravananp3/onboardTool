@@ -153,6 +153,8 @@ var flag=0;
 
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
+<%@ page import="onboard.DBconnection"%>
+
 
 
 <%
@@ -170,8 +172,8 @@ ArrayList<String> final_count = new ArrayList<String>();
 //ArrayList<String> final_month = new ArrayList<String>();
 
     DBconnection d=new DBconnection();
-    Connection con = (Connection)d.getConnection();
-    Statement st_distinct= con.createStatement(); 
+    Connection conn = (Connection)d.getConnection();
+    Statement st_distinct= conn.createStatement(); 
 
 
     ResultSet rs_distinct=st_distinct.executeQuery("select distinct(monthname(date)) from  visits ");
@@ -181,7 +183,7 @@ ArrayList<String> final_count = new ArrayList<String>();
     distinct_monthname.push("\"<%=rs_distinct.getString(1)%>\"");
     <%}
     
-Statement st_line_chart_month= con.createStatement(); 
+Statement st_line_chart_month= conn.createStatement(); 
 
 
 ResultSet rs_line_chart_month=st_line_chart_month.executeQuery("select monthname(date),SUBSTR(date,1,4), (SUBSTR(date,6,2)-1),SUBSTR(date,9,2),count from  visits where uname = '+ uname +'");
@@ -376,8 +378,7 @@ function drawChart() {
 String info=(String)details.getAttribute("app_emp");
 try {
 String det=(String)session.getAttribute("theName");
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
+//Connection conn = d.getConnection();
 String query = "select * from AppEmphazize_ProjectDetails";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);

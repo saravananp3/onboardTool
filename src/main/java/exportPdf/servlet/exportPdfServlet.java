@@ -18,6 +18,7 @@ import com.google.gson.JsonParser;
 
 import ArchiveExecutionGovernanceModule.service.ArchiveExecutionGovernanceAddService;
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionAddService;
+import common.constant.MODULE_NAME;
 import exportPdf.service.exportPdfService;
 @WebServlet("/exportPdfServlet")
 public class exportPdfServlet extends HttpServlet {
@@ -25,17 +26,22 @@ public class exportPdfServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession details = request.getSession();
 		String jsonContent = (String)request.getParameter("jsonContent");
+		String modulename = (String)request.getParameter("modulename");
+
 		String appName = (String) details.getAttribute("SelectedOpportunity");
 		String appId = (String) details.getAttribute("ID");
 		JsonParser parser = new JsonParser();
+
 		JsonElement tradeElement = parser.parse(jsonContent);
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
+		
 		exportPdfService export = null;
 		JsonObject jsonObject = null;
 		try {
 			jsonObject = new JsonObject();
-			export = new exportPdfService(jsonArray,appName,appId); 
+			export = new exportPdfService(jsonArray,appName,appId,modulename); 
 			jsonObject.addProperty("path",export.startExportPdf());
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();

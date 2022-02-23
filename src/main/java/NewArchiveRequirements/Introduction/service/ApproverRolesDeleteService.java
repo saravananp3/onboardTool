@@ -1,3 +1,4 @@
+
 package NewArchiveRequirements.Introduction.service;
 
 import java.sql.PreparedStatement;
@@ -7,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.google.gson.JsonObject;
+
+import common.constant.APPROVAL_CONSTANT;
+
 import java.sql.Connection;
 
 import onboard.DBconnection;
@@ -16,6 +20,7 @@ public class ApproverRolesDeleteService {
 	Connection con;
 	int SeqNum;
 	String Id;
+	
 	
 	public ApproverRolesDeleteService(int SeqNum,String Id) throws ClassNotFoundException, SQLException {
 		 dBconnection = new DBconnection();
@@ -36,6 +41,9 @@ public class ApproverRolesDeleteService {
 			ArrayList<String> emailId = new ArrayList<String>();
 			ArrayList<String> username = new ArrayList<String>();
 			ArrayList<String> priority = new ArrayList<String>();
+			ArrayList<String> approval_id = new ArrayList<String>();
+			ArrayList<String> intakeApproval = new ArrayList<String>();
+			ArrayList<String> mailflag = new ArrayList<String>();
 			
 			ArrayList<String> seqNumRes = new ArrayList<String>();
 			ArrayList<String> roleRes = new ArrayList<String>();
@@ -43,6 +51,9 @@ public class ApproverRolesDeleteService {
 			ArrayList<String> emailIdRes = new ArrayList<String>();
 			ArrayList<String> usernameRes = new ArrayList<String>();
 			ArrayList<String> priorityRes = new ArrayList<String>();
+			ArrayList<String> approval_idRes = new ArrayList<String>();
+			ArrayList<String> intakeApprovalRes = new ArrayList<String>();
+			ArrayList<String> mailflagRes = new ArrayList<String>();
 			
 			String appname ="";
 			int newSeqNum = SeqNum+1;
@@ -58,7 +69,10 @@ public class ApproverRolesDeleteService {
 			   emailId.add(rs.getString("emailId"));
 			   username.add(rs.getString("username"));
 			   appname=(rs.getString("app_name"));
-			  priority.add(rs.getString("priority_order_num"));
+			   priority.add(rs.getString("priority_order_num"));
+			   approval_id.add(rs.getString("approvalId"));
+			   intakeApproval.add(rs.getString("intakeApproval"));
+			   mailflag.add(rs.getString("mail_flag"));
 			}
 			
 			for(int i=0;i<seqNum.size();i++)
@@ -71,6 +85,9 @@ public class ApproverRolesDeleteService {
 					emailIdRes.add(emailId.get(i));
 					usernameRes.add(username.get(i));
 					priorityRes.add(priority.get(i));
+					approval_idRes.add(approval_id.get(i));
+					intakeApprovalRes.add(intakeApproval.get(i));
+					mailflagRes.add(mailflag.get(i));
 				}
 				else if(SeqNum>Integer.parseInt(seqNum.get(i)))
 				{
@@ -80,6 +97,9 @@ public class ApproverRolesDeleteService {
 					emailIdRes.add(emailId.get(i));
 					usernameRes.add(username.get(i));
 					priorityRes.add(priority.get(i));
+					approval_idRes.add(approval_id.get(i));
+					intakeApprovalRes.add(intakeApproval.get(i));
+					mailflagRes.add(mailflag.get(i));
 
 				}
 			}
@@ -90,11 +110,13 @@ public class ApproverRolesDeleteService {
 			st1.executeUpdate(deleteQuery);
 			st1.close();
 			
+			
 			for(int i=0;i<seqNumRes.size();i++)
 			{
 			  System.out.println(seqNumRes.get(i)+" "+roleRes.get(i)+" "+nameRes.get(i)+" "+emailIdRes.get(i)+" "+usernameRes.get(i)+" "+priorityRes.get(i)+" ");	
-			  String StakeHolderInsertQuery = "insert into ArchiveReq_Roles_Info (seq_no, OppId, prj_name, app_name, role, name, emailId,username ,priority_order_num)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?,?);";
+			  String StakeHolderInsertQuery = "insert into ArchiveReq_Roles_Info ("
+			  		+ "seq_no, OppId, prj_name, app_name, role,name, emailId, username, priority_order_num,approvalId, intakeApproval, moduleId, comments, mail_flag)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, Integer.parseInt(seqNum.get(i)));
 	          prestmt.setString(2, Id);
@@ -105,6 +127,11 @@ public class ApproverRolesDeleteService {
 	          prestmt.setString(7, emailIdRes.get(i));
 	          prestmt.setString(8, usernameRes.get(i));
 	          prestmt.setString(9, priorityRes.get(i));
+	          prestmt.setString(10, approval_idRes.get(i));
+	          prestmt.setString(11, intakeApprovalRes.get(i));
+	          prestmt.setString(12, "");
+	          prestmt.setString(13, "");
+	          prestmt.setString(14, mailflagRes.get(i));
 	          prestmt.execute();
 	          statusFlag =true;
 			}

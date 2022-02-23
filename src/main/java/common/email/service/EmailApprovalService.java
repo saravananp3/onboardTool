@@ -135,7 +135,7 @@ public class EmailApprovalService extends EmailService {
 			while (rs.next()) {
 				boolean mailFlag = Boolean.parseBoolean(rs.getString("mail_flag"));
 				String decision = rs.getString("intakeApproval");
-				if (!mailFlag && decision.equals(APPROVAL_CONSTANT.DECISION_PENDING)) {
+				if (!mailFlag && decision.equals(APPROVAL_CONSTANT.DECISION_PENDING) && rs.getInt("priority_order_num")!=0) {
 					return rs.getInt("priority_order_num");
 				} else if (mailFlag && decision.equals(APPROVAL_CONSTANT.REJECTED)) {
 					setFlagAndDecision("false", APPROVAL_CONSTANT.DECISION_PENDING);

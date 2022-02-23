@@ -34,6 +34,8 @@
  <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
 
 <!-- ========== MODERNIZR ========== -->
+<script src="js/common/email/emailAjaxCall.js"></script>
+
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
@@ -584,9 +586,11 @@ font-size:12px;
                                                             </div>
                                                             <div class="col-12" align="end">
                                                                 <button type="button" class="btn btn-primary" id="ApprovalSave">Finish</button>
-                                                                <button type="button" class="btn btn-primary pull-right" id="archiveReqConfirmationPopUp_Btn" data-bs-toggle="modal" data-bs-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
-                                                                <button type="hidden" class="form-wizard-next-btn float-right btn-info btn btn-info" id="NavigationId" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" style="display: none;">
-                                                                </div>
+                                                                <button type="button" class="btn btn-primary pull-right" id="archiveReqConfirmationPopUp_Btn" data-bs-toggle="modal" data-bs-target="#ConfirmationPopUp" style="display: none;">Confirmation PopUp</button>
+                                                               <!--  <button type="hidden" class="form-wizard-next-btn float-right btn-info btn btn-info" id="NavigationId" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" style="display: none;"> -->
+                                                                <!-- comment popup button -->
+															<button type="button" id="ApprovalComments" data-bs-toggle="modal" data-bs-target="#ApprovalCommentsPopUp" style="display: none;">Comments PopUp</button>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -600,8 +604,8 @@ font-size:12px;
         </div>
        
     </form>
-    <!-- Delete Row Pop Up  -->
-    <div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
+    <!-- Confirmation Pop Up  -->
+  <div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -624,7 +628,34 @@ font-size:12px;
       </div>
     </div>
   </div>
-</div>  
+</div>
+
+
+
+<!-- Comment Pop Up -->
+	<div class="modal" id="ApprovalCommentsPopUp"   tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+			<button type="button" class="btn-close" id ="ApprovalCommentClose" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+		</div>
+      <div class="modal-body">
+                <div class="modal-body">
+                <label>comments</label>
+             <textarea id="ApprovalCommentId" name="ApprovalCommentSection" rows="4" cols="70"></textarea>
+			 </div>
+             <input type="hidden" id="ApprovalCommentSeq"/>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id = "ApprovalCommentOKBtn" >Ok</button>
+        <button type="button" class="btn btn-secondary" id = "ApprovalCommentCancelBtn" >Cancel</button>
+      </div>
+      </div>
+    </div>
+  </div>  
     <!-- Date picker --> 
     
        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  

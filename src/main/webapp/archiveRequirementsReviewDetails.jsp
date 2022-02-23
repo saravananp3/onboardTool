@@ -30,6 +30,12 @@
 
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
+<script src="js/common/email/emailAjaxCall.js"></script>
+<script src ="js/pdf/downloadPDF_AjaxCall.js"></script>
+<script src ="js/pdf/deletePDF_AjaxCall.js"></script>
+<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
 
@@ -538,29 +544,29 @@ font-size:12px;
                                   <div class=" col-md-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
-                                    
+                                    <div id="editor"></div>
                                          <div class="card-container-1 card" id="d3s-mt-80">
                                             <div class="card-header" id="cd-header">
                                                
                                                   Archive Requirements Summary
-                                                <button id="intake_module" class="btn btn-primary align-right" style="margin-top: -4px;" ><span
+                                                <button id="exportPdf" class="btn btn-primary align-right"  style="margin-top: -4px;" ><span
                                                     class="glyphicon glyphicon-download-alt"></span> Export Pdf
                                                  </button>
                                             </div>
-                                            <div class="panel-collapse"
+                                            <div class="panel-collapse "
                                                 name="collapse">
-                                                <div class="panel-body">
+                                                <div class="panel-body" >
                                                       
-                                                      <div class="container">
-
+                                                      <div class="container"  >
+  
                                             <div bgcolor='#e4e4e4' style='font-family:Arial,Helvetica,sans-serif;'
                                                  id="table-scroll">
-
-                                                <table>
+                                          
+                                                <table  >
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            <table width='780' border='0' align='center'>
+                                                            <table width='780' border='0' align='center' id="d1">
 
                                                                 <tbody>
 
@@ -572,19 +578,21 @@ font-size:12px;
                                                         <h3 class="panel-title">1.1 Purpose & Scope</h3><br>
                                                          	<div id="purposeInfoPreview"></div>
                                                             <div id="scopeInfoPreview"></div>
-                                                         <h3 class="panel-title">1.2 Roles & Responsibilites</h3><br>
+                                                        <!--  <h3 class="panel-title">1.2 Roles & Responsibilites</h3><br>
                                                          <table class='table-bordered'>
                                                          <thead>
                                                          <th scope='col'>Role</th>
                                                          <th scope='col'>Name</th>
-                                                         <th scope='col'>Title</th>
-                                                         <th scope='col'>Approver Purpose</th>
+                                                         <th scope='col'>Email</th>
+                                                         <th scope='col'>Username </th>
+                                                         <th scope='col'>Priority </th>
                                                          </thead>
                                                         	<tbody id="roleResponseInfoPreview">  </tbody>
-                                                        	</table></td></tr>
+                                                        	</table> -->
+                                                        	</td></tr>
                                                         	
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <h3 class="panel-title">1.3 Assumptions</h3> <br>
+                                                        <h3 class="panel-title">1.2 Assumptions</h3> <br>
                                                         <div id="AssumptionInfoPreview"> </div>  </td> </tr>
                                                         
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
@@ -760,17 +768,32 @@ font-size:12px;
                                                         </div>
                                                         </td> </tr>
                                                         <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                       <h3 class="panel-title">8 Approval Details</h3><br><br>
+                                                      <!--  <h3 class="panel-title">8 Approval Details</h3><br><br>
                                                         <table class='table-bordered'>
                                                           <thead>
-                                                          <th>Name</th>
                                                           <th>Role</th>
-                                                          <th>Title</th>
+                                                          <th>Name</th>
+                                                          <th>Email</th>
+                                                          <th>Username</th>
+                                                          <th>Priority</th>
                                                           <th>Approval Status</th>
-                                                          </thead>
+                                                          
+  </thead>
                                                           <tbody id='approvalInfoPreview'>
                                                           </tbody>
-                                                          </table></div> </td> </tr>
+                                                          </table> -->
+                                                           <h3 class="panel-title">8 Roles & Responsibilites</h3><br>
+                                                         <table class='table-bordered'>
+                                                         <thead>
+                                                         <th scope='col'>Role</th>
+                                                         <th scope='col'>Name</th>
+                                                         <th scope='col'>Email</th>
+                                                         <th scope='col'>Username </th>
+                                                         <th scope='col'>Priority </th>
+                                                         </thead>
+                                                        	<tbody id="roleResponseInfoPreview">  </tbody>
+                                                        	</table>
+                                                          </div> </td> </tr>
                                                  
                                                         </tbody>
                                     </table>
@@ -798,7 +821,9 @@ font-size:12px;
                                                     </div>
                                                 </div>
                                             </div>
+                                       
                                         </div>
+                                        
                                     </div>
                              </div>
                 </section>
@@ -896,5 +921,4 @@ $(document).on('mouseenter','.active1', function(){
 <!-- ========== Toastr ========== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-
 </html>

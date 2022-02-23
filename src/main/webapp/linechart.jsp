@@ -44,14 +44,14 @@ response.sendRedirect("Login.jsp");
 }
 %>
 <%
+DBconnection dBconnection = new DBconnection();
 
 HttpSession details=request.getSession();
 String roles=(String)details.getAttribute("role");
 String info=(String)details.getAttribute("app_emp");
 try {
 String det=(String)session.getAttribute("theName");
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
+Connection conn = dBconnection.getConnection();
 String query = "select * from AppEmphazize_ProjectDetails";
 Statement st = conn.createStatement();
 ResultSet rs = st.executeQuery(query);

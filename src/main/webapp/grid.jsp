@@ -77,7 +77,11 @@
     <%@page import="java.text.SimpleDateFormat" %>
     <%@page import="java.util.Date" %>
     <%@page import="java.util.Calendar" %>
+    <%@ page import="onboard.DBconnection"%>
+ 
+    
     <%
+        DBconnection dBconnection = new DBconnection();
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
         response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
         response.setHeader("Expires", "0"); // Proxies.
@@ -91,18 +95,12 @@
             String name=(String)session.getAttribute("ID");
             HttpSession details=request.getSession();
             Connection con = null;
-            String url = "jdbc:mysql://localhost:3306/";
-            String db = "Onboarding";
-            String driver = "com.mysql.jdbc.Driver";
-            String userName ="root";
-            String password="password123";
             session.setAttribute("theName", name);
             String roles=(String)details.getAttribute("role");
             int sumcount=0;
             Statement st,st2;
             try{
-                Class.forName(driver).newInstance();
-                con = DriverManager.getConnection(url+db,userName,password);
+                con = dBconnection.getConnection();
                 Statement st1;
 
 
