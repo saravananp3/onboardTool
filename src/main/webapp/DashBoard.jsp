@@ -607,67 +607,65 @@ input[type=search]:focus {
 			<div class="main-page">
 				<div class="col-md-12 ">
 
-					<div class="paneldashboard">
+					<!-- <div class="paneldashboard"> -->
 
-						<div class="container-fluid grid">
-							<div class="main">
+					<div class="container-fluid grid mt-5">
+						<div class="main">
 
-								<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+							<!-- <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid"> -->
+							<div id="cbp-vm" class="cbp-vm-view-grid">
 
 
-									<card style="margin-bottom: 38px;"
-										class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a
-										class="dashboard-stat col-md-12"
-										style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
-										href="PhaseList.jsp">
+								<card class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a
+									class="dashboard-stat col-md-12"
+									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
+									href="PhaseList.jsp">
+									<div class="col-md-3" style="height: 100%;">
+										<p class="totcounter" style="height: 80%; color: white;"></p>
+										<span class="font_icon" style="height: 20%; color: white;">Phases</span>
+									</div>
+									<div class="col-md-9">Phases can be described as a
+										project that is scheduled over a period of time Which consists
+										of multiple waves.</div>
+								</a> </card>
+
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<a class="dashboard-stat col-md-12"
+										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
+										href="waveList.jsp?waves=all">
 										<div class="col-md-3" style="height: 100%;">
 											<p class="totcounter" style="height: 80%; color: white;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Phases</span>
+											<span class="font_icon" style="height: 20%; color: white;">Waves</span>
 										</div>
-										<div class="col-md-9">Phases can be described as a
-											project that is scheduled over a period of time Which
-											consists of multiple waves.</div>
-									</a> </card>
-
-									<div style="margin-bottom: 38px;"
-										class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-										<a class="dashboard-stat col-md-12"
-											style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
-											href="waveList.jsp?waves=all">
-											<div class="col-md-3" style="height: 100%;">
-												<p class="totcounter" style="height: 80%; color: white;"></p>
-												<span class="font_icon" style="height: 20%; color: white;">Waves</span>
-											</div>
-											<div class="col-md-9">Waves can be comprised of set of
-												applications that are ready for implementation over a period
-												of time.</div>
-										</a>
-
-									</div>
-
-									<div style="margin-bottom: 38px;"
-										class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-										<a class="dashboard-stat col-md-12"
-											style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
-											href="OpportunityList.jsp">
-											<div class="col-md-3" style="height: 100%;">
-												<p class="totcounter"
-													style="height: 80%; color: white; padding-right: 10px;"></p>
-												<span class="font_icon" style="height: 20%; color: white;">Apps</span>
-											</div>
-											<div class="col-md-9">Applications are the
-												opportunities provided within the organization for Archival
-												or Decommission or Retiring purpose.</div>
-										</a>
-
-									</div>
-
+										<div class="col-md-9">Waves can be comprised of set of
+											applications that are ready for implementation over a period
+											of time.</div>
+									</a>
 
 								</div>
-							</div>
 
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<a class="dashboard-stat col-md-12"
+										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
+										href="OpportunityList.jsp">
+										<div class="col-md-3" style="height: 100%;">
+											<p class="totcounter"
+												style="height: 80%; color: white; padding-right: 10px;"></p>
+											<span class="font_icon" style="height: 20%; color: white;">Apps</span>
+										</div>
+										<div class="col-md-9">Applications are the opportunities
+											provided within the organization for Archival or Decommission
+											or Retiring purpose.</div>
+									</a>
+
+								</div>
+
+
+							</div>
 						</div>
-						<%
+
+					</div>
+					<%
                                                 con.close();
                                                 visit_st.close();
     }
@@ -679,19 +677,19 @@ input[type=search]:focus {
                                         %>
 
 
-						</ul>
+					</ul>
 
-					</div>
+					<!-- </div> -->
 				</div>
 
-				<div class="col-md-12 ">
+				<!-- <div class="col-md-12 ">
 					<div class="row">
 						<div class="col-sm-3 col-md-6 col-lg-7">
 							<div class="paneldashboard">
 								<br /> <br />
 								<div class="content">
 									<h6 style="margin-left: 30px;">Application Status</h6>
-									<!-- <div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div> -->
+									<div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div>
 									<table id="example" class="display" style="width: 100%">
 										<thead>
 											<tr>
@@ -742,8 +740,8 @@ input[type=search]:focus {
 						</div>
 
 					</div>
-				</div>
-				<div class="col-md-12">
+				</div> -->
+				<!-- <div class="col-md-12">
 					<div class="row">
 						<div class="col-sm-3 col-md-6 col-lg-4">
 							<div class="paneldashboard">
@@ -776,8 +774,132 @@ input[type=search]:focus {
 							</div>
 						</div>
 					</div>
+				</div> -->
+
+
+				<div class="d3s-pl-15 d3s-pr-15">
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-header">Overall progress for phases and
+										waves</div>
+									<div class="card-body" id="chartContainer"
+										style="height: 300px; width: 100%;"></div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-header">Application Categories</div>
+									<div class="card-body" id="pieChartId"
+										style="width: 100%; height: 300px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-header">Application Status</div>
+									<div class="card-body">
+
+										<table id="example"
+											style="margin: 1%; border: 1px solid black; border-collapse: collapse; width: 98%"
+											class="display">
+											<thead>
+												<tr>
+													<th
+														style="margin-left: 30px; border: 1px solid black; border-collapse: collapse; font-size: 18px">Application
+														Status</th>
+												</tr>
+												<tr
+													style="border: 1px solid black; border-collapse: collapse;">
+													<th>App Name</th>
+													<th>AppType</th>
+													<th>Status</th>
+													<th>Progress</th>
+													<th>Phase</th>
+													<th>Wave</th>
+													<th>End Date</th>
+													<th>AppOwner</th>
+												</tr>
+											</thead>
+											<tbody id="dataTableId">
+											</tbody>
+										</table>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-header">Risk, Issues and Deadlines</div>
+									<div class="card-body"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-header">Approval Status For Application</div>
+									<div class="card-body">
+										<table id="example1"
+											style="margin: 1%; border: 1px solid black; border-collapse: collapse; width: 98%"
+											class="display">
+											<thead>
+												<tr>
+													<th
+														style="margin-left: 30px; border: 1px solid black; border-collapse: collapse; font-size: 18px">
+														Approval Status for Application</th>
+												</tr>
+												<tr
+													style="border: 1px solid black; border-collapse: collapse;">
+													<th>App Name</th>
+													<th>Module</th>
+													<th>Due Date</th>
+													<th>Resource</th>
+													<th>Status</th>
+												</tr>
+											</thead>
+											<tbody id="dataTableId1">
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-header">Data Characteristic</div>
+									<div class="card-body"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-header">Plan and Priority</div>
+									<div class="card-body"></div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-header">Cost Benefit and Analysis</div>
+									<div class="card-body"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+
 
 
 
@@ -804,27 +926,25 @@ input[type=search]:focus {
 
 
 	<script type="text/javascript">
-    $('#list').click(function()
-    {
-        $('#grid').removeClass('cologen');
-        $('#list').addClass('cologen');
-    });
-    $('#grid').click(function()
-    {
-        $('#list').removeClass('cologen');
-        $('#grid').addClass('cologen');
-    });
-    $(document).ready(function() {
-        $(".lis").click(function() {
-            $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
-            $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
-        });
-        $(".gr").click(function() {
-            $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
-            $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
-        });
-    });
-</script>
+		$('#list').click(function() {
+			$('#grid').removeClass('cologen');
+			$('#list').addClass('cologen');
+		});
+		$('#grid').click(function() {
+			$('#list').removeClass('cologen');
+			$('#grid').addClass('cologen');
+		});
+		$(document).ready(function() {
+			$(".lis").click(function() {
+				$(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
+				$(".cbp-vm-switcher").addClass("cbp-vm-view-list");
+			});
+			$(".gr").click(function() {
+				$(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
+				$(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
+			});
+		});
+	</script>
 	<!-- ========== PAGE JS FILES ========== -->
 	<script src="js/prism/prism.js"></script>
 	<script src="js/waypoint/waypoints.min.js"></script>
@@ -952,5 +1072,8 @@ $(document).ready(function() {
   }
   </script>
 	<script src="js/navigation/navigation.js"></script>
+	<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
