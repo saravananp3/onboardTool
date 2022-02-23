@@ -221,16 +221,16 @@ body {
 																	<button type="submit" class="btn btn-primary"
 																		id="create">Save</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-																	<button
-																		class="form-wizard-next-btn float-right btn-info btn btn-info"
-																		onclick="location.href='IntakeTriage.jsp';" id="next"
-																		disabled="true">
-
-																		<a href="javascript:;"  style="color: #fff;">Next</a>
-
-																	</button>
-
-																	<button type="button"
+																	<!-- <button
+                                                                            class="form-wizard-next-btn float-right btn-info btn btn-info"
+                                                                             onclick="location.href='IntakeTriage.jsp';" id="next"
+                                                                               disabled="true"> -->
+                                                                         <!--  <a href="javascript:;" style="color: #fff;" class="btn btn-primary" onclick="location.href='IntakeTriage.jsp';" id="next" disabled="true">Next</a> -->
+                                                                         <!-- </button>
+																	 -->
+																	 <button type="button" class="btn btn-primary"
+																		onclick="location.href='IntakeTriage.jsp';" id="next" disabled="true" >Next</button>
+                                                                 <button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn"
 																		data-bs-toggle="modal" data-bs-target="#EditPopUp"
 																		style="display: none;">Edit PopUp</button>
