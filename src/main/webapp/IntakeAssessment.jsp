@@ -43,26 +43,30 @@
 <link rel="stylesheet" href="css/Intake/IntakeOpportunity.css" media="screen" > 
 
 <!-- ========== BootstrapV5 ========== -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" 
+integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" 
+crossorigin="anonymous">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" 
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" 
+ crossorigin="anonymous"></script>
+ 
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" 
+ integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+ crossorigin="anonymous"></script>
+ 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
+integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+ integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" 
+ crossorigin="anonymous"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -321,15 +325,16 @@
 							         </div>
 							         </div> -->
 							         <!-- ========== Application Information ========== -->
-							         <div class="accordion" id="accordionPanelsStayOpenExample">
-							          	<div class="accordion-item">
-							          		<h2 class="accordion-header" id="panelsStayOpen-headingOne">
-							          			<button class="accordion-button" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
-							          				data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-							          				aria-controls="panelsStayOpen-collapseOne">Application Information</button>
+							         <div class="accordion accordion-flush" id="accordionFlushExample">
+							          	
+                                    <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed"id="accordion-button-clr" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        Application Information </button>
 							          		</h2>
-							          		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne"
-							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          		<div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne"
+							          			data-bs-parent="#accordionFlushExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsAppInfo"></div> 
 							          			</div>
@@ -337,12 +342,12 @@
 							          	</div>
 							          <!-- ========== Data Characteristics ========== -->
 							          <div class="accordion-item">
-							          		<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+							          		<h2 class="accordion-header" id="flush-headingTwo">
 							          			<button class="accordion-button collapsed" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
-							          				data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">Data Characteristics</button>
+							          				data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">Data Characteristics</button>
 							          		</h2>
-							          		<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo"
-							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          		<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+							          			data-bs-parent="#accordionFlushExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsDataChar"></div> 
 							          			</div>
@@ -350,12 +355,12 @@
 							          </div>
 							          <!-- ========== Compliance Characteristics ========== -->
 							           <div class="accordion-item">
-							          		<h2 class="accordion-header" id="panelsStayOpen-headingThree">
+							          		<h2 class="accordion-header" id="flush-headingThree">
 							          			<button class="accordion-button collapsed" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
-							          				data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">Compliance Characteristics</button>
+							          				data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">Compliance Characteristics</button>
 							          		</h2>
-							          		<div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree"
-							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          		<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+							          			data-bs-parent="#accordionFlushExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsComplianceChar"></div> 
 							          			</div>
@@ -363,12 +368,12 @@
 							          </div>
 							          <!-- ========== Archival Consumption ========== -->
 							           <div class="accordion-item">
-							          		<h2 class="accordion-header" id="panelsStayOpen-headingFour">
+							          		<h2 class="accordion-header" id="flush-headingFour">
 							          			<button class="accordion-button collapsed" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
-							          				data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">Archival Consumption</button>
+							          				data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">Archival Consumption</button>
 							          		</h2>
-							          		<div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour"
-							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          		<div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+							          			data-bs-parent="#accordionFlushExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsArchivConsump"></div> 
 							          			</div>
@@ -376,12 +381,12 @@
 							          </div>
 							           <!-- ========== Contract Information ========== -->
 							            <div class="accordion-item" id ="ContractInformation" style ="display:none;">
-							          		<h2 class="accordion-header" id="panelsStayOpen-headingFive">
+							          		<h2 class="accordion-header" id="flush-headingFive">
 							          			<button class="accordion-button collapsed" id="accordion-button-clr" type="button" data-bs-toggle="collapse"
-							          				data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">Contract Information</button>
+							          				data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">Contract Information</button>
 							          		</h2>
-							          		<div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive"
-							          			data-bs-parent="#accordionPanelsStayOpenExample">
+							          		<div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+							          			data-bs-parent="#accordionFlushExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsContInfo"></div> 
 							          			</div>
