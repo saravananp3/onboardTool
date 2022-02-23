@@ -804,7 +804,6 @@ input[type=search]:focus {
 								<div class="card">
 									<div class="card-header">Application Status</div>
 									<div class="card-body">
-
 										<table id="example"
 											style="margin: 1%; border: 1px solid black; border-collapse: collapse; width: 98%"
 											class="display">
