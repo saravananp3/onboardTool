@@ -137,6 +137,38 @@ function dashboardDetails() {
 				$('#example1').DataTable();
 			});
 			
+			$.each(data[7], function(key, value) {
+				var t_row = "<div class='row'>" 
+				+ "<div class='p-2 border border-danger col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Risks</div>"
+				+ "<div class='p-2 border border-danger col-md-4' style='background-color: Red; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.riskCount + "</div>"
+				+ "</div>" + 
+				 "<div class='row mt-4'>" 
+				+ "<div class='p-2 border border-warning col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Issues</div>"
+				+ "<div class='p-2 border border-warning col-md-4' style='background-color: Orange; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.issueCount + "</div>"
+				+ "</div>" +
+				 "<div class='row mt-4'>" 
+				+ "<div class='p-2 border border-primary col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Deadlines</div>"
+				+ "<div class='p-2 border border-primary col-md-4' style='background-color: Blue; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.decisionCount + "</div>"
+				+ "</div>";
+				$('#dataCountIssue').append(t_row);
+			});
+			
+			$.each(data[8], function(key, value) {
+				var list = "<li><div data-percentage='" + value.db2Percent + "' class='bar'></div><span>DB2</span></li>"
+					+ "<li><div data-percentage='" + value.msSqlPercent + "' class='bar'></div><span>MS SQL</span></li>"
+					+ "<li><div data-percentage='" + value.mySqlPercent + "' class='bar'></div><span>MySQL</span></li>"
+					+ "<li><div data-percentage='" + value.oraclePercent + "' class='bar'></div><span>Oracle</span></li>"
+					+ "<li><div data-percentage='" + value.sybasePercent + "' class='bar'></div><span>Sybase</span></li>"
+					+ "<li><div data-percentage='" + value.otherPercent + "' class='bar'></div><span>Other</span></li>";
+				$('#bars').append(list);
+				$("#bars li .bar").each(function(key, bar) {
+					var percentage = $(this).data('percentage');
+					$(this).animate({
+						'height': percentage,
+					}, 1000);
+				})
+			});
+			
 			function drawBarChart() {
 				var databar = google.visualization.arrayToDataTable(barChartData);
 				var view = new google.visualization.DataView(databar);
@@ -152,6 +184,7 @@ function dashboardDetails() {
 				//var chart = new google.charts.BarChart(document.getElementById('top_x_div'));
 				chart.draw(view, options);
 			};
+			
 		},
 		error: function(e) {
 			console.log(e);
