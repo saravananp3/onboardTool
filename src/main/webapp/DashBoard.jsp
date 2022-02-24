@@ -42,6 +42,9 @@
 
 <script src="js/dashboard/dashboardAjaxCall.js"></script>
 
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+
 
 
 
@@ -49,6 +52,7 @@
 <style type="text/css">
 body {
 	background: #fff;
+	font-family: 'Poppins', sans-serif;
 }
 
 /*  .active{
@@ -434,6 +438,14 @@ input[type=search]:focus {
 	margin-left: 22px;
 	margin-bottom: 21px;
 }
+
+#card-header {
+	background-color: #fff;
+	font-weight: 600;
+    font-size: 16px;
+    color: #141515;
+
+}
 </style>
 
 </head>
@@ -607,7 +619,7 @@ input[type=search]:focus {
 			<div class="main-page">
 				<div class="col-md-12 ">
 
-					<!-- <div class="paneldashboard"> -->
+					<!-- <div class="card mt-5"> -->
 
 					<div class="container-fluid grid mt-5">
 						<div class="main">
@@ -782,17 +794,27 @@ input[type=search]:focus {
 						<div class="row">
 							<div class="col-md-8">
 								<div class="card">
-									<div class="card-header">Overall progress for phases and
+									<div class="card-header" id="card-header">Overall progress for phases and
 										waves</div>
-									<div class="card-body" id="chartContainer"
-										style="height: 300px; width: 100%;"></div>
+									<div class="card-body">
+										<div class="col-md-4">
+											<canvas class="vr" id="mycanvas" width="200" height="200"
+												style="margin-left: 105px;"></canvas>
+										</div>
+										
+										<div class="col-md-4">
+											<canvas id="mycanvas1" width="200" height="200"
+												style="margin-left: 230px;"></canvas>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="card">
-									<div class="card-header">Application Categories</div>
-									<div class="card-body" id="pieChartId"
-										style="width: 100%; height: 300px;"></div>
+									<div class="card-header"  id="card-header">Application Categories</div>
+									<div class="card-body">
+										<div id="pieChartId" width="200" height="200"></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -802,27 +824,21 @@ input[type=search]:focus {
 						<div class="row">
 							<div class="col-md-8">
 								<div class="card">
-									<div class="card-header">Application Status</div>
-									<div class="card-body">
+									<div class="card-header"  id="card-header">Application Status</div>
+									<div class="card-body" style="padding:0px;">
 										<table id="example"
-											style="margin: 1%; border: 1px solid black; border-collapse: collapse; width: 98%"
-											class="display">
+											class="table">
 											<thead>
+												
 												<tr>
-													<th
-														style="margin-left: 30px; border: 1px solid black; border-collapse: collapse; font-size: 18px">Application
-														Status</th>
-												</tr>
-												<tr
-													style="border: 1px solid black; border-collapse: collapse;">
-													<th>App Name</th>
-													<th>AppType</th>
-													<th>Status</th>
-													<th>Progress</th>
-													<th>Phase</th>
-													<th>Wave</th>
-													<th>End Date</th>
-													<th>AppOwner</th>
+													<th scope="col">App Name</th>
+													<th scope="col">AppType</th>
+													<th scope="col">Status</th>
+													<th scope="col">Progress</th>
+													<th scope="col">Phase</th>
+													<th scope="col">Wave</th>
+													<th scope="col">End Date</th>
+													<th scope="col">AppOwner</th>
 												</tr>
 											</thead>
 											<tbody id="dataTableId">
@@ -834,7 +850,7 @@ input[type=search]:focus {
 							</div>
 							<div class="col-md-4">
 								<div class="card">
-									<div class="card-header">Risk, Issues and Deadlines</div>
+									<div class="card-header"  id="card-header">Risk, Issues and Deadlines</div>
 									<div class="card-body"></div>
 								</div>
 							</div>
@@ -845,35 +861,28 @@ input[type=search]:focus {
 						<div class="row">
 							<div class="col-md-8">
 								<div class="card">
-									<div class="card-header">Approval Status For Application</div>
-									<div class="card-body">
-										<table id="example1"
-											style="margin: 1%; border: 1px solid black; border-collapse: collapse; width: 98%"
-											class="display">
-											<thead>
-												<tr>
-													<th
-														style="margin-left: 30px; border: 1px solid black; border-collapse: collapse; font-size: 18px">
-														Approval Status for Application</th>
-												</tr>
-												<tr
-													style="border: 1px solid black; border-collapse: collapse;">
-													<th>App Name</th>
-													<th>Module</th>
-													<th>Due Date</th>
-													<th>Resource</th>
-													<th>Status</th>
-												</tr>
-											</thead>
-											<tbody id="dataTableId1">
-											</tbody>
-										</table>
+									<div class="card-header"  id="card-header">Approval Status For Application</div>
+									<div class="card-body" style="padding:0px;">
+										<table id="example"
+											class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">App Name</th>
+                                                <th scope="col">Module</th>
+                                                <th scope="col">Due Date</th>
+                                                <th scope="col">Resource</th>
+                                                <th scope="col">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dataTableId1">
+                                        </tbody>
+                                    </table>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="card">
-									<div class="card-header">Data Characteristic</div>
+									<div class="card-header" id="card-header">Data Characteristic</div>
 									<div class="card-body"></div>
 								</div>
 							</div>
@@ -884,13 +893,15 @@ input[type=search]:focus {
 						<div class="row">
 							<div class="col-md-8">
 								<div class="card">
-									<div class="card-header">Plan and Priority</div>
-									<div class="card-body"></div>
+									<div class="card-header" id="card-header">Plan and Priority</div>
+									<div class="card-body">
+										
+									</div>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="card">
-									<div class="card-header">Cost Benefit and Analysis</div>
+									<div class="card-header" id="card-header">Cost Benefit and Analysis</div>
 									<div class="card-body"></div>
 								</div>
 							</div>
@@ -1071,8 +1082,8 @@ $(document).ready(function() {
   }
   </script>
 	<script src="js/navigation/navigation.js"></script>
-	<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-	<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
+	
 </body>
 </html>
