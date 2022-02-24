@@ -46,6 +46,9 @@
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveCircleStatus/circle.css" />
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionHeaderInfo/archiveExecHeaderInfo.css" />
 
+<script type="text/javascript" src="js_in_pages/project.js"></script>
+
+
 
 
 
@@ -56,7 +59,29 @@
 
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionStatus/archiveExecStatus.css" />
 <script src="js/ArchiveExecutionDetails/ArchiveExecutionInfo/ArchiveExecutionDataRetrieve.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+	
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/main.css" media="screen">
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
+
+<link rel="stylesheet" href="css/headerIcon/headerIcon.css"
+	media="screen">
 
 <style>
  <style type="text/css">
@@ -77,7 +102,7 @@ padding-right: 0px;
 }
 <!-- Wizard-->
 
-body {
+/* body {
   background-color: #ffffff;
   color: #444444;
   font-family: 'Roboto', sans-serif;
@@ -85,7 +110,10 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
-}
+} */
+
+
+
 .wizard-content-left {
   background-blend-mode: darken;
   background-color: rgba(0, 0, 0, 0.45);
@@ -334,13 +362,13 @@ color:#fff;
  }
  
  
-table {
+/* table {
     width: 92%;
     border-spacing: 0;
     
     margin-bottom: 2.375em;
     border-style:none;
-} 
+}  */
 
 
 .pdf{
@@ -452,7 +480,7 @@ font-size:12px;
   
 }
 
-.active{
+.active-1{
         background:#1565c0;
          }
       .page-title-div {
@@ -467,25 +495,25 @@ font-size:12px;
 	padding-left: 0px;
     padding-right: 0px;
 	}
- .navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
-}        
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
+}
 
- .navbar-nav .nav-link.active {
+ .navbar-nav .nav-link-2.active-2 {
     /* border-top: none; */
     border-left: none;
     border-right: none;
     border-bottom: 4px solid rgba(255,255,255,.5)!important;
 }
 
-.navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
 }
 
 .link:hover{
@@ -509,11 +537,86 @@ background:#1565c0 important;
 
 </head>
 <body class="top-navbar-fixed">
-    <form class="form-signin" name="loginForm" method="post">
+
+<nav class="navbar navbar-expand-md navbar-light bg-white nav-height nav-font">
+	<div class="container-fluid" id="container-fluid-margin">
+		<a class="navbar-brand" href="OpportunityList.jsp"> <img
+				src="images/Decom360-logo.png" class="d3s-logo-1" alt="Decom3Sxity">
+			</a>
+		<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav mr-auto d3s-ml-110">
+					<li class="nav-item moduleIcon"><a
+						class="nav-link active" aria-current="page" href="OpportunityList.jsp"><i
+							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
+					</li>
+					
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="Admin_Module_Send_Invites.jsp"><i
+							class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
+					</li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="PhaseList.jsp"><i
+							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="#"><i
+							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="DashBoard.jsp"><i
+							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
+					</li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="#"><i
+							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
+					</li>
+
+				</ul>
+				
+			<div class="dropdown" align="end">
+				<a class="dropdown-toggle" href="#" role="button"
+					 data-toggle="dropdown"
+					aria-expanded="false"><i
+					class="fas fa-user-circle iconAlign iconColor fa-3x"  style="margin-top:25px; padding-left: 140px;"></i><span class="caret"></span> </a>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="#" id="textAlign"><i
+							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
+							in as <br/><b>admin</b></a></li>
+					<hr/>
+					<li><a class="dropdown-item li-align" href="#" id="textAlign"
+						onclick="location.href='Login.jsp';"><i
+							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
+				</ul>
+			</div>
+
+
+			</div>
+		
+			
+	</div>
+	
+</nav>
+
+<%-- <%@include file="Nav-Bar.jspf"%> --%>
+	<nav class="nav nav-height-70 nav-font" id="bg-color">
+		<div class="container-fluid">
+			<div class="col-sm-12" id="d3s-mt-20">
+				<ul class="nav navbar-nav">
+					<li class=" nav-link-2 active-2"><a class="link"
+						href="ArchiveExecutionDetails.jsp"
+						style="color: #fff; padding: 7px 10px; height: 35px;">Project
+							Plan</a></li>
+					<li class="nav-link-2"><a class="link" href="archiveExeIssueRiskTracker.jsp"
+						style="color: #fff; padding: 7px 10px; height: 35px;">Issue/Risk
+							Tracker</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
    <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+   <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                  <div class="navbar-header no-padding" style = "height : 100px;">
@@ -521,7 +624,7 @@ background:#1565c0 important;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -541,8 +644,8 @@ background:#1565c0 important;
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-12">
-                             <!--  <h4 class="title" style="color:#fff">User Configuration</h4>
-                               <p class="sub-title">Create and manage your Opportunities here</p>-->
+                              <h4 class="title" style="color:#fff">User Configuration</h4>
+                               <p class="sub-title">Create and manage your Opportunities here</p>
                                <ul class="nav navbar-nav " >
 						      <li class=" nav-link active"><a class="link" href="ArchiveExecutionDetails.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan</a></li>
 						      <li class="nav-link" ><a class="link" href="#" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan Summary</a></li>
@@ -560,11 +663,11 @@ background:#1565c0 important;
                     </div>
 
                 </div>
-			</nav>
+			</nav>	
       
         </div>
-        <!-- /.container-fluid -->
-    </nav >
+        /.container-fluid
+    </nav > -->
             <div class="content-wrapper">
                 <div class="content-container" >
                    
@@ -572,7 +675,7 @@ background:#1565c0 important;
                         
                         <section>
                             <div class="row">
-                                <div class="container" id="module_header">
+                                <div class="container">
                                   <div class="panelSize col-md-12 col-sm-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
@@ -583,15 +686,14 @@ background:#1565c0 important;
 								<li><span>2</span><i>Project Summary</i></li>
 							</ul>
 						</div> -->
-						<br/>
-						<br/>
+						
                                    <div class="wrapper">
 													   
 													   <a href="#" class="btn10 coloring" id = "oppName">
 													     Opportunity Name : </br>
 													  </a>
 													    <a href="#" class="btn10 coloring" id = "oppId">
-													     P3 Project Id : </br>
+													     Opportunity Id : </br>
 													  </a>
 													    <a href="#" class="btn10 coloring" id = "startDate">
 													    Start Date : </br> 15-04-2020
@@ -601,22 +703,20 @@ background:#1565c0 important;
 													    Estimated Completion : </br> 31-12-2020
 													  </a>
 													  </div>
-													  
-													  
-                                         <div class="panel panel-default" style='width:1900px;'>
-                                            <div class="panel-heading" >
-                                                <h4 class="panel-title" >
-                                                    <a class="collapsed" data-toggle="collapse"  data-parent="#panels1">Archive Execution</a> </h4>
-                                            </div>
+
+
+												<div class="card-container-4 card">
+                                            <div class="card-header d3s-pl-15" id="cd-header">Archive Execution</div>
+                                                    
                                             <div class="panel-collapse collapse in"
                                                 name="collapse">
-                                                <div class="panel-body">
+                                                <div class="card-body">
                                                 
                                                     <div>
                                                     <!-- <h4>Task List</h4>   -->
                                                             <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
       													<div class="panel">         
-  													<table class="table table-bordered">
+  													<table class="table table-bordered" style="width: 100%;font-size: 9px;">
   													
     												<thead >
       												<tr>
@@ -902,7 +1002,7 @@ background:#1565c0 important;
 </div>
 
 <!-- Active Icon Color changes  -->
-<script>
+<!-- <script>
 $(document).on('mouseenter','.active1', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');
@@ -975,4 +1075,32 @@ $(document).on('mouseenter','.active1', function(){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+    <!-- ========== BootstrapV5 ========== -->
+
+<!-- <link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script> -->
+    <script src="js/navigation/navigation.js"></script>
+   <script src="js/jquery-1.9.1.min.js"></script>
+   
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	 
+    <!-- ========== Toastr ========== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </html>

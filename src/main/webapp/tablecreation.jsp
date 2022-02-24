@@ -11,7 +11,7 @@
     System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed TableCreation JSP PAGE-----[INFO]"); %>
 
 <%
-    //String connectionURL = "jdbc:mysql://localhost:3306/decom3sixtytool";
+//String connectionURL = "jdbc:mysql://localhost:3306/decom3sixtytool";
     Connection connection = null;
     Statement statement = null;
     try {
@@ -255,12 +255,12 @@
         String query92 ="CREATE TABLE IF NOT EXISTS `Intake_Assessment_Application_Info_Doc` ( seq_num INTEGER, AppId VARCHAR(255), File_Name VARCHAR(255), doc LONGBLOB);";
         statement.executeUpdate(query92);
         
-    	String query93 = "CREATE TABLE IF NOT EXISTS `ArchiveExe_Issue_Info_Template_Details` (`seq_no` INTEGER,`app_Id` varchar(255),`impact` varchar(255), `type` varchar(255), `description` varchar(500),`start_date` varchar(255), `raised_by` varchar(255),`status` varchar(500),`assigned_to` varchar(255),`resolved` varchar(255),`exp_date` varchar(255),`end_date` varchar(255),`comments` varchar(500))";
-	statement.executeUpdate(query93);
+       	String query93 = "CREATE TABLE IF NOT EXISTS `ArchiveExe_Issue_Info_Template_Details` (`seq_no` INTEGER,`app_Id` varchar(255),`impact` varchar(255), `type` varchar(255), `description` varchar(500),`start_date` varchar(255), `raised_by` varchar(255),`status` varchar(500),`assigned_to` varchar(255),`resolved` varchar(255),`exp_date` varchar(255),`end_date` varchar(255),`comments` varchar(500))";
+		statement.executeUpdate(query93);
 
-	String query94 = "CREATE TABLE IF NOT EXISTS `ArchiveExe_Issue_Info` (`seq_no` INTEGER,`app_Id` varchar(255),`impact` varchar(255), `type` varchar(255), `description` varchar(500),`start_date` varchar(255), `raised_by` varchar(255),`status` varchar(500),`assigned_to` varchar(255),`resolved` varchar(255),`exp_date` varchar(255),`end_date` varchar(255),`comments` varchar(500))";
-	statement.executeUpdate(query94);
-	  %>
+		String query94 = "CREATE TABLE IF NOT EXISTS `ArchiveExe_Issue_Info` (`seq_no` INTEGER,`app_Id` varchar(255),`impact` varchar(255), `type` varchar(255), `description` varchar(500),`start_date` varchar(255), `raised_by` varchar(255),`status` varchar(500),`assigned_to` varchar(255),`resolved` varchar(255),`exp_date` varchar(255),`end_date` varchar(255),`comments` varchar(500))";
+		statement.executeUpdate(query94);
+%>
 <% } catch (Exception ex) {
     ex.printStackTrace();
     System.err.println("[ERROR]-----Got an exception!-----Tables are already created----[ERROR]");

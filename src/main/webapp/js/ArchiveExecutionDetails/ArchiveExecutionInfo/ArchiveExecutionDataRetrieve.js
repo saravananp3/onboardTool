@@ -4,13 +4,13 @@ $(document).ready(function()
 {
 	users=[];
 	taskTypeArr = [];
-	$('.collapse.in').prev('.panel-heading').addClass('active');
+	$('.collapse.in').prev('.card-header').addClass('active');
 	  $('#accordion, #bs-collapse')
 	    .on('show.bs.collapse', function(a) {
-	      $(a.target).prev('.panel-heading').addClass('active');
+	      $(a.target).prev('.card-header').addClass('active');
 	    })
 	    .on('hide.bs.collapse', function(a) {
-	      $(a.target).prev('.panel-heading').removeClass('active');
+	      $(a.target).prev('.card-header').removeClass('active');
 	    });
 	  
 	  
