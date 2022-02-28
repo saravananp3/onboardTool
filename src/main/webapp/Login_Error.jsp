@@ -152,7 +152,7 @@
 	<html> 
 	<head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> 
-	<title>Insert title here</title> 
+	<title>Decom3Sixty</title> 
 	</head> 
 	<body> 
 	
@@ -168,8 +168,9 @@
 	
 	<div class="container"> 
 	<div class="well"> 
-	<h1 id="ErrorMessage">  </h1>
-	<a href="Login.jsp"> Login </a>
+	<h1 id="ErrorMessage"></h1>
+	<h2>Invalid Username & Password. Login with Correct Credentials</h2>
+	<a href="Login_1.jsp"> Login </a>
 	
 	</div> 
 	

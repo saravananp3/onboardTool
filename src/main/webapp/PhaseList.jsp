@@ -514,7 +514,7 @@ pointer-events:all;
 
  <%
                             String uname=(String)details.getAttribute("username");
-                            String role=(String)details.getAttribute("role");%>
+                           /*  String role=(String)details.getAttribute("role"); */%>
 
 <!-- main wrapper -->
 <div class="main-wrapper">
@@ -650,7 +650,7 @@ pointer-events:all;
         <!-- /.container-fluid -->
     </nav > --%>
     
-     <%@include file="Nav-Bar.jspf"%>
+   <%@include file="Nav-Bar.jspf"%>
  
  <nav class="nav nav-down-height" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
