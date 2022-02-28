@@ -883,7 +883,9 @@ input[type=search]:focus {
 							<div class="col-md-4">
 								<div class="card">
 									<div class="card-header" id="card-header">Data Characteristic</div>
-									<div class="card-body"></div>
+									<div class="card-body">
+									<div id="columnChartId"></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -1072,8 +1074,8 @@ $(document).ready(function() {
 
       var options = {
         title: "Total",
-        width: 1200,
-        height: 400,
+        width: 400,
+        height: 250,
         bar: {groupWidth: "25%"},
         legend: { position: "none" },
       };

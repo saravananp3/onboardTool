@@ -169,6 +169,37 @@ function dashboardDetails() {
 				})
 			});
 			
+			google.charts.load("current", { packages: ['corechart'] });
+			google.charts.setOnLoadCallback(drawChart);
+			$.each(data[8],function drawChart(key, value) {
+				console.log(data[8]);
+				var data = google.visualization.arrayToDataTable([
+					["State", "$", { role: "style" }],
+					['Sum of Realized', 110000.00, 'blue'],
+					['Sum of in Process', 365000, 'blue'],
+					['Sum of Intake/Opportunity', 192000.00, 'blue']]);
+
+				var view = new google.visualization.DataView(data);
+				view.setColumns([0, 1,
+					{
+						calc: "stringify",
+						sourceColumn: 1,
+						type: "string",
+						role: "annotation"
+					},
+					2]);
+
+				var options = {
+					title: "Total",
+					width: 400,
+					height: 250,
+					bar: { groupWidth: "25%" },
+					legend: { position: "none" },
+				};
+				var chart = new google.visualization.ColumnChart(document.getElementById("columnChartId"));
+				chart.draw(view, options);
+			});
+			
 			function drawBarChart() {
 				var databar = google.visualization.arrayToDataTable(barChartData);
 				var view = new google.visualization.DataView(databar);
