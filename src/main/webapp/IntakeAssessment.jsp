@@ -446,12 +446,14 @@
 																			<button type="submit" class="btn btn-primary"
 																				id="AssessmentSaveBtn">Save</button>
 																			<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-																			<button
+																			<!-- <button
 																				class="form-wizard-next-btn float-right btn-info btn btn-info"
 																				id="next"  onclick="location.href='IntakeStakeHolder.jsp';" disabled="true" style="color: #fff;">
 
 																				<a href="javascript:;">Next</a>
-																			</button>
+																			</button> -->
+																			<button type="button" class="btn btn-primary"
+                                                                                onclick="location.href='IntakeStakeHolder.jsp';" id="next" disabled="true" >Next</button>
 
 																			<button type="button"
 																				class="btn btn-primary pull-right"

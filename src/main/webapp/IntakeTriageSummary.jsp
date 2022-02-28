@@ -253,15 +253,16 @@
 																	<button type="submit" class="btn btn-primary"
 																		id="createTriSummary">Save</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-																	<button
+																	<!-- <button
 																		class="form-wizard-next-btn float-right btn-info btn btn-info"
 																		onclick="location.href='IntakeAssessment.jsp';" id="next"
 																		disabled="true">
 
 																		<a href="javascript:;"  style="color: #fff;">Next</a>
 
-																	</button>
-
+																	</button> -->
+                                                                    <button type="button" class="btn btn-primary"
+                                                                       onclick="location.href='IntakeAssessment.jsp';" id="next" disabled="true" >Next</button>
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="editpopupSummary_btn"
 																		data-bs-toggle="modal" data-bs-target="#TriSummEditPopUp"

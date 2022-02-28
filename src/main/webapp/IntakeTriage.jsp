@@ -227,14 +227,16 @@ body {
 																	</div>
 																	<button type="submit" class="btn btn-primary"
 																		id="createbtn">Save</button>
-																	<button
+																	<!-- <button
 																		class="form-wizard-next-btn float-right btn-info btn btn-info"
 																		onclick="location.href='IntakeTriageSummary.jsp';"
 																		id="next" disabled="true">
 
 																		<a href="javascript:;" style="color: #fff;">Next</a>
 
-																	</button>
+																	</button> -->
+																	<button type="button" class="btn btn-primary"
+                                                                            onclick="location.href='IntakeTriageSummary.jsp';" id="next" disabled="true" >Next</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeTriageSummary.jsp';">Next</a> -->
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn1"
