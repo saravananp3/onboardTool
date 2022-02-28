@@ -17,7 +17,7 @@
  <%
  if(authtype.equals("LOCAL"))
  {
- response.sendRedirect("Login_1.jsp");
+ response.sendRedirect("Login.jsp");
  }
  else if(authtype.equals("SSO"))
  {

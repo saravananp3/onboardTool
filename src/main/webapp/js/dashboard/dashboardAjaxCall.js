@@ -148,7 +148,7 @@ function dashboardDetails() {
 				+ "</div>" +
 				 "<div class='row mt-4'>" 
 				+ "<div class='p-2 border border-primary col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Deadlines</div>"
-				+ "<div class='p-2 border border-primary col-md-4' style='background-color: Blue; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.decisionCount + "</div>"
+				+ "<div class='p-2 border border-primary col-md-4' style='background-color: Blue; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.deadlineCount + "</div>"
 				+ "</div>";
 				$('#dataCountIssue').append(t_row);
 			});

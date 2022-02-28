@@ -67,9 +67,9 @@
 				</ul>
 
 			</div>
-			<%
+			<%-- <%
                             String ufname=(String)details.getAttribute("username");
-                            String role=(String)details.getAttribute("role");%>
+                            String role=(String)details.getAttribute("role");%> --%>
 			<div class="dropdown" align="end">
 				<a class="dropdown-toggle" href="#" role="button"
 					id="dropdownMenuLink" data-bs-toggle="dropdown"
@@ -79,7 +79,7 @@
 					aria-labelledby="dropdownMenuLink">
 					<li><a class="dropdown-item" href="#" id="textAlign"><i
 							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
-							in as <br/><b><%=ufname%></b></a></li>
+							in as <br/><b>admin</b></a></li>
 					<hr/>
 					<li><a class="dropdown-item li-align" href="#" id="textAlign"
 						onclick="location.href='Login_1.jsp';"><i

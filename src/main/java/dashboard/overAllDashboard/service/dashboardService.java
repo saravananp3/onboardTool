@@ -5,7 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import com.docusign.esign.model.List;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -545,36 +549,45 @@ public class dashboardService {
 	}
 
 	public JsonArray getAppIssueCount() {
-		JsonArray jsonArray = new JsonArray();
-		JsonObject jsonObject = new JsonObject();
-		try {
-			int issueCount = 0, riskCount = 0, decisionCount = 0;
-			String selectQuery = "SELECT * FROM ArchiveExe_Issue_Info;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			while (rs.next()) {
-				String type = rs.getString("type");
-				if (type.equals("ISSUE")) {
-					issueCount++;
-				}
-				if (type.equals("RISK")) {
-					riskCount++;
-				}
-				if (type.equals("DECISION")) {
-					decisionCount++;
-				}
-			}
-			jsonObject.addProperty("issueCount", issueCount);
-			jsonObject.addProperty("riskCount", riskCount);
-			jsonObject.addProperty("decisionCount", decisionCount);
-			jsonArray.add(jsonObject);
-			rs.close();
-			st.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return jsonArray;
-	}
+        JsonArray jsonArray = new JsonArray();
+        JsonObject jsonObject = new JsonObject();
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+            String todaysdate = sdf.format(date);
+            int issueCount = 0, riskCount = 0, deadlineCount = 0;
+            String selectQuery = "SELECT * FROM ArchiveExe_Issue_Info;";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(selectQuery);
+            while (rs.next()) {
+                String type = rs.getString("type");
+                String resolved = rs.getString("resolved");
+                String expDtae = rs.getString("exp_date");
+                System.out.println("ye hai dekho  :" +" "+expDtae);
+                System.out.println("ye hai dekho  :" +" "+todaysdate);
+                if (type.equals("ISSUE")&& !resolved.equals("COMPLETED")&& !resolved.equals("CANCELLED")) {
+                    issueCount++;
+                }
+                if (type.equals("RISK")&& !resolved.equals("COMPLETED")&& !resolved.equals("CANCELLED")) {
+                    riskCount++;
+                }
+                if (sdf.parse(expDtae).before(sdf.parse(todaysdate))&& !resolved.equals("COMPLETED")&& !resolved.equals("CANCELLED")&& rs.getString("end_date")!=null&& expDtae!=null){
+                    deadlineCount++;
+                }
+            }
+           
+            jsonObject.addProperty("issueCount", issueCount);
+            jsonObject.addProperty("riskCount", riskCount);
+            jsonObject.addProperty("deadlineCount", deadlineCount);
+            jsonArray.add(jsonObject);
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
+    }
 
 	/*
 	 * public JsonArray getDataCharDetails() { JsonArray jsonArray = new
