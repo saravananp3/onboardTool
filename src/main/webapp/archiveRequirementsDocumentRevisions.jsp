@@ -411,8 +411,8 @@ padding: 15px;
                                             <div class="col-12" align="end">
 																	 <button class="btn btn-secondary" type="button" id="docRevAdd">Add</button>
 																	 <button type="submit" class="btn btn-primary" id="docRevSave">Save</button>
-																	   <button class="btn btn-primary" onclick="location.href='archiveRequirementsAddendum.jsp';" id="docRevNext" disabled="true">
-                                                                 			<a href="archiveRequirementsAddendum.jsp">Next</a></button>
+																	  <a href="archiveRequirementsAddendum.jsp" class="btn btn-primary" onclick="location.href='archiveRequirementsAddendum.jsp';" id="docRevNext" disabled="true">
+                                                                 			Next</a>
 					                                       			</div>
                                        <!--  <div class="col-md-12">
                                         	<br/>

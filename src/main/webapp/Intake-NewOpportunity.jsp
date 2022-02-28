@@ -357,9 +357,9 @@
 			</div>
 		</div>
 	</div>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="js/toastr/toastr.min.js"></script>
+<script src="js/toastr/toastr.min.js"></script> -->
 <script src="js/Opportunity/AddFeatureFunctionality.js"></script>
 <script src="js/Opportunity/AddFeatureAjaxCall.js"></script>
 <script src="js/Opportunity/Opportunity.js"></script>

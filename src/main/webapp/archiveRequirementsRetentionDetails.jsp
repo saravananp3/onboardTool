@@ -414,9 +414,9 @@ padding: 15px;
                                                                
                                                                 <button type="submit" class="btn btn-primary" id="saveRetentionId">Save</button>
                                                                 <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-                                                                 <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='ArchiveBusinessRequirements.jsp';" id="next" disabled="true">
+                                                                  <a href="javascript:;" style="color: #fff;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='ArchiveBusinessRequirements.jsp';" id="next" disabled="true">
                                                                  
-                                                                 <a href="javascript:;" style="color: #fff;">Next</a>
+                                                                Next</a>
                                                                  
                                                                  </button>
                                                               

@@ -690,8 +690,8 @@ padding: 15px;
                                        <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" >Prev</button></div>
                                        <div class="col-12" align="end">
                                        
-                                      <button class="btn btn-primary"  id="busreqNext" disabled="true">
-                                                                 <a href="archiveReqAbbrevation.jsp">Next</a></button>
+                                      <a href="archiveReqAbbrevation.jsp"class="btn btn-primary"  id="busreqNext" disabled="true">
+                                                                 Next</a></button>
                                      
                                        </div>
                                      </div>

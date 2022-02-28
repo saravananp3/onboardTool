@@ -584,8 +584,8 @@ padding: 15px;
                                        <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='ArchiveRequirementsIntroDetails.jsp';" >Prev</button></div>
                                        <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
                                        
-                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" id="rolesNext" >
-                                                                 <a href="javascript:;">Next</a></button>
+                                       <a href="javascript:;" class="btn btn-primary" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" id="rolesNext" >
+                                                                Next</a>
                                      
                                        </div>
                                      </div>  

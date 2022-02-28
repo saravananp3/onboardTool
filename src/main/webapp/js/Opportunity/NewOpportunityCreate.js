@@ -119,12 +119,12 @@ $("#create").click(function(e)
 	    
     	if(checkMandatory==true && checkAjax == true && checkAjax !=undefined)
 	    {
-    		notification("warning","New Opportunity is created successfully.","Warning");
+    		notification("success","New Opportunity is created successfully.","Success");
 	    	$("#OpportunityListbtn").click();
 	    	
 	    	/*var f=document.OpportunityForm;
             f.method="post";
-            f.action="OpportunityList.jsp?";
+            f.action="OpportunityList.jsp";
             f.submit;*/
 	    } 
     	
