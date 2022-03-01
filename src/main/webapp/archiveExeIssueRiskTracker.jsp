@@ -393,6 +393,7 @@ table.table td .add {
 																								style="width: 100%;">
 																								<thead>
 																									<tr>
+																									
 																										<th
 																											style='text-align: center; vertical-align: middle;'>Id</th>
 																										<th
@@ -425,6 +426,7 @@ table.table td .add {
 																											style='text-align: center; vertical-align: middle;'>COMMENTS</th>
 																										<th
 																											style='text-align: center; vertical-align: middle;'>ACTION</th>
+																											
 																									</tr>
 																								</thead>
 																								<tbody id="AppIssue">
@@ -453,6 +455,7 @@ table.table td .add {
 																							
 																							</div>
 																						</div>
+																						
 																					</div>
 																				</div>
 																			</div>
@@ -460,6 +463,7 @@ table.table td .add {
 																	</div>
 																</div>
 															</div>
+															
 														<!-- </div>
 
 

@@ -137,6 +137,14 @@ function dashboardDetails() {
 				$('#example1').DataTable();
 			});
 			
+			$.each(data[7], function(key, value) {
+				var t_row = "<div class='row'>" 
+				+ "<div class='p-2 border border-danger col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px'>Issues</div>"
+				+ "<div class='p-2 border border-danger col-md-4' style='background-color: #dc3545; width:10%;text-align:center;'>" + value.issueCount + "</div>"
+				+ "</div>";
+				$('#dataCountIssue').append(t_row);
+			});
+			
 			function drawBarChart() {
 				var databar = google.visualization.arrayToDataTable(barChartData);
 				var view = new google.visualization.DataView(databar);
@@ -152,6 +160,7 @@ function dashboardDetails() {
 				//var chart = new google.charts.BarChart(document.getElementById('top_x_div'));
 				chart.draw(view, options);
 			};
+			
 		},
 		error: function(e) {
 			console.log(e);

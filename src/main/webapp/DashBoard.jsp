@@ -40,8 +40,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script src="js/dashboard/dashboardAjaxCall.js"></script>
-
 <link rel="stylesheet" href="css/Responsive/responsive.css"
 	media="screen">
 
@@ -621,14 +619,14 @@ input[type=search]:focus {
 
 					<!-- <div class="card mt-5"> -->
 
-					<div class="container-fluid grid mt-5">
+					<div class="grid mt-5">
 						<div class="main">
 
 							<!-- <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid"> -->
 							<div id="cbp-vm" class="cbp-vm-view-grid">
 
 
-								<card class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a
+								<card class="col-md-4"> <a
 									class="dashboard-stat col-md-12"
 									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
 									href="PhaseList.jsp">
@@ -641,7 +639,7 @@ input[type=search]:focus {
 										of multiple waves.</div>
 								</a> </card>
 
-								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div class="col-md-4">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
 										href="waveList.jsp?waves=all">
@@ -656,7 +654,7 @@ input[type=search]:focus {
 
 								</div>
 
-								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+								<div class="col-md-4">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
 										href="OpportunityList.jsp">
@@ -850,8 +848,10 @@ input[type=search]:focus {
 							</div>
 							<div class="col-md-4">
 								<div class="card">
-									<div class="card-header"  id="card-header">Risk, Issues and Deadlines</div>
-									<div class="card-body"></div>
+									<div class="card-header" id="card-header">Risk, Issues and Deadlines</div>
+									<div class="card-body justify-content-center">
+										<div id="dataCountIssue"></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -883,7 +883,9 @@ input[type=search]:focus {
 							<div class="col-md-4">
 								<div class="card">
 									<div class="card-header" id="card-header">Data Characteristic</div>
-									<div class="card-body"></div>
+									<div class="card-body">
+									
+									</div>
 								</div>
 							</div>
 						</div>
@@ -1084,6 +1086,6 @@ $(document).ready(function() {
 	<script src="js/navigation/navigation.js"></script>
 	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
-	
+	<script src="js/dashboard/dashboardAjaxCall.js"></script>
 </body>
 </html>
