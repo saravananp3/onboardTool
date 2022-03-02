@@ -304,8 +304,9 @@ padding: 15px;
                                 <div class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font"style="margin-left:24px;">
 							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<!-- <p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p> -->
 								<li class="active"><span>1</span><i>Introduction</i></li>
 								<li><span>2</span><i>Legacy Application Info</i></li>
 								<li><span>3</span><i>Retention Details</i></li>
@@ -313,9 +314,8 @@ padding: 15px;
 								<li><span>5</span><i>Abbreviations</i></li>
 								<li><span>6</span><i>Revisions</i></li>
 								<li><span>7</span><i>Addendum</i></li>
-								<li><span>8</span><i>StakeHolders</i></li>
-								<li><span>9</span><i>Review</i></li>
-								<li><span>10</span><i>Approval</i></li>
+								<li><span>8</span><i>Review</i></li>
+								<li><span>9</span><i>Approval</i></li>
 						
 							</ul>
 						</div>

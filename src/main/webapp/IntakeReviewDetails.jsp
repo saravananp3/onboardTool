@@ -655,7 +655,7 @@ font-size:12px;
                    											  <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" id = "ReviewNextBtn" 
                    											  	onclick="location.href='IntakeApproval.jsp';" style="color:#fff;">Next</a> -->	
                    											  	<button type="button" class="btn btn-primary"
-                                                                        onclick="location.href='IntakeApproval.jsp';" id="next" disabled="true" >Next</button>
+                                                                        onclick="location.href='IntakeApproval.jsp';" id="next" disabled="false" >Next</button>
 														</div>
 													</div>
                                                    
