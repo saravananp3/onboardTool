@@ -544,7 +544,7 @@ font-size:12px;
 					<br/>
                                     <div class="form-wizard-header">
 											<p style="font-size: 14px;">Fill all the required fields to go next step</p>
-											<ul class="list-unstyled form-wizard-steps clearfix">
+											<ul class="list-unstyled form-wizard-steps clearfix" onclick="location.href='IntakeReviewDetails.jsp';">
 												<li class="activated" ><span>1</span><i>Opportunity</i></li>
 												<li class="activated"><span>2</span><i>Triage</i></li>
 												<li class="activated"><span>3</span><i>Triage Summary</i></li>

@@ -304,7 +304,7 @@ padding: 15px;
                                 <div class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix nav-font"style="margin-left:24px;">
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font"style="margin-left:24px;"onclick="location.href='archiveRequirementsLegacyDetails.jsp';">
 							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
 							<!-- <p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p> -->
 								<li class="active"><span>1</span><i>Introduction</i></li>
