@@ -193,6 +193,7 @@
                                         <div id="collapse3" class="panel-collapse ">
                                             <div class="card-body">
                                             <div id="inputFieldsSummary">
+                                            
                                                     <input type='hidden' class='form-control' size='35' id="Json_sample_id" placeholder='' name="Json_Sample" value=""/> </div>
                                                                                               
                                                    <!--  <div class="col-md-12">

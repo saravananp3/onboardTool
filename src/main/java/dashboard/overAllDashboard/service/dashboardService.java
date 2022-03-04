@@ -564,8 +564,6 @@ public class dashboardService {
                 String type = rs.getString("type");
                 String resolved = rs.getString("resolved");
                 String expDtae = rs.getString("exp_date");
-                System.out.println("ye hai dekho  :" +" "+expDtae);
-                System.out.println("ye hai dekho  :" +" "+todaysdate);
                 if (type.equals("ISSUE")&& !resolved.equals("COMPLETED")&& !resolved.equals("CANCELLED")) {
                     issueCount++;
                 }
@@ -577,9 +575,18 @@ public class dashboardService {
                 }
             }
            
-            jsonObject.addProperty("issueCount", issueCount);
-            jsonObject.addProperty("riskCount", riskCount);
-            jsonObject.addProperty("deadlineCount", deadlineCount);
+            if(issueCount<10) {
+                String issue = String.format("%02d", issueCount);
+                jsonObject.addProperty("issueCount", issue);
+            }
+            if(riskCount<10) {
+                String risk = String.format("%02d", riskCount);
+                jsonObject.addProperty("riskCount", risk);
+            }
+            if(deadlineCount<10) {
+                String deadline = String.format("%02d", deadlineCount);
+                jsonObject.addProperty("deadlineCount", deadline);
+            }
             jsonArray.add(jsonObject);
             rs.close();
             st.close();

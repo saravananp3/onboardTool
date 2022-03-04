@@ -101,7 +101,7 @@ function dashboardDetails() {
 				var pieData = google.visualization.arrayToDataTable(pieChartData);
 				var pieOptions = {
 					/*title: 'Application',*/
-					colors: ['#e7f8f6', '#439f95', '#20336e']
+					colors: ['#83ddd4', '#1d88aa', '#1f346d']
 				};
 				var pieChart = new google.visualization.PieChart(document.getElementById('pieChartId'));
 				pieChart.draw(pieData, pieOptions);
@@ -139,21 +139,21 @@ function dashboardDetails() {
 			
 			$.each(data[7], function(key, value) {
 				var t_row = "<div class='row'>" 
-				+ "<div class='p-2 border border-danger col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Risks</div>"
-				+ "<div class='p-2 border border-danger col-md-4' style='background-color: Red; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.riskCount + "</div>"
+				+ "<div class='p-2 border border-danger col-md-8' style='background-color: #f5dfe3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Risks</div>"
+				+ "<div class='p-2 border border-danger col-md-4' style='background-color: #f80206; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.riskCount + "</div>"
 				+ "</div>" + 
 				 "<div class='row mt-4'>" 
-				+ "<div class='p-2 border border-warning col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Issues</div>"
-				+ "<div class='p-2 border border-warning col-md-4' style='background-color: Orange; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.issueCount + "</div>"
+				+ "<div class='p-2 border border-warning col-md-8' style='background-color: #f3eae3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Issues</div>"
+				+ "<div class='p-2 border border-warning col-md-4' style='background-color: #fe7800; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.issueCount + "</div>"
 				+ "</div>" +
 				 "<div class='row mt-4'>" 
-				+ "<div class='p-2 border border-primary col-md-8' style='background-color: #d1e1f3;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Deadlines</div>"
-				+ "<div class='p-2 border border-primary col-md-4' style='background-color: Blue; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.deadlineCount + "</div>"
+				+ "<div class='p-2 border border-primary col-md-8' style='background-color: #cedde6;border-radius: 4px; width:85%; margin-left: 10px; font-size: 16px; font-weight: 500;'>Deadlines</div>"
+				+ "<div class='p-2 border border-primary col-md-4' style='background-color: #1464c5; width:10%;text-align:center;color:#fff; font-size: 16px;'>" + value.deadlineCount + "</div>"
 				+ "</div>";
 				$('#dataCountIssue').append(t_row);
 			});
 			
-			$.each(data[8], function(key, value) {
+			/*$.each(data[8], function(key, value) {
 				var list = "<li><div data-percentage='" + value.db2Percent + "' class='bar'></div><span>DB2</span></li>"
 					+ "<li><div data-percentage='" + value.msSqlPercent + "' class='bar'></div><span>MS SQL</span></li>"
 					+ "<li><div data-percentage='" + value.mySqlPercent + "' class='bar'></div><span>MySQL</span></li>"
@@ -167,7 +167,7 @@ function dashboardDetails() {
 						'height': percentage,
 					}, 1000);
 				})
-			});
+			})
 			
 			google.charts.load("current", { packages: ['corechart'] });
 			google.charts.setOnLoadCallback(drawChart);
@@ -199,6 +199,48 @@ function dashboardDetails() {
 				var chart = new google.visualization.ColumnChart(document.getElementById("columnChartId"));
 				chart.draw(view, options);
 			});
+			*/
+			
+			$.each(data[8],function(key,value){
+  	var perfix="<li style='font-size: 11px;'><span>100%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>90%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>80%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>70%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>60%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>50%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>40%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>30%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>20%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>10%</span><hr></li>"+
+                "<li style='font-size: 11px;'><span>0%</span><hr></li>";
+                /* var perfix="<li style='font-size: 12px;'><span>100%</span></li>"+
+                "<li style='font-size: 12px;'><span>90%</span></li>"+
+                "<li style='font-size: 12px;'><span>80%</span></li>"+
+                "<li style='font-size: 12px;'><span>70%</span></li>"+
+                "<li style='font-size: 12px;'><span>60%</span></li>"+
+                "<li style='font-size: 12px;'><span>50%</span></li>"+
+                "<li style='font-size: 12px;'><span>40%</span></li>"+
+                "<li style='font-size: 12px;'><span>30%</span></li>"+
+                "<li style='font-size: 12px;'><span>20%</span></li>"+
+                "<li style='font-size: 12px;'><span>10%</span><hr></li>"+
+                "<li style='font-size: 12px;'><span>0%</span></li>";*/
+                $('#numbers').append(perfix);
+                $("li span hr").css("display", "inline-block");
+                $("hr").css({"width": "335px", "border": "red", "margin-left": "50px", "position": "relative", "top": "20px"});
+    var list="<li><div data-percentage='"+ value.db2Percent +"' class='bar'></div><span style='font-size: 11px;'>DB2</span></li>"
+            +"<li><div data-percentage='"+ value.msSqlPercent +"' class='bar'></div><span style='font-size: 11px;'>MS SQL</span></li>"
+            +"<li><div data-percentage='"+ value.mySqlPercent +"' class='bar'></div><span style='font-size: 11px;'>MySQL</span></li>"
+            +"<li><div data-percentage='"+ value.oraclePercent +"' class='bar'></div><span style='font-size: 11px;'>Oracle</span></li>"
+            +"<li><div data-percentage='"+ value.sybasePercent +"' class='bar'></div><span style='font-size: 11px;'>Sybase</span></li>"
+            +"<li><div data-percentage='"+ value.otherPercent +"' class='bar'></div><span style='font-size: 11px;'>Other</span></li>";
+            $('#bars').append(list);
+          $("#bars li .bar").each(function(key, bar){
+            var percentage = $(this).data('percentage');
+            $(this).animate({
+              'height':percentage,
+            }, 1000);
+          })
+        });
 			
 			function drawBarChart() {
 				var databar = google.visualization.arrayToDataTable(barChartData);
@@ -237,19 +279,19 @@ $(document).ready(function() {
 	var data = [
 		{
 			value: 27,
-			color: "#1565c0",
+			color: "#486ccc",
 			highlight: "lightskyblue",
 			label: "Yet To Start"
 		},
 		{
 			value: 33,
 			color: "#d1e1f3",
-			highlight: "yellowgreen",
+			highlight: "#82aadd",
 			label: "In Progress"
 		},
 		{
 			value: 40,
-			color: "#d2d6e2",
+			color: "#aeb8c1",
 			highlight: "darkorange",
 			label: "Completed"
 		}
@@ -270,7 +312,7 @@ $(document).ready(function() {
 	var data = [
 		{
 			value: 27,
-			color: "#1565c0",
+			color: "#486ccc",
 			highlight: "lightskyblue",
 			label: "Yet To Start"
 		},
@@ -282,7 +324,7 @@ $(document).ready(function() {
 		},
 		{
 			value: 40,
-			color: "#d2d6e2",
+			color: "#aeb8c1",
 			highlight: "darkorange",
 			label: "Completed"
 		}

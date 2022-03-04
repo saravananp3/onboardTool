@@ -389,5 +389,89 @@ body {
     color: #1565c0;
 }
 
+/* <!-- ========== Data Characteritics for Dashboard ========== --> */
+
+
+    #chart {
+  width: 98%;
+  height: 400px;
+  /* margin-top:50px; */
+  margin-left: 10px;
+  display: flex;
+    /* padding: 40px; */
+}
+#chart #numbers {
+  height: 100%;
+  /* font-weight: bold; */
+  width: 50px;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  float: left;
+}
+#chart #numbers li:first-child { margin-top:15px;}
+#chart #numbers li {
+  text-align: right;
+  padding-right: 1em;
+  list-style: none;
+  height: 15px;
+  position: relative;
+ /*  bottom: 30px; */
+}
+#chart #numbers li:last-child { height: 18px; }
+#chart #numbers li span {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
+#chart #bars {
+  display: inline-block;
+  background: #fff;
+  width: 600px;
+ /*  height: 300px;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 0 0 0 #444; */
+  margin-top: 25px;
+}
+
+
+#chart #bars li {
+  display: table-cell;
+ /*    padding: 20px; */
+  width: 100px;
+  height: 300px;
+  margin: 0;
+  text-align: center;
+  position: relative;
+}
+#chart #bars li .bar {
+  display: block;
+  width: 40px;
+ /*  font-weight:bold; */
+  margin-left: 10px;
+  background: #486ccc;
+  position: absolute;
+  bottom: 0;
+}
+#chart #bars li .bar:hover {
+  background: #5AE;
+  cursor: pointer;
+}
+#chart #bars li .bar:hover:before {
+  color: #000;
+  content: attr(data-percentage);
+  position: relative;
+  bottom: 20px;
+}
+#chart #bars li span {
+  width: 100%;
+  position: absolute;
+  bottom: -2em;
+  left: 0;
+  text-align: center;
+}
+
+
 
 

@@ -1,3 +1,4 @@
+package Login;
 
 
 import java.io.IOException;
@@ -15,13 +16,13 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Login_1
  */
-public class Login_1 extends HttpServlet {
+public class LoggedIn_1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login_1() {
+    public LoggedIn_1() {
         super();
         // TODO Auto-generated constructor stub
     }

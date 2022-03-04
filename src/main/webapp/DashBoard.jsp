@@ -43,10 +43,6 @@
 <link rel="stylesheet" href="css/Responsive/responsive.css"
 	media="screen">
 
-
-
-
-
 <style type="text/css">
 body {
 	background: #fff;
@@ -442,8 +438,10 @@ input[type=search]:focus {
 	font-weight: 600;
     font-size: 16px;
     color: #141515;
-
 }
+
+
+ 
 </style>
 
 </head>
@@ -884,13 +882,18 @@ input[type=search]:focus {
 								<div class="card">
 									<div class="card-header" id="card-header">Data Characteristic</div>
 									<div class="card-body">
-									<div id="columnChartId"></div>
+									<div id="chart">
+                                        <ul id="numbers">
+                                        </ul>
+                                        <ul id="bars">
+                                        </ul>
+                                    </div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
+<!-- 
 					<div class="col-md-12 mt-3">
 						<div class="row">
 							<div class="col-md-8">
@@ -908,7 +911,7 @@ input[type=search]:focus {
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 
@@ -1082,10 +1085,12 @@ $(document).ready(function() {
       var chart = new google.visualization.ColumnChart(document.getElementById("columnChartId"));
       chart.draw(view, options);
   }
+    
   </script>
 	<script src="js/navigation/navigation.js"></script>
 	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
 	<script src="js/dashboard/dashboardAjaxCall.js"></script>
+	
 </body>
 </html>
