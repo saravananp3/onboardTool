@@ -612,15 +612,17 @@ font-size:12px;
                                                                 <button type="submit" class="btn btn-primary" id="save">Save</button>
                                                                 <!-- <button type = "button"class="btn btn-info" id = "NextStakeHolder"  style="display:none;">Next</button> -->
 
-																	<button
+																	<!-- <button
 																		class="form-wizard-next-btn float-right btn-info btn btn-info"
 																		onclick="location.href='IntakeReviewDetails.jsp';"
 																		id="next" disabled="true">
 
 																		<a href="javascript:;" style="color: #fff;">Next</a>
 
-																	</button>
-																	
+																	</button> -->
+																	<button type="button" class="btn btn-primary"
+                                                                        onclick="location.href='IntakeReviewDetails.jsp';" id="next" disabled="true" >Next</button>
+                                                                        
 																	<button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-bs-toggle="modal" data-bs-target="#EditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-bs-toggle="modal" data-bs-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>

@@ -82,7 +82,7 @@
 							in as <br/><b>admin</b></a></li>
 					<hr/>
 					<li><a class="dropdown-item li-align" href="#" id="textAlign"
-						onclick="location.href='Login_1.jsp';"><i
+						onclick="location.href='Login.jsp';"><i
 							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
 				</ul>
 			</div>

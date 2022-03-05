@@ -652,8 +652,10 @@ font-size:12px;
 															 <button type="button" id="button_id" name="button_id" class="btn btn-primary">
                         										Request Sign
                    											 </button>
-                   											  <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" id = "ReviewNextBtn" 
-                   											  	onclick="location.href='IntakeApproval.jsp';" style="color:#fff;">Next</a>	
+                   											  <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" id = "ReviewNextBtn" 
+                   											  	onclick="location.href='IntakeApproval.jsp';" style="color:#fff;">Next</a>	 -->
+                   											  <button type="button" class="btn btn-primary"
+                                                                        onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn" disabled="true" >Next</button>
 														</div>
 													</div>
                                                    

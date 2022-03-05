@@ -142,7 +142,8 @@ body {
         /.container-fluid
     </nav > -->
 		<%@include file="Nav-Bar.jspf"%>
-		<nav class="nav nav-height-70 nav-font" id="bg-color" style="font-size: 14px;">
+		<nav class="nav nav-height-70 nav-font" id="bg-color"
+			style="font-size: 14px;">
 			<div class="container-fluid" id="container-fluid-margin">
 				<div class="row" id="d3s-mt-10">
 					<div class="col-lg-12 col-md-12">
@@ -165,7 +166,8 @@ body {
 									<form action="" method="post" role="form">
 										<br /> <br />
 										<div class="form-wizard-header nav-font">
-											<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+											<p style="font-size: 14px;">Fill all the required fields
+												to go next step</p>
 											<ul class="list-unstyled form-wizard-steps clearfix">
 												<li class="active"><span>1</span><i>Opportunity</i></li>
 												<li><span>2</span><i>Triage</i></li>
@@ -208,7 +210,8 @@ body {
 																				id="add" href="#" data-bs-toggle="modal"
 																				data-bs-target="#AddPopUp"> <i
 																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-																						</i>Add</a></li>
+																				</i>Add
+																			</a></li>
 																			<li><a class="dropdown-item dropDown-font"
 																				id="Edit" href="#"><i class="fas fa-edit"
 																					aria-hidden="true">&nbsp;&nbsp; </i>Edit</a></li>
@@ -221,7 +224,7 @@ body {
 																	<button type="submit" class="btn btn-primary"
 																		id="create">Save</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-																	<button
+																	<!-- <button
 																		class="form-wizard-next-btn float-right btn-info btn btn-info"
 																		onclick="location.href='IntakeTriage.jsp';" id="next"
 																		disabled="true">
@@ -229,7 +232,10 @@ body {
 																		<a href="javascript:;"  style="color: #fff;">Next</a>
 
 																	</button>
-
+ -->
+																	<button type="button" class="btn btn-primary"
+																		onclick="location.href='IntakeTriage.jsp';" id="next"
+																		disabled="true">Next</button>
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn"
 																		data-bs-toggle="modal" data-bs-target="#EditPopUp"
@@ -304,8 +310,8 @@ body {
 													<div class="modal-header">
 														<h5 class="modal-title" id="exampleModalLabel">Opportunity
 															Template</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal"
-															aria-label="Close"></button>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
 														<form name="myForm">
@@ -578,7 +584,7 @@ body {
 																		<label class="control-label" for="opportunity">Data
 																			Type</label>
 																	</div>
-																	
+
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
 																			id="date_type_temp1" name="date_type_temp">
@@ -660,7 +666,8 @@ body {
 															data-bs-dismiss="modal">Close</button>
 														<button type="button"
 															class="btn btn-primary submitDisable"
-															onclick="validateForm()" data-bs-dismiss="modal">Add Template</button>
+															onclick="validateForm()" data-bs-dismiss="modal">Add
+															Template</button>
 													</div>
 												</div>
 											</div>
@@ -905,23 +912,23 @@ body {
 
 
 	<script>
-    $(document).ready(function(){
-    	$(window).scroll(function () {
-    			if ($(this).scrollTop() > 50) {
-    				$('#back-to-top').fadeIn();
-    			} else {
-    				$('#back-to-top').fadeOut();
-    			}
-    		});
-    		// scroll body to 0px on click
-    		$('#back-to-top').click(function () {
-    			$('body,html').animate({
-    				scrollTop: 0
-    			}, 400);
-    			return false;
-    		});
-    });
-    </script>
+		$(document).ready(function() {
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 50) {
+					$('#back-to-top').fadeIn();
+				} else {
+					$('#back-to-top').fadeOut();
+				}
+			});
+			// scroll body to 0px on click
+			$('#back-to-top').click(function() {
+				$('body,html').animate({
+					scrollTop : 0
+				}, 400);
+				return false;
+			});
+		});
+	</script>
 
 
 	<!-- ========== COMMON JS FILES ========== -->
@@ -955,7 +962,10 @@ body {
 	<script id="scripttag"></script>
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link
+		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet">
 </body>
 </html>
