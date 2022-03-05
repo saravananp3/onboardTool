@@ -23,7 +23,7 @@ $("#AssessmentSaveBtn").click(function(e){
 	CheckMandatoryContractInfo();
 	CheckDependencyFields();
 	console.log("Assessment Save json Array :",JsonArray);
-	if(checkAllMandatoryFields)
+	if(checkAllMandatoryFields!=true)
 	{
 		//alert("IntakeAssessment Save");
 		var JsonString = JSON.stringify(JsonArray);

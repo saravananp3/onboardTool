@@ -39,7 +39,7 @@ $(document).ready(function(){
 	        					"<div class='drophide'>"+
 	        					"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 	        					"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
-	        					"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
+	        					"<a class = 'options' style = 'text-align:left;' href='#' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>Edit</a>"+
 	        					"<a class = 'options addClass' style = 'text-align:left;"+optionWave+"' href='#'>Add to Wave</a>"+
 	        					"<a class = 'options deleteClass' style = 'text-align:left;' href='#'>Delete</a>"+
 	        					"</div>"+

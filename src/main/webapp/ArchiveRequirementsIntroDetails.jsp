@@ -439,7 +439,7 @@ padding: 15px;
 												  
 												 <div class="col-12" align="end">
 												 <button class="btn btn-secondary" type="button" id="AddRoleResponse">Add</button>
-												 <button type="submit" class="btn btn-primary" id="saveRoleResponse">Save</button>
+												 <button type="submit" class="btn btn-primary" id="saveRoleResponse" >Save</button>
 												 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="multiCollapseExample2" style="color: #fff;">Next</button>
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        			</div>
@@ -492,13 +492,17 @@ padding: 15px;
 							         
 							     	<br/>
                                      
-                                     
+           <!--                           <script>
+        function nextbtn() {
+            document.getElementById("nextbt").disabled = false;
+        }
+    </script> -->
                                         <div class="col-md-12">
                                         	<br/>
                                         
                                        <div class="col-12 dropup" align="end">
                                        
-                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true">
+                                      <button class="btn btn-primary" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true" >
                                                                  <a href="javascript:;">Next</a></button>
                                                                  
                                      

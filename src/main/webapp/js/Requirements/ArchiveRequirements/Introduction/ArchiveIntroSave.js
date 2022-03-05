@@ -194,7 +194,7 @@ var typingTimer;                //timer identifier
 		}
 	function checkNextButton()
 	{
-		if(checkScope&&checkRoles)
+		if(checkRoles)
 			$("#rolesNext").attr('disabled',false);	
 		else
 			$("#rolesNext").attr('disabled',true);
