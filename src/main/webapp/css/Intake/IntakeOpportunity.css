@@ -121,7 +121,7 @@ padding-right: 0px;
 }
 .form-wizard .form-group {
   position: relative;
-  margin: 25px 0;
+ /*  margin: 25px 0; */
 }
 .form-wizard .wizard-form-text-label {
   position: absolute;

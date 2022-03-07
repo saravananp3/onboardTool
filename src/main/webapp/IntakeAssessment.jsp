@@ -1436,11 +1436,13 @@ crossorigin="anonymous"></script>
                         </div>
                     </div>
                 </div><br/>
+                <div style="margin-top:-20px;">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Label:</label>
                             <input type="text" class="form-control" id="AssessLabel"  name="AssessLabel" required>
+                        </div>
                         </div>
                     </div>
                 </div><br/>
@@ -1456,6 +1458,7 @@ crossorigin="anonymous"></script>
                         </div>
                     </div>
                 </div> -->
+                <div style="margin-top:-20px;">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
@@ -1467,6 +1470,7 @@ crossorigin="anonymous"></script>
                                 <option value="Dropdown">Dropdown</option>
                                 <option value="Datepicker">Datepicker</option>
                             </select>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -1520,6 +1524,7 @@ crossorigin="anonymous"></script>
                         </div>
                     </div>
                 </div>
+                <div style="margin-top:-40px;">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
@@ -1528,6 +1533,7 @@ crossorigin="anonymous"></script>
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -41,7 +41,7 @@
 <!-- <script src="js/IntakeDetails/IntakeOpportunity/IntakeOpportunity.js"></script> -->
 <link rel="stylesheet" href="css/Intake/IntakeOpportunity.css"
 	media="screen">
-	
+
 <!-- ========== BootstrapV5 ========== -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -170,7 +170,8 @@ body {
 									<form action="" method="post" role="form">
 										<br /> <br />
 										<div class="form-wizard-header nav-font">
-											<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+											<p style="font-size: 14px;">Fill all the required fields
+												to go next step</p>
 											<ul class="list-unstyled form-wizard-steps clearfix">
 												<li class="activated"><span>1</span><i>Introduction</i></li>
 												<li class="active"><span>2</span><i>Triage Info</i></li>
@@ -186,7 +187,8 @@ body {
 											style="border-style: none">
 											<div class="tab-pane" role="tabpanel" id="step2">
 												<div class="card-container card">
-													<div class="card-header" id="cd-header">Triage Information</div>
+													<div class="card-header" id="cd-header">Triage
+														Information</div>
 													<div id="collapse2" class="panel-collapse ">
 														<div class="card-body">
 															<div id="inputValue">
@@ -208,20 +210,22 @@ body {
 																			class="btn btn-secondary dropdown-toggle"
 																			id="dropdownMenuButton1" data-bs-toggle="dropdown"
 																			aria-expanded="false">Actions</button>
-																		
+
 																		<ul class="dropdown-menu"
 																			aria-labelledby="dropdownMenuButton1">
 																			<li><a class="dropdown-item dropDown-font"
 																				id="add" href="#" data-bs-toggle="modal"
 																				data-bs-target="#AddTriagePopUp"> <i
 																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-																						</i>Add</a></li>
+																				</i>Add
+																			</a></li>
 																			<li><a class="dropdown-item dropDown-font"
 																				id="EditTriage" href="#"><i class="fas fa-edit"
 																					aria-hidden="true">&nbsp;&nbsp; </i>Edit</a></li>
 																			<li><a class="dropdown-item dropDown-font"
-																				id="DeleteTriage" href="#"><i class="fas fa-trash"
-																					aria-hidden="true">&nbsp;&nbsp;&nbsp; </i>Delete</a></li>
+																				id="DeleteTriage" href="#"><i
+																					class="fas fa-trash" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+																				</i>Delete</a></li>
 
 																		</ul>
 																	</div>
@@ -236,11 +240,13 @@ body {
 
 																	</button> -->
 																	<button type="button" class="btn btn-primary"
-                                                                        onclick="location.href='IntakeTriageSummary.jsp';" id="next" disabled="true" >Next</button>
+																		onclick="location.href='IntakeTriageSummary.jsp';"
+																		id="next" disabled="true">Next</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeTriageSummary.jsp';">Next</a> -->
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn1"
-																		data-bs-toggle="modal" data-bs-target="#EditTriagePopUp"
+																		data-bs-toggle="modal"
+																		data-bs-target="#EditTriagePopUp"
 																		style="display: none;">Edit PopUp</button>
 																	<button type="button"
 																		class="btn btn-primary pull-right"
@@ -312,9 +318,10 @@ body {
 											<div class="modal-dialog modal-lg" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Opportunity Template</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal"
-															aria-label="Close"></button>
+														<h5 class="modal-title" id="exampleModalLabel">Opportunity
+															Template</h5>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
 														<form name="myForm">
@@ -587,7 +594,7 @@ body {
 																		<label class="control-label" for="opportunity">Data
 																			Type</label>
 																	</div>
-																	
+
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
 																			id="date_type_temp1" name="date_type_temp">
@@ -669,22 +676,23 @@ body {
 															data-bs-dismiss="modal">Close</button>
 														<button type="button"
 															class="btn btn-primary submitDisable"
-															onclick="validateForm()" data-bs-dismiss="modal">Add Template</button>
+															onclick="validateForm()" data-bs-dismiss="modal">Add
+															Template</button>
 													</div>
 												</div>
 											</div>
 										</div>
 										<!-- Triage Template modal-->
-										<div class="modal triage-example-modal-lg"
-											id="myFormModal" tabindex="-1" role="dialog"
+										<div class="modal triage-example-modal-lg" id="myFormModal"
+											tabindex="-1" role="dialog"
 											aria-labelledby="myLargeModalLabel" aria-hidden="true">
 											<div class="modal-dialog modal-lg" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
 														<h5 class="modal-title" id="exampleModalLabel">Triage
 															Template</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal"
-															aria-label="Close"></button>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
 														<form name="myForm">
@@ -1353,7 +1361,8 @@ body {
 															data-bs-dismiss="modal">Close</button>
 														<button type="button"
 															class="btn btn-primary submitDisable"
-															onclick="validateTriage()" data-bs-dismiss="modal">Add Template</button>
+															onclick="validateTriage()" data-bs-dismiss="modal">Add
+															Template</button>
 													</div>
 												</div>
 											</div>
@@ -1480,7 +1489,8 @@ body {
 															data-bs-dismiss="modal">Close</button>
 														<button type="button"
 															class="btn btn-primary SubmitDisableTriSumm"
-															onclick="validateTriageSummary()" data-bs-dismiss="modal">Add Template</button>
+															onclick="validateTriageSummary()" data-bs-dismiss="modal">Add
+															Template</button>
 													</div>
 												</div>
 											</div>
@@ -1606,8 +1616,7 @@ body {
 																		</div>
 																	</div>
 																</div>
-																<br />
-																<br />
+																<br /> <br />
 															</div>
 														</form>
 													</div>
@@ -1622,11 +1631,13 @@ body {
 										</div>
 										<!-------Triage Add popup---------->
 										<div class="modal" id="AddTriagePopUp" tabindex="-1"
-											aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+											aria-labelledby="exampleModalLabel" aria-hidden="true"
+											role="dialog">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Add Input Fields</h5>
+														<h5 class="modal-title" id="exampleModalLabel">Add
+															Input Fields</h5>
 														<button type="button" class="btn-close"
 															data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
@@ -1682,7 +1693,7 @@ body {
 																				name="TriageNumber">
 																		</div>
 																	</div>
-																
+
 																</div>
 																<div class="row TriageHideField" id="TriageRadio"
 																	style="display: none;">
@@ -1694,7 +1705,7 @@ body {
 																				name="TriageRadioNumber">
 																		</div>
 																	</div>
-																	
+
 																</div>
 																<div class="row TriageHideField" id="TriageDrop"
 																	style="display: none;">
@@ -1705,7 +1716,7 @@ body {
 																				id="TriageDropNumber" name="TriageDropNumber">
 																		</div>
 																	</div>
-																
+
 																</div>
 																<div class="row">
 																	<div class="form-group">
@@ -1729,6 +1740,7 @@ body {
 																		</div>
 																	</div>
 																</div>
+																<div style="margin-top:-40px">
 																<div class="row">
 																	<div class="form-group">
 																		<div class="col-lg-8">
@@ -1741,14 +1753,15 @@ body {
 																		</div>
 																	</div>
 																</div>
-																
-															
+ 																</div>
+
 															</div>
 														</form>
 													</div>
 													<div class="modal-footer">
 														<button type="button" id="submitTriage"
-															class="btn btn-primary" data-bs-dismiss="modal">Add Fields</button>
+															class="btn btn-primary" data-bs-dismiss="modal">Add
+															Fields</button>
 														<button type="button" class="btn btn-secondary"
 															data-bs-dismiss="modal">Close</button>
 													</div>
@@ -1879,8 +1892,7 @@ body {
 																		</div>
 																	</div>
 																</div>
-																<br />
-																<br />
+																<br /> <br />
 															</div>
 														</form>
 													</div>
@@ -2039,8 +2051,7 @@ body {
 																		</div>
 																	</div>
 																</div>
-																<br />
-																<br />
+																<br /> <br />
 															</div>
 														</form>
 													</div>
@@ -2281,9 +2292,8 @@ body {
 																	</div>
 																</div>
 															</div>
-															<br />
-															<input type="text" id="TriSummSeqNum" name="" value=""
-																style="display: none;">
+															<br /> <input type="text" id="TriSummSeqNum" name=""
+																value="" style="display: none;">
 														</form>
 													</div>
 													<div class="modal-footer">
@@ -2321,10 +2331,10 @@ body {
 																	</div>
 																</div>
 															</div>
-															<br />
-															<input type="text" id="AssessSeqNum" name="" value=""
-																style="display: none;"> <input type="text"
-																id="EditSection" name="" value="" style="display: none;">
+															<br /> <input type="text" id="AssessSeqNum" name=""
+																value="" style="display: none;"> <input
+																type="text" id="EditSection" name="" value=""
+																style="display: none;">
 														</form>
 													</div>
 													<div class="modal-footer">
@@ -2484,23 +2494,23 @@ body {
 
 
 	<script>
-    $(document).ready(function(){
-    	$(window).scroll(function () {
-    			if ($(this).scrollTop() > 50) {
-    				$('#back-to-top').fadeIn();
-    			} else {
-    				$('#back-to-top').fadeOut();
-    			}
-    		});
-    		// scroll body to 0px on click
-    		$('#back-to-top').click(function () {
-    			$('body,html').animate({
-    				scrollTop: 0
-    			}, 400);
-    			return false;
-    		});
-    });
-    </script>
+		$(document).ready(function() {
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 50) {
+					$('#back-to-top').fadeIn();
+				} else {
+					$('#back-to-top').fadeOut();
+				}
+			});
+			// scroll body to 0px on click
+			$('#back-to-top').click(function() {
+				$('body,html').animate({
+					scrollTop : 0
+				}, 400);
+				return false;
+			});
+		});
+	</script>
 
 
 
@@ -2554,19 +2564,19 @@ body {
 		src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
 	<script>
-      var app = angular.module("btn", []);
+		var app = angular.module("btn", []);
 
-      app.controller("MainCtrl", function($scope) {
-          
+		app.controller("MainCtrl", function($scope) {
 
-        
-      });
-
-      </script>
+		});
+	</script>
 
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link
+		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet">
 </body>
 </html>

@@ -661,7 +661,7 @@ padding: 15px;
                 <input type="text" id="Legacyappln_name" name="appln_name" value="" style="display:none;">
                 <input type="text" id="Legacyservlet_name" name="servlet_name" value="" style="display:none;">  
 
-             
+                <div style="margin-top:-20px;">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
@@ -673,6 +673,7 @@ padding: 15px;
                                 <option value="Dropdown">Dropdown</option>
                                 <option value="Datepicker">Datepicker</option>
                             </select>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -726,6 +727,7 @@ padding: 15px;
                         </div>
                     </div>
                 </div>
+                <div style="margin-top:-40px;">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">

@@ -624,6 +624,7 @@
                         </div>
                     </div>
                 </div> -->
+                <div style="margin-top:-20px;">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
@@ -635,6 +636,7 @@
                                 <option value="Dropdown">Dropdown</option>
                                 <option value="Datepicker">Datepicker</option>
                             </select>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -688,6 +690,7 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin-top:-40px;">
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
@@ -697,6 +700,7 @@
                                 <option>No</option>
                             </select>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <br/><br/>
