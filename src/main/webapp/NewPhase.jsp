@@ -277,11 +277,10 @@ li a.alignCenter {
 													<div class="modal-dialog" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
-																<h5 class="modal-title" id="exampleModalLabel">Delete Field</h5>
-																<button type="button" id="delete_close" class="close"
-																	data-bs-dismiss="modal" aria-label="Close">
-																	<span aria-hidden="true">&times;</span>
-																</button>
+																<h5 class="modal-title" id="exampleModalLabel">Delete
+																	Field</h5>
+																<button type="button" class="btn-close"
+																	data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div class="modal-body">
 																<form name="DeleteForm">
@@ -570,16 +569,16 @@ li a.alignCenter {
 	</div>
 	</div>
 
-	<div class="modal" id="addWavePopUp" tabindex="-1" role="dialog">
+	<div class="modal" id="addWavePopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
+
 				<div class="modal-header">
-					<h5 class="modal-title">Add Wave Name</h5>
-					<button type="button" id="addWaveEditClose" class="close"
-						data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+					<h5 class="modal-title" id="exampleModalLabel">Add Wave Name</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 				</div>
+				
 				<div class="modal-body">
 					<form name="PopUpform">
 						<div class="row">
@@ -607,7 +606,7 @@ li a.alignCenter {
 				</div>
 				<div class="modal-footer">
 
-					<button type="button" class="btn btn-default" data-dismiss="modal"
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
 						aria-label="Close">Cancel</button>
 
 				</div>

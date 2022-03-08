@@ -30,12 +30,16 @@
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/governance/governanceList/governanceList.js"></script>
+     <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+	<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
     <style type="text/css">
          body{
             background:#fff;
         }
 
-        .active{
+        .active1{
         background:#1565c0;
          }
       .page-title-div {
@@ -460,14 +464,16 @@ color:#fff;
             preparedStmt.execute();
         }%>
 
-
+<%
+    String uname=(String)details.getAttribute("username");
+    String role=(String)details.getAttribute("role");%>
 
 <!-- main wrapper -->
 <div class="main-wrapper">
 
 
      <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+   <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
@@ -478,9 +484,9 @@ color:#fff;
                    
 
 
-                </div>
+                </div> -->
                 <!-- /.navbar-header -->
-                <div class="tabs-content">
+                <%-- <div class="tabs-content">
                   <ul class="nav navbar-nav">
 		              <li><a href="OpportunityList.jsp">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
@@ -490,9 +496,7 @@ color:#fff;
 		              <li><a href="#">Compliance</a></li>
 		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
-                        <%
-                            String uname=(String)details.getAttribute("username");
-                            String role=(String)details.getAttribute("role");%>
+                        
 
                         <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
@@ -502,66 +506,79 @@ color:#fff;
                 
                 
                 
-            </div>
+            </div> --%>
             <!-- /.row -->
-            <nav class="navbar navbar-down">
+            <!-- <nav class="navbar navbar-down">
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
-                             <h5 class="title" style="color:#fff">Waves / Projects</h5>
+                             <h5 class="title" style="color:#fff">Waves / Projects</h5> -->
                               <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
-                        </div>
-                  
-                         <div class="col-md-12">
-                             <div class="row form-row">
-                               <div class="col-md-2 search-input">
-		                                <div class="row form-row">
-		                               <div class="col-md-1">
-		                               <i class="fa fa-search" aria-hidden="true"></i>
-		                               </div>
-		                               <div class="col-md-10">
-		                               <input class="form-control searchbox-input" id="myInput" type="text" placeholder="Search the application.."></div>
-		                               
-		                               </div>
-                               </div>
-                               
-                               
-                               <div class="col-md-6 ">
-		                                <div class="row ">
-		                               <div class="col-md-5">
-		                              <label class="col-md-2" id="apptype" title="Application Type"></label>
-		                               </div>
-                              
-                               </div>
-                               
-                               
-                               
-                              
-                              
-                               </div>
-                             </div>
-                        </div>
-                       
-                         <div class="container-fluid ">
-                         <ul class="nav navbar-nav" >
-						      <li ></li>
-						        <li ></li>
-		                   </ul>
-                         </div>
-                 
+                       <!--  </div> -->
 
-			
-                       
-                        <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                               
-                            </button>
-                        </div>
-                        <!-- /.col-sm-6 text-right -->
+		<%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-down-height" id="bg-color">
+			<div class="container-fluid" id="container-fluid-margin">
+				<div class="row" id="d3s-mt-20">
+					<div class="col-lg-12 col-md-12">
+						<h5 class="title" style="color: #fff">Waves / Projects</h5>
+						<!-- <p class="sub-title">Create and manage your Opportunities here</p> -->
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="row form-row">
+						<div class="col-md-2 search-input">
+							<div class="row form-row">
+								<div class="col-md-1">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</div>
+								<div class="col-md-10">
+									<input class="form-control searchbox-input" id="myInput"
+										type="text" placeholder="Search the application..">
+								</div>
 
-                    </div>
+							</div>
+						</div>
 
-                </div>
+
+						<div class="col-md-6 ">
+							<div class="row ">
+								<div class="col-md-5">
+									<label class="col-md-2" id="apptype" title="Application Type"></label>
+								</div>
+
+							</div>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+
+				<div class="container-fluid ">
+					<ul class="nav navbar-nav">
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+
+
+
+
+				<div class="col-sm-6 right-side">
+					<button type="button" class="btn btn-primary pull-right"
+						id="button" style="color: DodgerBlue;" name="newpr"
+						onclick="location.href='NewGovernance.jsp';">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+					</button>
+				</div>
+				<!-- /.col-sm-6 text-right -->
+
+			</div>
+	</div>
 			</nav>
         </div>
         <!-- /.container-fluid -->
@@ -766,6 +783,10 @@ $(document).ready(function() {
     }
 });
 </script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<script src="js/navigation/navigation.js"></script>
 
 </body>
 </html>

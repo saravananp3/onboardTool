@@ -41,6 +41,10 @@ function switchActiveModule() {
 			break;
 		case "PhaseList.jsp":
 		case "NewPhase.jsp":
+		case "waveList.jsp":
+		case "NewGovernance.jsp":
+		case "GovernanceList.jsp":
+		case "waveGrid.jsp":
 			selectiveActiveIcon(2);
 			break;
 		case "DashBoard.jsp":

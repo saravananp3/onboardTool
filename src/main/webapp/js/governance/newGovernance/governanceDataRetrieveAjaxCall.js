@@ -43,7 +43,7 @@ function governanceDataretrieveAjaxCall()
                 if(Type=="Text box")
                 {
                     var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
-                        "<label class='control-label' for='governance'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                        "<label class='control-label' for='governance'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
                         "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                         "</div>";
                     $('#inputFields').append(inputtext);
@@ -51,14 +51,14 @@ function governanceDataretrieveAjaxCall()
                 else if(Type=="Datepicker")
                 {
                 	var inputdate="<div class='form-group InputField' id='"+ColumnName+"_Row'>" +
-                        "<label class='control-label' for= 'governance'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
+                        "<label class='control-label' for= 'governance'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
                         "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";
                     $('#inputFields').append(inputdate);
                     }
                 else if(Type=="Dropdown")
                 {
-                	var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'governance'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                	var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'governance'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
                         "<select style = 'width:100%;' class ='form-control' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
@@ -76,7 +76,7 @@ function governanceDataretrieveAjaxCall()
                 else if(Type=="Check box")
                 {
                     var inputcheck= "<div class='form-group'>"+
-                        "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>";
+                        "<label class='control-label' for= 'formInput198'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -97,7 +97,7 @@ function governanceDataretrieveAjaxCall()
                 else if(Type=="Radio box")
                 {
                     var inputdrop= "<div class='form-group'>"+
-                        "<label class='control-label' for= 'formInput198'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;' '></span></div></label>";
+                        "<label class='control-label' for= 'formInput198'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>";
                     var Options=value.options;
                     var sub_option = Options.substring(0, Options.length - 1);
                     var option=Options.split(",");
@@ -134,7 +134,7 @@ function governanceDataretrieveAjaxCall()
                 else if(Type=="MultiselectDropdown")
                 {
                 	var Options=value.options;
-                	var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'governance'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>"+
+                	var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'governance'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
                     "<select multiple data-live-search='true' style = 'width:100%;' class ='form-control multiselect' id='"+ColumnName+"'name='"+ColumnName+"' multiple data-actions-box='true'>";
                 
                 var sub_option = Options.substring(0, Options.length - 1);

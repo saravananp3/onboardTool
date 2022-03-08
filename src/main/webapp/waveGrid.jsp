@@ -32,7 +32,10 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
  
-    
+    <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+		media="screen">
+	<link rel="stylesheet" href="css/Responsive/responsive.css"
+		media="screen">
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
 
@@ -45,9 +48,9 @@
    
    
     }
-   .active{
+ /*   .active{
         background:#1565c0;
-         }
+         } */
       .page-title-div {
 	 background:#1565c0;
 	  padding: 15px;
@@ -379,9 +382,12 @@ transition: width 2s, height 2s, transform 2s;
                 { */
 
     %>
+     <%
+         String uname=(String)details.getAttribute("username");
+         String role=(String)details.getAttribute("role");%>
 
     <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+    <%-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
@@ -400,9 +406,7 @@ transition: width 2s, height 2s, transform 2s;
 		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
 		    </ul>
 		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
-                        <%
-                            String uname=(String)details.getAttribute("username");
-                            String role=(String)details.getAttribute("role");%>
+                       
 
                         <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
@@ -412,9 +416,9 @@ transition: width 2s, height 2s, transform 2s;
                 
                 
                 
-            </div>
+            </div> --%>
             <!-- /.row -->
-            <nav class="navbar navbar-down">
+         <%--    <nav class="navbar navbar-down">
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
@@ -430,15 +434,36 @@ transition: width 2s, height 2s, transform 2s;
 			</nav>
         </div>
         <!-- /.container-fluid -->
-    </nav >
-    <div class="content-wrapper">
+    </nav > --%>
+    <%@include file="Nav-Bar.jspf"%> 
+             <nav class="nav nav-down-height" id="bg-color">
+        <div class="container-fluid" id="container-fluid-margin">
+            <div class="row" id="d3s-mt-20">
+                <div class="col-lg-12 col-md-12">
+                    <h5 class="title" style="color:#fff">Modules</h5>
+                    </div>
+                    </div>
+                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                        <%--  <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >><%=waveName%></p> --%>
+                      <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="sub-title" style="color: #fff">
+                            <a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+                                class="glyphicon glyphicon-home"></span> Home</a> >>
+                            <%=waveName%>
+                        </div>
+                       </div>
+                    </div>
+                </div>
+            </nav>
+    <div class="content-wrapper" style="margin-left: -8%;">
         <div class="content-container">
 
             <!-- ========== LEFT SIDEBAR ========== -->
             <div class="main-page">
                 
                 <!-- /.container-fluid -->
-              <div class="container-fluid" id="module_header">
+              <div class="container-fluid">
 
                 <%
                     if(roles.equals("admin")){
@@ -576,7 +601,7 @@ else if(roles.equals("ArchivalDeveloper"))
  <!-- Active Icon Color changes  -->
 <script>
 
-$(document).on('mouseenter','.active', function(){
+/* $(document).on('mouseenter','.active', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');
 		 
@@ -586,7 +611,7 @@ $(document).on('mouseenter','.active', function(){
 			
 		 $('.activeIcon').css('color','#fff');
 		 
-	 });
+	 }); */
 </script>
 
 <!-- ========== COMMON JS FILES ========== -->
@@ -626,6 +651,10 @@ $(document).on('mouseenter','.active', function(){
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<script src="js/navigation/navigation.js"></script>
 
 
 
