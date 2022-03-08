@@ -198,12 +198,11 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid ul li {
+	padding-top: 68px;
 	width: 20%;
 	text-align: center;
-	  box-shadow:5px 5px 5px 5px  #dbdbdb;
-	
-	display: inline-block;
-	
+	box-shadow:5px 5px 5px 5px  #dbdbdb;	
+	display: inline-block;	
 	vertical-align: top;
 }
 

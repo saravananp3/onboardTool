@@ -74,7 +74,7 @@
 	media="screen">
 <link rel="stylesheet" href="css/Responsive/responsive.css"
 	media="screen">
-	<style id="alignEnd"></style>
+<style id="alignEnd"></style>
 	
 </head>
 <body>

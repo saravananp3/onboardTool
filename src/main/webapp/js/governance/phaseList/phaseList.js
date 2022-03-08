@@ -316,6 +316,9 @@ function phaseListAjaxCall()
 							"</div>"+
 							"<h3 class='cbp-vm-title' style='display:none;'>"+value.apps+"</h3>"+
                              "<h3 class='left-col primary phaseHeadingName' name='name' contenteditable='false'>"+phaseName+"</h3>"+
+                             "<button type='button' class='btn btn-primary mt-2' name='btn' onClick=\"edit('"+phaseId+"','"+phaseName+"')\";>"+
+								"<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
+							 "</button>"+
                              
                               "</li>";
         	$('#ul_id').append(li_element);

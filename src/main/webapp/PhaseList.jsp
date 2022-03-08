@@ -197,12 +197,11 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid ul li {
+	padding-top: 68px;
 	width: 20%;
 	text-align: center;
-	  box-shadow:5px 5px 5px 5px  #dbdbdb;
-	
+	box-shadow:5px 5px 5px 5px  #dbdbdb;
 	display: inline-block;
-	
 	vertical-align: top;
 }
 
@@ -695,7 +694,7 @@ pointer-events:all;
 				</div>
 
 				<div class="col-lg-3 col-md-6">
-					<div class="row align-items-center">
+					<div class="row align-items-center flex-nowrap">
 						<div class="col-auto">
 							<label class="col-form-label" id="title">Application</label>
 						</div>

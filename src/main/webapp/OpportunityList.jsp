@@ -214,6 +214,7 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid ul li {
+	padding-top: 68px;
 	width: 23%;
 	text-align: center;
 	box-shadow: 5px 5px 5px 5px #dbdbdb;

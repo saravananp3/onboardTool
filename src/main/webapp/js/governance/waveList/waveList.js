@@ -82,6 +82,9 @@ function waveListAjaxCall()
 						"<input type = 'hidden' class = 'waveId' value = '"+WaveId+"'>"+
 						"</div>"+
 	                  "<h3 class='cbp-vm-title left-col primary waveHeadingName' name='name' contenteditable='false'>"+waveName+"</h3>"+
+	                  "<button type='button' class='btn btn-primary mt-3' name='btn' onClick=\"edit('"+WaveId+"','"+waveName+"')\";>"+
+							"<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
+						"</button>"+
 	                  "</li>";
 		$('#ul_id').append(li_element);
 		var phaseClass = (phaseName.replaceAll("-","")).replaceAll(" ","");
