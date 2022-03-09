@@ -288,7 +288,7 @@ function AssessmentDataRetrieveAjaxCall()
                 {
                 	NoColumnName =  ColumnName;
                 	var inputdrop= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>"+
-                    "<label class='control-label' for= 'Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label><br/>";
+                    "<label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+ delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span><br/>";
                 var Options=value.options;
                 var sub_option = Options.substring(0, Options.length - 1);
                 var option=Options.split(",");
@@ -330,7 +330,7 @@ function AssessmentDataRetrieveAjaxCall()
                 else if(Type=="TextAreaFile")
                 {
                 	var inputtext="<form action='' method='POST' enctype='multipart/form-data'><div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>\n" +
-                    "<label class='control-label' for='Assessment'><div "+manadatory+">"+LabelName+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div></label>\n" +
+                    "<label class='control-label' for='Assessment'><span "+manadatory+">"+LabelName+delete_icon+"</span></label> <span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span></div>\n" +
                     /*"<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +*/
                      "<textarea class='form-control' name='"+ColumnName+"_text' id='"+ColumnName+"'>"+Value+"</textarea>"+
                      "<input type='file' name='"+ColumnName+"_file' accept='image/!*' id ='choosen_file_name'>\n" +
