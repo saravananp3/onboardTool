@@ -90,7 +90,31 @@
 </style>
 
 
-</head>
+</head> <script type="text/javascript">
+ 
+a=10;
+if(a==10)
+	{
+window.onload = function() {
+   setTimeout(loadAfterTime, 500)
+}; 
+ 
+function loadAfterTime(){
+	
+	
+	validateTriageSummary1();
+	if(window.location.href.substr(-2) !== "?#") {
+		  window.location = window.location.href + "?#";
+		}
+	
+	
+}	
+	}
+else
+	{
+	Error
+	}
+	</script>
 <body class="top-navbar-fixed">
 
  <%@include file="Nav-Bar.jspf"%>
@@ -1196,6 +1220,7 @@
      <script src="js/IntakeDetails/IntakeTriageSummary/TriageSummaryAddFeatureAjaxCall.js"></script>
      <script src="js/IntakeDetails/IntakeTriageSummary/EditDeleteToggle.js"></script>
      <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummaryTemplate.js"></script>
+      <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummaryTemplate2.js"></script>
      
    
       

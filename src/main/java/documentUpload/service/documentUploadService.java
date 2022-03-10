@@ -106,7 +106,7 @@ public class documentUploadService {
 			if(rs.next()) {
 				Blob blob = rs.getBlob("doc");
 				InputStream in = blob.getBinaryStream();
-				OutputStream out = new FileOutputStream("S:\\Decom3Sixty\\Screenshot\\Files\\"+rs.getString("File_Name"));
+				OutputStream out = new FileOutputStream("D:\\file"+rs.getString("File_Name"));
 				byte[] buff = new byte[4096];  // how much of the blob to read/write at a time
 				int len = 0;
 
