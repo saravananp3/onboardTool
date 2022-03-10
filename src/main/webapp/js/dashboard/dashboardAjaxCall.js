@@ -114,34 +114,47 @@ function dashboardDetails() {
 			}
 			
 			$.each(data[4], function(key, value) {
-				var t_row = "<tr>"
-					+ "<td>" + value.appName + "</td>"
-                    + "<td>" + value.submittedDate + "</td>"
-                    + "<td>" + value.decomAnalyst + "</td>"
-                    + "<td>" + value.phaseName + "</td>"
-                    + "<td>" + value.ArchiveRequired + "</td>"
-                    + "<td>" + value.completionTarget + "</td>"
-					+ "</tr>";
-				$('#dataTableId').append(t_row);
-			});
-			$(document).ready(function() {
-				$('#example').DataTable();
-			});
-			$.each(data[6], function(key, value) {
-				var t_row = "<tr>"
-                    + "<td>" + value.app_name + "</td>"
-                    + "<td>" + value.craetionDate + "</td>"
-                    + "<td>" + value.status + "</td>"
-                    + "<td>" + value.targetCompletionDate + "</td>"
-                    + "<td>" + value.phaseName + "</td>"
-                    + "<td>" + value.waveName + "</td>"
-                    + "<td>" + value.DesignApproval + "</td>"
+                var aname=value.appName==undefined?"":value.appName;
+                var sdate=value.submittedDate==undefined?"":value.submittedDate;
+                var dcom=value.decomAnalyst==undefined?"":value.decomAnalyst;
+                var phase=value.phaseName==undefined?"":value.phaseName;
+                var areq=value.ArchiveRequired==undefined?"":value.ArchiveRequired;
+                var ctdate=value.completionTarget==undefined?"":value.completionTarget;
+                var t_row = "<tr>"
+                    + "<td>" + aname + "</td>"
+                    + "<td>" + sdate + "</td>"
+                    + "<td>" + dcom + "</td>"
+                    + "<td>" + phase + "</td>"
+                    + "<td>" + areq + "</td>"
+                    + "<td>" + ctdate + "</td>"
                     + "</tr>";
-				$('#dataTableId1').append(t_row);
-			});
-			$(document).ready(function() {
-				$('#example1').DataTable();
-			});
+                $('#dataTableId').append(t_row);
+            });
+            $(document).ready(function() {
+                $('#example').DataTable();
+            });
+            $.each(data[6], function(key, value) {
+                var aname=value.app_name==undefined?"":value.app_name;
+                var cdate=value.craetionDate==undefined?"":value.craetionDate;
+                var status=value.status==undefined?"":value.status;
+                var tcdate=value.targetCompletionDate==undefined?"":value.targetCompletionDate;
+                var phase=value.phaseName==undefined?"":value.phaseName;
+                var wave=value.waveName==undefined?"":value.waveName;
+                var dcapprove=value.DesignApproval==undefined?"":value.DesignApproval;
+                var t_row = "<tr>"
+                    + "<td>" + aname + "</td>"
+                    + "<td>" + cdate + "</td>"
+                    + "<td>" + status + "</td>"
+                    + "<td>" + tcdate + "</td>"
+                    + "<td>" + phase + "</td>"
+                    + "<td>" + wave + "</td>"
+                    + "<td>" + dcapprove + "</td>"
+                    + "</tr>";
+                $('#dataTableId1').append(t_row);
+            });
+            $(document).ready(function() {
+                $('#example1').DataTable();
+            });
 			
 			$.each(data[7], function(key, value) {
 				var t_row = "<div class='row'>" 
@@ -338,4 +351,5 @@ $(document).ready(function() {
 
 	var chart = new Chart(ctx).Doughnut(data);
 });
+
 

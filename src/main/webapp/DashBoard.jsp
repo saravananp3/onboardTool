@@ -441,6 +441,16 @@ input[type=search]:focus {
 }
 
 
+focus {
+background-color: #ff00ff;
+color: #fff;
+cursor: pointer;
+font-weight: bold;
+}
+.pageNumber {
+padding: 2px;
+}
+
  
 </style>
 
@@ -624,11 +634,11 @@ input[type=search]:focus {
 							<div id="cbp-vm" class="cbp-vm-view-grid">
 
 
-								<card class="col-md-3"> <a
+								<card class="col-md-3" style="font-size:13.7px;"> <a
 									class="dashboard-stat col-md-12"
 									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
 									href="PhaseList.jsp">
-									<div class="col-md-4" style="height: 100%;">
+									<div class="col-md-4" style="height: 100%; margin-left: -17px;">
 										<p class="totcounter" style="height: 80%; color: white;"></p>
 										<span class="font_icon" style="height: 20%; color: white;">Phases</span>
 									</div>
@@ -637,11 +647,11 @@ input[type=search]:focus {
 										of multiple waves.</div>
 								</a> </card>
 
-								<div class="col-md-3">
+								<div class="col-md-3" style="font-size:13.7px;">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
 										href="waveList.jsp?waves=all">
-										<div class="col-md-4" style="height: 100%;">
+										<div class="col-md-4" style="height: 100%; margin-left: -17px;">
 											<p class="totcounter" style="height: 80%; color: white;"></p>
 											<span class="font_icon" style="height: 20%; color: white;">Waves</span>
 										</div>
@@ -652,33 +662,34 @@ input[type=search]:focus {
 
 								</div>
 
-								<div class="col-md-3">
+								<div class="col-md-3" style="font-size:13.7px;">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
 										href="OpportunityList.jsp">
-										<div class="col-md-4" style="height: 100%;">
+										<div class="col-md-4" style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
 											<span class="font_icon" style="height: 20%; color: white;">Apps</span>
 										</div>
-										<div class="col-md-8">Applications are the opportunities
-											provided within the organization for Archival or Decommission
-											or Retiring purpose.</div>
+										<!-- <div class="col-md-8">Applications are opportunities provided within the organisation
+											for Archival or Decommission or Retiring purpose.</div> -->
+										<div class="col-md-8">Applications are opportunities provided within the organisation
+											for Archival or Decommission or Retiring purpose.</div>
 									</a>
 
 								</div>
 								
-								<div class="col-md-3">
+								<div class="col-md-3" style="font-size:13.7px;">
                                         <a class="dashboard-stat col-md-12"
                                             style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
                                             href="IntakeOpportunity.jsp">
-                                            <div class="col-md-4" style="height: 100%;">
+                                            <div class="col-md-4" style="height: 100%; margin-left: -17px;">
                                                 <p class="totcounter"
                                                     style="height: 80%; color: white; padding-right: 10px;"></p>
                                                 <span class="font_icon" style="height: 20%; color: white;">Intake</span>
                                             </div>
                                             <div class="col-md-8">Intake is the initiation of the product as well as we need to 
-                                            place some data so that the div size should manage</div>
+                                            place some data so that the div size should manage.</div>
                                         </a>
                                     </div>
 
@@ -806,6 +817,30 @@ input[type=search]:focus {
 								<div class="card">
 									<div class="card-header" id="card-header">Overall progress for phases and
 										waves</div>
+									<!-- <div class="card-header row">
+									<div class="col-md-6"  id="card-header">Overall progress for phases and
+										waves</div>
+										<div class="col-md-2" align="end">
+											<div class="btn-group">
+												<button type="button" class="btn btn-secondary">Action</button>
+												<button type="button"
+													class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-expanded="false">
+													<span class="visually-hidden">Toggle Dropdown</span>
+												</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#">Action</a></li>
+													<li><a class="dropdown-item" href="#">Another
+															action</a></li>
+													<li><a class="dropdown-item" href="#">Something
+															else here</a></li>
+													<li><hr class="dropdown-divider"></li>
+													<li><a class="dropdown-item" href="#">Separated
+															link</a></li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
 									<div class="card-body">
 										<div class="col-md-4">
 											<canvas class="vr" id="mycanvas" width="200" height="200"
@@ -889,6 +924,7 @@ input[type=search]:focus {
                                         <tbody id="dataTableId1">
                                         </tbody>
                                     </table>
+										
 									</div>
 								</div>
 							</div>
@@ -981,6 +1017,8 @@ input[type=search]:focus {
 
 	</div>
 	<!-- end of main wrapper -->
+	
+	
 
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -1143,5 +1181,6 @@ $(document).ready(function() {
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
 	<script src="js/dashboard/dashboardAjaxCall.js"></script>
 	
+
 </body>
 </html>
