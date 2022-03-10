@@ -67,7 +67,7 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 				
 				while(rs1.next()) {
 					JsonObject jsonObject1 = new JsonObject();
-					jsonObject1.addProperty("CheckExistance", false);
+					jsonObject1.addProperty("CheckExistance", true);
 					jsonObject1.addProperty("seq_num", rs1.getString("seq_no"));
 					//jsonObject1.addProperty("id", rs1.getString("Id"));
 					jsonObject1.addProperty("Project_Name", rs1.getString("prj_name"));

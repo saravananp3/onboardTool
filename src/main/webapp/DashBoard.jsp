@@ -947,7 +947,7 @@ padding: 2px;
 					<div class="col-md-12 mt-3">
 						<div class="row">
 							<div class="col-md-8">
-								<div class="card">
+								<!-- <div class="card">
 									<div class="card-header"  id="card-header">Archive Execution</div>
 									<div class="card-body" style="padding:0px;">
 										<table id="example"
@@ -963,7 +963,7 @@ padding: 2px;
                                         </tbody>
                                     </table>
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<!-- <div class="col-md-4">
 								<div class="card">
