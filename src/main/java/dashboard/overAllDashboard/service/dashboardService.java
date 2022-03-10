@@ -775,4 +775,80 @@ public class dashboardService {
         }
         return jsonArray;
     }
+    
+    public JsonArray getDoughnutIntakeDetail() {
+        JsonArray jsonArray = new JsonArray();
+        try {
+            ArrayList<String> app = new ArrayList<String>();
+            String selectApp = "select * from opportunity_info where column_name='appName'";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(selectApp);
+            while (rs.next()) {
+                app.add(rs.getString("value"));
+            }
+            String[] apps = new String[app.size()];
+            apps = app.toArray(apps);
+            jsonArray.addAll(getIntakeDetail(apps));
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
+    }
+    public JsonArray getIntakeDetail(String apps[]) {
+        JsonArray jsonArray = new JsonArray();
+        JsonObject jsonObject = new JsonObject();
+        try {
+            int yestoStartCount = 0, inProgressCount = 0, completedCount = 0;
+            for (String app : apps) {
+                String selectApp = "select * from opportunity_info where column_name='appName' and value = '" + app
+                        + "'";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(selectApp);
+                while (rs.next()) {
+                    String Id = rs.getString("Id");
+                    String selectAppdetail = "select intakeApproval,max(priority_order_num) pr,OppId from Intake_Stake_Holder_Info where OppId = '" + Id+ "' group by intakeApproval,OppId";
+                    Statement st11 = con.createStatement();
+                    ResultSet rs11 = st11.executeQuery(selectAppdetail);
+                    boolean checkData=false;
+                        while (rs11.next()) {
+                            String value = rs11.getString("intakeApproval");
+                            checkData=true;
+                            if(value.equals("Decision pending")||value.equals("Rejected"))
+                            {
+                                inProgressCount++;
+                            }
+                            else if(value.equals("Approved"))
+                            {
+                                completedCount++;
+                            }
+                        }
+                         if(checkData==false) {
+                                yestoStartCount++;
+                            }
+                    rs11.close();
+                    st11.close();
+                }
+                rs.close();
+                st.close();
+            }
+            double totalCount = yestoStartCount + inProgressCount + completedCount;
+            DecimalFormat f = new DecimalFormat("##.##");
+        /*  String yestoStart = String.valueOf(f.format((yestoStartCount * 100) / totalCount));
+            String inProgress = String.valueOf(f.format((inProgressCount * 100) / totalCount)) ;
+            String completed = String.valueOf(f.format((completedCount * 100) / totalCount)) ;*/
+            double yestoStart = Double.parseDouble(f.format((yestoStartCount * 100) / totalCount));
+            double inProgress = Double.parseDouble(f.format((inProgressCount * 100) / totalCount)) ;
+            double completed = Double.parseDouble(f.format((completedCount * 100) / totalCount)) ;
+            jsonObject.addProperty("yestoStart", yestoStart);
+            jsonObject.addProperty("inProgress", inProgress);
+            jsonObject.addProperty("completed", completed);
+            jsonArray.add(jsonObject);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("myjson "+jsonArray);
+        return jsonArray;
+    }
 }

@@ -286,37 +286,46 @@ function dashboardDetails() {
 
 
 $(document).ready(function() {
-	var ctx = $("#mycanvas").get(0).getContext("2d");
-
-	var options = {
-		title: {
-			display: true,
-			text: "Phases"
-		},
-	}
-
-	var data = [
-		{
-			value: 27,
-			color: "#486ccc",
-			highlight: "lightskyblue",
-			label: "Yet To Start"
-		},
-		{
-			value: 33,
-			color: "#d1e1f3",
-			highlight: "#82aadd",
-			label: "In Progress"
-		},
-		{
-			value: 40,
-			color: "#aeb8c1",
-			highlight: "darkorange",
-			label: "Completed"
-		}
-	];
-
-	var chart = new Chart(ctx).Doughnut(data);
+    var ctx = $("#mycanvas").get(0).getContext("2d");
+    var options = {
+        title: {
+            display: true,
+            text: "Phases"
+        },
+    }
+$.ajax({
+        url: "dashboardServlet",
+        type: 'POST',
+        async: false,
+        dataType: "json",
+        success: function(data) {
+            console.log("Data : ", data);
+            $.each(data[9],function(key,value1){
+    var data = [
+        {
+            value: value1.yestoStart,
+            color: "#486ccc",
+            highlight: "lightskyblue",
+            label: "Yet To Start"
+        },
+        {
+            value: value1.inProgress,
+            color: "#d1e1f3",
+            highlight: "#82aadd",
+            label: "In Progress"
+        },
+        {
+            value: value1.completed,
+            color: "#aeb8c1",
+            highlight: "darkorange",
+            label: "Completed"
+        }
+    ];
+    console.log(data)
+    var chart = new Chart(ctx).Doughnut(data);
+    });
+    
+   }});
 });
 
 $(document).ready(function() {
