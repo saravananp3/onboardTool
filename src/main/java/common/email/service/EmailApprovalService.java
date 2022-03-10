@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message.RecipientType;
 import org.simplejavamail.email.*;
@@ -72,6 +75,7 @@ public class EmailApprovalService extends EmailService {
                 sendApprovalEmail(user_name, user_mail, approvalLink, mailCont,
                         subject, replaceValues);
                 setFlagAndDecisionForApproverId("true", APPROVAL_CONSTANT.DECISION_PENDING, approval_id);
+                setFirsttDate();
             }
             rs.close();
             st.close();
@@ -82,6 +86,20 @@ public class EmailApprovalService extends EmailService {
         jsonObject.addProperty("checkStatus", checkStatus);
         jsonObject.addProperty("priorityNumber", priorityNumber);
         return jsonObject;
+    }
+    private void setFirsttDate() {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+            String todaysdate = sdf.format(date);
+            String selectQuery = "UPDATE " + tableName + " SET submittedDate ='" + todaysdate + "' WHERE OPPID = '" + oppId + "' AND submittedDate is null";
+            Statement st = con.createStatement();
+            st.executeUpdate(selectQuery);
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public boolean checkCurrentApproverCanDecide(String approverId) {
         try {

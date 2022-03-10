@@ -25,13 +25,14 @@ public class dashboardServlet extends HttpServlet {
 		try {
 			
 			dashboardService dashboard = new dashboardService();
-			jsonArray.add(dashboard.dashboardCardDetails());
+            jsonArray.add(dashboard.dashboardCardDetails());
             jsonArray.add(dashboard.donetChartDetails());
             jsonArray.add(dashboard.getOppNameList());
             jsonArray.add(dashboard.GanttChartJsonArray);
             jsonArray.add(dashboard.getApplicationFromPhaseDataTable("All"));
             jsonArray.add(dashboard.getPieChartDetails());
-            jsonArray.add(dashboard.getAppDetails());
+            //jsonArray.add(dashboard.getAppDetails());
+            jsonArray.add(dashboard.getApplicationArchiveReqDataFromPhase("All"));
             jsonArray.add(dashboard.getAppIssueCount());
             jsonArray.add(dashboard.getDataCharDataTable());
             dashboard = null;

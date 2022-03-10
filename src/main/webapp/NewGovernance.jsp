@@ -221,7 +221,7 @@ HttpSession details = request.getSession();
 	                      </form>
 	               
 	     <!--Delete pop up-->
-	     <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+	     <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
      <div class="modal-header">

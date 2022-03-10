@@ -624,49 +624,63 @@ input[type=search]:focus {
 							<div id="cbp-vm" class="cbp-vm-view-grid">
 
 
-								<card class="col-md-4"> <a
+								<card class="col-md-3"> <a
 									class="dashboard-stat col-md-12"
 									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
 									href="PhaseList.jsp">
-									<div class="col-md-3" style="height: 100%;">
+									<div class="col-md-4" style="height: 100%;">
 										<p class="totcounter" style="height: 80%; color: white;"></p>
 										<span class="font_icon" style="height: 20%; color: white;">Phases</span>
 									</div>
-									<div class="col-md-9">Phases can be described as a
+									<div class="col-md-8">Phases can be described as a
 										project that is scheduled over a period of time Which consists
 										of multiple waves.</div>
 								</a> </card>
 
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
 										href="waveList.jsp?waves=all">
-										<div class="col-md-3" style="height: 100%;">
+										<div class="col-md-4" style="height: 100%;">
 											<p class="totcounter" style="height: 80%; color: white;"></p>
 											<span class="font_icon" style="height: 20%; color: white;">Waves</span>
 										</div>
-										<div class="col-md-9">Waves can be comprised of set of
+										<div class="col-md-8">Waves can be comprised of set of
 											applications that are ready for implementation over a period
 											of time.</div>
 									</a>
 
 								</div>
 
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
 										href="OpportunityList.jsp">
-										<div class="col-md-3" style="height: 100%;">
+										<div class="col-md-4" style="height: 100%;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
 											<span class="font_icon" style="height: 20%; color: white;">Apps</span>
 										</div>
-										<div class="col-md-9">Applications are the opportunities
+										<div class="col-md-8">Applications are the opportunities
 											provided within the organization for Archival or Decommission
 											or Retiring purpose.</div>
 									</a>
 
 								</div>
+								
+								<div class="col-md-3">
+                                        <a class="dashboard-stat col-md-12"
+                                            style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
+                                            href="IntakeOpportunity.jsp">
+                                            <div class="col-md-4" style="height: 100%;">
+                                                <p class="totcounter"
+                                                    style="height: 80%; color: white; padding-right: 10px;"></p>
+                                                <span class="font_icon" style="height: 20%; color: white;">Intake</span>
+                                            </div>
+                                            <div class="col-md-8">Intake is the initiation of the product as well as we need to 
+                                            place some data so that the div size should manage</div>
+                                        </a>
+                                    </div>
 
 
 							</div>
@@ -827,15 +841,13 @@ input[type=search]:focus {
 											<thead>
 												
 												<tr>
-													<th scope="col">App Name</th>
-													<th scope="col">AppType</th>
-													<th scope="col">Status</th>
-													<th scope="col">Progress</th>
-													<th scope="col">Phase</th>
-													<th scope="col">Wave</th>
-													<th scope="col">End Date</th>
-													<th scope="col">AppOwner</th>
-												</tr>
+                                                    <th scope="col">App Name</th>
+                                                    <th scope="col">Submitted Date</th>
+                                                    <th scope="col">Assigned to</th>
+                                                    <th scope="col">Targeted Phase</th>
+                                                    <th scope="col">Archive Required</th>
+                                                    <th scope="col">Archival Completion Target</th>
+                                                </tr>
 											</thead>
 											<tbody id="dataTableId">
 											</tbody>
@@ -859,17 +871,19 @@ input[type=search]:focus {
 						<div class="row">
 							<div class="col-md-8">
 								<div class="card">
-									<div class="card-header"  id="card-header">Approval Status For Application</div>
+									<div class="card-header"  id="card-header">Archive Requirements</div>
 									<div class="card-body" style="padding:0px;">
 										<table id="example"
 											class="table">
                                         <thead>
-                                            <tr>
+                                           <tr>
                                                 <th scope="col">App Name</th>
-                                                <th scope="col">Module</th>
-                                                <th scope="col">Due Date</th>
-                                                <th scope="col">Resource</th>
-                                                <th scope="col">Status</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">Status </th>
+                                                <th scope="col">Target Completion Date</th>
+                                                <th scope="col">Phase</th>
+                                                <th scope="col">Wave</th>
+                                                <th scope="col">Design Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody id="dataTableId1">
@@ -891,6 +905,43 @@ input[type=search]:focus {
 									</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-header"  id="card-header">Archive Execution</div>
+									<div class="card-body" style="padding:0px;">
+										<table id="example"
+											class="table">
+                                        <thead>
+                                          <tr>
+                                                <th scope="col">App Name</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">Status </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="col-md-4">
+								<div class="card">
+									<div class="card-header" id="card-header">Data Characteristic</div>
+									<div class="card-body">
+									<div id="chart">
+                                        <ul id="numbers">
+                                        </ul>
+                                        <ul id="bars">
+                                        </ul>
+                                    </div>
+									</div>
+								</div>
+							</div> -->
 						</div>
 					</div>
 <!-- 

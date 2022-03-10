@@ -15,9 +15,15 @@ function dashboardDetails() {
 				$(".font_icon").eq(1).html('Wave');
 			if (data[0].appCount == 0 || data[0].appCount == 1)
 				$(".font_icon").eq(2).html('App');
-			$('.totcounter').eq(0).html(data[0].phaseCount);
+			/*$('.totcounter').eq(0).html(data[0].phaseCount);
 			$('.totcounter').eq(1).html(data[0].waveCount);
-			$('.totcounter').eq(2).html(data[0].appCount);
+			$('.totcounter').eq(2).html(data[0].appCount);*/
+			if(data[0].intakeCount == 0 || data[0].intakeCount== 1)
+                $(".font_icon").eq(3).html('Intake');   
+            $('.totcounter').eq(0).html(data[0].phaseCount);
+            $('.totcounter').eq(1).html(data[0].waveCount);
+            $('.totcounter').eq(2).html(data[0].appCount);
+            $('.totcounter').eq(3).html(data[0].intakeCount);
 			google.charts.load('current', { 'packages': ['table'] });
 			google.charts.setOnLoadCallback(drawTable);
 			function drawTable() {
@@ -110,13 +116,11 @@ function dashboardDetails() {
 			$.each(data[4], function(key, value) {
 				var t_row = "<tr>"
 					+ "<td>" + value.appName + "</td>"
-					+ "<td>" + value.appType + "</td>"
-					+ "<td>" + value.appStatus + "</td>"
-					+ "<td>" + value.progress + "</td>"
-					+ "<td>" + value.phaseName + "</td>"
-					+ "<td>" + value.waveName + "</td>"
-					+ "<td>" + value.endDate + "</td>"
-					+ "<td>" + value.owner + "</td>"
+                    + "<td>" + value.submittedDate + "</td>"
+                    + "<td>" + value.decomAnalyst + "</td>"
+                    + "<td>" + value.phaseName + "</td>"
+                    + "<td>" + value.ArchiveRequired + "</td>"
+                    + "<td>" + value.completionTarget + "</td>"
 					+ "</tr>";
 				$('#dataTableId').append(t_row);
 			});
@@ -125,12 +129,14 @@ function dashboardDetails() {
 			});
 			$.each(data[6], function(key, value) {
 				var t_row = "<tr>"
-					+ "<td>" + value.appName + "</td>"
-					+ "<td>" + value.module + "</td>"
-					+ "<td>" + value.dueDate + "</td>"
-					+ "<td>" + value.resource + "</td>"
-					+ "<td>" + value.status + "</td>"
-					+ "</tr>";
+                    + "<td>" + value.app_name + "</td>"
+                    + "<td>" + value.craetionDate + "</td>"
+                    + "<td>" + value.status + "</td>"
+                    + "<td>" + value.targetCompletionDate + "</td>"
+                    + "<td>" + value.phaseName + "</td>"
+                    + "<td>" + value.waveName + "</td>"
+                    + "<td>" + value.DesignApproval + "</td>"
+                    + "</tr>";
 				$('#dataTableId1').append(t_row);
 			});
 			$(document).ready(function() {
