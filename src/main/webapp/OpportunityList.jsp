@@ -542,7 +542,7 @@ full width */
 						</div>
 
 						<div class="col-auto">
-							<select class="selectInput filter" id="category dropDown-width">
+							<select class="selectInput filter" id="category">
 								<option class='options' value='All'>All</option>
 								<option class='options' value='Intake'>Intake</option>
 								<option class='options' value='Triage'>Triage</option>
@@ -566,8 +566,8 @@ full width */
 							<label class="col-form-label" id="title">Phase</label>
 						</div>
 						<div class="col-auto">
-							<select class="selectInput filter" id="dropDown-width">
-								<option class='options' value='All'>All</option>
+							<select class="selectInput filter dropDown-width" id="phase">
+								<!-- <option class='options' value='All'>All</option> -->
 							</select>
 						</div>
 					</div>
@@ -579,8 +579,8 @@ full width */
 							<label class="col-form-label" id="title">Wave</label>
 						</div>
 						<div class="col-auto">
-							<select class="selectInput filter" id="dropDown-width">
-								<option class='options' value='All'>All</option>
+							<select class="selectInput filter dropDown-width" id="wave">
+								<!-- <option class='options' value='All'>All</option> -->
 							</select>
 						</div>
 					</div>

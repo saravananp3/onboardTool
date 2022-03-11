@@ -198,7 +198,7 @@ input[type=search]:focus {
 
 .cbp-vm-view-grid ul li {
 	padding-top: 68px;
-	width: 20%;
+	width: 23%;
 	text-align: center;
 	box-shadow:5px 5px 5px 5px  #dbdbdb;
 	display: inline-block;
@@ -775,7 +775,7 @@ pointer-events:all;
 
 
  
-                                      <div class='col-md-12'>
+                                      <div class="col-md-12 d3s-ml-10" >
                                         <ul id = "ul_id">
                                             
 
