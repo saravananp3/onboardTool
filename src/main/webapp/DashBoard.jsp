@@ -42,6 +42,8 @@
 
 <link rel="stylesheet" href="css/Responsive/responsive.css"
 	media="screen">
+<!-- ========== Pagination ========== -->
+<script src="js/paging/pagination.js"></script>
 
 <style type="text/css">
 body {
@@ -447,11 +449,7 @@ color: #fff;
 cursor: pointer;
 font-weight: bold;
 }
-.pageNumber {
-padding: 2px;
-}
 
- 
 </style>
 
 </head>
@@ -634,7 +632,7 @@ padding: 2px;
 							<div id="cbp-vm" class="cbp-vm-view-grid">
 
 
-								<card class="col-md-3" style="font-size:13.7px;"> <a
+								<card class="col-md-3" style="font-size:13.6px; height: 123px !important;"> <a
 									class="dashboard-stat col-md-12"
 									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
 									href="PhaseList.jsp">
@@ -647,7 +645,7 @@ padding: 2px;
 										of multiple waves.</div>
 								</a> </card>
 
-								<div class="col-md-3" style="font-size:13.7px;">
+								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
 										href="waveList.jsp?waves=all">
@@ -662,7 +660,7 @@ padding: 2px;
 
 								</div>
 
-								<div class="col-md-3" style="font-size:13.7px;">
+								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
 										href="OpportunityList.jsp">
@@ -679,7 +677,7 @@ padding: 2px;
 
 								</div>
 								
-								<div class="col-md-3" style="font-size:13.7px;">
+								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
                                         <a class="dashboard-stat col-md-12"
                                             style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
                                             href="IntakeOpportunity.jsp">
@@ -711,9 +709,207 @@ padding: 2px;
 
 
 					</ul>
+					
+				<div>
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card ht-270">
+									<div class="card-header" id="card-header">Overall progress for phases and
+										waves</div>
+									<!-- <div class="card-header row">
+									<div class="col-md-6"  id="card-header">Overall progress for phases and
+										waves</div>
+										<div class="col-md-2" align="end">
+											<div class="btn-group">
+												<button type="button" class="btn btn-secondary">Action</button>
+												<button type="button"
+													class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-expanded="false">
+													<span class="visually-hidden">Toggle Dropdown</span>
+												</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#">Action</a></li>
+													<li><a class="dropdown-item" href="#">Another
+															action</a></li>
+													<li><a class="dropdown-item" href="#">Something
+															else here</a></li>
+													<li><hr class="dropdown-divider"></li>
+													<li><a class="dropdown-item" href="#">Separated
+															link</a></li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+									<div class="card-body">
+										<div class="col-md-4">
+											<canvas class="vr" id="mycanvas" width="200" height="200"
+												style="margin-left: 105px;"></canvas>
+										</div>
+										
+										<div class="col-md-4">
+											<canvas id="mycanvas1" width="200" height="200"
+												style="margin-left: 230px;"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card ht-270">
+									<div class="card-header" id="card-header">Application Categories</div>
+									<div class="card-body">
+										<div id="pieChartId" width="200" height="200"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-					<!-- </div> -->
-				</div>
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card ht-233">
+										<div class="card-header" id="card-header">Application
+											Status</div>
+										<div class="card-body" style="padding: 0px;">
+											<table id="example" class="table">
+												<thead>
+
+													<tr>
+														<th scope="col">App Name</th>
+														<th scope="col">Submitted Date</th>
+														<th scope="col">Assigned to</th>
+														<th scope="col">Targeted Phase</th>
+														<th scope="col">Archive Required</th>
+														<th scope="col">Archival Completion Target</th>
+													</tr>
+												</thead>
+												<tbody id="dataTableId">
+												</tbody>
+											</table>
+											<div class="col-md-12 text-center">
+												<ul class="pagination pagination-lg pager pagination-align"
+													id="developer_page"></ul>
+											</div>
+										</div>
+									</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card ht-233">
+									<div class="card-header" id="card-header">Risk, Issues and Deadlines</div>
+									<div class="card-body justify-content-center">
+										<div id="dataCountIssue"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card ht-270">
+									<div class="card-header" id="card-header">Archive
+											Requirements</div>
+									<div class="card-body" style="padding:0px;">
+										<table id="example1"
+											class="table">
+                                        <thead>
+                                           <tr>
+                                                <th scope="col">App Name</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">Status </th>
+                                                <th scope="col">Target Completion Date</th>
+                                                <th scope="col">Phase</th>
+                                                <th scope="col">Wave</th>
+                                                <th scope="col">Design Approval</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dataTableId1">
+                                        </tbody>
+                                    </table>
+										<div class="col-md-12 text-center">
+												<ul class="pagination pagination-lg pager pagination-align"
+													id="developer_page_1"></ul>
+											</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card ht-270">
+									<div class="card-header" id="card-header">Data Characteristic</div>
+									<div class="card-body">
+									<div id="chart">
+                                        <ul id="numbers" class="numbers-align">
+                                        </ul>
+                                        <ul id="bars" class="bars-align">
+                                        </ul>
+                                    </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<!-- <div class="card">
+									<div class="card-header"  id="card-header">Archive Execution</div>
+									<div class="card-body" style="padding:0px;">
+										<table id="example"
+											class="table">
+                                        <thead>
+                                          <tr>
+                                                <th scope="col">App Name</th>
+                                                <th scope="col">Start Date</th>
+                                                <th scope="col">Status </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+									</div>
+								</div> -->
+							</div>
+							<!-- <div class="col-md-4">
+								<div class="card">
+									<div class="card-header" id="card-header">Data Characteristic</div>
+									<div class="card-body">
+									<div id="chart">
+                                        <ul id="numbers">
+                                        </ul>
+                                        <ul id="bars">
+                                        </ul>
+                                    </div>
+									</div>
+								</div>
+							</div> -->
+						</div>
+					</div>
+<!-- 
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="card">
+									<div class="card-header" id="card-header">Plan and Priority</div>
+									<div class="card-body">
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card">
+									<div class="card-header" id="card-header">Cost Benefit and Analysis</div>
+									<div class="card-body"></div>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					</div>
+
+					</div> 
+				
 
 				<!-- <div class="col-md-12 ">
 					<div class="row">
@@ -810,195 +1006,7 @@ padding: 2px;
 				</div> -->
 
 
-				<div class="d3s-pl-15 d3s-pr-15">
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card">
-									<div class="card-header" id="card-header">Overall progress for phases and
-										waves</div>
-									<!-- <div class="card-header row">
-									<div class="col-md-6"  id="card-header">Overall progress for phases and
-										waves</div>
-										<div class="col-md-2" align="end">
-											<div class="btn-group">
-												<button type="button" class="btn btn-secondary">Action</button>
-												<button type="button"
-													class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-													data-bs-toggle="dropdown" aria-expanded="false">
-													<span class="visually-hidden">Toggle Dropdown</span>
-												</button>
-												<ul class="dropdown-menu">
-													<li><a class="dropdown-item" href="#">Action</a></li>
-													<li><a class="dropdown-item" href="#">Another
-															action</a></li>
-													<li><a class="dropdown-item" href="#">Something
-															else here</a></li>
-													<li><hr class="dropdown-divider"></li>
-													<li><a class="dropdown-item" href="#">Separated
-															link</a></li>
-												</ul>
-											</div>
-										</div>
-									</div> -->
-									<div class="card-body">
-										<div class="col-md-4">
-											<canvas class="vr" id="mycanvas" width="200" height="200"
-												style="margin-left: 105px;"></canvas>
-										</div>
-										
-										<div class="col-md-4">
-											<canvas id="mycanvas1" width="200" height="200"
-												style="margin-left: 230px;"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card">
-									<div class="card-header"  id="card-header">Application Categories</div>
-									<div class="card-body">
-										<div id="pieChartId" width="200" height="200"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card">
-									<div class="card-header"  id="card-header">Application Status</div>
-									<div class="card-body" style="padding:0px;">
-										<table id="example"
-											class="table">
-											<thead>
-												
-												<tr>
-                                                    <th scope="col">App Name</th>
-                                                    <th scope="col">Submitted Date</th>
-                                                    <th scope="col">Assigned to</th>
-                                                    <th scope="col">Targeted Phase</th>
-                                                    <th scope="col">Archive Required</th>
-                                                    <th scope="col">Archival Completion Target</th>
-                                                </tr>
-											</thead>
-											<tbody id="dataTableId">
-											</tbody>
-										</table>
-
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card">
-									<div class="card-header" id="card-header">Risk, Issues and Deadlines</div>
-									<div class="card-body justify-content-center">
-										<div id="dataCountIssue"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card">
-									<div class="card-header"  id="card-header">Archive Requirements</div>
-									<div class="card-body" style="padding:0px;">
-										<table id="example"
-											class="table">
-                                        <thead>
-                                           <tr>
-                                                <th scope="col">App Name</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">Status </th>
-                                                <th scope="col">Target Completion Date</th>
-                                                <th scope="col">Phase</th>
-                                                <th scope="col">Wave</th>
-                                                <th scope="col">Design Approval</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="dataTableId1">
-                                        </tbody>
-                                    </table>
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card">
-									<div class="card-header" id="card-header">Data Characteristic</div>
-									<div class="card-body">
-									<div id="chart">
-                                        <ul id="numbers">
-                                        </ul>
-                                        <ul id="bars">
-                                        </ul>
-                                    </div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<!-- <div class="card">
-									<div class="card-header"  id="card-header">Archive Execution</div>
-									<div class="card-body" style="padding:0px;">
-										<table id="example"
-											class="table">
-                                        <thead>
-                                          <tr>
-                                                <th scope="col">App Name</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">Status </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-									</div>
-								</div> -->
-							</div>
-							<!-- <div class="col-md-4">
-								<div class="card">
-									<div class="card-header" id="card-header">Data Characteristic</div>
-									<div class="card-body">
-									<div id="chart">
-                                        <ul id="numbers">
-                                        </ul>
-                                        <ul id="bars">
-                                        </ul>
-                                    </div>
-									</div>
-								</div>
-							</div> -->
-						</div>
-					</div>
-<!-- 
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card">
-									<div class="card-header" id="card-header">Plan and Priority</div>
-									<div class="card-body">
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card">
-									<div class="card-header" id="card-header">Cost Benefit and Analysis</div>
-									<div class="card-body"></div>
-								</div>
-							</div>
-						</div>
-					</div> -->
 				</div>
 			</div>
 
@@ -1180,7 +1188,5 @@ $(document).ready(function() {
 	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
 	<script src="js/dashboard/dashboardAjaxCall.js"></script>
-	
-
 </body>
 </html>

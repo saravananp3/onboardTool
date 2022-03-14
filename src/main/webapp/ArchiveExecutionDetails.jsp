@@ -48,13 +48,6 @@
 
 <script type="text/javascript" src="js_in_pages/project.js"></script>
 
-
-
-
-
-
-
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
 
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionStatus/archiveExecStatus.css" />

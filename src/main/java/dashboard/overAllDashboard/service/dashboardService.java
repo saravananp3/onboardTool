@@ -714,12 +714,12 @@ public class dashboardService {
             }
             double totalCount = DB2Count + MSSQLCount + MySqlCount + OracleCount + OtherCount + SybaseCount;
             DecimalFormat f = new DecimalFormat("##.##");
-            String Db2Percent = String.valueOf(f.format((DB2Count * 100) / totalCount)) + "%";
-            String msSqlPercent = String.valueOf(f.format((MSSQLCount * 100) / totalCount)) + "%";
-            String mySqlPercent = String.valueOf(f.format((MySqlCount * 100) / totalCount)) + "%";
-            String oraclePercent = String.valueOf(f.format((OracleCount * 100) / totalCount)) + "%";
-            String sybasePercent = String.valueOf(f.format((SybaseCount * 100) / totalCount)) + "%";
-            String OtherPercent = String.valueOf(f.format((OtherCount * 100) / totalCount)) + "%";
+            String Db2Percent = String.valueOf(f.format((DB2Count * 50) / totalCount)) + "%";
+            String msSqlPercent = String.valueOf(f.format((MSSQLCount * 50) / totalCount)) + "%";
+            String mySqlPercent = String.valueOf(f.format((MySqlCount * 50) / totalCount)) + "%";
+            String oraclePercent = String.valueOf(f.format((OracleCount * 50) / totalCount)) + "%";
+            String sybasePercent = String.valueOf(f.format((SybaseCount * 50) / totalCount)) + "%";
+            String OtherPercent = String.valueOf(f.format((OtherCount * 50) / totalCount)) + "%";
             jsonObject.addProperty("db2Percent", Db2Percent);
             jsonObject.addProperty("msSqlPercent", msSqlPercent);
             jsonObject.addProperty("mySqlPercent", mySqlPercent);

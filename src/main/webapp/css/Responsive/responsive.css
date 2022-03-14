@@ -432,9 +432,19 @@ body {
   padding: 0;
   margin: 0;
   box-shadow: 0 0 0 0 #444; */
-  margin-top: 25px;
+  margin-top: -120px;
 }
 
+.bars-align {
+	position: relative;
+    right: 20px;
+    height: 0px;
+}
+
+.numbers-align {
+	position: relative;
+    right: 18px;
+}
 
 #chart #bars li {
   display: table-cell;
@@ -471,6 +481,23 @@ body {
   left: 0;
   text-align: center;
 }
+
+.ht-270 {
+	height: 270px !important;
+}
+
+.ht-233 {
+	height: 233px !important;
+}
+.pagination-align {
+
+	margin: 0;
+    padding: 0;
+    position: relative;
+    bottom: 7px;
+    float: right;
+}
+
 
 
 
