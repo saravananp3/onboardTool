@@ -42,13 +42,13 @@ public class EmailApprovalService extends EmailService {
         switch (module) {
         case MODULE_NAME.INTAKE_MODULE:
             tableName = INTAKE_TABLE.STAKE_HOLDER_TABLE;
-            this.approval_Link = "'https://" + properties.getProperty("EMAIL.LINK.HOST") + ":"
+            this.approval_Link = properties.getProperty("EMAIL.LINK.HOST") + ":"
                     + properties.getProperty("EMAIL.LINK.PORT") + properties.getProperty("EMAIL.INTAKE.JSP.LINK");
             subject=EMAIL_SERVICE_CONSTANT.INTAKE_APPROVAL_SUBJECT;
             break;
         case MODULE_NAME.ARCHIVE_REQUIREMENTS_MODULE:
             tableName = INTAKE_TABLE.ROLES_RESPONSIBILITIES_TABLE;
-            this.approval_Link = "'https://" + properties.getProperty("EMAIL.LINK.HOST") + ":"
+            this.approval_Link = properties.getProperty("EMAIL.LINK.HOST") + ":"
                     + properties.getProperty("EMAIL.LINK.PORT") + properties.getProperty("EMAIL.ROLES_RESPONSE.JSP.LINK");
             subject=EMAIL_SERVICE_CONSTANT.ROLES_RESPONSE_APPROVAL_SUBJECT;
             break;
@@ -69,7 +69,7 @@ public class EmailApprovalService extends EmailService {
                 String user_name = rs.getString("name");
                 String user_mail = rs.getString("emailId");
                 String approval_id = rs.getString("approvalId");
-                String approvalLink = approval_Link + approval_id + "'";
+                String approvalLink = approval_Link + approval_id;
                 Object[] replaceValues = new Object[] { user_name, appName, approvalLink };
                 System.out.println(user_name + " : " + user_mail);
                 sendApprovalEmail(user_name, user_mail, approvalLink, mailCont,

@@ -33,6 +33,10 @@
  
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> 
  <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+ <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
 
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
@@ -648,8 +652,35 @@ pointer-events:all;
         </div>
         <!-- /.container-fluid -->
     </nav > --%>
-    
-   <%@include file="Nav-Bar.jspf"%>
+
+		<div class="col-sm-6 right-side">
+			<button type="button" class="btn btn-primary pull-right" id="button"
+				style="color: DodgerBlue;" name="newpr"
+				onclick="location.href='NewPhase.jsp';">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+			</button>
+
+			<button type="button" class="btn btn-primary pull-right"
+				id="addWaveBtnId" style="color: DodgerBlue; display: none;"
+				name="newpr" data-bs-toggle='modal' data-bs-target='#existWavePopUp'>
+			</button>
+			<button type="button" class="btn btn-primary pull-right"
+				id="deleteBtn" style="color: DodgerBlue; display: none;"
+				name="newpr" data-bs-toggle='modal' data-bs-target='#deletePopUp'>
+			</button>
+
+			<button type="button" class="btn btn-primary pull-right"
+				id="deletePhaseBtn" style="color: DodgerBlue; display: none;"
+				name="newpr" data-bs-toggle='modal' data-bs-target='#deletePhasePopUp'>
+			</button>
+			<button type="button" class="btn btn-primary pull-right"
+				id="deleteWaveBtn" style="color: DodgerBlue; display: none;"
+				name="newpr" data-bs-toggle='modal' data-bs-target='#deleteWavePopUp'>
+			</button>
+		</div>
+
+		<%@include file="Nav-Bar.jspf"%>
  
  <nav class="nav nav-down-height" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
@@ -919,15 +950,14 @@ pointer-events:all;
 
 <!-- Phase Delete Pop Up -->
 
-   <div class="modal" id="deletePhasePopUp" tabindex="-1" role="dialog">
+   <div class="modal" id="deletePhasePopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="vertical-alignment-helper">
   <div class="modal-dialog vertical-align-center" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Phase</h5>
-        <button type="button" id="deletePhaseClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Delete Phase</h5>
+		 <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="PopUpform">
@@ -949,8 +979,8 @@ pointer-events:all;
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="deletePhaseYesBtn" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
+        <button type="button" id="deletePhaseYesBtn" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
         
       </div>
     </div>
