@@ -285,9 +285,13 @@ function appendRowFunction(data){
     		taskTypeArr = ['','Activity','Deliverable'];
     		checkIndex = true;
     		var headerOppId = value.Opp_Id;
-    		var headerOppName = value.appName;
-    		$('#oppName').html("Opportunity Name : </br>"+headerOppName);
-    		$('#oppId').html("P3 Project Id : </br>"+headerOppId);
+            var headerOppName = value.appName;
+            var headerstartDate=value.startDate;
+            var headerendDate=value.endDate;
+            $('#oppName').html("Opportunity Name : </br>"+headerOppName);
+            $('#oppId').html("P3 Project Id : </br>"+headerOppId);
+            $('#startDate').html("Start Date : </br>"+headerstartDate);
+            $('#endDate').html("Estimated Completion : </br>"+headerendDate);
     		
     	}
 		

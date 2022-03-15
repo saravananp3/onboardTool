@@ -680,22 +680,20 @@ background:#1565c0 important;
 							</ul>
 						</div> -->
 						
-                                   <div class="wrapper">
-													   
-													   <a href="#" class="btn10 coloring" id = "oppName">
-													     Opportunity Name : </br>
-													  </a>
-													    <a href="#" class="btn10 coloring" id = "oppId">
-													     Opportunity Id : </br>
-													  </a>
-													    <a href="#" class="btn10 coloring" id = "startDate">
-													    Start Date : </br> 15-04-2020
-													  </a>
-													
-													    <a href="#" class="btn10 coloring" id = "estDate">
-													    Estimated Completion : </br> 31-12-2020
-													  </a>
-													  </div>
+                                 <div class="wrapper">
+                                                       <a href="#" class="btn10 coloring" id = "oppName">
+                                                         Opportunity Name : </br>
+                                                      </a>
+                                                        <a href="#" class="btn10 coloring" id = "oppId">
+                                                         Opportunity Id : </br>
+                                                      </a>
+                                                        <a href="#" class="btn10 coloring" id = "startDate">
+                                                        Start Date : </br>
+                                                      </a>
+                                                        <a href="#" class="btn10 coloring" id = "endDate">
+                                                        Estimated Completion : </br>
+                                                      </a>
+                                                      </div>
 
 
 												<div class="card-container-4 card">
