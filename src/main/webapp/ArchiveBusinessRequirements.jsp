@@ -329,15 +329,16 @@ padding: 15px;
 							
 							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
 							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
-								<li class="activated"><span>1</span><i>Introduction</i></li>
-								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
-								<li class="activated"><span>3</span><i>Retention Details</i></li>
-								<li class="active"><span>4</span><i>Business requirements</i></li>
-								<li><span>5</span><i>Abbreviations</i></li>
-								<li><span>6</span><i>Revisions</i></li>
-								<li><span>7</span><i>Addendum</i></li>
-								<li><span>8</span><i>Review</i></li>
-								<li><span>9</span><i>Approval</i></li>
+								
+								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
+								<li class="active" onclick="location.href='ArchiveBusinessRequirements.jsp';"><span>4</span><i>Business requirements</i></li>
+								<li onclick="location.href='archiveReqAbbrevation.jsp;'"><span>5</span><i>Abbreviations</i></li>
+								<li onclick="location.href='archiveRequirementsDocumentRevisions.jsp;'"><span>6</span><i>Revisions</i></li>
+								<li onclick="location.href='archiveRequirementsAddendum.jsp;'"><span>7</span><i>Addendum</i></li>
+								<li onclick="location.href='archiveRequirementsReviewDetails.jsp;'"><span>8</span><i>Review</i></li>
+								<li onclick="location.href='archiveRequirementsApprovalDetails.jsp;'"><span>9</span><i>Approval</i></li>
 						
 							</ul>
 						</div>

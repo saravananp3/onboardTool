@@ -219,6 +219,7 @@ function CheckDependencyFields(Section)
 	getDependencyDetails(Section);
 	CheckingCurrentSectionDependencyValue(Section);
 }
+
 function getDependencyDetails(Section)
 {
 	 DependencyFields =[];

@@ -394,6 +394,9 @@ table.table td .add {
 																								<thead>
 																									<tr>
 																										<th
+																											style='text-align: center; vertical-align: middle;'>ACTION</th>
+																								
+																										<th
 																											style='text-align: center; vertical-align: middle;'>Id</th>
 																										<th
 																											style='text-align: center; vertical-align: middle;'>IMPACT</th>
@@ -423,9 +426,9 @@ table.table td .add {
 																											END DATE</th>
 																										<th
 																											style='text-align: center; vertical-align: middle;'>COMMENTS</th>
-																										<th
-																											style='text-align: center; vertical-align: middle;'>ACTION</th>
+																										
 																									</tr>
+																										
 																								</thead>
 																								<tbody id="AppIssue">
 

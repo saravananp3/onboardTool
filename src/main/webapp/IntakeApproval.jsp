@@ -554,17 +554,25 @@ font-size:12px;
 				                                                        	<br/>
 												<div class="form-wizard-header nav-font">
 													<p style="font-size: 14px;">Fill all the required fields to go next step</p>
-													<ul class="list-unstyled form-wizard-steps clearfix">
-														<li class="activated"><span>1</span><i>Opportunity</i></li>
-														<li class="activated"><span>2</span><i>Triage</i></li>
-														<li class="activated"><span>3</span><i>Triage
+													
+												<ul class="list-unstyled form-wizard-steps clearfix">
+														<li class="activated"
+															onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage
 																Summary</i></li>
-														<li class="activated"><span>4</span><i>Assessment</i></li>
-														<li class="activated"><span>5</span> <i>Stake
-																Holder</i></li>
-														<li class="activated"><span>6</span><i>Review</i></li>
-														<li class="active"><span>7</span><i>Approval</i></li>
-													</ul>
+														<li class="activated"
+															onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span>
+															<i>Stake Holder</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
+														<li class="active" 
+															onclick="location.href='IntakeApproval.jsp';"><span>7</span><i>Approval</i></li>
+												</ul>
 												</div>
 												
 

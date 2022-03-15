@@ -203,7 +203,16 @@ function archiveExeIssueDataRetrieve(){
                        optionsResolved += "<option value='"+resolvedArray[n]+"' "+selected+">"+resolvedArray[n]+"</option>";
                    }
                  var Row="<tr class = 'rowClass'>"+
+                 "<td>"+
+             "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
+                           "<ul class='dropdown-menu'>"+
+                           "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
+                           "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
+                           "</ul>"+
+                           "</div>"+
+             "</td>" +
                  "<td><input type ='text' readonly class='app_Id' value='"+value.app_Id+"'><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
+                  
  "<td><select type='text' class='impact' value='"+value.impact+"' >"+
                             optionsImpact
                             +"</select></td>"+
@@ -221,14 +230,6 @@ function archiveExeIssueDataRetrieve(){
             "<td><input type ='date' readonly class='exp_date' placeholder='mm/dd/yyyy' value='"+value.exp_date+"'></td>" +
             "<td><input type ='date' readonly class='end_date' placeholder='mm/dd/yyyy' value='"+value.end_date+"'></td>" +
             "<td><textarea class='comments' readonly id='comments' rows='3'>"+value.comments+"</textarea></td>" +
-            "<td>"+
-             "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
-                           "<ul class='dropdown-menu'>"+
-                           "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
-                           "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
-                           "</ul>"+
-                           "</div>"+
-             "</td>" +
              "</tr>";
              $("#AppIssue").append(Row);
                  if(checkFieldValues(value.role,  value.name, value.email, value.username, value.priority))
