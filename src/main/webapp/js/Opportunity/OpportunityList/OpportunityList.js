@@ -7,6 +7,7 @@ $(document).ready(function(){
         $('#existWaveSeqNum').val(index);
         $('#addWaveBtnId').click();
     });
+    
      $.ajax({
             url: "OpportunityListServlet",
             type: 'POST',
@@ -40,7 +41,8 @@ $(document).ready(function(){
                                 "<input type = 'hidden' class = 'oppName' value = '"+opportunityName+"'>"+
                                 "<input type = 'hidden' class = 'oppId' value = '"+OpportunityId+"'>"+
                                 "</div>"+
-                                 "<h3 class='cbp-vm-title left-col primary' name='name'>"+opportunityName+"</h3>"+
+                                "<h3 class='cbp-vm-title left-col primary' name='name' data-bs-toggle='tooltip' data-bs-placement='top' title='"+opportunityName+"'>"+opportunityName+"</h3>"+
+                                 /*"<h3 class='cbp-vm-title left-col primary' data-bs-toggle='tooltip' data-bs-placement='top' title='"+opportunityName+"'>"+opportunityName+"</h3>"+*/
                                  /*"<p class='right-col primary' >In Test</p>"+*/
                                   "<button type='button' class='btn btn-primary mt-3' name='btn' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>"+
                                   "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
@@ -48,6 +50,12 @@ $(document).ready(function(){
                                   "</li>";
                 $('#ul_id').append(li_element);
                 i++;
+                
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+				var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+					return new bootstrap.Tooltip(tooltipTrigger)
+				 });
+                
                  });
                  var phaseOptions ="<option class='options All' value='All'>All</option>"
                  $.each(data[2][0], function(key, value){

@@ -82,8 +82,6 @@
 body{
 background:#fff;
 }
-
-
 .page-title-div {
 background:#1565c0;
 padding: 15px; 
@@ -94,7 +92,6 @@ padding-left: 0px;
 padding-right: 0px;
 }
 <!-- Wizard-->
-
 /* body {
   background-color: #ffffff;
   color: #444444;
@@ -104,9 +101,6 @@ padding-right: 0px;
   margin: 0;
   padding: 0;
 } */
-
-
-
 .wizard-content-left {
   background-blend-mode: darken;
   background-color: rgba(0, 0, 0, 0.45);
@@ -123,7 +117,6 @@ padding-right: 0px;
   padding: 12px 20px;
   text-align: center;
 }
-
 .form-wizard {
   color: #888888;
   
@@ -187,7 +180,6 @@ padding-right: 0px;
 .form-wizard .form-wizard-header {
   text-align: center;
 }
-
 .form-wizard .wizard-fieldset {
   display: none;
 }
@@ -204,8 +196,6 @@ padding-right: 0px;
   height: 2px;
   width: 100%;
 }
-
-
 .form-wizard .form-control:focus {
   box-shadow: none;
 }
@@ -304,9 +294,6 @@ padding-right: 0px;
     height: auto;
   }
 }
-
-
-
 fieldset {
     padding: 0.875em 1.75em 1.75em;
     border-width: 1px #fff;
@@ -314,7 +301,6 @@ fieldset {
     max-width: 141%;
     margin-bottom: 1.875em;
 }
-
 .form-wizard-steps li  i{
 	position: absolute;
     top: -22px;
@@ -327,7 +313,6 @@ fieldset {
     font-weight: 700;
     color: #000;
 }
-
 .form-wizard-steps li  i{
 	color: #d65470;
 }
@@ -339,7 +324,6 @@ fieldset {
     border-radius:50%;
     background:Gray;
 }
-
 .fa{
 padding-left:3px;
 padding-top:-3px;
@@ -347,7 +331,6 @@ padding-bottom:10px;
 margin:0 auto;
 font-size:14x;
 color:#fff;
-
 }
 	#module_header{
  
@@ -362,32 +345,24 @@ color:#fff;
     margin-bottom: 2.375em;
     border-style:none;
 }  */
-
-
 .pdf{
-
 float:right;
     margin-top: -36px;
-
 }
 .pdf{
 background:#1565c0;
 }
-
-
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
-
 .switch input { 
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -399,7 +374,6 @@ background:#1565c0;
   -webkit-transition: .4s;
   transition: .4s;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -411,47 +385,34 @@ background:#1565c0;
   -webkit-transition: .4s;
   transition: .4s;
 }
-
 input:checked + .slider {
   background-color: #2196F3;
 }
-
 input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
-
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
-
 .slider.round:before {
   border-radius: 50%;
 }
-
 .userlist{
-
 width:95%;
-
 }
-
 input[type="text"]{
-
 font-size:12px;
-
 }
-
 .panelSize {
   display: flex;
   justify-content: center;
 }
-
 .triangle{
     position:absolute;
 }
@@ -472,7 +433,6 @@ font-size:12px;
     border-top: none;
   
 }
-
 .active-1{
         background:#1565c0;
          }
@@ -494,28 +454,21 @@ font-size:12px;
 	border-right: none;
 	border-bottom: 4px solid transparent;
 }
-
  .navbar-nav .nav-link-2.active-2 {
     /* border-top: none; */
     border-left: none;
     border-right: none;
     border-bottom: 4px solid rgba(255,255,255,.5)!important;
 }
-
 .navbar-nav-1 #nav-link {
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	border-bottom: 4px solid transparent;
 }
-
 .link:hover{
-
 background:#1565c0 important;
-
 }
-
-
  .active1{
    background:#1565c0;
     }
@@ -523,8 +476,6 @@ background:#1565c0 important;
  background:#1565c0;
  padding: 15px;
 	}
-
-
 </style>
 
 
@@ -563,26 +514,25 @@ background:#1565c0 important;
 					</li>
 
 				</ul>
-				
+
+			</div>
+			
 			<div class="dropdown" align="end">
 				<a class="dropdown-toggle" href="#" role="button"
 					 data-toggle="dropdown"
-					aria-expanded="false"><i
-					class="fas fa-user-circle iconAlign iconColor fa-3x"  style="margin-top:25px; padding-left: 140px;"></i><span class="caret"></span> </a>
-				<ul class="dropdown-menu">
+					aria-expanded="false" style="position: relative; bottom: 100px; left:93%;"><i
+					class="fas fa-user-circle iconAlign iconColor fa-3x"  style="margin-top:25px;"></i><span class="caret"></span> </a>
+				<ul class="dropdown-menu" style="min-width:0px; left:90%;top:-60%;">
 					<li><a class="dropdown-item" href="#" id="textAlign"><i
 							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
 							in as <br/><b>admin</b></a></li>
-					<hr/>
+					<hr style="margin-left:0px;"/>
 					<li><a class="dropdown-item li-align" href="#" id="textAlign"
 						onclick="location.href='Login.jsp';"><i
-							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
+							class="fa fa-sign-out fa-1x" style="color: #1565c0;"></i>Logout</a></li>
 				</ul>
 			</div>
-
-
-			</div>
-		
+			
 			
 	</div>
 	
@@ -654,7 +604,6 @@ background:#1565c0 important;
 		                   </ul>
                          </div>
                     </div>
-
                 </div>
 			</nav>	
       
@@ -696,7 +645,7 @@ background:#1565c0 important;
                                                       </div>
 
 
-												<div class="card-container-4 card">
+												<div class="card-container-3 card">
                                             <div class="card-header d3s-pl-15" id="cd-header">Archive Execution</div>
                                                     
                                             <div class="panel-collapse collapse in"
@@ -706,8 +655,8 @@ background:#1565c0 important;
                                                     <div>
                                                     <!-- <h4>Task List</h4>   -->
                                                             <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
-      													<div class="panel">         
-  													<table class="table table-bordered" style="width: 100%;font-size: 9px;">
+      													<div class="panel" style="overflow-x: auto;">         
+  													<table class="table table-bordered" style="width: 100%; font-size: 12px;">
   													
     												<thead >
       												<tr>
@@ -1006,7 +955,6 @@ $(document).on('mouseenter','.active1', function(){
 		 
 	 });
 </script>
-
     <!-- Date picker --> 
         <!--  <link href = "https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css"  
          rel = "stylesheet"> -->

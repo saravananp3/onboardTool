@@ -223,7 +223,17 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid .cbp-vm-title {
+	/* font-size: 21px;
+	overflow: hidden; 
+	max-width: 16ch;  */
+/* 	text-overflow: ellipsis;  */
+	/* white-space: nowrap; */
 	font-size: 21px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden; 
+	text-overflow: ellipsis;
 }
 
 .cbp-vm-view-grid .cbp-vm-details {

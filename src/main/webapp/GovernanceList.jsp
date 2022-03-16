@@ -192,17 +192,26 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid ul li {
-	width: 20%;
+	padding-top: 68px;
+	width: 23%;
 	text-align: center;
-	  box-shadow:5px 5px 5px 5px  #dbdbdb;
-	
+	box-shadow:5px 5px 5px 5px  #dbdbdb;
 	display: inline-block;
-	
 	vertical-align: top;
+}
+
+.col-md-12 {
+flex: 0 0 auto;
+width: 100%;
 }
 
 .cbp-vm-view-grid .cbp-vm-title {
 	font-size: 21px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden; 
+	text-overflow: ellipsis;
 }
 
 .cbp-vm-view-grid .cbp-vm-details {

@@ -81,7 +81,7 @@ function waveListAjaxCall()
 						"<input type = 'hidden' class = 'waveName' value = '"+waveName+"'>"+
 						"<input type = 'hidden' class = 'waveId' value = '"+WaveId+"'>"+
 						"</div>"+
-	                  "<h3 class='cbp-vm-title left-col primary waveHeadingName' name='name' contenteditable='false'>"+waveName+"</h3>"+
+	                  "<h3 class='cbp-vm-title left-col primary waveHeadingName' data-bs-toggle='tooltip' data-bs-placement='top' title='"+waveName+"' name='name' contenteditable='false'>"+waveName+"</h3>"+
 	                  "<button type='button' class='btn btn-primary mt-3' name='btn' onClick=\"edit('"+WaveId+"','"+waveName+"')\";>"+
 							"<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
 						"</button>"+
@@ -98,10 +98,15 @@ function waveListAjaxCall()
 		var appName = apps[i].replaceAll(",","").replaceAll(" ","");
 		appClass += appName+" "; 
 		}
-		$("#wave").append("<option class='"+phaseClass+" options waveOption "+appClass+"' value='"+waveName+"' >"+waveName+"</option>");
+		$("#wave").append("<option class='"+phaseClass+" options waveOption "+appClass+"' value='"+waveName+"'>"+waveName+"</option>");
 		}
 		
 		i++;
+		
+		 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+				return new bootstrap.Tooltip(tooltipTrigger)
+			});
 	     });
 	     $('#title_id').html("Number of Wave &nbsp;("+(i-1)+")");
 	 }

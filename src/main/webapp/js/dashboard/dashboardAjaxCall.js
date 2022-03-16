@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	dashboardDetails();
+	doughnutType();
 });
 function dashboardDetails() {
 	$.ajax({
@@ -465,6 +466,145 @@ function dashboardDetails() {
             }, 1000);
           })
         });
+        
+       /* $.each(data[10], function(key, value) {
+                var aname=value.app_name==undefined?"":value.app_name
+                var status=value.status==undefined?"":value.status
+                var stdate=value.startDate==undefined?"":value.startDate*/
+                var t_row = "<tr>"
+                    + "<td>" + "App-1" + "</td>"
+                    + "<td>" + "16-03-2022" + "</td>"
+                    + "<td>" + "75%" + "</td>"
+                    + "</tr>" +
+                    "<tr>"
+                    + "<td>" + "App-2" + "</td>"
+                    + "<td>" + "16-03-2022" + "</td>"
+                    + "<td>" + "75%" + "</td>"
+                    + "</tr>"+
+                    "<tr>"
+                    + "<td>" + "App-3" + "</td>"
+                    + "<td>" + "16-03-2022" + "</td>"
+                    + "<td>" + "75%" + "</td>"
+                    + "</tr>"+
+                    "<tr>"
+                    + "<td>" + "App-4" + "</td>"
+                    + "<td>" + "16-03-2022" + "</td>"
+                    + "<td>" + "75%" + "</td>"
+                    + "</tr>"+
+                    "<tr>"
+                    + "<td>" + "App-5" + "</td>"
+                    + "<td>" + "16-03-2022" + "</td>"
+                    + "<td>" + "75%" + "</td>"
+                    + "</tr>"+
+                    "<tr>";
+                    
+                $('#dataTableId2').append(t_row);
+                
+               	$.fn.pageMe = function(opts) {
+					var $this = this,
+						defaults = {
+							perPage: 7,
+							showPrevNext: false,
+							hidePageNumbers: false
+						},
+						settings = $.extend(defaults, opts);
+
+					var listElement = $this;
+					var perPage = settings.perPage;
+					var children = listElement.children();
+					var pager = $('.pager');
+
+					if (typeof settings.childSelector != "undefined") {
+						children = listElement.find(settings.childSelector);
+					}
+
+					if (typeof settings.pagerSelector != "undefined") {
+						pager = $(settings.pagerSelector);
+					}
+
+					var numItems = children.size();
+					var numPages = Math.ceil(numItems / perPage);
+
+					pager.data("curr", 0);
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="prev_link"><<</a></li>').appendTo(pager);
+					}
+
+					var curr = 0;
+					while (numPages > curr && (settings.hidePageNumbers == false)) {
+						$('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>').appendTo(pager);
+						curr++;
+					}
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="next_link">>></a></li>').appendTo(pager);
+					}
+
+					pager.find('.page_link:first').addClass('active');
+					pager.find('.prev_link').hide();
+					if (numPages <= 1) {
+						pager.find('.next_link').hide();
+					}
+					pager.children().eq(1).addClass("active");
+
+					children.hide();
+					children.slice(0, perPage).show();
+
+					pager.find('li .page_link').click(function() {
+						var clickedPage = $(this).html().valueOf() - 1;
+						goTo(clickedPage, perPage);
+						return false;
+					});
+					pager.find('li .prev_link').click(function() {
+						previous();
+						return false;
+					});
+					pager.find('li .next_link').click(function() {
+						next();
+						return false;
+					});
+
+					function previous() {
+						var goToPage = parseInt(pager.data("curr")) - 1;
+						goTo(goToPage);
+					}
+
+					function next() {
+						goToPage = parseInt(pager.data("curr")) + 1;
+						goTo(goToPage);
+					}
+
+					function goTo(page) {
+						var startAt = page * perPage,
+							endOn = startAt + perPage;
+
+						children.css('display', 'none').slice(startAt, endOn).show();
+
+						if (page >= 1) {
+							pager.find('.prev_link').show();
+						}
+						else {
+							pager.find('.prev_link').hide();
+						}
+
+						if (page < (numPages - 1)) {
+							pager.find('.next_link').show();
+						}
+						else {
+							pager.find('.next_link').hide();
+						}
+
+						pager.data("curr", page);
+						pager.children().removeClass("active");
+						pager.children().eq(page + 1).addClass("active");
+
+					}
+				};
+           /* });*/
+            $(document).ready(function() {
+                $('#example2').DataTable();
+            });
 			
 			function drawBarChart() {
 				var databar = google.visualization.arrayToDataTable(barChartData);
@@ -533,84 +673,54 @@ $.ajax({
    }});
 });
 
-$(document).ready(function() {
-	var ctx = $("#mycanvas1").get(0).getContext("2d");
-
-	var options = {
-		title: {
-			display: true,
-			text: "Waves"
-		},
-	}
-	var data = [
-		{
-			value: 27,
-			color: "#486ccc",
-			highlight: "lightskyblue",
-			label: "Yet To Start"
-		},
-		{
-			value: 33,
-			color: "#d1e1f3",
-			highlight: "yellowgreen",
-			label: "In Progress"
-		},
-		{
-			value: 40,
-			color: "#aeb8c1",
-			highlight: "darkorange",
-			label: "Completed"
-		}
-	];
-
-	var chart = new Chart(ctx).Doughnut(data);
+$("#phId").change(function() {
+	doughnutType();
+  
 });
 
-/*function paging(tableId,maxRowId,totalRows1,paginationId){
-    var table='#'+tableId
-        $('#'+maxRowId).on('change',function(){
-            $('#'+paginationId).html('')
-            var trnum=0
-            var maxRows=parseInt($(this).val())
-            var totalRows=totalRows1
-            $(table +' tr:gt(0)').each(function(){
-                trnum++
-                if(trnum>maxRows)
-                {
-                    $(this).hide()
-                }
-                if(trnum<=maxRows)
-                {
-                    $(this).show()
-                }
-            })
-            if(totalRows>maxRows)
-            {
-                var pageNum=Math.ceil(totalRows/maxRows)
-                for(var i=1;i<=pageNum;)
-                {
-                    $('#'+paginationId).append('<li data-page="'+i+'"><span>'+ i++ +'<span class="sr-only">(current)</span></span></li>').show()
-                }
-            }
-            $('#'+paginationId+' li:first-child').addClass('active')
-            $(this).addClass('active')
-            $('#'+paginationId+' li').on('click',function(){
-                var pageNum=parseInt($(this).attr('data-page'))
-                var trIndex=0;
-                $(''+paginationId+' li').removeClass('active')
-                $(table+' tr:gt(0)').each(function(){
-                    trIndex++
-                    if(trIndex>(maxRows*pageNum) || trIndex<=((maxRows*pageNum)-maxRows))
-                    {
-                      $(this).hide()
-                    }
-                    else
-                    {
-                      $(this).show()
-                    }
-                })
-                $(this).addClass('active')
-            })
-        });
-}*/
+function doughnutType()
+{
+    var ctx = $("#mycanvas1").get(0).getContext("2d");
+    var selectedItem=$('#phId :selected').text();
+    var options = {
+        title: {
+            display: true,
+            text: "Waves"
+        },
+    }
+    $.ajax({
+        url: "dashboardDoughnutServlet",
+        type: 'POST',
+        async: false,
+        data:{doughnutType:selectedItem},
+        dataType: "json",
+        success: function(data) {
+            console.log("Wave Data : ", data);
+            $.each(data[0],function(key,value1){
+    var result = [
+        {
+            value: value1.yestoStart,
+            color: "#486ccc",
+            highlight: "lightskyblue",
+            label: "Yet To Start"
+        },
+        {
+            value: value1.inProgress,
+            color: "#d1e1f3",
+            highlight: "#82aadd",
+            label: "In Progress"
+        },
+        {
+            value: value1.completed,
+            color: "#aeb8c1",
+            highlight: "darkorange",
+            label: "Completed"
+        }
+    ];
+    console.log("Result : ",result)
+    var chart = new Chart(ctx).Doughnut(result);
+    	});
+    
+   }});
+}
 

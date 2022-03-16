@@ -15,3 +15,12 @@ $(document).ready(function() {
 		perPage: 4
 	});
 });
+
+$(document).ready(function() {
+	$('#dataTableId2').pageMe({
+		pagerSelector: '#developer_page_2',
+		showPrevNext: true,
+		hidePageNumbers: false,
+		perPage: 4
+	});
+});

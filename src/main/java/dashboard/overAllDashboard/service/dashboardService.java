@@ -851,4 +851,97 @@ public class dashboardService {
         System.out.println("myjson "+jsonArray);
         return jsonArray;
     }
+    
+    public JsonArray getArchiveExeDataFromPhase(String phaseFilter) {
+        JsonArray jsonArray = new JsonArray();
+        try {
+            String whereCondn = phaseFilter.equals("All") ? "" : " where phaseName like '" + phaseFilter + "%'";
+            String selectPhases = "select * from phase_info" + whereCondn;
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(selectPhases);
+            while (rs.next()) {
+                if (rs.getString("column_name").equals("waves")) {
+                    String waves[] = rs.getString("value").split(",");
+                    jsonArray.addAll(getArchiveExeWaveDetails(waves, rs.getString("phaseName")));
+                }
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
+    }
+    private JsonArray getArchiveExeWaveDetails(String[] waves, String phase) {
+        JsonArray jsonArray = new JsonArray();
+        try {
+            for (String wave : waves) {
+                String selectWaves = "select * from governance_info where waveName='" + wave + "'";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(selectWaves);
+                while (rs.next()) {
+                    if (rs.getString("column_name").equals("apps")) {
+                        String apps[] = rs.getString("value").split(",");
+                        jsonArray.addAll(getArchiveExeDetail(apps, rs.getString("waveName"), phase));
+                    }
+                }
+                rs.close();
+                st.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
+    }
+    private JsonArray getArchiveExeDetail(String[] apps, String wave, String phase) {
+        JsonArray jsonArray = new JsonArray();
+        try {
+            for (String app : apps) {
+                JsonObject jsonObject = new JsonObject();
+                String selectApp = "select distinct ar.oppName,OppId from opportunity_info o inner join archive_execution_info ar on o.Id=ar.OppId where column_name='appName' and value ='"
+                        + app + "';";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(selectApp);
+                while (rs.next()) {
+                    jsonObject.addProperty("app_name", rs.getString("ar.oppName"));
+                    String Id = rs.getString("OppId");
+                    String crdate="select value from opportunity_info where column_name='creation_date' and Id='"+ Id +"';";
+                    Statement st13 = con.createStatement();
+                    ResultSet rs13 = st13.executeQuery(crdate);
+                    if(rs13.next()) {
+                        jsonObject.addProperty("startDate", rs13.getString("value"));                   }
+                    System.out.println("OppId: " + Id);
+                    String selectAppdetail = "select * from archive_execution_info where level='1' and taskGroup='Initiation &amp; Setup - General' and OppId = '" + Id+"';";
+                    Statement st12 = con.createStatement();
+                    ResultSet rs12 = st12.executeQuery(selectAppdetail);
+                    if (rs12.next()) {
+                        String plstdt = rs12.getString("planSrt");
+                        String acstdt = rs12.getString("actSrt");
+                        String acendt = rs12.getString("actEnd");
+                        System.out.println(" teen date : "+plstdt+" ::"+acstdt+" ::"+acendt);
+                        if(plstdt.isEmpty()==false &&  acstdt.isEmpty()) {
+                            jsonObject.addProperty("status", "yet to start");
+                            System.out.println("yet to start");
+                           }
+                        else if(plstdt.isEmpty()==false && acstdt.isEmpty()==false &&  acendt.isEmpty()) {
+                            jsonObject.addProperty("status", "In Progress");
+                            System.out.println("In Progress");
+                        }else if(acendt.isEmpty()==false) {
+                            jsonObject.addProperty("status", "Completed");
+                            System.out.println("Completed");
+                        }
+                        rs12.close();
+                    st12.close();
+                    jsonArray.add(jsonObject);
+                    System.out.println("ye status  :  "+jsonArray);
+                    }
+                }
+                rs.close();
+                st.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
+    }
 }

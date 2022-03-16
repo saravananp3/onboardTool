@@ -80,9 +80,9 @@
 					<li><a class="dropdown-item" href="#" id="textAlign"><i
 							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
 							in as <br/><b>admin</b></a></li>
-					<hr/>
-					<li><a class="dropdown-item li-align" href="#" id="textAlign"
-						onclick="location.href='Login.jsp';"><i
+					
+					<li class="mt-5"><a class="dropdown-item li-align" href="#" id="textAlign"
+						onclick="location.href='Login.jsp';" style="border-top: 1px solid #d3d7e2;"><i
 							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
 				</ul>
 			</div>

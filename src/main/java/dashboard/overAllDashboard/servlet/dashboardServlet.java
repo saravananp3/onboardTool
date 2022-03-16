@@ -36,6 +36,7 @@ public class dashboardServlet extends HttpServlet {
             jsonArray.add(dashboard.getAppIssueCount());
             jsonArray.add(dashboard.getDataCharDataTable());
             jsonArray.add(dashboard.getDoughnutIntakeDetail());
+            jsonArray.add(dashboard.getArchiveExeDataFromPhase("All"));
             dashboard = null;
             System.gc();
 			

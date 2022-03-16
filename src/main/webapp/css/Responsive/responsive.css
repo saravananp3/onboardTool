@@ -387,6 +387,14 @@ body {
 	bottom: 35px;
     position: relative;
     color: #1565c0;
+    right: 93%;
+}
+
+#caret {
+	bottom: 35px;
+    position: relative;
+    color: #1565c0;
+    right: 93%;
 }
 
 /* <!-- ========== Data Characteritics for Dashboard ========== --> */
@@ -401,7 +409,7 @@ body {
     /* padding: 40px; */
 }
 #chart #numbers {
-  height: 100%;
+ /*  height: 100%; */
   /* font-weight: bold; */
   width: 50px;
   margin: 0;
@@ -426,7 +434,7 @@ body {
 }
 #chart #bars {
   display: inline-block;
-  background: #fff;
+/*   background: #fff; */
   width: 600px;
  /*  height: 300px;
   padding: 0;

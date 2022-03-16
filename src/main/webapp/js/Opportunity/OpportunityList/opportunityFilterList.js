@@ -59,13 +59,18 @@ function getAppList(data)
                     "<input type = 'hidden' class = 'oppName' value = '"+opportunityName+"'>"+
                     "<input type = 'hidden' class = 'oppId' value = '"+OpportunityId+"'>"+
                     "</div>"+
-                     "<h3 class='cbp-vm-title left-col primary' name='name'>"+opportunityName+"</h3>"+
-                     "<p class='right-col primary' >In Test</p>"+
-                      "<button type='button' class='btn btn-primary' name='btn' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>"+
+                     "<h3 class='cbp-vm-title left-col primary' data-bs-toggle='tooltip' data-bs-placement='top' title='"+opportunityName+"' name='name'>"+opportunityName+"</h3>"+
+                     /*"<p class='right-col primary' >In Test</p>"+*/
+                      "<button type='button' class='btn btn-primary mt-3' name='btn' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>"+
                       "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
                       "</button>"+
                       "</li>";
        $('#ul_id').append(li_element);
       i++;
+      
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+				return new bootstrap.Tooltip(tooltipTrigger)
+			});
   });
 }

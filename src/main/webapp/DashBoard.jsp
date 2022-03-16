@@ -450,6 +450,19 @@ cursor: pointer;
 font-weight: bold;
 }
 
+#dropDownMenu
+{
+margin: 0;
+width: 1%;
+padding: 0;
+left: -20px;
+}
+.dropdown-menu>li>a {
+line-height: 1.128571489;
+}
+
+
+
 </style>
 
 </head>
@@ -715,41 +728,29 @@ font-weight: bold;
 						<div class="row">
 							<div class="col-md-8">
 								<div class="card ht-270">
-									<div class="card-header" id="card-header">Overall progress for phases and
-										waves</div>
-									<!-- <div class="card-header row">
-									<div class="col-md-6"  id="card-header">Overall progress for phases and
-										waves</div>
-										<div class="col-md-2" align="end">
-											<div class="btn-group">
-												<button type="button" class="btn btn-secondary">Action</button>
-												<button type="button"
-													class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-													data-bs-toggle="dropdown" aria-expanded="false">
-													<span class="visually-hidden">Toggle Dropdown</span>
-												</button>
-												<ul class="dropdown-menu">
-													<li><a class="dropdown-item" href="#">Action</a></li>
-													<li><a class="dropdown-item" href="#">Another
-															action</a></li>
-													<li><a class="dropdown-item" href="#">Something
-															else here</a></li>
-													<li><hr class="dropdown-divider"></li>
-													<li><a class="dropdown-item" href="#">Separated
-															link</a></li>
-												</ul>
+										<div class="card-header" id="card-header">
+											<div class="row">
+												<div class="col-md-6">Overall progress for phases and
+													waves</div>
+												<div class="col-md-2 ms-auto">
+													<select class="form-select" id="phId"
+														aria-label="Default select example" style="padding: 0 0 0 0.75rem;">
+														<!-- <option selected>Select</option> -->
+														<option value="Phase" selected>Phase</option>
+														<option value="Wave">Wave</option>
+													</select>
+												</div>
 											</div>
 										</div>
-									</div> -->
-									<div class="card-body">
+										<div class="card-body">
 										<div class="col-md-4">
-											<canvas class="vr" id="mycanvas" width="200" height="200"
-												style="margin-left: 105px;"></canvas>
+											<canvas id="mycanvas" width="200" height="200"
+												style="margin-left: 35%;"></canvas>
 										</div>
 										
 										<div class="col-md-4">
 											<canvas id="mycanvas1" width="200" height="200"
-												style="margin-left: 230px;"></canvas>
+												style="margin-left: 96%;"></canvas>
 										</div>
 									</div>
 								</div>
@@ -854,10 +855,10 @@ font-weight: bold;
 					<div class="col-md-12 mt-3">
 						<div class="row">
 							<div class="col-md-8">
-								<!-- <div class="card">
+								<div class="card ht-270">
 									<div class="card-header"  id="card-header">Archive Execution</div>
 									<div class="card-body" style="padding:0px;">
-										<table id="example"
+										<table id="example2"
 											class="table">
                                         <thead>
                                           <tr>
@@ -866,15 +867,19 @@ font-weight: bold;
                                                 <th scope="col">Status </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="dataTableId2">
                                         </tbody>
                                     </table>
+                                    	<div class="col-md-12 text-center">
+											<ul class="pagination pagination-lg pager pagination-align"
+												id="developer_page_2"></ul>
+										</div>
 									</div>
-								</div> -->
+								</div>
 							</div>
-							<!-- <div class="col-md-4">
-								<div class="card">
-									<div class="card-header" id="card-header">Data Characteristic</div>
+							<div class="col-md-4">
+								<div class="card ht-270">
+									<div class="card-header" id="card-header">Cost Benefit Analysis</div>
 									<div class="card-body">
 									<div id="chart">
                                         <ul id="numbers">
@@ -884,129 +889,16 @@ font-weight: bold;
                                     </div>
 									</div>
 								</div>
-							</div> -->
+							</div>
 						</div>
 					</div>
-<!-- 
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card">
-									<div class="card-header" id="card-header">Plan and Priority</div>
-									<div class="card-body">
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card">
-									<div class="card-header" id="card-header">Cost Benefit and Analysis</div>
-									<div class="card-body"></div>
-								</div>
-							</div>
-						</div>
-					</div> -->
+					
 					</div>
 
 					</div> 
 				
 
-				<!-- <div class="col-md-12 ">
-					<div class="row">
-						<div class="col-sm-3 col-md-6 col-lg-7">
-							<div class="paneldashboard">
-								<br /> <br />
-								<div class="content">
-									<h6 style="margin-left: 30px;">Application Status</h6>
-									<div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div>
-									<table id="example" class="display" style="width: 100%">
-										<thead>
-											<tr>
-												<th>App</th>
-												<th>AppOwner</th>
-												<th>Phase</th>
-												<th>Wave</th>
-												<th>AppType</th>
-											</tr>
-										</thead>
-										<tbody id="dataTableId">
-
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-9 col-md-6 col-lg-7">
-
-							<div class="paneldashboard">
-
-								<div class="content">
-
-									<div class="form-group">
-
-										<label class="control-label" for="GanttChart"
-											style="margin-left: 30px;">Select Application :</label> <select
-											id="oppNameDrop" class="form-control"
-											name="ganttChartTypesName"
-											style="width: 250px; margin-left: 30px;" required>
-
-										</select>
-
-									</div>
-
-									<br /> <br />
-									<h6 style="margin-left: 30px;">Archive Execution Details</h6>
-									<br />
-									<div id="chart_div"
-										style="width: 700px; height: 400px; margin-left: 50px;"></div>
-
-								</div>
-
-
-
-
-							</div>
-						</div>
-
-					</div>
-				</div> -->
-				<!-- <div class="col-md-12">
-					<div class="row">
-						<div class="col-sm-3 col-md-6 col-lg-4">
-							<div class="paneldashboard">
-								<div>
-									<div class="content">
-										<h6 style="margin-left: 30px;">Cost Benefit Analysis</h6>
-										<br />
-										<div id="pieChartId" style="width: 650px; height: 500px;"></div>
-
-									</div>
-
-								</div>
-
-
-							</div>
-						</div>
-						<div class="col-sm-3 col-md-6 col-lg-8">
-							<div class="paneldashboard">
-								<div>
-									<div class="content">
-										<h6 style="margin-left: 30px;">Cost Benefit Analysis</h6>
-										<br />
-										<div id="columnChartId" style="width: 700px; height: 500px;"></div>
-
-									</div>
-
-								</div>
-
-
-							</div>
-						</div>
-					</div>
-				</div> -->
-
-
-
+				
 				</div>
 			</div>
 

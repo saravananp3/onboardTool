@@ -315,7 +315,8 @@ function phaseListAjaxCall()
 							"<input type = 'hidden' class = 'phaseId' value = '"+phaseId+"'/>"+
 							"</div>"+
 							"<h3 class='cbp-vm-title' style='display:none;'>"+value.apps+"</h3>"+
-                             "<h3 class='left-col primary phaseHeadingName' name='name' contenteditable='false'>"+phaseName+"</h3>"+
+                             /*"<h3 class='left-col primary phaseHeadingName' name='name' contenteditable='false'>"+phaseName+"</h3>"+*/
+                             "<h3 class='cbp-vm-title left-col primary' data-bs-toggle='tooltip' data-bs-placement='top' title='"+phaseName+"'>"+phaseName+"</h3>"+
                              "<button type='button' class='btn btn-primary mt-2' name='btn' onClick=\"edit('"+phaseId+"','"+phaseName+"')\";>"+
 								"<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
 							 "</button>"+
@@ -325,6 +326,11 @@ function phaseListAjaxCall()
         	 option +="<option class='options' value='"+phaseName+"'>"+phaseName+"</option>";
         	
         	i++;
+        	
+        	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+				return new bootstrap.Tooltip(tooltipTrigger)
+			});
              });
              $('#phase').html(option);
              $('#title_id').html("Number of Wave &nbsp;("+(i-1)+")");
