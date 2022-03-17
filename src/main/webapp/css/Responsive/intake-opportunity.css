@@ -32,6 +32,12 @@ body {
 	font-family: 'Poppins', sans-serif;
 	width: 100%;
 }
+
+.card-container-5 {
+	font-family: 'Poppins', sans-serif;
+	width: 90%;
+	 margin-left: 5%;
+}
 #cd-header {
 	font-size: 16px;
 	color: #fff;

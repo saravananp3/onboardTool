@@ -17,9 +17,11 @@ public class ArchiveExecutionDetailService {
     }
     public JsonArray archiveExecutionDataRetrieve(String Id, String oppName) {
         JsonArray jsonArray = new JsonArray();
+        
         try {
-            JsonObject jsonObject = archiveExecutionHearderInfo(Id,oppName); 
+        	JsonObject jsonObject= archiveExecutionHearderInfo(Id,oppName); 
             jsonArray.add(jsonObject);
+            
             String selectQuery = "select * from Archive_Execution_Info where oppId = '"+Id+"' and oppName = '"+oppName+"' order by seq_no;";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(selectQuery);
@@ -65,6 +67,9 @@ public class ArchiveExecutionDetailService {
             String ed = "select planEnd from Archive_Execution_Info where oppId = '"+Id+"' and oppName = '"+oppName+"' and taskId='5.05'  order by seq_no;";
             Statement eds = con.createStatement();
             ResultSet ers = eds.executeQuery(ed);
+            String at = "select r_name from resources";
+            Statement ats = con.createStatement();
+            ResultSet ars = ats.executeQuery(at);
             while(rs.next()) {
                 if((rs.getString("column_name")).equals("apmid"))
                     jsonObj.addProperty("Opp_Id",rs.getString("value"));
@@ -81,6 +86,26 @@ public class ArchiveExecutionDetailService {
                 jsonObj.addProperty("endDate",ers.getString("planEnd"));
                 jsonArray.add(jsonObj);
         }
+            JsonArray jsonArrayUsers = new JsonArray();
+            JsonObject jsonObjectUsers = new JsonObject();
+            int c=0;
+            String str= "Select";
+           while(ars.next())
+           {
+				/* jsonObj.addProperty("user"+c,ars.getString("r_name")); */
+				/* jsonArrayUsers.add(ars.getString("r_name")); */
+        	   str = str+","+ars.getString("r_name") ;
+               System.out.println("H"+jsonObjectUsers);
+               System.out.println("User Array "+ jsonArrayUsers);
+               c++;
+       }
+		/* jsonArray.add(jsonObjectUsers); */
+		/* jsonObj.put("user",(Object)jsonArrayUsers); */
+           
+           //System.out.println("User List "+ jsonArrayUsers.toString());
+           jsonObj.addProperty("user",str);
+       
+            
 		
         }
         catch(Exception e) {
@@ -88,6 +113,9 @@ public class ArchiveExecutionDetailService {
         }
         return jsonObj;
     }
+    
+
+	
     protected void finalize() throws Throwable 
     { 
         System.out.println("Db connection closed.");

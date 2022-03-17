@@ -138,6 +138,12 @@ $(document).ready(function()
      
 });
 
+function userAppendFunction(data) {
+	$.each(data, function(){
+		
+	})
+}
+
 
 function appendRowFunction(data){
 	var collapse = "";
@@ -161,7 +167,7 @@ function appendRowFunction(data){
 		var completion = value.completion;
 		var status = value.status;
 		var remark = value.remark;
-		var AssignedToOptions = Options(users,assingedTo);
+		var AssignedToOptions = userAppendFunction(data[0].user,assingedTo);
 		var taskTypeOptions = Options(taskTypeArr,taskType);
  	    if (level == 1){    	
  	    	collapse = "collapse"+seqNo;
@@ -311,3 +317,21 @@ function Options(optionlist,value)
 	}
 	 return options;
 }
+
+function userAppendFunction(optionlist,value1) {
+	//console.log(optionlist);
+	var userArrayList = optionlist.split(',');
+	//console.log(userArrayList);
+	var options = "";
+	$.each(userArrayList, function(key, value){
+		//var getUser = "user"+count.toString();
+		var userList = (value);
+		 if(value1.includes(userList.toString()))
+		  options += "<option value='"+userList+"' selected>"+userList+"</option>";
+	  else
+		  options += "<option value='"+userList+"'>"+userList+"</option>";
+		  
+	});
+	return options;
+}
+

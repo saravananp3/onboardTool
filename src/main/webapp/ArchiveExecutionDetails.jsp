@@ -645,7 +645,7 @@ background:#1565c0 important;
                                                       </div>
 
 
-												<div class="card-container-3 card">
+												<div class="card-container-5 card">
                                             <div class="card-header d3s-pl-15" id="cd-header">Archive Execution</div>
                                                     
                                             <div class="panel-collapse collapse in"
@@ -656,7 +656,7 @@ background:#1565c0 important;
                                                     <!-- <h4>Task List</h4>   -->
                                                             <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
       													<div class="panel" style="overflow-x: auto;">         
-  													<table class="table table-bordered" style="width: 100%; font-size: 12px;">
+  													<table class="table table-bordered table-responsive" style="width: 100%; font-size: 12px;">
   													
     												<thead >
       												<tr>

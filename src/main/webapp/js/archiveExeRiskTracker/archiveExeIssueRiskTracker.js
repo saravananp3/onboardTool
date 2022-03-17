@@ -88,6 +88,14 @@ function archiveExeIssueAddAjaxCall(seqNum){
             console.log("Add Row Retrieve--->",data);
             if(data.AddStatus){
                 var Row="<tr class = 'rowClass'>"+
+                "<td>"+
+             "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
+                           "<ul class='dropdown-menu'>"+
+                           "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
+                           "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
+                           "</ul>"+
+                           "</div>"+
+             "</td>" +
              "<td><input type ='text' readonly class='app_Id' value='"+data.id+"'><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
  "<td>"+
              "<select name='Impact' class='impact'>"+
@@ -124,14 +132,7 @@ function archiveExeIssueAddAjaxCall(seqNum){
               "<td><input type ='date' class='exp_date' placeholder='mm/dd/yyyy' value=''></td>" +
             "<td><input type ='date' class='end_date' placeholder='mm/dd/yyyy' value=''></td>" +
             "<td><textarea class='comments' rows='3' value=''/></td>" +
-             "<td>"+
-             "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
-                           "<ul class='dropdown-menu'>"+
-                           "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
-                           "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
-                           "</ul>"+
-                           "</div>"+
-             "</td>" +
+             
              "</tr>";
              $("#AppIssue").append(Row);
                 notification("success","Row added Successfully.","Note:");
