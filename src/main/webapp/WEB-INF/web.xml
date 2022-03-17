@@ -15,6 +15,13 @@
   	<servlet-name>Login_1</servlet-name>
   	<servlet-class>Login_1</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ArchiveExecutionResourcesServlet</display-name>
+  	<servlet-name>ArchiveExecutionResourcesServlet</servlet-name>
+  	<servlet-class>ArchiveExecutionModule.ArchiveExecutionDetails.servlet.ArchiveExecutionResourcesServlet</servlet-class>
+  </servlet>
  
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
@@ -23,6 +30,10 @@
   <servlet-mapping>
   	<servlet-name>Login_1</servlet-name>
   	<url-pattern>/Login_1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ArchiveExecutionResourcesServlet</servlet-name>
+  	<url-pattern>/ArchiveExecutionResourcesServlet</url-pattern>
   </servlet-mapping>
   
   <!-- <servlet-mapping>

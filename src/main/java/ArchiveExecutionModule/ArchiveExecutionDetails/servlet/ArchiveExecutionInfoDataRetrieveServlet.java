@@ -39,9 +39,12 @@ public class ArchiveExecutionInfoDataRetrieveServlet extends HttpServlet {
         String oppName =(String)details.getAttribute("SelectedOpportunity");
        System.out.println("Opportunity Id "+Id);
         JsonArray jsonArray = null;
+        
         try {
             ArchiveExecutionDetailService archiveExecution =  new ArchiveExecutionDetailService();
+            
             jsonArray = archiveExecution.archiveExecutionDataRetrieve(Id,oppName);
+           
             archiveExecution =null;
             //calling finalize method and garabage collector
             System.gc();
@@ -52,6 +55,7 @@ public class ArchiveExecutionInfoDataRetrieveServlet extends HttpServlet {
         }
         System.out.println("JSON ARRAY"+jsonArray);
          String json = new Gson().toJson(jsonArray);
+       
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);

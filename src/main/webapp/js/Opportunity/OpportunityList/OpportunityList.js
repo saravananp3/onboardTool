@@ -9,7 +9,7 @@ $(document).ready(function(){
     });
     
      $.ajax({
-            url: "OpportunityListServlet",
+            url: "ArchiveExecutionResourcesServlet",
             type: 'POST',
             dataType: "json",
             success: function (data) {

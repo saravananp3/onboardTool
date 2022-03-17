@@ -17,9 +17,11 @@ public class ArchiveExecutionDetailService {
     }
     public JsonArray archiveExecutionDataRetrieve(String Id, String oppName) {
         JsonArray jsonArray = new JsonArray();
+        
         try {
-            JsonObject jsonObject = archiveExecutionHearderInfo(Id,oppName); 
+        	JsonObject jsonObject= archiveExecutionHearderInfo(Id,oppName); 
             jsonArray.add(jsonObject);
+            
             String selectQuery = "select * from Archive_Execution_Info where oppId = '"+Id+"' and oppName = '"+oppName+"' order by seq_no;";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(selectQuery);
@@ -65,6 +67,7 @@ public class ArchiveExecutionDetailService {
             String ed = "select planEnd from Archive_Execution_Info where oppId = '"+Id+"' and oppName = '"+oppName+"' and taskId='5.05'  order by seq_no;";
             Statement eds = con.createStatement();
             ResultSet ers = eds.executeQuery(ed);
+           
             while(rs.next()) {
                 if((rs.getString("column_name")).equals("apmid"))
                     jsonObj.addProperty("Opp_Id",rs.getString("value"));
@@ -81,6 +84,8 @@ public class ArchiveExecutionDetailService {
                 jsonObj.addProperty("endDate",ers.getString("planEnd"));
                 jsonArray.add(jsonObj);
         }
+            
+            
 		
         }
         catch(Exception e) {
@@ -88,6 +93,9 @@ public class ArchiveExecutionDetailService {
         }
         return jsonObj;
     }
+    
+
+	
     protected void finalize() throws Throwable 
     { 
         System.out.println("Db connection closed.");
