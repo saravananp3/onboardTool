@@ -643,6 +643,20 @@ line-height: 1.128571489;
 
 							<!-- <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid"> -->
 							<div id="cbp-vm" class="cbp-vm-view-grid">
+							
+								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
+                                        <a class="dashboard-stat col-md-12"
+                                            style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
+                                            href="IntakeOpportunity.jsp">
+                                            <div class="col-md-4" style="height: 100%; margin-left: -17px;">
+                                                <p class="totcounter"
+                                                    style="height: 80%; color: white; padding-right: 10px;"></p>
+                                                <span class="font_icon" style="height: 20%; color: white;">Intake</span>
+                                            </div>
+                                            <div class="col-md-8">Intake is the initiation of the product as well as we need to 
+                                            place some data so that the div size should manage.</div>
+                                        </a>
+                                    </div>
 
 
 								<card class="col-md-3" style="font-size:13.6px; height: 123px !important;"> <a
@@ -690,20 +704,6 @@ line-height: 1.128571489;
 
 								</div>
 								
-								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
-                                        <a class="dashboard-stat col-md-12"
-                                            style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
-                                            href="IntakeOpportunity.jsp">
-                                            <div class="col-md-4" style="height: 100%; margin-left: -17px;">
-                                                <p class="totcounter"
-                                                    style="height: 80%; color: white; padding-right: 10px;"></p>
-                                                <span class="font_icon" style="height: 20%; color: white;">Intake</span>
-                                            </div>
-                                            <div class="col-md-8">Intake is the initiation of the product as well as we need to 
-                                            place some data so that the div size should manage.</div>
-                                        </a>
-                                    </div>
-
 
 							</div>
 						</div>
@@ -1054,7 +1054,7 @@ $(document).ready(function() {
         ["State", "$", { role: "style" } ],
         ['Sum of Realized',      110000.00, 'blue'],     
         ['Sum of in Process',  365000, 'blue'],          
-        ['Sum of Intake/Opportunity', 192000.00, 'blue']      ]);
+        ['Sum of Intake/Opportunity', 192000.00, 'blue'] ]);
 
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
