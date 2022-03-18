@@ -9,22 +9,22 @@ function dashboardDetails() {
 		async: false,
 		dataType: "json",
 		success: function(data) {
-			console.log("Data : ", data);
+			/*console.log("Data : ", data);
 			if (data[0].phaseCount == 0 || data[0].phaseCount == 1)
 				$(".font_icon").eq(0).html('Phase');
 			if (data[0].waveCount == 0 || data[0].waveCount == 1)
 				$(".font_icon").eq(1).html('Wave');
 			if (data[0].appCount == 0 || data[0].appCount == 1)
-				$(".font_icon").eq(2).html('App');
+				$(".font_icon").eq(2).html('App');*/
 			/*$('.totcounter').eq(0).html(data[0].phaseCount);
 			$('.totcounter').eq(1).html(data[0].waveCount);
 			$('.totcounter').eq(2).html(data[0].appCount);*/
 			if(data[0].intakeCount == 0 || data[0].intakeCount== 1)
                 $(".font_icon").eq(3).html('Intake');   
-            $('.totcounter').eq(0).html(data[0].phaseCount);
-            $('.totcounter').eq(1).html(data[0].waveCount);
-            $('.totcounter').eq(2).html(data[0].appCount);
-            $('.totcounter').eq(3).html(data[0].intakeCount);
+            $('.totcounter').eq(1).html(data[0].phaseCount);
+            $('.totcounter').eq(2).html(data[0].waveCount);
+            $('.totcounter').eq(3).html(data[0].appCount);
+            $('.totcounter').eq(0).html(data[0].intakeCount);
 			google.charts.load('current', { 'packages': ['table'] });
 			google.charts.setOnLoadCallback(drawTable);
 			function drawTable() {
