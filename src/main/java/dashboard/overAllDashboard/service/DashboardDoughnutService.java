@@ -80,15 +80,15 @@ public class DashboardDoughnutService {
                 if (rs.getString("column_name").equals("waves")) {
                     if (rs.getString("value").isEmpty() == false) {
                         String waveArray[] = rs.getString("value").split(",");
-                        for (String string : waveArray) 
-                        {
+                        for (String string : waveArray) {
                             waves.add(string);
-                            }
-                        } } 
-                } 
-            String[] allWave = new String[waves.size()]; 
+                        }
+                    }
+                }
+            }
+            String[] allWave = new String[waves.size()];
             allWave = waves.toArray(allWave);
-            jsonArray=(getWaveDetailsStatus(allWave, wave));
+            jsonArray = (getWaveDetailsStatus(allWave, wave));
             rs.close();
             st.close();
         } catch (Exception e) {
@@ -140,7 +140,7 @@ public class DashboardDoughnutService {
                         }
                     }
                     System.out.println("All apps: " + allappsList);
-                     allapp = new String[allappsList.size()];
+                    allapp = new String[allappsList.size()];
                     allapp = allappsList.toArray(allapp);
                     rs.close();
                     st.close();
@@ -184,6 +184,7 @@ public class DashboardDoughnutService {
         return jsonArray;
     }
     public JsonArray dashboardAppDetails(String apps[]) {
+        int idIsthere=0;
         JsonArray jsonArray = new JsonArray();
         JsonObject jsonObject = new JsonObject();
         int appCount = 0, archiveReqCount = 0, archiveExeCount = 0, completedCount = 0, noIntakeApproveApp = 0;
@@ -194,22 +195,23 @@ public class DashboardDoughnutService {
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(selectApp);
                 while (rs.next()) {
+                    idIsthere++;
                     String Id = rs.getString("Id");
-                    System.out.println("Id "+Id);
+                    System.out.println("Id " + Id);
                     String selectAppdetail = "select intakeApproval,max(priority_order_num) pr,OppId from Intake_Stake_Holder_Info where OppId = '"
                             + Id + "' group by intakeApproval,OppId";
                     Statement st11 = con.createStatement();
                     ResultSet rs11 = st11.executeQuery(selectAppdetail);
                     while (rs11.next()) {
                         String value = rs11.getString("intakeApproval");
-                        System.out.println("value of intake "+value);
+                        System.out.println("value of intake " + value);
                         if (value.equals("Decision pending") || value.equals("Rejected")) {
                             // Need to write
                             noIntakeApproveApp++;
                         } else if (value.equals("Approved")) {
                             System.out.println("Intake");
                             appCount++;
-                            String selectStatus1 = "select intakeApproval,max(priority_order_num) pr,OppId from ArchiveReq_Roles_Info where priority_order_num!='' and OppId = '"
+                            String selectStatus1 = "select intakeApproval,max(priority_order_num) pr,OppId from ArchiveReq_Roles_Info where priority_order_num!='' and intakeApproval is not null and OppId = '"
                                     + Id + "' group by intakeApproval,OppId;";
                             Statement st4 = con.createStatement();
                             ResultSet rs4 = st4.executeQuery(selectStatus1);
@@ -273,39 +275,50 @@ public class DashboardDoughnutService {
                     rs11.close();
                     st11.close();
                     if (apps.length == noIntakeApproveApp) {
+                        jsonObject.addProperty("archiveReqPer", 0.00);
+                        jsonObject.addProperty("archiveExePer", 0.00);
+                        jsonObject.addProperty("completed", 0.00);
                         jsonObject.addProperty("NoApp", 100.00);
                     } else {
-                        if(appCount>0) {
-                        double totalCount = archiveReqCount + archiveExeCount + completedCount;
-                        if(totalCount==0)
-                        {
-                        	jsonObject.addProperty("archiveReqPer", 0.00);
+                        if (appCount > 0) {
+                            double totalCount = archiveReqCount + archiveExeCount + completedCount;
+                            if (totalCount == 0) {
+                                jsonObject.addProperty("archiveReqPer", 0.00);
+                                jsonObject.addProperty("archiveExePer", 0.00);
+                                jsonObject.addProperty("completed", 0.00);
+                                jsonObject.addProperty("NoApp", 100.00);
+                            } else {
+                                DecimalFormat f = new DecimalFormat("##.##");
+                                /*
+                                 * String yestoStart = String.valueOf(f.format((yestoStartCount * 100) /
+                                 * totalCount)); String inProgress = String.valueOf(f.format((inProgressCount *
+                                 * 100) / totalCount)) ; String completed =
+                                 * String.valueOf(f.format((completedCount * 100) / totalCount)) ;
+                                 */
+                                double archiveReqPer = Double
+                                        .parseDouble(f.format((archiveReqCount * 100) / totalCount));
+                                double archiveExePer = Double
+                                        .parseDouble(f.format((archiveExeCount * 100) / totalCount));
+                                double completed = Double.parseDouble(f.format((completedCount * 100) / totalCount));
+                                jsonObject.addProperty("archiveReqPer", archiveReqPer);
+                                jsonObject.addProperty("archiveExePer", archiveExePer);
+                                jsonObject.addProperty("completed", completed);
+                                jsonObject.addProperty("NoApp", 0.00);
+                            }
+                        } else {
+                            jsonObject.addProperty("archiveReqPer", 0.00);
                             jsonObject.addProperty("archiveExePer", 0.00);
                             jsonObject.addProperty("completed", 0.00);
                             jsonObject.addProperty("NoApp", 100.00);
                         }
-                        else {
-                        DecimalFormat f = new DecimalFormat("##.##");
-                        /*
-                         * String yestoStart = String.valueOf(f.format((yestoStartCount * 100) /
-                         * totalCount)); String inProgress = String.valueOf(f.format((inProgressCount *
-                         * 100) / totalCount)) ; String completed =
-                         * String.valueOf(f.format((completedCount * 100) / totalCount)) ;
-                         */
-                        double archiveReqPer = Double.parseDouble(f.format((archiveReqCount * 100) / totalCount));
-                        double archiveExePer = Double.parseDouble(f.format((archiveExeCount * 100) / totalCount));
-                        double completed = Double.parseDouble(f.format((completedCount * 100) / totalCount));
-                        jsonObject.addProperty("archiveReqPer", archiveReqPer);
-                        jsonObject.addProperty("archiveExePer", archiveExePer);
-                        jsonObject.addProperty("completed", completed);
-                        jsonObject.addProperty("NoApp", 0.00);
-                        }
-                        }else {
-                            jsonObject.addProperty("archiveReqPer", 0.00);
-                            jsonObject.addProperty("archiveExePer", 0.00);
-                            jsonObject.addProperty("completed", 0.00);
-                        }
                     }
+                }
+                if(idIsthere==0)
+                {
+                    jsonObject.addProperty("archiveReqPer", 0.00);
+                    jsonObject.addProperty("archiveExePer", 0.00);
+                    jsonObject.addProperty("completed", 0.00);
+                    jsonObject.addProperty("NoApp", 100.00);
                 }
                 rs.close();
                 st.close();
@@ -341,7 +354,7 @@ public class DashboardDoughnutService {
         JsonArray jsonArray = new JsonArray();
         JsonObject jsonObject = new JsonObject();
         try {
-            double intakeCBA=0,inprogreeCBA=0,realisedCBA=0,appCBA=0;
+            double intakeCBA = 0, inprogreeCBA = 0, realisedCBA = 0, appCBA = 0;
             for (String app : apps) {
                 String selectApp = "select * from opportunity_info where column_name='appName' and value = '" + app
                         + "'";
@@ -349,53 +362,52 @@ public class DashboardDoughnutService {
                 ResultSet rs = st.executeQuery(selectApp);
                 while (rs.next()) {
                     String Id = rs.getString("Id");
-                    String selectTriagedetail = "select case when (value=''|| value not regexp '^[0-9]+$') then '0' else value end 'CBAvalue' from decom3sixtytool.Triage_Info where column_name='Preliminary_CBA' and Id='"+Id+"';";
+                    String selectTriagedetail = "select case when (value=''|| value not regexp '^[0-9]+$') then '0' else value end 'CBAvalue' from decom3sixtytool.Triage_Info where column_name='Preliminary_CBA' and Id='"
+                            + Id + "';";
                     Statement st12 = con.createStatement();
                     ResultSet rs12 = st12.executeQuery(selectTriagedetail);
                     while (rs12.next()) {
-                        appCBA=Double.parseDouble(rs12.getString("CBAvalue"));
+                        appCBA = Double.parseDouble(rs12.getString("CBAvalue"));
                     }
                     rs12.close();
                     st12.close();
-                            String selectAppdetail = "select intakeApproval,max(priority_order_num) pr,OppId from Intake_Stake_Holder_Info where OppId = '" + Id+ "' group by intakeApproval,OppId";
-                            Statement st11 = con.createStatement();
-                            ResultSet rs11 = st11.executeQuery(selectAppdetail);
-                                while (rs11.next()) {
-                                    String value = rs11.getString("intakeApproval");
-                                    if(value.equals("Decision pending")||value.equals("Rejected"))
-                                    {
-                                      intakeCBA=intakeCBA+appCBA;
-                                    }
-                                    else if(value.equals("Approved"))
-                                    {
-                                                String selectStatus2 = "select distinct * from `archive_execution_info` where oppId='"
-                                                        + Id + "'  and taskGroup='Closure' ;";
-                                                Statement st5 = con.createStatement();
-                                                ResultSet rs5 = st5.executeQuery(selectStatus2);
-                                                if (rs5.next()) {
-                                                    boolean level = rs5.getString("level").equals("1");
-                                                    boolean actDate = rs5.getString("actEnd").isEmpty();
-                                                    if (level == true && actDate == false) {
-                                                        realisedCBA=realisedCBA+appCBA;
-                                                    } else {
-                                                        inprogreeCBA=inprogreeCBA+appCBA;
-                                                    }
-                                                }
-                                                rs5.close();
-                                                st5.close();
-                                            }
+                    String selectAppdetail = "select intakeApproval,max(priority_order_num) pr,OppId from Intake_Stake_Holder_Info where OppId = '"
+                            + Id + "' group by intakeApproval,OppId";
+                    Statement st11 = con.createStatement();
+                    ResultSet rs11 = st11.executeQuery(selectAppdetail);
+                    while (rs11.next()) {
+                        String value = rs11.getString("intakeApproval");
+                        if (value.equals("Decision pending") || value.equals("Rejected")) {
+                            intakeCBA = intakeCBA + appCBA;
+                        } else if (value.equals("Approved")) {
+                            String selectStatus2 = "select distinct * from `archive_execution_info` where oppId='" + Id
+                                    + "'  and taskGroup='Closure' ;";
+                            Statement st5 = con.createStatement();
+                            ResultSet rs5 = st5.executeQuery(selectStatus2);
+                            if (rs5.next()) {
+                                boolean level = rs5.getString("level").equals("1");
+                                boolean actDate = rs5.getString("actEnd").isEmpty();
+                                if (level == true && actDate == false) {
+                                    realisedCBA = realisedCBA + appCBA;
+                                } else {
+                                    inprogreeCBA = inprogreeCBA + appCBA;
                                 }
-                                rs11.close();
-                                st11.close();
+                            }
+                            rs5.close();
+                            st5.close();
                         }
+                    }
+                    rs11.close();
+                    st11.close();
+                }
                 rs.close();
                 st.close();
             }
-            double totalCBA = inprogreeCBA+intakeCBA+realisedCBA;
+            double totalCBA = inprogreeCBA + intakeCBA + realisedCBA;
             DecimalFormat f = new DecimalFormat("##.##");
-            double sunmOfIntake = Double.parseDouble(f.format((intakeCBA * 100) / totalCBA)) ;
+            double sunmOfIntake = Double.parseDouble(f.format((intakeCBA * 100) / totalCBA));
             double sumOfInProgress = Double.parseDouble(f.format((inprogreeCBA * 100) / totalCBA));
-            double sumOfRealised = Double.parseDouble(f.format((realisedCBA * 100) / totalCBA)) ;
+            double sumOfRealised = Double.parseDouble(f.format((realisedCBA * 100) / totalCBA));
             jsonObject.addProperty("sunmOfIntake", sunmOfIntake);
             jsonObject.addProperty("sumOfInProgress", sumOfInProgress);
             jsonObject.addProperty("sumOfRealised", sumOfRealised);

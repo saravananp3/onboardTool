@@ -28,6 +28,9 @@
 <!-- =========== Header Icon ========= -->
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> 
  <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
+ <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css">
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -519,11 +522,11 @@ pointer-events:all;
                 </button>
                 <button type="button" class="btn btn-primary pull-right"
                     id="addWaveBtnId" style="color: DodgerBlue; display: none;"
-                    name="newpr" data-toggle='modal' data-target='#existWavePopUp'>
+                    name="newpr" data-bs-toggle='modal' data-bs-target='#existWavePopUp'>
                 </button>
                 <button type="button" class="btn btn-primary pull-right"
                     id="deleteBtn" style="color: DodgerBlue; display: none;"
-                    name="newpr" data-toggle='modal' data-target='#deletePopUp'>
+                    name="newpr" data-bs-toggle='modal' data-bs-target='#deletePopUp'>
                 </button>
             </div>
         </div>
@@ -598,6 +601,19 @@ pointer-events:all;
             </nav>
         </div> -->
         <!-- /.container-fluid -->
+        
+         <div class="col-sm-6 right-side">
+                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-primary pull-right" id="addWaveBtnId" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#existWavePopUp'>
+                            </button>r
+                            <button type="button" class="btn btn-primary pull-right" id="deleteBtn" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#deletePopUp'>
+                            </button>
+                            <button type="button" class="btn btn-primary pull-right" id="deletePhaseBtn" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#deletePhasePopUp'>
+                            </button>
+                            <button type="button" class="btn btn-primary pull-right" id="deleteWaveBtn" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#deleteWavePopUp'>
+                            </button>
+                        </div>
     </nav >
     <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
     <div class="content-wrapper">
@@ -710,10 +726,9 @@ pointer-events:all;
   <div class="modal-dialog vertical-align-center" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Application</h5>
-        <button type="button" id="deleteClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Delete Application</h5>
+		 <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="PopUpform">
@@ -732,23 +747,22 @@ pointer-events:all;
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="deleteYesBtn" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
+        <button type="button" id="deleteYesBtn" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" id = "closeIdDeleteApp" aria-label="Close">No</button>
       </div>
     </div>
   </div>
 </div> 
 </div>
 <!-- Wave Delete Pop Up -->
-   <div class="modal" id="deleteWavePopUp" tabindex="-1" role="dialog">
+   <div class="modal" id="deleteWavePopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="vertical-alignment-helper">
   <div class="modal-dialog vertical-align-center" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Wave</h5>
-        <button type="button" id="deleteWaveClose" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Delete Wave</h5>
+		 <button type="button" class="btn-close" data-bs-dismiss="modal"
+			aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="PopUpform">
@@ -757,8 +771,8 @@ pointer-events:all;
                         <div class="col-lg-10">
                             <!-- <label class="control-label" for="formInput526">Select Wave Name:</label>
                             <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
-                            </select>
-    -->                     
+                            </select> -->
+                     
                <p>Are you sure, want to delete the Wave permanently?</p>
                <input type="checkbox" id ="includeWaveAll"  value="true"/>&nbsp;&nbsp;Include Wave content (Associated Applications)
                <input type="textbox" id="waveIndex" value="" style="display:none;"/>
@@ -770,7 +784,7 @@ pointer-events:all;
       </div>
       <div class="modal-footer">
         <button type="button" id="deleteWaveYesBtn" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
       </div>
     </div>
   </div>
