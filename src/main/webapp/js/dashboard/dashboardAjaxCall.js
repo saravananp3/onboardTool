@@ -476,29 +476,7 @@ function dashboardDetails() {
                     + "<td>" + aname + "</td>"
                     + "<td>" + stdate + "</td>"
                     + "<td>" + status + "</td>"
-                    + "</tr>" +
-                    "<tr>"
-                    + "<td>" + "App-2" + "</td>"
-                    + "<td>" + "16-03-2022" + "</td>"
-                    + "<td>" + "75%" + "</td>"
-                    + "</tr>"+
-                    "<tr>"
-                    + "<td>" + "App-3" + "</td>"
-                    + "<td>" + "16-03-2022" + "</td>"
-                    + "<td>" + "75%" + "</td>"
-                    + "</tr>"+
-                    "<tr>"
-                    + "<td>" + "App-4" + "</td>"
-                    + "<td>" + "16-03-2022" + "</td>"
-                    + "<td>" + "75%" + "</td>"
-                    + "</tr>"+
-                    "<tr>"
-                    + "<td>" + "App-5" + "</td>"
-                    + "<td>" + "16-03-2022" + "</td>"
-                    + "<td>" + "75%" + "</td>"
-                    + "</tr>"+
-                    "<tr>";
-                    
+                    + "</tr>";
                 $('#dataTableId2').append(t_row);
                 
                	$.fn.pageMe = function(opts) {
