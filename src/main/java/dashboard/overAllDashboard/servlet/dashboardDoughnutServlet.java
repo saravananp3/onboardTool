@@ -13,16 +13,19 @@ public class dashboardDoughnutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JsonArray jsonArray =  new JsonArray();
-        String detailtype = request.getParameter("doughnutType");
+        String phase = request.getParameter("phase");
+        String wave = request.getParameter("wave");
         try {
             DashboardDoughnutService dashboard = new DashboardDoughnutService();
-            jsonArray.add(dashboard.dashboardDoughnutDetails(detailtype));
+            jsonArray.add(dashboard.dashboardDoughnutDetails(phase,wave));
+            jsonArray.add(dashboard.getCBADetail());
             dashboard = null;
             System.gc();
         }
         catch(Exception e) {
             e.printStackTrace();
         }
+        System.out.println("JsonArray last: "+jsonArray);
          String json = new Gson().toJson(jsonArray);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");

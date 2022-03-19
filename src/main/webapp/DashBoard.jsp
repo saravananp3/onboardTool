@@ -643,23 +643,27 @@ line-height: 1.128571489;
 
 							<!-- <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid"> -->
 							<div id="cbp-vm" class="cbp-vm-view-grid">
-							
-								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
-                                        <a class="dashboard-stat col-md-12"
-                                            style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
-                                            href="IntakeOpportunity.jsp">
-                                            <div class="col-md-4" style="height: 100%; margin-left: -17px;">
-                                                <p class="totcounter"
-                                                    style="height: 80%; color: white; padding-right: 10px;"></p>
-                                                <span class="font_icon" style="height: 20%; color: white;">Intake</span>
-                                            </div>
-                                            <div class="col-md-8">Intake is the initiation of the product as well as we need to 
-                                            place some data so that the div size should manage.</div>
-                                        </a>
-                                    </div>
+
+								<div class="col-md-3"
+									style="font-size: 13.6px; height: 123px !important;">
+									<a class="dashboard-stat col-md-12"
+										style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
+										href="IntakeOpportunity.jsp">
+										<div class="col-md-4"
+											style="height: 100%; margin-left: -17px;">
+											<p class="totcounter"
+												style="height: 80%; color: white; padding-right: 10px;"></p>
+											<span class="font_icon" style="height: 20%; color: white;">Intake</span>
+										</div>
+										<div class="col-md-8">Intake is the initiation of the
+											product as well as we need to place some data so that the div
+											size should manage.</div>
+									</a>
+								</div>
 
 
-								<card class="col-md-3" style="font-size:13.6px; height: 123px !important;"> <a
+								<card class="col-md-3"
+									style="font-size:13.6px; height: 123px !important;"> <a
 									class="dashboard-stat col-md-12"
 									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
 									href="PhaseList.jsp">
@@ -672,11 +676,13 @@ line-height: 1.128571489;
 										of multiple waves.</div>
 								</a> </card>
 
-								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
+								<div class="col-md-3"
+									style="font-size: 13.6px; height: 123px !important;">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
 										href="waveList.jsp?waves=all">
-										<div class="col-md-4" style="height: 100%; margin-left: -17px;">
+										<div class="col-md-4"
+											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter" style="height: 80%; color: white;"></p>
 											<span class="font_icon" style="height: 20%; color: white;">Waves</span>
 										</div>
@@ -687,23 +693,25 @@ line-height: 1.128571489;
 
 								</div>
 
-								<div class="col-md-3" style="font-size:13.6px; height: 123px !important;">
+								<div class="col-md-3"
+									style="font-size: 13.6px; height: 123px !important;">
 									<a class="dashboard-stat col-md-12"
 										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
 										href="OpportunityList.jsp">
-										<div class="col-md-4" style="height: 100%; margin-left: -17px;">
+										<div class="col-md-4"
+											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
 											<span class="font_icon" style="height: 20%; color: white;">Apps</span>
-										</div>
-										<!-- <div class="col-md-8">Applications are opportunities provided within the organisation
+										</div> <!-- <div class="col-md-8">Applications are opportunities provided within the organisation
 											for Archival or Decommission or Retiring purpose.</div> -->
-										<div class="col-md-8">Applications are opportunities provided within the organisation
-											for Archival or Decommission or Retiring purpose.</div>
+										<div class="col-md-8">Applications are opportunities
+											provided within the organisation for Archival or Decommission
+											or Retiring purpose.</div>
 									</a>
 
 								</div>
-								
+
 
 							</div>
 						</div>
@@ -722,54 +730,83 @@ line-height: 1.128571489;
 
 
 					</ul>
-					
-				<div>
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card ht-270">
+
+					<div>
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-270">
 										<div class="card-header" id="card-header">
 											<div class="row">
 												<div class="col-md-6">Overall progress for phases and
 													waves</div>
-												<div class="col-md-2 ms-auto">
+												<!-- <div class="col-md-2 ms-auto">
 													<select class="form-select" id="phId"
 														aria-label="Default select example" style="padding: 0 0 0 0.75rem;">
-														<!-- <option selected>Select</option> -->
+														<option selected>Select</option>
 														<option value="Phase" selected>Phase</option>
 														<option value="Wave">Wave</option>
 													</select>
+												</div> -->
+
+												<div class="col-md-3">
+													<div class="row align-items-center">
+														<!--<div class="ms-auto">
+                                                            <label class="col-form-label" id="title">Phase</label>
+                                                        </div>-->
+														<div class="ms-auto">
+															<select class="form-select"
+																aria-label="Default select example" id="phase">
+																<!-- <option class='options' value='All'>All</option> -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="row align-items-center">
+														<!--<div class="ms-auto">
+                                                            <label class="col-form-label" id="title">Wave</label>
+                                                        </div>-->
+														<div class="ms-auto">
+															<select class="form-select"
+																aria-label="Default select example" id="wave">
+																<!-- <option class='options' value='All'>All</option> -->
+															</select>
+														</div>
+													</div>
 												</div>
 											</div>
+
 										</div>
 										<div class="card-body">
-										<div class="col-md-4">
-											<canvas id="mycanvas" width="200" height="200"
-												style="margin-left: 35%;"></canvas>
-										</div>
-										
-										<div class="col-md-4">
-											<canvas id="mycanvas1" width="200" height="200"
-												style="margin-left: 96%;"></canvas>
+											<div class="col-md-4">
+												<canvas id="mycanvas" width="200" height="200"
+													style="margin-left: 35%;"></canvas>
+											</div>
+
+											<div class="col-md-4" id="canvas2">
+												<canvas id="mycanvas1" width="200" height="200"
+													style="margin-left: 96%;"></canvas>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card ht-270">
-									<div class="card-header" id="card-header">Application Categories</div>
-									<div class="card-body">
-										<div id="pieChartId" width="200" height="200"></div>
+								<div class="col-md-4">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Application
+											Categories</div>
+										<div class="card-body">
+											<div id="pieChartId" width="200" height="200"></div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card ht-233">
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-233">
 										<div class="card-header" id="card-header">Application
 											Status</div>
 										<div class="card-body" style="padding: 0px;">
@@ -794,112 +831,113 @@ line-height: 1.128571489;
 											</div>
 										</div>
 									</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card ht-233">
-									<div class="card-header" id="card-header">Risk, Issues and Deadlines</div>
-									<div class="card-body justify-content-center">
-										<div id="dataCountIssue"></div>
-									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card ht-270">
-									<div class="card-header" id="card-header">Archive
-											Requirements</div>
-									<div class="card-body" style="padding:0px;">
-										<table id="example1"
-											class="table">
-                                        <thead>
-                                           <tr>
-                                                <th scope="col">App Name</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">Status </th>
-                                                <th scope="col">Target Completion Date</th>
-                                                <th scope="col">Phase</th>
-                                                <th scope="col">Wave</th>
-                                                <th scope="col">Design Approval</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="dataTableId1">
-                                        </tbody>
-                                    </table>
-										<div class="col-md-12 text-center">
-												<ul class="pagination pagination-lg pager pagination-align"
-													id="developer_page_1"></ul>
-											</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="card ht-270">
-									<div class="card-header" id="card-header">Data Characteristic</div>
-									<div class="card-body">
-									<div id="chart">
-                                        <ul id="numbers" class="numbers-align">
-                                        </ul>
-                                        <ul id="bars" class="bars-align">
-                                        </ul>
-                                    </div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-12 mt-3">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="card ht-270">
-									<div class="card-header"  id="card-header">Archive Execution</div>
-									<div class="card-body" style="padding:0px;">
-										<table id="example2"
-											class="table">
-                                        <thead>
-                                          <tr>
-                                                <th scope="col">App Name</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">Status </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="dataTableId2">
-                                        </tbody>
-                                    </table>
-                                    	<div class="col-md-12 text-center">
-											<ul class="pagination pagination-lg pager pagination-align"
-												id="developer_page_2"></ul>
+								<div class="col-md-4">
+									<div class="card ht-233">
+										<div class="card-header" id="card-header">Risk, Issues
+											and Deadlines</div>
+										<div class="card-body justify-content-center">
+											<div id="dataCountIssue"></div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4">
-								<div class="card ht-270">
-									<div class="card-header" id="card-header">Cost Benefit Analysis</div>
-									<div class="card-body">
-									<div id="chart">
-                                        <ul id="numbers">
-                                        </ul>
-                                        <ul id="bars">
-                                        </ul>
-                                    </div>
+						</div>
+
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Archive
+											Requirements</div>
+										<div class="card-body" style="padding: 0px;">
+											<table id="example1" class="table">
+												<thead>
+													<tr>
+														<th scope="col">App Name</th>
+														<th scope="col">Start Date</th>
+														<th scope="col">Status</th>
+														<th scope="col">Target Completion Date</th>
+														<th scope="col">Phase</th>
+														<th scope="col">Wave</th>
+														<th scope="col">Design Approval</th>
+													</tr>
+												</thead>
+												<tbody id="dataTableId1">
+												</tbody>
+											</table>
+											<div class="col-md-12 text-center">
+												<ul class="pagination pagination-lg pager pagination-align"
+													id="developer_page_1"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Data
+											Characteristic</div>
+										<div class="card-body">
+											<div id="chart">
+												<ul id="numbers" class="numbers-align">
+												</ul>
+												<ul id="bars" class="bars-align">
+												</ul>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					
+
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Archive
+											Execution</div>
+										<div class="card-body" style="padding: 0px;">
+											<table id="example2" class="table">
+												<thead>
+													<tr>
+														<th scope="col">App Name</th>
+														<th scope="col">Start Date</th>
+														<th scope="col">Status</th>
+													</tr>
+												</thead>
+												<tbody id="dataTableId2">
+												</tbody>
+											</table>
+											<div class="col-md-12 text-center">
+												<ul class="pagination pagination-lg pager pagination-align"
+													id="developer_page_2"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Cost Benefit
+											Analysis</div>
+										<div class="card-body">
+											<div class="col-md-4 mt-3">
+												<canvas id="canvasCBA" width="175" height="175"
+													style="margin-left: 100%;"></canvas>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
 
-					</div> 
-				
-
-				
 				</div>
+
+
+
+			</div>
 			</div>
 
 

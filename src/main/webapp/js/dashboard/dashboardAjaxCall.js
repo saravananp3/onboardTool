@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	dashboardDetails();
+	BindPhaseWave();
 	doughnutType();
 });
 function dashboardDetails() {
@@ -467,14 +468,14 @@ function dashboardDetails() {
           })
         });
         
-       /* $.each(data[10], function(key, value) {
-                var aname=value.app_name==undefined?"":value.app_name
-                var status=value.status==undefined?"":value.status
-                var stdate=value.startDate==undefined?"":value.startDate*/
+        $.each(data[10], function(key, value) {
+                var aname=value.app_name==undefined?"":value.app_name;
+                var status=value.status==undefined?"":value.status;
+                var stdate=value.startDate==undefined?"":value.startDate;
                 var t_row = "<tr>"
-                    + "<td>" + "App-1" + "</td>"
-                    + "<td>" + "16-03-2022" + "</td>"
-                    + "<td>" + "75%" + "</td>"
+                    + "<td>" + aname + "</td>"
+                    + "<td>" + stdate + "</td>"
+                    + "<td>" + status + "</td>"
                     + "</tr>" +
                     "<tr>"
                     + "<td>" + "App-2" + "</td>"
@@ -601,7 +602,7 @@ function dashboardDetails() {
 
 					}
 				};
-           /* });*/
+           });;
             $(document).ready(function() {
                 $('#example2').DataTable();
             });
@@ -648,21 +649,33 @@ $.ajax({
             $.each(data[9],function(key,value1){
     var data = [
         {
-            value: value1.yestoStart,
-            color: "#486ccc",
-            highlight: "lightskyblue",
-            label: "Yet To Start"
+            value: value1.newOpportunity,
+            color: "#7FFFD4",
+            highlight: "lightblue",
+            label: "New Opportunity"
         },
         {
-            value: value1.inProgress,
-            color: "#d1e1f3",
+            value: value1.triage,
+            color: "#1565c0",
+            highlight: "lightskyblue",
+            label: "Triage"
+        },
+        {
+            value: value1.assesment,
+            color: "#6495ed",
             highlight: "#82aadd",
-            label: "In Progress"
+            label: "Assessment"
+        },
+        {
+            value: value1.pendingApproval,
+            color: "#1d88aa",
+            highlight: "darkorange",
+            label: "Pending Approval"
         },
         {
             value: value1.completed,
-            color: "#aeb8c1",
-            highlight: "darkorange",
+            color: "#83ddd4",
+            highlight: "darkgreen",
             label: "Completed"
         }
     ];
@@ -673,42 +686,181 @@ $.ajax({
    }});
 });
 
-$("#phId").change(function() {
+/*$("#phId").change(function() {
 	doughnutType();
   
-});
+});*/
 
 function doughnutType()
 {
+    resetCanvas();
     var ctx = $("#mycanvas1").get(0).getContext("2d");
-    var selectedItem=$('#phId :selected').text();
+    var selectedPhase=$('#phase :selected').text();
+    var selectedwave=$('#wave :selected').text();
     var options = {
         title: {
             display: true,
             text: "Waves"
         },
     }
+    var phase=selectedPhase==""?"All":selectedPhase;
+    var wave=selectedwave==""?"All":selectedwave;
     $.ajax({
         url: "dashboardDoughnutServlet",
         type: 'POST',
         async: false,
-        data:{doughnutType:selectedItem},
+        data:{phase:phase,wave:wave},
         dataType: "json",
         success: function(data) {
             console.log("Wave Data : ", data);
             $.each(data[0],function(key,value1){
     var result = [
         {
-            value: value1.yestoStart,
-            color: "#486ccc",
+            value: value1.NoApp,
+            color: "#aeb8c1",
             highlight: "lightskyblue",
-            label: "Yet To Start"
+            label: "No Apps Found"
         },
         {
-            value: value1.inProgress,
+            value: value1.archiveReqPer,
+            color: "#1565c0",
+            highlight: "#82aadd",
+            label: "Archieve Requirements"
+        },
+        {
+            value: value1.archiveExePer,
+            color: "#1d88aa",
+            highlight: "darkorange",
+            label: "Archieve Execution"
+        },
+        {
+            value: value1.completed,
+            color: "#83ddd4",
+            highlight: "darkgreen",
+            label: "Completed"
+        }
+    ];
+    console.log("Result : ",result)
+    var chart = new Chart(ctx).Doughnut(result);
+        });
+   }});
+}
+
+function BindPhaseWave()
+{
+    $.ajax({
+            url: "OpportunityListServlet",
+            type: 'POST',
+            dataType: "json",
+            success: function (data) {
+                console.log("Data OpportunityList", data);
+                 if (!$.isArray(data)) {
+                     data = [data];
+                 }
+                 $.each(data[0], function(key, value){
+                     var options = "<option>"+value+"</option>";
+                     $('#existWaveTypesId').append(options);
+                 });
+                 var phaseOptions ="<option selected class='options All' value='All'>All</option>"
+                 $.each(data[2][0], function(key, value){
+                      phaseOptions += "<option class='phaseOptions options' value='"+value.phaseName+"'>"+value.phaseName+"</option>";
+                 });
+                 $('#phase').append(phaseOptions);
+                 var waveOptions ="<option selected class='options All' value='All'>All</option>"
+                     $.each(data[2][1], function(key, value){
+                         var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
+                          waveOptions += "<option class='options waveOptions "+phase+"' value='"+value.waveName+"'>"+value.waveName+"</option>";
+                     });
+                 $('#wave').append(waveOptions);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+});
+}
+$(document).on('change','#phase',function(){
+$(".waveOptions").hide();
+var phaseName = $(this).val();
+if(phaseName!="All")
+    {
+    $("."+(phaseName.replaceAll(" ","")).replaceAll("-","")).show();
+    $("#wave").val("All");
+    }
+    else
+    {
+    $(".waveOptions").show();
+    }
+   /* UpdateDoughnut();*/
+   doughnutType();
+});
+$(document).on('change','#wave',function(){
+   /* UpdateDoughnut();*/
+   doughnutType();
+    });
+$(document).on('change','.filter',function(){
+    var category = $("#category").val();
+    var phase = $("#phase").val();
+    var wave = $("#wave").val();
+    filterAjaxCall(category,phase,wave);
+});
+function filterAjaxCall(category,phase,wave)
+{
+    $.ajax({
+        url: "OpportunityFilterListServlet",
+        type: 'POST',
+        dataType: "json",
+        data:{wave:wave,category:category,phase:phase,bySearch:false},
+        success: function (data) {
+            console.log("Data:", data);
+             if (!$.isArray(data)) {
+                 data = [data];
+             } 
+        },
+        error: function (e) {
+            console.log(e);
+        }
+});
+}
+
+/*function UpdateDoughnut(){
+     var ctx = $("#mycanvas1").get(0).getContext("2d");
+    var selectedPhase=$('#phase :selected').text();
+    var selectedwave=$('#wave :selected').text();
+    var options = {
+        title: {
+            display: true,
+            text: "Waves"
+        },
+    }
+    var phase=selectedPhase==""?"All":selectedPhase;
+    var wave=selectedwave==""?"All":selectedwave;
+    $.ajax({
+        url: "dashboardDoughnutServlet",
+        type: 'POST',
+        async: false,
+        data:{phase:phase,wave:wave},
+        dataType: "json",
+        success: function(data) {
+            console.log("Wave Data : ", data);
+            $.each(data[0],function(key,value1){
+    var result = [
+        {
+            value: value1.NoApp,
+            color: "#486ccc",
+            highlight: "lightskyblue",
+            label: "No Apps Found"
+        },
+        {
+            value: value1.archiveReqPer,
             color: "#d1e1f3",
             highlight: "#82aadd",
-            label: "In Progress"
+            label: "Archieve Requirements"
+        },
+        {
+            value: value1.archiveExePer,
+            color: "#FFC0CB",
+            highlight: "darkorange",
+            label: "Archieve Execution"
         },
         {
             value: value1.completed,
@@ -718,9 +870,106 @@ function doughnutType()
         }
     ];
     console.log("Result : ",result)
-    var chart = new Chart(ctx).Doughnut(result);
-    	});
-    
-   }});
+});
 }
+});
+}*/
 
+function resetCanvas() {
+  $('#mycanvas1').remove(); // this is my <canvas> element
+  $('#canvas2').append("<canvas id='mycanvas1' width='200' height='200' style='margin-left: 96%;'><canvas>");
+};
+
+$(document).ready(function() {
+     var ctx = $("#canvasCBA").get(0).getContext("2d");
+    var options = {
+        title: {
+            display: true,
+            text: "Waves"
+        },
+    }
+    var selectedPhase=$('#phase :selected').text();
+    var selectedwave=$('#wave :selected').text();
+     var phase=selectedPhase==""?"All":selectedPhase;
+    var wave=selectedwave==""?"All":selectedwave;
+    $.ajax({
+        url: "dashboardDoughnutServlet",
+        type: 'POST',
+        async: false,
+         data:{phase:phase,wave:wave},
+        dataType: "json",
+        success: function(data) {
+            console.log("CBA Data : ", data);
+            $.each(data[1],function(key,value1){
+    var result = [
+        {
+            value: value1.sunmOfIntake,
+            color: "#1565c0",
+            highlight: "lightskyblue",
+            label: "Sum Of Intake/Opportunity"
+        },
+        {
+            value: value1.sumOfInProgress,
+            color: "#d1e0f3",
+            highlight: "#82aadd",
+            label: "Sum Of InProcess"
+        },
+        {
+            value: value1.sumOfRealised,
+            color: "#d2d6e2",
+            highlight: "darkorange",
+            label: "Sum Of Realized"
+        }
+    ];
+    console.log("Result : ",result)
+    var chart = new Chart(ctx).Pie(result);
+        });
+   }});
+});
+
+/*$(document).ready(function() {
+     var ctx = $("#pieChartId").get(0).getContext("2d");
+    var options = {
+		label: {
+			fontSize: 12,
+			width: 200
+		},
+        title: {
+            display: true,
+            text: "Waves"
+            
+        },
+    }
+    $.ajax({
+        url: "dashboardServlet",
+        type: 'POST',
+        async: false,
+        dataType: "json",
+        success: function(data) {
+            console.log("Archive Data : ", data);
+            $.each(data[5],function(key,value1){
+    var result = [
+        {
+            value: value1.archiveCount,
+            color: "#486ccc",
+            highlight: "lightskyblue",
+            label: "Archive"
+        },
+        {
+            value: value1.decommissionCount,
+            color: "#d1e1f3",
+            highlight: "#82aadd",
+            label: "Decommission"
+        },
+        {
+            value: value1.retiredCount,
+            color: "#aeb8c1",
+            highlight: "darkorange",
+            label: "To be Retired"
+        }
+    ];
+    console.log("Result : ",result)
+    var chart = new Chart(ctx).Pie(result, options);
+        });
+   }});
+});*/
