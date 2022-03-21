@@ -286,7 +286,7 @@ function Options(optionlist,value)
 }
 function userAppendFunction(optionlist,value1) {
     //console.log(optionlist);
-    var userArrayList = optionlist.split(',');
+    var userArrayList = optionlist.split(',').slice(1);
     //console.log(userArrayList);
     var options = "";
     $.each(userArrayList, function(key, value){

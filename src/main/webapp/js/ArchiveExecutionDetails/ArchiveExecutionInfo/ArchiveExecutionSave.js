@@ -430,7 +430,7 @@ function getPreviousValue(valuePrev, columnName, fieldName, index){
 		break;
 		
 	case 'assignedTo':
-		var option  = Options(users,prevValue);
+		var option  = Options(user,prevValue);
 		$("select.assignedToDrop").eq(index).html(option);
 		$('select.assignedToDrop').eq(index).selectpicker("refresh");
 		$('select.assignedToDrop').eq(index).selectpicker();

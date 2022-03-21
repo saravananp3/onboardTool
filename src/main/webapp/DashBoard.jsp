@@ -461,7 +461,10 @@ left: -20px;
 line-height: 1.128571489;
 }
 
-
+h6 {
+	padding-left: 55%;
+    font-size: 16px;
+}
 
 </style>
 
@@ -656,8 +659,7 @@ line-height: 1.128571489;
 											<span class="font_icon" style="height: 20%; color: white;">Intake</span>
 										</div>
 										<div class="col-md-8">Intake is the initiation of the
-											product as well as we need to place some data so that the div
-											size should manage.</div>
+                                            product.Number of opportunity or application in intake step that are yet to be approved.</div>
 									</a>
 								</div>
 
@@ -735,7 +737,7 @@ line-height: 1.128571489;
 						<div class="col-md-12 mt-3">
 							<div class="row">
 								<div class="col-md-8">
-									<div class="card ht-270">
+									<div class="card ht-290">
 										<div class="card-header" id="card-header">
 											<div class="row">
 												<div class="col-md-6">Overall progress for phases and
@@ -756,7 +758,7 @@ line-height: 1.128571489;
                                                         </div>-->
 														<div class="ms-auto">
 															<select class="form-select"
-																aria-label="Default select example" id="phase">
+																aria-label="Default select example" id="phase" style="padding: 0 0 0 0.75rem;">
 																<!-- <option class='options' value='All'>All</option> -->
 															</select>
 														</div>
@@ -769,7 +771,7 @@ line-height: 1.128571489;
                                                         </div>-->
 														<div class="ms-auto">
 															<select class="form-select"
-																aria-label="Default select example" id="wave">
+																aria-label="Default select example" id="wave" style="padding: 0 0 0 0.75rem;">
 																<!-- <option class='options' value='All'>All</option> -->
 															</select>
 														</div>
@@ -780,11 +782,13 @@ line-height: 1.128571489;
 										</div>
 										<div class="card-body">
 											<div class="col-md-4">
+										<!-- 	<h6 class="d-flex justify-content-center"><b>Intake</b></h6> -->
 												<canvas id="mycanvas" width="200" height="200"
 													style="margin-left: 35%;"></canvas>
 											</div>
 
 											<div class="col-md-4" id="canvas2">
+											<!-- <h6 class="d-flex justify-content-center" style="padding-left: 138%;"><b>Waves</b></h6> -->
 												<canvas id="mycanvas1" width="200" height="200"
 													style="margin-left: 96%;"></canvas>
 											</div>
@@ -792,11 +796,11 @@ line-height: 1.128571489;
 									</div>
 								</div>
 								<div class="col-md-4">
-									<div class="card ht-270">
+									<div class="card ht-290">
 										<div class="card-header" id="card-header">Application
 											Categories</div>
-										<div class="card-body">
-											<div id="pieChartId" width="200" height="200"></div>
+										<div class="card-body mt-3">
+											<div id="pieChartId" width="250" height="250"></div>
 										</div>
 									</div>
 								</div>
@@ -921,8 +925,9 @@ line-height: 1.128571489;
 											Analysis</div>
 										<div class="card-body">
 											<div class="col-md-4 mt-3">
-												<canvas id="canvasCBA" width="175" height="175"
-													style="margin-left: 100%;"></canvas>
+											
+												<canvas id="canvasCBA" width="200" height="200"
+													style="margin-left: 80%;"></canvas>
 
 											</div>
 										</div>
@@ -1118,5 +1123,8 @@ $(document).ready(function() {
 	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
 	<script src="js/dashboard/dashboardAjaxCall.js"></script>
+	<!-- <script src="https://cdnjs.com/libraries/Chart.js"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+	
 </body>
 </html>

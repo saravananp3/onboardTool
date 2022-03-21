@@ -20,8 +20,8 @@ function dashboardDetails() {
 			/*$('.totcounter').eq(0).html(data[0].phaseCount);
 			$('.totcounter').eq(1).html(data[0].waveCount);
 			$('.totcounter').eq(2).html(data[0].appCount);*/
-			if(data[0].intakeCount == 0 || data[0].intakeCount== 1)
-                $(".font_icon").eq(3).html('Intake');   
+			/*if(data[0].intakeCount == 0 || data[0].intakeCount== 1)
+                $(".font_icon").eq(3).html('Intake');*/
             $('.totcounter').eq(1).html(data[0].phaseCount);
             $('.totcounter').eq(2).html(data[0].waveCount);
             $('.totcounter').eq(3).html(data[0].appCount);
@@ -611,12 +611,14 @@ function dashboardDetails() {
 
 $(document).ready(function() {
     var ctx = $("#mycanvas").get(0).getContext("2d");
-    var options = {
+	var options = {
         title: {
             display: true,
             text: "Phases"
         },
+        
     }
+
 $.ajax({
         url: "dashboardServlet",
         type: 'POST',
@@ -625,7 +627,7 @@ $.ajax({
         success: function(data) {
             console.log("Data : ", data);
             $.each(data[9],function(key,value1){
-    var data = [
+   	var data = [
         {
             value: value1.newOpportunity,
             color: "#7FFFD4",
@@ -675,12 +677,12 @@ function doughnutType()
     var ctx = $("#mycanvas1").get(0).getContext("2d");
     var selectedPhase=$('#phase :selected').text();
     var selectedwave=$('#wave :selected').text();
-    var options = {
+   	var options = {
         title: {
             display: true,
             text: "Waves"
         },
-    }
+     }
     var phase=selectedPhase==""?"All":selectedPhase;
     var wave=selectedwave==""?"All":selectedwave;
     $.ajax({
@@ -859,11 +861,12 @@ function resetCanvas() {
 };
 
 $(document).ready(function() {
-     var ctx = $("#canvasCBA").get(0).getContext("2d");
+    var ctx = $("#canvasCBA").get(0).getContext("2d");
+   
     var options = {
         title: {
             display: true,
-            text: "Waves"
+            text: 'Waves'
         },
     }
     var selectedPhase=$('#phase :selected').text();

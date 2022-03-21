@@ -783,7 +783,7 @@ pointer-events:all;
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="deleteWaveYesBtn" class="btn btn-primary" >Yes</button>
+        <button type="button" id="deleteWaveYesBtn" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id = "closeIdDeleteApp" aria-label="Close">No</button>
       </div>
     </div>
@@ -886,5 +886,8 @@ $(document).ready(function() {
 });
 </script>
 <script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </body>
 </html>
