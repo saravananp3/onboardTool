@@ -611,6 +611,9 @@ function dashboardDetails() {
 
 $(document).ready(function() {
     var ctx = $("#mycanvas").get(0).getContext("2d");
+    vartitle = {
+		text: "Live Data"
+	}
 	var options = {
         title: {
             display: true,
@@ -627,7 +630,7 @@ $.ajax({
         success: function(data) {
             console.log("Data : ", data);
             $.each(data[9],function(key,value1){
-   	var data = [
+   		var data = [
         {
             value: value1.newOpportunity,
             color: "#7FFFD4",

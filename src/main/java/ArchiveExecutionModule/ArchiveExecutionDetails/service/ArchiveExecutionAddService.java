@@ -278,7 +278,7 @@ public class ArchiveExecutionAddService {
 			}
 			else{
 				String child = String.valueOf(++childSeqNum);
-				taskId = parentSeqNum+"."+((child.length() == 2) ? child : "0"+child);
+				taskId = parentSeqNum+"."+((child.length() == 2) ? child : child);
 			}
 				 return taskId;
 		}
@@ -307,7 +307,7 @@ public class ArchiveExecutionAddService {
 				  int childValue = Integer.parseInt(taskId.substring(taskId.lastIndexOf(".")+1));
 				  childValue++;
 				  String child = String.valueOf(childValue);
-				  value = taskId.substring(0,taskId.lastIndexOf(".")+1) + ((child.length() == 2) ? child : "0"+child);
+				  value = taskId.substring(0,taskId.lastIndexOf(".")+1) + ((child.length() == 2) ? child : child);
 			  }
 		  }
 			  

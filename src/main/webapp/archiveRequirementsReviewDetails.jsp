@@ -427,6 +427,53 @@ font-size:12px;
 <body class="top-navbar-fixed">
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
+        
+        <%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
+
+
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
+%>
               <!-- ========== TOP NAVBAR ========== -->
 <!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -493,7 +540,7 @@ font-size:12px;
 				<div class="row" id="d3s-mt-10">
 						<div class="col-lg-12 col-md-12">
 							<div class="sub-title" style="color: #fff">
-								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Introduction</a> >>
                            		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Legacy Application Info</a> >>
@@ -512,6 +559,17 @@ font-size:12px;
 					</div>
 			</div>
 		</nav>
+		
+		
+			<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
             <div class="content-wrapper">
             <div class="col-md-12">
 								<div style="margin-bottom: -138px;" class="form-wizard">

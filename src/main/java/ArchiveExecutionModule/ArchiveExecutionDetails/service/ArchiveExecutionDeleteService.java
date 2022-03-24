@@ -318,7 +318,7 @@ public JsonArray archiveExecutionDeleteService() {
 			suffixValue--;
 			
 			int prefixValue = Integer.parseInt(taskID.substring(0,taskID.indexOf(".")));
-			taskID = prefixValue+"."+((String.valueOf(suffixValue).length() == 1) ? "0"+suffixValue : ""+suffixValue);
+			taskID = prefixValue+"."+((String.valueOf(suffixValue).length() == 1) ? suffixValue : ""+suffixValue);
 		}
 			return taskID;
 	}
@@ -332,7 +332,7 @@ public JsonArray archiveExecutionDeleteService() {
 		
 			int prefixValue = Integer.parseInt(taskID.substring(0,taskID.indexOf(".")));
 			prefixValue--;
-			taskID = prefixValue+"."+((String.valueOf(suffixValue).length() == 1) ? "0"+suffixValue : ""+suffixValue);
+			taskID = prefixValue+"."+((String.valueOf(suffixValue).length() == 1) ? suffixValue : ""+suffixValue);
 		}
 		else if(!taskID.contains(".") && level.equals("1")) {
 			int value = Integer.parseInt(taskID);

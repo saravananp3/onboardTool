@@ -782,13 +782,13 @@ h6 {
 										</div>
 										<div class="card-body">
 											<div class="col-md-4">
-										<!-- 	<h6 class="d-flex justify-content-center"><b>Intake</b></h6> -->
+										<h6 class="d-flex justify-content-left"><b>Intake</b></h6>
 												<canvas id="mycanvas" width="200" height="200"
 													style="margin-left: 35%;"></canvas>
 											</div>
-
+										
 											<div class="col-md-4" id="canvas2">
-											<!-- <h6 class="d-flex justify-content-center" style="padding-left: 138%;"><b>Waves</b></h6> -->
+											<h6 class="d-flex justify-content-left" style="margin-left: 62%;"><b>Waves</b></h6>
 												<canvas id="mycanvas1" width="200" height="200"
 													style="margin-left: 96%;"></canvas>
 											</div>

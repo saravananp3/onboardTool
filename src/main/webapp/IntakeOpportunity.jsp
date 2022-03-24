@@ -47,7 +47,6 @@
 	href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet">
 
-
 <style type="text/css">
 body {
 	background: #fff;
@@ -98,6 +97,59 @@ body {
 <body class="top-navbar-fixed">
 
 	<div class="main-wrapper">
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
+
+
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
+%>
+
+
+    
+    
+    
+				
+	
 		<!-- ========== TOP NAVBAR ========== -->
 		<!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -141,6 +193,8 @@ body {
         </div>
         /.container-fluid
     </nav > -->
+    
+    
 		<%@include file="Nav-Bar.jspf"%>
 		<nav class="nav nav-height-70 nav-font" id="bg-color"
 			style="font-size: 14px;">
@@ -149,12 +203,22 @@ body {
 					<div class="col-lg-12 col-md-12">
 						<div class="sub-title" style="color: #fff">
 							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
-								class="glyphicon glyphicon-home"></span> Home</a> >> Opportunity
+								class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >>Opportunity
 						</div>
 					</div>
 				</div>
 			</div>
 		</nav>
+		
+		<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
 
 		<div class="content-wrapper">
 			<div class="content-container">

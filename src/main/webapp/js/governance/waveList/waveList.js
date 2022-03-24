@@ -58,8 +58,8 @@ function waveListAjaxCall()
 		 var i = 1;
 		 $('#ul_id').html("");
 		 //var phaseName = data[0].phaseName;
-		 $("#phase").append("<option></option>");
-
+		 //$("#phase").append("<option></option>");
+		 $("#phase").append("<option class='all options' value='All'>All</option>");
 		 $("#wave").append("<option class='all options' value='All'>All</option>");
 		 $("#application").append("<option class='all options' value='All'>All</option>");
 	     $.each(data[0], function(key, value){
@@ -69,7 +69,7 @@ function waveListAjaxCall()
 			 var phaseName = value.phaseName;
 			 
 			 if(phaseName!="")
-			 $("#phase").append("<option>"+phaseName+"</option>");
+			 $("#phase").append("<option class= 'all options'>"+phaseName+"</option>");
 	    	 var li_element ="<li class = 'waveCard listCard'>"+
 						"<div class='drophide'>"+
 						"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+

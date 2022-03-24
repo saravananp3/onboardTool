@@ -449,6 +449,54 @@ font-size:12px;
 </head>
 <body class="top-navbar-fixed">
 
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
+
+
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
+%>
+
+
 <%@include file="Nav-Bar.jspf"%>
 		<nav class="nav nav-height-70 nav-font" id="bg-color"
 			style="font-size: 14px;">
@@ -458,7 +506,7 @@ font-size:12px;
 						<div class="sub-title" style="color: #fff">
 								<a href="OpportunityList.jsp" id="sitetitle1"
 									style="color: #fff"><span class="glyphicon glyphicon-home"></span>
-									Home</a> >> <a href="IntakeOpportunity.jsp" id="sitetitle1"
+									Home</a> >> <%=OpportunityName%> >><a href="IntakeOpportunity.jsp" id="sitetitle1"
 									style="color: #fff"> Opportunity </a> >> <a
 									href="IntakeTriageSummary.jsp" id="sitetitle1"
 									style="color: #fff"> Triage Summary</a> <a
@@ -470,6 +518,17 @@ font-size:12px;
 				</div>
 			</div>
 		</nav>
+		
+		<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
+		
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->

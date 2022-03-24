@@ -258,8 +258,14 @@
        	String query93 = "CREATE TABLE IF NOT EXISTS `ArchiveExe_Issue_Info_Template_Details` (`seq_no` INTEGER,`app_Id` varchar(255),`impact` varchar(255), `type` varchar(255), `description` varchar(500),`start_date` varchar(255), `raised_by` varchar(255),`status` varchar(500),`assigned_to` varchar(255),`resolved` varchar(255),`exp_date` varchar(255),`end_date` varchar(255),`comments` varchar(500))";
 		statement.executeUpdate(query93);
 
-		String query94 = "CREATE TABLE IF NOT EXISTS `ArchiveExe_Issue_Info` (`seq_no` INTEGER,`app_Id` varchar(255),`impact` varchar(255), `type` varchar(255), `description` varchar(500),`start_date` varchar(255), `raised_by` varchar(255),`status` varchar(500),`assigned_to` varchar(255),`resolved` varchar(255),`exp_date` varchar(255),`end_date` varchar(255),`comments` varchar(500))";
-		statement.executeUpdate(query94);
+		String query94 = "CREATE TABLE IF NOT EXISTS `ArchiveExe_Issue_Info` (`seq_no` INTEGER,`app_Id` varchar(255),`impact` varchar(255), `type` varchar(255), `description` varchar(500),`start_date` varchar(255), `raised_by` varchar(255),`status` varchar(500),`assigned_to` varchar(255),`resolved` varchar(255),`exp_date` varchar(255),`end_date` varchar(255),`comments` varchar(500),`oppId` varchar(255),`IssueId` varchar(255))";
+        statement.executeUpdate(query94);
+        
+        String query95 = "CREATE TABLE IF NOT EXISTS `user_table` ( seq_num INTEGER, uemail VARCHAR(255), ufname VARCHAR(255), ugroup VARCHAR(255), ulname VARCHAR(255), pwd VARCHAR(255));";
+        statement.executeUpdate(query95);
+        
+        String query96 = "CREATE TABLE IF NOT EXISTS `resources` ( seq_num INTEGER, r_name VARCHAR(255), r_email VARCHAR(255), r_title VARCHAR(255));";
+        statement.executeUpdate(query96);
 %>
 <% } catch (Exception ex) {
     ex.printStackTrace();
