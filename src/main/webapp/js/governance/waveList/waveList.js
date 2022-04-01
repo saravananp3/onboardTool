@@ -58,8 +58,8 @@ function waveListAjaxCall()
 		 var i = 1;
 		 $('#ul_id').html("");
 		 //var phaseName = data[0].phaseName;
-		 $("#phase").append("<option></option>");
-
+		 //$("#phase").append("<option></option>");
+		 $("#phase").append("<option class='all options' value='All'>All</option>");
 		 $("#wave").append("<option class='all options' value='All'>All</option>");
 		 $("#application").append("<option class='all options' value='All'>All</option>");
 	     $.each(data[0], function(key, value){
@@ -69,7 +69,7 @@ function waveListAjaxCall()
 			 var phaseName = value.phaseName;
 			 
 			 if(phaseName!="")
-			 $("#phase").append("<option>"+phaseName+"</option>");
+			 $("#phase").append("<option class= 'all options'>"+phaseName+"</option>");
 	    	 var li_element ="<li class = 'waveCard listCard'>"+
 						"<div class='drophide'>"+
 						"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
@@ -81,7 +81,10 @@ function waveListAjaxCall()
 						"<input type = 'hidden' class = 'waveName' value = '"+waveName+"'>"+
 						"<input type = 'hidden' class = 'waveId' value = '"+WaveId+"'>"+
 						"</div>"+
-	                  "<h3 class='cbp-vm-title left-col primary waveHeadingName' name='name' contenteditable='false'>"+waveName+"</h3>"+
+	                  "<h3 class='cbp-vm-title left-col primary waveHeadingName' data-bs-toggle='tooltip' data-bs-placement='top' title='"+waveName+"' name='name' contenteditable='false'>"+waveName+"</h3>"+
+	                  "<button type='button' class='btn btn-primary mt-3' name='btn' onClick=\"edit('"+WaveId+"','"+waveName+"')\";>"+
+							"<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
+						"</button>"+
 	                  "</li>";
 		$('#ul_id').append(li_element);
 		var phaseClass = (phaseName.replaceAll("-","")).replaceAll(" ","");
@@ -95,10 +98,15 @@ function waveListAjaxCall()
 		var appName = apps[i].replaceAll(",","").replaceAll(" ","");
 		appClass += appName+" "; 
 		}
-		$("#wave").append("<option class='"+phaseClass+" options waveOption "+appClass+"' value='"+waveName+"' >"+waveName+"</option>");
+		$("#wave").append("<option class='"+phaseClass+" options waveOption "+appClass+"' value='"+waveName+"'>"+waveName+"</option>");
 		}
 		
 		i++;
+		
+		 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+				return new bootstrap.Tooltip(tooltipTrigger)
+			});
 	     });
 	     $('#title_id').html("Number of Wave &nbsp;("+(i-1)+")");
 	 }

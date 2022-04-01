@@ -34,7 +34,8 @@ public class intakePreviewHtmlContentService  extends jsonToHtmlContent{
 	private void getIntakeDetails() {
 		for(int j=0;j<intake_sections.length;j++) {
 			writeHeader(intake_sections[j]);
-			JsonArray jsonArray1 = jsonArray.get(j).getAsJsonArray();
+			JsonArray jsonArray1 = jsonArray.get(j).getAsJsonArray();		
+			System.out.println(jsonArray1+ "  Intake sesion hai ");
 			writeTableStartTags();
 			for(int i=0;i<jsonArray1.size();i++) {
 				JsonObject jsonObject = jsonArray1.get(i).getAsJsonObject();

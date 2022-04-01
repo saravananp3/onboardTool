@@ -14,7 +14,7 @@ $(document).ready (function(){
 		 type: 'POST',
 		 async: false,
 	     dataType: "json",
-	     data: {jsonContent:JSON.stringify(exportContent)},
+	     data: {jsonContent:JSON.stringify(exportContent),modulename:"INTAKE"},
 	     success: function (data) {
 	    	 var pdfPath = data.path;
 	    	 pdfPath =pdfPath.replaceAll("\\","//");

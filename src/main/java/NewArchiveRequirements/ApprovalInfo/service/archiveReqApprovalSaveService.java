@@ -34,7 +34,7 @@ public class archiveReqApprovalSaveService {
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
-		   String updateQuery = "update ArchiveRequirements_Stake_Holder_Info set ArchiveRequirementApproval ='"+approvalStatus+"'  where oppid='"+Id+"' and seq_no='"+seqNum+"';";
+		   String updateQuery = "update ArchiveReq_Roles_Info set intakeApproval ='"+approvalStatus+"'  where oppid='"+Id+"' and seq_no='"+seqNum+"';";
 		   Statement st =  con.createStatement();
 		   st.executeUpdate(updateQuery);
 		   statusFlag =true;

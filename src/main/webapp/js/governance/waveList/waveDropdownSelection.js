@@ -80,9 +80,14 @@ function displayFilterWaveList(data){
 						"<input type = 'hidden' class = 'waveName' value = '"+waveName+"'>"+
 						"<input type = 'hidden' class = 'waveId' value = '"+WaveId+"'>"+
 						"</div>"+
-	                  "<h3 class='cbp-vm-title left-col primary waveHeadingName' name='name' contenteditable='false'>"+waveName+"</h3>"+
+	                  "<h3 class='cbp-vm-title left-col primary waveHeadingName'data-bs-toggle='tooltip' data-bs-placement='top' title='"+waveName+"' name='name' contenteditable='false'>"+waveName+"</h3>"+
 	                  "</li>";
 		$('#ul_id').append(li_element);
 		i++;
+		
+		 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+				return new bootstrap.Tooltip(tooltipTrigger)
+			});
 	 });
 }

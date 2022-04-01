@@ -42,7 +42,7 @@
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav mr-auto d3s-ml-80">
 					<li class="nav-item moduleIcon"><a
-						class="nav-link active" id="" aria-current="page" href="OpportunityList.jsp"><i
+						class="nav-link active" aria-current="page" href="OpportunityList.jsp"><i
 							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
 					</li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
@@ -68,9 +68,8 @@
 
 			</div>
 			<%-- <%
-			HttpSession details = request.getSession();
-			String uname = (String) details.getAttribute("username");
-			%> --%>
+                            String ufname=(String)details.getAttribute("username");
+                            String role=(String)details.getAttribute("role");%> --%>
 			<div class="dropdown" align="end">
 				<a class="dropdown-toggle" href="#" role="button"
 					id="dropdownMenuLink" data-bs-toggle="dropdown"
@@ -81,9 +80,9 @@
 					<li><a class="dropdown-item" href="#" id="textAlign"><i
 							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
 							in as <br/><b>admin</b></a></li>
-					<hr/>
-					<li><a class="dropdown-item li-align" href="#" id="textAlign"
-						onclick="location.href='Login.jsp';"><i
+					
+					<li class="mt-5"><a class="dropdown-item li-align" href="#" id="textAlign"
+						onclick="location.href='Login.jsp';" style="border-top: 1px solid #d3d7e2;"><i
 							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
 				</ul>
 			</div>

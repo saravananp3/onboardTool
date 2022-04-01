@@ -30,6 +30,7 @@ function switchActiveModule() {
 		case "archiveRequirementsReviewDetails.jsp":
 		case "archiveRequirementsApprovalDetails.jsp":
 		case "ArchiveExecutionDetails.jsp":
+		case "archiveExeIssueRiskTracker.jsp":
 			selectiveActiveIcon(0);
 			break;
 		case "Admin_Module_Send_Invites.jsp":
@@ -40,6 +41,12 @@ function switchActiveModule() {
 			break;
 		case "PhaseList.jsp":
 		case "NewPhase.jsp":
+		case "waveList.jsp":
+		case "NewGovernance.jsp":
+		case "GovernanceList.jsp":
+		case "waveGrid.jsp":
+		case "waveEdit.jsp":
+		case "phaseEdit.jsp":
 			selectiveActiveIcon(2);
 			break;
 		case "DashBoard.jsp":

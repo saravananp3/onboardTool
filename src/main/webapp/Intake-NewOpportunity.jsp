@@ -72,7 +72,9 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
 	media="screen">
-	<style id="alignEnd"></style>
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+<style id="alignEnd"></style>
 	
 </head>
 <body>

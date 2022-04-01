@@ -430,7 +430,7 @@ function getPreviousValue(valuePrev, columnName, fieldName, index){
 		break;
 		
 	case 'assignedTo':
-		var option  = Options(users,prevValue);
+		var option  = Options(user,prevValue);
 		$("select.assignedToDrop").eq(index).html(option);
 		$('select.assignedToDrop').eq(index).selectpicker("refresh");
 		$('select.assignedToDrop').eq(index).selectpicker();
@@ -451,7 +451,7 @@ function getPreviousValue(valuePrev, columnName, fieldName, index){
 
  function SaveInfoNotification(seqNo, columnName, value)
  {
-	 var taskId =$(".taskId").eq(seqNo-1).html();
+	/* var taskId =$(".taskId").eq(seqNo-1).html();
 	   if (columnName=="taskType") 
 		   notification("info","In Task id "+taskId+" taskType changed to "+value,"Info:");
 	   
@@ -480,5 +480,5 @@ function getPreviousValue(valuePrev, columnName, fieldName, index){
 		   notification("info","In Task id "+taskId+" major dependencies filled with "+value,"Info:");
 	   
 	   else if (columnName=="remark")
-		   notification("info","In Task id "+taskId+" remarks filled with "+value,"Info:");
+		   notification("info","In Task id "+taskId+" remarks filled with "+value,"Info:");*/
  }

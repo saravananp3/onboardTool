@@ -94,6 +94,55 @@ body {
 <body class="top-navbar-fixed">
 
 	<div class="main-wrapper">
+	
+		<div class="main-wrapper">
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
+
+
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
+%>
+	
 		<!-- ========== TOP NAVBAR ========== -->
 		<!--   <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -151,7 +200,7 @@ body {
 					<div class="col-lg-12 col-md-12">
 						<div class="sub-title" style="color: #fff">
 							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
-								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >><a
 								href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1"
 								style="color: #fff"> Opportunity </a> >> Triage Information </a>
 						</div>
@@ -160,6 +209,15 @@ body {
 			</div>
 		</nav>
 
+	<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
 		<div class="content-wrapper">
 			<div class="content-container">
 				<div class="main-page">
@@ -171,14 +229,15 @@ body {
 										<br /> <br />
 										<div class="form-wizard-header nav-font">
 											<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+											
 											<ul class="list-unstyled form-wizard-steps clearfix">
-												<li class="activated"><span>1</span><i>Introduction</i></li>
-												<li class="active"><span>2</span><i>Triage Info</i></li>
-												<li><span>3</span><i>Triage Summary</i></li>
-												<li><span>4</span><i>Assessment</i></li>
-												<li><span>5</span> <i>Stake Holder</i></li>
-												<li><span>6</span><i>Review</i></li>
-												<li><span>7</span><i>Approval</i></li>
+												<li class="activated" onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+												<li class="active" onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
+												<li onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage Summary</i></li>
+												<li onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
+												<li onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span> <i>Stake Holder</i></li>
+												<li onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
+												<li onclick="location.href='IntakeApproval.jsp';"><span>7</span><i>Approval</i></li>
 											</ul>
 										</div>
 										<!-- Triage Info -->
@@ -227,14 +286,16 @@ body {
 																	</div>
 																	<button type="submit" class="btn btn-primary"
 																		id="createbtn">Save</button>
-																	<button
+																	<!-- <button
 																		class="form-wizard-next-btn float-right btn-info btn btn-info"
 																		onclick="location.href='IntakeTriageSummary.jsp';"
 																		id="next" disabled="true">
 
 																		<a href="javascript:;" style="color: #fff;">Next</a>
 
-																	</button>
+																	</button> -->
+																	<button type="button" class="btn btn-primary"
+                                                                        onclick="location.href='IntakeTriageSummary.jsp';" id="next" disabled="true" >Next</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick ="window.location.href='IntakeTriageSummary.jsp';">Next</a> -->
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn1"

@@ -34,6 +34,8 @@
  <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
 
 <!-- ========== MODERNIZR ========== -->
+<script src="js/common/email/emailAjaxCall.js"></script>
+
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
@@ -425,6 +427,53 @@ font-size:12px;
 <body class="top-navbar-fixed">
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
+        
+         <%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
+
+
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
+%>
               <!-- ========== TOP NAVBAR ========== -->
   <!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -496,7 +545,7 @@ font-size:12px;
 				<div class="row" id="d3s-mt-10">
 					<div class="col-lg-12 col-md-12">
 						<div class="sub-title" style="color: #fff">
-								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Introduction</a> >>
                            		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Legacy Application Info</a> >>
@@ -517,23 +566,32 @@ font-size:12px;
 				</div>
 			</div>
 		</nav>
+		
+			<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
             <div class="content-wrapper">
              <div class="col-md-12">
 								<div style="margin-bottom: -138px;" class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
 							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
-								<li class="activated"><span>1</span><i>Introduction</i></li>
-								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
-								<li class="activated"><span>3</span><i>Retention Details</i></li>
-								<li class="activated"><span>4</span><i>Business requirements</i></li>
-								<li class="activated"><span>5</span><i>Abbreviations</i></li>
-								<li class="activated"><span>6</span><i>Revisions</i></li>
-								<li class="activated"><span>7</span><i>Addendum</i></li>
-								<li class="activated"><span>8</span><i>StakeHolders</i></li>
-								<li class="activated"><span>9</span><i>Review</i></li>
-								<li class="active"><span>10</span><i>Approval</i></li>
+								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
+								<li class="activated" onclick="location.href='ArchiveBusinessRequirements.jsp';"><span>4</span><i>Business requirements</i></li>
+								<li class="activated" onclick="location.href='archiveReqAbbrevation.jsp;'"><span>5</span><i>Abbreviations</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsDocumentRevisions.jsp;'"><span>6</span><i>Revisions</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsAddendum.jsp;'"><span>7</span><i>Addendum</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsReviewDetails.jsp;'"><span>8</span><i>Review</i></li>
+								<li class="active" onclick="location.href='archiveRequirementsApprovalDetails.jsp;'"><span>9</span><i>Approval</i></li>
 						
 							</ul>
 						</div>
@@ -584,9 +642,11 @@ font-size:12px;
                                                             </div>
                                                             <div class="col-12" align="end">
                                                                 <button type="button" class="btn btn-primary" id="ApprovalSave">Finish</button>
-                                                                <button type="button" class="btn btn-primary pull-right" id="archiveReqConfirmationPopUp_Btn" data-bs-toggle="modal" data-bs-target="#ConfirmationPopUp" style="display: none;">Delete PopUp</button>
-                                                                <button type="hidden" class="form-wizard-next-btn float-right btn-info btn btn-info" id="NavigationId" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" style="display: none;">
-                                                                </div>
+                                                                <button type="button" class="btn btn-primary pull-right" id="archiveReqConfirmationPopUp_Btn" data-bs-toggle="modal" data-bs-target="#ConfirmationPopUp" style="display: none;">Confirmation PopUp</button>
+                                                               <!--  <button type="hidden" class="form-wizard-next-btn float-right btn-info btn btn-info" id="NavigationId" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" style="display: none;"> -->
+                                                                <!-- comment popup button -->
+															<button type="button" id="ApprovalComments" data-bs-toggle="modal" data-bs-target="#ApprovalCommentsPopUp" style="display: none;">Comments PopUp</button>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -600,8 +660,8 @@ font-size:12px;
         </div>
        
     </form>
-    <!-- Delete Row Pop Up  -->
-    <div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
+    <!-- Confirmation Pop Up  -->
+  <div class="modal" id="ConfirmationPopUp" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -624,7 +684,34 @@ font-size:12px;
       </div>
     </div>
   </div>
-</div>  
+</div>
+
+
+
+<!-- Comment Pop Up -->
+	<div class="modal" id="ApprovalCommentsPopUp"   tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Remarks</h5>
+			<button type="button" class="btn-close" id ="ApprovalCommentClose" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+		</div>
+      <div class="modal-body">
+                <div class="modal-body">
+                <label>comments</label>
+             <textarea id="ApprovalCommentId" name="ApprovalCommentSection" rows="4" cols="70"></textarea>
+			 </div>
+             <input type="hidden" id="ApprovalCommentSeq"/>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id = "ApprovalCommentOKBtn" >Ok</button>
+        <button type="button" class="btn btn-secondary" id = "ApprovalCommentCancelBtn" >Cancel</button>
+      </div>
+      </div>
+    </div>
+  </div>  
     <!-- Date picker --> 
     
        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  

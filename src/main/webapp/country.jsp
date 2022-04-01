@@ -1,4 +1,7 @@
 <%@page import="java.sql.*"%>
+<%@ page import="onboard.DBconnection"%>
+
+
  <html>
       <head>  
       <script language="javascript" type="text/javascript">  
@@ -34,8 +37,9 @@
       <select name='country' onchange="showState(this.value)">  
        <option value="none">Select</option>  
     <%
- Class.forName("com.mysql.jdbc.Driver").newInstance();  
- Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123");  
+    DBconnection dBconnection = new DBconnection();
+
+ Connection con = dBconnection.getConnection();  
  Statement stmt = con.createStatement();  
  ResultSet rs = stmt.executeQuery("Select * from country");
  while(rs.next()){

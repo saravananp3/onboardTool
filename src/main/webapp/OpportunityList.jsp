@@ -51,10 +51,10 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-<script
+<!-- <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -214,6 +214,7 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid ul li {
+	padding-top: 68px;
 	width: 23%;
 	text-align: center;
 	box-shadow: 5px 5px 5px 5px #dbdbdb;
@@ -222,7 +223,17 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-grid .cbp-vm-title {
+	/* font-size: 21px;
+	overflow: hidden; 
+	max-width: 16ch;  */
+/* 	text-overflow: ellipsis;  */
+	/* white-space: nowrap; */
 	font-size: 21px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden; 
+	text-overflow: ellipsis;
 }
 
 .cbp-vm-view-grid .cbp-vm-details {
@@ -245,7 +256,7 @@ input[type=search]:focus {
 	font-size: 1.3em;
 	padding: 0 30px;
 	white-space: normal;
-	width: 25%;
+	width: 60%;
 }
 
 .cbp-vm-view-list .center-col {
@@ -261,12 +272,20 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-list li {
-	padding: 12px 0;
+	padding: 0px 0px 15px 0px;
 	white-space: nowrap;
 	background-color: #fff;
 	box-shadow: 5px 5px 5px 5px #dbdbdb;
 	margin: 13px;
-	padding-top: 10px;
+	padding-top: 3px;
+}
+
+.cbp-vm-view-list li{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width:20ch;
+
 }
 
 .cbp-vm-view-list li:focus {
@@ -541,7 +560,7 @@ full width */
 						</div>
 
 						<div class="col-auto">
-							<select class="selectInput filter" id="category dropDown-width">
+							<select class="selectInput filter" id="category">
 								<option class='options' value='All'>All</option>
 								<option class='options' value='Intake'>Intake</option>
 								<option class='options' value='Triage'>Triage</option>
@@ -565,8 +584,8 @@ full width */
 							<label class="col-form-label" id="title">Phase</label>
 						</div>
 						<div class="col-auto">
-							<select class="selectInput filter" id="dropDown-width">
-								<option class='options' value='All'>All</option>
+							<select class="selectInput filter dropDown-width" id="phase">
+								<!-- <option class='options' value='All'>All</option> -->
 							</select>
 						</div>
 					</div>
@@ -578,8 +597,8 @@ full width */
 							<label class="col-form-label" id="title">Wave</label>
 						</div>
 						<div class="col-auto">
-							<select class="selectInput filter" id="dropDown-width">
-								<option class='options' value='All'>All</option>
+							<select class="selectInput filter dropDown-width" id="wave">
+								<!-- <option class='options' value='All'>All</option> -->
 							</select>
 						</div>
 					</div>
@@ -607,7 +626,7 @@ full width */
 	</nav>
 	<%
 	String uname = (String) details.getAttribute("username");
-	String role = (String) details.getAttribute("role");
+	/* String role = (String) details.getAttribute("role"); */
 	%>
 	
 	<!-- main wrapper -->

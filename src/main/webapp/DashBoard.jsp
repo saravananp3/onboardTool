@@ -40,15 +40,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script src="js/dashboard/dashboardAjaxCall.js"></script>
-
-
-
-
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+<!-- ========== Pagination ========== -->
+<script src="js/paging/pagination.js"></script>
 
 <style type="text/css">
 body {
 	background: #fff;
+	font-family: 'Poppins', sans-serif;
 }
 
 /*  .active{
@@ -434,6 +434,38 @@ input[type=search]:focus {
 	margin-left: 22px;
 	margin-bottom: 21px;
 }
+
+#card-header {
+	background-color: #fff;
+	font-weight: 600;
+    font-size: 16px;
+    color: #141515;
+}
+
+
+focus {
+background-color: #ff00ff;
+color: #fff;
+cursor: pointer;
+font-weight: bold;
+}
+
+#dropDownMenu
+{
+margin: 0;
+width: 1%;
+padding: 0;
+left: -20px;
+}
+.dropdown-menu>li>a {
+line-height: 1.128571489;
+}
+
+h6 {
+	padding-left: 55%;
+    font-size: 16px;
+}
+
 </style>
 
 </head>
@@ -607,67 +639,87 @@ input[type=search]:focus {
 			<div class="main-page">
 				<div class="col-md-12 ">
 
-					<div class="paneldashboard">
+					<!-- <div class="card mt-5"> -->
 
-						<div class="container-fluid grid">
-							<div class="main">
+					<div class="grid mt-5">
+						<div class="main">
 
-								<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+							<!-- <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid"> -->
+							<div id="cbp-vm" class="cbp-vm-view-grid">
 
-
-									<card style="margin-bottom: 38px;"
-										class="col-lg-4 col-md-4 col-sm-6 col-xs-12"> <a
-										class="dashboard-stat col-md-12"
-										style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
-										href="PhaseList.jsp">
-										<div class="col-md-3" style="height: 100%;">
-											<p class="totcounter" style="height: 80%; color: white;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Phases</span>
+								<div class="col-md-3"
+									style="font-size: 13.6px; height: 123px !important;">
+									<a class="dashboard-stat col-md-12"
+										style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
+										href="IntakeOpportunity.jsp">
+										<div class="col-md-4"
+											style="height: 100%; margin-left: -17px;">
+											<p class="totcounter"
+												style="height: 80%; color: white; padding-right: 10px;"></p>
+											<span class="font_icon" style="height: 20%; color: white;">Intake</span>
 										</div>
-										<div class="col-md-9">Phases can be described as a
-											project that is scheduled over a period of time Which
-											consists of multiple waves.</div>
-									</a> </card>
+										<div class="col-md-8">Intake is the initiation of the
+                                            product.Number of opportunity or application in intake step that are yet to be approved.</div>
+									</a>
+								</div>
 
-									<div style="margin-bottom: 38px;"
-										class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-										<a class="dashboard-stat col-md-12"
-											style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
-											href="waveList.jsp?waves=all">
-											<div class="col-md-3" style="height: 100%;">
-												<p class="totcounter" style="height: 80%; color: white;"></p>
-												<span class="font_icon" style="height: 20%; color: white;">Waves</span>
-											</div>
-											<div class="col-md-9">Waves can be comprised of set of
-												applications that are ready for implementation over a period
-												of time.</div>
-										</a>
 
+								<card class="col-md-3"
+									style="font-size:13.6px; height: 123px !important;"> <a
+									class="dashboard-stat col-md-12"
+									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
+									href="PhaseList.jsp">
+									<div class="col-md-4" style="height: 100%; margin-left: -17px;">
+										<p class="totcounter" style="height: 80%; color: white;"></p>
+										<span class="font_icon" style="height: 20%; color: white;">Phases</span>
 									</div>
+									<div class="col-md-8">Phases can be described as a
+										project that is scheduled over a period of time Which consists
+										of multiple waves.</div>
+								</a> </card>
 
-									<div style="margin-bottom: 38px;"
-										class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-										<a class="dashboard-stat col-md-12"
-											style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
-											href="OpportunityList.jsp">
-											<div class="col-md-3" style="height: 100%;">
-												<p class="totcounter"
-													style="height: 80%; color: white; padding-right: 10px;"></p>
-												<span class="font_icon" style="height: 20%; color: white;">Apps</span>
-											</div>
-											<div class="col-md-9">Applications are the
-												opportunities provided within the organization for Archival
-												or Decommission or Retiring purpose.</div>
-										</a>
-
-									</div>
-
+								<div class="col-md-3"
+									style="font-size: 13.6px; height: 123px !important;">
+									<a class="dashboard-stat col-md-12"
+										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
+										href="waveList.jsp?waves=all">
+										<div class="col-md-4"
+											style="height: 100%; margin-left: -17px;">
+											<p class="totcounter" style="height: 80%; color: white;"></p>
+											<span class="font_icon" style="height: 20%; color: white;">Waves</span>
+										</div>
+										<div class="col-md-8">Waves can be comprised of set of
+											applications that are ready for implementation over a period
+											of time.</div>
+									</a>
 
 								</div>
-							</div>
 
+								<div class="col-md-3"
+									style="font-size: 13.6px; height: 123px !important;">
+									<a class="dashboard-stat col-md-12"
+										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
+										href="OpportunityList.jsp">
+										<div class="col-md-4"
+											style="height: 100%; margin-left: -17px;">
+											<p class="totcounter"
+												style="height: 80%; color: white; padding-right: 10px;"></p>
+											<span class="font_icon" style="height: 20%; color: white;">Apps</span>
+										</div> <!-- <div class="col-md-8">Applications are opportunities provided within the organisation
+											for Archival or Decommission or Retiring purpose.</div> -->
+										<div class="col-md-8">Applications are opportunities
+											provided within the organisation for Archival or Decommission
+											or Retiring purpose.</div>
+									</a>
+
+								</div>
+
+
+							</div>
 						</div>
-						<%
+
+					</div>
+					<%
                                                 con.close();
                                                 visit_st.close();
     }
@@ -679,105 +731,220 @@ input[type=search]:focus {
                                         %>
 
 
-						</ul>
+					</ul>
+
+					<div>
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-290">
+										<div class="card-header" id="card-header">
+											<div class="row">
+												<div class="col-md-6">Overall progress for phases and
+													waves</div>
+												<!-- <div class="col-md-2 ms-auto">
+													<select class="form-select" id="phId"
+														aria-label="Default select example" style="padding: 0 0 0 0.75rem;">
+														<option selected>Select</option>
+														<option value="Phase" selected>Phase</option>
+														<option value="Wave">Wave</option>
+													</select>
+												</div> -->
+
+												<div class="col-md-3">
+													<div class="row align-items-center">
+														<!--<div class="ms-auto">
+                                                            <label class="col-form-label" id="title">Phase</label>
+                                                        </div>-->
+														<div class="ms-auto">
+															<select class="form-select"
+																aria-label="Default select example" id="phase" style="padding: 0 0 0 0.75rem;">
+																<!-- <option class='options' value='All'>All</option> -->
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="row align-items-center">
+														<!--<div class="ms-auto">
+                                                            <label class="col-form-label" id="title">Wave</label>
+                                                        </div>-->
+														<div class="ms-auto">
+															<select class="form-select"
+																aria-label="Default select example" id="wave" style="padding: 0 0 0 0.75rem;">
+																<!-- <option class='options' value='All'>All</option> -->
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="card-body">
+											<div class="col-md-4">
+										<h6 class="d-flex justify-content-left"><b>Intake</b></h6>
+												<canvas id="mycanvas" width="200" height="200"
+													style="margin-left: 35%;"></canvas>
+											</div>
+										
+											<div class="col-md-4" id="canvas2">
+											<h6 class="d-flex justify-content-left" style="margin-left: 62%;"><b>Waves</b></h6>
+												<canvas id="mycanvas1" width="200" height="200"
+													style="margin-left: 96%;"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card ht-290">
+										<div class="card-header" id="card-header">Application
+											Categories</div>
+										<div class="card-body mt-3">
+											<div id="pieChartId" width="250" height="250"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-233">
+										<div class="card-header" id="card-header">Application
+											Status</div>
+										<div class="card-body" style="padding: 0px;">
+											<table id="example" class="table">
+												<thead>
+
+													<tr>
+														<th scope="col">App Name</th>
+														<th scope="col">Submitted Date</th>
+														<th scope="col">Assigned to</th>
+														<th scope="col">Targeted Phase</th>
+														<th scope="col">Archive Required</th>
+														<th scope="col">Archival Completion Target</th>
+													</tr>
+												</thead>
+												<tbody id="dataTableId">
+												</tbody>
+											</table>
+											<div class="col-md-12 text-center">
+												<ul class="pagination pagination-lg pager pagination-align"
+													id="developer_page"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card ht-233">
+										<div class="card-header" id="card-header">Risk, Issues
+											and Deadlines</div>
+										<div class="card-body justify-content-center">
+											<div id="dataCountIssue"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Archive
+											Requirements</div>
+										<div class="card-body" style="padding: 0px;">
+											<table id="example1" class="table">
+												<thead>
+													<tr>
+														<th scope="col">App Name</th>
+														<th scope="col">Start Date</th>
+														<th scope="col">Status</th>
+														<th scope="col">Target Completion Date</th>
+														<th scope="col">Phase</th>
+														<th scope="col">Wave</th>
+														<th scope="col">Design Approval</th>
+													</tr>
+												</thead>
+												<tbody id="dataTableId1">
+												</tbody>
+											</table>
+											<div class="col-md-12 text-center">
+												<ul class="pagination pagination-lg pager pagination-align"
+													id="developer_page_1"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Data
+											Characteristic</div>
+										<div class="card-body">
+											<div id="chart">
+												<ul id="numbers" class="numbers-align">
+												</ul>
+												<ul id="bars" class="bars-align">
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 mt-3">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Archive
+											Execution</div>
+										<div class="card-body" style="padding: 0px;">
+											<table id="example2" class="table">
+												<thead>
+													<tr>
+														<th scope="col">App Name</th>
+														<th scope="col">Start Date</th>
+														<th scope="col">Status</th>
+													</tr>
+												</thead>
+												<tbody id="dataTableId2">
+												</tbody>
+											</table>
+											<div class="col-md-12 text-center">
+												<ul class="pagination pagination-lg pager pagination-align"
+													id="developer_page_2"></ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="card ht-270">
+										<div class="card-header" id="card-header">Cost Benefit
+											Analysis</div>
+										<div class="card-body">
+											<div class="col-md-4 mt-3">
+											
+												<canvas id="canvasCBA" width="200" height="200"
+													style="margin-left: 80%;"></canvas>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
 					</div>
+
 				</div>
 
-				<div class="col-md-12 ">
-					<div class="row">
-						<div class="col-sm-3 col-md-6 col-lg-7">
-							<div class="paneldashboard">
-								<br /> <br />
-								<div class="content">
-									<h6 style="margin-left: 30px;">Application Status</h6>
-									<!-- <div id="table_chart" style="margin:auto;position:relative;width: 750px; height: 500px;"></div> -->
-									<table id="example" class="display" style="width: 100%">
-										<thead>
-											<tr>
-												<th>App</th>
-												<th>AppOwner</th>
-												<th>Phase</th>
-												<th>Wave</th>
-												<th>AppType</th>
-											</tr>
-										</thead>
-										<tbody id="dataTableId">
-
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-9 col-md-6 col-lg-7">
-
-							<div class="paneldashboard">
-
-								<div class="content">
-
-									<div class="form-group">
-
-										<label class="control-label" for="GanttChart"
-											style="margin-left: 30px;">Select Application :</label> <select
-											id="oppNameDrop" class="form-control"
-											name="ganttChartTypesName"
-											style="width: 250px; margin-left: 30px;" required>
-
-										</select>
-
-									</div>
-
-									<br /> <br />
-									<h6 style="margin-left: 30px;">Archive Execution Details</h6>
-									<br />
-									<div id="chart_div"
-										style="width: 700px; height: 400px; margin-left: 50px;"></div>
-
-								</div>
 
 
-
-
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="row">
-						<div class="col-sm-3 col-md-6 col-lg-4">
-							<div class="paneldashboard">
-								<div>
-									<div class="content">
-										<h6 style="margin-left: 30px;">Cost Benefit Analysis</h6>
-										<br />
-										<div id="pieChartId" style="width: 650px; height: 500px;"></div>
-
-									</div>
-
-								</div>
-
-
-							</div>
-						</div>
-						<div class="col-sm-3 col-md-6 col-lg-8">
-							<div class="paneldashboard">
-								<div>
-									<div class="content">
-										<h6 style="margin-left: 30px;">Cost Benefit Analysis</h6>
-										<br />
-										<div id="columnChartId" style="width: 700px; height: 500px;"></div>
-
-									</div>
-
-								</div>
-
-
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
+			</div>
+
 
 
 
@@ -793,6 +960,8 @@ input[type=search]:focus {
 
 	</div>
 	<!-- end of main wrapper -->
+	
+	
 
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -804,27 +973,25 @@ input[type=search]:focus {
 
 
 	<script type="text/javascript">
-    $('#list').click(function()
-    {
-        $('#grid').removeClass('cologen');
-        $('#list').addClass('cologen');
-    });
-    $('#grid').click(function()
-    {
-        $('#list').removeClass('cologen');
-        $('#grid').addClass('cologen');
-    });
-    $(document).ready(function() {
-        $(".lis").click(function() {
-            $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
-            $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
-        });
-        $(".gr").click(function() {
-            $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
-            $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
-        });
-    });
-</script>
+		$('#list').click(function() {
+			$('#grid').removeClass('cologen');
+			$('#list').addClass('cologen');
+		});
+		$('#grid').click(function() {
+			$('#list').removeClass('cologen');
+			$('#grid').addClass('cologen');
+		});
+		$(document).ready(function() {
+			$(".lis").click(function() {
+				$(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
+				$(".cbp-vm-switcher").addClass("cbp-vm-view-list");
+			});
+			$(".gr").click(function() {
+				$(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
+				$(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
+			});
+		});
+	</script>
 	<!-- ========== PAGE JS FILES ========== -->
 	<script src="js/prism/prism.js"></script>
 	<script src="js/waypoint/waypoints.min.js"></script>
@@ -930,7 +1097,7 @@ $(document).ready(function() {
         ["State", "$", { role: "style" } ],
         ['Sum of Realized',      110000.00, 'blue'],     
         ['Sum of in Process',  365000, 'blue'],          
-        ['Sum of Intake/Opportunity', 192000.00, 'blue']      ]);
+        ['Sum of Intake/Opportunity', 192000.00, 'blue'] ]);
 
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
@@ -942,15 +1109,22 @@ $(document).ready(function() {
 
       var options = {
         title: "Total",
-        width: 1200,
-        height: 400,
+        width: 400,
+        height: 250,
         bar: {groupWidth: "25%"},
         legend: { position: "none" },
       };
       var chart = new google.visualization.ColumnChart(document.getElementById("columnChartId"));
       chart.draw(view, options);
   }
+    
   </script>
 	<script src="js/navigation/navigation.js"></script>
+	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
+	<script src="js/dashboard/dashboardAjaxCall.js"></script>
+	<!-- <script src="https://cdnjs.com/libraries/Chart.js"></script> -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+	
 </body>
 </html>

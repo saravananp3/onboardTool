@@ -232,27 +232,51 @@ padding: 15px;
 
 <body class="top-navbar-fixed">
 
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
 <%
-    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    Date date = new Date();
-    System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed IntakeArchiveRequirements JSP PAGE-----[INFO]"); %>
-<%@page language="java" %>
-<%@page import="java.sql.*" %>
-<%@ page import="onboard.DBconnection" %>
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
 
 
-<%
-    try {
-        HttpSession details = request.getSession();
-        String roles = (String) details.getAttribute("role");
-        String det = (String) session.getAttribute("theName");
-        String idd = (String) session.getAttribute("appidd");
-        String Opportunityname=(String)session.getAttribute("SelectedOpportunity");
-        DBconnection d = new DBconnection();
-        Connection conn = (Connection) d.getConnection();
-        
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
 %>
 <form class="form-signin" name="loginForm" method="post">
 
@@ -314,7 +338,7 @@ padding: 15px;
 				<div class="row" id="d3s-mt-10">
 						<div class="col-lg-12 col-md-12">
 							<div class="sub-title" style="color: #fff">
-								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Introduction</a> >>
                            		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Legacy Application Info</a> >>
@@ -331,6 +355,16 @@ padding: 15px;
 					</div>
 			</div>
 		</nav>
+		
+			<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
     
         <div class="content-wrapper">
          <br/>
@@ -339,18 +373,18 @@ padding: 15px;
 				<div style="margin-bottom: -138px;" class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
 							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
-								<li class="activated"><span>1</span><i>Introduction</i></li>
-								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
-								<li class="activated"><span>3</span><i>Retention Details</i></li>
-								<li class="activated"><span>4</span><i>Business requirements</i></li>
-								<li class="activated"><span>5</span><i>Abbreviations</i></li>
-								<li class="activated"><span>6</span><i>Revisions</i></li>
-								<li class="active"><span>7</span><i>Addendum</i></li>
-								<li><span>8</span><i>StakeHolders</i></li>
-								<li><span>9</span><i>Review</i></li>
-								<li><span>10</span><i>Approval</i></li>
+								
+								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
+								<li class="activated" onclick="location.href='ArchiveBusinessRequirements.jsp';"><span>4</span><i>Business requirements</i></li>
+								<li class="activated" onclick="location.href='archiveReqAbbrevation.jsp;'"><span>5</span><i>Abbreviations</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsDocumentRevisions.jsp;'"><span>6</span><i>Revisions</i></li>
+								<li class="active" onclick="location.href='archiveRequirementsAddendum.jsp;'"><span>7</span><i>Addendum</i></li>
+								<li onclick="location.href='archiveRequirementsReviewDetails.jsp;'"><span>8</span><i>Review</i></li>
+								<li onclick="location.href='archiveRequirementsApprovalDetails.jsp;'"><span>9</span><i>Approval</i></li>
 						
 							</ul>
 						</div>
@@ -558,7 +592,7 @@ padding: 15px;
   </div>
 </div>
 
-<jsp:include page="samp_forms.jsp">
+<%-- <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
     <jsp:param name="AppName" value="<%=idd %>"/>
     <jsp:param name="number" value="2"/>
@@ -570,7 +604,7 @@ padding: 15px;
     } 
     catch (Exception e) {
     }
-%>
+%> --%>
 
 <!-- Active Icon Color changes  -->
 <script>

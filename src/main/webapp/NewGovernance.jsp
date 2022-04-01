@@ -23,6 +23,11 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
+    <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+	<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+    
 </head>
 <style>
 
@@ -30,7 +35,7 @@
             background:#fff;
         }
 
-        .active{
+        .active1{
         background:#1565c0;
          }
       .page-title-div {
@@ -83,11 +88,24 @@ response.sendRedirect("Login.jsp");
 HttpSession details = request.getSession();
 %>
 
+ <%
+    String uname=(String)details.getAttribute("username");
+    String role=(String)details.getAttribute("role");%>
 
+<%@include file="Nav-Bar.jspf"%>
+	<nav class="nav nav-height-50" id="bg-color">
+		<div class="container-fluid" id="container-fluid-margin">
+			<div class="row" id="d3s-mt-10">
+				<div class="col-lg-12 col-md-12">
+					<h5 id="title">Create Wave</h5>
+				</div>
+			</div>
+		</div>
+	</nav>
 <div class="main-wrapper">
 
         <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+    <!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header no-padding">
@@ -98,9 +116,9 @@ HttpSession details = request.getSession();
                    
 
 
-                </div>
+                </div> -->
                 <!-- /.navbar-header -->
-                <div class="tabs-content">
+               <%--  <div class="tabs-content">
                   <ul class="nav navbar-nav">
 		              <li ><a href="OpportunityList.jsp">Applications</a></li>
 		              <li><a href="Admin_Module_Send_Invites.jsp">Administration</a></li>
@@ -110,9 +128,7 @@ HttpSession details = request.getSession();
 		              <li><a href="#">Compliance</a></li>
 		          </ul>
 		         <ul class="nav navbar-nav navbar-right">
-                        <%
-                            String uname=(String)details.getAttribute("username");
-                            String role=(String)details.getAttribute("role");%>
+                       
 
                         <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
@@ -122,14 +138,15 @@ HttpSession details = request.getSession();
                 
                 
                 
-            </div>
+            </div> --%>
             <!-- /.row -->
-            <nav class="navbar navbar-down">
+            
+           <!--  <nav class="navbar navbar-down">
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-6">
                             <h4 class="title" style="color:#fff">Create Wave</h4>
-                              <!-- <p class="sub-title">Create and manage your Opportunities here</p>-->
+                              <p class="sub-title">Create and manage your Opportunities here</p>
                         </div>
                        
 
@@ -137,10 +154,10 @@ HttpSession details = request.getSession();
 
                 </div>
 			</nav>
-        </div>
+        </div> -->
         <!-- /.container-fluid -->
-    </nav >
-
+  <!--   </nav >
+ -->
         <div class="content-wrapper">
             <div class="content-container">
 
@@ -152,18 +169,16 @@ HttpSession details = request.getSession();
                           
 
                             <div class="row">
-                             <br>
+                            
                                 <div class="container">
                               
                                 
 
- <div class="panel-group" id="panels1">
- <br/>
- <br/>
-     <div class="panel panel-default">
-         <div class="panel-heading">
-             <h4 class="panel-title"> <a  data-parent="#panels1" > New Wave  </a> </h4>
-         </div>
+ <div class="container" id="panel-container">
+
+     <div class="card-container-1 mt-5">
+         <div class="Card">
+            <div class="card-header" id="cd-header">New Wave</div>
          <%@ page import="java.sql.*"%>
          <div id="collapse2" class="panel-collapse">
              <div class="panel-body text-left">
@@ -176,39 +191,45 @@ HttpSession details = request.getSession();
               </div>     
               
 	              
-	                      <div class="col-md-12">
-                <div class="col-md-1">
-	               <button type="button" class="btn btn-light" style="padding-top:5px; padding-left:10px; float: left;" onclick="location.href='GovernanceList.jsp';">Back</button>
+	                      <div class="row">
+                <div class="col-4">
+	               <button type="button" class="btn btn-secondary"onclick="location.href='GovernanceList.jsp';">Back</button>
 	           </div>
-	               <div class = "col-md-4 dropup" style="padding-top:10px; padding-right:10px; float: right;">
+	               <div class = "col-8" align="end"> 
 
+
+						<div class="dropdown">
 	                
-                            <button class="btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown">Actions
+                            <button class="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown">Actions
                               <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                <li><a href="#" id = "add" data-toggle="modal" data-target="#AddPopUp" class="fa fa-plus" style="font-size:19px;color:black;">&nbsp;&nbsp;&nbsp;Add</a></li>
-                                <li><a href="#" id = "Edit" class="fa fa-edit" style="font-size:19px;color:black">&nbsp;&nbsp;&nbsp;Edit</a></li>
-                                <li><a href="#" id = "Delete" class="fa fa-trash" style="font-size:18px;color:black">&nbsp;&nbsp;&nbsp;Delete</a></li>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item dropDown-font" href="#" id = "add" data-bs-toggle="modal" data-bs-target="#AddPopUp">
+                                	<i class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Add</a></li>
+                                <li><a class="dropdown-item dropDown-font" href="#" id = "Edit">
+                                	<i class="fas fa-edit" aria-hidden="true">&nbsp;&nbsp;</i>Edit</a></li>
+                                <li><a class="dropdown-item dropDown-font" href="#" id = "Delete">
+                                	<i class="fas fa-trash" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>Delete</a></li>
                                 </ul>
-	                       <button type="submit" class="btn btn-success" id="create">Create</button>
-	                       <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display:none;">Edit PopUp</button>
-	                      <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display:none;">Delete PopUp</button>
-	                      <button type="button" class="btn btn-primary pull-right" id="infopopup_btn" data-toggle="modal" data-target="#InfoPopUp" style="display:none;">Info PopUp</button>	                      
+                         </div>
+	                       <button type="submit" class="btn btn-primary" id="create">Create</button>
+	                       <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-bs-toggle="modal" data-bs-target="#EditPopUp" style="display:none;">Edit PopUp</button>
+	                      <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-bs-toggle="modal" data-bs-target="#DeletePopUp" style="display:none;">Delete PopUp</button>
+	                      <button type="button" class="btn btn-primary pull-right" id="infopopup_btn" data-bs-toggle="modal" data-bs-target="#InfoPopUp" style="display:none;">Info PopUp</button>	                      
 	                      <button type="button" class="btn btn-primary pull-right" id="governanceListId" onclick ="window.location.href='PhaseList.jsp';"style="display:none;"></button>
 	                      </div>
 	                      </div>
 	                      </form>
 	               
 	     <!--Delete pop up-->
-	     <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog">
+	     <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-        <button type="button" id ="delete_close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+     <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Delete
+			Field</h5>
+		<button type="button" class="btn-close"
+			data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>
       <div class="modal-body">
         <form name="DeleteForm">
                 <div class="modal-body">
@@ -218,8 +239,8 @@ HttpSession details = request.getSession();
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="submit2" class="btn btn-primary" >Yes</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close" >No</button>
+        <button type="button" id="submit2" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" >No</button>
       </div>
     </div>
   </div>
@@ -248,15 +269,15 @@ HttpSession details = request.getSession();
 </div>                         
 
 	<!-- Edit pop up -->
-	<div class="modal" id="EditPopUp" tabindex="-1" role="dialog">
+	<div class="modal" id="EditPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Input Field</h5>
-        <button type="button" id="edit_close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+		 <h5 class="modal-title" id="exampleModalLabel">Edit
+			Input Field</h5>
+		<button type="button" class="btn-close"
+			data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>
       <div class="modal-body">
         <form name="PopUpform">
             <div class="row">
@@ -272,23 +293,23 @@ HttpSession details = request.getSession();
 
       </div>
       <div class="modal-footer">
-        <button type="button" id="submit1" class="btn btn-primary" >Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Cancel</button>
+        <button type="button" id="submit1" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
         
       </div>
     </div>
   </div>
 </div>               
 <!-------Add popup---------->	
-<div class="modal" id="AddPopUp" tabindex="-1" role="dialog">
+<div class="modal" id="AddPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Input Fields</h5>
-        <button type="button" class="close" id = "add_close_id" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+     <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Add
+			Input Fields</h5>
+			<button type="button" class="btn-close"
+				data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
       <div class="modal-body">
         <form name="PopUpform">
             <div id="scrollbar">
@@ -318,7 +339,7 @@ HttpSession details = request.getSession();
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Type:</label>
-                            <select id="types" class="form-control" name="types" required >
+                            <select id="types" class="form-select" name="types" required >
                                 <option value="Text box">Text box</option>
                                 <option value="Check box">Check box</option>
                                 <option value="Radio box">Radio box</option>
@@ -385,7 +406,7 @@ HttpSession details = request.getSession();
                     <div class="form-group">
                         <div class="col-lg-8">
                             <label class="control-label" for="formInput526">Mandatory:</label>
-                            <select id="mandatory" class="form-control" name="mandatory" required >
+                            <select id="mandatory" class="form-select" name="mandatory" required >
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
@@ -398,16 +419,17 @@ HttpSession details = request.getSession();
         
       </div>
       <div class="modal-footer">
-        <button type="button" id ="submit" class="btn btn-primary">Add Fields</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id ="submit" class="btn btn-primary" data-bs-dismiss="modal">Add Fields</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>               
 	         
            </div>
+          
            
-           
+           </div>
            </div>
           </div>
           
@@ -518,5 +540,9 @@ $('.deletepopup').click(function() {
 </script>
 <script id ="scripttag1">
 </script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<script src="js/navigation/navigation.js"></script>
 </body>
 </html>

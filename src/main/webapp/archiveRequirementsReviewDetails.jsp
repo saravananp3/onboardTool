@@ -30,6 +30,12 @@
 
 <!-- ========== MODERNIZR ========== -->
 <script src="js/modernizr/modernizr.min.js"></script>
+<script src="js/common/email/emailAjaxCall.js"></script>
+<script src ="js/pdf/downloadPDF_AjaxCall.js"></script>
+<script src ="js/pdf/deletePDF_AjaxCall.js"></script>
+<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
 
@@ -421,6 +427,53 @@ font-size:12px;
 <body class="top-navbar-fixed">
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
+        
+        <%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
+
+
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
+%>
               <!-- ========== TOP NAVBAR ========== -->
 <!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -487,7 +540,7 @@ font-size:12px;
 				<div class="row" id="d3s-mt-10">
 						<div class="col-lg-12 col-md-12">
 							<div class="sub-title" style="color: #fff">
-								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a>  >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
+								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Introduction</a> >>
                            		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
                            			Legacy Application Info</a> >>
@@ -506,23 +559,33 @@ font-size:12px;
 					</div>
 			</div>
 		</nav>
+		
+		
+			<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
             <div class="content-wrapper">
             <div class="col-md-12">
 								<div style="margin-bottom: -138px;" class="form-wizard">
 						<div class="form-wizard-header">
 							
-							<ul class="list-unstyled form-wizard-steps clearfix nav-font">
+							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
 							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
-								<li class="activated"><span>1</span><i>Introduction</i></li>
-								<li class="activated"><span>2</span><i>Legacy Application Info</i></li>
-								<li class="activated"><span>3</span><i>Retention Details</i></li>
-								<li class="activated"><span>4</span><i>Business requirements</i></li>
-								<li class="activated"><span>5</span><i>Abbreviations</i></li>
-								<li class="activated"><span>6</span><i>Revisions</i></li>
-								<li class="activated"><span>7</span><i>Addendum</i></li>
-								<li class="activated"><span>8</span><i>StakeHolders</i></li>
-								<li class="active"><span>9</span><i>Review</i></li>
-								<li><span>10</span><i>Approval</i></li>
+								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
+								<li class="activated" onclick="location.href='ArchiveBusinessRequirements.jsp';"><span>4</span><i>Business requirements</i></li>
+								<li class="activated" onclick="location.href='archiveReqAbbrevation.jsp;'"><span>5</span><i>Abbreviations</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsDocumentRevisions.jsp;'"><span>6</span><i>Revisions</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsAddendum.jsp;'"><span>7</span><i>Addendum</i></li>
+								<li class="active" onclick="location.href='archiveRequirementsReviewDetails.jsp;'"><span>8</span><i>Review</i></li>
+								<li onclick="location.href='archiveRequirementsApprovalDetails.jsp;'"><span>9</span><i>Approval</i></li>
 						
 							</ul>
 						</div>
@@ -538,29 +601,29 @@ font-size:12px;
                                   <div class=" col-md-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
-                                    
+                                    <div id="editor"></div>
                                          <div class="card-container-1 card" id="d3s-mt-80">
                                             <div class="card-header" id="cd-header">
                                                
                                                   Archive Requirements Summary
-                                                <button id="intake_module" class="btn btn-primary align-right" style="margin-top: -4px;" ><span
+                                                <button id="exportPdf" class="btn btn-primary align-right"  style="margin-top: -4px;" ><span
                                                     class="glyphicon glyphicon-download-alt"></span> Export Pdf
                                                  </button>
                                             </div>
-                                            <div class="panel-collapse"
+                                            <div class="panel-collapse "
                                                 name="collapse">
-                                                <div class="panel-body">
+                                                <div class="panel-body" >
                                                       
-                                                      <div class="container">
-
+                                                      <div class="container"  >
+  
                                             <div bgcolor='#e4e4e4' style='font-family:Arial,Helvetica,sans-serif;'
                                                  id="table-scroll">
-
-                                                <table>
+                                          
+                                                <table  >
                                                     <tbody>
                                                     <tr>
                                                         <td>
-                                                            <table width='780' border='0' align='center'>
+                                                            <table width='780' border='0' align='center' id="d1">
 
                                                                 <tbody>
 
@@ -572,19 +635,21 @@ font-size:12px;
                                                         <h3 class="panel-title">1.1 Purpose & Scope</h3><br>
                                                          	<div id="purposeInfoPreview"></div>
                                                             <div id="scopeInfoPreview"></div>
-                                                         <h3 class="panel-title">1.2 Roles & Responsibilites</h3><br>
+                                                        <!--  <h3 class="panel-title">1.2 Roles & Responsibilites</h3><br>
                                                          <table class='table-bordered'>
                                                          <thead>
                                                          <th scope='col'>Role</th>
                                                          <th scope='col'>Name</th>
-                                                         <th scope='col'>Title</th>
-                                                         <th scope='col'>Approver Purpose</th>
+                                                         <th scope='col'>Email</th>
+                                                         <th scope='col'>Username </th>
+                                                         <th scope='col'>Priority </th>
                                                          </thead>
                                                         	<tbody id="roleResponseInfoPreview">  </tbody>
-                                                        	</table></td></tr>
+                                                        	</table> -->
+                                                        	</td></tr>
                                                         	
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                        <h3 class="panel-title">1.3 Assumptions</h3> <br>
+                                                        <h3 class="panel-title">1.2 Assumptions</h3> <br>
                                                         <div id="AssumptionInfoPreview"> </div>  </td> </tr>
                                                         
                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
@@ -760,17 +825,32 @@ font-size:12px;
                                                         </div>
                                                         </td> </tr>
                                                         <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                       <h3 class="panel-title">8 Approval Details</h3><br><br>
+                                                      <!--  <h3 class="panel-title">8 Approval Details</h3><br><br>
                                                         <table class='table-bordered'>
                                                           <thead>
-                                                          <th>Name</th>
                                                           <th>Role</th>
-                                                          <th>Title</th>
+                                                          <th>Name</th>
+                                                          <th>Email</th>
+                                                          <th>Username</th>
+                                                          <th>Priority</th>
                                                           <th>Approval Status</th>
-                                                          </thead>
+                                                          
+  </thead>
                                                           <tbody id='approvalInfoPreview'>
                                                           </tbody>
-                                                          </table></div> </td> </tr>
+                                                          </table> -->
+                                                           <h3 class="panel-title">8 Roles & Responsibilites</h3><br>
+                                                         <table class='table-bordered'>
+                                                         <thead>
+                                                         <th scope='col'>Role</th>
+                                                         <th scope='col'>Name</th>
+                                                         <th scope='col'>Email</th>
+                                                         <th scope='col'>Username </th>
+                                                         <th scope='col'>Priority </th>
+                                                         </thead>
+                                                        	<tbody id="roleResponseInfoPreview">  </tbody>
+                                                        	</table>
+                                                          </div> </td> </tr>
                                                  
                                                         </tbody>
                                     </table>
@@ -798,7 +878,9 @@ font-size:12px;
                                                     </div>
                                                 </div>
                                             </div>
+                                       
                                         </div>
+                                        
                                     </div>
                              </div>
                 </section>
@@ -896,5 +978,4 @@ $(document).on('mouseenter','.active1', function(){
 <!-- ========== Toastr ========== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-
 </html>

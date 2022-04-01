@@ -28,6 +28,27 @@
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
+<!-- ========== BootstrapV4 ========== -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+crossorigin="anonymous"></script>
+
 <!--  ========== Three Toggle ========= -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" />
 <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
@@ -431,7 +452,52 @@ font-size:12px;
 </style>
 </head>
 <body class="top-navbar-fixed">
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%
+SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+Date date = new Date();
+System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+<%@page language="java"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="onboard.DBconnection"%>
+<%@page import="java.util.Calendar"%>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+response.setHeader("Expires", "0"); // Proxies.
+DBconnection dBconnection = new DBconnection();
 
+
+
+if (session.getAttribute("username")==null)
+{
+response.sendRedirect("Login.jsp");
+
+
+
+}
+else{
+String name=(String)session.getAttribute("ID");
+HttpSession details=request.getSession();
+Connection con = null;
+session.setAttribute("theName", name);
+String roles=(String)details.getAttribute("role");
+String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+String s=OpportunityName;
+System.out.println("Welcome"+OpportunityName);
+
+int sumcount=0;
+Statement st,st2;
+try{
+
+con=dBconnection.getConnection();
+Statement st1;
+
+%>
 <%@include file="Nav-Bar.jspf"%>
 		<nav class="nav nav-height-70 nav-font" id="bg-color"
 			style="font-size: 14px;">
@@ -441,7 +507,7 @@ font-size:12px;
 						<div class="sub-title" style="color: #fff">
 								<a href="OpportunityList.jsp" id="sitetitle1"
 									style="color: #fff"><span class="glyphicon glyphicon-home"></span>
-									Home</a> >> <a href="IntakeOpportunity.jsp" id="sitetitle1"
+									Home</a> >> <%=OpportunityName%> >><a href="IntakeOpportunity.jsp" id="sitetitle1"
 									style="color: #fff"> Opportunity </a> >> <a
 									href="IntakeTriageSummary.jsp" id="sitetitle1"
 									style="color: #fff"> Triage Summary</a> <a
@@ -457,6 +523,15 @@ font-size:12px;
 				</div>
 			</div>
 		</nav>
+		<%
+}
+catch(Exception e){
+e.printStackTrace();
+}
+
+
+
+} %>
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
@@ -533,17 +608,25 @@ font-size:12px;
 				                                                        	<br/>
 												<div class="form-wizard-header nav-font">
 													<p style="font-size: 14px;">Fill all the required fields to go next step</p>
-													<ul class="list-unstyled form-wizard-steps clearfix">
-														<li class="activated"><span>1</span><i>Opportunity</i></li>
-														<li class="activated"><span>2</span><i>Triage</i></li>
-														<li class="activated"><span>3</span><i>Triage
+													
+												<ul class="list-unstyled form-wizard-steps clearfix">
+														<li class="activated"
+															onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage
 																Summary</i></li>
-														<li class="activated"><span>4</span><i>Assessment</i></li>
-														<li class="activated"><span>5</span> <i>Stake
-																Holder</i></li>
-														<li class="activated"><span>6</span><i>Review</i></li>
-														<li class="active"><span>7</span><i>Approval</i></li>
-													</ul>
+														<li class="activated"
+															onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span>
+															<i>Stake Holder</i></li>
+														<li class="activated"
+															onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
+														<li class="active" 
+															onclick="location.href='IntakeApproval.jsp';"><span>7</span><i>Approval</i></li>
+												</ul>
 												</div>
 												
 
@@ -1209,7 +1292,7 @@ $(document).on('mouseenter','.active1', function(){
   
 	
 	<!-- ========== BootstrapV5 ========== -->
-<link
+<!-- <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -1225,7 +1308,8 @@ $(document).on('mouseenter','.active1', function(){
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script> -->
+
 <!-- ========== Toastr ========== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
