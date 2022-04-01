@@ -31,10 +31,70 @@
 
 
     <style type="text/css">
-        .breadcrumb-div {
-            background-color: #e7e7e7;
-            color: #010101; }
+
+        body{
+
+            background:#f5f5f5;
+
+        }
+        #sitetitle1{
+
+            color:DodgerBlue;
+            text-align:center;
+            float:right;
+
+        }
+        .example-two {
+        border-radius: 10px;
+        border: 3px solid #e3e3e3;
+        }
+
+
+        .bs-wizard {margin-top: 40px;}
+
+        /*Form Wizard*/
+        .bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+        .bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+        .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+        .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+        .bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+        .bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #6dccff; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;}
+        .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: 	#1E90FF; border-radius: 50px; position: absolute; top: 8px; left: 8px; }
+        .bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+        .bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background:  #6dccff;}
+        .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+        .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+        .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+        .bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+        .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+        .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+        .bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+        .bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+        .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+        /*END Form Wizard*/
+
+        /* Style the buttons */
+        .btn {
+            border: none;
+            outline: none;
+            padding: 3px 14px;
+            background-color: #3697e8;
+            cursor: pointer;
+
+        }
+        .activ-pro{     font-size: 16px;
+            margin-left: -15px;
+            margin-right: 70px;}
+        .active, .btn:hover {
+
+            color: white;
+        }
+
+        /* Style the active class, and buttons on mouse-over */
+
+
     </style>
+
     <script src="js_in_pages/tree1.js"></script>
 
 </head>
@@ -253,7 +313,7 @@
     }
 </script>
 
-<form class="form-signin" name="loginForm" method="post">
+<form class="form-signin" name="loginForm" method="post" action="Displaydb">
 
     <div class="main-wrapper">
 
@@ -286,13 +346,14 @@
                         </button>
                     </div>
                     <!-- /.navbar-header -->
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=rs3.getString("projectname") %></a>
+
 
 
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
                         <!-- /.nav navbar-nav -->
                         <ul class="nav navbar-nav navbar-right">
+                            <a class="navbar-brand" href="Project_List.jsp" id="sitetitle1">PROJECT NAME-<%=rs3.getString("projectname") %></a>
                             <%
                                 String uname=(String)details.getAttribute("username");
                                 String role=(String)details.getAttribute("role");%>
@@ -313,11 +374,9 @@
         <div class="content-wrapper">
             <div class="content-container">
 
-
                 <!-- ========== LEFT SIDEBAR ========== -->
                 <div class="left-sidebar fixed-sidebar bg-primary box-shadow tour-three">
                     <div class="sidebar-content" id='jqxWidget'>
-
 
                         <div class="sidebar-nav">
                             <ul class="side-nav color-gray">
@@ -328,95 +387,140 @@
                                     <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
                                 </li>
 
-                                <li class="nav-header">
-                                    <a href="AppEmphasize_EditProject.jsp"><span class="">App Emphasize Module</span></a>
-                                </li>
+                                <%--   <li class="nav-header">
+                                       <a href="AppEmphasize_EditProject.jsp"><span class="">Plan and pirority</span></a>
+                                   </li>--%>
                                 <li class="has-children">
+                                    <a href=""><i class="fa fa-archive"></i> <span>Plan and pirority</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav" id="myDIV">
+                                        <li><a href="AppEmphasize_EditProject.jsp" > <span >Project Information</span></a></li>
+                                        <li><a href="AppEmphasize_Application.jsp" > <span>Application Information</span></a></li>
+                                        <li class="btn"><a href="AppEmphasize_CostCalculation.jsp" > <span class="activ-pro">Application Complexity</span></a></li>
+                                        <li><a href="AppEmphasize_PrioritizedApplications.jsp"> <span>Prioritized Applications</span></a></li>
+                                        <li><a href="AppEmphasize_Preview.jsp"> <span>Review Page</span></a></li>
+                                    </ul>
+                                </li>
+                                <%--<li class="has-children">
                                     <a href="AppEmphasize_EditProject.jsp"><i class="fa fa-file-text"></i> <span>Project Details</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
                                         <li><a href="AppEmphasize_EditProject.jsp"> <span>Project Information</span></a></li>
                                         <li><a href="AppEmphasize_Application.jsp"> <span>Application Details</span></a></li>
                                     </ul>
-                                </li>
+                                </li>--%>
 
-                                <li class="has-children">
+
+                                <%--<li class="has-children">
                                     <a href="AppEmphasize_CostCalculation.jsp"><i class="fa fa-paint-brush"></i> <span>Application Prioritization</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity</span></a></li>
+                                        <li><a href="AppEmphasize_CostCalculation.jsp"> <span>Application Complexity </span></a></li>
                                     </ul>
-                                </li>
+                                </li>--%>
 
-                                <li>
+                                <%--<li>
                                     <a href="AppEmphasize_PrioritizedApplications.jsp"><i class="fa fa-map-signs"></i> <span>Application Prioritized</span> </a>
-                                </li>
+                                </li>--%>
 
-                                <li class="nav-header">
-                                    <a href='Applications.jsp'><span class="">Intake Module</span></a>
-                                </li>
+                                <%-- <li class="nav-header">
+                                     <a href='Applications.jsp'><span class="">Intake Module</span></a>
+                                 </li>
 
+                                 <li class="has-children">
+                                     <a href="Applications.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
+                                     <ul class="child-nav">
+                                         <li><a href="Applications.jsp"> <span>Application Information</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Legacy Retention Information</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Archive Data Management</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>System Requirements</span></a></li>
+                                     </ul>
+                                 </li>
+
+                                 <li class="has-children">
+                                     <a href="Applications.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
+                                     <ul class="child-nav">
+                                         <li><a href="Applications.jsp"> <span>Application Data Information</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Technical Information</span></a></li>
+                                     </ul>
+                                 </li>
+                                 <li class="has-children">
+                                     <a href="Applications.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
+                                     <ul class="child-nav">
+                                         <li><a href="Applications.jsp"> <span>Screen/Report Requirements</span></a></li>
+                                         <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
+                                     </ul>
+                                 </li>--%>
                                 <li class="has-children">
-                                    <a href="Applications.jsp"><i class="fa fa-magic"></i> <span>Business</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <a href=""><i class="fa fa-file-text"></i> <span>Intake Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="Applications.jsp"> <span>Application Information</span></a></li>
-                                        <li><a href="Applications.jsp"> <span>Legacy Retention Information</span></a></li>
-                                        <li><a href="Applications.jsp"> <span>Archive Data Management</span></a></li>
-                                        <li><a href="Applications.jsp"> <span>System Requirements</span></a></li>
+                                        <li><a href="Applications.jsp" > <span>Archive Intake</span></a></li>
+                                        <li><a href="Decomm_Intake_Applications.jsp" > <span>Decomm Intake</span></a></li>
+                                        <%--<li><a href="Intake_TechnicalDetails.jsp"> <span>Technical Details</span></a></li>
+                                        <li><a href="Intake_ArchiveRequirements.jsp"> <span>Archive Requirements</span></a></li>
+                                        <li><a href="Intake_ReviewPage.jsp"> <span>Review Page</span></a></li>--%>
                                     </ul>
                                 </li>
+                                <%--<li class="nav-header">
+                                    <a href='Archive_Execution.jsp'><span class="">Archive Execution Module</span></a>
+                                </li>--%>
+                                <li class="has-children">
+                                    <a href=""><i class="fa fa-map-signs"></i> <span>Archive Execution Module</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <ul class="child-nav">
+                                        <li><a href="Archive_Execution.jsp" > <span>Archive Execution</span></a></li>
+                                        <li><a href="archivesummary.jsp" > <span>Archive summary</span></a></li>
 
-                                <li class="has-children">
-                                    <a href="Applications.jsp"><i class="fa fa-bars"></i> <span>Technical</span> <i class="fa fa-angle-right arrow"></i></a>
-                                    <ul class="child-nav">
-                                        <li><a href="Applications.jsp"> <span>Application Data Information</span></a></li>
-                                        <li><a href="Applications.jsp"> <span>Infrastructure & Environment Inforamation</span></a></li>
-                                        <li><a href="Applications.jsp"> <span>Technical Information</span></a></li>
                                     </ul>
                                 </li>
+                                <%--   <li class="nav-header">
+                                       <a href='RoleUIDashboard.jsp'><span class="">Report Module</span></a>
+                                   </li>--%>
                                 <li class="has-children">
-                                    <a href="Applications.jsp"><i class="fa fa-archive"></i> <span>Archival Requirements</span> <i class="fa fa-angle-right arrow"></i></a>
+                                    <a href=""><i class="fa fa-paint-brush"></i> <span>Report Module</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="Applications.jsp"> <span>Screen/Report Requirements</span></a></li>
-                                        <li><a href="Applications.jsp"> <span>Archive Requirements</span></a></li>
+                                        <li><a href="RoleUIDashboard.jsp" > <span>Reports Dashboard</span></a></li>
+                                        <li><a href="RoleDashboard.jsp" > <span>Role Dashboard</span></a></li>
+                                        <li><a href="ProjectDashboard.jsp" > <span>Project Dashboard</span></a></li>
+                                        <li><a href="ApplicationDashboard.jsp"> <span>Application Dashboard</span></a></li>
                                     </ul>
-                                </li>
-                                <li><a href="Archive_Execution.jsp"><i class="fa fa-suitcase"></i> <span>Archive Execution Module</span></a>
                                 </li>
                             </ul>
+
                         </div>
                         <!-- /.sidebar-nav -->
                     </div>
                     <!-- /.sidebar-content -->
                 </div>
                 <!-- /.left-sidebar -->
+                <div class="container-fluid">
+                    <div class="row page-title-div">
+                        <div class="col-sm-6">
+                            <h2 class="title">Application Prioritized</h2>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row breadcrumb-div">
+                        <div class="col-sm-6">
+                            <ul class="breadcrumb">
+                                <li><a href="Project_List.jsp"><i class="fa fa-home"></i> Home</a></li>
+                                <li><a href="AppEmphasize_EditProject.jsp">Project Info</a></li>
+                                <li><a href="AppEmphasize_Application.jsp">Application Info</a></li>
+                                <li><a href="AppEmphasize_CostCalculation.jsp">Application Complexity</a></li>
+
+                            </ul>
+                        </div>
 
 
-                <script>
-                    $(document).ready(function(){
-                        $('[data-toggle="tooltip"]').tooltip();
-                    });
-                </script>
 
-                <script>
-                    $(function () {
-                        // 6 create an instance when the DOM is ready
-                        $('#jstree').jstree();
-                        // 7 bind to events triggered on the tree
-                        $('#jstree').on("changed.jstree", function (e, data) {
-                            console.log(data.selected);
-                        });
-                        // 8 interact with the tree - either way is OK
-                        $('button').on('click', function () {
-                            $('#jstree').jstree(true).select_node('child_node_1');
-                            $('#jstree').jstree('select_node', 'child_node_1');
-                            $.jstree.reference('#jstree').select_node('child_node_1');
-                        });
-                    });
-                </script>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+
+
 
                 </script>
 
                 <!-- Projects List Start -->
-
+                <form>
                 <section>
 
                 <div class="row">
@@ -476,36 +580,45 @@
                 </jsp:include>
 
 
-                <div class="row">
+
+                <div class="container">
+
 
                     <div class="row bs-wizard" style="border-bottom:0;">
 
                     <div class="col-xs-3 bs-wizard-step complete">
                     <div class="text-center bs-wizard-stepnum">Project Information</div>
                 <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot" style="color:white">1</a>
-                    </div>
-
-                    <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
-                    <div class="text-center bs-wizard-stepnum">Application Complexity </div>
-                <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot">2</a>
+                <a href="#" class="bs-wizard-dot"></a>
                     <div class="bs-wizard-info text-center"></div>
                     </div>
 
-                    <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                    <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                    <div class="text-center bs-wizard-stepnum">Cost Complexity Calculation</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="#" class="bs-wizard-dot"></a>
+                    <div class="bs-wizard-info text-center"></div>
+                    </div>
+
+                    <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                     <div class="text-center bs-wizard-stepnum">Prioritized Applications</div>
                 <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot">3</a>
+                <a href="#" class="bs-wizard-dot example-two"></a>
                     <div class="bs-wizard-info text-center"></div>
                     </div>
 
                     <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
                     <div class="text-center bs-wizard-stepnum">Final</div>
                     <div class="progress"><div class="progress-bar"></div></div>
-                <a href="#" class="bs-wizard-dot">4</a>
-                    <div class="bs-wizard-info text-center"></div>
+                <a href="#" class="bs-wizard-dot example-two"></a>
+                    <div class="bs-wizard-info text-center"> </div>
                     </div>
+                    </div>
+
+
+
+
+
                     </div>
                     <br/>
                     <div class="panel-group" id="panels1">
@@ -559,9 +672,9 @@
                 </div> -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                    <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse2" onclick="switchColors();">    Application Complexity   </a> </h4>
+                    <h4 class="panel-title"> <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">    Application Complexity   </a> </h4>
                 </div>
-                <div id="collapse2" class="panel-collapse collapse">
+                <div id="collapse2" class="panel-collapse ">
                     <div class="panel-body text-left">
 
 
@@ -599,8 +712,8 @@
                 <tr>
 
                 <td class="edit_row" style="cursor:pointer" id="1"><%=rs1.getString("appname") %></td>
-                    <td class="row_s" style="cursor:pointer" id="2"><%=rs1.getString("complexity") %></td>
-                    <td class="row_t" style="cursor:pointer" id="3"><%=rs1.getString("est_scrn") %></td>
+                    <td class="row_s" style="cursor:pointer" id="2"><%=rs1.getString("complexity") ==(null)? "-" : rs1.getString("complexity") %></td>
+                    <td class="row_t" style="cursor:pointer" id="3"><%=rs1.getString("est_scrn") ==(null)? "-" : rs1.getString("est_scrn") %></td>
 
 
 
@@ -632,23 +745,57 @@
                         {
 
                             knt++;
-
+                            document.getElementById('no_of_app_complexity').value = "<%= rs8.getString("no_of_app_complexity") %>";
                             document.getElementById('complexity').value = "<%= rs8.getString("complexity") %>";
                             document.getElementById('curnt_users').value = "<%= rs8.getString("curnt_users") %>";
                             document.getElementById('data_size').value = "<%= rs8.getString("data_size") %>";
+                            document.getElementById('data_source').value = "<%= rs8.getString("data_source") %>";
                             document.getElementById('RO_DATE').value = "<%= rs8.getString("read_date") %>";
                             document.getElementById('SME_DATE').value = "<%= rs8.getString("sme_date") %>";
                             document.getElementById('est_scrn').value = "<%= rs8.getString("est_scrn") %>";
+                        
+                           
+                            
+                        var data_retained = "<%= rs8.getString("data_retained") ==(null)? "" : rs8.getString("data_retained") %>";
+                        var Decommission = "<%= rs8.getString("Decommission") ==(null)? "" : rs8.getString("Decommission") %>";
+                        
+                        <%-- console.log("Data Source : ","<%= rs8.getString("data_source")%>");
+                        console.log("Data Retained : ",data_retained);
+                        console.log("Decommission : ",Decommission); --%>
+                        
+                         if (data_retained == 'true'){
+                        	 $("#checkbox_id_yes").prop("checked", true);
+                        	 $(".Q2").show();
+                             $(".radio1").attr('type','radio');
+                             if (Decommission == 'true')
+                            	 $("#yes").prop("checked", true);
+                             else if (Decommission == 'false')
+                            	 $("#no").prop("checked", true);
+                         }
+                         else if(data_retained == 'false')
+                         {
+                        	 $("#checkbox_id_no").prop("checked", true); 
+                         }
+                         
                         }
                         <% }
                          %>
                         if(knt==0){
                             document.getElementById('complexity').value = " ";
+                            document.getElementById('no_of_app_complexity').value = " ";
                             document.getElementById('curnt_users').value = " ";
                             document.getElementById('data_size').value = " ";
+                            document.getElementById('data_source').value = " ";
                             document.getElementById('RO_DATE').value = " ";
                             document.getElementById('SME_DATE').value = " ";
                             document.getElementById('est_scrn').value = " ";
+                            
+                            $("#checkbox_id_yes").prop("checked", false);
+                            $("#checkbox_id_no").prop("checked", false); 
+                            $("#yes").prop("checked", false);
+                            $("#no").prop("checked", false);
+                            $(".Q2").hide();
+                            $(".radio1").attr('type','hidden');
                         }
                     }, false);
                 }
@@ -663,7 +810,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="formInput526"><div class="required">Number of Applications based on Complexity&nbsp;<span class="text-danger">*</span></div></label>
-                <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value="<%=rs.getString("no_of_app_complexity")%>" required>
+                <input type="text" class="form-control" id="no_of_app_complexity"  name="no_of_app_complexity" value="<%=rs.getString("no_of_app_complexity")%>" >
             </div>
 
             <div class="form-group">
@@ -673,7 +820,7 @@
 
             <div class="form-group">
                 <label class="control-label" for="formInput26">Data Size&nbsp;<span class="text-danger">*</span></label>
-                <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required >
+                <select id="data_size" class="form-control" name="data_size" onChange="updatesum()" required>
                     <option></option>
                     <option><100 GB</option>
                     <option>100 to 250 GB</option>
@@ -683,8 +830,18 @@
                 </select>
             </div>
 
-
-            <div class="form-group">
+<div class="form-group">
+                <label class="control-label" for="formInput26">Data Source&nbsp;<span class="text-danger">*</span></label>
+                <select id="data_source" class="form-control" name="data_source">
+                    <option></option>
+                    <option>Regular DB</option>
+                    <option>ERP</option>
+                    <option>Product Based</option>
+                </select>
+            </div>
+            
+            
+           <%--  <div class="form-group">
                 <label class="control-label" for="formInput664"><b>Data Source</b></label>
             </div>
             <div class="checkbox">
@@ -693,7 +850,7 @@
                 <label class="Data Source">     <input type="checkbox" name="data_source" value="erp" <%=rs.getString("data_source")%>>ERP</label><br />
                 <label class="Data Source"> <input type="checkbox" name="data_source" value="product" <%=rs.getString("data_source")%>>Product based
                 </label>  <br />
-            </div>
+            </div> --%>
 
 
             <div class="form-group">
@@ -721,11 +878,11 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="formInput664">Read Only Date</label>
-                <input placeholder="mm/dd/yyyy" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()">
+                <input placeholder="mm/dd/yyyy" style = "background-color: white;" type="text" class="form-control ember-text-field zf-date-picker date-picker ember-view date start" id="RO_DATE"  name="read_date" onChange="updatesum()" readonly>
             </div>
             <div class="form-group">
                 <label class="control-label" for="formInput664">SME Availability Date</label>
-                <input placeholder="mm/dd/yyyy" type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()">
+                <input placeholder="mm/dd/yyyy" style = "background-color: white;" type="text" class="form-control" id="SME_DATE"  name="sme_date" onChange="updatesum()" readonly>
             </div>
 
 
@@ -733,34 +890,67 @@
                 <label class="control-label" for="formInput664">Estimated Number of Screen</label>
                 <input type="text" class="form-control" id="est_scrn"  name="est_scrn" onChange="updatesum()" >
             </div>
+            <div class="form-group">
+                <label class="control-label" for="formInput664">Does the data needs to be Retained?&nbsp;<span class="text-danger">*</span></label>
+                <p>
+                    <label class="radio-inline">
+
+                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_yes" value="true" required/>
+                        <b>Yes</b>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="data_retained" class="radio" id="checkbox_id_no" value="false" required/>
+                        <b>No</b>
+                    </label>
+                </p>
+            </div>
+            <div class="form-group">
+                <label class="Q2" for="formInput664" hidden>If the data is retained , do we need to decommission the application?&nbsp;<span class="text-danger Q2">*</span></label>
+
+                <p class="Q2" hidden>
+                    <label class="radio-inline">
+
+                        <input type="hidden" id="yes" name="Decommission" class="radio1" value="true" required/>
+                        <b>Yes</b>
+
+                    </label>
+                    <label class="radio-inline">
+
+                        <input type="hidden" id="no" name="Decommission" class="radio1" value="false" required/>
+                        <b>  No </b>
+                    </label>
+                </p>
+
+
+            </div>
+
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary pull-right" onclick="OnButton1()" >Save & Continue</button>
+
+
+
+
+                <a href="AppEmphasize_Application.jsp" class="btn btn-default" class="btn pull-right">Back</a>
+            </div>
 
         </div>
+
     </div>
+
     </div>
 
 
 
     <input type="text" id="pwqej" value="<%= info %>" style="display:none">
     <br/>
-    <script>
-        function OnButton1()
-        {
-            document.loginForm.action = "Displaydb"
-            document.loginForm.submit();
-            document.loginForm.submit();
-        }
-    </script>
 
 
 
 
-    <button type="button" class="btn btn-success pull-right" onclick="OnButton1()">Save & Continue ...</button>
 
 
-
-
-    <a href="root1.jsp" class="btn btn-default" class="btn pull-right">Cancel</a>
-        <% } %>
+    <% } %>
 
     </div>
 
@@ -772,134 +962,198 @@
 
     </section>
     <!-- /.section -->
+</form>
+</div>
+<!-- /.main-page -->
 
-    </div>
-    <!-- /.main-page -->
+<!-- Project List End -->
 
-    <!-- Project List End -->
+</div>
+<!-- /.content-container -->
+</div>
+<!-- /.content-wrapper -->
 
-    </div>
-    <!-- /.content-container -->
-    </div>
-    <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /.main-wrapper -->
+</div>
+<!-- /.main-wrapper -->
 
 
 
-    <script>
-        if(document.getElementById('pwqej').value=="R")
-            checkk();
-    </script>
-        <%
-}
-}}
-catch(Exception e){}
+<script>
+    if(document.getElementById('pwqej').value=="R")
+        checkk();
+</script>
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("myDIV");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
+<%
+            }
+        }}
+    catch(Exception e){}
 %>
 
-    <!-- ========== COMMON JS FILES ========== -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/pace/pace.min.js"></script>
-    <script src="js/lobipanel/lobipanel.min.js"></script>
-    <script src="js/iscroll/iscroll.js"></script>
+<!-- ========== COMMON JS FILES ========== -->
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/pace/pace.min.js"></script>
+<script src="js/lobipanel/lobipanel.min.js"></script>
+<script src="js/iscroll/iscroll.js"></script>
 
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".lis").click(function() {
-                $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
-                $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
-            });
-            $(".gr").click(function() {
-                $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
-                $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
-            });
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".lis").click(function() {
+            $(".cbp-vm-switcher").removeClass("cbp-vm-view-grid");
+            $(".cbp-vm-switcher").addClass("cbp-vm-view-list");
         });
-    </script>
-
-
-    <!-- ========== PAGE JS FILES ========== -->
-    <script src="js/prism/prism.js"></script>
-    <script src="js/waypoint/waypoints.min.js"></script>
-    <script src="js/counterUp/jquery.counterup.min.js"></script>
-    <script src="js/amcharts/amcharts.js"></script>
-    <script src="js/amcharts/serial.js"></script>
-    <script src="js/amcharts/plugins/export/export.min.js"></script>
-    <link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
-    <script src="js/amcharts/themes/light.js"></script>
-    <script src="js/toastr/toastr.min.js"></script>
-    <script src="js/icheck/icheck.min.js"></script>
-    <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
-
-    <!-- ========== THEME JS ========== -->
-    <script src="js/production-chart.js"></script>
-    <script src="js/traffic-chart.js"></script>
-    <script src="js/task-list.js"></script>
-
-    <!-- ========== THEME JS ========== -->
-    <script src="js/main.js"></script>
-
-
-    <!-- ========== PAGE JS FILES ========== -->
-    <script src="js/prism/prism.js"></script>
-    <script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
-    <script type="text/javascript" src="js/date-picker/datepair.js"></script>
-    <script type="text/javascript" src="js/date-picker/moment.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-
-    <!-- ========== THEME JS ========== -->
-
-    <script type="text/javascript">
-        $('.datepicker').datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '-3d'
+        $(".gr").click(function() {
+            $(".cbp-vm-switcher").addClass("cbp-vm-view-grid");
+            $(".cbp-vm-switcher").removeClass("cbp-vm-view-list");
         });
-    </script>
+    });
+</script>
 
 
-    <!-- ========== THEME JS ========== -->
-    <script>
-        $(function($) {
-            // 1st  datepicker
-            $('#basicExample .time').timepicker({
-                'showDuration': true,
-                'timeFormat': 'g:ia'
-            });
-            $('#basicExample .date').datepicker({
-                'format': 'm/d/yyyy',
-                'autoclose': true
-            });
-            var basicExampleEl = document.getElementById('basicExample');
-            var datepair = new Datepair(basicExampleEl);
-            // 2nd  datepicker
-            $('#datetimepicker1').datetimepicker({
-                debug: true
-            });
-            // 3rd  datepicker
-            $('#datetimepicker9').datetimepicker({
-                viewMode: 'years'
-            });
-            // 4th  datepicker
-            $('#datetimepicker10').datetimepicker({
-                viewMode: 'years',
-                format: 'MM/YYYY'
-            });
-            // 5th  datepicker
-            $('#datetimepicker11').datetimepicker({
-                daysOfWeekDisabled: [0, 6]
-            });
-            // 6th  datepicker
-            $('#datetimepicker12').datetimepicker({
-                inline: true,
-                sideBySide: true
-            });
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script src="js/waypoint/waypoints.min.js"></script>
+<script src="js/counterUp/jquery.counterup.min.js"></script>
+<script src="js/amcharts/amcharts.js"></script>
+<script src="js/amcharts/serial.js"></script>
+<script src="js/amcharts/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
+<script src="js/amcharts/themes/light.js"></script>
+<script src="js/toastr/toastr.min.js"></script>
+<script src="js/icheck/icheck.min.js"></script>
+<script src="js/bootstrap-tour/bootstrap-tour.js"></script>
+
+<!-- ========== THEME JS ========== -->
+<script src="js/production-chart.js"></script>
+<script src="js/traffic-chart.js"></script>
+<script src="js/task-list.js"></script>
+
+<!-- ========== THEME JS ========== -->
+<script src="js/main.js"></script>
+
+
+<!-- ========== PAGE JS FILES ========== -->
+<script src="js/prism/prism.js"></script>
+<script type="text/javascript" src="js/date-picker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/date-picker/jquery.timepicker.js"></script>
+<script type="text/javascript" src="js/date-picker/datepair.js"></script>
+<script type="text/javascript" src="js/date-picker/moment.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+
+<!-- ========== THEME JS ========== -->
+
+<script type="text/javascript">
+    $('.datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+        startDate: '-3d'
+    });
+</script>
+
+<script>
+    function OnButton1()
+    {
+        var ProjectName=$('#prj_name').val();
+        var no_of_app_complexity=$('#no_of_app_complexity').val();
+        var data_size=$('#data_size').val();
+        var current_user=$('#curnt_users').val();
+        var complexity=$('#complexity').val();
+        var q2id=$('#yes').attr('type');
+        var check2=$('[name="Decommission"]:checked').val();
+        var check1=$('[name="data_retained"]:checked').val();
+        if(ProjectName==""||no_of_app_complexity==""||current_user==""||complexity==""||check1==undefined||q2id=="radio"&&check2==undefined)
+        {
+            alert("fill the manditory fields.");
+        }
+        else {
+            document.loginForm.action = "Displaydb"
+            document.loginForm.submit();
+            document.loginForm.submit();
+        }
+    }
+    $('.radio').on('change', function() {
+        //alert( this.value );
+        if(this.value=="true")
+        {
+            $(".Q2").show();
+            $(".radio1").attr('type','radio');
+        }
+        else
+        {
+            $(".Q2").hide();
+            $(".radio1").attr('type','hidden');
+
+
+        }
+    });
+
+    /*$('.radio').on('click', function() {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });*/
+</script>
+<!-- ========== THEME JS ========== -->
+<script>
+    $(function($) {
+        // 1st  datepicker
+        $('#basicExample .time').timepicker({
+            'showDuration': true,
+            'timeFormat': 'g:ia'
         });
-    </script>
+        $('#basicExample .date').datepicker({
+            'format': 'm/d/yyyy',
+            'autoclose': true
+        });
+        var basicExampleEl = document.getElementById('basicExample');
+        var datepair = new Datepair(basicExampleEl);
+        // 2nd  datepicker
+        $('#datetimepicker1').datetimepicker({
+            debug: true
+        });
+        // 3rd  datepicker
+        $('#datetimepicker9').datetimepicker({
+            viewMode: 'years'
+        });
+        // 4th  datepicker
+        $('#datetimepicker10').datetimepicker({
+            viewMode: 'years',
+            format: 'MM/YYYY'
+        });
+        // 5th  datepicker
+        $('#datetimepicker11').datetimepicker({
+            daysOfWeekDisabled: [0, 6]
+        });
+        // 6th  datepicker
+        $('#datetimepicker12').datetimepicker({
+            inline: true,
+            sideBySide: true
+        });
+    });
+</script>
 
 
 </body>

@@ -13,7 +13,12 @@
  <%@page import="java.sql.*"%>
  <%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
+		<%@ page import="onboard.DBconnection"%>
+
+		
 		<%
+		 DBconnection dBconnection = new DBconnection();
+
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed state JSP PAGE-----[INFO]");  %>
@@ -22,8 +27,7 @@ String country=request.getParameter("count");
 
  String buffer="<select name='state'> <option disabled selected>Please Select any Option</option>";  
  try{
- Class.forName("com.mysql.jdbc.Driver").newInstance();  
- Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding","root","password123");  
+ Connection con = dBconnection.getConnection();  
  Statement stmt = con.createStatement();  
  ResultSet rs = stmt.executeQuery("Select * from Admin_UserDetails where roles='"+country+"' ");  
    while(rs.next()){

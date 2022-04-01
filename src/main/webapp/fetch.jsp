@@ -24,7 +24,7 @@
  <%@page import="java.sql.*"%>
 <%
 String myDriver = "org.gjt.mm.mysql.Driver";
-String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
+String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
 Class.forName(myDriver);
 Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
 String data1=request.getParameter("s2");  

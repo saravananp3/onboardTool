@@ -13,7 +13,12 @@
  <%@page import="java.sql.*"%>
  <%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
+		<%@ page import="onboard.DBconnection"%>
+		
+		
 		<%
+		 DBconnection dBconnection = new DBconnection();
+
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed table JSP PAGE-----[INFO]");  %>
@@ -27,8 +32,7 @@ System.out.println("fromDate:" + fromdate +" toDate :" + todate);
 
  String buffer="<tbody>";  
  try{
- Class.forName("com.mysql.jdbc.Driver").newInstance();  
- Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding","root","password123");  
+ Connection con = dBconnection.getConnection();  
  Statement stmt = con.createStatement();  
  ResultSet rs = stmt.executeQuery("select * from logs where substring(DATED,1,10) >= '"+fromdate+"' and substring(DATED,1,10) <= '"+todate+"' and USER_ID='"+uname+"'");  
    while(rs.next()){

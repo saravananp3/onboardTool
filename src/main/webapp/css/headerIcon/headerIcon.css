@@ -1,0 +1,44 @@
+.iconAlign{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    width : 100px;
+    margin-bottom: 10px;
+    
+}
+.iconColor{
+	color: #1565c0;
+}
+
+.textColor:hover{
+	text-color: #1565c0;
+}
+
+li a .iconColor:hover{
+	color: #1565c0;
+}
+
+li a .activeIcon :hover{
+	color: #1565c0;
+}
+
+li a{
+	text-align : center;
+	font-size: 15px;  
+}
+.navAlign{
+margin-left : 150px;
+}
+
+/*  .navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus,
+    .navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .active > a:focus {
+    background-color:  #fff;
+    
+   
+}    */
+
+/* .iconAlign:hover{
+	color: #1565c0;
+} */

@@ -56,14 +56,15 @@ public class mail_uname extends HttpServlet {
 		new javax.mail.Authenticator() {
 		protected PasswordAuthentication getPasswordAuthentication() {
 		//return new PasswordAuthentication("vkarun202@gmail.com","arun's@kumar");
-			return new PasswordAuthentication("arun.vk@platform3solutions.com","arun@kid06");
+			return new PasswordAuthentication("shankarganesh.n@platform3solutions.com","Shankarganesh94");
 		}
 		});
 
 		try {
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("arun.vk@platform3solutions.com"));
-		
+		//message.setFrom(new InternetAddress("arun.vk@platform3solutions.com"));
+		message.setFrom(new InternetAddress("shankarganesh.n@platform3solutions.com"));
+
 		message.setRecipients(Message.RecipientType.TO,
 		InternetAddress.parse(email));
 		message.setSubject("UserName");

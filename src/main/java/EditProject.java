@@ -84,7 +84,7 @@ try
         {
           // create a mysql database connection
           String myDriver = "org.gjt.mm.mysql.Driver";
-          String myUrl = "jdbc:mysql://localhost:3306/Onboarding";
+          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
           Class.forName(myDriver);
           Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
      
@@ -120,7 +120,10 @@ try
           preparedStmt3.setString (1, projectname);
           preparedStmt3.setString   (2, prjname);
           preparedStmt3.execute();
-          
+          //HttpSession details=request.getSession()
+          if (!(projectname) .equals (prjname)) {
+        	 details.setAttribute("nameofproject",projectname); 
+          }
         }
   catch (Exception e)
         {

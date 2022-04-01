@@ -23,6 +23,7 @@
 
         <!-- ========== PAGE STYLES ========== -->
         <link rel="stylesheet" href="css/prism/prism.css" media="screen" >
+    <link rel="stylesheet" href="css/archive_add/archive_add.css" media="screen" >
         <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen" >
         <link rel="stylesheet" href="css/icheck/skins/line/blue.css" >
         <link rel="stylesheet" href="css/icheck/skins/line/red.css" >
@@ -141,7 +142,9 @@ function checkk()
 		<%@ page import="javax.sql.*"%>
 		<%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
+		<%@page import="onboard.DBconnection"%>
 		<%
+		DBconnection dBconnection=new DBconnection();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Admin_RoleDetails JSP PAGE-----[INFO]");  %>
@@ -158,8 +161,7 @@ if (session.getAttribute("username")==null)
 HttpSession details=request.getSession();
 String info=(String)details.getAttribute("admin");
 String prjname=(String)details.getAttribute("nameofproject");
-Class.forName("com.mysql.jdbc.Driver"); 
-java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Onboarding","root","password123"); 
+java.sql.Connection conn = dBconnection.getConnection(); 
 String query="select * from Role_Details";
 String query1="select * from Admin_UserDetails";
 Statement s=conn.createStatement();
@@ -229,15 +231,15 @@ int count=0;
                                     <li class="nav-header">
                                         <span class="">Main Category</span>
                                     </li>
-                                    <li id='home' item-selected='true'>
+                           s         <li id='home' item-selected='true'>
                                         <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
                                     </li>
-
+s
                                     <li class="nav-header">
                                         <a><span class="">User Module</span></a>
                                     </li>
                                     <li>
-                                        <a href="Admin_UserConfiguration.jsp"><i class="fa fa-file-text"></i> <span>User Configuration</span> </a>
+                                        <a href="User_Configuration.jsp"><i class="fa fa-file-text"></i> <span>User Configuration</span> </a>
                                     </li>
 
                                     <li>

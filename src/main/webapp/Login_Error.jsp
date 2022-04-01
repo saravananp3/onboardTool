@@ -152,7 +152,7 @@
 	<html> 
 	<head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> 
-	<title>Insert title here</title> 
+	<title>Decom3Sixty</title> 
 	</head> 
 	<body> 
 	
@@ -168,13 +168,22 @@
 	
 	<div class="container"> 
 	<div class="well"> 
-	<h1> Invalid Username or Password </h1> 
-	<a href="Login.jsp"> Login </a>
+	<h1 id="ErrorMessage"></h1>
+	<h2>Invalid Username & Password. Login with Correct Credentials</h2>
+	<a href="Login_1.jsp"> Login </a>
 	
 	</div> 
 	
-	</div> 
-	
-	
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		var url_string=window.location.href;
+		var url = new URL(url_string);
+		var ErrorMessage = url.searchParams.get("ErrorMessage");
+		$(document).ready(function()
+		{
+			$('#ErrorMessage').html(ErrorMessage);
+		});
+	</script>
 	</body> 
 	</html>
