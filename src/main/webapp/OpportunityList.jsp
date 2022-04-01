@@ -256,7 +256,7 @@ input[type=search]:focus {
 	font-size: 1.3em;
 	padding: 0 30px;
 	white-space: normal;
-	width: 25%;
+	width: 60%;
 }
 
 .cbp-vm-view-list .center-col {
@@ -272,12 +272,20 @@ input[type=search]:focus {
 }
 
 .cbp-vm-view-list li {
-	padding: 12px 0;
+	padding: 0px 0px 15px 0px;
 	white-space: nowrap;
 	background-color: #fff;
 	box-shadow: 5px 5px 5px 5px #dbdbdb;
 	margin: 13px;
-	padding-top: 10px;
+	padding-top: 3px;
+}
+
+.cbp-vm-view-list li{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width:20ch;
+
 }
 
 .cbp-vm-view-list li:focus {

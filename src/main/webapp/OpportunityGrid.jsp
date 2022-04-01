@@ -378,6 +378,7 @@ img.filtered {
             session.setAttribute("theName", name);
             String roles=(String)details.getAttribute("role");
             String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
+            System.out.println("[INFO]-----"+OpportunityName+"-----Accessed Grid JSP PAGE-----[INFO]");
             int sumcount=0;
             Statement st,st2;
             try{

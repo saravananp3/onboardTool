@@ -31,7 +31,7 @@ $(document).ready(function(){
                          optionWave = "display:none;";   
                 var li_element ="<li class='opportunityCard'>"+
                                 "<div class='drophide'>"+
-                                "<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
+                                "<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px;margin-left:5px; margin-top:0.5%; position:absolute; width:90%; top:0px;'>"+
                                 "<div class='dropdown-content myDropdown' style = 'float:right;'>"+
                                 "<a class = 'options' style = 'text-align:left;' href='#' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>Edit</a>"+
                                 "<a class = 'options addClass' style = 'text-align:left;"+optionWave+"' href='#'>Add to Wave</a>"+
@@ -41,7 +41,7 @@ $(document).ready(function(){
                                 "<input type = 'hidden' class = 'oppName' value = '"+opportunityName+"'>"+
                                 "<input type = 'hidden' class = 'oppId' value = '"+OpportunityId+"'>"+
                                 "</div>"+
-                                "<h3 class='cbp-vm-title left-col primary' name='name' data-bs-toggle='tooltip' data-bs-placement='top' title='"+opportunityName+"'>"+opportunityName+"</h3>"+
+                                "<h3 class='cbp-vm-title left-col primary' style='margin-top:1.5%;' name='name' data-bs-toggle='tooltip' data-bs-placement='top' title='"+opportunityName+"'>"+opportunityName+"</h3>"+
                                  /*"<h3 class='cbp-vm-title left-col primary' data-bs-toggle='tooltip' data-bs-placement='top' title='"+opportunityName+"'>"+opportunityName+"</h3>"+*/
                                  /*"<p class='right-col primary' >In Test</p>"+*/
                                   "<button type='button' class='btn btn-primary mt-3' name='btn' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>"+

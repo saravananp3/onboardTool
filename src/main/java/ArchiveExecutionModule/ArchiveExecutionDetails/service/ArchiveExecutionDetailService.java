@@ -61,10 +61,18 @@ public class ArchiveExecutionDetailService {
             String selectQuery = "select * from opportunity_info where id = '"+Id+"'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(selectQuery);
-            String sd = "select planSrt from Archive_Execution_Info where oppId = '"+Id+"' and taskId='1.01'  order by seq_no;";
+			/*
+			 * String sd = "select planSrt from Archive_Execution_Info where oppId = '"
+			 * +Id+"' and oppName = '"+oppName+"' and taskId='1.01'  order by seq_no;";
+			 */
+            String sd = "select planSrt from Archive_Execution_Info where oppId = '"+Id+"' order by seq_no LIMIT 1;";
             Statement sds = con.createStatement();
             ResultSet srs = sds.executeQuery(sd);
-            String ed = "select planEnd from Archive_Execution_Info where oppId = '"+Id+"' and taskId='5.05'  order by seq_no;";
+			/*
+			 * String ed = "select planEnd from Archive_Execution_Info where oppId = '"
+			 * +Id+"' and oppName = '"+oppName+"' and taskId='5.05'  order by seq_no;";
+			 */
+            String ed = "select planEnd from Archive_Execution_Info where oppId = '"+Id+"' order by seq_no DESC LIMIT 1;";
             Statement eds = con.createStatement();
             ResultSet ers = eds.executeQuery(ed);
             String at = "select r_name from resources";
