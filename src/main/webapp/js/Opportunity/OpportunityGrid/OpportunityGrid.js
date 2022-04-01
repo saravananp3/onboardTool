@@ -12,7 +12,9 @@ $(document).ready(function() {
             	var moduleName = value.ModuleName;
             	var checkExistence = value.checkExistence;
             	var OverallApproval = value.OverallApproval;
-            	moduleAccess(moduleName,checkExistence,OverallApproval)
+            	var completeStatus=value.completeStatus;
+            	var cuurrentModule=value.cuurrentModule;
+            	moduleAccess(moduleName,checkExistence,OverallApproval,completeStatus,cuurrentModule)
             });
         },
         error: function (e) {
@@ -21,14 +23,46 @@ $(document).ready(function() {
     });
 	
 		});
-function moduleAccess(moduleName,checkExistence,OverallApproval)
+function moduleAccess(moduleName,checkExistence,OverallApproval,completeStatus,cuurrentModule)
 {
 	switch(moduleName)
 	{
 	case "Intake":
-		if(checkExistence)
+	    
+		
+			 if(cuurrentModule=="StakeHolder" &&completeStatus=="Yes"){
+					 $("#IntakeNavigation").attr("href","");
+			 $("#IntakeNavigation").attr("href","IntakeReviewDetails.jsp");
+
+			
+			}else if(cuurrentModule=="StakeHolder" &&completeStatus=="No"){
+					 $("#IntakeNavigation").attr("href","");
+			 $("#IntakeNavigation").attr("href","IntakeStakeHolder.jsp");
+
+			
+			}else if(cuurrentModule=="Assesment" &&completeStatus=="Yes"){
+					 $("#IntakeNavigation").attr("href","");
+			 $("#IntakeNavigation").attr("href","IntakeStakeHolder.jsp");
+
+			
+			}else if(cuurrentModule=="Assesment" &&completeStatus=="No"){
+					 $("#IntakeNavigation").attr("href","");
+			 $("#IntakeNavigation").attr("href","IntakeAssessment.jsp");
+
+			
+			}
+
+			else if(cuurrentModule=="TriageSummary" &&completeStatus=="Yes"){
+				 $("#IntakeNavigation").attr("href","");
+			 $("#IntakeNavigation").attr("href","IntakeAssessment.jsp");
+			}else if(cuurrentModule=="TriageSummary" &&completeStatus=="No"){
+					 $("#IntakeNavigation").attr("href","");
+			 $("#IntakeNavigation").attr("href","IntakeTriage.jsp");
+
+			}
+			if(checkExistence)
 		{
-			if(OverallApproval =="true")
+						if(OverallApproval =="true")
 			{
 			 $("#IntakeNavigation").attr("href","");
 			 $("#IntakeNavigation").attr("href","IntakeReviewDetails.jsp");
@@ -38,3 +72,9 @@ function moduleAccess(moduleName,checkExistence,OverallApproval)
 	}
 
 }
+
+
+
+	
+
+

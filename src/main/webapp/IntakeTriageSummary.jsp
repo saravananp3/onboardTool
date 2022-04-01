@@ -34,6 +34,7 @@
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
 <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummary.js"></script>
+<script src="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>
 
  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
@@ -276,6 +277,9 @@ else
 
 																		</ul>
 																	</div>
+													               <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+													               <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
+																	
 																	<button type="submit" class="btn btn-primary"
 																		id="createTriSummary">Save</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->

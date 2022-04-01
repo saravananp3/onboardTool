@@ -471,6 +471,9 @@ crossorigin="anonymous"></script>
 
 																				</ul>
 																			</div>
+																			<button type="submit" class="btn btn-primary" id="edit" >Edit</button>
+																			<button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
+																			
 																			<button type="submit" class="btn btn-primary"
 																				id="AssessmentSaveBtn">Save</button>
 																			<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->

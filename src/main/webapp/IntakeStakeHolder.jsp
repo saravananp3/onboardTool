@@ -616,7 +616,8 @@ font-size:12px;
 															</div>
 															<div class="col-8" align="end">
 																<button class="btn btn-secondary" type="button" id="AddStakeUserBtn">Add</button>
-
+                                                                <button type="submit" class="btn btn-primary" id="edit" >Edit</button>
+                                                                <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                                                 <button type="submit" class="btn btn-primary" id="save">Save</button>
                                                                 <!-- <button type = "button"class="btn btn-info" id = "NextStakeHolder"  style="display:none;">Next</button> -->
 

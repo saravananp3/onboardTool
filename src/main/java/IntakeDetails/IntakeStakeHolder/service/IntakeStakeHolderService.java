@@ -57,6 +57,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 			ArrayList<String> arr_comments = new ArrayList<String>();
 			ArrayList<String> arr_priority = new ArrayList<String>();
 			ArrayList<String> arr_mail_flag = new ArrayList<String>();
+			ArrayList<String> arr_isCompleted = new ArrayList<String>();
 
 
 			ArrayList<Integer> arr_seqmax_split = new ArrayList<Integer>();
@@ -73,6 +74,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 			ArrayList<String> arr_comments_split = new ArrayList<String>();
 			ArrayList<String> arr_priority_split = new ArrayList<String>();
 			ArrayList<String> arr_mail_flag_split = new ArrayList<String>();
+			ArrayList<String> arr_isCompleted_split = new ArrayList<String>();
 
 
 
@@ -102,6 +104,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 				arr_comments.add(rs1.getString(12));
 				arr_priority.add(rs1.getString(13));
 				arr_mail_flag.add(rs1.getString(14));
+				arr_isCompleted.add(rs1.getString(15));
 			}
 
 			rs1.close();
@@ -122,6 +125,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 					arr_comments_split.add(arr_comments.get(i));
 					arr_priority_split.add(arr_priority.get(i));
 					arr_mail_flag_split.add(arr_mail_flag.get(i));
+					arr_isCompleted_split.add(arr_isCompleted.get(i));
 				} else if (arr_seqmax.get(i) > seq_num) {
 					arr_seqmax_split.add((arr_seqmax.get(i) - 1));
 					arr_Oppid_split.add(arr_Oppid.get(i));
@@ -137,6 +141,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 					arr_comments_split.add(arr_comments.get(i));
 					arr_priority_split.add(arr_priority.get(i));
 					arr_mail_flag_split.add(arr_mail_flag.get(i));
+					arr_isCompleted_split.add(arr_isCompleted.get(i));
 				}
 			}
 
@@ -144,7 +149,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 			Statement st2 = connection.createStatement();
 			st2.executeUpdate(delete_query);
 			for (int j = 0; j < seqmax - 1; j++) {
-				String insert_query = "insert into intake_stake_holder_info (seq_no,Oppid,prj_name,app_name,name,emailId,username,role,approvalid,intakeApproval,moduleid,comments,priority_order_num,mail_flag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				String insert_query = "insert into intake_stake_holder_info (seq_no,Oppid,prj_name,app_name,name,emailId,username,role,approvalid,intakeApproval,moduleid,comments,priority_order_num,mail_flag,isCompleted) values(?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 				PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 				preparedStatement1.setInt(1, arr_seqmax_split.get(j));
 				preparedStatement1.setString(2, arr_Oppid_split.get(j));
@@ -160,6 +165,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 				preparedStatement1.setString(12, arr_comments_split.get(j));
 				preparedStatement1.setString(13,arr_priority_split.get(j));
 				preparedStatement1.setString(14, arr_mail_flag_split.get(j));
+				preparedStatement1.setString(15, arr_isCompleted_split.get(j));
 				preparedStatement1.execute();
 			}
 			st2.close();
@@ -278,8 +284,8 @@ public class IntakeStakeHolderService extends  DynamicFields
 	         
 	         String UserName = rs1.getString("value");
 	         
-	         String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+	         String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag,isCompleted)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, seq_num+1);
@@ -296,6 +302,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 	          prestmt.setString(12, "");
 	          prestmt.setString(13, "");
 	          prestmt.setString(14, "");
+	          prestmt.setString(15, "");
 	          prestmt.execute();
 	          JsonObject jsonObj = new JsonObject();
 				jsonObj.addProperty("seq_no",seq_num+1);
@@ -310,6 +317,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 				jsonObj.addProperty("comments", "");
 				jsonObj.addProperty("prorityNum","");
 				jsonObj.addProperty("mail_flag","");
+				jsonObj.addProperty("isCompleted","");
 				jsonArray.add(jsonObj);
 			seq_num++;
 			}
@@ -379,8 +387,8 @@ public class IntakeStakeHolderService extends  DynamicFields
     	try
     	{
     		String approvalId = generateRandomApprovalId();
-    		String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag)"
-					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    		String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag,isCompleted)"
+					+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 
           PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
           prestmt.setInt(1, seq_num+1);
@@ -397,6 +405,7 @@ public class IntakeStakeHolderService extends  DynamicFields
           prestmt.setString(12, "");
           prestmt.setString(13, "");
           prestmt.setString(14, "false");
+          prestmt.setString(15, "No");
           prestmt.execute();
           check = true;
     	}
@@ -410,6 +419,13 @@ public class IntakeStakeHolderService extends  DynamicFields
 	public void Save(JsonArray jsonArr, String id) {
 		try
 		{
+			String isCompleted="";
+			String isCompletedQuery = "select distinct isCompleted from intake_stake_holder_info where OppId ='"+id+"'";
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(isCompletedQuery);
+			if(rs.next()) {
+				isCompleted = rs.getString("isCompleted");
+			}
 		  	for(int i=0;i<jsonArr.size();i++)
 		  	{
 		  		JsonObject jsonObj = jsonArr.get(i).getAsJsonObject();
@@ -418,9 +434,17 @@ public class IntakeStakeHolderService extends  DynamicFields
 				String username = jsonObj.get("username").getAsString();
   				String role = jsonObj.get("role").getAsString();
   				String priorityNum =jsonObj.get("priorityNum").getAsString();
-  			
-  			String StakeHolderUpdateQuery = "update intake_stake_holder_info set name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ? where seq_no='"+(i+1)+"' and oppid='"+id+"'";
-
+  				String StakeHolderUpdateQuery="";
+  				if(isCompleted.isEmpty()||isCompleted.equals("No"))
+  				{
+  			      StakeHolderUpdateQuery = "update intake_stake_holder_info set  name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ?,isCompleted=? where seq_no='"+(i+1)+"' and oppid='"+id+"'";
+  			      isCompleted="No";
+  				}
+  				else
+  				{
+  					StakeHolderUpdateQuery = "update intake_stake_holder_info set  name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ?,isCompleted=? where seq_no='"+(i+1)+"' and oppid='"+id+"'";
+    			      isCompleted="Yes";
+  				}
   	          PreparedStatement prestmt = con.prepareStatement(StakeHolderUpdateQuery);
   	        
   	          prestmt.setString(1, name);
@@ -428,6 +452,8 @@ public class IntakeStakeHolderService extends  DynamicFields
   	          prestmt.setString(3, username);
   	          prestmt.setString(4, role);
   	          prestmt.setString(5, priorityNum);
+  	          prestmt.setString(5, priorityNum);
+  	          prestmt.setString(6, isCompleted);
 
   	          prestmt.execute();
 		  	}
@@ -536,8 +562,8 @@ public class IntakeStakeHolderService extends  DynamicFields
 			  seq_num = Integer.parseInt(rs3.getString(1));
 			  }
 			  String approvalId = generateRandomApprovalId();
-			  String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			  String StakeHolderInsertQuery = "insert into intake_stake_holder_info (seq_no, OppId, prj_name, app_name, name, emailId, username, role, approvalId, intakeApproval, moduleId, comments, priority_order_num, mail_flag,isCompleted)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, seq_num+1);
 	          prestmt.setString(2, Id);
@@ -553,6 +579,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 	          prestmt.setString(12, "");
 	          prestmt.setString(13, "");
 	          prestmt.setString(14, "false");
+	          prestmt.setString(15, "No");
 	          prestmt.execute();
 			}     
 		 }

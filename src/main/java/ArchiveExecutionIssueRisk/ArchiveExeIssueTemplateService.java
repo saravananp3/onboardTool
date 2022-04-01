@@ -39,8 +39,8 @@ public class ArchiveExeIssueTemplateService {
 			
 				 String approval_id=generateRandomApprovalId();
 
-				 String StakeHolderInsertQuery = "insert into ArchiveExe_Issue_Info (seq_no, app_Id,impact, type, description, start_date, raised_by, status, assigned_to, resolved, exp_date, end_date, comments) "
-					  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				 String StakeHolderInsertQuery = "insert into ArchiveExe_Issue_Info (seq_no, app_Id,impact, type, description, start_date, raised_by, status, assigned_to, resolved, exp_date, end_date, comments,oppId,IssueId) "
+					  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
 			          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 			          prestmt.setInt(1, 1);
 			          prestmt.setString(2, approval_id);
@@ -55,6 +55,8 @@ public class ArchiveExeIssueTemplateService {
 			          prestmt.setString(11, "");
 			          prestmt.setString(12, "");
 			          prestmt.setString(13, "");
+			          prestmt.setString(14, Id);
+			          prestmt.setString(15, "");
 			          prestmt.execute();
 				 }
 			 catch(Exception e) {
@@ -68,7 +70,7 @@ public class ArchiveExeIssueTemplateService {
 			JsonArray jsonArray = new JsonArray();
 			
 			try {
-				 String selectQuery1 = "select * from ArchiveExe_Issue_Info;";
+				 String selectQuery1 = "select * from ArchiveExe_Issue_Info where oppId='"+Id+"' ;";
 				 Statement st2 = con.createStatement();
 				 ResultSet rs2 = st2.executeQuery(selectQuery1);
 				 
@@ -92,14 +94,13 @@ public class ArchiveExeIssueTemplateService {
 			JsonArray jsonArray = new JsonArray();
 			
 			try {
-				 String selectQuery1 = "select * from ArchiveExe_Issue_Info order by seq_no;";
+				 String selectQuery1 = "select * from ArchiveExe_Issue_Info where oppId='"+Id+"' order by seq_no;";
 				 Statement st2 = con.createStatement();
 				 ResultSet rs2 = st2.executeQuery(selectQuery1);
 				 
 				 while(rs2.next()) {
 					 JsonObject jsonObject = new JsonObject();
 					 jsonObject.addProperty("seq_no", rs2.getInt("seq_no"));
-					 jsonObject.addProperty("app_Id", rs2.getString("app_Id"));
 					 jsonObject.addProperty("impact", rs2.getString("impact"));
 					 jsonObject.addProperty("type", rs2.getString("type"));
 					 jsonObject.addProperty("description", rs2.getString("description"));
@@ -111,8 +112,11 @@ public class ArchiveExeIssueTemplateService {
 					 jsonObject.addProperty("exp_date", rs2.getString("exp_date"));
 					 jsonObject.addProperty("end_date", rs2.getString("end_date"));
 					 jsonObject.addProperty("comments", rs2.getString("comments"));
+					 jsonObject.addProperty("IssueId", rs2.getString("IssueId"));
 					 jsonArray.add(jsonObject);
+					 
 				 }
+				 System.out.println( " ye aya retrive : "+jsonArray);
 				 st2.close();
 				 rs2.close();
 			}
@@ -179,7 +183,7 @@ public class ArchiveExeIssueTemplateService {
 			
 			boolean checkDuplicate = false;
 			
-			String selectQuery = "select * from ArchiveExe_Issue_Info order by seq_no;";
+			String selectQuery = "select * from ArchiveExe_Issue_Info where oppId='"+Id+"' order by seq_no;";
 			Statement state = con.createStatement();
 			ResultSet result = state.executeQuery(selectQuery);
 			

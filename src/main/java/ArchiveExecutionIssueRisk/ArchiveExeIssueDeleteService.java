@@ -46,6 +46,8 @@ public class ArchiveExeIssueDeleteService {
 			ArrayList<String> exp_date = new ArrayList<String>();
 			ArrayList<String> end_date = new ArrayList<String>();
 			ArrayList<String> comments = new ArrayList<String>();
+			ArrayList<String> oppID = new ArrayList<String>();
+			ArrayList<String> issueId = new ArrayList<String>();
 			
 			ArrayList<String> seq_noRes = new ArrayList<String>();
 			ArrayList<String> app_IdRes = new ArrayList<String>();
@@ -60,10 +62,21 @@ public class ArchiveExeIssueDeleteService {
 			ArrayList<String> exp_dateRes = new ArrayList<String>();
 			ArrayList<String> end_dateRes = new ArrayList<String>();
 			ArrayList<String> commentsRes = new ArrayList<String>();
+			ArrayList<String> oppIdRes = new ArrayList<String>();
+			ArrayList<String> issueIdRes = new ArrayList<String>();
 			
 			String appname ="";
+			String UniqueId ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from ArchiveExe_Issue_Info where app_Id='"+app_id+"' order by seq_no;";
+			String selectUniqueID = "select * from ArchiveExe_Issue_Info where  IssueId='"+app_id+"' and seq_no='"+SeqNum+"' order by seq_no;";
+			Statement st2 = con.createStatement();
+			ResultSet rs2 = st2.executeQuery(selectUniqueID);
+			if(rs2.next()) {
+				UniqueId=rs2.getString("app_Id");
+				
+			}
+			
+			String selectQuery = "select * from ArchiveExe_Issue_Info where app_Id='"+UniqueId+"' order by seq_no;";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
 			
@@ -82,6 +95,8 @@ public class ArchiveExeIssueDeleteService {
 				exp_date.add(rs.getString("exp_date"));
 				end_date.add(rs.getString("end_date"));
 				comments.add(rs.getString("comments"));
+				oppID.add(rs.getString("oppId"));
+				issueId.add(rs.getString("IssueId"));
 			}
 			
 			for(int i=0;i<seq_no.size();i++)
@@ -101,6 +116,8 @@ public class ArchiveExeIssueDeleteService {
 					exp_dateRes.add(exp_date.get(i));
 					end_dateRes.add(end_date.get(i));
 					commentsRes.add(comments.get(i));
+					commentsRes.add(oppID.get(i));
+					commentsRes.add(issueId.get(i));
 				}
 				else if(SeqNum>Integer.parseInt(seq_no.get(i)))
 				{
@@ -117,12 +134,14 @@ public class ArchiveExeIssueDeleteService {
 					exp_dateRes.add(exp_date.get(i));
 					end_dateRes.add(end_date.get(i));
 					commentsRes.add(comments.get(i));
+					commentsRes.add(oppID.get(i));
+					commentsRes.add(issueId.get(i));
 
 				}
 			}
 	
 			
-			String deleteQuery ="delete from ArchiveExe_Issue_Info where app_Id='"+app_id+"';";
+			String deleteQuery ="delete from ArchiveExe_Issue_Info where app_Id='"+UniqueId+"';";
 			Statement st1 = con.createStatement();
 			st1.executeUpdate(deleteQuery);
 			st1.close();
@@ -130,8 +149,8 @@ public class ArchiveExeIssueDeleteService {
 			
 			for(int i=0;i<seq_noRes.size();i++)
 			{
-			  String StakeHolderInsertQuery = "insert into ArchiveExe_Issue_Info (seq_no, app_Id,impact, type, description, start_date, raised_by, status, assigned_to, resolved, exp_date, end_date, comments) "
-				  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			  String StakeHolderInsertQuery = "insert into ArchiveExe_Issue_Info (seq_no, app_Id,impact, type, description, start_date, raised_by, status, assigned_to, resolved, exp_date, end_date, comments,oppId,IssueId) "
+				  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, Integer.parseInt(seq_no.get(i)));
 	          prestmt.setString(2, app_IdRes.get(i));
@@ -146,6 +165,8 @@ public class ArchiveExeIssueDeleteService {
 	          prestmt.setString(11, exp_dateRes.get(i));
 	          prestmt.setString(12, end_dateRes.get(i));
 	          prestmt.setString(13, commentsRes.get(i));
+	          prestmt.setString(13, oppIdRes.get(i));
+	          prestmt.setString(13, issueIdRes.get(i));
 	          prestmt.execute();
 	          statusFlag =true;
 			}

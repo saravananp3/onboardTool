@@ -43,16 +43,19 @@ public class ArchiveExeIssueSaveServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession details = request.getSession();
+		String OppId = (String)details.getAttribute("ID");
 		String id = (String)details.getAttribute("app_Id");
         String JsonString= request.getParameter("JsonArray");
         JsonParser parser = new JsonParser();
 		JsonElement tradeElement = parser.parse(JsonString);
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
 		JsonObject jsonObj = new JsonObject();
+        System.out.println(id+", "+"save Id comming");
+        System.out.println("ye save me app Id hai kya : "+OppId);
 
 		try
 		{
-			ArchiveExeIssueSaveService archiveIssue = new ArchiveExeIssueSaveService(id, jsonArray);
+			ArchiveExeIssueSaveService archiveIssue = new ArchiveExeIssueSaveService(OppId,id, jsonArray);
 			jsonObj=archiveIssue.archiveExeIssueSave();
 			archiveIssue = null;
 			System.gc();

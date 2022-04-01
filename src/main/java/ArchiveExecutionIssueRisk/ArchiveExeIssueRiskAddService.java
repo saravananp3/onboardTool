@@ -33,8 +33,8 @@ public class ArchiveExeIssueRiskAddService {
 			boolean statusFlag = false;
 
     		String approvalId = generateRandomApprovalId();
-			  String StakeHolderInsertQuery = "insert into ArchiveExe_Issue_Info (seq_no, app_Id,impact, type, description, start_date, raised_by, status, assigned_to, resolved, exp_date, end_date, comments) "
-			  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			  String StakeHolderInsertQuery = "insert into ArchiveExe_Issue_Info (seq_no, app_Id,impact, type, description, start_date, raised_by, status, assigned_to, resolved, exp_date, end_date, comments,oppId,IssueId) "
+			  		+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, SeqNum+1);
 	          prestmt.setString(2, approvalId);
@@ -49,11 +49,13 @@ public class ArchiveExeIssueRiskAddService {
 	          prestmt.setString(11, "");
 	          prestmt.setString(12, "");
 	          prestmt.setString(13, "");
+	          prestmt.setString(14, Id);
+	          prestmt.setString(15, "");
 	          prestmt.execute();
 	          statusFlag =true;
 			
 			jsonObject.addProperty("AddStatus", statusFlag);
-			jsonObject.addProperty("id", approvalId);
+		//	jsonObject.addProperty("id", approvalId);
 			
 		}
 		

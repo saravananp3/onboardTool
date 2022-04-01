@@ -2,7 +2,9 @@ package ArchiveExecutionIssueRisk;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,17 +16,20 @@ public class ArchiveExeIssueSaveService {
 	DBconnection dBconnection;
 	Connection con;
 	String Id;
+	String OppId;
 	JsonArray jsonArray ;
-	public ArchiveExeIssueSaveService(String Id,JsonArray jsonArray) throws ClassNotFoundException, SQLException {
+	public ArchiveExeIssueSaveService(String OppId,String Id,JsonArray jsonArray) throws ClassNotFoundException, SQLException {
 		 dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
 		 this.Id = Id;
+		 this.OppId = OppId;
 		 this.jsonArray = jsonArray;
 	}
 
 	public JsonObject archiveExeIssueSave()
 	{
 		JsonObject jsonObject = new JsonObject();
+		String UniqueId=null;
 		try
 		{	boolean statusFlag =false;
 			for(int i=0;i<jsonArray.size();i++)
@@ -45,28 +50,38 @@ public class ArchiveExeIssueSaveService {
 		  		String comments =  jsonObj.get("comments").getAsString();
 		  		System.out.println(" ye araha"+app_Id+""+impact+""+type+""+comments+""+exp_date+" ye araha");
 		  		
-			  String UpdateQuery = "update ArchiveExe_Issue_Info set impact=?,type=?,description=?,"
-			  		+ "start_date=?,raised_by=?,status=?,assigned_to=?,resolved=?,exp_date=?,end_date=?,comments=? where app_Id='"+app_Id+"'";
+		  		String fetchUniqueId="select * from decom3sixtytool.archiveexe_issue_info where seq_no='"+seq_no+"'and oppId='"+OppId+"';";
+		  		Statement st1 = con.createStatement();
+				ResultSet rs1 = st1.executeQuery(fetchUniqueId);
+				if(rs1.next()) {
+					UniqueId=rs1.getString("app_Id");
+				}
+				rs1.close();
+				st1.close();
+			  String UpdateQuery = "update ArchiveExe_Issue_Info set IssueId=?, impact=?,type=?,description=?,"
+			  		+ "start_date=?,raised_by=?,status=?,assigned_to=?,resolved=?,exp_date=?,end_date=?,comments=? where app_Id='"+UniqueId+"'";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	         // prestmt.setString(1, seq_no);
-	         // prestmt.setString(2, app_Id);
-	          prestmt.setString(1, impact);
-	          prestmt.setString(2, type);
-	          prestmt.setString(3, description);
-	          prestmt.setString(4, start_date);
-	          prestmt.setString(5, raised_by);
-	          prestmt.setString(6, status);
-	          prestmt.setString(7, assigned_to);
-	          prestmt.setString(8, resolved);
-	          prestmt.setString(9, exp_date);
-	          prestmt.setString(10, end_date);
-	          prestmt.setString(11, comments);
+	          prestmt.setString(1, app_Id);
+	          prestmt.setString(2, impact);
+	          prestmt.setString(3, type);
+	          prestmt.setString(4, description);
+	          prestmt.setString(5, start_date);
+	          prestmt.setString(6, raised_by);
+	          prestmt.setString(7, status);
+	          prestmt.setString(8, assigned_to);
+	          prestmt.setString(9, resolved);
+	          prestmt.setString(10, exp_date);
+	          prestmt.setString(11, end_date);
+	          prestmt.setString(12, comments);
 	          prestmt.execute();
 	          statusFlag =true;
 			}
 			jsonObject.addProperty("SaveStatus", statusFlag);
-			
+		
+		
 		}
+	
 		
 		catch(Exception e)
 		{
