@@ -610,63 +610,66 @@ function dashboardDetails() {
 
 
 $(document).ready(function() {
-    var ctx = $("#mycanvas").get(0).getContext("2d");
-    vartitle = {
-		text: "Live Data"
-	}
-	var options = {
-        title: {
-            display: true,
-            text: "Phases"
-        },
-        
-    }
 
-$.ajax({
-        url: "dashboardServlet",
-        type: 'POST',
-        async: false,
-        dataType: "json",
-        success: function(data) {
-            console.log("Data : ", data);
-            $.each(data[9],function(key,value1){
-   		var data = [
-        {
-            value: value1.newOpportunity,
-            color: "#7FFFD4",
-            highlight: "lightblue",
-            label: "New Opportunity"
-        },
-        {
-            value: value1.triage,
-            color: "#1565c0",
-            highlight: "lightskyblue",
-            label: "Triage"
-        },
-        {
-            value: value1.assesment,
-            color: "#6495ed",
-            highlight: "#82aadd",
-            label: "Assessment"
-        },
-        {
-            value: value1.pendingApproval,
-            color: "#1d88aa",
-            highlight: "darkorange",
-            label: "Pending Approval"
-        },
-        {
-            value: value1.completed,
-            color: "#83ddd4",
-            highlight: "darkgreen",
-            label: "Completed"
-        }
-    ];
-    console.log(data)
-    var chart = new Chart(ctx).Doughnut(data);
-    });
-    
-   }});
+	var optionsPie = {
+
+
+	};
+
+	$.ajax({
+		url: "dashboardServlet",
+		type: 'POST',
+		async: false,
+		dataType: "json",
+		success: function(data) {
+			console.log("Data : ", data);
+			$.each(data[9], function(key, value11) {
+				var data = [
+
+
+					{
+						value: value11.newOpportunity,
+						color: "#7FFFD4",
+						highlight: "lightblue",
+						label: "New Opportunity"
+					},
+					{
+						value: value11.triage,
+						color: "#1565c0",
+						highlight: "lightskyblue",
+						label: "Triage"
+					},
+					{
+						value: value11.assesment,
+						color: "#6495ed",
+						highlight: "#82aadd",
+						label: "Assessment"
+					},
+					{
+						value: value11.pendingApproval,
+						color: "#1d88aa",
+						highlight: "darkorange",
+						label: "Pending Approval"
+					},
+					{
+						value: value11.completed,
+						color: "#83ddd4",
+						highlight: "darkgreen",
+						label: "Completed"
+					},
+
+
+				];
+				console.log(data)
+				var ctx = $("#mycanvas").get(0).getContext("2d");
+				var PieChart = new Chart(ctx).Doughnut(data, optionsPie);
+
+
+
+				document.getElementById('legend').innerHTML = PieChart.generateLegend();
+			});
+		}
+	});
 });
 
 /*$("#phId").change(function() {
@@ -677,7 +680,7 @@ $.ajax({
 function doughnutType()
 {
     resetCanvas();
-    var ctx = $("#mycanvas1").get(0).getContext("2d");
+    /*var ctx = $("#mycanvas1").get(0).getContext("2d");*/
     var selectedPhase=$('#phase :selected').text();
     var selectedwave=$('#wave :selected').text();
    	var options = {
@@ -724,7 +727,10 @@ function doughnutType()
         }
     ];
     console.log("Result : ",result)
-    var chart = new Chart(ctx).Doughnut(result);
+    /*var chart = new Chart(ctx).Doughnut(result);*/
+    var ctx = $("#mycanvas1").get(0).getContext("2d");
+	var PieChart = new Chart(ctx).Doughnut(result);
+	document.getElementById('legend2').innerHTML = PieChart.generateLegend();
         });
    }});
 }
@@ -864,7 +870,7 @@ function resetCanvas() {
 };
 
 $(document).ready(function() {
-    var ctx = $("#canvasCBA").get(0).getContext("2d");
+   /* var ctx = $("#canvasCBA").get(0).getContext("2d");*/
    
     var options = {
         title: {
@@ -906,7 +912,11 @@ $(document).ready(function() {
         }
     ];
     console.log("Result : ",result)
-    var chart = new Chart(ctx).Pie(result);
+    /*var chart = new Chart(ctx).Pie(result);*/
+	var ctx = $("#canvasCBA").get(0).getContext("2d");
+	var PieChart = new Chart(ctx).Pie(result);
+	document.getElementById('legend1').innerHTML = PieChart.generateLegend();
+
         });
    }});
 });

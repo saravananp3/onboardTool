@@ -480,7 +480,7 @@ e.printStackTrace();
 																	<button type="submit" class="btn btn-primary"
 																		id="legacyAppInfoSave">Save</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-																	<button
+																	<!-- <button
 																		class="form-wizard-next-btn float-right btn-info btn btn-info"
 																		onclick="location.href='';" id="next"
 																		disabled="true">
@@ -488,7 +488,7 @@ e.printStackTrace();
 																		<a href="javascript:;"  style="color: #fff;">Next</a>
 
 																	</button>
-
+ -->
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn"
 																		data-bs-toggle="modal" data-bs-target="#LegacyEditPopUp"
@@ -600,10 +600,10 @@ e.printStackTrace();
 											<label for="upload"> <input type="file" id="fileUpload" multiple> Upload Files</label>
 											</div>
 									        <div class="files fileClass">
-											<h2>Files Selected</h2>
+											<h6><b>Files Selected</b></h6>
 											<ul id="FileList"></ul>
 											</div>
-											<input type="button" value="Upload" class="btn btn-success" name="submit" id="UploadFiles" />
+											<input type="button" value="Upload" class="btn btn-primary" name="submit" id="UploadFiles" />
 											</form>
 											</div>
 											</div>

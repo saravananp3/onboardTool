@@ -1193,7 +1193,7 @@ e.printStackTrace();
 		</div>
       <div class="modal-body">
                 <div class="modal-body">
-                <label>comments</label>
+                <label>Please fill approval comments</label>
              <textarea id="ApprovalCommentId" name="ApprovalCommentSection" rows="4" cols="70"></textarea>
 			 </div>
              <input type="hidden" id="ApprovalCommentSeq"/>

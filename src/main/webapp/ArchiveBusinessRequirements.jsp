@@ -432,7 +432,7 @@ e.printStackTrace();
                             <div class="row changeText1 business" contenteditable='true'>
                                                  <ul>
 													<li>Each requirement must be marked as In-Scope or Out-of-Scope for this project, with additional information specific to each requirement if necessary. </li>
-													<li>Requirement ID's are linked to test script ID's to ensure traceability from requirement to test execution. Requirement ID's may be formatted according to client needs.</li>
+													<li>Requirement IDs are linked to test script IDs to ensure traceability from requirement to test execution. Requirement IDs may be formatted according to client needs.</li>
 												</ul>
 													</div>
 													</div>

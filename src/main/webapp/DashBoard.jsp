@@ -780,18 +780,32 @@ h6 {
 											</div>
 
 										</div>
-										<div class="card-body">
-											<div class="col-md-4">
-										<h6 class="d-flex justify-content-left"><b>Intake</b></h6>
+										<div class="card-body" style="width: fit-content;">
+
+											<div class="col-md-4.5">
+
+												<h6 class="d-flex justify-content-left"
+													style="margin-left: -40%;">
+													<b>Intake</b>
+												</h6>
 												<canvas id="mycanvas" width="200" height="200"
-													style="margin-left: 35%;"></canvas>
+													style="margin-left: 0%;"></canvas>
+												<div id="legend"
+													style="margin-top: -34%; margin-left: 37%; font-size: 10px; font-weight: 700;">
+												</div>
 											</div>
-										
-											<div class="col-md-4" id="canvas2">
-											<h6 class="d-flex justify-content-left" style="margin-left: 62%;"><b>Waves</b></h6>
+											<div class="col-md-4.5" id="canvas2"
+												style="padding-left: 318px; margin-top: -34%; margin-right: 12%;">
+												<h6 class="d-flex justify-content-left"
+													style="margin-left: 95%;">
+													<b>Waves</b>
+												</h6>
 												<canvas id="mycanvas1" width="200" height="200"
 													style="margin-left: 96%;"></canvas>
+
 											</div>
+											<div id="legend2"
+												style="float: right; margin-right: -57%; margin-top: -33%; font-size: 10px; font-weight: 700;"></div>
 										</div>
 									</div>
 								</div>
@@ -925,14 +939,17 @@ h6 {
 									<div class="card ht-270">
 										<div class="card-header" id="card-header">Cost Benefit
 											Analysis</div>
-										<div class="card-body">
-											<div class="col-md-4 mt-3">
-											
-												<canvas id="canvasCBA" width="200" height="200"
-													style="margin-left: 80%;"></canvas>
 
+										<div class="card-body" style="width: fit-content;">
+											<div class="col-md-4 mt-3">
+												<canvas id="canvasCBA" width="200" height="200"
+													style="margin-left: -10%;"></canvas>
+												<div id="legend1"
+													style="margin-top: -165%; margin-left: 180%; float: left; font-size: 70%; font-weight: 700;"></div>
 											</div>
 										</div>
+
+
 									</div>
 								</div>
 							</div>

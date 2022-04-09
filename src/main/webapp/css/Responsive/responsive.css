@@ -516,7 +516,86 @@ body {
 
 
 
+.doughnut-legend {
+	list-style: none;
+	margin: 0;
+	/* padding: 0; */
+}
 
+.doughnut-legend span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	margin-right: 16px;
+	margin-bottom: -2px;
+	text-overflow: ellipsis;
+	/* overflow: hidden; */
+	white-space: nowrap;
+}
 
+.doughnut-legend li {
+	margin-bottom: 10px;
+	/* text-overflow: ellipsis; */
+	/* overflow: hidden;
+white-space: nowrap;
+max-width:18ch; */
+	white-space: nowrap;
+}
 
+.doughnut-legend2 {
+	list-style: none;
+	margin: 0;
+	/* padding: 0; */
+}
 
+.doughnut-legend2 span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	margin-right: 16px;
+	margin-bottom: -2px;
+	text-overflow: ellipsis;
+	/* overflow: hidden; */
+	white-space: nowrap;
+}
+
+.doughnut-legend2 li {
+	margin-bottom: 10px;
+	/* display: inline-block; */
+	/* margin-right: 10px; */
+	/* text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+max-width:18ch; */
+	white-space: nowrap;
+}
+
+.pie-legend {
+	list-style: none;
+	margin: 0;
+	/* padding: 0; */
+}
+
+.pie-legend span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	margin-right: 16px;
+	margin-bottom: -2px;
+	text-overflow: ellipsis;
+	/* overflow: hidden; */
+	white-space: nowrap;
+}
+
+.pie-legend li {
+	margin-bottom: 10px;
+	/* display: inline-block; */
+	/* margin-right: 10px; */
+	/* text-overflow: ellipsis;
+overflow: hidden;
+max-width:20ch; */
+	white-space: nowrap;
+}

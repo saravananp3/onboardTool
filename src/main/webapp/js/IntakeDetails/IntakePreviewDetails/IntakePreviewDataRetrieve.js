@@ -160,7 +160,7 @@ function IntakePreviewDataRetrieveAjaxCall()
             	$("#button_id").show();
             }
             else{
-            	$("#button_id").hide();
+            	$("#button_id").show();
             }
             var checkReviewPage = data[data.length-1].CheckExistence;
             if(checkReviewPage==true)
