@@ -882,11 +882,13 @@ h6 {
 										<div class="card-header" id="card-header">Data
 											Characteristic</div>
 										<div class="card-body">
-											<div id="chart">
-												<ul id="numbers" class="numbers-align">
-												</ul>
-												<ul id="bars" class="bars-align">
-												</ul>
+											<div class="overflow-hidden">
+												<div id="chart">
+													<ul id="numbers" class="numbers-align">
+													</ul>
+													<ul id="bars" class="bars-align">
+													</ul>
+												</div>
 											</div>
 										</div>
 									</div>

@@ -515,7 +515,7 @@ e.printStackTrace();
 												  
 												 <div class="col-12" align="end">
 												 <button class="btn btn-secondary addClass" type="button" id="dataReqAdd">Add</button>
-												 <button type="submit" class="btn btn-primary dataSaveClass" id="dataSaveReq">Save</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="dataSaveReq" disabled="true">Save</button>
 												 
                                        	
                                        			</div>
@@ -544,7 +544,7 @@ e.printStackTrace();
 												  
 												 <div class="col-12" align="end">
 												 <button class="btn btn-secondary addClass" type="button" id="legalReqSaveAdd">Add</button>
-												 <button type="submit" class="btn btn-primary dataSaveClass" id="legalReqSaveReq">Save</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="legalReqSaveReq" disabled="true">Save</button>
 												 
                                        	
                                        			</div>
@@ -573,7 +573,7 @@ e.printStackTrace();
 												  
 												 <div class="col-12" align="end">
 												 <button class="btn btn-secondary addClass" type="button" id="securityReqAdd">Add</button>
-												 <button type="submit" class="btn btn-primary dataSaveClass" id="securityReqSaveReq">Save</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="securityReqSaveReq" disabled="true">Save</button>
 												 
                                        	
                                        			</div>
@@ -602,7 +602,7 @@ e.printStackTrace();
 												  
 												 <div class="col-12" align="end">
 												 <button class="btn btn-secondary addClass" type="button" id="UsabilityReqAdd">Add</button>
-												 <button type="submit" class="btn btn-primary dataSaveClass" id="UsabilityReqSaveReq">Save</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="UsabilityReqSaveReq" disabled="true">Save</button>
 												 
                                        	
                                        			</div>
@@ -631,7 +631,7 @@ e.printStackTrace();
 												  
 												 <div class="col-12" align="end">
 												 <button class="btn btn-secondary addClass" type="button" id="auditReqAdd">Add</button>
-												 <button type="submit" class="btn btn-primary dataSaveClass" id="auditReqSaveReq">Save</button>
+												 <button type="submit" class="btn btn-primary dataSaveClass" id="auditReqSaveReq" disabled="true">Save</button>
 												 
                                        	
                                        			</div>
@@ -723,6 +723,9 @@ e.printStackTrace();
                                     
                                        <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" >Prev</button></div>
                                        <div class="col-12" align="end">
+                                       
+                                       <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+									   <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                        
                                       <button class="btn btn-primary"  id="busreqNext">
                                                                  <a href="archiveReqAbbrevation.jsp">Next</a></button>

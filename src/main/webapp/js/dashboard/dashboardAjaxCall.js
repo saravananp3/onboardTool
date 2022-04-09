@@ -452,7 +452,7 @@ function dashboardDetails() {
                 "<li style='font-size: 12px;'><span>0%</span></li>";*/
                 $('#numbers').append(perfix);
                 $("li span hr").css("display", "inline-block");
-                $("hr").css({"width": "335px", "border": "red", "margin-left": "50px", "position": "relative", "top": "20px"});
+                $("hr").css({"width": "600px", "border": "red", "margin-left": "50px", "position": "relative", "top": "20px"});
     var list="<li><div data-percentage='"+ value.db2Percent +"' class='bar'></div><span style='font-size: 11px;'>DB2</span></li>"
             +"<li><div data-percentage='"+ value.msSqlPercent +"' class='bar'></div><span style='font-size: 11px;'>MS SQL</span></li>"
             +"<li><div data-percentage='"+ value.mySqlPercent +"' class='bar'></div><span style='font-size: 11px;'>MySQL</span></li>"

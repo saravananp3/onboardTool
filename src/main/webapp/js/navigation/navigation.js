@@ -47,6 +47,8 @@ function switchActiveModule() {
 		case "waveGrid.jsp":
 		case "waveEdit.jsp":
 		case "phaseEdit.jsp":
+		/*case "applicationList.jsp":*/
+		case "ArchiveExecutionDetails_Governance.jsp":
 			selectiveActiveIcon(2);
 			break;
 		case "DashBoard.jsp":

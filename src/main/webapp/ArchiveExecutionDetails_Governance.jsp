@@ -57,6 +57,11 @@
 <link rel="stylesheet" href="css/ArchiveExecutionCss/archiveExecutionStatus/archiveExecStatus.css" />
 <script src="js/ArchiveExecutionDetailsGovernance/ArchiveExecutionGovernanceInfo/ArchiveExecutionGovernanceDataRetrieve.js"></script>
 
+<link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
+	media="screen">
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+	media="screen">
+
 
 <style>
  <style type="text/css">
@@ -452,7 +457,7 @@ font-size:12px;
   
 }
 
-.active{
+.active-1{
         background:#1565c0;
          }
       .page-title-div {
@@ -467,35 +472,28 @@ font-size:12px;
 	padding-left: 0px;
     padding-right: 0px;
 	}
- .navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
-}        
-
- .navbar-nav .nav-link.active {
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
+}
+ .navbar-nav .nav-link-2.active-2 {
     /* border-top: none; */
     border-left: none;
     border-right: none;
     border-bottom: 4px solid rgba(255,255,255,.5)!important;
 }
-
-.navbar-nav .nav-link {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid transparent;
+.navbar-nav-1 #nav-link {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 4px solid transparent;
 }
-
 .link:hover{
-
 background:#1565c0 important;
-
 }
-
-
- .active1{
+ .active2{
    background:#1565c0;
     }
  .page-title-div {
@@ -509,11 +507,81 @@ background:#1565c0 important;
 
 </head>
 <body class="top-navbar-fixed">
+
+<nav class="navbar navbar-expand-md navbar-light bg-white nav-height nav-font">
+	<div class="container-fluid" id="container-fluid-margin">
+		<a class="navbar-brand" href="OpportunityList.jsp"> <img
+				src="images/Decom360-logo.png" class="d3s-logo-1" alt="Decom3Sxity">
+			</a>
+		<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav mr-auto d3s-ml-110">
+					<li class="nav-item moduleIcon"><a
+						class="nav-link active" aria-current="page" href="OpportunityList.jsp"><i
+							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
+					</li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="Admin_Module_Send_Invites.jsp"><i
+							class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
+					</li>
+					<li class="nav-item moduleIcon"><a class="nav-link active2"
+						aria-current="page" href="PhaseList.jsp"><i
+							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="#"><i
+							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="DashBoard.jsp"><i
+							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
+					</li>
+					<li class="nav-item moduleIcon"><a class="nav-link active"
+						aria-current="page" href="#"><i
+							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
+					</li>
+
+				</ul>
+
+			</div>
+			
+			<div class="dropdown" align="end">
+				<a class="dropdown-toggle" href="#" role="button"
+					 data-toggle="dropdown"
+					aria-expanded="false" style="position: relative; bottom: 100px; left:93%;"><i
+					class="fas fa-user-circle iconAlign iconColor fa-3x"  style="margin-top:25px;"></i><span class="caret"></span> </a>
+				<ul class="dropdown-menu" style="min-width:0px; left:90%;top:-60%;">
+					<li><a class="dropdown-item" href="#" id="textAlign"><i
+							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
+							in as <br/><b>admin</b></a></li>
+					<hr style="margin-left:0px;"/>
+					<li><a class="dropdown-item li-align" href="#" id="textAlign"
+						onclick="location.href='Login.jsp';"><i
+							class="fa fa-sign-out fa-1x" style="color: #1565c0;"></i>Logout</a></li>
+				</ul>
+			</div>
+			
+			
+	</div>
+	
+</nav>
+
+<%-- <%@include file="Nav-Bar.jspf"%> --%>
+	<nav class="nav nav-height-70 nav-font" id="bg-color">
+		<div class="container-fluid">
+			<div class="col-sm-12" id="d3s-mt-20">
+				<ul class="nav navbar-nav">
+					<li class=" nav-link-2 active-2"><a class="link"
+						href="ArchiveExecutionDetails_Governance.jsp"
+						style="color: #fff; padding: 7px 10px; height: 35px;">Project
+							Plan</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
    <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
+    <!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">
                  <div class="navbar-header no-padding" style = "height : 100px;">
@@ -521,7 +589,7 @@ background:#1565c0 important;
                         <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
-                <!-- /.navbar-header -->
+                /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav headerTab navAlign">
 		              <li class="active1"><a href="OpportunityList.jsp" style= "color:#fff;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
@@ -541,10 +609,10 @@ background:#1565c0 important;
 				  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                         <div class="col-sm-12">
-                             <!--  <h4 class="title" style="color:#fff">User Configuration</h4>
-                               <p class="sub-title">Create and manage your Opportunities here</p>-->
+                              <h4 class="title" style="color:#fff">User Configuration</h4>
+                               <p class="sub-title">Create and manage your Opportunities here</p>
                                <ul class="nav navbar-nav " >
-						      <li class=" nav-link active"><a class="link" href="ArchiveExecutionDetails.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan</a></li>
+						      <li class=" nav-link active"><a class="link" href="ArchiveExecutionDetails_Governance.jsp" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan</a></li>
 						      <li class="nav-link" ><a class="link" href="#" style=" color: #fff;padding: 7px 10px; height: 35px;">Project Plan Summary</a></li>
 						     
 		    </ul>
@@ -563,8 +631,8 @@ background:#1565c0 important;
 			</nav>
       
         </div>
-        <!-- /.container-fluid -->
-    </nav >
+        /.container-fluid
+    </nav > -->
             <div class="content-wrapper">
                 <div class="content-container" >
                    
@@ -572,7 +640,7 @@ background:#1565c0 important;
                         
                         <section>
                             <div class="row">
-                                <div class="container" id="module_header">
+                                <div class="container">
                                   <div class="panelSize col-md-12 col-sm-12">
 				<div class="form-wizard">
 					<form action="" method="post" role="form">
@@ -583,8 +651,7 @@ background:#1565c0 important;
 								<li><span>2</span><i>Project Summary</i></li>
 							</ul>
 						</div> -->
-						<br/>
-						<br/>
+						
                                    <div class="wrapper">
 													   
 													   <a href="#" class="btn10 coloring" id = "waveName">
@@ -603,11 +670,9 @@ background:#1565c0 important;
 													  </div>
 													  
 													  
-                                         <div class="panel panel-default" style='width:1900px;'>
-                                            <div class="panel-heading" >
-                                                <h4 class="panel-title" >
-                                                    <a class="collapsed" data-toggle="collapse"  data-parent="#panels1">Archive Execution</a> </h4>
-                                            </div>
+                                         
+                                            <div class="card-container-5 card">
+                                            <div class="card-header d3s-pl-15" id="cd-header">Archive Execution</div>
                                             <div class="panel-collapse collapse in"
                                                 name="collapse">
                                                 <div class="panel-body">
@@ -615,8 +680,8 @@ background:#1565c0 important;
                                                     <div>
                                                     <!-- <h4>Task List</h4>   -->
                                                             <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
-      													<div class="panel">         
-  													<table class="table table-bordered">
+      													<div class="panel" style="overflow-x: auto;">         
+  													<table class="table table-bordered table-responsive" style="width: 100%; font-size: 12px;">
   													
     												<thead >
       												<tr>
@@ -901,7 +966,7 @@ background:#1565c0 important;
 </div>
 
 <!-- Active Icon Color changes  -->
-<script>
+<!-- <script>
 $(document).on('mouseenter','.active1', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');
@@ -914,7 +979,7 @@ $(document).on('mouseenter','.active1', function(){
 		 
 	 });
 </script>
-
+ -->
     <!-- Date picker --> 
         <!--  <link href = "https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css"  
          rel = "stylesheet"> -->
@@ -974,4 +1039,8 @@ $(document).on('mouseenter','.active1', function(){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+    <!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<script src="js/navigation/navigation.js"></script>
 </html>

@@ -538,7 +538,7 @@ e.printStackTrace();
 																</table>
 																 <div class="col-12" align="end">
 																	 <button class="btn btn-secondary" type="button" id="AddEnvmntName">Add</button>
-																	 <button type="submit" class="btn btn-primary" id="saveEnvmntName">Save</button>
+																	 <button type="submit" class="btn btn-primary" id="saveEnvmntName"  disabled="true">Save</button>
 												
 					                                       			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
 					                                       			</div>
@@ -565,7 +565,7 @@ e.printStackTrace();
 																
 																 <div class="col-12" align="end">
 												 <button class="btn btn-secondary" type="button" id="AddEnvmntServer">Add</button>
-												 <button type="submit" class="btn btn-primary" id="saveEnvmntServer">Save</button>
+												 <button type="submit" class="btn btn-primary" id="saveEnvmntServer"  disabled="true">Save</button>
 												 
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        			</div>
@@ -613,10 +613,13 @@ e.printStackTrace();
                                        </div>
                                        <div class="col-md-12">
                                         	<br/>
-                                        <div class="col-md-1"> 
+                                        <div class="col-md-4"> 
                                     
                                        <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='ArchiveRequirementsIntroDetails.jsp';" >Prev</button></div>
-                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
+                                       <div class="col-md-8 dropup" align="end">
+                                       
+                                       <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+									   <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                        
                                       <button class="btn btn-primary" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" id="rolesNext" >
                                                                  <a href="javascript:;">Next</a></button>

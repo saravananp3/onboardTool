@@ -535,6 +535,8 @@ e.printStackTrace();
                                        
                                      <!--  <button class="btn btn-primary" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true">
                                                                  <a href="javascript:;">Next</a></button> -->
+                                        <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+										<button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                                                  
                                        <a href="javascript:;" class="btn btn-primary" onclick="location.href='archiveRequirementsLegacyDetails.jsp';" id="rolesNext" disabled="true">
                                                                 Next</a>

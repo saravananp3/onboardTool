@@ -63,30 +63,24 @@
 body {
 	background: #f1f1f1;
 }
-
 .active-1 {
 	background: #1565c0;
 }
-
 .page-title-div {
 	background: #1565c0;
 	padding: 15px;
 }
-
 .fixed-top {
 	width: 100%;
 	padding-left: 0px;
 	padding-right: 0px;
 }
-
 .btn {
 	margin-left: 50px;
 }
-
 .card .card-body {
 	padding: 1.88rem 1.81rem;
 }
-
 .card {
 	position: relative;
 	display: flex;
@@ -99,50 +93,41 @@ body {
 	border-radius: 0.3125rem;
 	margin-top: 50px;
 }
-
 .card-body {
 	flex: 1 1 auto;
 	padding: 1.25rem;
 }
-
 .card-title {
 	margin-bottom: 0.75rem;
 }
-
 form {
 	display: inner-block;
 	margin-top: 0em;
 }
-
 .navbar-nav-1 #nav-link {
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	border-bottom: 4px solid transparent;
 }
-
 .navbar-nav-1 #nav-link.active-1 {
 	/* border-top: none; */
 	border-left: none;
 	border-right: none;
 	border-bottom: 4px solid rgba(255, 255, 255, .5) !important;
 }
-
 .navbar-nav-1 #nav-link {
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	border-bottom: 4px solid transparent;
 }
-
 .link:hover {
 	background: #1565c0 important;
 }
-
 .active1 {
 	background: #1565c0;
 }
-
 .page-title-div {
 	background: #1565c0;
 	padding: 15px;
@@ -201,7 +186,6 @@ form {
 		          </ul>
 		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                        
-
                         <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin</span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
@@ -234,7 +218,6 @@ form {
 		                   </ul>
                          </div>
                     </div>
-
                 </div>
 			</nav>
         </div>

@@ -149,9 +149,9 @@
         statement.executeUpdate(query54);
         String query55 = "CREATE TABLE IF NOT EXISTS `ArchiveReq_Roles_Info_Template_Details` (`seq_no` INTEGER (255), `role` varchar(255),`name` varchar(255), `email` varchar(255), `username` varchar(255), `priority` varchar(55),`approverpurpose` varchar(255))";
         statement.executeUpdate(query55);
-        String query56 = "CREATE TABLE IF NOT EXISTS `ArchiveReq_Roles_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `role` varchar(255),`name` varchar(255), `emailId` varchar(255),`username` varchar(255),`approvalId` varchar(255),`intakeApproval` varchar(255),`moduleId` varchar(255),`comments` varchar(500),`priority_order_num` varchar(55),`mail_flag` varchar(100),`submittedDate` varchar(50))";
+        String query56 = "CREATE TABLE IF NOT EXISTS `ArchiveReq_Roles_Info` (`seq_no` INTEGER (255),`OppId` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `role` varchar(255),`name` varchar(255), `emailId` varchar(255),`username` varchar(255),`approvalId` varchar(255),`intakeApproval` varchar(255),`moduleId` varchar(255),`comments` varchar(500),`priority_order_num` varchar(55),`mail_flag` varchar(100),`submittedDate` varchar(50),`isCompleted` varchar(45))";
         statement.executeUpdate(query56);
-        String query57 = "CREATE TABLE IF NOT EXISTS `ArchiveIntro_Info` (`seq_no` INTEGER (255),`OppId` varchar(255), `app_name` varchar(255), `purpose` varchar(2000),`scope` varchar(2000), `assumption` varchar(2000))";
+        String query57 = "CREATE TABLE IF NOT EXISTS `ArchiveIntro_Info` (`seq_no` INTEGER (255),`OppId` varchar(255), `app_name` varchar(255), `purpose` varchar(2000),`scope` varchar(2000), `assumption` varchar(2000),`isCompleted` varchar(45))";
         statement.executeUpdate(query57);
         String query58 = "CREATE TABLE IF NOT EXISTS `ArchiveIntro_Info_template_details` (`seq_no` INTEGER (255),`OppId` varchar(255), `app_name` varchar(255), `purpose` varchar(255),`scope` varchar(255), `assumption` varchar(255))";
         statement.executeUpdate(query58);
@@ -159,13 +159,13 @@
         String query59 = "CREATE TABLE IF NOT EXISTS `Archive_Environment_Name_Info` (`seq_no` INTEGER (255),`OppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `devName` varchar(255),`testName` varchar(255), `stageName` varchar(255), `prodName` varchar(255))";
         statement.executeUpdate(query59);
         
-        String query60 = "CREATE TABLE IF NOT EXISTS `Archive_Environment_ServerIp_Info` (`seq_no` INTEGER (255),`OppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `devServerIp` varchar(255),`testServerIp` varchar(255), `stageServerIp` varchar(255), `prodServerIp` varchar(255))";
+        String query60 = "CREATE TABLE IF NOT EXISTS `Archive_Environment_ServerIp_Info` (`seq_no` INTEGER (255),`OppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `devServerIp` varchar(255),`testServerIp` varchar(255), `stageServerIp` varchar(255), `prodServerIp` varchar(255),`isCompleted` varchar(45))";
         statement.executeUpdate(query60);
         
         String query61 = "CREATE TABLE IF NOT EXISTS `Archive_Retention_Template_Details` (`seq_no` INTEGER (255), `retentionCheck` varchar(255), `retentionLevel` varchar(255), `conditions` varchar(500), `dateUsedType` varchar(255), `dateUsed` varchar(255), `descp` varchar(500))";
         statement.executeUpdate(query61);
         
-        String query62 = "CREATE TABLE IF NOT EXISTS `Archive_Retention_Info` (`seq_no` INTEGER (255),`OppId` varchar(255), `app_name` varchar(255), `prjName` varchar(255), `retentionCheck` varchar(255), `retentionLevel` varchar(255), `conditions` varchar(500), `dateUsedType` varchar(255), `dateUsed` varchar(255), `descp` varchar(500))";
+        String query62 = "CREATE TABLE IF NOT EXISTS `Archive_Retention_Info` (`seq_no` INTEGER (255),`OppId` varchar(255), `app_name` varchar(255), `prjName` varchar(255), `retentionCheck` varchar(255), `retentionLevel` varchar(255), `conditions` varchar(500), `dateUsedType` varchar(255), `dateUsed` varchar(255), `descp` varchar(500),`isCompleted` varchar(45))";
         statement.executeUpdate(query62);
         
         String query63 = "CREATE TABLE IF NOT EXISTS `Archive_Retention_Content_Info` (`OppId` varchar(255), `app_name` varchar(255), `prjName` varchar(255), `contentInfo` varchar(2000))";
@@ -207,7 +207,7 @@
         String query76 = "CREATE TABLE IF NOT EXISTS `Archive_AuditlReq_Template_Details` (`seq_no` INTEGER (255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
         statement.executeUpdate(query76);
         
-        String query77 = "CREATE TABLE IF NOT EXISTS `Archive_AuditReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255))";
+        String query77 = "CREATE TABLE IF NOT EXISTS `Archive_AuditReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `reqInScope` varchar(255), `reqType` varchar(255), `descp` varchar(255), `additionInfo` varchar(255),`isCompleted` varchar(45))";
         statement.executeUpdate(query77);
 	
         String query78 = "CREATE TABLE IF NOT EXISTS `Archive_ScreenReq_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `screenDisplay` varchar(255), `purpose` varchar(255), `equivalentLegacy` varchar(255))";
@@ -216,13 +216,13 @@
         String query79 = "CREATE TABLE IF NOT EXISTS `Archive_ScreenReq_SearchForm` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `reqId` varchar(255), `searchForm` varchar(255), `searchField` varchar(255), `fieldFormat` varchar(255), `dataType` varchar(255), `dataRetrieval` varchar(255), `requiredField` varchar(255), `additionalInfo` varchar(255))";
         statement.executeUpdate(query79);
 	
-	String query80 = "CREATE TABLE IF NOT EXISTS `Archive_DocumentRevision_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `date` varchar(255), `version` varchar(255), `documentChanges` varchar(255), `changeAuthor` varchar(255))";
+		String query80 = "CREATE TABLE IF NOT EXISTS `Archive_DocumentRevision_Info` (`seq_no` INTEGER (255), `oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255), `date` varchar(255), `version` varchar(255), `documentChanges` varchar(255), `changeAuthor` varchar(255))";
         statement.executeUpdate(query80);
 	
 	    String query81 = "CREATE TABLE IF NOT EXISTS `Governance_Info_Template_Details` (`seq_no` INTEGER (255),`options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query81);
     
-        String query82 = "CREATE TABLE IF NOT EXISTS `Governance_Info_Details` (`seq_no` INTEGER (255), `waveId` varchar(255), `waveName` varchar(255), `prj_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        String query82 = "CREATE TABLE IF NOT EXISTS `Governance_Info_Details` (`seq_no` INTEGER (255), `waveId` varchar(255), `waveName` varchar(255), `prj_name` varchar(255), `options` varchar(14000),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query82);
         
         String query83 = "CREATE TABLE IF NOT EXISTS `Governance_Info` (`seq_no` INTEGER (255), `waveId` varchar(255), `waveName` varchar(255), `prj_name` varchar(255), `options` varchar(60000), `label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
