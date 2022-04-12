@@ -165,9 +165,9 @@ function IntakePreviewDataRetrieveAjaxCall()
             var checkReviewPage = data[data.length-1].CheckExistence;
             if(checkReviewPage==true)
             {
-             $("#ReviewNextBtn").hide();
-             $("#ReviewPrevBtn").hide();
-             $("#button_id").hide();
+             $("#ReviewNextBtn").show();
+             $("#ReviewPrevBtn").show();
+             $("#button_id").show();
             }
         },
         error: function (e) {
