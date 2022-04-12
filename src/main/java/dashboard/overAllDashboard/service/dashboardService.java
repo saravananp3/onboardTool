@@ -642,14 +642,20 @@ public class dashboardService {
             if (issueCount < 10) {
                 String issue = String.format("%02d", issueCount);
                 jsonObject.addProperty("issueCount", issue);
+            } else {
+            	jsonObject.addProperty("issueCount", issueCount);
             }
             if (riskCount < 10) {
                 String risk = String.format("%02d", riskCount);
                 jsonObject.addProperty("riskCount", risk);
+            } else {
+            	jsonObject.addProperty("riskCount", riskCount);
             }
             if (deadlineCount < 10) {
                 String deadline = String.format("%02d", deadlineCount);
                 jsonObject.addProperty("deadlineCount", deadline);
+            }else {
+            	jsonObject.addProperty("deadlineCount", deadlineCount);
             }
             jsonArray.add(jsonObject);
             rs.close();

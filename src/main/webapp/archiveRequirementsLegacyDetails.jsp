@@ -224,6 +224,13 @@ padding: 15px;
     background:#1565c0;
 	padding: 15px;  
 }
+
+.form-wizard .form-wizard-steps {
+margin: -6px 0;
+}
+#module_header {
+margin-top: 97px;
+}
    
 </style>
 
@@ -358,7 +365,7 @@ e.printStackTrace();
 						<div class="form-wizard-header">
 							
 							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
-							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<!-- <p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p> -->
 								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
 								<li class="active" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
 								<li onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
@@ -480,7 +487,7 @@ e.printStackTrace();
 																	<button type="submit" class="btn btn-primary"
 																		id="legacyAppInfoSave">Save</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-																	<button
+																	<!-- <button
 																		class="form-wizard-next-btn float-right btn-info btn btn-info"
 																		onclick="location.href='';" id="next"
 																		disabled="true">
@@ -488,7 +495,7 @@ e.printStackTrace();
 																		<a href="javascript:;"  style="color: #fff;">Next</a>
 
 																	</button>
-
+ -->
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn"
 																		data-bs-toggle="modal" data-bs-target="#LegacyEditPopUp"
@@ -538,7 +545,7 @@ e.printStackTrace();
 																</table>
 																 <div class="col-12" align="end">
 																	 <button class="btn btn-secondary" type="button" id="AddEnvmntName">Add</button>
-																	 <button type="submit" class="btn btn-primary" id="saveEnvmntName">Save</button>
+																	 <button type="submit" class="btn btn-primary" id="saveEnvmntName"  disabled="true">Save</button>
 												
 					                                       			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
 					                                       			</div>
@@ -565,7 +572,7 @@ e.printStackTrace();
 																
 																 <div class="col-12" align="end">
 												 <button class="btn btn-secondary" type="button" id="AddEnvmntServer">Add</button>
-												 <button type="submit" class="btn btn-primary" id="saveEnvmntServer">Save</button>
+												 <button type="submit" class="btn btn-primary" id="saveEnvmntServer"  disabled="true">Save</button>
 												 
                                        			 <button type="button" class="btn btn-primary pull-right" id="OpportunityListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                        			</div>
@@ -600,10 +607,10 @@ e.printStackTrace();
 											<label for="upload"> <input type="file" id="fileUpload" multiple> Upload Files</label>
 											</div>
 									        <div class="files fileClass">
-											<h2>Files Selected</h2>
+											<h6><b>Files Selected</b></h6>
 											<ul id="FileList"></ul>
 											</div>
-											<input type="button" value="Upload" class="btn btn-success" name="submit" id="UploadFiles" />
+											<input type="button" value="Upload" class="btn btn-primary" name="submit" id="UploadFiles" />
 											</form>
 											</div>
 											</div>
@@ -613,10 +620,13 @@ e.printStackTrace();
                                        </div>
                                        <div class="col-md-12">
                                         	<br/>
-                                        <div class="col-md-1"> 
+                                        <div class="col-md-4"> 
                                     
                                        <button type="button" class="btn btn-secondary" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='ArchiveRequirementsIntroDetails.jsp';" >Prev</button></div>
-                                       <div class="col-md-6 dropup" style=" padding-right: 10px; float: right; width:10%">
+                                       <div class="col-md-8 dropup" align="end">
+                                       
+                                       <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+									   <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                        
                                       <button class="btn btn-primary" onclick="location.href='archiveRequirementsRetentionDetails.jsp';" id="rolesNext" >
                                                                  <a href="javascript:;">Next</a></button>

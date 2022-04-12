@@ -217,6 +217,13 @@ padding: 15px;
     background:#1565c0;
 	padding: 15px;  
 }
+
+.form-wizard .form-wizard-steps {
+margin: -6px 0;
+}
+#module_header {
+margin-top: 97px;
+}
 </style>
 
 <body class="top-navbar-fixed">
@@ -353,7 +360,7 @@ e.printStackTrace();
 						<div class="form-wizard-header">
 							
 							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
-							<p style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<!-- <p style="margin-bottom: -52px;">Fill all the required fields to go next step</p> -->
 								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
 								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
 								<li class="active" onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
@@ -444,7 +451,8 @@ e.printStackTrace();
                                                             <div class="col-12" align="end">
                                                                 
                                                                 
-                                                               
+                                                               <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+															   <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                                                 <button type="submit" class="btn btn-primary" id="saveRetentionId">Save</button>
                                                                 <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
                                                                  <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='ArchiveBusinessRequirements.jsp';" id="next" disabled="true">

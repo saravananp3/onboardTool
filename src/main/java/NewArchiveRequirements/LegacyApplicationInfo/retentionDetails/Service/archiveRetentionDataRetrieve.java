@@ -58,8 +58,8 @@ public class archiveRetentionDataRetrieve {
 				preparedStatement1.setString(2, oppName);
 				preparedStatement1.setString(3, "");
 				preparedStatement1.setString(4,"Retention Policies will be applied to the data per Company Policies ::\r\n" + 
-						"Select the level retention will be applied for this application::\r\n" + 
-						"IF there is more than one condition applicable, specify which conditions apply. i.e. : If there is not a specified date at record level, the read-only date at the table level will be used.");
+						"Select the level retention that will be applied for this application::\r\n" + 
+						"IF there is more than one condition applicable, specify which conditions apply i.e., If there is not a specified date at record level, the read-only date at the table level will be used.");
 			    preparedStatement1.execute();
 			    preparedStatement1.close();
 			}

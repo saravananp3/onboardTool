@@ -25,6 +25,8 @@
     <!-- ========== THEME CSS ========== -->
     <link rel="stylesheet" href="css/main.css" media="screen" >
     <script type="text/javascript" src="js_in_pages/project.js"></script>
+     <link rel="stylesheet" href="css/headerIcon/headerIcon.css"
+	media="screen">
 
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>

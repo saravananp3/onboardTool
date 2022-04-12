@@ -91,7 +91,7 @@ $("#ConfirmationYes").click(function()
 				if(checkOverAllAapproval)
 				{
 				   setTimeout(function(){
-					   location.href = "OpportunityGrid.jsp";
+					   location.href = "OpportunityList.jsp";
 				   },1000);	
 				}
 			}

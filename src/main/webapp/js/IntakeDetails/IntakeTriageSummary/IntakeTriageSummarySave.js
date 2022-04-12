@@ -1,3 +1,10 @@
+$(document).ready(function() {
+	enableSaveButtonFunction()
+	
+		});
+
+
+
 $("#createTriSummary").click(function(e)
 {
 	    //e.stopPropagation();
@@ -22,7 +29,12 @@ $("#createTriSummary").click(function(e)
      		        	if(type == 'radio')
      		        		{
      		        			var nameRadio = $(this).find("input").attr("name");
-     		        			var radioValue = $("input[name='"+nameRadio+"']:checked").val();
+     		        			/*var radioValue = $("input[name='"+nameRadio+"']:checked").val();*/
+     		        			var radioValue = "";
+     		        			$.each($("input[name='"+nameRadio+"']:checked"), function() {
+									radioValue += $(this).val()+",";
+								});
+     		        			radioValue = radioValue.substring(0,radioValue.length-1);
      		        			if(radioValue==""||radioValue==undefined)
      		        				{
      		        				checkMandatory = false;
@@ -61,7 +73,11 @@ $("#createTriSummary").click(function(e)
     		        	if(type == 'radio')
     		        		{
     		        			var nameRadio = $(this).find("input").attr("name");
-    		        			var radioValue = $("input[name='"+nameRadio+"']:checked").val();
+    		        			var radioValue = "";
+     		        			$.each($("input[name='"+nameRadio+"']:checked"), function() {
+									radioValue += $(this).val()+",";
+								});
+     		        			radioValue = radioValue.substring(0,radioValue.length-1);
     		        			inputs["Name"]=nameRadio;
     	    				    inputs["Value"]=radioValue;
     		        			
@@ -95,6 +111,8 @@ $("#createTriSummary").click(function(e)
     				     nameAttr.push(name2);
     				     console.log("name in select : ",name2);
     				   }
+    				   
+    				   console.log(jsonObj);
     		        jsonObj.push(inputs);
     		        
     		});
@@ -113,6 +131,9 @@ $("#createTriSummary").click(function(e)
     		 var validationCheck_json = AjaxCallUpdate(JsonString,e);
     		 notification("success","Triage Summary details saved successfully.","Note");
     		 document.getElementById("next").disabled = false;
+    		 document.getElementById("complete").disabled = false;
+    		 
+
 	    }
     	else
     		{
@@ -124,6 +145,7 @@ $("#createTriSummary").click(function(e)
     	 
 
 });
+
 
 function AjaxCallUpdate(JsonString,e)
 {
@@ -156,3 +178,79 @@ function AlertBox()
 	//alert("Please fill all the mandatory fields.");
 return false;
 }
+
+$(document).on('click', '#complete', function(e) {
+				$.ajax({
+	    url: "IntakeTriageSummaryCompletedServlet",
+		type: 'POST',
+		async: false,
+		data : {completeType : "TriageSummary"},
+		dataType: "json",
+		success: function(data) {
+			console.log("Completed DATA:", data);
+			JsonObject = data;
+			if (data.iscompleted==true) {
+				
+				notification("success", "Completed successfully.", "Note:");
+				checkRoles = true;
+			}
+			
+		}
+		
+	});
+	e.preventDefault();
+			});
+			
+			$(document).on('click', '#edit', function(e) {
+               
+              			document.getElementById("createTriSummary").disabled = false;
+              			notification("success", "Current Page is editable", "Note:");
+
+ 
+               
+	        e.preventDefault();
+			});
+			
+			
+			
+		function enableSaveButtonFunction(e){
+			$.ajax({
+	    url: "IntakeCompleteStatus",
+		type: 'POST',
+		async: false,
+		data : {completeType : "TriageSummary"},
+		dataType: "json",
+		success: function(data) {
+			console.log("Completed DATA:", data);
+			JsonObject = data;
+			if (data.iscompleted==true) {
+			document.getElementById("createTriSummary").disabled = true;
+
+			}else{
+			document.getElementById("createTriSummary").disabled = false;
+
+								
+							}
+			
+		}
+		
+	});
+	e.preventDefault();
+
+		}	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	  

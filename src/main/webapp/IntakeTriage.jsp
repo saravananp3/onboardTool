@@ -228,7 +228,7 @@ e.printStackTrace();
 									<form action="" method="post" role="form">
 										<br /> <br />
 										<div class="form-wizard-header nav-font">
-											<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+											<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
 											
 											<ul class="list-unstyled form-wizard-steps clearfix">
 												<li class="activated" onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
@@ -237,7 +237,7 @@ e.printStackTrace();
 												<li onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
 												<li onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span> <i>Stake Holder</i></li>
 												<li onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
-												<li onclick="location.href='IntakeApproval.jsp';"><span>7</span><i>Approval</i></li>
+												<li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
 											</ul>
 										</div>
 										<!-- Triage Info -->
@@ -2627,5 +2627,7 @@ e.printStackTrace();
 	<!-- ========== Toastr ========== -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
+	
 </body>
 </html>

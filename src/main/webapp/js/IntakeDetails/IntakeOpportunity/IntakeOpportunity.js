@@ -158,6 +158,8 @@ $(document).ready(function(){
     $(document).on('click', '.editpopup', function () {
     	$('#editpopup_btn').click();
     var seqnum=$(this).index('.editpopup');
+  /*  var dp1 = $(".dp").val();
+    	console.log(dp1);*/
     //alert('seq_num in js file '+seqnum);
     $('#seq_num').val(seqnum);
     //alert('seq num field in js file'+$('#seq_num').val());

@@ -46,7 +46,7 @@ public class ArchiveExeIssueDeleteServlet extends HttpServlet {
 		int seqNum = Integer.parseInt(request.getParameter("seqNum")); 
 		String app_Id=request.getParameter("app_Id"); 
 		JsonObject jsonobject = new JsonObject();
-        
+        System.out.println("ye save me app Id hai kya : "+ID+"Opp name : "+oppName+"ye issue Id hai :"+app_Id);
         try {
         	ArchiveExeIssueDeleteService deleteService = new ArchiveExeIssueDeleteService(seqNum, ID,app_Id);
         	jsonobject = deleteService.DeleteRow();

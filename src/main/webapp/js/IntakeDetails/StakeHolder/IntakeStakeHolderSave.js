@@ -1,3 +1,7 @@
+$(document).ready(function() {
+	enableSaveButtonFunction()
+	
+		});
 $("#save").click(function(e)
 {
 	var checkMandatory = true;
@@ -69,6 +73,7 @@ $("#save").click(function(e)
 	}
     if(jsonObj.CheckSave)
      {
+	       document.getElementById("complete").disabled = false;
     	   document.getElementById("next").disabled = false;
     	   e.preventDefault();
             notification("success","Saved Successfully.","Note");
@@ -121,3 +126,66 @@ function SaveAjaxCall(jsonArr)
     });
   return json;
 }
+$(document).on('click', '#complete', function(e) {
+				
+		$.ajax({
+	    url: "IntakeTriageSummaryCompletedServlet",
+		type: 'POST',
+		async: false,
+		data : {completeType : "StakeHolder"},
+		dataType: "json",
+		success: function(data) {
+			console.log("Completed DATA:", data);
+			JsonObject = data;
+			if (data.iscompleted==true) {
+				
+				notification("success", "Completed successfully.", "Note:");
+				checkRoles = true;
+			}
+			
+		}
+		
+	});
+	e.preventDefault();
+	});
+	
+	$(document).on('click', '#edit', function(e) {
+               
+              			document.getElementById("save").disabled = false;
+              			notification("success", "Current Page is editable", "Note:");
+
+ 
+               
+	        e.preventDefault();
+			});
+			
+			
+			
+		function enableSaveButtonFunction(e){
+			$.ajax({
+	    url: "IntakeCompleteStatus",
+		type: 'POST',
+		async: false,
+		data : {completeType : "StakeHolder"},
+		dataType: "json",
+		success: function(data) {
+			console.log("Completed DATA:", data);
+			JsonObject = data;
+			if (data.iscompleted==true) {
+			document.getElementById("save").disabled = true;
+
+			}else{
+			document.getElementById("save").disabled = false;
+
+								
+							}
+			
+		}
+		
+	});
+	e.preventDefault();
+
+		}	
+
+
+	

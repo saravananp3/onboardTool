@@ -61,19 +61,16 @@ body {
 	padding: 0;
 	font-family: 'Poppins', sans-serif;
 }
-
 .page-title-div {
 	background: #1565c0;
 	padding: 15px;
 }
-
 h1 {
 	text-align: center;
 	font-family: Tahoma, Arial, sans-serif;
 	color: #06D85F;
 	margin: 80px 0;
 }
-
 .box {
 	width: 40%;
 	margin: 0 auto;
@@ -84,7 +81,6 @@ h1 {
 	background-clip: padding-box;
 	text-align: center;
 }
-
 .overlay {
 	position: fixed;
 	top: 0;
@@ -95,12 +91,10 @@ h1 {
 	transition: opacity 500ms;
 	visibility: hidden;
 }
-
 .overlay:target {
 	visibility: visible;
 	opacity: 1;
 }
-
 .popup {
 	margin: 210px auto;
 	padding: 20px;
@@ -109,13 +103,11 @@ h1 {
 	width: 40%;
 	position: relative;
 }
-
 .popup h2 {
 	margin-top: 0;
 	color: #333;
 	font-family: Tahoma, Arial, sans-serif;
 }
-
 .popup .close {
 	position: absolute;
 	top: 20px;
@@ -126,20 +118,16 @@ h1 {
 	text-decoration: none;
 	color: black;
 }
-
 .popup .close:hover {
 	color: black;
 }
-
 .popup .content {
 	max-height: 30%;
 	overflow: auto;
 }
-
 .button {
 	color: white;
 }
-
 @media screen and (max-width: 700px) {
 	.box {
 		width: 70%;
@@ -148,20 +136,16 @@ h1 {
 		width: 70%;
 	}
 }
-
 #nav_userid {
 	color: green;
 }
-
 #nav_role {
 	color: blue;
 }
-
 .ScrollStyle {
 	max-height: 350px;
 	overflow-y: scroll;
 }
-
 .table-title .add-new {
 	float: right;
 	height: 30px;
@@ -172,65 +156,52 @@ h1 {
 	border-radius: 50px;
 	line-height: 13px;
 }
-
 .table-title .add-new i {
 	margin-right: 4px;
 }
-
 table.table td a {
 	cursor: pointer;
 	display: inline-block;
 	margin: 0 5px;
 	min-width: 24px;
 }
-
 table.table td a.add {
 	color: #27C46B;
 }
-
 table.table td a.edit {
 	color: #FFC107;
 }
-
 table.table td a.delete {
 	color: #E34724;
 }
-
 table.table td i {
 	font-size: 19px;
 }
-
 table.table td a.add i {
 	font-size: 24px;
 	margin-right: -1px;
 	position: relative;
 	top: 3px;
 }
-
 table.table .form-control {
 	height: 32px;
 	line-height: 32px;
 	box-shadow: none;
 	border-radius: 2px;
 }
-
 table.table .form-control.error {
 	border-color: #f50000;
 }
-
 table.table td .add {
 	display: none;
 }
-
 .active1 {
 	background: #1565c0;
 }
-
 .page-title-div {
 	background: #1565c0;
 	padding: 15px;
 }
-
 .navbar-nav-1 #nav-link.active-1 {
 	/* border-top: none; */
 	border-left: none;
@@ -318,9 +289,7 @@ table.table td .add {
                          <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> Introduction</p>
                      
                     
-
                     </div>
-
                 </div>
 </nav>
       
@@ -464,8 +433,6 @@ table.table td .add {
 																</div>
 															</div>
 														<!-- </div>
-
-
 													</div>
 												</div>
 											</div>
@@ -489,12 +456,10 @@ table.table td .add {
 				<!-- /.main-wrapper -->
 				<script>
         function validateform9() {
-
             var f = document.loginForm;
             f.method = "post";
             f.action = 'ArchivalRequirements';
             f.submit();
-
         }
     </script>
 

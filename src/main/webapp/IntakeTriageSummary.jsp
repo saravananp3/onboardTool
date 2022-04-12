@@ -34,6 +34,7 @@
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
 <script src="js/IntakeDetails/IntakeTriageSummary/IntakeTriageSummary.js"></script>
+<script src="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>
 
  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
@@ -247,7 +248,7 @@ e.printStackTrace();
 					<br/>
 					<br/>
 						<div class="form-wizard-header nav-font">
-							<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+							<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
 								<ul class="list-unstyled form-wizard-steps clearfix">
 												<li class="activated"
 													onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
@@ -260,7 +261,7 @@ e.printStackTrace();
 												<li onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span>
 													<i>Stake Holder</i></li>
 												<li onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
-												<li onclick="location.href='IntakeApproval.jsp';"><span>7</span><i>Approval</i></li>
+												<li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
 									</ul>
 										</div>
 											
@@ -331,6 +332,9 @@ e.printStackTrace();
 
 																		</ul>
 																	</div>
+													               <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+													               <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
+																	
 																	<button type="submit" class="btn btn-primary"
 																		id="createTriSummary">Save</button>
 																	<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
@@ -1361,5 +1365,6 @@ e.printStackTrace();
  <!-- ========== Toastr ========== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
 </body>
 </html>
