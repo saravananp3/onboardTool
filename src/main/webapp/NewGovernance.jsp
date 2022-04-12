@@ -16,6 +16,8 @@
   
    <!-- ========== multiselect dropdown ========== -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css"/>
+   <link rel="stylesheet" href="css/headerIcon/headerIcon.css"
+	media="screen">
    
 
     <!-- ========== THEME CSS ========== -->

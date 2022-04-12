@@ -200,10 +200,10 @@ function archiveEnvironmentDataRetrieve(){
              $.each(data[0], function(key, value){
             	 
             	 var Row="<tr class = 'rowClassName'>"+
-            	 "<td><input type ='text' class='devName' value='"+value.DevName+"' readonly></td>" +
-            	 "<td><input type ='text' class='testName' value='"+value.TestName+"' readonly></td>" +
-            	 "<td><input type ='text' class='stageName' value='"+value.StageName+"' readonly></td>" +
-            	 "<td><input type ='text' class='prodName' value='"+value.ProdName+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='devName' value='"+value.DevName+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='testName' value='"+value.TestName+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='stageName' value='"+value.StageName+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='prodName' value='"+value.ProdName+"' readonly></td>" +
             	 "<td>"+
             	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu'>"+
@@ -241,10 +241,10 @@ function archiveEnvironmentDataRetrieve(){
              $.each(data[1], function(key, value){
             	 
             	 var Row="<tr class = 'rowClassServer'>"+
-            	 "<td><input type ='text' class='devServerIp' value='"+value.DevServerIp+"' readonly></td>" +
-            	 "<td><input type ='text' class='testServerIp' value='"+value.TestServerIp+"' readonly></td>" +
-            	 "<td><input type ='text' class='stageServerIp' value='"+value.StageServerIp+"' readonly></td>" +
-            	 "<td><input type ='text' class='prodServerIp' value='"+value.ProdServerIp+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='devServerIp' value='"+value.DevServerIp+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='testServerIp' value='"+value.TestServerIp+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='stageServerIp' value='"+value.StageServerIp+"' readonly></td>" +
+            	 "<td><input type ='text' style='width:100%; text-align:center;' class='prodServerIp' value='"+value.ProdServerIp+"' readonly></td>" +
             	 "<td>"+
             	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu'>"+

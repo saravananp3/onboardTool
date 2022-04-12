@@ -1,3 +1,9 @@
+$(document).ready(function() {
+	enableSaveButtonFunction()
+	
+		});
+
+
 var checkMandatoryFields = true;
 var checkAllMandatoryFields=true;
 var DependencyPairs=['OtherPleaseDescribe','plsdescribeStreams','LastUpdateMade','ExpectedDate'];
@@ -7,6 +13,9 @@ var DependencyFieldsPair = [];
 var DependencykeyValuePair = [];
 var DependencyType=[];
 var JsonArray =[];
+
+
+
 $("#AssessmentSaveBtn").click(function(e){
 	uploadFiles();
 	var section =['ApplicationInformation','DataCharacteristics','ComplianceCharacteristics','ArchivalConsumption'];
@@ -28,10 +37,13 @@ $("#AssessmentSaveBtn").click(function(e){
 		//alert("IntakeAssessment Save");
 		var JsonString = JSON.stringify(JsonArray);
 		var jsonobj = AssessmentAjaxCallUpdate(JsonString,e);
-		if(jsonobj.CheckExistence)
+		if(jsonobj.CheckExistence){
 			notification("success","Assessment section's detail are saved successfully.","Note");
 			//alert("Saved Successfully!");
-		    
+			document.getElementById("complete").disabled = false;
+	        document.getElementById("next").disabled = false;
+          	
+		    }
 		else
 			notification("error","Failed to save.","Error");
 	}
@@ -41,8 +53,9 @@ $("#AssessmentSaveBtn").click(function(e){
 	notification("warning",ValidationMsg,"Warning");
 	//alert(ValidationMsg);	
 	}	
-	document.getElementById("next").disabled = false;
-   	e.preventDefault();
+	
+	e.preventDefault();
+	
 });
 
 function CheckMandatoryCommonFields(InputFieldClass)
@@ -398,3 +411,64 @@ function DependencyColumnNameCheck(ColumnName)
 	}
 	return checkColName;
 }
+$(document).on('click', '#complete', function(e) {
+				
+		$.ajax({
+	    url: "IntakeTriageSummaryCompletedServlet",
+		type: 'POST',
+		async: false,
+		data : {completeType : "Assesment"},
+		dataType: "json",
+		success: function(data) {
+			console.log("Completed DATA:", data);
+			JsonObject = data;
+			if (data.iscompleted==true) {
+				
+				notification("success", "Completed successfully.", "Note:");
+				checkRoles = true;
+			}
+			
+		}
+		
+	});
+	e.preventDefault();
+	});
+	
+			$(document).on('click', '#edit', function(e) {
+               
+              			document.getElementById("AssessmentSaveBtn").disabled = false;
+              			notification("success", "Current Page is editable", "Note:");
+
+ 
+               
+	        e.preventDefault();
+			});
+			
+			
+			
+		function enableSaveButtonFunction(e){
+			$.ajax({
+	    url: "IntakeCompleteStatus",
+		type: 'POST',
+		async: false,
+		data : {completeType : "Assesment"},
+		dataType: "json",
+		success: function(data) {
+			console.log("Completed DATA:", data);
+			JsonObject = data;
+			if (data.iscompleted==true) {
+			document.getElementById("AssessmentSaveBtn").disabled = true;
+
+			}else{
+			document.getElementById("AssessmentSaveBtn").disabled = false;
+
+								
+							}
+			
+		}
+		
+	});
+	e.preventDefault();
+
+		}	
+

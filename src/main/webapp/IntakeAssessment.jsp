@@ -259,7 +259,7 @@ e.printStackTrace();
 					<br/>
 					<br/>
 						<div class="form-wizard-header nav-font">
-							<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+							<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
 							
 								<ul class="list-unstyled form-wizard-steps clearfix">
 									<li class="activated"
@@ -274,7 +274,7 @@ e.printStackTrace();
 									<li onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span>
 										<i>Stake Holder</i></li>
 									<li onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
-										<li onclick="location.href='IntakeApproval.jsp';"><span>7</span><i>Approval</i></li>
+										<li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
 									</ul>	
 							
 						</div>
@@ -292,120 +292,6 @@ e.printStackTrace();
                                             <div id="collapse1" class="panel-collapse " name="collapse">
                                                 <div class="panel-body">
                                                     <div id="inputFieldsAssessment">
-                               <!--        Application Information
-                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1"  onclick="switchColors();">Application information</a></h4>
-                                        </div>
-                                        <div id="collapse5" class="panel-collapse ">
-                                            <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse " name="collapse">
-                                               <div class="panel-body">
-                                                 <div id="inputFieldsAppInfo">
-												 </div>   
-											    </div>
-											<div class="col-md-12">
-                                                 <div class="col-md-1">
-                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>														
-								                 </div>
-					                        </div>
-                                            </div>
-                                       </div>
-							         </div>   
-                                                   
-                               Data Characteristics
-                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse6" ">Data Characteristics</a></h4>
-                                        </div>
-                                        <div id="collapse6" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
-                                               <div class="panel-body">
-                                                 <div id="inputFieldsDataChar">
-												 </div>   
-											    </div>
-											<div class="col-md-12">
-                                                 <div class="col-md-1">
-                                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="multiCollapseExample2">Next</button>														
-								                 </div>
-					                        </div>
-                                            </div>
-                                       </div>
-							         </div>         
-                                                    
-                             Compliance Characteristics
-                                      <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse7">Compliance Characteristics</a></h4>
-                                        </div>
-                                        <div id="collapse7" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
-                                               <div class="panel-body">
-                                                 <div id="inputFieldsComplianceChar">
-												 </div>   
-											    </div>
-											<div class="col-md-12">
-                                                 <div class="col-md-1">
-                                                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="multiCollapseExample2">Next</button>														
-								                 </div>
-					                        </div>
-                                            </div>
-                                       </div>
-							         </div>
-							         </div>
-							         
-							      Archival Consumption
-                                      <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse8" ">Archival Consumption</a></h4>
-                                        </div>
-                                        <div id="collapse8" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
-                                               <div class="panel-body">
-                                                 <div id="inputFieldsArchivConsump">
-												 </div>   
-											    </div>
-											<div class="col-md-12">
-                                                 <div class="col-md-1">
-                                                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse9" aria-expanded="false" >Next</button></div>														
-								                 </div>
-					                        </div>
-                                            </div>
-                                       </div>
-							         </div>
-							         
-							         Contract Information
-							         <div id ="ContractInformation" style="display:none;">
-							           <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#panels1" href="#collapse9" onclick="switchColors();">Contract Information</a></h4>
-                                        </div>
-                                        <div id="collapse9" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                            <div id="collapse1" class="panel-collapse collapse in" name="collapse">
-                                               <div class="panel-body">
-                                                 <div id="inputFieldsContInfo">
-												 </div>   
-											    </div>
-											<div class="col-md-12">
-                                                 <div class="col-md-1">
-                                                 </div>														
-								                 </div>
-					                        </div>
-                                            </div>
-                                       </div>
-							         </div>
-							         </div>
-							         </div>
-							         </div> -->
 							         <!-- ========== Application Information ========== -->
 							         <div class="accordion" id="accordionPanelsStayOpenExample">
 							          	<div class="accordion-item">
@@ -529,6 +415,9 @@ e.printStackTrace();
 
 																				</ul>
 																			</div>
+																			<button type="submit" class="btn btn-primary" id="edit" >Edit</button>
+																			<button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
+																			
 																			<button type="submit" class="btn btn-primary"
 																				id="AssessmentSaveBtn">Save</button>
 																			<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
@@ -1968,7 +1857,18 @@ e.printStackTrace();
       
  
       
-       
+ <script>
+ setTimeout(function() {
+ $('.accordion').on('shown.bs.collapse', function () {
+	 var panel = $(this).find('.show');
+
+	 $('html, body').animate({
+	 scrollTop: panel.offset().top
+	 });
+
+	 });
+ },1000);
+</script>
      
      
 
@@ -2044,6 +1944,6 @@ e.printStackTrace();
 <!-- ========== Toastr ========== -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-
+	<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
 </body>
 </html>

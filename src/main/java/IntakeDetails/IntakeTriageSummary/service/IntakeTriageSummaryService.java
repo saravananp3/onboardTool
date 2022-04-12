@@ -39,6 +39,7 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 				jsonObject.addProperty("Type", rs.getString("type"));
 				jsonObject.addProperty("Mandatory", rs.getString("mandatory"));
 				jsonObject.addProperty("Value", rs.getString("value"));
+				jsonObject.addProperty("isCompleted", rs.getString("isCompleted"));
 				
 				jsonArray.add(jsonObject);
 				
@@ -55,6 +56,7 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 					jsonObject1.addProperty("Type", rs.getString("type"));
 					jsonObject1.addProperty("Mandatory", rs.getString("mandatory"));
 					jsonObject1.addProperty("Value", rs.getString("value"));
+					jsonObject1.addProperty("isCompleted", rs.getString("isCompleted"));
 					
 					jsonArray.add(jsonObject1);
 				}
@@ -502,6 +504,97 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 		System.out.println("Json object " + jsonobj);
 		return jsonobj;
 	}
+
+	
+	public JsonObject complete(String id,String completeType) {
+		boolean status=false;
+		JsonObject jsonobj = new JsonObject();
+		String SelectQuery="";
+
+		 try {
+			 DBconnection con = new DBconnection();
+			 Connection connection = (Connection) con.getConnection();
+			 if(completeType.equals("TriageSummary")) {
+			  SelectQuery = "select * from triage_summary_info where id ='"+id+"' ;";
+			 }
+			 else if(completeType.equals("Assesment")) {
+				  SelectQuery = "select * from assessment_archival_consumption_info where id ='"+id+"' ;";
+			 }
+			 else if(completeType.equals("StakeHolder")) {
+				  SelectQuery = "select * from intake_stake_holder_info where OppId ='"+id+"' ;";
+			 }
+				Statement st = connection.createStatement();
+				ResultSet rs = st.executeQuery(SelectQuery);
+				if(rs.next())
+				{ String UpdateQuery="";
+				 if(completeType.equals("TriageSummary")) {
+					 UpdateQuery = "update triage_summary_info set isCompleted ='Yes'  where id ='"+id+"' ";
+				 }
+				 else if(completeType.equals("Assesment")) {
+					 UpdateQuery = "update assessment_archival_consumption_info set isCompleted ='Yes'  where id ='"+id+"' ";
+
+				 }
+				 else if(completeType.equals("StakeHolder")) {
+					 UpdateQuery = "update intake_stake_holder_info set isCompleted ='Yes'  where OppId ='"+id+"' ";
+
+				 }
+					 Statement st1 = connection.createStatement();
+		               st1.executeUpdate(UpdateQuery);
+		               status=true;
+					 }
+				jsonobj.addProperty("iscompleted", status);
+			     connection.close();
+
+		 }
+		 catch(Exception e) {
+			 e.printStackTrace();
+			System.out.println("Exception----------[info]--------"+e);
+		 }
+		 
+		return jsonobj;
+	}
+	public JsonObject getCompleteStatus(String id,String completeType) {
+		boolean status=false;
+		JsonObject jsonobj = new JsonObject();
+		String SelectQuery="";
+		
+		try {
+			DBconnection con = new DBconnection();
+			Connection connection = (Connection) con.getConnection();
+			if(completeType.equals("TriageSummary")) {
+				SelectQuery = "select ifnull(isCompleted,'No')isCompleted from triage_summary_info where id ='"+id+"' ;";
+			}
+			else if(completeType.equals("Assesment")) {
+				SelectQuery = "select ifnull(isCompleted,'No')isCompleted from assessment_archival_consumption_info where id ='"+id+"' ;";
+			}
+			else if(completeType.equals("StakeHolder")) {
+				SelectQuery = "select ifnull(isCompleted,'No')isCompleted from intake_stake_holder_info where OppId ='"+id+"' ;";
+			}
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(SelectQuery);
+			if(rs.next())
+			{ String isCompleted="";
+				isCompleted = rs.getString("isCompleted");
+			if(isCompleted.equals("Yes")) {
+				status=true;
+			}
+			
+			}
+			jsonobj.addProperty("iscompleted", status);
+			connection.close();
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Exception----------[info]--------"+e);
+		}
+		
+		return jsonobj;
+	}
+	
+	
+
+	
 	@Override
 	public void Save(JsonArray jsonArr,String id) {
 		 try {
@@ -514,13 +607,19 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 			JsonObject jsonObj = jsonArr.get(i).getAsJsonObject();
 			String name = jsonObj.get("Name").getAsString();
 			String value = jsonObj.get("Value").getAsString();
-			String SelectQuery = "select * from triage_summary_info where id ='"+id+"' and column_name='"+name+"';";
+			String SelectQuery = "select ifnull(isCompleted,'No')isCompleted from triage_summary_info where id ='"+id+"' and column_name='"+name+"';";
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(SelectQuery);
+			
 			if(rs.next())
+			{ String UpdateQuery="";
+				if(rs.getString("isCompleted").isEmpty()||rs.getString("isCompleted").equals("No"))
 			{
-				String UpdateQuery = "update triage_summary_info set value='"+value+"' where id ='"+id+"' and column_name ='"+name+"'";
-				Statement st1 = connection.createStatement();
+				 UpdateQuery = "update triage_summary_info set isCompleted ='No' ,value='"+value+"' where id ='"+id+"' and column_name ='"+name+"'";
+			}else{
+				 UpdateQuery = "update triage_summary_info set isCompleted ='Yes' ,value='"+value+"' where id ='"+id+"' and column_name ='"+name+"'";
+
+			}Statement st1 = connection.createStatement();
                st1.executeUpdate(UpdateQuery);
                
 			}

@@ -22,12 +22,7 @@ public class ArchiveExecutionDetailService {
         	JsonObject jsonObject= archiveExecutionHearderInfo(Id,oppName); 
             jsonArray.add(jsonObject);
             
-			/*
-			 * String selectQuery =
-			 * "select * from Archive_Execution_Info where oppId = '"+Id+"' and oppName = '"
-			 * +oppName+"' order by seq_no;";
-			 */
-            String selectQuery = "select * from Archive_Execution_Info where oppId = '"+Id+"'order by seq_no;";
+            String selectQuery = "select * from Archive_Execution_Info where oppId = '"+Id+"' order by seq_no;";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(selectQuery);
             while(rs.next())

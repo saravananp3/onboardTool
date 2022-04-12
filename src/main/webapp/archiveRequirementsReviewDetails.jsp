@@ -420,9 +420,44 @@ font-size:12px;
     background:#1565c0;
 	padding: 15px;  
 }
+
+.form-wizard .form-wizard-steps {
+margin: -6px 0;
+}
+
+#overlay{
+position: fixed;
+top: 0;
+z-index: 100;
+width:1500px;
+height:100%;
+display: none;
+background: rgb(0,0,0,0.6);
+}
+.cv-spinner {
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.spinner {
+width: 40px;
+height: 40px;
+border: 4px #ddd solid;
+border-top: 4px #2e93e6 solid;
+border-radius: 50%;
+animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+100% {
+transform: rotate(360deg);
+}
+}
+.is-hide{
+display:none;
+}
 </style>
 
-</style>
 </head>
 <body class="top-navbar-fixed">
     <form class="form-signin" name="loginForm" method="post">
@@ -576,7 +611,7 @@ e.printStackTrace();
 						<div class="form-wizard-header">
 							
 							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
-							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<!-- <p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p> -->
 								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
 								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
 								<li class="activated" onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
@@ -590,8 +625,12 @@ e.printStackTrace();
 							</ul>
 						</div>
 						</div></div>
-						
-                <div class="content-container" >
+				<div id="overlay">
+					<div class="cv-spinner">
+						<span class="spinner"></span>
+					</div>
+				</div>
+				<div class="content-container" >
                    
                     <div class="main-page">
                         
@@ -867,11 +906,11 @@ e.printStackTrace();
                                                                 <button type="button" class="btn btn-secondary" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsAddendum.jsp';" >Prev</button>
                                                             </div>
                                                          <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
-                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary">
+                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary" onClick="myFunction()">
                         Request Sign
                     </button>
                    
-                                                                <button class="form-wizard-next-btn float-right btn-info btn btn-info" id="ReviewNextBtn" onclick="location.href='archiveRequirementsApprovalDetails.jsp';" disabled="true">
+                                                                <button class="form-wizard-next-btn float-right btn-info btn btn-info" id="ReviewNextBtn" onclick="location.href='archiveRequirementsApprovalDetails.jsp';">
                                                                 <a href="javascript:;" id="nextBtn" style="color: #fff;">Next</a></button>
                                                                
                                                             </div>
@@ -973,6 +1012,16 @@ $(document).on('mouseenter','.active1', function(){
 		 
 	 });
 	
+</script>
+<script>
+var myVar;
+function myFunction() {
+document.getElementById("overlay").style.display = "block";
+myVar = setTimeout(showPage,180);
+}
+function showPage() {
+document.getElementById("overlay").style.display = "none";
+}
 </script>
 <script src="js/navigation/navigation.js"></script>
 <!-- ========== Toastr ========== -->
