@@ -224,6 +224,13 @@ padding: 15px;
     background:#1565c0;
 	padding: 15px;  
 }
+
+.form-wizard .form-wizard-steps {
+margin: -6px 0;
+}
+#module_header {
+margin-top: 97px;
+}
    
 </style>
 
@@ -358,7 +365,7 @@ e.printStackTrace();
 						<div class="form-wizard-header">
 							
 							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
-							<p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p>
+							<!-- <p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p> -->
 								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
 								<li class="active" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
 								<li onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>

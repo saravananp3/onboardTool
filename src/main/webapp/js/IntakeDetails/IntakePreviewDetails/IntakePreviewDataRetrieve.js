@@ -290,4 +290,3 @@ function checkReadOnlyData(ColumnName){
 	return checkBoolean;
 	
 }
-

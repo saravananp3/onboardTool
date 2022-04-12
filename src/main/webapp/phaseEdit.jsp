@@ -21,6 +21,8 @@
  <!-- =========== Header Icon ========= -->
  
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> 
+  <link rel="stylesheet" href="css/headerIcon/headerIcon.css"
+	media="screen">
  
 
     <!-- ========== THEME CSS ========== -->
@@ -34,11 +36,9 @@
 	media="screen">
 </head>
 <style>
-
     body{
             background:#fff;
         }
-
         .active1{
         background:#1565c0;
          }
@@ -54,11 +54,9 @@
 	padding-left: 0px;
     padding-right: 0px;
 	}
-
 #panels1{
 margin:60px auto;
 }
-
 .iconAlign{
     display: flex;
 	align-items: center;
@@ -70,19 +68,15 @@ margin:60px auto;
 .iconColor{
 	color: #1565c0;
 }
-
 .textColor:hover{
 	text-color: #1565c0;
 }
-
 li a .iconColor:hover{
 	color: #1565c0;
 }
-
 li a .activeIcon :hover{
 	color: #1565c0;
 }
-
 li a.alignCenter{
 	text-align : center;
 	font-size: 15px;  
@@ -90,11 +84,8 @@ li a.alignCenter{
 .navAlign{
 margin-left : 150px;
 }
-
 }
     
-
-
 </style>
 
 <body class="top-navbar-fixed">
@@ -112,11 +103,9 @@ margin-left : 150px;
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="onboard.DBconnection" %>
 <%
-
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 response.setHeader("Expires", "0"); // Proxies.
-
 if (session.getAttribute("username")==null)
 {
 response.sendRedirect("Login.jsp");
@@ -161,7 +150,6 @@ HttpSession details = request.getSession();
 		          </ul>
 		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                        
-
                         <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
@@ -180,9 +168,7 @@ HttpSession details = request.getSession();
                               <p class="sub-title">Create and manage your Opportunities here</p>
                         </div>
                        
-
                     </div>
-
                 </div>
 			</nav>
         </div> -->

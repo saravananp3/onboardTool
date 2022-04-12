@@ -608,7 +608,7 @@ e.printStackTrace();
 					<br/>
 					
                                     <div class="form-wizard-header nav-font">
-											<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+											<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
 											
 												<ul class="list-unstyled form-wizard-steps clearfix">
 														<li class="activated"
@@ -625,7 +625,7 @@ e.printStackTrace();
 															<i>Stake Holder</i></li>
 														<li class="active"
 															onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
-														<li onclick="location.href='IntakeApproval.jsp';"><span>7</span><i>Approval</i></li>
+														<li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
 												</ul>
 						           </div>
                                          <div class="card-container card">

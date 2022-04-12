@@ -50,7 +50,6 @@ body {
 	background: #fff;
 	font-family: 'Poppins', sans-serif;
 }
-
 /*  .active{
         background:#1565c0;
          } */
@@ -58,17 +57,14 @@ body {
 	background: #1565c0;
 	padding: 15px;
 }
-
 .fixed-top {
 	width: 100%;
 	padding-left: 0px;
 	padding-right: 0px;
 }
-
 h1 {
 	color: green;
 }
-
 /* toggle in label designing */
 .toggle {
 	position: absolute;
@@ -81,7 +77,6 @@ h1 {
 	border-radius: 30px;
 	border: 2px solid #1287ea;
 }
-
 /* After slide changes */
 .toggle:after {
 	content: '';
@@ -94,51 +89,41 @@ h1 {
 	left: 1px;
 	transition: all 0.5s;
 }
-
 /* Toggle text */
 p {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 }
-
 /* Checkbox cheked effect */
 .checkbox:checked+.toggle::after {
 	left: 49px;
 }
-
 /* Checkbox cheked toggle label bg color */
 .checkbox:checked+.toggle {
 	background-color: #ffffff;
 }
-
 /* Checkbox vanished */
 .checkbox {
 	display: none;
 }
-
 hr {
 	border-top: 3px solid #dce8f1;
 }
-
 input[type=search] {
 	outline: 0;
 	border-width: 0 0 3px 0;
 	border-color: #d2d2d2;
 }
-
 input[type=search]:focus {
 	border-color: #1565c0;
 }
-
 .cbp-vm-switcher {
 	padding: 42px;
 }
-
 .cbp-vm-options {
 	text-align: right;
 	padding-bottom: 10px;
 }
-
 .cbp-vm-options a {
 	display: inline-block;
 	width: 30px;
@@ -148,7 +133,6 @@ input[type=search]:focus {
 	color: #d0d0d0;
 	margin: 2px;
 }
-
 /* .cbp-vm-options a:hover,
 .cbp-vm-options a.cbp-vm-selected {
 	color: #47a3da;
@@ -161,48 +145,39 @@ input[type=search]:focus {
 	text-align: center;
 	display: inline-block;
 }
-
 /* General style of switch items' list */
 .cbp-vm-switcher ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-
 /* Clear eventual floats */
 .cbp-vm-switcher ul:before, .cbp-vm-switcher ul:after {
 	content: " ";
 	display: table;
 }
-
 .cbp-vm-switcher ul:after {
 	clear: both;
 }
-
 .cbp-vm-switcher ul li {
 	display: block;
 	position: relative;
 }
-
 .cbp-vm-image {
 	display: block;
 	margin: 0 auto;
 }
-
 .cbp-vm-image img {
 	display: inline-block;
 	max-width: 100%;
 }
-
 .cbp-vm-title {
 	margin: 0;
 	padding: 0;
 }
-
 .cbp-vm-price {
 	color: #c0c0c0;
 }
-
 .cbp-vm-add {
 	color: #fff;
 	background: #47a3da;
@@ -212,16 +187,13 @@ input[type=search]:focus {
 	display: inline-block;
 	transition: background 0.2s;
 }
-
 .cbp-vm-add:hover {
 	color: #fff;
 	background: #02639d;
 }
-
 .cbp-vm-add:before {
 	margin-right: 5px;
 }
-
 /* Common icon styles */
 .cbp-vm-icon:before {
 	font-family: 'fontawesome';
@@ -233,14 +205,11 @@ input[type=search]:focus {
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
-
 /* Individual view mode styles */
-
 /* Large grid view */
 .cbp-vm-view-grid ul {
 	text-align: center;
 }
-
 .cbp-vm-view-grid ul li {
 	width: 20%;
 	text-align: center;
@@ -248,46 +217,38 @@ input[type=search]:focus {
 	display: inline-block;
 	vertical-align: top;
 }
-
 .cbp-vm-view-grid .cbp-vm-title {
 	font-size: 21px;
 }
-
 .cbp-vm-view-grid .cbp-vm-details {
 	max-width: 300px;
 	min-height: 70px;
 	margin: 0 auto;
 }
-
 .cbp-vm-view-grid .cbp-vm-price {
 	margin: 10px 0;
 	font-size: 1.5em;
 }
-
 .cbp-vm-view-list .right-col {
 	float: left;
 	width: 25%;
 }
-
 .cbp-vm-view-list .cbp-vm-title {
 	font-size: 1.3em;
 	padding: 0 30px;
 	white-space: normal;
 	width: 25%;
 }
-
 .cbp-vm-view-list .center-col {
 	float: left;
 	width: 20%;
 	margin-right: 51px;
 }
-
 .cbp-vm-view-list .center-col {
 	float: left;
 	width: 20%;
 	margin-right: 51px;
 }
-
 .cbp-vm-view-list li {
 	padding: 12px 0;
 	white-space: nowrap;
@@ -296,24 +257,20 @@ input[type=search]:focus {
 	margin: 13px;
 	padding-top: 10px;
 }
-
 .cbp-vm-view-list li:focus {
 	display: block;
 	border: 2px solid red;
 }
-
 @media screen and (max-width: 66.7em) {
 	.cbp-vm-view-list .cbp-vm-details {
 		width: 30%;
 	}
 }
-
 @media screen and (max-width: 57em) {
 	.cbp-vm-view-grid ul li {
 		width: 49%;
 	}
 }
-
 @media screen and (max-width: 47.375em) {
 	.cbp-vm-view-list .cbp-vm-image {
 		width: 20%;
@@ -330,13 +287,11 @@ input[type=search]:focus {
 		margin: 10px;
 	}
 }
-
 @media screen and (max-width: 40.125em) {
 	.cbp-vm-view-grid ul li {
 		width: 100%;
 	}
 }
-
 /* .grid{
   margin-top:10%;
   
@@ -345,22 +300,18 @@ input[type=search]:focus {
 	display: block;
 	border: 2px solid red;
 }
-
 .progress {
 	margin-top: 5px;
 }
-
 .cologen {
 	color: #1c95f8 !important;
 }
-
 .right-side {
 	position: absolute;
 	right: 10%;
 	top: 80px;
 	z-index: 1;
 }
-
 #button {
 	height: 50px;
 	width: 50px;
@@ -373,21 +324,18 @@ input[type=search]:focus {
 	padding: 12px;
 	text-align: center;
 }
-
 .form-row {
 	display: flex;
 	flex-wrap: wrap;
 	margin-right: -5px;
 	margin-left: -5px;
 }
-
 .search-input {
 	min-width: 150px;
 	max-width: 290px;
 	flex: 1;
 	position: relative;
 }
-
 #myInput {
 	border: none;
 	border-bottom: 1px solid #959595;
@@ -403,53 +351,43 @@ input[type=search]:focus {
 	margin-top: 5px;
 	padding-bottom: 3px;
 }
-
 .fa-search {
 	color: #fff;
 }
 /* toggle */
-
 /* toggle */
 #apptype {
 	font-size: .875rem;
 	color: #fff;
 }
-
 .paneldashboard {
 	box-shadow: 0 1px 7px rgb(76, 89, 103);
 	margin-top: 14px;
 }
-
 .font_icon {
 	font-size: 20px;
 }
-
 .totcounter {
 	font-size: 43px;
 	margin-bottom: 14px;
 	text-align: center;
 }
-
 .headercharts {
 	margin-left: 22px;
 	margin-bottom: 21px;
 }
-
 #card-header {
 	background-color: #fff;
 	font-weight: 600;
     font-size: 16px;
     color: #141515;
 }
-
-
 focus {
 background-color: #ff00ff;
 color: #fff;
 cursor: pointer;
 font-weight: bold;
 }
-
 #dropDownMenu
 {
 margin: 0;
@@ -460,12 +398,10 @@ left: -20px;
 .dropdown-menu>li>a {
 line-height: 1.128571489;
 }
-
 h6 {
 	padding-left: 55%;
     font-size: 16px;
 }
-
 </style>
 
 </head>
@@ -510,7 +446,6 @@ h6 {
         Date date = new Date();
         SimpleDateFormat ft,ft1;
         String username=(String)details.getAttribute("username");
-
         ft=new SimpleDateFormat ("yyyy-MM-dd");
         ft1=new SimpleDateFormat ("hh:mm:ss");
         String strDate=ft.format(date);
@@ -528,7 +463,6 @@ h6 {
                     break;
                 }
             }
-
         }
         //System.out.println("the flag value is "+flag);
         if(flag==1)
@@ -543,7 +477,6 @@ h6 {
             preparedStmt.setString(5, strTime);
             preparedStmt.setString(6, "None");
             preparedStmt.setString(7, "");
-
             // execute the preparedstatement
             preparedStmt.execute();
         }%>
@@ -552,8 +485,6 @@ h6 {
 
 	<!-- main wrapper -->
 	<%-- <div class="main-wrapper">
-
-
      <!-- ========== TOP NAVBAR ========== -->
     <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -577,7 +508,6 @@ h6 {
                         <%
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>
-
                         <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
@@ -599,9 +529,7 @@ h6 {
                         
                         </div>
                       
-
                     </div>
-
                 </div>
 			</nav>
         </div> --%>
@@ -723,8 +651,6 @@ h6 {
                                                 con.close();
                                                 visit_st.close();
     }
-
-
                                             catch(Exception e){
                                                 e.printStackTrace();
                                             }
@@ -791,7 +717,7 @@ h6 {
 												<canvas id="mycanvas" width="200" height="200"
 													style="margin-left: 0%;"></canvas>
 												<div id="legend"
-													style="margin-top: -34%; margin-left: 37%; font-size: 10px; font-weight: 700;">
+													style="margin-top: -34%; margin-left: 37%; font-size: 11px; font-weight: 600;">
 												</div>
 											</div>
 											<div class="col-md-4.5" id="canvas2"
@@ -805,7 +731,7 @@ h6 {
 
 											</div>
 											<div id="legend2"
-												style="float: right; margin-right: -57%; margin-top: -33%; font-size: 10px; font-weight: 700;"></div>
+												style="float: right; margin-right: -57%; margin-top: -33%; font-size: 11px; font-weight: 600;"></div>
 										</div>
 									</div>
 								</div>
@@ -945,7 +871,7 @@ h6 {
 												<canvas id="canvasCBA" width="200" height="200"
 													style="margin-left: -10%;"></canvas>
 												<div id="legend1"
-													style="margin-top: -165%; margin-left: 180%; float: left; font-size: 70%; font-weight: 700;"></div>
+													style="margin-top: -165%; margin-left: 180%; float: left; font-size: 75%; font-weight: 600;"></div>
 											</div>
 										</div>
 
@@ -1056,7 +982,6 @@ $(document).ready(function() {
     $('.searchbox-input').keyup(function(){
         search_text($(this).val());
     });
-
     function search_text(value){
         $('#ul_id .cbp-vm-title').each(function(){
             var found = 'false';
@@ -1088,7 +1013,6 @@ $(document).ready(function() {
             ['Sum of in Process',  365000, 'blue'],          
             ['Sum of Intake/Opportunity', 192000.00, 'blue']
          ]);
-
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
                        { calc: "stringify",
@@ -1096,7 +1020,6 @@ $(document).ready(function() {
                          type: "string",
                          role: "annotation" },
                        2]);
-
       var options = {
         title: "Total",
         width: 600,
@@ -1117,7 +1040,6 @@ $(document).ready(function() {
         ['Sum of Realized',      110000.00, 'blue'],     
         ['Sum of in Process',  365000, 'blue'],          
         ['Sum of Intake/Opportunity', 192000.00, 'blue'] ]);
-
       var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,
                        { calc: "stringify",
@@ -1125,7 +1047,6 @@ $(document).ready(function() {
                          type: "string",
                          role: "annotation" },
                        2]);
-
       var options = {
         title: "Total",
         width: 400,

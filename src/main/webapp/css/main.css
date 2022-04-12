@@ -4389,7 +4389,7 @@ code:not(.language-html) {
 
 .dropdown-menu {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  min-width: 220px;
+  min-width: 120px;
   padding: 0;
   border: 0;
 }

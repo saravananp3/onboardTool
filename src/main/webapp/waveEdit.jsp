@@ -21,6 +21,8 @@
  <!-- =========== Header Icon ========= -->
  
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> 
+  <link rel="stylesheet" href="css/headerIcon/headerIcon.css"
+	media="screen">
  
 
     <!-- ========== THEME CSS ========== -->

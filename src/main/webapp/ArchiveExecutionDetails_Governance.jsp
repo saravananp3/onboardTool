@@ -507,7 +507,83 @@ background:#1565c0 important;
 
 </head>
 <body class="top-navbar-fixed">
+<%@ page import="java.text.SimpleDateFormat"%>
+	<%@ page import="java.util.Date"%>
+	<%
+	SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date newDate1 = new Date();
+	System.out.println("[INFO]-----" + formatter1.format(newDate1) + "-----Accessed OpportunityList JSP PAGE-----[INFO]");
+	%>
+	<%@page language="java"%>
+	<%@page import="java.text.DateFormat"%>
+	<%@page import="java.text.SimpleDateFormat"%>
+	<%@page import="java.util.Date"%>
+	<%@page import="java.sql.*"%>
+	<%@ page import="onboard.DBconnection"%>
+	<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Expires", "0");
+	if (session.getAttribute("username") == null) {
+		response.sendRedirect("Login.jsp");
+	}
+	%>
+	<%
+	HttpSession role_session = request.getSession();
+	String frole1 = (String) role_session.getAttribute("role");
+	//int sumcount1=0;
+	Statement sDate, sTime;
+	try {
+		//String query;
+		HttpSession sessionDetails = request.getSession();
+		String Projects = (String) sessionDetails.getAttribute("projects");
+		System.out.println("projects-------------" + Projects);
+		String rolesList = (String) sessionDetails.getAttribute("role");
+		DBconnection db = new DBconnection();
+		Connection connectCon = (Connection) db.getConnection();
+		String visit_query1 = "select * from visits";
+		Statement visit_start = connectCon.createStatement();
+		ResultSet visit_reset = visit_start.executeQuery(visit_query1);
+		int flag1 = 1, knt1 = 0;
+		Date newDate = new Date();
+		SimpleDateFormat fDate, fTime;
+		String userName = (String) sessionDetails.getAttribute("username");
 
+		fDate = new SimpleDateFormat("yyyy-MM-dd");
+		fTime = new SimpleDateFormat("hh:mm:ss");
+		String startDate = fDate.format(newDate);
+		String startTime = fTime.format(newDate);
+		while (visit_reset.next()) {
+			if (visit_reset.getString(6) != null) {
+		if (visit_reset.getString(1).equals(userName) && visit_reset.getString(2).equals(startDate)
+				&& visit_reset.getString(3).equals("Logged in")) {
+			Statement stmtt = connectCon.createStatement();
+			String queryy = "update visits set count=count+1,time='" + startTime + "' where uname='" + userName
+					+ "' and module='Logged in'  and date ='" + startDate + "'";
+			int count = stmtt.executeUpdate(queryy);
+			flag1 = 0;
+			break;
+		}
+			}
+
+		}
+		//System.out.println("the flag value is "+flag);
+		if (flag1 == 1) {
+			String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
+			+ " values (?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement preparedStmt = connectCon.prepareStatement(ins_query);
+			preparedStmt.setString(1, userName);
+			preparedStmt.setString(2, startDate);
+			preparedStmt.setString(3, "Logged in");
+			preparedStmt.setString(4, "1");
+			preparedStmt.setString(5, startTime);
+			preparedStmt.setString(6, "None");
+			preparedStmt.setString(7, "");
+
+			// execute the preparedstatement
+			preparedStmt.execute();
+		}
+	%>
 <nav class="navbar navbar-expand-md navbar-light bg-white nav-height nav-font">
 	<div class="container-fluid" id="container-fluid-margin">
 		<a class="navbar-brand" href="OpportunityList.jsp"> <img
@@ -550,7 +626,7 @@ background:#1565c0 important;
 				<ul class="dropdown-menu" style="min-width:0px; left:90%;top:-60%;">
 					<li><a class="dropdown-item" href="#" id="textAlign"><i
 							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
-							in as <br/><b>admin</b></a></li>
+							in as <br/><b><%=userName%></b></a></li>
 					<hr style="margin-left:0px;"/>
 					<li><a class="dropdown-item li-align" href="#" id="textAlign"
 						onclick="location.href='Login.jsp';"><i
@@ -562,6 +638,16 @@ background:#1565c0 important;
 	</div>
 	
 </nav>
+
+<%
+	connectCon.close();
+	visit_start.close();
+	}
+
+	catch (Exception e) {
+	e.printStackTrace();
+	}
+	%>
 
 <%-- <%@include file="Nav-Bar.jspf"%> --%>
 	<nav class="nav nav-height-70 nav-font" id="bg-color">

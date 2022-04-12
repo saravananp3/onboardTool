@@ -210,7 +210,13 @@ padding: 15px;
     background:#1565c0;
 	padding: 15px;  
 }
-   
+
+.form-wizard .form-wizard-steps {
+margin: -6px 0;
+}
+#module_header {
+margin-top: 97px;
+}
 </style>
 
 <body class="top-navbar-fixed">

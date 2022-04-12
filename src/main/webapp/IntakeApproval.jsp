@@ -607,7 +607,7 @@ e.printStackTrace();
 												<br/>
 				                                                        	<br/>
 												<div class="form-wizard-header nav-font">
-													<p style="font-size: 14px;">Fill all the required fields to go next step</p>
+													<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
 													
 												<ul class="list-unstyled form-wizard-steps clearfix">
 														<li class="activated"
@@ -632,243 +632,7 @@ e.printStackTrace();
 
 												
 
-										<!-- 		<div class="panel panel-default">
-												 Opportunity Details
-													<div class="panel-heading OpportunityInfoPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse1">
-																Opportunity Details</a>
-														</h4>
-													</div>
-													<div id="collapse1" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse11" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="OpportunityInfoPreview">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													Triage Details
-													<div class="panel-heading TriageInfoPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse2">
-																Triage Details</a>
-														</h4>
-													</div>
-													<div id="collapse2" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse12" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="TriageInfoPreview">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													Triage Summary Details
-													<div class="panel-heading TriageSummInfoPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse3">
-																Triage Summary Details</a>
-														</h4>
-													</div>
-													<div id="collapse3" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse13" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="TriageSummInfoPreview">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													Intake Assessment Details
-													<div class="panel-heading AssessmentInfoPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse4">
-																Intake Assessment</a>
-														</h4>
-													</div>
-													<div id="collapse4" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse14" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																<div class="panel panel-default">
-																	Application Details
-													<div class="panel-heading ApplicationInformationPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse41">
-																Application Details</a>
-														</h4>
-													</div>
-													<div id="collapse41" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse141" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="ApplicationInformationPreview">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-
-															Data Characteristics Details
-													<div class="panel-heading DataCharacteristicsPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse42">
-																Data Characteristics</a>
-														</h4>
-													</div>
-													<div id="collapse42" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse142" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="DataCharacteristicsPreview">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-
-													Compliance Characteristics Details
-													<div class="panel-heading ComplianceCharacteristicsPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse43">
-																Compliance Characteristics</a>
-														</h4>
-													</div>
-													<div id="collapse43" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse143" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="ComplianceCharacteristicsPreview">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-															
-													Archival Consumption Details
-													<div class="panel-heading ArchivalConsumptionPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse44">
-																Archival Consumption</a>
-														</h4>
-													</div>
-													<div id="collapse44" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse144" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="ArchivalConsumptionPreview">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-															
-					
-													Contract Information Details
-													<div class="panel-heading ContractInformationPreview intakeSection" style="display:none;">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse45">
-																Contract Information</a>
-														</h4>
-													</div>
-													<div id="collapse45" class="panel-collapse collapse" >
-														<div class="panel-body">
-															<div id="collapse145" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div>
-																	<table class="IntakePreviewClass" style="border-collapse: collapse;width: 100%;">
-																	<tbody id="ContractInformationPreview" style="display:none;">
-																	
-																	</tbody>
-																	</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													</div>
-													</div>
-																</div>
-															</div>
-														</div>
-														Stake Holder
-													<div class="panel-heading StakeHolderInfoPreview intakeSection">
-														<h4 class="panel-title">
-															<a class="collapsed" data-toggle="collapse"
-																data-parent="#panels1" href="#collapse5">
-																Stake Holder</a>
-														</h4>
-													</div>
-													<div id="collapse5" class="panel-collapse collapse">
-														<div class="panel-body">
-															<div id="collapse15" class="panel-collapse collapse in"
-																name="collapse">
-																<div class="panel-body">
-																	<div id="StakeHolderInfoPreview">
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													</div> -->
+									
 																	
 								
 												<div class="card-container card">											 
@@ -1313,5 +1077,18 @@ $(document).on('mouseenter','.active1', function(){
 <!-- ========== Toastr ========== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+ <script>
+ setTimeout(function() {
+ $('.accordion').on('shown.bs.collapse', function () {
+	 var panel = $(this).find('.show');
+
+	 $('html, body').animate({
+	 scrollTop: panel.offset().top
+	 });
+
+	 });
+ },1000);
+</script>
     
 </html>
