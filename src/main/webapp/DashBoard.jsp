@@ -724,7 +724,7 @@ h6 {
 												style="padding-left: 318px; margin-top: -34%; margin-right: 12%;">
 												<h6 class="d-flex justify-content-left"
 													style="margin-left: 95%;">
-													<b>Waves</b>
+													<b style="margin-top: -8px;">Waves</b>
 												</h6>
 												<canvas id="mycanvas1" width="200" height="200"
 													style="margin-left: 96%;"></canvas>
