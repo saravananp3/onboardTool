@@ -20,18 +20,20 @@ return repository.save(u);
 
     public user_data updateuserdata(user_data u){
 
-        user_data existinguser=repository.findByUfname(u.getUfname());
-        if(existinguser.equals(null))
+        user_data existinguserfname=repository.findByUfname(u.getUfname());
+        user_data existingusername=repository.findByUname(u.getUname());
+        if(existinguserfname.equals(null) && existingusername.equals(null))
         {
             return null;
         }
         else
         {
-        existinguser.setUfname(u.getUfname());
-        existinguser.setUlname(u.getUlname());
-        existinguser.setUemail(u.getUemail());
-        existinguser.setUgroup(u.getUgroup());
-        return repository.save(existinguser);
+        existinguserfname.setUfname(u.getUfname());
+        existinguserfname.setUlname(u.getUlname());
+        existinguserfname.setUemail(u.getUemail());
+        existinguserfname.setUemail(u.getUname());
+        existinguserfname.setUgroup(u.getUgroup());
+        return repository.save(existinguserfname);
         }
     }
 

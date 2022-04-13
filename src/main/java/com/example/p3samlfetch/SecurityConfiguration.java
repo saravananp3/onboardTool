@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
+        System.out.println("SAML Invokes");
         http
             .authorizeRequests()
                 .antMatchers("/saml*").permitAll()
