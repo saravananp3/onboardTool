@@ -3,12 +3,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
+import java.security.*;
 import com.google.gson.JsonObject;
 import onboard.DBconnection;
 public class Add_users_service {
     public static JsonObject add_users(String uname,String ufname,String ulname,String u_email,String u_pwd,String u_role) {
         JsonObject jsonobj = new JsonObject();
     try {
+        String s_u_pwd = generate_u_encrypt_pwd(u_pwd);
+        System.out.println("S_U_Pwd:"+s_u_pwd);
         String random_id = generateRandomApprovalId();
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
@@ -20,7 +23,7 @@ public class Add_users_service {
         preparedStmt1.setString(3, ufname);
         preparedStmt1.setString(4, ulname);
         preparedStmt1.setString(5, u_email);
-        preparedStmt1.setString(6, u_pwd);
+        preparedStmt1.setString(6, s_u_pwd);
         preparedStmt1.setString(7, u_role);
         preparedStmt1.execute();
         jsonobj.addProperty("id", random_id);
@@ -28,7 +31,7 @@ public class Add_users_service {
         jsonobj.addProperty("ufname", ufname);
         jsonobj.addProperty("ulname", ulname);
         jsonobj.addProperty("u_email", u_email);
-        jsonobj.addProperty("u_pwd", u_pwd);
+        jsonobj.addProperty("u_pwd", s_u_pwd);
         jsonobj.addProperty("u_role", u_role);
     }
 catch(Exception e)
@@ -37,6 +40,25 @@ catch(Exception e)
     }
     return jsonobj;
 }
+    public static String generate_u_encrypt_pwd(String u_pwd) throws SQLException {
+       MessageDigest md;
+    try {
+        md = MessageDigest.getInstance("SHA-512");
+       md.update(u_pwd.getBytes());
+       byte[] pwdresultarray =md.digest();
+       StringBuilder psb=new StringBuilder();
+       for(byte b:pwdresultarray)
+       {
+           psb.append(String.format("%02x",b));
+       }
+       return psb.toString();
+    }
+     catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "";
+    }
     public static String generateRandomApprovalId() throws SQLException {
         String uniqueID = "";
             uniqueID = UUID.randomUUID().toString();
