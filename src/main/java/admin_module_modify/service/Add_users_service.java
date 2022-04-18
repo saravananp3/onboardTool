@@ -1,7 +1,9 @@
 package admin_module_modify.service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.UUID;
 import java.security.*;
 import com.google.gson.JsonObject;
@@ -61,8 +63,40 @@ catch(Exception e)
     }
     public static String generateRandomApprovalId() throws SQLException {
         String uniqueID = "";
+        boolean checkTermination = true;
+        while(checkTermination) {
             uniqueID = UUID.randomUUID().toString();
             System.out.println("App Id : " + uniqueID);
+            boolean checkDupilcateId = checkDuplicateApprovalId(uniqueID);
+            if(checkDupilcateId == false) {
+                checkTermination = false;
+                }
+        }
         return uniqueID;
+    }
+    public static boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
+        boolean checkDuplicate = false;
+        try {
+        	DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            System.out.println("Connected...");
+        
+        
+        String selectQuery = "select * from users order by seq_no;";
+        Statement state = connection.createStatement();
+        ResultSet result = state.executeQuery(selectQuery);
+        while(result.next()) {
+            String checkApprovalId = result.getString("random_id");
+            if(checkApprovalId == uniqueID) {
+                checkDuplicate = true;
+            }   
+        }
+        }
+        catch(Exception e)
+        {
+        	
+        }
+        return checkDuplicate;
+    
     }
 }

@@ -21,6 +21,8 @@ function appendRowFunction(data){
         var ulname = value.ulname;
         var u_email = value.u_email;
         var u_role = value.u_role;
+        var random_id = value.random_id;
+        
         var row = "<tr>"+
                 "<td style='text-align:center;vertical-align: middle;'><label class='control-label' for=''>"+uname+"</label>" +
                  "</td>"+
@@ -32,7 +34,9 @@ function appendRowFunction(data){
                  "</td>"+
                  "<td style='text-align:center;vertical-align: middle;'><label class='control-label ' for=''>"+u_role+"</label>" +
                  "</td>"+
-                  "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup'style='display:block;'></span><span class='glyphicon glyphicon-trash deletepopup' style='float:right;display:block;'></span>"+
+                  "<td style='text-align:center;vertical-align: middle;display:none;'><label class='control-label ' for=''>"+random_id+"</label>" +
+                 "</td>"+
+                  "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup'style='display:block;'></span><span class='glyphicon glyphicon-trash deletepopup' style='float:right;display:block;margin-top:-13px;'></span>"+
                   "</td>"+
                   "</tr>";
                   $("#Userslist").append(row);

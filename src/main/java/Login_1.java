@@ -51,11 +51,13 @@ public class Login_1 extends HttpServlet {
         // TODO Auto-generated method stub
         HttpSession details=request.getSession(); 
         HttpSession session=request.getSession();
+             
         String user_email=request.getParameter("user_email");
         String user_fname=request.getParameter("user_fname");
         String user_lname=request.getParameter("user_lname");
         String username=request.getParameter("username");
         String user_group=request.getParameter("user_group");
+       
         session.setAttribute("username",user_fname);
     class Samp
     {
@@ -206,6 +208,7 @@ public class Login_1 extends HttpServlet {
     int i=0,exec_det=0,dum=0,lm=0;
 try
 {
+   
     DBconnection dbConnection = new DBconnection();
     Connection con = (Connection) dbConnection.getConnection();
     Statement st5= con.createStatement(); 
@@ -726,12 +729,14 @@ try
     ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+user_fname+"'");
     try
     {   
+        
         PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uname=? AND ufname=? AND ulname=? AND u_email=? AND  u_role=? ");
         ps.setString(1, username);
         ps.setString(2,user_fname);
         ps.setString(3,user_lname);
         ps.setString(4,user_email);
         ps.setString(5,user_group);
+        
         ResultSet rs2=ps.executeQuery();
         if(rs2.next())
         {
@@ -740,6 +745,7 @@ try
             String dbulname=rs2.getString("ulname");
             String dbu_email=rs2.getString("u_email");
             String dbu_role=rs2.getString("u_role");
+            
             if(username.equals(dbuname)&& user_fname.equals(dbufname)&& user_lname.equals(dbulname)&&user_email.equals(dbu_email)&& user_group.equals(dbu_role)) 
     {
         details.setAttribute("role","admin");
@@ -752,6 +758,7 @@ try
         String redirectURL = "DashBoard.jsp";
         response.sendRedirect(redirectURL);
     }
+    
         else {
             //System.out.println("if");
             String msg = "";
@@ -770,6 +777,7 @@ try
                 MDC.put("USERID", user_id);
                 MDC.put("USERROLE", u_role);
                 logger.info("Logged In"); 
+
     }
     catch(Exception e)
     {

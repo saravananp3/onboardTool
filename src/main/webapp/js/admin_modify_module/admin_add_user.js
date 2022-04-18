@@ -17,18 +17,15 @@ $('#add_usersubmit').click(function(){
                 var u_email=data.u_email;
                 var u_pwd=data.u_pwd;
                 var u_role=data.u_role;
-                /*$("#uname").val("");
-                $("#ufname").val("");
-                $("#ulname").val("");
-                $("#u_email").val("");
-                $("#u_pwd").val("");
-                $("#u_role").val("");               
-                //$("#edit_close").click();
-                //$('.hidepencil').hide();*/
-                notification("success","User is Added Successfully.","Note");
-        }    
+                
+                
+        } 
+           
         });
-       location.reload(); });
+       notification("success","User is Added Successfully.","Note");
+       window.setTimeout(function(){location.reload()},220) });
+       
+       
         $(document).on('click', '.editpopup', function () {
     $('#editpopup_btn').click();
      var seqnum=$(this).index('.editpopup');
@@ -38,19 +35,25 @@ $('#add_usersubmit').click(function(){
     var ulname_modify=currentRow.find("td:eq(2)").text();
     var u_email_modify=currentRow.find("td:eq(3)").text();
     var u_role_modify=currentRow.find("td:eq(4)").text();
+    var random_id_modify=currentRow.find("td:eq(5)").text();
+    
+    
      $('#uname_modify').val(uname_modify);
      $('#ufname_modify').val(ufname_modify);
      $('#ulname_modify').val(ulname_modify);
      $('#u_email_modify').val(u_email_modify);
      $('#u_role_modify').val(u_role_modify);
-     $('#seq_num').val(seqnum);
+     $('#random_id_modify').val(random_id_modify);
+     
     $('#EditPopUp').on('shown.bs.modal', function () {
     });
     });
     $(document).on('click', '.deletepopup', function () {
     $('#deletepopup_btn').click();
     var seq_num=$(this).index('.deletepopup');
-    $('#seq_num').val(seq_num);
+    var currentRow=$(this).closest("tr");
+    var random_id=currentRow.find("td:eq(5)").text();
+    $('#random_id').val(random_id);
     $('#DeletePopUp').on('shown.bs.modal', function () {
     });
     });

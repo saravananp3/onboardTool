@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
-<% String user_fname = request.getParameter("user_fname"); %>
+<%-- <% String user_fname = request.getParameter("user_fname"); %> --%>
 <%
 %>
 <!DOCTYPE html>
@@ -11,17 +11,24 @@
         <title>JSP Page</title>
     </head>
     <body>
+    
         <%String user_email = request.getParameter("user_email");%>
+        <% String user_fname = request.getParameter("user_fname");%>
         <% String user_lname = request.getParameter("user_lname"); %>
+        <%String username = request.getParameter("username");%>
         <% String user_group = request.getParameter("user_group"); %>
     </body>
      <%
     %>
        <form class=" vldauth" 
 action="Login_1" method="POST" name="loginForm">
-   <input type="text" id="uname" class="fadeIn second" name="usr" placeholder="Username" value="<%=user_fname%>">
-            <input type="password" id="pwd" class="fadeIn third" name="pwd" placeholder="Password" value="<%=user_email%>">
-             <input type="password" id="u_email" class="fadeIn third" name="u_email" placeholder="Password" value="<%=user_group%>">
+			   <input type="text" id="user_email" class="fadeIn second" name="user_email" placeholder="User Email" value="<%=user_email%>">
+			   <input type="text" id="user_fname" class="fadeIn second" name="user_fname" placeholder="User FirstName" value="<%=user_fname%>">
+			   <input type="text" id="user_lname" class="fadeIn second" name="user_lname" placeholder="User LastName" value="<%=user_lname%>">
+           	   <input type="text" id="username" class="fadeIn third" name="username" placeholder="Username" value="<%=username%>">
+               <input type="text" id="user_group" class="fadeIn third" name="user_group" placeholder="User Email" value="<%=user_group%>">
+    			
+    
     <input type="submit" name="submitInput">
 <script>
     window.onload = function(){
@@ -34,6 +41,7 @@ action="Login_1" method="POST" name="loginForm">
     --%>
     <h2>SAML Logged User is</h2>
     <h3>E-Mail : <%=user_email%></h3>
+    <h3>Username : <%=username%></h3>
     <h3>Firstname : <%=user_fname%></h3>
     <h3>Lastname : <%=user_lname%></h3>
     <h3>Group : <%=user_group%></h3>
