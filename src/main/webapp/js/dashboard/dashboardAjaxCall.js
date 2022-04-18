@@ -612,8 +612,6 @@ function dashboardDetails() {
 $(document).ready(function() {
 
 	var optionsPie = {
-
-
 	};
 
 	$.ajax({

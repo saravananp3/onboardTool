@@ -6,13 +6,13 @@ import java.sql.Statement;
 import com.google.gson.JsonObject;
 import onboard.DBconnection;
 public class Update_users_service {
-    public static JsonObject update_users(String uname_modify,String ufname_modify,String ulname_modify,String u_email_modify,String u_role_modify,int seq_num) {
+    public static JsonObject update_users(String uname_modify,String ufname_modify,String ulname_modify,String u_email_modify,String u_role_modify,String random_id_modify) {
         JsonObject jsonobj = new JsonObject();
     try {
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("Connected...");
-        String usersupdatequery = "select uname,ufname,ulname,u_email,u_role from users where seq_num = '"+seq_num+"';";
+        String usersupdatequery = "select uname,ufname,ulname,u_email,u_role from users where random_id = '"+random_id_modify+"';";
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(usersupdatequery);
         if (rs.next()) {
@@ -24,7 +24,7 @@ public class Update_users_service {
         }
 System.out.println("Username"+uname_modify);
 System.out.println("Firstname"+ufname_modify);
-        String update_query = "update users set uname =?,ufname=?,ulname=?,u_email=?,u_role=? where seq_num = '"+seq_num+"';";
+        String update_query = "update users set uname =?,ufname=?,ulname=?,u_email=?,u_role=? where random_id = '"+random_id_modify+"';";
         PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
         preparedStmt1.setString(1, uname_modify);
         preparedStmt1.setString(2, ufname_modify);

@@ -51,14 +51,14 @@ public class Login_1 extends HttpServlet {
         // TODO Auto-generated method stub
         HttpSession details=request.getSession(); 
         HttpSession session=request.getSession();
-        String jdbcurl="jdbc:mysql://localhost:3306/decom3sixtytool";
-        String jdbcuname="root";
-        String jdbcpwd="password123";
-        //details.setAttribute("u_Name",userid);
-        String userid=request.getParameter("usr");
-        String pwd=request.getParameter("pwd");
-        String ugroup=request.getParameter("u_email");
-        session.setAttribute("username",userid);
+             
+        String user_email=request.getParameter("user_email");
+        String user_fname=request.getParameter("user_fname");
+        String user_lname=request.getParameter("user_lname");
+        String username=request.getParameter("username");
+        String user_group=request.getParameter("user_group");
+       
+        session.setAttribute("username",username);
     class Samp
     {
         String seq_num,level,name,id,refid;
@@ -208,8 +208,7 @@ public class Login_1 extends HttpServlet {
     int i=0,exec_det=0,dum=0,lm=0;
 try
 {
-    //Class.forName("com.mysql.jdbc.Driver"); 
-    //java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123");
+   
     DBconnection dbConnection = new DBconnection();
     Connection con = (Connection) dbConnection.getConnection();
     Statement st5= con.createStatement(); 
@@ -727,26 +726,28 @@ try
     System.gc();
     }
     Statement st= con.createStatement(); 
-    ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");
+    ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+username+"'");
     try
     {   
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection c=DriverManager.getConnection(jdbcurl,jdbcuname,jdbcpwd);
-        PreparedStatement ps=c.prepareStatement("SELECT * FROM user_table WHERE ufname=? AND uemail=? AND ugroup=? ");
-        ps.setString(1, userid);
-        ps.setString(2,pwd);
-        ps.setString(3,ugroup);
+        
+        PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uname=?  ");
+        ps.setString(1, username);
+       
+        
         ResultSet rs2=ps.executeQuery();
         if(rs2.next())
         {
-            String dbuname=rs2.getString("ufname");
-            String dbpwd=rs2.getString("uemail");
-            String dburole=rs2.getString("ugroup");
-            if(userid.equals(dbuname) && pwd.equals(dbpwd) && ugroup.equals(dburole)) 
+            String dbuname=rs2.getString("uname");
+            String dbufname=rs2.getString("ufname");
+            String dbulname=rs2.getString("ulname");
+            String dbu_email=rs2.getString("u_email");
+            String dbu_role=rs2.getString("u_role");
+            
+            if(username.equals(dbuname)&& user_fname.equals(dbufname)&& user_lname.equals(dbulname)&&user_email.equals(dbu_email)&& user_group.equals(dbu_role)) 
     {
-        details.setAttribute("role","admin");
+        details.setAttribute("role",dbu_role);
         details.setAttribute("projects","all");
-        details.setAttribute("admin","X");
+        details.setAttribute(dbu_role,"X");
         details.setAttribute("prj","X");
         details.setAttribute("app_emp","X");
         details.setAttribute("intake","X");
@@ -754,39 +755,11 @@ try
         String redirectURL = "DashBoard.jsp";
         response.sendRedirect(redirectURL);
     }
-    else
-        {
-        if(rs.next()) 
-    {
-        encryption et=new encryption();
-          String passw=(String)et.decrypt(rs.getString(5));
-        // System.out.println("decrypted pass is "+passw+" and entered passw is "+pwd);
-            if((passw.equals(pwd)))
-    { 
-        details.setAttribute("role",rs.getString(7));
-        details.setAttribute("projects",rs.getString(6));
-        details.setAttribute("applications",rs.getString(11));
-        Statement st1= con.createStatement(); 
-        ResultSet rs1=st.executeQuery("select * from Role_Details where role='"+rs.getString(7)+"'"); 
-        if(rs1.next())
-        {
-            details.setAttribute("admin",rs1.getString(2));
-            details.setAttribute("app_emp",rs1.getString(3));
-            details.setAttribute("intake",rs1.getString(4));
-            details.setAttribute("archive_exec",rs1.getString(5));
-        }
-                    String redirectURL = "DashBoard.jsp";
-                    response.sendRedirect(redirectURL);
-    }
-            else 
-            { 
-                response.sendRedirect("Login_Error.jsp?ErrorMessage=Password is Incorrect");//pwd is incorrect
-            }
-    }
+    
         else {
             //System.out.println("if");
             String msg = "";
-            if (!userid.equals(dbuname)) {
+            if (!username.equals(dbuname)) {
                 msg = "This user not yet registered.";
             } else
             {
@@ -801,7 +774,7 @@ try
                 MDC.put("USERID", user_id);
                 MDC.put("USERROLE", u_role);
                 logger.info("Logged In"); 
-}
+
     }
     catch(Exception e)
     {

@@ -14,7 +14,7 @@ public class Retrieve_users_service {
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("Connected...");
-        String selectQuery = "select uname,ufname,ulname,u_email,u_role from users";
+        String selectQuery = "select uname,ufname,ulname,u_email,u_role,random_id from users where random_id IS NOT NULL";
         Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(selectQuery);
         while(rs.next())
@@ -25,6 +25,7 @@ public class Retrieve_users_service {
             jsonObj.addProperty("ulname",rs.getString(3));
             jsonObj.addProperty("u_email",rs.getString(4));
             jsonObj.addProperty("u_role",rs.getString(5));
+            jsonObj.addProperty("random_id",rs.getString(6));
             jsonArray.add(jsonObj);
        }    
     }

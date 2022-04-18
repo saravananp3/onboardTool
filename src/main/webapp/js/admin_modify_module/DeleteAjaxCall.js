@@ -1,13 +1,14 @@
 $('#delete_submit').click(function(){
-        var seq_num=$('#seq_num').val();
+        var random_id=$('#random_id').val();
         $.ajax({
             url: "Delete_users_servlet",
             type: 'POST',
-            data : {seq_num:seq_num},
+            data : {random_id:random_id},
             dataType: "json",
             success: function (data) {
-                var seq_num=data.seq_num;
-                notification("success","Selected field is edited successfully in Opportunity.","Note");
+                var random_id=data.random_id;
+                
             }
         });
-        location.reload();});
+        notification("warning","User is Deleted Successfully","Delete User");
+        window.setTimeout(function(){location.reload()},220)});

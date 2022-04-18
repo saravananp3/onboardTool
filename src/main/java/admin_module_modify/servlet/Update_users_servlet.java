@@ -38,7 +38,8 @@ public class Update_users_servlet extends HttpServlet {
         String ulname_modify=request.getParameter("ulname_modify");
         String u_email_modify=request.getParameter("u_email_modify");
         String u_role_modify=request.getParameter("u_role_modify");
-        int seq_num = Integer.parseInt(request.getParameter("seq_num"))+1;
+        String random_id_modify=request.getParameter("random_id_modify");
+       
         //String seq_num = request.getParameter("seq_num");
         System.out.println("ID"+id);
         System.out.println("User Name : "+uname_modify);
@@ -46,8 +47,9 @@ public class Update_users_servlet extends HttpServlet {
         System.out.println("User Last Name: "+ulname_modify);
         System.out.println("User Email: "+u_email_modify);
         System.out.println("User Role: "+u_role_modify);
-        System.out.println("Seq Num: "+seq_num);
-        JsonObject jsonObj =Update_users_service.update_users(uname_modify, ufname_modify, ulname_modify, u_email_modify, u_role_modify, seq_num);
+        System.out.println("Random ID: "+random_id_modify);
+        
+        JsonObject jsonObj =Update_users_service.update_users(uname_modify, ufname_modify, ulname_modify, u_email_modify, u_role_modify, random_id_modify);
          String json = new Gson().toJson(jsonObj);
          System.out.println("JSON"+json);
             response.setContentType("application/json");
