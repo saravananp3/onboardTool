@@ -58,7 +58,7 @@ public class Login_1 extends HttpServlet {
         String username=request.getParameter("username");
         String user_group=request.getParameter("user_group");
        
-        session.setAttribute("username",user_fname);
+        session.setAttribute("username",username);
     class Samp
     {
         String seq_num,level,name,id,refid;
@@ -726,16 +726,13 @@ try
     System.gc();
     }
     Statement st= con.createStatement(); 
-    ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+user_fname+"'");
+    ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+username+"'");
     try
     {   
         
-        PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uname=? AND ufname=? AND ulname=? AND u_email=? AND  u_role=? ");
+        PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uname=?  ");
         ps.setString(1, username);
-        ps.setString(2,user_fname);
-        ps.setString(3,user_lname);
-        ps.setString(4,user_email);
-        ps.setString(5,user_group);
+       
         
         ResultSet rs2=ps.executeQuery();
         if(rs2.next())
@@ -748,9 +745,9 @@ try
             
             if(username.equals(dbuname)&& user_fname.equals(dbufname)&& user_lname.equals(dbulname)&&user_email.equals(dbu_email)&& user_group.equals(dbu_role)) 
     {
-        details.setAttribute("role","admin");
+        details.setAttribute("role",dbu_role);
         details.setAttribute("projects","all");
-        details.setAttribute("admin","X");
+        details.setAttribute(dbu_role,"X");
         details.setAttribute("prj","X");
         details.setAttribute("app_emp","X");
         details.setAttribute("intake","X");
@@ -762,7 +759,7 @@ try
         else {
             //System.out.println("if");
             String msg = "";
-            if (!user_fname.equals(dbuname)) {
+            if (!username.equals(dbuname)) {
                 msg = "This user not yet registered.";
             } else
             {
