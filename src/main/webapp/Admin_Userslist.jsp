@@ -167,7 +167,7 @@ body {
 	<div class="main-wrapper">
 
 		<%@include file="Nav-Bar.jspf"%>
-		<nav class="nav nav-height-70 nav-font" id="bg-color">
+		<nav class="nav nav-height-70 nav-font" id="bg-color" style = "margin-top: -20px;">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav-1 mt-3">
