@@ -606,7 +606,7 @@ pointer-events:all;
                             <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             <button type="button" class="btn btn-primary pull-right" id="addWaveBtnId" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#existWavePopUp'>
-                            </button>r
+                            </button>
                             <button type="button" class="btn btn-primary pull-right" id="deleteBtn" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#deletePopUp'>
                             </button>
                             <button type="button" class="btn btn-primary pull-right" id="deletePhaseBtn" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#deletePhasePopUp'>

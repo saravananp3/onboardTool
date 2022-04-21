@@ -34,23 +34,35 @@ $(document).ready(function(){
                     disable_property = "";
                     delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
                 }
-                if(Type=="Text box")
-                { 
-                	
-                    var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
-                        "<label class='control-label' for='archiveLegacy'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
-                        "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
-                        "</div>";
-                    $('#inputFieldsAppInfo').append(inputtext);
-                    
-             
-                }
+				if (Type == "Text box") {
+					var template_check = "";
+					var inputtext = "<div class='form-group InputField' id ='" + ColumnName + "_Row'>\n" +
+						"<label class='control-label' for='archiveLegacy'>" + LabelName + "<span " + manadatory + "></span></label>" + delete_icon + "<span class='glyphicon glyphicon-pencil editpopup hidepencil ' style='float:right;display:none;'></span>\n";
+					if (ColumnName == "totalsize") {
+						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					else if (ColumnName == "estimatestrucsize") {
+						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					else if (ColumnName == "estimateunstrucsize") {
+						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					else {
+						inputtext = inputtext + "<input type='text' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					$('#inputFieldsAppInfo').append(inputtext);
+				}
+
                 else if(Type=="Datepicker")
                 {
                 	
                     var inputdate="<div class='form-group InputField' id='"+ColumnName+"_Row'>" +
                         "<label class='control-label' for= 'archiveLegacy'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
-                        "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
+                        "<input type='text' onchange='dateChangeFunction(this.value)' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";
                     $('#inputFieldsAppInfo').append(inputdate);
                     
@@ -201,3 +213,10 @@ $(document).on('change','input[name = dataloclaw]',function()
 		});
 
 });
+
+function dateChangeFunction(val) {
+	if (!val.match('^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$')) {
+		notification("warning", "Date field should be in mm/dd/yyyy format", "Note:");
+	}
+}
+

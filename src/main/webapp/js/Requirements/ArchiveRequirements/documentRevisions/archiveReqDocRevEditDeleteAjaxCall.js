@@ -8,10 +8,10 @@ $(document).ready(function(){
 		if(nameReadOnly)
 		{
 			
-			$(".date").eq(seqNum).addClass("datepicker1");
-			$(".date").eq(seqNum).removeAttr("readonly");
-			$( ".datepicker1" ).datepicker("refresh");
-			$(".version").eq(seqNum).removeAttr("readonly");
+		//	$(".date").eq(seqNum).addClass("datepicker1");
+		//	$(".date").eq(seqNum).removeAttr("readonly");
+	//	$( ".datepicker1" ).datepicker("refresh");
+		//	$(".version").eq(seqNum).removeAttr("readonly");
 			$(".documentChanges").eq(seqNum).removeAttr("readonly");
 			$(".changeAuthor").eq(seqNum).removeAttr("readonly");
 			notification("info","Seleted row is editable.","Info:");
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		else
 		{
 			$(".date").eq(seqNum).prop("readonly", true);
-			$(".date").eq(seqNum).removeClass("datepicker1");
+			//$(".date").eq(seqNum).removeClass("datepicker1");
 			$(".version").eq(seqNum).prop("readonly", true);
 			$(".documentChanges").eq(seqNum).prop("readonly", true);
 			$(".changeAuthor").eq(seqNum).prop("readonly", true);
@@ -63,6 +63,7 @@ function archiveReqDocRevDeleteAjaxCall(seqNum){
         	if(data.DeleteStatus){
         		$('.rowClassDoc').eq(seqNum-1).remove();
         		notification("success","Seleted row deleted Successfully.","Note:");
+        		archiveReqDocRevDataRetrieve("0");
         	}
         	else
         		notification("error","Error occured while deleting the row.","Error:");
