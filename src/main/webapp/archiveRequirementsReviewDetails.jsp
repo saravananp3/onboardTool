@@ -910,8 +910,11 @@ e.printStackTrace();
                         Request Sign
                     </button>
                    
-                                                                <button class="form-wizard-next-btn float-right btn-info btn btn-info" id="ReviewNextBtn" onclick="location.href='archiveRequirementsApprovalDetails.jsp';">
-                                                                <a href="javascript:;" id="nextBtn" style="color: #fff;">Next</a></button>
+                                                               
+                                                                
+																
+																<button type="button" class="btn btn-primary"
+                                                                    onclick="location.href='archiveRequirementsApprovalDetails.jsp';" id="ReviewNextBtn" >Next</button>
                                                                
                                                             </div>
                                                     </div>

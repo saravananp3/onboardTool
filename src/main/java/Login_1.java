@@ -545,11 +545,11 @@ try
         AssessmentDetails[4] = new Assessment(5,"","",ComplianceChar,"","Remaining Retention Period (if applicable)","remainingretentionperiod","Datepicker","Yes","");
         AssessmentDetails[5] = new Assessment(6,"","",ComplianceChar,"","Special Data Retention Requirements","specialdataretention","Text box","No","");
         AssessmentDetails[6] = new Assessment(7,"","",ComplianceChar,"Yes,No","Legal Hold","legalhold","RadioBoxDependencyYes","Yes","");
-        AssessmentDetails[7] = new Assessment(8,"","",ComplianceChar,"","If any, please describe details","ifanypleasedescribe","TextBoxDependencyYes","Yes","");
+        AssessmentDetails[7] = new Assessment(8,"","",ComplianceChar,"","If any, please describe details","ifanypleasedescribe","TextBoxDependencyYes","No","");
         AssessmentDetails[8] = new Assessment(9,"","",ComplianceChar,"Yes,No","Are there any pending litigations that impacts the retirment of the application and data","retirementappanddata","Radio box","Yes","");
         AssessmentDetails[9] = new Assessment(10,"","",ComplianceChar,"On Hold, Pending review, Cleared","Legal Status","legalstatus","Dropdown","Yes","");
         AssessmentDetails[10] = new Assessment(11,"","",ComplianceChar,"Yes,No","Any specific Purge requirements?","specificpurgerequirements","RadioBoxDependencyYes","Yes","");
-        AssessmentDetails[11] = new Assessment(12,"","",ComplianceChar,"","If any, please describe details","describedetails","TextBoxDependencyYes","Yes","");     
+        AssessmentDetails[11] = new Assessment(12,"","",ComplianceChar,"","If any, please describe details","describedetails","TextBoxDependencyYes","No","");     
         for (int index = 0; index<AssessmentDetails.length; index++)
         {
             String ComplianceChar_InsertQuery = "insert into Assessment_Compliance_Char_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)"
