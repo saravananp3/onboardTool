@@ -50,16 +50,8 @@ public class Update_User_registration extends HttpServlet {
             String application_id = request.getParameter("application_id");
             String id = request.getParameter("id");
             Update_User_Registration_Service update_user_registration_service = new Update_User_Registration_Service().Update_Service_Registration(uname, fname, lname, email_val, project_id, application_id, id);
-            /*            String update_registration = new Update_User_Registration_Service().Update_Service_Registration(uname,fname,lname,email_val,project_id,application_id,id);*/
             logger.info("queryyyy" + update_user_registration_service);
-            /*String myDriver = "org.gjt.mm.mysql.Driver";
-            String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-            Class.forName(myDriver);
-            Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-            Statement st = conn.createStatement();
-            String query = "update admin_userdetails set uname='" + uname + "',fname='" + fname + "',lname='" + lname + "',email='" + email_val + "',projects='" + project_id + "',application='" + application_id + "' where id='" + id + "'; ";
-            st.executeUpdate(query);
-            conn.close();*/
+            
             response.sendRedirect("Modify_Admin_Users_list.jsp");
         } catch (Exception e) {
             e.printStackTrace();

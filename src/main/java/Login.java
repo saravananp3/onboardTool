@@ -253,8 +253,7 @@ public class Login extends HttpServlet {
 		
 try
 {
-	//Class.forName("com.mysql.jdbc.Driver"); 
-	//java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool","root","password123");
+	
 
 	DBconnection dbConnection = new DBconnection();
 	Connection con = (Connection) dbConnection.getConnection();

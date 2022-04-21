@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class Login
  */
@@ -43,20 +45,15 @@ public class LoggedIn extends HttpServlet {
 		
 		HttpSession details=request.getSession(); 
 		HttpSession session=request.getSession();
-		
-		String jdbcurl="jdbc:mysql://localhost:3306/decom3sixtytool";
-		String jdbcuname="root";
-		String jdbcpwd="password123";
-		//details.setAttribute("u_Name",userid);
 		String ufname=request.getParameter("usr");
 		String ulname=request.getParameter("pwd");
 		String ugroup=request.getParameter("u_email");
 		session.setAttribute("username",ufname);
 			try
 			{	
-				Class.forName("com.mysql.jdbc.Driver");
-				Connection c=DriverManager.getConnection(jdbcurl,jdbcuname,jdbcpwd);
-				PreparedStatement ps=c.prepareStatement("SELECT * FROM user_table WHERE ufname=? AND ulname=? AND ugroup=? ");
+				 DBconnection dBconnection = new DBconnection();
+			        Connection connection = (Connection) dBconnection.getConnection();
+				PreparedStatement ps=connection.prepareStatement("SELECT * FROM user_table WHERE ufname=? AND ulname=? AND ugroup=? ");
 				ps.setString(1, ufname);
 				ps.setString(2,ulname);
 				ps.setString(3,ugroup);
@@ -68,12 +65,12 @@ public class LoggedIn extends HttpServlet {
 					String dbpwd=rs.getString("ulname");
 					String dburole=rs.getString("ugroup");
 					
-					if(ufname.equals(dbuname) && ulname.equals(dbpwd) && ugroup.equals(dburole)) //check fethable database record and user input value are match after continue
+					if(ufname.equals(dbuname) && ulname.equals(dbpwd) && ugroup.equals(dburole))
 		            {
 				
 						if(ugroup.equals("DECOM_ADMIN")||ugroup.equals("DECOM_SUPER_ADMIN")|| ugroup.equals("DECOM_TECHNICAL_CONTRIBUTOR"))
 						{
-							session.setAttribute("USER",dbuname); //session name is "admin_login" and store fetchable database "dbemail" address
+							session.setAttribute("USER",dbuname); 
 		                    response.sendRedirect("DashBoard.jsp");
 						}
 					

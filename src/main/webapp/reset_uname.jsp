@@ -390,6 +390,7 @@
 	System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed reset_uname JSP PAGE-----[INFO]");  %>
 <%@page language="java"%>
 <%@page import="java.sql.*"%>
+<%@ page import="onboard.DBconnection"%>
 <%
 	System.out.println("start page");
 	String x=request.getParameter("email");
@@ -401,10 +402,10 @@
 	String Qn="";
 	String ans="";
 	String uname="";
-	Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
+	DBconnection dBconnection = new DBconnection();
+    Connection connection = (Connection) dBconnection.getConnection();
 	String query = "SELECT * from Admin_UserDetails where email='"+x+"' and roles='"+rl+"' and projects like '%"+pj+"%'";
-	Statement st = conn.createStatement();
+	Statement st = connection.createStatement();
 	ResultSet rs = st.executeQuery(query);
 
 	if(rs.next()){

@@ -15,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import onboard.DBconnection;
 import onboard.encryption;
 
 /**
@@ -49,33 +51,28 @@ public class user_registration extends HttpServlet {
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed User Registration servlet-----[INFO]");  
 		String roles=request.getParameter("reg_roles");
-	String username=request.getParameter("reg_uname");
-	String firstname=request.getParameter("reg_fname");
-	String lastname=request.getParameter("reg_lname");
-	String email=request.getParameter("reg_email");
-	String confmemail=request.getParameter("reg_cemail");
-	String pass=request.getParameter("reg_pwd");
-	String confmpass=request.getParameter("reg_cpwd");
-	String projects=request.getParameter("reg_projects");
-	String question=request.getParameter("reg_qn");
-	String answer=request.getParameter("reg_ans");
-	String app=request.getParameter("reg_app");
-	
-	encryption et=new encryption();
-	String passw=et.encrypt(pass);
+		String username=request.getParameter("reg_uname");
+		String firstname=request.getParameter("reg_fname");
+		String lastname=request.getParameter("reg_lname");
+		String email=request.getParameter("reg_email");
+		String confmemail=request.getParameter("reg_cemail");
+		String pass=request.getParameter("reg_pwd");
+		String confmpass=request.getParameter("reg_cpwd");
+		String projects=request.getParameter("reg_projects");
+		String question=request.getParameter("reg_qn");
+		String answer=request.getParameter("reg_ans");
+		String app=request.getParameter("reg_app");
+		encryption et=new encryption();
+		String passw=et.encrypt(pass);
 	//System.out.println("enpt pass is "+passw);
 	 try
       {
-        // create a mysql database connection
-        String myDriver = "org.gjt.mm.mysql.Driver";
-        String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-        Class.forName(myDriver);
-        Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-      
+		 DBconnection dBconnection = new DBconnection();
+	     Connection connection = (Connection) dBconnection.getConnection();
         String query = " insert into Admin_UserDetails (uname, fname, lname, email, pwd, projects, roles,stats,question,answer,application)"
 	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-	          PreparedStatement preparedStmt = conn.prepareStatement(query);
+	          PreparedStatement preparedStmt = connection.prepareStatement(query);
 	          preparedStmt.setString(1, username);
 	          preparedStmt.setString(2, firstname);
 	          preparedStmt.setString(3, lastname);
@@ -92,7 +89,7 @@ public class user_registration extends HttpServlet {
 	          
 	         
         
-        conn.close();
+         connection.close();
         response.sendRedirect("confirmation?email="+email);
       }
       catch (Exception e)

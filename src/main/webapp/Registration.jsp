@@ -145,6 +145,7 @@
 	Date date = new Date();
 	System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Registration JSP PAGE-----[INFO]"); %>
 <%@page import="java.sql.*" %>
+<%@ page import="onboard.DBconnection"%>
 <%
 	HttpSession ses = request.getSession();
 	String role = (String) ses.getAttribute("My_Roles");
@@ -154,10 +155,10 @@
 	String project = (String) ses.getAttribute("project");
 	String app = (String) ses.getAttribute("application");
 	System.out.println(fname + "   " + lname);
-	Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
+	DBconnection dBconnection = new DBconnection();
+    Connection connection = (Connection) dBconnection.getConnection();
 	String query = "select uname from Admin_UserDetails";
-	Statement st = conn.createStatement();
+	Statement st = connection.createStatement();
 	ResultSet rs = st.executeQuery(query);
 %>
 

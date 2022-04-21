@@ -6,6 +6,9 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+
+import onboard.DBconnection;
+
 import javax.servlet.ServletConfig;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -86,17 +89,13 @@ public class Project extends HttpServlet {
 		        String Enddate = request.getParameter("Enddate"); 
 		        try
 		        {
-		        	
-		          // create a mysql database connection
-		          String myDriver = "org.gjt.mm.mysql.Driver";
-		          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-		          Class.forName(myDriver);
-		          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
+		        	 DBconnection dBconnection = new DBconnection();
+		             Connection connection = (Connection) dBconnection.getConnection();
 		     
 		          String query = " insert into AppEmphazize_ProjectDetails (projectname, descr,appno,Startdate,Intdate,Plandate,Execdate,Hyperdate,Enddate)"
 		            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		          PreparedStatement preparedStmt = conn.prepareStatement(query);
+		          PreparedStatement preparedStmt = connection.prepareStatement(query);
 		          preparedStmt.setString (1, projectname);
 		          preparedStmt.setString   (2, descr);
 		          preparedStmt.setString (3, appno);
@@ -111,7 +110,7 @@ public class Project extends HttpServlet {
 		          String query4 = " insert into AppEmphazize_ApplicationPrioritization (prj_name, IA_lic_cst, IA_maint_cst, Infrastrct_cst, strg_est, lab_cst, proj_name, data_size, data_source, curnt_users, complexity, est_archive, est_scrn, est_db_size, est_hrs, est_cst, ttl_IA_cst, ttl_infra_cst, ttl_IA_prdct_cst, ttl, ttl_cst_fr_app, add_cst_fr_contigency, add_cst, IA_app_sprt_cst, est_archive_cst,no_of_app_complexity, read_date,sme_date)"
 		  	            + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
           
-		  	          PreparedStatement preparedStmt1 = conn.prepareStatement(query4);
+		  	          PreparedStatement preparedStmt1 = connection.prepareStatement(query4);
 		  	          preparedStmt1.setString(1,projectname);
 		  	          preparedStmt1.setString(2, " ");
 		  	          preparedStmt1.setString(3, " ");
@@ -143,13 +142,13 @@ public class Project extends HttpServlet {
 		           preparedStmt1.execute();
 		           
 		          String query1="select * from ArchiveExecution_Defaultvalues";
-		          Statement st1 = conn.createStatement();
+		          Statement st1 = connection.createStatement();
 				     ResultSet rs1 = st1.executeQuery(query1);
 				     while(rs1.next())
 				     {
 				    	 
 				    	 String query2="insert into ArchiveExecution_Details(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects,progressbar)"+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-				    	 PreparedStatement preparedStmt2 = conn.prepareStatement(query2);
+				    	 PreparedStatement preparedStmt2 = connection.prepareStatement(query2);
 				          preparedStmt2.setInt (1,rs1.getInt(1));
 				          preparedStmt2.setInt (2,rs1.getInt(2));
 				          preparedStmt2.setString (3,rs1.getString(3));
@@ -167,7 +166,7 @@ public class Project extends HttpServlet {
 				          preparedStmt2.execute(); 
 				     }
 		          
-		          conn.close();
+				     connection.close();
 		        }
 		        catch (Exception e)
 		        {

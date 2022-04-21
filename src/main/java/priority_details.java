@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class priority_details
  */
@@ -69,15 +71,9 @@ public class priority_details extends HttpServlet {
      
         try
         {
-          // create a mysql database connection
-          String myDriver = "org.gjt.mm.mysql.Driver";
-          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-          Class.forName(myDriver);
-          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-        
-       
-          
-          Statement st=conn.createStatement();
+        	 DBconnection dBconnection = new DBconnection();
+             Connection connection = (Connection) dBconnection.getConnection();
+        	Statement st=connection.createStatement();
           
           for(int a=0;a<4;a++){
         	  String projectname=project_name[a];
@@ -91,7 +87,7 @@ public class priority_details extends HttpServlet {
       //System.out.println("update AppEmphazize_ApplicationPrioritization set complexity='"+complexitye+"',est_db_size='"+estdbsize+"',est_cst='"+estcst+"',priorities='"+priorities+"' where proj_name='"+projectname+"'");
            }
           
-          conn.close();
+          connection.close();
         }
         catch (Exception e)
         {
