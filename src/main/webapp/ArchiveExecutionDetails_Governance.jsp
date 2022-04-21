@@ -596,7 +596,7 @@ background:#1565c0 important;
 							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
 					</li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
-						aria-current="page" href="Admin_Module_Send_Invites.jsp"><i
+						aria-current="page" href="Admin_Userslist.jsp"><i
 							class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
 					</li>
 					<li class="nav-item moduleIcon"><a class="nav-link active2"
