@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;
                                             charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Decom3Sixty Tool</title>
     </head>
     <body>
     
@@ -22,14 +22,13 @@
     %>
        <form class=" vldauth" 
 action="Login_1" method="POST" name="loginForm">
-			   <input type="text" id="user_email" class="fadeIn second" name="user_email" placeholder="User Email" value="<%=user_email%>">
-			   <input type="text" id="user_fname" class="fadeIn second" name="user_fname" placeholder="User FirstName" value="<%=user_fname%>">
-			   <input type="text" id="user_lname" class="fadeIn second" name="user_lname" placeholder="User LastName" value="<%=user_lname%>">
-           	   <input type="text" id="username" class="fadeIn third" name="username" placeholder="Username" value="<%=username%>">
-               <input type="text" id="user_group" class="fadeIn third" name="user_group" placeholder="User Email" value="<%=user_group%>">
+			   <input type="hidden" id="user_email" class="fadeIn second" name="user_email" placeholder="User Email" value="<%=user_email%>">
+			   <input type="hidden" id="user_fname" class="fadeIn second" name="user_fname" placeholder="User FirstName" value="<%=user_fname%>">
+			   <input type="hidden" id="user_lname" class="fadeIn second" name="user_lname" placeholder="User LastName" value="<%=user_lname%>">
+           	   <input type="hidden" id="username" class="fadeIn third" name="username" placeholder="Username" value="<%=username%>">
+               <input type="hidden" id="user_group" class="fadeIn third" name="user_group" placeholder="User Email" value="<%=user_group%>">
     			
-    
-    <input type="submit" name="submitInput">
+        <!-- <input type="submit" name="submitInput"> -->
 <script>
     window.onload = function(){
     document.forms['loginForm'].submit();
@@ -39,10 +38,10 @@ action="Login_1" method="POST" name="loginForm">
     <%-- Here we use the JSP expression tag to display value
         stored in a variable
     --%>
-    <h2>SAML Logged User is</h2>
+    <%-- <h2>SAML Logged User is</h2>
     <h3>E-Mail : <%=user_email%></h3>
     <h3>Username : <%=username%></h3>
     <h3>Firstname : <%=user_fname%></h3>
     <h3>Lastname : <%=user_lname%></h3>
-    <h3>Group : <%=user_group%></h3>
+    <h3>Group : <%=user_group%></h3> --%>
 </html>
