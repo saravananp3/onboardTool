@@ -1,6 +1,6 @@
 <%@page import="java.util.Properties"%>
 <%@page import="java.io.InputStream"%>
-<%@page import="onboard.DB_Creation_connection"%>
+<%@page import="onboard.DBconnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.sql.*"%>
@@ -19,18 +19,19 @@
         Date date = new Date();  
         System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed DB_Creation JSP PAGE-----[INFO]");  %>
 <%
-try
-{			DB_Creation_connection  d = new DB_Creation_connection();
+	try
+	{		
+			DBconnection  d = new DBconnection(true);
 	    	Connection dbconnection = (Connection) d.getConnection();
 	        Statement s = dbconnection.createStatement();
 	       	s.executeUpdate("CREATE DATABASE decom3sixtytool");
 	       	dbconnection.close();
-}
+	}
 
-catch(Exception e)
-{
+	catch(Exception e)
+	{
     System.err.println("[ERROR]-----Got an exception!-----Tables Already Created----[ERROR]");
-}
+	}
 %>
 </body>
 </html>
