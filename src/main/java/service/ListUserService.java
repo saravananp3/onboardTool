@@ -22,21 +22,18 @@ public class ListUserService {
     public JsonObject getUserList() {
         JsonObject infoJson = new JsonObject();
         try {
-            Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
-            String user_query = "select * from admin_userdetails /*where stats='active'*/";
-            /*String user_query = "select * from admin_userdetails where uname ='" + uname+ "'";*/
-            Statement user_st = connection.createStatement();
-            ResultSet users_list = user_st.executeQuery(user_query);
-            while (users_list.next()) {
+        	 DBconnection dBconnection = new DBconnection();
+             Connection connection = (Connection) dBconnection.getConnection();        	       	
+             String user_query = "select * from admin_userdetails /*where stats='active'*/";
+             Statement user_st = connection.createStatement();
+             ResultSet users_list = user_st.executeQuery(user_query);
+             while (users_list.next()) {
                 String field = users_list.getString("id");
-                //String value = users_list.getString("uname").concat(" ("+ users_list.getString("fname")).concat(users_list.getString("lname")+")");
-                //String value = users_list.getString("id").concat("\t"+users_list.getString("uname")).concat("\t("+users_list.getString("email")+")");
                 String value = users_list.getString("uname").concat("\t("+users_list.getString("email")+")");
-                //String value = users_list.getString("uname");
                 infoJson.addProperty(field, value);
-            }
-        } catch (Exception e) {
+             }
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
         return infoJson;
@@ -49,10 +46,7 @@ public class ListUserService {
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            //Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-            //Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
             String user_query = "select id,uname,email from admin_userdetails where id in (" + StringUtils.join(recepientsId, ',') + ")";
-            /*String user_query = "select * from admin_userdetails where uname ='" + uname+ "'";*/
             Statement user_st = connection.createStatement();
             ResultSet users_list = user_st.executeQuery(user_query);
             while (users_list.next()) {

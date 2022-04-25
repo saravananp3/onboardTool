@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class deactivate
  */
@@ -50,12 +52,9 @@ public class deactivate extends HttpServlet {
 
 		try
 	      {
-	        // create a mysql database connection
-	        String myDriver = "org.gjt.mm.mysql.Driver";
-	        String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-	        Class.forName(myDriver);
-	        Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-	        Statement st = conn.createStatement();
+			 DBconnection dBconnection = new DBconnection();
+		        Connection connection = (Connection) dBconnection.getConnection();
+	        Statement st = connection.createStatement();
 	        
 	      
 	        for(int i=0;i<names.length;i++)
@@ -73,7 +72,7 @@ public class deactivate extends HttpServlet {
 
 		         
 	        response.sendRedirect("Admin_Userslist.jsp");
-	        conn.close();
+	        connection.close();
 	      }
 	      catch (Exception e)
 	      {

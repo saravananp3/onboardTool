@@ -18,6 +18,9 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+
+import onboard.DBconnection;
+
 import javax.servlet.ServletConfig;
 /**
  * Servlet implementation class updatedb
@@ -63,22 +66,21 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
     System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Updated servlet-----[INFO]");  
 	String u_name=(String)details.getAttribute("username");
 	String Project_Name=(String)details.getAttribute("nameofproject");
-
-		String userid=u_name;
-				MDC.put("USERID", userid);
-String project_name[]=new String[10];
-String complexity[]=new String[10];
-String priority[]=new String[10];
-int cnt=(Integer.parseInt(request.getParameter("appname_size")));
-int count=0;
-for(int i=0;i<cnt;i++){
-project_name[i]=request.getParameter("project_name"+i);
-complexity[i]=request.getParameter("complexity"+i);
-priority[i]=request.getParameter("priority"+i);
-//System.out.println(project_name[i]);
-if(priority[i]!=null)
-	 count++;
-}
+	String userid=u_name;
+	MDC.put("USERID", userid);
+	String project_name[]=new String[10];
+	String complexity[]=new String[10];
+	String priority[]=new String[10];
+	int cnt=(Integer.parseInt(request.getParameter("appname_size")));
+	int count=0;
+	for(int i=0;i<cnt;i++){
+		project_name[i]=request.getParameter("project_name"+i);
+		complexity[i]=request.getParameter("complexity"+i);
+		priority[i]=request.getParameter("priority"+i);
+		//System.out.println(project_name[i]);
+		if(priority[i]!=null)
+			count++;
+				}
 
 
     PrintWriter writer = response.getWriter();
@@ -86,16 +88,9 @@ if(priority[i]!=null)
      
         try
         {
-          // create a mysql database connection
-          String myDriver = "org.gjt.mm.mysql.Driver";
-          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-          Class.forName(myDriver);
-          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-        
-       
-          
-          Statement st=conn.createStatement();
-          
+          DBconnection dBconnection = new DBconnection();
+          Connection connection = (Connection) dBconnection.getConnection();
+          Statement st=connection.createStatement();
           for(int a=0;a<count;a++){
           String projectname=project_name[a];
           String complexitye=complexity[a];
@@ -109,7 +104,7 @@ if(priority[i]!=null)
  
           }
           
-          conn.close();
+          connection.close();
         }
         catch (Exception e)
         {

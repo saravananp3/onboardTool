@@ -1,5 +1,6 @@
 
 
+import onboard.DBconnection;
 import onboard.encryption;
 
 import java.io.IOException;
@@ -53,19 +54,16 @@ public class update_pass extends HttpServlet {
 		String email=(String)passwd.getAttribute("email");
 		 try
 	      {
-	        // create a mysql database connection
-	        String myDriver = "org.gjt.mm.mysql.Driver";
-	        String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-	        Class.forName(myDriver);
-	        Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
+			 DBconnection dBconnection = new DBconnection();
+		        Connection connection = (Connection) dBconnection.getConnection();
 	      
-	        Statement st=conn.createStatement();
+	        Statement st=connection.createStatement();
 			  encryption et=new encryption();
 			  String passw=et.encrypt(pwd);
 		   st.executeUpdate("update Admin_UserDetails set pwd='"+passw+"' where email='"+email+"'");
 		             
 	        
-	        conn.close();
+		   connection.close();
 	      }
 	      catch (Exception e)
 	      {

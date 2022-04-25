@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.MDC;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class NewRequirements
  */
@@ -64,17 +66,13 @@ public class NewRequirements extends HttpServlet {
 	       try
 	       {
 	    	   String idd=(String)details.getAttribute("appidd");
-	         // create a mysql database connection
-	         String myDriver = "org.gjt.mm.mysql.Driver";
-	         String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-	         Class.forName(myDriver);
-	         Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-	         
+	    	   DBconnection dBconnection = new DBconnection();
+	           Connection connection = (Connection) dBconnection.getConnection();
 	         // the mysql insert statement
 	         String query = " insert into Intake_NewRequirements (requirements,appname)" + " values (?,'"+idd+"')";
 
 	        // System.out.println("Insert query :" +  query);
-	         PreparedStatement preparedStmt = conn.prepareStatement(query);
+	         PreparedStatement preparedStmt = connection.prepareStatement(query);
 	         preparedStmt.setString (1, new_Requirements);
 	        
 	        
@@ -82,7 +80,7 @@ public class NewRequirements extends HttpServlet {
 	         // execute the preparedstatement
 	         preparedStmt.execute();
 	         
-	         conn.close();
+	         connection.close();
 	       }
 	       catch (Exception e)
 	       {

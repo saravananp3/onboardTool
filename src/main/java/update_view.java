@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class update_view
  */
@@ -63,13 +65,13 @@ public class update_view extends HttpServlet {
 		for(int i=0;i<200;i++){
 			seqnum[i]=request.getParameter("seqnum"+i);
 			name[i]=request.getParameter("name"+i);
-mem_as[i] = request.getParameter("mem_ass"+i);
-act_srt_dat[i]=request.getParameter("act_srt_date"+i);
-act_end_dat[i]=request.getParameter("act_end_date"+i);
-pln_srt_dat[i]=request.getParameter("pln_srt_date"+i);
-pln_end_dat[i]=request.getParameter("pln_end_date"+i);
-hr[i]=request.getParameter("hrs"+i);
-plan_hrs[i]=request.getParameter("phrs"+i);
+			mem_as[i] = request.getParameter("mem_ass"+i);
+			act_srt_dat[i]=request.getParameter("act_srt_date"+i);
+			act_end_dat[i]=request.getParameter("act_end_date"+i);
+			pln_srt_dat[i]=request.getParameter("pln_srt_date"+i);
+			pln_end_dat[i]=request.getParameter("pln_end_date"+i);
+			hr[i]=request.getParameter("hrs"+i);
+			plan_hrs[i]=request.getParameter("phrs"+i);
 
 }
 	System.out.println(seqnum[0]+" "+name[0]);
@@ -80,15 +82,9 @@ plan_hrs[i]=request.getParameter("phrs"+i);
      
         try
         {
-          // create a mysql database connection
-          String myDriver = "org.gjt.mm.mysql.Driver";
-          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-          Class.forName(myDriver);
-          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-        
-       
-          
-          Statement st=conn.createStatement();
+        	DBconnection dBconnection = new DBconnection();
+            Connection connection = (Connection) dBconnection.getConnection();
+            Statement st=connection.createStatement();
           for(int a=0;a<200;a++){
         	  String seq_num=seqnum[a];
         	  String nam=name[a];
@@ -104,7 +100,7 @@ plan_hrs[i]=request.getParameter("phrs"+i);
   	
            }
           
-          conn.close();
+          connection.close();
         }
         catch (Exception e)
         {

@@ -20,6 +20,7 @@ import org.apache.log4j.MDC;
 
 import bean.PriorityComparator;
 import bean.ProjectComplexity;
+import onboard.DBconnection;
 
 import javax.servlet.ServletConfig;
 
@@ -112,8 +113,6 @@ public class Displaydb extends HttpServlet {
 		}
 
 
-		// System.out.println("complexitie is   s s  "+no_of_app_complexity);
-		//  System.out.println("est_scrn value is "+complexity);
 
 	        HttpSession app_details=request.getSession();
 	        app_details.setAttribute("proj_name",proj_name);
@@ -129,26 +128,20 @@ public class Displaydb extends HttpServlet {
 		htmlRespone += "</html>";
 		writer.println(htmlRespone);
 
-		final String myDriver = "org.gjt.mm.mysql.Driver";
-		final String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
+		
 
 		try
 		{
-			Class.forName(myDriver);
-			Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-
-//			String query0="delete from AppEmphazize_ApplicationPrioritization where prj_name='"+prj_name+"' and IA_lic_cst=''";
-//			PreparedStatement Stmt0 = conn.prepareStatement(query0);
-//			Stmt0.executeUpdate(query0);
-
-			String query2 = "select * from AppEmphazize_ApplicationPrioritization where proj_name='" + proj_name
+			 DBconnection dBconnection = new DBconnection();
+		     Connection connection = (Connection) dBconnection.getConnection();
+		     String query2 = "select * from AppEmphazize_ApplicationPrioritization where proj_name='" + proj_name
 					+ "' and prj_name='" + prj_name + "'";
-			PreparedStatement Stmt1 = conn.prepareStatement(query2);
-			ResultSet rs1 = Stmt1.executeQuery(query2);
+		     PreparedStatement Stmt1 = connection.prepareStatement(query2);
+		     ResultSet rs1 = Stmt1.executeQuery(query2);
 			if(rs1.next())
 			{
 				String query = "update AppEmphazize_ApplicationPrioritization set IA_lic_cst=?, IA_maint_cst=?, Infrastrct_cst=?, strg_est=?, lab_cst=?, data_size=?, data_source=?, curnt_users=?, complexity=?, est_archive=?, est_scrn=?, est_db_size=?, est_hrs=?, est_cst=?, ttl_IA_cst=?, ttl_infra_cst=?, ttl_IA_prdct_cst=?, ttl=?, ttl_cst_fr_app=?, add_cst_fr_contigency=?, add_cst=?, IA_app_sprt_cst=?, est_archive_cst=?, no_of_app_complexity=?,read_date=?, sme_date=?, data_retained=?, Decommission=? where prj_name=? and  proj_name=?";
-				PreparedStatement preparedStmt1 = conn.prepareStatement(query);
+				PreparedStatement preparedStmt1 = connection.prepareStatement(query);
 				preparedStmt1.setString(1, IA_lic_cst);
 				preparedStmt1.setString(2, IA_maint_cst);
 				preparedStmt1.setString(3, Infrastrct_cst);
@@ -183,7 +176,7 @@ public class Displaydb extends HttpServlet {
 				preparedStmt1.execute();
 				// System.out.println("est_scrn value from if pstmt1 "+est_scrn);
 
-				PreparedStatement preparedStmt2 = conn.prepareStatement(
+				PreparedStatement preparedStmt2 = connection.prepareStatement(
 						"update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_scrn=? where appname=? and prjname=?");
 				preparedStmt2.setString(1, complexity);
 				preparedStmt2.setString(2, est_db_size);
@@ -199,7 +192,7 @@ public class Displaydb extends HttpServlet {
 				String query = " insert into AppEmphazize_ApplicationPrioritization (prj_name, IA_lic_cst, IA_maint_cst, Infrastrct_cst, strg_est, lab_cst, proj_name, data_size, data_source, curnt_users, complexity, est_archive, est_scrn, est_db_size, est_hrs, est_cst, ttl_IA_cst, ttl_infra_cst, ttl_IA_prdct_cst, ttl, ttl_cst_fr_app, add_cst_fr_contigency, add_cst, IA_app_sprt_cst, est_archive_cst,no_of_app_complexity,read_date,sme_date,data_retained,Decommission)"
 						+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-				PreparedStatement preparedStmt = conn.prepareStatement(query);
+				PreparedStatement preparedStmt = connection.prepareStatement(query);
 				preparedStmt.setString(1, prj_name);
 				preparedStmt.setString(2, IA_lic_cst);
 				preparedStmt.setString(3, IA_maint_cst);
@@ -233,7 +226,7 @@ public class Displaydb extends HttpServlet {
 				preparedStmt.execute();
 
 				// System.out.println("est_scrn value from else pstmt1 "+est_scrn);
-				PreparedStatement preparedStmt2 = conn.prepareStatement(
+				PreparedStatement preparedStmt2 = connection.prepareStatement(
 						"update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_scrn=? where appname=? and prjname=?");
 				preparedStmt2.setString(1, complexity);
 				preparedStmt2.setString(2, est_db_size);
@@ -244,7 +237,7 @@ public class Displaydb extends HttpServlet {
 //System.out.println("est_scrn value from else pstmt2 "+est_scrn);
 
 			}
-			PreparedStatement preparedStmt3 = conn.prepareStatement("SELECT appname, complexity, est_scrn "
+			PreparedStatement preparedStmt3 = connection.prepareStatement("SELECT appname, complexity, est_scrn "
 					+ "from AppEmphazize_ApplicationInfo where prjname=? and complexity is not null");
 			preparedStmt3.setString(1, prj_name);
 			ResultSet rs2 = preparedStmt3.executeQuery();
@@ -281,7 +274,7 @@ public class Displaydb extends HttpServlet {
 				}	projectPriorities.add(new ProjectComplexity(appName, complex, est, pr, priority));
 			}
 			Collections.sort(projectPriorities, new PriorityComparator());
-			conn.close();
+			connection.close();
 			app_details.setAttribute("proj_priorities", projectPriorities);
 			
 		} catch (Exception e) {
