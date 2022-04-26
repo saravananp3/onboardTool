@@ -3,17 +3,7 @@ $(document).ready(function() {
 	BindPhaseWave();
 	doughnutType();
 });
-$.ajax({
-url : "DashBoard.jsp",
-cache : false,
-beforeSend : function(){
-$('#overlay').show();
-},
-success: function(data){
-$('#overlay').hide();
-$('.body').append(data);
-},
-});
+
 function dashboardDetails() {
 	$.ajax({
 		url: "dashboardServlet",
