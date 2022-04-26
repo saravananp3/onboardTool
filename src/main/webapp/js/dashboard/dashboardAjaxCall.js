@@ -3,17 +3,6 @@ $(document).ready(function() {
 	BindPhaseWave();
 	doughnutType();
 });
-$.ajax({
-url : "DashBoard.jsp",
-cache : false,
-beforeSend : function(){
-$('#overlay').show();
-},
-success: function(data){
-$('#overlay').hide();
-$('.body').append(data);
-},
-});
 function dashboardDetails() {
 	$.ajax({
 		url: "dashboardServlet",
@@ -628,10 +617,15 @@ $(document).ready(function() {
 	$.ajax({
 		url: "dashboardServlet",
 		type: 'POST',
-		async: false,
+		cache: false,
 		dataType: "json",
+		beforeSend : function(){
+		$('#overlay').show();
+			},
 		success: function(data) {
-			console.log("Data : ", data);
+		$('#overlay').hide();
+		$('.body').append(data);
+		console.log("Data : ", data);
 			$.each(data[9], function(key, value11) {
 				var data = [
 
