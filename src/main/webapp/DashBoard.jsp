@@ -413,7 +413,7 @@ display: none;
 background: rgb(0,0,0,0.6);
 }
 .cv-spinner {
-height: 70%;
+height: 120%;
 display: flex;
 justify-content: center;
 align-items: center;
