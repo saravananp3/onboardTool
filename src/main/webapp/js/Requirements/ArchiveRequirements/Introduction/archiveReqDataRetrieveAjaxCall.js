@@ -80,9 +80,15 @@ function archiveReqAddAjaxCall(seqNum){
         dataType: "json",
         success: function (data) {
             console.log("Add Row Retrieve--->",data);
+            var options ;
             if(data.AddStatus){
+                var options_arr = ['Project Sponsor','System Architect','Project Manager','Business Owner','Technical Lead'];
+                    for(var n=0;n<options_arr.length;n++){
+                      var selected = "Project Sponsor";
+                       options += "<option value='"+options_arr[n]+"' "+selected+">"+options_arr[n]+"</option>";
+                   }
                 var Row="<tr class = 'rowClass'>"+
-             "<td><input type ='text' class='role' value=''><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
+             "<td><select type ='text' class='role' value=''>"+options+"</select><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
              "<td><input type ='text' class='name' value=''></td>" +
              "<td><input type ='text' class='emailId' value=''></td>" +
              "<td><input type ='text' class='username' value=''></td>" +
@@ -146,9 +152,16 @@ function archiveReqRolesResponseDataRetrieve(){
              }
              $("#Approver").html("");
              //var checkValidation = false;
+              var options_arr = ['Project Sponsor','System Architect','Project Manager','Business Owner','Technical Lead'];
              $.each(data, function(key, value){
+     var options ="";
+                        var role = (value.role==undefined)?"":value.role;
+                    for(var n=0;n<options_arr.length;n++){
+                       var selected = (role==options_arr[n])? "selected":"";
+                       options += "<option value='"+options_arr[n]+"' "+selected+">"+options_arr[n]+"</option>";
+                   }
                  var Row="<tr class = 'rowClass'>"+
-                 "<td><input type ='text' class='role' value='"+value.role+"' readonly><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
+                 "<td><select type ='text' class='role' value='"+value.role+"' readonly>"+options+"</select><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
                  "<td><input type ='text' class='name' value='"+value.name+"' readonly></td>" +
                  "<td><input type ='text' class='emailId' value='"+value.emailId+"' readonly></td>" +
                  "<td><input type ='text' class='username' value='"+value.username+"' readonly></td>" +
@@ -212,4 +225,4 @@ $(document).on('click', '#complete', function(e) {
                             }
         }
     });
-        }
+   }

@@ -155,6 +155,7 @@ function IntakePreviewDataRetrieveAjaxCall()
             notification("info","Review of previous details.","Info");
             // var onclick_attr = $("#ReviewNextBtn").attr("onclick");
             $("#ReviewNextBtn").attr("onclick","location.href='IntakeApproval.jsp?a_id="+data[5].a_id+"';");
+            $(".ReviewNextBtn").attr("onclick","location.href='IntakeApproval.jsp?a_id="+data[5].a_id+"';");
             
             if(data[5].checkRequestSign==1){
             	$("#button_id").show();
