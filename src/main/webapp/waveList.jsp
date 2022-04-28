@@ -469,7 +469,7 @@ pointer-events:all;
         <div class="container-fluid" id="container-fluid-margin">
             <div class="row" id="d3s-mt-20">
                 <div class="col-lg-12 col-md-12">
-                    <h5 id="title">Applications</h5>
+                    <h5 id="title">Waves</h5>
                 </div>
             </div>
             <div class="row" id="d3s-mt-10">
@@ -479,7 +479,7 @@ pointer-events:all;
                             <i class="fa fa-search search-icon" aria-hidden="true"></i>
                         </div>
                         <div class="col-auto">
-                            <input id="appFilter" type="text" placeholder="Search the Phase...">
+                            <input id="appFilter" type="text" placeholder="Search the wave...">
                         </div>
                     </div>
                 </div>
