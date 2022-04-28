@@ -682,6 +682,10 @@ else if(roles.equals("ArchivalDeveloper"))
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/navigation/navigation.js"></script>
+	<!-- ========== Toastr ========== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script src="js/toastr/toastr.min.js"></script>
 
 </body>
 </html>
