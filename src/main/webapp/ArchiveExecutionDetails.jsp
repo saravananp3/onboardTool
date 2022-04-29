@@ -571,20 +571,20 @@ background:#1565c0 important;
 					</li>
 					
 					<li class="nav-item moduleIcon"><a class="nav-link active"
-						aria-current="page" href="Admin_Module_Send_Invites.jsp"><i
+						aria-current="page" href="Admin_Userslist.jsp"><i
 							class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
 					</li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
 						aria-current="page" href="PhaseList.jsp"><i
 							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" data-toggle="tooltip" data-placement="bottom" title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
 						aria-current="page" href="DashBoard.jsp"><i
 							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
 					</li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" data-toggle="tooltip" data-placement="bottom" title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
 					</li>
@@ -1068,7 +1068,13 @@ $(document).on('mouseenter','.active1', function(){
             document.getElementById('creation_date').value = today;
         }
     </script> -->
-    </body>
+
+	<script>
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
+</body>
     <!-- ========== COMMON JS FILES ========== -->
     
     <!-- <script src="js/jquery-ui/jquery-ui.min.js"></script> -->

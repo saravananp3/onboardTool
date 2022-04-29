@@ -403,29 +403,7 @@ h6 {
 	padding-left: 55%;
     font-size: 16px;
 }
-#overlay{
-position: fixed;
-top: 0;
-z-index: 100;
-width:1400px;
-height:100%;
-display: none;
-background: rgb(0,0,0,0.6);
-}
-.cv-spinner {
-height: 70%;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-.spinner {
-width: 80px;
-height: 80px;
-border: 8px #ddd solid;
-border-top: 8px #2e93e6 solid;
-border-radius: 50%;
-animation: sp-anime 0.8s infinite linear;
-}
+
 @keyframes sp-anime {
 100% {
 transform: rotate(360deg);
@@ -516,11 +494,6 @@ display:none;
         }%>
 
 	<%@include file="Nav-Bar.jspf"%>
-	<div id="overlay">
-<div class="cv-spinner">
-<span class="spinner"></span>
-</div>
-</div>
 	<nav class="nav nav-height nav-font" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">

@@ -602,14 +602,14 @@ background:#1565c0 important;
 					<li class="nav-item moduleIcon"><a class="nav-link active2"
 						aria-current="page" href="PhaseList.jsp"><i
 							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" data-toggle="tooltip" data-placement="bottom" title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
 						aria-current="page" href="DashBoard.jsp"><i
 							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
 					</li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" data-toggle="tooltip" data-placement="bottom" title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
 					</li>
@@ -1093,6 +1093,12 @@ $(document).on('mouseenter','.active1', function(){
             document.getElementById('creation_date').value = today;
         }
     </script> -->
+    
+    <script>
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
     </body>
     <!-- ========== COMMON JS FILES ========== -->
     
