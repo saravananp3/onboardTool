@@ -16,7 +16,7 @@
 <link rel="icon" type="image/png" href="assets/img/favicon.ico">
 
 
-<title>Decom3Sixty Users</title>
+<title>Decom3Sixty License Information</title>
 
 <meta
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
@@ -179,10 +179,12 @@ body {
 							href="Modify_Admin_Users_list.jsp"
 							style="color: #fff; padding: 7px 10px; height: 35px;">Modify
 								User</a></li> -->
-						<li class="active-1" id="nav-link"><a class="link"
-							href="Admin_Userslist.jsp"
-							style="color: #fff; padding: 7px 10px; height: 35px;">UserList</a></li>
+						
+							
 						 <li id="nav-link"><a class="link"
+							href="Admin_Userslist.jsp"
+							style="color: #fff; padding: 7px 10px; height: 35px;">Userlist</a></li> 
+							<li class="active-1" id="nav-link"><a class="link"
 							href="License_info.jsp"
 							style="color: #fff; padding: 7px 10px; height: 35px;">License Information</a></li>
 					</ul>
@@ -281,15 +283,12 @@ body {
 																<thead>
 
 																	
-																	<th style="text-align:center;">UserName</th>
-																	<th style="text-align:center;">FirstName</th>
-																	<th style="text-align:center;">LastName</th>
-																	<th style="text-align:center;">Email</th>
-																	<th style="text-align:center;">Role</th>
-																	<th style="text-align:center;">Action</th>
-																
+																	<th style="text-align:center;">Issue To</th>
+																	<th style="text-align:center;">Issue Date</th>
+																	<th style="text-align:center;">Valid Till</th>
+																																
 																</thead>
-																<tbody id ="Userslist">
+																<tbody id ="license_info_1">
       												    											
       												</tbody>
 
@@ -300,7 +299,7 @@ body {
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header" style="background-color:#1565c0;">
-								<h5 class="modal-title" id="exampleModalLabel" style="color:white;">Add New User</h5>
+								<h5 class="modal-title" id="exampleModalLabel" style="color:white;">Update License Information</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
 									aria-label="Close"></button>
 							</div>
@@ -309,46 +308,10 @@ body {
 									<div class="row">
 										<div class="form-group">
 										<div class="col-lg-12">
-												<label class="control-label" for="formInput526">UserName:</label>
-												<input type="text" class="form-control" id="uname"
-													name="uname" required>
-											</div>
-											<div class="col-lg-12">
-												<label class="control-label" for="formInput526">FirstName:</label>
-												<input type="text" class="form-control" id="ufname"
-													name="fname" required>
-											</div>
-											<div class="col-lg-12">
-												<label class="control-label" for="formInput526">LastName:</label>
-												<input type="text" class="form-control" id="ulname"
-													name="lname" required>
-											</div>
-											<div class="col-lg-12">
-												<label class="control-label" for="formInput526">E-Mail:</label>
-												<input type="text" class="form-control" id="u_email"
-													name="u_email" required>
-											</div>
-											<div class="col-lg-12">
-												<label class="control-label" for="formInput526">Password:</label>
-												<input type="password" class="form-control" id="u_pwd"
-													name="u_pwd" required>
-											</div>
-											<div class="col-lg-12">
-												<label class="control-label" for="formInput526">Role/Group:</label>
-												<!-- <input type="text" class="form-control" id="u_role"
-													name="u_role" required>  -->
-													<select class="form-select form-select-lg mb-3"
-															aria-label=".form-select-lg example"
-															id="u_role" name="u_role" required>
-															<option>Select</option>
-															<option>DECOM_SUPER_ADMIN</option>
-															<option>DECOM_ADMIN</option>
-															<option>DECOM_TECHNICAL_CONTRIBUTOR</option>
-															<option>DECOM_ARCHIVE_CONTRIBUTOR</option>
-															<option>DECOM_DECOMMISSION_CONTRIBUTOR</option>
-															<option>DECOM_FINANCE_CONTRIBUTOR</option>
-													</select>
-											</div>
+												<label class="control-label" for="formInput526" style="color:red;">Please Update your License Information</label> 
+												   <textarea class="form-control" id="license_info" name="license_info" rows="4"  required></textarea> 
+												  
+												  								
 											
 										</div>
 									</div>
@@ -358,7 +321,7 @@ body {
 							</div>
 							<div class="modal-footer">
 								
-								<button type="button" class="btn btn-primary" id="add_usersubmit" data-bs-dismiss="modal">Add User</button>
+								<button type="button" class="btn btn-primary" id="license_update_submit" data-bs-dismiss="modal">Update License</button>
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Close</button>
 							</div>
@@ -382,35 +345,9 @@ body {
 					</div>
 <button type="button" id="add_btn" class="btn btn-primary"
 															href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-															style="margin: 5px">Add User</button>
+															style="margin: 5px">Update License</button>
 																		
-																		<button type="button"
-																		class="btn btn-primary pull-right" id="editpopup_btn"
-																		data-bs-toggle="modal" data-bs-target="#EditPopUp"
-																		style="display: none;">Edit PopUp</button>
-																		<button type="button"
-																		class="btn btn-primary pull-right"
-																		id="deletepopup_btn" data-bs-toggle="modal"
-																		data-bs-target="#DeletePopUp" style="display: none;">Delete
-																		PopUp</button>
-														<%--<button type="button" id="edit_button" name="edit_button"
-                                                            class="btn btn-primary" style="margin:5px">
-                                                        Delete User
-                                                    </button>
-                                                    <button type="button" id="delete_button" name="delete_button"
-                                                            class="btn btn-primary" style="margin:5px">
-                                                        Submit
-                                                    </button>--%>
-														<!-- <input type="button" id="del_btn" class="btn btn-primary"
-															onclick="del();" value="Delete User"
-															style="margin: 5px"> --> &nbsp;&nbsp;
-														<!-- <button type="button" id="sub_btn" class="btn btn-primary"
-															onclick="servlet_call();" style="margin: -5px">Submit</button> -->
-
-
-
-				</div>
-			</div>
+																		
 			<script>
             if(document.getElementById('role_conf').value=="R")
                 checkk();
@@ -421,85 +358,7 @@ body {
 
 	</div>
 	
-	<div class="modal" id="EditPopUp" tabindex="-1"
-											aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header" style="background-color:#1565c0;">
-														<h5 class="modal-title" id="exampleModalLabel" style="color:white;">Update User Details</h5>
-														<button type="button" class="btn-close"
-															data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<form name="PopUpform">
-															<div class="row">
-																<div class="form-group">
-																	<div class="col-lg-12">
-																		<label class="control-label" for="formInput526">Username:</label>
-																		<input type="text" class="form-control"
-																			id="uname_modify" name="uname" required>
-																			<label class="control-label" for="formInput526">Firstname:</label>
-																		<input type="text" class="form-control"
-																			id="ufname_modify" name="ufname" required>
-																			<label class="control-label" for="formInput526">Lastname:</label>
-																		<input type="text" class="form-control"
-																			id="ulname_modify" name="ulname" required>
-																			<label class="control-label" for="formInput526">User E-Mail:</label>
-																		<input type="text" class="form-control"
-																			id="u_email_modify" name="u_email" required>
-																			
-																			<label class="control-label" for="formInput526">User Role:</label>
-																		<input type="text" class="form-control"
-																			id="u_role_modify" name="u_role" required>
-																			
-																			
-																	</div>
-																</div>
-															</div>
-															<input type="text" id="random_id_modify" name="random_id" value=""
-																style="display: none;">
-														</form>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-primary" id="update_submit"
-															data-bs-dismiss="modal">Update</button>
-														<button type="button" class="btn btn-secondary"
-															data-bs-dismiss="modal">Cancel</button>
-														
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										<!--Delete pop up-->
-										<div class="modal" id="DeletePopUp" tabindex="-1"
-											aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header" style="background-color:#1565c0;">
-														<h5 class="modal-title" id="exampleModalLabel" style="color:white;">Delete User</h5>
-														<button type="button" class="btn-close"
-															data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<form name="DeleteForm">
-															<div class="modal-body">
-																<p style="font-size: 14px;">Do you want to Delete
-																	this User Permanently?</p>
-																<input type="text" id="random_id"  style="display:none;"/>
-															</div>
-														</form>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-primary"
-															data-bs-dismiss="modal" id="delete_submit">Yes</button>
-														<button type="button" class="btn btn-secondary"
-															data-bs-dismiss="modal">No</button>
-													</div>
-												</div>
-											</div>
-										</div>
-	<!-- /.col-md-6 -->
+		<!-- /.col-md-6 -->
 
 	</div>
 	<!-- /.row -->
@@ -535,8 +394,7 @@ $(document).on('mouseenter','.active1', function(){
 </script>
 
 	<!-- ========== COMMON JS FILES ========== -->
-	<script src="js/admin_modify_module/admin_retrieve_users.js"></script>
-
+	
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<script src="js/jquery-ui/jquery-ui.min.js"></script>
 	<script src="js/bootstrap/bootstrap.min.js"></script>
@@ -561,6 +419,7 @@ $(document).on('mouseenter','.active1', function(){
 
 	<!-- ========== PAGE JS FILES ========== -->
 	<script src="js/prism/prism.js"></script>
+	
 	<script src="js/waypoint/waypoints.min.js"></script>
 	<script src="js/counterUp/jquery.counterup.min.js"></script>
 	<script src="js/amcharts/amcharts.js"></script>
@@ -584,11 +443,8 @@ $(document).on('mouseenter','.active1', function(){
 
 	<!-- ========== PAGE JS FILES ========== -->
 	<script src="js/prism/prism.js"></script>
-	<script src="js/admin_modify_module/admin_add_user.js"></script>
-	<script src="js/admin_modify_module/admin_retrieve_users.js"></script>
-	<script src="js/admin_modify_module/DeleteAjaxCall.js"></script>
-	<script src="js/admin_modify_module/EditAjaxCall.js"></script>
 	
+		
 	<script type="text/javascript"
 		src="js/date-picker/bootstrap-datepicker.js"></script>
 	<script type="text/javascript"
@@ -619,6 +475,7 @@ $(document).on('mouseenter','.active1', function(){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="js/notification/notification.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
 	<!-- ========== THEME JS ========== -->
 
 	<script type="text/javascript">
@@ -684,6 +541,8 @@ $(document).ready(function() {
 } );
 </script>
 	<script src="js/navigation/navigation.js"></script>
+	<script src="js/license/retrieve_license_info.js"></script>
+	<script src="js/license/update_license.js"></script>
 </body>
 </html>
 

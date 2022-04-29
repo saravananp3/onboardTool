@@ -20,6 +20,10 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
+import org.json.JSONObject;
+
 import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
@@ -854,33 +858,80 @@ try
 	ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+userid+"'");
 	String dbuname="";
 	String dbu_pwd="";
+	String lic_info="";
 	String p_pwd=generate_u_encrypt_pwd(pwd);
-	System.out.println("Protected Password : "+p_pwd);
-	 PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uname=? AND u_pwd=?");
-     ps.setString(1, userid);
-     ps.setString(2,p_pwd);
-//   ps.setString(3,ugroup);
-     ResultSet rs2=ps.executeQuery();
-     if(rs2.next()) {
-     dbuname=rs2.getString("uname");
-     dbu_pwd=rs2.getString("u_pwd");
+	StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+    EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
+    config.setPassword("Decom3Sixty");                        // we HAVE TO set a password
+    config.setAlgorithm("PBEWITHHMACSHA512AndAES_256");
+    encryptor.setConfig(config);
+    encryptor.setKeyObtentionIterations(1000);
+   	System.out.println("Protected Password : "+p_pwd);
+	PreparedStatement lc=con.prepareStatement("select license_info from license ORDER BY id DESC LIMIT 1");
+	ResultSet r1=lc.executeQuery();
+	if(r1.next())
+	{
+		lic_info=r1.getString("license_info");
+	}
+	else if(!r1.next())
+	{
+		String msg1="Please Add License Details!";
+        
+      	response.sendRedirect("Update_License.jsp?ErrorMessage="+msg1);
+		
+	}
+	System.out.println("Issue To : "+lic_info);
+	String enc=encryptor.decrypt(lic_info);
+	JSONObject jsonObj = new JSONObject(enc.toString());
+	System.out.println("Decrypted Value is : "+jsonObj);
+	String s=jsonObj.getString("Valid Till");
+	System.out.println("SS : "+s);
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");  
+	//dates to be compare  
+	String pattern = "dd-MMM-yyyy";
+	String dateInString =new SimpleDateFormat(pattern).format(new Date());
+	System.out.println("Date:"+dateInString);
+	Date cur_date = sdf.parse(dateInString);  
+	Date lic_valid_date = sdf.parse(s);  
+	//prints dates  
+	System.out.println("Current Date : " + sdf.format(cur_date));  
+	System.out.println("License Valid Date : " + sdf.format(lic_valid_date));  
+	PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uname=? AND u_pwd=?");
+   ps.setString(1, userid);
+   ps.setString(2,p_pwd);
+// ps.setString(3,ugroup);
+    ResultSet rs2=ps.executeQuery();
+    if(rs2.next()) {
+    dbuname=rs2.getString("uname");
+    dbu_pwd=rs2.getString("u_pwd");
 
 	if(userid.equals(dbuname)&&p_pwd.equals(dbu_pwd))
 	{
+		if(cur_date.before(lic_valid_date)|| cur_date.equals(lic_valid_date))
+		{
+			details.setAttribute("role","admin");
+			details.setAttribute("projects","all");
+			details.setAttribute("admin","X");
+			details.setAttribute("prj","X");
+			details.setAttribute("app_emp","X");
+			details.setAttribute("intake","X");
+			details.setAttribute("archive_exec","X");
+			String redirectURL = "DashBoard.jsp";
+			response.sendRedirect(redirectURL);
+			    
+			    
+		}
+		else if(cur_date.after(lic_valid_date))
+		{
+			String msg1="Your License was Expired.Please Update Your License Details!";
+	        
+	      	 response.sendRedirect("Update_License.jsp?ErrorMessage="+msg1);
+		}
+
 		
-		details.setAttribute("role","admin");
-		details.setAttribute("projects","all");
-		details.setAttribute("admin","X");
-		details.setAttribute("prj","X");
-		details.setAttribute("app_emp","X");
-		details.setAttribute("intake","X");
-		details.setAttribute("archive_exec","X");
+		
 
-	    String redirectURL = "DashBoard.jsp";
-
-	    response.sendRedirect(redirectURL);
-	}}
-	/*else
+			}}	/*else
 		{
 		if(rs.next()) 
 		
