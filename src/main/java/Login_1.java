@@ -732,43 +732,8 @@ try
     Statement st= con.createStatement(); 
     ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+username+"'");
     try
-    {   String lic_info="";
-    	StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
-        config.setPassword("Decom3Sixty");                        // we HAVE TO set a password
-        config.setAlgorithm("PBEWITHHMACSHA512AndAES_256");
-        encryptor.setConfig(config);
-        encryptor.setKeyObtentionIterations(1000);
-       	PreparedStatement lc=con.prepareStatement("select license_info from license ORDER BY id DESC LIMIT 1");
-    	ResultSet r1=lc.executeQuery();
-    	if(r1.next())
-    	{
-    		lic_info=r1.getString("license_info");
-    	}
-    	else if(!r1.next())
-    	{
-    		String msg1="Please Add License Details!";
-            
-          	response.sendRedirect("Update_License.jsp?ErrorMessage="+msg1);
-    	}
-    	String dbuname="";
-    	System.out.println("Issue To : "+lic_info);
-    	String enc=encryptor.decrypt(lic_info);
-    	JSONObject jsonObj = new JSONObject(enc.toString());
-    	System.out.println("Decrypted Value is : "+jsonObj);
-    	String s=jsonObj.getString("Valid Till");
-    	System.out.println("SS : "+s);
-    	SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");  
-    	//dates to be compare  
-    	String pattern = "dd-MMM-yyyy";
-    	String dateInString =new SimpleDateFormat(pattern).format(new Date());
-    	System.out.println("Date:"+dateInString);
-    	Date cur_date = sdf.parse(dateInString);  
-    	Date lic_valid_date = sdf.parse(s);  
-    	//prints dates  
-    	System.out.println("Date 1: " + sdf.format(cur_date));  
-    	System.out.println("Date 2: " + sdf.format(lic_valid_date));  
-
+    {   String dbuname="";
+    	
         PreparedStatement ps=con.prepareStatement("SELECT * FROM users WHERE uname=?  ");
         ps.setString(1, username);
         ResultSet rs2=ps.executeQuery();
@@ -782,8 +747,46 @@ try
             
             if(username.equals(dbuname)&& user_fname.equals(dbufname)&& user_lname.equals(dbulname)&&user_email.equals(dbu_email)&& user_group.equals(dbu_role)) 
     {
+            	String lic_info="";
+            	StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+                EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
+                config.setPassword("Decom3Sixty");                        // we HAVE TO set a password
+                config.setAlgorithm("PBEWITHHMACSHA512AndAES_256");
+                encryptor.setConfig(config);
+                encryptor.setKeyObtentionIterations(1000);
+               	PreparedStatement lc=con.prepareStatement("select license_info from license ORDER BY id DESC LIMIT 1");
+            	ResultSet r1=lc.executeQuery();
+            	if(r1.next())
+            	{
+            		lic_info=r1.getString("license_info");
+            	}
+            	else if(!r1.next())
+            	{
+            		String msg1="Please Add License Details!";
+                    
+                  	response.sendRedirect("Update_License.jsp?ErrorMessage="+msg1);
+            	}
+            	
+            	System.out.println("Issue To : "+lic_info);
+            	String enc=encryptor.decrypt(lic_info);
+            	JSONObject jsonObj = new JSONObject(enc.toString());
+            	System.out.println("Decrypted Value is : "+jsonObj);
+            	String s=jsonObj.getString("Valid Till");
+            	System.out.println("SS : "+s);
+            	SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");  
+            	//dates to be compare  
+            	String pattern = "dd-MMM-yyyy";
+            	String dateInString =new SimpleDateFormat(pattern).format(new Date());
+            	System.out.println("Date:"+dateInString);
+            	Date cur_date = sdf.parse(dateInString);  
+            	Date lic_valid_date = sdf.parse(s);  
+            	//prints dates  
+            	System.out.println("Date 1: " + sdf.format(cur_date));  
+            	System.out.println("Date 2: " + sdf.format(lic_valid_date));  
+
         if(cur_date.before(lic_valid_date)|| cur_date.equals(lic_valid_date))
         {
+        	
         details.setAttribute("role",dbu_role);
         details.setAttribute("projects","all");
         details.setAttribute(dbu_role,"X");
