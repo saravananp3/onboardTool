@@ -39,13 +39,15 @@ public class ApproverRolesSaveService {
 		  		String username =  jsonObj.get("username").getAsString();
 		  		String priority_order_num =  jsonObj.get("priority_order_num").getAsString();
 		  		
-			  String UpdateQuery = "update ArchiveReq_Roles_Info set role = ?, name =?, emailId=?, username=?,priority_order_num=? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			  String UpdateQuery = "update ArchiveReq_Roles_Info set role = ?, name =?, emailId=?, username=?,priority_order_num=? where OppId=? and seq_no=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, role);
 	          prestmt.setString(2, name);
 	          prestmt.setString(3, emailId);
 	          prestmt.setString(4, username);
 	          prestmt.setString(5, priority_order_num);
+	          prestmt.setString(6, Id);
+	          prestmt.setString(7, seqNum);
 	          prestmt.execute();
 	          statusFlag =true;
 			}
