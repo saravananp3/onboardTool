@@ -285,8 +285,8 @@ try
         opportunity[9] = new OpportunityDetails(10,"","","","Business Owner", "businessowner", "Text box", "No", "");
         opportunity[10] = new OpportunityDetails(11,"","","","Development Owner/SME", "sme", "Text box", "Yes", "");
         opportunity[11] = new OpportunityDetails(12,"","","","Billing Code", "billcode", "Text box", "No", "");
-        opportunity[12] = new OpportunityDetails(13,"","","","Buisness Segment", "buisnesssegment", "Text box", "No", "");
-        opportunity[13] = new OpportunityDetails(14,"","","","Buisness Unit", "buisnessunit", "Text box", "No", "");
+        opportunity[12] = new OpportunityDetails(13,"","","","Business Segment", "businesssegment", "Text box", "No", "");
+        opportunity[13] = new OpportunityDetails(14,"","","","Business Unit", "businessunit", "Text box", "No", "");
         opportunity[14] = new OpportunityDetails(15,"","","","Key Function", "keyfunction", "Text box", "No", "");
         opportunity[15] = new OpportunityDetails(16,"","","","Program or Segment Contact", "pscontact", "Text box", "No", "");
         opportunity[16] = new OpportunityDetails(17,"","","EMR System,ERP Data,Financial Data,HealthCare Data,HR Data,MR/HR Data,Other Data","Data Type", "date_type", "Dropdown", "No", "");

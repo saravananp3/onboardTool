@@ -466,7 +466,7 @@ transition: width 2s, height 2s, transform 2s;
               <div class="container-fluid">
 
                 <%
-                    if(roles.equals("admin")){
+                    if(roles.equals("admin")||!roles.equals("admin")){
                 %>
                 <!--  admin Role -->
                 <section>
