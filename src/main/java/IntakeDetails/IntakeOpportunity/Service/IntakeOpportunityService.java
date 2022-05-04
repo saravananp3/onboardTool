@@ -243,8 +243,8 @@ public class IntakeOpportunityService {
     	  KeyValue.put("businessowner","busOwner");
     	  KeyValue.put("sme","devOwner");
     	  KeyValue.put("billcode","billing_Code");
-    	  KeyValue.put("buisnesssegment","business_Segment");
-    	  KeyValue.put("buisnessunit","busUnit");
+    	  KeyValue.put("businesssegment","business_Segment");
+    	  KeyValue.put("businessunit","busUnit");
     	  KeyValue.put("pscontact","segment_contact");
 		return KeyValue;
 	}
