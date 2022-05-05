@@ -1133,13 +1133,13 @@ $(document).on('mouseenter','.active1', function(){
 	$('#financeHint[data-toggle="tooltip"]').tooltip({
 		animated : 'fade',
 		placement : 'bottom',
-		trigger : 'click'
+		trigger : 'onClick'
 	});
 
 	$('#complianceHint[data-toggle="tooltip"]').tooltip({
 		animated : 'fade',
 		placement : 'bottom',
-		trigger : 'click'
+		trigger : 'onClick'
 	});
 </script>
 </html>
