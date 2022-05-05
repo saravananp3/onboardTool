@@ -51,13 +51,23 @@ public class archiveRolesResponseSaveServlet extends HttpServlet {
 		JsonElement tradeElement = parser.parse(JsonString);
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
 		JsonObject jsonObj = new JsonObject();
+		boolean CheckSave = false; 
 
 		try
 		{
 			ApproverRolesSaveService approverRoles = new ApproverRolesSaveService(id, jsonArray);
-			jsonObj=approverRoles.archiveIntroRolesResponseSave();
+			
+			
+			jsonObj = approverRoles.CheckUserDetails(jsonArray, id);
+			if(jsonObj.get("checkUser").getAsBoolean() && jsonObj.get("checkName").getAsBoolean() && jsonObj.get("checkEmail").getAsBoolean() && jsonObj.get("checkRole").getAsBoolean())
+			{
+			 approverRoles.archiveIntroRolesResponseSave();
+			 CheckSave = true;
+			}
+			
 			approverRoles = null;
 			System.gc();
+			jsonObj.addProperty("CheckSave", CheckSave);
 		}
 		catch(Exception e)
 		{

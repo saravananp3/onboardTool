@@ -1,3 +1,4 @@
+var number = 0;
 $(document).ready(function(){
 	StakeHolderDataRetrieveAjaxCall();
 	$(document).on('click', '.DeleteRow', function () {
@@ -37,6 +38,7 @@ function StakeHolderDataRetrieveAjaxCall()
             var index=0;
             var checkData = false;
             var options_arr = ['Development Owner','Application Owner','Project Sponsor','Project Manager','Business Owner','Technical S.M.E'];
+            
             $.each(data[0], function(key, value){
                if(index==0)
             	{
@@ -64,9 +66,9 @@ function StakeHolderDataRetrieveAjaxCall()
             		   disable = "";
             	}
             	  var Row = "<tr class='UserRow'>"+
-        		            "<td><input type='text' class ='name' value='"+name+"' "+readonly+"></td>"+
-        				    "<td><input type='text' class ='emailid' value='"+emailid+"' "+readonly+"></td>"+
-        	                "<td><input type='text' class='username' value='"+username+"' "+readonly+"></td>"+
+        		            "<td><input type='text' id='firstName"+number+"' class ='name' value='"+name+"' "+readonly+"></td>"+
+        				     "<td><input type='text' id='search"+number+"' class ='emailid' onClick='searchFunction("+number+");' value='"+emailid+"' "+readonly+"><ul id='result"+number+"' class='list-group searchResult'></ul></td>"+
+        	                "<td><input type='text' id='userName"+number+"' class='username' value='"+username+"' "+readonly+"></td>"+
         				    "<td><select type='text'class='role' value='"+role+"' >"+
         				    options
         				    +"</select></td>"
@@ -82,6 +84,7 @@ function StakeHolderDataRetrieveAjaxCall()
             	  $("#UserList").append(Row);
             	}
             	index++;
+            	number++;
             });
             if(!checkData)
             {
@@ -148,3 +151,72 @@ function DeleteRowAjaxCall(DeleteSeqNum)
     });
 	return false;
 }
+
+function searchFunction(i){
+	
+	$('#search'+i).keyup(function() {
+		$('#result'+i).html('');
+		var searchField = $('#search'+i).val();
+		var expression = new RegExp(searchField, "i");
+		$.ajax({
+			type: "POST",
+			url: "Retrieve_users_servlet",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				 if (!$.isArray(data)) {
+                data = [data];
+            }
+           
+            	$('#result'+i).empty();
+				$.each(data, function(key, value) {
+					
+					if (value.u_email.search(expression) != -1){						
+						$('#result'+i).append('<li class="list-group-item link-class">' + value.u_email +'</li>');					
+					}
+					
+				});
+			}
+
+		});
+	
+	});
+		
+	$('#result' + i).on('click', 'li', function() {
+		var click_text = $(this).text();
+		$('#search' + i).val(click_text);
+		$("#result" + i).html('');
+		$.ajax({
+			type: "POST",
+			url: "Retrieve_users_servlet",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				if (!$.isArray(data)) {
+					data = [data];
+				}
+
+				var count = 0;
+				var first_name;
+				var user_name;
+				$.each(data, function() {
+
+					if (click_text == data[count].u_email) {
+						first_name = data[count].ufname;
+						user_name = data[count].uname;
+						document.getElementById('firstName' + i).value = first_name;
+						document.getElementById('userName' + i).value = user_name;
+
+					}
+					count = count + 1;
+
+				});
+
+			}
+		});
+
+	});
+};
+
+
+
