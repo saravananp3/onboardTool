@@ -2,6 +2,7 @@ package ArchiveExecutionGovernanceModule.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -37,9 +38,13 @@ public class ArchiveExecutionGovernanceEditServlet extends HttpServlet {
         	dBconnection = new DBconnection();
 			con = (Connection) dBconnection.getConnection();
         	
-        	String updateQuery = "update archive_execution_governance_info set taskGroup = '"+taskGroup+"', taskName = '"+taskName+"' where waveId = '"+waveId+"' and seq_no = '"+seqNum+"';";
-        	Statement st = con.createStatement();
-		    st.executeUpdate(updateQuery);
+        	String updateQuery = "update archive_execution_governance_info set taskGroup = ?, taskName = ? where waveId = ? and seq_no = ?;";
+        	 PreparedStatement prestmt = con.prepareStatement(updateQuery);
+	         prestmt.setString(1, taskGroup);
+	         prestmt.setString(2, taskName);
+	         prestmt.setString(3, waveId);
+	         prestmt.setInt(4, seqNum);
+        	 prestmt.execute();
 		    check = true; 
         }
         

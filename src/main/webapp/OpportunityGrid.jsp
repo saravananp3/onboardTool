@@ -477,7 +477,7 @@ img.filtered {
 					<div class="container-fluid">
 
 						<%
-                    if(roles.equals("admin")){
+                    if(roles.equals("admin")|| !roles.equals("admin") ){
                 %>
 						<!--  admin Role -->
 						<section>
