@@ -50,14 +50,16 @@ public class ArchiveExeIssueTemplateService {
         public JsonArray archiveExeIssueDataRetrieve() {
             JsonArray jsonArray = new JsonArray();
             try {
-                 String selectQuery1 = "select * from ArchiveExe_Issue_Info where oppId='"+Id+"' ;";
-                 Statement st2 = con.createStatement();
-                 ResultSet rs2 = st2.executeQuery(selectQuery1);
+                 String selectQuery1 = "select * from ArchiveExe_Issue_Info where oppId=? ;";
+                 PreparedStatement pst2 = con.prepareStatement(selectQuery1);
+     			 pst2.setString(1, Id);
+     			 ResultSet rs2 = pst2.executeQuery();
+                 
                  if(!rs2.next()) {
                      archiveExeIssueDefaultRecords();
                  }
                  jsonArray = getTableInfo();
-                 st2.close();
+                 pst2.close();
                  rs2.close();
             }
                  catch(Exception e) {
@@ -68,9 +70,10 @@ public class ArchiveExeIssueTemplateService {
         public JsonArray getTableInfo() {
             JsonArray jsonArray = new JsonArray();
             try {
-                 String selectQuery1 = "select * from ArchiveExe_Issue_Info where oppId='"+Id+"' order by seq_no;";
-                 Statement st2 = con.createStatement();
-                 ResultSet rs2 = st2.executeQuery(selectQuery1);
+                 String selectQuery1 = "select * from ArchiveExe_Issue_Info where oppId=? order by seq_no;";
+                 PreparedStatement pst2 = con.prepareStatement(selectQuery1);
+     			 pst2.setString(1, Id);
+     			 ResultSet rs2 = pst2.executeQuery();
                  while(rs2.next()) {
                      JsonObject jsonObject = new JsonObject();
                      jsonObject.addProperty("seq_no", rs2.getInt("seq_no"));
@@ -89,7 +92,7 @@ public class ArchiveExeIssueTemplateService {
                      jsonArray.add(jsonObject);
                  }
                  System.out.println( " ye aya retrive : "+jsonArray);
-                 st2.close();
+                 pst2.close();
                  rs2.close();
             }
                  catch(Exception e) {
@@ -102,10 +105,12 @@ public class ArchiveExeIssueTemplateService {
             boolean checkStatus = true;
             try
             {
-                String roleQuery = "select * from archiverequirements_stake_holder_info where OppId='"+Id+"' and role='"+Role+"';";
-                Statement st = con.createStatement();
-                System.out.println(roleQuery);
-                ResultSet rs = st.executeQuery(roleQuery);
+                String roleQuery = "select * from archiverequirements_stake_holder_info where OppId=? and role=?;";
+                PreparedStatement pst2 = con.prepareStatement(roleQuery);
+    			pst2.setString(1, Id);
+    			pst2.setString(2, Role);
+    			System.out.println(roleQuery);
+    			ResultSet rs = pst2.executeQuery();                                             
                 if(rs.next())
                 {
                     if(rs.getString("ArchiveRequirementApproval").equals(APPROVAL_CONSTANT.DECISION_PENDING))
@@ -114,7 +119,7 @@ public class ArchiveExeIssueTemplateService {
                 else
                 checkStatus = false;
                 rs.close();
-                st.close();
+                pst2.close();
              }
             catch(Exception e)
             {
@@ -141,9 +146,12 @@ public class ArchiveExeIssueTemplateService {
         }
         public boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
             boolean checkDuplicate = false;
-            String selectQuery = "select * from ArchiveExe_Issue_Info where oppId='"+Id+"' order by seq_no;";
-            Statement state = con.createStatement();
-            ResultSet result = state.executeQuery(selectQuery);
+            String selectQuery = "select * from ArchiveExe_Issue_Info where oppId=? order by seq_no;";
+            PreparedStatement pst2 = con.prepareStatement(selectQuery);
+			pst2.setString(1, Id);
+			System.out.println(selectQuery);
+			ResultSet result = pst2.executeQuery();
+            
             while(result.next()) {
                 String checkApprovalId = result.getString("app_id");
                 if(checkApprovalId == uniqueID) {

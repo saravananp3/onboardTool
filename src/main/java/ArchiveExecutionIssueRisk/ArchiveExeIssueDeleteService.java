@@ -59,15 +59,20 @@ public class ArchiveExeIssueDeleteService {
             String appname ="";
             String UniqueId ="";
             int newSeqNum = SeqNum+1;
-            String selectUniqueID = "select * from ArchiveExe_Issue_Info where  IssueId='"+app_id+"' and seq_no='"+SeqNum+"' order by seq_no;";
-            Statement st2 = con.createStatement();
-            ResultSet rs2 = st2.executeQuery(selectUniqueID);
+            String selectUniqueID = "select * from ArchiveExe_Issue_Info where  IssueId=? and seq_no=? order by seq_no;";
+            PreparedStatement pst1 = con.prepareStatement(selectUniqueID);
+			pst1.setString(1, app_id);
+			pst1.setInt(2,SeqNum);
+			ResultSet rs2 = pst1.executeQuery();
+            
             if(rs2.next()) {
                 UniqueId=rs2.getString("app_Id");
             }
-            String selectQuery = "select * from ArchiveExe_Issue_Info where app_Id='"+UniqueId+"' order by seq_no;";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "select * from ArchiveExe_Issue_Info where app_Id=? order by seq_no;";
+            PreparedStatement pst2 = con.prepareStatement(selectQuery);
+			pst2.setString(1, UniqueId);
+			ResultSet rs = pst2.executeQuery();
+          
             while(rs.next())
             {
                 seq_no.add(rs.getString("seq_no"));
@@ -125,9 +130,11 @@ public class ArchiveExeIssueDeleteService {
                     commentsRes.add(issueId.get(i));
                 }
             }
-            String deleteQuery ="delete from ArchiveExe_Issue_Info where app_Id='"+UniqueId+"';";
-            Statement st1 = con.createStatement();
-            st1.executeUpdate(deleteQuery);
+            String deleteQuery ="delete from ArchiveExe_Issue_Info where app_Id=?;";
+            PreparedStatement st1 = con.prepareStatement(deleteQuery);
+			st1.setString(1,UniqueId);
+			st1.executeUpdate();
+            
             st1.close();
             for(int i=0;i<seq_noRes.size();i++)
             {
