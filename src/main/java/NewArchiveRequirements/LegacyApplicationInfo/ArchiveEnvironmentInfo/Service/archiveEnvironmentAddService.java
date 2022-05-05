@@ -85,9 +85,10 @@ public class archiveEnvironmentAddService {
 			
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from "+tableName+" where oppid='"+Id+"' oreder by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from "+tableName+" where oppid=?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			
 			while(rs.next())
 			{

@@ -1,6 +1,7 @@
 package NewArchiveRequirements.LegacyApplicationInfo.ArchiveEnvironmentInfo.Service;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.google.gson.JsonArray;
@@ -44,13 +45,17 @@ public class archiveEnvironmentSaveService {
 		  		String stage=  jsonObj.get("stage").getAsString();
 		  		String prod =  jsonObj.get("prod").getAsString();
 		  		
-			  String UpdateQuery = "update "+tableName+" set dev"+columnSuffix+" = ?, test"+columnSuffix+" =?, stage"+columnSuffix+"=?, prod"+columnSuffix+"=? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
-	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
-	          prestmt.setString(1, dev);
-	          prestmt.setString(2, test);
-	          prestmt.setString(3, stage);
-	          prestmt.setString(4, prod);
-	          prestmt.execute();
+			  String UpdateQuery = "update "+tableName+" set dev"+columnSuffix+" = ?, test"+columnSuffix+" =?, stage"+columnSuffix+"=?, prod"+columnSuffix+"=? where OppId=? and seq_no=?";
+			  PreparedStatement st = con.prepareStatement(UpdateQuery);
+			  st.setString(1,Id);
+			  st.setString(2,seqNum);
+			  ResultSet rs = st.executeQuery();
+			  
+			  /*
+				 * PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
+				 * prestmt.setString(1, dev); prestmt.setString(2, test); prestmt.setString(3,
+				 * stage); prestmt.setString(4, prod); prestmt.execute();
+				 */
 			}
 			statusFlag =true;
 			

@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,16 +21,19 @@ public class ArchiveExecutionDataRetrieve {
         DBconnection dBconnection = new DBconnection();
         String projectname="";
         Connection connection = (Connection) dBconnection.getConnection();
-        String query = "select * from AppEmphazize_ProjectDetails where id = " + id + ";";
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery(query);
+        String query = "select * from AppEmphazize_ProjectDetails where id =?;";
+        PreparedStatement st = connection.prepareStatement(query);
+        st.setString(1,id);
+        ResultSet rs = st.executeQuery();
         if(rs.next()) {
            projectname = rs.getString("projectname");
         }
         JsonObject json = new JsonObject();
-        String progress_bar_query = "select * from archiveexecution_details where projects='" + projectname + "' and level=1;";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(progress_bar_query);
+        String progress_bar_query = "select * from archiveexecution_details where projects=? and level=1;";
+        PreparedStatement st1 = connection.prepareStatement(progress_bar_query);
+        st1.setString(1, projectname);
+        ResultSet resultSet = st1.executeQuery();
+       
         while (resultSet.next()) {
             String key = resultSet.getString(3);
             String value = resultSet.getString(15);
@@ -48,17 +52,21 @@ public class ArchiveExecutionDataRetrieve {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             //query for retrieving the table data
-            String query7 = "select * from AppEmphazize_ProjectDetails where id = " + project_id;
-            Statement st7 = connection.createStatement();
-            ResultSet rs7 = st7.executeQuery(query7);
+            String query7 = "select * from AppEmphazize_ProjectDetails where id = ?;";
+            PreparedStatement st7 = connection.prepareStatement(query7);
+            st7.setString(1,project_id);
+            ResultSet rs7 = st7.executeQuery();
+           
             if(rs7.next())
             {
                 projectname=rs7.getString("projectname");
             }
 
-            String query = "select * from archiveexecution_details where projects='"+projectname+"'order by seq_num;";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            String query = "select * from archiveexecution_details where projects=? order by seq_num;";
+            PreparedStatement st3 = connection.prepareStatement(query);
+            st3.setString(1, projectname);
+            ResultSet resultSet = st3.executeQuery(); 
+            
 
             while (resultSet.next()) {
                 JsonObject infoJson = new JsonObject();
@@ -77,9 +85,11 @@ public class ArchiveExecutionDataRetrieve {
             {
                 lastobject.addProperty(dummy_value.getMetaData().getColumnLabel(1).toLowerCase(),dummy_value.getString(1));
             }
-            String level1_query="select * from archiveexecution_details where projects='"+projectname+"' and level=1 order by seq_num";
-            Statement level1_statement=connection.createStatement();
-            ResultSet level1_value=level1_statement.executeQuery(level1_query);
+            String level1_query="select * from archiveexecution_details where projects=? and level=1 order by seq_num";
+            PreparedStatement st1 =connection.prepareStatement(level1_query);
+            st1.setString(1,projectname);
+            ResultSet level1_value = st1.executeQuery();
+           
             while(level1_value.next())
             {
                 lastobject.addProperty(level1_value.getString(3).replace(" ",""),level1_value.getString(1));
