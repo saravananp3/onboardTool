@@ -1,6 +1,7 @@
 package ArchiveExecutionGovernanceModule.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -38,9 +39,12 @@ public class ArchiveExecutionGovernanceSaveService {
 		try
 		{
 			
-			String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = '"+Value+"' where waveid='"+waveId+"' and seq_No='"+SeqNo+"';";
-		    Statement st = con.createStatement();
-		    st.executeUpdate(UpdateQuery);
+			String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = ? where waveid=? and seq_No=?;";
+			PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
+	        prestmt.setString(1, Value);
+	        prestmt.setString(2, waveId);
+	        prestmt.setInt(3, SeqNo);
+	        prestmt.execute();
 			
 			jsonObject = checkInputType(ColumnName, SeqNo);
 		    checkSave = true;
@@ -64,9 +68,10 @@ public class ArchiveExecutionGovernanceSaveService {
 		
 		try {
 			
-			String selectQuery = "select * from archive_execution_governance_info where waveid='"+waveId+"' order by seq_no";
-			Statement st1 = con.createStatement();
-			ResultSet rs = st1.executeQuery(selectQuery);
+			String selectQuery = "select * from archive_execution_governance_info where waveid=? order by seq_no";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, waveId);
+			ResultSet rs = st.executeQuery();
 			
 			ArrayList<String> arrDate = new ArrayList<String>();
 			ArrayList<Integer> arrLevel = new ArrayList<Integer>();
@@ -125,9 +130,13 @@ public class ArchiveExecutionGovernanceSaveService {
 		    for(int i = rowIndex; i >= 0; i--) {
 		    	
 		    	if(arrLevel.get(i) == 1) {
-		    		String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = '"+resultDate+"' where waveid='"+waveId+"' and seq_No='"+(i+1)+"';";
-			    	Statement st3 = con.createStatement();
-			    	st3.executeUpdate(UpdateQuery);
+		    		String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = ? where waveid=? and seq_No=?;";
+		    		PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
+		    		int s=i+1;
+			        prestmt.setString(1, resultDate);
+			        prestmt.setString(2, waveId);
+			        prestmt.setInt(3, s);
+			        prestmt.execute();	    		
 			    	break;
 		    	}
 		    }
