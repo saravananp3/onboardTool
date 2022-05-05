@@ -77,7 +77,7 @@ public class ArchiveExecutionGovernanceSaveService {
 			ArrayList<Integer> arrLevel = new ArrayList<Integer>();
 			ArrayList<Date> arrChildDate = new ArrayList<Date>();
 		
-		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
 			
 			
 			int rowIndex = seqNum-1;
@@ -132,7 +132,7 @@ public class ArchiveExecutionGovernanceSaveService {
 		    	if(arrLevel.get(i) == 1) {
 		    		String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = ? where waveid=? and seq_No=?;";
 		    		PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
-		    		int s=i+1;
+		    		int s=(i+1);
 			        prestmt.setString(1, resultDate);
 			        prestmt.setString(2, waveId);
 			        prestmt.setInt(3, s);

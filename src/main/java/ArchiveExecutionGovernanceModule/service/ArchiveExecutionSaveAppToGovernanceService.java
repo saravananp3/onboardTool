@@ -1,6 +1,7 @@
 package ArchiveExecutionGovernanceModule.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,7 +25,7 @@ DBconnection dBconnection =null;
 	private int seqNo;
 	private String columnName;
 	private String value;
-	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
 
 	public ArchiveExecutionSaveAppToGovernanceService(String Id,int seqNo,String columnName,String value) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
@@ -39,9 +40,12 @@ DBconnection dBconnection =null;
 		boolean isArchiveParentNode = false;
 		try {
 			for(int i=seqNo;i>0;i--) {
-			String selectQuery = "select * from Archive_Execution_info where oppId='"+Id+"' and seq_no ='"+i+"'";
-			Statement st =con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from Archive_Execution_info where oppId=? and seq_no =?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			st.setInt(2, i);
+		    ResultSet rs = st.executeQuery();
+		
 			if(rs.next()) {
 				if (rs.getInt("level")==1) {
 					if(rs.getString("taskGroup").startsWith("Archive Implementation"))
@@ -60,9 +64,11 @@ DBconnection dBconnection =null;
 	private String getAppName() {
 		String appName = null;
 		try {
-			String selectQuery = "select * from opportunity_info where id='"+Id+"' and column_name='appName'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from opportunity_info where id=? and column_name='appName'";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+			
 			if(rs.next()) {
 			appName = rs.getString("value");	
 			}
@@ -79,9 +85,10 @@ DBconnection dBconnection =null;
 		String waveId = null;
 		try {
 			String appName = getAppName();
-			String selectQuery = "select * from governance_info where column_name='apps' and value like'%"+appName+"%'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from governance_info where column_name='apps' and value like?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, "%" + appName + "%");
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 			waveId = rs.getString("waveId");	
 			}
@@ -99,9 +106,11 @@ DBconnection dBconnection =null;
 		try {
 			String taskGroup = "";
 			String taskName = "";
-			String selectQuery = "select * from archive_execution_info where seq_no ="+seqNo+" and oppId='"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from archive_execution_info where seq_no =? and oppId=?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setInt(1, seqNo);
+			st.setString(2,Id);
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 			taskGroup = rs.getString("taskGroup");	
 			taskName = rs.getString("taskName");
@@ -109,9 +118,12 @@ DBconnection dBconnection =null;
 			st.close();
 			rs.close();
 			
-			String selectQuery1 = "select * from archive_execution_governance_info where taskGroup ='"+taskGroup+"' and taskName = '"+taskName+"' and  waveId='"+waveId+"'";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectQuery1);
+			String selectQuery1 = "select * from archive_execution_governance_info where taskGroup =? and taskName = ? and  waveId=?";
+			PreparedStatement st1 = con.prepareStatement(selectQuery1);
+			st1.setString(1, taskGroup);
+			st1.setString(2, taskName);
+			st1.setString(3, waveId);
+			ResultSet rs1 = st1.executeQuery();
 			if(rs1.next()) {
 			seqNum = rs1.getInt("seq_no");
 			}
@@ -159,9 +171,12 @@ DBconnection dBconnection =null;
 //			String taskGroup = "";
 //			String taskName = "";
 			for(int i=seqNo;i>0;i--) {
-			String selectQuery = "select * from archive_execution_info where seq_no ="+i+" and oppId='"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from archive_execution_info where seq_no =? and oppId=?";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setInt(1, i);
+			st1.setString(2, Id);
+			ResultSet rs = st1.executeQuery();
+			
 			if(rs.next()) {
 				int level = rs.getInt("level");
 				if(level == 2)
@@ -170,7 +185,7 @@ DBconnection dBconnection =null;
 					break;		
 			}
 			rs.close();
-			st.close();
+			st1.close();
 			}
 			
 //			Statement st = con.createStatement();
@@ -182,9 +197,11 @@ DBconnection dBconnection =null;
 //			st.close();
 //			rs.close();
 			seqNum += childCount;
-			String selectQuery1 = "select * from archive_execution_governance_info where taskGroup like '%"+appName+"' and waveId='"+waveId+"'";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectQuery1);
+			String selectQuery1 = "select * from archive_execution_governance_info where taskGroup like ? and waveId=?";
+			PreparedStatement st1 = con.prepareStatement(selectQuery1);
+			st1.setString(1, "%"+appName+"%");
+			st1.setString(2, waveId);
+			ResultSet rs1 = st1.executeQuery();
 			if(rs1.next()) {
 			seqNum += rs1.getInt("seq_no");
 			}
@@ -202,15 +219,17 @@ DBconnection dBconnection =null;
 		try {
 			String taskGroup = "";
 			String taskName = "";
-			String selectQuery = "select * from archive_execution_info where seq_no ="+seqNo+" and oppId='"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from archive_execution_info where seq_no =? and oppId=?";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setInt(1, seqNo);
+			st1.setString(2, Id);
+			ResultSet rs = st1.executeQuery();					
 			if(rs.next()) {
 			taskGroup = rs.getString("taskGroup");	
 			taskName = rs.getString("taskName");
 			}
 			rs.close();
-			st.close();
+			st1.close();
 			
 			ArrayList<Date> Date = new ArrayList<Date>();
 			
@@ -258,12 +277,15 @@ DBconnection dBconnection =null;
 		Date date = null;
 		try {
 			int seq_no = 0;
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
 			
-			String selectQuery = "select * from archive_execution_info where taskGroup = '"+taskGroup+"' and taskName = '"+taskName+"' and oppName= '"+app+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from archive_execution_info where taskGroup = ? and taskName = ? and oppName= ?;";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, taskGroup);
+			st1.setString(2, taskName);
+			st1.setString(3, app);
+			ResultSet rs = st1.executeQuery();
+					
 			if(rs.next()) {
 				String rs_date = rs.getString(columnName);
 				if(!rs_date.equals("")&&rs_date!=null)
@@ -271,7 +293,7 @@ DBconnection dBconnection =null;
 				seq_no = rs.getInt(1);
 			}			
 			rs.close();
-			st.close();
+			st1.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -282,9 +304,10 @@ DBconnection dBconnection =null;
 	private String getGovernanceApps(String waveId) {
 		String apps="";
 		try {
-		String selectQuery1 = "select * from governance_info where column_name ='apps' and  waveId='"+waveId+"'";
-		Statement st1 = con.createStatement();
-		ResultSet rs1 = st1.executeQuery(selectQuery1);
+		String selectQuery1 = "select * from governance_info where column_name ='apps' and  waveId=?";
+		PreparedStatement st1 = con.prepareStatement(selectQuery1);
+		st1.setString(1, waveId);
+		ResultSet rs1 = st1.executeQuery();
 		if(rs1.next()) {
 		apps = rs1.getString("value");
 		}
@@ -304,10 +327,12 @@ DBconnection dBconnection =null;
 		try
 		{
 			
-			String UpdateQuery  = "update archive_execution_governance_info set "+columnName+" = '"+value+"' where waveid='"+waveId+"' and seq_No='"+seq+"';";
-		    Statement st = con.createStatement();
-		    st.executeUpdate(UpdateQuery);
-			st.close();
+			String UpdateQuery  = "update archive_execution_governance_info set "+columnName+" = ? where waveid=? and seq_No=?;";
+			PreparedStatement pst1 = con.prepareStatement(UpdateQuery);
+			pst1.setString(1, value);
+	    	pst1.setString(2, waveId);
+	    	pst1.setInt(3, seq);
+	    	pst1.execute();
 			
 			jsonObject = checkInputType(columnName, seq,waveId);
 		    checkSave = true;
@@ -329,15 +354,17 @@ DBconnection dBconnection =null;
 		
 		try {
 			
-			String selectQuery = "select * from archive_execution_governance_info where waveid='"+waveId+"' order by seq_no";
-			Statement st1 = con.createStatement();
-			ResultSet rs = st1.executeQuery(selectQuery);
+			String selectQuery = "select * from archive_execution_governance_info where waveid=? order by seq_no";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, waveId);
+			ResultSet rs = st1.executeQuery();
+			
 			
 			ArrayList<String> arrDate = new ArrayList<String>();
 			ArrayList<Integer> arrLevel = new ArrayList<Integer>();
 			ArrayList<Date> arrChildDate = new ArrayList<Date>();
 		
-		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
 			
 			
 			int rowIndex = seqNum-1;
@@ -391,9 +418,14 @@ DBconnection dBconnection =null;
 		    for(int i = rowIndex; i >= 0; i--) {
 		    	
 		    	if(arrLevel.get(i) == 1) {
-		    		String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = '"+resultDate+"' where waveid='"+waveId+"' and seq_No='"+(i+1)+"';";
-			    	Statement st3 = con.createStatement();
-			    	st3.executeUpdate(UpdateQuery);
+		    		int s=i+1;
+		    		String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = ? where waveid=? and seq_No=?;";
+		    		PreparedStatement pst1 = con.prepareStatement(UpdateQuery);
+					pst1.setString(1, resultDate);
+			    	pst1.setString(2, waveId);
+			    	pst1.setInt(3, s);
+			    	pst1.execute();
+		    		
 			    	break;
 		    	}
 		    }

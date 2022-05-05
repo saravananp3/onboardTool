@@ -1,6 +1,7 @@
 package ArchiveExecutionModule.ArchiveExecutionDetails.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,10 +38,13 @@ public class ArchiveExecutionSaveService {
 		boolean checkSave = false;
 		try
 		{
+			String UpdateQuery  = "update archive_execution_info set "+ColumnName+" = ? where oppid=? and seq_No=?;";
+			PreparedStatement pst1 = con.prepareStatement(UpdateQuery);
+			pst1.setString(1, Value);
+	    	pst1.setString(2, Id);
+	    	pst1.setInt(3, SeqNo);
+	    	pst1.execute();
 			
-			String UpdateQuery  = "update archive_execution_info set "+ColumnName+" = '"+Value+"' where oppid='"+Id+"' and seq_No='"+SeqNo+"';";
-		    Statement st = con.createStatement();
-		    st.executeUpdate(UpdateQuery);
 			
 			jsonObject = checkInputType(ColumnName, SeqNo);
 		    checkSave = true;
@@ -64,9 +68,11 @@ public class ArchiveExecutionSaveService {
 		
 		try {
 			
-			String selectQuery = "select * from archive_execution_info where oppid='"+Id+"' order by seq_no";
-			Statement st1 = con.createStatement();
-			ResultSet rs = st1.executeQuery(selectQuery);
+			String selectQuery = "select * from archive_execution_info where oppid=? order by seq_no";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, Id);
+			ResultSet rs = st1.executeQuery();
+			
 			
 			ArrayList<String> arrDate = new ArrayList<String>();
 			ArrayList<Integer> arrLevel = new ArrayList<Integer>();
@@ -125,9 +131,14 @@ public class ArchiveExecutionSaveService {
 		    for(int i = rowIndex; i >= 0; i--) {
 		    	
 		    	if(arrLevel.get(i) == 1) {
-		    		String UpdateQuery  = "update archive_execution_info set "+ColumnName+" = '"+resultDate+"' where oppid='"+Id+"' and seq_No='"+(i+1)+"';";
-			    	Statement st3 = con.createStatement();
-			    	st3.executeUpdate(UpdateQuery);
+		    		int t=i+1;
+		    		String UpdateQuery  = "update archive_execution_info set "+ColumnName+" = ? where oppid=? and seq_No=?;";
+		    		PreparedStatement pst1 = con.prepareStatement(UpdateQuery);
+					pst1.setString(1, resultDate);
+			    	pst1.setString(2, Id);
+			    	pst1.setInt(3, t);
+			    	pst1.execute();
+		    		
 			    	break;
 		    	}
 		    }

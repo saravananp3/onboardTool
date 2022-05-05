@@ -43,16 +43,18 @@ public class ArchiveExeIssueSaveService {
                 String end_date =  jsonObj.get("end_date").getAsString();
                 String comments =  jsonObj.get("comments").getAsString();
                 System.out.println(" ye araha"+app_Id+""+impact+""+type+""+comments+""+exp_date+" ye araha");
-                String fetchUniqueId="select * from decom3sixtytool.archiveexe_issue_info where seq_no='"+seq_no+"'and oppId='"+OppId+"';";
-                Statement st1 = con.createStatement();
-                ResultSet rs1 = st1.executeQuery(fetchUniqueId);
+                String fetchUniqueId="select * from decom3sixtytool.archiveexe_issue_info where seq_no=?and oppId=?;";
+                PreparedStatement pst2 = con.prepareStatement(fetchUniqueId);
+    			pst2.setString(1, seq_no);
+    			pst2.setString(2, OppId);
+    			ResultSet rs1 = pst2.executeQuery();                             
                 if(rs1.next()) {
                     UniqueId=rs1.getString("app_Id");
                 }
                 rs1.close();
-                st1.close();
+                pst2.close();
               String UpdateQuery = "update ArchiveExe_Issue_Info set IssueId=?, impact=?,type=?,description=?,"
-                    + "start_date=?,raised_by=?,status=?,assigned_to=?,resolved=?,exp_date=?,end_date=?,comments=? where app_Id='"+UniqueId+"'";
+                    + "start_date=?,raised_by=?,status=?,assigned_to=?,resolved=?,exp_date=?,end_date=?,comments=? where app_Id=?";
               PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
              // prestmt.setString(1, seq_no);
               prestmt.setString(1, app_Id);
@@ -67,6 +69,7 @@ public class ArchiveExeIssueSaveService {
               prestmt.setString(10, exp_date);
               prestmt.setString(11, end_date);
               prestmt.setString(12, comments);
+              prestmt.setString(13, UniqueId);
               prestmt.execute();
               statusFlag =true;
             }
