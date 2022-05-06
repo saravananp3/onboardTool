@@ -214,9 +214,14 @@ public class archiveReqLegacyDataRetrieveService {
 			boolean checkValue =false;
 		    String value = "";
 			int structureDataSize = !structDbSize.equals("")?Integer.parseInt(structDbSize):0;
-			String selectQueryDate = "select * from "+tableName+" where column_name = 'UnstrucDataVolume' and Id = '"+Id+"'";
-			 Statement st2 = con.createStatement();
-			 ResultSet rs2 = st2.executeQuery(selectQueryDate);
+			String selectQueryDate = "select * from "+tableName+" where column_name = 'UnstrucDataVolume' and Id = ?;";
+			PreparedStatement st2 = con.prepareStatement(selectQueryDate);
+			st2.setString(1,Id);
+			ResultSet rs2 = st2.executeQuery();
+			
+			
+			
+			
 			 if(rs2.next())
 			 {
 				 checkValue = true;

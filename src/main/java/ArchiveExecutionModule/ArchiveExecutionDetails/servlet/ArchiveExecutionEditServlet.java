@@ -2,6 +2,7 @@ package ArchiveExecutionModule.ArchiveExecutionDetails.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -63,9 +64,15 @@ public class ArchiveExecutionEditServlet extends HttpServlet {
         	
 			
 			System.out.println("Here");
-        	String updateQuery = "update archive_execution_info set taskGroup = '"+taskGroup+"', taskName = '"+taskName+"' where oppId = '"+Id+"' and seq_no = '"+seqNum+"';";
-        	Statement st = con.createStatement();
-		    st.executeUpdate(updateQuery);
+        	String updateQuery = "update archive_execution_info set taskGroup = ?, taskName = ? where oppId = ? and seq_no = ?;";
+        	PreparedStatement st = con.prepareStatement(updateQuery);
+        	st.setString(1,taskGroup);
+        	st.setString(2,taskName);
+        	st.setString(3,Id);
+        	st.setInt(4,seqNum);
+        	st.execute();
+        	
+        	
 		    check = true; 
         }
         
