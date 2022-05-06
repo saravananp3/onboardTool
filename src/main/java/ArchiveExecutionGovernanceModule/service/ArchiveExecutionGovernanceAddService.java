@@ -90,9 +90,11 @@ public class ArchiveExecutionGovernanceAddService {
 				ArrayList<String> arrStatusRes = new ArrayList<String>();
 				ArrayList<String> arrRemarkRes = new ArrayList<String>();
 				
-				String selectQuery = "select * from archive_execution_governance_info where waveid='"+waveId+"' order by seq_no";
-				Statement st1 = con.createStatement();
-				ResultSet rs = st1.executeQuery(selectQuery);
+				String selectQuery = "select * from archive_execution_governance_info where waveid=? order by seq_no";
+				PreparedStatement st1 = con.prepareStatement(selectQuery);
+				st1.setString(1,waveId);
+				ResultSet rs = st1.executeQuery();
+				System.out.println("sagadevan");
 			
 				int selectedIndex = seqNum-1;
 				
@@ -181,9 +183,14 @@ public class ArchiveExecutionGovernanceAddService {
 					
 					}
 				
-				String deleteQuery = "delete from archive_execution_governance_info where waveid='"+waveId+"' order by seq_no;";
-				Statement st3 = con.createStatement();
-	            st3.executeUpdate(deleteQuery);
+				String deleteQuery = "delete from archive_execution_governance_info where waveid=? order by seq_no;";
+				PreparedStatement st3 = con.prepareStatement(deleteQuery);
+				st3.setString(1,waveId);
+
+				System.out.println("sagadevan");
+				
+				
+				
 				
 				for(int k = 0; k<arrSeqNumRes.size(); k++) {
 					

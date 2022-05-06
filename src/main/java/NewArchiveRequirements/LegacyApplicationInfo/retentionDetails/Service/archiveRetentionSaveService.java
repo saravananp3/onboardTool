@@ -30,9 +30,10 @@ public class archiveRetentionSaveService {
 		try
 		{	
 			JsonObject jsonObj1 = jsonArray.get(0).getAsJsonObject();
-			String UpdateQuery1 = "update archive_retention_content_info set contentInfo = ? where OppId='"+Id+"'";
+			String UpdateQuery1 = "update archive_retention_content_info set contentInfo = ? where OppId=?";
 	          PreparedStatement prestmt1 = con.prepareStatement(UpdateQuery1);
 	          prestmt1.setString(1, jsonObj1.get("contentInfo").getAsString());
+	          prestmt1.setString(2,Id);
 	          prestmt1.execute();
 	          prestmt1.close();
 			for(int i=1;i<jsonArray.size();i++)
@@ -48,7 +49,7 @@ public class archiveRetentionSaveService {
 		  		String dateUsed =  jsonObj.get(dateUsedType).getAsString();
 		  		String descp =  jsonObj.get("descp").getAsString();
 		  		
-			  String UpdateQuery = "update Archive_Retention_Info set retentionCheck = ?, retentionLevel = ?, conditions = ?, dateUsedType = ?, dateUsed = ?, descp = ? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			  String UpdateQuery = "update Archive_Retention_Info set retentionCheck = ?, retentionLevel = ?, conditions = ?, dateUsedType = ?, dateUsed = ?, descp = ? where OppId=? and seq_no=?;";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, retentionCheck);
 	          prestmt.setString(2, retentionLevel);
@@ -56,6 +57,8 @@ public class archiveRetentionSaveService {
 	          prestmt.setString(4, dateUsedType);
 	          prestmt.setString(5, dateUsed);
 	          prestmt.setString(6, descp);
+	          prestmt.setString(7,Id);
+	          prestmt.setString(8,seqNum);
 	          prestmt.execute();
 	          prestmt.close();
 			}
