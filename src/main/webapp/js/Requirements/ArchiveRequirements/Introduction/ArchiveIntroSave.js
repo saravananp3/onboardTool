@@ -151,11 +151,18 @@ var typingTimer;                //timer identifier
                 success: function (data) {
                     console.log("SAVE DATA:",data);
                     JsonObject = data;
-                    if(data.SaveStatus)
-                        {
+                    if(data.CheckSave) {
                         notification("success","Saved successfully.","Note:");
                         checkRoles = true;
-                        }
+                        } else if(!data.checkUser) {
+							notification("warning","Username already exist for this opportunity.","Warning!!");
+						} else if(!data.checkName) {
+							notification("warning","Name already exist for this opportunity.","Warning!!");
+						} else if(!data.checkEmail) {
+							notification("warning","EmailId already exist for this opportunity.","Warning!!");
+						} else if(!data.checkRole) {
+							notification("warning","Role already exist for this opportunity.","Warning!!");
+						}
                     else
                         {
                         notification("error","Error occured while saving.","Error:");

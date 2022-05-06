@@ -409,23 +409,33 @@ public class dashboardService {
             st1.close();
             // String selectQuery2 = "select count(*) from opportunity_info where
             // column_name = 'appName';";
-            String selectQuery2 = "select count(distinct OppId) from decom3sixtytool.Intake_Stake_Holder_Info where intakeApproval='Approved';";
+            int countIntake = 0;
+            String selectQuery2 = "select distinct Id from decom3sixtytool.Opportunity_Info oi left join decom3sixtytool.Intake_Stake_Holder_Info ish on ish.OppId=oi.Id ;";
             Statement st2 = con.createStatement();
             ResultSet rs2 = st2.executeQuery(selectQuery2);
             int countOpportunity = 0;
-            if (rs2.next())
-                countOpportunity = rs2.getInt(1);
+            while (rs2.next())
+            {   
+                String Id = rs2.getString("Id");
+                String selectIntakeCount="select * from decom3sixtytool.Intake_Stake_Holder_Info where intakeApproval='Approved' and priority_order_num=(select Max(priority_order_num) from decom3sixtytool.Intake_Stake_Holder_Info where OppId='"+Id+"')and OppId='"+Id+"';";
+                Statement statement = con.createStatement();
+                ResultSet rset = statement.executeQuery(selectIntakeCount);
+                if(rset.next()) {
+                    countOpportunity++;
+                }else
+                    countIntake++;
+                //countOpportunity = rs2.getInt(1);
+            }
             rs2.close();
             st2.close();
-            String selectQuery3 = "select count(distinct oi.Id) from decom3sixtytool.Opportunity_Info oi left join decom3sixtytool.Intake_Stake_Holder_Info ish on ish.OppId=oi.Id "
+        /*   String selectQuery3 = "select count(distinct oi.Id) from decom3sixtytool.Opportunity_Info oi left join decom3sixtytool.Intake_Stake_Holder_Info ish on ish.OppId=oi.Id "
                     + "where column_name='appName' and oi.Id not in (select OppId from decom3sixtytool.Intake_Stake_Holder_Info where intakeApproval='Approved');";
             Statement st3 = con.createStatement();
             ResultSet rs3 = st3.executeQuery(selectQuery3);
-            int countIntake = 0;
             if (rs3.next())
                 countIntake = rs3.getInt(1);
             rs3.close();
-            st3.close();
+            st3.close();*/
             jsonObject.addProperty("phaseCount", countPhase);
             jsonObject.addProperty("waveCount", countWave);
             jsonObject.addProperty("appCount", countOpportunity);

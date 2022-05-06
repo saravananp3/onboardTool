@@ -23,6 +23,67 @@ public class ApproverRolesSaveService {
 		 this.Id = Id;
 		 this.jsonArray = jsonArray;
 	}
+	
+
+public JsonObject CheckUserDetails(JsonArray jsonArray,String id)
+	{
+		JsonObject jsonObjCheck = new JsonObject();
+		boolean checkUser = true;
+		boolean checkName = true;
+		boolean checkEmail = true;
+		boolean checkRole = true;
+		ArrayList<String> UserName = new ArrayList<String>();
+		ArrayList<String> Name = new ArrayList<String>();
+		ArrayList<String> Email = new ArrayList<String>();
+		ArrayList<String> Role = new ArrayList<String>();
+		try
+		{
+			for(int i=0;i<jsonArray.size();i++)
+			{
+				
+				JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();	
+		  		String role = jsonObj.get("role").getAsString();
+		  		String name =  jsonObj.get("name").getAsString();
+		  		String emailId =  jsonObj.get("emailId").getAsString();
+		  		String username =  jsonObj.get("username").getAsString();
+		  		
+				
+				
+				if(!UserName.contains(username))
+				UserName.add(username);
+				else
+					checkUser = false;
+				
+				if(!Name.contains(name))
+					Name.add(name);				
+				else
+					checkName = false;
+				
+				if(!Email.contains(emailId))
+					Email.add(emailId);				
+				else
+					checkEmail = false;
+				
+				if(!Role.contains(role))
+					Role.add(role);				
+				else
+					checkRole = false;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		jsonObjCheck.addProperty("checkUser", checkUser);
+		jsonObjCheck.addProperty("checkName", checkName);
+		jsonObjCheck.addProperty("checkEmail", checkEmail);
+		jsonObjCheck.addProperty("checkRole", checkRole);
+		
+		return jsonObjCheck;
+	}
+	
+	
 
 	public JsonObject archiveIntroRolesResponseSave()
 	{

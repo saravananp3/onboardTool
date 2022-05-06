@@ -1,6 +1,7 @@
 $("#AddStakeUserBtn").click(function()
 {
 	AddRowAjaxCall();
+	//location.reload();
 });
 function AddRowAjaxCall()
 {
@@ -13,9 +14,9 @@ function AddRowAjaxCall()
         if(data.checkAdd)
         {
         	 var Row =  "<tr class='UserRow'>"+
-	                    "<td><input type='text' class ='name' value='' ></td>"+
-			            "<td><input type='text' class ='emailid' value='' ></td>"+
-                        "<td><input type='text' class='username' value='' ></td>"+
+	                    "<td><input type='text' id='firstName"+number+"' class ='name' value='' ></td>"+
+			            "<td><input type='text' id='search"+number+"' class ='emailid' onClick='searchFunction("+number+");' value='' ><ul id='result"+number+"' class='list-group searchResult'></ul></td>"+
+                        "<td><input type='text' id='userName"+number+"' class='username' value='' ></td>"+
 			            "<td><select type='text' class='role' value=''>"+
                              "<option value='Development Owner'>Development Owner</option>"+
                              "<option value='Application Owner'>Application Owner</option>"+
@@ -35,6 +36,7 @@ function AddRowAjaxCall()
 			            "</tr>";
              $("#UserList").append(Row);
              notification("success","Row added Successfully.","Note");
+             number++;
         }
         else if(!data.checkAdd)
         {
@@ -46,6 +48,75 @@ function AddRowAjaxCall()
         error: function (e) {
             console.log(e);
         }
-
+		
     });
 }
+
+function searchFunction(i){
+	
+	$('#search'+i).keyup(function() {
+		$('#result'+i).html('');
+		var searchField = $('#search'+i).val();
+		var expression = new RegExp(searchField, "i");
+		$.ajax({
+			type: "POST",
+			url: "Retrieve_users_servlet",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				 if (!$.isArray(data)) {
+                data = [data];
+            }
+           
+            	$('#result'+i).empty();
+				$.each(data, function(key, value) {
+					
+					if (value.u_email.search(expression) != -1){						
+						$('#result'+i).append('<li class="list-group-item link-class" id="list">' + value.u_email +'</li>');					
+					}
+					
+				});
+			}
+
+		});
+	
+	});
+		
+	$('#result' + i).on('click', '#list', function() {
+		var click_text = $(this).text();
+		$('#search' + i).val(click_text);
+		$("#result" + i).html('');
+		$.ajax({
+			type: "POST",
+			url: "Retrieve_users_servlet",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				if (!$.isArray(data)) {
+					data = [data];
+				}
+
+				var count = 0;
+				var first_name;
+				var user_name;
+				$.each(data, function() {
+
+					if (click_text == data[count].u_email) {
+						
+						first_name = data[count].ufname;
+						user_name = data[count].uname;
+						console.log(first_name);
+						console.log(user_name);
+						document.getElementById('firstName'+i).value = first_name;
+						document.getElementById('userName'+i).value = user_name;
+
+					}
+					count = count + 1;
+
+				});
+
+			}
+		});
+
+	});
+};
