@@ -55,7 +55,7 @@ function getPhaseList(data)
    	 var phaseName = value.phaseName; 
    	 var phaseId = value.phaseId; 
    	
-	var li_element ="<li class = 'phaseCard' >"+
+	var li_element ="<li class = 'phaseCard'>"+
 		        	"<div class='drophide'>"+
 					"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 					"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
@@ -67,9 +67,18 @@ function getPhaseList(data)
 					"<input type = 'hidden' class = 'phaseId' value = '"+phaseId+"'/>"+
 					"</div>"+
 					"<h3 class='cbp-vm-title' style='display:none;'>"+value.apps+"</h3>"+
-                    "<h3 class='left-col primary phaseHeadingName' name='name' contenteditable='false'>"+phaseName+"</h3>"+
+					 "<h3 class='cbp-vm-title left-col primary' data-bs-toggle='tooltip' data-bs-placement='top' title='"+phaseId+"'>"+phaseName+"</h3>"+
+					
+                    /*"<h3 class='left-col primary phaseHeadingName' name='name' contenteditable='false'>"+phaseName+"</h3>"+*/
+                    "<button type='button' class='btn btn-primary mt-3' name='btn' onClick=\"edit('"+phaseId+"','"+phaseName+"')\";>"+
+                      "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
+                      "</button>"+
                     "</li>";
 	$('#ul_id').append(li_element);
+	 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+				return new bootstrap.Tooltip(tooltipTrigger)
+			});
     });
 }
 function getOpportunityList(data)
@@ -88,21 +97,24 @@ function getOpportunityList(data)
 					"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
 					"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
 					"<a class = 'options' style = 'text-align:left;' href='#'>Edit</a>"+
-					"<a class = 'options addClass' style = 'text-align:left;"+optionWave+"' href='#'>Add to Wave</a>"+
+					"<a class = 'options addClass' style = 'text-align:left;"+optionwave+"' href='#'>Add to Wave</a>"+
 					"<a class = 'options deleteClass' style = 'text-align:left;' href='#'>Delete</a>"+
 					"</div>"+
 					"</i>"+
 					"<input type = 'hidden' class = 'oppName' value = '"+opportunityName+"'>"+
 					"<input type = 'hidden' class = 'oppId' value = '"+OpportunityId+"'>"+
 					"</div>"+
-                    "<h3 class='cbp-vm-title left-col primary' name='name'>"+opportunityName+"</h3>"+
-                    "<p class='right-col primary' >In Test</p>"+
+                    "<h3 class='cbp-vm-title left-col primary' opportunityHeadingName' name='name' contenteditable='false'>"+opportunityName+"</h3>"+
+                   /* "<p class='right-col primary' >In Test</p>"+*/
                    
                      "<button type='button' class='btn btn-primary' name='btn' onClick=\"edit('"+OpportunityId+"','"+opportunityName+"')\";>"+
                      "<i class='fa fa-eye'></i>/ &nbsp; <i class='fa fa-edit'></i>"+
-                     "</button>"+
+                 
                      "</li>";
 	$('#ul_id').append(li_element);
+	
     });
 }
+
+
 

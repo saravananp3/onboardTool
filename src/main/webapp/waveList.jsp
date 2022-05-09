@@ -479,7 +479,7 @@ pointer-events:all;
                             <i class="fa fa-search search-icon" aria-hidden="true"></i>
                         </div>
                         <div class="col-auto">
-                            <input id="appFilter" type="text" placeholder="Search the wave...">
+                            <input id="appFilter" class="searchbox-input" type="text" placeholder="Search the wave...">
                         </div>
                     </div>
                 </div>
