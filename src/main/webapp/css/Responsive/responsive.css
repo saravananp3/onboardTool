@@ -43,6 +43,9 @@ body {
 	height: 140px;
 }
 
+.d3s-ml-5 {
+	margin-right: 5px;
+}
 .d3s-mr-10 {
 	margin-right: 10px;
 }
@@ -611,3 +614,26 @@ overflow: hidden;
 max-width:20ch; */
 	white-space: nowrap;
 }
+
+/* <!-- ========== Card Grid ========== --> */
+
+.card-grid {
+	display: grid;
+	grid-template-columns:
+	repeat(auto-fit, minmax(100px, 1fr));
+}
+
+
+/* @media ( min-width :992px) {
+	#nav-res-align {
+		margin-left: -2rem;
+	}
+	
+	#user-icon-lign {
+		margin-left: -7.5rem;
+	}
+}
+ */
+
+
+

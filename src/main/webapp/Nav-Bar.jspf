@@ -116,13 +116,13 @@
 
 
 	<nav
-		class="navbar navbar-expand-md navbar-light bg-white nav-height nav-font">
-		<div class="container-fluid" id="container-fluid-margin">
+		class="navbar navbar-expand-lg navbar-expand-md navbar-expand-lg navbar-expand-xl navbar-light bg-white nav-height nav-font">
+		<div class="container-fluid d-flex flex-grow-1" id="container-fluid-margin">
 			<a class="navbar-brand" href="OpportunityList.jsp"> <img
 				src="images/Decom360-logo.png" class="d3s-logo" alt="Decom3Sxity">
 			</a>
 			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav mr-auto d3s-ml-80">
+				<ul class="navbar-nav mr-auto d3s-ml-80" id="nav-res-align">
 					<li class="nav-item moduleIcon"><a class="nav-link active"
 						aria-current="page" href="OpportunityList.jsp"><i
 							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
@@ -156,7 +156,7 @@
 
 			</div>
 
-			<div class="dropdown col-md-2" align="end">
+			<div class="dropdown col-md-2" align="end" id="user-icon-lign">
 				<a class="dropdown-toggle" href="#" role="button"
 					id="dropdownMenuLink" data-bs-toggle="dropdown"
 					aria-expanded="false"><i
