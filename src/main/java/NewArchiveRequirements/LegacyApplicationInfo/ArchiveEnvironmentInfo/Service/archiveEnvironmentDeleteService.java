@@ -93,12 +93,9 @@ private String getColumnSuffix()
 			String deleteQuery ="delete from "+tableName+" where OppId=?";
 			PreparedStatement st1 = con.prepareStatement(deleteQuery);
 			st1.setString(1,Id);
+			st1.executeUpdate();
 			st1.close();
-			/*
-			 * Statement st1 = con.createStatement(); st1.executeUpdate(deleteQuery);
-			 * st1.close();
-			 */
-			
+						
 			for(int i=0;i<seqNumRes.size();i++)
 			{
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
@@ -113,7 +110,7 @@ private String getColumnSuffix()
 			  prestmt.setString(6, testRes.get(i));
 			  prestmt.setString(7,stageRes.get(i));
 			  prestmt.setString(8,prodRes.get(i));
-			  ResultSet rs1 = prestmt.executeQuery();
+			  prestmt.execute();
 	          
 			}
 			statusFlag =true;

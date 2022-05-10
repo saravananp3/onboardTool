@@ -31,9 +31,10 @@ public class IntakeApprovalService {
 	
 	private void getOppId() {
 		try {
-			String selectQuery ="select * from intake_stake_holder_info where approvalId='"+approverId+"'";
-			Statement st =con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from intake_stake_holder_info where approvalId=?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, approverId);
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 				oppId =rs.getString("oppId");
 			}
@@ -46,9 +47,10 @@ public class IntakeApprovalService {
 	
 	private void getAppName(){
 		try {
-			String selectQuery ="select * from opportunity_info where Id='"+oppId+"' and column_name ='appName'";
-			Statement st =con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from opportunity_info where Id=? and column_name ='appName'";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, oppId);
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 				appName =rs.getString("value");
 			}
@@ -65,10 +67,13 @@ public class IntakeApprovalService {
 		
 		try
 		{
-			String UpdateQuery ="update intake_stake_holder_info set intakeApproval ='"+IntakeApproval+"', comments ='"+comments+"' where approvalId='"+approverId+"';";
-            Statement st = con.createStatement();
-            st.executeUpdate(UpdateQuery);
-            st.close();
+			String UpdateQuery ="update intake_stake_holder_info set intakeApproval =?, comments =? where approvalId=?;";
+			 PreparedStatement st = con.prepareStatement(UpdateQuery);
+	          st.setString(1, IntakeApproval);
+	          st.setString(2, comments);
+	          st.setString(3, approverId);
+	          st.execute();
+		      st.close();
             check=true;
             
             
@@ -96,10 +101,10 @@ public class IntakeApprovalService {
 		
 		try {
 		
-			String selectQuery = "select * from Intake_Stake_Holder_Info where OppId = '"+oppId+"' order by seq_no;";
-			Statement st1 =con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from Intake_Stake_Holder_Info where OppId = ? order by seq_no;";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, oppId);
+			ResultSet rs1 = st1.executeQuery();
 			while(rs1.next()) {
 				
 				String intakeApprovalValue = rs1.getString("intakeApproval");
@@ -122,14 +127,17 @@ public class IntakeApprovalService {
 		int seq_num = getSequenceNumber();
 		
 		try {
-				String selectQuery = "select * from Module_Approval_Info where OppId = '"+oppId+"' and moduleName ='Intake' order by seq_no;";
-				Statement st =con.createStatement();
-				ResultSet rs = st.executeQuery(selectQuery);
+				String selectQuery = "select * from Module_Approval_Info where OppId = ? and moduleName ='Intake' order by seq_no;";
+				PreparedStatement st = con.prepareStatement(selectQuery);
+				st.setString(1, oppId);
+				ResultSet rs = st.executeQuery();
 				if(rs.next()) {
-					String UpdateQuery ="update Module_Approval_Info set overAllApproval ='"+checkStatus+"' where oppid='"+oppId+"' and moduleName = 'Intake' ";
-		            Statement st1 = con.createStatement();
-		            st1.executeUpdate(UpdateQuery);
-				}
+					String UpdateQuery ="update Module_Approval_Info set overAllApproval =? where oppid=? and moduleName = 'Intake' ";
+					 PreparedStatement st1 = con.prepareStatement(UpdateQuery);
+			          st1.setString(1, Boolean.toString(checkStatus));
+			          st1.setString(2, oppId);
+			          st1.execute();
+					}
 				else {
 					String insertQuery = "insert into Module_Approval_Info (seq_no, OppId, moduleName, overAllApproval)" + "values (?, ?, ?, ?);";
 					PreparedStatement prestmt = con.prepareStatement(insertQuery);
@@ -151,9 +159,10 @@ public class IntakeApprovalService {
     	int seq_num =0;
 		try
 		{
-		String MaxSeqNumQuery = "select max(seq_no) from Module_Approval_Info where OppId ='"+oppId+"'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(MaxSeqNumQuery);
+		String MaxSeqNumQuery = "select max(seq_no) from Module_Approval_Info where OppId =?";
+		PreparedStatement st = con.prepareStatement(MaxSeqNumQuery);
+		st.setString(1, oppId);
+		ResultSet rs = st.executeQuery();
 		if(rs.next())
 		seq_num = rs.getInt(1);
 		}

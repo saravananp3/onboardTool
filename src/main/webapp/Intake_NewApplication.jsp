@@ -96,12 +96,15 @@ String strDate=ft.format(date);
 String strTime=ft1.format(date);
 
 
-String query3 = "select * from AppEmphazize_ProjectDetails where id = "+ID;
-Statement st3 = conn.createStatement();
-ResultSet rs3 = st3.executeQuery(query3);
-String query4 = "select * from AppEmphazize_ApplicationInfo where appname ='"+app_Name+"'";
-Statement st4 = conn.createStatement();
-ResultSet rs4 = st4.executeQuery(query4);
+String query3 = "select * from AppEmphazize_ProjectDetails where id = ?";
+PreparedStatement st3 = conn.prepareStatement(query3);
+st3.setString(1, ID);
+ResultSet rs3 = st3.executeQuery();
+String query4 = "select * from AppEmphazize_ApplicationInfo where appname =?";
+PreparedStatement st4 = conn.prepareStatement(query4);
+st4.setString(1, app_Name);
+ResultSet rs4 = st4.executeQuery();
+
 String imp_id="";
 String sequenceNumber="";
 int actualHours=0,plannedHours=0,actualHours1=0,plannedHours1=0;

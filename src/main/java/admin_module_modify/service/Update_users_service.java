@@ -12,9 +12,10 @@ public class Update_users_service {
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("Connected...");
-        String usersupdatequery = "select uname,ufname,ulname,u_email,u_role from users where random_id = '"+random_id_modify+"';";
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery(usersupdatequery);
+        String usersupdatequery = "select uname,ufname,ulname,u_email,u_role from users where random_id = ?;";
+        PreparedStatement st = connection.prepareStatement(usersupdatequery);
+		st.setString(1, random_id_modify);
+		ResultSet rs = st.executeQuery();
         if (rs.next()) {
             jsonobj.addProperty("prev_uname", rs.getString(1));
             jsonobj.addProperty("prev_ufname", rs.getString(2));
@@ -24,13 +25,14 @@ public class Update_users_service {
         }
 System.out.println("Username"+uname_modify);
 System.out.println("Firstname"+ufname_modify);
-        String update_query = "update users set uname =?,ufname=?,ulname=?,u_email=?,u_role=? where random_id = '"+random_id_modify+"';";
+        String update_query = "update users set uname =?,ufname=?,ulname=?,u_email=?,u_role=? where random_id = ?;";
         PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
         preparedStmt1.setString(1, uname_modify);
         preparedStmt1.setString(2, ufname_modify);
         preparedStmt1.setString(3, ulname_modify);
         preparedStmt1.setString(4, u_email_modify);
         preparedStmt1.setString(5, u_role_modify);
+        preparedStmt1.setString(6, random_id_modify);
         preparedStmt1.execute();
         jsonobj.addProperty("uname", uname_modify);
         jsonobj.addProperty("ufname", ufname_modify);

@@ -25,9 +25,13 @@ public class LegacyRetentionDbUpdataServlet extends HttpServlet {
                 int classlength=Integer.parseInt(request.getParameter("classlength"));
                 for (int i = 1; i <= classlength; i++){
                     String value = request.getParameter("LegacyRetention"+i);
-                    String Updatequery="update decomm_legacy_add_table set value=? where prj_name = '" + projectname + "' and app_name = '" + appname + "' and column_name='"+"LegacyRetention"+i+"'";
+                    String Updatequery="update decomm_legacy_add_table set value=? where prj_name = ? and app_name = ? and column_name=?";
+                    String s="LegacyRetention"+i;
                     PreparedStatement preparedStmt1 = connection.prepareStatement(Updatequery);
                     preparedStmt1.setString(1, value);
+                    preparedStmt1.setString(2, projectname);
+                    preparedStmt1.setString(3, appname);
+                    preparedStmt1.setString(4, s);
                     System.out.println("Hello");
                     preparedStmt1.execute();
                 }

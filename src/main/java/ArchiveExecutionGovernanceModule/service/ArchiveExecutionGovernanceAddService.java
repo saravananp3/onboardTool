@@ -186,7 +186,8 @@ public class ArchiveExecutionGovernanceAddService {
 				String deleteQuery = "delete from archive_execution_governance_info where waveid=? order by seq_no;";
 				PreparedStatement st3 = con.prepareStatement(deleteQuery);
 				st3.setString(1,waveId);
-
+				st3.executeUpdate();
+				st3.close();
 				System.out.println("sagadevan");
 				
 				

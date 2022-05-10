@@ -28,9 +28,11 @@ public class archiveReqApprovalDataRetrieveService {
         try
         {
             boolean checkData = false;
-            String selectQuery ="select * from ArchiveReq_Roles_Info where oppid='"+Id+"';";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery ="select * from ArchiveReq_Roles_Info where oppid=?;";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+        
             while(rs.next())
             {
                 checkData = true;
@@ -52,9 +54,11 @@ public class archiveReqApprovalDataRetrieveService {
             if(!checkData)
             {
                 int seq_no=0;
-                    String selectQuery1 = "select * from archivereq_roles_info where oppid='"+Id+"';";
-                    Statement st1 = con.createStatement();
-                    ResultSet rs1 = st1.executeQuery(selectQuery1);
+                    String selectQuery1 = "select * from archivereq_roles_info where oppid=?;";
+                    PreparedStatement st1 = con.prepareStatement(selectQuery1);
+        			st1.setString(1, Id);
+        			ResultSet rs1 = st1.executeQuery();
+                   
                     while(rs1.next())
                     {
                         jsonArray.add(InsertApprovalRow(rs1.getString("role"),rs1.getString("name"), ++seq_no));
@@ -110,9 +114,11 @@ public class archiveReqApprovalDataRetrieveService {
             ID =uuid.toString();
             while(checkDuplicate)
             {
-                String selectQuery ="select * from ArchiveRequirements_Stake_Holder_Info where approvalId='"+ID+"';";
-                Statement st2 = con.createStatement();
-                ResultSet rs2 = st2.executeQuery(selectQuery);
+                String selectQuery ="select * from ArchiveRequirements_Stake_Holder_Info where approvalId=?;";
+                PreparedStatement st2 = con.prepareStatement(selectQuery);
+    			st2.setString(1, ID);
+    			ResultSet rs2 = st2.executeQuery();
+                
                 if(!rs2.next())
                     checkDuplicate =false;
                 rs2.close();

@@ -132,9 +132,10 @@ public class archiveEnvironmentAddService {
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
 			}
 			
-			String deleteQuery ="delete from "+tableName+" where oppid='"+Id+"';";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			String deleteQuery ="delete from "+tableName+" where oppid=?;";
+			PreparedStatement st1=con.prepareStatement(deleteQuery);
+			st1.setString(1, Id);
+			st1.executeUpdate();
 			st1.close();
 			
 			for(int i=0;i<seqNumRes.size();i++)

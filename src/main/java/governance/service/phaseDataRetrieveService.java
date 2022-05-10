@@ -102,9 +102,10 @@ public class phaseDataRetrieveService {
 			{
 			phaseId=UUID.randomUUID().toString();
 			//checking the wave id in phase_Info
-			String selectQuery = "select * from phase_Info where phaseId='"+phaseId+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from phase_Info where phaseId=?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, phaseId);
+			ResultSet rs = st.executeQuery();
 			if(!rs.next())
 			checkphaseId =false;
 			}
@@ -151,9 +152,10 @@ public class phaseDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
-			String selectQuery = "select * from phase_Info where phaseId = '"+phaseId+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from phase_Info where phaseId = ?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, phaseId);
+			ResultSet rs = st.executeQuery();
 			while(rs.next())
 			{
 			JsonObject jsonObject = new JsonObject();
@@ -191,9 +193,10 @@ public class phaseDataRetrieveService {
 			while(rs.next())
 			{
 				checkApp =true;
-				String selectQuery1 = "select * from phase_info where column_name='waves' and value like '%"+rs.getString("value")+"%'";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(selectQuery1);
+				String selectQuery1 = "select * from phase_info where column_name='waves' and value like ?";
+				PreparedStatement st1 = con.prepareStatement(selectQuery1);
+				st1.setString(1,"%" +rs.getString("value")+"%");
+				ResultSet rs1 = st1.executeQuery();
 				if(!rs1.next())
 					waveNames += rs.getString("value")+",";	
 			  rs1.close();
@@ -204,10 +207,11 @@ public class phaseDataRetrieveService {
 			if(!waveNames.equals(""))
 				waveNames=waveNames.substring(0,waveNames.length()-1);
 			
-			String updateQuery ="update phase_info_details set options ='"+waveNames+"' where column_name = 'waves';";
-			Statement st2 = con.createStatement();
-			st2.executeUpdate(updateQuery);
-			st2.close();
+			String updateQuery ="update phase_info_details set options =? where column_name = 'waves';";
+			PreparedStatement st2 = con.prepareStatement(updateQuery);
+	          st2.setString(1, waveNames);
+	          st2.execute();
+	          st2.close();
 			System.out.println("waveNames : "+waveNames);
 			
 		}
@@ -229,9 +233,10 @@ public class phaseDataRetrieveService {
 			while(rs.next())
 			{
 				checkApp =true;
-				String selectQuery1 = "select * from phase_info where column_name='waves' and value like '%"+rs.getString("value")+"%'";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(selectQuery1);
+				String selectQuery1 = "select * from phase_info where column_name='waves' and value like ?";
+				PreparedStatement st1 = con.prepareStatement(selectQuery1);
+				st1.setString(1,"%" +rs.getString("value")+"%");
+				ResultSet rs1 = st1.executeQuery();
 				if(!rs1.next())
 					waveNames += rs.getString("value")+",";	
 			  rs1.close();
@@ -241,9 +246,10 @@ public class phaseDataRetrieveService {
 			st.close();
 			System.out.println("waveNames : "+waveNames);
 
-			String selectWaves = "select * from phase_info where column_name='waves' and phaseId='"+phaseId+"'";
-			Statement st3 = con.createStatement();
-			ResultSet rs3 =st3.executeQuery(selectWaves);
+			String selectWaves = "select * from phase_info where column_name='waves' and phaseId=?";
+			PreparedStatement st3 = con.prepareStatement(selectWaves);
+			st3.setString(1,phaseId);
+			ResultSet rs3 = st3.executeQuery();
 			if(rs3.next())
 			{
 				String wave = ((rs3.getString("value").equals(""))?"":rs3.getString("value")+",");
@@ -252,10 +258,12 @@ public class phaseDataRetrieveService {
 			if(!waveNames.equals(""))
 				waveNames=waveNames.substring(0,waveNames.length()-1);
 			
-			String updateQuery ="update phase_info set options ='"+waveNames+"' where column_name = 'waves' and phaseId='"+phaseId+"';";
-			Statement st2 = con.createStatement();
-			st2.executeUpdate(updateQuery);
-			st2.close();
+			String updateQuery ="update phase_info set options =? where column_name = 'waves' and phaseId=?;";
+			PreparedStatement st2 = con.prepareStatement(updateQuery);
+	          st2.setString(1, waveNames);
+	          st2.setString(2, phaseId);
+	          st2.execute();
+	          st2.close();
 			System.out.println("waveNames : "+waveNames);
 			
 		}

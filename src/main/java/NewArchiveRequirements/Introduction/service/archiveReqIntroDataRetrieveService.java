@@ -28,10 +28,11 @@ public class archiveReqIntroDataRetrieveService {
 		
 		try {
 			
-			String selectQuery = "select * from archiveintro_info where OppId = '"+Id+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from archiveintro_info where OppId = ?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+					
 			if(rs.next()) {
 				jsonObject.addProperty("checkData", true);
 				jsonObject.addProperty("Purpose", rs.getString("purpose"));

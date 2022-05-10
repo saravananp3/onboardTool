@@ -1,6 +1,7 @@
 package dashboard.overAllDashboard.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,9 +31,10 @@ public class dashboardGanttChartService {
 			JsonArray jsonArray = new JsonArray();
 			try {
 				
-				String selectQuery = "select * from archive_execution_info where oppName = '"+oppName+"' and level = '1' order by seq_no;";
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(selectQuery);
+				String selectQuery = "select * from archive_execution_info where oppName = ? and level = '1' order by seq_no;";
+				PreparedStatement st=con.prepareStatement(selectQuery);
+				st.setString(1, oppName);
+				ResultSet rs = st.executeQuery();
 				
 				while(rs.next()) {
 					JsonObject jsonObject = new JsonObject();

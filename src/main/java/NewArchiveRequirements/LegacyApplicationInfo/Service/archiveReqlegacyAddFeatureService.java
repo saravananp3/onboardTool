@@ -30,16 +30,18 @@ public class archiveReqlegacyAddFeatureService {
 			try {
 				DBconnection dBconnection = new DBconnection();
 				Connection connection = (Connection) dBconnection.getConnection();
-				String select_query = "select * from archivereq_legacyapp_info where Id = '"+Id+"' order by seq_no;";
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(select_query);
+				String select_query = "select * from archivereq_legacyapp_info where Id = ? order by seq_no;";
+				PreparedStatement st = connection.prepareStatement(select_query);
+				st.setString(1, Id);
+				ResultSet rs = st.executeQuery();
 				String name = "LegacyAddInfo";
 				
 				if (rs.next()) {
-					String max_seqnum = "select max(seq_no) from archivereq_legacyapp_info where Id = '"+Id+"' order by seq_no;";
-					Statement st1 = connection.createStatement();
-					ResultSet rs1 = st1.executeQuery(max_seqnum);
-
+					String max_seqnum = "select max(seq_no) from archivereq_legacyapp_info where Id = ? order by seq_no;";
+					PreparedStatement st1 = connection.prepareStatement(max_seqnum);
+					st1.setString(1, Id);
+					ResultSet rs1 = st1.executeQuery();
+					
 					if (rs1.next()) {
 						max_seq_num = Integer.parseInt(rs1.getString(1));
 						max_seq_num++;

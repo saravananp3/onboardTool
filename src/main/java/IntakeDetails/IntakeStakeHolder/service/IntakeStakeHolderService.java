@@ -79,16 +79,19 @@ public class IntakeStakeHolderService extends  DynamicFields
 
 
 			
-			String select_query = "select max(seq_no) from intake_stake_holder_info where OppId = '"+Id+"' order by seq_no;";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(select_query);
+			String select_query = "select max(seq_no) from intake_stake_holder_info where OppId = ? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(select_query);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+			
 			if (rs.next()) {
 				seqmax = Integer.parseInt(rs.getString(1));
 			}
 
-			String query = "select * from intake_stake_holder_info where OppId = '"+Id+"' order by seq_no;";
-			Statement st1 = connection.createStatement();
-			ResultSet rs1 = st1.executeQuery(query);
+			String query = "select * from intake_stake_holder_info where OppId = ? order by seq_no;";
+			PreparedStatement st1 = con.prepareStatement(query);
+			st1.setString(1, Id);
+			ResultSet rs1 = st1.executeQuery();
 			while (rs1.next()) {
 				arr_seqmax.add(rs1.getInt(1));
 				arr_Oppid.add(rs1.getString(2));
@@ -145,9 +148,11 @@ public class IntakeStakeHolderService extends  DynamicFields
 				}
 			}
 
-			String delete_query = "delete from intake_stake_holder_info where OppId='"+Id+"';";
-			Statement st2 = connection.createStatement();
-			st2.executeUpdate(delete_query);
+			String delete_query = "delete from intake_stake_holder_info where OppId=?;";
+			PreparedStatement st2 = con.prepareStatement(delete_query);
+			st2.setString(1,Id);
+			st2.executeUpdate();	
+		
 			for (int j = 0; j < seqmax - 1; j++) {
 				String insert_query = "insert into intake_stake_holder_info (seq_no,Oppid,prj_name,app_name,name,emailId,username,role,approvalid,intakeApproval,moduleid,comments,priority_order_num,mail_flag,isCompleted) values(?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 				PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
@@ -210,9 +215,10 @@ public class IntakeStakeHolderService extends  DynamicFields
 		
 	    JsonArray jsonArray = new JsonArray();
 		boolean checkExistence =  false;
-		String CheckQuery = "select * from intake_stake_holder_info where OppId ='"+Id+"' order by seq_no;";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(CheckQuery);
+		String CheckQuery = "select * from intake_stake_holder_info where OppId =? order by seq_no;";
+		PreparedStatement st = con.prepareStatement(CheckQuery);
+		st.setString(1, Id);
+		ResultSet rs = st.executeQuery();
 		while(rs.next())
 		{
 			checkExistence =  true;
@@ -254,9 +260,10 @@ public class IntakeStakeHolderService extends  DynamicFields
      private void getOppIdAndUserName(String approverId) {
     	  oppId=null;
     	 try {
-    		 String selectQuery = "select * from intake_stake_holder_info where approvalId = '"+approverId+"'";
-    		 Statement st = con.createStatement();
-    		 ResultSet rs = st.executeQuery(selectQuery);
+    		 String selectQuery = "select * from intake_stake_holder_info where approvalId = ?";
+    		 PreparedStatement st = con.prepareStatement(selectQuery);
+ 			 st.setString(1, approverId);
+ 			 ResultSet rs = st.executeQuery();
     		 if(rs.next()) {
     			 oppId = rs.getString("oppId");
     			 userName =rs.getString("username");
@@ -274,9 +281,10 @@ public class IntakeStakeHolderService extends  DynamicFields
 		
 		JsonArray jsonArray = new JsonArray();
 		try {
-			String OppInfoQuery = "select * from decom3sixtytool.opportunity_info where id = '"+Id+"' and (column_name = 'appowner' or column_name = 'businessowner' or column_name = 'sme') order by seq_no;";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(OppInfoQuery);
+			String OppInfoQuery = "select * from decom3sixtytool.opportunity_info where id = ? and (column_name = 'appowner' or column_name = 'businessowner' or column_name = 'sme') order by seq_no;";
+			PreparedStatement st1 = con.prepareStatement(OppInfoQuery);
+			st1.setString(1, Id);
+			ResultSet rs1 = st1.executeQuery();
 			int seq_num = 0;
 			while (rs1.next()) {
 				
@@ -370,9 +378,10 @@ public class IntakeStakeHolderService extends  DynamicFields
     	int seq_num =0;
 		try
 		{
-		String MaxSeqNumQuery = "select max(seq_no) from intake_stake_holder_info where OppId ='"+Id+"'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(MaxSeqNumQuery);
+		String MaxSeqNumQuery = "select max(seq_no) from intake_stake_holder_info where OppId =?";
+		PreparedStatement st = con.prepareStatement(MaxSeqNumQuery);
+		st.setString(1, Id);
+		ResultSet rs = st.executeQuery();
 		if(rs.next())
 		seq_num = rs.getInt(1);
 		}
@@ -420,9 +429,10 @@ public class IntakeStakeHolderService extends  DynamicFields
 		try
 		{
 			String isCompleted="";
-			String isCompletedQuery = "select distinct isCompleted from intake_stake_holder_info where OppId ='"+id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(isCompletedQuery);
+			String isCompletedQuery = "select distinct isCompleted from intake_stake_holder_info where OppId =?";
+			PreparedStatement st = con.prepareStatement(isCompletedQuery);
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 				isCompleted = rs.getString("isCompleted");
 			}
@@ -435,16 +445,18 @@ public class IntakeStakeHolderService extends  DynamicFields
   				String role = jsonObj.get("role").getAsString();
   				String priorityNum =jsonObj.get("priorityNum").getAsString();
   				String StakeHolderUpdateQuery="";
+  				
   				if(isCompleted.isEmpty()||isCompleted.equals("No"))
   				{
-  			      StakeHolderUpdateQuery = "update intake_stake_holder_info set  name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ?,isCompleted=? where seq_no='"+(i+1)+"' and oppid='"+id+"'";
+  			      StakeHolderUpdateQuery = "update intake_stake_holder_info set  name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ?,isCompleted=? where seq_no=? and oppid=?";
   			      isCompleted="No";
   				}
   				else
   				{
-  					StakeHolderUpdateQuery = "update intake_stake_holder_info set  name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ?,isCompleted=? where seq_no='"+(i+1)+"' and oppid='"+id+"'";
+  					StakeHolderUpdateQuery = "update intake_stake_holder_info set  name = ?, emailId = ?, username = ?, role = ?, priority_order_num = ?,isCompleted=? where seq_no=? and oppid=?";
     			      isCompleted="Yes";
   				}
+  				int s=i+1;
   	          PreparedStatement prestmt = con.prepareStatement(StakeHolderUpdateQuery);
   	        
   	          prestmt.setString(1, name);
@@ -454,6 +466,8 @@ public class IntakeStakeHolderService extends  DynamicFields
   	          prestmt.setString(5, priorityNum);
   	          prestmt.setString(5, priorityNum);
   	          prestmt.setString(6, isCompleted);
+  	          prestmt.setInt(7, s);
+  	          prestmt.setString(8, id);
 
   	          prestmt.execute();
 		  	}
@@ -537,24 +551,30 @@ public class IntakeStakeHolderService extends  DynamicFields
 		if(!value.isEmpty()&&!value.equals(null))
 		{
 			boolean checkInsert = true;
-			String selectQuery = "select * from intake_stake_holder_info where oppid='"+Id+"' and role ='"+RoleName+"'";
-			Statement st1 = con.createStatement();
-			ResultSet rs1= st1.executeQuery(selectQuery);
+			String selectQuery = "select * from intake_stake_holder_info where oppid=? and role =?";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, Id);
+			st1.setString(2, RoleName);
+			ResultSet rs1 = st1.executeQuery();
 			if(rs1.next())
 				checkInsert = false;
 			
 			if(!checkInsert)
 			{
-			 String UpdateQuery = "update intake_stake_holder_info set username ='"+value+"' where role ='"+RoleName+"' and oppid = '"+Id+"'";
-			 Statement st2 = con.createStatement();
-			 st2.executeUpdate(UpdateQuery);
-			}
+			 String UpdateQuery = "update intake_stake_holder_info set username =? where role =? and oppid = ?";
+			 PreparedStatement st2 = con.prepareStatement(UpdateQuery);
+	          st2.setString(1, value);
+	          st2.setString(2, RoleName);
+	          st2.setString(3, Id);
+	          st2.execute();
+				}
 			else
 			{
 			  int seq_num =0;
-			  String SeqNumQuery = "select max(seq_no) from intake_stake_holder_info where oppid='"+Id+"';"; 
-			  Statement st3 = con.createStatement();
-			  ResultSet rs3 = st3.executeQuery(SeqNumQuery);
+			  String SeqNumQuery = "select max(seq_no) from intake_stake_holder_info where oppid=?;"; 
+			  PreparedStatement st3 = con.prepareStatement(SeqNumQuery);
+			  st3.setString(1, Id);
+			  ResultSet rs3 = st3.executeQuery();
 			  if(rs3.next())
 			  {
 				 String seqnum = rs3.getString(1);
@@ -587,10 +607,12 @@ public class IntakeStakeHolderService extends  DynamicFields
 		{
 			String checkQuery ="";
 			int seq_num = 0;
-			String selectSeqNum ="select seq_no from intake_stake_holder_info where oppid='"+Id+"' and role='"+RoleName+"';";
-			Statement st4 = con.createStatement();
-			ResultSet rs4 = st4.executeQuery(selectSeqNum);
-		     if(rs4.next())
+			String selectSeqNum ="select seq_no from intake_stake_holder_info where oppid=? and role=?;";
+			PreparedStatement st4 = con.prepareStatement(selectSeqNum);
+			st4.setString(1, Id);
+			st4.setString(2, RoleName);
+			ResultSet rs4 = st4.executeQuery();
+			if(rs4.next())
 			      seq_num = Integer.parseInt(rs4.getString(1));
 		    if(seq_num!=0)
 		    delete(seq_num,Id);

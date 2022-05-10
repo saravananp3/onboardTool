@@ -12,6 +12,7 @@ import java.util.Set;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import onboard.DBconnection;
 
@@ -92,12 +93,13 @@ public class deleteOpportunityService {
 			while(it.hasNext())
 			{
 				Map.Entry obj = (Map.Entry)it.next();
-			String deleteQuery = "delete from "+obj.getKey()+" where "+obj.getValue()+"='"+id+"'";
-			Statement st = con.createStatement();
-			int num_rows=st.executeUpdate(deleteQuery);
-				System.out.println(obj.getKey()+" "+num_rows+" rows deleted.");
-				
+			String deleteQuery = "delete from "+obj.getKey()+" where "+obj.getValue()+"=?";
+			PreparedStatement st = con.prepareStatement(deleteQuery);
+			st.setString(1,id);
+			int num_rows=st.executeUpdate();
+			System.out.println(obj.getKey()+" "+num_rows+" rows deleted.");
 			st.close();
+			
 			}
 			deleteFlag = true;
 		}
@@ -229,10 +231,11 @@ public class deleteOpportunityService {
 		
 		try
 		{
-			String selectQuery = "select * from opportunity_info where id='"+Id+"' and column_name='appName'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from opportunity_info where id=? and column_name='appName'";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			 st.setString(1, Id);
+			 ResultSet rs = st.executeQuery();  
+						
 			if(rs.next())
 				appName = rs.getString("value");
 			rs.close();
@@ -251,9 +254,10 @@ public class deleteOpportunityService {
 		boolean statusFlag = false;
 		try
 		{
-			String selectQuery ="select * from governance_info where column_name='apps' and value like '%"+appName+"%'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from governance_info where column_name='apps' and value like ?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			 st.setString(1, "%" + appName + "%");
+			 ResultSet rs = st.executeQuery();  
 			if(rs.next())
 			{
 				String waveId = rs.getString("waveId");
@@ -267,10 +271,12 @@ public class deleteOpportunityService {
 				if(!newApps.equals(""))
 					newApps = newApps.substring(0,newApps.length()-1);
 				
-				String updateQuery ="update governance_info set value='"+newApps+"' where column_name='apps' and waveId='"+waveId+"'";
-				Statement st1 =con.createStatement();
-				st1.executeUpdate(updateQuery);
-				st1.close();
+				String updateQuery ="update governance_info set value=? where column_name='apps' and waveId=?";
+				 PreparedStatement st1 = con.prepareStatement(updateQuery);
+				 st1.setString(1, newApps);
+				 st1.setString(2, waveId);
+		         st1.execute();
+		         st1.close();
 				
 			}
 			rs.close();
@@ -288,9 +294,10 @@ public class deleteOpportunityService {
 		boolean statusFlag = false;
 		try
 		{
-			String selectQuery ="select * from phase_info where column_name='waves' and value like '%"+waveName+"%'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from phase_info where column_name='waves' and value like ?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			 st.setString(1, "%" + waveName + "%");
+			 ResultSet rs = st.executeQuery();  
 			if(rs.next())
 			{
 				String phaseId = rs.getString("phaseId");
@@ -304,10 +311,12 @@ public class deleteOpportunityService {
 				if(!newWaves.equals(""))
 					newWaves = newWaves.substring(0,newWaves.length()-1);
 				
-				String updateQuery ="update phase_info set value='"+newWaves+"' where column_name='waves' and phaseId='"+phaseId+"'";
-				Statement st1 =con.createStatement();
-				st1.executeUpdate(updateQuery);
-				st1.close();
+				String updateQuery ="update phase_info set value=? where column_name='waves' and phaseId=?";
+				PreparedStatement st1 = con.prepareStatement(updateQuery);
+				 st1.setString(1, newWaves);
+				 st1.setString(2, phaseId);
+		         st1.execute();
+		         st1.close();
 				
 			}
 			rs.close();
@@ -327,9 +336,10 @@ public class deleteOpportunityService {
 		{
 			if(deleteType.equals("Phase"))
 			{	
-			String selectQuery="select * from phase_info where column_name ='waves' and phaseId='"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery="select * from phase_info where column_name ='waves' and phaseId=?";
+			 PreparedStatement st = con.prepareStatement(selectQuery);
+			 st.setString(1, Id);
+			 ResultSet rs = st.executeQuery();  
 			if(rs.next())
 			{
 				String[] waves = rs.getString("value").split(",");
@@ -359,9 +369,10 @@ public class deleteOpportunityService {
 	{
 		boolean statusFlag = false;
 		try
-		{String selectApps ="select * from governance_info where column_name='apps' and waveName = '"+waveName+"';";
-		  Statement st1 = con.createStatement();
-		  ResultSet rs1 = st1.executeQuery(selectApps);
+		{String selectApps ="select * from governance_info where column_name='apps' and waveName = ?;";
+		 PreparedStatement st1 = con.prepareStatement(selectApps);
+		  st1.setString(1, waveName);
+		  ResultSet rs1 = st1.executeQuery();  
 		  if(rs1.next())
 		  {
 			  String waveId = rs1.getString("waveId");
@@ -388,10 +399,10 @@ public class deleteOpportunityService {
 		{
 			for(String app:apps)
 			  {
-			  String selectApplication ="select * from opportunity_info where column_name='appName' and value= '"+app+"';";
-			  Statement st2 = con.createStatement();
-			  ResultSet rs2 = st2.executeQuery(selectApplication);
-			  
+			  String selectApplication ="select * from opportunity_info where column_name='appName' and value= ?;";
+			  PreparedStatement st2 = con.prepareStatement(selectApplication);
+  			  st2.setString(1, app);
+  			  ResultSet rs2 = st2.executeQuery();
 			  while(rs2.next())
 			  {
 				  String appId = rs2.getString("id");

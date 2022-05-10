@@ -31,10 +31,10 @@ public JsonArray archiveReqAddendumDataRetrieve() {
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
-			String selectQuery = "select * from Archive_Req_Addendum_Info where OppId = '"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from Archive_Req_Addendum_Info where OppId = ? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 				JsonObject jsonObj =new JsonObject();
 				jsonObj.addProperty("checkExistance",true);

@@ -1,5 +1,6 @@
 package dashboard.overAllDashboard.service;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,63 +26,63 @@ public class dashboardService {
         dBconnection = new DBconnection();
         con = (Connection) dBconnection.getConnection();
     }
-//      public JsonObject dashboardCardDetails() {
-//          
-//          JsonObject jsonObject = new JsonObject();
-//          try {
-//              
-//              //Opportunity Count 
-//              String oppQuery = "select count(*) from opportunity_info where column_name = 'appName';";
-//              Statement st = con.createStatement();
-//              ResultSet rs = st.executeQuery(oppQuery);
-//              
-//              if(rs.next()) 
-//                  jsonObject.addProperty("opportunityCount", rs.getInt(1));
-//              
-//              rs.close();
-//              st.close();
-//              
-//              //Decommission Count 
-//              String decommQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Decommission';";
-//              Statement st1 = con.createStatement();
-//              ResultSet rs1 = st1.executeQuery(decommQuery);
-//              
-//              if(rs1.next()) 
-//                  jsonObject.addProperty("decommissionCount", rs1.getInt(1));
-//              
-//              rs1.close();
-//              st1.close();
-//              
-//              
-//              //Archive Count 
-//              String archiveQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Archive';";
-//              Statement st2 = con.createStatement();
-//              ResultSet rs2 = st2.executeQuery(archiveQuery);
-//              
-//              if(rs2.next()) 
-//                  jsonObject.addProperty("archiveCount", rs2.getInt(1));
-//              
-//              rs2.close();
-//              st2.close();
-//              
-//              //To be retire Count 
-//              String retireQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'To be retire';";
-//              Statement st3 = con.createStatement();
-//              ResultSet rs3 = st3.executeQuery(retireQuery);
-//              
-//              if(rs3.next()) 
-//                  jsonObject.addProperty("retireCount", rs3.getInt(1));
-//              
-//              rs3.close();
-//              st3.close();
-//              
-//          }
-//          catch(Exception e) {
-//              e.printStackTrace();
-//          }
-//          
-//          return jsonObject;
-//      }
+    //      public JsonObject dashboardCardDetails() {
+    //          
+    //          JsonObject jsonObject = new JsonObject();
+    //          try {
+    //              
+    //              //Opportunity Count 
+    //              String oppQuery = "select count(*) from opportunity_info where column_name = 'appName';";
+    //              Statement st = con.createStatement();
+    //              ResultSet rs = st.executeQuery(oppQuery);
+    //              
+    //              if(rs.next()) 
+    //                  jsonObject.addProperty("opportunityCount", rs.getInt(1));
+    //              
+    //              rs.close();
+    //              st.close();
+    //              
+    //              //Decommission Count 
+    //              String decommQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Decommission';";
+    //              Statement st1 = con.createStatement();
+    //              ResultSet rs1 = st1.executeQuery(decommQuery);
+    //              
+    //              if(rs1.next()) 
+    //                  jsonObject.addProperty("decommissionCount", rs1.getInt(1));
+    //              
+    //              rs1.close();
+    //              st1.close();
+    //              
+    //              
+    //              //Archive Count 
+    //              String archiveQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'Archive';";
+    //              Statement st2 = con.createStatement();
+    //              ResultSet rs2 = st2.executeQuery(archiveQuery);
+    //              
+    //              if(rs2.next()) 
+    //                  jsonObject.addProperty("archiveCount", rs2.getInt(1));
+    //              
+    //              rs2.close();
+    //              st2.close();
+    //              
+    //              //To be retire Count 
+    //              String retireQuery = "select count(*) from opportunity_info where column_name = 'request_type' and value = 'To be retire';";
+    //              Statement st3 = con.createStatement();
+    //              ResultSet rs3 = st3.executeQuery(retireQuery);
+    //              
+    //              if(rs3.next()) 
+    //                  jsonObject.addProperty("retireCount", rs3.getInt(1));
+    //              
+    //              rs3.close();
+    //              st3.close();
+    //              
+    //          }
+    //          catch(Exception e) {
+    //              e.printStackTrace();
+    //          }
+    //          
+    //          return jsonObject;
+    //      }
     public JsonArray getApplicationFromPhaseDataTable(String phaseFilter) {
         JsonArray jsonArray = new JsonArray();
         try {
@@ -116,12 +117,12 @@ public class dashboardService {
     private JsonArray getApplicationApprovalDataTable(String[] apps, String wave, String phase) {
         JsonArray jsonArray = new JsonArray();
         try {
-            for (String app : apps) {
+            for (String app: apps) {
                 JsonObject jsonObject = new JsonObject();
-                String selectApp = "select distinct ar.app_name,OppId from opportunity_info o inner join ArchiveReq_Roles_Info ar on o.Id=ar.oppId where column_name='appName' and value = '"
-                        + app + "'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectApp);
+                String selectApp = "select distinct ar.app_name,OppId from opportunity_info o inner join ArchiveReq_Roles_Info ar on o.Id=ar.oppId where column_name='appName' and value = ?";
+                PreparedStatement st = con.prepareStatement(selectApp);
+    			st.setString(1, app);
+    			ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     jsonObject.addProperty("app_name", rs.getString("app_name"));
                     jsonObject.addProperty("phaseName", phase);
@@ -130,28 +131,28 @@ public class dashboardService {
                     jsonObject.addProperty("DesignApproval", "No");
                     String Id = rs.getString("OppId");
                     // System.out.println("OppId: " + Id);
-                    String selectAppdetail = "select * from ArchiveReq_Roles_Info where OppId = '" + Id
-                            + "' and priority_order_num!=''";
-                    Statement st11 = con.createStatement();
-                    ResultSet rs11 = st11.executeQuery(selectAppdetail);
+                    String selectAppdetail = "select * from ArchiveReq_Roles_Info where OppId = ? and priority_order_num!=''";
+                    PreparedStatement st11 = con.prepareStatement(selectAppdetail);
+        			st11.setString(1, Id);
+        			ResultSet rs11 = st11.executeQuery();
                     boolean flag = rs11.next();
                     if (!rs11.next())
                         jsonObject.addProperty("status", "0%");
                     rs11.close();
                     st11.close();
-                    String selectCreationDate = "select value from opportunity_info where column_name='creation_date' and  Id = '"
-                            + Id + "'";
-                    Statement st2 = con.createStatement();
-                    ResultSet rs2 = st2.executeQuery(selectCreationDate);
+                    String selectCreationDate = "select value from opportunity_info where column_name='creation_date' and  Id = ?";
+                    PreparedStatement st2 = con.prepareStatement(selectCreationDate);
+        			st2.setString(1, Id);
+        			ResultSet rs2 = st2.executeQuery();
                     if (rs2.next())
                         jsonObject.addProperty("craetionDate", rs2.getString("value"));
                     rs2.close();
                     st2.close();
                     if (flag == true) {
-                        String selectStatusLI = "select * from `decom3sixtytool`.`ArchiveReq_LegacyApp_Info` where mandatory='YES' and Id= '"
-                                + Id + "'  and value =''";
-                        Statement st9 = con.createStatement();
-                        ResultSet rs9 = st9.executeQuery(selectStatusLI);
+                        String selectStatusLI = "select * from `decom3sixtytool`.`ArchiveReq_LegacyApp_Info` where mandatory='YES' and Id= ? and value =''";
+                        PreparedStatement st9 = con.prepareStatement(selectStatusLI);
+            			st9.setString(1, Id);
+            			ResultSet rs9 = st9.executeQuery();
                         boolean Li = rs9.next();
                         rs9.close();
                         st9.close();
@@ -160,65 +161,66 @@ public class dashboardService {
                         } else {
                             jsonObject.addProperty("status", "25%");
                             if (Li == false) {
-                                String selectStatusRC = "select * from `decom3sixtytool`.`Archive_Retention_Info`   where OppId= '"
-                                        + Id + "' and retentionCheck='true'";
-                                Statement st8 = con.createStatement();
-                                ResultSet rs8 = st8.executeQuery(selectStatusRC);
+                                String selectStatusRC = "select * from `decom3sixtytool`.`Archive_Retention_Info`   where OppId= ? and retentionCheck='true'";
+                                PreparedStatement st8 = con.prepareStatement(selectStatusRC);
+                    			st8.setString(1, Id);
+                    			ResultSet rs8 = st8.executeQuery();
                                 boolean Rc = rs8.next();
                                 rs8.close();
                                 st8.close();
                                 if (Rc == true) {
                                     jsonObject.addProperty("status", "50%");
-                                    String selectStatusBR1 = "select  * from `decom3sixtytool`.`Archive_DataReq_Info`  where OppId= '"
-                                            + Id + "' and reqInScope=''";
-                                    Statement st4 = con.createStatement();
-                                    ResultSet rs4 = st4.executeQuery(selectStatusBR1);
+                                    String selectStatusBR1 = "select  * from `decom3sixtytool`.`Archive_DataReq_Info`  where OppId= ? and reqInScope=''";
+                                    PreparedStatement st4 = con.prepareStatement(selectStatusBR1);
+                        			st4.setString(1, Id);
+                        			ResultSet rs4 = st4.executeQuery();
                                     boolean Br1 = rs4.next();
                                     rs4.close();
                                     st4.close();
-                                    String selectStatusBR2 = "select  * from `decom3sixtytool`.`Archive_RetentionLegalReq_Info`  where OppId= '"
-                                            + Id + "' and reqInScope=''";
-                                    Statement st5 = con.createStatement();
-                                    ResultSet rs5 = st5.executeQuery(selectStatusBR2);
+                                    String selectStatusBR2 = "select  * from `decom3sixtytool`.`Archive_RetentionLegalReq_Info`  where OppId= ? and reqInScope=''";
+                                    PreparedStatement st5 = con.prepareStatement(selectStatusBR2);
+                        			st5.setString(1, Id);
+                        			ResultSet rs5 = st5.executeQuery();
+
                                     boolean Br2 = rs5.next();
                                     rs5.close();
                                     st5.close();
-                                    String selectStatusBR3 = "select  * from `decom3sixtytool`.`Archive_SecurityReq_Info`  where OppId= '"
-                                            + Id + "' and reqInScope=''";
-                                    Statement st6 = con.createStatement();
-                                    ResultSet rs6 = st6.executeQuery(selectStatusBR3);
+                                    String selectStatusBR3 = "select  * from `decom3sixtytool`.`Archive_SecurityReq_Info`  where OppId= ? and reqInScope=''";
+                                    PreparedStatement st6 = con.prepareStatement(selectStatusBR3);
+                        			st6.setString(1, Id);
+                        			ResultSet rs6 = st6.executeQuery();
                                     boolean Br3 = rs6.next();
                                     rs6.close();
                                     st6.close();
-                                    String selectStatusBR4 = "select  * from `decom3sixtytool`.`Archive_UsabilityReq_Info`  where OppId= '"
-                                            + Id + "' and reqInScope=''";
-                                    Statement st7 = con.createStatement();
-                                    ResultSet rs7 = st7.executeQuery(selectStatusBR4);
+                                    String selectStatusBR4 = "select  * from `decom3sixtytool`.`Archive_UsabilityReq_Info`  where OppId= ? and reqInScope=''";
+                                    PreparedStatement st7 = con.prepareStatement(selectStatusBR4);
+                        			st7.setString(1, Id);
+                        			ResultSet rs7 = st7.executeQuery();
                                     boolean Br4 = rs7.next();
                                     rs7.close();
                                     st7.close();
-                                    String selectStatusBR5 = "select  * from `decom3sixtytool`.`Archive_AuditReq_Info`  where OppId= '"
-                                            + Id + "' and reqInScope=''";
-                                    Statement st12 = con.createStatement();
-                                    ResultSet rs12 = st12.executeQuery(selectStatusBR5);
+                                    String selectStatusBR5 = "select  * from `decom3sixtytool`.`Archive_AuditReq_Info`  where OppId= ? and reqInScope=''";
+                                    PreparedStatement st12 = con.prepareStatement(selectStatusBR5);
+                        			st12.setString(1, Id);
+                        			ResultSet rs12 = st12.executeQuery();
+                                   
                                     boolean Br5 = rs12.next();
                                     rs12.close();
                                     st12.close();
                                     if (Br1 == false && Br2 == false && Br3 == false && Br4 == false && Br5 == false) {
                                         jsonObject.addProperty("status", "75%");
-                                        String selectStatus = "select intakeApproval from ArchiveReq_Roles_Info where  OppId = '"
-                                                + Id
-                                                + "' and priority_order_num is not null and priority_order_num!='' and intakeApproval in ('Decision pending','Rejected')";
-                                        Statement st3 = con.createStatement();
-                                        ResultSet rs3 = st3.executeQuery(selectStatus);
+                                        String selectStatus = "select intakeApproval from ArchiveReq_Roles_Info where  OppId = ? and priority_order_num is not null and priority_order_num!='' and intakeApproval in ('Decision pending','Rejected')";
+                                        PreparedStatement st3 = con.prepareStatement(selectStatus);
+                            			st3.setString(1, Id);
+                            			ResultSet rs3 = st3.executeQuery();
+                             
                                         boolean approvalstatus = rs3.next();
                                         rs3.close();
                                         st3.close();
-                                        String selectStatusApproved = "select intakeApproval from ArchiveReq_Roles_Info where  OppId = '"
-                                                + Id
-                                                + "' and priority_order_num is not null and priority_order_num!='' and intakeApproval='Approved'";
-                                        Statement st10 = con.createStatement();
-                                        ResultSet rs10 = st10.executeQuery(selectStatusApproved);
+                                        String selectStatusApproved = "select intakeApproval from ArchiveReq_Roles_Info where  OppId = ? and priority_order_num is not null and priority_order_num!='' and intakeApproval='Approved'";
+                                        PreparedStatement st10 = con.prepareStatement(selectStatusApproved);
+                            			st10.setString(1, Id);
+                            			ResultSet rs10 = st10.executeQuery();
                                         boolean approvalstatusApproved = rs10.next();
                                         rs3.close();
                                         st3.close();
@@ -244,10 +246,11 @@ public class dashboardService {
     private JsonArray getWaveDetails(String[] waves, String phase) {
         JsonArray jsonArray = new JsonArray();
         try {
-            for (String wave : waves) {
-                String selectWaves = "select * from governance_info where waveName='" + wave + "'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectWaves);
+            for (String wave: waves) {
+                String selectWaves = "select * from governance_info where waveName=?";
+                PreparedStatement st = con.prepareStatement(selectWaves);
+    			st.setString(1, wave);
+    			ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     if (rs.getString("column_name").equals("apps")) {
                         String apps[] = rs.getString("value").split(",");
@@ -267,12 +270,12 @@ public class dashboardService {
         boolean check2 = false;
         JsonArray jsonArray = new JsonArray();
         try {
-            for (String app : apps) {
+            for (String app: apps) {
                 JsonObject jsonObject = new JsonObject();
-                String selectApp = "select * from opportunity_info where column_name='appName' and value = '" + app
-                        + "'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectApp);
+                String selectApp = "select * from opportunity_info where column_name='appName' and value = ?";
+                PreparedStatement st = con.prepareStatement(selectApp);
+    			st.setString(1, app);
+    			ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     jsonObject.addProperty("appName", app);
                     jsonObject.addProperty("phaseName", phase);
@@ -281,95 +284,95 @@ public class dashboardService {
                     // jsonObject.addProperty("endDate", "14-02-2022");
                     String Id = rs.getString("Id");
                     // System.out.println("OppId: " + Id);
-                    String selectAppType = "select * from opportunity_info where column_name='request_type' and  Id = '"
-                            + Id + "'";
-                    Statement st1 = con.createStatement();
-                    ResultSet rs1 = st1.executeQuery(selectAppType);
+                    String selectAppType = "select * from opportunity_info where column_name='request_type' and  Id = ?";
+                    PreparedStatement st1 = con.prepareStatement(selectAppType);
+        			st1.setString(1, Id);
+        			ResultSet rs1 = st1.executeQuery();
                     if (rs1.next())
                         jsonObject.addProperty("appType", rs1.getString("value"));
                     rs1.close();
                     st1.close();
-                /*  String selectAppOwner = "select * from opportunity_info where column_name='appowner' and  Id = '"
-                            + Id + "'";
-                    Statement st2 = con.createStatement();
-                    ResultSet rs2 = st2.executeQuery(selectAppOwner);
-                    if (rs2.next())
-                        jsonObject.addProperty("owner", rs2.getString("value"));
-                    rs2.close();
-                    st2.close();
-                    String selectStatus = "select intakeApproval from Intake_Stake_Holder_Info where  OppId = '" + Id
-                            + "' and priority_order_num is not null";
-                    Statement st3 = con.createStatement();
-                    ResultSet rs3 = st3.executeQuery(selectStatus);
-                    boolean intakestatus = rs3.next();
-                    while (rs3.next()) {
-                        if (rs3.getString("intakeApproval").equals("Decision pending")) {
-                            jsonObject.addProperty("appStatus", "Intake");
-                            jsonObject.addProperty("progress", "25%");
-                            check1 = true;
-                            break;
-                        }
-                    }
-                    rs3.close();
-                    st3.close();
-                    if (intakestatus == false) {
-                        jsonObject.addProperty("appStatus", "Yet To Start");
-                        jsonObject.addProperty("progress", "0%");
-                    }
-                    boolean archiverequirementstatus = false;
-                    if (check1 == false) {
-                        System.out.println("Id kya hai :"+Id);
-                        String selectStatus1 = "select intakeApproval from ArchiveReq_Roles_Info where  OppId = '" + Id
-                                + "' and priority_order_num!='' and intakeApproval is not null";
-                        Statement st4 = con.createStatement();
-                        ResultSet rs4 = st4.executeQuery(selectStatus1);
-                        archiverequirementstatus = rs4.next();
-                        while (rs4.next()) {
-                            if (rs4.getString("intakeApproval").equals("Decision pending")) {
-                                jsonObject.addProperty("appStatus", "Archieve Requirements");
-                                jsonObject.addProperty("progress", "50%");
-                                check2 = true;
+                    /*  String selectAppOwner = "select * from opportunity_info where column_name='appowner' and  Id = '"
+                                + Id + "'";
+                        Statement st2 = con.createStatement();
+                        ResultSet rs2 = st2.executeQuery(selectAppOwner);
+                        if (rs2.next())
+                            jsonObject.addProperty("owner", rs2.getString("value"));
+                        rs2.close();
+                        st2.close();
+                        String selectStatus = "select intakeApproval from Intake_Stake_Holder_Info where  OppId = '" + Id
+                                + "' and priority_order_num is not null";
+                        Statement st3 = con.createStatement();
+                        ResultSet rs3 = st3.executeQuery(selectStatus);
+                        boolean intakestatus = rs3.next();
+                        while (rs3.next()) {
+                            if (rs3.getString("intakeApproval").equals("Decision pending")) {
+                                jsonObject.addProperty("appStatus", "Intake");
+                                jsonObject.addProperty("progress", "25%");
+                                check1 = true;
                                 break;
                             }
                         }
-                        rs4.close();
-                        st4.close();
-                    }
-                    if (check1 == false && check2 == false && intakestatus == true
-                            && archiverequirementstatus == true) {
-                        String selectStatus2 = "select * from archive_execution_info where  OppId = '" + Id + "'";
-                        Statement st5 = con.createStatement();
-                        ResultSet rs5 = st5.executeQuery(selectStatus2);
-                        if (rs5.next()) {
-                            jsonObject.addProperty("appStatus", "Archieve Execution");
-                            jsonObject.addProperty("progress", "75%");
+                        rs3.close();
+                        st3.close();
+                        if (intakestatus == false) {
+                            jsonObject.addProperty("appStatus", "Yet To Start");
+                            jsonObject.addProperty("progress", "0%");
                         }
-                        rs5.close();
-                        st5.close();
-                    } */
-                    String selectSubmittedDate = "select distinct submittedDate from Intake_Stake_Holder_Info where  OppId = '"
-                            + Id + "' and priority_order_num is not null";
-                    Statement st6 = con.createStatement();
-                    ResultSet rs6 = st6.executeQuery(selectSubmittedDate);
+                        boolean archiverequirementstatus = false;
+                        if (check1 == false) {
+                            System.out.println("Id kya hai :"+Id);
+                            String selectStatus1 = "select intakeApproval from ArchiveReq_Roles_Info where  OppId = '" + Id
+                                    + "' and priority_order_num!='' and intakeApproval is not null";
+                            Statement st4 = con.createStatement();
+                            ResultSet rs4 = st4.executeQuery(selectStatus1);
+                            archiverequirementstatus = rs4.next();
+                            while (rs4.next()) {
+                                if (rs4.getString("intakeApproval").equals("Decision pending")) {
+                                    jsonObject.addProperty("appStatus", "Archieve Requirements");
+                                    jsonObject.addProperty("progress", "50%");
+                                    check2 = true;
+                                    break;
+                                }
+                            }
+                            rs4.close();
+                            st4.close();
+                        }
+                        if (check1 == false && check2 == false && intakestatus == true
+                                && archiverequirementstatus == true) {
+                            String selectStatus2 = "select * from archive_execution_info where  OppId = '" + Id + "'";
+                            Statement st5 = con.createStatement();
+                            ResultSet rs5 = st5.executeQuery(selectStatus2);
+                            if (rs5.next()) {
+                                jsonObject.addProperty("appStatus", "Archieve Execution");
+                                jsonObject.addProperty("progress", "75%");
+                            }
+                            rs5.close();
+                            st5.close();
+                        } */
+                    String selectSubmittedDate = "select distinct submittedDate from Intake_Stake_Holder_Info where  OppId = ? and priority_order_num is not null";
+                    PreparedStatement st6 = con.prepareStatement(selectSubmittedDate);
+        			st6.setString(1, Id);
+        			ResultSet rs6 = st6.executeQuery();
                     while (rs6.next()) {
                         jsonObject.addProperty("submittedDate", rs6.getString("submittedDate"));
                     }
                     rs6.close();
                     st6.close();
-                    String selectDecomAnalyst = "select value from Triage_Info where  Id = '" + Id
-                            + "' and column_name='decomAnalyst'";
-                    Statement st7 = con.createStatement();
-                    ResultSet rs7 = st7.executeQuery(selectDecomAnalyst);
+                    String selectDecomAnalyst = "select value from Triage_Info where  Id = ? and column_name='decomAnalyst'";
+                    PreparedStatement st7 = con.prepareStatement(selectDecomAnalyst);
+        			st7.setString(1, Id);
+        			ResultSet rs7 = st7.executeQuery();
                     while (rs7.next()) {
                         jsonObject.addProperty("decomAnalyst", rs7.getString("value"));
                     }
                     rs7.close();
                     st7.close();
                     String ArchiveRequired = "Yes";
-                    String selectArchiveRequired = "select value from Assessment_Compliance_Char_Info where  Id = '"
-                            + Id + "' and column_name='archivalrequired'";
-                    Statement st8 = con.createStatement();
-                    ResultSet rs8 = st8.executeQuery(selectArchiveRequired);
+                    String selectArchiveRequired = "select value from Assessment_Compliance_Char_Info where  Id = ? and column_name='archivalrequired'";
+                    PreparedStatement st8 = con.prepareStatement(selectArchiveRequired);
+        			st8.setString(1, Id);
+        			ResultSet rs8 = st8.executeQuery();
                     while (rs8.next()) {
                         if (!rs8.getString("value").equals("")) {
                             ArchiveRequired = rs8.getString("value");
@@ -414,28 +417,29 @@ public class dashboardService {
             Statement st2 = con.createStatement();
             ResultSet rs2 = st2.executeQuery(selectQuery2);
             int countOpportunity = 0;
-            while (rs2.next())
-            {   
+            while (rs2.next()) {
                 String Id = rs2.getString("Id");
-                String selectIntakeCount="select * from decom3sixtytool.Intake_Stake_Holder_Info where intakeApproval='Approved' and priority_order_num=(select Max(priority_order_num) from decom3sixtytool.Intake_Stake_Holder_Info where OppId='"+Id+"')and OppId='"+Id+"';";
-                Statement statement = con.createStatement();
-                ResultSet rset = statement.executeQuery(selectIntakeCount);
-                if(rset.next()) {
+                String selectIntakeCount = "select * from decom3sixtytool.Intake_Stake_Holder_Info where intakeApproval='Approved' and priority_order_num=(select Max(priority_order_num) from decom3sixtytool.Intake_Stake_Holder_Info where OppId=?)and OppId=?;";
+                PreparedStatement statement = con.prepareStatement(selectIntakeCount);
+                statement.setString(1, Id);
+                statement.setString(2, Id);
+    			ResultSet rset = statement.executeQuery();
+                if (rset.next()) {
                     countOpportunity++;
-                }else
+                } else
                     countIntake++;
                 //countOpportunity = rs2.getInt(1);
             }
             rs2.close();
             st2.close();
-        /*   String selectQuery3 = "select count(distinct oi.Id) from decom3sixtytool.Opportunity_Info oi left join decom3sixtytool.Intake_Stake_Holder_Info ish on ish.OppId=oi.Id "
-                    + "where column_name='appName' and oi.Id not in (select OppId from decom3sixtytool.Intake_Stake_Holder_Info where intakeApproval='Approved');";
-            Statement st3 = con.createStatement();
-            ResultSet rs3 = st3.executeQuery(selectQuery3);
-            if (rs3.next())
-                countIntake = rs3.getInt(1);
-            rs3.close();
-            st3.close();*/
+            /*   String selectQuery3 = "select count(distinct oi.Id) from decom3sixtytool.Opportunity_Info oi left join decom3sixtytool.Intake_Stake_Holder_Info ish on ish.OppId=oi.Id "
+                        + "where column_name='appName' and oi.Id not in (select OppId from decom3sixtytool.Intake_Stake_Holder_Info where intakeApproval='Approved');";
+                Statement st3 = con.createStatement();
+                ResultSet rs3 = st3.executeQuery(selectQuery3);
+                if (rs3.next())
+                    countIntake = rs3.getInt(1);
+                rs3.close();
+                st3.close();*/
             jsonObject.addProperty("phaseCount", countPhase);
             jsonObject.addProperty("waveCount", countWave);
             jsonObject.addProperty("appCount", countOpportunity);
@@ -453,23 +457,29 @@ public class dashboardService {
             ResultSet rs = st.executeQuery(Query);
             while (rs.next()) {
                 String oppId = rs.getString(1);
-                String moduleNames[] = { "Intake", "Requirments", "ArchiveExecution", "DecommissionExecution" };
-                for (String moduleName : moduleNames) {
+                String moduleNames[] = {
+                    "Intake",
+                    "Requirments",
+                    "ArchiveExecution",
+                    "DecommissionExecution"
+                };
+                for (String moduleName: moduleNames) {
                     boolean checkCurrentPhase = true;
                     if (!moduleName.equals("Requirments")) {
-                        String selectQuery = "select * from module_approval_info where moduleName = '" + moduleName
-                                + "' and OppId = '" + oppId + "'";
-                        Statement st1 = con.createStatement();
-                        ResultSet rs1 = st1.executeQuery(selectQuery);
+                        String selectQuery = "select * from module_approval_info where moduleName = ? and OppId = ?";
+                        PreparedStatement st1 = con.prepareStatement(selectQuery);
+            			st1.setString(1, moduleName);
+            			st1.setString(2, oppId);
+            			ResultSet rs1 = st1.executeQuery();
                         if (rs1.next()) {
                             if (rs1.getBoolean(4))
                                 checkCurrentPhase = false;
                         }
                     } else {
-                        String selectQuery1 = "select * from opportunity_info where Id = '" + oppId
-                                + "' and column_name = 'request_type';";
-                        Statement st2 = con.createStatement();
-                        ResultSet rs2 = st2.executeQuery(selectQuery1);
+                        String selectQuery1 = "select * from opportunity_info where Id = ? and column_name = 'request_type';";
+                        PreparedStatement st2 = con.prepareStatement(selectQuery1);
+            			st2.setString(1, oppId);
+            			ResultSet rs2 = st2.executeQuery();
                         if (rs2.next())
                             checkCurrentPhase = getReqApproval(rs2.getString("value"), oppId);
                     }
@@ -491,18 +501,18 @@ public class dashboardService {
     private void setModuleCount(String moduleName) {
         try {
             switch (moduleName) {
-            case "Intake":
-                intakeCount++;
-                break;
-            case "Requirments":
-                reqCount++;
-                break;
-            case "ArchiveExecution":
-                archiveExeCount++;
-                break;
-            case "DecommissionExecution":
-                decomExeCount++;
-                break;
+                case "Intake":
+                    intakeCount++;
+                    break;
+                case "Requirments":
+                    reqCount++;
+                    break;
+                case "ArchiveExecution":
+                    archiveExeCount++;
+                    break;
+                case "DecommissionExecution":
+                    decomExeCount++;
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -512,16 +522,16 @@ public class dashboardService {
         boolean checkPhase = true;
         try {
             switch (reqType) {
-            case "Archive":
-                checkPhase = getReqInfo("Archive_Requirement", oppId);
-                break;
-            case "Decommission":
-                checkPhase = getReqInfo("Decommission_Requirement", oppId);
-                break;
-            case "To be retire":
-                if (!getReqInfo("Archive_Requirement", oppId) && !getReqInfo("Decommission_Requirement", oppId))
-                    checkPhase = false;
-                break;
+                case "Archive":
+                    checkPhase = getReqInfo("Archive_Requirement", oppId);
+                    break;
+                case "Decommission":
+                    checkPhase = getReqInfo("Decommission_Requirement", oppId);
+                    break;
+                case "To be retire":
+                    if (!getReqInfo("Archive_Requirement", oppId) && !getReqInfo("Decommission_Requirement", oppId))
+                        checkPhase = false;
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -531,10 +541,11 @@ public class dashboardService {
     private boolean getReqInfo(String phaseName, String oppId) {
         boolean checkPhase = true;
         try {
-            String selectQuery = "select * from module_approval_info where moduleName = '" + phaseName
-                    + "' and OppId = '" + oppId + "'";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "select * from module_approval_info where moduleName = ? and OppId = ?";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, phaseName);
+			st.setString(2, oppId);
+			ResultSet rs = st.executeQuery();
             if (rs.next())
                 if (rs.getBoolean(4))
                     checkPhase = false;
@@ -643,8 +654,8 @@ public class dashboardService {
                     riskCount++;
                 }
                 if (!expDtae.equals("")) {
-                    if (sdf.parse(expDtae).before(sdf.parse(todaysdate)) && !resolved.equals("COMPLETED")
-                            && !resolved.equals("CANCELLED") && rs.getString("end_date") != null && expDtae != null) {
+                    if (sdf.parse(expDtae).before(sdf.parse(todaysdate)) && !resolved.equals("COMPLETED") &&
+                        !resolved.equals("CANCELLED") && rs.getString("end_date") != null && expDtae != null) {
                         deadlineCount++;
                     }
                 }
@@ -653,19 +664,19 @@ public class dashboardService {
                 String issue = String.format("%02d", issueCount);
                 jsonObject.addProperty("issueCount", issue);
             } else {
-            	jsonObject.addProperty("issueCount", issueCount);
+                jsonObject.addProperty("issueCount", issueCount);
             }
             if (riskCount < 10) {
                 String risk = String.format("%02d", riskCount);
                 jsonObject.addProperty("riskCount", risk);
             } else {
-            	jsonObject.addProperty("riskCount", riskCount);
+                jsonObject.addProperty("riskCount", riskCount);
             }
             if (deadlineCount < 10) {
                 String deadline = String.format("%02d", deadlineCount);
                 jsonObject.addProperty("deadlineCount", deadline);
-            }else {
-            	jsonObject.addProperty("deadlineCount", deadlineCount);
+            } else {
+                jsonObject.addProperty("deadlineCount", deadlineCount);
             }
             jsonArray.add(jsonObject);
             rs.close();
@@ -760,10 +771,11 @@ public class dashboardService {
     private JsonArray getArchiveReqWaveDetails(String[] waves, String phase) {
         JsonArray jsonArray = new JsonArray();
         try {
-            for (String wave : waves) {
-                String selectWaves = "select * from governance_info where waveName='" + wave + "'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectWaves);
+            for (String wave: waves) {
+                String selectWaves = "select * from governance_info where waveName=?";
+                PreparedStatement st = con.prepareStatement(selectWaves);
+    			st.setString(1, wave);
+    			ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     if (rs.getString("column_name").equals("apps")) {
                         String apps[] = rs.getString("value").split(",");
@@ -781,7 +793,7 @@ public class dashboardService {
     public JsonArray getDoughnutIntakeDetail() {
         JsonArray jsonArray = new JsonArray();
         try {
-            ArrayList<String> app = new ArrayList<String>();
+            ArrayList < String > app = new ArrayList < String > ();
             String selectApp = "select * from opportunity_info where column_name='appName'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(selectApp);
@@ -803,18 +815,18 @@ public class dashboardService {
         JsonObject jsonObject = new JsonObject();
         try {
             int triageCount = 0, assesmentCount = 0, completedCount = 0, newOpp = 0, pendApproval = 0;
-            for (String app : apps) {
-                String selectApp = "select * from opportunity_info where column_name='appName' and value = '" + app
-                        + "'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectApp);
+            for (String app: apps) {
+                String selectApp = "select * from opportunity_info where column_name='appName' and value = ?";
+                PreparedStatement st = con.prepareStatement(selectApp);
+    			st.setString(1, app);
+    			ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     String Id = rs.getString("Id");
-                    System.out.println("OppId :"+Id);
-                    String selectNewOppQuery = "select count(*) from decom3sixtytool.Triage_Info where value='' and Id='"
-                            + Id + "';";
-                    Statement st17 = con.createStatement();
-                    ResultSet rs17 = st17.executeQuery(selectNewOppQuery);
+                    System.out.println("OppId :" + Id);
+                    String selectNewOppQuery = "select count(*) from decom3sixtytool.Triage_Info where value='' and Id=?;";
+                    PreparedStatement st17 = con.prepareStatement(selectNewOppQuery);
+        			st17.setString(1, Id);
+        			ResultSet rs17 = st17.executeQuery();
                     if (rs17.next()) {
                         int totalCount = rs17.getInt(1);
                         rs17.close();
@@ -827,59 +839,59 @@ public class dashboardService {
                             System.out.println("triage m aya");
                         }
                     }
-                    String selectTriagedetail = "select * from decom3sixtytool.Triage_Info where mandatory='yes' and value='' and Id='"
-                            + Id + "';";
-                    Statement st12 = con.createStatement();
-                    ResultSet rs12 = st12.executeQuery(selectTriagedetail);
+                    String selectTriagedetail = "select * from decom3sixtytool.Triage_Info where mandatory='yes' and value='' and Id=?;";
+                    PreparedStatement st12 = con.prepareStatement(selectTriagedetail);
+        			st12.setString(1, Id);
+        			ResultSet rs12 = st12.executeQuery();
                     boolean triage = rs12.next();
                     rs12.close();
                     st12.close();
                     if (triage) {
-                         triageCount--;
+                        triageCount--;
                         System.out.println("yaha nahi aana tha");
                     } else {
-                        String assappInfoQuery = "select * from decom3sixtytool.Assessment_Application_Info where mandatory='Yes' and value='' and Id='"
-                                + Id + "';";
-                        Statement st13 = con.createStatement();
-                        ResultSet rs13 = st13.executeQuery(assappInfoQuery);
+                        String assappInfoQuery = "select * from decom3sixtytool.Assessment_Application_Info where mandatory='Yes' and value='' and Id=?;";
+                        PreparedStatement st13 = con.prepareStatement(assappInfoQuery);
+            			st13.setString(1, Id);
+            			ResultSet rs13 = st13.executeQuery();
                         boolean assappIn = rs13.next();
                         rs13.close();
                         st13.close();
-                        String assappArchConsQuery = "select * from decom3sixtytool.Assessment_Archival_Consumption_Info where mandatory='Yes' and value='' and Id='"
-                                + Id + "';";
-                        Statement st14 = con.createStatement();
-                        ResultSet rs14 = st14.executeQuery(assappArchConsQuery);
+                        String assappArchConsQuery = "select * from decom3sixtytool.Assessment_Archival_Consumption_Info where mandatory='Yes' and value='' and Id=?;";
+                        PreparedStatement st14 = con.prepareStatement(assappArchConsQuery);
+            			st14.setString(1, Id);
+            			ResultSet rs14 = st14.executeQuery();
                         boolean assappArchCon = rs14.next();
                         rs14.close();
                         st14.close();
-                        String assappArchCompCharQuery = "select * from decom3sixtytool.Assessment_Compliance_Char_Info where mandatory='Yes' and value= '' and Id='"
-                                + Id + "';";
-                        Statement st15 = con.createStatement();
-                        ResultSet rs15 = st15.executeQuery(assappArchCompCharQuery);
+                        String assappArchCompCharQuery = "select * from decom3sixtytool.Assessment_Compliance_Char_Info where mandatory='Yes' and value= '' and Id=?;";
+                        PreparedStatement st15 = con.prepareStatement(assappArchCompCharQuery);
+            			st15.setString(1, Id);
+            			ResultSet rs15 = st15.executeQuery();
                         boolean assappArchComCha = rs15.next();
                         rs15.close();
                         st15.close();
-                        String assDataCharacterQuery = "select * from decom3sixtytool.Assessment_Data_Char_Info where mandatory='Yes' and value= '' and Id='"
-                                + Id + "';";
-                        Statement st16 = con.createStatement();
-                        ResultSet rs116 = st16.executeQuery(assDataCharacterQuery);
+                        String assDataCharacterQuery = "select * from decom3sixtytool.Assessment_Data_Char_Info where mandatory='Yes' and value= '' and Id=?;";
+                        PreparedStatement st16 = con.prepareStatement(assDataCharacterQuery);
+            			st16.setString(1, Id);
+            			ResultSet rs116 = st16.executeQuery();
                         boolean assDataChar = rs116.next();
                         rs116.close();
                         st16.close();
-                        System.out.println(assappIn+" "+assappArchCon+" "+assappArchComCha+" "+assDataChar);
-                        if (assappIn == true || assappArchCon == true || assappArchComCha == true
-                                || assDataChar == true) {
+                        System.out.println(assappIn + " " + assappArchCon + " " + assappArchComCha + " " + assDataChar);
+                        if (assappIn == true || assappArchCon == true || assappArchComCha == true ||
+                            assDataChar == true) {
                             System.out.println("Asscess m ayaa");
                             assesmentCount++;
-                        } else if (assappIn == false && assappArchCon == false && assappArchComCha == false
-                                && assDataChar == false) {
-                            String selectAppdetail = "select intakeApproval,max(priority_order_num) pr,OppId from Intake_Stake_Holder_Info where priority_order_num!='' and intakeApproval is not null and OppId = '"
-                                    + Id + "' group by intakeApproval,OppId";
-                            Statement st11 = con.createStatement();
-                            ResultSet rs11 = st11.executeQuery(selectAppdetail);
+                        } else if (assappIn == false && assappArchCon == false && assappArchComCha == false &&
+                            assDataChar == false) {
+                            String selectAppdetail = "select intakeApproval,max(priority_order_num) pr,OppId from Intake_Stake_Holder_Info where priority_order_num!='' and intakeApproval is not null and OppId = ? group by intakeApproval,OppId";
+                            PreparedStatement st11 = con.prepareStatement(selectAppdetail);
+                			st11.setString(1, Id);
+                			ResultSet rs11 = st11.executeQuery();
                             while (rs11.next()) {
                                 String value = rs11.getString("intakeApproval");
-                                System.out.println("I approval :"+value);
+                                System.out.println("I approval :" + value);
                                 if (value.equals("Decision pending") || value.equals("Rejected")) {
                                     System.out.println("pending m aaya");
                                     pendApproval++;
@@ -946,10 +958,11 @@ public class dashboardService {
     private JsonArray getArchiveExeWaveDetails(String[] waves, String phase) {
         JsonArray jsonArray = new JsonArray();
         try {
-            for (String wave : waves) {
-                String selectWaves = "select * from governance_info where waveName='" + wave + "'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectWaves);
+            for (String wave: waves) {
+                String selectWaves = "select * from governance_info where waveName=?";
+                PreparedStatement st = con.prepareStatement(selectWaves);
+    			st.setString(1, wave);
+    			ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     if (rs.getString("column_name").equals("apps")) {
                         String apps[] = rs.getString("value").split(",");
@@ -967,32 +980,31 @@ public class dashboardService {
     private JsonArray getArchiveExeDetail(String[] apps, String wave, String phase) {
         JsonArray jsonArray = new JsonArray();
         try {
-            for (String app : apps) {
+            for (String app: apps) {
                 JsonObject jsonObject = new JsonObject();
-                String selectApp = "select distinct ar.oppName,OppId from opportunity_info o inner join archive_execution_info ar on o.Id=ar.OppId where column_name='appName' and value ='"
-                        + app + "';";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectApp);
+                String selectApp = "select distinct ar.oppName,OppId from opportunity_info o inner join archive_execution_info ar on o.Id=ar.OppId where column_name='appName' and value =?;";
+                PreparedStatement st = con.prepareStatement(selectApp);
+    			st.setString(1, app);
+    			ResultSet rs = st.executeQuery();
                 while (rs.next()) {
                     jsonObject.addProperty("app_name", rs.getString("ar.oppName"));
                     String Id = rs.getString("OppId");
-                    String crdate = "select value from opportunity_info where column_name='creation_date' and Id='" + Id
-                            + "';";
-                    Statement st13 = con.createStatement();
-                    ResultSet rs13 = st13.executeQuery(crdate);
+                    String crdate = "select value from opportunity_info where column_name='creation_date' and Id=?;";
+                    PreparedStatement st13 = con.prepareStatement(crdate);
+        			st13.setString(1, Id);
+        			ResultSet rs13 = st13.executeQuery();
                     if (rs13.next()) {
                         jsonObject.addProperty("startDate", rs13.getString("value"));
                     }
                     // System.out.println("OppId: " + Id);
-                    String selectAppdetail = "select * from `archive_execution_info` where taskGroup='Archive Implementation' and level='1' and OppId = '"
-                            + Id + "';";
-                    Statement st12 = con.createStatement();
-                    ResultSet rs12 = st12.executeQuery(selectAppdetail);
+                    String selectAppdetail = "select * from `archive_execution_info` where taskGroup='Archive Implementation' and level='1' and OppId = ?;";
+                    PreparedStatement st12 = con.prepareStatement(selectAppdetail);
+        			st12.setString(1, Id);
+        			ResultSet rs12 = st12.executeQuery();
                     if (rs12.next()) {
                         String completion = rs12.getString("completion");
-                        if(completion.equals(""))
-                        {
-                            completion="0%";
+                        if (completion.equals("")) {
+                            completion = "0%";
                         }
                         jsonObject.addProperty("status", completion);
                         rs12.close();

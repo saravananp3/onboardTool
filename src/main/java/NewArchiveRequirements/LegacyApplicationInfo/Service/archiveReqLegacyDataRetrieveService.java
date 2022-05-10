@@ -30,17 +30,17 @@ public class archiveReqLegacyDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
-			String selectQuery = "select * from archivereq_legacyapp_info where Id = '"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from archivereq_legacyapp_info where Id = ?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+						
 			if(!rs.next()) {
 				
 				String TemplateQuery = "select * from archivereq_legacyapp_template_details order by seq_no;";
 				Statement st1 = con.createStatement();
 				ResultSet rs1 = st1.executeQuery(TemplateQuery);
-				
-				
+							
 				while(rs1.next()) {
 					String column =rs1.getString("column_name");
 					String insertQuery = "insert into archivereq_legacyapp_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -73,9 +73,10 @@ public class archiveReqLegacyDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
-			String selectQuery = "select * from archivereq_legacyapp_info where Id = '"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from archivereq_legacyapp_info where Id = ? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			LinkedHashMap<String,String> columnDetails = getAutoPopulateFields();
 			while(rs.next()) {
 				String column = rs.getString("column_name");
@@ -138,10 +139,12 @@ public class archiveReqLegacyDataRetrieveService {
 		 String columnName =columnTablePair.split("-")[0];
 		 String tableName =columnTablePair.split("-")[1];
 		 
-		 String selectQuery = "select * from "+tableName+" where column_name = '"+columnName+"' and Id = '"+Id+"'";
-		 Statement st = con.createStatement();
-		 ResultSet rs = st.executeQuery(selectQuery);
-		 if(rs.next())
+		 String selectQuery = "select * from "+tableName+" where column_name = ? and Id = ?";
+		 PreparedStatement st = con.prepareStatement(selectQuery);
+		 st.setString(1, columnName);
+		 st.setString(2, Id);
+		 ResultSet rs = st.executeQuery();
+	     if(rs.next())
 		 {
 			 checkValue = true;
 	         value= rs.getString("value");		 
@@ -151,9 +154,11 @@ public class archiveReqLegacyDataRetrieveService {
 		 if(columnName.equals("AssessAppPlatform")) {
 			 columnName = "DatabaseType";
 			 tableName = "assessment_data_char_info";
-			 String selectQueryDB = "select * from "+tableName+" where column_name = '"+columnName+"' and Id = '"+Id+"'";
-			 Statement stDb = con.createStatement();
-			 ResultSet rsDb = stDb.executeQuery(selectQueryDB);
+			 String selectQueryDB = "select * from "+tableName+" where column_name = ? and Id = ?";
+			 PreparedStatement stDb = con.prepareStatement(selectQueryDB);
+			 stDb.setString(1, columnName);
+			 stDb.setString(2, Id);
+			 ResultSet rsDb = stDb.executeQuery();
 			 if(rsDb.next()) {
 				 value = value.equals("")?rsDb.getString("value"):value+","+rsDb.getString("value");
 			 }
@@ -167,9 +172,11 @@ public class archiveReqLegacyDataRetrieveService {
 			 columnName = "LastUpdateMade";
 			 else if(value.equals("No"))
 			 columnName ="ExpectedDate";
-			 String selectQueryDate = "select * from "+tableName+" where column_name = '"+columnName+"' and Id = '"+Id+"'";
-			 Statement st2 = con.createStatement();
-			 ResultSet rs2 = st2.executeQuery(selectQueryDate);
+			 String selectQueryDate = "select * from "+tableName+" where column_name = ? and Id = ?";
+			 PreparedStatement st2 = con.prepareStatement(selectQueryDate);
+			 st2.setString(1, columnName);
+			 st2.setString(2, Id);
+			 ResultSet rs2 = st2.executeQuery();
 			 if(rs2.next())
 			 {
 				 checkValue = true;
@@ -186,9 +193,12 @@ public class archiveReqLegacyDataRetrieveService {
 		 {
 			 tableName = "triage_info";
 			 columnName ="appPlatfrm";
-			 String selectQuery1 = "select * from "+tableName+" where column_name = '"+columnName+"' and Id = '"+Id+"'";
-			 Statement st1 = con.createStatement();
-			 ResultSet rs1 = st1.executeQuery(selectQuery1);
+			 String selectQuery1 = "select * from "+tableName+" where column_name = ? and Id = ?";
+			 PreparedStatement st1 = con.prepareStatement(selectQuery1);
+			 st1.setString(1, columnName);
+			 st1.setString(2, Id);
+			 ResultSet rs1 = st1.executeQuery();
+			
 			 if(rs1.next())
 			 {
 				 checkValue = true;

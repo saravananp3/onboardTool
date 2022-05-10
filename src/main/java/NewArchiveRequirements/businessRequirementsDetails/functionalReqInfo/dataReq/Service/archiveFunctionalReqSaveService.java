@@ -43,13 +43,15 @@ public class archiveFunctionalReqSaveService {
 		  		String Requirements =  jsonObj.get("Requirements").getAsString();
 		  		String Additional =  jsonObj.get("Additional").getAsString();
 		  		
-			  String UpdateQuery = "update "+tableName+" set reqId = ?, reqInScope =?, reqType=?, "+column+"=?, additionInfo=? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			  String UpdateQuery = "update "+tableName+" set reqId = ?, reqInScope =?, reqType=?, "+column+"=?, additionInfo=? where OppId=? and seq_no=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, ReqId);
 	          prestmt.setString(2, InScope);
 	          prestmt.setString(3, ReqType);
 	          prestmt.setString(4, Requirements);
 	          prestmt.setString(5, Additional);
+	          prestmt.setString(6, Id);
+	          prestmt.setString(7, seqNum);
 	          prestmt.execute();
 			}
 			statusFlag =true;

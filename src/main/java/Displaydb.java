@@ -134,10 +134,11 @@ public class Displaydb extends HttpServlet {
 		{
 			 DBconnection dBconnection = new DBconnection();
 		     Connection connection = (Connection) dBconnection.getConnection();
-		     String query2 = "select * from AppEmphazize_ApplicationPrioritization where proj_name='" + proj_name
-					+ "' and prj_name='" + prj_name + "'";
+		     String query2 = "select * from AppEmphazize_ApplicationPrioritization where proj_name=? and prj_name=?";
 		     PreparedStatement Stmt1 = connection.prepareStatement(query2);
-		     ResultSet rs1 = Stmt1.executeQuery(query2);
+		     Stmt1.setString(1,proj_name);
+		     Stmt1.setString(2,prj_name);
+		     ResultSet rs1 = Stmt1.executeQuery();
 			if(rs1.next())
 			{
 				String query = "update AppEmphazize_ApplicationPrioritization set IA_lic_cst=?, IA_maint_cst=?, Infrastrct_cst=?, strg_est=?, lab_cst=?, data_size=?, data_source=?, curnt_users=?, complexity=?, est_archive=?, est_scrn=?, est_db_size=?, est_hrs=?, est_cst=?, ttl_IA_cst=?, ttl_infra_cst=?, ttl_IA_prdct_cst=?, ttl=?, ttl_cst_fr_app=?, add_cst_fr_contigency=?, add_cst=?, IA_app_sprt_cst=?, est_archive_cst=?, no_of_app_complexity=?,read_date=?, sme_date=?, data_retained=?, Decommission=? where prj_name=? and  proj_name=?";

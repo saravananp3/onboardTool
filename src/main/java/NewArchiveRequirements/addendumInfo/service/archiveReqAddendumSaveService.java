@@ -38,11 +38,12 @@ public class archiveReqAddendumSaveService {
 		  		String addendumInfo =  jsonObj.get("addendumInfo").getAsString();
 		  		
 		  		
-			  String UpdateQuery = "update Archive_Req_Addendum_Info set labelName = ?, addendumInfo =? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			  String UpdateQuery = "update Archive_Req_Addendum_Info set labelName = ?, addendumInfo =? where OppId=? and seq_no=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, label);
 	          prestmt.setString(2, addendumInfo);
-	          
+	          prestmt.setString(3, Id);
+	          prestmt.setString(4, seqNum);
 	          prestmt.execute();
 			}
 			statusFlag =true;

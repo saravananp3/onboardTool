@@ -1,6 +1,7 @@
 package IntakeDetails.IntakeAssessment.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -76,30 +77,33 @@ public class IntakeAssessmentSaveFunctionalityService {
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
 
-				String SelectQuery = "select * from " + SectionInfoTable + " where id ='" + id + "' and column_name='"
-						+ name + "' and section = '" + SectionName + "';";
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(SelectQuery);
+				String SelectQuery = "select * from " + SectionInfoTable + " where id =? and column_name=? and section = ?;";
+				PreparedStatement st=connection.prepareStatement(SelectQuery);
+				st.setString(1, id);
+				st.setString(2, name);
+				st.setString(3, SectionName);
+				ResultSet rs = st.executeQuery();
 				String UpdateQuery = "";
 				if (rs.next()) {
 					if (SectionInfoTable.equals("Assessment_Archival_Consumption_Info")) {
 
 						if (rs.getString("isCompleted").isEmpty() || rs.getString("isCompleted").equals("No")) {
-							UpdateQuery = "update " + SectionInfoTable + " set isCompleted ='No' ,value='" + value + "' where id ='" + id
-									+ "' and column_name ='" + name + "' and section = '" + SectionName + "';";
+							UpdateQuery = "update " + SectionInfoTable + " set isCompleted ='No' ,value=? where id =? and column_name =? and section = ?;";
 
 						} else {
-							UpdateQuery = "update " + SectionInfoTable + " set isCompleted ='Yes' ,value='" + value + "' where id ='" + id
-									+ "' and column_name ='" + name + "' and section = '" + SectionName + "';";
+							UpdateQuery = "update " + SectionInfoTable + " set isCompleted ='Yes' ,value=? where id =? and column_name =? and section = ?;";
 
 						}
 					} else {
-						UpdateQuery = "update " + SectionInfoTable + " set value='" + value + "' where id ='" + id
-								+ "' and column_name ='" + name + "' and section = '" + SectionName + "';";
+						UpdateQuery = "update " + SectionInfoTable + " set value=? where id =? and column_name =? and section = ?;";
 
 					}
-					Statement st1 = connection.createStatement();
-					st1.executeUpdate(UpdateQuery);
+					PreparedStatement st1=connection.prepareStatement(UpdateQuery);
+					st1.setString(1, value);
+					st1.setString(2, id);
+					st1.setString(3, name);
+					st1.setString(4, SectionName);
+					st1.execute();
 				}
 			}
 			connection.close();

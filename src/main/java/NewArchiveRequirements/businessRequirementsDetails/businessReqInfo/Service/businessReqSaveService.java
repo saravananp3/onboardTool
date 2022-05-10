@@ -37,9 +37,10 @@ public class businessReqSaveService{
 			int max_seq = 0;
 			String Business_Requirements = "Each requirement must be marked as In-Scope or Out-of-Scope for this project, with additional information specific to each requirement if necessary.::\r\n" + 
 					"Requirement ID's are linked to test script ID's to ensure traceability from requirement to test execution. Requirement ID's may be formatted according to client needs.";
-			String selectQuery = "select * from archivebussinessreq_info where OppId='"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from archivebussinessreq_info where OppId=?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 				checkInsert =false;
 			rs.close();
@@ -62,11 +63,13 @@ public class businessReqSaveService{
 				prepareStmt.execute();
 				prepareStmt.close();
 			}
-			String UpdateQuery ="update archivebussinessreq_info set "+columnName+"='"+value+"' where OppId='"+Id+"';";
-			Statement st2 = con.createStatement();
+			String UpdateQuery ="update archivebussinessreq_info set "+columnName+"=? where OppId=?;";
+			 PreparedStatement st2 = con.prepareStatement(UpdateQuery);
+	          st2.setString(1, value);
+	          st2.setString(2, Id);
+	          st2.execute();
 			System.out.println(UpdateQuery);
-			st2.executeUpdate(UpdateQuery);
-			
+					
 			st2.close();
 			jsonObject.addProperty("checkUpdate", true);
 		}

@@ -729,8 +729,11 @@ try
     archiveDataReqObj = null;
     System.gc();
     }
-    Statement st= con.createStatement(); 
-    ResultSet rs=st.executeQuery("select * from Admin_UserDetails where uname='"+username+"'");
+    String admin_user_details="select * from Admin_UserDetails where uname=?";
+    PreparedStatement st = con.prepareStatement(admin_user_details);
+	st.setString(1, username);
+	ResultSet rs = st.executeQuery();
+    
     try
     {   String dbuname="";
     	

@@ -26,9 +26,10 @@ public class IntakeTriageService extends DynamicFields {
 				DBconnection dBconnection = new DBconnection();
 				Connection con = (Connection) dBconnection.getConnection();
 				
-				String SelectQuery = "select * from triage_info where Id='"+Id+"' order by seq_no;";
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(SelectQuery);
+				String SelectQuery = "select * from triage_info where Id=? order by seq_no;";
+				PreparedStatement st = con.prepareStatement(SelectQuery);
+				st.setString(1, Id);
+				ResultSet rs = st.executeQuery();
 				if (!rs.next()){
 					String TemplateQuery = "select * from triage_info_template_details order by seq_no;";
 					Statement st1 = con.createStatement();
@@ -59,10 +60,11 @@ public class IntakeTriageService extends DynamicFields {
 				}
 				else
 				{
-					String TemplateQuery = "select * from triage_info where id='"+Id+"' order by seq_no;";
-					Statement st1 = con.createStatement();
-					ResultSet rs1 = st1.executeQuery(TemplateQuery);
-					
+					String TemplateQuery = "select * from triage_info where id=? order by seq_no;";
+					PreparedStatement st1 = con.prepareStatement(TemplateQuery);
+					st1.setString(1, Id);
+					ResultSet rs1 = st1.executeQuery();
+									
 					while(rs1.next()) {
 						JsonObject jsonObject = new JsonObject();
 						boolean checkexsistent=true; 
@@ -100,6 +102,7 @@ public class IntakeTriageService extends DynamicFields {
 				// selecting the defaiult set from triage template 
 				
 				String SelectRecords = "select * from triage_info_template_details where seq_no>='11' and seq_no<='21'";
+				
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(SelectRecords);
 				int seq_num=1;
@@ -133,16 +136,17 @@ public class IntakeTriageService extends DynamicFields {
 				try {
 					DBconnection dBconnection = new DBconnection();
 					Connection connection = (Connection) dBconnection.getConnection();
-					String select_query = "select * from triage_info where Id = '"+id+"' order by seq_no;";
-					Statement st = connection.createStatement();
-					ResultSet rs = st.executeQuery(select_query);
+					String select_query = "select * from triage_info where Id = ? order by seq_no;";
+					PreparedStatement st = connection.prepareStatement(select_query);
+					st.setString(1, id);
+					ResultSet rs = st.executeQuery();
 					String name = "TriageAddInfo";
 					
 					if (rs.next()) {
-						String max_seqnum = "select max(seq_no) from triage_info where Id = '"+id+"' order by seq_no;";
-						Statement st1 = connection.createStatement();
-						ResultSet rs1 = st1.executeQuery(max_seqnum);
-
+						String max_seqnum = "select max(seq_no) from triage_info where Id = ? order by seq_no;";
+						PreparedStatement st1 = connection.prepareStatement(max_seqnum);
+						st1.setString(1, id);
+						ResultSet rs1 = st1.executeQuery();
 						if (rs1.next()) {
 							max_seq_num = Integer.parseInt(rs1.getString(1));
 							max_seq_num++;
@@ -176,21 +180,27 @@ public class IntakeTriageService extends DynamicFields {
 			try {
 				DBconnection dBconnection = new DBconnection();
 				Connection connection = (Connection) dBconnection.getConnection();
-				String PreviouslabelQuery = "select label_name from triage_info where id = '"+id+"' and seq_no ='"+ sequencenumber + "';";
-				Statement st1 = connection.createStatement();
-				ResultSet rs1 = st1.executeQuery(PreviouslabelQuery);
+				String PreviouslabelQuery = "select label_name from triage_info where id = ? and seq_no =?;";
+				PreparedStatement st1 = connection.prepareStatement(PreviouslabelQuery);
+				st1.setString(1, id);
+				st1.setInt(2, sequencenumber);
+				ResultSet rs1 = st1.executeQuery();
 				if (rs1.next()) {
 					jsonobj.addProperty("previous_label_name", rs1.getString(1));
 				}
 
-				String update_query = "update triage_info set label_name =?,mandatory=? where id = '"+id+"' and seq_no='" + sequencenumber +"';";
+				String update_query = "update triage_info set label_name =?,mandatory=? where id = ? and seq_no=?;";
 				PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
 				preparedStmt1.setString(1, label_name);
 				preparedStmt1.setString(2, Mandatory);
+				preparedStmt1.setString(3, id);
+				preparedStmt1.setInt(4, sequencenumber);
 				preparedStmt1.execute();
-				String SelectQuery = "select * from triage_info where id ='"+id+"' and seq_no ='" + sequencenumber + "';";
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(SelectQuery);
+				String SelectQuery = "select * from triage_info where id =? and seq_no =?;";
+				PreparedStatement st = connection.prepareStatement(SelectQuery);
+				st.setString(1, id);
+				st.setInt(2, sequencenumber);
+				ResultSet rs = st.executeQuery();
 				int i = 1;
 				if (rs.next()) {
 					ResultSetMetaData rsmd = rs.getMetaData();
@@ -236,16 +246,18 @@ public class IntakeTriageService extends DynamicFields {
 				ArrayList<String> arr_mandatory_split = new ArrayList<String>();
 				ArrayList<String> arr_value_split = new ArrayList<String>();
 
-				String select_query = "select max(seq_no) from triage_info where Id = '"+Id+"' order by seq_no;";
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(select_query);
+				String select_query = "select max(seq_no) from triage_info where Id = ? order by seq_no;";
+				PreparedStatement st = connection.prepareStatement(select_query);
+				st.setString(1, Id);
+				ResultSet rs = st.executeQuery();
 				if (rs.next()) {
 					seqmax = Integer.parseInt(rs.getString(1));
 				}
 
-				String query = "select * from triage_info where Id = '"+Id+"' order by seq_no;";
-				Statement st1 = connection.createStatement();
-				ResultSet rs1 = st1.executeQuery(query);
+				String query = "select * from triage_info where Id = ? order by seq_no;";
+				PreparedStatement st1 = connection.prepareStatement(query);
+				st1.setString(1, Id);
+				ResultSet rs1 = st1.executeQuery();
 				while (rs1.next()) {
 					arr_seqmax.add(rs1.getInt(1));
 					arr_id.add(rs1.getString(2));
@@ -285,9 +297,12 @@ public class IntakeTriageService extends DynamicFields {
 					}
 				}
 
-				String delete_query = "delete from triage_info where id='"+Id+"';";
-				Statement st2 = connection.createStatement();
-				st2.executeUpdate(delete_query);
+				String delete_query = "delete from triage_info where id=?;";
+				PreparedStatement st2 = connection.prepareStatement(delete_query);
+				st2.setString(1,Id);
+				st2.executeUpdate();	
+				st2.close();
+		
 				for (int j = 0; j < seqmax - 1; j++) {
 					String insert_query = "insert into triage_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 					PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
@@ -352,10 +367,12 @@ public class IntakeTriageService extends DynamicFields {
 			HashMap<String,String> OpportunityTriageKeyValuePair = KeyValuePairForOpportunityTriage();
 			 DBconnection dBconnection = new DBconnection();   
 	    	 Connection connection = (Connection) dBconnection.getConnection(); 
-			String SelectQuery = "select * from opportunity_info where id='"+id+"' and column_name='"+OpportunityTriageKeyValuePair.get(column_name)+"'";	
-			 Statement st =connection.createStatement();
-			 ResultSet rs = st.executeQuery(SelectQuery);
-			 if(rs.next())
+			String SelectQuery = "select * from opportunity_info where id=? and column_name=?";	
+			PreparedStatement st = connection.prepareStatement(SelectQuery);
+			st.setString(1, id);
+			st.setString(2, OpportunityTriageKeyValuePair.get(column_name));
+			ResultSet rs = st.executeQuery(); 
+			if(rs.next())
 			 {
 				 value =rs.getString("value");
 			 }
@@ -440,12 +457,11 @@ public class IntakeTriageService extends DynamicFields {
 		    	   
 		    	   JsonArray jsonArrayAdd = new JsonArray();
 		    	   
-		    	   String CheckQuery = "select * from triage_info where id='"+id+"' order by seq_no";
-		    	   
-		    	   Statement st2 = connection.createStatement();
-		    	   
-		    	   ResultSet rs2 = st2.executeQuery(CheckQuery);
-		    	   
+		    	   String CheckQuery = "select * from triage_info where id=? order by seq_no";
+		    	    PreparedStatement st2 = connection.prepareStatement(CheckQuery);
+					st2.setString(1, id);
+					ResultSet rs2 = st2.executeQuery();
+	    	   
 		    	   boolean check_first_occurance = true;
 		    	   
 		    	   while(rs2.next())
@@ -453,9 +469,11 @@ public class IntakeTriageService extends DynamicFields {
 		    		   String column_name = rs2.getString("column_name");
 		    		   if(!selected_temp_column_name.contains(column_name)&&!column_name.startsWith("TriageAddInfo")&&!getDependencyColumnNamePair().containsValue(column_name))
 		    		   {
-		    			 String Seq_Num_Query = "Select * from triage_info where id = '"+id+"' and column_name = '"+column_name+"';";
-		    			 Statement st3 = connection.createStatement();
-		    			 ResultSet rs3 = st3.executeQuery(Seq_Num_Query);
+		    			 String Seq_Num_Query = "Select * from triage_info where id = ? and column_name = ?;";
+		    			 PreparedStatement st3 = connection.prepareStatement(Seq_Num_Query);
+		    			 st3.setString(1, id);
+		    			 st3.setString(2, column_name);	
+		    			 ResultSet rs3 = st3.executeQuery();
 		    			 int seq_num = 0;
 		    			 if(rs3.next())
 		    			 {
@@ -491,12 +509,11 @@ public class IntakeTriageService extends DynamicFields {
 
 				   jsonArray.add(delete_column_name);
 		    	   
-				   String MaxSeqnoQuery = "select max(seq_no) from triage_info where Id = '"+id+"' order by seq_no"; 
-					
-				   Statement st = connection.createStatement(); 
-					
-				   ResultSet rs = st.executeQuery(MaxSeqnoQuery); 
-					
+				   String MaxSeqnoQuery = "select max(seq_no) from triage_info where Id = ? order by seq_no"; 
+				   PreparedStatement st = connection.prepareStatement(MaxSeqnoQuery);
+				   st.setString(1, id);
+				   ResultSet rs = st.executeQuery();
+				   		
 				   int max_seq = 1; 
 					
 				   if(rs.next()) { 
@@ -508,21 +525,22 @@ public class IntakeTriageService extends DynamicFields {
 				   for(String col_name : selected_temp_column_name)
 				   {
 		    		
-					   String SelectedQuery = "select * from triage_info where id='"+id+"' and column_name ='"+col_name+"';";
-		    		   
-					   Statement st3 = connection.createStatement();
-		        	   
-					   ResultSet rs3 = st3.executeQuery(SelectedQuery);
-		        	   
+					   String SelectedQuery = "select * from triage_info where id=? and column_name =?;";
+					   PreparedStatement st3 = connection.prepareStatement(SelectedQuery);
+					   st3.setString(1, id);
+					   st3.setString(2, col_name);
+					   ResultSet rs3 = st3.executeQuery();
+		    		 				 	        	   
 					   if(!rs3.next())
 		        	   
 					   {
 		        		
 						   
-		        			  String SelectDetailsQuery = "select * from triage_info_template_details where column_name='"+col_name+"';";
-		        			  Statement st4 = connection.createStatement();
-		        		      ResultSet rs4 = st3.executeQuery(SelectDetailsQuery);
-		        		  
+		        			  String SelectDetailsQuery = "select * from triage_info_template_details where column_name=?;";
+		        			  PreparedStatement st4 = connection.prepareStatement(SelectDetailsQuery);
+						      st4.setString(1, col_name);
+							  ResultSet rs4 = st4.executeQuery();
+		        				        		  
 		        		  if(rs4.next()) {
 		        			  //String id = OpportunityBean.getRecord_Number();
 		        			  String project_name = rs4.getString(2);
@@ -566,9 +584,10 @@ public class IntakeTriageService extends DynamicFields {
 		        		  if(isDependecyColumnName(column_name))
 		        		  {
 		        			String ColumnName = getDependencyColumnNamePair().get(column_name); 
-		          		    String selectQuery = "select * from triage_info_template_details where column_name='"+ColumnName+"';";
-		          		    Statement st5 = connection.createStatement();
-		          		    ResultSet rs5 =st5.executeQuery(selectQuery);
+		          		    String selectQuery = "select * from triage_info_template_details where column_name=?;";
+		          		    PreparedStatement st5 = connection.prepareStatement(selectQuery);
+		          		    st5.setString(1, ColumnName);
+		          		    ResultSet rs5 = st5.executeQuery();
 		          		    if(rs5.next())
 		          		    {
 		          		    	String Triage_InsertQuery1 ="insert into triage_info (seq_no, id,  prj_name, app_name, options, label_name, column_name, type, mandatory, value) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -632,25 +651,30 @@ public class IntakeTriageService extends DynamicFields {
 				boolean CheckAPP = false,Checkapmid = false;
 				DBconnection dBconnection = new DBconnection();
 				Connection connection = (Connection) dBconnection.getConnection();
-				String SelectQuery = "SELECT * FROM triage_info WHERE ID = '"+id+"' and  column_name = 'Id' and value = '"+APMID+"';";
-				Statement st2 = connection.createStatement();
-				ResultSet rs2 = st2.executeQuery(SelectQuery);
+				String SelectQuery = "SELECT * FROM triage_info WHERE ID = ? and  column_name = 'Id' and value = ?;";
+				PreparedStatement st2 = connection.prepareStatement(SelectQuery);
+				st2.setString(1, id);
+				st2.setString(2, APMID);
+				ResultSet rs2 = st2.executeQuery();
 				if(rs2.next())
 				{
 					Checkapmid =true;
 				}
-				String SelectQuery1 = "SELECT * FROM triage_info WHERE ID = '"+id+"' and  column_name = 'app_name' and value = '"+AppName+"';";
-				Statement st3 = connection.createStatement();
-				ResultSet rs3 = st2.executeQuery(SelectQuery1);
+				String SelectQuery1 = "SELECT * FROM triage_info WHERE ID = ? and  column_name = 'app_name' and value = ?;";
+				PreparedStatement st3 = connection.prepareStatement(SelectQuery1);
+				st3.setString(1, id);
+				st3.setString(2, AppName);
+				ResultSet rs3 = st3.executeQuery();
 				if(rs3.next())
 				{
 					CheckAPP = true;
 				}
 				if(!Checkapmid)
 				{
-				String CheckQueryAmpid = "SELECT * FROM triage_info WHERE column_name='Id' and value='"+APMID+"';";
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(CheckQueryAmpid);
+				String CheckQueryAmpid = "SELECT * FROM triage_info WHERE column_name='Id' and value=?;";
+				PreparedStatement st = connection.prepareStatement(CheckQueryAmpid);
+				st.setString(1, APMID);
+				ResultSet rs = st.executeQuery();
 				if(rs.next())
 				{
 					checkAPMID = true;
@@ -695,15 +719,20 @@ public class IntakeTriageService extends DynamicFields {
 				JsonObject jsonObj = jsonArr.get(i).getAsJsonObject();
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
-				String SelectQuery = "select * from triage_info where id ='"+id+"' and column_name='"+name+"';";
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(SelectQuery);
+				String SelectQuery = "select * from triage_info where id =? and column_name=?;";
+				PreparedStatement st = connection.prepareStatement(SelectQuery);
+				st.setString(1, id);
+				st.setString(2, name);
+				ResultSet rs = st.executeQuery();
 				if(rs.next())
 				{
-					String UpdateQuery = "update triage_info set value='"+value+"' where id ='"+id+"' and column_name ='"+name+"'";
-					Statement st1 = connection.createStatement();
-	                st1.executeUpdate(UpdateQuery);
-	                
+					String UpdateQuery = "update triage_info set value=? where id =? and column_name =?";
+					PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
+			          st1.setString(1, value);
+			          st1.setString(2, id);
+			          st1.setString(3, name);
+			          st1.execute();
+					                
 				}
 				 }
 				  connection.close();
@@ -736,10 +765,13 @@ public class IntakeTriageService extends DynamicFields {
 	      	    		  if(!seqnum.equals(append_seq_num))
 	      	    		  {
 	      	    			String updateColumnName = startStr+seqnum;
-	      	    			String UpdateQuery = "Update triage_info set column_name ='"+updateColumnName+"' where id = '"+ID+"' and seq_no='"+seqnum+"';";  
-	      	    			Statement st1 = connection.createStatement();
-	      	       	        st1.executeUpdate(UpdateQuery);
-	      	    		  }
+	      	    			String UpdateQuery = "Update triage_info set column_name =? where id = ? and seq_no=?;";  
+	      	    			PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
+	      	    			st1.setString(1, updateColumnName);
+	      	    			st1.setString(2, ID);
+	      	    			st1.setString(3, seqnum);
+	      	    			st1.execute();
+	      	    		}
 	      	    	  }
 	      	      }
 	   
@@ -768,16 +800,21 @@ public class IntakeTriageService extends DynamicFields {
 				JsonObject jsonObj = jsonArr.get(i).getAsJsonObject();
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
-				String SelectQuery = "select * from triage_info where id ='"+id+"' and column_name='"+name+"';";
-				Statement st = connection.createStatement();
-				ResultSet rs = st.executeQuery(SelectQuery);
+				String SelectQuery = "select * from triage_info where id =? and column_name=?;";
+				PreparedStatement st = connection.prepareStatement(SelectQuery);
+				st.setString(1, id);
+				st.setString(2, name);
+				ResultSet rs = st.executeQuery();
 				if(rs.next())
 				{   
 					boolean DuplicateCheck;
-					String UpdateQuery = "update triage_info set value='"+value+"' where id ='"+id+"' and column_name ='"+name+"'";
-					Statement st1 = connection.createStatement();
-	                st1.executeUpdate(UpdateQuery);
-	               if(isOpportunityField(name))
+					String UpdateQuery = "update triage_info set value=? where id =? and column_name =?";
+					PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
+  	    			st1.setString(1, value);
+  	    			st1.setString(2, id);
+  	    			st1.setString(3, name);
+  	    			st1.execute();
+				if(isOpportunityField(name))
 	            	   OpportunityDetailsUpdate(id,name,value);
 				}
 				 }
@@ -792,16 +829,20 @@ public class IntakeTriageService extends DynamicFields {
 
 	private void OpportunityDetailsUpdate(String id,String name,String value) throws SQLException
 	{
-		Statement st = null;
+		
 		Connection connection = null;
 		try
 		{
 			DBconnection con = new DBconnection();
 		    connection = (Connection) con.getConnection();
 			String OpportunitycolumnName = getOpportunityColumnName(name);
-			String UpdateQuery = "update opportunity_info set value='"+value+"' where id = '"+id+"' and column_name='"+OpportunitycolumnName+"';";
-			st = connection.createStatement();
-			st.executeUpdate(UpdateQuery);
+			String UpdateQuery = "update opportunity_info set value=? where id = ? and column_name=?;";
+			PreparedStatement st = connection.prepareStatement(UpdateQuery);
+  			st.setString(1, value);
+  			st.setString(2, id);
+  			st.setString(3, OpportunitycolumnName);
+  			st.execute();
+  			st.close();	
 		}
 		catch(Exception e)
 		{
@@ -809,7 +850,7 @@ public class IntakeTriageService extends DynamicFields {
 		}
 		finally
 		{
-			st.close();
+			
 			connection.close();
 		}
 	}
@@ -823,14 +864,20 @@ public class IntakeTriageService extends DynamicFields {
 		  {
 			  DBconnection con = new DBconnection();
 			  Connection connection = (Connection) con.getConnection();
-			  String CheckOpportunityQuery="select * from opportunity_info where id != '"+id+"' and column_name='"+getOpportunityColumnName(name)+"' and value='"+value+"';";
-			  Statement st = connection.createStatement();
-			  ResultSet rs = st.executeQuery(CheckOpportunityQuery);
+			  String CheckOpportunityQuery="select * from opportunity_info where id != ? and column_name=? and value=?;";
+			  PreparedStatement st = connection.prepareStatement(CheckOpportunityQuery);
+			  st.setString(1, id);
+			  st.setString(2, getOpportunityColumnName(name));
+			  st.setString(3, value);
+			  ResultSet rs = st.executeQuery();
 			  if(rs.next())
 			  check =  false;
-			  String CheckTriageQuery="select * from triage_info where id != '"+id+"' and column_name='"+name+"' and value='"+value+"';";
-			  Statement st1 = connection.createStatement();
-			  ResultSet rs1 = st1.executeQuery(CheckTriageQuery);
+			  String CheckTriageQuery="select * from triage_info where id != ? and column_name=? and value=?;";
+			  PreparedStatement st1 = connection.prepareStatement(CheckTriageQuery);
+			  st1.setString(1, id);
+			  st1.setString(2, name);
+			  st1.setString(3, value);
+			  ResultSet rs1 = st1.executeQuery();
 			  if(rs1.next())
 			  check =false;
 		  }

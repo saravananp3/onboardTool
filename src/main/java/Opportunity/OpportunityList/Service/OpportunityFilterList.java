@@ -1,6 +1,7 @@
 package Opportunity.OpportunityList.Service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -41,9 +42,12 @@ public class OpportunityFilterList {
 	{
 		JsonArray jsonArray = new JsonArray();
 		try {
-			String selectApps = "select * from opportunity_info where column_name='appName' and value like '%"+appName+"%'";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectApps);
+			String selectApps = "select * from opportunity_info where column_name='appName' and value like ?;";
+			PreparedStatement st = connection.prepareStatement(selectApps);
+			st.setString(1,"%"+appName+"%");
+			ResultSet rs = st.executeQuery();
+			
+			
 			while(rs.next())
 			{
 				  JsonObject jsonObject = new JsonObject();
@@ -116,9 +120,13 @@ public class OpportunityFilterList {
 		JsonArray jsonArray  = new JsonArray();
 		try
 		{
-			String selectWaves = "select * from phase_info where column_name='waves' and phaseName='"+phaseName+"';";
-		    Statement st = connection.createStatement();
-		    ResultSet rs = st.executeQuery(selectWaves);
+			String selectWaves = "select * from phase_info where column_name='waves' and phaseName=?;";
+		    PreparedStatement st  =connection.prepareStatement(selectWaves);
+		    st.setString(1,phaseName);
+		    ResultSet rs = st.executeQuery();
+			
+		    
+		    
 		    while(rs.next())
 		    {
 		    	String waves[] = rs.getString("value").split(",");
@@ -142,9 +150,13 @@ public class OpportunityFilterList {
 		
 		try
 		{
-			String selectApps = "select * from governance_info where column_name='apps' and waveName='"+wave+"';";
-		    Statement st = connection.createStatement();
-		    ResultSet rs = st.executeQuery(selectApps);
+			String selectApps = "select * from governance_info where column_name='apps' and waveName=?;";
+		    PreparedStatement st = connection.prepareStatement(selectApps);
+		    st.setString(1,wave);
+			ResultSet rs = st.executeQuery();
+			
+			
+			
 		    while(rs.next())
 		    {
 		    	String apps[] = rs.getString("value").split(",");
@@ -170,9 +182,13 @@ public class OpportunityFilterList {
 		JsonObject jsonObject = null;
 		try
 		{
-			String selectApp ="select * from opportunity_info where column_name='appName' and value ='"+app+"'"; 
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectApp);
+			String selectApp ="select * from opportunity_info where column_name='appName' and value =?;"; 
+			PreparedStatement st = connection.prepareStatement(selectApp);
+			st.setString(1,app);
+			ResultSet rs = st.executeQuery();
+		    	
+		   
+			
 			if(rs.next())
 			{
 				if(getCategoryInfo(rs.getString("Id"))) {
@@ -202,9 +218,11 @@ public class OpportunityFilterList {
 			
 			if(!moduleName.equals("Archive_ Requirment")&&!moduleName.equals("Decomm_Requirement")&&!moduleName.equals("Triage")&&!moduleName.equals("Assessment")) {
 				
-				String selectQuery = "select * from module_approval_info where moduleName = '"+moduleName+"' and OppId = '"+oppId+"'";
-				Statement st1 = connection.createStatement();
-				ResultSet rs1 = st1.executeQuery(selectQuery);
+				String selectQuery = "select * from module_approval_info where moduleName = ? and OppId = ?";
+				PreparedStatement st1=connection.prepareStatement(selectQuery);
+				st1.setString(1,moduleName);
+				st1.setString(2,oppId);
+				ResultSet rs1 = st1.executeQuery();
 				
 				if(rs1.next()) {
 					if(rs1.getBoolean(4))
@@ -215,9 +233,10 @@ public class OpportunityFilterList {
 			}
 			else if(moduleName.equals("Archive_ Requirment")&&moduleName.equals("Decomm_Requirement")) {
 				
-				String selectQuery1 = "select * from opportunity_info where Id = '"+oppId+"' and column_name = 'request_type';";
-				Statement st2 = connection.createStatement();
-				ResultSet rs2 = st2.executeQuery(selectQuery1);
+				String selectQuery1 = "select * from opportunity_info where Id = ? and column_name = 'request_type';";
+				PreparedStatement st2=connection.prepareStatement(selectQuery1);
+				st2.setString(1,oppId);
+				ResultSet rs2 = st2.executeQuery();
 				
 				if(rs2.next())
 					checkCurrentPhase = getReqApproval(rs2.getString("value"), oppId);
@@ -265,10 +284,12 @@ public class OpportunityFilterList {
 		
 		boolean checkPhase = true;
 		try {
-			String selectQuery = "select * from module_approval_info where moduleName = '"+phaseName+"' and OppId = '"+oppId+"'";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from module_approval_info where moduleName = ? and OppId = ?";
+			PreparedStatement st=connection.prepareStatement(selectQuery);
+			st.setString(1,phaseName);
+			st.setString(2,oppId);
+			ResultSet rs = st.executeQuery();
+		
 			if(rs.next())
 				if(rs.getBoolean(4))
 					checkPhase = false;
@@ -315,9 +336,13 @@ public class OpportunityFilterList {
 		boolean statusFlag = true;
 		try
 		{
-			String selectQuery ="select * from archive_execution_info where oppid='"+id+"' and level = 1  order by seq_no";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from archive_execution_info where oppid=? and level = 1  order by seq_no";
+			PreparedStatement st = connection.prepareStatement(selectQuery);
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+			
+			
+			
 			while(rs.next())
 			{
 				if(rs.getString("plansrt").equals("")&&rs.getString("planEnd").equals("")&&rs.getString("actsrt").equals("")&&rs.getString("actEnd").equals(""))
@@ -344,9 +369,13 @@ public class OpportunityFilterList {
 			for(String module:moduleArray)
 			{
 				
-			 String selectQuery = "select * from module_approval_info where oppid='"+id+"' and moduleName='"+module+"'";
-			 Statement st = connection.createStatement();
-			 ResultSet rs = st.executeQuery(selectQuery);
+			 String selectQuery = "select * from module_approval_info where oppid=? and moduleName=?;";
+			 PreparedStatement st = connection.prepareStatement(selectQuery);
+			 st.setString(1,id);
+			 st.setString(2,module);
+			 ResultSet rs = st.executeQuery();
+			 
+			
 			 
 			 if(rs.next()) {
 				 if(category.equals(module))
@@ -412,9 +441,15 @@ public class OpportunityFilterList {
 			    String tableName = entry.getKey();
 			    String columnName = entry.getValue();
 			    count++;
-			    String selectQuery ="select * from "+tableName+" where column_name='"+columnName+"' and id='"+id+"'; ";
-			    Statement st = connection.createStatement();
-			    ResultSet rs = st.executeQuery(selectQuery);
+			    String selectQuery ="select * from "+tableName+" where column_name=? and id=?; ";
+			    PreparedStatement st = connection.prepareStatement(selectQuery);
+			    st.setString(1,columnName);
+			    st.setString(2,id);
+			    ResultSet rs = st.executeQuery();
+			    
+			   
+			    
+			  
 			    if(rs.next()) {
 			     if(count==1&&!rs.getString("value").equals(""))
 				  valueFlag = true;
@@ -439,9 +474,14 @@ public class OpportunityFilterList {
 		String requirements = "";
 		try
 		{
-			String selectQuery ="select * from opportunity_info where id='"+id+"' and column_name='request_type'";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from opportunity_info where id=? and column_name='request_type'";
+			PreparedStatement st = connection.prepareStatement(selectQuery);
+			st.setString(1,id);
+			ResultSet rs = st.executeQuery();
+			
+			
+			
+		
 			if(rs.next())
 			{
 				String value = rs.getString("value");

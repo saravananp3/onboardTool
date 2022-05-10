@@ -21,9 +21,10 @@ public class archiveReqDocRevDataRetrieveService {
     public JsonArray archiveReqDocDataRetrieve() {
         JsonArray jsonArray = new JsonArray();
         try {
-            String selectQuery = "select * from Archive_DocumentRevision_Info where OppId = '"+Id+"' order by seq_no;";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "select * from Archive_DocumentRevision_Info where OppId = ? order by seq_no;";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
             if(rs.next()) {
                 JsonObject jsonObj =new JsonObject();
                 jsonObj.addProperty("checkExistance",true);
@@ -74,9 +75,11 @@ public JsonArray getRevisionVersion() {
         boolean check=false;
         JsonArray jsonArray = new JsonArray();
         try {
-            String selectQuery = "select Max(version)version from Archive_DocumentRevision_Info where OppId = '"+Id+"' order by seq_no;";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "select Max(version)version from Archive_DocumentRevision_Info where OppId = ? order by seq_no;";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+          
                 while(rs.next()) {
                     int maxVersion=Integer.parseInt(rs.getString("version"));
                     System.out.println("MaxVersion  : "+maxVersion);

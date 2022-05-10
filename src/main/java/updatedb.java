@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -101,7 +102,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
          // System.out.println("update AppEmphazize_ApplicationPrioritization set complexity='"+complexitye+"',priorities='"+priorities+"' where proj_name='"+projectname+"'and prj_name='"+Project_Name+"'");
                 
      st.executeUpdate("update AppEmphazize_ApplicationPrioritization set complexity='"+complexitye+"',priorities='"+priorities+"' where proj_name='"+projectname+"' and prj_name='"+Project_Name+"'");
- 
+
           }
           
           connection.close();

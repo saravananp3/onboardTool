@@ -501,10 +501,12 @@ full width */
 			if (visit_rs.getString(6) != null) {
 		if (visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate)
 				&& visit_rs.getString(3).equals("Logged in")) {
-			Statement stmtt = con.createStatement();
-			String queryy = "update visits set count=count+1,time='" + strTime + "' where uname='" + username
-					+ "' and module='Logged in'  and date ='" + strDate + "'";
-			int count = stmtt.executeUpdate(queryy);
+			String queryy = "update visits set count=count+1,time=? where uname=? and module='Logged in' and date =?";
+        	PreparedStatement stmtt = con.prepareStatement(queryy);
+        	stmtt.setString(1, strTime);
+        	stmtt.setString(2, username);
+        	stmtt.setString(3, strDate);
+        	int count = stmtt.executeUpdate();
 			flag = 0;
 			break;
 		}
@@ -798,9 +800,10 @@ full width */
 					application_count = Integer.parseInt(projectCountqyery.getString(1));
 						}
 					} else {
-						String ProjCountQuery = "select * from admin_userdetails where uname='" + uname + "'";
-						Statement statement1 = con.createStatement();
-						ResultSet resultSet = statement1.executeQuery(ProjCountQuery);
+						String ProjCountQuery = "select * from admin_userdetails where uname=?";
+						PreparedStatement statement1=con.prepareStatement(ProjCountQuery);
+						statement1.setString(1,uname);
+						ResultSet resultSet = statement1.executeQuery();
 						if (resultSet.next()) {
 					String[] prjs = (resultSet.getString("projects")).split(",");
 					application_count = prjs.length;

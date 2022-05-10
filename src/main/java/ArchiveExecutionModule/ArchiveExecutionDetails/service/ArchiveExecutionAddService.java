@@ -185,7 +185,7 @@ public class ArchiveExecutionAddService {
 				String deleteQuery = "delete from archive_execution_info where oppid=?;";
 				PreparedStatement st3 = con.prepareStatement(deleteQuery);
 				st3.setString(1,Id);
-				ResultSet rs3 = st3.executeQuery();
+				st3.executeUpdate();
 				
 				for(int k = 0; k<arrSeqNumRes.size(); k++) {
 					

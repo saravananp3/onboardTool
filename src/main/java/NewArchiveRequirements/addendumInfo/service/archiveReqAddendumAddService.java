@@ -32,9 +32,12 @@ public boolean checkDuplicateLabelName()
 	boolean checkDuplicate = false;
 	try
 	{
-		String checkQuery ="select * from Archive_Req_Addendum_Info where oppId='"+Id+"' and labelName ='"+labelName+"'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(checkQuery);
+		String checkQuery ="select * from Archive_Req_Addendum_Info where oppId=? and labelName =?";
+		PreparedStatement st = con.prepareStatement(checkQuery);
+		st.setString(1, Id);
+		st.setString(2, labelName);
+		ResultSet rs = st.executeQuery();
+		
 		if(rs.next())
 		checkDuplicate = true;
 	}

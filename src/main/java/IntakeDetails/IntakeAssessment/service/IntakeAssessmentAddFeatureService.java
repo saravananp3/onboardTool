@@ -68,10 +68,12 @@ private void SetTableName(String section) {
 	  boolean labelcheck=false;
 	  try
 	  {
-		  String select_lab = "select * from "+SectionInfoTable+" where Id = '"+id+"' and label_name = '"+label_name+"' ";
-          Statement st1=con.createStatement();
-          ResultSet rs1=st1.executeQuery(select_lab);
-          if(rs1.next()){
+		  String select_lab = "select * from "+SectionInfoTable+" where Id = ? and label_name = ? ";
+		  PreparedStatement st1 = con.prepareStatement(select_lab);
+			st1.setString(1, id);
+			st1.setString(2, label_name);
+		  ResultSet rs1 = st1.executeQuery();
+		  if(rs1.next()){
               labelcheck = true;   
           }
 	  }
@@ -86,16 +88,17 @@ private void SetTableName(String section) {
 		try {
 			DBconnection dBconnection = new DBconnection();
 			Connection connection = (Connection) dBconnection.getConnection();
-			String select_query = "select * from "+SectionInfoTable+" where Id = '"+id+"' order by seq_no;";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(select_query);
+			String select_query = "select * from "+SectionInfoTable+" where Id = ? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(select_query);
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
 			String name = "AssessmentAddInfo";
 			
 			if (rs.next()) {
-				String max_seqnum = "select max(seq_no) from "+SectionInfoTable+" where Id = '"+id+"' order by seq_no;";
-				Statement st1 = connection.createStatement();
-				ResultSet rs1 = st1.executeQuery(max_seqnum);
-
+				String max_seqnum = "select max(seq_no) from "+SectionInfoTable+" where Id = ? order by seq_no;";
+				PreparedStatement st1 = connection.prepareStatement(max_seqnum);
+				st1.setString(1, id);
+				ResultSet rs1 = st1.executeQuery();
 				if (rs1.next()) {
 					max_seq_num = Integer.parseInt(rs1.getString(1));
 					max_seq_num++;

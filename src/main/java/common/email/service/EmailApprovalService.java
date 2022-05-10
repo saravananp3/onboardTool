@@ -1,6 +1,7 @@
 package common.email.service;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -61,10 +62,11 @@ public class EmailApprovalService extends EmailService {
         try {
             String mailCont = properties.getProperty("EMAIL.APPROVAL");
             priorityNumber = getMailPriorityNumber();
-            String selectQuery = "SELECT * FROM " + tableName + " WHERE OPPID='" + oppId + "' AND PRIORITY_ORDER_NUM='"
-                    + priorityNumber + "';";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "SELECT * FROM " + tableName + " WHERE OPPID=? AND PRIORITY_ORDER_NUM=?;";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, oppId);
+			st.setInt(2, priorityNumber);
+			ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String user_name = rs.getString("name");
                 String user_mail = rs.getString("emailId");
@@ -93,19 +95,23 @@ public class EmailApprovalService extends EmailService {
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
             String todaysdate = sdf.format(date);
-            String selectQuery = "UPDATE " + tableName + " SET submittedDate ='" + todaysdate + "' WHERE OPPID = '" + oppId + "' AND submittedDate is null";
-            Statement st = con.createStatement();
-            st.executeUpdate(selectQuery);
-            st.close();
+            String selectQuery = "UPDATE " + tableName + " SET submittedDate =? WHERE OPPID = ? AND submittedDate is null";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+	          st.setString(1, todaysdate);
+	          st.setString(2, oppId);
+	          st.execute();
+              st.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     public boolean checkCurrentApproverCanDecide(String approverId) {
         try {
-            String selectQuery = "SELECT * FROM " + tableName + " WHERE APPROVALID='" + approverId + "'";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "SELECT * FROM " + tableName + " WHERE APPROVALID=?";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, approverId);
+			ResultSet rs = st.executeQuery();
+            
             if (rs.next()) {
                 if (!rs.getBoolean("mail_flag")) {
                     return false;
@@ -124,10 +130,10 @@ public class EmailApprovalService extends EmailService {
     public int getMailPriorityNumber() {
         int priorityNum = 0;
         try {
-            String selectQuery = "SELECT * FROM " + tableName + " WHERE OPPID = '" + oppId
-                    + "' ORDER BY PRIORITY_ORDER_NUM";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "SELECT * FROM " + tableName + " WHERE OPPID = ? ORDER BY PRIORITY_ORDER_NUM";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, oppId);
+			ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 boolean mailFlag = Boolean.parseBoolean(rs.getString("mail_flag"));
                 String decision = rs.getString("intakeApproval");
@@ -149,22 +155,27 @@ public class EmailApprovalService extends EmailService {
     }
     public void setFlagAndDecision(String mailFlag, String approval) {
         try {
-            String selectQuery = "UPDATE " + tableName + " SET MAIL_FLAG ='" + mailFlag + "', INTAKEAPPROVAL = '"
-                    + approval + "' WHERE OPPID = '" + oppId + "'";
-            Statement st = con.createStatement();
-            st.executeUpdate(selectQuery);
-            st.close();
+            String selectQuery = "UPDATE " + tableName + " SET MAIL_FLAG =?, INTAKEAPPROVAL = ? WHERE OPPID = ?";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+	          st.setString(1, mailFlag);
+	          st.setString(2, approval);
+	          st.setString(3, oppId);
+	          st.execute();
+              st.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     public void setFlagAndDecisionForApproverId(String mailFlag, String approval, String approverId) {
         try {
-            String selectQuery = "UPDATE " + tableName + " SET MAIL_FLAG ='" + mailFlag + "', INTAKEAPPROVAL = '"
-                    + approval + "' WHERE OPPID = '" + oppId + "' AND APPROVALID='" + approverId + "'";
-            Statement st = con.createStatement();
-            st.executeUpdate(selectQuery);
-            st.close();
+            String selectQuery = "UPDATE " + tableName + " SET MAIL_FLAG =?, INTAKEAPPROVAL = ? WHERE OPPID = ? AND APPROVALID=?";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+	          st.setString(1, mailFlag);
+	          st.setString(2, approval);
+	          st.setString(3, oppId);
+	          st.setString(4, approverId);
+	          st.execute();
+              st.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -18,14 +18,16 @@ public class IntakeInformationService {
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            String businesscustomizationQuery = "select * from intake_buisnesscustomization where appname ='" + appName + "'";
-            Statement businesscustomizationStaement = connection.createStatement();
-            ResultSet businesscustomizationResultSet = businesscustomizationStaement.executeQuery(businesscustomizationQuery);
+            String businesscustomizationQuery = "select * from intake_buisnesscustomization where appname =?";
+            PreparedStatement businesscustomizationStaement = connection.prepareStatement(businesscustomizationQuery);
+            businesscustomizationStaement.setString(1, appName);
+			ResultSet businesscustomizationResultSet = businesscustomizationStaement.executeQuery();
             while (businesscustomizationResultSet.next()) {
                 String businesskey = businesscustomizationResultSet.getString(1);
-                String businessdetailsQuery = "select " + businesscustomizationResultSet.getString("idname") + " from intake_buisnessdetails where appname ='" + appName + "'";
-                Statement businessdetailsStaement = connection.createStatement();
-                ResultSet businessdetailsResultSet = businessdetailsStaement.executeQuery(businessdetailsQuery);
+                String businessdetailsQuery = "select " + businesscustomizationResultSet.getString("idname") + " from intake_buisnessdetails where appname =?";
+                PreparedStatement businessdetailsStaement = connection.prepareStatement(businessdetailsQuery);
+                businessdetailsStaement.setString(1, appName);
+    			ResultSet businessdetailsResultSet = businessdetailsStaement.executeQuery();
                 if (businessdetailsResultSet.next()) {
                     String businessvalue = businessdetailsResultSet.getString(1) + "/" + businesscustomizationResultSet.getString(10);
                     infoJson.addProperty(businesskey, businessvalue);
@@ -34,17 +36,19 @@ public class IntakeInformationService {
 
             }
 
-            String technicalcustomizationQuery = "select * from intake_technicalcustomization where appname ='" + appName + "'";
-            Statement technicalcustomizationStaement = connection.createStatement();
-            ResultSet technicalcustomizationResultSet = technicalcustomizationStaement.executeQuery(technicalcustomizationQuery);
+            String technicalcustomizationQuery = "select * from intake_technicalcustomization where appname =?";
+            PreparedStatement technicalcustomizationStaement = connection.prepareStatement(technicalcustomizationQuery);
+            technicalcustomizationStaement.setString(1, appName);
+			ResultSet technicalcustomizationResultSet = technicalcustomizationStaement.executeQuery();
             while (technicalcustomizationResultSet.next()) {
                 String technicalkey = technicalcustomizationResultSet.getString(1);
                 if (technicalkey.equals(" ") && technicalcustomizationResultSet.getString(2).equals("Check box")) {
                     technicalkey = technicalcustomizationResultSet.getString("checkbox_labels");
                 }
-                String technicaldetailsQuery = "select " + technicalcustomizationResultSet.getString("idname") + " from intake_technicaldetails where appname ='" + appName + "'";
-                Statement technicaldetailsStaement = connection.createStatement();
-                ResultSet technicaldetailsResultSet = technicaldetailsStaement.executeQuery(technicaldetailsQuery);
+                String technicaldetailsQuery = "select " + technicalcustomizationResultSet.getString("idname") + " from intake_technicaldetails where appname =?";
+                PreparedStatement technicaldetailsStaement = connection.prepareStatement(technicaldetailsQuery);
+                technicaldetailsStaement.setString(1, appName);
+    			ResultSet technicaldetailsResultSet = technicaldetailsStaement.executeQuery();
                 if (technicaldetailsResultSet.next()) {
                     String technicalvalue = technicaldetailsResultSet.getString(1) + "/" + technicalcustomizationResultSet.getString(10);
                     infoJson.addProperty(technicalkey, technicalvalue);
@@ -54,6 +58,9 @@ public class IntakeInformationService {
             }
 
             String archivalrequirementcustomizationQuery = "select * from intake_archivalrequirementcustomization where appname ='" + appName + "'";
+            PreparedStatement technicaldetailsStaement = connection.prepareStatement(archivalrequirementcustomizationQuery);
+            technicaldetailsStaement.setString(1, appName);
+			ResultSet technicaldetailsResultSet = technicaldetailsStaement.executeQuery();
             Statement archivalrequirementcustomizationStaement = connection.createStatement();
             ResultSet archivalrequirementcustomizationResultSet = archivalrequirementcustomizationStaement.executeQuery(archivalrequirementcustomizationQuery);
             while (archivalrequirementcustomizationResultSet.next()) {

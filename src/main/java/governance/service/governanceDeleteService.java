@@ -180,11 +180,13 @@ public class governanceDeleteService {
      	    		  if(!seqnum.equals(append_seq_num))
      	    		  {
      	    			String updateColumnName = startStr+seqnum;
-     	    			String UpdateQuery = "Update "+tableName+" set column_name ='"+updateColumnName+"' where seq_no='"+seqnum+"' "+idAndCond+";";  
-     	    			Statement st1 = con.createStatement();
-     	       	        st1.executeUpdate(UpdateQuery);
-     	       	        st1.close();
-     	    		  }
+     	    			String UpdateQuery = "Update "+tableName+" set column_name =? where seq_no=? "+idAndCond+";";  
+     	    			PreparedStatement st1 = con.prepareStatement(UpdateQuery);
+     	    			st1.setString(1, updateColumnName);
+     	    			st1.setString(2,seqnum);
+     	    			st1.execute();
+     	    			st1.close();
+     	    		 }
      	    	  }
      	      }
      	      st.close();

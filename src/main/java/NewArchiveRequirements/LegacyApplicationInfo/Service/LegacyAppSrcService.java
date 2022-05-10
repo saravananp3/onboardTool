@@ -21,9 +21,10 @@ public class LegacyAppSrcService {
 			DBconnection dBconnection = new DBconnection();
 			Connection con = (Connection) dBconnection.getConnection();
 			
-			String SelectQuery = "SELECT value FROM decom3sixtytool.assessment_application_info where column_name ='AssessAppPlatform' and id='"+Id+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectQuery);
+			String SelectQuery = "SELECT value FROM decom3sixtytool.assessment_application_info where column_name ='AssessAppPlatform' and id=?;";
+			PreparedStatement st = con.prepareStatement(SelectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
 				

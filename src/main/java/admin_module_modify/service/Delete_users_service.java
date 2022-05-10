@@ -1,5 +1,6 @@
 package admin_module_modify.service;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import com.google.gson.JsonObject;
 import onboard.DBconnection;
@@ -10,9 +11,10 @@ public class Delete_users_service {
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("DB Connected...");
-        String delete_query = "delete from users where random_id='"+random_id+"';";
-        Statement st2 = connection.createStatement();
-        st2.executeUpdate(delete_query);
+        String delete_query = "delete from users where random_id=?;";
+        PreparedStatement st2=connection.prepareStatement(delete_query);
+        st2.setString(1, random_id);
+        st2.executeUpdate();
         System.out.println("Deleted");
         }
     catch(Exception e)

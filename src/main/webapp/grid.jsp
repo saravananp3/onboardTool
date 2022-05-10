@@ -101,12 +101,11 @@
             Statement st,st2;
             try{
                 con = dBconnection.getConnection();
-                Statement st1;
-
-
-                String query1 = "select * from AppEmphazize_ProjectDetails where id = "+name;
-                st1 = con.createStatement();
-                ResultSet rs = st1.executeQuery(query1);
+              
+                String query1 = "select * from AppEmphazize_ProjectDetails where id = ?";
+                PreparedStatement st1 = con.prepareStatement(query1);
+    			st1.setString(1, name);
+    			ResultSet rs = st1.executeQuery();
                 if(rs.next())
                 {
 
