@@ -226,7 +226,7 @@ public JsonArray archiveExecutionDeleteService() {
 				 */
 				}
 				
-				String deleteQuery = "delete from archive_execution_governance_info where waveid=?order by seq_no;";
+				String deleteQuery = "delete from archive_execution_governance_info where waveid=? order by seq_no;";
 				PreparedStatement st1 = con.prepareStatement(deleteQuery);
 				st1.setString(1,waveId);
 				st1.executeUpdate();
