@@ -86,11 +86,10 @@ public class ArchivalRequirements extends HttpServlet {
                     preparedStmt4.setString(2, project_name);
                     preparedStmt4.execute();
 
-                    String query5 = "alter table intake_archivalrequirement drop ? where projectname=? and appname=?";
+                    String query5 = "alter table intake_archivalrequirement drop " + Idname + " where projectname=? and appname=?";
                     PreparedStatement preparedStmt5 = connection.prepareStatement(query5);
-                    preparedStmt5.setString(1, Idname);
-                    preparedStmt5.setString(2, project_name);
-                    preparedStmt5.setString(3, app_name);
+                    preparedStmt5.setString(1, project_name);
+                    preparedStmt5.setString(2, app_name);
                     preparedStmt5.execute();
                     DEL_count++;
 
@@ -111,7 +110,7 @@ public class ArchivalRequirements extends HttpServlet {
                     if (cnt == 0) {
                         String n = request.getParameter(rs.getString("idname"));
                         cnt++;
-                        String query1 = "insert into intake_archivalrequirement(n,appname,projectname) values(?,?,?)";
+                        String query1 = "insert into intake_archivalrequirement("+ rs.getString("idname") +",appname,projectname) values(?,?,?)";
                         PreparedStatement preparedStmt = connection.prepareStatement(query1);
                         preparedStmt.setString(1, n);
                         preparedStmt.setString(2, app_name);
@@ -130,7 +129,7 @@ public class ArchivalRequirements extends HttpServlet {
                             n = "no";
 
 
-                        String query2 = "update intake_archivalrequirement set n=? where id = ?";
+                        String query2 = "update intake_archivalrequirement set " + rs.getString("idname") + "=? where id = ?";
                         PreparedStatement preparedStmt1 = connection.prepareStatement(query2);
                         preparedStmt1.setString(1, n);
                         preparedStmt1.setString(2,ref_id);

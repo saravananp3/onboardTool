@@ -94,8 +94,7 @@ public class ArchiveExecutionGovernanceAddService {
 				PreparedStatement st1 = con.prepareStatement(selectQuery);
 				st1.setString(1,waveId);
 				ResultSet rs = st1.executeQuery();
-				System.out.println("sagadevan");
-			
+						
 				int selectedIndex = seqNum-1;
 				
 				while(rs.next()) {
@@ -188,8 +187,7 @@ public class ArchiveExecutionGovernanceAddService {
 				st3.setString(1,waveId);
 				st3.executeUpdate();
 				st3.close();
-				System.out.println("sagadevan");
-				
+								
 				
 				
 				
