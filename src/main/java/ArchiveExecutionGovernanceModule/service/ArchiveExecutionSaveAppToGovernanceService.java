@@ -25,7 +25,7 @@ DBconnection dBconnection =null;
 	private int seqNo;
 	private String columnName;
 	private String value;
-	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
+	private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
 	public ArchiveExecutionSaveAppToGovernanceService(String Id,int seqNo,String columnName,String value) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
@@ -85,7 +85,7 @@ DBconnection dBconnection =null;
 		String waveId = null;
 		try {
 			String appName = getAppName();
-			String selectQuery = "select * from governance_info where column_name='apps' and value like?";
+			String selectQuery = "select * from governance_info where column_name='apps' and value like ?";
 			PreparedStatement st = con.prepareStatement(selectQuery);
 			st.setString(1, "%" + appName + "%");
 			ResultSet rs = st.executeQuery();
@@ -277,7 +277,7 @@ DBconnection dBconnection =null;
 		Date date = null;
 		try {
 			int seq_no = 0;
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 			
 			String selectQuery = "select * from archive_execution_info where taskGroup = ? and taskName = ? and oppName= ?;";
 			PreparedStatement st1 = con.prepareStatement(selectQuery);
@@ -364,7 +364,7 @@ DBconnection dBconnection =null;
 			ArrayList<Integer> arrLevel = new ArrayList<Integer>();
 			ArrayList<Date> arrChildDate = new ArrayList<Date>();
 		
-		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
+		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 			
 			
 			int rowIndex = seqNum-1;

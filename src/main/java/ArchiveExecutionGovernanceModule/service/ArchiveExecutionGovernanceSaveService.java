@@ -77,7 +77,7 @@ public class ArchiveExecutionGovernanceSaveService {
 			ArrayList<Integer> arrLevel = new ArrayList<Integer>();
 			ArrayList<Date> arrChildDate = new ArrayList<Date>();
 		
-		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm/dd/yyyy");
+		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 			
 			
 			int rowIndex = seqNum-1;

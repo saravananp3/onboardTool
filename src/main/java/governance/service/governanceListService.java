@@ -1,6 +1,7 @@
 package governance.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,9 +55,10 @@ public class governanceListService {
 		String phaseName = "";
 		try
 		{
-			String selectQuery ="select * from phase_info where column_name='waves' and values like '%"+waveName+"%'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from phase_info where column_name='waves' and values like ?";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, "%"+waveName+"%");
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 				phaseName += rs.getString("phaseName");
 			
