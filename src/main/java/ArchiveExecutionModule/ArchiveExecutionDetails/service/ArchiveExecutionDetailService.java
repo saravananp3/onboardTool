@@ -75,7 +75,7 @@ public class ArchiveExecutionDetailService {
             String ed = "select planEnd from Archive_Execution_Info where oppId = '"+Id+"' order by seq_no DESC LIMIT 1;";
             Statement eds = con.createStatement();
             ResultSet ers = eds.executeQuery(ed);
-            String at = "select r_name from resources";
+            String at = "select uname from users";
             Statement ats = con.createStatement();
             ResultSet ars = ats.executeQuery(at);
             while(rs.next()) {
@@ -100,9 +100,9 @@ public class ArchiveExecutionDetailService {
             String str= "Select";
            while(ars.next())
            {
-				/* jsonObj.addProperty("user"+c,ars.getString("r_name")); */
-				/* jsonArrayUsers.add(ars.getString("r_name")); */
-        	   str = str+","+ars.getString("r_name") ;
+				/* jsonObj.addProperty("user"+c,ars.getString("uname")); */
+				/* jsonArrayUsers.add(ars.getString("uname")); */
+        	   str = str+","+ars.getString("uname") ;
                System.out.println("H"+jsonObjectUsers);
                System.out.println("User Array "+ jsonArrayUsers);
                c++;

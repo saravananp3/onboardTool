@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class Edit_Intake
  */
@@ -75,36 +77,32 @@ public class Edit_Intake extends HttpServlet {
 		
 		   try
 	        {
-	          // create a mysql database connection
-	          String myDriver = "org.gjt.mm.mysql.Driver";
-	          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-	          Class.forName(myDriver);
-	          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-	        
+			   DBconnection dBconnection = new DBconnection();
+		        Connection connection = (Connection) dBconnection.getConnection();
 	         String query="";
 	          // the mysql insert statement
 	          if(servlet_name.equals("Business"))
 	          {
 	        	   query="update Intake_BuisnessCustomization set label='"+label+"',type_of_box='"+type+"',mandatory='"+mandatory+"',no_of_box='"+number+"',checkbox_labels='"+c_labels+"',no_of_Rbox='"+Rnumber+"',radiobox_labels='"+r_labels+"',no_of_drpdwn='"+Dnumber+"',dropdown_labels='"+d_labels+"' where idname='"+col_name+"'";
-	        	   PreparedStatement preparedStmt = conn.prepareStatement(query);
+	        	   PreparedStatement preparedStmt = connection.prepareStatement(query);
 	 	          preparedStmt.execute();
-	 	          conn.close();
+	 	         connection.close();
 	 	         response.sendRedirect("Intake_Business.jsp");
 	          }
 	          if(servlet_name.equals("'Technical'"))
 	          {
 	        	   query="update Intake_TechnicalCustomization set label='"+label+"',type_of_box='"+type+"',mandatory='"+mandatory+"',no_of_box='"+number+"',checkbox_labels='"+c_labels+"',no_of_Rbox='"+Rnumber+"',radiobox_labels='"+r_labels+"',no_of_drpdwn='"+Dnumber+"',dropdown_labels='"+d_labels+"' where idname='"+col_name+"'";  
-	        	   PreparedStatement preparedStmt = conn.prepareStatement(query);
+	        	   PreparedStatement preparedStmt = connection.prepareStatement(query);
 	 	          preparedStmt.execute();
-	 	          conn.close();
+	 	         connection.close();
 	 	        response.sendRedirect("Intake_TechnicalDetails.jsp");
 	          }
 	          if(servlet_name.equals("'Requirements'"))
 	          {
 	        	   query="update Intake_ArchivalRequirementCustomization set label='"+label+"',type_of_box='"+type+"',mandatory='"+mandatory+"',no_of_box='"+number+"',checkbox_labels='"+c_labels+"',no_of_Rbox='"+Rnumber+"',radiobox_labels='"+r_labels+"',no_of_drpdwn='"+Dnumber+"',dropdown_labels='"+d_labels+"' where idname='"+col_name+"'";
-	        	   PreparedStatement preparedStmt = conn.prepareStatement(query);
+	        	   PreparedStatement preparedStmt = connection.prepareStatement(query);
 	 	          preparedStmt.execute();
-	 	          conn.close();
+	 	         connection.close();
 	 	         response.sendRedirect("Intake_ArchiveRequirements.jsp");
 	          }
 	          

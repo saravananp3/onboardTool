@@ -103,37 +103,7 @@ public class Archive_execution_db_update {
         //return progressbar;
     }
 
-    /* public static String user_name(String select_project)
-     {
-         String unames="";
-         String unames1="";
-         try
-         {
-             String myDriver = "org.gjt.mm.mysql.Driver";
-
-             String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-
-             Class.forName(myDriver);
-
-             Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-
-             Statement sr = conn.createStatement();
-             String query1="select distinct(uname) from admin_userdetails where projects like '%"+select_project+"%';";
-             Statement st1 = conn.createStatement();
-             ResultSet rs1 = st1.executeQuery(query1);
-             while(rs1.next())
-             {
-                 unames+=rs1.getString("uname")+",";
-             }
-             if(!unames.equals(""))
-             unames1=unames.substring(0,unames.length()-1);
-         }
-         catch(Exception e)
-         {
-             System.out.println("Exception----------"+e);
-         }
-         return unames1;
-     }*/
+    
     public static float progress_bar_percent(int seq_num, String selected_project) {
         float progress = 0;
         logger.info("seq:" + seq_num);
@@ -189,34 +159,7 @@ public class Archive_execution_db_update {
         return progress;
     }
 
-    /*public static int percent(int seq_num,String selected_project)
-    {
-    	int percentage = 0;
-    	try
-    	{
-    	String myDriver = "org.gjt.mm.mysql.Driver";
-
-        String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-
-        Class.forName(myDriver);
-
-        Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-
-        Statement sr = conn.createStatement();
-        String query1="select * from archiveexecution_details where projects='"+selected_project+"' and seq_num ='"+seq_num+"';";
-        Statement st1 = conn.createStatement();
-        ResultSet rs1 = st1.executeQuery(query1);
-        if(rs1.next())
-        {
-        	percentage = Integer.parseInt(rs1.getString("progressbar"));
-        }
-    	}
-        catch(Exception e)
-    	{
-    	 System.out.println("Exception----------"+e);
-    	}
-    	return percentage;
-    }*/
+    
     public static void progress_bar_delete_task(ArrayList<Integer> level_num, ArrayList<String> actual_enddate, ArrayList<String> progressbar, String prjname, int selectedindex, int currentlevel) {
         try {
             ArrayList<Integer> checkindex = new ArrayList<Integer>();

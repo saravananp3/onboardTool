@@ -34,9 +34,10 @@ public class Delete_users_servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         HttpSession details = request.getSession();
-        int seq_num = Integer.parseInt(request.getParameter("seq_num"))+1;
-        System.out.println("Seq NUM : "+seq_num);
-        JsonObject jsonObj =Delete_users_service.delete_users(seq_num);
+        //int seq_num = Integer.parseInt(request.getParameter("seq_num"))+1;
+        String random_id=request.getParameter("random_id");
+        System.out.println("Random ID : "+random_id);
+        JsonObject jsonObj =Delete_users_service.delete_users(random_id);
          String json = new Gson().toJson(jsonObj);
          System.out.println("JSON"+json);
             response.setContentType("application/json");

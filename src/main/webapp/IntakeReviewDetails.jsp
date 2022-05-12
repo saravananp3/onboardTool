@@ -625,7 +625,7 @@ e.printStackTrace();
 															<i>Stake Holder</i></li>
 														<li class="active"
 															onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
-														<li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
+														<li onclick="location.href='IntakeApproval.jsp';" class="ReviewNextBtn"><span>7</span><i>Approval</i></li>
 												</ul>
 						           </div>
                                          <div class="card-container card">
@@ -718,10 +718,9 @@ e.printStackTrace();
 															 <button type="button" id="button_id" name="button_id" class="btn btn-primary">
                         										Request Sign
                    											 </button>
-                   											  <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" id = "ReviewNextBtn" 
-                   											  	onclick="location.href='IntakeApproval.jsp';" style="color:#fff;">Next</a>	 -->
-                   											  <button type="button" class="btn btn-primary"
-                                                                        onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn" >Next</button>
+                   											  <!--  <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" id = "ReviewNextBtn" 
+                   											  	onclick="location.href='IntakeApproval.jsp';" style="color:#fff;">Next</a> -->
+                   											  <button type="button" class="btn btn-primary" onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn">Next</button>
 														</div>
 													</div>
                                                    

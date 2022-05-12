@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
 
+import onboard.DBconnection;
+
 import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
@@ -268,17 +270,14 @@ public class IntsantApp extends HttpServlet {
 
 
         try {
-            // create a mysql database connection
-            String myDriver = "org.gjt.mm.mysql.Driver";
-            String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-            Class.forName(myDriver);
-            Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
+        	 DBconnection dBconnection = new DBconnection();
+             Connection connection = (Connection) dBconnection.getConnection();
             try {
                 for (int j = 0; j < 63; j++) {
                     String query = " insert into Intake_BuisnessCustomization (`label`,`type_of_box`,`mandatory`,`no_of_box`,`checkbox_labels`,`no_of_Rbox`,`radiobox_labels`,`no_of_drpdwn`,`dropdown_labels`,`panels`,`idname`,`appname`,`projectname`)"
                             + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                    PreparedStatement preparedStmt = conn.prepareStatement(query);
+                    PreparedStatement preparedStmt = connection.prepareStatement(query);
                     preparedStmt.setString(1, app[j].label);
                     preparedStmt.setString(2, app[j].type_of_box);
                     preparedStmt.setString(3, app[j].mandatory);
@@ -304,7 +303,7 @@ public class IntsantApp extends HttpServlet {
                     String query1 = " insert into Intake_TechnicalCustomization (`label`,`type_of_box`,`mandatory`,`no_of_box`,`checkbox_labels`,`no_of_Rbox`,`radiobox_labels`,`no_of_drpdwn`,`dropdown_labels`,`panels`,`idname`,`appname`,`projectname`)"
                             + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                    PreparedStatement preparedStmt1 = conn.prepareStatement(query1);
+                    PreparedStatement preparedStmt1 = connection.prepareStatement(query1);
                     preparedStmt1.setString(1, t[j].label);
                     preparedStmt1.setString(2, t[j].type_of_box);
                     preparedStmt1.setString(3, t[j].mandatory);
@@ -329,7 +328,7 @@ public class IntsantApp extends HttpServlet {
                 for (int j = 0; j < 18; j++) {
                     String query2 = " insert into Intake_ArchivalRequirementCustomization (`label`,`type_of_box`,`mandatory`,`no_of_box`,`checkbox_labels`,`no_of_Rbox`,`radiobox_labels`,`no_of_drpdwn`,`dropdown_labels`,`panels`,`idname`,`appname`,`projectname`)"
                             + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement preparedStmt2 = conn.prepareStatement(query2);
+                    PreparedStatement preparedStmt2 = connection.prepareStatement(query2);
                     preparedStmt2.setString(1, ar[j].label);
                     preparedStmt2.setString(2, ar[j].type_of_box);
                     preparedStmt2.setString(3, ar[j].mandatory);
@@ -356,13 +355,13 @@ public class IntsantApp extends HttpServlet {
             String query_app = " insert into AppEmphazize_ApplicationInfo (appname, prjname)"
                     + " values (?,?)";
 
-            PreparedStatement preparedStmt = conn.prepareStatement(query_app);
+            PreparedStatement preparedStmt = connection.prepareStatement(query_app);
             preparedStmt.setString(1, appname);
             preparedStmt.setString(2, prjname);
             preparedStmt.execute();
 
             String query1 = "select appname from AppEmphazize_ApplicationInfo where prjname='" + prjname + "'";
-            Statement st = conn.createStatement();
+            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query1);
             int x = 20;
             int y = 1;
@@ -374,15 +373,15 @@ public class IntsantApp extends HttpServlet {
 
 
                 String query2 = "select seq_num from ArchiveExecution_Details where name='Closure' and projects='" + prjname + "'";
-                Statement st2 = conn.createStatement();
+                Statement st2 = connection.createStatement();
                 ResultSet rs2 = st2.executeQuery(query2);
                 String query7 = "select id from ArchiveExecution_Details where name='Execute'";
-                Statement st7 = conn.createStatement();
+                Statement st7 = connection.createStatement();
                 ResultSet rs7 = st7.executeQuery(query7);
                 if (rs2.next() && rs7.next()) {
 
                     String query9 = "select name from ArchiveExecution_Details where level=2 and seq_num>=22 and seq_num<" + rs2.getInt(1) + " and projects='" + prjname + "'";
-                    Statement st9 = conn.createStatement();
+                    Statement st9 = connection.createStatement();
                     ResultSet rs9 = st9.executeQuery(query9);
                     while (rs9.next()) {
                         // System.out.println("projects name --- "+rs9.getString(1));
@@ -395,10 +394,10 @@ public class IntsantApp extends HttpServlet {
 
                     if (cnt == 0) {
                         String query3 = "update ArchiveExecution_Details set seq_num=seq_num+62 where seq_num>=" + rs2.getInt(1);
-                        PreparedStatement preparedStmt1 = conn.prepareStatement(query3);
+                        PreparedStatement preparedStmt1 = connection.prepareStatement(query3);
                         preparedStmt1.execute();
                         String query4 = "insert into ArchiveExecution_Details(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects,progressbar)" + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                        PreparedStatement preparedStmt2 = conn.prepareStatement(query4);
+                        PreparedStatement preparedStmt2 = connection.prepareStatement(query4);
                         preparedStmt2.setInt(1, rs2.getInt(1));
                         preparedStmt2.setInt(2, 2);
                         preparedStmt2.setString(3, rs.getString(1));
@@ -416,12 +415,12 @@ public class IntsantApp extends HttpServlet {
                         preparedStmt2.execute();
                         int count = rs2.getInt(1);
                         String query5 = "select * from details";
-                        Statement st5 = conn.createStatement();
+                        Statement st5 = connection.createStatement();
                         ResultSet rs5 = st5.executeQuery(query5);
                         while (rs5.next()) {
                             //"" System.out.println(count);
                             String query6 = "insert into ArchiveExecution_Details(seq_num,level,name,mem_ass,act_srt_date,act_end_date,pln_srt_date,pln_end_date,hours,planned_hrs,id,ref_id,projects,progressbar)" + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                            PreparedStatement preparedStmt3 = conn.prepareStatement(query6);
+                            PreparedStatement preparedStmt3 = connection.prepareStatement(query6);
                             preparedStmt3.setInt(1, ++count);
                             preparedStmt3.setInt(2, rs5.getInt(1));
                             preparedStmt3.setString(3, rs5.getString(2));
@@ -451,7 +450,7 @@ public class IntsantApp extends HttpServlet {
             }
 
 
-            conn.close();
+            connection.close();
 
         } catch (Exception e) {
 

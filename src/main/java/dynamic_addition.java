@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class dynamic_addition
  */
@@ -81,11 +83,8 @@ public class dynamic_addition extends HttpServlet {
 		
 		  try
 	        {
-	          // create a mysql database connection
-	          String myDriver = "org.gjt.mm.mysql.Driver";
-	          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-	          Class.forName(myDriver);
-	          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
+			  DBconnection dBconnection = new DBconnection();
+		        Connection connection = (Connection) dBconnection.getConnection();
 	          String query="";
 	        
 	         
@@ -102,7 +101,7 @@ public class dynamic_addition extends HttpServlet {
 		           query = " insert into Intake_ArchivalRequirementCustomization (label,type_of_box,mandatory,no_of_box,checkbox_labels,no_of_Rbox,radiobox_labels,no_of_drpdwn,dropdown_labels,idname,panels,projectname,appname)"
 		            + " values (? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		          }
-	          PreparedStatement preparedStmt = conn.prepareStatement(query);
+	          PreparedStatement preparedStmt = connection.prepareStatement(query);
 	          preparedStmt.setString (1, label);
 	          preparedStmt.setString (2, type);
 	          preparedStmt.setString (3, mandatory);
@@ -117,7 +116,7 @@ public class dynamic_addition extends HttpServlet {
 	         preparedStmt.setString (12, project_name);
 	         preparedStmt.setString (13, appln_name);
 	          preparedStmt.execute();
-	          conn.close();
+	          connection.close();
 	        }
 	        catch (Exception e)
 	        {

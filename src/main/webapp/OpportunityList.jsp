@@ -530,7 +530,7 @@ full width */
 	%>
 
 
-	<%@include file="Nav-Bar.jspf"%>
+	<%@ include file="Nav-Bar.jspf" %>
 
 	<nav class="nav nav-down-height" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
@@ -1089,5 +1089,9 @@ full width */
 						});
 	</script>
 	<script src="js/navigation/navigation.js"></script>
+	<!-- ========== Toastr ========== -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	
 </body>
 </html>

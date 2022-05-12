@@ -3,6 +3,7 @@ $(document).ready(function() {
 	BindPhaseWave();
 	doughnutType();
 });
+
 function dashboardDetails() {
 	$.ajax({
 		url: "dashboardServlet",
@@ -612,8 +613,6 @@ function dashboardDetails() {
 $(document).ready(function() {
 
 	var optionsPie = {
-
-
 	};
 
 	$.ajax({

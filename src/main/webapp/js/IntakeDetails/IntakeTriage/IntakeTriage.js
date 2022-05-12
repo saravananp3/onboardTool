@@ -67,7 +67,7 @@ $(document).ready(function(){
                 	
                     var inputdate="<div class='form-group InputField' id='"+ColumnName+"_Row'>" +
                         "<label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
-                        "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
+                        "<input type='text' onchange='dateChangeFunction(this.value)' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";
                     $('#inputValue').append(inputdate);
                     }
@@ -240,3 +240,9 @@ $(document).on('change', 'input[name=TechincalDeterminingdate]', function () {
     $("#pls_describe_Row").hide();
 });
 });
+
+function dateChangeFunction(val) {
+	if (!val.match('^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$')) {
+		notification("warning", "Date field should be in mm/dd/yyyy format", "Note:");
+	}
+}

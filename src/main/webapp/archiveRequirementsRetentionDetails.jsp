@@ -455,13 +455,16 @@ e.printStackTrace();
 															   <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                                                 <button type="submit" class="btn btn-primary" id="saveRetentionId">Save</button>
                                                                 <!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
-                                                                 <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='ArchiveBusinessRequirements.jsp';" id="next" disabled="true">
-                                                                 
-                                                                 <a href="javascript:;" style="color: #fff;">Next</a>
-                                                                 
-                                                                 </button>
-                                                              
-                                                                 </div>
+                                                               
+														<button class="btn btn-primary"
+															onclick="location.href='ArchiveBusinessRequirements.jsp';"
+															id="next" disabled="true">
+
+															<a href="javascript:;">Next</a>
+
+														</button>
+
+													</div>
                                                     </div>
                                                     
                                                 </div>

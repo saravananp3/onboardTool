@@ -43,6 +43,20 @@
   	<servlet-name>Delete_users_servlet</servlet-name>
   	<servlet-class>admin_module_modify.servlet.Delete_users_servlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>retrieve_license_servlet</display-name>
+  	<servlet-name>retrieve_license_servlet</servlet-name>
+  	<servlet-class>license.servlet.retrieve_license_servlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>update_license_servlet</display-name>
+  	<servlet-name>update_license_servlet</servlet-name>
+  	<servlet-class>license.servlet.update_license_servlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -66,6 +80,14 @@
   <servlet-mapping>
   	<servlet-name>Delete_users_servlet</servlet-name>
   	<url-pattern>/Delete_users_servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>retrieve_license_servlet</servlet-name>
+  	<url-pattern>/retrieve_license_servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>update_license_servlet</servlet-name>
+  	<url-pattern>/update_license_servlet</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

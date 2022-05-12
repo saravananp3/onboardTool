@@ -596,20 +596,20 @@ background:#1565c0 important;
 							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
 					</li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
-						aria-current="page" href="Admin_Module_Send_Invites.jsp"><i
+						aria-current="page" href="Admin_Userslist.jsp"><i
 							class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
 					</li>
 					<li class="nav-item moduleIcon"><a class="nav-link active2"
 						aria-current="page" href="PhaseList.jsp"><i
 							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" id="financeHint" data-toggle="tooltip" title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
 						aria-current="page" href="DashBoard.jsp"><i
 							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
 					</li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" id="complianceHint" data-toggle="tooltip" title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
 					</li>
@@ -1129,4 +1129,17 @@ $(document).on('mouseenter','.active1', function(){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 <script src="js/navigation/navigation.js"></script>
+<script>
+	$('#financeHint[data-toggle="tooltip"]').tooltip({
+		animated : 'fade',
+		placement : 'bottom',
+		trigger : 'onClick'
+	});
+
+	$('#complianceHint[data-toggle="tooltip"]').tooltip({
+		animated : 'fade',
+		placement : 'bottom',
+		trigger : 'onClick'
+	});
+</script>
 </html>

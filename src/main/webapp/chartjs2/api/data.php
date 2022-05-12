@@ -8,10 +8,6 @@
 header('Content-Type: application/json');
 
 //database
-define('DB_HOST', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'password123');
-define('DB_NAME', 'Onboarding');
 
 //get connection
 $mysqli = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);

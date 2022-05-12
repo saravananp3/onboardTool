@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import onboard.DBconnection;
+
 /**
  * Servlet implementation class infodb
  */
@@ -44,25 +46,19 @@ public class infodb extends HttpServlet {
 		String complexity = (String)app_details.getAttribute("complexity");
 		String est_db_size = (String)app_details.getAttribute("est_db_size");
 		String est_cst = (String)app_details.getAttribute("est_cst");
-		
-	         
-	        final String myDriver = "org.gjt.mm.mysql.Driver";
-	          final String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-	       
+		   
 	        try
 	        {
-	          // create a mysql database connection
-	        	Class.forName(myDriver);
-	          Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
+	        	 DBconnection dBconnection = new DBconnection();
+	             Connection connection = (Connection) dBconnection.getConnection();
 	          
-	          PreparedStatement preparedStmt = conn.prepareStatement("update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_cst=? where appname=?");
+	          PreparedStatement preparedStmt = connection.prepareStatement("update AppEmphazize_ApplicationInfo set complexity=?, est_db_size=?, est_cst=? where appname=?");
 	          preparedStmt.setString(1, complexity);
 	          preparedStmt.setString(2, est_db_size);
 	          preparedStmt.setString(3, est_cst);
 	          preparedStmt.setString(4, proj_name);
-preparedStmt.execute();
-	          
-	          conn.close();
+	          preparedStmt.execute();
+	          connection.close();
 	        
 	        }
 	        catch (Exception e)

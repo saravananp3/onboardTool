@@ -134,14 +134,20 @@
 					<li class="nav-item moduleIcon"><a class="nav-link active"
 						aria-current="page" href="PhaseList.jsp"><i
 							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" id="myElementwithTooltip"
+                		data-bs-toggle="tooltip"
+                		data-bs-placement="bottom"
+                		title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
 					<li class="nav-item moduleIcon"><a class="nav-link active"
 						aria-current="page" href="DashBoard.jsp"><i
 							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
 					</li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
+					<li class="nav-item moduleIcon" id="myElementwithTooltip"
+                		data-bs-toggle="tooltip"
+                		data-bs-placement="bottom"
+                		title="For Future Enhancement"><a class="nav-link active"
 						aria-current="page" href="#"><i
 							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
 					</li>
@@ -162,7 +168,7 @@
 							in as <br/> <b class="user-ellipsis"><%=userName%></b></a></li>
 
 					<li class="mt-5"><a class="dropdown-item li-align" href="#"
-						id="textAlign" onclick="location.href='Login.jsp';"
+						id="textAlign" onclick="location.href='logout.jsp';"
 						style="border-top: 1px solid #d3d7e2;"><i
 							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
 				</ul>
@@ -181,6 +187,19 @@
 	e.printStackTrace();
 	}
 	%>
+	<script>
+		let tooltipTriggerList = [].slice.call(document
+				.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+			return new bootstrap.Tooltip(tooltipTriggerEl, {
+				container : 'body',
+				trigger : 'onClick'
+			});
+			
+		});
+	</script>
+
+
 
 </body>
 

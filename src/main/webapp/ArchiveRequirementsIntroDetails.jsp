@@ -217,6 +217,24 @@ margin: -6px 0;
 #module_header {
 margin-top: 97px;
 }
+
+
+.searchResult {
+    position: absolute;
+    width: 25%;
+    max-width: 870px;
+    cursor: pointer;
+    overflow-y: auto;
+    max-height: 400px;
+    box-sizing: border-box;
+    z-index: 1001;
+    font-size: 12px;
+}
+
+  .link-class:hover {
+   background-color:#1565c0;
+   color: #fff;
+  }
 </style>
 
 <body class="top-navbar-fixed">

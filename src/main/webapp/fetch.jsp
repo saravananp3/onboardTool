@@ -22,11 +22,10 @@
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Fetch JSP PAGE-----[INFO]");  %>
  <%@page import="java.sql.*"%>
+ <%@ page import="onboard.DBconnection"%>
 <%
-String myDriver = "org.gjt.mm.mysql.Driver";
-String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-Class.forName(myDriver);
-Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
+DBconnection dBconnection = new DBconnection();
+Connection connection = (Connection) dBconnection.getConnection();
 String data1=request.getParameter("s2");  
 String data2=request.getParameter("input"); 
 
@@ -34,7 +33,7 @@ System.out.println("ROle : " + data1 + "userid :" +data2);
 
 
 String query = "select * from Admin_UserDetails where roles='ArchivalAdmin' and uname='bala'";
-Statement st = conn.createStatement();
+Statement st = connection.createStatement();
 ResultSet rs = st.executeQuery(query);
 
 
@@ -42,7 +41,7 @@ while(rs.next())
 {
  
 String query1 = "select * from ArchiveExecution_Details where projects='"+rs.getString("projects")+"' and level=1";
-Statement st1 = conn.createStatement();
+Statement st1 = connection.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
 
 while(rs1.next())
@@ -59,7 +58,7 @@ String status=rs1.getString("name");
 
 
 String query2 = "select seq_num from ArchiveExecution_Details where projects='"+rs.getString("projects")+"' and name='"+rs.getString("application")+"'";
-Statement st2 = conn.createStatement();
+Statement st2 = connection.createStatement();
 ResultSet rs2 = st2.executeQuery(query2);
 String seqnum="";
 if(rs2.next())
@@ -68,7 +67,7 @@ seqnum=rs2.getString(1);
 System.out.println(seqnum);
 String query3="select * from ArchiveExecution_Details where projects='"+rs.getString("projects")+"' and seq_num>"+seqnum+" and seq_num<="+(Integer.parseInt(seqnum)+70)+" and level=3 order by seq_num";
 System.out.println(query3);
-Statement st3 = conn.createStatement();
+Statement st3 = connection.createStatement();
 ResultSet rs3 = st3.executeQuery(query3);
 
 String Stats="";
@@ -92,7 +91,7 @@ break;
 <br/><br/>
 <%
 String query4 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
-Statement st4 = conn.createStatement();
+Statement st4 = connection.createStatement();
 ResultSet rs4 = st4.executeQuery(query4);
 while(rs4.next())
 {

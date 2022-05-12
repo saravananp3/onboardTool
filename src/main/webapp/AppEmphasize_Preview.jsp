@@ -164,6 +164,7 @@
 <%@page language="java" %>
 <%@page import="java.sql.*" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ page import="onboard.DBconnection"%>
 
 <%
     double ans = 0.0;
@@ -172,16 +173,16 @@
         HttpSession details = request.getSession();
         String roles = (String) details.getAttribute("role");
         String det = (String) session.getAttribute("theName");
-        Class.forName("org.gjt.mm.mysql.Driver").newInstance();
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "password123");
+        DBconnection dBconnection = new DBconnection();
+        Connection connection = (Connection) dBconnection.getConnection();
 
         String query3 = "select * from AppEmphazize_ProjectDetails where id = " + det;
         String name = (String) session.getAttribute("newname");
 
         System.out.println("testinpreview" + name);
-        Statement st1 = conn.createStatement();
-        Statement st2 = conn.createStatement();
-        Statement st3 = conn.createStatement();
+        Statement st1 = connection.createStatement();
+        Statement st2 = connection.createStatement();
+        Statement st3 = connection.createStatement();
         ResultSet rs3 = st3.executeQuery(query3);
         String query1 = "SELECT * from AppEmphazize_ApplicationInfo where prjname='" + name + "' and complexity is not null";
         ResultSet rs1 = st1.executeQuery(query1);

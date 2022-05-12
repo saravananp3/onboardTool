@@ -80,12 +80,19 @@ function archiveReqAddAjaxCall(seqNum){
         dataType: "json",
         success: function (data) {
             console.log("Add Row Retrieve--->",data);
+            var options ;
             if(data.AddStatus){
+				var seq_no = data.seqNum;
+                var options_arr = ['Project Sponsor','System Architect','Project Manager','Business Owner','Technical Lead'];
+                    for(var n=0;n<options_arr.length;n++){
+                      var selected = "Project Sponsor";
+                       options += "<option value='"+options_arr[n]+"' "+selected+">"+options_arr[n]+"</option>";
+                   }
                 var Row="<tr class = 'rowClass'>"+
-             "<td><input type ='text' class='role' value=''><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
-             "<td><input type ='text' class='name' value=''></td>" +
-             "<td><input type ='text' class='emailId' value=''></td>" +
-             "<td><input type ='text' class='username' value=''></td>" +
+             "<td><select type ='text' class='role' value=''>"+options+"</select><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
+             "<td><input type ='text' id='firstName"+seq_no+"' class='name' value=''></td>" +
+             "<td><input type ='text' id='search"+seq_no+"' onClick='searchFunction("+seq_no+");' class='emailId' value=''><ul id='result"+seq_no+"' class='list-group searchResult'></ul></td>" +
+             "<td><input type ='text' id='userName"+seq_no+"' class='username' value=''></td>" +
             "<td><input type ='text' class='priority_order_num' value=''></td>" +
              "<td>"+
              "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
@@ -146,12 +153,20 @@ function archiveReqRolesResponseDataRetrieve(){
              }
              $("#Approver").html("");
              //var checkValidation = false;
+              var options_arr = ['Project Sponsor','System Architect','Project Manager','Business Owner','Technical Lead'];
              $.each(data, function(key, value){
+     					var options ="";
+                        var role = (value.role==undefined)?"":value.role;
+                        var seq_no = value.seq_no;
+                    for(var n=0;n<options_arr.length;n++){
+                       var selected = (role==options_arr[n])? "selected":"";
+                       options += "<option value='"+options_arr[n]+"' "+selected+">"+options_arr[n]+"</option>";
+                   }
                  var Row="<tr class = 'rowClass'>"+
-                 "<td><input type ='text' class='role' value='"+value.role+"' readonly><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
-                 "<td><input type ='text' class='name' value='"+value.name+"' readonly></td>" +
-                 "<td><input type ='text' class='emailId' value='"+value.emailId+"' readonly></td>" +
-                 "<td><input type ='text' class='username' value='"+value.username+"' readonly></td>" +
+                 "<td><select type ='text' class='role' value='"+value.role+"' readonly>"+options+"</select><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
+                 "<td><input type ='text' class='name' id='firstName"+seq_no+"' value='"+value.name+"' readonly></td>" +
+                 "<td><input type ='text' class='emailId' id='search"+seq_no+"' onClick='searchFunction("+seq_no+");' value='"+value.emailId+"' readonly><ul id='result"+seq_no+"' class='list-group searchResult'></ul></td>" +
+                 "<td><input type ='text' class='username' id='userName"+seq_no+"' value='"+value.username+"' readonly></td>" +
                  "<td><input type ='text' class='priority_order_num' value='"+value.priority_order_num+"' readonly></td>" +
                  "<td>"+
                  "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
@@ -212,4 +227,70 @@ $(document).on('click', '#complete', function(e) {
                             }
         }
     });
-        }
+   }
+   
+   function searchFunction(i){
+	
+	$('#search'+i).keyup(function() {
+		$('#result'+i).html('');
+		var searchField = $('#search'+i).val();
+		var expression = new RegExp(searchField, "i");
+		$.ajax({
+			type: "POST",
+			url: "Retrieve_users_servlet",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				 if (!$.isArray(data)) {
+                data = [data];
+            }
+           
+            	$('#result'+i).empty();
+				$.each(data, function(key, value) {
+					
+					if (value.u_email.search(expression) != -1){						
+						$('#result'+i).append('<li class="list-group-item link-class">' + value.u_email +'</li>');					
+					}
+					
+				});
+			}
+
+		});
+	
+	});
+		
+	$('#result' + i).on('click', 'li', function() {
+		var click_text = $(this).text();
+		$('#search' + i).val(click_text);
+		$("#result" + i).html('');
+		$.ajax({
+			type: "POST",
+			url: "Retrieve_users_servlet",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				if (!$.isArray(data)) {
+					data = [data];
+				}
+
+				var count = 0;
+				var first_name;
+				var user_name;
+				$.each(data, function() {
+
+					if (click_text == data[count].u_email) {
+						first_name = data[count].ufname;
+						user_name = data[count].uname;
+						document.getElementById('firstName' + i).value = first_name;
+						document.getElementById('userName' + i).value = user_name;
+
+					}
+					count = count + 1;
+
+				});
+
+			}
+		});
+
+	});
+};

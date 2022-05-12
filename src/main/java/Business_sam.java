@@ -15,6 +15,9 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+
+import onboard.DBconnection;
+
 import javax.servlet.ServletConfig;
 
 import javax.servlet.ServletException;
@@ -58,22 +61,15 @@ public class Business_sam extends HttpServlet {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Buisness Customzation servlet-----[INFO]");  
-		//System.out.println("----------Business_sam page------------");
 		String project_name=request.getParameter("project_name");
 		String app_name=request.getParameter("appln_name");
 		int DEL_count=0;
 	try{
-        String myDriver = "org.gjt.mm.mysql.Driver";
-        String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-        Class.forName(myDriver);
-        Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
-		
-		/*String query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA. COLUMNS WHERE TABLE_NAME = 'Intake_BuisnessDetails' ORDER BY ORDINAL_POSITION";
-        Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery(query);*/
-        for(int i=1;i<=4;i++){
-       String query21 = "SELECT * from Intake_BuisnessCustomization where panels='P"+i+"'";
-        Statement st21 = conn.createStatement();
+		 DBconnection dBconnection = new DBconnection();
+	     Connection connection = (Connection) dBconnection.getConnection();
+		for(int i=1;i<=4;i++){
+		String query21 = "SELECT * from Intake_BuisnessCustomization where panels='P"+i+"'";
+        Statement st21 = connection.createStatement();
         ResultSet rs21 = st21.executeQuery(query21);
         while(rs21.next())
         {
@@ -82,11 +78,11 @@ public class Business_sam extends HttpServlet {
         	if(val != null)
         	{
         		String query4 = "delete from Intake_BuisnessCustomization where idname='"+Idname+"' and projectname='"+project_name+"' and appname='"+app_name+"'";
-            	PreparedStatement preparedStmt4 = conn.prepareStatement(query4);
+            	PreparedStatement preparedStmt4 = connection.prepareStatement(query4);
             	 preparedStmt4.execute();
             	 DEL_count++;
          		String query5 = "alter table Intake_BuisnessDetails drop "+Idname+" where projectname='"+project_name+"' and appname='"+app_name+"'";
-             	PreparedStatement preparedStmt5 = conn.prepareStatement(query5);
+             	PreparedStatement preparedStmt5 = connection.prepareStatement(query5);
              	 preparedStmt5.execute();
              	
              	
@@ -97,7 +93,7 @@ public class Business_sam extends HttpServlet {
         }
         if(DEL_count==0){
         String query = "SELECT * from Intake_BuisnessCustomization where appname='"+app_name+"' and projectname='"+project_name+"'";
-        Statement st = conn.createStatement();
+        Statement st = connection.createStatement();
         ResultSet rs = st.executeQuery(query);
         int cnt=0;
         String ref_id="";
@@ -109,7 +105,7 @@ public class Business_sam extends HttpServlet {
         	cnt++;
         	String query1 = "insert into Intake_BuisnessDetails("+rs.getString("idname")+",appname,projectname) values('"+n+"','"+app_name+"','"+project_name+"')";
 
-        	PreparedStatement preparedStmt = conn.prepareStatement(query1);
+        	PreparedStatement preparedStmt = connection.prepareStatement(query1);
         	 preparedStmt.execute();
         	}
         	else{
@@ -119,13 +115,13 @@ public class Business_sam extends HttpServlet {
 
         
         	String query2 = "update Intake_BuisnessDetails set "+rs.getString("idname")+" = '"+n+"' where legappname = '"+ref_id+"'";
-        	PreparedStatement preparedStmt1 = conn.prepareStatement(query2);
+        	PreparedStatement preparedStmt1 = connection.prepareStatement(query2);
         	 preparedStmt1.execute();
         	}
         	
         }
         }
-        conn.close();
+        connection.close();
 	       }
 	       catch (Exception e)
 	       {

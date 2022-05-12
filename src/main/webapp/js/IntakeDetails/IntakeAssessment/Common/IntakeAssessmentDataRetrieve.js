@@ -147,23 +147,40 @@ function AssessmentDataRetrieveAjaxCall()
                 	if(checkThirdParty)
                 	$("#ContractInformation").show();
                 }
-                if(Type=="Text box")
-                {
-                	var template_check=""; 
-                    var inputtext="<div class='form-group InputFieldAssessment "+Section+"' id ='"+ColumnName+"_AssessmentRow'"+HideShow+">\n" +
-                        "<label class='control-label' for='Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span>\n" +
-                        "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
-                        "</div>";
-                    $('#'+InputFieldName).append(inputtext);
-                    HideShow = "";
-                 }
+				if (Type == "Text box") {
+					var template_check = "";
+					var inputtext = "<div class='form-group InputFieldAssessment " + Section + "' id ='" + ColumnName + "_AssessmentRow'" + HideShow + ">\n" +
+						"<label class='control-label' for='Assessment'>" + LabelName + "<span " + manadatory + "></span></label>" + delete_icon + "<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment " + Section + "_Edit' style='float:right;display:none;'></span>\n";
+					if (ColumnName == "StrucDBsize") {
+						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					else if (ColumnName == "UnstrucDataVolume") {
+						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					else if (ColumnName == "archivalusercount") {
+						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					else if (ColumnName == "noofsearch") {
+						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					else {
+						inputtext = inputtext + "<input type='text' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
+					}
+					$('#' + InputFieldName).append(inputtext);
+					HideShow = "";
+				}
                 else if(Type=="Datepicker")
                 {
                 	var template_check=""; 
                 	
                     var inputdate="<div class='form-group InputFieldAssessment "+Section+"' id='"+ColumnName+"_AssessmentRow' >" +
                         "<label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span>\n" +
-                        "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
+                        "<input type='text' onchange='dateChangeFunction(this.value)' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                         "</div>";
                     $('#'+InputFieldName).append(inputdate);
                     }
@@ -375,4 +392,10 @@ function AssessmentDataRetrieveAjaxCall()
 
     });
 	
+}
+
+function dateChangeFunction(val) {
+	if (!val.match('^((0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2})*$')) {
+		notification("warning", "Date field should be in mm/dd/yyyy format", "Note:");
+	}
 }

@@ -187,6 +187,7 @@ input[type=search]:focus {
 	display: inline-block;
 	transition: background 0.2s;
 }
+
 .cbp-vm-add:hover {
 	color: #fff;
 	background: #02639d;
@@ -402,6 +403,39 @@ h6 {
 	padding-left: 55%;
     font-size: 16px;
 }
+#overlay{
+position: fixed;
+top: 0;
+z-index: 100;
+width:1400px;
+height:100%;
+display: none;
+background: rgb(0,0,0,0.6);
+}
+.cv-spinner {
+height: 70%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.spinner {
+width: 80px;
+height: 80px;
+border: 8px #ddd solid;
+border-top: 8px #2e93e6 solid;
+border-radius: 50%;
+animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+100% {
+transform: rotate(360deg);
+}
+}
+.is-hide{
+display:none;
+}
+
+
 </style>
 
 </head>
@@ -481,63 +515,12 @@ h6 {
             preparedStmt.execute();
         }%>
 
-
-
-	<!-- main wrapper -->
-	<%-- <div class="main-wrapper">
-     <!-- ========== TOP NAVBAR ========== -->
-    <nav class="navbar top-navbar bg-white box-shadow">
-        <div class="container-fluid">
-            <div class="row">
-                 <div class="navbar-header no-padding" style = "height : 100px;">
-                    <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
-                    </a>
-                </div>
-                <!-- /.navbar-header -->
-                <div class="tabs-content">
-                  <ul class="nav navbar-nav navAlign">
-		              <li ><a href="OpportunityList.jsp"><i class="fad fa-folders fa-2x iconAlign iconColor"></i>Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
-		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
-		              <li class="active"><a href="#" style="color:#fff"><i class="fad fa-chart-pie iconAlign activeIcon fa-2x"></i>Dashboards</a></li>
-		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
-		          </ul>
-		         <ul class="nav navbar-nav navbar-right">
-                        <%
-                            String uname=(String)details.getAttribute("username");
-                            String role=(String)details.getAttribute("role");%>
-                        <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
-                        <li><a href="Logout" class="text-center"> Logout</a> </li>
-                    </ul>
-                </div>
-                
-                
-                
-                
-            </div>
-            <!-- /.row -->
-            <nav class="navbar navbar-down">
-				  <div class="container-fluid fixed-top">
-                    <div class="row page-title-div">
-                        <div class="col-sm-6">
-                             <h5 class="title" style="color:#fff">Dashboard</h5>
-                             
-                              <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> Dashboard</p>
-                        </div>
-                        
-                        </div>
-                      
-                    </div>
-                </div>
-			</nav>
-        </div> --%>
-
-	<!-- /.container-fluid -->
-	<!--   </nav > -->
-
 	<%@include file="Nav-Bar.jspf"%>
+	<div id="overlay">
+<div class="cv-spinner">
+<span class="spinner"></span>
+</div>
+</div>
 	<nav class="nav nav-height nav-font" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">
@@ -555,12 +538,10 @@ h6 {
 			</div>
 		</div>
 	</nav>
+	
 	<!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
 
 	<div class="content-wrapper">
-
-
-
 
 		<div class="content-container">
 
@@ -724,11 +705,10 @@ h6 {
 												style="padding-left: 318px; margin-top: -34%; margin-right: 12%;">
 												<h6 class="d-flex justify-content-left"
 													style="margin-left: 95%;">
-													<b>Waves</b>
+													<b style="margin-top: -8px;">Waves</b>
 												</h6>
 												<canvas id="mycanvas1" width="200" height="200"
 													style="margin-left: 96%;"></canvas>
-
 											</div>
 											<div id="legend2"
 												style="float: right; margin-right: -57%; margin-top: -33%; font-size: 11px; font-weight: 600;"></div>

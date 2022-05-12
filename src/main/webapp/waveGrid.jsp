@@ -38,7 +38,7 @@
 		media="screen">
     <!-- ========== MODERNIZR ========== -->
     <script src="js/modernizr/modernizr.min.js"></script>
-
+    
     <script src="js/multiplepages.js"></script>
     <script src ="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>   
      <style>
@@ -456,7 +456,7 @@ transition: width 2s, height 2s, transform 2s;
                     </div>
                 </div>
             </nav>
-    <div class="content-wrapper" style="margin-left: -8%;">
+    <div class="content-wrapper mt-5  d-flex justify-content-center">
         <div class="content-container">
 
             <!-- ========== LEFT SIDEBAR ========== -->
@@ -466,11 +466,11 @@ transition: width 2s, height 2s, transform 2s;
               <div class="container-fluid">
 
                 <%
-                    if(roles.equals("admin")){
+                    if(roles.equals("admin")||!roles.equals("admin")){
                 %>
                 <!--  admin Role -->
                 <section>
- <div class="flow container">
+ <!-- <div class="flow container">
        <div class="process candidate">
         <div class="step">
     <div class="step-milestone2"/>
@@ -490,7 +490,7 @@ transition: width 2s, height 2s, transform 2s;
       Plan and Priority
     </span>
   </div>
-    </div>
+    </div> -->
     
     <div class="process interview">
         <div class="step">
@@ -509,11 +509,11 @@ transition: width 2s, height 2s, transform 2s;
     </span>
   </div>
     </div>
-    <div class="arrow assessment">
+    <!-- <div class="arrow assessment">
         <div class="line"></div>
         <div class="triangle"></div>
-    </div>
-    <div class="process assessment">
+    </div> -->
+    <!-- <div class="process assessment">
         <div class="step">
     <div class="step-milestone2"/>
     <a href="#">
@@ -530,12 +530,12 @@ transition: width 2s, height 2s, transform 2s;
      <span class="step-title">
       Decommission Execution
     </span>
-  </div>
+  </div> -->
     </div>
-    <div class="arrow finalDecision">
+    <!-- <div class="arrow finalDecision">
         <div class="line"></div>
         <div class="triangle"></div>
-    </div>
+    </div> -->
         </div>
     
  

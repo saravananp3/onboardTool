@@ -64,10 +64,6 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
         String projectname = request.getParameter("projectname");
         String applicationname = request.getParameter("appname");
         try {
-            final String myDriver = "org.gjt.mm.mysql.Driver";
-            final String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-
-            Connection conn = DriverManager.getConnection(myUrl, "root", "password123");
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             String delete_query = "delete from Decomm_BusinessUnit_GeographicCode where prj_name='" + projectname + "' and app_name='" + applicationname + "' ";
@@ -81,7 +77,7 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
                 String department = request.getParameter("Department" + i);
                 String insert_query = "insert into Decomm_BusinessUnit_GeographicCode( prj_name,app_name,business_unit,operation_unit,location_unit,dept,id)"
                         + "values(?,?,?,?,?,?,?)";
-                PreparedStatement preparedStmt = conn.prepareStatement(insert_query);
+                PreparedStatement preparedStmt = connection.prepareStatement(insert_query);
                 preparedStmt.setString(1, projectname);
                 preparedStmt.setString(2, applicationname);
                 preparedStmt.setString(3, business);
@@ -108,7 +104,7 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
                 String officeDesignation = request.getParameter("OfficeDesignation"+i);
                 String insert_query1 = "insert into decomm_sitelocation_assets( prj_name,app_name,country,city,state,office_designation,id)"
                         + "values(?,?,?,?,?,?,?)";
-                PreparedStatement preparedStmt = conn.prepareStatement(insert_query1);
+                PreparedStatement preparedStmt = connection.prepareStatement(insert_query1);
                 preparedStmt.setString(1, projectname);
                 preparedStmt.setString(2, applicationname);
                 preparedStmt.setString(3, country);
@@ -145,7 +141,7 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
             if(rs1.next())
             {
                 String update_query = "update decomm_intake_req set id=?, prj_name=?, app_name=?, legacy_app_name=?, enterprise_team_decomm_prj_no=?, app_identification_no=?, infra_prj_no=?, read_only_date=? where prj_name='" + projectname + "' and app_name='" + applicationname + "' ";
-                PreparedStatement preparedStmt1 = conn.prepareStatement(update_query);
+                PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
                 preparedStmt1.setInt(1, id);
                 preparedStmt1.setString(2, projectname);
                 preparedStmt1.setString(3, appname);
@@ -161,7 +157,7 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
             {
                 String insert_query = "insert into decomm_intake_req (id, prj_name, app_name, legacy_app_name, enterprise_team_decomm_prj_no, app_identification_no, infra_prj_no, read_only_date)"
                         +"values(?,?,?,?,?,?,?,?)";
-                PreparedStatement preparedStmt = conn.prepareStatement(insert_query);
+                PreparedStatement preparedStmt = connection.prepareStatement(insert_query);
                 preparedStmt.setInt(1, id);
                 preparedStmt.setString(2, projectname);
                 preparedStmt.setString(3, appname);
@@ -171,7 +167,7 @@ public class DecommIntakeRequirements_db_update extends HttpServlet {
                 preparedStmt.setString(7, infraprojectnumber);
                 preparedStmt.setString(8, read_date);
                 preparedStmt.execute();
-                conn.close();
+                connection.close();
             }
         } catch (Exception e) {
             System.out.println("Exception..." + e);

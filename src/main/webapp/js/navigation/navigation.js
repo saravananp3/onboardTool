@@ -36,6 +36,7 @@ function switchActiveModule() {
 		/*case "Admin_Module_Send_Invites.jsp":
 		case "Modify_Admin_Users_list.jsp":*/
 		case "Admin_Userslist.jsp":
+		case "License_info.jsp":
 		/*case "Admin_Role_Details.jsp":*/
 			selectiveActiveIcon(1);
 			break;
