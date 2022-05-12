@@ -71,19 +71,25 @@ public class ArchivalRequirements extends HttpServlet {
         	 DBconnection dBconnection = new DBconnection();
              Connection connection = (Connection) dBconnection.getConnection();
 		     int i = 2;
-		     String query21 = "SELECT * from Intake_ArchivalRequirementCustomization where panels='P" + i + "'";
-		     Statement st21 = connection.createStatement();
-		     ResultSet rs21 = st21.executeQuery(query21);
+		     String s="P"+String.valueOf(i);
+		     String query21 = "SELECT * from Intake_ArchivalRequirementCustomization where panels=?";
+		     PreparedStatement st21 = connection.prepareStatement(query21);
+			 st21.setString(1, s);
+			 ResultSet rs21 = st21.executeQuery();
 		     while (rs21.next()) {
                 String val = request.getParameter(rs21.getString("idname") + "1");
                 String Idname = rs21.getString("idname");
                 if (val != null) {
-                    String query4 = "delete from Intake_ArchivalRequirementCustomization where idname='" + Idname + "'and projectname='" + project_name + "'";
+                    String query4 = "delete from Intake_ArchivalRequirementCustomization where idname=?and projectname=?";
                     PreparedStatement preparedStmt4 = connection.prepareStatement(query4);
+                    preparedStmt4.setString(1, Idname);
+                    preparedStmt4.setString(2, project_name);
                     preparedStmt4.execute();
 
-                    String query5 = "alter table intake_archivalrequirement drop " + Idname + " where projectname='" + project_name + "' and appname='" + app_name + "'";
+                    String query5 = "alter table intake_archivalrequirement drop " + Idname + " where projectname=? and appname=?";
                     PreparedStatement preparedStmt5 = connection.prepareStatement(query5);
+                    preparedStmt5.setString(1, project_name);
+                    preparedStmt5.setString(2, app_name);
                     preparedStmt5.execute();
                     DEL_count++;
 
@@ -92,22 +98,28 @@ public class ArchivalRequirements extends HttpServlet {
             }
 
             if (DEL_count == 0) {
-                String query = "SELECT * from Intake_ArchivalRequirementCustomization where appname='" + app_name + "' and projectname='" + project_name + "'";
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(query);
+                String query = "SELECT * from Intake_ArchivalRequirementCustomization where appname=? and projectname=?";
+                PreparedStatement st = connection.prepareStatement(query);
+				st.setString(1, app_name);
+				st.setString(2, project_name);
+			    ResultSet rs = st.executeQuery();
+               
                 int cnt = 0;
                 String ref_id = "";
                 while (rs.next()) {
                     if (cnt == 0) {
                         String n = request.getParameter(rs.getString("idname"));
                         cnt++;
-                        String query1 = "insert into intake_archivalrequirement(" + rs.getString("idname") + ",appname,projectname) values('" + n + "','" + app_name + "','" + project_name + "')";
-
+                        String query1 = "insert into intake_archivalrequirement("+ rs.getString("idname") +",appname,projectname) values(?,?,?)";
                         PreparedStatement preparedStmt = connection.prepareStatement(query1);
+                        preparedStmt.setString(1, n);
+                        preparedStmt.setString(2, app_name);
+                        preparedStmt.setString(3, project_name);
                         preparedStmt.execute();
-                        String query10 = "SELECT max(id) from intake_archivalrequirement where appname='" + app_name + "'";
-                        Statement st10 = connection.createStatement();
-                        ResultSet rs10 = st10.executeQuery(query10);
+                        String query10 = "SELECT max(id) from intake_archivalrequirement where appname=?";
+                        PreparedStatement st10 = connection.prepareStatement(query10);
+        				st10.setString(1, app_name);
+                        ResultSet rs10 = st10.executeQuery();
                         if (rs10.next())
                             ref_id = rs10.getString(1);
 
@@ -117,8 +129,10 @@ public class ArchivalRequirements extends HttpServlet {
                             n = "no";
 
 
-                        String query2 = "update intake_archivalrequirement set " + rs.getString("idname") + " = '" + n + "' where id = '" + ref_id + "'";
+                        String query2 = "update intake_archivalrequirement set " + rs.getString("idname") + "=? where id = ?";
                         PreparedStatement preparedStmt1 = connection.prepareStatement(query2);
+                        preparedStmt1.setString(1, n);
+                        preparedStmt1.setString(2,ref_id);
                         preparedStmt1.execute();
                     }
 

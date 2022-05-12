@@ -1,6 +1,7 @@
 package governance.wave.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,9 +56,10 @@ public class filterWaveList {
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
-		String selectWave = "select * from governance_info where column_name='apps' and value like '%"+appName+"%'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectWave);
+		String selectWave = "select * from governance_info where column_name='apps' and value like ?";
+		PreparedStatement st = con.prepareStatement(selectWave);
+		st.setString(1, "%" + appName + "%");
+		ResultSet rs = st.executeQuery();
 		
 		if(rs.next())
 		{
@@ -84,17 +86,19 @@ public class filterWaveList {
 	{
 		JsonArray jsonArray = new JsonArray();
 		try {
-	    String selectPhase = "select * from phase_info where column_name='waves' and phaseName='"+phaseName+"';";
-	    Statement st1 = con.createStatement();
-	    ResultSet rs1 = st1.executeQuery(selectPhase);
+	    String selectPhase = "select * from phase_info where column_name='waves' and phaseName=?;";
+	    PreparedStatement st1 = con.prepareStatement(selectPhase);
+		st1.setString(1, phaseName);
+		ResultSet rs1 = st1.executeQuery();
 	    if(rs1.next()) {
 		
 	    String waves[] = rs1.getString("value").split(",");	
 	    for(String wave:waves) {
-	    String selectWave = "select * from governance_info where column_name='waveName' and value = '"+wave+"';";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectWave);
-	
+	    String selectWave = "select * from governance_info where column_name='waveName' and value = ?;";
+	    PreparedStatement st = con.prepareStatement(selectWave);
+		st.setString(1, wave);
+		ResultSet rs = st.executeQuery();
+
 		while(rs.next())
 		{
 			
@@ -128,10 +132,11 @@ public class filterWaveList {
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
-		String selectWave = "select * from governance_info where column_name='waveName' and value = '"+waveName+"'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectWave);
-		
+		String selectWave = "select * from governance_info where column_name='waveName' and value = ?";
+		PreparedStatement st = con.prepareStatement(selectWave);
+		st.setString(1, waveName);
+		ResultSet rs = st.executeQuery();
+
 		if(rs.next())
 		{
 			JsonObject jsonObject = new JsonObject();

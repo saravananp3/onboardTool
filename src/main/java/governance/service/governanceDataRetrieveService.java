@@ -101,9 +101,10 @@ public class governanceDataRetrieveService {
 			{
 			WaveId=UUID.randomUUID().toString();
 			//checking the wave id in Governance_Info
-			String selectQuery = "select * from Governance_Info where waveId='"+WaveId+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from Governance_Info where waveId=?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, WaveId);
+			ResultSet rs = st.executeQuery();
 			if(!rs.next())
 			checkWaveId =false;
 			}
@@ -150,9 +151,10 @@ public class governanceDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
-			String selectQuery = "select * from governance_Info where waveId = '"+waveId+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from governance_Info where waveId = ?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, waveId);
+			ResultSet rs = st.executeQuery();
 			while(rs.next())
 			{
 			JsonObject jsonObject = new JsonObject();
@@ -189,9 +191,10 @@ public class governanceDataRetrieveService {
 			while(rs.next())
 			{
 				checkApp =true;
-				String selectQuery1 = "select * from governance_info where column_name='apps' and value like '%"+rs.getString("value")+"%'";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(selectQuery1);
+				String selectQuery1 = "select * from governance_info where column_name='apps' and value like ?";
+				PreparedStatement st1 = con.prepareStatement(selectQuery1);
+				st1.setString(1, "%" + rs.getString("value") + "%");
+				ResultSet rs1 = st1.executeQuery();
 				if(!rs1.next())
 				  appNames+=rs.getString("value")+",";	
 			  rs1.close();
@@ -202,10 +205,11 @@ public class governanceDataRetrieveService {
 			if(!appNames.equals(""))
 				appNames=appNames.substring(0,appNames.length()-1);
 			
-			String updateQuery ="update governance_info_details set options ='"+appNames+"' where column_name = 'apps';";
-			Statement st2 = con.createStatement();
-			st2.executeUpdate(updateQuery);
-			st2.close();
+			String updateQuery ="update governance_info_details set options =? where column_name = 'apps';";
+			 PreparedStatement st2 = con.prepareStatement(updateQuery);
+			 st2.setString(1, appNames);
+			 st2.execute();
+			 st2.close();
 			System.out.println("appNames : "+appNames);
 			
 		}
@@ -226,9 +230,10 @@ public class governanceDataRetrieveService {
 			while(rs.next())
 			{
 				checkApp =true;
-				String selectQuery1 = "select * from governance_info where column_name='apps' and value like '%"+rs.getString("value")+"%'";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(selectQuery1);
+				String selectQuery1 = "select * from governance_info where column_name='apps' and value like ?";
+				PreparedStatement st1 = con.prepareStatement(selectQuery1);
+				st1.setString(1, "%" + rs.getString("value") + "%");
+				ResultSet rs1 = st1.executeQuery();
 				if(!rs1.next())
 					appNames += rs.getString("value")+",";	
 			  rs1.close();
@@ -238,9 +243,10 @@ public class governanceDataRetrieveService {
 			st.close();
 			System.out.println("appNames : "+appNames);
 
-			String selectWaves = "select * from governance_info where column_name='apps' and waveId='"+waveId+"'";
-			Statement st3 = con.createStatement();
-			ResultSet rs3 =st3.executeQuery(selectWaves);
+			String selectWaves = "select * from governance_info where column_name='apps' and waveId=?";
+			PreparedStatement st3 = con.prepareStatement(selectWaves);
+			st3.setString(1, waveId);
+			ResultSet rs3 = st3.executeQuery();
 			if(rs3.next())
 			{
 				String app = ((rs3.getString("value").equals(""))?"":rs3.getString("value")+",");
@@ -249,10 +255,12 @@ public class governanceDataRetrieveService {
 			if(!appNames.equals(""))
 				appNames=appNames.substring(0,appNames.length()-1);
 			
-			String updateQuery ="update governance_info set options ='"+appNames+"' where column_name = 'apps' and waveId='"+waveId+"';";
-			Statement st2 = con.createStatement();
-			st2.executeUpdate(updateQuery);
-			st2.close();
+			String updateQuery ="update governance_info set options =? where column_name = 'apps' and waveId=?;";
+			PreparedStatement st2 = con.prepareStatement(updateQuery);
+			 st2.setString(1, appNames);
+			 st2.setString(2,waveId);
+			 st2.execute();
+			 st2.close();
 			System.out.println("appNames : "+appNames);
 			
 		}

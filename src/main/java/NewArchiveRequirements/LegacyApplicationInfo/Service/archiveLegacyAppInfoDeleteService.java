@@ -53,17 +53,21 @@ public class archiveLegacyAppInfoDeleteService {
 			ArrayList<String> arr_mandatory_split = new ArrayList<String>();
 			ArrayList<String> arr_value_split = new ArrayList<String>();
 
-			String select_query = "select max(seq_no) from archivereq_legacyapp_info where Id = '"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(select_query);
+			String select_query = "select max(seq_no) from archivereq_legacyapp_info where Id = ? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(select_query);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+			
 			if (rs.next()) {
 				seqmax = Integer.parseInt(rs.getString(1));
 			}
             st.close();
             rs.close();
-			String query = "select * from archivereq_legacyapp_info where Id = '"+Id+"' order by seq_no;";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(query);
+			String query = "select * from archivereq_legacyapp_info where Id = ? order by seq_no;";
+			PreparedStatement st1 = con.prepareStatement(query);
+			st1.setString(1, Id);
+			ResultSet rs1 = st1.executeQuery();
+			
 			while (rs1.next()) {
 				arr_seqmax.add(rs1.getInt(1));
 				arr_id.add(rs1.getString(2));
@@ -106,10 +110,12 @@ public class archiveLegacyAppInfoDeleteService {
 				}
 			}
 
-			String delete_query = "delete from archivereq_legacyapp_info where id='"+Id+"';";
-			Statement st2 = con.createStatement();
-			st2.executeUpdate(delete_query);
+			String delete_query = "delete from archivereq_legacyapp_info where id=?;";
+			PreparedStatement st2 = con.prepareStatement(delete_query);
+			st2.setString(1,Id);
+			st2.executeUpdate();	
 			st2.close();
+	
 			for (int j = 0; j < seqmax - 1; j++) {
 				String insert_query = "insert into archivereq_legacyapp_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 				PreparedStatement preparedStatement1 = con.prepareStatement(insert_query);
@@ -158,9 +164,12 @@ public class archiveLegacyAppInfoDeleteService {
 		String column = "";
 		
 		try {
-			String selectQuery ="select * from archivereq_legacyapp_info where id='"+Id+"' and seq_no ='"+seqNum+"';";
-			Statement st1 = con.createStatement();
-			ResultSet rs = st1.executeQuery(selectQuery);
+			String selectQuery ="select * from archivereq_legacyapp_info where id=? and seq_no =?;";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, Id);
+			st1.setInt(2, seqNum);
+			ResultSet rs = st1.executeQuery();
+			
 			if(rs.next())
 			{
 				column=rs.getString("column_name");
@@ -187,9 +196,11 @@ public class archiveLegacyAppInfoDeleteService {
   	  
   		  try {
   		  
-     	      String SelectQuery ="Select * from archivereq_legacyapp_info where id='"+Id+"' order by seq_no";
-     	      Statement st = con.createStatement();
-     	      ResultSet rs = st.executeQuery(SelectQuery);
+     	      String SelectQuery ="Select * from archivereq_legacyapp_info where id=? order by seq_no";
+     	      PreparedStatement st = con.prepareStatement(SelectQuery);
+ 			  st.setString(1, Id);
+ 			  ResultSet rs = st.executeQuery();
+     
      	      String startStr = "LegacyAddInfo";
      	      while(rs.next())
      	      {
@@ -201,10 +212,13 @@ public class archiveLegacyAppInfoDeleteService {
      	    		  if(!seqnum.equals(append_seq_num))
      	    		  {
      	    			String updateColumnName = startStr+seqnum;
-     	    			String UpdateQuery = "Update archivereq_legacyapp_info set column_name ='"+updateColumnName+"' where id = '"+Id+"' and seq_no='"+seqnum+"';";  
-     	    			Statement st1 = con.createStatement();
-     	       	        st1.executeUpdate(UpdateQuery);
-     	       	        st1.close();
+     	    			String UpdateQuery = "Update archivereq_legacyapp_info set column_name =? where id = ? and seq_no=?;";  
+     	    			PreparedStatement st1 = con.prepareStatement(UpdateQuery);
+     	 	            st1.setString(1, updateColumnName);
+     	 	            st1.setString(2, Id);
+     	 	            st1.setString(3, seqnum);
+     	 	            st1.execute();
+     	    			st1.close();
      	    		  }
      	    	  }
      	      }

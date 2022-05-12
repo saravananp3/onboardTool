@@ -34,9 +34,13 @@ public class archiveReqApprovalSaveService {
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
-		   String updateQuery = "update ArchiveReq_Roles_Info set intakeApproval ='"+approvalStatus+"'  where oppid='"+Id+"' and seq_no='"+seqNum+"';";
-		   Statement st =  con.createStatement();
-		   st.executeUpdate(updateQuery);
+		   String updateQuery = "update ArchiveReq_Roles_Info set intakeApproval =?  where oppid=? and seq_no=?;";
+		   PreparedStatement st = con.prepareStatement(updateQuery);
+	          st.setString(1, approvalStatus);
+	          st.setString(2, Id);
+	          st.setInt(3, seqNum);
+	          st.execute();
+		 
 		   statusFlag =true;
 		   jsonObject.addProperty("statusFlag",statusFlag);
 		   checkAndUpdateOverallApproval();
@@ -54,23 +58,29 @@ public class archiveReqApprovalSaveService {
 		try
 		{
 			int seq_num = getSequenceNumber()+1;
-			String checkQuery = "select * from ArchiveRequirements_Stake_Holder_Info where oppId='"+Id+"'";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(checkQuery);
+			String checkQuery = "select * from ArchiveRequirements_Stake_Holder_Info where oppId=?";
+			PreparedStatement st1 = con.prepareStatement(checkQuery);
+			st1.setString(1, Id);
+			ResultSet rs1 = st1.executeQuery();
+		
 			while(rs1.next())
 			{
 				if(!rs1.getString("ArchiveRequirementApproval").equals(APPROVAL_CONSTANT.APPROVED))
 					checkOverallStatus = false;
 			}
 			
-			String selectQuery = "select * from module_approval_info where oppId='"+Id+"' and moduleName = 'Archive_Requirement';";
-			Statement st2 = con.createStatement();
-			ResultSet rs2 = st2.executeQuery(selectQuery);
+			String selectQuery = "select * from module_approval_info where oppId=? and moduleName = 'Archive_Requirement';";
+			PreparedStatement st2 = con.prepareStatement(selectQuery);
+			st2.setString(1, Id);
+			ResultSet rs2 = st2.executeQuery();
+		
 			if(rs2.next()) {
-				String UpdateQuery ="update Module_Approval_Info set overAllApproval ='"+checkOverallStatus+"' where oppid='"+Id+"' and moduleName = 'Archive_Requirement' ";
-	            Statement st3 = con.createStatement();
-	            st3.executeUpdate(UpdateQuery);
-	            st3.close();
+				String UpdateQuery ="update Module_Approval_Info set overAllApproval =? where oppid=? and moduleName = 'Archive_Requirement' ";
+				PreparedStatement st3 = con.prepareStatement(UpdateQuery);
+		          st3.setString(1, Boolean.toString(checkOverallStatus));
+		          st3.setString(2, Id);
+		          st3.execute();
+				  st3.close();
 			}
 			else {
 				String insertQuery = "insert into Module_Approval_Info (seq_no, OppId, moduleName, overAllApproval)" + "values (?, ?, ?, ?);";
@@ -97,9 +107,10 @@ public class archiveReqApprovalSaveService {
     	int seq_num =0;
 		try
 		{
-		String MaxSeqNumQuery = "select max(seq_no) from Module_Approval_Info where OppId ='"+Id+"'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(MaxSeqNumQuery);
+		String MaxSeqNumQuery = "select max(seq_no) from Module_Approval_Info where OppId =?";
+		PreparedStatement st = con.prepareStatement(MaxSeqNumQuery);
+		st.setString(1, Id);
+		ResultSet rs = st.executeQuery();
 		if(rs.next())
 		seq_num = rs.getInt(1);
 		rs.close();

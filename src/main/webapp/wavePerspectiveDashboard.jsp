@@ -510,9 +510,12 @@ color:#fff;
             {
                 if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Logged in"))
                 {
-                    Statement stmtt = con.createStatement();
-                    String queryy = "update visits set count=count+1,time='"+strTime+"' where uname='"+username+"' and module='Logged in'  and date ='"+strDate+"'";
-                    int count = stmtt.executeUpdate(queryy);
+                	String queryy = "update visits set count=count+1,time=? where uname=? and module='Logged in'  and date =?";
+                    PreparedStatement stmtt = con.prepareStatement(queryy);
+        			stmtt.setString(1, strTime);
+        			stmtt.setString(2, username);
+        			stmtt.setString(3, strDate);
+                    int count = stmtt.executeUpdate();
                     flag=0;
                     break;
                 }

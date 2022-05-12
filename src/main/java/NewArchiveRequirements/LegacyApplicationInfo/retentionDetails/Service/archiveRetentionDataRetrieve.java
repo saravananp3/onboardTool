@@ -47,9 +47,12 @@ public class archiveRetentionDataRetrieve {
 		{
 			String contentInfo = "";
 			
-			String selectQuery ="select * from Archive_Retention_Content_Info where OppId ='"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from Archive_Retention_Content_Info where OppId =?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1,Id);
+			ResultSet rs = st.executeQuery();
+			
+			
 			if(!rs.next())
 			{
 				String insertQuery = "insert into `Archive_Retention_Content_Info` (OppId,app_name,prjName,contentInfo) values(?, ?, ?, ?);";
@@ -63,9 +66,10 @@ public class archiveRetentionDataRetrieve {
 			    preparedStatement1.execute();
 			    preparedStatement1.close();
 			}
-			String selectQuery1 ="select * from Archive_Retention_Content_Info where OppId ='"+Id+"'";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectQuery1);
+			String selectQuery1 ="select * from Archive_Retention_Content_Info where OppId =?;";
+			PreparedStatement st1 = con.prepareStatement(selectQuery1);
+			st1.setString(1, Id);
+			ResultSet rs1 = st1.executeQuery();
 			if(rs1.next())
 				contentInfo=rs1.getString("contentInfo");
 			jsonObj.addProperty("ContentInfo",contentInfo);
@@ -80,9 +84,11 @@ public class archiveRetentionDataRetrieve {
 	{
 		try
 		{
-			String selectQuery = "select * from Archive_Retention_Info where OppId = '"+Id+"' order by seq_no";
-			Statement st = con.createStatement();
-			ResultSet rs =  st.executeQuery(selectQuery);
+			String selectQuery = "select * from Archive_Retention_Info where OppId = ? order by seq_no";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1,Id);
+			ResultSet rs = st.executeQuery();
+			
 			if(!rs.next())
 			{
 				String TempTable ="select * from Archive_Retention_Template_details;";
@@ -118,9 +124,11 @@ public class archiveRetentionDataRetrieve {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
-			String selectQuery ="select * from Archive_Retention_Info where OppId ='"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs =  st.executeQuery(selectQuery);
+			String selectQuery ="select * from Archive_Retention_Info where OppId =? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1,Id);
+			ResultSet rs = st.executeQuery();
+			
 			System.out.println();
 			if(rs.next())
 			{

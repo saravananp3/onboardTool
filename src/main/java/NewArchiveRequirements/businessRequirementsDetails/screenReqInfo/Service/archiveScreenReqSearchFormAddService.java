@@ -58,9 +58,10 @@ public class archiveScreenReqSearchFormAddService {
 			ArrayList<String> requiredFieldRes = new ArrayList<String>();
 			ArrayList<String> additionalInfoRes = new ArrayList<String>();
 
-			String selectQuery = "select * from Archive_ScreenReq_SearchForm where oppId = '"+Id+"' order by seq_no";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from Archive_ScreenReq_SearchForm where oppId = ? order by seq_no";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			while(rs.next())
 			{
 				seq_no.add(rs.getInt("seq_no"));
@@ -116,9 +117,10 @@ public class archiveScreenReqSearchFormAddService {
 			  System.out.println(seq_noRes.get(i)+" "+reqIdRes.get(i)+" "+searchFormNamesRes.get(i)+" "+searchFieldNamesRes.get(i)+" "+fieldFormatRes.get(i)+" ");	
 			}
 			
-			String deleteQuery ="delete from  Archive_ScreenReq_SearchForm where oppId='"+Id+"';";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			String deleteQuery ="delete from  Archive_ScreenReq_SearchForm where oppId=?;";
+			PreparedStatement st1=con.prepareStatement(deleteQuery);
+			st1.setString(1, Id);
+			st1.executeUpdate();
 			st1.close();
 			
 			for(int i=0;i<seq_noRes.size();i++)

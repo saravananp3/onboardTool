@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -84,8 +85,7 @@ public class update_view extends HttpServlet {
         {
         	DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            Statement st=connection.createStatement();
-          for(int a=0;a<200;a++){
+            for(int a=0;a<200;a++){
         	  String seq_num=seqnum[a];
         	  String nam=name[a];
           String mem_ass=mem_as[a];
@@ -96,9 +96,20 @@ public class update_view extends HttpServlet {
           String hrs=hr[a];
           String pln_hrs=plan_hrs[a];
  
-      st.executeUpdate("update ArchiveExecution_Details set name='"+nam+"',mem_ass='"+mem_ass+"',act_srt_date='"+act_srt_date+"',act_end_date='"+act_end_date+"',pln_srt_date='"+pln_srt_date+"',pln_end_date='"+pln_end_date+"',hours='"+hrs+"',planned_hrs='"+pln_hrs+"' where seq_num='"+seq_num+"'");
-  	
-           }
+      String UpdateQuery="update ArchiveExecution_Details set name=?,mem_ass=?,act_srt_date=?,act_end_date=?,pln_srt_date=?,pln_end_date=?,hours=?,planned_hrs=? where seq_num=?";
+      PreparedStatement st = connection.prepareStatement(UpdateQuery);
+      st.setString(1, nam);
+      st.setString(2, mem_ass);
+      st.setString(3, act_srt_date);
+      st.setString(4, act_end_date);
+      st.setString(5, pln_srt_date);
+      st.setString(6, pln_end_date);
+      st.setString(7, hrs);
+      st.setString(8, pln_hrs);
+      st.setString(9, seq_num);
+      st.execute();
+           
+          }
           
           connection.close();
         }

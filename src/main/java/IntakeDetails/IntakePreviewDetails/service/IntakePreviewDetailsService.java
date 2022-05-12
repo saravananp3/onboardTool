@@ -1,6 +1,7 @@
 package IntakeDetails.IntakePreviewDetails.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -153,9 +154,11 @@ public class IntakePreviewDetailsService {
 		JsonObject approverId = null;
 		try {
 		   	approverId = new JsonObject();
-		   	String selectQuery = "select * from intake_stake_holder_info  where oppId='"+oppId+"' and username ='"+username+"'";
-		   	Statement st = con.createStatement();
-		   	ResultSet rs = st.executeQuery(selectQuery);
+		   	String selectQuery = "select * from intake_stake_holder_info  where oppId=? and username =?";
+		   	PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, oppId);
+			st.setString(2, username);
+			ResultSet rs = st.executeQuery();
 		   	if(rs.next()) {
 		   		approverId.addProperty("a_id", rs.getString("approvalId"));
 		   		EmailApprovalService mailService = new EmailApprovalService(oppId, "", MODULE_NAME.INTAKE_MODULE);
@@ -175,9 +178,10 @@ public class IntakePreviewDetailsService {
 		try
 		{
 			boolean checkOverallApproval = false;
-			String SelectQuery="Select * from module_approval_info where oppid='"+Id+"' and moduleName='Intake' ";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectQuery);
+			String SelectQuery="Select * from module_approval_info where oppid=? and moduleName='Intake' ";
+			PreparedStatement st = con.prepareStatement(SelectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 			{
 				checkOverallApproval = Boolean.parseBoolean(rs.getString(4));

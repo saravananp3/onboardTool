@@ -23,7 +23,7 @@ public class governanceSaveService {
 	JsonArray jsonArray;
 	String waveName;
 	String oppName;
-        String tableName;
+    String tableName;
 	String idWhereCond;
 	String idAndCond;
 	String operation;
@@ -78,10 +78,10 @@ public class governanceSaveService {
 		String Apps = "";
 		try
 		{
-			String selectPreviousApps = "select * from governance_info where column_name='apps' and waveId='"+id+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectPreviousApps);
-			
+			String selectPreviousApps = "select * from governance_info where column_name='apps' and waveId=?;";
+			PreparedStatement st = con.prepareStatement(selectPreviousApps);
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 			{
 				 Apps = rs.getString("Value");
@@ -103,10 +103,10 @@ public class governanceSaveService {
 		try
 		{
 			String oppNames = "";
-			String selectQuery = "select * from governance_info where waveName = '"+waveName+"' and column_name='apps';";
-			Statement st1 =con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from governance_info where waveName = ? and column_name='apps';";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, waveName);
+			ResultSet rs1 = st1.executeQuery();
 			if(rs1.next())
 			oppNames = rs1.getString("value");
 			rs1.close();
@@ -115,10 +115,12 @@ public class governanceSaveService {
 				oppNames=oppName;
 			else
 			   oppNames += ","+oppName;
-			String updateQuery = "update governance_info set value='"+oppNames+"' where column_name='apps' and waveName = '"+waveName+"';";
-            Statement st = con.createStatement();
-            st.executeUpdate(updateQuery);
-            st.close();
+			String updateQuery = "update governance_info set value=? where column_name='apps' and waveName = ?;";
+			PreparedStatement st = con.prepareStatement(updateQuery);
+	          st.setString(1, oppNames);
+	          st.setString(2, waveName);
+	          st.execute();
+	          st.close();
             
             statusFlag = true;
 		}
@@ -141,10 +143,13 @@ public class governanceSaveService {
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
 				
-	            String updateQuery = "update "+tableName+" set value='"+value+"',waveName='"+waveName+"' where column_name='"+name+"' "+idAndCond+";";
-	            Statement st = con.createStatement();
-                st.executeUpdate(updateQuery);
-	            st.close();
+	            String updateQuery = "update "+tableName+" set value=?,waveName=? where column_name=? "+idAndCond+";";
+	            PreparedStatement st = con.prepareStatement(updateQuery);
+		          st.setString(1, value);
+		          st.setString(2, waveName);
+		          st.setString(3, name);
+		          st.execute();
+	              st.close();
 	            
 			}
 			String waveName = jsonArray.get(1).getAsJsonObject().get("Value").getAsString();
@@ -199,9 +204,10 @@ public class governanceSaveService {
 	{
 		String waveId="";
 		try {
-			String selectQuery = "select * from governance_info where column_name ='waveName' and value ='"+waveName+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from governance_info where column_name ='waveName' and value =?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+	          st.setString(1, waveName);
+	        ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 				waveId = rs.getString("waveId");
 			}
@@ -269,9 +275,11 @@ public class governanceSaveService {
 		{
 			if(operation.equals("NewPhase"))
 			{
-			String selectQuery = "select * from governance_info where column_name='"+columnName+"' and value='"+value+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from governance_info where column_name=? and value=?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, columnName);
+			st.setString(2, value);
+			ResultSet rs = st.executeQuery();
 			System.out.println("Query : "+selectQuery);
 			if(rs.next())
 			{
@@ -283,9 +291,11 @@ public class governanceSaveService {
 			}
 			else if(operation.equals("EditPhase"))
 			{
-				String selectQuery = "select * from governance_info where column_name='"+columnName+"' and value='"+value+"';";
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(selectQuery);
+				String selectQuery = "select * from governance_info where column_name=? and value=?;";
+				PreparedStatement st = con.prepareStatement(selectQuery);
+				st.setString(1, columnName);
+				st.setString(2, value);
+				ResultSet rs = st.executeQuery();
 				System.out.println("Query : "+selectQuery);
 				while(rs.next())
 				{

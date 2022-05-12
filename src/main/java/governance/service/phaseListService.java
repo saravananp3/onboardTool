@@ -1,6 +1,7 @@
 package governance.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,18 +54,20 @@ public class phaseListService {
         String phaseApps = "";
 		try
 		{
-			String selectWaves = "select * from phase_info where phaseName = '"+phaseName+"' and column_name='waves'";
-		    Statement st = con.createStatement();
-		    ResultSet rs = st.executeQuery(selectWaves);
+			String selectWaves = "select * from phase_info where phaseName = ? and column_name='waves'";
+			PreparedStatement st = con.prepareStatement(selectWaves);
+			st.setString(1, phaseName);
+			ResultSet rs = st.executeQuery();
 		    if(rs.next())
 		    {
 		    	String waves[] =rs.getString("value").split(",");
 		    	
 		    	for(String wave:waves)
 		    	{
-		    		String selectApps = "select * from governance_info where waveName = '"+wave+"' and column_name='apps'";
-				    Statement st1 = con.createStatement();
-				    ResultSet rs1 = st1.executeQuery(selectApps);
+		    		String selectApps = "select * from governance_info where waveName = ? and column_name='apps'";
+		    		PreparedStatement st1 = con.prepareStatement(selectApps);
+					st1.setString(1, wave);
+					ResultSet rs1 = st1.executeQuery();
 				    if(rs1.next())
 				    {
 				    	String apps[] = rs1.getString("value").split(","); 

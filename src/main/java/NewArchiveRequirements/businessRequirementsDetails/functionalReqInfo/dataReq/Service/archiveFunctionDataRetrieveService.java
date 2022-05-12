@@ -49,9 +49,11 @@ public class archiveFunctionDataRetrieveService {
 	{
 		try
 		{
-			String selectQuery = "select * from "+tableName+" where oppId = '"+Id+"' order by seq_no";
-			Statement st = con.createStatement();
-			ResultSet rs =  st.executeQuery(selectQuery);
+			String selectQuery = "select * from "+tableName+" where oppId = ? order by seq_no";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+			
 			if(!rs.next())
 			{
 				String TempTable ="select * from "+tempTableName+";";
@@ -87,10 +89,10 @@ public class archiveFunctionDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
-			String selectQuery ="select * from "+tableName+" where OppId ='"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs =  st.executeQuery(selectQuery);
-			
+			String selectQuery ="select * from "+tableName+" where OppId =? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 			{
 			JsonObject jsonObj =new JsonObject();

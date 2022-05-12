@@ -21,9 +21,10 @@ public class ApproverRoles_Service {
 			DBconnection dBconnection = new DBconnection();
 			Connection con = (Connection) dBconnection.getConnection();
 			
-			String SelectQuery = "SELECT value FROM opportunity_info where column_name ='request_type' and id='"+Id+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectQuery);
+			String SelectQuery = "SELECT value FROM opportunity_info where column_name ='request_type' and id=?";
+			PreparedStatement st = con.prepareStatement(SelectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
 				
@@ -53,9 +54,11 @@ public class ApproverRoles_Service {
 			{
 				DBconnection dBconnection = new DBconnection();
 				Connection con = (Connection) dBconnection.getConnection();
-				String selectQuery = "select * from module_approval_info where OppId='"+Id+"' and moduleName='"+moduleName+"';";
-			    Statement st = con.createStatement();
-			    ResultSet rs = st.executeQuery(selectQuery);
+				String selectQuery = "select * from module_approval_info where OppId=? and moduleName=?;";
+				PreparedStatement st = con.prepareStatement(selectQuery);
+				st.setString(1, Id);
+				st.setString(2, moduleName);
+			    ResultSet rs = st.executeQuery();
 			    if(rs.next())
 			    checkOverAllStatus = rs.getBoolean("overAllApproval");
 			    

@@ -23,9 +23,10 @@ DBconnection dBconnection =null;
     public void archiveReqRolesResponseDefaultRecords() {
          try {
              String oppName = "";
-             String QueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName' and Id = '"+Id+"';";
-             Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery(QueryAppName);
+             String QueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName' and Id = ?;";
+             PreparedStatement st = con.prepareStatement(QueryAppName);
+ 			 st.setString(1, Id);
+ 			 ResultSet rs = st.executeQuery();
              if(rs.next())
                  oppName = rs.getString("value");
              st.close();
@@ -64,9 +65,10 @@ DBconnection dBconnection =null;
     public JsonArray archiveReqIntroRolesResponseDataRetrieve() {
         JsonArray jsonArray = new JsonArray();
         try {
-             String selectQuery1 = "select * from ArchiveReq_Roles_Info where OppId = '"+Id+"';";
-             Statement st2 = con.createStatement();
-             ResultSet rs2 = st2.executeQuery(selectQuery1);
+             String selectQuery1 = "select * from ArchiveReq_Roles_Info where OppId = ?;";
+             PreparedStatement st2 = con.prepareStatement(selectQuery1);
+ 			 st2.setString(1, Id);
+ 			 ResultSet rs2 = st2.executeQuery();
              if(!rs2.next()) {
                  archiveReqRolesResponseDefaultRecords();
              }
@@ -83,9 +85,10 @@ DBconnection dBconnection =null;
     public JsonArray getTableInfo() {
         JsonArray jsonArray = new JsonArray();
         try {
-             String selectQuery1 = "select * from ArchiveReq_Roles_Info where OppId = '"+Id+"' order by seq_no;";
-             Statement st2 = con.createStatement();
-             ResultSet rs2 = st2.executeQuery(selectQuery1);
+             String selectQuery1 = "select * from ArchiveReq_Roles_Info where OppId = ? order by seq_no;";
+             PreparedStatement st2 = con.prepareStatement(selectQuery1);
+ 			 st2.setString(1, Id);
+ 			 ResultSet rs2 = st2.executeQuery();
              while(rs2.next()) {
                  JsonObject jsonObject = new JsonObject();
                  jsonObject.addProperty("seq_no", rs2.getInt("seq_no"));
@@ -113,10 +116,12 @@ DBconnection dBconnection =null;
         boolean checkStatus = true;
         try
         {
-            String roleQuery = "select * from archiverequirements_stake_holder_info where OppId='"+Id+"' and role='"+Role+"';";
-            Statement st = con.createStatement();
+            String roleQuery = "select * from archiverequirements_stake_holder_info where OppId=? and role=?;";
+            PreparedStatement st = con.prepareStatement(roleQuery);
+			st.setString(1, Id);
+			st.setString(2, Role);
+			ResultSet rs = st.executeQuery();
             System.out.println(roleQuery);
-            ResultSet rs = st.executeQuery(roleQuery);
             if(rs.next())
             {
                 if(rs.getString("ArchiveRequirementApproval").equals(APPROVAL_CONSTANT.DECISION_PENDING))

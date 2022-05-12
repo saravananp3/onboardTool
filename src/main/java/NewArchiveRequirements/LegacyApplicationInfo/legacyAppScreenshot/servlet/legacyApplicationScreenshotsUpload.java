@@ -55,9 +55,11 @@ public class legacyApplicationScreenshotsUpload extends HttpServlet {
 	 int seq_num = 1;
 	 for(FileItem item : multiFiles)
 	 {
-		 String selectQuery ="SELECT * FROM `Legacy_Application_Screenshot` WHERE appId='"+Id+"' and seq_num ='"+seq_num+"'";
-		 Statement st = con.createStatement();
-		 ResultSet rs = st.executeQuery(selectQuery);
+		 String selectQuery ="SELECT * FROM `Legacy_Application_Screenshot` WHERE appId=? and seq_num =?";
+		 PreparedStatement st = con.prepareStatement(selectQuery);
+		 st.setString(1, Id);
+		 st.setInt(2, seq_num);
+		 ResultSet rs = st.executeQuery();
 		 if(rs.next()) {
 			 String insertQuery = "UPDATE `Legacy_Application_Screenshot` SET doc = ?, File_name = ? WHERE appId = ? AND  seq_num = ?";
 			 FileInputStream is  = (FileInputStream) item.getInputStream();

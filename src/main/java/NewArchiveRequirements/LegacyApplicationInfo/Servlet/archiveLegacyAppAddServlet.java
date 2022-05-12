@@ -2,6 +2,7 @@ package NewArchiveRequirements.LegacyApplicationInfo.Servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -74,10 +75,12 @@ public class archiveLegacyAppAddServlet extends HttpServlet {
                 jsonobject.addProperty("OptionCheckExistance", true);
             }
 
-            String select_lab = "select * from archivereq_legacyapp_info where Id = '"+Id+"' and  label_name = '"+label_name+"' ";
-            Statement st1=connection.createStatement();
-            ResultSet rs1=st1.executeQuery(select_lab);
-            
+            String select_lab = "select * from archivereq_legacyapp_info where Id = ? and  label_name = ? ";
+            PreparedStatement st1 = connection.prepareStatement(select_lab);
+			st1.setString(1, Id);
+			st1.setString(2, label_name);
+			ResultSet rs1 = st1.executeQuery();
+                     
             boolean labelcheck=false;
             
             if(rs1.next()){

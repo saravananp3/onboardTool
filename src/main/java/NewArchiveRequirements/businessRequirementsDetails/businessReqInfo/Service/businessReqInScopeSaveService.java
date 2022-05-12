@@ -54,10 +54,11 @@ public class businessReqInScopeSaveService {
 	private void updatebusinessreq(String columnname, String value) {
 		
 		try {
-			String UpdateQuery = "update BusinessReqinscope_Info set description=?  where OppId='"+Id+"' and req_in_scope='"+columnname+"'";
+			String UpdateQuery = "update BusinessReqinscope_Info set description=?  where OppId=? and req_in_scope=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, value);
-	          
+	          prestmt.setString(2, Id);
+	          prestmt.setString(3, columnname);
 	          prestmt.execute();
 	          prestmt.close();
 		}

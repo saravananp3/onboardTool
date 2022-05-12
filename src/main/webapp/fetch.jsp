@@ -40,10 +40,11 @@ ResultSet rs = st.executeQuery(query);
 while(rs.next())
 {
  
-String query1 = "select * from ArchiveExecution_Details where projects='"+rs.getString("projects")+"' and level=1";
-Statement st1 = connection.createStatement();
-ResultSet rs1 = st1.executeQuery(query1);
-
+String query1 = "select * from ArchiveExecution_Details where projects=? and level=1";
+PreparedStatement st1 = connection.prepareStatement(query1);
+String s=rs.getString("projects");
+st1.setString(1, s);
+ResultSet rs1 = st1.executeQuery();
 while(rs1.next())
 {
 if(rs1.getString("progressbar")=="100")
@@ -57,19 +58,26 @@ break;
 String status=rs1.getString("name");
 
 
-String query2 = "select seq_num from ArchiveExecution_Details where projects='"+rs.getString("projects")+"' and name='"+rs.getString("application")+"'";
-Statement st2 = connection.createStatement();
-ResultSet rs2 = st2.executeQuery(query2);
+String query2 = "select seq_num from ArchiveExecution_Details where projects=? and name=?";
+PreparedStatement st2 = connection.prepareStatement(query2);
+String s1=rs.getString("projects");
+String s2=rs.getString("application");
+st2.setString(1, s1);
+st2.setString(2, s2);
+ResultSet rs2 = st2.executeQuery();
 String seqnum="";
 if(rs2.next())
 seqnum=rs2.getString(1);
 
 System.out.println(seqnum);
-String query3="select * from ArchiveExecution_Details where projects='"+rs.getString("projects")+"' and seq_num>"+seqnum+" and seq_num<="+(Integer.parseInt(seqnum)+70)+" and level=3 order by seq_num";
+String query3="select * from ArchiveExecution_Details where projects=? and seq_num>? and seq_num<=? and level=3 order by seq_num";
 System.out.println(query3);
-Statement st3 = connection.createStatement();
-ResultSet rs3 = st3.executeQuery(query3);
-
+PreparedStatement st3 = connection.prepareStatement(query3);
+String s3=rs.getString("projects");
+st3.setString(1, s3);
+st3.setString(2, seqnum);
+st3.setInt(3, (Integer.parseInt(seqnum)+70));
+ResultSet rs3 = st3.executeQuery();
 String Stats="";
 while(rs3.next())
 {

@@ -7,6 +7,7 @@ import java.sql.Statement;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import onboard.DBconnection;
 
@@ -29,9 +30,10 @@ public class archiveScreenReqDataRetrieveService {
 		try {
 			boolean checkData = false;
 			JsonObject jsonObject = null;
-			String selectQuery = "select * from Archive_ScreenReq_Info where oppId='"+Id+"' order by seq_no;";
-            Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from Archive_ScreenReq_Info where oppId=? order by seq_no;";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+     		ResultSet rs = st.executeQuery();
 			while(rs.next())
 			{
 				checkData =  true;
@@ -65,9 +67,11 @@ public class archiveScreenReqDataRetrieveService {
 		try {
 			boolean checkData = false;
 			JsonObject jsonObject = null;
-			String selectQuery = "select * from Archive_ScreenReq_SearchForm where oppId='"+Id+"' order by seq_no;";
-            Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from Archive_ScreenReq_SearchForm where oppId=? order by seq_no;";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+     		ResultSet rs = st.executeQuery();
+			
 			while(rs.next())
 			{
 				checkData =  true;

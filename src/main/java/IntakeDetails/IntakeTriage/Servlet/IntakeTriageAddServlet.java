@@ -2,6 +2,7 @@ package IntakeDetails.IntakeTriage.Servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -91,10 +92,12 @@ public class IntakeTriageAddServlet extends HttpServlet {
                 }
             }*/
 
-            String select_lab = "select * from Triage_Info where Id = '"+ID+"' and label_name = '"+label_name+"' ";
-            Statement st1=connection.createStatement();
-            ResultSet rs1=st1.executeQuery(select_lab);
-            //String select_col = "select * from Triage_Info where Id = '"+ID+"' and column_name = '"+column_name+"' ";
+            String select_lab = "select * from Triage_Info where Id = ? and label_name = ? ";
+            PreparedStatement st1 = connection.prepareStatement(select_lab);
+			st1.setString(1, ID);
+			st1.setString(2, label_name);
+			ResultSet rs1 = st1.executeQuery();
+           //String select_col = "select * from Triage_Info where Id = '"+ID+"' and column_name = '"+column_name+"' ";
             //Statement st2=connection.createStatement();
             //ResultSet rs2=st2.executeQuery(select_col);
             boolean labelcheck=false;

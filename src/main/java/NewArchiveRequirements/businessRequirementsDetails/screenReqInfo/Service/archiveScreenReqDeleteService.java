@@ -49,10 +49,11 @@ public class archiveScreenReqDeleteService {
 				
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from archive_screenreq_info where OppId='"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from archive_screenreq_info where OppId=? order by seq_no;";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+     		ResultSet rs = st.executeQuery();
+						
 			while(rs.next())
 			{
 			   seqNum.add(rs.getString("seq_no"));
@@ -87,9 +88,10 @@ public class archiveScreenReqDeleteService {
 			}
 			
 			
-			String deleteQuery ="delete from archive_screenreq_info where OppId='"+Id+"';";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			String deleteQuery ="delete from archive_screenreq_info where OppId=?;";
+			PreparedStatement st1=con.prepareStatement(deleteQuery);
+			st1.setString(1, Id);
+			st1.executeUpdate();
 			st1.close();
 			
 			for(int i=0;i<seqNumRes.size();i++)
@@ -150,9 +152,12 @@ public class archiveScreenReqDeleteService {
 		try
 		{
 			int seq_no = 0; 
-			String selectQuery = "select min(seq_no) from Archive_ScreenReq_SearchForm where oppid='"+Id+"' and reqId='"+deleteReqId+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select min(seq_no) from Archive_ScreenReq_SearchForm where oppid=? and reqId=?;";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			st.setString(2, deleteReqId);
+     		ResultSet rs = st.executeQuery();
+			
 			if(rs.next())
 			{
 				seq_no = rs.getInt(1);

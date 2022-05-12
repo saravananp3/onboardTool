@@ -1,6 +1,7 @@
 package governance.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -85,10 +86,10 @@ JsonArray jsonArray = new JsonArray();
 		String phaseName = "";
 		try
 		{
-			String selectQuery  = "select * from phase_info where column_name = 'waves' and value like '%"+waveName+"%'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery  = "select * from phase_info where column_name = 'waves' and value like ?";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, "%"+waveName+"%");
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 				phaseName = rs.getString("phaseName");
 			
@@ -108,10 +109,11 @@ JsonArray jsonArray = new JsonArray();
 		String phaseName = "";
 		try
 		{
-			String selectQuery  = "select * from governance_info where column_name = 'apps' and value like '%"+appName+"%'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery  = "select * from governance_info where column_name = 'apps' and value like ?";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, "%"+appName+"%");
+			ResultSet rs = st.executeQuery();
+
 			if(rs.next())
 				phaseName = rs.getString("waveName");
 			
@@ -134,14 +136,16 @@ JsonArray jsonArray = new JsonArray();
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
-		  String selectWave = "select * from governance_info where column_name='apps' and value like '%"+appName+"%'";
-		  Statement st = con.createStatement();
-		  ResultSet rs = st.executeQuery(selectWave);
+		  String selectWave = "select * from governance_info where column_name='apps' and value like ?";
+		  PreparedStatement st=con.prepareStatement(selectWave);
+		  st.setString(1, "%"+appName+"%");
+		  ResultSet rs = st.executeQuery();
 		  if(rs.next()) {
 			  
-			  String selectPhase = "select * from phase_info where column_name = 'waves' and value like '%"+rs.getString("value")+"%' "; 
-			  Statement st1 = con.createStatement();
-			  ResultSet rs1 = st1.executeQuery(selectWave);
+			  String selectPhase = "select * from phase_info where column_name = 'waves' and value like ? "; 
+			  PreparedStatement st1=con.prepareStatement(selectWave);
+			  st1.setString(1, "%"+rs.getString("value")+"%");
+			  ResultSet rs1 = st1.executeQuery();
 			  if(rs1.next())
 			  {
 				  JsonObject jsonObject = new JsonObject();

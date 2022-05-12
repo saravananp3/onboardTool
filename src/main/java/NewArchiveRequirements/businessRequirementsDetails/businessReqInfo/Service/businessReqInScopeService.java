@@ -33,10 +33,11 @@ DBconnection dBconnection =null;
 			 
 			 String oppName = "";
 			 
-			 String AppNameQuery = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName' and Id = '"+Id+"';";
-			 Statement st = con.createStatement();
-			 ResultSet rs = st.executeQuery(AppNameQuery);
-			 
+			 String AppNameQuery = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName' and Id = ?";
+			 PreparedStatement st = con.prepareStatement(AppNameQuery);
+			 st.setString(1, Id);
+			 ResultSet rs = st.executeQuery();
+				 
 			 if(rs.next())
 				 oppName = rs.getString("value");
 			 
@@ -76,10 +77,11 @@ DBconnection dBconnection =null;
 		JsonArray jsonArray = new JsonArray();
 		
 		try {
-			 String selectQuery1 = "select * from BusinessReqinscope_Info where OppId = '"+Id+"';";
-			 Statement st2 = con.createStatement();
-			 ResultSet rs2 = st2.executeQuery(selectQuery1);
-			 
+			 String selectQuery1 = "select * from BusinessReqinscope_Info where OppId = ?;";
+			 PreparedStatement st2 = con.prepareStatement(selectQuery1);
+				st2.setString(1, Id);
+				ResultSet rs2 = st2.executeQuery();
+					 
 			 if(!rs2.next()) {
 				 BusinessReqServiceDefaultRecords();
 				 
@@ -100,10 +102,11 @@ DBconnection dBconnection =null;
 		JsonArray jsonArray = new JsonArray();
 		
 		try {
-			 String selectQuery1 = "select * from BusinessReqinscope_Info where OppId = '"+Id+"' order by seq_no;";
-			 Statement st2 = con.createStatement();
-			 ResultSet rs2 = st2.executeQuery(selectQuery1);
-			 
+			 String selectQuery1 = "select * from BusinessReqinscope_Info where OppId = ? order by seq_no;";
+			 PreparedStatement st2 = con.prepareStatement(selectQuery1);
+			 st2.setString(1, Id);
+			 ResultSet rs2 = st2.executeQuery();
+				 
 			 while(rs2.next()) {
 				 JsonObject jsonObject = new JsonObject();
 				 jsonObject.addProperty("seq_no", rs2.getInt(1));

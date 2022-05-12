@@ -44,11 +44,13 @@ public class archiveScreenReqSaveService {
 		  		String purpose=  jsonObj.get("purpose").getAsString();
 		  		String equivalent =  jsonObj.get("equivalent").getAsString();
 		  		
-			  String UpdateQuery = "update archive_screenreq_info set  screenDisplay =?, purpose=?, equivalentLegacy = ? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			  String UpdateQuery = "update archive_screenreq_info set  screenDisplay =?, purpose=?, equivalentLegacy = ? where OppId=? and seq_no=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, screenDisplay);
 	          prestmt.setString(2, purpose);
 	          prestmt.setString(3, equivalent);
+	          prestmt.setString(4, Id);
+	          prestmt.setString(5, seqNum);
 	          prestmt.execute();
 	          if(updateSearchFormFlag)
 	          updateSearchFormFlag=updateSearchFormName(screenDisplay,ReqId);
@@ -88,8 +90,7 @@ public class archiveScreenReqSaveService {
 		  		String dataRetrieval =  jsonObj.get("dataRetrieval").getAsString();
 		  		String requiredField=  jsonObj.get("requiredField").getAsString();
 		  		String additionalInfo =  jsonObj.get("additionalInfo").getAsString();
-		  		
-			  String UpdateQuery = "update archive_screenreq_searchform set  searchForm =?, searchField =?, fieldFormat=?, dataType =?, dataRetrieval = ?, requiredField=?, additionalInfo=?  where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+		  	  String UpdateQuery = "update archive_screenreq_searchform set  searchForm =?, searchField =?, fieldFormat=?, dataType =?, dataRetrieval = ?, requiredField=?, additionalInfo=?  where OppId=? and seq_no=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, searchForm);
 	          prestmt.setString(2, searchField);
@@ -98,6 +99,8 @@ public class archiveScreenReqSaveService {
 	          prestmt.setString(5, dataRetrieval);
 	          prestmt.setString(6, requiredField);
 	          prestmt.setString(7, additionalInfo);
+	          prestmt.setString(8, Id);
+	          prestmt.setString(9, seqNum);
 	          prestmt.execute();
 	          
 			}
@@ -121,15 +124,19 @@ public class archiveScreenReqSaveService {
 		try
 		{
 			int seqNum = 0;
-			String selectQuery = "select min(seq_no) from archive_screenreq_searchform where oppId='"+Id+"' and reqId = '"+reqId+"'";
-			Statement st =  con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select min(seq_no) from archive_screenreq_searchform where oppId=? and reqId = ?";
+			PreparedStatement st=con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			st.setString(2, reqId);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 				seqNum = rs.getInt(1);
 			
-			String UpdateQuery = "update archive_screenreq_searchform set  searchForm =?  where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			String UpdateQuery = "update archive_screenreq_searchform set  searchForm =?  where OppId=? and seq_no=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1,searchForm);
+	          prestmt.setString(2,Id);
+	          prestmt.setInt(3,seqNum);
 	          prestmt.execute();
 			statusFlag = true;
 		}

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import NewArchiveRequirements.ApprovalInfo.service.archiveReqApprovalDataRetrieveService;
 import NewArchiveRequirements.Introduction.service.ApproverRoles_Service;
@@ -162,9 +163,11 @@ public JsonArray archiveReqReviewDataRetrieve(){
 		try
 		{
 			boolean checkOverAllApproval= false;
-			String selectQuery ="select * from module_approval_info where OppId='"+Id+"' and moduleName='Archive_Requirement'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery ="select * from module_approval_info where OppId=? and moduleName='Archive_Requirement'";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1,Id);
+			ResultSet rs = st.executeQuery();
+			
 			if(rs.next())
 				checkOverAllApproval = rs.getBoolean("overAllApproval");
 		  jsonObject.addProperty("checkOverAllStatus",checkOverAllApproval);

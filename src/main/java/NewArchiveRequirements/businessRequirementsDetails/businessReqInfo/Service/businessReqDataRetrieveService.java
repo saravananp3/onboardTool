@@ -28,9 +28,10 @@ public class businessReqDataRetrieveService {
 		
 		try {
 			
-			String selectQuery = "select * from ArchiveBussinessReq_Info where OppId = '"+Id+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from ArchiveBussinessReq_Info where OppId = ?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
 				jsonObject.addProperty("checkData", true);

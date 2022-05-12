@@ -50,10 +50,12 @@ public boolean checkDuplicateLabelName()
 	boolean StatusFlag = true;
 	try
 	{
-		String selectQuery = "select * from archivereq_legacyapp_info where Id='"+Id+"' and label_name='"+labelName+"'";
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(selectQuery);
-        if(rs.next())
+		String selectQuery = "select * from archivereq_legacyapp_info where Id=? and label_name=?";
+		PreparedStatement st = con.prepareStatement(selectQuery);
+		st.setString(1, Id);
+		st.setString(2, labelName);
+		ResultSet rs = st.executeQuery();
+		if(rs.next())
         StatusFlag =false;
         st.close();
         rs.close();
@@ -70,10 +72,12 @@ public boolean checkDuplicateLabelName()
 	 	String previousLabelName ="";
 	 try
 	 {
-		 String selectQuery = "select * from archivereq_legacyapp_info where Id='"+Id+"' and seq_no='"+seqNum+"'";
-	        Statement st = con.createStatement();
-	        ResultSet rs = st.executeQuery(selectQuery);
-	        if(rs.next())
+		 String selectQuery = "select * from archivereq_legacyapp_info where Id=? and seq_no=?";
+		 PreparedStatement st = con.prepareStatement(selectQuery);
+		 st.setString(1, Id);
+		 st.setInt(2, seqNum);
+		 ResultSet rs = st.executeQuery();   
+		 if(rs.next())
 	         previousLabelName = rs.getString("label_name");
 	        rs.close();
 	        st.close();

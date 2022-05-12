@@ -27,9 +27,10 @@ public class LegacyAppInfoService {
 			DBconnection dBconnection = new DBconnection();
 			Connection con = (Connection) dBconnection.getConnection();
 			
-			String SelectQuery = "select * from archivereq_legacyapp_info where Id='"+Id+"' order by seq_no";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectQuery);
+			String SelectQuery = "select * from archivereq_legacyapp_info where Id=? order by seq_no";
+			PreparedStatement st = con.prepareStatement(SelectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			
 			if (!rs.next()){
 				String TemplateQuery = "select * from archivereq_legacyapp_template_details order by seq_no;";
@@ -59,9 +60,10 @@ public class LegacyAppInfoService {
 			}
 			else
 			{
-				String TemplateQuery = "select * from archivereq_legacyapp_info where id='"+Id+"' order by seq_no;";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(TemplateQuery);
+				String TemplateQuery = "select * from archivereq_legacyapp_info where id=? order by seq_no;";
+				PreparedStatement st1 = con.prepareStatement(TemplateQuery);
+				st1.setString(1, Id);
+				ResultSet rs1 = st1.executeQuery();
 				
 				while(rs1.next()) {
 					JsonObject jsonObject = new JsonObject();
