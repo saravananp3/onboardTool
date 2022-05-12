@@ -59,9 +59,12 @@ public class documentUploadService {
 			 int seq_num = 1;
 			 for(FileItem item : multiFiles)
 			 {
-				 String selectQuery ="SELECT * FROM `"+tableName+"` WHERE appId='"+appId+"' and seq_num ='"+seq_num+"'";
-				 Statement st = con.createStatement();
-				 ResultSet rs = st.executeQuery(selectQuery);
+				 System.out.println("Table Name : "+tableName);
+				 String selectQuery ="SELECT * FROM `"+tableName+"` WHERE appId=? and seq_num =?";
+				 PreparedStatement st = con.prepareStatement(selectQuery);
+					st.setString(1, appId);
+					st.setInt(2, seq_num);
+					ResultSet rs = st.executeQuery();
 				 if(rs.next()) {
 					 String insertQuery = "UPDATE `"+tableName+"` SET doc = ?, File_name = ? WHERE appId = ? AND  seq_num = ?";
 					 FileInputStream is  = (FileInputStream) item.getInputStream();
@@ -100,13 +103,14 @@ public class documentUploadService {
 	
 	public boolean retrieveBlob() {
 		try {
-			String selectQuery ="SELECT * FROM "+tableName+" WHERE appId='"+appId+"' AND seq_num="+1;
-			Statement st = con.createStatement();
-			ResultSet rs =st.executeQuery(selectQuery);
+			String selectQuery ="SELECT * FROM "+tableName+" WHERE appId=? AND seq_num="+1;
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, appId);
+			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
 				Blob blob = rs.getBlob("doc");
 				InputStream in = blob.getBinaryStream();
-				OutputStream out = new FileOutputStream("S:\\Decom3Sixty\\Screenshot\\Files\\"+rs.getString("File_Name"));
+				OutputStream out = new FileOutputStream("D:\\scrupload\\"+rs.getString("File_Name"));
 				byte[] buff = new byte[4096];  // how much of the blob to read/write at a time
 				int len = 0;
 
@@ -128,10 +132,12 @@ public class documentUploadService {
 	
 	public boolean deleteDocuments() {
 		try {
-			String deleteQuery ="DELETE * FROM "+tableName+" WHERE appId="+appId;
-			Statement st = con.createStatement();
-			st.executeUpdate(deleteQuery);
+			String deleteQuery ="DELETE * FROM "+tableName+" WHERE appId=?";
+			PreparedStatement st = con.prepareStatement(deleteQuery);
+			st.setString(1,appId);
+			st.executeUpdate();	
 			st.close();
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();

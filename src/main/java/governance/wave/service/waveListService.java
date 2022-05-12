@@ -1,6 +1,7 @@
 package governance.wave.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,9 +36,10 @@ public class waveListService {
 		//JsonObject jsonObject = new JsonObject();
 		//jsonObject.addProperty("phaseName", phaseName);
 		//jsonArray.add(jsonObject);
-		String selectWaves = "select * from phase_info where column_name='waves' and phaseId='"+phaseId+"'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectWaves);
+		String selectWaves = "select * from phase_info where column_name='waves' and phaseId=?";
+		PreparedStatement st = con.prepareStatement(selectWaves);
+		st.setString(1, phaseId);
+		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
 		 waves = rs.getString("value").split(",");
 		for(String wave : waves)
@@ -94,9 +96,10 @@ public class waveListService {
 		JsonObject jsonObject = new JsonObject();
 	try
 	{
-		String selectWaves = "select * from governance_info where column_name='waveName' and value='"+wave+"'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectWaves);
+		String selectWaves = "select * from governance_info where column_name='waveName' and value=?";
+		PreparedStatement st = con.prepareStatement(selectWaves);
+		st.setString(1, wave);
+		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
 			 jsonObject.addProperty("phaseName",getPhaseName(wave));
 		     jsonObject.addProperty("WaveId", rs.getString("waveId"));
@@ -116,9 +119,10 @@ public class waveListService {
 	private String getPhaseName(String wave) {
 		String phaseName = "";
 		try {
-			String selectQuery = "select * from phase_info where column_name = 'waves' and value like '%"+wave+"%'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from phase_info where column_name = 'waves' and value like ?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, "%" + wave + "%");
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 				phaseName = rs.getString("phaseName");
 			rs.close();
@@ -136,9 +140,10 @@ public class waveListService {
 		try
 		{
 			
-			String selectOptions = "select * from governance_info where column_name='apps' and waveName='"+wave+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectOptions);
+			String selectOptions = "select * from governance_info where column_name='apps' and waveName=?";
+			PreparedStatement st = con.prepareStatement(selectOptions);
+			st.setString(1, wave);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 			{
 			 app = rs.getString("value");

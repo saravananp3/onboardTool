@@ -75,19 +75,24 @@ public class phaseSaveService {
 		try
 		{
 			String oppNames = "";
-			String selectQuery = "select * from phase_info where phaseName = '"+phaseName+"' and column_name='apps';";
-			Statement st1 =con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from phase_info where phaseName = ? and column_name='apps';";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+			st1.setString(1, phaseName);
+			ResultSet rs1 = st1.executeQuery();
+	
 			if(rs1.next())
 			oppNames = rs1.getString("value");
 			rs1.close();
 			st1.close();
 			
-			String updateQuery = "update phase_info set value='"+oppNames+","+oppName+"' where column_name='apps' and phaseName = '"+phaseName+"';";
-            Statement st = con.createStatement();
-            st.executeUpdate(updateQuery);
-            st.close();
+			String updateQuery = "update phase_info set value=? where column_name='apps' and phaseName = ?;";
+			String s=oppNames+","+oppName;
+			System.out.println("s Value : "+s);
+	 		PreparedStatement st = con.prepareStatement(updateQuery);
+	         st.setString(1, s);
+	          st.setString(2, phaseName);
+	          st.execute();
+	          st.close();
             
             statusFlag = true;
 		}
@@ -108,11 +113,13 @@ public class phaseSaveService {
 				JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
-				
-	            String updateQuery = "update "+tableName+" set value='"+value+"',phaseName='"+phaseName+"' where column_name='"+name+"' "+idAndCond+";";
-	            Statement st = con.createStatement();
-	            st.executeUpdate(updateQuery);
-	            st.close();
+				String updateQuery = "update "+tableName+" set value=?,phaseName=? where column_name=? "+idAndCond+";";
+				 PreparedStatement st = con.prepareStatement(updateQuery);
+		          st.setString(1, value);
+		          st.setString(2, phaseName);
+		          st.setString(3, name);
+		          st.execute();
+				  st.close();
 	            
 			}
 			if(operation.equals("NewPhase"))
@@ -166,9 +173,11 @@ public class phaseSaveService {
 		{
 			if(operation.equals("NewPhase"))
 			{
-			String selectQuery = "select * from phase_info where column_name='"+columnName+"' and value='"+value+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from phase_info where column_name=? and value=?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, columnName);
+			st.setString(2, value);
+			ResultSet rs = st.executeQuery();
 			System.out.println("Query : "+selectQuery);
 			if(rs.next())
 			{
@@ -180,9 +189,11 @@ public class phaseSaveService {
 			}
 			else if(operation.equals("EditPhase"))
 			{
-				String selectQuery = "select * from phase_info where column_name='"+columnName+"' and value='"+value+"';";
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(selectQuery);
+				String selectQuery = "select * from phase_info where column_name=? and value=?;";
+				PreparedStatement st = con.prepareStatement(selectQuery);
+				st.setString(1, columnName);
+				st.setString(2, value);
+				ResultSet rs = st.executeQuery();
 				System.out.println("Query : "+selectQuery);
 				while(rs.next())
 				{

@@ -90,9 +90,10 @@ public class ArchiveExecutionAddService {
 				ArrayList<String> arrStatusRes = new ArrayList<String>();
 				ArrayList<String> arrRemarkRes = new ArrayList<String>();
 				
-				String selectQuery = "select * from archive_execution_info where oppid='"+Id+"' order by seq_no";
-				Statement st1 = con.createStatement();
-				ResultSet rs = st1.executeQuery(selectQuery);
+				String selectQuery = "select * from archive_execution_info where oppid=?;";
+				PreparedStatement st = con.prepareStatement(selectQuery);
+				st.setString(1, Id);
+				ResultSet rs = st.executeQuery();
 			
 				int selectedIndex = seqNum-1;
 				
@@ -181,9 +182,10 @@ public class ArchiveExecutionAddService {
 					
 					}
 				
-				String deleteQuery = "delete from archive_execution_info where oppid='"+Id+"' order by seq_no;";
-				Statement st3 = con.createStatement();
-	            st3.executeUpdate(deleteQuery);
+				String deleteQuery = "delete from archive_execution_info where oppid=?;";
+				PreparedStatement st3 = con.prepareStatement(deleteQuery);
+				st3.setString(1,Id);
+				st3.executeUpdate();
 				
 				for(int k = 0; k<arrSeqNumRes.size(); k++) {
 					

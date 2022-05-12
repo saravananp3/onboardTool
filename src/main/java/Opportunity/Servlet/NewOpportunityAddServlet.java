@@ -2,6 +2,7 @@ package Opportunity.Servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -92,12 +93,14 @@ public class NewOpportunityAddServlet extends HttpServlet {
                 }
             }*/
 
-            String select_lab = "select * from Opportunity_Info_Details where  label_name = '"+label_name+"' ";
-            Statement st1=connection.createStatement();
-            ResultSet rs1=st1.executeQuery(select_lab);
-            String select_col = "select * from Opportunity_Info_Details where  column_name = '"+column_name+"' ";
-            Statement st2=connection.createStatement();
-            ResultSet rs2=st2.executeQuery(select_col);
+            String select_lab = "select * from Opportunity_Info_Details where  label_name = ? ";
+            PreparedStatement st1=connection.prepareStatement(select_lab);
+            st1.setString(1, label_name);
+            ResultSet rs1=st1.executeQuery();
+            String select_col = "select * from Opportunity_Info_Details where  column_name = ? ";
+            PreparedStatement st2=connection.prepareStatement(select_col);
+            st2.setString(1, column_name);
+            ResultSet rs2=st2.executeQuery();
             boolean labelcheck=false;
             boolean columncheck=false;
             if(rs1.next()){

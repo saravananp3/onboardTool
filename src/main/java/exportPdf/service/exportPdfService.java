@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -60,9 +61,10 @@ public class exportPdfService extends jsonToHtmlContent {
     String applicationId=null;
      public String getAppId() {
          try {
-             String applicationIdQuery = "select value from opportunity_info where column_name='apmid' and Id='" + appId + "';";
-             Statement st = con.createStatement();
-             ResultSet rs = st.executeQuery(applicationIdQuery);
+             String applicationIdQuery = "select value from opportunity_info where column_name='apmid' and Id=?;";
+             PreparedStatement st = con.prepareStatement(applicationIdQuery);
+ 			 st.setString(1, appId);
+ 			 ResultSet rs = st.executeQuery();
              while (rs.next()) {
                  applicationId = rs.getString("value");
              }

@@ -821,8 +821,10 @@ public class Login extends HttpServlet {
                 archiveDataReqObj = null;
                 System.gc();
             }
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from Admin_UserDetails where uname='" + userid + "'");
+            String admin_user_details="select * from Admin_UserDetails where uname=?";
+            PreparedStatement st = con.prepareStatement(admin_user_details);
+			st.setString(1, userid);
+			ResultSet rs = st.executeQuery();
             String dbuname = "";
             String dbu_pwd = "";
             String lic_info = "";

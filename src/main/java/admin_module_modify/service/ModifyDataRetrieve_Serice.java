@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -19,10 +20,11 @@ public class ModifyDataRetrieve_Serice {
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
-            Statement st = connection.createStatement();
             //String query="select * from admin_userdetails where id="+id+";";
-            String query = "select  uname, fname, lname, email, projects, application, id from admin_userdetails where id=" + id + ";";
-            ResultSet users_list = st.executeQuery(query);
+            String query = "select  uname, fname, lname, email, projects, application, id from admin_userdetails where id=?;";
+            PreparedStatement st = connection.prepareStatement(query);
+			st.setString(1, id);
+			ResultSet users_list = st.executeQuery();
            /* while(users_list.next())
             {
              String key=users_list.getString("id");

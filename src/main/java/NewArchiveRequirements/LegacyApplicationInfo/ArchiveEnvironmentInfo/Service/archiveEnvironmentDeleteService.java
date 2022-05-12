@@ -51,9 +51,10 @@ private String getColumnSuffix()
 			
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from "+tableName+" where OppId='"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from "+tableName+" where OppId=?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			
 			while(rs.next())
 			{
@@ -89,11 +90,12 @@ private String getColumnSuffix()
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
 			}
 			
-			String deleteQuery ="delete from "+tableName+" where OppId='"+Id+"';";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			String deleteQuery ="delete from "+tableName+" where OppId=?";
+			PreparedStatement st1 = con.prepareStatement(deleteQuery);
+			st1.setString(1,Id);
+			st1.executeUpdate();
 			st1.close();
-			
+						
 			for(int i=0;i<seqNumRes.size();i++)
 			{
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
@@ -101,14 +103,14 @@ private String getColumnSuffix()
 						+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, Integer.parseInt(seqNum.get(i)));
-	          prestmt.setString(2, Id);
-	          prestmt.setString(3, "");
-	          prestmt.setString(4, oppName);
-	          prestmt.setString(5, devRes.get(i));
-	          prestmt.setString(6, testRes.get(i));
-	          prestmt.setString(7, stageRes.get(i));
-	          prestmt.setString(8, prodRes.get(i));
-	          prestmt.execute();
+			  prestmt.setString(2,Id);
+			  prestmt.setString(3, "");
+			  prestmt.setString(4, oppName);
+			  prestmt.setString(5,devRes.get(i));
+			  prestmt.setString(6, testRes.get(i));
+			  prestmt.setString(7,stageRes.get(i));
+			  prestmt.setString(8,prodRes.get(i));
+			  prestmt.execute();
 	          
 			}
 			statusFlag =true;

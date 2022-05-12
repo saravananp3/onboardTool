@@ -1,5 +1,6 @@
 package ArchiveExecutionModule.ArchiveExecutionDetails.service;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,9 +23,11 @@ public class ArchiveExecutionDetailService {
         	JsonObject jsonObject= archiveExecutionHearderInfo(Id,oppName); 
             jsonArray.add(jsonObject);
             
-            String selectQuery = "select * from Archive_Execution_Info where oppId = '"+Id+"' order by seq_no;";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "select * from Archive_Execution_Info where oppId = ? order by seq_no;";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+            st.setString(1,Id);
+            ResultSet rs = st.executeQuery();
+            
             while(rs.next())
             {
                 JsonObject jsonObj = new JsonObject();
@@ -58,23 +61,30 @@ public class ArchiveExecutionDetailService {
         JsonArray jsonArray=new JsonArray();
         JsonObject jsonObj = new JsonObject();
         try {
-            String selectQuery = "select * from opportunity_info where id = '"+Id+"'";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectQuery);
+            String selectQuery = "select * from opportunity_info where id = ?;";
+            PreparedStatement st = con.prepareStatement(selectQuery);
+            st.setString(1,Id);
+            ResultSet rs = st.executeQuery();
+            
 			/*
 			 * String sd = "select planSrt from Archive_Execution_Info where oppId = '"
 			 * +Id+"' and oppName = '"+oppName+"' and taskId='1.01'  order by seq_no;";
 			 */
-            String sd = "select planSrt from Archive_Execution_Info where oppId = '"+Id+"' order by seq_no LIMIT 1;";
-            Statement sds = con.createStatement();
-            ResultSet srs = sds.executeQuery(sd);
+            String sd = "select planSrt from Archive_Execution_Info where oppId = ? order by seq_no LIMIT 1;";
+            PreparedStatement  sds = con.prepareStatement(sd);
+            sds.setString(1,Id);
+            ResultSet srs = sds.executeQuery();
+            
 			/*
 			 * String ed = "select planEnd from Archive_Execution_Info where oppId = '"
 			 * +Id+"' and oppName = '"+oppName+"' and taskId='5.05'  order by seq_no;";
 			 */
-            String ed = "select planEnd from Archive_Execution_Info where oppId = '"+Id+"' order by seq_no DESC LIMIT 1;";
-            Statement eds = con.createStatement();
-            ResultSet ers = eds.executeQuery(ed);
+            String ed = "select planEnd from Archive_Execution_Info where oppId = ? order by seq_no DESC LIMIT 1;";
+            PreparedStatement eds = con.prepareStatement(ed);
+            eds.setString(1,Id);
+            ResultSet ers = eds.executeQuery();
+            
+           
             String at = "select uname from users";
             Statement ats = con.createStatement();
             ResultSet ars = ats.executeQuery(at);

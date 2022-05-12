@@ -7,6 +7,7 @@ import java.sql.Statement;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import onboard.DBconnection;
 
@@ -35,15 +36,21 @@ public class archiveLegacyAppInfoSaveService {
 			JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
 			String name = jsonObj.get("Name").getAsString();
 			String value = jsonObj.get("Value").getAsString();
-			String SelectQuery = "select * from archivereq_legacyapp_info where id ='"+Id+"' and column_name='"+name+"';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectQuery);
+			String SelectQuery = "select * from archivereq_legacyapp_info where id =? and column_name=?;";
+			PreparedStatement st = con.prepareStatement(SelectQuery);
+			st.setString(1, Id);
+			st.setString(2, name);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 			{
-				String UpdateQuery = "update archivereq_legacyapp_info set value='"+value+"', app_name = '"+oppName+"' where id ='"+Id+"' and column_name ='"+name+"'";
-				Statement st1 = con.createStatement();
-               st1.executeUpdate(UpdateQuery);
-               st1.close();
+				String UpdateQuery = "update archivereq_legacyapp_info set value=?, app_name = ? where id =? and column_name =?";
+				 PreparedStatement st1 = con.prepareStatement(UpdateQuery);
+		          st1.setString(1, value);
+		          st1.setString(2, oppName);
+		          st1.setString(3, Id);
+		          st1.setString(4, name);
+		          st1.execute();
+			      st1.close();
 			  }
 			rs.close();
 			st.close();

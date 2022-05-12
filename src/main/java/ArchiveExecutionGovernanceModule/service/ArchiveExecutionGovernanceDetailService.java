@@ -1,6 +1,7 @@
 package ArchiveExecutionGovernanceModule.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,10 +30,13 @@ public class ArchiveExecutionGovernanceDetailService {
 		try {
 			JsonObject jsonObject = archiveExecutionHearderInfo(waveId); 
 			jsonArray.add(jsonObject);
-			String selectQuery = "select * from Archive_Execution_governance_Info where waveId = '"+waveId+"' and waveName = '"+waveName+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
 			
+			String selectQuery = "select * from Archive_Execution_governance_Info where waveId = ? and waveName = ? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, waveId);
+			st.setString(2, waveName);
+			ResultSet rs = st.executeQuery();
+						
 			while(rs.next())
 			{
 				JsonObject jsonObj = new JsonObject();
@@ -72,9 +76,10 @@ public class ArchiveExecutionGovernanceDetailService {
 		JsonObject jsonObj = new JsonObject();
 		try {
 			
-			String selectQuery = "select * from governance_info where waveId = '"+waveId+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from governance_info where waveId = ?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, waveId);
+			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
 				if((rs.getString("column_name")).equals("waveId"))
 					jsonObj.addProperty("waveId",rs.getString("value"));

@@ -78,12 +78,11 @@ public class IntakeAssessSectionDataRetrieveService {
 	public boolean checkForContractInformation() {
 		boolean flag = false;
 		try {
-			String SelectQuery = "SELECT * FROM "+SectionInfoTable+" WHERE ID = '"+id+"' AND COLUMN_NAME = 'AppDetails' AND VALUE = 'Third Party' ORDER BY SEQ_NO;";
-			 
-			 Statement st1 = con.createStatement();
-			 
-			 ResultSet rs1 = st1.executeQuery(SelectQuery);
-			 if(rs1.next()) {
+			String SelectQuery = "SELECT * FROM "+SectionInfoTable+" WHERE ID = ? AND COLUMN_NAME = 'AppDetails' AND VALUE = 'Third Party' ORDER BY SEQ_NO;";
+			PreparedStatement st1 = con.prepareStatement(SelectQuery);
+			st1.setString(1, id);
+			ResultSet rs1 = st1.executeQuery();
+			if(rs1.next()) {
 				flag =true;
 			 }
 			 rs1.close();
@@ -101,12 +100,11 @@ public class IntakeAssessSectionDataRetrieveService {
 		 JsonArray jsonArray = new JsonArray();
 		 try
 		 {	 
-			 String SelectQueryComplianceChar = "Select * from "+SectionInfoTable+" Where Id ='"+id+"' order by seq_no;";
-			 
-			 Statement st1 = con.createStatement();
-			 
-			 ResultSet rs1 = st1.executeQuery(SelectQueryComplianceChar);
-		     
+			 String SelectQueryComplianceChar = "Select * from "+SectionInfoTable+" Where Id =? order by seq_no;";
+			  PreparedStatement st1 = con.prepareStatement(SelectQueryComplianceChar);
+			  st1.setString(1, id);
+			  ResultSet rs1 = st1.executeQuery();
+					     
 			 boolean CeckExistance = true;
 			 
 			 if(rs1.next())
@@ -269,9 +267,10 @@ public class IntakeAssessSectionDataRetrieveService {
 	public void ContractInformationDelete() {
 		try 
 		{
-			String DeleteContractInfoQuery = "delete from "+SectionInfoTable+" where id = '"+id+"'";
-			Statement st = con.createStatement();
-			st.executeUpdate(DeleteContractInfoQuery);
+			String DeleteContractInfoQuery = "delete from "+SectionInfoTable+" where id = ?";
+			PreparedStatement st=con.prepareStatement(DeleteContractInfoQuery);
+			st.setString(1, id);
+			st.executeUpdate();
 		}
 		catch(Exception e) {
 			System.out.println("Exception-----[info]-------" +e);
@@ -286,11 +285,10 @@ public class IntakeAssessSectionDataRetrieveService {
 		{
 			String value = "Third Party";
 			
-			String selectQuery = "Select * from Assessment_Application_Info where id ='"+id+"' and column_name = 'AppDetails';";
-			
-			Statement st = con.createStatement();
-			
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "Select * from Assessment_Application_Info where id =? and column_name = 'AppDetails';";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
 			
 			if(rs.next())
 			{

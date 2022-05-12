@@ -41,10 +41,11 @@ public class archiveReqAddendumDeleteService {
 			
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from archive_req_addendum_info where OppId='"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from archive_req_addendum_info where OppId=? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+						
 			while(rs.next())
 			{
 			   seqNum.add(rs.getString("seq_no"));
@@ -70,10 +71,12 @@ public class archiveReqAddendumDeleteService {
 			}
 			
 			
-			String deleteQuery ="delete from archive_req_addendum_info where OppId='"+Id+"';";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			String deleteQuery ="delete from archive_req_addendum_info where OppId=?;";
+			PreparedStatement st1 = con.prepareStatement(deleteQuery);
+			st1.setString(1,Id);
+			st1.executeUpdate();	
 			st1.close();
+		
 			
 			for(int i=0;i<seqNumRes.size();i++)
 			{

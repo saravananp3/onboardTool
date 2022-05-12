@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 import onboard.DBconnection;
 
 public class phaseEditService {
@@ -56,10 +58,12 @@ public class phaseEditService {
 		boolean editStatus  = false;
 		try
 		{
-			String updateQuery ="update "+tableName+" set label_name='"+labelName+"' where  seq_no='"+seqNum+"' "+idAndCond+"; ";
-			Statement st = con.createStatement();
-			st.executeUpdate(updateQuery);
-			st.close();
+			String updateQuery ="update "+tableName+" set label_name=? where  seq_no=? "+idAndCond+"; ";
+			PreparedStatement st = con.prepareStatement(updateQuery);
+ 			st.setString(1, labelName);
+ 			st.setInt(2, seqNum);
+ 			st.execute();
+ 			st.close();
 			editStatus = true;
 		}
 		catch(Exception e)
@@ -74,9 +78,10 @@ public class phaseEditService {
 		String previousLabel ="";
 		try
 		{
-			String selectQuery = "select * from "+tableName+" where seq_no='"+seqNum+"' "+idAndCond+";";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from "+tableName+" where seq_no=? "+idAndCond+";";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setInt(1, seqNum);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 			previousLabel =rs.getString("label_name");
 			rs.close();
@@ -93,9 +98,10 @@ public class phaseEditService {
 		boolean checkDuplicateLabel = false;
 		try
 		{
-			String selectQuery = "select * from "+tableName+" where label_name='"+labelName+"' "+idAndCond+";";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from "+tableName+" where label_name=? "+idAndCond+";";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, labelName);
+			ResultSet rs = st.executeQuery();
 			if(rs.next())
 				checkDuplicateLabel = true;
 				rs.close();

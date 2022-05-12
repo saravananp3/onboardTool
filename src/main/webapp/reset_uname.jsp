@@ -404,9 +404,12 @@
 	String uname="";
 	DBconnection dBconnection = new DBconnection();
     Connection connection = (Connection) dBconnection.getConnection();
-	String query = "SELECT * from Admin_UserDetails where email='"+x+"' and roles='"+rl+"' and projects like '%"+pj+"%'";
-	Statement st = connection.createStatement();
-	ResultSet rs = st.executeQuery(query);
+	String query = "SELECT * from Admin_UserDetails where email=? and roles=? and projects like ?";
+	PreparedStatement st = connection.prepareStatement(query);
+	st.setString(1, x);
+	st.setString(2, rl);
+	st.setString(3, "%" + pj + "%");
+	ResultSet rs = st.executeQuery();
 
 	if(rs.next()){
 		Qn=rs.getString(9);

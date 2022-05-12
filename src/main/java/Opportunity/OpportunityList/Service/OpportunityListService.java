@@ -1,6 +1,7 @@
 package Opportunity.OpportunityList.Service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -88,9 +89,10 @@ public class OpportunityListService {
 			dBconnection = new DBconnection();
 			connection = (Connection) dBconnection.getConnection();
 			
-			String selectQuery = "select * from governance_info where column_name = 'apps' and value like '%"+waveName+"%';";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from governance_info where column_name = 'apps' and value like ?;";
+			PreparedStatement st = connection.prepareStatement(selectQuery);
+			st.setString(1,"%"+waveName+"%");
+			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) 
 				checkWave = true;

@@ -30,9 +30,10 @@ public class archiveEnvironmentNameDataRetrieveService {
 		
 		try {
 			
-			String selectQuery = "select * from Archive_Environment_Name_Info where OppId = '"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from Archive_Environment_Name_Info where OppId = ?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1,Id);
+			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
 				JsonObject jsonObj =new JsonObject();
@@ -85,10 +86,11 @@ public class archiveEnvironmentNameDataRetrieveService {
 		
 		try {
 			
-			String selectQuery = "select * from Archive_Environment_ServerIp_Info where OppId = '"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			
+			String selectQuery = "select * from Archive_Environment_ServerIp_Info where OppId = ?;";
+			PreparedStatement st1 = con.prepareStatement(selectQuery);
+            st1.setString(1, Id);
+            ResultSet rs = st1.executeQuery();
+            
 			if(rs.next()) {
 				JsonObject jsonObj =new JsonObject();
 				jsonObj.addProperty("checkExistance",true);

@@ -1,6 +1,7 @@
 package Opportunity.OpportunityGrid.servlet;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.annotation.WebServlet;
@@ -53,26 +54,26 @@ public class ModuleAccessInfoServlet extends HttpServlet {
             for (int i = 0; i < ModuleNames.length; i++) {
                 JsonObject jsonObj = new JsonObject();
                 jsonObj.addProperty("ModuleName", ModuleNames[i]);
-                String SelectCompleteStatusTriage = "select distinct ifnull(IsCompleted,'No')IsCompleted from decom3sixtytool.triage_summary_info where Id = '"
-                        + id + "'";
-                Statement st1 = con.createStatement();
-                ResultSet rs1 = st1.executeQuery(SelectCompleteStatusTriage);
+                String SelectCompleteStatusTriage = "select distinct ifnull(IsCompleted,'No')IsCompleted from decom3sixtytool.triage_summary_info where Id = ?";
+                PreparedStatement st1 = con.prepareStatement(SelectCompleteStatusTriage);
+    			st1.setString(1, id);
+    			ResultSet rs1 = st1.executeQuery();
                 if (rs1.next()) {
                     if (rs1.getString("IsCompleted").equals("Yes")) {
                         jsonObj.addProperty("completeStatus", rs1.getString("IsCompleted"));
                         jsonObj.addProperty("cuurrentModule", "TriageSummary");
-                        String SelectCompleteStatusAssesment = "select distinct ifnull(IsCompleted,'No')IsCompleted from decom3sixtytool.assessment_archival_consumption_info where Id = '"
-                                + id + "'";
-                        Statement st2 = con.createStatement();
-                        ResultSet rs2 = st2.executeQuery(SelectCompleteStatusAssesment);
+                        String SelectCompleteStatusAssesment = "select distinct ifnull(IsCompleted,'No')IsCompleted from decom3sixtytool.assessment_archival_consumption_info where Id = ?";
+                        PreparedStatement st2 = con.prepareStatement(SelectCompleteStatusAssesment);
+            			st2.setString(1, id);
+            			ResultSet rs2 = st2.executeQuery();
                         if (rs2.next()) {
                             if (rs2.getString("IsCompleted").equals("Yes")) {
                                 jsonObj.addProperty("completeStatus", rs2.getString("IsCompleted"));
                                 jsonObj.addProperty("cuurrentModule", "Assesment");
-                                String SelectCompleteStatusStakeHolder = "select distinct ifnull(IsCompleted,'No')IsCompleted from decom3sixtytool.intake_stake_holder_info where OppId = '"
-                                        + id + "'";
-                                Statement st3 = con.createStatement();
-                                ResultSet rs3 = st3.executeQuery(SelectCompleteStatusStakeHolder);
+                                String SelectCompleteStatusStakeHolder = "select distinct ifnull(IsCompleted,'No')IsCompleted from decom3sixtytool.intake_stake_holder_info where OppId = ?";
+                                PreparedStatement st3 = con.prepareStatement(SelectCompleteStatusStakeHolder);
+                    			st3.setString(1, id);
+                    			ResultSet rs3 = st3.executeQuery();
                                 if (rs3.next()) {
                                     if (rs3.getString("IsCompleted").equals("Yes")) {
                                         jsonObj.addProperty("completeStatus", rs3.getString("IsCompleted"));
@@ -98,10 +99,10 @@ public class ModuleAccessInfoServlet extends HttpServlet {
                     jsonObj.addProperty("completeStatus", "No");
                     jsonObj.addProperty("cuurrentModule", "Triage");
                 }
-                String SelectModuleInfo = "select * from Module_Approval_Info where oppid = '" + id
-                        + "' and modulename = 'Intake'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(SelectModuleInfo);
+                String SelectModuleInfo = "select * from Module_Approval_Info where oppid = ? and modulename = 'Intake'";
+                PreparedStatement st = con.prepareStatement(SelectModuleInfo);
+    			st.setString(1, id);
+    			ResultSet rs = st.executeQuery();
                 if (rs.next()) {
                     jsonObj.addProperty("checkExistence", true);
                     jsonObj.addProperty("OverallApproval", rs.getString("overallapproval"));

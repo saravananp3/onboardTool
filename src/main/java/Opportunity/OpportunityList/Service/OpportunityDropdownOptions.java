@@ -1,6 +1,7 @@
 package Opportunity.OpportunityList.Service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,10 +76,10 @@ public class OpportunityDropdownOptions {
     			   
     			    String wave = rs1.getString("value");
     			    jsonObject.addProperty("waveName",wave );
-    				String selectWave = "select * from phase_info where column_name='waves' and value like '%"+wave+"%'";
-    				Statement st2 = connection.createStatement();
-    				ResultSet rs2 = st2.executeQuery(selectWave);
-    				
+    				String selectWave = "select * from phase_info where column_name='waves' and value like ?";
+    				PreparedStatement st2=connection.prepareStatement(selectWave);
+    				st2.setString(1, "%"+ wave +"%");   
+    				ResultSet rs2 = st2.executeQuery();
     				if(rs2.next())
     					jsonObject.addProperty("phaseName",rs2.getString("phaseName"));
     				else

@@ -44,9 +44,11 @@ public class ArchiveIntroSaveService{
 					"Legacy Application SMEs/users will be available for UAT activities::\r\n" + 
 					"The Data Archive Project Team has access granted to the front end of the legacy application along with network connectivity::\r\n" + 
 					"The retiring/repurposing legacy application has been turned to read-only mode before the Production archival begins (if this is not the case the archive could be compromised)";
-			String selectQuery = "select * from archiveintro_info where oppid='"+Id+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from archiveintro_info where oppid=?";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+			
 			if(rs.next())
 				checkInsert =false;
 			rs.close();
@@ -71,9 +73,11 @@ public class ArchiveIntroSaveService{
 				prepareStmt.execute();
 				prepareStmt.close();
 			}
-			String UpdateQuery ="update archiveintro_info set "+columnName+"='"+value+"' where oppid='"+Id+"';";
-			Statement st2 = con.createStatement();
-			st2.executeUpdate(UpdateQuery);
+			String UpdateQuery ="update archiveintro_info set "+columnName+"=? where oppid=?;";
+			PreparedStatement st2 = con.prepareStatement(UpdateQuery);
+	          st2.setString(1, value);
+	          st2.setString(2, Id);
+	          st2.execute();
 			System.out.println(UpdateQuery);
 			st2.close();
 			jsonObject.addProperty("checkUpdate", true);

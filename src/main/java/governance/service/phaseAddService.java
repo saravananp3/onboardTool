@@ -111,9 +111,10 @@ public boolean checkLabelName(String labelName)
 	boolean checkDuplicate = false;
 	try
 	{
-      String labelQuery = "select * from "+tableName+" where label_name = '"+labelName+"'"+ IdAndCond;
-      Statement st = con.createStatement();
-      ResultSet rs = st.executeQuery(labelQuery);
+      String labelQuery = "select * from "+tableName+" where label_name = ?"+ IdAndCond;
+      PreparedStatement st = con.prepareStatement(labelQuery);
+	  st.setString(1, labelName);
+	  ResultSet rs = st.executeQuery();
       if(rs.next())
     	  checkDuplicate = true;
 	}

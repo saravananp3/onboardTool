@@ -41,9 +41,11 @@ public JsonArray archiveExecutionDeleteService() {
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
-			String selectQuery = "select * from archive_execution_info where oppId = '"+Id+"' order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from archive_execution_info where oppId = ? order by seq_no;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+			
 			
 			ArrayList<Integer> arrSeqNum = new ArrayList<Integer>();
 			ArrayList<String> arrOppId = new ArrayList<String>();
@@ -225,9 +227,11 @@ public JsonArray archiveExecutionDeleteService() {
 				 */
 				}
 				
-				String deleteQuery = "delete from archive_execution_info where oppid='"+Id+"' order by seq_no;";
-				Statement st3 = con.createStatement();
-	            st3.executeUpdate(deleteQuery);
+				String deleteQuery = "delete from archive_execution_info where oppid=? order by seq_no;";
+				PreparedStatement st1 = con.prepareStatement(deleteQuery);
+				st1.setString(1, Id);
+				st1.executeUpdate();
+				
 				
 	            
 	            

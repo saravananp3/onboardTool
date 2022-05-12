@@ -38,12 +38,14 @@ public class archiveReqDocRevSaveService {
 		  		String documentChanges =  jsonObj.get("documentChanges").getAsString();
 		  		String changeAuthor =  jsonObj.get("changeAuthor").getAsString();
 		  		
-			  String UpdateQuery = "update archive_documentrevision_info set date = ?, version =?, documentChanges =?, changeAuthor =? where OppId='"+Id+"' and seq_no='"+seqNum+"'";
+			  String UpdateQuery = "update archive_documentrevision_info set date = ?, version =?, documentChanges =?, changeAuthor =? where OppId=? and seq_no=?";
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, date);
 	          prestmt.setString(2, version);
 	          prestmt.setString(3, documentChanges);
 	          prestmt.setString(4, changeAuthor);
+	          prestmt.setString(5, Id);
+	          prestmt.setString(6, seqNum);
 	          prestmt.execute();
 			}
 			statusFlag =true;

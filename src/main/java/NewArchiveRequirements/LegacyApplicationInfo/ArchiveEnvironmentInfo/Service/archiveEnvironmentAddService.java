@@ -85,9 +85,10 @@ public class archiveEnvironmentAddService {
 			
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from "+tableName+" where oppid='"+Id+"' oreder by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			String selectQuery = "select * from "+tableName+" where oppid=?;";
+			PreparedStatement st = con.prepareStatement(selectQuery);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
 			
 			while(rs.next())
 			{
@@ -131,9 +132,10 @@ public class archiveEnvironmentAddService {
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
 			}
 			
-			String deleteQuery ="delete from "+tableName+" where oppid='"+Id+"';";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			String deleteQuery ="delete from "+tableName+" where oppid=?;";
+			PreparedStatement st1=con.prepareStatement(deleteQuery);
+			st1.setString(1, Id);
+			st1.executeUpdate();
 			st1.close();
 			
 			for(int i=0;i<seqNumRes.size();i++)

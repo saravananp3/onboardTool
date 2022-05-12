@@ -175,9 +175,11 @@ DBconnection dBconnection =null;
 			rs1.close();
 			
 			String apps = "";
-			String selectQuery1 = "select * from governance_info where waveId = '"+Id+"' and column_name = 'apps';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery1);
+			String selectQuery1 = "select * from governance_info where waveId = ? and column_name = 'apps';";
+			PreparedStatement st = con.prepareStatement(selectQuery1);
+			st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+				
 			if(rs.next())
 			{
 				apps = rs.getString("value");
@@ -185,17 +187,21 @@ DBconnection dBconnection =null;
 	
 			String [] appNames = apps.split(",");
 			for(String app : appNames) {
-				String SelectQuery2 = "select * from Archive_Execution_Info where taskGroup = 'Archive Implementation' and oppName='"+app+"' order by seq_no";
-				Statement st2 = con.createStatement();
-				ResultSet rs2 = st2.executeQuery(SelectQuery2);
+				String SelectQuery2 = "select * from Archive_Execution_Info where taskGroup = 'Archive Implementation' and oppName=? order by seq_no";
+				PreparedStatement pst = con.prepareStatement(SelectQuery2);
+				pst.setString(1, app);
+				ResultSet rs2 = pst.executeQuery();
+				
 				
 				boolean matchFlag = true;
 				if(rs2.next())
 				{
 					int fromSeqNum = rs2.getInt(1);
-					String selectQuery4 = "select * from Archive_Execution_Info where seq_no>="+fromSeqNum+" and oppName='"+app+"' order by seq_no;" ;
-					Statement st4= con.createStatement();
-					ResultSet rs4 = st4.executeQuery(selectQuery4);
+					String selectQuery4 = "select * from Archive_Execution_Info where seq_no>=? and oppName='app' order by seq_no;" ;
+					PreparedStatement pst1 = con.prepareStatement(selectQuery4);
+					pst1.setInt(1, fromSeqNum);
+					
+					ResultSet rs4 = pst1.executeQuery();
 					boolean firstRow = true;
 					
 				while(rs4.next()) {
@@ -223,9 +229,9 @@ DBconnection dBconnection =null;
 					
 				}
 				rs4.close();
-				st4.close();
+			
 				}
-				st2.close();
+			
 				rs2.close();
 			}
 			st.close();
@@ -370,13 +376,15 @@ seqNo++;
 	 String apps[] = null;
 	 try {
 		   
-			 String selectApps = "select * from Governance_Info where waveId='"+Id+"' and column_name = 'apps';";
-			 Statement st = con.createStatement();
-			 ResultSet rs = st.executeQuery(selectApps);
+			 String selectApps = "select * from Governance_Info where waveId=? and column_name = 'apps';";
+			 PreparedStatement pst = con.prepareStatement(selectApps);
+			 pst.setString(1, Id);
+			 ResultSet rs = pst.executeQuery();
+			 
 			 if(rs.next()) 
 				 apps = rs.getString("value").split(",");
 			 rs.close();
-			 st.close();
+			 pst.close();
 			   
 	   }
 	   catch (Exception e) {
@@ -388,13 +396,15 @@ seqNo++;
  private int getSeqNo() {
 	 int seq_no = -1;
 	 try {
-		 String selectSeqNo ="select * from Archive_Execution_Governance_Info where waveId='"+Id+"' and taskGroup = 'Closure';";
-		 Statement st = con.createStatement();
-		 ResultSet rs = st.executeQuery(selectSeqNo);
+		 String selectSeqNo ="select * from Archive_Execution_Governance_Info where waveId=? and taskGroup = 'Closure';";
+		 PreparedStatement pst2 = con.prepareStatement(selectSeqNo);
+		 pst2.setString(1, Id);
+		 ResultSet rs = pst2.executeQuery();
+		
 		 if(rs.next())
 			 seq_no = rs.getInt(1);
 		 rs.close();
-		 st.close();
+		 pst2.close();
 	 }
 	 catch(Exception e) {
 		 e.printStackTrace();
@@ -405,10 +415,12 @@ seqNo++;
    try {
 	   
 	   int fromSeqNo = getSeqNo();
-	   String selectQuery = "select * from Archive_Execution_Governance_Info where waveId='"+Id+"' and seq_no >="+fromSeqNo+" order by seq_no;";  
-	   Statement st = con.createStatement();
-	   ResultSet rs = st.executeQuery(selectQuery);
-	   
+	   String selectQuery = "select * from Archive_Execution_Governance_Info where waveId=? and seq_no >=? order by seq_no;";  
+	   PreparedStatement pst3 = con.prepareStatement(selectQuery);
+	   pst3.setString(1, Id);
+	   pst3.setInt(2, fromSeqNo);
+	   ResultSet rs = pst3.executeQuery();
+	      
 	   while(rs.next()) {
 		
 		   String taskGroup = "";
@@ -428,7 +440,7 @@ seqNo++;
 		 
 	   }
 	   rs.close();
-	   st.close();
+	   pst3.close();
      }
    catch (Exception e) {
 	   e.printStackTrace();
@@ -489,11 +501,17 @@ public ArchiveExecBean getDateDetails(String apps[],String taskGroup,String task
 			 cond = "taskName='"+taskName+"';";
 		 }
 		 
-		 String updateQuery = "update Archive_Execution_Governance_Info set planSrt = '"+min.toString()+"', planEnd='"+max.toString()+"', actSrt='"+min2.toString()+"', actEnd='"+max2.toString()+"' where waveId ='"+Id+"' and "+cond;
-		 Statement st = con.createStatement();
-		 st.executeUpdate(updateQuery);
-		 
-		 st.close();
+		 String updateQuery = "update Archive_Execution_Governance_Info set planSrt = ?, planEnd=?, actSrt=?, actEnd=? where waveId =? and ?";
+		 PreparedStatement prestmt = con.prepareStatement(updateQuery);
+ 		 prestmt.setString(1, min.toString());
+	     prestmt.setString(2, max.toString());
+	     prestmt.setString(3, min2.toString());
+	     prestmt.setString(4, max2.toString());
+	     prestmt.setString(5, Id);
+	     prestmt.setString(6, cond);
+	     prestmt.execute();	 
+		 		 
+	     prestmt.close();
 	 }
 	 catch (Exception e) {
 		e.printStackTrace();
@@ -512,9 +530,12 @@ private ResultSet getDate(String appId, String taskGroup, String taskName, int l
 		 {
 			 cond = "taskName='"+taskName+"';";
 		 }
-		String selectQuery = "select * from archive_execution_info where oppId = '"+appId+"' and "+cond;
-		Statement st = con.createStatement();
-		 rs = st.executeQuery(selectQuery);
+		String selectQuery = "select * from archive_execution_info where oppId = ? and ?";
+		PreparedStatement pst4 = con.prepareStatement(selectQuery);
+		pst4.setString(1, appId);
+		pst4.setString(2, cond);
+		rs = pst4.executeQuery();
+		
 		
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -552,9 +573,11 @@ public void ArchiveExecutionEditApplicationParentNode(String waveName)
  private void updateTaskCount(String waveName) {
 	try {
 		int number = 1;
-		String selectQuery ="select * from Archive_Execution_Governance_Info where waveName='"+waveName+"' order by seq_no;";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectQuery);
+		String selectQuery ="select * from Archive_Execution_Governance_Info where waveName=? order by seq_no;";
+		PreparedStatement pst5 = con.prepareStatement(selectQuery);
+		pst5.setString(1, waveName);
+		ResultSet rs = pst5.executeQuery();
+		
 		int levelCount = 0;
 		while(rs.next()) {
 			int level = rs.getInt("level");
@@ -574,7 +597,7 @@ public void ArchiveExecutionEditApplicationParentNode(String waveName)
 					number++;				
 			}
 		}
-		st.close();
+		pst5.close();
 		rs.close();
 	}
 	catch(Exception e) {
@@ -585,10 +608,13 @@ public void ArchiveExecutionEditApplicationParentNode(String waveName)
 private void updateTaskId(String taskId, String seq_no, String waveName) {
 	
 	try {
-		String updateQuery = "update Archive_Execution_Governance_Info set taskId = '"+taskId+"' where waveName = '"+waveName+"' and seq_no = '"+seq_no+"'";
-		Statement st1 = con.createStatement();
-		st1.executeUpdate(updateQuery);
-		st1.close();
+		String updateQuery = "update Archive_Execution_Governance_Info set taskId = ? where waveName = ? and seq_no = ?";
+		 PreparedStatement prestmt = con.prepareStatement(updateQuery);
+ 		 prestmt.setString(1,taskId);
+	     prestmt.setString(2, waveName);
+	     prestmt.setString(3, seq_no);
+	     prestmt.execute();	 
+	     prestmt.close();
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
@@ -602,10 +628,12 @@ private int getClosureSeqNum(int fromSeqNum, String appNames) {
 		String apps[] = appNames.split(",");
 	  for(String app : apps ) {
 		  int ArchiveSeqNum = getArchiveImplementationSeqNum(app);
-		  String selectQuery ="select * from Archive_Execution_Info where oppName ='"+app+"' and seq_no>="+ArchiveSeqNum+" order by seq_no";
-		  Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			boolean FirstRow = true;
+		  String selectQuery ="select * from Archive_Execution_Info where oppName =? and seq_no>=? order by seq_no";
+		  PreparedStatement pst5 = con.prepareStatement(selectQuery);
+		  pst5.setString(1, app);
+		  pst5.setInt(2, ArchiveSeqNum);
+			ResultSet rs = pst5.executeQuery();
+		  	boolean FirstRow = true;
 			while(rs.next()) {
               if(rs.getInt(4)==1&&!FirstRow)
               {
@@ -616,7 +644,7 @@ private int getClosureSeqNum(int fromSeqNum, String appNames) {
 			
 			}
 			rs.close();
-			st.close();
+			pst5.close();
 	  }
 	}
 	catch(Exception e)
@@ -630,13 +658,15 @@ private int getArchiveImplementationSeqNum(String app) {
 	int seqNum = 0;
 	try {
 		
-		String selectQuery ="select * from Archive_Execution_Info where oppName ='"+app+"' and taskGroup = 'Archive Implementation'";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectQuery);
+		String selectQuery ="select * from Archive_Execution_Info where oppName =? and taskGroup = 'Archive Implementation'";
+		PreparedStatement pst6 = con.prepareStatement(selectQuery);
+		pst6.setString(1, app);
+		ResultSet rs = pst6.executeQuery();
+				
 		if(rs.next())
 			seqNum= rs.getInt(1);
 		rs.close();
-		st.close();
+		pst6.close();
 	}
 	catch(Exception e) {
 		e.printStackTrace();
@@ -679,16 +709,18 @@ private int getArchiveImplementationSeqNum(String app) {
 private String getAppNames() {
 	String apps = "";
 	try {
-		String selectQuery = "select * from governance_Info where waveId = '"+Id+"' and column_name = 'apps';";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectQuery);
-		
+		String selectQuery = "select * from governance_Info where waveId = ? and column_name = 'apps';";
+		PreparedStatement pst7 = con.prepareStatement(selectQuery);
+		pst7.setString(1, Id);
+	
+		ResultSet rs = pst7.executeQuery();
+				
 		if(rs.next()) {
 			apps = rs.getString("value");
 		}
 		
 		rs.close();
-		st.close();
+		pst7.close();
 	}
 	catch(Exception e) {
 		e.printStackTrace();
@@ -709,9 +741,12 @@ public void insertAppParentNodes(String appNames, int govSeqNum,String waveName)
 	 try
 	 {
 		 String appId = getApplicationIdByName(appName);
-		 String selectQuery =  "select * from Archive_Execution_Info where oppId='"+appId+"' and taskGroup = 'Archive Implementation' order by seq_no;";
-		 Statement st = con.createStatement();
-		 ResultSet rs = st.executeQuery(selectQuery);
+		 String s="Archive Implementation";
+		 String selectQuery =  "select * from Archive_Execution_Info where oppId=? and taskGroup = ? order by seq_no;";
+		 PreparedStatement pst8 = con.prepareStatement(selectQuery);
+			pst8.setString(1, appId);
+			pst8.setString(2, s);
+			ResultSet rs = pst8.executeQuery();
 		 int taskCount = getTaskCount(waveName);
 		 boolean FirstRow = true;
 		 if(FirstRow_Flag)
@@ -719,10 +754,12 @@ public void insertAppParentNodes(String appNames, int govSeqNum,String waveName)
 		 int number = 0, decimalNumber = 1;
 		 if(rs.next())
 		 {
-				String selectQuery1 = "select * from Archive_Execution_Info where oppId='"+appId+"' and seq_no>="+rs.getInt(1)+" order by seq_no;";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(selectQuery1);
-				
+				String selectQuery1 = "select * from Archive_Execution_Info where oppId=? and seq_no>=? order by seq_no;";
+				PreparedStatement pst9 = con.prepareStatement(selectQuery1);
+				pst9.setString(1, appId);
+				pst9.setInt(2, rs.getInt(1));
+				ResultSet rs1 = pst9.executeQuery();
+						
 				while(rs1.next()) {
 					System.out.println(rs1.getString("taskGroup"));
 					 if(rs1.getInt("level") == 1 && !FirstRow)
@@ -743,15 +780,15 @@ public void insertAppParentNodes(String appNames, int govSeqNum,String waveName)
 					 FirstRow = false;
 				}
 				rs1.close();
-				st1.close();
-				st1.close();
+				pst9.close();
+				
 				
 				 
 				 FirstRow_Flag = false;
 			 
 		 }
 		 
-		 st.close();
+		 pst8.close();
 		 rs.close();
 		 
 	 }
@@ -764,10 +801,13 @@ public void insertAppParentNodes(String appNames, int govSeqNum,String waveName)
  private int getTaskCount(String waveName) {
 	int taskCount = 0;
 	try {
+		int l=1;
+		String selectQuery = "select * from Archive_Execution_Governance_info where waveName = ? and level=?  order by seq_no;";
+		PreparedStatement psts = con.prepareStatement(selectQuery);
+		psts.setString(1, waveName);
+		psts.setInt(2, l);
+		ResultSet rs = psts.executeQuery();
 		
-		String selectQuery = "select * from Archive_Execution_Governance_info where waveName = '"+waveName+"' and level='1'  order by seq_no;";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectQuery);
 		while(rs.next())
 		{
 		     if(rs.getString("taskGroup").equals("Intake Process / Methodology")) {
@@ -778,7 +818,7 @@ public void insertAppParentNodes(String appNames, int govSeqNum,String waveName)
 		}
 		
 		rs.close();
-		st.close();
+		psts.close();
 	}
 	catch(Exception e)
 	{
@@ -790,15 +830,17 @@ public void insertAppParentNodes(String appNames, int govSeqNum,String waveName)
 private String getApplicationIdByName(String appName) {
 	 String appId="";
 	try {
-		String selectQuery = "select * from opportunity_info where column_name = 'appName' and value = '"+appName+"';";
-		Statement st= con.createStatement();
-		ResultSet rs = st.executeQuery(selectQuery);
+		String selectQuery = "select * from opportunity_info where column_name = 'appName' and value = ?;";
+		PreparedStatement psts1 = con.prepareStatement(selectQuery);
+		psts1.setString(1, appName);
+		ResultSet rs = psts1.executeQuery();
+		
 		if(rs.next())
 		{
 			appId=rs.getString("Id");
 		}
 		rs.close();
-		st.close();
+		psts1.close();
 	}
 	catch(Exception e)
 	{
@@ -814,29 +856,36 @@ public int deleteAllArchiveImplementParentNode()
 	 try
 	 { 
 		 // to get from seq_no
-		 String selectQuery1 = "select * from Archive_Execution_Governance_Info where waveId='"+Id+"' and taskGroup like 'Archive Implementation%' order by seq_no;";
-		 Statement st = con.createStatement();
-		 ResultSet rs = st.executeQuery(selectQuery1);
+		 String selectQuery1 = "select * from Archive_Execution_Governance_Info where waveId=? and taskGroup like 'Archive Implementation%' order by seq_no;";
+		 PreparedStatement psts2 = con.prepareStatement(selectQuery1);
+		 psts2.setString(1, Id);
+		 ResultSet rs = psts2.executeQuery();
+		 
 		 boolean firstRow = true;
 		 if(rs.next())
 			 seqNum = rs.getInt(1);
 		 rs.close();
-		 st.close();
+		 psts2.close();
 		 
 		 //to get to seq_no
-		 String selectQuery3 = "select * from Archive_Execution_Governance_Info where waveId='"+Id+"' and taskGroup = 'Closure' order by seq_no;";
-		 Statement st3 = con.createStatement();
-		 ResultSet rs3 = st3.executeQuery(selectQuery3);
+		 String selectQuery3 = "select * from Archive_Execution_Governance_Info where waveId=? and taskGroup = 'Closure' order by seq_no;";
+		 PreparedStatement psts3 = con.prepareStatement(selectQuery3);
+		 psts3.setString(1, Id);
+		 ResultSet rs3 = psts3.executeQuery();
+		 
 		 if(rs3.next())
 			 toseqNum = rs3.getInt(1);
 		 rs3.close();
-		 st3.close();
+		 psts3.close();
 		 
 		// delete the row in between from and to seq_no
-		String deleteQuery = "delete from Archive_Execution_Governance_Info where waveId = '"+Id+"' and seq_no >= "+seqNum+" and seq_no < "+toseqNum+" order by seq_no;";	
-		Statement st2 =con.createStatement();
-		st2.executeUpdate(deleteQuery);
-		st2.close();
+		String deleteQuery = "delete from Archive_Execution_Governance_Info where waveId = ? and seq_no >= ? and seq_no < ? order by seq_no;";	
+		PreparedStatement st1 = con.prepareStatement(deleteQuery);
+		st1.setString(1,Id);
+		st1.setInt(2,seqNum);
+		st1.setInt(3,toseqNum);
+		st1.executeUpdate();
+		st1.close();
 	 }
 	 catch(Exception e)
 	 {
@@ -849,28 +898,33 @@ public int deleteAllArchiveImplementParentNode()
  private void updateClosureSeqNum(int fromSeqNum,int seqNum) {
 	try {
 		
-		String selectQuery = "select * from Archive_Execution_Governance_info where waveId='"+Id+"' and taskGroup = 'Closure' order by seq_no;";
-	    Statement st = con.createStatement();
-	    ResultSet rs = st.executeQuery(selectQuery);
+		String selectQuery = "select * from Archive_Execution_Governance_info where waveId=? and taskGroup = 'Closure' order by seq_no;";
+		PreparedStatement st = con.prepareStatement(selectQuery);
+		st.setString(1, Id);
+		ResultSet rs = st.executeQuery();
 	    //int appImpCount = 18 * appLength;
 	    
 	    while(rs.next()) {
-	    	String selectQuery1 = "select * from Archive_Execution_Governance_info where waveId='"+Id+"' and seq_no >= "+rs.getInt(1)+" order by seq_no;";
-		    Statement st1 = con.createStatement();
-		    ResultSet rs1 = st1.executeQuery(selectQuery1);
+	    	String selectQuery1 = "select * from Archive_Execution_Governance_info where waveId=? and seq_no >= ? order by seq_no;";
+	    	PreparedStatement pst = con.prepareStatement(selectQuery1);
+			pst.setString(1, Id);
+			pst.setInt(2, rs.getInt(1));
+	    	ResultSet rs1 = pst.executeQuery();
 		    
 		    while(rs1.next()) {
+	    	String updateQuery = "update Archive_Execution_Governance_info set seq_no = ? where waveId=? and seq_no = ?";
+	    	PreparedStatement pst1 = con.prepareStatement(updateQuery);
+			int no=seqNum+fromSeqNum;
+	    	pst1.setInt(1, no);
+	    	pst1.setString(2, Id);
+	    	pst1.setInt(3, rs1.getInt(1));
+	    	pst1.execute();
+	    	pst1.close();
 	    	
-		    String updateQuery = "update Archive_Execution_Governance_info set seq_no = "+(seqNum+fromSeqNum)+" where waveId='"+Id+"' and seq_no = "+rs1.getInt(1);
-		    Statement st2 = con.createStatement();
-		    st2.executeUpdate(updateQuery);
-		    st2.close();
-		    
 		    seqNum++;
 		    
 		    }
-		    
-		    st1.close();
+		    pst.close();
 		    rs1.close();
 	    }
 	    
