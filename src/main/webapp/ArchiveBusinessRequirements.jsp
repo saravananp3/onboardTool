@@ -457,7 +457,7 @@ e.printStackTrace();
                                         		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                         			<div id="inputFieldsReqinscope">
                                                		
-                                                 			<div>
+                                                 			<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
@@ -499,8 +499,8 @@ e.printStackTrace();
                                         		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                         			<div id="inputFieldsReqinscope">
                                                		
-                                                 			<div>
                                                  			<h4 class="title1">4.1.1 Data Requirements</h4>
+                                                 			<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
@@ -528,8 +528,9 @@ e.printStackTrace();
                                             
                                             <div id="inputFieldsReqinscope">
                                                		
-                                                 			<div>
+                          
                                                  			<h4 class="title1">4.1.2 Retention and Legal Requirements</h4>
+                                                 			<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
@@ -557,8 +558,8 @@ e.printStackTrace();
                                               
                                               <div id="inputFieldsReqinscope">
                                                		
-                                                 			<div>
                                                  			<h4 class="title1">4.1.3 Security Requirements</h4>
+                                                 			<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
@@ -586,8 +587,8 @@ e.printStackTrace();
                                               
                                               <div id="inputFieldsReqinscope">
                                                		
-                                                 			<div>
                                                  			<h4 class="title1">4.1.4 Usability Requirements</h4>
+                                                 			<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
@@ -614,9 +615,9 @@ e.printStackTrace();
                                             </div>
                                               
                                               <div id="inputFieldsReqinscope">
-                                               		
-                                                 			<div>
+                                              
                                                  			<h4 class="title1">4.1.5 Audit Requirements</h4>
+                                                 			<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
@@ -657,8 +658,7 @@ e.printStackTrace();
                                             <div class="panel-body">
                                         		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                         			<div id="inputFieldsReqinscope">
-                                               		
-                                                 			<div>
+                                               				<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
@@ -685,7 +685,7 @@ e.printStackTrace();
   																<br/>
   																<br/>
   																<br/>
-  																<div>
+  																<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>

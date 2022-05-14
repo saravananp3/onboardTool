@@ -14,10 +14,10 @@ function AddRowAjaxCall()
         if(data.checkAdd)
         {
         	 var Row =  "<tr class='UserRow'>"+
-	                    "<td><input type='text' id='firstName"+number+"' class ='name' value='' ></td>"+
-			            "<td><input type='text' id='search"+number+"' class ='emailid' onClick='searchFunction("+number+");' value='' ><ul id='result"+number+"' class='list-group searchResult'></ul></td>"+
-                        "<td><input type='text' id='userName"+number+"' class='username' value='' ></td>"+
-			            "<td><select type='text' class='role' value=''>"+
+	                    "<td><input type='text' id='firstName"+number+"' class ='name' style='width: 100%; text-align: center;' value='' ></td>"+
+			            "<td><input type='text' id='search"+number+"' class ='emailid' style='width: 100%; text-align: center;' onClick='searchFunction("+number+");' value='' ><ul id='result"+number+"' class='list-group searchResult'></ul></td>"+
+                        "<td><input type='text' id='userName"+number+"' class='username' value='' style='width: 100%; text-align: center;' ></td>"+
+			            "<td><select type='text' class='role' value='' style='width: 100%; text-align: center;padding: 0.3rem 0 0.3rem 0;'>"+
                              "<option value='Development Owner'>Development Owner</option>"+
                              "<option value='Application Owner'>Application Owner</option>"+
                              "<option value='Project Sponsor'>Project Sponsor</option>"+
@@ -25,7 +25,7 @@ function AddRowAjaxCall()
                              "<option value='Business Owner'>Business Owner</option>"+
                              "<option value='Technical S.M.E'>Technical S.M.E</option>"+
                              "</select></td>"+
-         				    "<td><input type='text' class='priorityNum' value=''/></td>"+
+         				    "<td><input type='text' class='priorityNum' style='width: 100%; text-align: center;' value=''/></td>"+
                         "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                         "<ul class='dropdown-menu' style = 'min-width: inherit;'>"+
                         "<li><a   class='fa fa-edit EditRow' style='font-size: 19px; color: black;'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+

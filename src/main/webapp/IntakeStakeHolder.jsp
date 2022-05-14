@@ -644,7 +644,7 @@ e.printStackTrace();
                                                 <div class="card-body">
                                                 	<div>
                                                     <h4>User List</h4>
-                          <div class="table-responsive">           
+                          						<div class="table-responsive">           
   													<table class="table-bordered" style="width: 100%;">
     												<thead>
       												<tr>
@@ -660,7 +660,7 @@ e.printStackTrace();
       												    												
       												</tbody>
   													</table>
-                          </div>
+                          						</div>
   													</div>
                                                                                             
                                                    <!--  <div class="col-md-12">

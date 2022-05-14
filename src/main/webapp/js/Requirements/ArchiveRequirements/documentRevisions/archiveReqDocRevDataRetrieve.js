@@ -24,10 +24,10 @@ function archiveReqDocRevDataRetrieve(){
                  var dateFromDb=value.date==''?today:value.date;
                  var versionFromDb=value.version;
                  var Row="<tr class = 'rowClassDoc'>"+
-                 "<td><input type ='text' class='date' value='"+dateFromDb+"' readonly></td>" +
-                 "<td><input type ='text' class='version' value='"+versionFromDb+"' readonly></td>" +
-                 "<td><input type ='text' class='documentChanges' value='"+value.documentChanges+"' readonly></td>" +
-                 "<td><input type ='text' class='changeAuthor' value='"+value.changeAuthor+"' readonly></td>" +
+                 "<td><input type ='text' class='date' style='width: 100%; text-align:center;' value='"+dateFromDb+"' readonly></td>" +
+                 "<td><input type ='text' class='version' style='width: 100%; text-align:center;' value='"+versionFromDb+"' readonly></td>" +
+                 "<td><input type ='text' class='documentChanges' style='width: 100%; text-align:center;' value='"+value.documentChanges+"' readonly></td>" +
+                 "<td><input type ='text' class='changeAuthor' style='width: 100%; text-align:center;' value='"+value.changeAuthor+"' readonly></td>" +
                  "<td>"+
                  "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu'>"+

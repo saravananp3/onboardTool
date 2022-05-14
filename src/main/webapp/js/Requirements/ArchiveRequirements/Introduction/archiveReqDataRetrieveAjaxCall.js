@@ -89,11 +89,11 @@ function archiveReqAddAjaxCall(seqNum){
                        options += "<option value='"+options_arr[n]+"' "+selected+">"+options_arr[n]+"</option>";
                    }
                 var Row="<tr class = 'rowClass'>"+
-             "<td><select type ='text' class='role' value=''>"+options+"</select><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
-             "<td><input type ='text' id='firstName"+seq_no+"' class='name' value=''></td>" +
-             "<td><input type ='text' id='search"+seq_no+"' onClick='searchFunction("+seq_no+");' class='emailId' value=''><ul id='result"+seq_no+"' class='list-group searchResult'></ul></td>" +
-             "<td><input type ='text' id='userName"+seq_no+"' class='username' value=''></td>" +
-            "<td><input type ='text' class='priority_order_num' value=''></td>" +
+             "<td><select type ='text' class='role' style='width: 100%; text-align:center;padding: 0.3rem 0 0.3rem 0;' value=''>"+options+"</select><input type='hidden' class='ArchiveApproval' value='false'/></td>" +
+             "<td><input type ='text' id='firstName"+seq_no+"' class='name' style='width: 100%; text-align:center;' value=''></td>" +
+             "<td><input type ='text' id='search"+seq_no+"' style='width: 100%; text-align:center;' onClick='searchFunction("+seq_no+");' class='emailId' value=''><ul id='result"+seq_no+"' class='list-group searchResult'></ul></td>" +
+             "<td><input type ='text' id='userName"+seq_no+"' style='width: 100%; text-align:center;' class='username' value=''></td>" +
+            "<td><input type ='text' class='priority_order_num' style='width: 100%; text-align:center;' value=''></td>" +
              "<td>"+
              "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                            "<ul class='dropdown-menu'>"+
@@ -163,11 +163,11 @@ function archiveReqRolesResponseDataRetrieve(){
                        options += "<option value='"+options_arr[n]+"' "+selected+">"+options_arr[n]+"</option>";
                    }
                  var Row="<tr class = 'rowClass'>"+
-                 "<td><select type ='text' class='role' value='"+value.role+"' readonly>"+options+"</select><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
-                 "<td><input type ='text' class='name' id='firstName"+seq_no+"' value='"+value.name+"' readonly></td>" +
-                 "<td><input type ='text' class='emailId' id='search"+seq_no+"' onClick='searchFunction("+seq_no+");' value='"+value.emailId+"' readonly><ul id='result"+seq_no+"' class='list-group searchResult'></ul></td>" +
-                 "<td><input type ='text' class='username' id='userName"+seq_no+"' value='"+value.username+"' readonly></td>" +
-                 "<td><input type ='text' class='priority_order_num' value='"+value.priority_order_num+"' readonly></td>" +
+                 "<td><select type ='text' class='role' value='"+value.role+"' style='width: 100%; text-align:center;padding: 0.3rem 0 0.3rem 0;' readonly>"+options+"</select><input type='hidden' class='ArchiveApproval' value='"+value.ApprovalStatus+"'></td>" +
+                 "<td><input type ='text' class='name' id='firstName"+seq_no+"' style='width: 100%; text-align:center;' value='"+value.name+"' readonly></td>" +
+                 "<td><input type ='text' class='emailId' id='search"+seq_no+"' style='width: 100%; text-align:center;' onClick='searchFunction("+seq_no+");' value='"+value.emailId+"' readonly><ul id='result"+seq_no+"' class='list-group searchResult'></ul></td>" +
+                 "<td><input type ='text' class='username' id='userName"+seq_no+"' style='width: 100%; text-align:center;' value='"+value.username+"' readonly></td>" +
+                 "<td><input type ='text' class='priority_order_num' value='"+value.priority_order_num+"' style='width: 100%; text-align:center;' readonly></td>" +
                  "<td>"+
                  "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu'>"+

@@ -72,7 +72,7 @@ function waveListAjaxCall()
 			 $("#phase").append("<option class= 'all options'>"+phaseName+"</option>");
 	    	 var li_element ="<li class = 'waveCard listCard'>"+
 						"<div class='drophide'>"+
-						"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;'>"+
+						"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;margin-left:5px; margin-top:0.5%;'>"+
 						"<div class='dropdown-content myDropdown' style = 'float:right;'>"+
 						"<a class = 'options editWaveClass' style = 'text-align:left;' href='#'>Edit</a>"+
 						"<a class = 'options deleteWaveClass' style = 'text-align:left;' href='#'>Delete</a>"+

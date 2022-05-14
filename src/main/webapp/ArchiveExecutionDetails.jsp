@@ -560,8 +560,7 @@ background:#1565c0 important;
 	%>
 	<nav
 		class="navbar navbar-expand-md navbar-light bg-white nav-height nav-font row">
-		<div class="container-fluid col-sm-12 col-md-12 col-lg-12"
-			id="container-fluid-margin">
+		<div class="container-fluid col-sm-12 col-md-12 col-lg-12">
 			<div class="col-sm-2 col-md-2 col-lg-2">
 				<a class="navbar-brand" href="OpportunityList.jsp"> <img
 					src="images/Decom360-logo.png" class="d3s-logo-1" alt="Decom3Sxity">
@@ -601,11 +600,11 @@ background:#1565c0 important;
 				</div>
 			</div>
 			<div class="col-sm-2 col-md-2 col-lg-2">
-				<div class="dropdown d3s-ml-40 mt-3" align="end">
+				<div class="dropdown d3s-ml-80 mt-3" align="end">
 					<a class="dropdown-toggle" href="#" role="button"
 						data-toggle="dropdown" aria-expanded="false"><i
 						class="fas fa-user-circle iconAlign iconColor fa-3x"
-						style="margin-top: 25px;"></i><span class="caret" style="margin-left: 13rem;"></span> </a>
+						style="margin-top: 25px;"></i><span class="caret" style="position: absolute; top: 2rem; left: 5rem;"></span> </a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#" id="textAlign"><i
 								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
@@ -751,8 +750,8 @@ background:#1565c0 important;
                                                     <div>
                                                     <!-- <h4>Task List</h4>   -->
                                                             <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
-      													<div class="panel" style="overflow-x: auto;">         
-  													<table class="table table-bordered table-responsive" style="width: 100%; font-size: 12px;">
+      													<div class="panel table-responsive">         
+  													<table class="table table-bordered" style="width: 100%; font-size: 12px;">
   													
     												<thead >
       												<tr>
