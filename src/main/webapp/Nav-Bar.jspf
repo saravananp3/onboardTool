@@ -116,65 +116,69 @@
 
 
 	<nav
-		class="navbar navbar-expand-lg navbar-expand-md navbar-expand-lg navbar-expand-xl navbar-light bg-white nav-height nav-font">
-		<div class="container-fluid d-flex flex-grow-1" id="container-fluid-margin">
-			<a class="navbar-brand" href="OpportunityList.jsp"> <img
-				src="images/Decom360-logo.png" class="d3s-logo" alt="Decom3Sxity">
-			</a>
-			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav mr-auto d3s-ml-80" id="nav-res-align">
-					<li class="nav-item moduleIcon"><a class="nav-link active"
-						aria-current="page" href="OpportunityList.jsp"><i
-							class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
-					</li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
-						aria-current="page" href="Admin_Userslist.jsp"><i
-							class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
-					</li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
-						aria-current="page" href="PhaseList.jsp"><i
-							class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-					<li class="nav-item moduleIcon" id="myElementwithTooltip"
-                		data-bs-toggle="tooltip"
-                		data-bs-placement="bottom"
-                		title="For Future Enhancement"><a class="nav-link active"
-						aria-current="page" href="#"><i
-							class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
-					<li class="nav-item moduleIcon"><a class="nav-link active"
-						aria-current="page" href="DashBoard.jsp"><i
-							class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
-					</li>
-					<li class="nav-item moduleIcon" id="myElementwithTooltip"
-                		data-bs-toggle="tooltip"
-                		data-bs-placement="bottom"
-                		title="For Future Enhancement"><a class="nav-link active"
-						aria-current="page" href="#"><i
-							class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
-					</li>
+		class="navbar navbar-expand-lg navbar-expand-lg navbar-light bg-white nav-height nav-font">
+		<div class="container-fluid col-sm-12 col-md-12 col-lg-12">
+			<div class="col-sm-2 col-md-2 col-lg-2">
+				<a class="navbar-brand" href="OpportunityList.jsp"> <img
+					src="images/Decom360-logo.png" class="d3s-logo" alt="Decom3Sxity">
+				</a>
+			</div>
+			<div class="col-md-8 col-lg-8 col-sm-8">
+				<div class="collapse navbar-collapse">
+					<ul class="navbar-nav mr-auto d3s-ml-80" id="nav-res-align">
+						<li class="nav-item moduleIcon"><a class="nav-link active"
+							aria-current="page" href="OpportunityList.jsp"><i
+								class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
+						</li>
+						<li class="nav-item moduleIcon"><a class="nav-link active"
+							aria-current="page" href="Admin_Userslist.jsp"><i
+								class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
+						</li>
+						<li class="nav-item moduleIcon"><a class="nav-link active"
+							aria-current="page" href="PhaseList.jsp"><i
+								class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+						<li class="nav-item moduleIcon" id="myElementwithTooltip"
+							data-bs-toggle="tooltip" data-bs-placement="bottom"
+							title="For Future Enhancement"><a class="nav-link active"
+							aria-current="page" href="#"><i
+								class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+						<li class="nav-item moduleIcon"><a class="nav-link active"
+							aria-current="page" href="DashBoard.jsp"><i
+								class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
+						</li>
+						<li class="nav-item moduleIcon" id="myElementwithTooltip"
+							data-bs-toggle="tooltip" data-bs-placement="bottom"
+							title="For Future Enhancement"><a class="nav-link active"
+							aria-current="page" href="#"><i
+								class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
+						</li>
 
-				</ul>
+					</ul>
 
+				</div>
 			</div>
 
-			<div class="dropdown col-md-2" align="end" id="user-icon-lign">
-				<a class="dropdown-toggle" href="#" role="button"
-					id="dropdownMenuLink" data-bs-toggle="dropdown"
-					aria-expanded="false"><i
-					class="fas fa-user-circle iconAlign iconColor fa-3x"></i> </a>
-				<ul class="dropdown-menu" id="dropDownMenu"
-					aria-labelledby="dropdownMenuLink">
-					<li><a class="dropdown-item" href="#" id="textAlign"><i
-							class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br/>Signed
-							in as <br/> <b class="user-ellipsis"><%=userName%></b></a></li>
+			<div class="col-sm-2 col-md-2 col-lg-2">
+				<div class="dropdown d3s-ml-70" align="end" id="user-icon-lign">
+					<a class="dropdown-toggle" href="#" role="button"
+						id="dropdownMenuLink" data-bs-toggle="dropdown"
+						aria-expanded="false"><i
+						class="fas fa-user-circle iconAlign iconColor fa-3x"></i> </a>
+					<ul class="dropdown-menu" id="dropDownMenu"
+						aria-labelledby="dropdownMenuLink">
+						<li><a class="dropdown-item" href="#" id="textAlign"><i
+								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
+								in as <br /> <b class="user-ellipsis"><%=userName%></b></a></li>
 
-					<li class="mt-5"><a class="dropdown-item li-align" href="#"
-						id="textAlign" onclick="location.href='logout.jsp';"
-						style="border-top: 1px solid #d3d7e2;"><i
-							class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
-				</ul>
+						<li class="mt-5"><a class="dropdown-item li-align" href="#"
+							id="textAlign" onclick="location.href='logout.jsp';"
+							style="border-top: 1px solid #d3d7e2;"><i
+								class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
+					</ul>
+				</div>
+
+
 			</div>
-
-
 		</div>
 	</nav>
 

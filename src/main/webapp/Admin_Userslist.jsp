@@ -162,12 +162,9 @@ body {
 
 </head>
 <body class="top-navbar-fixed">
-	
 
-	<div class="main-wrapper">
-
-		<%@include file="Nav-Bar.jspf"%>
-		<nav class="nav nav-height-70 nav-font" id="bg-color" style = "margin-top: -20px;">
+<%@include file="Nav-Bar.jspf"%>
+		<nav class="nav nav-height-70 nav-font" id="bg-color" style="margin-top: -20px;">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav-1 mt-3">
@@ -189,6 +186,8 @@ body {
 				</div>
 			</div>
 		</nav>
+	
+	<div class="main-wrapper">
 		<!--  <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
             <div class="row">

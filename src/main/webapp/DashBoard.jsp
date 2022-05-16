@@ -519,11 +519,6 @@ display:none;
         }%>
 
 	<%@include file="Nav-Bar.jspf"%>
-	<div id="overlay">
-<div class="cv-spinner">
-<span class="spinner"></span>
-</div>
-</div>
 	<nav class="nav nav-height nav-font" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">
