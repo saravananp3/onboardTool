@@ -166,7 +166,6 @@ body {
 <%@include file="Nav-Bar.jspf"%>
 		<nav class="nav nav-height-70 nav-font" id="bg-color" style="margin-top: -20px;">
 			<div class="container-fluid">
-				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav-1 mt-3">
 						<!-- <li id="nav-link"><a class="link"
 							href="Admin_Module_Send_Invites.jsp"
@@ -184,7 +183,6 @@ body {
 							style="color: #fff; padding: 7px 10px; height: 35px;">License Information</a></li>
 					</ul>
 				</div>
-			</div>
 		</nav>
 	
 	<div class="main-wrapper">
