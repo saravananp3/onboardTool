@@ -20,6 +20,7 @@ public class archiveFunctionalReqDeleteService {
 	String tableName;
 	public String column;
 	private String ReqId;
+	static String qry;
 	public archiveFunctionalReqDeleteService(int SeqNum,String Id,String tableName) throws ClassNotFoundException, SQLException {
 		 dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
@@ -52,7 +53,7 @@ public class archiveFunctionalReqDeleteService {
 			
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from "+tableName+" where OppId=? order by seq_no;";
+			String selectQuery = getQuery(tableName);
 			PreparedStatement st = con.prepareStatement(selectQuery);
 			st.setString(1, Id);
 			ResultSet rs = st.executeQuery();
@@ -95,7 +96,7 @@ public class archiveFunctionalReqDeleteService {
 			  System.out.println(seqNumRes.get(i)+" "+reqIdRes.get(i)+" "+reqInScopeRes.get(i)+" "+reqTypeRes.get(i)+" "+reqRes.get(i)+" "+additionInfoRes.get(i)+" ");	
 			}
 			
-			String deleteQuery ="delete from "+tableName+" where OppId=?;";
+			String deleteQuery =getDelQuery(tableName);
 			PreparedStatement st1 = con.prepareStatement(deleteQuery);
 			st1.setString(1,Id);
 			st1.executeUpdate();	
@@ -105,8 +106,7 @@ public class archiveFunctionalReqDeleteService {
 			for(int i=0;i<seqNumRes.size();i++)
 			{
 			  System.out.println(seqNumRes.get(i)+" "+reqIdRes.get(i)+" "+reqInScopeRes.get(i)+" "+reqTypeRes.get(i)+" "+reqRes.get(i)+" "+additionInfoRes.get(i)+" ");	
-			  String StakeHolderInsertQuery = "insert into "+tableName+" (seq_no, OppId, oppName, prjName, reqId, reqInScope, reqType, "+column+", additionInfo)"
-						+ " value(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			  String StakeHolderInsertQuery = getInsQuery(tableName);
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, Integer.parseInt(seqNum.get(i)));
 	          prestmt.setString(2, Id);
@@ -166,6 +166,87 @@ public class archiveFunctionalReqDeleteService {
 			
 		}
 	}
+	
+	public static String getInsQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_datareq_info":
+			qry="insert into archive_datareq_info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, req, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_RetentionLegalReq_Info":
+			qry="insert into Archive_RetentionLegalReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_SecurityReq_Info":
+			qry="insert into Archive_SecurityReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_UsabilityReq_Info":
+			qry="insert into Archive_UsabilityReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_AuditReq_Info":
+			qry="insert into Archive_AuditReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return qry;
+	}
+	
+	public static String getQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_datareq_info":
+			qry="select * from archive_datareq_info where OppId=? order by seq_no;";
+		break;
+		case "Archive_RetentionLegalReq_Info":
+			qry="select * from Archive_RetentionLegalReq_Info where OppId=? order by seq_no;";
+		break;
+		case "Archive_SecurityReq_Info":
+			qry="select * from Archive_SecurityReq_Info where OppId=? order by seq_no;";
+		break;
+		case "Archive_UsabilityReq_Info":
+			qry="select * from Archive_UsabilityReq_Info where OppId=? order by seq_no;";
+		break;
+		case "Archive_AuditReq_Info":
+			qry="select * from Archive_AuditReq_Info where OppId=? order by seq_no;";
+		break;
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return qry;
+	}
+	
+	public static String getDelQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_datareq_info":
+			qry="delete from archive_datareq_info where OppId=?;";
+		break;
+		case "Archive_RetentionLegalReq_Info":
+			qry="delete from Archive_RetentionLegalReq_Info where OppId=?;";
+		break;
+		case "Archive_SecurityReq_Info":
+			qry="delete from Archive_SecurityReq_Info where OppId=?;";
+		break;
+		case "Archive_UsabilityReq_Info":
+			qry="delete from Archive_UsabilityReq_Info where OppId=?;";
+		break;
+		case "Archive_AuditReq_Info":
+			qry="delete from Archive_AuditReq_Info where OppId=?;";
+		break;
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return qry;
+	}
+	
+	
+	
 	private String getSeqNum(int seq_no)
 	{
 		String seq_num="";

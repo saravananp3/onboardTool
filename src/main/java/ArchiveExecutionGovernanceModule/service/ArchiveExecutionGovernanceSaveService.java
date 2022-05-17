@@ -23,6 +23,8 @@ public class ArchiveExecutionGovernanceSaveService {
 	public String ColumnName = "";
 	public int SeqNo = 0;
 	public String Value = "";
+	static String qry;
+	static String dateqry;
 	public ArchiveExecutionGovernanceSaveService(String waveId,int SeqNo,String ColumnName,String Value) throws ClassNotFoundException, SQLException {
 		
 		dBconnection = new DBconnection();
@@ -32,6 +34,74 @@ public class ArchiveExecutionGovernanceSaveService {
 		this.ColumnName = ColumnName;
 		this.Value = Value;
 	}
+	
+	public static String getQuery(String ColumnName)
+	{
+		switch(ColumnName)
+		{
+		case "taskType":
+			qry="update archive_execution_governance_info set taskType = ? where waveId=? and seq_No=?;";
+			break;
+		case "majorDependencies":
+			qry="update archive_execution_governance_info set majorDependencies = ? where waveId=? and seq_No=?;";
+			break;
+		case "assignedTo":
+			qry="update archive_execution_governance_info set assignedTo = ? where waveId=? and seq_No=?;";
+			break;
+		case "planSrt":
+			qry="update archive_execution_governance_info set planSrt = ? where waveId=? and seq_No=?;";
+			break;
+		case "planEnd":
+			qry="update archive_execution_governance_info set planEnd = ? where waveId=? and seq_No=?;";
+			break;
+		case "actSrt":
+			qry="update archive_execution_governance_info set actSrt = ? where waveId=? and seq_No=?;";
+			break;
+		case "actEnd":
+			qry="update archive_execution_governance_info set actEnd = ? where waveId=? and seq_No=?;";
+			break;
+		case "completion":
+			qry="update archive_execution_governance_info set completion = ? where waveId=? and seq_No=?;";
+			break;
+		case "status":
+			qry="update archive_execution_governance_info set status = ? where waveId=? and seq_No=?;";
+			break;
+		case "remark":
+			qry="update archive_execution_governance_info set remark = ? where waveId=? and seq_No=?;";
+			break;
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	
+	public static String getDateQuery(String ColumnName)
+	{
+		switch(ColumnName)
+		{
+		case "planSrt":
+			dateqry="update archive_execution_governance_info set planSrt = ? where waveId=? and seq_No=?;";
+			break;
+		case "planEnd":
+			dateqry="update archive_execution_governance_info set planEnd = ? where waveId=? and seq_No=?;";
+			break;
+		case "actSrt":
+			dateqry="update archive_execution_governance_info set actSrt = ? where waveId=? and seq_No=?;";
+			break;
+		case "actEnd":
+			dateqry="update archive_execution_governance_info set actEnd = ? where waveId=? and seq_No=?;";
+			break;
+			
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return dateqry;
+		
+	}
+	
 	public JsonObject ArchiveExecutionSave()
 	{
 		JsonObject jsonObject = new JsonObject();
@@ -39,7 +109,7 @@ public class ArchiveExecutionGovernanceSaveService {
 		try
 		{
 			
-			String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = ? where waveid=? and seq_No=?;";
+			String UpdateQuery  = getQuery(ColumnName);
 			PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	        prestmt.setString(1, Value);
 	        prestmt.setString(2, waveId);
@@ -130,7 +200,8 @@ public class ArchiveExecutionGovernanceSaveService {
 		    for(int i = rowIndex; i >= 0; i--) {
 		    	
 		    	if(arrLevel.get(i) == 1) {
-		    		String UpdateQuery  = "update archive_execution_governance_info set "+ColumnName+" = ? where waveid=? and seq_No=?;";
+		    		
+		    		String UpdateQuery  = getDateQuery(ColumnName);
 		    		PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 		    		int s=(i+1);
 			        prestmt.setString(1, resultDate);
