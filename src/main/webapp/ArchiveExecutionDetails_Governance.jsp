@@ -557,10 +557,12 @@ background:#1565c0 important;
 			if (visit_reset.getString(6) != null) {
 		if (visit_reset.getString(1).equals(userName) && visit_reset.getString(2).equals(startDate)
 				&& visit_reset.getString(3).equals("Logged in")) {
-			Statement stmtt = connectCon.createStatement();
-			String queryy = "update visits set count=count+1,time='" + startTime + "' where uname='" + userName
-					+ "' and module='Logged in'  and date ='" + startDate + "'";
-			int count = stmtt.executeUpdate(queryy);
+			String queryy = "update visits set count=count+1,time=? where uname=? and module='Logged in'  and date =?";
+            PreparedStatement stmtt = connectCon.prepareStatement(queryy);
+			 stmtt.setString(1, startTime);
+			 stmtt.setString(2, userName);
+			 stmtt.setString(3, startDate);
+            int count = stmtt.executeUpdate();
 			flag1 = 0;
 			break;
 		}

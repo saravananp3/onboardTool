@@ -449,8 +449,18 @@ body {
 																			id="u_email_modify" name="u_email" required>
 																			
 																			<label class="control-label" for="formInput526">User Role:</label>
-																		<input type="text" class="form-control"
-																			id="u_role_modify" name="u_role" required>
+																		<select class="form-select form-select-lg mb-3"
+															aria-label=".form-select-lg example"
+															id="u_role_modify" name="u_role" required>
+															<option>Select</option>
+															<option>DECOM_SUPER_ADMIN</option>
+															<option>DECOM_ADMIN</option>
+															<option>DECOM_TECHNICAL_CONTRIBUTOR</option>
+															<option>DECOM_ARCHIVE_CONTRIBUTOR</option>
+															<option>DECOM_DECOMMISSION_CONTRIBUTOR</option>
+															<option>DECOM_FINANCE_CONTRIBUTOR</option>
+													</select>
+																		
 																			
 																			
 																	</div>

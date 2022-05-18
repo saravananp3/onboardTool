@@ -1,7 +1,6 @@
 package servlet;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import service.IntakeInformationService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,11 +20,13 @@ public class Archive_Intake_Servlet extends HttpServlet {
         String ID = (String) details.getAttribute("theName");
         String uname=(String)details.getAttribute("username");
         String roles=(String)details.getAttribute("role");
-        JsonArray infojson = new IntakeInformationService().archive_intake_app(Project_name,Applications,ID,uname,roles);
-        String json = new Gson().toJson(infojson);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+		/*
+		 * JsonArray infojson = new
+		 * IntakeInformationService().archive_intake_app(Project_name,Applications,ID,
+		 * uname,roles); String json = new Gson().toJson(infojson);
+		 * response.setContentType("application/json");
+		 * response.setCharacterEncoding("UTF-8"); response.getWriter().write(json);
+		 */
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

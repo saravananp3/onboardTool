@@ -25,7 +25,7 @@ public class phaseSaveService {
 	String idAndCond;
 	String operation;
 	String id;
-	
+	static String qry;
 	public phaseSaveService(String Id,String phaseName,JsonArray jsonArray,String id,String operation) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
@@ -53,14 +53,10 @@ public class phaseSaveService {
 			{
 			case "EditPhase":
 				  tableName = "phase_info";
-				  idAndCond = " and phaseId='"+id+"'";
-				  idWhereCond = " where phaseId='"+id+"'";
-				break;
+				  break;
 				
 			case "NewPhase":
 				tableName = "phase_info_details";
-				idWhereCond = "";
-				idAndCond = "";
 				break;
 			}
 		}
@@ -69,6 +65,26 @@ public class phaseSaveService {
 			e.printStackTrace();
 		}
 	}
+	
+	public static String getUpdQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "phase_info":
+			qry="update phase_info set value=?,phaseName=? where column_name=? and phaseId=?;";
+			break;
+		case "phase_info_details":
+			qry="update phase_info_details set value=?,phaseName=? where column_name=?;";
+			break;
+			
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	
 	public boolean AddOpportunityToExistingWave()
 	{
 		boolean statusFlag = false;
@@ -109,18 +125,35 @@ public class phaseSaveService {
 		{
 			for(int i=0;i<jsonArray.size();i++)
 			{
-				
+				if(tableName.equals("phase_info"))
+				{
 				JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
-				String updateQuery = "update "+tableName+" set value=?,phaseName=? where column_name=? "+idAndCond+";";
+				String updateQuery = getUpdQuery(tableName);
+				 PreparedStatement st = con.prepareStatement(updateQuery);
+		          st.setString(1, value);
+		          st.setString(2, phaseName);
+		          st.setString(3, name);
+		          st.setString(4, id);
+		          st.execute();
+				  st.close();
+				}
+				
+				if(tableName.equals("phase_info_details"))
+				{
+				JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
+				String name = jsonObj.get("Name").getAsString();
+				String value = jsonObj.get("Value").getAsString();
+				String updateQuery = getUpdQuery(tableName);
 				 PreparedStatement st = con.prepareStatement(updateQuery);
 		          st.setString(1, value);
 		          st.setString(2, phaseName);
 		          st.setString(3, name);
 		          st.execute();
 				  st.close();
-	            
+				}
+				
 			}
 			if(operation.equals("NewPhase"))
 			moveInfoDetailsToInfo();

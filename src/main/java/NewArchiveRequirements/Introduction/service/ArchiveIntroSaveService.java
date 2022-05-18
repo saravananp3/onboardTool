@@ -18,7 +18,7 @@ public class ArchiveIntroSaveService{
 	String value;
 	String Id;
 	String appName;
-	
+	static String qry;
 	public ArchiveIntroSaveService(String columnName,String value,String Id,String appName) throws ClassNotFoundException, SQLException {
 	this.columnName =columnName;
 	this.value =value;
@@ -73,7 +73,8 @@ public class ArchiveIntroSaveService{
 				prepareStmt.execute();
 				prepareStmt.close();
 			}
-			String UpdateQuery ="update archiveintro_info set "+columnName+"=? where oppid=?;";
+			
+			String UpdateQuery =getQuery(columnName);
 			PreparedStatement st2 = con.prepareStatement(UpdateQuery);
 	          st2.setString(1, value);
 	          st2.setString(2, Id);
@@ -88,6 +89,26 @@ public class ArchiveIntroSaveService{
 			e.printStackTrace();
 		}
 		return jsonObject;
+	}
+	public static String getQuery(String columnName)
+	{
+		switch(columnName)
+		{
+		case "scope":
+			qry="update archiveintro_info set scope=? where oppid=?;";
+		break;
+		case "purpose":
+			qry="update archiveintro_info set purpose=? where oppid=?;";
+		break;
+		case "assumption":
+			qry="update archiveintro_info set assumption=? where oppid=?;";
+		break;
+		
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return qry;
 	}
 	protected void finalize() throws Throwable {
 	 con.close();

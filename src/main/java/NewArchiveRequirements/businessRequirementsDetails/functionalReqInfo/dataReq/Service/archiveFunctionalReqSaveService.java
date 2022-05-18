@@ -17,6 +17,7 @@ public class archiveFunctionalReqSaveService {
 	JsonArray jsonArray ;
 	String tableName;
 	String column;
+	static String qry;
 	public archiveFunctionalReqSaveService(String Id,JsonArray jsonArray,String tableName) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
@@ -43,7 +44,7 @@ public class archiveFunctionalReqSaveService {
 		  		String Requirements =  jsonObj.get("Requirements").getAsString();
 		  		String Additional =  jsonObj.get("Additional").getAsString();
 		  		
-			  String UpdateQuery = "update "+tableName+" set reqId = ?, reqInScope =?, reqType=?, "+column+"=?, additionInfo=? where OppId=? and seq_no=?";
+			  String UpdateQuery = getQuery(tableName);
 	          PreparedStatement prestmt = con.prepareStatement(UpdateQuery);
 	          prestmt.setString(1, ReqId);
 	          prestmt.setString(2, InScope);
@@ -79,6 +80,32 @@ public class archiveFunctionalReqSaveService {
 		default : 
 			column = "descp";
 		}
+	}
+	
+	public static String getQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "Archive_DataReq_Info":
+			qry="update archive_datareq_info set reqId = ?, reqInScope =?, reqType=?, req=?, additionInfo=? where OppId=? and seq_no=?";
+		break;
+		case "Archive_RetentionLegalReq_Info":
+			qry="update Archive_RetentionLegalReq_Info set reqId = ?, reqInScope =?, reqType=?, descp=?, additionInfo=? where OppId=? and seq_no=?";
+		break;
+		case "Archive_SecurityReq_Info":
+			qry="update Archive_SecurityReq_Info set reqId = ?, reqInScope =?, reqType=?, descp=?, additionInfo=? where OppId=? and seq_no=?";
+		break;
+		case "Archive_UsabilityReq_Info":
+			qry="update Archive_UsabilityReq_Info set reqId = ?, reqInScope =?, reqType=?, descp=?, additionInfo=? where OppId=? and seq_no=?";
+		break;
+		case "Archive_AuditReq_Info":
+			qry="update Archive_AuditReq_Info set reqId = ?, reqInScope =?, reqType=?, descp=?, additionInfo=? where OppId=? and seq_no=?";
+		break;
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return qry;
 	}
 	
 	protected void finalize() throws Throwable {

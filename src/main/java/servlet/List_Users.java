@@ -3,7 +3,7 @@ package servlet;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.log4j.Logger;
-import service.IntakeInformationService;
+
 import service.ListUserService;
 
 import javax.servlet.ServletException;

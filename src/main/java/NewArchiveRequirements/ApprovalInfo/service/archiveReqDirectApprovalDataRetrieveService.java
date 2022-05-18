@@ -28,9 +28,12 @@ public class archiveReqDirectApprovalDataRetrieveService {
         JsonObject jsonObject = new JsonObject();
         try
         {
-            String selectQuery ="update decom3sixtytool.ArchiveReq_Roles_Info set mail_flag='true' where intakeApproval='Approved' and priority_order_num='"+priorityNo+"' and approvalId='"+approverId+"' and OppId='"+Id+"';";
-            Statement st = con.createStatement();
-            int update = st.executeUpdate(selectQuery);
+            String selectQuery ="update decom3sixtytool.ArchiveReq_Roles_Info set mail_flag='true' where intakeApproval='Approved' and priority_order_num=? and approvalId=? and OppId=?;";
+            PreparedStatement st=con.prepareStatement(selectQuery);
+            st.setString(1, priorityNo);
+            st.setString(2, approverId);
+            st.setString(3, Id);
+            int update = st.executeUpdate();
             if(update>0) {
                 jsonObject.addProperty("status", "true");
             }
@@ -49,9 +52,12 @@ public class archiveReqDirectApprovalDataRetrieveService {
         JsonObject jsonObject = new JsonObject();
         try
         {
-            String selectQuery ="update decom3sixtytool.intake_stake_holder_info set mail_flag='true' where intakeApproval='Approved' and priority_order_num='"+priorityNo+"' and approvalId='"+approverId+"' and OppId='"+Id+"';";
-            Statement st = con.createStatement();
-            int update = st.executeUpdate(selectQuery);
+            String selectQuery ="update decom3sixtytool.intake_stake_holder_info set mail_flag='true' where intakeApproval='Approved' and priority_order_num=? and approvalId=? and OppId=?;";
+            PreparedStatement st=con.prepareStatement(selectQuery);
+            st.setString(1, priorityNo);
+            st.setString(2, approverId);
+            st.setString(3, Id);
+           int update = st.executeUpdate();
             if(update>0) {
                 jsonObject.addProperty("status", "true");
             }

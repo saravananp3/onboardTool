@@ -17,6 +17,7 @@ public class phaseAddService {
 	String tableName;
 	String IdWhereCond;
 	String IdAndCond;
+	static String qry;
 	
 public phaseAddService(String Id,String operation) throws ClassNotFoundException, SQLException {
 	 dBconnection = new DBconnection();
@@ -31,20 +32,93 @@ private void getTableProp(String operation) {
 	{
 	
 	case "EditPhase":
-		tableName =" phase_info";
-		IdWhereCond =  " where phaseId='"+Id+"'";
-		IdAndCond = " and phaseId='"+Id+"'";
+		tableName ="phase_info";
 		break;
 	
 	case "NewPhase":
-		tableName =" phase_info_details";
-		IdWhereCond =  "";
-		IdAndCond = "";
+		tableName ="phase_info_details";
 		break;
 	}
 	
 	
 }
+
+public static String getQuery(String tableName)
+{
+	switch(tableName)
+	{
+	case "phase_info":
+		qry="select * from phase_info where phaseId=? order by seq_no";
+		break;
+	case "phase_info_details":
+		qry="select * from phase_info_details where phaseId=? order by seq_no";
+		break;
+		
+    default:
+	System.out.println("Error");
+	break;
+	
+	}
+	return qry;
+}
+
+public static String getSeqNoQuery(String tableName)
+{
+	switch(tableName)
+	{
+	case "phase_info":
+		qry="select max(seq_no) from phase_info where phaseId=? order by seq_no;";
+		break;
+	case "phase_info_details":
+		qry="select max(seq_no) from phase_info_details where phaseId=? order by seq_no;";
+		break;
+		
+    default:
+	System.out.println("Error");
+	break;
+	
+	}
+	return qry;
+}
+
+public static String getChkLblQuery(String tableName)
+{
+	switch(tableName)
+	{
+	case "phase_info":
+		qry="select * from phase_info where label_name = ? and phaseId=?";
+		break;
+	case "phase_info_details":
+		qry="select * from phase_info_details where label_name = ? and phaseId=?";
+		break;
+		
+    default:
+	System.out.println("Error");
+	break;
+	
+	}
+	return qry;
+}
+
+public static String getInsQuery(String tableName)
+{
+	switch(tableName)
+	{
+	case "phase_info":
+		qry="insert into phase_info (seq_no,phaseId,phaseName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+	case "phase_info_details":
+		qry="insert into phase_info_details (seq_no,phaseId,phaseName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		
+    default:
+	System.out.println("Error");
+	break;
+	
+	}
+	return qry;
+}
+
 
 public boolean phaseAdd(String type,String label_name,String options,String mandatory)
 {
@@ -52,9 +126,11 @@ public boolean phaseAdd(String type,String label_name,String options,String mand
      try
      {
     	 int max_seq_num = 0;
-    	 String select_query = "select * from  "+tableName+IdWhereCond+" order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(select_query);
+    	 	String select_query = getQuery(tableName);
+    	 	PreparedStatement st=con.prepareStatement(select_query);
+    	 	st.setString(1, Id);
+			ResultSet rs = st.executeQuery();
+			System.out.println("QUERYY : "+select_query);
 			String name = "phaseAddInfo";
 			
 			if (rs.next()) {
@@ -63,7 +139,7 @@ public boolean phaseAdd(String type,String label_name,String options,String mand
 			if (!type.equals("Text box") && !type.equals("Datepicker")) {
 				options = options.substring(0, options.length() - 1);
 			}
-			String insert_query = "insert into "+tableName+" (seq_no,phaseId,phaseName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String insert_query = getInsQuery(tableName);
 			PreparedStatement preparedStatement1 = con.prepareStatement(insert_query);
 			preparedStatement1.setInt(1, max_seq_num);
 			preparedStatement1.setString(2,Id);
@@ -78,6 +154,7 @@ public boolean phaseAdd(String type,String label_name,String options,String mand
 			preparedStatement1.execute();
             preparedStatement1.close();
             addStatus =true;
+            System.out.println("INSERT PHASE : "+insert_query);
      }
      catch(Exception e)
      {
@@ -91,10 +168,12 @@ public int getSeqNum()
 	int max_seq_num = 0;
 	try
 	{
-	String max_seqnum = "select max(seq_no) from "+tableName+IdWhereCond+" order by seq_no;";
-	Statement st1 = con.createStatement();
-	ResultSet rs1 = st1.executeQuery(max_seqnum);
-
+		
+	String max_seqnum = getSeqNoQuery(tableName);
+	PreparedStatement st1=con.prepareStatement(max_seqnum);
+	st1.setString(1, Id);
+	ResultSet rs1 = st1.executeQuery();
+	System.out.println("SEQ NUM :: "+max_seqnum);
 	if (rs1.next()) {
 		max_seq_num = Integer.parseInt(rs1.getString(1));
 		max_seq_num++;
@@ -111,10 +190,12 @@ public boolean checkLabelName(String labelName)
 	boolean checkDuplicate = false;
 	try
 	{
-      String labelQuery = "select * from "+tableName+" where label_name = ?"+ IdAndCond;
+      String labelQuery = getChkLblQuery(tableName);
       PreparedStatement st = con.prepareStatement(labelQuery);
 	  st.setString(1, labelName);
+	  st.setString(2, Id);
 	  ResultSet rs = st.executeQuery();
+	  System.out.println("CHK LABEL :: "+labelQuery);
       if(rs.next())
     	  checkDuplicate = true;
 	}

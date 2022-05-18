@@ -23,6 +23,8 @@ public class ArchiveExecutionSaveService {
 	public String ColumnName = "";
 	public int SeqNo = 0;
 	public String Value = "";
+	static String qry;
+	static String dateqry;
 	public ArchiveExecutionSaveService(String Id,int SeqNo,String ColumnName,String Value) throws ClassNotFoundException, SQLException {
 		
 		dBconnection = new DBconnection();
@@ -32,13 +34,79 @@ public class ArchiveExecutionSaveService {
 		this.ColumnName = ColumnName;
 		this.Value = Value;
 	}
+	public static String getQuery(String ColumnName)
+	{
+		switch(ColumnName)
+		{
+		case "taskType":
+			qry="update archive_execution_info set taskType = ? where oppid=? and seq_No=?;";
+			break;
+		case "majorDependencies":
+			qry="update archive_execution_info set majorDependencies = ? where oppid=? and seq_No=?;";
+			break;
+		case "assignedTo":
+			qry="update archive_execution_info set assignedTo = ? where oppid=? and seq_No=?;";
+			break;
+		case "planSrt":
+			qry="update archive_execution_info set planSrt = ? where oppid=? and seq_No=?;";
+			break;
+		case "planEnd":
+			qry="update archive_execution_info set planEnd = ? where oppid=? and seq_No=?;";
+			break;
+		case "actSrt":
+			qry="update archive_execution_info set actSrt = ? where oppid=? and seq_No=?;";
+			break;
+		case "actEnd":
+			qry="update archive_execution_info set actEnd = ? where oppid=? and seq_No=?;";
+			break;
+		case "completion":
+			qry="update archive_execution_info set completion = ? where oppid=? and seq_No=?;";
+			break;
+		case "status":
+			qry="update archive_execution_info set status = ? where oppid=? and seq_No=?;";
+			break;
+		case "remark":
+			qry="update archive_execution_info set remark = ? where oppid=? and seq_No=?;";
+			break;
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	public static String getDateQuery(String ColumnName)
+	{
+		switch(ColumnName)
+		{
+		case "planSrt":
+			dateqry="update archive_execution_info set planSrt = ? where oppid=? and seq_No=?;";
+			break;
+		case "planEnd":
+			dateqry="update archive_execution_info set planEnd = ? where oppid=? and seq_No=?;";
+			break;
+		case "actSrt":
+			dateqry="update archive_execution_info set actSrt = ? where oppid=? and seq_No=?;";
+			break;
+		case "actEnd":
+			dateqry="update archive_execution_info set actEnd = ? where oppid=? and seq_No=?;";
+			break;
+			
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return dateqry;
+		
+	}
+	
 	public JsonObject ArchiveExecutionSave()
 	{
 		JsonObject jsonObject = new JsonObject();
 		boolean checkSave = false;
 		try
-		{
-			String UpdateQuery  = "update archive_execution_info set "+ColumnName+" = ? where oppid=? and seq_No=?;";
+		{	
+			String UpdateQuery  = getQuery(ColumnName);
 			PreparedStatement pst1 = con.prepareStatement(UpdateQuery);
 			pst1.setString(1, Value);
 	    	pst1.setString(2, Id);
@@ -132,7 +200,7 @@ public class ArchiveExecutionSaveService {
 		    	
 		    	if(arrLevel.get(i) == 1) {
 		    		int t=i+1;
-		    		String UpdateQuery  = "update archive_execution_info set "+ColumnName+" = ? where oppid=? and seq_No=?;";
+		    		String UpdateQuery  = getDateQuery(ColumnName);
 		    		PreparedStatement pst1 = con.prepareStatement(UpdateQuery);
 					pst1.setString(1, resultDate);
 			    	pst1.setString(2, Id);
