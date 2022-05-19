@@ -53,7 +53,7 @@ HttpSession details = request.getSession();
 	                outStream.write(buffer, 0, bytesRead);
 	            }
 	            
-	            //System.out.println("JSON ARRAY : "+jsonArray);
+	            System.out.println("Downloaded File : "+fileName);
 	            inputStream.close();
 	            outStream.close();  
 	            response.flushBuffer();

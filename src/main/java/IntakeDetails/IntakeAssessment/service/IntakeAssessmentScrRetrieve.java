@@ -29,15 +29,15 @@ public JsonArray intake_screenshot_retrieve(String Id) {
             jsonObj.addProperty("AppId",rs.getString(1));
             jsonObj.addProperty("File_Name",rs.getString(2));
             jsonArray.add(jsonObj);
-           
+            System.out.println("Intake Assessment Screenshot : "+jsonObj);
            
        }    
     }
 catch(Exception e)
     {
-    System.out.println("Execption Occurs");
+    System.out.println("Execption Occurs"+e);
     }
-    System.out.println("JSON"+jsonArray);
+    System.out.println("INTAKE ASSESSMENT SCREENSHOT JSON ARRAY"+jsonArray);
     return jsonArray;
 }
 

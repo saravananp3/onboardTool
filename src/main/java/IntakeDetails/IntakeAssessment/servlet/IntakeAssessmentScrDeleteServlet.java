@@ -43,7 +43,7 @@ public class IntakeAssessmentScrDeleteServlet extends HttpServlet {
 	    String File_Name=request.getParameter("File_Name");
 	    JsonObject jsonObj =IntakeAsssessmentScrDelete.delete_screenshots(Id, File_Name);
         String json = new Gson().toJson(jsonObj);
-        System.out.println("JSON"+json);
+        System.out.println("INTAKE SCREENSHOT DELTE JSON : "+json);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);

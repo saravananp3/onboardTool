@@ -19,11 +19,12 @@ public class IntakeAsssessmentScrDelete {
 	        st2.setString(1, Id);
 	        st2.setString(2, File_Name);
 	        st2.executeUpdate();
-	        System.out.println("Deleted");
+	        System.out.println("Deleted File : "+File_Name);
+	        jsonobj.addProperty("Deleted File Name : ", File_Name);
 	        }
 	    catch(Exception e)
 	    {
-	    System.out.println("Execption Occurs");
+	    System.out.println("Execption Occurs"+e);
 	    }
 	    return jsonobj;
 	    }

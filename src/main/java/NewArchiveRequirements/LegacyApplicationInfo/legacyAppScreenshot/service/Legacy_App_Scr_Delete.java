@@ -20,11 +20,12 @@ public class Legacy_App_Scr_Delete {
 	        st2.setString(1, Id);
 	        st2.setString(2, File_Name);
 	        st2.executeUpdate();
-	        System.out.println("Deleted");
+	        System.out.println("File Deleted : "+File_Name);
+	        jsonobj.addProperty("Deleted File : ", File_Name);
 	        }
 	    catch(Exception e)
 	    {
-	    System.out.println("Execption Occurs");
+	    System.out.println("Execption Occurs"+e);
 	    }
 	    return jsonobj;
 	    }

@@ -43,7 +43,7 @@ public class Legacy_App_Scr_DeleteServlet extends HttpServlet {
 	    String File_Name=request.getParameter("File_Name");
 	    JsonObject jsonObj =Legacy_App_Scr_Delete.delete_screenshots(Id,File_Name);
         String json = new Gson().toJson(jsonObj);
-        System.out.println("JSON"+json);
+        System.out.println("LEGACY SCREENSHOT DELETE JSON : "+json);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);

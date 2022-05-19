@@ -47,7 +47,7 @@ public class IntakeAssessmentScrRetrieveServlet extends HttpServlet {
         intake_scr_retrive =null;
         //calling finalize method and garabage collector
         System.gc();
-        System.out.println("JSON ARRAY"+jsonArray);
+        System.out.println("INTAKE JSON ARRAY"+jsonArray);
         String json = new Gson().toJson(jsonArray);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
