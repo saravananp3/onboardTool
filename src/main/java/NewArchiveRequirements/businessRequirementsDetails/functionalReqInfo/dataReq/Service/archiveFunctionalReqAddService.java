@@ -18,6 +18,7 @@ public class archiveFunctionalReqAddService {
 	String tableName;
 	String column;
 	String ReqId;
+	static String qry;
 	
 	public archiveFunctionalReqAddService(int SeqNum,String Id, String oppName, String tableName) throws ClassNotFoundException, SQLException {
 		 dBconnection = new DBconnection();
@@ -36,8 +37,8 @@ public class archiveFunctionalReqAddService {
 		try
 		{
 			boolean statusFlag = false;
-			  String InsertQuery = "insert into "+tableName+" (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, "+column+", additionInfo)"
-						+ " value(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			
+			  String InsertQuery = getQuery(tableName);
 	          PreparedStatement prestmt = con.prepareStatement(InsertQuery);
 	          prestmt.setInt(1, SeqNum+1);
 	          prestmt.setString(2, Id);
@@ -93,6 +94,32 @@ public class archiveFunctionalReqAddService {
 			break;
 			
 		}
+	}
+	
+	public static String getQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_datareq_info":
+			qry="insert into archive_datareq_info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, req, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_RetentionLegalReq_Info":
+			qry="insert into Archive_RetentionLegalReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_SecurityReq_Info":
+			qry="insert into Archive_SecurityReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_UsabilityReq_Info":
+			qry="insert into Archive_UsabilityReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		case "Archive_AuditReq_Info":
+			qry="insert into Archive_AuditReq_Info (seq_no, oppId, oppName, prjname, reqId, reqInScope, reqType, descp, additionInfo)values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		default:
+			System.out.println("Error");
+			break;
+		}
+		return qry;
 	}
 	private String getSeqNum()
 	{

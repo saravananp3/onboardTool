@@ -30,6 +30,7 @@ public class governanceSaveService {
 	String previousApps = "";
 	String selectedApps = "";
 	String id;
+	static String qry;
 	public governanceSaveService(String Id,String waveName,JsonArray jsonArray,String id,String operation) throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
@@ -74,6 +75,25 @@ public class governanceSaveService {
 			e.printStackTrace();
 		}
 	}
+	public static String getUpdQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "governance_info":
+			qry="update governance_info set value=?,waveName=? where column_name=? and waveId=?;";
+			break;
+		case "governance_info_details":
+			qry="update governance_info_details set value=?,waveName=? where column_name=?;";
+			break;
+			
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	
 	private String getApps() {
 		String Apps = "";
 		try
@@ -142,15 +162,29 @@ public class governanceSaveService {
 				JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
-				
-	            String updateQuery = "update "+tableName+" set value=?,waveName=? where column_name=? "+idAndCond+";";
+				System.out.println("TABLE NAME -- : "+tableName);
+				System.out.println("ID COND : "+idAndCond);
+				if(tableName.equals("governance_info"))
+				{
+	            String updateQuery =getUpdQuery(tableName);
+	            PreparedStatement st = con.prepareStatement(updateQuery);
+		          st.setString(1, value);
+		          st.setString(2, waveName);
+		          st.setString(3, name);
+		          st.setString(4, id);
+		          st.execute();
+	              st.close();
+	            }
+				if(tableName.equals("governance_info_details"))
+				{
+	            String updateQuery =getUpdQuery(tableName);
 	            PreparedStatement st = con.prepareStatement(updateQuery);
 		          st.setString(1, value);
 		          st.setString(2, waveName);
 		          st.setString(3, name);
 		          st.execute();
 	              st.close();
-	            
+	            }
 			}
 			String waveName = jsonArray.get(1).getAsJsonObject().get("Value").getAsString();
 			

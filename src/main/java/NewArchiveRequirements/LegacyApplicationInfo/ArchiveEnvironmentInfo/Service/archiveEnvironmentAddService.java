@@ -19,6 +19,7 @@ public class archiveEnvironmentAddService {
 	String oppName;
 	String tableName;
 	String columnSuffix;
+	static String qry;
 	public archiveEnvironmentAddService(int SeqNum,String Id, String oppName,String tableName) throws ClassNotFoundException, SQLException {
 		 dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
@@ -32,14 +33,94 @@ public class archiveEnvironmentAddService {
 	{
 		return((tableName.equals("archive_environment_name_info"))?"Name":(tableName.equals("archive_environment_serverip_info")?"ServerIp":""));
 	}
+	
+	public static String getQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_environment_name_info":
+			qry="select * from archive_environment_name_info where oppid=?";
+			break;
+		case "archive_environment_serverip_info":
+			qry="select * from archive_environment_serverip_info where oppid=?";
+			break;
+			
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	
+	public static String getDelQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_environment_name_info":
+			qry="delete from archive_environment_name_info where oppid=?;";
+			break;
+		case "archive_environment_serverip_info":
+			qry="delete from archive_environment_serverip_info where oppid=?;";
+			break;
+			
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	
+	public static String getrowInsQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_environment_name_info":
+			qry="insert into archive_environment_name_info (seq_no, OppId, prjName, OppName, devName, testName, stageName, prodName)"
+					+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+			break;
+		case "archive_environment_serverip_info":
+			qry="insert into archive_environment_serverip_info (seq_no, OppId, prjName, OppName, devServerIp, testServerIp, stageServerIp, prodServerIp)"
+					+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+			break;
+			
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	
+	public static String getInsQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_environment_name_info":
+			qry="insert into archive_environment_name_info (seq_no, OppId, prjName, OppName, dev, test, stage, prod)"
+					+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+			break;
+		case "archive_environment_serverip_info":
+			qry="insert into archive_environment_serverip_info (seq_no, OppId, prjName, OppName, dev, test, stage, prod)"
+					+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+			break;
+			
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
+	
 	public JsonObject AddRow()
 	{
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
 			boolean statusFlag = false;
-			  String StakeHolderInsertQuery = "insert into "+tableName+" (seq_no, OppId, prjName, OppName, dev"+columnSuffix+", test"+columnSuffix+", stage"+columnSuffix+", prod"+columnSuffix+")"
-						+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+			  String StakeHolderInsertQuery = getrowInsQuery(tableName);
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, SeqNum+1);
 	          prestmt.setString(2, Id);
@@ -85,7 +166,7 @@ public class archiveEnvironmentAddService {
 			
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from "+tableName+" where oppid=?;";
+			String selectQuery = getQuery(tableName);
 			PreparedStatement st = con.prepareStatement(selectQuery);
 			st.setString(1, Id);
 			ResultSet rs = st.executeQuery();
@@ -132,7 +213,7 @@ public class archiveEnvironmentAddService {
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
 			}
 			
-			String deleteQuery ="delete from "+tableName+" where oppid=?;";
+			String deleteQuery =getDelQuery(tableName);
 			PreparedStatement st1=con.prepareStatement(deleteQuery);
 			st1.setString(1, Id);
 			st1.executeUpdate();
@@ -141,8 +222,8 @@ public class archiveEnvironmentAddService {
 			for(int i=0;i<seqNumRes.size();i++)
 			{
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
-			  String StakeHolderInsertQuery = "insert into "+tableName+" (seq_no, OppId, prjName, OppName, dev, test, stage, prod)"
-						+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+			 
+			  String StakeHolderInsertQuery = getInsQuery(tableName);
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, Integer.parseInt(seqNum.get(i)));
 	          prestmt.setString(2, Id);
@@ -154,6 +235,7 @@ public class archiveEnvironmentAddService {
 	          prestmt.setString(8, prod.get(i));
 	          prestmt.execute();
 	          statusFlag =true;
+			System.out.println("Tablee Name :: "+StakeHolderInsertQuery);
 			}
 			jsonObject.addProperty("AddStatus", statusFlag);
 			

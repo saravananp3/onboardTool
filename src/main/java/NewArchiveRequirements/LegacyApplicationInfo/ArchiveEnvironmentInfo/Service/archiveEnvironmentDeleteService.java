@@ -18,6 +18,7 @@ public class archiveEnvironmentDeleteService {
 	String Id;
 	String tableName;
 	String columnSuffix;
+	static String qry;
 	public archiveEnvironmentDeleteService(int SeqNum,String Id,String tableName) throws ClassNotFoundException, SQLException {
 		 dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
@@ -30,6 +31,67 @@ private String getColumnSuffix()
 {
 	return((tableName.equals("archive_environment_name_info"))?"Name":(tableName.equals("archive_environment_serverip_info")?"ServerIp":""));
 }
+
+
+public static String getQuery(String tableName)
+{
+	switch(tableName)
+	{
+	case "archive_environment_name_info":
+		qry="select * from archive_environment_name_info where OppId=?;";
+		break;
+	case "archive_environment_serverip_info":
+		qry="select * from archive_environment_serverip_info where OppId=?;";
+		break;
+		
+    default:
+	System.out.println("Error");
+	break;
+	
+	}
+	return qry;
+}
+
+public static String getDelQuery(String tableName)
+{
+	switch(tableName)
+	{
+	case "archive_environment_name_info":
+		qry="delete from archive_environment_name_info where OppId=?;";
+		break;
+	case "archive_environment_serverip_info":
+		qry="delete from archive_environment_serverip_info where OppId=?;";
+		break;
+		
+    default:
+	System.out.println("Error");
+	break;
+	
+	}
+	return qry;
+}
+
+public static String getrowInsQuery(String tableName)
+{
+	switch(tableName)
+	{
+	case "archive_environment_name_info":
+		qry="insert into archive_environment_name_info (seq_no, OppId, prjName, OppName, devName, testName, stageName, prodName)"
+				+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+	case "archive_environment_serverip_info":
+		qry="insert into archive_environment_serverip_info (seq_no, OppId, prjName, OppName, devServerIp, testServerIp, stageServerIp, prodServerIp)"
+				+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+		break;
+		
+    default:
+	System.out.println("Error");
+	break;
+	
+	}
+	return qry;
+}
+
 	public JsonObject DeleteRowEnvironmentName()
 	{
 		JsonObject jsonObject = new JsonObject();
@@ -51,7 +113,7 @@ private String getColumnSuffix()
 			
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
-			String selectQuery = "select * from "+tableName+" where OppId=?;";
+			String selectQuery = getQuery(tableName);
 			PreparedStatement st = con.prepareStatement(selectQuery);
 			st.setString(1, Id);
 			ResultSet rs = st.executeQuery();
@@ -90,7 +152,7 @@ private String getColumnSuffix()
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
 			}
 			
-			String deleteQuery ="delete from "+tableName+" where OppId=?";
+			String deleteQuery =getDelQuery(tableName);
 			PreparedStatement st1 = con.prepareStatement(deleteQuery);
 			st1.setString(1,Id);
 			st1.executeUpdate();
@@ -99,8 +161,7 @@ private String getColumnSuffix()
 			for(int i=0;i<seqNumRes.size();i++)
 			{
 			  System.out.println(seqNumRes.get(i)+" "+devRes.get(i)+" "+testRes.get(i)+" "+stageRes.get(i)+" "+prodRes.get(i)+" ");	
-			  String StakeHolderInsertQuery = "insert into "+tableName+" (seq_no, OppId, prjName, oppName,dev"+columnSuffix+" ,test"+columnSuffix+", stage"+columnSuffix+",prod"+columnSuffix+")"
-						+ " value(?, ?, ?, ?, ?, ?, ?, ?);";
+			  String StakeHolderInsertQuery = getrowInsQuery(tableName);
 	          PreparedStatement prestmt = con.prepareStatement(StakeHolderInsertQuery);
 	          prestmt.setInt(1, Integer.parseInt(seqNum.get(i)));
 			  prestmt.setString(2,Id);

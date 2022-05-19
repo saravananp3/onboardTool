@@ -3,7 +3,6 @@ package intake;
 import com.google.gson.JsonObject;
 import org.apache.log4j.Logger;
 import reportutils.ReportPojo;
-import service.IntakeInformationService;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -63,7 +63,8 @@ public class businessReqSaveService{
 				prepareStmt.execute();
 				prepareStmt.close();
 			}
-			String UpdateQuery ="update archivebussinessreq_info set "+columnName+"=? where OppId=?;";
+			
+			String UpdateQuery ="update archivebussinessreq_info set businessreq=? where OppId=?;";
 			 PreparedStatement st2 = con.prepareStatement(UpdateQuery);
 	          st2.setString(1, value);
 	          st2.setString(2, Id);

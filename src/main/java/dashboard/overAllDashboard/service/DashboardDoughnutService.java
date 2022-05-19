@@ -72,26 +72,57 @@ public class DashboardDoughnutService {
     public JsonArray getPercentageByphase(String phaseFilter, String wave) {
         JsonArray jsonArray = new JsonArray();
         List < String > waves = new ArrayList < String > ();
+        String qry;
         try {
-            String whereCondn = phaseFilter.equals("All") ? "" : " where phaseName like '%" + phaseFilter + "%'";
-            String selectPhases = "select * from phase_info" + whereCondn;
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectPhases);
-            while (rs.next()) {
-                if (rs.getString("column_name").equals("waves")) {
-                    if (rs.getString("value").isEmpty() == false) {
-                        String waveArray[] = rs.getString("value").split(",");
-                        for (String string: waveArray) {
-                            waves.add(string);
+        	
+           // String whereCondn = phaseFilter.equals("All") ? "" : " where phaseName like '%" + phaseFilter + "%'";
+            if(phaseFilter.equals("All"))
+            {
+            	System.out.println("Doughnut Service All");
+            	String selectPhases = "select * from phase_info";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(selectPhases);
+                while (rs.next()) {
+                    if (rs.getString("column_name").equals("waves")) {
+                        if (rs.getString("value").isEmpty() == false) {
+                            String waveArray[] = rs.getString("value").split(",");
+                            for (String string: waveArray) {
+                                waves.add(string);
+                            }
                         }
                     }
                 }
+                String[] allWave = new String[waves.size()];
+                allWave = waves.toArray(allWave);
+                jsonArray = (getWaveDetailsStatus(allWave, wave));
+                rs.close();
+                st.close();    
             }
-            String[] allWave = new String[waves.size()];
-            allWave = waves.toArray(allWave);
-            jsonArray = (getWaveDetailsStatus(allWave, wave));
-            rs.close();
-            st.close();
+                if(!phaseFilter.equals("All"))
+                {
+                	System.out.println("Phase is :: "+phaseFilter);
+                	String selectPhases = "select * from phase_info where phaseName like ?";
+                	PreparedStatement st=con.prepareStatement(selectPhases);
+                	st.setString(1,"%"+phaseFilter+"%");
+                    ResultSet rs = st.executeQuery();
+                    while (rs.next()) {
+                        if (rs.getString("column_name").equals("waves")) {
+                            if (rs.getString("value").isEmpty() == false) {
+                                String waveArray[] = rs.getString("value").split(",");
+                                for (String string: waveArray) {
+                                    waves.add(string);
+                                }
+                            }
+                        }
+                    }
+                    String[] allWave = new String[waves.size()];
+                    allWave = waves.toArray(allWave);
+                    jsonArray = (getWaveDetailsStatus(allWave, wave));
+                    rs.close();
+                    st.close(); 
+                }
+            	             
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

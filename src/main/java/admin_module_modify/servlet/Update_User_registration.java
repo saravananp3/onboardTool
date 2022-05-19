@@ -1,7 +1,6 @@
 package admin_module_modify.servlet;
 
-import admin_module_modify.service.ModifyDataRetrieve_Serice;
-import admin_module_modify.service.Update_User_Registration_Service;
+
 import com.google.gson.JsonObject;
 import onboard.encryption;
 import org.apache.log4j.Logger;
@@ -49,8 +48,8 @@ public class Update_User_registration extends HttpServlet {
             String project_id = request.getParameter("project_id");
             String application_id = request.getParameter("application_id");
             String id = request.getParameter("id");
-            Update_User_Registration_Service update_user_registration_service = new Update_User_Registration_Service().Update_Service_Registration(uname, fname, lname, email_val, project_id, application_id, id);
-            logger.info("queryyyy" + update_user_registration_service);
+            //Update_User_Registration_Service update_user_registration_service = new Update_User_Registration_Service().Update_Service_Registration(uname, fname, lname, email_val, project_id, application_id, id);
+            //logger.info("queryyyy" + update_user_registration_service);
             
             response.sendRedirect("Modify_Admin_Users_list.jsp");
         } catch (Exception e) {
