@@ -410,7 +410,7 @@ public class NewOpportunityService {
           } 
       for(int n=0; n< add_column.size() ; n++) 
       {
-          String SelectDetailsQuery = "select * from opportunity_info_template_details where column_name='"+add_column.get(n)+"';";
+          String SelectDetailsQuery = "select * from opportunity_info_template_details where column_name=?;";
           PreparedStatement st3 = connection.prepareStatement(SelectDetailsQuery);
           st3.setString(1,add_column.get(n)); 
           ResultSet rs3 = st3.executeQuery();

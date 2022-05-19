@@ -587,22 +587,17 @@ public class IntakeOpportunityService {
     }
 	 public static void OrderingColumnNameBySeq(String ID,String table)
      {
-   	  String table1="";
-   	  String table2 ="";
-   	  if(table.equals("Opportunity_Info"))
-   	  {
-   		  table1 ="Opportunity_Info where id='"+ID+"'";
-   	  }else if(table.equals("Opportunity_Info_Details"))
-   	  {
-   		  table1 = "Opportunity_Info_Details";
-   	  }
-   		  try {
+   	     try {
    		  
-   		  DBconnection dBconnection = new DBconnection();
+   		      DBconnection dBconnection = new DBconnection();
       	      Connection connection = (Connection) dBconnection.getConnection(); 
-      	      String SelectQuery ="Select * from "+table1+"order by seq_no";
-      	      Statement st = connection.createStatement();
-      	      ResultSet rs = st.executeQuery(SelectQuery);
+      	     if(table.equals("Opportunity_Info"))
+      	     {
+      	    	 System.out.println("Opportunity_iNFo");
+      	      String SelectQuery ="select * from Opportunity_Info where id=? order by seq_no";
+      	      PreparedStatement st=connection.prepareStatement(SelectQuery);
+      	      st.setString(1, ID);
+      	      ResultSet rs = st.executeQuery();
       	      String startStr = "OpportunityAddInfo";
       	      while(rs.next())
       	      {
@@ -614,7 +609,7 @@ public class IntakeOpportunityService {
       	    		  if(!seqnum.equals(append_seq_num))
       	    		  {
       	    			String updateColumnName = startStr+seqnum;
-      	    			String UpdateQuery = "Update "+table+" set column_name =? where id = ? and seq_no=?;";  
+      	    			String UpdateQuery = "Update Opportunity_Info set column_name =? where id = ? and seq_no=?;";  
       	    			PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
       					st1.setString(1, updateColumnName);
       			        st1.setString(2, ID);
@@ -623,7 +618,33 @@ public class IntakeOpportunityService {
       	    	      	    		  }
       	    	  }
       	      }
-   
+      	     }
+      	   if(table.equals("Opportunity_Info_Details"))
+    	     {System.out.println("Opportunity_iNFo DETAILSS");
+    	      String SelectQuery ="select * from Opportunity_Info_Details order by seq_no";
+    	      PreparedStatement st=connection.prepareStatement(SelectQuery);
+    	      ResultSet rs = st.executeQuery();
+    	      String startStr = "OpportunityAddInfo";
+    	      while(rs.next())
+    	      {
+    	    	  if(rs.getString("column_name").startsWith("OpportunityAddInfo"))
+    	    	  {
+    	    		  String seqnum = rs.getString("seq_no");
+    	    		  String column_name = rs.getString("column_name");
+    	    		  String append_seq_num=column_name.substring(startStr.length(),column_name.length());
+    	    		  if(!seqnum.equals(append_seq_num))
+    	    		  {
+    	    			String updateColumnName = startStr+seqnum;
+    	    			String UpdateQuery = "Update Opportunity_Info_Details set column_name =? where id = ? and seq_no=?;";  
+    	    			PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
+    					st1.setString(1, updateColumnName);
+    			        st1.setString(2, ID);
+    			        st1.setString(3, seqnum);
+    			      	st1.execute();
+    	    	      	    		  }
+    	    	  }
+    	      }
+    	     }
    	  }
    	  catch(Exception e)
    	  {

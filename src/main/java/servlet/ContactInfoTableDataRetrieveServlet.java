@@ -3,7 +3,6 @@ package servlet;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import service.IntakeInformationService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,11 +21,13 @@ public class ContactInfoTableDataRetrieveServlet extends HttpServlet {
         String roles[]=Roles.split(",");
         System.out.println("Roles:"+Roles + "Project:"+ProjectName+ "AppName:"+AppName);
         System.out.println("Roles:" + roles[0]);
-        JsonArray jsonarr=new IntakeInformationService().DecommIntakeContactInfoDataRetrieve(ProjectName,AppName,roles);
-        String json = new Gson().toJson(jsonarr);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+		/*
+		 * JsonArray jsonarr=new
+		 * IntakeInformationService().DecommIntakeContactInfoDataRetrieve(ProjectName,
+		 * AppName,roles); String json = new Gson().toJson(jsonarr);
+		 * response.setContentType("application/json");
+		 * response.setCharacterEncoding("UTF-8"); response.getWriter().write(json);
+		 */
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -17,7 +17,7 @@ public class archiveEnvironmentSaveService {
 	JsonArray jsonArray;
 	String tableName;
 	String columnSuffix;
-
+	static String qry;
 	public archiveEnvironmentSaveService(String Id, JsonArray jsonArray, String tableName)
 			throws ClassNotFoundException, SQLException {
 		dBconnection = new DBconnection();
@@ -32,7 +32,24 @@ public class archiveEnvironmentSaveService {
 		return ((tableName.equals("archive_environment_name_info")) ? "Name"
 				: (tableName.equals("archive_environment_serverip_info") ? "ServerIp" : ""));
 	}
-
+	public static String getUpdQuery(String tableName)
+	{
+		switch(tableName)
+		{
+		case "archive_environment_name_info":
+			qry= "update archive_environment_name_info set devName=?, testName=?, stageName=?, prodName=? where OppId=? and seq_no=?";
+			break;
+		case "archive_environment_serverip_info":
+			qry="update archive_environment_serverip_info set devServerIp=?, testServerIp=?, stageServerIp=?, prodServerIp=? where OppId=? and seq_no=?";
+			break;
+			
+	    default:
+		System.out.println("Error");
+		break;
+		
+		}
+		return qry;
+	}
 	public JsonObject archiveEnvironmentSave() {
 		JsonObject jsonObject = new JsonObject();
 		boolean statusFlag = false;
@@ -45,8 +62,7 @@ public class archiveEnvironmentSaveService {
 				String stage = jsonObj.get("stage").getAsString();
 				String prod = jsonObj.get("prod").getAsString();
 
-				String UpdateQuery = "update " + tableName + " set dev" + columnSuffix + " = ?, test" + columnSuffix
-						+ " =?, stage" + columnSuffix + "=?, prod" + columnSuffix + "=? where OppId=? and seq_no=?";
+				String UpdateQuery = getUpdQuery(tableName);
 				PreparedStatement st = con.prepareStatement(UpdateQuery);
 				st.setString(1, dev);
 		        st.setString(2, test);
