@@ -818,7 +818,7 @@ pointer-events:all;
 
 
  
-                                      <div class="col-md-12 d3s-ml-10" >
+                                      <div class="col-md-12 d3s-ml-10 card-m-align">
                                         <ul id = "ul_id">
                                             
 

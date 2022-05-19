@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" href="css/toastr/toastr.min.css" media="screen"> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -272,7 +269,7 @@ body {
 													<br>
 													<form class="form-sample">
 														<p class="card-description"></p>
-														<div class="content table-responsive">
+														<div class="content table-responsive d3s-font-14">
 															<table class="table table-bordered table-striped"
 																id="datatable">
 																<thead>
@@ -355,9 +352,9 @@ body {
 							</div>
 							<div class="modal-footer">
 								
-								<button type="button" class="btn btn-primary" id="add_usersubmit" data-bs-dismiss="modal">Add User</button>
+								<button type="button" class="btn btn-primary" id="add_usersubmit" data-bs-dismiss="modal" style="font-size: 12px;">Add User</button>
 								<button type="button" class="btn btn-secondary"
-									data-bs-dismiss="modal">Close</button>
+									data-bs-dismiss="modal" style="font-size: 12px;">Close</button>
 							</div>
 						</div>
 					</div>
@@ -377,9 +374,9 @@ body {
 								</div>
 							</div>
 					</div>
-<button type="button" id="add_btn" class="btn btn-primary"
+<button type="button" id="add_btn" class="btn btn-primary d3s-font-14"
 															href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-															style="margin: 5px">Add User</button>
+															style="margin: 5px; font-size: 14px;">Add User</button>
 																		
 																		<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn"
@@ -691,6 +688,13 @@ $(document).ready(function() {
 } );
 </script>
 	<script src="js/navigation/navigation.js"></script>
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+media="screen">
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+crossorigin="anonymous">
 </body>
 </html>
 

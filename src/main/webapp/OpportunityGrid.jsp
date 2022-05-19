@@ -42,6 +42,8 @@
 
 <script src="js/multiplepages.js"></script>
 <script src="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>
+<link rel="stylesheet" href="css/Responsive/responsive.css"
+media="screen">
 <style>
 body {
 	background-color: #fff;
@@ -480,7 +482,7 @@ img.filtered {
                     if(roles.equals("admin")|| !roles.equals("admin") ){
                 %>
 						<!--  admin Role -->
-						<section>
+						<section class="flow-container">
 							<div class="flow container" style="margin-left: 10%;">
 								<div class="process job">
 									<div class="step">
