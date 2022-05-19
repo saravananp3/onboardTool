@@ -519,11 +519,6 @@ display:none;
         }%>
 
 	<%@include file="Nav-Bar.jspf"%>
-	<div id="overlay">
-<div class="cv-spinner">
-<span class="spinner"></span>
-</div>
-</div>
 	<nav class="nav nav-height nav-font" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">
@@ -549,77 +544,77 @@ display:none;
 		<div class="content-container">
 
 			<div class="main-page">
-				<div class="col-md-12 ">
+				<div class="col-md-12 col-sm-12 col-lg-12">
 
 					<!-- <div class="card mt-5"> -->
 
-					<div class="grid mt-5">
+					<div class="card-grid mt-5">
 						<div class="main">
 
 							<!-- <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid"> -->
 							<div id="cbp-vm" class="cbp-vm-view-grid">
 
-								<div class="col-md-3"
+								<div class="col-sm-3 col-md-3 col-lg-3"
 									style="font-size: 13.6px; height: 123px !important;">
-									<a class="dashboard-stat col-md-12"
+									<a class="dashboard-stat col-md-12 col-sm-12 col-lg-12"
 										style="background: linear-gradient(to left, rgb(96, 130, 182, 0.2) 70%, #6495ED 30%);"
 										href="IntakeOpportunity.jsp">
-										<div class="col-md-4"
+										<div class="col-sm-4 col-md-4 col-lg-4"
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Intake</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Intake</span>
 										</div>
-										<div class="col-md-8">Intake is the initiation of the
+										<div class="col-sm-8 col-md-8 col-lg-8">Intake is the initiation of the
                                             product.Number of opportunity or application in intake step that are yet to be approved.</div>
 									</a>
 								</div>
 
 
-								<card class="col-md-3"
+								<card class="col-sm-3 col-md-3 col-lg-3"
 									style="font-size:13.6px; height: 123px !important;"> <a
-									class="dashboard-stat col-md-12"
+									class="dashboard-stat col-md-12 col-sm-12 col-lg-12"
 									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
 									href="PhaseList.jsp">
-									<div class="col-md-4" style="height: 100%; margin-left: -17px;">
+									<div class="col-sm-4 col-md-4 col-lg-4" style="height: 100%; margin-left: -17px;">
 										<p class="totcounter" style="height: 80%; color: white;"></p>
-										<span class="font_icon" style="height: 20%; color: white;">Phases</span>
+										<span class="font_icon text-align" style="height: 20%; color: white;">Phases</span>
 									</div>
-									<div class="col-md-8">Phases can be described as a
+									<div class="col-sm-8 col-md-8 col-lg-8">Phases can be described as a
 										project that is scheduled over a period of time Which consists
 										of multiple waves.</div>
 								</a> </card>
 
-								<div class="col-md-3"
+								<div class="col-md-3 col-sm-3 col-lg-3 "
 									style="font-size: 13.6px; height: 123px !important;">
-									<a class="dashboard-stat col-md-12"
+									<a class="dashboard-stat col-md-12 col-sm-12 col-lg-12"
 										style="background: linear-gradient(to left, rgba(32, 51, 110, 0.2) 70%, #20336e 30%);"
 										href="waveList.jsp?waves=all">
-										<div class="col-md-4"
+										<div class="col-sm-4 col-md-4 col-lg-4"
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter" style="height: 80%; color: white;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Waves</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Waves</span>
 										</div>
-										<div class="col-md-8">Waves can be comprised of set of
+										<div class="col-sm-8 col-md-8 col-lg-8">Waves can be comprised of set of
 											applications that are ready for implementation over a period
 											of time.</div>
 									</a>
 
 								</div>
 
-								<div class="col-md-3"
+								<div class="col-sm-3 col-md-3 col-lg-3"
 									style="font-size: 13.6px; height: 123px !important;">
-									<a class="dashboard-stat col-md-12"
+									<a class="dashboard-stat col-md-12 col-sm-12 col-lg-12"
 										style="background: linear-gradient(to left, rgba(134, 221, 212, 0.2) 70%, #439f95 30%);"
 										href="OpportunityList.jsp">
-										<div class="col-md-4"
+										<div class="col-sm-4 col-md-4 col-lg-4"
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Apps</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Apps</span>
 										</div> <!-- <div class="col-md-8">Applications are opportunities provided within the organisation
 											for Archival or Decommission or Retiring purpose.</div> -->
-										<div class="col-md-8">Applications are opportunities
+										<div class="col-sm-8 col-md-8 col-lg-8">Applications are opportunities
 											provided within the organisation for Archival or Decommission
 											or Retiring purpose.</div>
 									</a>
@@ -690,7 +685,7 @@ display:none;
 											</div>
 
 										</div>
-										<div class="card-body" style="width: fit-content;">
+										<div class="card-body align" style="width: fit-content;">
 
 											<div class="col-md-4.5">
 
@@ -723,7 +718,10 @@ display:none;
 										<div class="card-header" id="card-header">Application
 											Categories</div>
 										<div class="card-body mt-3">
-											<div id="pieChartId" width="250" height="250"></div>
+											<div class="align1">
+												<div id="pieChartId" width="250" height="250"></div>
+											</div>
+										
 										</div>
 									</div>
 								</div>
@@ -849,7 +847,7 @@ display:none;
 										<div class="card-header" id="card-header">Cost Benefit
 											Analysis</div>
 
-										<div class="card-body" style="width: fit-content;">
+										<div class="card-body align2" style="width: fit-content;">
 											<div class="col-md-4 mt-3">
 												<canvas id="canvasCBA" width="200" height="200"
 													style="margin-left: -10%;"></canvas>

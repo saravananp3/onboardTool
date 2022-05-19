@@ -424,8 +424,9 @@ e.printStackTrace();
 													</form>	
 													 </div>   
 													 
-													 <div>
+													 
                                                    				<h4 class="title1"></h4>
+                                                   				<div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>

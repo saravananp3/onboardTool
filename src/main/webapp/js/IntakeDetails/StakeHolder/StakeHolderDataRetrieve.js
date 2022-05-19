@@ -66,13 +66,13 @@ function StakeHolderDataRetrieveAjaxCall()
             		   disable = "";
             	}
             	  var Row = "<tr class='UserRow'>"+
-        		            "<td><input type='text' id='firstName"+number+"' class ='name' value='"+name+"' "+readonly+"></td>"+
-        				     "<td><input type='text' id='search"+number+"' class ='emailid' onClick='searchFunction("+number+");' value='"+emailid+"' "+readonly+"><ul id='result"+number+"' class='list-group searchResult'></ul></td>"+
-        	                "<td><input type='text' id='userName"+number+"' class='username' value='"+username+"' "+readonly+"></td>"+
-        				    "<td><select type='text'class='role' value='"+role+"' >"+
+        		            "<td><input type='text' id='firstName"+number+"' class ='name' style='width: 100%; text-align: center;' value='"+name+"' "+readonly+"></td>"+
+        				     "<td><input type='text' id='search"+number+"' class ='emailid' style='width: 100%; text-align: center;' onClick='searchFunction("+number+");' value='"+emailid+"' "+readonly+"><ul id='result"+number+"' class='list-group searchResult'></ul></td>"+
+        	                "<td><input type='text' id='userName"+number+"' class='username' style='width: 100%; text-align: center;' value='"+username+"' "+readonly+"></td>"+
+        				    "<td><select type='text'class='role' value='"+role+"' style='width: 100%; text-align: center;padding: 0.3rem 0 0.3rem 0;'>"+
         				    options
         				    +"</select></td>"
-        				    +"<td><input type='text' class='priorityNum' value='"+priorityNum+"' "+readonly+"/></td>"
+        				    +"<td><input type='text' class='priorityNum' style='width: 100%; text-align: center;' value='"+priorityNum+"' "+readonly+"/></td>"
                             +"<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
                             "<ul class='dropdown-menu' style = 'min-width: inherit;'>"+
                             "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black;'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+

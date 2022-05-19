@@ -235,9 +235,9 @@ input[type=search]:focus {
         }
         .cbp-vm-view-list .cbp-vm-title {
             font-size: 1.3em;
-            padding: 0 30px;
+            padding: 13px 30px;
             white-space: normal;
-            width: 25%;
+            width: 60%;
         }
         .cbp-vm-view-list .center-col {
             float: left;
@@ -739,12 +739,12 @@ pointer-events:all;
     </nav > --%>
 
 		<div class="col-sm-6 right-side">
-			<button type="button" class="btn btn-primary pull-right" id="button"
+			<!-- <button type="button" class="btn btn-primary pull-right" id="button"
 				style="color: DodgerBlue;" name="newpr"
 				onclick="location.href='NewPhase.jsp';">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 
-			</button>
+			</button> -->
 
 			<button type="button" class="btn btn-primary pull-right"
 				id="addWaveBtnId" style="color: DodgerBlue; display: none;"
@@ -818,7 +818,7 @@ pointer-events:all;
 
 
  
-                                      <div class="col-md-12 d3s-ml-10" >
+                                      <div class="col-md-12 d3s-ml-10 card-m-align">
                                         <ul id = "ul_id">
                                             
 

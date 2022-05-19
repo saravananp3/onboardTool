@@ -419,7 +419,7 @@ e.printStackTrace();
                                                  <div class="modal-body">
                     <form name="myForm">
                         <div class="form-group" id="TemplateFields">
-                          <div>
+                          <div class="table-responsive">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>

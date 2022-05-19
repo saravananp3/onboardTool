@@ -193,9 +193,9 @@ input[type=search]:focus {
         }
         .cbp-vm-view-list .cbp-vm-title {
             font-size: 1.3em;
-            padding: 0 30px;
+            padding: 13px 30px;
             white-space: normal;
-            width: 25%;
+            width: 60%;
         }
         .cbp-vm-view-list .center-col {
             float: left;
@@ -606,8 +606,8 @@ pointer-events:all;
         <!-- /.container-fluid -->
         
          <div class="col-sm-6 right-side">
-                            <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </button>
+                           <!--  <button type="button" class="btn btn-primary pull-right" id="button" style="color:DodgerBlue;" name="newpr" onclick="location.href='NewGovernance.jsp';" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button> -->
                             <button type="button" class="btn btn-primary pull-right" id="addWaveBtnId" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#existWavePopUp'>
                             </button>
                             <button type="button" class="btn btn-primary pull-right" id="deleteBtn" style="color:DodgerBlue; display:none;" name="newpr" data-bs-toggle='modal' data-bs-target='#deletePopUp'>
@@ -660,7 +660,7 @@ pointer-events:all;
                                             <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid"></a>
                                             <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list"></a>
                                         </div>
-                                      <div class='col-md-12'>
+                                      <div class='col-md-12 d3s-ml-10 card-m-align'>
                                         <ul id = "ul_id">
                                         </ul>
                                       </div>

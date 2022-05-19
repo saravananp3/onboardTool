@@ -643,7 +643,8 @@ e.printStackTrace();
                                             <div class="panel-collapse" name="collapse">
                                                 <div class="card-body">
                                                 	<div>
-                                                    <h4>User List</h4>           
+                                                    <h4>User List</h4>
+                          						<div class="table-responsive">           
   													<table class="table-bordered" style="width: 100%;">
     												<thead>
       												<tr>
@@ -659,6 +660,7 @@ e.printStackTrace();
       												    												
       												</tbody>
   													</table>
+                          						</div>
   													</div>
                                                                                             
                                                    <!--  <div class="col-md-12">

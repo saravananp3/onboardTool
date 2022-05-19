@@ -477,7 +477,7 @@ e.printStackTrace();
                                         		<div id="collapse1" class="panel-collapse collapse show" name="collapse">
                                                		<div class="panel-body">
                                                  		<div id="inputFieldsRoles">
-                                                 			<div>
+                                                 			<div class="table-responsive">
                                                    				<h4 class="title1">Approvers</h4>
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
