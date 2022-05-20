@@ -33,7 +33,8 @@ public class Legacy_App_Scr_Retrieve {
             jsonObj.addProperty("File_Name",rs.getString(2));
             jsonArray.add(jsonObj);
             System.out.println("Data Fetched.."+jsonObj); 
-       }    
+       }
+        connection.close();
     }
 catch(Exception e)
     {

@@ -55,7 +55,8 @@ HttpSession details = request.getSession();
 	            
 	            System.out.println("Downloaded File : "+fileName);
 	            inputStream.close();
-	            outStream.close();  
+	            outStream.close();
+	            connection.close();
 	            response.flushBuffer();
 	            } else {
 	            // no file found

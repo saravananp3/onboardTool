@@ -21,7 +21,9 @@ public class IntakeAsssessmentScrDelete {
 	        st2.executeUpdate();
 	        System.out.println("Deleted File : "+File_Name);
 	        jsonobj.addProperty("Deleted File Name : ", File_Name);
-	        }
+	        connection.close();   
+	    }
+	    
 	    catch(Exception e)
 	    {
 	    System.out.println("Execption Occurs"+e);

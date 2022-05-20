@@ -31,8 +31,10 @@ public JsonArray intake_screenshot_retrieve(String Id) {
             jsonArray.add(jsonObj);
             System.out.println("Intake Assessment Screenshot : "+jsonObj);
            
-       }    
+       } 
+        connection.close();    
     }
+    
 catch(Exception e)
     {
     System.out.println("Execption Occurs"+e);

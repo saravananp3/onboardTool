@@ -22,6 +22,7 @@ public class Legacy_App_Scr_Delete {
 	        st2.executeUpdate();
 	        System.out.println("File Deleted : "+File_Name);
 	        jsonobj.addProperty("Deleted File : ", File_Name);
+	        connection.close();
 	        }
 	    catch(Exception e)
 	    {
