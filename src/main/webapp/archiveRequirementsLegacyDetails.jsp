@@ -955,6 +955,41 @@ e.printStackTrace();
   </div>
 </div>
 
+<button type="button"
+																		class="btn btn-primary" id="legacy_scr_delete_popup"
+																		data-bs-toggle="modal" data-bs-target="#LegacySCRDeletePopUp"
+																		style="display: none;"></button>
+
+<div class="modal" id="LegacySCRDeletePopUp" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content" style="width:auto; height:250px;">
+													<div class="modal-header" style="background-color:#1565c0;">
+														<h5 class="modal-title" id="exampleModalLabel" style="color:white;">Delete File</h5>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														<form name="DeleteForm">
+															<div class="modal-body">
+																<p style="font-size: 14px;">Do you want to Delete
+																	this File Permanently?</p>
+																<input type="text" id="random_id"  style="display:none;"/>
+															</div>
+														</form>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-primary"
+															data-bs-dismiss="modal" id="legacy_scr_delete_submit">Yes</button>
+														<button type="button" class="btn btn-secondary"
+															data-bs-dismiss="modal">No</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+
 <%-- <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
     <jsp:param name="AppName" value="<%=idd %>"/>

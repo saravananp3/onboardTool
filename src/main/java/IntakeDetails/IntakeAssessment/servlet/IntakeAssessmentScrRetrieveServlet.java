@@ -2,6 +2,7 @@ package IntakeDetails.IntakeAssessment.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import IntakeDetails.IntakeAssessment.service.IntakeAssessmentScrRetrieve;
 /**
  * Servlet implementation class IntakeAssessmentScrRetrieveServlet
  */
+@WebServlet("/IntakeAssessmentScrRetrieveServlet")
 public class IntakeAssessmentScrRetrieveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

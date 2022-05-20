@@ -2,6 +2,7 @@ package NewArchiveRequirements.LegacyApplicationInfo.legacyAppScreenshot.servlet
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import NewArchiveRequirements.LegacyApplicationInfo.legacyAppScreenshot.service.
 /**
  * Servlet implementation class Legacy_App_Scr_Retrieve_Servlet
  */
+@WebServlet("/Legacy_App_Scr_Retrieve_Servlet")
 public class Legacy_App_Scr_Retrieve_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

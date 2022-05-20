@@ -1880,6 +1880,40 @@ e.printStackTrace();
 
 </div> <!-- main-wrapper -->
 
+<button type="button"
+																		class="btn btn-primary" id="intake_scr_delete_popup"
+																		data-bs-toggle="modal" data-bs-target="#IntakeSCRDeletePopUp"
+																		style="display: none;"></button>
+
+<div class="modal" id="IntakeSCRDeletePopUp" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content" style="width:auto; height:250px;">
+													<div class="modal-header" style="background-color:#1565c0;">
+														<h5 class="modal-title" id="exampleModalLabel" style="color:white;">Delete File</h5>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														<form name="DeleteForm">
+															<div class="modal-body">
+																<p style="font-size: 14px;">Do you want to Delete
+																	this File Permanently?</p>
+																<input type="text" id="random_id"  style="display:none;"/>
+															</div>
+														</form>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-primary"
+															data-bs-dismiss="modal" id="intake_scr_delete_submit">Yes</button>
+														<button type="button" class="btn btn-secondary"
+															data-bs-dismiss="modal">No</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
          rel = "stylesheet"><!-- newly added code by parthiban -->
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
