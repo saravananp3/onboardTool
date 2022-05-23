@@ -750,7 +750,7 @@ display:none;
 												<tbody id="dataTableId">
 												</tbody>
 											</table>
-											<div class="col-md-12 text-center">
+											<div class="col-md-12 text-center" id="pg1">
 												<ul class="pagination pagination-lg pager pagination-align"
 													id="developer_page"></ul>
 											</div>
@@ -791,7 +791,7 @@ display:none;
 												<tbody id="dataTableId1">
 												</tbody>
 											</table>
-											<div class="col-md-12 text-center">
+											<div class="col-md-12 text-center" id="pg2">
 												<ul class="pagination pagination-lg pager pagination-align"
 													id="developer_page_1"></ul>
 											</div>
@@ -835,7 +835,7 @@ display:none;
 												<tbody id="dataTableId2">
 												</tbody>
 											</table>
-											<div class="col-md-12 text-center">
+											<div class="col-md-12 text-center" id="pg3">
 												<ul class="pagination pagination-lg pager pagination-align"
 													id="developer_page_2"></ul>
 											</div>

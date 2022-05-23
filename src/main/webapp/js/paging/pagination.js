@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
 	$('#dataTableId').pageMe({
 		pagerSelector: '#developer_page',
 		showPrevNext: true,
@@ -23,4 +23,4 @@ $(document).ready(function() {
 		hidePageNumbers: false,
 		perPage: 4
 	});
-});
+});*/
