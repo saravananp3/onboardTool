@@ -563,7 +563,7 @@ display:none;
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Intake</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Intake</span>
 										</div>
 										<div class="col-sm-8 col-md-8 col-lg-8">Intake is the initiation of the
                                             product.Number of opportunity or application in intake step that are yet to be approved.</div>
@@ -578,7 +578,7 @@ display:none;
 									href="PhaseList.jsp">
 									<div class="col-sm-4 col-md-4 col-lg-4" style="height: 100%; margin-left: -17px;">
 										<p class="totcounter" style="height: 80%; color: white;"></p>
-										<span class="font_icon" style="height: 20%; color: white;">Phases</span>
+										<span class="font_icon text-align" style="height: 20%; color: white;">Phases</span>
 									</div>
 									<div class="col-sm-8 col-md-8 col-lg-8">Phases can be described as a
 										project that is scheduled over a period of time Which consists
@@ -593,7 +593,7 @@ display:none;
 										<div class="col-sm-4 col-md-4 col-lg-4"
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter" style="height: 80%; color: white;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Waves</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Waves</span>
 										</div>
 										<div class="col-sm-8 col-md-8 col-lg-8">Waves can be comprised of set of
 											applications that are ready for implementation over a period
@@ -611,7 +611,7 @@ display:none;
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
-											<span class="font_icon" style="height: 20%; color: white;">Apps</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Apps</span>
 										</div> <!-- <div class="col-md-8">Applications are opportunities provided within the organisation
 											for Archival or Decommission or Retiring purpose.</div> -->
 										<div class="col-sm-8 col-md-8 col-lg-8">Applications are opportunities
@@ -685,7 +685,7 @@ display:none;
 											</div>
 
 										</div>
-										<div class="card-body" style="width: fit-content;">
+										<div class="card-body align" style="width: fit-content;">
 
 											<div class="col-md-4.5">
 
@@ -718,7 +718,10 @@ display:none;
 										<div class="card-header" id="card-header">Application
 											Categories</div>
 										<div class="card-body mt-3">
-											<div id="pieChartId" width="250" height="250"></div>
+											<div class="align1">
+												<div id="pieChartId" width="250" height="250"></div>
+											</div>
+										
 										</div>
 									</div>
 								</div>
@@ -844,7 +847,7 @@ display:none;
 										<div class="card-header" id="card-header">Cost Benefit
 											Analysis</div>
 
-										<div class="card-body" style="width: fit-content;">
+										<div class="card-body align2" style="width: fit-content;">
 											<div class="col-md-4 mt-3">
 												<canvas id="canvasCBA" width="200" height="200"
 													style="margin-left: -10%;"></canvas>

@@ -660,7 +660,7 @@ pointer-events:all;
                                             <a href="#" id="grid" title="Grid View" class="cbp-vm-icon cbp-vm-grid cologen gr" data-view="cbp-vm-view-grid"></a>
                                             <a href="#" id="list" title="List"  class="cbp-vm-icon cbp-vm-list lis" data-view="cbp-vm-view-list"></a>
                                         </div>
-                                      <div class='col-md-12'>
+                                      <div class='col-md-12 d3s-ml-10 card-m-align'>
                                         <ul id = "ul_id">
                                         </ul>
                                       </div>
