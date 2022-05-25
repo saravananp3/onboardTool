@@ -810,6 +810,7 @@ public class dashboardService {
         }
         return jsonArray;
     }
+    
     public JsonArray getIntakeDetail(String apps[]) {
         JsonArray jsonArray = new JsonArray();
         JsonObject jsonObject = new JsonObject();
