@@ -1,7 +1,5 @@
 package dashboard.overAllDashboard.service;
-import com.docusign.esign.model.List;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,14 +11,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map.Entry;
+import java.sql.PreparedStatement;
 import javax.servlet.http.HttpSession;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.itextpdf.styledxmlparser.jsoup.nodes.Entities;
 import onboard.DBconnection;
 public class dashboardService {
-	ArrayList<String> mainList = new ArrayList<String>();
+	List<String> mainList = new LinkedList<String>();
     DBconnection dBconnection = null;
     Connection con = null;
     int intakeCount = 0;
@@ -133,7 +133,7 @@ public class dashboardService {
         int i=0;
         
         try {
-      	    ArrayList<String> list  = getphasewaveinfo( "All");
+      	    List<String> list  = getphasewaveinfo( "All");
 
             for (String app : apps) {
                 JsonObject jsonObject = new JsonObject();
@@ -291,9 +291,9 @@ public class dashboardService {
         return jsonArray;
     }
     
-    public ArrayList<String> getphasewaveinfo(String  phaseFilter) {
+    public List<String> getphasewaveinfo(String  phaseFilter) {
         JsonArray jsonArray = new JsonArray();
-	      ArrayList<String> list = new ArrayList<String>();
+	      List<String> list = new LinkedList<String>();
 
         try {
             String whereCondn = phaseFilter.equals("All") ? "" : " where phaseName like '" + phaseFilter + "%'";
@@ -316,9 +316,9 @@ public class dashboardService {
     	
 }
     
-    private  ArrayList<String> getWaveinfo(String[] waves, String phase) {
+    private  List<String> getWaveinfo(String[] waves, String phase) {
         JsonArray jsonArray = new JsonArray();
-        ArrayList<String> list = new ArrayList<String>();
+        List<String> list = new LinkedList<String>();
 
         try {
             for (String wave : waves) {
@@ -340,7 +340,7 @@ public class dashboardService {
         return list;
     }
     
-    private  ArrayList<String> getApplicationinfo(String[] apps, String wave, String phase) {
+    private  List<String> getApplicationinfo(String[] apps, String wave, String phase) {
         JsonArray jsonArray = new JsonArray();
       
         try {
@@ -437,7 +437,7 @@ public class dashboardService {
         
         try {
   	     
-  	    ArrayList<String> list  = getphasewaveinfo( "All");
+  	    List<String> list  = getphasewaveinfo( "All");
         	
 
             for (String app : apps) {
@@ -1031,7 +1031,7 @@ public class dashboardService {
     public JsonArray getDoughnutIntakeDetail() {
         JsonArray jsonArray = new JsonArray();
         try {
-            ArrayList < String > app = new ArrayList < String > ();
+            ArrayList<String> app = new ArrayList<String>();
             String selectApp = "select * from opportunity_info where column_name='appName'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(selectApp);
@@ -1063,12 +1063,12 @@ public class dashboardService {
                 while (rs.next()) {
                     String Id = rs.getString("Id");
                     System.out.println("OppId :"+Id);
-                    String selectNewOppInTriQuery = "select count * from decom3sixtytool.Triage_Info where Id=?;";
+                    String selectNewOppInTriQuery = "select * from decom3sixtytool.Triage_Info where Id=?;";
                     PreparedStatement st21 = con.prepareStatement(selectNewOppInTriQuery);
         			st21.setString(1, Id);
         			ResultSet rs21 = st21.executeQuery();
                     if(rs21.next()) {
-                    	String selectNewOppQuery = "select * from decom3sixtytool.Triage_Info where mandatory='yes' and value='' and Id=?;";
+                    	String selectNewOppQuery = "select count (*) from decom3sixtytool.Triage_Info where mandatory='yes' and value='' and Id=?;";
                         PreparedStatement st17 = con.prepareStatement(selectNewOppQuery);
             			st17.setString(1, Id);
             			ResultSet rs17 = st17.executeQuery();
@@ -1095,7 +1095,7 @@ public class dashboardService {
 //                        st13.close();
                         String assappArchConsQuery = "select * from decom3sixtytool.Assessment_Archival_Consumption_Info where mandatory='Yes' and value='' and isCompleted='No' and Id=?;";
                         PreparedStatement st14 = con.prepareStatement(assappArchConsQuery);
-            			st12.setString(1, Id);
+            			st14.setString(1, Id);
             			ResultSet rs14 = st14.executeQuery();
                         boolean assappArchCon = rs14.next();
                         rs14.close();

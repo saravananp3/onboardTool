@@ -3,8 +3,8 @@ $(document).ready(function() {
 	BindPhaseWave();
 	doughnutType();
 	f1();
-    f2();
-    f3();
+	f2();
+	f3();
 });
 
 function dashboardDetails() {
@@ -17,10 +17,11 @@ function dashboardDetails() {
 		url: "dashboardServlet",
 		type: 'POST',
 		async: false,
+		data:{phase:phase,wave:wave},
 		dataType: "json",
 		success: function(data) {
-			/*console.log("Data : ", data);
-			if (data[0].phaseCount == 0 || data[0].phaseCount == 1)
+			console.log("Data : ", data);
+			/*if (data[0].phaseCount == 0 || data[0].phaseCount == 1)
 				$(".font_icon").eq(0).html('Phase');
 			if (data[0].waveCount == 0 || data[0].waveCount == 1)
 				$(".font_icon").eq(1).html('Wave');
@@ -621,15 +622,8 @@ function dashboardDetails() {
 
 
 $(document).ready(function() {
-    var ctx = $("#mycanvas").get(0).getContext("2d");
-    
-	var options = {
-        title: {
-            display: true,
-            text: "Phases"
-        },
-        
-    }
+   var optionsPie = {
+	};
 
 $.ajax({
         url: "dashboardServlet",
@@ -638,41 +632,43 @@ $.ajax({
         dataType: "json",
         success: function(data) {
             console.log("Data : ", data);
-            $.each(data[9],function(key,value1){
+            $.each(data[9],function(key,value11){
    		var data = [
         {
-            value: value1.newOpportunity,
+            value: value11.newOpportunity,
             color: "#7FFFD4",
             highlight: "lightblue",
             label: "New Opportunity"
         },
         {
-            value: value1.triage,
+            value: value11.triage,
             color: "#1565c0",
             highlight: "lightskyblue",
             label: "Triage"
         },
         {
-            value: value1.assesment,
+            value: value11.assesment,
             color: "#6495ed",
             highlight: "#82aadd",
             label: "Assessment"
         },
         {
-            value: value1.pendingApproval,
+            value: value11.pendingApproval,
             color: "#1d88aa",
             highlight: "darkorange",
             label: "Pending Approval"
         },
         {
-            value: value1.completed,
+            value: value11.completed,
             color: "#83ddd4",
             highlight: "darkgreen",
             label: "Completed"
         }
     ];
     console.log(data)
-    var chart = new Chart(ctx).Doughnut(data);
+    var ctx = $("#mycanvas").get(0).getContext("2d");
+	var PieChart = new Chart(ctx).Doughnut(data, optionsPie);
+	document.getElementById('legend').innerHTML = PieChart.generateLegend();
     });
     
    }});
@@ -717,13 +713,13 @@ function doughnutType()
             value: value1.archiveReqPer,
             color: "#1565c0",
             highlight: "#82aadd",
-            label: "Archieve Requirements"
+            label: "Archive Requirements"
         },
         {
             value: value1.archiveExePer,
             color: "#1d88aa",
             highlight: "darkorange",
-            label: "Archieve Execution"
+            label: "Archive Execution"
         },
         {
             value: value1.completed,
@@ -773,6 +769,7 @@ function BindPhaseWave()
             }
 });
 }
+
 $(document).on('change','#phase',function(){
 $(".waveOptions").hide();
 var phaseName = $(this).val();
@@ -786,20 +783,24 @@ if(phaseName!="All")
     $(".waveOptions").show();
     }
    /* UpdateDoughnut();*/
-   getAppicationDetails();
+   getApplicationDetails();
    doughnutType();
+   
 });
+
 $(document).on('change','#wave',function(){
    /* UpdateDoughnut();*/
-   getAppicationDetails();
+   getApplicationDetails();
    doughnutType();
-    });
+});
+
 $(document).on('change','.filter',function(){
     var category = $("#category").val();
     var phase = $("#phase").val();
     var wave = $("#wave").val();
     filterAjaxCall(category,phase,wave);
 });
+
 function filterAjaxCall(category,phase,wave)
 {
     $.ajax({
@@ -851,13 +852,13 @@ function filterAjaxCall(category,phase,wave)
             value: value1.archiveReqPer,
             color: "#d1e1f3",
             highlight: "#82aadd",
-            label: "Archieve Requirements"
+            label: "Archive Requirements"
         },
         {
             value: value1.archiveExePer,
             color: "#FFC0CB",
             highlight: "darkorange",
-            label: "Archieve Execution"
+            label: "Archive Execution"
         },
         {
             value: value1.completed,
@@ -888,7 +889,7 @@ $(document).ready(function() {
     }
     var selectedPhase=$('#phase :selected').text();
     var selectedwave=$('#wave :selected').text();
-     var phase=selectedPhase==""?"All":selectedPhase;
+    var phase=selectedPhase==""?"All":selectedPhase;
     var wave=selectedwave==""?"All":selectedwave;
     $.ajax({
         url: "dashboardDoughnutServlet",
@@ -1035,10 +1036,7 @@ $('#example2').remove();
 }
 
 
-
-
-
-function getAppicationDetails()
+function getApplicationDetails()
 {
 	resetDiv();
 	var selectedPhase=$('#phase :selected').text();
@@ -1071,7 +1069,7 @@ function getAppicationDetails()
                     + "</tr>";
                 $('#dataTableId').append(t_row); 
                 
-                                	$.fn.pageMe = function(opts) {
+                $.fn.pageMe = function(opts) {
 					var $this = this,
 						defaults = {
 							perPage: 7,
@@ -1426,10 +1424,7 @@ function getAppicationDetails()
            f3();
             $(document).ready(function() {
                 $('#example2').DataTable();
-            });
-			
-
-             
+            });            
             
         }, 
         error: function (e) {
