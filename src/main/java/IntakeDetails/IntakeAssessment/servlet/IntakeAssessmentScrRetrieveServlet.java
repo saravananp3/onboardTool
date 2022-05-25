@@ -1,4 +1,4 @@
-package license.servlet;
+package IntakeDetails.IntakeAssessment.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,19 +11,19 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 
-import license.service.retrieve_license_info;
+import IntakeDetails.IntakeAssessment.service.IntakeAssessmentScrRetrieve;
 
 /**
- * Servlet implementation class retrieve_license_servlet
+ * Servlet implementation class IntakeAssessmentScrRetrieveServlet
  */
-@WebServlet("/retrieve_license_servlet")
-public class retrieve_license_servlet extends HttpServlet {
+@WebServlet("/IntakeAssessmentScrRetrieveServlet")
+public class IntakeAssessmentScrRetrieveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public retrieve_license_servlet() {
+    public IntakeAssessmentScrRetrieveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,18 +40,16 @@ public class retrieve_license_servlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		HttpSession details = request.getSession();
-        String issue_to=request.getParameter("issue_to");
-        String issue_date=request.getParameter("issue_date");
-        String valid_till=request.getParameter("valid_till");
-        JsonArray jsonArray = null;
-        retrieve_license_info retrievelicense =  new retrieve_license_info();
-        jsonArray = retrievelicense.retrieve_license_details();
-        retrievelicense =null;
+	    String Id=(String)details.getAttribute("ID");
+	    JsonArray jsonArray = null;
+	    IntakeAssessmentScrRetrieve intake_scr_retrive=new IntakeAssessmentScrRetrieve();
+	    jsonArray=intake_scr_retrive.intake_screenshot_retrieve(Id);
+        intake_scr_retrive =null;
         //calling finalize method and garabage collector
         System.gc();
-        System.out.println("JSON ARRAY"+jsonArray);
+        System.out.println("INTAKE JSON ARRAY"+jsonArray);
         String json = new Gson().toJson(jsonArray);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,7 @@ import onboard.encryption;
 /**
  * Servlet implementation class Login_1
  */
+@WebServlet("/Login_1")
 public class Login_1 extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private Logger logger = null;

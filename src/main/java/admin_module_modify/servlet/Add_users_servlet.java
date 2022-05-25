@@ -2,6 +2,7 @@ package admin_module_modify.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import admin_module_modify.service.Add_users_service;
 /**
  * Servlet implementation class Add_users_servlet
  */
+@WebServlet("/Add_users_servlet")
 public class Add_users_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
