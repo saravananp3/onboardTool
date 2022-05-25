@@ -15,6 +15,7 @@ import admin_module_modify.service.Retrieve_users_service;
 /**
  * Servlet implementation class Retrieve_users_servlet
  */
+@WebServlet("/Retrieve_users_servlet")
 public class Retrieve_users_servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     /**
