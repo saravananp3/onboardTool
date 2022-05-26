@@ -1068,7 +1068,7 @@ public class dashboardService {
         			st21.setString(1, Id);
         			ResultSet rs21 = st21.executeQuery();
                     if(rs21.next()) {
-                    	String selectNewOppQuery = "select count (*) from decom3sixtytool.Triage_Info where mandatory='yes' and value='' and Id=?;";
+                    	String selectNewOppQuery = "select * from decom3sixtytool.Triage_Info where mandatory='yes' and value='' and Id=?;";
                         PreparedStatement st17 = con.prepareStatement(selectNewOppQuery);
             			st17.setString(1, Id);
             			ResultSet rs17 = st17.executeQuery();

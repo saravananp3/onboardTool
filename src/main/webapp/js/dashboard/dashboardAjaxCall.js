@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	dashboardDetails();
 	BindPhaseWave();
+	doughnut1();
 	doughnutType();
 	f1();
 	f2();
@@ -416,7 +417,6 @@ function dashboardDetails() {
 					['Sum of Realized', 110000.00, 'blue'],
 					['Sum of in Process', 365000, 'blue'],
 					['Sum of Intake/Opportunity', 192000.00, 'blue']]);
-
 				var view = new google.visualization.DataView(data);
 				view.setColumns([0, 1,
 					{
@@ -426,7 +426,6 @@ function dashboardDetails() {
 						role: "annotation"
 					},
 					2]);
-
 				var options = {
 					title: "Total",
 					width: 400,
@@ -621,7 +620,7 @@ function dashboardDetails() {
 }
 
 
-$(document).ready(function() {
+function doughnut1() {
    var optionsPie = {
 	};
 
@@ -672,7 +671,8 @@ $.ajax({
     });
     
    }});
-});
+  };
+/*});*/
 
 /*$("#phId").change(function() {
 	doughnutType();
