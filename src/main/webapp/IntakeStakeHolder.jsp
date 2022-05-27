@@ -5,7 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Decom3Sixty - Intake</title>
-
 <!-- ========== COMMON STYLES ========== -->
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
 <link rel="stylesheet" href="css/bootstrap.css" media="screen">
@@ -29,47 +28,40 @@
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src ="js/IntakeDetails/StakeHolder/StakeHolderDataRetrieve.js"></script>
-
 <!-- ========== BootstrapV5 ========== -->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-	crossorigin="anonymous"></script>
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-	crossorigin="anonymous"></script>
-
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link
-	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-	rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+    rel="stylesheet">
 <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
-	media="screen">
+    media="screen">
 <link rel="stylesheet" href="css/Responsive/responsive.css"
-	media="screen">
-
+    media="screen">
 <style>
  <style type="text/css">
-         
 body{
 background:#fff;
 }
-
-
 .page-title-div {
 background:#1565c0;
 padding: 15px; 
@@ -80,7 +72,6 @@ padding-left: 0px;
 padding-right: 0px;
 }
 <!-- Wizard-->
-
 body {
   background-color: #ffffff;
   color: #444444;
@@ -106,10 +97,8 @@ body {
   padding: 12px 20px;
   text-align: center;
 }
-
 .form-wizard {
   color: #888888;
-  
 }
 .form-wizard .wizard-form-radio {
   display: inline-block;
@@ -170,7 +159,6 @@ body {
 .form-wizard .form-wizard-header {
   text-align: center;
 }
-
 .form-wizard .wizard-fieldset {
   display: none;
 }
@@ -187,8 +175,6 @@ body {
   height: 2px;
   width: 100%;
 }
-
-
 .form-wizard .form-control:focus {
   box-shadow: none;
 }
@@ -287,9 +273,6 @@ body {
     height: auto;
   }
 }
-
-
-
 fieldset {
     padding: 0.875em 1.75em 1.75em;
     border-width: 1px #fff;
@@ -297,9 +280,8 @@ fieldset {
     max-width: 141%;
     margin-bottom: 1.875em;
 }
-
 .form-wizard-steps li  i{
-	position: absolute;
+    position: absolute;
     top: -22px;
     font-style: normal;
     font-weight: 400;
@@ -310,19 +292,16 @@ fieldset {
     /* font-weight: 700; */
     color: #000;
 }
-
 .form-wizard-steps li  i{
-	color: rgba(0,0,0,.9);
+    color: rgba(0,0,0,.9);
 }
 .back-to-top {
     position: fixed;
     bottom: 20px;
     right: 35px;
-    
     border-radius:50%;
     background:Gray;
 }
-
 .fa{
 padding-left:3px;
 padding-top:-3px;
@@ -330,47 +309,34 @@ padding-bottom:10px;
 margin:0 auto;
 font-size:14x;
 color:#fff;
-
 }
-	#module_header{
- 
+    #module_header{
  margin-top:75px;
  }
- 
- 
 table {
     width: 92%;
     border-spacing: 0;
-    
     margin-bottom: 2.375em;
     border-style:none;
 } 
-
-
 .pdf{
-
 float:right;
     margin-top: -36px;
-
 }
 .pdf{
 background:#1565c0;
 }
-
-
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
-
 .switch input { 
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -382,7 +348,6 @@ background:#1565c0;
   -webkit-transition: .4s;
   transition: .4s;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -394,42 +359,30 @@ background:#1565c0;
   -webkit-transition: .4s;
   transition: .4s;
 }
-
 input:checked + .slider {
   background-color: #2196F3;
 }
-
 input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
-
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
-
 .slider.round:before {
   border-radius: 50%;
 }
-
 .userlist{
-
 width:95%;
-
 }
-
 input[type="text"]{
-
 font-size:12px;
-
 }
-
 .searchResult {
     position: absolute;
     width: 25%;
@@ -441,31 +394,25 @@ font-size:12px;
     z-index: 1001;
     font-size: 12px;
 }
-
   .link-class:hover {
    background-color:#1565c0;
    color: #fff;
   }
 </style>
-
   <style type="text/css">
          body{
             background:#fff;
         }
-
         .active1{
         background:#1565c0;
          }
       .page-title-div {
-	 background:#1565c0;
-	  padding: 15px;
-	  
-	  
-	}
+     background:#1565c0;
+      padding: 15px;
+    }
 </style>
 </head>
 <body class="top-navbar-fixed">
-
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <%
@@ -484,15 +431,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // H
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 response.setHeader("Expires", "0"); // Proxies.
 DBconnection dBconnection = new DBconnection();
-
-
-
 if (session.getAttribute("username")==null)
 {
 response.sendRedirect("Login.jsp");
-
-
-
 }
 else{
 String name=(String)session.getAttribute("ID");
@@ -503,49 +444,39 @@ String roles=(String)details.getAttribute("role");
 String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
 String s=OpportunityName;
 System.out.println("Welcome"+OpportunityName);
-
 int sumcount=0;
 Statement st,st2;
 try{
-
 con=dBconnection.getConnection();
 Statement st1;
-
 %>
-
-
 <%@include file="Nav-Bar.jspf"%>
-		<nav class="nav nav-height-70 nav-font" id="bg-color"
-			style="font-size: 14px;">
-			<div class="container-fluid" id="container-fluid-margin">
-				<div class="row" id="d3s-mt-10">
-					<div class="col-lg-12 col-md-12">
-						<div class="sub-title" style="color: #fff">
-								<a href="OpportunityList.jsp" id="sitetitle1"
-									style="color: #fff"><span class="glyphicon glyphicon-home"></span>
-									Home</a> >> <%=OpportunityName%> >><a href="IntakeOpportunity.jsp" id="sitetitle1"
-									style="color: #fff"> Opportunity </a> >> <a
-									href="IntakeTriageSummary.jsp" id="sitetitle1"
-									style="color: #fff"> Triage Summary</a> <a
-									href="IntakeAssessment.jsp" id="sitetitle1" style="color: #fff">
-									Assessment</a> >> <a href="IntakeStakeHolder.jsp"
-									id="sitetitle1" style="color: #fff"> StakeHolder</a>
-							</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-		
-		<%
+        <nav class="nav nav-height-70 nav-font" id="bg-color"
+            style="font-size: 14px;">
+            <div class="container-fluid" id="container-fluid-margin">
+                <div class="row" id="d3s-mt-10">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="sub-title" style="color: #fff">
+                                <a href="OpportunityList.jsp" id="sitetitle1"
+                                    style="color: #fff"><span class="glyphicon glyphicon-home"></span>
+                                    Home</a> >> <%=OpportunityName%> >><a href="IntakeOpportunity.jsp" id="sitetitle1"
+                                    style="color: #fff"> Opportunity </a> >> <a
+                                    href="IntakeTriageSummary.jsp" id="sitetitle1"
+                                    style="color: #fff"> Triage Summary</a> <a
+                                    href="IntakeAssessment.jsp" id="sitetitle1" style="color: #fff">
+                                    Assessment</a> >> <a href="IntakeStakeHolder.jsp"
+                                    id="sitetitle1" style="color: #fff"> StakeHolder</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <%
 }
 catch(Exception e){
 e.printStackTrace();
 }
-
-
-
 } %>
-		
     <form class="form-signin" name="loginForm" method="post">
         <div class="main-wrapper">
               <!-- ========== TOP NAVBAR ========== -->
@@ -561,28 +492,25 @@ e.printStackTrace();
                 /.navbar-header
                 <div class="tabs-content">
                   <ul class="nav navbar-nav navAlign">
-		              <li class="active1"><a href="OpportunityList.jsp" style="color:white;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
-		              <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
-		              <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-		              <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
-		              <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
-		              <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
-		          </ul>
-		         <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
+                      <li class="active1"><a href="OpportunityList.jsp" style="color:white;"><i class="fad fa-folders fa-2x iconAlign activeIcon"></i>Applications</a></li>
+                      <li><a href="Admin_Module_Send_Invites.jsp"><i class="fad fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a></li>
+                      <li><a href="PhaseList.jsp"><i class="fad fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
+                      <li><a href="#"><i class="fad fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
+                      <li ><a href="DashBoard.jsp"><i class="fad fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a></li>
+                      <li><a href="#"><i class="fad fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a></li>
+                  </ul>
+                 <ul class="nav navbar-nav navbar-right" style = "margin-top:45px;">
                       <li><a href="#"><span id="nav_userid">admin &nbsp;</span>logged in as &nbsp;<span id='nav_role'> admin </span></a></li>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
                 </div>
       </div>
       <nav class="navbar navbar-down">
-				  <div class="container-fluid fixed-top">
+                  <div class="container-fluid fixed-top">
                     <div class="row page-title-div">
                              <div class="col-sm-6">
-                        
-                            
                           <p class="sub-title" style="color:#fff"> <a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff">
                           <span class="glyphicon glyphicon-home"></span> Home</a> >> 
-                         
                           <a  href="IntakeOpportunity.jsp" id="sitetitle1" style="color:#fff">
                            Opportunity</a> >>
                           <a  href="IntakeTriage.jsp" id="sitetitle1" style="color:#fff">
@@ -594,128 +522,106 @@ e.printStackTrace();
                             <a  href="IntakeStakeHolder.jsp" id="sitetitle1" style="color:#fff">
                            StakeHolder</a>
                          </p>
-
                     </div>
-
                 </div>
-			</nav>
-      
+            </nav>
         </div>
         /.container-fluid
     </nav > -->
-    
-    
             <div class="content-wrapper">
                 <div class="content-container" >
-                   
                     <div class="main-page">
-                        
                         <section>
                             <div class="row">
                                 <div class="container">
                                   <div class=" col-md-12">
-				<div class="form-wizard">
-					<form action="" method="post" role="form">
-					<br/>
-					<br/>
+                <div class="form-wizard">
+                    <form action="" method="post" role="form">
+                    <br/>
+                    <br/>
                                     <div class="form-wizard-header">
-										<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
-											
-													<ul class="list-unstyled form-wizard-steps clearfix">
-														<li class="activated"
-															onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
-														<li class="activated"
-															onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
-														<li class="activated"
-															onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage
-																Summary</i></li>
-														<li class="activated"
-															onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
-														<li class="active"
-															onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span>
-															<i>Stake Holder</i></li>
-														<li onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
-														<li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
-													</ul>
-												</div>
+                                        <!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
+                                                    <ul class="list-unstyled form-wizard-steps clearfix">
+                                                        <li class="activated"
+                                                            onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+                                                        <li class="activated"
+                                                            onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
+                                                        <li class="activated"
+                                                            onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage
+                                                                Summary</i></li>
+                                                        <li class="activated"
+                                                            onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
+                                                        <li class="active"
+                                                            onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span>
+                                                            <i>Stake Holder</i></li>
+                                                        <li onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
+                                                        <li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
+                                                    </ul>
+                                                </div>
                                          <div class="card-container card">
                                             <div class="card-header" id="cd-header">Stake Holder</div>
                                             <div class="panel-collapse" name="collapse">
                                                 <div class="card-body">
-                                                	<div>
+                                                    <div>
                                                     <h4>User List</h4>
-                          						<div class="table-responsive">           
-  													<table class="table-bordered" style="width: 100%;">
-    												<thead>
-      												<tr>
-        											<th>Name</th>
-        											<th>Email</th>
-        											<th>User Name</th>
-        											<th>Role</th>
-        											<th>Priority Order No.</th>
-        											<th>Action</th>
-      												</tr>
-    												</thead>
-    												<tbody id ="UserList">
-      												    												
-      												</tbody>
-  													</table>
-                          						</div>
-  													</div>
-                                                                                            
+                                                <div class="table-responsive">           
+                                                    <table class="table-bordered" style="width: 100%;">
+                                                    <thead>
+                                                    <tr>
+                                                    <th>Action</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>User Name</th>
+                                                    <th>Role</th>
+                                                    <th>Priority Order No.</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id ="UserList">
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                                    </div>
                                                    <!--  <div class="col-md-12">
                                                             <div class="col-md-1">
                                                                 <button type="button" class="btn btn-light" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='IntakeAssessment.jsp';">Prev</button>
                                                             </div>
                                                             <div class="col-md-2" style="padding-top: 10px; padding-right: 10px; float: right; width:25%;">
                                                                 <button class="btn btn-primary" type="button" id="AddStakeUserBtn">Add</button>
-
                                                                 <button type="submit" class="btn btn-success" id="save">Save</button>
                                                                 <button type = "button"class="btn btn-info" id = "NextStakeHolder"  style="display:none;">Next</button>
-                                                                   
-                                                                   
                                                                <a href="javascript:;" class="form-wizard-next-btn float-right btn btn-info" onclick="location.href='IntakeReviewDetails.jsp';" >Next</a>         
-                                                                
                                                                 <button class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeReviewDetails.jsp';" id="next" disabled="true">
-                                                                 
                                                                  <a href="javascript:;">Next</a>
-                                                                 
                                                                  </button> 
                                                                 <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-toggle="modal" data-target="#EditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-toggle="modal" data-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
                                                             </div>
                                                     </div> -->
-                                                    
                                                     <div class="row">
-															<div class="col-4">
-																<button type="button" class="btn btn-secondary"
-																	 onclick="location.href='IntakeAssessment.jsp';">Prev</button>
-															</div>
-															<div class="col-8" align="end">
-																<button class="btn btn-secondary" type="button" id="AddStakeUserBtn">Add</button>
+                                                            <div class="col-4">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                     onclick="location.href='IntakeAssessment.jsp';">Prev</button>
+                                                            </div>
+                                                            <div class="col-8" align="end">
+                                                                <button class="btn btn-secondary" type="button" id="AddStakeUserBtn">Add</button>
                                                                 <button type="submit" class="btn btn-primary" id="edit" >Edit</button>
                                                                 <button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
                                                                 <button type="submit" class="btn btn-primary" id="save">Save</button>
                                                                 <!-- <button type = "button"class="btn btn-info" id = "NextStakeHolder"  style="display:none;">Next</button> -->
-
-																	<!-- <button
-																		class="form-wizard-next-btn float-right btn-info btn btn-info"
-																		onclick="location.href='IntakeReviewDetails.jsp';"
-																		id="next" disabled="true">
-
-																		<a href="javascript:;" style="color: #fff;">Next</a>
-
-																	</button> -->
-																	<button type="button" class="btn btn-primary"
+                                                                    <!-- <button
+                                                                        class="form-wizard-next-btn float-right btn-info btn btn-info"
+                                                                        onclick="location.href='IntakeReviewDetails.jsp';"
+                                                                        id="next" disabled="true">
+                                                                        <a href="javascript:;" style="color: #fff;">Next</a>
+                                                                    </button> -->
+                                                                    <button type="button" class="btn btn-primary"
                                                                         onclick="location.href='IntakeReviewDetails.jsp';" id="next" disabled="true" >Next</button>
-                                                                        
-																	<button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-bs-toggle="modal" data-bs-target="#EditPopUp" style="display: none;">Edit PopUp</button>
+                                                                    <button type="button" class="btn btn-primary pull-right" id="editpopup_btn" data-bs-toggle="modal" data-bs-target="#EditPopUp" style="display: none;">Edit PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="deletepopup_btn" data-bs-toggle="modal" data-bs-target="#DeletePopUp" style="display: none;">Delete PopUp</button>
                                                                 <button type="button" class="btn btn-primary pull-right" id="TriageSummaryListbtn" onclick ="window.location.href='IntakeDetails.jsp';"style="display:none;"></button>
-																</div>
-													</div>
-													
+                                                                </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -734,7 +640,7 @@ e.printStackTrace();
       <div class="modal-header">
         <h5 class="modal-title">Delete Field</h5>
        <button type="button" class="btn-close"
-			data-bs-dismiss="modal" aria-label="Close"></button>
+            data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="DeleteForm">
@@ -754,7 +660,6 @@ e.printStackTrace();
 </div>
 </div>
     <!-- Date picker --> 
-    
        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
          rel = "stylesheet"><!-- newly added code by parthiban -->
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -771,24 +676,15 @@ e.printStackTrace();
             document.getElementById('creation_date').value = today;
         }
     </script> -->
-    
           <!-- Active Icon Color changes  -->
 <script>
 $(document).on('mouseenter','.active1', function(){
-		
-		 $('.activeIcon').css('color','#1565c0');
-		 
-		 
-	 });
-	 
-	 $(document).on('mouseleave','.active1', function(){
-			
-		 $('.activeIcon').css('color','#fff');
-		 
-	 });
+         $('.activeIcon').css('color','#1565c0');
+     });
+     $(document).on('mouseleave','.active1', function(){
+         $('.activeIcon').css('color','#fff');
+     });
 </script>
-    
-    
     </body>
     <!-- ========== COMMON JS FILES ========== -->
     <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -807,7 +703,6 @@ $(document).on('mouseenter','.active1', function(){
     <link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
         type="text/css" media="all" />
     <script src="js/amcharts/themes/light.js"></script>
-   
     <script src="js/icheck/icheck.min.js"></script>
     <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
     <!-- ========== THEME JS ========== -->
@@ -817,112 +712,108 @@ $(document).on('mouseenter','.active1', function(){
     <!-- ========== THEME JS ========== -->
     <script src="js/main.js"></script>
     <script id ="scripttag"></script>
-   
     <script>
-
 jQuery(document).ready(function() {
-	// click on next button
-	jQuery('.form-wizard-next-btn').click(function() {
-		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
-		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
-		var next = jQuery(this);
-		var nextWizardStep = true;
-		parentFieldset.find('.wizard-required').each(function(){
-			var thisValue = jQuery(this).val();
-
-			if( thisValue == "") {
-				jQuery(this).siblings(".wizard-form-error").slideDown();
-				nextWizardStep = false;
-			}
-			else {
-				jQuery(this).siblings(".wizard-form-error").slideUp();
-			}
-		});
-		if( nextWizardStep) {
-			next.parents('.wizard-fieldset').removeClass("show","400");
-			currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
-			next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
-			jQuery(document).find('.wizard-fieldset').each(function(){
-				if(jQuery(this).hasClass('show')){
-					var formAtrr = jQuery(this).attr('data-tab-content');
-					jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
-						if(jQuery(this).attr('data-attr') == formAtrr){
-							jQuery(this).addClass('active');
-							var innerWidth = jQuery(this).innerWidth();
-							var position = jQuery(this).position();
-							jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
-						}else{
-							jQuery(this).removeClass('active');
-						}
-					});
-				}
-			});
-		}
-	});
-	//click on previous button
-	jQuery('.form-wizard-previous-btn').click(function() {
-		var counter = parseInt(jQuery(".wizard-counter").text());;
-		var prev =jQuery(this);
-		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
-		prev.parents('.wizard-fieldset').removeClass("show","400");
-		prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show","400");
-		currentActiveStep.removeClass('active').prev().removeClass('activated').addClass('active',"400");
-		jQuery(document).find('.wizard-fieldset').each(function(){
-			if(jQuery(this).hasClass('show')){
-				var formAtrr = jQuery(this).attr('data-tab-content');
-				jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
-					if(jQuery(this).attr('data-attr') == formAtrr){
-						jQuery(this).addClass('active');
-						var innerWidth = jQuery(this).innerWidth();
-						var position = jQuery(this).position();
-						jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
-					}else{
-						jQuery(this).removeClass('active');
-					}
-				});
-			}
-		});
-	});
-	//click on form submit button
-	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
-		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
-		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
-		parentFieldset.find('.wizard-required').each(function() {
-			var thisValue = jQuery(this).val();
-			if( thisValue == "" ) {
-				jQuery(this).siblings(".wizard-form-error").slideDown();
-			}
-			else {
-				jQuery(this).siblings(".wizard-form-error").slideUp();
-			}
-		});
-	});
-	// focus on input field check empty or not
-	jQuery(".form-control").on('focus', function(){
-		var tmpThis = jQuery(this).val();
-		if(tmpThis == '' ) {
-			jQuery(this).parent().addClass("focus-input");
-		}
-		else if(tmpThis !='' ){
-			jQuery(this).parent().addClass("focus-input");
-		}
-	}).on('blur', function(){
-		var tmpThis = jQuery(this).val();
-		if(tmpThis == '' ) {
-			jQuery(this).parent().removeClass("focus-input");
-			jQuery(this).siblings('.wizard-form-error').slideDown("3000");
-		}
-		else if(tmpThis !='' ){
-			jQuery(this).parent().addClass("focus-input");
-			jQuery(this).siblings('.wizard-form-error').slideUp("3000");
-		}
-	});
+    // click on next button
+    jQuery('.form-wizard-next-btn').click(function() {
+        var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+        var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+        var next = jQuery(this);
+        var nextWizardStep = true;
+        parentFieldset.find('.wizard-required').each(function(){
+            var thisValue = jQuery(this).val();
+            if( thisValue == "") {
+                jQuery(this).siblings(".wizard-form-error").slideDown();
+                nextWizardStep = false;
+            }
+            else {
+                jQuery(this).siblings(".wizard-form-error").slideUp();
+            }
+        });
+        if( nextWizardStep) {
+            next.parents('.wizard-fieldset').removeClass("show","400");
+            currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
+            next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
+            jQuery(document).find('.wizard-fieldset').each(function(){
+                if(jQuery(this).hasClass('show')){
+                    var formAtrr = jQuery(this).attr('data-tab-content');
+                    jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+                        if(jQuery(this).attr('data-attr') == formAtrr){
+                            jQuery(this).addClass('active');
+                            var innerWidth = jQuery(this).innerWidth();
+                            var position = jQuery(this).position();
+                            jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+                        }else{
+                            jQuery(this).removeClass('active');
+                        }
+                    });
+                }
+            });
+        }
+    });
+    //click on previous button
+    jQuery('.form-wizard-previous-btn').click(function() {
+        var counter = parseInt(jQuery(".wizard-counter").text());;
+        var prev =jQuery(this);
+        var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+        prev.parents('.wizard-fieldset').removeClass("show","400");
+        prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show","400");
+        currentActiveStep.removeClass('active').prev().removeClass('activated').addClass('active',"400");
+        jQuery(document).find('.wizard-fieldset').each(function(){
+            if(jQuery(this).hasClass('show')){
+                var formAtrr = jQuery(this).attr('data-tab-content');
+                jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+                    if(jQuery(this).attr('data-attr') == formAtrr){
+                        jQuery(this).addClass('active');
+                        var innerWidth = jQuery(this).innerWidth();
+                        var position = jQuery(this).position();
+                        jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+                    }else{
+                        jQuery(this).removeClass('active');
+                    }
+                });
+            }
+        });
+    });
+    //click on form submit button
+    jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
+        var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+        var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+        parentFieldset.find('.wizard-required').each(function() {
+            var thisValue = jQuery(this).val();
+            if( thisValue == "" ) {
+                jQuery(this).siblings(".wizard-form-error").slideDown();
+            }
+            else {
+                jQuery(this).siblings(".wizard-form-error").slideUp();
+            }
+        });
+    });
+    // focus on input field check empty or not
+    jQuery(".form-control").on('focus', function(){
+        var tmpThis = jQuery(this).val();
+        if(tmpThis == '' ) {
+            jQuery(this).parent().addClass("focus-input");
+        }
+        else if(tmpThis !='' ){
+            jQuery(this).parent().addClass("focus-input");
+        }
+    }).on('blur', function(){
+        var tmpThis = jQuery(this).val();
+        if(tmpThis == '' ) {
+            jQuery(this).parent().removeClass("focus-input");
+            jQuery(this).siblings('.wizard-form-error').slideDown("3000");
+        }
+        else if(tmpThis !='' ){
+            jQuery(this).parent().addClass("focus-input");
+            jQuery(this).siblings('.wizard-form-error').slideUp("3000");
+        }
+    });
 });
-
 </script>
 <script src="js/navigation/navigation.js"></script>
  <!-- ========== Toastr ========== -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-	<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
 </html>

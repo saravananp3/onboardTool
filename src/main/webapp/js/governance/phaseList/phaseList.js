@@ -67,7 +67,7 @@ $(document).ready(function(){
 	
 	$(document).on('mouseenter','.dropClass',function(){
 	var index = $(this).index('.dropClass');
-	$('.phaseCard').eq(index).removeClass('phaseCard');
+	$('.cardClass').eq(index).removeClass('phaseCard');
 	
 	});
 	$(document).on('mouseleave','.dropClass',function(){
@@ -303,7 +303,7 @@ function phaseListAjaxCall()
             	 var phaseName = value.phaseName; 
             	 var phaseId = value.phaseId; 
             	
-        	var li_element ="<li class = 'phaseCard' >"+
+        	var li_element ="<li class = 'phaseCard cardClass' >"+
 				        	"<div class='drophide'>"+
 							"<i class = 'fal fa-ellipsis-v dropbtn dropClass' style='font-size:35px; position:absolute; width:90%; top:0px;margin-left:5px; margin-top:0.5%;'>"+
 							"<div class='dropdown-content myDropdown' style = 'float:right;'>"+

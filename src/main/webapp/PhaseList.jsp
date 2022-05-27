@@ -553,7 +553,7 @@ pointer-events:all;
 				</div>
 
 
-				<div class="col-lg-3 col-md-6">
+				<!-- <div class="col-lg-3 col-md-6">
 					<div class="row align-items-center">
 						<div class="col-auto">
 							<label class="col-form-label" id="title">Phase</label>
@@ -584,7 +584,7 @@ pointer-events:all;
 							<select class="selectInput filter phase-dropDown-width" id="application"></select>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<div class="col-lg-6 right-side">

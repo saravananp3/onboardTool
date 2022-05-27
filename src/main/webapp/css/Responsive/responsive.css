@@ -600,7 +600,8 @@ body {
 }
 
 .pie-legend {
-	list-style: none; margin;
+	list-style: none;
+	margin: 0;
 	white-space: nowrap
 }
 
