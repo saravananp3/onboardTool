@@ -319,7 +319,7 @@ public class Login extends HttpServlet {
                 opportunity[4] = new OpportunityDetails(5, "", "", "", "Status", "status", "Text box", "No", "");
                 opportunity[5] = new OpportunityDetails(6, "", "", "Archive,Decommission,To be retired", "Request Type", "request_type", "Dropdown", "Yes", "");
                 opportunity[6] = new OpportunityDetails(7, "", "", "", "Requester", "requester", "Text box", "Yes", "");
-                opportunity[7] = new OpportunityDetails(8, "", "", "", "Application Descrpition", "appdesc", "Text box", "No", "");
+                opportunity[7] = new OpportunityDetails(8, "", "", "", "Application Description", "appdesc", "Text box", "No", "");
                 opportunity[8] = new OpportunityDetails(9, "", "", "", "Application Owner", "appowner", "Text box", "Yes", "");
                 opportunity[9] = new OpportunityDetails(10, "", "", "", "Business Owner", "businessowner", "Text box", "No", "");
                 opportunity[10] = new OpportunityDetails(11, "", "", "", "Development Owner/SME", "sme", "Text box", "Yes", "");
@@ -328,9 +328,9 @@ public class Login extends HttpServlet {
                 opportunity[13] = new OpportunityDetails(14, "", "", "", "Business Unit", "businessunit", "Text box", "No", "");
                 opportunity[14] = new OpportunityDetails(15, "", "", "", "Key Function", "keyfunction", "Text box", "No", "");
                 opportunity[15] = new OpportunityDetails(16, "", "", "", "Program or Segment Contact", "pscontact", "Text box", "No", "");
-                opportunity[16] = new OpportunityDetails(17, "", "", "EMR System,ERP Data,Financial Data,HealthCare Data,HR Data,MR/HR Data,Other Data", "Data Type", "date_type", "Dropdown", "No", "");
+                opportunity[16] = new OpportunityDetails(17, "", "", "EMR System,ERP Data,Financial Data,Healthcare Data,HR Data,MR/HR Data,Other Data", "Data Type", "date_type", "Dropdown", "No", "");
                 opportunity[17] = new OpportunityDetails(18, "", "", "", "If Other Data", "if_other_data", "Text box", "No", "");
-                opportunity[18] = new OpportunityDetails(19, "", "", "", "Please describe your needs for Archival and Decommission Service", "arcdecomm", "Text box", "No", "");
+                opportunity[18] = new OpportunityDetails(19, "", "", "", "Please describe your needs for archival and decommission service", "arcdecomm", "Text box", "No", "");
                 opportunity[19] = new OpportunityDetails(20, "", "", "", "Desired Completion Date", "completion_date", "Datepicker", "No", "");
 
                 for (int index = 0; index < opportunity.length; index++) {
@@ -619,7 +619,7 @@ public class Login extends HttpServlet {
                 AssessmentDetails[7] = new Assessment(8, "", "", ComplianceChar, "", "If any, please describe details", "ifanypleasedescribe", "TextBoxDependencyYes", "No", "");
                 AssessmentDetails[8] = new Assessment(9, "", "", ComplianceChar, "Yes,No", "Are there any pending litigations that impacts the retirment of the application and data", "retirementappanddata", "Radio box", "Yes", "");
                 AssessmentDetails[9] = new Assessment(10, "", "", ComplianceChar, "On Hold, Pending review, Cleared", "Legal Status", "legalstatus", "Dropdown", "Yes", "");
-                AssessmentDetails[10] = new Assessment(11, "", "", ComplianceChar, "Yes,No", "Any specific Purge requirements?", "specificpurgerequirements", "RadioBoxDependencyYes", "Yes", "");
+                AssessmentDetails[10] = new Assessment(11, "", "", ComplianceChar, "Yes,No", "Any specific purge requirements?", "specificpurgerequirements", "RadioBoxDependencyYes", "Yes", "");
                 AssessmentDetails[11] = new Assessment(12, "", "", ComplianceChar, "", "If any, please describe details", "describedetails", "TextBoxDependencyYes", "No", "");
                 for (int index = 0; index < AssessmentDetails.length; index++) {
                     String ComplianceChar_InsertQuery = "insert into Assessment_Compliance_Char_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)" +
@@ -650,9 +650,9 @@ public class Login extends HttpServlet {
                 AssessmentArchiv[0] = new Assessment(1, "", "", ArchivConsump, "Frequent users with Online Inquiry, Retention for Audit purposes, Ad-hoc reporting, Long-term Retention Only", "Archival needs", "archiveneed", "Dropdown", "Yes", "");
                 AssessmentArchiv[1] = new Assessment(2, "", "", ArchivConsump, "", "How many users are expected to use the InfoArchive system after archival?", "archivalusercount", "Text box", "Yes", "");
                 AssessmentArchiv[2] = new Assessment(3, "", "", ArchivConsump, "", "Number of concurrent users", "concurrentuser", "Text box", "No", "");
-                AssessmentArchiv[3] = new Assessment(4, "", "", ArchivConsump, "", "Estimated number of Search Forms (screens) needed in the archive ", "noofsearch", "Text box", "Yes", "");
+                AssessmentArchiv[3] = new Assessment(4, "", "", ArchivConsump, "", "Estimated number of search forms (screens) needed in the archive ", "noofsearch", "Text box", "Yes", "");
                 AssessmentArchiv[4] = new Assessment(5, "", "", ArchivConsump, "", "Please describe any known Search screen requirements", "plsdescscrreq", "Text box", "Yes", "");
-                AssessmentArchiv[5] = new Assessment(6, "", "", ArchivConsump, "", "Frequency of Search", "searchfreq", "Text box", "No", "");
+                AssessmentArchiv[5] = new Assessment(6, "", "", ArchivConsump, "", "Frequency of search", "searchfreq", "Text box", "No", "");
                 AssessmentArchiv[6] = new Assessment(7, "", "", ArchivConsump, "", "Format of results (e.g., online, report, etc.)", "resformat", "Text box", "Yes", "");
                 AssessmentArchiv[7] = new Assessment(8, "", "", ArchivConsump, "", "Response time requirement", "responsetime", "Text box", "No", "");
                 AssessmentArchiv[8] = new Assessment(9, "", "", ArchivConsump, "Yes,No", "Encryption?", "enc", "Radio box", "Yes", "");

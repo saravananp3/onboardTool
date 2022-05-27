@@ -710,13 +710,13 @@ function doughnutType()
             value: value1.archiveReqPer,
             color: "#1565c0",
             highlight: "#82aadd",
-            label: "Archieve Requirements"
+            label: "Archive Requirements"
         },
         {
             value: value1.archiveExePer,
             color: "#1d88aa",
             highlight: "darkorange",
-            label: "Archieve Execution"
+            label: "Archive Execution"
         },
         {
             value: value1.completed,
@@ -842,13 +842,13 @@ function filterAjaxCall(category,phase,wave)
             value: value1.archiveReqPer,
             color: "#d1e1f3",
             highlight: "#82aadd",
-            label: "Archieve Requirements"
+            label: "Archive Requirements"
         },
         {
             value: value1.archiveExePer,
             color: "#FFC0CB",
             highlight: "darkorange",
-            label: "Archieve Execution"
+            label: "Archive Execution"
         },
         {
             value: value1.completed,

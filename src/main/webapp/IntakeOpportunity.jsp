@@ -583,7 +583,7 @@ e.printStackTrace();
 																			value="">
 																	</div>
 																	<div class="col-md-2">
-																		<label class="control-label" for="opportunity">Buisness
+																		<label class="control-label" for="opportunity">Business
 																			Segment</label>
 																	</div>
 																	<div class="col-md-6">
@@ -599,7 +599,7 @@ e.printStackTrace();
 																			value="">
 																	</div>
 																	<div class="col-md-2">
-																		<label class="control-label" for="opportunity">Buisness
+																		<label class="control-label" for="opportunity">Business
 																			Unit</label>
 																	</div>
 																	<div class="col-md-6">
