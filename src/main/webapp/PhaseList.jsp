@@ -1111,5 +1111,8 @@ $(document).ready(function() {
 });
 </script>
 <script src="js/navigation/navigation.js"></script>
+<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </body>
 </html>
