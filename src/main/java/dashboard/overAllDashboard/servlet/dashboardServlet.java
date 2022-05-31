@@ -15,20 +15,26 @@ public class dashboardServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JsonArray jsonArray =  new JsonArray();
+        String phase = request.getParameter("phase");
+        String wave = request.getParameter("wave");
+        if(phase==null||wave==null) {
+        	phase="All";
+        	wave="All";
+        }
         try {
             dashboardService dashboard = new dashboardService();
             jsonArray.add(dashboard.dashboardCardDetails());
             jsonArray.add(dashboard.donetChartDetails());
             jsonArray.add(dashboard.getOppNameList());
             jsonArray.add(dashboard.GanttChartJsonArray);
-            jsonArray.add(dashboard.getApplicationFromPhaseDataTable("All"));
+            jsonArray.add(dashboard.getApplicationFromPhaseDataTable(phase,wave));
             jsonArray.add(dashboard.getPieChartDetails());
             //jsonArray.add(dashboard.getAppDetails());
-            jsonArray.add(dashboard.getApplicationArchiveReqDataFromPhase("All"));
+            jsonArray.add(dashboard.getApplicationArchiveReqDataFromPhase(phase,wave));
             jsonArray.add(dashboard.getAppIssueCount());
             jsonArray.add(dashboard.getDataCharDataTable());
             jsonArray.add(dashboard.getDoughnutIntakeDetail());
-            jsonArray.add(dashboard.getArchiveExeDataFromPhase("All"));
+            jsonArray.add(dashboard.getArchiveExeDataFromPhase(phase,wave));
             dashboard = null;
             System.gc();
         }

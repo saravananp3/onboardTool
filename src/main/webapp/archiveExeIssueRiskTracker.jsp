@@ -49,7 +49,8 @@
 <link rel="stylesheet" href="css/Responsive/responsive.css"
 	media="screen">
 <script src="js/archiveExeRiskTracker/archiveExeIssueRiskTracker.js"></script>
-
+<!-- ========== Pagination ========== -->
+<script src="js/paging/pagination.js"></script>
 
 
 </head>
@@ -358,7 +359,7 @@ table.table td .add {
 																					<div id="inputFieldsRoles">
 																						<div style="overflow-x: auto;">
 																							<h4 class="title1">App Issue</h4>
-																							<table class="table-bordered"
+																							<table id="trackerTable" class="table-bordered"
 																								style="width: 100%;">
 																								<thead>
 																									<tr>
@@ -403,6 +404,11 @@ table.table td .add {
 
 																								</tbody>
 																							</table>
+																							
+																						</div>
+																						<div class="col-md-12 text-center mt-3">
+																							<ul class="pagination pagination-lg pager pagination-align"
+																								id="tracker_page"></ul>
 																						</div>
 																						<div class="row mt-5">
 																						

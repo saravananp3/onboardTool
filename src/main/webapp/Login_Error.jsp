@@ -169,7 +169,7 @@
 	<div class="container"> 
 	<div class="well"> 
 	<h1 id="ErrorMessage"></h1>
-	<h2>Invalid Username & Password. Login with Correct Credentials</h2>
+	<h2>Invalid Username & Password.</h2>
 	<a href="Login.jsp"> Login </a>
 	
 	</div> 

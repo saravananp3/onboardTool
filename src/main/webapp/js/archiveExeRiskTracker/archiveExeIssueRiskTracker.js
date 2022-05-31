@@ -139,7 +139,9 @@ function archiveExeIssueAddAjaxCall(seqNum) {
                     "<td><textarea class='comments' rows='3' value=''/></td>" +
                     "</tr>";
                 $("#AppIssue").append(Row);
+                				
                 notification("success", "Row added Successfully.", "Note:");
+                
             }
             else
                 notification("error", "Error occured while adding the row.", "Error:");
@@ -236,9 +238,11 @@ function archiveExeIssueDataRetrieve() {
                     "<td><textarea class='comments' readonly id='comments' rows='3'>" + value.comments + "</textarea></td>" +
                     "</tr>";
                 $("#AppIssue").append(Row);
+
                 if (checkFieldValues(value.role, value.name, value.email, value.username, value.priority))
                     checkRoles = true;
                 //checkValidation = true;
+                
             });
         },
         error: function(e) {
@@ -332,3 +336,6 @@ function archiveExeIssueSaveAjaxcall(JsonArray) {
         }
     });
 }
+
+
+ 
