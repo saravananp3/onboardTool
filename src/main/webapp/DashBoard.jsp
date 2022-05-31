@@ -735,24 +735,26 @@ display:none;
 										<div class="card-header" id="card-header">Application
 											Status</div>
 										<div class="card-body" style="padding: 0px;">
-											<table id="example" class="table">
-												<thead>
+											<div id="ApplicationStatusDash">
+												<table id="example" class="table">
+													<thead>
 
-													<tr>
-														<th scope="col">App Name</th>
-														<th scope="col">Submitted Date</th>
-														<th scope="col">Assigned to</th>
-														<th scope="col">Targeted Phase</th>
-														<th scope="col">Archive Required</th>
-														<th scope="col">Archival Completion Target</th>
-													</tr>
-												</thead>
-												<tbody id="dataTableId">
-												</tbody>
-											</table>
-											<div class="col-md-12 text-center">
-												<ul class="pagination pagination-lg pager pagination-align"
-													id="developer_page"></ul>
+														<tr>
+															<th scope="col">App Name</th>
+															<th scope="col">Submitted Date</th>
+															<th scope="col">Assigned to</th>
+															<th scope="col">Targeted Phase</th>
+															<th scope="col">Archive Required</th>
+															<th scope="col">Archival Completion Target</th>
+														</tr>
+													</thead>
+													<tbody id="dataTableId">
+													</tbody>
+												</table>
+												<div class="col-md-12 text-center" id="pg1">
+													<ul class="pagination pagination-lg pager pagination-align"
+														id="developer_page"></ul>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -776,24 +778,26 @@ display:none;
 										<div class="card-header" id="card-header">Archive
 											Requirements</div>
 										<div class="card-body" style="padding: 0px;">
-											<table id="example1" class="table">
-												<thead>
-													<tr>
-														<th scope="col">App Name</th>
-														<th scope="col">Start Date</th>
-														<th scope="col">Status</th>
-														<th scope="col">Target Completion Date</th>
-														<th scope="col">Phase</th>
-														<th scope="col">Wave</th>
-														<th scope="col">Design Approval</th>
-													</tr>
-												</thead>
-												<tbody id="dataTableId1">
-												</tbody>
-											</table>
-											<div class="col-md-12 text-center">
-												<ul class="pagination pagination-lg pager pagination-align"
-													id="developer_page_1"></ul>
+											<div id="AppAchiveReqDash">
+												<table id="example1" class="table">
+													<thead>
+														<tr>
+															<th scope="col">App Name</th>
+															<th scope="col">Start Date</th>
+															<th scope="col">Status</th>
+															<th scope="col">Target Completion Date</th>
+															<th scope="col">Phase</th>
+															<th scope="col">Wave</th>
+															<th scope="col">Design Approval</th>
+														</tr>
+													</thead>
+													<tbody id="dataTableId1">
+													</tbody>
+												</table>
+												<div class="col-md-12 text-center" id="pg2">
+													<ul class="pagination pagination-lg pager pagination-align"
+														id="developer_page_1"></ul>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -824,20 +828,22 @@ display:none;
 										<div class="card-header" id="card-header">Archive
 											Execution</div>
 										<div class="card-body" style="padding: 0px;">
-											<table id="example2" class="table">
-												<thead>
-													<tr>
-														<th scope="col">App Name</th>
-														<th scope="col">Start Date</th>
-														<th scope="col">Status</th>
-													</tr>
-												</thead>
-												<tbody id="dataTableId2">
-												</tbody>
-											</table>
-											<div class="col-md-12 text-center">
-												<ul class="pagination pagination-lg pager pagination-align"
-													id="developer_page_2"></ul>
+											<div id="AppArchiveExeDash">
+												<table id="example2" class="table">
+													<thead>
+														<tr>
+															<th scope="col">App Name</th>
+															<th scope="col">Start Date</th>
+															<th scope="col">Status</th>
+														</tr>
+													</thead>
+													<tbody id="dataTableId2">
+													</tbody>
+												</table>
+												<div class="col-md-12 text-center" id="pg3">
+													<ul class="pagination pagination-lg pager pagination-align"
+														id="developer_page_2"></ul>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -1044,6 +1050,7 @@ $(document).ready(function() {
 	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
 	<script src="js/dashboard/dashboardAjaxCall.js"></script>
+<!-- 	<script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> -->
 	<!-- <script src="https://cdnjs.com/libraries/Chart.js"></script> -->
 	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 	

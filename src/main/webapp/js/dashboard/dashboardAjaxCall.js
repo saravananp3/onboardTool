@@ -1,18 +1,28 @@
 $(document).ready(function() {
 	dashboardDetails();
 	BindPhaseWave();
+	doughnut1();
 	doughnutType();
+	f1();
+	f2();
+	f3();
 });
 
 function dashboardDetails() {
+	var selectedPhase=$('#phase :selected').text();
+    var selectedwave=$('#wave :selected').text();
+
+	var phase=selectedPhase==""?"All":selectedPhase;
+    var wave=selectedwave==""?"All":selectedwave;
 	$.ajax({
 		url: "dashboardServlet",
 		type: 'POST',
 		async: false,
+		data:{phase:phase,wave:wave},
 		dataType: "json",
 		success: function(data) {
-			/*console.log("Data : ", data);
-			if (data[0].phaseCount == 0 || data[0].phaseCount == 1)
+			console.log("Data : ", data);
+			/*if (data[0].phaseCount == 0 || data[0].phaseCount == 1)
 				$(".font_icon").eq(0).html('Phase');
 			if (data[0].waveCount == 0 || data[0].waveCount == 1)
 				$(".font_icon").eq(1).html('Wave');
@@ -237,6 +247,7 @@ function dashboardDetails() {
             $(document).ready(function() {
                 $('#example').DataTable();
             });
+            
             /* paging('example','maxRows',data[4].length,'appStatus');*/
             $.each(data[6], function(key, value) {
                 var aname=value.app_name==undefined?"":value.app_name;
@@ -362,6 +373,7 @@ function dashboardDetails() {
             $(document).ready(function() {
                 $('#example1').DataTable();
             });
+            
 			/*paging('example1','maxRows1',data[6].length,'appReq');*/
 			
 			$.each(data[7], function(key, value) {
@@ -405,7 +417,6 @@ function dashboardDetails() {
 					['Sum of Realized', 110000.00, 'blue'],
 					['Sum of in Process', 365000, 'blue'],
 					['Sum of Intake/Opportunity', 192000.00, 'blue']]);
-
 				var view = new google.visualization.DataView(data);
 				view.setColumns([0, 1,
 					{
@@ -415,7 +426,6 @@ function dashboardDetails() {
 						role: "annotation"
 					},
 					2]);
-
 				var options = {
 					title: "Total",
 					width: 400,
@@ -581,7 +591,7 @@ function dashboardDetails() {
 
 					}
 				};
-           });;
+           });
             $(document).ready(function() {
                 $('#example2').DataTable();
             });
@@ -610,66 +620,59 @@ function dashboardDetails() {
 }
 
 
-$(document).ready(function() {
-
-	var optionsPie = {
+function doughnut1() {
+   var optionsPie = {
 	};
 
-	$.ajax({
-		url: "dashboardServlet",
-		type: 'POST',
-		async: false,
-		dataType: "json",
-		success: function(data) {
-			console.log("Data : ", data);
-			$.each(data[9], function(key, value11) {
-				var data = [
-
-
-					{
-						value: value11.newOpportunity,
-						color: "#7FFFD4",
-						highlight: "lightblue",
-						label: "New Opportunity"
-					},
-					{
-						value: value11.triage,
-						color: "#1565c0",
-						highlight: "lightskyblue",
-						label: "Triage"
-					},
-					{
-						value: value11.assesment,
-						color: "#6495ed",
-						highlight: "#82aadd",
-						label: "Assessment"
-					},
-					{
-						value: value11.pendingApproval,
-						color: "#1d88aa",
-						highlight: "darkorange",
-						label: "Pending Approval"
-					},
-					{
-						value: value11.completed,
-						color: "#83ddd4",
-						highlight: "darkgreen",
-						label: "Completed"
-					},
-
-
-				];
-				console.log(data)
-				var ctx = $("#mycanvas").get(0).getContext("2d");
-				var PieChart = new Chart(ctx).Doughnut(data, optionsPie);
-
-
-
-				document.getElementById('legend').innerHTML = PieChart.generateLegend();
-			});
-		}
-	});
-});
+$.ajax({
+        url: "dashboardServlet",
+        type: 'POST',
+        async: false,
+        dataType: "json",
+        success: function(data) {
+            console.log("Data : ", data);
+            $.each(data[9],function(key,value11){
+   		var data = [
+        {
+            value: value11.newOpportunity,
+            color: "#7FFFD4",
+            highlight: "lightblue",
+            label: "New Opportunity"
+        },
+        {
+            value: value11.triage,
+            color: "#1565c0",
+            highlight: "lightskyblue",
+            label: "Triage"
+        },
+        {
+            value: value11.assesment,
+            color: "#6495ed",
+            highlight: "#82aadd",
+            label: "Assessment"
+        },
+        {
+            value: value11.pendingApproval,
+            color: "#1d88aa",
+            highlight: "darkorange",
+            label: "Pending Approval"
+        },
+        {
+            value: value11.completed,
+            color: "#83ddd4",
+            highlight: "darkgreen",
+            label: "Completed"
+        }
+    ];
+    console.log(data)
+    var ctx = $("#mycanvas").get(0).getContext("2d");
+	var PieChart = new Chart(ctx).Doughnut(data, optionsPie);
+	document.getElementById('legend').innerHTML = PieChart.generateLegend();
+    });
+    
+   }});
+  };
+/*});*/
 
 /*$("#phId").change(function() {
 	doughnutType();
@@ -766,6 +769,7 @@ function BindPhaseWave()
             }
 });
 }
+
 $(document).on('change','#phase',function(){
 $(".waveOptions").hide();
 var phaseName = $(this).val();
@@ -779,18 +783,24 @@ if(phaseName!="All")
     $(".waveOptions").show();
     }
    /* UpdateDoughnut();*/
+   getApplicationDetails();
    doughnutType();
+   
 });
+
 $(document).on('change','#wave',function(){
    /* UpdateDoughnut();*/
+   getApplicationDetails();
    doughnutType();
-    });
+});
+
 $(document).on('change','.filter',function(){
     var category = $("#category").val();
     var phase = $("#phase").val();
     var wave = $("#wave").val();
     filterAjaxCall(category,phase,wave);
 });
+
 function filterAjaxCall(category,phase,wave)
 {
     $.ajax({
@@ -879,7 +889,7 @@ $(document).ready(function() {
     }
     var selectedPhase=$('#phase :selected').text();
     var selectedwave=$('#wave :selected').text();
-     var phase=selectedPhase==""?"All":selectedPhase;
+    var phase=selectedPhase==""?"All":selectedPhase;
     var wave=selectedwave==""?"All":selectedwave;
     $.ajax({
         url: "dashboardDoughnutServlet",
@@ -966,3 +976,487 @@ $(document).ready(function() {
         });
    }});
 });*/
+
+function resetDiv(){
+	$('#example').remove();
+	$('#pg1').remove();
+  $('#ApplicationStatusDash').append("<table id='example' class='table'> <thead> <tr>  <th scope='col'>App Name</th>"+
+													"	<th scope='col'>Submitted Date</th> "+
+														"	<th scope='col'>Assigned to</th> "+
+														"	<th scope='col'>Targeted Phase</th> "+
+														"	<th scope='col'>Archive Required</th> "+
+														"	<th scope='col'>Archival Completion Target</th> "+
+														"</tr> "+
+												 	"</thead> "+
+												"	<tbody id='dataTableId'> "+
+													" </tbody> "+
+												" </table>"+
+												"<div class='col-md-12 text-center' id='pg1'>"+
+												"<ul class='pagination pagination-lg pager pagination-align' "+
+												"	id='developer_page'></ul> " +	
+											" </div>"
+											);
+											
+										
+											
+											
+$('#example1').remove();
+	$('#pg2').remove();
+  $('#AppAchiveReqDash').append("<table id='example1' class='table'> <thead> <tr>  <th scope='col'>App Name</th>"+
+													"	<th scope='col'>Start Date</th> "+
+														"	<th scope='col'> Status</th> "+
+														"	<th scope='col'>Target Completion Date</th> "+
+														"	<th scope='col'> Phase</th> "+
+														"	<th scope='col'>Wave</th> "+
+														"	<th scope='col'>Design Approval</th> "+
+														"</tr> "+
+												 	"</thead> "+
+												"	<tbody id='dataTableId1'> "+
+													" </tbody> "+
+												" </table>"+
+												"<div class='col-md-12 text-center' id='pg2'>"+
+												"<ul class='pagination pagination-lg pager pagination-align' "+
+												"	id='developer_page_1'></ul> " +
+											" </div>");
+$('#example2').remove();
+	$('#pg3').remove();
+  $('#AppArchiveExeDash').append("<table id='example2' class='table'> <thead> <tr>  <th scope='col'>App Name</th>"+
+													"	<th scope='col'>Start Date</th> "+
+														"	<th scope='col'> Status</th> "+
+														"</tr> "+
+												 	"</thead> "+
+												"	<tbody id='dataTableId2'> "+
+													" </tbody> "+
+												" </table>"+
+												"<div class='col-md-12 text-center' id='pg3'>"+
+												"<ul class='pagination pagination-lg pager pagination-align' "+
+												"	id='developer_page_2'></ul> " +
+											" </div>");
+
+}
+
+
+function getApplicationDetails()
+{
+	resetDiv();
+	var selectedPhase=$('#phase :selected').text();
+    var selectedwave=$('#wave :selected').text();
+	var phase=selectedPhase==""?"All":selectedPhase;
+    var wave=selectedwave==""?"All":selectedwave;
+    
+    $.ajax({
+        url: "FilteredApplicationServlet",
+        type: 'POST',
+        dataType: "json",
+		data:{phase:phase,wave:wave},
+        success: function (data) {
+            console.log("Filtered Application Data  :", data);
+                 $.each(data[0],function(key,value){
+
+                var aname=value.appName==undefined?"":value.appName;
+                var sdate=value.submittedDate==undefined?"":value.submittedDate;
+                var dcom=value.decomAnalyst==undefined?"":value.decomAnalyst;
+                var phase=value.phaseName==undefined?"":value.phaseName;
+                var areq=value.ArchiveRequired==undefined?"":value.ArchiveRequired;
+                var ctdate=value.completionTarget==undefined?"":value.completionTarget;
+                var t_row = "<tr>"
+                    + "<td>" + aname + "</td>"
+                    + "<td>" + sdate + "</td>"
+                    + "<td>" + dcom + "</td>"
+                    + "<td>" + phase + "</td>"
+                    + "<td>" + areq + "</td>"
+                    + "<td>" + ctdate + "</td>"
+                    + "</tr>";
+                $('#dataTableId').append(t_row); 
+                
+                $.fn.pageMe = function(opts) {
+					var $this = this,
+						defaults = {
+							perPage: 7,
+							showPrevNext: false,
+							hidePageNumbers: false
+						},
+						settings = $.extend(defaults, opts);
+
+					var listElement = $this;
+					var perPage = settings.perPage;
+					var children = listElement.children();
+					var pager = $('.pager');
+
+					if (typeof settings.childSelector != "undefined") {
+						children = listElement.find(settings.childSelector);
+					}
+
+					if (typeof settings.pagerSelector != "undefined") {
+						pager = $(settings.pagerSelector);
+					}
+
+					var numItems = children.size();
+					var numPages = Math.ceil(numItems / perPage);
+
+					pager.data("curr", 0);
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="prev_link"><<</a></li>').appendTo(pager);
+					}
+
+					var curr = 0;
+					while (numPages > curr && (settings.hidePageNumbers == false)) {
+						$('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>').appendTo(pager);
+						curr++;
+					}
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="next_link">>></a></li>').appendTo(pager);
+					}
+
+					pager.find('.page_link:first').addClass('active');
+					pager.find('.prev_link').hide();
+					if (numPages <= 1) {
+						pager.find('.next_link').hide();
+					}
+					pager.children().eq(1).addClass("active");
+
+					children.hide();
+					children.slice(0, perPage).show();
+
+					pager.find('li .page_link').click(function() {
+						var clickedPage = $(this).html().valueOf() - 1;
+						goTo(clickedPage, perPage);
+						return false;
+					});
+					pager.find('li .prev_link').click(function() {
+						previous();
+						return false;
+					});
+					pager.find('li .next_link').click(function() {
+						next();
+						return false;
+					});
+
+					function previous() {
+						var goToPage = parseInt(pager.data("curr")) - 1;
+						goTo(goToPage);
+					}
+
+					function next() {
+						goToPage = parseInt(pager.data("curr")) + 1;
+						goTo(goToPage);
+					}
+
+					function goTo(page) {
+						var startAt = page * perPage,
+							endOn = startAt + perPage;
+
+						children.css('display', 'none').slice(startAt, endOn).show();
+
+						if (page >= 1) {
+							pager.find('.prev_link').show();
+						}
+						else {
+							pager.find('.prev_link').hide();
+						}
+
+						if (page < (numPages - 1)) {
+							pager.find('.next_link').show();
+						}
+						else {
+							pager.find('.next_link').hide();
+						}
+
+						pager.data("curr", page);
+						pager.children().removeClass("active");
+						pager.children().eq(page + 1).addClass("active");
+
+					}
+				};
+                     
+            });
+            
+            f1();
+              $(document).ready(function() {
+                $('#example').DataTable();
+            });
+            
+			
+            
+               $.each(data[1], function(key, value) {
+                var aname=value.app_name==undefined?"":value.app_name;
+                var cdate=value.craetionDate==undefined?"":value.craetionDate;
+                var status=value.status==undefined?"":value.status;
+                var tcdate=value.targetCompletionDate==undefined?"":value.targetCompletionDate;
+                var phase=value.phaseName==undefined?"":value.phaseName;
+                var wave=value.waveName==undefined?"":value.waveName;
+                var dcapprove=value.DesignApproval==undefined?"":value.DesignApproval;
+                var t_row = "<tr>"
+                    + "<td>" + aname + "</td>"
+                    + "<td>" + cdate + "</td>"
+                    + "<td>" + status + "</td>"
+                    + "<td>" + tcdate + "</td>"
+                    + "<td>" + phase + "</td>"
+                    + "<td>" + wave + "</td>"
+                    + "<td>" + dcapprove + "</td>"
+                    + "</tr>";
+                $('#dataTableId1').append(t_row);
+                	$.fn.pageMe = function(opts) {
+					var $this = this,
+						defaults = {
+							perPage: 7,
+							showPrevNext: false,
+							hidePageNumbers: false
+						},
+						settings = $.extend(defaults, opts);
+
+					var listElement = $this;
+					var perPage = settings.perPage;
+					var children = listElement.children();
+					var pager = $('.pager');
+
+					if (typeof settings.childSelector != "undefined") {
+						children = listElement.find(settings.childSelector);
+					}
+
+					if (typeof settings.pagerSelector != "undefined") {
+						pager = $(settings.pagerSelector);
+					}
+
+					var numItems = children.size();
+					var numPages = Math.ceil(numItems / perPage);
+
+					pager.data("curr", 0);
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="prev_link"><<</a></li>').appendTo(pager);
+					}
+
+					var curr = 0;
+					while (numPages > curr && (settings.hidePageNumbers == false)) {
+						$('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>').appendTo(pager);
+						curr++;
+					}
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="next_link">>></a></li>').appendTo(pager);
+					}
+
+					pager.find('.page_link:first').addClass('active');
+					pager.find('.prev_link').hide();
+					if (numPages <= 1) {
+						pager.find('.next_link').hide();
+					}
+					pager.children().eq(1).addClass("active");
+
+					children.hide();
+					children.slice(0, perPage).show();
+
+					pager.find('li .page_link').click(function() {
+						var clickedPage = $(this).html().valueOf() - 1;
+						goTo(clickedPage, perPage);
+						return false;
+					});
+					pager.find('li .prev_link').click(function() {
+						previous();
+						return false;
+					});
+					pager.find('li .next_link').click(function() {
+						next();
+						return false;
+					});
+
+					function previous() {
+						var goToPage = parseInt(pager.data("curr")) - 1;
+						goTo(goToPage);
+					}
+
+					function next() {
+						goToPage = parseInt(pager.data("curr")) + 1;
+						goTo(goToPage);
+					}
+
+					function goTo(page) {
+						var startAt = page * perPage,
+							endOn = startAt + perPage;
+
+						children.css('display', 'none').slice(startAt, endOn).show();
+
+						if (page >= 1) {
+							pager.find('.prev_link').show();
+						}
+						else {
+							pager.find('.prev_link').hide();
+						}
+
+						if (page < (numPages - 1)) {
+							pager.find('.next_link').show();
+						}
+						else {
+							pager.find('.next_link').hide();
+						}
+
+						pager.data("curr", page);
+						pager.children().removeClass("active");
+						pager.children().eq(page + 1).addClass("active");
+
+					}
+				};
+            });
+            f2();
+            $(document).ready(function() {
+                $('#example1').DataTable();
+            });
+            
+            
+            $.each(data[2], function(key, value) {
+				console.log(data[2]);
+                var aname=value.app_name==undefined?"":value.app_name;
+                var status=value.status==undefined?"":value.status;
+                var stdate=value.startDate==undefined?"":value.startDate;
+                var t_row = "<tr>"
+                    + "<td>" + aname + "</td>"
+                    + "<td>" + stdate + "</td>"
+                    + "<td>" + status + "</td>"
+                    + "</tr>";
+                $('#dataTableId2').append(t_row);
+                
+               	$.fn.pageMe = function(opts) {
+					var $this = this,
+						defaults = {
+							perPage: 7,
+							showPrevNext: false,
+							hidePageNumbers: false
+						},
+						settings = $.extend(defaults, opts);
+
+					var listElement = $this;
+					var perPage = settings.perPage;
+					var children = listElement.children();
+					var pager = $('.pager');
+
+					if (typeof settings.childSelector != "undefined") {
+						children = listElement.find(settings.childSelector);
+					}
+
+					if (typeof settings.pagerSelector != "undefined") {
+						pager = $(settings.pagerSelector);
+					}
+
+					var numItems = children.size();
+					var numPages = Math.ceil(numItems / perPage);
+
+					pager.data("curr", 0);
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="prev_link"><<</a></li>').appendTo(pager);
+					}
+
+					var curr = 0;
+					while (numPages > curr && (settings.hidePageNumbers == false)) {
+						$('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>').appendTo(pager);
+						curr++;
+					}
+
+					if (settings.showPrevNext) {
+						$('<li><a href="#" class="next_link">>></a></li>').appendTo(pager);
+					}
+
+					pager.find('.page_link:first').addClass('active');
+					pager.find('.prev_link').hide();
+					if (numPages <= 1) {
+						pager.find('.next_link').hide();
+					}
+					pager.children().eq(1).addClass("active");
+
+					children.hide();
+					children.slice(0, perPage).show();
+
+					pager.find('li .page_link').click(function() {
+						var clickedPage = $(this).html().valueOf() - 1;
+						goTo(clickedPage, perPage);
+						return false;
+					});
+					pager.find('li .prev_link').click(function() {
+						previous();
+						return false;
+					});
+					pager.find('li .next_link').click(function() {
+						next();
+						return false;
+					});
+
+					function previous() {
+						var goToPage = parseInt(pager.data("curr")) - 1;
+						goTo(goToPage);
+					}
+
+					function next() {
+						goToPage = parseInt(pager.data("curr")) + 1;
+						goTo(goToPage);
+					}
+
+					function goTo(page) {
+						var startAt = page * perPage,
+							endOn = startAt + perPage;
+
+						children.css('display', 'none').slice(startAt, endOn).show();
+
+						if (page >= 1) {
+							pager.find('.prev_link').show();
+						}
+						else {
+							pager.find('.prev_link').hide();
+						}
+
+						if (page < (numPages - 1)) {
+							pager.find('.next_link').show();
+						}
+						else {
+							pager.find('.next_link').hide();
+						}
+						console.log("curr", page);
+						pager.data("curr", page);
+
+						pager.children().removeClass("active");
+						pager.children().eq(page + 1).addClass("active");
+
+					}
+				};
+           });;
+           f3();
+            $(document).ready(function() {
+                $('#example2').DataTable();
+            });            
+            
+        }, 
+        error: function (e) {
+            console.log(e);
+        }
+});
+
+}
+
+function f1() {
+	$('#dataTableId').pageMe({
+		pagerSelector: '#developer_page',
+		showPrevNext: true,
+		hidePageNumbers: false, 
+		perPage: 3
+	});
+};
+
+function f2() {
+	$('#dataTableId1').pageMe({
+		pagerSelector: '#developer_page_1',
+		showPrevNext: true,
+		hidePageNumbers: false,
+		perPage: 4
+	});
+};
+
+function f3(){
+	$('#dataTableId2').pageMe({
+		pagerSelector: '#developer_page_2',
+		showPrevNext: true,
+		hidePageNumbers: false,
+		perPage: 4
+	});
+};
