@@ -547,13 +547,13 @@ pointer-events:all;
 							<i class="fa fa-search search-icon" aria-hidden="true"></i>
 						</div>
 						<div class="col-auto">
-							<input id="appFilter" type="text" placeholder="Search the Phase...">
+							<input class="searchboxInput" type="text" placeholder="Search the Phase...">
 						</div>
 					</div>
 				</div>
 
 
-				<div class="col-lg-3 col-md-6">
+				<!-- <div class="col-lg-3 col-md-6">
 					<div class="row align-items-center">
 						<div class="col-auto">
 							<label class="col-form-label" id="title">Phase</label>
@@ -584,7 +584,7 @@ pointer-events:all;
 							<select class="selectInput filter phase-dropDown-width" id="application"></select>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<div class="col-lg-6 right-side">
@@ -1087,7 +1087,7 @@ $(document).on('mouseenter','.active1', function(){
 
  <script>
 $(document).ready(function() {
-    $('.searchbox-input').keyup(function(){
+    $('.searchboxInput').keyup(function(){
         search_text($(this).val());
     });
 
@@ -1108,6 +1108,7 @@ $(document).ready(function() {
             }
         })
     }
+    
 });
 </script>
 <script src="js/navigation/navigation.js"></script>

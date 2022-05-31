@@ -569,7 +569,7 @@ full width */
 								<option class='options' value='Assessment'>Assessment</option>
 								<option class='options' value='Archive_Requirement'>Archive
 									Requirement</option>
-								<option class='options' value='Decomm_Requirement'>Decomm
+								<option class='options' value='Decomm_Requirement'>Decommission
 									Requirement</option>
 								<option class='options' value='DecommissionExecution'>Decommission
 									Execution</option>

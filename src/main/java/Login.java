@@ -319,7 +319,7 @@ public class Login extends HttpServlet {
                 opportunity[4] = new OpportunityDetails(5, "", "", "", "Status", "status", "Text box", "No", "");
                 opportunity[5] = new OpportunityDetails(6, "", "", "Archive,Decommission,To be retired", "Request Type", "request_type", "Dropdown", "Yes", "");
                 opportunity[6] = new OpportunityDetails(7, "", "", "", "Requester", "requester", "Text box", "Yes", "");
-                opportunity[7] = new OpportunityDetails(8, "", "", "", "Application Descrpition", "appdesc", "Text box", "No", "");
+                opportunity[7] = new OpportunityDetails(8, "", "", "", "Application Description", "appdesc", "Text box", "No", "");
                 opportunity[8] = new OpportunityDetails(9, "", "", "", "Application Owner", "appowner", "Text box", "Yes", "");
                 opportunity[9] = new OpportunityDetails(10, "", "", "", "Business Owner", "businessowner", "Text box", "No", "");
                 opportunity[10] = new OpportunityDetails(11, "", "", "", "Development Owner/SME", "sme", "Text box", "Yes", "");
@@ -328,9 +328,9 @@ public class Login extends HttpServlet {
                 opportunity[13] = new OpportunityDetails(14, "", "", "", "Business Unit", "businessunit", "Text box", "No", "");
                 opportunity[14] = new OpportunityDetails(15, "", "", "", "Key Function", "keyfunction", "Text box", "No", "");
                 opportunity[15] = new OpportunityDetails(16, "", "", "", "Program or Segment Contact", "pscontact", "Text box", "No", "");
-                opportunity[16] = new OpportunityDetails(17, "", "", "EMR System,ERP Data,Financial Data,HealthCare Data,HR Data,MR/HR Data,Other Data", "Data Type", "date_type", "Dropdown", "No", "");
+                opportunity[16] = new OpportunityDetails(17, "", "", "EMR System,ERP Data,Financial Data,Healthcare Data,HR Data,MR/HR Data,Other Data", "Data Type", "date_type", "Dropdown", "No", "");
                 opportunity[17] = new OpportunityDetails(18, "", "", "", "If Other Data", "if_other_data", "Text box", "No", "");
-                opportunity[18] = new OpportunityDetails(19, "", "", "", "Please describe your needs for Archival and Decommission Service", "arcdecomm", "Text box", "No", "");
+                opportunity[18] = new OpportunityDetails(19, "", "", "", "Please describe your needs for archival and decommission service", "arcdecomm", "Text box", "No", "");
                 opportunity[19] = new OpportunityDetails(20, "", "", "", "Desired Completion Date", "completion_date", "Datepicker", "No", "");
 
                 for (int index = 0; index < opportunity.length; index++) {
@@ -429,11 +429,11 @@ public class Login extends HttpServlet {
                 Details[2] = new Triage(3, "", "", "", "Application Description", "applicationDesc", "Text box", "No", "");
                 Details[3] = new Triage(4, "", "", "", "Application Owner", "applicationOwner", "Text box", "No", "");
                 Details[4] = new Triage(5, "", "", "", "Business Owner", "busOwner", "Text box", "No", "");
-                Details[5] = new Triage(6, "", "", "", "Developement Owner or SME", "devOwner", "Text box", "No", "");
+                Details[5] = new Triage(6, "", "", "", "Development Owner or SME", "devOwner", "Text box", "No", "");
                 Details[6] = new Triage(7, "", "", "", "Billing Code", "billing_Code", "Text box", "No", "");
-                Details[7] = new Triage(8, "", "", "", "Business Segement", "business_Segment", "Text box", "No", "");
+                Details[7] = new Triage(8, "", "", "", "Business Segment", "business_Segment", "Text box", "No", "");
                 Details[8] = new Triage(9, "", "", "", "Business Unit", "busUnit", "Text box", "No", "");
-                Details[9] = new Triage(10, "", "", "", "Program or Segement Contact", "segment_contact", "Text box", "No", "");
+                Details[9] = new Triage(10, "", "", "", "Program or Segment Contact", "segment_contact", "Text box", "No", "");
                 Details[10] = new Triage(11, "", "", "", "Logical Grouping", "logic_Grp", "Text box", "No", "");
                 Details[11] = new Triage(12, "", "", "", "Preliminary CBA", "Preliminary_CBA", "Text box", "No", "");
                 Details[12] = new Triage(13, "", "", "Yes,No", "Funding Available", "funding_Avl", "Dropdown", "No", "");
@@ -447,7 +447,7 @@ public class Login extends HttpServlet {
                 Details[20] = new Triage(21, "", "", "", "Decom Analyst", "decomAnalyst", "Text box", "No", "");
                 Details[21] = new Triage(22, "", "", " Replace,Retire,Combine,Other", "Rationalization Type", "rationalization_type", "Dropdown", "No", "");
                 Details[22] = new Triage(23, "", "", "", "If other, please describe ", "If_other_please_describe", "HiddenText", "Yes", "");
-                Details[23] = new Triage(24, "", "", "Mainframe,Distibuted - Unix,Windows,hybrid,Others", "Application platform", "appPlatfrm", "Dropdown", "Yes", "");
+                Details[23] = new Triage(24, "", "", "Mainframe,Distributed - Unix,Windows,hybrid,Others", "Application platform", "appPlatfrm", "Dropdown", "Yes", "");
                 Details[24] = new Triage(25, "", "", "", "If Other,please describe ", "If_Other_describe", "HiddenText", "Yes", "");
                 Details[25] = new Triage(26, "", "", "Yes,No", "Is application and Data hosted externally?", "app_and_data_hosted", "Radio box", "No", "");
                 Details[26] = new Triage(27, "", "", "", "If yes,vendor?Location?", "vendor", "HiddenText", "Yes", "");
@@ -565,18 +565,18 @@ public class Login extends HttpServlet {
                 Assdata[7] = new Assessment(8, "", "", DataChar, "", "Database Names ", "DBNames", "Text box", "No", "");
                 Assdata[8] = new Assessment(9, "", "", DataChar, "", "Table Names if appropriate ", "TableNames", "Text box", "No", "");
                 Assdata[9] = new Assessment(10, "", "", DataChar, "", "DBA Contact ", "DBAContact", "Text box", "No", "");
-                Assdata[10] = new Assessment(11, "", "", DataChar, "Yes,No", "Are there any datasets on Mainframe  that this application uses? ", "DataSetMainframe", "RadioBoxDependencyYes", "No", "");
+                Assdata[10] = new Assessment(11, "", "", DataChar, "Yes,No", "Are there any datasets on mainframe  that this application uses? ", "DataSetMainframe", "RadioBoxDependencyYes", "No", "");
                 Assdata[11] = new Assessment(12, "", "", DataChar, "", "If yes, please provide additional information", "plsprovideinfo", "TextBoxDependencyYes", "No", "");
                 Assdata[12] = new Assessment(13, "", "", DataChar, "Yes,No", "Does this application generate any reports to other systems? ", "ReportGeneration", "RadioBoxDependencyYes", "No", "");
                 Assdata[13] = new Assessment(14, "", "", DataChar, "", "If yes, please provide details ", "plsprovidedetails", "TextBoxDependencyYes", "No", "");
                 Assdata[14] = new Assessment(15, "", "", DataChar, "", "File share location (unstructured) ", "FileShareLocation", "Text box", "No", "");
                 Assdata[15] = new Assessment(16, "", "", DataChar, "Yes,No", "Data is static (no updates are being made) ", "StaticData", "Radio box", "Yes", "");
-                Assdata[16] = new Assessment(17, "", "", DataChar, "Yes,No", "Data is in Read Only state (no updates CAN be made) ", "ReadonlyData", "Radio box", "No", "");
+                Assdata[16] = new Assessment(17, "", "", DataChar, "Yes,No", "Data is in Read Only State (no updates can be made) ", "ReadonlyData", "Radio box", "No", "");
                 Assdata[17] = new Assessment(18, "", "", DataChar, "", "If yes, when was the last updates made? ", "LastUpdateMade", "DatepickerDependency", "No", "");
                 Assdata[18] = new Assessment(19, "", "", DataChar, "", "If no, when is it expected to be read only? ", "ExpectedDate", "DatepickerDependency", "No", "");
                 Assdata[19] = new Assessment(20, "", "", DataChar, "PCI, SOX, Consumer PII, Customer PII, Associate PII, SSN", "Application  Data ", "ApplicationData", "Dropdown", "Yes", "");
                 Assdata[20] = new Assessment(21, "", "", DataChar, "Yes,No", "Upstream/Downstream dependencies ", "UpDownStream", "RadioBoxDependencyYes", "Yes", "");
-                Assdata[21] = new Assessment(22, "", "", DataChar, "", "If yes, please decsribe ", "plsdescribeStreams", "TextBoxDependencyYes", "No", "");
+                Assdata[21] = new Assessment(22, "", "", DataChar, "", "If yes, please describe ", "plsdescribeStreams", "TextBoxDependencyYes", "No", "");
                 Assdata[22] = new Assessment(23, "", "", DataChar, "", "Date Range (age of records, e.g., 2009 - May, 2019) ", "Datepicker", "Text box", "No", "");
 
                 for (int index = 0; index < Assdata.length; index++) {
@@ -619,7 +619,7 @@ public class Login extends HttpServlet {
                 AssessmentDetails[7] = new Assessment(8, "", "", ComplianceChar, "", "If any, please describe details", "ifanypleasedescribe", "TextBoxDependencyYes", "No", "");
                 AssessmentDetails[8] = new Assessment(9, "", "", ComplianceChar, "Yes,No", "Are there any pending litigations that impacts the retirment of the application and data", "retirementappanddata", "Radio box", "Yes", "");
                 AssessmentDetails[9] = new Assessment(10, "", "", ComplianceChar, "On Hold, Pending review, Cleared", "Legal Status", "legalstatus", "Dropdown", "Yes", "");
-                AssessmentDetails[10] = new Assessment(11, "", "", ComplianceChar, "Yes,No", "Any specific Purge requirements?", "specificpurgerequirements", "RadioBoxDependencyYes", "Yes", "");
+                AssessmentDetails[10] = new Assessment(11, "", "", ComplianceChar, "Yes,No", "Any specific purge requirements?", "specificpurgerequirements", "RadioBoxDependencyYes", "Yes", "");
                 AssessmentDetails[11] = new Assessment(12, "", "", ComplianceChar, "", "If any, please describe details", "describedetails", "TextBoxDependencyYes", "No", "");
                 for (int index = 0; index < AssessmentDetails.length; index++) {
                     String ComplianceChar_InsertQuery = "insert into Assessment_Compliance_Char_Info_Template_Details (seq_no, prj_name, app_name, section, options, label_name, column_name, type, mandatory, value)" +
@@ -650,9 +650,9 @@ public class Login extends HttpServlet {
                 AssessmentArchiv[0] = new Assessment(1, "", "", ArchivConsump, "Frequent users with Online Inquiry, Retention for Audit purposes, Ad-hoc reporting, Long-term Retention Only", "Archival needs", "archiveneed", "Dropdown", "Yes", "");
                 AssessmentArchiv[1] = new Assessment(2, "", "", ArchivConsump, "", "How many users are expected to use the InfoArchive system after archival?", "archivalusercount", "Text box", "Yes", "");
                 AssessmentArchiv[2] = new Assessment(3, "", "", ArchivConsump, "", "Number of concurrent users", "concurrentuser", "Text box", "No", "");
-                AssessmentArchiv[3] = new Assessment(4, "", "", ArchivConsump, "", "Estimated number of Search Forms (screens) needed in the archive ", "noofsearch", "Text box", "Yes", "");
+                AssessmentArchiv[3] = new Assessment(4, "", "", ArchivConsump, "", "Estimated number of search forms (screens) needed in the archive ", "noofsearch", "Text box", "Yes", "");
                 AssessmentArchiv[4] = new Assessment(5, "", "", ArchivConsump, "", "Please describe any known Search screen requirements", "plsdescscrreq", "Text box", "Yes", "");
-                AssessmentArchiv[5] = new Assessment(6, "", "", ArchivConsump, "", "Frequency of Search", "searchfreq", "Text box", "No", "");
+                AssessmentArchiv[5] = new Assessment(6, "", "", ArchivConsump, "", "Frequency of search", "searchfreq", "Text box", "No", "");
                 AssessmentArchiv[6] = new Assessment(7, "", "", ArchivConsump, "", "Format of results (e.g., online, report, etc.)", "resformat", "Text box", "Yes", "");
                 AssessmentArchiv[7] = new Assessment(8, "", "", ArchivConsump, "", "Response time requirement", "responsetime", "Text box", "No", "");
                 AssessmentArchiv[8] = new Assessment(9, "", "", ArchivConsump, "Yes,No", "Encryption?", "enc", "Radio box", "Yes", "");
@@ -690,7 +690,7 @@ public class Login extends HttpServlet {
                 AssessmentDetails[2] = new Assessment(3, "", "", AppInfo, "Yes,No", "Is this a currently supported application?", "SupportedApp", "RadioBoxDependencyNo", "No", "");
                 AssessmentDetails[3] = new Assessment(4, "", "", AppInfo, "", "If NO,who supports this Application?", "SupportApp", "TextBoxDependencyNo", "No", "");
                 AssessmentDetails[4] = new Assessment(5, "", "", AppInfo, "Yes,No", "Operational support staff/SME's available for analysis?", "OperationalSupportStaff", "Radio box", "No", "");
-                AssessmentDetails[5] = new Assessment(6, "", "", AppInfo, "Mainframe,Distibuted - Unix,Windows,hybrid,Others", "Application platform", "AssessAppPlatform", "Dropdown", "Yes", "");
+                AssessmentDetails[5] = new Assessment(6, "", "", AppInfo, "Mainframe,Distributed - Unix,Windows,hybrid,Others", "Application platform", "AssessAppPlatform", "Dropdown", "Yes", "");
                 AssessmentDetails[6] = new Assessment(7, "", "", AppInfo, "", "If Other,please describe ", "OtherPleaseDescribe", "Text box", "Yes", "");
                 AssessmentDetails[7] = new Assessment(8, "", "", AppInfo, "", "Brief architecture description", "BriefArchitectureDescription", "TextAreaFile", "Yes", "");
                 AssessmentDetails[8] = new Assessment(9, "", "", AppInfo, "", "Application Hosting Vendor", "AppHost", "Text box", "No", "");

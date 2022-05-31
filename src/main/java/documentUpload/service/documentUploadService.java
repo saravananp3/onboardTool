@@ -67,7 +67,7 @@ public class documentUploadService {
 					ResultSet rs = st.executeQuery();
 				 if(rs.next()) {
 					 String insertQuery = "UPDATE `"+tableName+"` SET doc = ?, File_name = ? WHERE appId = ? AND  seq_num = ?";
-					 FileInputStream is  = (FileInputStream) item.getInputStream();
+					 InputStream is  = (InputStream) item.getInputStream();
 					 PreparedStatement pstmt = con.prepareStatement(insertQuery);
 					 pstmt.setBinaryStream(1, is);
 					 pstmt.setString(2, item.getName());
@@ -79,7 +79,7 @@ public class documentUploadService {
 				 }
 				 else {
 				 String insertQuery = "INSERT INTO `"+tableName+"` SET doc = ?, File_name = ?, seq_num = ?, appId = ?";
-				 FileInputStream is  = (FileInputStream) item.getInputStream();
+				 InputStream is  = (InputStream) item.getInputStream();
 				 PreparedStatement pstmt = con.prepareStatement(insertQuery);
 				 pstmt.setBinaryStream(1, is);
 				 pstmt.setString(2, item.getName());
