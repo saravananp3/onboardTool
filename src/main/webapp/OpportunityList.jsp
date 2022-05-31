@@ -447,6 +447,14 @@ full width */
 .options {
 	color: #000000;
 }
+
+.modal-header-1{
+	background-color: #1565c0;
+}
+
+.modal-title-1{
+	color: #ffffff;
+}
 </style>
 
 </head>
@@ -617,11 +625,11 @@ full width */
 
 				<button type="button" class="btn btn-primary pull-right"
 					id="addWaveBtnId" style="color: DodgerBlue; display: none;"
-					name="newpr" data-toggle='modal' data-target='#existWavePopUp'>
+					name="newpr" data-bs-toggle='modal' data-bs-target='#existWavePopUp'>
 				</button>
 				<button type="button" class="btn btn-primary pull-right"
 					id="deleteBtn" style="color: DodgerBlue; display: none;"
-					name="newpr" data-toggle='modal' data-target='#deletePopUp'>
+					name="newpr" data-bs-toggle='modal' data-bs-target='#deletePopUp'>
 				</button>
 			</div>
 		</div>
@@ -903,15 +911,12 @@ full width */
 
 
 	<div class="modal" id="existWavePopUp" tabindex="-1" role="dialog">
-		<div class="vertical-alignment-helper">
-			<div class="modal-dialog vertical-align-center" role="document">
+			<div class="modal-dialog" role="document">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Add To Existing Wave</h5>
-						<button type="button" id="existWaveClose" class="close"
-							data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+					<div class="modal-header modal-header-1">
+						<h5 class="modal-title modal-title-1" id="exampleModalLabel">Add To Existing Wave</h5>
+						<button type="button" id="existWaveClose" class="btn-close"
+							data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<form name="PopUpform">
@@ -932,38 +937,29 @@ full width */
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" id="existWaveSubmit" class="btn btn-primary">Submit</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal"
+						<button type="button" id="existWaveSubmit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
 							id="closeIdExistWave" aria-label="Close">Cancel</button>
 
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 	<!-- Delete Pop Up -->
 
-	<div class="modal" id="deletePopUp" tabindex="-1" role="dialog">
-		<div class="vertical-alignment-helper">
-			<div class="modal-dialog vertical-align-center" role="document">
+	<div class="modal" id="deletePopUp" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog" role="document">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Delete Application</h5>
-						<button type="button" id="deleteClose" class="close"
-							data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+					<div class="modal-header modal-header-1">
+						<h5 class="modal-title modal-title-1" id="exampleModalLabel">Delete Application</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
 						<form name="PopUpform">
 							<div class="row">
 								<div class="form-group">
 									<div class="col-lg-8">
-										<!-- <label class="control-label" for="formInput526">Select Wave Name:</label>
-                            <select id="existWaveTypesId" class="form-control" name="existWaveTypesName" required >
-                                
-                            </select>
-    -->
 										<p>
 											Are you sure, </br>want to delete the application permanently?
 										</p>
@@ -974,13 +970,11 @@ full width */
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" id="deleteYesBtn" class="btn btn-primary">Yes</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal"
-							id="closeIdDeleteApp" aria-label="Close">No</button>
+						<button type="button" id="deleteYesBtn" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
 
 					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 	<!-- ========== COMMON JS FILES ========== -->
