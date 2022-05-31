@@ -73,11 +73,6 @@
 <!-- ========== THEME JS ========== -->
 <script src="js/main.js"></script>
 
-<!-- ========== Pagination ========== -->
-<script src="js/paging/pagination.js"></script>
-
-<link rel="stylesheet" href="css/Responsive/responsive.css"
-	media="screen">
 	
 <!-- ========== BootstrapV5 ========== -->
 <link
@@ -97,6 +92,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -173,9 +170,13 @@
             </nav>
 
 		<div class="card-container-5 card d3s-mt-50">
-             <div class="card-header d3s-pl-15" id="cd-header">Applications List</div>
+             <div class="card-header d3s-pl-15" id="cd-header">Applications List
+             	<button id="appChange" class="btn btn-primary align-right" style="margin-top: -4px;">Change
+                </button>
+             </div>
              <div class="card-body">
-             	<table class="table table-bordered table-responsive" id="example3" style="width: 100%; font-size: 12px;">									
+             <div class="withPhase display" id="withPhase">
+             	<table class="table table-bordered table-responsive" id="appTable" style="width: 100%; font-size: 12px;">									
     				<thead>
       					<tr>						
       					 	<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Application Name</th>
@@ -188,21 +189,45 @@
       				</tbody>
   				</table>
   				
+  				<div class="col-md-12 text-center">
+					<ul class="pagination pagination-lg pager pagination-align"
+						id="developer_page_3"></ul>
+				</div>
   				<div class="row">
              		<div class="col-md-12" align="end">
-             			<!-- <button class="btn btn-primary" id="saveApplicationsList">Save</button> -->
              			<button class="btn btn-primary" id="saveApplicationList">Submit</button>
              		</div>
-             </div>
+             	</div>
+  				</div>
+  				<div class="withoutPhase" id="withoutPhase">
+  				<table class="table table-bordered table-responsive" id="example4" style="width: 100%; font-size: 12px;">									
+    				<thead>
+      					<tr>						
+      					 	<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Application Name</th>
+        					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Phase</th>
+        					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Wave</th>
+        					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Resources</th>
+      					</tr>
+    				</thead>
+    				<tbody>		    											
+      				</tbody>
+  				</table>
+  				<div class="row">
+             		<div class="col-md-12" align="end">
+             			<button class="btn btn-primary" id="">Submit</button>
+             		</div>
+             	</div>
+  				</div>
   				
-  					<div class="col-md-12 text-center">
-						<ul class="pagination pagination-lg pager pagination-align"
-							id="developer_page_3"></ul>
-					</div>
              </div>
             
         </div>
+<script>
+$("#appChange").on('click', function(e) {             
+	  $('#withPhase, #withoutPhase').toggleClass('display');
+	});
 
+</script>
 
 
 
@@ -237,6 +262,8 @@
 <link href="//code.jquery.com/jquery-3.6.0.min.js" rel="stylesheet">
 <link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" rel="stylesheet">
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" rel="stylesheet">
+<!-- ========== Pagination ========== -->
+<script src="js/paging/pagination.js"></script>
 
 </body>
 </html>

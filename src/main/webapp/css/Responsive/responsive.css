@@ -618,6 +618,15 @@ body {
 	margin-left: 0%;
 }
 
+.withPhase, 
+.withoutPhase {
+	display: none;
+}
+
+.display {
+	display: block;
+}
+
 /* <!-- ========== OpportunityList.jsp && Dashboard.jsp ========== --> */
 @media only screen and (min-width:912px) and (max-width: 1114px) {
 	.cbp-vm-view-grid ul li {

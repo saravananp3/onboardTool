@@ -129,6 +129,7 @@ public class dashboardService {
                     jsonObject.addProperty("waveName", wave);
                     jsonObject.addProperty("targetCompletionDate", "15-07-2022");
                     jsonObject.addProperty("DesignApproval", "No");
+                    jsonObject.addProperty("Nanda", rs.getString("OppId"));
                     String Id = rs.getString("OppId");
                     // System.out.println("OppId: " + Id);
                     String selectAppdetail = "select * from ArchiveReq_Roles_Info where OppId = ? and priority_order_num!=''";

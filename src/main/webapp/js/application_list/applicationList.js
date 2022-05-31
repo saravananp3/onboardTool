@@ -47,7 +47,7 @@ $(document).ready(function() {
 				
 				/*$('.resource').selectpicker();*/
 
-				    $.fn.pageMe = function(opts) {
+$.fn.pageMe = function(opts) {
 					var $this = this,
 						defaults = {
 							perPage: 7,
@@ -148,10 +148,11 @@ $(document).ready(function() {
 
 					}
 				};
+				
 			});
 			
 			 $(document).ready(function() {
-                $('#example3').DataTable();
+                $('#appTable').DataTable();
             });
 			
 
@@ -258,3 +259,4 @@ function filterAjaxCall(category,phase,wave)
         }
 });
 }
+
