@@ -482,11 +482,11 @@ pointer-events:all;
                             <i class="fa fa-search search-icon" aria-hidden="true"></i>
                         </div>
                         <div class="col-auto">
-                            <input id="appFilter" type="text" placeholder="Search the wave...">
+                            <input class="searchbox-input" id="appFilter" type="text" placeholder="Search the wave...">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <!-- <div class="col-lg-3 col-md-6">
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <label class="col-form-label" id="title">Phase</label>
@@ -515,7 +515,7 @@ pointer-events:all;
                             <select class="selectInput filter phase-dropDown-width" id="application"></select>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-6 right-side">
                 <button type="button" class="btn btn-primary pull-right" id="button"

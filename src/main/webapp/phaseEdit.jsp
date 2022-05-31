@@ -210,7 +210,7 @@ HttpSession details = request.getSession();
 	              
 	                      <div class="row">
                 <div class="col-4">
-	               <button type="button" class="btn btn-secondary"onclick="location.href='GovernanceList.jsp';">Back</button>
+	               <button type="button" class="btn btn-secondary"onclick="location.href='PhaseList.jsp';">Back</button>
 	           </div>
 	               <div class = "col-8" align="end">
 							<button type="button" class="btn btn-secondary" id="template" data-bs-toggle="modal" data-bs-target="#addWavePopUp">Add Wave</button>
