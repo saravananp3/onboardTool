@@ -2,10 +2,15 @@ function emailAjaxCall(moduleName){
 	 $.ajax({ 
 		 url: "EmailApproval",
 		 type: 'POST',
-		 async: false,
+		 cache: false,
 		 data:{moduleName:moduleName},
 	     dataType: "json",
+	     beforeSend : function(){
+         $('#overlay').show();
+  },
 	     success: function (data) {
+		$('#overlay').hide();
+    $('.body').append(data);
 	    	 console.log("Data : ",data); 
 	    	 if(data.checkStatus){
    		 		//$("#loading-overlay").hide();

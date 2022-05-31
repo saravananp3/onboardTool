@@ -430,22 +430,22 @@ margin: -6px 0;
 position: fixed;
 top: 0;
 z-index: 100;
-width:1500px;
+width:1400px;
 height:100%;
 display: none;
 background: rgb(0,0,0,0.6);
 }
 .cv-spinner {
-height: 100%;
+height: 70%;
 display: flex;
 justify-content: center;
 align-items: center;
 }
 .spinner {
-width: 40px;
-height: 40px;
-border: 4px #ddd solid;
-border-top: 4px #2e93e6 solid;
+width: 80px;
+height: 80px;
+border: 8px #ddd solid;
+border-top: 8px #2e93e6 solid;
 border-radius: 50%;
 animation: sp-anime 0.8s infinite linear;
 }
@@ -626,11 +626,11 @@ e.printStackTrace();
 							</ul>
 						</div>
 						</div></div>
-				<div id="overlay">
-					<div class="cv-spinner">
-						<span class="spinner"></span>
-					</div>
-				</div>
+				               <div id="overlay">
+					                <div class="cv-spinner">
+						                   <span class="spinner"></span>
+					                </div>
+				               </div>
 				<div class="content-container" >
                    
                     <div class="main-page">
