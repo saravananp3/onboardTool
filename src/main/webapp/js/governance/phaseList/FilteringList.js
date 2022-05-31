@@ -105,4 +105,3 @@ function getOpportunityList(data)
 	$('#ul_id').append(li_element);
     });
 }
-
