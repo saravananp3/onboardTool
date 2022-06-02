@@ -42,7 +42,7 @@ function appendRowFunction(data){
                  "</td>"+
                  "<td style='text-align:center;vertical-align: middle;'><label class='control-label ' for=''>"+File_Name+"</label>" +
                  "</td>"+
-                  "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt download_btn'style='display:block; margin-left:-15px;'></span><span class='glyphicon glyphicon-trash intake_scr_deletepopup' style='float:right;display:block;margin-top:-13px; margin-right:18px;'></span>"+
+                  "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt download_btn'style='display:block; margin-left:-23px;'></span><span class='glyphicon glyphicon-trash intake_scr_deletepopup' style='float:right;display:block;margin-top:-13px; margin-right:9px;'></span>"+
                   "</td>"+
                   "</tr>";
                   $("#Legacy_Scr_List").append(row);
