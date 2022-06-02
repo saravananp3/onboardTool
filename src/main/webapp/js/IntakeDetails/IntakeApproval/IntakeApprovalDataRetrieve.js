@@ -151,7 +151,7 @@ function IntakeApprovalDataRetrieveAjaxCall()
                             "</div>"+
                             "</td>"+
                             "<td style='text-align: center;padding-top:25px;' >"+
-                              "<i class='fas fa-comment-alt fa-2x ApprovalCommentIcon "+commentIconClass+"' style='color:#87CEEB;' role='button'></i>"+
+                              "<i class='fas fa-comment-alt fa-2x ApprovalCommentIcon "+commentIconClass+"'id='cmticon"+commentIconClass+"' style='color:#87CEEB;' role='button'></i>"+
                             "</td>"+
                             "</tr>";
                   $("#ApprovalDetails").append(Row);
@@ -509,15 +509,28 @@ function stakeHolderDetails(data,num){
      $("#StakeHolderInfoPreview").append(table);
 }
 $(document).on('click', '.ApprovalCommentIcon',function(){
-    var index = $(this).index('.ApprovalCommentIcon');
-    var currentRowClass = $('.ApprovalCommentIcon').eq(index).attr('class');
-    var comment ="N/A";
-    if(currentRowClass.includes("CurrentCommentIcon")){
-        comment =currentUserComment;
-    }
-    $("#ApprovalCommentSeq").val(index+1);
-    $("#ApprovalCommentId").val(comment);
-    $("#ApprovalComments").click();
+
+var index = $(this).index('.ApprovalCommentIcon');
+var disableComment=$(this).attr('id');
+var currentRowClass = $('.ApprovalCommentIcon').eq(index).attr('class');
+var comment ="N/A";
+if(currentRowClass.includes("CurrentCommentIcon")){
+comment =currentUserComment;
+}
+$("#ApprovalCommentSeq").val(index+1);
+$("#ApprovalCommentId").val(comment);
+if(disableComment=="cmticonCurrentCommentIcon")
+{
+$("#ApprovalComments").removeAttr('disabled');
+$("#ApprovalComments").click();
+}
+else if(disableComment=="cmticon")
+{
+$("#ApprovalComments").attr("disabled", "disabled");
+}
+
+
+
 });
 $(document).on('change','.approval',function(){
     var value=$(this).attr('value');

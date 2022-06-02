@@ -431,6 +431,36 @@ input[type="text"]{
 font-size:12px;
 
 }
+#overlay{
+position: fixed;
+top: 0;
+z-index: 100;
+width:1400px;
+height:100%;
+display: none;
+}
+.cv-spinner {
+height: 70%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.spinner {
+width: 80px;
+height: 80px;
+border: 8px #ddd solid;
+border-top: 8px #2e93e6 solid;
+border-radius: 50%;
+animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+100% {
+transform: rotate(360deg);
+}
+}
+.is-hide{
+display:none;
+}
 </style>
 </style>
   <style type="text/css">
@@ -566,6 +596,11 @@ Statement st1;
     </nav > -->
     
     <%@include file="Nav-Bar.jspf"%>
+                   <div id="overlay">
+					<div class="cv-spinner">
+						<span class="spinner"></span>
+					 </div>
+				 </div>
 		<nav class="nav nav-height-70 nav-font" id="bg-color"
 			style="font-size: 14px;">
 			<div class="container-fluid" id="container-fluid-margin">
