@@ -433,7 +433,6 @@ z-index: 100;
 width:1400px;
 height:100%;
 display: none;
-background: rgb(0,0,0,0.6);
 }
 .cv-spinner {
 height: 70%;
