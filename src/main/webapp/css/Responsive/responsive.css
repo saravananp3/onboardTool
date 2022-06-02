@@ -599,6 +599,22 @@ body {
 	white-space: nowrap;
 }
 
+.searchResult {
+    position: absolute;
+    width: 25%;
+    max-width: 870px;
+    cursor: pointer;
+    overflow-y: auto;
+    max-height: 400px;
+    box-sizing: border-box;
+    z-index: 1001;
+    font-size: 12px;
+}
+
+ .link-class:hover {
+   background-color:#1565c0;
+   color: #fff;
+  }
 .pie-legend {
 	list-style: none;
 	margin: 0;

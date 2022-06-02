@@ -73,79 +73,11 @@
 <!-- ========== THEME JS ========== -->
 <script src="js/main.js"></script>
 
-	
-<!-- ========== BootstrapV5 ========== -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
-
-<%-- <%@ page import="java.text.SimpleDateFormat"%>
-    <%@ page import="java.util.Date"%>
-    <%
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]");  %>
-    <%@page language="java"%>
-    <%@page import="java.sql.*"%>
-    <%@page import="java.text.DateFormat" %>
-    <%@page import="java.text.SimpleDateFormat" %>
-    <%@page import="java.util.Date" %>
-    <%@page import="java.util.Calendar" %>
-    <%@ page import="onboard.DBconnection"%>
-
-    
-    <%
-         DBconnection dBconnection = new DBconnection();
-
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-        response.setHeader("Expires", "0"); // Proxies.
-
-        if (session.getAttribute("username")==null)
-        {
-            response.sendRedirect("Login.jsp");
-
-        }
-        else{
-            String name=(String)session.getAttribute("ID");
-            HttpSession details=request.getSession();
-            Connection con = null;
-            session.setAttribute("theName", name);
-            String roles=(String)details.getAttribute("role");
-            String waveName = (String)details.getAttribute("selectedWaveName");
-            int sumcount=0;
-            Statement st,st2;
-            try{
-                con = dBconnection.getConnection();
-                Statement st1;
-
-
-                /* String query1 = "select * from AppEmphazize_ProjectDetails where id = "+name;
-                st1 = con.createStatement();
-                ResultSet rs = st1.executeQuery(query1);
-                if(rs.next())
-                { */
-
-    %> --%>
 
   <%@include file="Nav-Bar.jspf"%> 
              <nav class="nav" id="bg-color" style="height: 75px;">
@@ -171,8 +103,13 @@
 
 		<div class="card-container-5 card d3s-mt-50">
              <div class="card-header d3s-pl-15" id="cd-header">Applications List
-             	<button id="appChange" class="btn btn-primary align-right" style="margin-top: -4px;">Change
+             	<button id="appChange" class="btn btn-primary align-right" style="margin-top: -4px;">Application Type
                 </button>
+            <!--  <select class="form-select align-right" aria-label="Default select example" id="phase" style="padding: 0 0 0 0.75rem; width: 25%;">
+                <option  value="Applications with phase and wave">Applications with phase and wave</option>
+                <option value="Applications without phase and wave">Applications without phase and wave</option>
+                
+            </select> -->
              </div>
              <div class="card-body">
              <div class="withPhase display" id="withPhase">
@@ -182,7 +119,8 @@
       					 	<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Application Name</th>
         					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Phase</th>
         					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Wave</th>
-        					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Resources</th>
+        					<th style='text-align:center;vertical-align: middle;width:20%;'scope="col">Resources</th>
+        					<th style='text-align:center;vertical-align: middle;width:5%;'scope="col">Action</th>
       					</tr>
     				</thead>
     				<tbody id="applicationList">		    											
@@ -206,10 +144,11 @@
       					 	<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Application Name</th>
         					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Phase</th>
         					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Wave</th>
-        					<th style='text-align:center;vertical-align: middle;width:25%;'scope="col">Resources</th>
+        					<th style='text-align:center;vertical-align: middle;width:20%;'scope="col">Resources</th>
+        					<th style='text-align:center;vertical-align: middle;width:5%;'scope="col">Action</th>
       					</tr>
     				</thead>
-    				<tbody>		    											
+    				<tbody id="applicationListWithoutPhase">		    											
       				</tbody>
   				</table>
   				<div class="row">
@@ -222,10 +161,58 @@
              </div>
             
         </div>
+        <div>
+        <button type="button"
+			class="btn btn-primary pull-right" id="editpopup_btn"
+			data-bs-toggle="modal" data-bs-target="#EditPopUp"
+			style="display: none;">Edit PopUp
+		</button>
+		</div>
+        
+        
+   	<div class="modal" id="EditPopUp" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header" style="background-color:#1565c0;">
+														<h5 class="modal-title" id="exampleModalLabel" style="color:white;">Add Resources</h5>
+														<button type="button" class="btn-close"
+															data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body" >
+													<div id="resource-list"></div>
+
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-primary" id="update_submit"
+															data-bs-dismiss="modal">Add</button>
+														<button type="button" class="btn btn-secondary"
+															data-bs-dismiss="modal">Cancel</button>
+														
+													</div>
+												</div>
+											</div>
+										</div>
 <script>
 $("#appChange").on('click', function(e) {             
-	  $('#withPhase, #withoutPhase').toggleClass('display');
-	});
+	  $('#withoutPhase, #withPhase').toggleClass('display');
+	}); 
+
+/* $(document).ready(function() {
+    $("select").on('change', function() {
+        $(this).find("option:selected").each(function() {
+            var geeks = $(this).attr("value");
+            if (geeks) {
+                $("#withPhase").not("." + geeks).hide();
+                $("." + geeks).show();
+                alert("Radio button " + geeks + " is selected");
+            } else {
+                $("#withPhase").hide();
+                alert("Select an Element from Menu");
+            }
+
+        });
+    }).change(); */
 
 </script>
 
@@ -252,18 +239,38 @@ $("#appChange").on('click', function(e) {
 <script type="text/javascript" src="js/date-picker/datepair.js"></script>
 <script type="text/javascript" src="js/date-picker/moment.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<!-- ========== Toastr ========== -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
 <script src="js/navigation/navigation.js"></script>   
 <script src="js/application_list/applicationList.js"></script>
-<link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" rel="stylesheet">
-<link href="//code.jquery.com/jquery-3.6.0.min.js" rel="stylesheet">
-<link href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" rel="stylesheet">
-<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" rel="stylesheet">
+
 <!-- ========== Pagination ========== -->
 <script src="js/paging/pagination.js"></script>
 
+
+ 
+ <!-- ========== BootstrapV5 ========== -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+	integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+	crossorigin="anonymous"></script>
+	<!-- ========== Toastr ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+ <script src="js/notification/notification.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css"/>
 </body>
 </html>
