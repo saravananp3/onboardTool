@@ -1040,7 +1040,7 @@ background:#1565c0 important;
 </div>  
 </div>
 </div>
-<input type="button" id="updatedate" value="update" style="display:none;">
+
 <!-- Active Icon Color changes  -->
 <!-- <script>
 $(document).on('mouseenter','.active1', function(){
