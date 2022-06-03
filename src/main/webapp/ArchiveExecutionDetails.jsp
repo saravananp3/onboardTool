@@ -881,7 +881,7 @@ background:#1565c0 important;
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Child Input Fields</h5>
+        <h5 class="modal-title">Add Input Fields</h5>
         <button type="button" class="close" id = "ArchiveChildAddCloseId" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -892,7 +892,10 @@ background:#1565c0 important;
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-8">
-                            <label class="control-label" for="ArchiveExecution">Task Group Label:</label>
+                        <label class="control-label" for="ArchiveExecution">Select Sibling or Child</label>
+                             <input class="form-check-input" type="radio" class = "radioOption" name="ArchcExecRadio" id="inlineRadio1" value="Child">&nbsp;Sibling Row
+                             <input class="form-check-input" type="radio" class = "radioOption" name="ArchcExecRadio" id="inlineRadio2" value="SubChild">&nbsp;Child Row 
+                             <label class="control-label" for="ArchiveExecution">Task Group Label:</label>
                             <input type="text" class="form-control" id="ArchiveChildGrpLabel"  name="ArchiveChildGrpLabel" required>
                         </div>
                     </div>
@@ -1037,7 +1040,7 @@ background:#1565c0 important;
 </div>  
 </div>
 </div>
-
+<input type="button" id="updatedate" value="update">
 <!-- Active Icon Color changes  -->
 <!-- <script>
 $(document).on('mouseenter','.active1', function(){
