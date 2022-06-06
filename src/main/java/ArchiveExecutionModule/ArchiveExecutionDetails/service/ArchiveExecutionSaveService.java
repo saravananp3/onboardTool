@@ -187,7 +187,7 @@ public class ArchiveExecutionSaveService {
 			else if(!arrChildDate.isEmpty()){
 				Date maxDate = Collections.max(arrChildDate);
 				resultDate = simpleDateFormat.format(maxDate);
-				System.out.println("Minimum Date : "+simpleDateFormat.format(maxDate));
+				System.out.println("Maximum Date : "+simpleDateFormat.format(maxDate));
 			}
 			if(!resultDate.equals("") && !Value.equals(""))
 				if(simpleDateFormat.parse(resultDate).compareTo(simpleDateFormat.parse(Value)) == 0)
@@ -211,11 +211,7 @@ public class ArchiveExecutionSaveService {
 				}
 			}
 
-			/*
-			 * for (Date date : arrChildDate) { System.out.println("Date " +
-			 * simpleDateFormat.format(date)); }
-			 */
-
+			
 		}
 
 		catch(Exception e) {
@@ -272,6 +268,8 @@ public class ArchiveExecutionSaveService {
 
 				if(arrLevel.get(j) == 2)
 					break;
+				else if(arrLevel.get(j) == 1)
+				break;
 				else {
 					if(!arrDate.get(j).equals(""))
 						arrChildDate.add(simpleDateFormat.parse(arrDate.get(j)));
@@ -286,7 +284,7 @@ public class ArchiveExecutionSaveService {
 			else if(!arrChildDate.isEmpty()){
 				Date maxDate = Collections.max(arrChildDate);
 				resultDate = simpleDateFormat.format(maxDate);
-				System.out.println("Minimum Date : "+simpleDateFormat.format(maxDate));
+				System.out.println("Maximum Date : "+simpleDateFormat.format(maxDate));
 			}
 			if(!resultDate.equals("") && !Value.equals(""))
 				if(simpleDateFormat.parse(resultDate).compareTo(simpleDateFormat.parse(Value)) == 0)
