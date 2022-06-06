@@ -337,11 +337,12 @@ Statement st1;
 				<div class="row" id="d3s-mt-10">
 						<div class="col-lg-12 col-md-12">
 							<div class="sub-title" style="color: #fff">
-								<a href="OpportunityList.jsp" id="sitetitle1"
-									style="color: #fff"><span class="glyphicon glyphicon-home"></span>
-									Home</a> >> <%=OpportunityName%> >><a href="ArchiveRequirementsIntroDetails.jsp"
-									id="sitetitle1" style="color: #fff"> Introduction</a> >> Legacy
-									Application Information</a>
+								<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a> >>
+					 <a href="ArchiveDecommPage.jsp" id="sitetitle1" style="color: #fff">Requirements</a> >>
+					  <a href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color: #fff">Introduction</a> >>
+					  <a id="sitetitle1" style="color: #fff">Legacy Application Info</a> 
 							</div>
 						</div>
 					</div>

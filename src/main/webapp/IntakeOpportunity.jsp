@@ -97,59 +97,53 @@ body {
 <body class="top-navbar-fixed">
 
 	<div class="main-wrapper">
-<%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="java.util.Date"%>
-<%
-SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-Date date = new Date();
-System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
-<%@page language="java"%>
-<%@page import="java.sql.*"%>
-<%@page import="java.text.DateFormat"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
-<%@page import="onboard.DBconnection"%>
-<%@page import="java.util.Calendar"%>
-<%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-response.setHeader("Expires", "0"); // Proxies.
-DBconnection dBconnection = new DBconnection();
+		<%@ page import="java.text.SimpleDateFormat"%>
+		<%@ page import="java.util.Date"%>
+		<%
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Grid JSP PAGE-----[INFO]");
+		%>
+		<%@page language="java"%>
+		<%@page import="java.sql.*"%>
+		<%@page import="java.text.DateFormat"%>
+		<%@page import="java.text.SimpleDateFormat"%>
+		<%@page import="java.util.Date"%>
+		<%@page import="onboard.DBconnection"%>
+		<%@page import="java.util.Calendar"%>
+		<%
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setHeader("Expires", "0"); // Proxies.
+		DBconnection dBconnection = new DBconnection();
+
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("Login.jsp");
+
+		} else {
+			String name = (String) session.getAttribute("ID");
+			HttpSession details = request.getSession();
+			Connection con = null;
+			session.setAttribute("theName", name);
+			String roles = (String) details.getAttribute("role");
+			String OpportunityName = (String) details.getAttribute("SelectedOpportunity");
+			String s = OpportunityName;
+			System.out.println("Welcome" + OpportunityName);
+
+			int sumcount = 0;
+			Statement st, st2;
+			try {
+
+				con = dBconnection.getConnection();
+				Statement st1;
+		%>
 
 
 
-if (session.getAttribute("username")==null)
-{
-response.sendRedirect("Login.jsp");
 
 
 
-}
-else{
-String name=(String)session.getAttribute("ID");
-HttpSession details=request.getSession();
-Connection con = null;
-session.setAttribute("theName", name);
-String roles=(String)details.getAttribute("role");
-String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
-String s=OpportunityName;
-System.out.println("Welcome"+OpportunityName);
 
-int sumcount=0;
-Statement st,st2;
-try{
-
-con=dBconnection.getConnection();
-Statement st1;
-
-%>
-
-
-    
-    
-    
-				
-	
 		<!-- ========== TOP NAVBAR ========== -->
 		<!-- <nav class="navbar top-navbar bg-white box-shadow">
         <div class="container-fluid">
@@ -193,8 +187,8 @@ Statement st1;
         </div>
         /.container-fluid
     </nav > -->
-    
-    
+
+
 		<%@include file="Nav-Bar.jspf"%>
 		<nav class="nav nav-height-70 nav-font" id="bg-color"
 			style="font-size: 14px;">
@@ -202,23 +196,27 @@ Statement st1;
 				<div class="row" id="d3s-mt-10">
 					<div class="col-lg-12 col-md-12">
 						<div class="sub-title" style="color: #fff">
+							<%-- <a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+								class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >>Opportunity --%>
+
 							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
-								class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >>Opportunity
+								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a>>><a
+								href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff">Intake</a> >> Opportunity
+								
 						</div>
 					</div>
 				</div>
 			</div>
 		</nav>
-		
+
 		<%
-}
-catch(Exception e){
-e.printStackTrace();
-}
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
 
-
-
-} %>
+		}
+		%>
 
 		<div class="content-wrapper">
 			<div class="content-container">
@@ -233,13 +231,17 @@ e.printStackTrace();
 											<!-- <p style="font-size: 14px;">Fill all the required fields
 												to go next step</p> -->
 											<ul class="list-unstyled form-wizard-steps clearfix">
-												<li class="active" onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+												<li class="active"
+													onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
 												<li onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
-												<li onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage Summary</i></li>
+												<li onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage
+														Summary</i></li>
 												<li onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
-												<li onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span> <i>Stake Holder</i></li>
+												<li onclick="location.href='IntakeStakeHolder.jsp';"><span>5</span>
+													<i>Stake Holder</i></li>
 												<li onclick="location.href='IntakeReviewDetails.jsp';"><span>6</span><i>Review</i></li>
-												<li onclick="location.href='IntakeApproval.jsp';" id="ReviewNextBtn" ><span>7</span><i>Approval</i></li>
+												<li onclick="location.href='IntakeApproval.jsp';"
+													id="ReviewNextBtn"><span>7</span><i>Approval</i></li>
 											</ul>
 										</div>
 										<fieldset class="wizard-fieldset show"
@@ -1031,10 +1033,11 @@ e.printStackTrace();
 	<link
 		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
 		rel="stylesheet">
-	
-<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
 
-		
-	
+	<script
+		src="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
+
+
+
 </body>
 </html>

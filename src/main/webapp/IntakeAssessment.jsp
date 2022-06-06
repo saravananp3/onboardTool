@@ -171,12 +171,14 @@ Statement st1;
 					<div class="col-lg-12 col-md-12">
 						<div class="sub-title" style="color: #fff">
 						<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
-							class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >><a
-							href="IntakeOpportunity.jsp" id="sitetitle1" style="color: #fff">
-							Opportunity </a> >> <a href="IntakeTriageSummary.jsp"
-							id="sitetitle1" style="color: #fff"> Triage Summary</a> <a
-							href="IntakeAssessment.jsp" id="sitetitle1" style="color: #fff">
-							Assessment</a>
+								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a>>><a
+								href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff">Intake</a> >>
+								<a href="IntakeOpportunity.jsp" id="sitetitle1" style="color: #fff">Opportunity</a> >>
+								<a href="IntakeTriage.jsp" id="sitetitle1" style="color: #fff">Triage</a> >>
+								
+								
+								<a href="IntakeTriageSummary.jsp" id="sitetitle1" style="color: #fff">TriageSummary</a> >>Assessment
 					</div>
 					</div>
 				</div>
