@@ -829,8 +829,8 @@ background:#1565c0 important;
             	<div class="row">
             		<div class="form-group">
             		<div class ="col-lg-8">
-                            <label class="control-label" for="ArchiveExecution">Select Parent or Child</label>
-                             <input class="form-check-input" type="radio" class = "radioOption" name="ArchExecRadio" id="inlineRadio1" value="Parent">&nbsp;Parent Row &nbsp;
+                            <label class="control-label" for="ArchiveExecution">Select Sibling or Child</label>
+                             <input class="form-check-input" type="radio" class = "radioOption" name="ArchExecRadio" id="inlineRadio1" value="Parent">&nbsp;Sibling Row &nbsp;
                              <input class="form-check-input" type="radio" class = "radioOption" name="ArchExecRadio" id="inlineRadio2" value="Child">&nbsp;Child Row 
                         </div>
                         </div>
@@ -852,7 +852,7 @@ background:#1565c0 important;
                     </div>
                 </div>
                 <br/>
-                <div class="row"> 
+                <div class="row" style = "display:none;"> 
                                 <div class="col-md-8"> <label class="control-label hidePlanSrt" style = "display:none;" for="ArchiveExecution">Plan Start Date</label> 
                                 <input type="text" class="form-control datepicker2 hidePlanSrt" style = "display:none;" size="35" id="planSrtDate" placeholder="mm/dd/yyyy" name="planSrtDateName" /> 
                             </div></div>
@@ -908,8 +908,8 @@ background:#1565c0 important;
                         </div>
                     </div>
                 </div><br/>
-                 <div class="row"> 
-                                <div class="col-md-8"> <label class="control-label hidePlanSrt1"  for="ArchiveExecution">Plan Start Date</label> 
+                 <div class="row" style="display:none;"> 
+                                <div class="col-md-8"> <label class="control-label hidePlanSrt1"  for="ArchiveExecution" >Plan Start Date</label> 
                                 <input type="text" class="form-control datepicker2 hidePlanSrt1"  size="35" id="planSrtDate1" placeholder="mm/dd/yyyy" name="planSrtDateName1" /> 
                             </div> </div><br/>
                  <input type="hidden" id="checkChildPlanStartDate" value=""/>           
