@@ -152,6 +152,9 @@ function getFieldName(className){
 			saveFunction(seqNo,columnName,value,valuePrev);
 		    
 		});
+		
+		
+		
 	$(document).on('change','select.assignedToDrop',function()
 	{
 		var val=$(this).val();
@@ -307,7 +310,7 @@ function changeColor(classname)
 
 
 function saveFunction(seqNo, columnName, value, valuePrev){
-var JsonObj = [];
+/*var JsonObj = [];
 var checkPrevChild = checkPreviousRows(seqNo-1,true,value);
 var checkPrevParent = checkPreviousRows(seqNo-1,false,value);
 if(!checkPrevChild){
@@ -322,7 +325,7 @@ if(!checkPrevParent||!checkPrevChild)
 {
 	var prev = getPreviousValue(valuePrev, columnName, fieldName, seqNo-1);
 }
- if(checkPrevChild&&checkPrevParent){
+ if(checkPrevChild&&checkPrevParent){*/
 	$.ajax({
         url: "archiveExecutionSaveServlet",
         type: 'POST',
@@ -336,13 +339,15 @@ if(!checkPrevParent||!checkPrevChild)
         		if(columnName == "planSrt" || columnName == "planEnd" || columnName == "actSrt" || columnName == "actEnd"){
         			if(data.CheckParentDate)
         			updateParentDate(seqNo, columnName, data.ResultDate);
+        			else
+        			updateChildDate(seqNo, columnName, data.ResultDate);
         		}
         		if(fieldName != 'colorCode'&&fieldName!="")
         		$("."+fieldName).eq(seqNo-1).val(value);
 	        		SaveInfoNotification(seqNo, columnName, value);
-	        		
+	        		if(columnName!='completion'){
 	        		notification("success","changed field saved successfully.","Note:");
-	        	
+	        	}
         		}
         		else
         			notification("error","error while saving the chnaged field.","Error:");
@@ -355,7 +360,7 @@ if(!checkPrevParent||!checkPrevChild)
         
 	});
 	updateGovArchiveExec(seqNo, columnName, value);
-}
+//}
 
 
 
@@ -398,6 +403,24 @@ function updateParentDate(seqNum, columnName, value){
 	}
 }
 
+function updateChildDate(seqNum, columnName, value){
+var currentIndex = parseInt(seqNum-1);
+	var curlevel=$('.archiveLevel').eq(currentIndex).val();
+	var parentClassName = columnNameToClassName(columnName)
+	if(curlevel=="3"){
+		var subchildflag=false;
+		for(var i = currentIndex; i >= 0; i--){ 
+		var level = $('.archiveLevel').eq(i).val();
+			if(level == "2" && subchildflag==false){
+				$('.'+parentClassName).eq(i).datepicker('setDate', value);
+				subchildflag=true;
+		
+			}
+			
+	}
+}
+
+}
 function getPreviousValue(valuePrev, columnName, fieldName, index){
 	
 	var prevValue = "";
@@ -482,3 +505,5 @@ function getPreviousValue(valuePrev, columnName, fieldName, index){
 	   else if (columnName=="remark")
 		   notification("info","In Task id "+taskId+" remarks filled with "+value,"Info:");*/
  }
+ 
+ 

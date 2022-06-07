@@ -4,13 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import onboard.DBconnection;
 public class ArchiveExecutionDetailService {
     String oppname;
-     DBconnection dBconnection =null;
+    String lvl="1";
+    DBconnection dBconnection =null;
         Connection con = null;
     public ArchiveExecutionDetailService() throws ClassNotFoundException, SQLException {
         dBconnection = new DBconnection();
@@ -58,6 +60,8 @@ public class ArchiveExecutionDetailService {
         return jsonArray;
     }
     public JsonObject archiveExecutionHearderInfo(String Id,String oppName) {
+    	String resultDate = "";
+    	String resultDate1 = "";
         JsonArray jsonArray=new JsonArray();
         JsonObject jsonObj = new JsonObject();
         try {
@@ -70,20 +74,30 @@ public class ArchiveExecutionDetailService {
 			 * String sd = "select planSrt from Archive_Execution_Info where oppId = '"
 			 * +Id+"' and oppName = '"+oppName+"' and taskId='1.01'  order by seq_no;";
 			 */
-            String sd = "select planSrt from Archive_Execution_Info where oppId = ? order by seq_no LIMIT 1;";
+            int pscount=0;
+            int pecount=0;
+            String sd = "select planSrt from Archive_Execution_Info where oppId = ? and level=? order by seq_no";
             PreparedStatement  sds = con.prepareStatement(sd);
             sds.setString(1,Id);
+            sds.setString(2, lvl);
             ResultSet srs = sds.executeQuery();
+            ArrayList<String> arrDate = new ArrayList<String>();
+			ArrayList<Date> arrChildDate = new ArrayList<Date>();
+
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");         
+            
             
 			/*
 			 * String ed = "select planEnd from Archive_Execution_Info where oppId = '"
 			 * +Id+"' and oppName = '"+oppName+"' and taskId='5.05'  order by seq_no;";
 			 */
-            String ed = "select planEnd from Archive_Execution_Info where oppId = ? order by seq_no DESC LIMIT 1;";
+            String ed = "select planEnd from Archive_Execution_Info where oppId = ? and level=? order by seq_no";
             PreparedStatement eds = con.prepareStatement(ed);
             eds.setString(1,Id);
+            eds.setString(2,lvl);
             ResultSet ers = eds.executeQuery();
-            
+            ArrayList<String> arrDate1 = new ArrayList<String>();
+			ArrayList<Date> arrChildDate1 = new ArrayList<Date>();
            
             String at = "select uname from users";
             Statement ats = con.createStatement();
@@ -96,14 +110,50 @@ public class ArchiveExecutionDetailService {
             }
             while(srs.next())
             {
-                jsonObj.addProperty("startDate",srs.getString("planSrt"));
-                jsonArray.add(jsonObj);
-        }
+            	pscount++;
+            	String s=srs.getString("plansrt");
+            	arrDate.add(s);
+                
+            }
+            
+            System.out.println("lvl count : "+pscount);
+            System.out.println("Array count : "+arrDate);
+            for(int i = pscount-1; i >= 0; i--) {
+            if(!arrDate.get(i).equals(""))
+				arrChildDate.add(simpleDateFormat.parse(arrDate.get(i)));
+		}
+            System.out.println("Child Array Count : "+arrChildDate);
+            if(!arrChildDate.isEmpty()) {
+				Date minDate = Collections.min(arrChildDate);
+				resultDate = simpleDateFormat.format(minDate);
+
+				System.out.println("Minimum Date : "+simpleDateFormat.format(minDate));
+			}
+            jsonObj.addProperty("startDate",resultDate);
+            jsonArray.add(jsonObj);
             while(ers.next())
             {
-                jsonObj.addProperty("endDate",ers.getString("planEnd"));
-                jsonArray.add(jsonObj);
+            	pecount++;
+            	String s1=ers.getString("planEnd");
+            	arrDate1.add(s1);
+                
         }
+            System.out.println("lvl count : "+pecount);
+            System.out.println("Array count : "+arrDate1);
+            for(int i = pecount-1; i >= 0; i--) {
+            if(!arrDate1.get(i).equals(""))
+				arrChildDate1.add(simpleDateFormat.parse(arrDate1.get(i)));
+		}
+            System.out.println("Child Array Count : "+arrChildDate1);
+            if(!arrChildDate1.isEmpty()) {
+				Date maxDate = Collections.max(arrChildDate1);
+				resultDate1 = simpleDateFormat.format(maxDate);
+
+				System.out.println("Maximum Date : "+simpleDateFormat.format(maxDate));
+			}
+
+            jsonObj.addProperty("endDate",resultDate1);
+            jsonArray.add(jsonObj);
             JsonArray jsonArrayUsers = new JsonArray();
             JsonObject jsonObjectUsers = new JsonObject();
             int c=0;
