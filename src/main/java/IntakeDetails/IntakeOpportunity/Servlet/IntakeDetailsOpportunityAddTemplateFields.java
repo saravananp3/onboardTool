@@ -44,12 +44,16 @@ public class IntakeDetailsOpportunityAddTemplateFields extends HttpServlet {
 		HttpSession details = request.getSession();
 		String id = (String)details.getAttribute("ID");
 		String selected_index[] = request.getParameter("Selected_Index").split(",");
+		String templateMandatory = request.getParameter("Mandatory");
+		/* System.out.println("value"+templateMandatory); */
 		int[] Sel_seq = new int[selected_index.length];
 		for(int i = 0; i< selected_index.length; i++)
 		{
 			Sel_seq[i] = Integer.parseInt(selected_index[i]);
 		}
-		JsonArray jsonArray = IntakeOpportunityService.IntakeDetailsOpportunityAddTemplateFields1(Sel_seq, id);
+		
+		
+		JsonArray jsonArray = IntakeOpportunityService.IntakeDetailsOpportunityAddTemplateFields1(Sel_seq, id,templateMandatory);
 		
 		 String json = new Gson().toJson(jsonArray);
 	        response.setContentType("application/json");

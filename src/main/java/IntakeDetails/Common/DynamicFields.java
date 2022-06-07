@@ -18,4 +18,9 @@ public abstract class DynamicFields {
 	public abstract JsonArray DataRetrieve(String Id);
 	
 	public abstract void Save(JsonArray jsonArr,String id);
+
+	public JsonArray AddTemplateFields(int[] selected_index, String id, String templateMandatory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

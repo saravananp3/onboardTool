@@ -161,11 +161,11 @@ public class exportPdfService extends jsonToHtmlContent {
         System.out.println((x - (w / 2))+":"+( y - (h / 2)));
         if(modulename.equals(MODULE_NAME.INTAKE_MODULE))
         {
-            coverDoc.add(new Paragraph(new Text(appName+" - Intake Summary").setFontSize(28)).setTextAlignment(TextAlignment.CENTER).setFixedPosition(100,450,350));
+            coverDoc.add(new Paragraph(new Text("Intake Summary \n "+"-\n"+appName).setFontSize(28)).setTextAlignment(TextAlignment.CENTER).setFixedPosition(100,450,350));
         }
         else if(modulename.equals(MODULE_NAME.ARCHIVE_REQUIREMENTS_MODULE))
         {
-            coverDoc.add(new Paragraph(new Text(appName+" - Archive Requirements Summary").setFontSize(28)).setTextAlignment(TextAlignment.CENTER).setFixedPosition(100,450,350));
+            coverDoc.add(new Paragraph(new Text("Archive Requirements Summary \n"+"-\n"+appName).setFontSize(28)).setTextAlignment(TextAlignment.CENTER).setFixedPosition(100,450,350));
         }
         coverDoc.setFont(PdfFontFactory.createFont(StandardFontFamilies.HELVETICA));
         coverDoc.add(new Paragraph(new Text("Application Id : " + applicationId).setFontSize(8)));
@@ -220,9 +220,9 @@ public class exportPdfService extends jsonToHtmlContent {
         PdfDocument pdfDoc = new PdfDocument(pdfReader,pdfWriter);
         Document doc = new Document(pdfDoc);
         PdfFont font = PdfFontFactory.createFont(StandardFontFamilies.COURIER);
-        Paragraph titleText = new Paragraph(Objects.toString("App Name:"+waterMarkConditions.getAppName(), "")).setFont(font).setFontSize(6);
+        Paragraph titleText = new Paragraph(Objects.toString("App Name : "+waterMarkConditions.getAppName(), "")).setFont(font).setFontSize(6);
         Paragraph systemGenerated = new Paragraph("This is a system generated Report").setFont(font).setFontSize(6);
-        Paragraph jobIdText = new Paragraph(Objects.toString("App Id:"+getAppId(), "")).setFont(font).setFontSize(6);
+        Paragraph jobIdText = new Paragraph(Objects.toString("App Id : "+getAppId(), "")).setFont(font).setFontSize(6);
         ImageData img = ImageDataFactory.create(waterMarkLogo);
         float w = (float) (img.getWidth());
         float h = (float) (img.getHeight());

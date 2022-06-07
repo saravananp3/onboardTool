@@ -725,6 +725,13 @@ body {
 																</div>
 																<br>
 															</div>
+															<div class="col-md-6">
+                                                             	<label class="control-label" for="opportunity">Mandatory:</label>
+                                                                   <select id="mandatory2" class="form-select"name="mandatory" required>
+                                                            		  <option value="Yes">Yes</option>
+                                                            		   <option value="No">No</option>
+                                                             	   </select>
+                                                             </div>
 														</form>
 													</div>
 													<div class="modal-footer">
