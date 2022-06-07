@@ -282,7 +282,7 @@ input[type=search]:focus {
 
 .cbp-vm-view-list li{
 	white-space: nowrap;
-	overflow: hidden;
+	/* overflow: hidden; */
 	text-overflow: ellipsis;
 	min-width:20ch;
 

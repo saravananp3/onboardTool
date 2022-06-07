@@ -258,7 +258,7 @@ function reviewDataRetrieveAjaxCall()
             	  }
             if(data[9].checkOverAllStatus)
             	{
-            	  $("#ReviewNextBtn").hide();
+            	  $("#ReviewNextBtn").show();
             	  $("#button_id").hide();
             	  $("#ReviewPrevBtn").attr('onclick','location.href="ArchiveDecommPage.jsp";');
             	}

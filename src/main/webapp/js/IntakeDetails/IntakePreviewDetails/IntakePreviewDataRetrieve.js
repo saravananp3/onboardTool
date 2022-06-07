@@ -161,14 +161,14 @@ function IntakePreviewDataRetrieveAjaxCall()
             	$("#button_id").show();
             }
             else{
-            	$("#button_id").show();
+            	$("#button_id").hide();
             }
             var checkReviewPage = data[data.length-1].CheckExistence;
             if(checkReviewPage==true)
             {
              $("#ReviewNextBtn").show();
              $("#ReviewPrevBtn").show();
-             $("#button_id").show();
+             $("#button_id").hide();
             }
         },
         error: function (e) {
