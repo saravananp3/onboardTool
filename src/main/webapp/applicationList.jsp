@@ -183,7 +183,7 @@
 				</table>
 				<div class="row">
 					<div class="col-md-12" align="end">
-						<button class="btn btn-primary" id="">Submit</button>
+						<button class="btn btn-primary" id="saveApplicationList-1">Submit</button>
 					</div>
 				</div>
 			</div>

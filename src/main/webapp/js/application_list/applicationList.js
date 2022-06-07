@@ -5,6 +5,7 @@ var dependencyColumn = "";
 var readOnlyValue = "";
 var finalCheck;
 var exportContent = [];
+var JsonObject =[];
 $(document).ready(function() {
 	$.ajax({
 		url: "PlanAndPriorityWithinPhase",
@@ -19,13 +20,14 @@ $(document).ready(function() {
 
 			$.each(data[0], function(key, value) {
 				var opportunityName = value.app_name;
+				var opportunityId = value.Id;
 				var phaseName = value.phaseName;
 				var waveName = value.waveName;
 				var readonly = "readonly";
 				var disable = "disabled";
 
 				var t_row = "<tr class='rowClass'>"
-					+ "<td><input type = 'text' class ='oppName' value = '" + opportunityName + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityName + "'></td>"
+					+ "<td><input type = 'text' class ='applicationName' value = '" + opportunityName + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityName + "'></td>"
 
 					+ "<td><input type = 'text' class ='phaseList' id='phaseSearch" + number + "' value = '" + phaseName + "'" + readonly + " style='width:100%; border:none; background-color: #fff; text-align:center;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + phaseName + "'><ul id='phaseResult" + number + "' class='list-group searchResult'></ul></td>"
 
@@ -130,9 +132,12 @@ $(document).ready(function() {
 					waveOptions +
 					"</select>" + "</td>"
 
-					+ "<td>" + "<select class='form-select resource' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;'>" +
+				/*	+ "<td>" + "<select class='form-select resource' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;'>" +
 					resourceOptions +
-					"</select>" + "</td>" +
+					"</select>" + "</td>" +*/
+					
+					+ "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup'style='display:block;'></span>" +
+					"</td>" +
 
 					"<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>" +
 					"<ul class='dropdown-menu' style = 'min-width: inherit;'>" +
@@ -156,41 +161,57 @@ $(document).ready(function() {
 $(document).on('click', '#saveApplicationList', function(e) {
 	var validation = false;
 	var JsonArray = [];
-	var checkDuplicateRole = true;
 	for (var i = 0; i < $('.rowClass').length; i++) {
 		var inputs = {};
-		var opportunityName = $('.oppName').eq(i).val();
-		var phase = $('.phase').eq(i).val();
-		var wave = $('.wave').eq(i).val();
-		var resource = $('.resource').eq(i).val();
-		checkDuplicateRole = true;
+		var appId = $('.applicationName').eq(i).val();
+		var phaseId = $('.phaseList').eq(i).val();
+		var waveId = $('.waveList').eq(i).val();
 		validation = true;
-		inputs['seq_no'] = i + 1;
-		inputs['opportunityName'] = opportunityName;
-		inputs['phase'] = phase;
-		inputs['wave'] = wave;
-		inputs['resource'] = resource;
+		inputs['appId'] = appId;
+		inputs['phaseId'] = phaseId;
+		inputs['waveId'] = waveId;
 		JsonArray.push(inputs);
 	}
-	if (validation && checkDuplicateRole) {
+	if (validation) {
 		console.log("JsonArray Retrieve--->", JsonArray);
 		applicationListSaveAjaxcall(JsonArray);
 
 	}
 	else {
-		if (!validation)
-			notification("warning", "Please fill atleast one row fields.", "Warning");
-		if (!checkDuplicateRole)
-			notification("warning", "Please provide unique roles.", "Warning");
-		checkRoles = false;
+		notification("warning", "Please fill atleast one row fields.", "Warning");
+	}
+	e.preventDefault();
+});
+
+$(document).on('click', '#saveApplicationList-1', function(e) {
+	var validation = false;
+	var JsonArray = [];
+	for (var i = 0; i < $('.rowClass').length; i++) {
+		var inputs = {};
+		var appId = $('.oppName').eq(i).val();
+		var phaseId = $('.phase').eq(i).val();
+		var waveId = $('.wave').eq(i).val();
+		validation = true;
+		inputs['appId'] = appId;
+		inputs['phaseId'] = phaseId;
+		inputs['waveId'] = waveId;
+		JsonArray.push(inputs);
+	}
+	if (validation) {
+		console.log("JsonArray Retrieve--->", JsonArray);
+		applicationListSaveAjaxcall(JsonArray);
+
+	}
+	else {
+		notification("warning", "Please fill atleast one row fields.", "Warning");
 	}
 	e.preventDefault();
 });
 
 function applicationListSaveAjaxcall(JsonArray) {
-	var checkAjax = false;
+
 	$.ajax({
-		url: "applicationList",
+		url: "PlanAndPrioritySaveServlet",
 		type: 'POST',
 		data: { JsonArray: JSON.stringify(JsonArray) },
 		async: false,
@@ -200,11 +221,9 @@ function applicationListSaveAjaxcall(JsonArray) {
 			JsonObject = data;
 			if (data) {
 				notification("success", "Saved successfully.", "Note:");
-				checkRoles = true;
 			}
 			else {
 				notification("error", "Error occured while saving.", "Error:");
-				checkRoles = false;
 			}
 		},
 		error: function(e) {
@@ -212,7 +231,6 @@ function applicationListSaveAjaxcall(JsonArray) {
 		}
 	});
 }
-
 
 
 function searchPhaseFunction(i) {
@@ -608,3 +626,4 @@ function checkReadOnlyData(ColumnName){
 	return checkBoolean;
 	
 }
+
