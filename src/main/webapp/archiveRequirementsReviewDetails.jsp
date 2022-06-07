@@ -914,11 +914,11 @@ e.printStackTrace();
                                                       
                                                                                                    
                                                     <div class="col-md-12">
-                                                            <div class="col-md-1">
+                                                            <div class="col-md-6">
                                                                 <button type="button" class="btn btn-secondary" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsAddendum.jsp';" >Prev</button>
                                                             </div>
-                                                         <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
-                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary" onClick="myFunction()">
+                                                         <div class="col-md-6" align="end">
+                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary">
                         Request Sign
                     </button>
                    
