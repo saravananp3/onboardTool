@@ -77,7 +77,7 @@ $(document).on('click','#ArchiveParentSubmit', function(){
 $(document).on('click','#ArchiveChildSubmit', function(){
 	
 	$('.submitDisable').attr('disabled',true);
-	var rowType = 'Child';
+	var rowType = $('input[name="ArchcExecRadio"]:checked').val();
 	var taskGroup = $('#ArchiveChildGrpLabel').val();
 	var taskName = $('#ArchiveChildNameLabel').val();
 	var planSrtDate = $('#planSrtDate1').val();
