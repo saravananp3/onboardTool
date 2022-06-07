@@ -2,6 +2,7 @@ function validateTriage(){
 	$(".submitDisable").attr("disabled", true);
 	$(".hidepen").hide();
 	$(".hidedel").hide();
+	var templateMandatory = $('#mandatory2').val();
 	var selected_seq = [];
 	var selected_index = "";
 	console.log("class total length"+$(".Template_Values").length);
@@ -16,14 +17,43 @@ function validateTriage(){
 	$.ajax({
         url: "IntakeDetailsTriageAddTemplateFields",
         type: 'POST',
-        data : {Selected_Index:selected_index},
+        data : {Selected_Index:selected_index, Mandatory:templateMandatory},
         dataType: "json",
         success: function (data) {
-        	console.log("data add template ; ",data);
-        	if (!$.isArray(data)) {
-        		data = [data];
-                
+        	 console.log(data);
+	   var keys =  Object.keys(data);
+	 
+for (var i = 0; i < keys.length; i++) 
+{
+	
+	 if(i !=0  )
+	 {
+		
+		var tempkeys = Object.keys(data[keys[i]]);
+		var temp = data[keys[i]];
+		
+		console.log(tempkeys);
+		console.log(temp);
+	
+	for(var j=0;j<tempkeys.length;  j++) {
+
+			temp["Mandatory"]=templateMandatory;
+			
+		
+		console.log(temp[tempkeys[j]]);
+			}	
+	}
+	 
+	 }
+
+console.log("data add template ; ",data);
+console.log("data add template ;",templateMandatory);
+        	
+        	if (!$.isArray(data,templateMandatory)) {
+        		data = [data,templateMandatory];
+             console.log(data);   
             }
+        
         	for(var PageIndex=0;PageIndex<data.length;PageIndex++)
         	{
            if(PageIndex == 0)

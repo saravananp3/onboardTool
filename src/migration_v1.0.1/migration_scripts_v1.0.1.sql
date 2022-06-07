@@ -1,5 +1,4 @@
 SELECT * FROM decom3sixtytool.Opportunity_Info_Template_Details;
-
 update `decom3sixtytool`.`Opportunity_Info_Template_Details` set label_name='Business Unit' where label_name='Buisness Unit';
 update `decom3sixtytool`.`Opportunity_Info_Template_Details` set label_name='Business Segment' where label_name='Buisness Segment';
 update `decom3sixtytool`.`Opportunity_Info_Template_Details` set label_name='EMR System,ERP Data,Financial Data,Healthcare Data,HR Data,MR/HR Data,Other Data' where label_name='EMR System,ERP Data,Financial Data,HealthCare Data,HR Data,MR/HR Data,Other Data';

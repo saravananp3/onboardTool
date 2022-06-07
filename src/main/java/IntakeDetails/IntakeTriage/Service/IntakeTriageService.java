@@ -410,7 +410,7 @@ public class IntakeTriageService extends DynamicFields {
 		}
 		
 		@Override
-		public JsonArray AddTemplateFields(int[] selected_index,String id) {
+		public JsonArray AddTemplateFields(int[] selected_index,String id,String templateMandatory) {
 		      JsonArray jsonArray = new JsonArray();
 		      JsonArray FinalJson = new JsonArray();
 		      JsonArray jsonAssessment = new JsonArray();
@@ -549,7 +549,7 @@ public class IntakeTriageService extends DynamicFields {
 		        			  String label_name = rs4.getString(5); 
 		        			  String column_name = rs4.getString(6); 
 		        			  String type = rs4.getString(7); 
-		        			  String mandatory = rs4.getString(8);
+		        			  String mandatory = templateMandatory;
 		        			  String value = rs4.getString(9);
 		        			  if(isOpportunityField(column_name))
 		        				value =getValue(column_name,id);  
@@ -892,5 +892,10 @@ public class IntakeTriageService extends DynamicFields {
 	public void delete(int seq_num, String id) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public JsonArray AddTemplateFields(int[] selected_index, String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
    }

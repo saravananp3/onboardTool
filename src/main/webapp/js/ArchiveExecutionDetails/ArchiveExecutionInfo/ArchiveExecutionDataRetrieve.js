@@ -2,6 +2,7 @@
 var taskTypeArr = [];
 $(document).ready(function()
 {
+
     users=[];
     taskTypeArr = [];
     $('.collapse.in').prev('.card-header').addClass('active');
@@ -12,6 +13,8 @@ $(document).ready(function()
         .on('hide.bs.collapse', function(a) {
           $(a.target).prev('.card-header').removeClass('active');
         });
+       
+     
     $.ajax({
         url: "ArchiveExecutionInfoDataRetrieveServlet",
         type: 'POST',
@@ -23,6 +26,7 @@ $(document).ready(function()
             }
             /*var parentRow = ""*/
             appendRowFunction(data);
+           
             $('.assignedToDrop').selectpicker();
             var script="<script>$('.datepicker1').datepicker({\n" +
             "format: \"mm/dd/yyyy\",\n"+
@@ -121,7 +125,10 @@ function userAppendFunction(data) {
 function appendRowFunction(data){
     var collapse = "";
     var checkIndex = false;
+    var i=0;
+   
     $.each(data, function(key, value){
+	console.log("INDEX UI",i);
         if(checkIndex){
         var seqNo = value.seq_no;
         var oppId = value.oppId;
@@ -140,11 +147,20 @@ function appendRowFunction(data){
         var completion = !isNaN(value.completion)&&value.completion!=""?value.completion:0 ;
         var status = value.status;
         var remark = value.remark;
-        var AssignedToOptions = userAppendFunction(data[0].user,assingedTo);
+        var AssignedToOptions =userAppendFunction(data[0].user,assingedTo);
         var taskTypeOptions = Options(taskTypeArr,taskType);
         var status1=arcstatuscolor(completion);
+        var lvlflag=levlflag(level);
+       var t=taskId.replaceAll('.','_');
+       console.log("T VALUE",t);
+      
+       var t1=t.slice(0,3);
+       console.log(t1);
+       collapse1="collapse1"+t1;
         if (level == 1){        
             collapse = "collapse"+seqNo;
+            
+            //console.log("CONS")
         var row = "<tr class='ArchiveList' role='button' data-toggle='collapse' data-parent='#accordion' href='."+collapse+"' aria-expanded='false' aria-controls='"+collapse+"'>"+
                 "<td style='text-align:center;vertical-align: middle;'><label class='control-label taskChange taskId' for='ArchiveExection'>"+taskId+"</label>" +
                         "<input type = 'hidden' class = 'archiveLevel' value = '"+level+"'/>"+
@@ -200,29 +216,33 @@ function appendRowFunction(data){
                   "</td>"+
                   "</tr>";
                   $("#ArchiveExecutionList").append(row);
+                 
         }
-        else {
-            var row = "<tr class='ArchiveList panel-collapse collapse out "+collapse+"' role='tabpanel' aria-labelledby='headingOne'>"+
+     
+            
+        else if(level==2){
+
+            var row = "<tr class='ArchiveList panel-collapse collapse out "+collapse+"' role='button'  aria-labelledby='headingOne' data-toggle='collapse' data-parent='#accordion1' href='."+collapse1+"' aria-expanded='false' aria-controls='"+collapse1+"'>"+
             "<td style='text-align:center;vertical-align: middle;'><label class='control-label taskId' for='ArchiveExection'>"+taskId+"</label>" +
             "<input type = 'hidden' class = 'archiveLevel' value = '"+level+"'/>"+      
             "</td>"+
             "<td style='text-align:center;vertical-align: middle;'><label class='control-label taskGroup' for='ArchiveExection'>"+taskGroup+"</label></td>"+
               "<td><label class='control-label taskName' for='ArchiveExection'>"+taskName+"</label></td>"+
               "<td style='text-align:center;vertical-align: middle;'>"+
-              "<select class='taskTypeDrop taskChange'>"+
+              "<select class='taskTypeDrop taskChange' id='tasktype_"+t+"'>"+
               taskTypeOptions+
               "</select>" +
               "</td>"+
-              "<td style='text-align:center;vertical-align: middle;'><input type='text' class ='majorDep changeText' value='"+majDep+"'></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' class ='majorDep changeText' id='maj_"+t+"' value='"+majDep+"'></td>"+
               "<td style='text-align:center;vertical-align: middle;'>"+
-              "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true'>"+
+              "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' id='assign_"+t+"' >"+
             AssignedToOptions+
               "</select>" +
               "</td>"+
-              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 planStart' placeholder='mm/dd/yyyy' value='"+planStart+"' maxlength='0' /></td>"+
-              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 planEnd' placeholder='mm/dd/yyyy' value='"+planEnd+"' maxlength='0'/></td>"+
-              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actStart' placeholder='mm/dd/yyyy' value='"+actStart+"' maxlength='0'/></td>"+
-              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actEnd' placeholder='mm/dd/yyyy' value='"+actEnd+"' maxlength='0'/></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 planStart' placeholder='mm/dd/yyyy' value='"+planStart+"' maxlength='0' id='pln_srt"+t+"' /></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 planEnd' placeholder='mm/dd/yyyy' value='"+planEnd+"' maxlength='0' id='pln_end"+t+"'/></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actStart' placeholder='mm/dd/yyyy' value='"+actStart+"' maxlength='0' id='act_srt"+t+"'/></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actEnd' placeholder='mm/dd/yyyy' value='"+actEnd+"' maxlength='0' id='act_end"+t+"'/></td>"+
               "<td style='text-align:center;vertical-align: middle;'>"+
              "<div class='clearfix completion'>"+
           "<div class='c100 p"+completion+" small circle'>"+
@@ -247,7 +267,64 @@ function appendRowFunction(data){
               "<td style='text-align:center;vertical-align: middle;'><i class='fas fa-comment-alt fa-2x remarksIcon' style='color:#87CEEB;' role='button'></i><input type='hidden' class ='remark changeText' value='"+remark+"'></td>"+
           "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
           "<ul class='dropdown-menu'>"+
-          "<li><a  class='fa fa-plus AddRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Add</a></li>"+
+          "<li><a  class='fa fa-plus AddRow' style='font-size: 19px; color: black; "+lvlflag+"'>&nbsp;&nbsp;&nbsp;Add</a></li>"+
+          "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
+          "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
+          "</ul>"+
+          "</div>"+
+          "</td>"+
+              "</tr>";
+              $("#ArchiveExecutionList").append(row);
+             
+        }
+         else {
+
+            var row = "<tr class='ArchiveList panel-collapse collapse out "+collapse1+"' role='tabpanel' aria-labelledby='headingOne'>"+
+            "<td style='text-align:center;vertical-align: middle;'><label class='control-label taskId' for='ArchiveExection'>"+taskId+"</label>" +
+            "<input type = 'hidden' class = 'archiveLevel' value = '"+level+"'/>"+      
+            "</td>"+
+            "<td style='text-align:center;vertical-align: middle;'><label class='control-label taskGroup' for='ArchiveExection'>"+taskGroup+"</label></td>"+
+              "<td><label class='control-label taskName' for='ArchiveExection'>"+taskName+"</label></td>"+
+              "<td style='text-align:center;vertical-align: middle;'>"+
+              "<select class='taskTypeDrop taskChange' id='tasktype_"+t+"'>"+
+              taskTypeOptions+
+              "</select>" +
+              "</td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' class ='majorDep changeText' id='maj_"+t+"' value='"+majDep+"'></td>"+
+              "<td style='text-align:center;vertical-align: middle;'>"+
+              "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' id='assign_"+t+"' >"+
+            AssignedToOptions+
+              "</select>" +
+              "</td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 planStart' placeholder='mm/dd/yyyy' value='"+planStart+"' maxlength='0' id='pln_srt"+t+"' /></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 planEnd' placeholder='mm/dd/yyyy' value='"+planEnd+"' maxlength='0' id='pln_end"+t+"'/></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actStart' placeholder='mm/dd/yyyy' value='"+actStart+"' maxlength='0' id='act_srt"+t+"'/></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actEnd' placeholder='mm/dd/yyyy' value='"+actEnd+"' maxlength='0' id='act_end"+t+"'/></td>"+
+              "<td style='text-align:center;vertical-align: middle;'>"+
+             "<div class='clearfix completion'>"+
+          "<div class='c100 p"+completion+" small circle'>"+
+          "<span class='percentage'>"+completion+" %</span>"+
+          "<div class='slice'>"+
+         "<div class='bar'></div>"+
+        "<div class='fill'></div>"+
+        "</div>"+
+        "</div>"+
+        "<div class='visibleBtn arrow'>"+
+        "<div>"+
+        "<i style='vertical-align:top;position:relative;' role ='button' class='triangle up'></i>"+
+        "</div>"+
+        "<br/>"+
+        "<div>"+
+        "<i style='vertical-align:bottom;position:relative;' role='button' class='triangle down'></i>"+
+        "</div>"+
+        "</div>"+
+        "</div>"+
+          "</td>"+
+              "<td style='text-align:center;vertical-align: middle;'><span class='colorCode' ></span></td>"+
+              "<td style='text-align:center;vertical-align: middle;'><i class='fas fa-comment-alt fa-2x remarksIcon' style='color:#87CEEB;' role='button'></i><input type='hidden' class ='remark changeText' value='"+remark+"'></td>"+
+          "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
+          "<ul class='dropdown-menu'>"+
+          "<li><a  class='fa fa-plus AddRow' style='font-size: 19px; color: black; "+lvlflag+"'>&nbsp;&nbsp;&nbsp;Add</a></li>"+
           "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
           "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
           "</ul>"+
@@ -270,7 +347,10 @@ function appendRowFunction(data){
             $('#startDate').html("Start Date : </br>"+headerstartDate);
             $('#endDate').html("Estimated Completion : </br>"+headerendDate);
         }
+   i++;
+   
     });
+  getData();
 }
 function Options(optionlist,value)
 {
@@ -310,3 +390,68 @@ function arcstatuscolor(completion){
               colorClass = "statusGreen";
            return colorClass;
       }
+      
+function levlflag(level){
+	var lvl=level;
+	var displayflag="";
+	if(lvl==3)
+        {
+		var displayflag="display:none;";
+		console.log("METHOD INVOKES in 3rd Level");
+		}
+		else
+		{
+			var displayflag="display:block;";	
+			console.log("METHOD INVOKES in 1st & 2nd Level");
+		}
+		
+	return displayflag;
+}
+
+function getData(){
+	var m=[];
+	$("#ArchiveExecutionList tr").each(function(index, value){
+	m.push($(this).find("td:eq(0)").text());
+		
+    });
+    console.log("Array",m);
+    for(var i = 0; i < m.length-1; i++) {
+		console.log("Current Row Level : ",m[[i]]);
+		var ss=m[[i]];
+		var ss1=m[[i]].length;
+		
+	var next = m[($.inArray(m[[i]], m) + 1) % m.length];
+	var sss=next;
+	var sss1=next.length;
+	
+	console.log("Check DOT",sss.includes('.'));
+	if(ss.includes('.') )
+	{
+		count1=0;
+		count2=0
+	    for (let s of ss){    
+		if(s=='.')
+		 count1++
+	       } 
+	      for(let r of sss){
+		 if(r=='.')count2++
+	}
+	if(count1==1 && count2==2){
+		
+		 ss=ss.replaceAll('.','_');
+		 console.log("SS VALUE",ss);
+					$("#pln_srt"+ss+"").attr("disabled", "disabled");
+					$("#pln_end"+ss+"").attr("disabled", "disabled");
+					$("#act_srt"+ss+"").attr("disabled", "disabled"); 
+					$("#act_end"+ss+"").attr("disabled", "disabled");
+		 			$("#maj_"+ss+"").attr("disabled", "disabled");
+		 			$("#assign_"+ss+"").attr("disabled", "disabled");
+		 			$("#tasktype_"+ss+"").attr("disabled", "disabled");
+				
+	}
+	}
+	console.log("NEXT Row Level: ",next)
+	}
+    
+	}
+ 

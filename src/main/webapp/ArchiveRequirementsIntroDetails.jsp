@@ -295,7 +295,11 @@ Statement st1;
 				<div class="col-lg-12 col-md-12" id="d3s-mt-10">
 					<div class="sub-title" style="color: #fff">
 						<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
-							class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >>Introduction
+								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a> >>
+					 <a href="ArchiveDecommPage.jsp" id="sitetitle1" style="color: #fff">Requirements</a> >>
+					  <a  id="sitetitle1" style="color: #fff">Introduction</a> 
+								
 					</div>
 				</div>
 			</div>

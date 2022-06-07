@@ -575,20 +575,18 @@ Statement st1;
 				<div class="row" id="d3s-mt-10">
 						<div class="col-lg-12 col-md-12">
 							<div class="sub-title" style="color: #fff">
-								<a  href="OpportunityList.jsp" id="sitetitle1" style="color:#fff"><span class="glyphicon glyphicon-home"></span> Home</a> >> <%=OpportunityName%> >> <a  href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color:#fff">
-                           			Introduction</a> >>
-                           		<a  href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color:#fff">
-                           			Legacy Application Info</a> >>
-                           		<a  href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color:#fff">
-                           			Retention Details</a> >> 
-                           		<a  href="ArchiveBusinessRequirements.jsp" id="sitetitle1" style="color:#fff">
-                           			Business Requirements</a> >>
-                            	<a  href="archiveReqAbbrevation.jsp" id="sitetitle1" style="color:#fff">
-                           			Abbreviations</a> >>
-                           		<a  href="archiveRequirementsDocumentRevisions.jsp" id="sitetitle1" style="color:#fff">
-                           			Document Revision</a> >> 
-                            	<a  href="archiveRequirementsAddendum.jsp" id="sitetitle1" style="color:#fff">
-                           			Addendum</a> >> Review 
+								<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a> >>
+					 <a href="ArchiveDecommPage.jsp" id="sitetitle1" style="color: #fff">Requirements</a> >>
+					  <a href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color: #fff">Introduction</a> >>
+					  <a href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color: #fff">Legacy Application Info</a> >>
+					   <a href="archiveRequirementsRetentionDetails.jsp" id="sitetitle1" style="color: #fff">Retention Details</a> >>
+					   <a href="ArchiveBusinessRequirements.jsp" id="sitetitle1" style="color: #fff"> Business Requirements</a> >>
+					    <a href="archiveReqAbbrevation.jsp" id="sitetitle1" style="color: #fff"> Abbreviations</a> >>
+					    <a href="archiveRequirementsDocumentRevisions.jsp" id="sitetitle1" style="color: #fff"> Revisions</a> >>
+					    <a href="archiveRequirementsAddendum.jsp" id="sitetitle1" style="color: #fff"> Addendum</a> >>
+					    <a  id="sitetitle1" style="color: #fff"> Review</a> 
 							</div>
 						</div>
 					</div>
@@ -916,11 +914,11 @@ e.printStackTrace();
                                                       
                                                                                                    
                                                     <div class="col-md-12">
-                                                            <div class="col-md-1">
+                                                            <div class="col-md-6">
                                                                 <button type="button" class="btn btn-secondary" id = "ReviewPrevBtn" style="padding-top: 5px; padding-left: 10px; float: left;" onclick="location.href='archiveRequirementsAddendum.jsp';" >Prev</button>
                                                             </div>
-                                                         <div class="col-md-3" style="padding-top: 10px; padding-right: 10px; float: right; width:26%;">
-                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary" onClick="myFunction()">
+                                                         <div class="col-md-6" align="end">
+                                                               <button type="button" id="button_id" name="button_id" class="btn btn-primary">
                         Request Sign
                     </button>
                    

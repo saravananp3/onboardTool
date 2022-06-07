@@ -460,9 +460,13 @@ img.filtered {
 				<div class="row">
 					<div class="col-lg-12 col-md-12">
 						<div class="sub-title" style="color: #fff">
-							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+							<%-- <a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
 								class="glyphicon glyphicon-home"></span> Home</a> >>
-							<%=OpportunityName%>
+							<%=OpportunityName%> --%>
+							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+								class="glyphicon glyphicon-home"></span> Home</a> >> 
+								<a  id="sitetitle1" style="color: #fff"><%=OpportunityName%></a>
+								
 						</div>
 					</div>
 				</div>

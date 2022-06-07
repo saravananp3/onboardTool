@@ -46,7 +46,7 @@ public class IntakeOpportunityService {
 				jsonObject.addProperty("Value", rs.getString("value"));
 				
 				jsonArray.add(jsonObject);
-				
+				System.out.println( rs.getString("mandatory"));
 			}
 		}
 		catch(Exception e) {
@@ -99,7 +99,7 @@ public class IntakeOpportunityService {
 			}
 			return max_seq_num;
 	}
-	
+
 	public static JsonObject IntakeOpportunityEditService(String label_name, int sequencenumber,String id) {
 		JsonObject jsonobj = new JsonObject();
 		try {
@@ -115,6 +115,7 @@ public class IntakeOpportunityService {
 			}
 
 			String update_query = "update Opportunity_Info set label_name =? where id = ? and seq_no=?;";
+			System.out.println("1");
 			PreparedStatement preparedStmt1 = connection.prepareStatement(update_query);
 			preparedStmt1.setString(1, label_name);
 			preparedStmt1.setString(2, id);
@@ -297,7 +298,14 @@ public class IntakeOpportunityService {
 		}
 		 return value; 
 	}
-	public static JsonArray IntakeDetailsOpportunityAddTemplateFields1(int[] selected_index,String id) {
+	public static JsonArray IntakeDetailsOpportunityAddTemplateFields1(int[] selected_index,String id,String templateMandatory) {
+		
+		System.out.println(selected_index[0]);
+		System.out.println(selected_index[1]);
+		System.out.println(selected_index[2]);
+
+		System.out.println("id " +id);
+		   
 	      JsonArray jsonArray = new JsonArray();
 	      try
 	      {
@@ -421,7 +429,7 @@ public class IntakeOpportunityService {
 	        			  String label_name = rs4.getString(5); 
 	        			  String column_name = rs4.getString(6); 
 	        			  String type = rs4.getString(7); 
-	        			  String mandatory = rs4.getString(8);
+	        			  String mandatory = templateMandatory;
 	        			  String value = rs4.getString(9);
 	        			  String Opportunity_InsertQuery ="insert into Opportunity_Info (seq_no, id,  prj_name, app_name, options, label_name, column_name, type, mandatory, value) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	        		  
@@ -549,6 +557,7 @@ public class IntakeOpportunityService {
 			if(rs.next())
 			{
 				String UpdateQuery = "update opportunity_info set value=? where id =? and column_name =?";
+				System.out.println("2");
 				PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
 				st1.setString(1, value);
 		        st1.setString(2, id);
@@ -610,6 +619,7 @@ public class IntakeOpportunityService {
       	    		  {
       	    			String updateColumnName = startStr+seqnum;
       	    			String UpdateQuery = "Update Opportunity_Info set column_name =? where id = ? and seq_no=?;";  
+      	    			System.out.println("3");
       	    			PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
       					st1.setString(1, updateColumnName);
       			        st1.setString(2, ID);
@@ -636,6 +646,7 @@ public class IntakeOpportunityService {
     	    		  {
     	    			String updateColumnName = startStr+seqnum;
     	    			String UpdateQuery = "Update Opportunity_Info_Details set column_name =? where id = ? and seq_no=?;";  
+    	    			System.out.println("4");
     	    			PreparedStatement st1 = connection.prepareStatement(UpdateQuery);
     					st1.setString(1, updateColumnName);
     			        st1.setString(2, ID);
@@ -662,6 +673,7 @@ public class IntakeOpportunityService {
 			    connection = (Connection) con.getConnection();
 				String TriagecolumnName = getTriageColumnName(name);
 				String UpdateQuery = "update Triage_info set value=? where id = ? and column_name=?;";
+				System.out.println("5");
 				PreparedStatement st = connection.prepareStatement(UpdateQuery);
 					st.setString(1, value);
 			        st.setString(2, id);
