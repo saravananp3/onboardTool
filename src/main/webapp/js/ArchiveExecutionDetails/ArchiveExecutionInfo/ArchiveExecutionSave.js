@@ -345,9 +345,9 @@ if(!checkPrevParent||!checkPrevChild)
         		if(fieldName != 'colorCode'&&fieldName!="")
         		$("."+fieldName).eq(seqNo-1).val(value);
 	        		SaveInfoNotification(seqNo, columnName, value);
-	        		if(columnName!='completion'){
+	        		/*if(columnName!='completion'){*/
 	        		notification("success","changed field saved successfully.","Note:");
-	        	}
+	        	/*}*/
         		}
         		else
         			notification("error","error while saving the chnaged field.","Error:");

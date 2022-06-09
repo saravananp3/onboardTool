@@ -70,6 +70,7 @@ $(document).ready(function()
     $(document).on('click','.up',function()
         {
             var index  = $(this).index('.up');
+            console.log("INDEXX",index);
             var statusIndex = $(this).index('.parentUp');
             var classArr = $('.circle').eq(index).attr('class').split(' ');
             var Progressclass = classArr[1].substring(1);
@@ -83,6 +84,55 @@ $(document).ready(function()
             fieldName = "";
             saveFunction(seqNo, columnName, value1);
            statusColor(parseInt(value1),statusIndex);
+        });
+      
+      $(document).on('dblclick','.percentage',function()
+        {
+	var s=$(this).attr("id");
+	
+	//ppperc_28
+	var ss = s.split('pp')[1];
+	var sss = "p"+ss;
+	$("#"+sss+"").hide();
+	$("#"+ss+"").show();
+	$('.visibleBtn').hide();
+	console.log(ss);
+	console.log(sss);
+	
+
+});
+     
+      
+
+     
+ $(document).on('keypress','.per',function(e)
+        {
+	console.log(e)
+	if(e.charCode==13){
+			var index  = $(this).index('.per');
+			var ids=$(this).attr("id");
+			var ss = ids.split('_')[1];
+			var f="#p"+ids;
+			var g="#ppp"+ids;
+			console.log("ID : ",f);
+            console.log("INDEXX",ss);
+            var statusIndex =g;
+            console.log("Status Index",statusIndex);
+            var classArr = $("#p"+ids+"").attr('class').split(' ');
+            var Progressclass = classArr[1].substring(1);
+            var value=$(this).val();
+            var value1=(value>=100)?"100":value;
+            $("#pp"+ids+"").html(value1+"%");
+            var progress = classArr[0]+" "+"p"+(value1)+" "+classArr[2]+" "+classArr[3];
+            $("#p"+ids+"").attr('class',progress);
+            var seqNo = parseInt(ss);
+            var columnName = "completion";
+            fieldName = "";
+            saveFunction(seqNo, columnName, value1);
+           statusColor1(parseInt(value1),statusIndex);
+           $("#p"+ids+"").show();
+           $("#"+ids+"").hide();
+           }
         });
             $(document).on('click','.down',function()
                 {
@@ -99,6 +149,7 @@ $(document).ready(function()
                    var columnName = "completion";
                    fieldName = "";
                    saveFunction(seqNo, columnName, value1);
+                   console.log("VALUE 1 : ",parseInt(value1))
                statusColor(parseInt(value1),statusIndex);
                 });
       function progressPercentage(percentClass)
@@ -106,6 +157,20 @@ $(document).ready(function()
               var perc = parseInt(percentClass.substring(0));
               return perc;
           }
+          
+          function statusColor1(progress,statusIndex){
+          var colorClass = "";
+          console.log(statusIndex);
+          if(progress<=25)
+              colorClass = "statusRed statusCode colorCode";
+          else if(progress<=75 && progress>25)
+              colorClass = "statusOrange statusCode colorCode";
+          else if(progress>75)
+              colorClass = "statusGreen statusCode colorCode";
+           console.log()
+           $(statusIndex).attr('class',colorClass);
+      }
+          
       function statusColor(progress,index){
           var colorClass = "";
           if(progress<=25)
@@ -126,7 +191,7 @@ function appendRowFunction(data){
     var collapse = "";
     var checkIndex = false;
     var i=0;
-   
+  
     $.each(data, function(key, value){
 	console.log("INDEX UI",i);
         if(checkIndex){
@@ -152,8 +217,9 @@ function appendRowFunction(data){
         var status1=arcstatuscolor(completion);
         var lvlflag=levlflag(level);
        var t=taskId.replaceAll('.','_');
+       //var s1=s(taskId);
        console.log("T VALUE",t);
-      
+     // console.log("S1 VALUE",s1);
        var t1=t.slice(0,3);
        console.log(t1);
        collapse1="collapse1"+t1;
@@ -184,8 +250,9 @@ function appendRowFunction(data){
                   "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control actEnd' placeholder='mm/dd/yyyy' value='"+actEnd+"' disabled/></td>"+
                   "<td style='text-align:center;vertical-align: middle;'>"+
                   "<div class='clearfix completion'>"+
-                  "<div class='c100 p"+completion+" small circle'>"+
-                  "<span class='percentage' >"+completion+"%</span>"+
+             "<input type='text' style='display:none;width:40px; height:40px;'class='per pro' id='perc_"+i+"'value="+completion+">"+
+           "<div class='c100 p"+completion+" small circle' id='pperc_"+i+"'>"+
+           "<span class='percentage' id='ppperc_"+i+"'>"+completion+" %</span>"+
                   "<div class='slice'>"+
                   "<div class='bar'></div>"+
                  "<div class='fill'></div>"+
@@ -203,7 +270,7 @@ function appendRowFunction(data){
                  "</div>"+
                   "</td>"+
                   "<td style='text-align:center;vertical-align: middle;'>"+
-                  "<span class='"+arcstatuscolor(completion)+" statusCode colorCode'></span>"+
+                  "<span class='"+arcstatuscolor(completion)+" statusCode colorCode' id='pppperc_"+i+"'></span>"+
                   "</td>"+
                   "<td style='text-align:center;vertical-align: middle;'><i class='fas fa-comment-alt fa-2x remarksIcon' style='color:#87CEEB;' role='button' ></i><input type='hidden' class ='remark changeText' value='"+remark+"' disabled></td>"+
                   "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
@@ -244,9 +311,10 @@ function appendRowFunction(data){
               "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actStart' placeholder='mm/dd/yyyy' value='"+actStart+"' maxlength='0' id='act_srt"+t+"'/></td>"+
               "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actEnd' placeholder='mm/dd/yyyy' value='"+actEnd+"' maxlength='0' id='act_end"+t+"'/></td>"+
               "<td style='text-align:center;vertical-align: middle;'>"+
-             "<div class='clearfix completion'>"+
-          "<div class='c100 p"+completion+" small circle'>"+
-          "<span class='percentage'>"+completion+" %</span>"+
+            "<div class='clearfix completion'>"+
+             "<input type='text' style='display:none;width:40px; height:40px;'class='per pro' id='perc_"+i+"'value="+completion+">"+
+           "<div class='c100 p"+completion+" small circle' id='pperc_"+i+"'>"+
+           "<span class='percentage' id='ppperc_"+i+"'>"+completion+" %</span>"+
           "<div class='slice'>"+
          "<div class='bar'></div>"+
         "<div class='fill'></div>"+
@@ -254,16 +322,18 @@ function appendRowFunction(data){
         "</div>"+
         "<div class='visibleBtn arrow'>"+
         "<div>"+
-        "<i style='vertical-align:top;position:relative;' role ='button' class='triangle up'></i>"+
+        "<i style='vertical-align:top;position:relative;' role ='button' class='triangle up parentUp'></i>"+
         "</div>"+
         "<br/>"+
         "<div>"+
-        "<i style='vertical-align:bottom;position:relative;' role='button' class='triangle down'></i>"+
+        "<i style='vertical-align:bottom;position:relative;' role='button' class='triangle down parentDown'></i>"+
         "</div>"+
         "</div>"+
         "</div>"+
           "</td>"+
-              "<td style='text-align:center;vertical-align: middle;'><span class='colorCode' ></span></td>"+
+          "<td style='text-align:center;vertical-align: middle;'>"+
+              "<span class='"+arcstatuscolor(completion)+" statusCode colorCode' id='pppperc_"+i+"'></span>"+
+              "</td>"+ 
               "<td style='text-align:center;vertical-align: middle;'><i class='fas fa-comment-alt fa-2x remarksIcon' style='color:#87CEEB;' role='button'></i><input type='hidden' class ='remark changeText' value='"+remark+"'></td>"+
           "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
           "<ul class='dropdown-menu'>"+
@@ -302,25 +372,29 @@ function appendRowFunction(data){
               "<td style='text-align:center;vertical-align: middle;'><input type='text' Class='form-control datepicker1 actEnd' placeholder='mm/dd/yyyy' value='"+actEnd+"' maxlength='0' id='act_end"+t+"'/></td>"+
               "<td style='text-align:center;vertical-align: middle;'>"+
              "<div class='clearfix completion'>"+
-          "<div class='c100 p"+completion+" small circle'>"+
-          "<span class='percentage'>"+completion+" %</span>"+
+             "<input type='text' style='display:none;width:40px; height:40px;'class='per pro' id='perc_"+i+"'value="+completion+">"+
+           "<div class='c100 p"+completion+" small circle' id='pperc_"+i+"'>"+
+           "<span class='percentage' id='ppperc_"+i+"'>"+completion+" %</span>"+
           "<div class='slice'>"+
          "<div class='bar'></div>"+
         "<div class='fill'></div>"+
         "</div>"+
         "</div>"+
+        
         "<div class='visibleBtn arrow'>"+
         "<div>"+
-        "<i style='vertical-align:top;position:relative;' role ='button' class='triangle up'></i>"+
+        "<i style='vertical-align:top;position:relative;' role ='button' class='triangle up parentUp'></i>"+
         "</div>"+
         "<br/>"+
         "<div>"+
-        "<i style='vertical-align:bottom;position:relative;' role='button' class='triangle down'></i>"+
+        "<i style='vertical-align:bottom;position:relative;' role='button' class='triangle down parentDown'></i>"+
         "</div>"+
         "</div>"+
         "</div>"+
           "</td>"+
-              "<td style='text-align:center;vertical-align: middle;'><span class='colorCode' ></span></td>"+
+              "<td style='text-align:center;vertical-align: middle;'>"+
+              "<span class='"+arcstatuscolor(completion)+" statusCode colorCode' id='pppperc_"+i+"'></span>"+
+              "</td>"+ 
               "<td style='text-align:center;vertical-align: middle;'><i class='fas fa-comment-alt fa-2x remarksIcon' style='color:#87CEEB;' role='button'></i><input type='hidden' class ='remark changeText' value='"+remark+"'></td>"+
           "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
           "<ul class='dropdown-menu'>"+
@@ -351,6 +425,7 @@ function appendRowFunction(data){
    
     });
   getData();
+
 }
 function Options(optionlist,value)
 {
@@ -408,6 +483,13 @@ function levlflag(level){
 	return displayflag;
 }
 
+function s(taskId)
+{
+	var t=taskId;
+	console.log("Welcome",t);
+}
+
+
 function getData(){
 	var m=[];
 	$("#ArchiveExecutionList tr").each(function(index, value){
@@ -454,4 +536,6 @@ function getData(){
 	}
     
 	}
- 
+	
+	 
+		 
