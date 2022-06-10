@@ -146,6 +146,7 @@
     System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Registration JSP PAGE-----[INFO]"); %>
 <%@page import="java.sql.*" %>
 <%@ page import="onboard.DBconnection"%>
+<%@page import="org.owasp.encoder.Encode" %>
 <%
     HttpSession ses = request.getSession();
     String role = (String) ses.getAttribute("My_Roles");
@@ -509,7 +510,7 @@
         var SecurityQuestion=$('#reg_qn').val();
         var SecurityAnswer=$('#reg_ans').val();
         <% while(rs.next()){ %>
-        if (uuname == "<%=rs.getString(1)%>") {
+        if (uuname == "<%=Encode.forHtml(rs.getString(1))%>") {
             window.alert("Project Name is already taken");
             window.location.href = 'Registration.jsp';
         }

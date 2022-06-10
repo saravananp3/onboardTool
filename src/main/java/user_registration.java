@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.owasp.encoder.Encode;
+
 import onboard.DBconnection;
 import onboard.encryption;
 
@@ -90,7 +92,7 @@ public class user_registration extends HttpServlet {
 	         
         
          connection.close();
-        response.sendRedirect("confirmation?email="+email);
+        response.sendRedirect(Encode.forJava("confirmation?email="+email));
       }
       catch (Exception e)
       {

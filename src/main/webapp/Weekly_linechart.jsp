@@ -13,6 +13,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
+		<%@page import="org.owasp.encoder.Encode" %>
 		<%
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
@@ -34,7 +35,7 @@
             	var uid;
             	 if(select_val=="none")
         		 {
-        		 uid="<%= details.getAttribute("username") %>";
+        		 uid="<%=details.getAttribute(Encode.forHtmlAttribute("username")) %>";
         		 }
         	 else
         		 {
@@ -131,7 +132,7 @@
  
  %>
  
-               <option value="<%=rs_name.getString(1) %>"> <%=rs_name.getString(1) %></option>
+               <option value="<%=Encode.forHtmlAttribute(rs_name.getString(1)) %>"> <%=Encode.forHtml(rs_name.getString(1)) %></option>
               
            
              <%} %>

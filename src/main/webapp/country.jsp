@@ -1,6 +1,6 @@
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection"%>
-
+<%@page import="org.owasp.encoder.Encode" %>
 
  <html>
       <head>  
@@ -44,7 +44,7 @@
  ResultSet rs = stmt.executeQuery("Select * from country");
  while(rs.next()){
      %>
-      <option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>  
+      <option value="<%=Encode.forHtml(rs.getString(1))%>"><%=Encode.forHtml(rs.getString(2))%></option>  
       <%
  }
      %>

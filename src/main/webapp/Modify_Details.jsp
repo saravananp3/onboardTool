@@ -1,3 +1,4 @@
+<%@page import="org.owasp.encoder.Encode" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -78,7 +79,7 @@
                     </button>
                 </div>
                 <!-- /.navbar-header -->
-                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%= project_name %>
+                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=Encode.forHtml(project_name) %>
                 </a>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -252,9 +253,14 @@
 
 
     $(document).ready(function () {
-        $('#userId').val(<%= request.getParameter("id") %>);
-        $('#userProject').val('<%= request.getParameter("project") %>');
-        $('#application').val('<%= request.getParameter("application") %>');
+        $('#userId').val(<%= Encode.forHtml(request.getParameter("id")) %>);
+        $('#userProject').val('<%= Encode.forHtml(request.getParameter("project")) %>');
+        $('#application').val('<%= Encode.forHtml(request.getParameter("application"))%>');
+        
+        $('#userId').val(<%= Encode.forHtmlAttribute(request.getParameter("id")) %>);
+        $('#userProject').val('<%= Encode.forHtmlAttribute(request.getParameter("project")) %>');
+        $('#application').val('<%= Encode.forHtmlAttribute(request.getParameter("application"))%>');
+        
         var id = $('#userId').val();
         $.ajax({
             url: 'ModifyDataRetrieve',

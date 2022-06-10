@@ -143,6 +143,7 @@ function checkk()
 		<%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
 		<%@page import="onboard.DBconnection"%>
+		<%@page import="org.owasp.encoder.Encode" %>
 		<%
 		DBconnection dBconnection=new DBconnection();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
@@ -191,7 +192,7 @@ int count=0;
                 			</button>
                 		</div>
                         <!-- /.navbar-header -->
-                         <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=prjname %></a>
+                         <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=Encode.forHtml(prjname)%></a>
 
                 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
                 			
@@ -200,7 +201,7 @@ int count=0;
        <%
                          String uname=(String)details.getAttribute("username");
                          String role=(String)details.getAttribute("role");%>                   
-	<li ><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
+	<li ><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=Encode.forHtml(role)%></span></a></li>
 		
 <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
@@ -298,15 +299,15 @@ s
                                       %>
                                      
                                       <tr>
-                                      <td><input class="act" style="width:170px;" type="text" name="role<%=i %>" value="<%= rs.getString(1) %>"></td>
-                                      <td><label class="switch"><input type="checkbox" id="slideradmin<%=i %>" onclick=chk("admin<%=i %>","slideradmin<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="admin<%=i %>" name="admin<%=i %>" value="<%= rs.getString(2) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
-                                      <td><label class="switch"><input type="checkbox" id="sliderapp_emp<%=i %>" onclick=chk("app_emp<%=i %>","sliderapp_emp<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="app_emp<%=i %>" name="app_emp<%=i %>" value="<%= rs.getString(3) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
-                                      <td><label class="switch"><input type="checkbox" id="sliderintake<%=i %>" onclick=chk("intake<%=i %>","sliderintake<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="intake<%=i %>" name="intake<%=i %>" value="<%= rs.getString(4) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
-                                      <td><label class="switch"><input type="checkbox" id="sliderarch_exe<%=i %>" onclick=chk("arch_exe<%=i %>","sliderarch_exe<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="arch_exe<%=i %>" name="arch_exe<%=i %>" value="<%= rs.getString(5) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
-                                      <td><label class="switch"><input type="checkbox" id="sliderdecomm<%=i %>" onclick=chk("decomm<%=i %>","sliderdecomm<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="decomm<%=i %>" name="decomm<%=i %>" value="<%= rs.getString(6) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
-                                      <td><label class="switch"><input type="checkbox" id="sliderprgm_gov<%=i %>" onclick=chk("prgm_gov<%=i %>","sliderprgm_gov<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="prgm_gov<%=i %>" name="prgm_gov<%=i %>" value="<%= rs.getString(7) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
-                                      <td><label class="switch"><input type="checkbox" id="sliderreport<%=i %>" onclick=chk("report<%=i %>","sliderreport<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="report<%=i %>" name="report<%=i %>" value="<%= rs.getString(8) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
-                                      <td><label class="switch"><input type="checkbox" id="sliderfinance<%=i %>" onclick=chk("finance<%=i %>","sliderfinance<%=i %>") ><span class="slider round"></span></label><input class="act" type="text" id="finance<%=i %>" name="finance<%=i %>" value="<%= rs.getString(9) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><input class="act" style="width:170px;" type="text" name="role<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(1)) %>"></td>
+                                      <td><label class="switch"><input type="checkbox" id="slideradmin<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("admin<%=Encode.forHtml(String.valueOf(i)) %>","slideradmin<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="admin<%=Encode.forHtml(String.valueOf(i)) %>" name="admin<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(2)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><label class="switch"><input type="checkbox" id="sliderapp_emp<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("app_emp<%=Encode.forHtml(String.valueOf(i)) %>","sliderapp_emp<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="app_emp<%=Encode.forHtml(String.valueOf(i)) %>" name="app_emp<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(3)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><label class="switch"><input type="checkbox" id="sliderintake<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("intake<%=Encode.forHtml(String.valueOf(i)) %>","sliderintake<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="intake<%=Encode.forHtml(String.valueOf(i)) %>" name="intake<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(4)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><label class="switch"><input type="checkbox" id="sliderarch_exe<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("arch_exe<%=Encode.forHtml(String.valueOf(i)) %>","sliderarch_exe<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="arch_exe<%=Encode.forHtml(String.valueOf(i)) %>" name="arch_exe<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(5)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><label class="switch"><input type="checkbox" id="sliderdecomm<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("decomm<%=Encode.forHtml(String.valueOf(i)) %>","sliderdecomm<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="decomm<%=Encode.forHtml(String.valueOf(i)) %>" name="decomm<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(6)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><label class="switch"><input type="checkbox" id="sliderprgm_gov<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("prgm_gov<%=Encode.forHtml(String.valueOf(i)) %>","sliderprgm_gov<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="prgm_gov<%=Encode.forHtml(String.valueOf(i)) %>" name="prgm_gov<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(7)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><label class="switch"><input type="checkbox" id="sliderreport<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("report<%=Encode.forHtml(String.valueOf(i)) %>","sliderreport<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="report<%=Encode.forHtml(String.valueOf(i)) %>" name="report<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(8)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
+                                      <td><label class="switch"><input type="checkbox" id="sliderfinance<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("finance<%=Encode.forHtml(String.valueOf(i)) %>","sliderfinance<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="finance<%=Encode.forHtml(String.valueOf(i)) %>" name="finance<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtml(rs.getString(9)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
                                       </tr> 
                                       <%
                                       i++;

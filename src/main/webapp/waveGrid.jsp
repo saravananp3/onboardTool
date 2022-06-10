@@ -347,7 +347,7 @@ transition: width 2s, height 2s, transform 2s;
     <%@page import="java.util.Date" %>
     <%@page import="java.util.Calendar" %>
     <%@ page import="onboard.DBconnection"%>
-
+	<%@page import="org.owasp.encoder.Encode" %>
     
     <%
          DBconnection dBconnection = new DBconnection();
@@ -450,7 +450,7 @@ transition: width 2s, height 2s, transform 2s;
                         <div class="sub-title" style="color: #fff">
                             <a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
                                 class="glyphicon glyphicon-home"></span> Home</a> >>
-                            <%=waveName%>
+                            <%=Encode.forHtml(waveName)%>
                         </div>
                        </div>
                     </div>

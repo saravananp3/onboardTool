@@ -153,7 +153,7 @@
 <%@page language="java" %>
 <%@page import="java.sql.*" %>
 <%@ page import="onboard.DBconnection" %>
-
+<%@page import="org.owasp.encoder.Encode" %>
 
 <%
     try {
@@ -192,7 +192,7 @@
                     <!-- /.navbar-header -->
 
                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Decom3Sixty
-                        Tool-<%=Opportunityname%>
+                        Tool-<%=Encode.forHtml(Opportunityname)%>
                     </a>
                     
                     <div class="collapse navbar-collapse" id="navbar-collapse-1" style="background-color:#fff ">
@@ -201,13 +201,13 @@
                         <ul class="nav navbar-nav navbar-right">
                             <ul class="nav navbar-nav navbar-right">
                             
-                            <a class="navbar-brand" href="Project_List.jsp" id="sitetitle2">OPPORTUNITY NAME -<%=Opportunityname%>
+                            <a class="navbar-brand" href="Project_List.jsp" id="sitetitle2">OPPORTUNITY NAME -<%=Encode.forHtml(Opportunityname)%>
                             <li>
                                 <%
                                     String uname = (String) details.getAttribute("username");
                                     String role = (String) details.getAttribute("role");%>
-                                <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span
-                                        id='nav_role'><%=role%></span></a></li>
+                                <li><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%>&nbsp;</span>logged in as &nbsp;<span
+                                        id='nav_role'><%=Encode.forHtml(role)%></span></a></li>
                                 <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                                 </li>
 

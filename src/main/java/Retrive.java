@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.owasp.encoder.Encode;
+
+import onboard.DBconnection;
+
 import java.sql.Statement;
 
 /**
@@ -45,9 +49,8 @@ public class Retrive extends HttpServlet {
         response.setContentType("text/html");
         out.println("<html><body>");
         try {
-            Class.forName("org.gjt.mm.mysql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "root");
-            // Here dsnname- mydsn,user id- system(for oracle 10g),password is pintu.
+        	DBconnection dBconnection = new DBconnection();
+	        Connection con = (Connection) dBconnection.getConnection();
             Statement stmt = (Statement) con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from appdetails");
            
@@ -55,7 +58,7 @@ public class Retrive extends HttpServlet {
             while (rs.next()) {
                 String n = rs.getString("appname");
                 String nm = rs.getString("ref");
-                out.println("<textbox" +n  ); 
+                out.println("<textbox" +Encode.forHtml(n)); 
                 out.print(">");
             }
            

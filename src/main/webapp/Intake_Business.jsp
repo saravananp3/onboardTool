@@ -158,6 +158,7 @@
 <%@page import="java.util.Date" %>
 <%@page import="java.util.Calendar" %>
 <%@ page import="java.util.*" %>
+<%@page import="org.owasp.encoder.Encode" %>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -226,7 +227,7 @@
                     <!-- /.navbar-header -->
 
                        <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Decom3Sixty
-                        Tool-<%=Opportunityname%>
+                        Tool-<%=Encode.forHtml(Opportunityname)%>
                     </a>
                     
                   
@@ -234,14 +235,14 @@
 
                         <!-- /.nav navbar-nav -->
                         <ul class="nav navbar-nav navbar-right">
-                        <a class="navbar-brand" href="Project_List.jsp" id="sitetitle2">OPPORTUNITY NAME -<%=Opportunityname%>
+                        <a class="navbar-brand" href="Project_List.jsp" id="sitetitle2">OPPORTUNITY NAME -<%=Encode.forHtml(Opportunityname)%>
                          
                         <li>
                             <%
                          String uname=(String)details.getAttribute("username");
                          String roles1=(String)details.getAttribute("role");%>
-                            <li><a href="#"><span id="nav_userid"><%=username%>&nbsp;</span>logged in as &nbsp;<span
-                                    id='nav_role'><%=roles%></span></a></li>
+                            <li><a href="#"><span id="nav_userid"><%=Encode.forHtml(username)%>&nbsp;</span>logged in as &nbsp;<span
+                                    id='nav_role'><%=Encode.forHtml(roles1)%></span></a></li>
 
                             <li><a href="logout.jsp" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                             </li>

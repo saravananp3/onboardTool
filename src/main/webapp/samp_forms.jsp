@@ -60,6 +60,7 @@ document.getElementById("demo"+q).innerHTML=s;
    </script>
 <%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
+		<%@page import="org.owasp.encoder.Encode" %>
 		<%
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
@@ -85,10 +86,10 @@ for(int i=1;i<=n;i++){
 </div>
  </div>
  </div><br/>
-         <input type="hidden" id="project_name" name="project_name" value="<%=ProjectName%>">
+         <input type="hidden" id="project_name" name="project_name" value="<%=Encode.forHtmlAttribute(ProjectName)%>">
                     
-                       <input type="text" id="appln_name" name="appln_name" value="<%= AppName %>" style="display:none;"> 
-                       <input type="text" id="servlet_name" name="servlet_name" value="<%= servlet %>" style="display:none;">      
+                       <input type="text" id="appln_name" name="appln_name" value="<%= Encode.forHtmlAttribute(AppName) %>" style="display:none;"> 
+                       <input type="text" id="servlet_name" name="servlet_name" value="<%= Encode.forHtmlAttribute(servlet) %>" style="display:none;">      
                               
            
  <div class="row">

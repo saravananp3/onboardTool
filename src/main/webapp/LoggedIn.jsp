@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
+<%@page import="org.owasp.encoder.Encode" %>
 <% String user_fname = request.getParameter("user_fname"); %>
 <%
 
@@ -28,9 +29,9 @@
     %>
        <form class=" vldauth" 
 action="Login" method="POST" name="loginForm">
-   <input type="text" id="uname" class="fadeIn second" name="usr" placeholder="Username" value="<%=user_fname%>">
-            <input type="password" id="pwd" class="fadeIn third" name="pwd" placeholder="Password" value="<%=user_lname%>">
-             <input type="password" id="u_email" class="fadeIn third" name="u_email" placeholder="Password" value="<%=user_group%>">
+   <input type="text" id="uname" class="fadeIn second" name="usr" placeholder="Username" value="<%=Encode.forHtmlAttribute(user_fname)%>">
+            <input type="password" id="pwd" class="fadeIn third" name="pwd" placeholder="Password" value="<%=Encode.forHtmlAttribute(user_lname)%>">
+             <input type="password" id="u_email" class="fadeIn third" name="u_email" placeholder="Password" value="<%=Encode.forHtmlAttribute(user_group)%>">
     <input type="submit" name="submitInput">
     
 <script>
@@ -44,10 +45,10 @@ action="Login" method="POST" name="loginForm">
 	--%>
 	
 	<h2>SAML Logged User is</h2>
-	<h3>E-Mail : <%=user_email%></h3>
-	<h3>Firstname : <%=user_fname%></h3>
-	<h3>Lastname : <%=user_lname%></h3>
-	<h3>Group : <%=user_group%></h3>
+	<h3>E-Mail : <%=Encode.forHtml(user_email)%></h3>
+	<h3>Firstname : <%=Encode.forHtml(user_fname)%></h3>
+	<h3>Lastname : <%=Encode.forHtml(user_lname)%></h3>
+	<h3>Group : <%=Encode.forHtml(user_group)%></h3>
 	
 	
 </html>

@@ -6,6 +6,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+import org.owasp.encoder.Encode;
 
 import onboard.DBconnection;
 
@@ -77,7 +78,7 @@ public class Project extends HttpServlet {
 				     
 
 				String projectname = request.getParameter("projectname");
-				 logger.info("created project "+projectname); 
+				 logger.info("created project "+Encode.forJava(projectname)); 
 				 
 		        String descr = request.getParameter("descr");
 		        String appno = request.getParameter("appno");

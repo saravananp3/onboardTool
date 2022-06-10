@@ -4,6 +4,7 @@
 <%@ page import="java.io.*"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import="onboard.DBconnection"%>
+<%@page import="org.owasp.encoder.Encode" %>
 <%String File = request.getParameter("File_Name");%>
 
  <%
@@ -37,11 +38,11 @@ HttpSession details = request.getSession();
 	            }              
 	             
 	            // set content properties and header attributes for the response
-	            response.setContentType(mimeType);
+	            response.setContentType(Encode.forJava(mimeType));
 	            response.setContentLength(fileLength);
 	            String headerKey = "Content-Disposition";
 	            String headerValue = String.format("attachment; filename=\"%s\"", fileName);
-	            response.setHeader(headerKey, headerValue);
+	            response.setHeader(Encode.forJava(headerKey), Encode.forJava(headerValue));
 
 	            // writes the file to the client
 	            OutputStream outStream = response.getOutputStream();

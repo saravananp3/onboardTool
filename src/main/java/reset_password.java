@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.owasp.encoder.Encode;
+
 /**
  * Servlet implementation class reset_password
  */
@@ -64,10 +66,10 @@ public class reset_password extends HttpServlet {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("decom3sixtytool@gmail.com"));
+            message.setFrom(new InternetAddress(Encode.forJava("decom3sixtytool@gmail.com")));
 
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(email));
+                    InternetAddress.parse(Encode.forJava(email)));
             message.setSubject("Recovery Mail");
             message.setText("http://localhost:8090/onboardTool/reset_pass.jsp");
             //message.setText("http://18.217.95.127:8080/Decomm_Manager/reset_pass.jsp");

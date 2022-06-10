@@ -23,6 +23,7 @@
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Fetch JSP PAGE-----[INFO]");  %>
  <%@page import="java.sql.*"%>
  <%@ page import="onboard.DBconnection"%>
+ <%@page import="org.owasp.encoder.Encode" %>
 <%
 DBconnection dBconnection = new DBconnection();
 Connection connection = (Connection) dBconnection.getConnection();
@@ -105,11 +106,11 @@ while(rs4.next())
 {
 %>
 <div class="row">
-    <div class="col-sm-2"><%=rs4.getString(1) %></div>
-    <div class="col-sm-2"><%=rs4.getString(2) %></div>
-    <div class="col-sm-2"><%=rs4.getString(3) %></div>
-    <div class="col-sm-2"><%=rs4.getString(4) %></div>
-    <div class="col-sm-2"><%=rs4.getString(5) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(1)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(2)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(3)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(4)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(5)) %></div>
 </div>
 <%
 }

@@ -494,6 +494,7 @@ background:#1565c0 important;
 	<%@page import="java.util.Date"%>
 	<%@page import="java.sql.*"%>
 	<%@ page import="onboard.DBconnection"%>
+	<%@page import="org.owasp.encoder.Encode" %>
 	<%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -611,7 +612,7 @@ background:#1565c0 important;
 						<li><a class="dropdown-item" href="#" id="textAlign"><i
 								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
 								in as <br />
-							<b><%=userName%></b></a></li>
+							<b><%=Encode.forHtml(userName)%></b></a></li>
 						<hr style="margin-left: 0px;" />
 						<li><a class="dropdown-item li-align" href="#" id="textAlign"
 							onclick="location.href='Login.jsp';"><i

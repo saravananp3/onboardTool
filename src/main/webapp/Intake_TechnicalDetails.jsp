@@ -157,6 +157,7 @@
 <%@page import="java.sql.*" %>
 <%@ page import="onboard.DBconnection" %>
 <%@ page import="java.util.*" %>
+<%@page import="org.owasp.encoder.Encode" %>
 <%
 
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -218,20 +219,20 @@
                     <!-- /.navbar-header -->
 
                     <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Decom3Sixty
-                        Tool-<%=Opportunityname%>
+                        Tool-<%=Encode.forHtml(Opportunityname)%>
                     </a>
                                     
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
                         <!-- /.nav navbar-nav -->
                         <ul class="nav navbar-nav navbar-right">
-                        <a class="navbar-brand" href="Project_List.jsp" id="sitetitle2">OPPORTUNITY NAME -<%=Opportunityname%>
+                        <a class="navbar-brand" href="Project_List.jsp" id="sitetitle2">OPPORTUNITY NAME -<%=Encode.forHtml(Opportunityname)%>
                          
                             <li><%
                                 String uid = (String) details.getAttribute("username");
                                 String role = (String) details.getAttribute("role");%>
-                                <p><span id="nav_userid"><%=uid%>&nbsp;logged in as &nbsp;</span><span
-                                        id='nav_role'><%=role%></span></p>
+                                <p><span id="nav_userid"><%=Encode.forHtml(uid)%>&nbsp;logged in as &nbsp;</span><span
+                                        id='nav_role'><%=Encode.forHtml(role)%></span></p>
                             </li>
                             <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                             </li>

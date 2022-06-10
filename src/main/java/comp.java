@@ -14,6 +14,10 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+import org.owasp.encoder.Encode;
+
+import onboard.DBconnection;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -72,7 +76,7 @@ public class comp extends HttpServlet {
 					MDC.put("USERID", userid);
 					MDC.put("USERROLE", u_role);
 					String projectname=request.getParameter("project_name");
-					logger.info("modified project "+projectname); 
+					logger.info("modified project "+Encode.forJava(projectname)); 
 		
 				String datatype_char = request.getParameter("datatype_char");
 		        String extracting_process = request.getParameter("extracting_process");
@@ -109,10 +113,8 @@ public class comp extends HttpServlet {
 		        try
 		        {
 		          // create a mysql database connection
-		          String myDriver = "org.gjt.mm.mysql.Driver";
-		          String myUrl = "jdbc:mysql://localhost:3306/decom3sixtytool";
-		          Class.forName(myDriver);
-		          Connection conn = DriverManager.getConnection(myUrl, "root", "root");
+		        	DBconnection dBconnection = new DBconnection();
+			        Connection conn = (Connection) dBconnection.getConnection();
 		        
 		    
 		          

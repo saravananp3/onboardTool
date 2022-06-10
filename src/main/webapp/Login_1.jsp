@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %>
+<%@page import="org.owasp.encoder.Encode" %>
 <%-- <% String user_fname = request.getParameter("user_fname"); %> --%>
 <%
 %>
@@ -22,11 +23,11 @@
     %>
        <form class=" vldauth" 
 action="Login_1" method="POST" name="loginForm">
-			   <input type="hidden" id="user_email" class="fadeIn second" name="user_email" placeholder="User Email" value="<%=user_email%>">
-			   <input type="hidden" id="user_fname" class="fadeIn second" name="user_fname" placeholder="User FirstName" value="<%=user_fname%>">
-			   <input type="hidden" id="user_lname" class="fadeIn second" name="user_lname" placeholder="User LastName" value="<%=user_lname%>">
-           	   <input type="hidden" id="username" class="fadeIn third" name="username" placeholder="Username" value="<%=username%>">
-               <input type="hidden" id="user_group" class="fadeIn third" name="user_group" placeholder="User Email" value="<%=user_group%>">
+			   <input type="hidden" id="user_email" class="fadeIn second" name="user_email" placeholder="User Email" value="<%=Encode.forHtmlAttribute(user_email)%>">
+			   <input type="hidden" id="user_fname" class="fadeIn second" name="user_fname" placeholder="User FirstName" value="<%=Encode.forHtmlAttribute(user_fname)%>">
+			   <input type="hidden" id="user_lname" class="fadeIn second" name="user_lname" placeholder="User LastName" value="<%=Encode.forHtmlAttribute(user_lname)%>">
+           	   <input type="hidden" id="username" class="fadeIn third" name="username" placeholder="Username" value="<%=Encode.forHtmlAttribute(username)%>">
+               <input type="hidden" id="user_group" class="fadeIn third" name="user_group" placeholder="User Email" value="<%=Encode.forHtmlAttribute(user_group)%>">
     			
         <!-- <input type="submit" name="submitInput"> -->
 <script>
