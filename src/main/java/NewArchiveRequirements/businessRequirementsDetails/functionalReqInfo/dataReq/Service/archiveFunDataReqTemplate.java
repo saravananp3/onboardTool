@@ -55,7 +55,9 @@ public void archiveDataReqTemplate() {
 		
 			}
 			
-		}	
+		}
+		st.close();
+		rs.close();
 	}
 	catch(Exception e) {
 		e.printStackTrace();
