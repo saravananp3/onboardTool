@@ -627,14 +627,18 @@ background:#1565c0 important;
 	</nav>
 
 	<%
+	
 	connectCon.close();
 	visit_start.close();
+	visit_reset.close();
+	
 	}
 
 	catch (Exception e) {
 	e.printStackTrace();
 	}
 	%>
+
 
 <%-- <%@include file="Nav-Bar.jspf"%> --%>
 	<nav class="nav nav-height-70 nav-font" id="bg-color">

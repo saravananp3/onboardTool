@@ -655,6 +655,7 @@ background:#1565c0 important;
 <%
 	connectCon.close();
 	visit_start.close();
+	visit_reset.close();
 	}
 
 	catch (Exception e) {
