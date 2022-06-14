@@ -1,6 +1,7 @@
 package applicationList.servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,8 +11,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import applicationList.service.PlanAndPrioritySaveService;
+@WebServlet("/PlanAndPrioritySaveServlet")
 public class PlanAndPrioritySaveServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,6 +26,7 @@ public class PlanAndPrioritySaveServlet extends HttpServlet {
         JsonObject jsonObj = new JsonObject();
         try
         {
+        	System.out.println("appName : " + jsonArray + " appId : " +" oppId : " +OppId);
             PlanAndPrioritySaveService service = new PlanAndPrioritySaveService(OppId,id, jsonArray);
             jsonObj=service.planAndPrioritySave();
             service = null;

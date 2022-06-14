@@ -273,6 +273,9 @@
         String query98 = "CREATE TABLE IF NOT EXISTS `license` (`id` int(11) NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`),`license_info` longtext, `last_update_date` VARCHAR(255));";
         statement.executeUpdate(query98);
         
+        String query99 = "CREATE TABLE IF NOT EXISTS `planAndPriorityInfo` (`rowId` varchar(255),`app_Id` varchar(255), `waveId` VARCHAR(255),`phaseId` VARCHAR(255));";
+        statement.executeUpdate(query99);
+        
         
 %>
 <% } catch (Exception ex) {

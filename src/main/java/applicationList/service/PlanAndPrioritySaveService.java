@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -30,6 +34,7 @@ public class PlanAndPrioritySaveService {
         String existingWave = null;
         boolean isAvailable = false;
         String applistExisting=null;
+        Set<String> applistExist=new HashSet<String>();
         try {
             boolean statusFlag = false;
             for (int i = 0; i < jsonArray.size(); i++) {
@@ -38,9 +43,16 @@ public class PlanAndPrioritySaveService {
                 String phase = jsonObj.get("phase").getAsString();
                 String wave = jsonObj.get("wave").getAsString();
                 String appName = jsonObj.get("appName").getAsString();
+                String flag = jsonObj.get("flag").getAsString();
             //  String resource = jsonObj.get("resource").getAsString();
-                String fetchdetailsFromWave = "select * from decom3sixtytool.Governance_Info;";
+                if(flag.equals("U")) {
+                boolean existingStatus=removeAppFromWave(appName,wave);
+                }
+                if(flag.equals("S")) {
+                String fetchdetailsFromWave = "select * from decom3sixtytool.Governance_Info"
+                		+ " where column_name ='apps' and waveName=?;";
                 PreparedStatement pst2 = con.prepareStatement(fetchdetailsFromWave);
+                pst2.setString(1, wave);
                 ResultSet rs1 = pst2.executeQuery();
                 while (rs1.next()) {
                     if (rs1.getString("column_name").equals("apps")) {
@@ -51,14 +63,20 @@ public class PlanAndPrioritySaveService {
                                     isAvailable = true;
                                     existingWave = rs1.getString("value");
                                     continue;
+                                } if(app!="") {
+                                	applistExist.add(app);
                                 }
-                                applistExisting=String.join(",", app);
                             }
+
+                            applistExisting=String.join(",", applistExist);
                         }
                     }
                 }
+
+
                 rs1.close();
                 pst2.close();
+                
                 if(isAvailable) {
                 String UpdateQueryExisting = "update Governance_Info set value=?"
                         + " where column_name ='apps' and waveName=?";
@@ -68,7 +86,12 @@ public class PlanAndPrioritySaveService {
                 prestmt.setString(2, existingWave);
                 prestmt.execute();
                 }
-                String listWithNewApp=String.join(",",applistExisting, appName);
+                String listWithNewApp = null;
+                if(applistExisting != null) {
+                	listWithNewApp = String.join(",",applistExisting, appName);
+                } else {
+                	listWithNewApp = appName;
+                } if(!isAvailable) {
                 String UpdateQueryNew = "update Governance_Info set value=?"
                         + " where column_name ='apps' and waveName=?";
                 PreparedStatement prestmt = con.prepareStatement(UpdateQueryNew);
@@ -76,9 +99,13 @@ public class PlanAndPrioritySaveService {
                 prestmt.setString(1, listWithNewApp);
                 prestmt.setString(2, wave);
                 prestmt.execute();
+                }
+                applistExisting="";
+                }
                 String phaseId=getPhaseId(phase);
                 String waveId=getWaveId(wave);
-                updatePlanAndPriorityInfo(phaseId,waveId,rowId,OppId);
+                String appId=getAppId(appName);
+                updatePlanAndPriorityInfo(phaseId,waveId,rowId,appId);
                 statusFlag = true;
             }
             jsonObject.addProperty("SaveStatus", statusFlag);
@@ -86,6 +113,78 @@ public class PlanAndPrioritySaveService {
             e.printStackTrace();
         }
         return jsonObject;
+    }
+    public boolean removeAppFromWave(String appName,String wave) {
+    	boolean toReturn=false;
+    	boolean isFound=false;
+        String applistExisting="";
+        String listWithNewApp="";
+        Set<String> applistExist=new HashSet<String>();
+    	String existingWave="";
+    	String fetchdetailsFromWave = "select * from decom3sixtytool.Governance_Info;";
+        PreparedStatement pst2;
+		try {
+			pst2 = con.prepareStatement(fetchdetailsFromWave);
+		
+        ResultSet rs1 = pst2.executeQuery();
+        while (rs1.next()) {
+        	if (rs1.getString("column_name").equals("waveName")) {
+        		 existingWave = rs1.getString("waveName");
+        	}
+            if (rs1.getString("column_name").equals("apps")) {
+                if (rs1.getString("value").isEmpty() == false) {
+                    String[] apps = rs1.getString("value").split(",");
+                    for (String app : apps) {
+                    	isFound=false;
+                       
+                        if (app.equals(appName)) {
+                        	isFound=true;
+                        } if((!app.equals("")) && isFound==false) {
+                        	applistExist.add(app);
+                        }
+                    }
+                    if(!applistExist.isEmpty()) {
+                    applistExisting=String.join(",", applistExist);
+                    }
+                    
+                    if(existingWave.equals(wave))
+                    {
+                    	if(applistExisting != null) {
+                    		applistExist.add(appName);
+                        	listWithNewApp = String.join(",",applistExist);
+                        } else {
+                        	listWithNewApp = appName;
+                        }
+                    }
+                    	String UpdateQueryExisting = "update Governance_Info set value=?"
+                                + " where column_name ='apps' and waveName=?";
+                        PreparedStatement prestmt = con.prepareStatement(UpdateQueryExisting);
+                        // prestmt.setString(1, seq_no);
+                        if(existingWave.equals(wave)) {
+                        prestmt.setString(1, listWithNewApp);
+                        prestmt.setString(2, wave);
+                        }
+                        else
+                        {
+                        	 prestmt.setString(1, applistExisting);
+                             prestmt.setString(2, existingWave);
+                        }
+                        prestmt.execute();	
+                        applistExisting="";
+                        existingWave="";
+                        applistExist.clear();
+                        toReturn=true;
+                    }
+                }
+            
+            applistExisting="";
+        }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+    	return toReturn;
     }
     public String getPhaseId(String phasename) {
         String phaseId=null;
@@ -119,6 +218,24 @@ public class PlanAndPrioritySaveService {
         }
         return waveId;
     }
+    
+    public String getAppId(String appname) {
+        String appId=null;
+        try {
+        String selectQuery = "select distinct Id from decom3sixtytool.Opportunity_Info where column_name='appName' and value=?;";
+        PreparedStatement prestmt = con.prepareStatement(selectQuery);
+        prestmt.setString(1, appname);
+        ResultSet rs1 = prestmt.executeQuery();
+            while (rs1.next()) {
+                appId=rs1.getString("Id");
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return appId;
+    }
+    
     public void updatePlanAndPriorityInfo(String phaseId,String waveId,String rowId,String appId) {
         try {
         String selectQuery = "select * from decom3sixtytool.planAndPriorityInfo where app_Id=?;";
@@ -136,7 +253,7 @@ public class PlanAndPrioritySaveService {
             prestmt1.setString(2, waveId);
             prestmt1.setString(3, phaseId);
             //prestmt1.setString(4, resource);
-            prestmt1.setString(5, appId);
+            prestmt1.setString(4, appId);
             prestmt1.execute();
         }
         else
@@ -149,7 +266,7 @@ public class PlanAndPrioritySaveService {
             prestmt1.setString(2, waveId);
             prestmt1.setString(3, phaseId);
         //  prestmt1.setString(4, resource);
-            prestmt1.setString(5, appId);
+            prestmt1.setString(4, appId);
             prestmt1.execute();
         }
         } catch (SQLException e) {

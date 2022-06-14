@@ -111,16 +111,14 @@
 	<div class="card-container-5 card d3s-mt-50">
 		<div class="card-header d3s-pl-15" id="cd-header">
 			Applications List
-			<button id="appChange" class="btn btn-primary align-right"
-				style="margin-top: -4px;">Application Type</button>
-			<!--  <select class="form-select align-right" aria-label="Default select example" id="phase" style="padding: 0 0 0 0.75rem; width: 25%;">
-                <option  value="Applications with phase and wave">Applications with phase and wave</option>
-                <option value="Applications without phase and wave">Applications without phase and wave</option>
+			<select class="form-select align-right" aria-label="Default select example" id="appChange" style="padding: 0 0 0 0.35rem; width: 25%;">
+                <option  value="1">Applications without phase and wave</option>
+                <option value="2">Applications with phase and wave</option>
                 
-            </select> -->
+            </select>
 		</div>
 		<div class="card-body">
-			<div class="withPhase display" id="withPhase">
+			<div class="withPhase" id="withPhase">
 				<table class="table table-bordered table-responsive" id="appTable"
 					style="width: 100%; font-size: 12px;">
 					<thead>
@@ -156,7 +154,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="withoutPhase" id="withoutPhase">
+			<div class="withoutPhase display" id="withoutPhase">
 				<table class="table table-bordered table-responsive" id="example4"
 					style="width: 100%; font-size: 12px;">
 					<thead>
@@ -356,41 +354,18 @@
 			</div>
 		</div>
 	</div>
+	<div>
+		<input type="text" id="demo" style="display: none;">
+	</div>
+	
+	
 	<script>
-$("#appChange").on('click', function(e) {             
-	  $('#withoutPhase, #withPhase').toggleClass('display');
-	}); 
-
-/* $(document).ready(function() {
-    $("select").on('change', function() {
-        $(this).find("option:selected").each(function() {
-            var geeks = $(this).attr("value");
-            if (geeks) {
-                $("#withPhase").not("." + geeks).hide();
-                $("." + geeks).show();
-                alert("Radio button " + geeks + " is selected");
-            } else {
-                $("#withPhase").hide();
-                alert("Select an Element from Menu");
-            }
-
-        });
-    }).change(); */
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
+	$(document).ready(function(){
+		$("#appChange").on('change', function(e) {
+			 $('#withoutPhase, #withPhase').toggleClass('display');
+		});
+	});
+	</script>
 
 
 
@@ -408,6 +383,7 @@ $("#appChange").on('click', function(e) {
 
 	<script src="js/navigation/navigation.js"></script>
 	<script src="js/application_list/applicationList.js"></script>
+	<script src="js/application_list/applicationListIntakePreview.js"></script>
 
 	<!-- ========== Pagination ========== -->
 	<script src="js/paging/pagination.js"></script>
