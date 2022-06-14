@@ -85,6 +85,8 @@ public String generateRandomApprovalId() throws SQLException {
                 checkDuplicate = true;
             }   
         }
+        state.close();
+        result.close();
         return checkDuplicate;
     }
 }

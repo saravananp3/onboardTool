@@ -45,20 +45,23 @@ public class archiveFunctionDataRetrieveService {
 		return jsonArray;
 	}
 	
-	private void checkDataReqTempTable()
+	private void checkDataReqTempTable() throws SQLException
 	{
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null,rs1=null;
+		
 		try
 		{
 			String selectQuery = "select * from "+tableName+" where oppId = ? order by seq_no";
-			PreparedStatement st = con.prepareStatement(selectQuery);
+			st = con.prepareStatement(selectQuery);
 			st.setString(1, Id);
-			ResultSet rs = st.executeQuery();
+			rs = st.executeQuery();
 			
 			if(!rs.next())
 			{
 				String TempTable ="select * from "+tempTableName+";";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(TempTable);
+				st1 = con.prepareStatement(TempTable);
+				rs1 = st1.executeQuery();
 				while(rs1.next())
 				{
 				 String InsertQuery = "insert into "+tableName+" (seq_no, OppId, oppName, prjName, reqId, reqInScope, reqType, "+column+", additionInfo)"
@@ -80,7 +83,14 @@ public class archiveFunctionDataRetrieveService {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+						e.printStackTrace();
+		}
+		finally
+		{
+			st.close();
+			rs.close();
+			st1.close();
+			rs1.close();
 		}
 	}
 	
@@ -118,6 +128,8 @@ public class archiveFunctionDataRetrieveService {
                     jsonArray.add(jsonObj1);
                 }
 			}
+			st.close();
+			rs.close();
 		}
 		catch(Exception e)
 		{
