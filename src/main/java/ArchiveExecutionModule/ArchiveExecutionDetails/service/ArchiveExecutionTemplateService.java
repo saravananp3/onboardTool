@@ -15,11 +15,13 @@ DBconnection dBconnection =null;
         con = (Connection) dBconnection.getConnection();
         this.Id = Id;
     }
- public void archiveExecutionDefaultRecords() {
+ public void archiveExecutionDefaultRecords() throws SQLException {
+	 PreparedStatement st=null;
+	 ResultSet rs=null;
      try {
          String selectQuery = "select * from Archive_Execution_Template_Info";
-         Statement st = con.createStatement();
-         ResultSet rs = st.executeQuery(selectQuery);
+         st = con.prepareStatement(selectQuery);
+         rs = st.executeQuery();
          if(!rs.next()) {
              ArchiveExecutionTemplateDetails archiveExecTemp[] = new ArchiveExecutionTemplateDetails[63];
              archiveExecTemp[0] = new ArchiveExecutionTemplateDetails("1","1","Initiation & Setup - General","");
@@ -110,18 +112,24 @@ DBconnection dBconnection =null;
      catch(Exception e) {
          e.printStackTrace();
      }
+     finally {
+    	 st.close();
+    	 rs.close();
+     }
  }
- public void archiveTemplateToArchiveInfo() {
+ public void archiveTemplateToArchiveInfo() throws SQLException {
+	 PreparedStatement st=null,st1=null;
+	 ResultSet rs=null,rs1=null;
      try {
          String oppName = "";
          String QueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName' and Id = '"+Id+"';";
-         Statement st = con.createStatement();
-         ResultSet rs = st.executeQuery(QueryAppName);
+         st = con.prepareStatement(QueryAppName);
+         rs = st.executeQuery();
          if(rs.next())
              oppName = rs.getString("value");
          String SelectQuery = "select * from Archive_Execution_Template_Info order by seq_no";
-            Statement st1 = con.createStatement();
-            ResultSet rs1 = st1.executeQuery(SelectQuery);
+            st1 = con.prepareStatement(SelectQuery);
+            rs1 = st1.executeQuery();
             int number = 0, decimalNumber = 1;
             while(rs1.next()) {
                 //String taskId = generateTaskId();
@@ -161,6 +169,12 @@ DBconnection dBconnection =null;
      catch(Exception e) {
          e.printStackTrace();
      }
+     finally {
+    	 st.close();
+    	 rs.close();
+    	 st1.close();
+    	 rs1.close();
+     }
  }
  public String generateTaskId() throws SQLException {
         String uniqueID = "";
@@ -186,6 +200,8 @@ DBconnection dBconnection =null;
                 checkDuplicate = true;
             }   
         }
+        state.close();
+        result.close();
         return checkDuplicate;
     }
     protected void finalize() throws Throwable 
