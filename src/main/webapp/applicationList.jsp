@@ -193,9 +193,38 @@
 		<button type="button" class="btn btn-primary pull-right"
 			id="editpopup_btn" data-bs-toggle="modal" data-bs-target="#EditPopUp"
 			style="display: none;">Edit PopUp</button>
+		<button type="button" class="btn btn-primary pull-right"
+			id="deletepopup_btn" data-bs-toggle="modal"
+			data-bs-target="#DeletePopUp" style="display: none;">Delete
+			PopUp</button>
 	</div>
+	
+	<!-- Delete Row Pop Up  -->
+    <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Field</h5>
+       <button type="button" class="btn-close"
+            data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form name="DeleteForm">
+                <div class="modal-body">
+                    <p style="font-size:20px;">Do you want to delete this Row permanently?</p>
+                    <input type="hidden" id="Sequence"/>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="DeleteSubmit" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" >No</button>
+      </div>
+    </div>
+  </div>
+</div>  
 
-
+<!-- Edit Row Pop Up  -->
 	<div class="modal" id="EditPopUp" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-xl">

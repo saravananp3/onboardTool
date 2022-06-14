@@ -7,6 +7,7 @@ var finalCheck;
 var exportContent = [];
 var JsonObject =[];
 var num=0;
+
 $(document).ready(function() {
 	$.ajax({
 		url: "PlanAndPriorityWithinPhase",
@@ -28,14 +29,14 @@ $(document).ready(function() {
 				var disable = "disabled";
 
 				var t_row = "<tr class='rowClass'>"
-					+ "<td style='display:none;'><input type = 'text' class ='applicationName' value = '" + opportunityId + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityId + "'></td>"
+					+ "<td style='display: none;'><input type = 'text' class ='applicationId' " + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityId + "'>"+opportunityId+"</td>"
 					+ "<td><input type = 'text' class ='applicationName' value = '" + opportunityName + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityName + "'></td>"
 
 					+ "<td><input type = 'text' class ='phaseList' id='phaseSearch" + number + "' value = '" + phaseName + "'" + readonly + " style='width:100%; border:none; background-color: #fff; text-align:center;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + phaseName + "'><ul id='phaseResult" + number + "' class='list-group searchResult'></ul></td>"
 
 					+ "<td><input type = 'text' class ='waveList' id='waveSearch" + number + "' value = '" + waveName + "'" + readonly + " style='width:100%; border:none; background-color: #fff; text-align:center;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + waveName + "'><ul id='waveResult" + number + "' class='list-group searchResult'></ul></td>"
 
-					+ "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup1' style='display:block;'></span>" +
+					+ "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup1' id='edit-popup' style='display:block;'></span>" +
 					"</td>" +
 					
 					/*+ "<td><input type = 'text' id='popupSearch" + number + "' ></td>"*/
@@ -195,7 +196,7 @@ function searchWaveFunction(i) {
 				}
 				$('#waveResult' + i).empty();
 				$.each(data[3][1], function(key, value) {
-					/*var phase = ((value.phaseName).replaceAll(" ", "")).replaceAll("-", "");*/
+				/*var phase = ((value.phaseName).replaceAll(" ", "")).replaceAll("-", "");*/
 					if (value.waveName.search(expression) != -1) {
 						$('#waveResult' + i).append('<li class="list-group-item link-class">' + value.waveName + '</li>');
 					}
@@ -211,16 +212,50 @@ function searchWaveFunction(i) {
 	});
 };
 
+/*$(document).on('change', '.phaseList', function(i) {
+	$("#waveResult"+i).hide();
+	var phaseName = $(this).val();
+	if (phaseName != "") {
+		$("." + (phaseName.replaceAll(" ", "")).replaceAll("-", "")).show();
+		$(".waveList").val("");
+	}
+	else {
+		$("#waveResult"+i).ishow();
+	}
+});*/
+
+/*$(document).on('change', '.filter', function(i) {
+	var phase = $(".phaseList").val();
+	var wave = $(".waveList").val();
+	filterAjaxCall(category, phase, wave);
+});
+
+function filterAjaxCall(category, phase, wave) {
+	$.ajax({
+		url: "OpportunityFilterListServlet",
+		type: 'POST',
+		dataType: "json",
+		data: { wave: wave, category: category, phase: phase, bySearch: false },
+		success: function(data) {
+			console.log("Data:", data);
+			if (!$.isArray(data)) {
+				data = [data];
+			}
+		},
+		error: function(e) {
+			console.log(e);
+		}
+	});
+}*/
+
 
 
 	$(document).on('click', '.editpopup1', function() {
-		var s=$(this).closest("tr");
-		console.log("S VALUE : ",s);
-		var ss=s.find("td:eq(0)").text();
-		console.log("SS VALUE",ss);
-		var demo = $('#demo').val();
-		console.log(demo);
-   		
+		var s = $(this).closest("tr");
+		console.log("S VALUE : ", s);
+		var demo = s.find("td:eq(0)").text();
+		console.log("SS VALUE", demo);
+		$('#demo').val(demo);
 		$('#editpopup_btn').click();
 		
 		$.ajax({
@@ -474,3 +509,45 @@ function checkReadOnlyData(ColumnName){
 	
 }
 
+ $(document).on('click', '.DeleteRow', function() {
+      /*  var seqnum = $(this).index('.DeleteRow');*/
+        $("#Sequence").val("");
+        $("#deletepopup_btn").click();
+    });
+    
+   $(document).on('click', '#DeleteSubmit', function() {
+		var JsonArray = [];
+		var inputs = {};
+        var appName = $(".applicationName").val();
+        var wave = $(".waveList").val();
+        inputs['appName'] = appName;
+		inputs['wave'] = wave;
+		JsonArray.push(inputs);
+        DeleteRowAjaxCall(JsonArray);
+    });
+
+function DeleteRowAjaxCall(JsonArray) {
+    $.ajax({
+        url: "PlanAndPriorityDeleteServlet",
+        type: 'POST',
+        async: false,
+        data: {JsonArray: JSON.stringify(JsonArray)},
+        dataType: "json",
+        success: function(data) {
+            console.log("delete row --> ", data);
+            JsonObject = data;
+           if (data) {
+                $(".rowClass").remove();
+                notification("success", "Row deleted successfully.", "Note");
+            }
+            else
+                notification("error", "Delete failed.", "Error");
+            $("#DeleteClose").click();
+            $("#Sequence").val("");
+        },
+        error: function(e) {
+            console.log(e);
+        }
+    });
+    return false;
+}

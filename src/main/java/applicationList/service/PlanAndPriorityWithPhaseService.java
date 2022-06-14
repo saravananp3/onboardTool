@@ -219,12 +219,14 @@ public class PlanAndPriorityWithPhaseService {
                       }
                     rs.close();
                     st.close();
-                    String selectApp = "select value from opportunity_info  where column_name='appName'";
+                    String selectApp = "select id,value from opportunity_info  where column_name='appName'";
                     PreparedStatement st1 = con.prepareStatement(selectApp);
                     ResultSet rs1 = st1.executeQuery();
                      JsonObject jsonObject = new JsonObject();
                     while (rs1.next()) {
                         String appname=rs1.getString("value");
+                        String appId=rs1.getString("id");
+                        System.out.println("ID VAL"+appId);
                         for(String app : list)
                         {
                             if(appname.equals(app))
@@ -234,9 +236,12 @@ public class PlanAndPriorityWithPhaseService {
                         }
                         if(isEqual==false)
                         {   JsonObject jsonObject2 = new JsonObject();
-                        jsonObject2.addProperty("appName", appname);
+                            jsonObject2.addProperty("appName", appname);
+                        jsonObject2.addProperty("appId", appId);
+                        
                             count++;
                             jsonArray2.add(jsonObject2);
+                           
                         }
                         isEqual=false;
                     }
