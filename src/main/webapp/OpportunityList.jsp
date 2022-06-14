@@ -800,7 +800,7 @@ full width */
 				<%
 				{
 					int application_count = 0;
-					if (Projets == "all") {
+					if (Projets.equals("all")) {
 						String projectCount = "select count(*) from appemphazize_projectdetails";
 						Statement projectCountst = con.createStatement();
 						ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);

@@ -93,7 +93,7 @@ public class ApproverRolesAddService {
 			String selectQuery = "select * from archivereq_roles_info where oppid='"+Id+"' oreder by seq_no;";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
-			
+	
 			while(rs.next())
 			{
 			   seqNum.add(rs.getString("seq_no"));
@@ -103,7 +103,8 @@ public class ApproverRolesAddService {
 			   approverPurpose.add(rs.getString("approverpurpose"));
 			  oppName = rs.getString("OppName");
 			}
-			
+			st.close();
+			rs.close();
 			for(int i=0;i<seqNum.size()+1;i++)
 			{
 				if(SeqNum<=Integer.parseInt(seqNum.get(i)))
@@ -166,6 +167,7 @@ public class ApproverRolesAddService {
 		{
 			e.printStackTrace();
 		}
+		
 		return jsonObject;
 		
 	}
@@ -206,10 +208,12 @@ public String generateRandomApprovalId() throws SQLException {
 		
 		while(result.next()) {
 			String checkApprovalId = result.getString("approvalId");
-			if(checkApprovalId == uniqueID) {
+			if(checkApprovalId.equals(uniqueID)) {
 				checkDuplicate = true;
 			}	
 		}
+		state.close();
+		result.close();
 		return checkDuplicate;
 	}
 

@@ -434,7 +434,11 @@
                         </div>
                         <!-- /.row -->
                         <!-- Footer -->
+<%
+st.close();
+rs.close();
 
+%>
                         <footer class="page-footer font-small blue">
 
                             <!-- Copyright -->

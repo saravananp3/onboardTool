@@ -217,6 +217,7 @@
 <body class="top-navbar-fixed">
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@page import="org.owasp.encoder.Encode" %>
 <%
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date = new Date();
@@ -274,8 +275,8 @@
                     </button>
                 </div>
                 <!-- /.navbar-header -->
-                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=prjname %>
-                </a>
+                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=Encode.forHtml(prjname)%></a>
+                
 
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
 
@@ -294,7 +295,14 @@
         <!-- /.container-fluid -->
     </nav>
 </div>
-
+<%
+s.close();
+rs.close();
+s1.close();
+rs1.close();
+s2.close();
+rs2.close();
+%>
 
     <form class="form-signin" name="loginForm" method="post">
 

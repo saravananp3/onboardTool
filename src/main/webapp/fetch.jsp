@@ -48,7 +48,7 @@ st1.setString(1, s);
 ResultSet rs1 = st1.executeQuery();
 while(rs1.next())
 {
-if(rs1.getString("progressbar")=="100")
+if(rs1.getString("progressbar").equals("100"))
 continue;
 else
 break;

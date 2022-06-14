@@ -154,7 +154,7 @@ public class ArchiveExeIssueTemplateService {
             
             while(result.next()) {
                 String checkApprovalId = result.getString("app_id");
-                if(checkApprovalId == uniqueID) {
+                if(checkApprovalId.equals(uniqueID)) {
                     checkDuplicate = true;
                 }   
             }

@@ -232,10 +232,10 @@ int count=0;
                                     <li class="nav-header">
                                         <span class="">Main Category</span>
                                     </li>
-                           s         <li id='home' item-selected='true'>
+                                  <li id='home' item-selected='true'>
                                         <a href="Project_List.jsp"><i class="fa fa-home"></i> <span>Home</span> </a>
                                     </li>
-s
+
                                     <li class="nav-header">
                                         <a><span class="">User Module</span></a>
                                     </li>
@@ -329,6 +329,12 @@ s
 
     </div>
 </div>
+<%
+s.close();
+rs.close();
+s1.close();
+rs1.close();
+%>
   <script>
  if(document.getElementById('rolecheck').value=="R")
 	 checkk();

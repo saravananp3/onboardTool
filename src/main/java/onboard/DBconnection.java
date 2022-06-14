@@ -22,7 +22,7 @@ public  DBconnection() throws ClassNotFoundException, SQLException{
 			config.setAlgorithm("PBEWITHHMACSHA512AndAES_256");
 			encryptor.setConfig(config);
 			encryptor.setKeyObtentionIterations(1000);
-			String dec_cred=null;
+			String decPw=null;
 		try {
              
               ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -34,22 +34,22 @@ public  DBconnection() throws ClassNotFoundException, SQLException{
 
                    Class.forName(prop.getProperty("DRIVER"));
                    
-                   String db_cred=prop.getProperty("PASSWORD");
+                   String dbcPw=prop.getProperty("PASSWORD");
                   
-                   if(db_cred.startsWith("ENC("))
+                   if(dbcPw.startsWith("ENC("))
            			{
                 	String separator =")";
-           			String s=db_cred.substring(4);
+           			String s=dbcPw.substring(4);
            			int sepPos = s.lastIndexOf(separator);
            			String lc=s.substring(0,sepPos);
-           			dec_cred=encryptor.decrypt(lc);
+           			decPw=encryptor.decrypt(lc);
            			}
-                   if(!db_cred.startsWith("ENC("))
+                   if(!dbcPw.startsWith("ENC("))
                    {               	
-                	   dec_cred=db_cred;
+                	   decPw=dbcPw;
                 	   
                    }
-                   this.connection= DriverManager.getConnection(prop.getProperty("URL")+prop.getProperty("DATABASENAME"),prop.getProperty("USERNAME"),dec_cred);
+                   this.connection= DriverManager.getConnection(prop.getProperty("URL")+prop.getProperty("DATABASENAME"),prop.getProperty("USERNAME"),decPw);
 } catch (Exception e) {
 System.out.println(e.getMessage());
 }
@@ -64,7 +64,7 @@ public  DBconnection(boolean create_db_Flag) throws ClassNotFoundException, SQLE
 	config.setAlgorithm("PBEWITHHMACSHA512AndAES_256");
 	encryptor.setConfig(config);
 	encryptor.setKeyObtentionIterations(1000);
-	String dec_cred=null;
+	String decPw=null;
 	try {
 	 
 	  ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -76,22 +76,22 @@ public  DBconnection(boolean create_db_Flag) throws ClassNotFoundException, SQLE
 	
 	       Class.forName(prop.getProperty("DRIVER"));
 	       
-	       String db_cred=prop.getProperty("PASSWORD");
+	       String dbcPw=prop.getProperty("PASSWORD");
 	      
-	       if(db_cred.startsWith("ENC("))
+	       if(dbcPw.startsWith("ENC("))
 				{
 	    	String separator =")";
-				String s=db_cred.substring(4);
+				String s=dbcPw.substring(4);
 				int sepPos = s.lastIndexOf(separator);
 				String lc=s.substring(0,sepPos);
-				dec_cred=encryptor.decrypt(lc);
+				decPw=encryptor.decrypt(lc);
 				}
-	       if(!db_cred.startsWith("ENC("))
+	       if(!dbcPw.startsWith("ENC("))
 	       {               	
-	    	   dec_cred=db_cred;
+	    	   decPw=dbcPw;
 	    	   
 	       }
-	       this.connection= DriverManager.getConnection(prop.getProperty("URL"),prop.getProperty("USERNAME"),dec_cred);
+	       this.connection= DriverManager.getConnection(prop.getProperty("URL"),prop.getProperty("USERNAME"),decPw);
 	
 	}
 	

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +28,10 @@ public class ArchiveExecutionDeleteService {
 	static int count;
 	static boolean checkNextParent;
 	static String tasktypemethod;
-
+	static boolean subchildflag;
+	static int SubchildSeqNum;
+	static int SubchildSeqNum1;
+	static int parentSeqNum;
 	public ArchiveExecutionDeleteService(String Id, String oppName, int seqNum) throws ClassNotFoundException, SQLException{
 		dBconnection = new DBconnection();
 		con = (Connection) dBconnection.getConnection();
@@ -110,20 +114,18 @@ public class ArchiveExecutionDeleteService {
 			ArrayList<Date> planEndDate = new ArrayList<Date>();
 			ArrayList<Date> ActualSrtDate = new ArrayList<Date>();
 			ArrayList<Date> ActualEndDate = new ArrayList<Date>();
-			int parentSeqNum=0;
-			isParent = isParentNode(seqNum,arrLevel);
 			tasktypemethod=tasktypeflow(seqNum,arrLevel);
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-			if(!isParent)
+			if(subchildflag)
 			{
 				for(int currentIndex=seqNum-1;currentIndex>=0;currentIndex--)
 				{
-					if(arrLevel.get(currentIndex).equals("1"))
+					if(arrLevel.get(currentIndex).equals("2"))
 					{
-						parentSeqNum=currentIndex+1;
+						SubchildSeqNum=currentIndex+1;
 						break;
 					} 
-					if(!arrLevel.get(currentIndex).equals("1")&&currentIndex!=seqNum-1)
+					if(!arrLevel.get(currentIndex).equals("2")&&currentIndex!=seqNum-1)
 					{
 						if(!arrPlanSrt.get(currentIndex).equals(""))
 							planSrtDate.add(simpleDateFormat.parse(arrPlanSrt.get(currentIndex)));
@@ -137,9 +139,9 @@ public class ArchiveExecutionDeleteService {
 				}
 				for(int currentIndex=seqNum-1;currentIndex<arrSeqNum.size();currentIndex++)
 				{
-					if(arrLevel.get(currentIndex).equals("1"))
+					if(arrLevel.get(currentIndex).equals("2"))
 						break;
-					if(!arrLevel.get(currentIndex).equals("1")&&currentIndex!=seqNum-1)
+					if(!arrLevel.get(currentIndex).equals("2")&&currentIndex!=seqNum-1)
 					{
 						if(!arrPlanSrt.get(currentIndex).equals(""))
 							planSrtDate.add(simpleDateFormat.parse(arrPlanSrt.get(currentIndex)));
@@ -150,6 +152,54 @@ public class ArchiveExecutionDeleteService {
 						if(!arrActEnd.get(currentIndex).equals(""))
 							ActualEndDate.add(simpleDateFormat.parse(arrActEnd.get(currentIndex)));
 					}  
+				}
+
+			}
+
+			if(!subchildflag)
+			{
+				for(int currentIndex=seqNum-1;currentIndex>=0;currentIndex--)
+				{
+					if(arrLevel.get(currentIndex).equals("1"))
+					{
+						parentSeqNum=currentIndex+1;
+						break;
+					} 
+					if(!arrLevel.get(currentIndex).equals("1")&&currentIndex!=seqNum-1)
+					{
+						if(!arrLevel.get(currentIndex).equals("3")&&currentIndex!=SubchildSeqNum-1)
+						{
+							if(!arrPlanSrt.get(currentIndex).equals(""))
+								planSrtDate.add(simpleDateFormat.parse(arrPlanSrt.get(currentIndex)));
+							if(!arrPlanEnd.get(currentIndex).equals(""))
+								planEndDate.add(simpleDateFormat.parse(arrPlanEnd.get(currentIndex)));
+							if(!arrActSrt.get(currentIndex).equals(""))
+								ActualSrtDate.add(simpleDateFormat.parse(arrActSrt.get(currentIndex)));
+							if(!arrActEnd.get(currentIndex).equals(""))
+								ActualEndDate.add(simpleDateFormat.parse(arrActEnd.get(currentIndex)));
+						}
+					}
+				}
+				for(int currentIndex=seqNum-1;currentIndex<arrSeqNum.size();currentIndex++)
+				{
+					if(arrLevel.get(currentIndex).equals("1"))
+						break;
+					if(!arrLevel.get(currentIndex).equals("1")&&currentIndex!=seqNum-1)
+					{
+						if(!arrLevel.get(currentIndex).equals("3")&&currentIndex!=seqNum-1)
+						{
+							if(!arrPlanSrt.get(currentIndex).equals(""))
+								planSrtDate.add(simpleDateFormat.parse(arrPlanSrt.get(currentIndex)));
+							if(!arrPlanEnd.get(currentIndex).equals(""))
+								planEndDate.add(simpleDateFormat.parse(arrPlanEnd.get(currentIndex)));
+							if(!arrActSrt.get(currentIndex).equals(""))
+								ActualSrtDate.add(simpleDateFormat.parse(arrActSrt.get(currentIndex)));
+							if(!arrActEnd.get(currentIndex).equals(""))
+								ActualEndDate.add(simpleDateFormat.parse(arrActEnd.get(currentIndex)));
+						}
+					}
+
+
 				}
 			}
 			checkNextParent = false;
@@ -203,39 +253,29 @@ public class ArchiveExecutionDeleteService {
 
 			}
 
-			if(!isParent)
-			{
+			if(subchildflag)
+			{ 					
+				arrPlanSrtRes.set(SubchildSeqNum-1,(planSrtDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.min(planSrtDate)));
+				arrPlanEndRes.set(SubchildSeqNum-1,(planEndDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.max(planEndDate)));
+				arrActSrtRes.set(SubchildSeqNum-1,(ActualSrtDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.min(ActualSrtDate)));
+				arrActEndRes.set(SubchildSeqNum-1,(ActualEndDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.max(ActualEndDate)));
+				String s=UpdateSubChildParentDate(SubchildSeqNum,arrLevel,arrPlanSrt,arrPlanEnd,arrActSrt,arrActEnd,planSrtDate,planEndDate,ActualSrtDate,ActualEndDate,arrSeqNum,arrPlanSrtRes,arrPlanEndRes,arrActSrtRes,arrActEndRes);
+			}
 
+
+			if(!subchildflag)
+			{
 				arrPlanSrtRes.set(parentSeqNum-1,(planSrtDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.min(planSrtDate)));
 				arrPlanEndRes.set(parentSeqNum-1,(planEndDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.max(planEndDate)));
 				arrActSrtRes.set(parentSeqNum-1,(ActualSrtDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.min(ActualSrtDate)));
 				arrActEndRes.set(parentSeqNum-1,(ActualEndDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.max(ActualEndDate)));
-
-				/*
-				 * ArchiveExecutionSaveService savePlanSrt = new
-				 * ArchiveExecutionSaveService(Id,parentSeqNum,"planSrt",Collections.min(
-				 * planSrtDate).toString()); savePlanSrt.ArchiveExecutionSave();
-				 * ArchiveExecutionSaveService savePlanEnd = new
-				 * ArchiveExecutionSaveService(Id,parentSeqNum,"planEnd",Collections.max(
-				 * planEndDate).toString()); savePlanEnd.ArchiveExecutionSave();
-				 * ArchiveExecutionSaveService saveActualSrt = new
-				 * ArchiveExecutionSaveService(Id,parentSeqNum,"actSrt",Collections.min(
-				 * ActualSrtDate).toString()); saveActualSrt.ArchiveExecutionSave();
-				 * ArchiveExecutionSaveService saveActualEnd = new
-				 * ArchiveExecutionSaveService(Id,parentSeqNum,"actEnd",Collections.max(
-				 * ActualEndDate).toString()); saveActualEnd.ArchiveExecutionSave();
-				 * 
-				 * System.gc();
-				 */
 			}
+
 
 			String deleteQuery = "delete from archive_execution_info where oppid=? order by seq_no;";
 			PreparedStatement st1 = con.prepareStatement(deleteQuery);
 			st1.setString(1, Id);
 			st1.executeUpdate();
-
-
-
 
 			for(int k = 0; k<arrSeqNumRes.size(); k++) {
 				System.out.println(arrSeqNumRes.get(k)+" "+arrLevelRes.get(k)+" "+arrTaskIdRes.get(k)+" "+arrTaskGroupRes.get(k));
@@ -263,9 +303,13 @@ public class ArchiveExecutionDeleteService {
 				prepare.execute();
 
 			}
+
 			ArchiveExecutionDetailService archiveExecution =  new ArchiveExecutionDetailService();
 			jsonArray = archiveExecution.archiveExecutionDataRetrieve(Id,oppName);
 			archiveExecution.con.close();
+
+
+
 			/*
 			 * archiveExecution =null; System.gc();
 			 */
@@ -278,38 +322,69 @@ public class ArchiveExecutionDeleteService {
 
 	}
 
-	public boolean isParentNode(int seqNum, ArrayList<String> level) {
+	private String UpdateSubChildParentDate(int subchildSeqNum2, ArrayList<String> arrLevel, ArrayList<String> arrPlanSrt, ArrayList<String> arrPlanEnd, ArrayList<String> arrActSrt, ArrayList<String> arrActEnd, ArrayList<Date> planSrtDate, ArrayList<Date> planEndDate,
+			ArrayList<Date> ActualSrtDate, ArrayList<Date> ActualEndDate, ArrayList<Integer> arrSeqNum, ArrayList<String> arrPlanSrtRes, ArrayList<String> arrPlanEndRes, ArrayList<String> arrActSrtRes, ArrayList<String> arrActEndRes) throws ParseException {
 
-		count = 0;
-		boolean checkParent = false;
-		int selectedIndex = seqNum-1; 
-		indexFrom = 0;
-		indexTo = 0;
-		if(level.get(seqNum-1).equals("2")) {
-			indexFrom = seqNum-1;
-			indexTo = seqNum-1;
-			count++;
-		}
-		else {
-			checkParent = true;
-			indexFrom = seqNum-1;
-			for(int i = selectedIndex+1; i<level.size(); i++ ) { 
-				if(level.get(i).equals("1")) {
-					indexTo	= i-1;
-					count++;
-					break;
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		for(int currentIndex=SubchildSeqNum-1;currentIndex>=0;currentIndex--)
+		{
+			if(arrLevel.get(currentIndex).equals("1"))
+			{
+				SubchildSeqNum1=currentIndex+1;
+				break;
+			} 
+			if(!arrLevel.get(currentIndex).equals("1")&&currentIndex!=SubchildSeqNum-1)
+			{
+				if(!arrLevel.get(currentIndex).equals("3")&&currentIndex!=SubchildSeqNum-1)
+				{
+					if(!arrPlanSrt.get(currentIndex).equals(""))
+						planSrtDate.add(simpleDateFormat.parse(arrPlanSrt.get(currentIndex)));
+					if(!arrPlanEnd.get(currentIndex).equals(""))
+						planEndDate.add(simpleDateFormat.parse(arrPlanEnd.get(currentIndex)));
+					if(!arrActSrt.get(currentIndex).equals(""))
+						ActualSrtDate.add(simpleDateFormat.parse(arrActSrt.get(currentIndex)));
+					if(!arrActEnd.get(currentIndex).equals(""))
+						ActualEndDate.add(simpleDateFormat.parse(arrActEnd.get(currentIndex)));
 				}
-				else if(level.size()-1 == i) {
-					indexTo	= i;
-					count++;
-					break;
-				}
-				count++;
 			}
 		}
+		for(int currentIndex=SubchildSeqNum-1;currentIndex<arrSeqNum.size();currentIndex++)
+		{
+			if(arrLevel.get(currentIndex).equals("1"))
+				break;
+			if(!arrLevel.get(currentIndex).equals("1")&&currentIndex!=SubchildSeqNum-1)
+			{
+				if(!arrLevel.get(currentIndex).equals("3")&&currentIndex!=SubchildSeqNum-1)
+				{
+					if(!arrPlanSrt.get(currentIndex).equals(""))
+						planSrtDate.add(simpleDateFormat.parse(arrPlanSrt.get(currentIndex)));
+					if(!arrPlanEnd.get(currentIndex).equals(""))
+						planEndDate.add(simpleDateFormat.parse(arrPlanEnd.get(currentIndex)));
+					if(!arrActSrt.get(currentIndex).equals(""))
+						ActualSrtDate.add(simpleDateFormat.parse(arrActSrt.get(currentIndex)));
+					if(!arrActEnd.get(currentIndex).equals(""))
+						ActualEndDate.add(simpleDateFormat.parse(arrActEnd.get(currentIndex)));
+				}
+			}
 
-		return checkParent;
+
+		}
+
+		System.out.println("SEQ NU :"+subchildSeqNum2);
+		System.out.println("SUB CHILD SEQ NUMBER : "+SubchildSeqNum1);
+		System.out.println("Plan Start Date :"+planSrtDate);
+		System.out.println("Plan End Date :"+planEndDate);
+		System.out.println("Actual Start Date :"+ActualSrtDate);
+		System.out.println("Actual End Date :"+ActualEndDate);
+		arrPlanSrtRes.set(SubchildSeqNum1-1,(planSrtDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.min(planSrtDate)));
+		arrPlanEndRes.set(SubchildSeqNum1-1,(planEndDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.max(planEndDate)));
+		arrActSrtRes.set(SubchildSeqNum1-1,(ActualSrtDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.min(ActualSrtDate)));
+		arrActEndRes.set(SubchildSeqNum1-1,(ActualEndDate.isEmpty()) ? "" : simpleDateFormat.format(Collections.max(ActualEndDate)));
+
+		return null;
 	}
+
+
 
 	public static String getTaskIdForChild(String level, String taskId) throws SQLException {
 
@@ -330,11 +405,13 @@ public class ArchiveExecutionDeleteService {
 		}
 		System.out.println("NEXT LEV ::"+levl);
 		System.out.println("QUERY ::"+selectQuery);
+		String childVal1 = deltaskID.substring(0,1);
+		String childVal2 = taskID.substring(0,1);
 		if(!checkNextParent)
 			if(level.equals("1")){
 				checkNextParent = true;
 			}
-			else if(level.equals("2") && taskID.contains("."))
+			else if(level.equals("2") && taskID.contains(".") && childVal1.equals(childVal2))
 			{
 				int suffixValue = Integer.parseInt(taskID.substring(taskID.lastIndexOf(".")+1));
 				suffixValue--;
@@ -343,16 +420,16 @@ public class ArchiveExecutionDeleteService {
 				taskID = prefixValue+"."+((String.valueOf(suffixValue).length() == 1) ? suffixValue : ""+suffixValue);
 			}
 
-
-		if(level.equals("3") && taskID.contains("."))
-		{	  flag=true;
-		String childValuetemp = taskID.substring(taskID.indexOf(".")+1);
-		String childvalue = childValuetemp.split("\\.", 2)[0];
-		int childValue = Integer.parseInt(childvalue);
-		childValue--;
-		String child = String.valueOf(childValue);
-		taskID = taskID.substring(0, taskID.indexOf("."))+"." + child+"."+taskID.substring(taskID.lastIndexOf(".")+1);
-		System.out.println("WELL COME P# Solutions");
+		if(level.equals("3") && taskID.contains(".") && childVal1.equals(childVal2) && !levl.equals("1"))
+		{
+			flag=true;
+			String childValuetemp = taskID.substring(taskID.indexOf(".")+1);
+			String childvalue = childValuetemp.split("\\.", 2)[0];
+			int childValue = Integer.parseInt(childvalue);
+			childValue--;
+			String child = String.valueOf(childValue);
+			taskID = taskID.substring(0, taskID.indexOf("."))+"." + child+"."+taskID.substring(taskID.lastIndexOf(".")+1);
+			System.out.println("WELL COME P# Solutions");
 		}
 
 		return taskID;
@@ -390,6 +467,7 @@ public class ArchiveExecutionDeleteService {
 	}
 
 	public static String tasktypeflow(int seqNum, ArrayList<String> level) throws SQLException {
+
 		String tasktype;
 		count = 0;
 		boolean checkParent = false;
@@ -409,12 +487,15 @@ public class ArchiveExecutionDeleteService {
 		System.out.println("NEXTT LEVEL : : ----"+nxtlevel);
 		if(level.get(seqNum-1).equals("3")) {
 			tasktype="subchild";
+			subchildflag=true;
 			indexFrom = seqNum-1;
 			indexTo = seqNum-1;
 			count++;
 		}
+
 		else if(level.get(seqNum-1).equals("2"))
 		{
+			subchildflag=false;
 			tasktype="child";
 			if(nxtlevel.equals("1"))
 			{
@@ -460,13 +541,19 @@ public class ArchiveExecutionDeleteService {
 				count++;
 			}
 		}
+
 		return tasktype;
 	}
-	
+
 	public static String getTaskIdForSubChild(String level, String taskId) throws SQLException {
 
 		String taskID = taskId;
+		System.out.println("T A S K I D : "+taskID);
+		System.out.println("L E V E L : "+level);
+		String h=String.valueOf(taskID.length());
+		System.out.println("T A S K I D L E N G T H : "+h);
 		String nxttaskid="";
+		String nxtlvl="";
 		String selectQuery = "select * from archive_execution_info where oppId = ? and seq_no=? order by seq_no;";
 		PreparedStatement st = con.prepareStatement(selectQuery);
 		st.setString(1, Id);
@@ -475,31 +562,36 @@ public class ArchiveExecutionDeleteService {
 		while(rs.next())
 		{
 			nxttaskid=rs.getString("taskId");	
+			nxtlvl=rs.getString("level");
 		}
 		System.out.println("NEXT TASK ID : "+nxttaskid);
 		System.out.println("CURRENT TASK ID : "+taskID);
-	
+		System.out.println("N E X T L E V E L : "+nxtlvl);
+
 		String childVal = nxttaskid.substring(nxttaskid.indexOf(".")+1);
+		String childVal1 = nxttaskid.substring(0,1);
 		String childtaskid = childVal.split("\\.", 2)[0];
 		System.out.println("C H I L D : "+childtaskid);
-		
+		System.out.println("FIRST CHILD CHAR"+childVal1);
 		String curchildValuetemp = taskID.substring(taskID.indexOf(".")+1);
+		String curchildValuetemp1 = taskID.substring(0,1);
 		String curchildvalue = curchildValuetemp.split("\\.", 2)[0];
 		System.out.println("C U R R E N T C H I L D : "+curchildvalue);
-		
-		if( taskID.contains(".") && level.equals("3") && childtaskid.equals(curchildvalue))
-		  {
-		  int scval = Integer.parseInt(taskID.substring(taskID.lastIndexOf(".")+1));
-		  scval--;
-		  String childValuetemp = taskID.substring(taskID.indexOf(".")+1);
-		  String childvalue = childValuetemp.split("\\.", 2)[0]; 
-		  taskID = taskID.substring(0,taskID.indexOf("."))+"."+childvalue+"."+scval; 
-		 		  
-		  }
-		
+		System.out.println("CURRENT CHILD CHAR"+curchildValuetemp1);
+
+		if(taskID.contains(".") && level.equals("3") && childtaskid.equals(curchildvalue) && childVal1.equals(curchildValuetemp1) && !nxtlvl.equals("2"))
+		{
+			int scval = Integer.parseInt(taskID.substring(taskID.lastIndexOf(".")+1));
+			scval--;
+			String childValuetemp = taskID.substring(taskID.indexOf(".")+1);
+			String childvalue = childValuetemp.split("\\.", 2)[0]; 
+			taskID = taskID.substring(0,taskID.indexOf("."))+"."+childvalue+"."+scval; 
+
+		}
+
 		return taskID;
 	}
-	
+
 	public static String action(String level, String taskId) throws SQLException {
 		String task=taskId;
 		if(tasktypemethod.equals("parent")) {
@@ -513,12 +605,13 @@ public class ArchiveExecutionDeleteService {
 		else if(tasktypemethod.equals("subchild"))
 		{
 			task=getTaskIdForSubChild(level, taskId);
+
 		}
 
 		return task;
 	}
-	
-	
+
+
 	protected void finalize() throws Throwable 
 	{ 
 		System.out.println("Db connection closed.");

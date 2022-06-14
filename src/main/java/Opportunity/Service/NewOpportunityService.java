@@ -113,7 +113,7 @@ public class NewOpportunityService {
     public static String RandomIdGenerator() {
         int n = 10;
         String AlphaNumericNumber = "";
-        String randomNumber = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        String rNber = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789";
         JsonObject jsonObject1 = new JsonObject();
         boolean DuplicateFlag = true;
@@ -134,15 +134,15 @@ public class NewOpportunityService {
                     // generate a random number between 
                     // 0 to AlphaNumericString variable length 
                     int index 
-                        = (int)(randomNumber.length() 
+                        = (int)(rNber.length() 
                                 * Math.random()); 
                     // add Character one by one in end of sb 
                     /*
                      * sb.append(randomNumber .charAt(index));
                      */
-                    AlphaNumericNumber += randomNumber .charAt(index);
+                    AlphaNumericNumber += rNber .charAt(index);
                 } 
-                System.out.println("Random No : " + randomNumber);
+                System.out.println("Random No : " + rNber);
                 DBconnection dBconnection = new DBconnection();
                 Connection connection = (Connection) dBconnection.getConnection();
                 String query = "select * from opportunity_info where id='" +"D3S"+AlphaNumericNumber

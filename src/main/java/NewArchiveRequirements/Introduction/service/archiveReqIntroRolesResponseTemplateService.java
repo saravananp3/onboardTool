@@ -162,7 +162,7 @@ public String generateRandomApprovalId() throws SQLException {
         ResultSet result = state.executeQuery(selectQuery);
         while(result.next()) {
             String checkApprovalId = result.getString("approvalId");
-            if(checkApprovalId == uniqueID) {
+            if(checkApprovalId.equals(uniqueID)) {
                 checkDuplicate = true;
             }   
         }
