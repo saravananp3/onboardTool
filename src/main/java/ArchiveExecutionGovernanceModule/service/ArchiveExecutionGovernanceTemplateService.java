@@ -339,12 +339,14 @@ public class ArchiveExecutionGovernanceTemplateService {
 		prestmt.execute();
 		seqNo++;
 	}
-	public void getDataRetrieveBasedOnApps() {
+	public void getDataRetrieveBasedOnApps() throws SQLException {
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		try {
 			String apps[] = getApps();		 
 			String selectNodeQuery = "select * from Archive_Execution_Governance_Info order by seq_no";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectNodeQuery);
+			st1 = con.prepareStatement(selectNodeQuery);
+			rs1 = st1.executeQuery();
 			while(rs1.next()) {
 				String taskGroup = "";
 				String taskName = "";
@@ -371,14 +373,17 @@ public class ArchiveExecutionGovernanceTemplateService {
 
 				getDateDetails(apps, taskGroup,taskName, level);
 			}
-			rs1.close();
-			st1.close();
-
+			
 			updateClosureNodes(apps);
 
 		}
 		catch(Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			st1.close();
+			rs1.close();
+			
 		}
 	}
 
@@ -983,6 +988,8 @@ public class ArchiveExecutionGovernanceTemplateService {
 				checkDuplicate = true;
 			}	
 		}
+		state.close();
+		result.close();		
 		return checkDuplicate;
 	}
 
