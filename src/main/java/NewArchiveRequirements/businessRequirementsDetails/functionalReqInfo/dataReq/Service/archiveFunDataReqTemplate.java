@@ -28,12 +28,13 @@ public archiveFunDataReqTemplate(String tableName) throws ClassNotFoundException
 	}
 
 public void archiveDataReqTemplate() {
-	
+	PreparedStatement st=null;
+	ResultSet rs=null;
 	try {
 		
 		String selectQuery = "select * from "+tableName+";";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectQuery);
+		st = con.prepareStatement(selectQuery);
+		rs = st.executeQuery();
 		
 		if(!rs.next()) {
 			

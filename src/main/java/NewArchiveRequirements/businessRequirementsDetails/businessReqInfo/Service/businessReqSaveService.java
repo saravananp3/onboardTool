@@ -28,8 +28,10 @@ public class businessReqSaveService{
 	 con = (Connection) dBconnection.getConnection();
 	}
 	
-	public JsonObject BusinessRequirementSave()
+	public JsonObject BusinessRequirementSave() throws SQLException
 	{
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
@@ -46,12 +48,11 @@ public class businessReqSaveService{
 			rs.close();
 			st.close();
 			String selectSeqNum = "select max(seq_no) from archivebussinessreq_info;";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectSeqNum);
+			st1 = con.prepareStatement(selectSeqNum);
+			rs1 = st1.executeQuery();
 			if(rs1.next())
 				max_seq =rs1.getInt(1);
-			rs1.close();
-			st1.close();
+		
 			if(checkInsert)
 			{
 				String InsertQuery = "Insert into archivebussinessreq_info (seq_no,OppId,app_name,businessreq) values (?,?,?,?)";
@@ -78,6 +79,10 @@ public class businessReqSaveService{
 		{
 			jsonObject.addProperty("checkUpdate", false);
 			e.printStackTrace();
+		}
+		finally {
+			rs1.close();
+			st1.close();
 		}
 		return jsonObject;
 	}

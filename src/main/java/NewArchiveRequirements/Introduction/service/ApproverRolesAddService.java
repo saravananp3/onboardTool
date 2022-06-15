@@ -70,8 +70,10 @@ public class ApproverRolesAddService {
 		
 	}
 	
-	public JsonObject AddRow1()
+	public JsonObject AddRow1() throws SQLException
 	{
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null;
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
@@ -91,8 +93,8 @@ public class ApproverRolesAddService {
 			String oppName ="";
 			int newSeqNum = SeqNum+1;
 			String selectQuery = "select * from archivereq_roles_info where oppid='"+Id+"' oreder by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 	
 			while(rs.next())
 			{
@@ -103,8 +105,7 @@ public class ApproverRolesAddService {
 			   approverPurpose.add(rs.getString("approverpurpose"));
 			  oppName = rs.getString("OppName");
 			}
-			st.close();
-			rs.close();
+			
 			for(int i=0;i<seqNum.size()+1;i++)
 			{
 				if(SeqNum<=Integer.parseInt(seqNum.get(i)))
@@ -138,10 +139,9 @@ public class ApproverRolesAddService {
 			}
 			
 			String deleteQuery ="delete from archivereq_roles_info where oppid='"+Id+"';";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
-			st1.close();
-			
+			st1 = con.prepareStatement(deleteQuery);
+			st1.executeUpdate();
+						
 			for(int i=0;i<seqNumRes.size();i++)
 			{
 			  System.out.println(seqNumRes.get(i)+" "+roleRes.get(i)+" "+nameRes.get(i)+" "+titleRes.get(i)+" "+approverPurposeRes.get(i)+" ");	
@@ -166,6 +166,13 @@ public class ApproverRolesAddService {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+		
+		finally
+		{
+			st.close();
+			rs.close();
+			st1.close();
 		}
 		
 		return jsonObject;

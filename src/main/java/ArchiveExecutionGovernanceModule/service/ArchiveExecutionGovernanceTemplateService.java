@@ -35,13 +35,15 @@ public class ArchiveExecutionGovernanceTemplateService {
 		this.Id = Id;
 	}
 
-	public void archiveExecutionDefaultRecords() {
+	public void archiveExecutionDefaultRecords() throws SQLException {
 
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		try {
 
 			String selectQuery = "select * from Archive_Execution_Governance_Template_Info";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 
 			if(!rs.next()) {
 				ArchiveExecutionGovernanceTemplateDetails archiveExecTemp[] = new ArchiveExecutionGovernanceTemplateDetails[63];
@@ -137,12 +139,16 @@ public class ArchiveExecutionGovernanceTemplateService {
 				}
 
 			}
-			st.close();
-			rs.close();
+
 		}
 
 		catch(Exception e) {
 			e.printStackTrace();
+		}
+
+		finally {
+			st.close();
+			rs.close();
 		}
 
 	}
@@ -373,7 +379,7 @@ public class ArchiveExecutionGovernanceTemplateService {
 
 				getDateDetails(apps, taskGroup,taskName, level);
 			}
-			
+
 			updateClosureNodes(apps);
 
 		}
@@ -383,7 +389,7 @@ public class ArchiveExecutionGovernanceTemplateService {
 		finally {
 			st1.close();
 			rs1.close();
-			
+
 		}
 	}
 

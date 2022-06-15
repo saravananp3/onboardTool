@@ -232,8 +232,8 @@ public class ArchiveExecutionGovernanceDeleteService {
 			st1.executeUpdate();
 
 
-			Statement st3 = con.createStatement();
-			st3.executeUpdate(deleteQuery);
+			PreparedStatement st3 = con.prepareStatement(deleteQuery);
+			st3.executeUpdate();
 
 
 

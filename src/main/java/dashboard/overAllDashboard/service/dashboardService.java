@@ -90,15 +90,17 @@ public class dashboardService {
 	//          
 	//          return jsonObject;
 	//      }
-	public JsonArray getApplicationFromPhaseDataTable(String phaseFilter,String waveFilter) {
+	public JsonArray getApplicationFromPhaseDataTable(String phaseFilter,String waveFilter) throws SQLException {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		ArrayList<String> waves = new ArrayList<String>();
 		try {
 			if(phaseFilter.equals("All"))
 			{     	       		
 				String selectPhases = "select * from phase_info";
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(selectPhases);
+				st = con.prepareStatement(selectPhases);
+				rs = st.executeQuery();
 				while (rs.next()) {
 					if (rs.getString("column_name").equals("waves")) {
 						String waveArray[] = rs.getString("value").split(",");
@@ -110,17 +112,15 @@ public class dashboardService {
 				String[] allWave = new String[waves.size()];
 				allWave = waves.toArray(allWave);
 				jsonArray = (getWaveDetails(allWave, waveFilter));
-				rs.close();
-				st.close();
 				System.out.println("ALL PHASE");
 			}
 
 			if(!phaseFilter.equals("All"))
 			{     	       		
 				String selectPhases = "select * from phase_info where phasename like ?";
-				PreparedStatement st = con.prepareStatement(selectPhases);
+				st = con.prepareStatement(selectPhases);
 				st.setString(1, "%"+phaseFilter+"%");
-				ResultSet rs = st.executeQuery();
+				rs = st.executeQuery();
 				while (rs.next()) {
 					if (rs.getString("column_name").equals("waves")) {
 						String waveArray[] = rs.getString("value").split(",");
@@ -132,14 +132,18 @@ public class dashboardService {
 				String[] allWave = new String[waves.size()];
 				allWave = waves.toArray(allWave);
 				jsonArray = (getWaveDetails(allWave, waveFilter));
-				rs.close();
-				st.close();
+				
 				System.out.println("Phase Name is : "+phaseFilter);
 			}	
 
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+		}
+		finally
+		{
+			st.close();
+			rs.close();
 		}
 		return jsonArray;
 	}
@@ -318,7 +322,9 @@ public class dashboardService {
 		return jsonArray;
 	}
 
-	public List<String> getphasewaveinfo(String  phaseFilter) {
+	public List<String> getphasewaveinfo(String  phaseFilter) throws SQLException {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		List<String> list = new LinkedList<String>();
 
@@ -326,36 +332,41 @@ public class dashboardService {
 			if(phaseFilter.equals("All"))
 			{
 			String selectPhases = "select * from phase_info";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectPhases);
+			st = con.prepareStatement(selectPhases);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				if (rs.getString("column_name").equals("waves")) {
 					String waves[] = rs.getString("value").split(",");
 					list=(getWaveinfo(waves, rs.getString("phaseName")));
 				}
 			}
-			rs.close();
 			st.close();
+			rs.close();
 		}
 			if(!phaseFilter.equals("All"))
 			{
 				String selectPhases = "select * from phase_info where phaseName like ? ";
-				PreparedStatement st=con.prepareStatement(selectPhases);
+				st=con.prepareStatement(selectPhases);
 				st.setString(1, "%"+phaseFilter+"%");
-				ResultSet rs = st.executeQuery();
+				rs = st.executeQuery();
 				while (rs.next()) {
 					if (rs.getString("column_name").equals("waves")) {
 						String waves[] = rs.getString("value").split(",");
 						list=(getWaveinfo(waves, rs.getString("phaseName")));
 					}
 				}
-				rs.close();
-				st.close();
+				
 				System.out.println("Phase Name 2 is : "+phaseFilter);
 			}
 		}
 			catch (Exception e) {
 			e.printStackTrace();
+		}
+		finally
+		{
+			st.close();
+			rs.close();
+			
 		}
 		System.out.println();
 		return list;

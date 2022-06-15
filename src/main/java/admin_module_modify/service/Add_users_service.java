@@ -75,16 +75,17 @@ public class Add_users_service {
 		return uniqueID;
 	}
 	public static boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
+		PreparedStatement state=null;
+		ResultSet result=null;
 		boolean checkDuplicate = false;
-		Statement state;
-		ResultSet result;
+				
 		try {
 			DBconnection dBconnection = new DBconnection();
 			Connection connection = (Connection) dBconnection.getConnection();
 			System.out.println("Connected...");
 			String selectQuery = "select * from users order by seq_no;";
-			state = connection.createStatement();
-			result= state.executeQuery(selectQuery);
+			state = connection.prepareStatement(selectQuery);
+			result= state.executeQuery();
 			while(result.next()) {
 				String checkApprovalId = result.getString("random_id");
 				if(checkApprovalId.equals(uniqueID)) {

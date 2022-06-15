@@ -24,12 +24,13 @@ public class archiveReqLegacyAppTemplateService {
 		 this.Id = Id;
 	}
 	
-	public void archiveReqLegacyAppTemplate() {
-		
+	public void archiveReqLegacyAppTemplate() throws SQLException {
+		PreparedStatement Legacystmt=null;
+		ResultSet rs_legacy=null;
 		try {
 			String LegacyAppInfo = "select * from ArchiveReq_LegacyApp_Template_Details";
-			Statement Legacystmt = con.createStatement();
-			ResultSet rs_legacy = Legacystmt.executeQuery(LegacyAppInfo);
+			Legacystmt = con.prepareStatement(LegacyAppInfo);
+			rs_legacy = Legacystmt.executeQuery();
 			
 			if(!rs_legacy.next())
 			{
@@ -78,10 +79,17 @@ public class archiveReqLegacyAppTemplateService {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		finally
+		{
+			Legacystmt.close();
+			rs_legacy.close();
+		}
 		
 	}
 	
-	public void archiveReqlegacyTemplateToLegacy(String Id,String Opportunityname) {
+	public void archiveReqlegacyTemplateToLegacy(String Id,String Opportunityname) throws SQLException {
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null,rs1=null;
 		
 		JsonArray jsonArray = new JsonArray();
 		
@@ -89,13 +97,13 @@ public class archiveReqLegacyAppTemplateService {
 			
 		
 		String SelectQuery = "select * from archivereq_legacyapp_info where Id='"+Id+"' order by seq_no";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(SelectQuery);
+		st = con.prepareStatement(SelectQuery);
+		rs = st.executeQuery();
 		
 		if (!rs.next()){
 			String TemplateQuery = "select * from archivereq_legacyapp_template_details order by seq_no;";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(TemplateQuery);
+			st1 = con.prepareStatement(TemplateQuery);
+			rs1 = st1.executeQuery();
 			
 			while(rs1.next()) {
 				
@@ -122,8 +130,8 @@ public class archiveReqLegacyAppTemplateService {
 		else
 		{
 			String TemplateQuery = "select * from archivereq_legacyapp_info where id='"+Id+"' order by seq_no;";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(TemplateQuery);
+			st1 = con.prepareStatement(TemplateQuery);
+			rs1 = st1.executeQuery();
 			
 			while(rs1.next()) {
 				JsonObject jsonObject = new JsonObject();
@@ -148,17 +156,27 @@ public class archiveReqLegacyAppTemplateService {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+		finally
+		{
+			st.close();
+			rs.close();
+			st1.close();
+			rs1.close();
+			
+		}
 	}
 	
-	private static void LegacyAppInfoRecordsStorage(String Id,String Opportunityname) {
+	private static void LegacyAppInfoRecordsStorage(String Id,String Opportunityname) throws SQLException {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		try
 		{
 			DBconnection dBconnection = new DBconnection();
 			Connection con = (Connection) dBconnection.getConnection();
 			
 			String SelectRecords = "select * from archivereq_legacyapp_info_template_details ";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectRecords);
+			st = con.prepareStatement(SelectRecords);
+			rs = st.executeQuery();
 			int seq_num=1;
 			while(rs.next())
 			{
@@ -181,6 +199,11 @@ public class archiveReqLegacyAppTemplateService {
 		{
 			e.printStackTrace();
 			System.out.println("Exception------[Legacy App info]-----"+e);
+		}
+		finally
+		{
+			st.close();
+			rs.close();
 		}
 	}
 	

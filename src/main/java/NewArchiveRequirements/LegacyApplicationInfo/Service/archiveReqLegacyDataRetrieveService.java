@@ -26,7 +26,9 @@ public class archiveReqLegacyDataRetrieveService {
 		 this.oppName = oppName;
 	}
 	
-	public JsonArray archiveReqLegacyTemplateToArchiveReqLegacyInfo() {
+	public JsonArray archiveReqLegacyTemplateToArchiveReqLegacyInfo() throws SQLException {
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
@@ -38,8 +40,8 @@ public class archiveReqLegacyDataRetrieveService {
 			if(!rs.next()) {
 				
 				String TemplateQuery = "select * from archivereq_legacyapp_template_details order by seq_no;";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(TemplateQuery);
+				st1 = con.prepareStatement(TemplateQuery);
+				rs1 = st1.executeQuery();
 							
 				while(rs1.next()) {
 					String column =rs1.getString("column_name");
@@ -64,6 +66,12 @@ public class archiveReqLegacyDataRetrieveService {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
+		}
+		
+		finally
+		{
+			st1.close();
+			rs1.close();
 		}
 		return jsonArray;
 	}
