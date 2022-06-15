@@ -14,8 +14,9 @@ import org.owasp.encoder.Encode;
 
 import java.util.*;
 import java.sql.Connection;
-
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -55,17 +56,19 @@ public class daterange extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	public void Db_Connection() {
+	public void Db_Connection() throws SQLException {
+		PreparedStatement week=null;
+		ResultSet rs=null;
 		//System.out.println("Inside dbconnection funtion");
 		try {
 			DBconnection d;
 			Connection con;
 			d = new DBconnection();
 			con = (Connection) d.getConnection();
-			Statement week = con.createStatement();
+			week = con.prepareStatement("select projectname,Intdate from AppEmphazize_ProjectDetails");
 			pro_name.clear();
 			int_date.clear();
-			ResultSet rs = week.executeQuery("select projectname,Intdate from AppEmphazize_ProjectDetails ");
+			rs = week.executeQuery();
 			while (rs.next()) {
 				
 				pro_name.add(rs.getString(1));
@@ -75,6 +78,12 @@ public class daterange extends HttpServlet {
 			con.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+		finally
+		{
+			
+			week.close();
+			rs.close();
 		}
 	}
 	public void project_select()
