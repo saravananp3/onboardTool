@@ -504,6 +504,8 @@ background:#1565c0 important;
 	}
 	%>
 	<%
+	PreparedStatement visit_start=null;
+	ResultSet visit_reset=null;
 	HttpSession role_session = request.getSession();
 	String frole1 = (String) role_session.getAttribute("role");
 	//int sumcount1=0;
@@ -517,8 +519,8 @@ background:#1565c0 important;
 		DBconnection db = new DBconnection();
 		Connection connectCon = (Connection) db.getConnection();
 		String visit_query1 = "select * from visits";
-		Statement visit_start = connectCon.createStatement();
-		ResultSet visit_reset = visit_start.executeQuery(visit_query1);
+		visit_start = connectCon.prepareStatement(visit_query1);
+		visit_reset = visit_start.executeQuery();
 		int flag1 = 1, knt1 = 0;
 		Date newDate = new Date();
 		SimpleDateFormat fDate, fTime;
@@ -627,15 +629,18 @@ background:#1565c0 important;
 	</nav>
 
 	<%
-	
 	connectCon.close();
-	visit_start.close();
-	visit_reset.close();
-	
+		
 	}
 
 	catch (Exception e) {
 	e.printStackTrace();
+	}
+	finally
+	{
+		
+		visit_start.close();
+		visit_reset.close();
 	}
 	%>
 

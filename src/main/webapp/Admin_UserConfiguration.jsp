@@ -236,6 +236,8 @@
 <%@ page import="javax.sql.*" %>
 <%@ page import="onboard.DBconnection" %>
 <%
+	PreparedStatement s=null,s1=null,s2=null;
+	ResultSet rs=null,rs1=null,rs2=null;
     DBconnection dBconnection=new DBconnection();
     HttpSession details = request.getSession();
     String prjname = (String) details.getAttribute("nameofproject");
@@ -244,13 +246,13 @@
     java.sql.Connection conn = dBconnection.getConnection();
     String query = "select * from Admin_UserDetails";
     String query1 = "select * from Admin_UserDetails";
-    Statement s = conn.createStatement();
-    Statement s1 = conn.createStatement();
-    ResultSet rs = s.executeQuery(query);
-    ResultSet rs1 = s1.executeQuery(query1);
+    s = conn.prepareStatement(query);
+    s1 = conn.prepareStatement(query1);
+    rs = s.executeQuery();
+    rs1 = s1.executeQuery();
     String query2 = "select * from AppEmphazize_ProjectDetails";
-    Statement s2 = conn.createStatement();
-    ResultSet rs2 = s2.executeQuery(query2);
+    s2 = conn.prepareStatement(query2);
+    rs2 = s2.executeQuery();
     int count = 0;
 %>
 

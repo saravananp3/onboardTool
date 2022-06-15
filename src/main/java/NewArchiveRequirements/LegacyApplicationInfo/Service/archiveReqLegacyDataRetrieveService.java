@@ -26,7 +26,7 @@ public class archiveReqLegacyDataRetrieveService {
 		 this.oppName = oppName;
 	}
 	
-	public JsonArray archiveReqLegacyTemplateToArchiveReqLegacyInfo() throws SQLException {
+	public JsonArray archiveReqLegacyTemplateToArchiveReqLegacyInfo() {
 		PreparedStatement st1=null;
 		ResultSet rs1=null;
 		JsonArray jsonArray = new JsonArray();
@@ -59,20 +59,18 @@ public class archiveReqLegacyDataRetrieveService {
 					preparedStatement1.setString(10, rs1.getString("value"));
 					preparedStatement1.execute();
 				}
-				
+				rs1.close();
+				st1.close();
 			}
 			jsonArray = archiveLegacyDataRetrieve();
 			
 		}
+		
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		finally
-		{
-			st1.close();
-			rs1.close();
-		}
+	
 		return jsonArray;
 	}
 	

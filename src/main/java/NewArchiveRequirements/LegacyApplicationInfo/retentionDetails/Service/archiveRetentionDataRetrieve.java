@@ -114,17 +114,17 @@ public class archiveRetentionDataRetrieve {
 	             prestmt.execute();
 	             prestmt.close();
 				}
+				rs1.close();
+				st1.close();
 			}
+			
+			
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		finally
-		{
-			st1.close();
-			rs1.close();
-		}
+		
 	}
 	private JsonArray getRetentionInfo()
 	{

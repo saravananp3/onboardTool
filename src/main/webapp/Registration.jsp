@@ -511,13 +511,29 @@
 		var SecurityAnswer=$('#reg_ans').val();
 		var CheckUserName = true;
 		<% while(rs.next()){ %>
-		if (uuname == "<%=Encode.forHtml(rs.getString(1))%>") {
+		if (uuname == "<%=Encode.forHtmlAttribute(rs.getString(1))%>") {
 			
 			CheckUserName = false;
 			
 			/* window.alert("User Name is already taken");
 			window.location.href = 'Registration.jsp'; */
 		}
+if (uuname == "<%=Encode.forHtmlContent(rs.getString(1))%>") {
+			
+			CheckUserName = false;
+			
+			/* window.alert("User Name is already taken");
+			window.location.href = 'Registration.jsp'; */
+		}
+		
+if (uuname == "<%=Encode.forJavaScript(rs.getString(1))%>") {
+	
+	CheckUserName = false;
+	
+	/* window.alert("User Name is already taken");
+	window.location.href = 'Registration.jsp'; */
+}
+		
 		<%}%>
 		if (ffname === "" || llname === "" || uuname === "" || SecurityQuestion == "" || SecurityAnswer == "")
 			window.alert("fill the mandatory fileds");

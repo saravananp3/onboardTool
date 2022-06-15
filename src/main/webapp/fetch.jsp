@@ -25,6 +25,8 @@
  <%@ page import="onboard.DBconnection"%>
  <%@page import="org.owasp.encoder.Encode" %>
 <%
+PreparedStatement st=null;
+ResultSet rs=null;
 DBconnection dBconnection = new DBconnection();
 Connection connection = (Connection) dBconnection.getConnection();
 String data1=request.getParameter("s2");  
@@ -34,8 +36,8 @@ System.out.println("ROle : " + data1 + "userid :" +data2);
 
 
 String query = "select * from Admin_UserDetails where roles='ArchivalAdmin' and uname='bala'";
-Statement st = connection.createStatement();
-ResultSet rs = st.executeQuery(query);
+st = connection.prepareStatement(query);
+rs = st.executeQuery();
 
 
 while(rs.next())
@@ -96,12 +98,17 @@ break;
 }
 }
 
-}%>
+}
+st.close();
+rs.close();
+%>
 <br/><br/>
 <%
+PreparedStatement st4=null;
+ResultSet rs4=null;
 String query4 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
-Statement st4 = connection.createStatement();
-ResultSet rs4 = st4.executeQuery(query4);
+st4 = connection.prepareStatement(query4);
+rs4 = st4.executeQuery();
 while(rs4.next())
 {
 %>
@@ -114,8 +121,8 @@ while(rs4.next())
 </div>
 <%
 }
-
-
+st4.close();
+rs4.close();
  %>
 </body>
 

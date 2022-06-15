@@ -418,6 +418,8 @@ color:#fff;
     }
 %>
 <%
+	PreparedStatement visit_st=null;
+	ResultSet visit_rs=null;
     HttpSession role_ses=request.getSession();
     String frole=(String)role_ses.getAttribute("role");
     int sumcount=0;
@@ -431,8 +433,8 @@ color:#fff;
         DBconnection d=new DBconnection();
         Connection con = (Connection)d.getConnection();
         String visit_query="select * from visits";
-        Statement visit_st = con.createStatement();
-        ResultSet visit_rs = visit_st.executeQuery(visit_query);
+        visit_st = con.prepareStatement(visit_query);
+        visit_rs = visit_st.executeQuery();
         int flag=1,knt=0;
         Date date = new Date();
         SimpleDateFormat ft,ft1;
@@ -476,7 +478,10 @@ color:#fff;
 
             // execute the preparedstatement
             preparedStmt.execute();
-        }%>
+        }
+        visit_st.close();
+        visit_rs.close();
+        %>
 
 <%
     String uname=(String)details.getAttribute("username");
@@ -602,12 +607,14 @@ color:#fff;
         <div class="content-container">
             <!-- Projects List Start -->
             <%
+            	PreparedStatement projectCountst=null;
+            	ResultSet projectCountqyery=null;
                 {
                     int application_count=0;
                     if(Projets.equals("all")) {
                         String projectCount = "select count(*) from appemphazize_projectdetails";
-                        Statement projectCountst = con.createStatement();
-                        ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
+                        projectCountst = con.prepareStatement(projectCount);
+                        projectCountqyery = projectCountst.executeQuery();
                         if (projectCountqyery.next()) {
                             application_count = Integer.parseInt(projectCountqyery.getString(1));
                         }
@@ -624,6 +631,8 @@ color:#fff;
                             application_count=prjs.length;
                         }
                     }
+                    projectCountst.close();
+                    projectCountqyery.close();
             %>
              <%} %>
             <div class="main-page">
@@ -663,6 +672,10 @@ color:#fff;
                                             catch(Exception e){
                                                 e.printStackTrace();
                                             }
+    finally{
+    	visit_st.close();
+    	visit_rs.close();
+    }
                                         %>
 
 

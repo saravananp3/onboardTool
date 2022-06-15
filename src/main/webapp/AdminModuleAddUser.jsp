@@ -148,6 +148,8 @@
 <%@ page import="onboard.DBconnection"%>
 <%@page import="org.owasp.encoder.Encode" %>
 <%
+	PreparedStatement st=null;
+	ResultSet rs=null;
     HttpSession ses = request.getSession();
     String role = (String) ses.getAttribute("My_Roles");
     String fname = (String) ses.getAttribute("fname");
@@ -159,10 +161,14 @@
     DBconnection dBconnection = new DBconnection();
     Connection connection = (Connection) dBconnection.getConnection();
     String query = "select uname from Admin_UserDetails";
-    Statement st = connection.createStatement();
-    ResultSet rs = st.executeQuery(query);
+    st = connection.prepareStatement(query);
+    rs = st.executeQuery();
 %>
+<%
+st.close();
+rs.close();
 
+%>
 <div class="main-wrapper">
 
     <!-- ========== TOP NAVBAR ========== -->
@@ -434,11 +440,7 @@
                         </div>
                         <!-- /.row -->
                         <!-- Footer -->
-<%
-st.close();
-rs.close();
 
-%>
                         <footer class="page-footer font-small blue">
 
                             <!-- Copyright -->
@@ -514,10 +516,20 @@ rs.close();
         var SecurityQuestion=$('#reg_qn').val();
         var SecurityAnswer=$('#reg_ans').val();
         <% while(rs.next()){ %>
-        if (uuname == "<%=Encode.forHtml(rs.getString(1))%>") {
+        if (uuname == "<%=Encode.forHtmlAttribute(rs.getString(1))%>") {
             window.alert("Project Name is already taken");
             window.location.href = 'Registration.jsp';
         }
+        
+        if (uuname == "<%=Encode.forHtmlContent(rs.getString(1))%>") {
+            window.alert("Project Name is already taken");
+            window.location.href = 'Registration.jsp';
+        }
+        if (uuname == "<%=Encode.forJavaScript(rs.getString(1))%>") {
+            window.alert("Project Name is already taken");
+            window.location.href = 'Registration.jsp';
+        }
+        
         <%}%>
         if (ffname === "" || llname === "" || uuname === "" || SecurityQuestion == "" || SecurityAnswer == "")
             window.alert("Fill the mandatory fields");

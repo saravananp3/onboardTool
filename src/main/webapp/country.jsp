@@ -46,7 +46,7 @@
  rs = stmt.executeQuery();
  while(rs.next()){
      %>
-      <option value="<%=Encode.forHtml(rs.getString(1))%>"><%=Encode.forHtml(rs.getString(2))%></option>  
+      <option value="<%=Encode.forHtmlAttribute(rs.getString(1))%>"><%=Encode.forHtmlAttribute(rs.getString(2))%></option>  
       <%
  }
      stmt.close();

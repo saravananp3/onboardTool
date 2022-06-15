@@ -90,7 +90,7 @@ public class dashboardService {
 	//          
 	//          return jsonObject;
 	//      }
-	public JsonArray getApplicationFromPhaseDataTable(String phaseFilter,String waveFilter) throws SQLException {
+	public JsonArray getApplicationFromPhaseDataTable(String phaseFilter,String waveFilter) {
 		PreparedStatement st=null;
 		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
@@ -132,18 +132,13 @@ public class dashboardService {
 				String[] allWave = new String[waves.size()];
 				allWave = waves.toArray(allWave);
 				jsonArray = (getWaveDetails(allWave, waveFilter));
-				
-				System.out.println("Phase Name is : "+phaseFilter);
-			}	
 
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally
-		{
+				System.out.println("Phase Name is : "+phaseFilter);
+			}
 			st.close();
 			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return jsonArray;
 	}
@@ -210,6 +205,7 @@ public class dashboardService {
 
 					jsonObject.addProperty("targetCompletionDate", "15-07-2022");
 					jsonObject.addProperty("DesignApproval", "No");
+					jsonObject.addProperty("Nanda", rs.getString("OppId"));
 					String Id = rs.getString("OppId");
 					// System.out.println("OppId: " + Id);
 					String selectAppdetail = "select * from ArchiveReq_Roles_Info where OppId = ? and priority_order_num!=''";
@@ -322,7 +318,7 @@ public class dashboardService {
 		return jsonArray;
 	}
 
-	public List<String> getphasewaveinfo(String  phaseFilter) throws SQLException {
+	public List<String> getphasewaveinfo(String  phaseFilter) {
 		PreparedStatement st=null;
 		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
@@ -331,18 +327,17 @@ public class dashboardService {
 		try {
 			if(phaseFilter.equals("All"))
 			{
-			String selectPhases = "select * from phase_info";
-			st = con.prepareStatement(selectPhases);
-			rs = st.executeQuery();
-			while (rs.next()) {
-				if (rs.getString("column_name").equals("waves")) {
-					String waves[] = rs.getString("value").split(",");
-					list=(getWaveinfo(waves, rs.getString("phaseName")));
+				String selectPhases = "select * from phase_info";
+				st = con.prepareStatement(selectPhases);
+				rs = st.executeQuery();
+				while (rs.next()) {
+					if (rs.getString("column_name").equals("waves")) {
+						String waves[] = rs.getString("value").split(",");
+						list=(getWaveinfo(waves, rs.getString("phaseName")));
+					}
 				}
+
 			}
-			st.close();
-			rs.close();
-		}
 			if(!phaseFilter.equals("All"))
 			{
 				String selectPhases = "select * from phase_info where phaseName like ? ";
@@ -355,18 +350,13 @@ public class dashboardService {
 						list=(getWaveinfo(waves, rs.getString("phaseName")));
 					}
 				}
-				
+
 				System.out.println("Phase Name 2 is : "+phaseFilter);
 			}
-		}
-			catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally
-		{
-			st.close();
 			rs.close();
-			
+			st.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		System.out.println();
 		return list;
@@ -374,24 +364,27 @@ public class dashboardService {
 	}
 
 	private  List<String> getWaveinfo(String[] waves, String phase) {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		List<String> list = new LinkedList<String>();
 
 		try {
 			for (String wave : waves) {
 				String selectWaves = "select * from governance_info where waveName=?";
-				PreparedStatement st = con.prepareStatement(selectWaves);
+				st = con.prepareStatement(selectWaves);
 				st.setString(1, wave);
-				ResultSet rs = st.executeQuery();
+				rs = st.executeQuery();
 				while (rs.next()) {
 					if (rs.getString("column_name").equals("apps")) {
 						String apps[] = rs.getString("value").split(",");
 						list=(getApplicationinfo(apps, rs.getString("waveName"), phase));
 					}
 				}
-				rs.close();
-				st.close();
+				
 			}
+			rs.close();
+			st.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -643,19 +636,21 @@ public class dashboardService {
 
 
 	public JsonObject dashboardCardDetails() {
+		PreparedStatement st=null,st1=null,st2=null;
+		ResultSet rs=null,rs1=null,rs2=null;
 		JsonObject jsonObject = new JsonObject();
 		try {
 			String selectQuery = "select count(*) from phase_info where column_name = 'phaseName';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			int countPhase = 0;
 			if (rs.next())
 				countPhase = rs.getInt(1);
 			rs.close();
 			st.close();
 			String selectQuery1 = "select count(*) from governance_info where column_name = 'waveName';";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(selectQuery1);
+			st1 = con.prepareStatement(selectQuery1);
+			rs1 = st1.executeQuery();
 			int countWave = 0;
 			if (rs1.next())
 				countWave = rs1.getInt(1);
@@ -665,8 +660,8 @@ public class dashboardService {
 			// column_name = 'appName';";
 			int countIntake = 0;
 			String selectQuery2 = "select distinct Id from decom3sixtytool.Opportunity_Info oi left join decom3sixtytool.Intake_Stake_Holder_Info ish on ish.OppId=oi.Id ;";
-			Statement st2 = con.createStatement();
-			ResultSet rs2 = st2.executeQuery(selectQuery2);
+			st2 = con.prepareStatement(selectQuery2);
+			rs2 = st2.executeQuery();
 			int countOpportunity = 0;
 			while (rs2.next()) {
 				String Id = rs2.getString("Id");
@@ -695,6 +690,12 @@ public class dashboardService {
 			jsonObject.addProperty("waveCount", countWave);
 			jsonObject.addProperty("appCount", countOpportunity);
 			jsonObject.addProperty("intakeCount", countIntake);
+			rs.close();
+			st.close();
+			rs1.close();
+			st1.close();
+			rs2.close();
+			st2.close();			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -703,11 +704,13 @@ public class dashboardService {
 
 
 	public JsonObject donetChartDetails() {
+		PreparedStatement st=null,st1=null,st2=null;
+		ResultSet rs=null,rs1=null,rs2=null;
 		JsonObject jsonObject = new JsonObject();
 		try {
 			String Query = "select distinct(Id) from opportunity_info;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(Query);
+			st = con.prepareStatement(Query);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				String oppId = rs.getString(1);
 				String moduleNames[] = { "Intake", "Requirments", "ArchiveExecution", "DecommissionExecution" };
@@ -715,19 +718,19 @@ public class dashboardService {
 					boolean checkCurrentPhase = true;
 					if (!moduleName.equals("Requirments")) {
 						String selectQuery = "select * from module_approval_info where moduleName = ? and OppId = ?";
-						PreparedStatement st1 = con.prepareStatement(selectQuery);
+						st1 = con.prepareStatement(selectQuery);
 						st1.setString(1, moduleName);
 						st1.setString(2, oppId);
-						ResultSet rs1 = st1.executeQuery();
+						rs1 = st1.executeQuery();
 						if (rs1.next()) {
 							if (rs1.getBoolean(4))
 								checkCurrentPhase = false;
 						}
 					} else {
 						String selectQuery1 = "select * from opportunity_info where Id = ? and column_name = 'request_type';";
-						PreparedStatement st2 = con.prepareStatement(selectQuery1);
+						st2 = con.prepareStatement(selectQuery1);
 						st2.setString(1, oppId);
-						ResultSet rs2 = st2.executeQuery();
+						rs2 = st2.executeQuery();
 						if (rs2.next())
 							checkCurrentPhase = getReqApproval(rs2.getString("value"), oppId);
 					}
@@ -738,9 +741,13 @@ public class dashboardService {
 				}
 				totalCount++;
 			}
+		
+			jsonObject = getPhasePercentage();
 			rs.close();
 			st.close();
-			jsonObject = getPhasePercentage();
+			rs1.close();
+			st1.close();
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -825,12 +832,14 @@ public class dashboardService {
 		return jsonObject;
 	}
 	public JsonArray getOppNameList() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			boolean checkFirstOpportunity = true;
 			String selectQuery = "select * from opportunity_info where column_name = 'appName'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				if (checkFirstOpportunity) {
 					dashboardGanttChartService ganttChart = new dashboardGanttChartService(rs.getString("value"));
@@ -848,13 +857,15 @@ public class dashboardService {
 		return jsonArray;
 	}
 	public JsonObject getPieChartDetails() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		JsonObject jsonObject = new JsonObject();
 		try {
 			int archiveCount = 0, decomissionCount = 0, retiredCount = 0;
 			String selectQuery = "SELECT * FROM opportunity_info where column_name='request_type';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				String value = rs.getString("value");
 				if (value.equals("Archive")) {
@@ -882,6 +893,8 @@ public class dashboardService {
 		con.close();
 	}
 	public JsonArray getAppIssueCount() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		JsonObject jsonObject = new JsonObject();
 		try {
@@ -891,8 +904,8 @@ public class dashboardService {
 			String todaysdate = sdf.format(date);
 			int issueCount = 0, riskCount = 0, deadlineCount = 0;
 			String selectQuery = "SELECT * FROM ArchiveExe_Issue_Info;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				String type = rs.getString("type");
 				String resolved = rs.getString("resolved");
@@ -948,13 +961,15 @@ public class dashboardService {
 	 * jsonArray; }
 	 */
 	public JsonArray getDataCharDataTable() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		JsonObject jsonObject = new JsonObject();
 		try {
 			int DB2Count = 0, MSSQLCount = 0, MySqlCount = 0, OracleCount = 0, SybaseCount = 0, OtherCount = 0;
 			String selectQuery = "SELECT * FROM decom3sixtytool.assessment_data_char_info where column_name='DatabaseType' and value!='';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				String value = rs.getString("value");
 				if (value.equals("DB2")) {
@@ -999,37 +1014,16 @@ public class dashboardService {
 		return jsonArray;
 	}
 	public JsonArray getApplicationArchiveReqDataFromPhase(String phaseFilter,String waveFilter) {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		ArrayList<String> waves = new ArrayList<String>();
 		try {
 			if(phaseFilter.equals("All"))
 			{
-			String selectPhases = "select * from phase_info";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectPhases);
-			while (rs.next()) {
-				if (rs.getString("column_name").equals("waves")) {
-					if (rs.getString("value").isEmpty() == false) {
-						String waveArray[] = rs.getString("value").split(",");
-						for (String string : waveArray) {
-							waves.add(string);
-						}
-					}
-				}
-			}
-
-			String[] allWave = new String[waves.size()];
-			allWave = waves.toArray(allWave);
-			jsonArray = (getArchiveReqWaveDetails(allWave, waveFilter));
-			rs.close();
-			st.close();
-			}
-			if(!phaseFilter.equals("All"))
-			{
-				String selectPhases = "select * from phase_info where phaseName like ?";
-				PreparedStatement st = con.prepareStatement(selectPhases);
-				st.setString(1, "%"+phaseFilter+"%");
-				ResultSet rs = st.executeQuery();
+				String selectPhases = "select * from phase_info";
+				st = con.prepareStatement(selectPhases);
+				rs = st.executeQuery();
 				while (rs.next()) {
 					if (rs.getString("column_name").equals("waves")) {
 						if (rs.getString("value").isEmpty() == false) {
@@ -1044,11 +1038,34 @@ public class dashboardService {
 				String[] allWave = new String[waves.size()];
 				allWave = waves.toArray(allWave);
 				jsonArray = (getArchiveReqWaveDetails(allWave, waveFilter));
-				rs.close();
-				st.close();
+
+			}
+			if(!phaseFilter.equals("All"))
+			{
+				String selectPhases = "select * from phase_info where phaseName like ?";
+				st = con.prepareStatement(selectPhases);
+				st.setString(1, "%"+phaseFilter+"%");
+				rs = st.executeQuery();
+				while (rs.next()) {
+					if (rs.getString("column_name").equals("waves")) {
+						if (rs.getString("value").isEmpty() == false) {
+							String waveArray[] = rs.getString("value").split(",");
+							for (String string : waveArray) {
+								waves.add(string);
+							}
+						}
+					}
+				}
+
+				String[] allWave = new String[waves.size()];
+				allWave = waves.toArray(allWave);
+				jsonArray = (getArchiveReqWaveDetails(allWave, waveFilter));
 				System.out.println("Phase Name 3 is : "+phaseFilter);
 			}
-		} catch (Exception e) {
+		rs.close();
+		st.close();
+		}
+		 catch (Exception e) {
 			e.printStackTrace();
 		}
 		return jsonArray;
@@ -1056,6 +1073,8 @@ public class dashboardService {
 
 
 	private JsonArray getArchiveReqWaveDetails(String[] waves, String wavestatus) {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		ArrayList<String> allappsList = new ArrayList<String>();
 		String apps[] = {};
@@ -1064,9 +1083,9 @@ public class dashboardService {
 			if (wavestatus.equals("All")) {
 				for (String wave : waves) {
 					String selectWaves = "select * from governance_info where waveName=?";
-					PreparedStatement st = con.prepareStatement(selectWaves);
+					st = con.prepareStatement(selectWaves);
 					st.setString(1, wave);
-					ResultSet rs = st.executeQuery();
+					rs = st.executeQuery();
 					while (rs.next()) {
 						if (rs.getString("column_name").equals("apps")) {
 							if (rs.getString("value").isEmpty() == false) {
@@ -1081,17 +1100,16 @@ public class dashboardService {
 					System.out.println("All apps: " + allappsList);
 					allapp = new String[allappsList.size()];
 					allapp = allappsList.toArray(allapp);
-					rs.close();
-					st.close();
+					
 				}
 				if (allapp.length > 0) {
 					jsonArray = getApplicationApprovalDataTable(allapp);
 				} 
 			} else {
 				String selectWaves = "select * from governance_info where waveName=?";
-				PreparedStatement st=con.prepareStatement(selectWaves);
+				st=con.prepareStatement(selectWaves);
 				st.setString(1, wavestatus);
-				ResultSet rs = st.executeQuery();
+				rs = st.executeQuery();
 				while (rs.next()) {
 					if (rs.getString("column_name").equals("apps")) {
 						if (rs.getString("value").isEmpty() == false) {
@@ -1102,10 +1120,10 @@ public class dashboardService {
 				if (apps.length > 0) {
 					jsonArray = getApplicationApprovalDataTable(apps);
 				} 
-				rs.close();
-				st.close();
+				
 			}
-
+			rs.close();
+			st.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1113,12 +1131,14 @@ public class dashboardService {
 	}
 
 	public JsonArray getDoughnutIntakeDetail() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			ArrayList<String> app = new ArrayList<String>();
 			String selectApp = "select * from opportunity_info where column_name='appName'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectApp);
+			st = con.prepareStatement(selectApp);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				app.add(rs.getString("value"));
 			}
@@ -1273,40 +1293,17 @@ public class dashboardService {
 
 
 	public JsonArray getArchiveExeDataFromPhase(String phaseFilter,String waveFilter) {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		ArrayList<String> waves = new ArrayList<String>();
 
 		try {
 			if(phaseFilter.equals("All"))
 			{
-			String selectPhases = "select * from phase_info";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectPhases);
-
-			while (rs.next()) {
-				if (rs.getString("column_name").equals("waves")) {
-					if (rs.getString("value").isEmpty() == false) {
-						String waveArray[] = rs.getString("value").split(",");
-						for (String string : waveArray) {
-							waves.add(string);
-						}
-					}
-				}
-			}
-
-			String[] allWave = new String[waves.size()];
-			allWave = waves.toArray(allWave);
-			jsonArray = (getArchiveExeWaveDetails(allWave, waveFilter));
-			rs.close();
-			st.close();
-
-		}
-			if(!phaseFilter.equals("All"))
-			{				
-				String selectPhases = "select * from phase_info where phaseName like ?";
-				PreparedStatement st = con.prepareStatement(selectPhases);
-				st.setString(1, "%"+phaseFilter+"%");
-				ResultSet rs = st.executeQuery();
+				String selectPhases = "select * from phase_info";
+				st = con.prepareStatement(selectPhases);
+				rs = st.executeQuery();
 
 				while (rs.next()) {
 					if (rs.getString("column_name").equals("waves")) {
@@ -1322,11 +1319,36 @@ public class dashboardService {
 				String[] allWave = new String[waves.size()];
 				allWave = waves.toArray(allWave);
 				jsonArray = (getArchiveExeWaveDetails(allWave, waveFilter));
-				rs.close();
-				st.close();
+			st.close();
+			rs.close();
+			}
+			if(!phaseFilter.equals("All"))
+			{				
+				String selectPhases = "select * from phase_info where phaseName like ?";
+				st = con.prepareStatement(selectPhases);
+				st.setString(1, "%"+phaseFilter+"%");
+				rs = st.executeQuery();
+
+				while (rs.next()) {
+					if (rs.getString("column_name").equals("waves")) {
+						if (rs.getString("value").isEmpty() == false) {
+							String waveArray[] = rs.getString("value").split(",");
+							for (String string : waveArray) {
+								waves.add(string);
+							}
+						}
+					}
+				}
+
+				String[] allWave = new String[waves.size()];
+				allWave = waves.toArray(allWave);
+				jsonArray = (getArchiveExeWaveDetails(allWave, waveFilter));
+				
 				System.out.println("Phase Name 4 is : "+phaseFilter);
 			}
-		}catch (Exception e) {
+		rs.close();
+		st.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return jsonArray;

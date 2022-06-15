@@ -241,8 +241,11 @@
                             <%
                          String uname=(String)details.getAttribute("username");
                          String roles1=(String)details.getAttribute("role");%>
-                            <li><a href="#"><span id="nav_userid"><%=Encode.forHtml(username)%>&nbsp;</span>logged in as &nbsp;<span
-                                    id='nav_role'><%=Encode.forHtml(roles1)%></span></a></li>
+                            <li><a href="#"><span id="nav_userid"><%=Encode.forHtmlAttribute(username)%>&nbsp;</span>logged in as &nbsp;<span
+                                    id='nav_role'><%=Encode.forHtmlAttribute(roles1)%></span></a></li>
+                                    
+                                     <li><a href="#"><span id="nav_userid"><%=Encode.forHtmlContent(username)%>&nbsp;</span>logged in as &nbsp;<span
+                                    id='nav_role'><%=Encode.forHtmlContent(roles1)%></span></a></li>
 
                             <li><a href="logout.jsp" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                             </li>
