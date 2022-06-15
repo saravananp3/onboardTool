@@ -47,22 +47,9 @@ $(document).ready(function() {
 					+ "<td>" + "<select class='form-select wave' id='wave1" + num + "' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;'>" +
 					waveOptions +
 					"</select>" + "</td>"
-
-				/*	+ "<td>" + "<select class='form-select resource' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;'>" +
-					resourceOptions +
-					"</select>" + "</td>" +*/
 					
-					+ "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup'style='display:block;'></span>" +
+					+ "<td style='text-align:center;vertical-align: middle;'><span class='fa fa-pencil-square-o editpopup'style='display:block;'></span>" +
 					"</td>" +
-
-					"<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>" +
-					"<ul class='dropdown-menu' style = 'min-width: inherit;'>" +
-					"<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black;'>&nbsp;&nbsp;&nbsp;Edit</a></li>" +
-					"<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black;'>&nbsp;&nbsp;&nbsp;Delete</a></li>" +
-					"</ul>" +
-					"</div>" +
-					"</td>" +
-
 					"</tr>";
 
 
@@ -148,33 +135,12 @@ $(document).on('change', '#phase1', function(j) {
 	}
 });
 
-$(document).on('change', '.filter', function(i) {
-	/* var category = $("#category").val();*/
+$(document).on('change', '.filter', function(j) {
 	var phase = $("#phase1").val();
 	var wave = $("#wave1"+j).val();
 	filterAjaxCall(category, phase, wave);
 });
 
-/*$(document).on('change','.phaseList',function(){
-$("#waveResult").hide();
-var phaseName = $(this).val();
-if(phaseName!="Select")
-	{
-	$("."+(phaseName.replaceAll(" ","")).replaceAll("-","")).show();
-	$(".waveList").val("Select");
-	}
-	else
-	{
-	$("#waveResult").show();
-	}
-});
-
-$(document).on('change','.filter',function(){
-   /* var category = $("#category").val();*/
-/* var phase = $("#phaseResult").val();
- var wave = $("#waveResult").val();
- filterAjaxCall(category,phase,wave);
-});*/
 function filterAjaxCall(category, phase, wave) {
 	$.ajax({
 		url: "OpportunityFilterListServlet",
@@ -195,10 +161,8 @@ function filterAjaxCall(category, phase, wave) {
 
 
 $(document).on('click', '.editpopup', function() {
-		var s = $(this).closest("tr");
-		console.log("S VALUE : ", s);
-		var demo = s.find("td:eq(0)").text();
-		console.log("SS VALUE", demo);
+		var intakePreview = $(this).closest("tr");
+		var demo = intakePreview.find("td:eq(0)").text();
 		$('#demo').val(demo);
 		$('#editpopup_btn').click();
 		

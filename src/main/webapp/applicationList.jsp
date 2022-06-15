@@ -171,9 +171,6 @@
 							<th
 								style='text-align: center; vertical-align: middle; width: 20%;'
 								scope="col">Preview</th>
-							<th
-								style='text-align: center; vertical-align: middle; width: 5%;'
-								scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody id="applicationListWithoutPhase">

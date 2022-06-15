@@ -141,6 +141,10 @@ public class PlanAndPriorityWithPhaseService {
                 while (rs.next()) {
                     if (rs.getString("column_name").equals("waves")) {
                         String waves[] = rs.getString("value").split(",");
+                        if(waves[0].equals(""))
+                        {
+                        	continue;
+                        }
                         list=(getWaveinfo(waves, rs.getString("phaseName")));
                     }
                 }

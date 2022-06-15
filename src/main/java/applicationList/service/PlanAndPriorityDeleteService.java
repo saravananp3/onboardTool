@@ -35,7 +35,7 @@ public class PlanAndPriorityDeleteService {
                     JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
                     String wave = jsonObj.get("wave").getAsString();
                     String appName = jsonObj.get("appName").getAsString();
-                    String fetchdetailsFromWave = "select * from decom3sixtytool.Governance_Info; where waveName=?";
+                    String fetchdetailsFromWave = "select * from decom3sixtytool.Governance_Info where waveName=?";
                     PreparedStatement pst2 = con.prepareStatement(fetchdetailsFromWave);
                     pst2.setString(1, wave);
                     ResultSet rs1 = pst2.executeQuery();
