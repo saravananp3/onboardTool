@@ -64,6 +64,8 @@
 	Statement sDate, sTime;
 	try {
 		//String query;
+		PreparedStatement visit_start=null;
+		ResultSet visit_reset=null;
 		HttpSession sessionDetails = request.getSession();
 		String Projects = (String) sessionDetails.getAttribute("projects");
 		System.out.println("projects-------------" + Projects);
@@ -71,8 +73,8 @@
 		DBconnection db = new DBconnection();
 		Connection connectCon = (Connection) db.getConnection();
 		String visit_query1 = "select * from visits";
-		Statement visit_start = connectCon.createStatement();
-		ResultSet visit_reset = visit_start.executeQuery(visit_query1);
+		visit_start = connectCon.prepareStatement(visit_query1);
+		visit_reset = visit_start.executeQuery();
 		int flag1 = 1, knt1 = 0;
 		Date newDate = new Date();
 		SimpleDateFormat fDate, fTime;
@@ -186,8 +188,11 @@
 	</nav>
 
 	<%
-	connectCon.close();
 	visit_start.close();
+	visit_reset.close();
+	connectCon.close();
+	
+	
 	}
 
 	catch (Exception e) {
