@@ -77,7 +77,7 @@ $(document).on('click', '#saveApplicationList', function(e) {
 	if (validation) {
 		console.log("JsonArray Retrieve--->", JsonArray);
 		applicationListSaveAjaxcall(JsonArray);
-
+		window.setTimeout(function(){location.reload()},1000);
 	}
 	else {
 		notification("warning", "Please fill atleast one row fields.", "Warning");
@@ -533,7 +533,7 @@ function DeleteRowAjaxCall(JsonArray,DeleteSeqNum) {
             JsonObject = data;
              $(".rowClass").eq(DeleteSeqNum).remove();
             notification("success", "Row deleted successfully.", "Note");
-           location.reload();
+           	window.setTimeout(function(){location.reload()},220);
         },
         error: function(e) {
             console.log(e);

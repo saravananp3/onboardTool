@@ -88,6 +88,7 @@ $(document).on('click', '#saveApplicationList-1', function(e) {
 	if (validation) {
 		console.log("JsonArray Retrieve--->", JsonArray);
 		applicationListSaveAjaxcall(JsonArray);
+		window.setTimeout(function(){location.reload()},1000);
 
 	}
 	else {
