@@ -133,23 +133,28 @@ function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,id,e)
         success: function (data) {
         	console.log("CREATE VALIDATION",data);
         	JsonObject = data;
-        	if(data.SaveStatus)
+        	if(data.checkWaveId){
+	                     checkAjax = false;
+		                	notification("warning","Wave Id is already exist.","Warning:");
+		                    }
+		          if(data.checkWaveName){
+			                   checkAjax = false;
+		                	  notification("warning","Wave name is already exist.","Warning:");
+		                    
+	                      }
+        	   if(data.SaveStatus)
         		{
-        		notification("success","Edited Wave successfully created.","Note:");
+        		notification("success","New Wave successfully created.","Note:");
         		setTimeout(function()
         				{
-        			      $("#ListId").click();
+        			      $("#governanceListId").click();
         				},1000);
         		}
-        	else
-        	{
-           		if(data.checkWaveName)
-        			notification("warning","Wave Name already exist.","Warning:");
-        		else if(data.checkWaveId)
-        			notification("warning","Wave Id already exist.","Warning:");
-        		else
-        		notification("error","Error occured while saving.","Error:");
-        	}
+        	    	else{
+	                    e.preventDefault();
+		                     notification("error","Error Occured while saving.","Error:");
+        		        return false;
+        		}
         	    	
            },
         error: function (e) {

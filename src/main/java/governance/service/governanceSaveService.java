@@ -307,7 +307,7 @@ public class governanceSaveService {
 		boolean statusFlag  = false;
 		try
 		{
-			if(operation.equals("NewPhase"))
+			if(operation.equals("NewWave"))
 			{
 			String selectQuery = "select * from governance_info where column_name=? and value=?;";
 			PreparedStatement st = con.prepareStatement(selectQuery);
@@ -323,7 +323,7 @@ public class governanceSaveService {
 			st.close();
 			rs.close();
 			}
-			else if(operation.equals("EditPhase"))
+			else if(operation.equals("EditWave"))
 			{
 				String selectQuery = "select * from governance_info where column_name=? and value=?;";
 				PreparedStatement st = con.prepareStatement(selectQuery);

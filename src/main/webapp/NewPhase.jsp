@@ -230,7 +230,7 @@ li a.alignCenter {
 													<div class="row">
 														<div class="col-4">
 															<button type="button" class="btn btn-secondary"
-																onclick="location.href='GovernanceList.jsp';">Back</button>
+																onclick="location.href='PhaseList.jsp';">Back</button>
 														</div>
 														<div class="col-8" align="end">
 															

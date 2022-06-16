@@ -36,7 +36,7 @@ public class phaseSaveServlet extends HttpServlet {
 		try {
 			phaseSaveService phase = new phaseSaveService(phaseId, phaseName, jsonArray,id,operation);
 			boolean checkphaseName = phase.checkDuplicateData("phaseName", phaseName);
-			boolean checkphaseId = phase.checkDuplicateData("phaseId", id);
+			boolean checkphaseId = phase.checkDuplicateData("phaseId", phaseId);
 			jsonObject.addProperty("checkphaseName", checkphaseName);
 			jsonObject.addProperty("checkphaseId", checkphaseId);
 

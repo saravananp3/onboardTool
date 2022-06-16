@@ -23,8 +23,8 @@ import governance.service.governanceSaveService;
 public class governanceSaveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String id = request.getParameter("waveId");
-		String Id = request.getParameter("id");
+		String waveId = request.getParameter("waveId");
+		String id = request.getParameter("id");
 		String operation =  request.getParameter("operation");
 		String waveName =request.getParameter("waveName");
 		boolean checkMandatory = Boolean.parseBoolean(request.getParameter("checkMandatory"));
@@ -34,9 +34,9 @@ public class governanceSaveServlet extends HttpServlet {
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
 		JsonObject jsonObject = new JsonObject();
 		try {
-			governanceSaveService governance = new governanceSaveService(id, waveName, jsonArray,Id,operation);
+			governanceSaveService governance = new governanceSaveService(waveId, waveName, jsonArray,id,operation);
 			boolean checkWaveName = governance.checkDuplicateData("waveName", waveName);
-			boolean checkWaveId = governance.checkDuplicateData("waveId", id);
+			boolean checkWaveId = governance.checkDuplicateData("waveId", waveId);
 			jsonObject.addProperty("checkWaveName", checkWaveName);
 			jsonObject.addProperty("checkWaveId", checkWaveId);
 
