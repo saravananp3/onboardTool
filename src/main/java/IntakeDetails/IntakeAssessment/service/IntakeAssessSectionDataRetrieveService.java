@@ -97,13 +97,15 @@ public class IntakeAssessSectionDataRetrieveService {
 	
 	public JsonArray DataRetrieveTableInfo()
 	 {
+		PreparedStatement st1=null,st2=null;
+		ResultSet rs1=null,rs2=null;
 		 JsonArray jsonArray = new JsonArray();
 		 try
 		 {	 
 			 String SelectQueryComplianceChar = "Select * from "+SectionInfoTable+" Where Id =? order by seq_no;";
-			  PreparedStatement st1 = con.prepareStatement(SelectQueryComplianceChar);
+			  st1 = con.prepareStatement(SelectQueryComplianceChar);
 			  st1.setString(1, id);
-			  ResultSet rs1 = st1.executeQuery();
+			  rs1 = st1.executeQuery();
 					     
 			 boolean CeckExistance = true;
 			 
@@ -145,9 +147,9 @@ public class IntakeAssessSectionDataRetrieveService {
 			 {
 				 String SelectQueryComplianceCharTemp = "Select * from "+SectionTemplateTable+" order by seq_no;";
 				 
-				 Statement st2 = con.createStatement();
+				 st2 = con.prepareStatement(SelectQueryComplianceCharTemp);
 				 
-				 ResultSet rs2 = st2.executeQuery(SelectQueryComplianceCharTemp);
+				 rs2 = st2.executeQuery();
 			     while(rs2.next())
 			     {
 			    	 JsonObject jsonObject = new JsonObject();
@@ -164,14 +166,15 @@ public class IntakeAssessSectionDataRetrieveService {
 						jsonObject.addProperty("Value", rs2.getString("value"));
 						jsonArray.add(jsonObject);
 			     }
-			     st2.close();
-			     rs2.close();
+			     
 			     
 			     //moving records from template table to info table
 			     
 			     MovingTemplateRecordsToInfo();
-			     
+			     st2.close();
+			     rs2.close();  
 			 }
+			 
 		 }
 		 catch(Exception e)
 		 {
@@ -181,12 +184,13 @@ public class IntakeAssessSectionDataRetrieveService {
 		 return jsonArray;
 	 }
 	private void MovingTemplateRecordsToInfo()
-	{
+	{	PreparedStatement st=null;
+		ResultSet rs=null;
 		try
 		{
 			String SelectTempQuery = "Select * from "+SectionTemplateTable+" order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectTempQuery);
+			st = con.prepareStatement(SelectTempQuery);
+			rs = st.executeQuery();
 			
 			while(rs.next())
 			{
@@ -206,6 +210,8 @@ public class IntakeAssessSectionDataRetrieveService {
 				prestmt1.setString(11,rs.getString(10));
 				prestmt1.execute();
 			}
+			st.close();
+			rs.close();
 		}
 		catch(Exception e)
 		{
@@ -215,12 +221,14 @@ public class IntakeAssessSectionDataRetrieveService {
 	
 	public JsonArray DataRetrieveForContractInformation(String id)
 	{
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonArray jsonArray = new JsonArray();
        try
        {
     	   String SelectTemplateQuery = "select * from " +SectionTemplateTable+" order by seq_no;";
-			Statement st1 = con.createStatement();
-			ResultSet rs1 = st1.executeQuery(SelectTemplateQuery);
+			st1 = con.prepareStatement(SelectTemplateQuery);
+			rs1 = st1.executeQuery();
 			
 			while(rs1.next())
 			{
@@ -254,7 +262,8 @@ public class IntakeAssessSectionDataRetrieveService {
 					jsonObject1.addProperty("Value", rs1.getString("value"));
 					jsonArray.add(jsonObject1); 
 			}
-
+			st1.close();
+			rs1.close();
        }
        catch(Exception e)
        {

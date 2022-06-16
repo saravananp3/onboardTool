@@ -520,15 +520,7 @@ rs.close();
             window.alert("Project Name is already taken");
             window.location.href = 'Registration.jsp';
         }
-        
-        if (uuname == "<%=Encode.forHtmlContent(rs.getString(1))%>") {
-            window.alert("Project Name is already taken");
-            window.location.href = 'Registration.jsp';
-        }
-        if (uuname == "<%=Encode.forJavaScript(rs.getString(1))%>") {
-            window.alert("Project Name is already taken");
-            window.location.href = 'Registration.jsp';
-        }
+       
         
         <%}%>
         if (ffname === "" || llname === "" || uuname === "" || SecurityQuestion == "" || SecurityAnswer == "")

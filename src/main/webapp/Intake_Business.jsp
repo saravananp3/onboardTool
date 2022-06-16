@@ -171,6 +171,8 @@
 
 <%
     try {
+    	PreparedStatement visit_st=null;
+    	ResultSet visit_rs=null;
         HttpSession details = request.getSession();
         String role_info = (String) details.getAttribute("intake");
         String roles = (String) details.getAttribute("role");
@@ -188,8 +190,8 @@
         String username = (String) details.getAttribute("username");
         String Project_Name = (String) details.getAttribute("nameofproject");
         String visit_query = "select * from visits";
-        Statement visit_st = conn.createStatement();
-        ResultSet visit_rs = visit_st.executeQuery(visit_query);
+        visit_st = conn.prepareStatement(visit_query);
+        visit_rs = visit_st.executeQuery();
         int flag = 1;
 
         Date date = new Date();
@@ -722,6 +724,8 @@
     <jsp:param name="servlet" value="Business"/>
 </jsp:include>
 <%
+visit_st.close();
+visit_rs.close();
            }
       //  }
    // } 

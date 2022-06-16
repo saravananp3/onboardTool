@@ -293,6 +293,15 @@ public class Login extends HttpServlet {
                 }
 
             }
+            st5.close();
+            rs5.close();
+            st6.close();
+            rs6.close();
+            st7.close();
+            rs7.close();
+            st8.close();
+            rs8.close();
+            
 
             if (dum == 0) {
                 String q = " insert into dummy (value)" +

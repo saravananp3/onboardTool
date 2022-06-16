@@ -104,7 +104,7 @@ public class daterange extends HttpServlet {
 			}
 		}
 		
-	    Res="";
+	    String Res="";
 		for(int i=0;i<result_projects.size();i++)
 		{
 			//System.out.println("result_projecs : "+result_projects.get(i));

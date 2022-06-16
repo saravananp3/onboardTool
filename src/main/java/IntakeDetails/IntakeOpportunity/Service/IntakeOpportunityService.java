@@ -299,7 +299,8 @@ public class IntakeOpportunityService {
 		 return value; 
 	}
 	public static JsonArray IntakeDetailsOpportunityAddTemplateFields1(int[] selected_index,String id,String templateMandatory) {
-		
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		System.out.println(selected_index[0]);
 		System.out.println(selected_index[1]);
 		System.out.println(selected_index[2]);
@@ -321,9 +322,9 @@ public class IntakeOpportunityService {
 	    	   
 	    	   String SelectedColumnQuery ="select * from opportunity_info_template_details;"; 
 	    	   
-	    	   Statement st1 =connection.createStatement(); 
+	    	   st1 =connection.prepareStatement(SelectedColumnQuery);
 	    	   
-	    	   ResultSet rs1 =st1.executeQuery(SelectedColumnQuery); 
+	    	   rs1 =st1.executeQuery(); 
 	    	   
 	    	   while(rs1.next()) {
 	    		
@@ -463,6 +464,8 @@ public class IntakeOpportunityService {
 				
 			}
 	      }
+	      st1.close();
+	      rs1.close();
 	      }
 	      catch(Exception e)
 	      {
@@ -472,7 +475,8 @@ public class IntakeOpportunityService {
 	       return jsonArray;
 	      }
 	public static JsonObject intakeDetailsOpportunityValidation(String AppName,JsonArray jsonArray,boolean checkMandatory,String APMID,String id)
-	{
+	{	PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
@@ -513,14 +517,16 @@ public class IntakeOpportunityService {
 			if(!CheckAPP)
 			{
 			String CheckQueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName';";
-			Statement st1 = connection.createStatement();
-			ResultSet rs1 = st1.executeQuery(CheckQueryAppName);
+			st1 = connection.prepareStatement(CheckQueryAppName);
+			rs1 = st1.executeQuery();
 			while(rs1.next()) {
 				if(rs1.getString("value").equals(AppName))
 				{
 					checkAppName =true;
 				}
 			}
+			st1.close();
+			rs1.close();
 			}
 			jsonObject.addProperty("APMID_VALIDATION", checkAPMID);
 			jsonObject.addProperty("AppName_VALIDATION",checkAppName);
@@ -528,6 +534,7 @@ public class IntakeOpportunityService {
 			{
 				IntakeOpportunityService.IntakeDetailsOpportunityDetailsSave(jsonArray,id);
 			}
+		
 		}
 		catch(Exception e)
 		{

@@ -34,7 +34,7 @@ public  DBconnection() throws ClassNotFoundException, SQLException{
 
                    Class.forName(prop.getProperty("DRIVER"));
                    
-                   String dbcPw=prop.getProperty("PASSWORD");
+                   String dbcPw=prop.getProperty("Pw");
                   
                    if(dbcPw.startsWith("ENC("))
            			{
@@ -76,7 +76,7 @@ public  DBconnection(boolean create_db_Flag) throws ClassNotFoundException, SQLE
 	
 	       Class.forName(prop.getProperty("DRIVER"));
 	       
-	       String dbcPw=prop.getProperty("PASSWORD");
+	       String dbcPw=prop.getProperty("Pw");
 	      
 	       if(dbcPw.startsWith("ENC("))
 				{

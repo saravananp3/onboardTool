@@ -90,7 +90,7 @@ public class piedaterange extends HttpServlet {
 			}
 		}
 		
-	    Res="";
+	    String Res="";
 	
 		}
 		catch(Exception e)
