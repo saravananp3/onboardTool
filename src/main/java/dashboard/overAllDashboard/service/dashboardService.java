@@ -740,13 +740,14 @@ public class dashboardService {
 					}
 				}
 				totalCount++;
-			}
+				rs1.close();
+				st1.close();
+				}
 		
 			jsonObject = getPhasePercentage();
 			rs.close();
 			st.close();
-			rs1.close();
-			st1.close();
+			
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1104,7 +1105,10 @@ public class dashboardService {
 				}
 				if (allapp.length > 0) {
 					jsonArray = getApplicationApprovalDataTable(allapp);
+					rs.close();
+					st.close();
 				} 
+				
 			} else {
 				String selectWaves = "select * from governance_info where waveName=?";
 				st=con.prepareStatement(selectWaves);
@@ -1121,9 +1125,10 @@ public class dashboardService {
 					jsonArray = getApplicationApprovalDataTable(apps);
 				} 
 				
-			}
-			rs.close();
-			st.close();
+				rs.close();
+				st.close();
+				}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

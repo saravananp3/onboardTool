@@ -236,6 +236,8 @@ public class ArchiveExecutionGovernanceTemplateService {
 
 					}
 
+					pst1.close();
+					rs4.close();
 				}
 
 
@@ -276,12 +278,10 @@ public class ArchiveExecutionGovernanceTemplateService {
 			st1.close();
 			st3.close();
 			pst.close();
-			pst1.close();
 			rs.close();
 			rs1.close();
 			rs2.close();
 			rs3.close();
-			rs4.close();
 
 		}
 

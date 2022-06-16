@@ -262,6 +262,14 @@ try
              preparedStmt.execute();
         }
     }
+    st5.close();
+    rs5.close();
+    st6.close();
+    rs6.close();
+    st7.close();
+    rs7.close();
+    st8.close();
+    rs8.close();
     if(dum==0){
     String q = " insert into dummy (value)"
             + " values (?)";
@@ -312,6 +320,8 @@ try
                 prestmt.execute();
         }
     }
+    statement.close();
+    rs_opportunity.close();
     //
     String NewGovernanceQuery = "select * from Governance_Info_Template_Details";
     Statement statements = con.createStatement();
@@ -370,6 +380,9 @@ try
     }
     rs_phase.close();
     PhaseStatement.close();
+    statements.close();
+    rs_governance.close();
+    
     String Triage_Query = "select * from Triage_Info_Template_Details";
     Statement statement1 = con.createStatement();
     ResultSet rs_Triage = statement1.executeQuery(Triage_Query);
@@ -435,6 +448,8 @@ try
                   prestmt.execute();
         }
     }
+    statement1.close();
+    rs_Triage.close();
     String TriageSummary = "select * from Triage_Summary_Info_Template_Details";
     Statement stTriSumm = con.createStatement();
     ResultSet rsTriSumm = stTriSumm.executeQuery(TriageSummary);
@@ -489,6 +504,8 @@ try
                      prestmtResponse.execute();
                  }
              }
+             stRoleRes.close();
+             RsroleRes.close();
     String AssessmentDataChar = "select * from Assessment_Data_Char_Info_Template_Details";
     Statement AssDataCharst = con.createStatement();
     ResultSet AssDataCharrs = AssDataCharst.executeQuery(AssessmentDataChar);
@@ -574,6 +591,8 @@ try
             prestmt1.execute();
         }
     }
+    AssessmentSt.close();
+    AssessmentRs.close();
     String AssessmentArchival = "Select * from Assessment_Archival_Consumption_Info_Template_Details";  
     Statement AssArchivalst = con.createStatement();    
     ResultSet AssArchivalrs = AssArchivalst.executeQuery(AssessmentArchival);
@@ -609,6 +628,8 @@ try
             prestmt3.execute();
         }
     }
+    AssArchivalst.close();
+    AssArchivalrs.close();
      String AssessAppInfoQuery = "Select * from Assessment_Application_Info_Template_Details;";
         Statement AssessAppInfoSt = con.createStatement();
         ResultSet AssessAppInfoRs = AssessAppInfoSt.executeQuery(AssessAppInfoQuery);
@@ -654,6 +675,8 @@ try
         }
     }
     //Template tale for Assessment Contract Information
+        AssessAppInfoSt.close();
+        AssessAppInfoRs.close();
     String AssessContractInfoQuery = "Select * from Assessment_Contract_Info_Template_Details;";
     Statement AssessContractInfoSt = con.createStatement();
     ResultSet AssessContractInfoRs = AssessContractInfoSt.executeQuery(AssessContractInfoQuery);
@@ -685,6 +708,8 @@ try
         }
     }
     // Business Requirements
+    AssessContractInfoSt.close();
+    AssessContractInfoRs.close();
      String BusReqInScope = "select * from BusinessReqinscope_Info_template_details";
      Statement stBusReqInScope = con.createStatement();
      ResultSet RsBusReqInScope = stBusReqInScope.executeQuery(BusReqInScope);
@@ -702,6 +727,8 @@ try
              prestmtBusReq.execute();
          }
      }
+     stBusReqInScope.close();
+     RsBusReqInScope.close();
     //calling Archive Execution Template function 
     ArchiveExecutionTemplateService archiveExecObj = new ArchiveExecutionTemplateService("");
     archiveExecObj.archiveExecutionDefaultRecords();

@@ -316,8 +316,8 @@ public class Login extends HttpServlet {
 
 
             String NewOpportunityQuery = "select * from Opportunity_Info_Template_Details";
-            Statement statement = con.createStatement();
-            ResultSet rs_opportunity = statement.executeQuery(NewOpportunityQuery);
+            PreparedStatement statement = con.prepareStatement(NewOpportunityQuery);
+            ResultSet rs_opportunity = statement.executeQuery();
 
             if (!rs_opportunity.next()) {
                 OpportunityDetails opportunity[] = new OpportunityDetails[20];
@@ -361,12 +361,13 @@ public class Login extends HttpServlet {
 
                 }
             }
-
+            statement.close();
+            rs_opportunity.close();
 
             //
             String NewGovernanceQuery = "select * from Governance_Info_Template_Details";
-            Statement statements = con.createStatement();
-            ResultSet rs_governance = statements.executeQuery(NewGovernanceQuery);
+            PreparedStatement statements = con.prepareStatement(NewGovernanceQuery);
+            ResultSet rs_governance = statements.executeQuery();
 
             if (!rs_governance.next()) {
                 GovernanceDetails governance[] = new GovernanceDetails[5];
@@ -392,11 +393,11 @@ public class Login extends HttpServlet {
                     prestmt.close();
                 }
             }
-
+         
             // phase template info
             String NewPhaseQuery = "select * from Phase_Info_Template_Details";
-            Statement PhaseStatement = con.createStatement();
-            ResultSet rs_phase = statements.executeQuery(NewPhaseQuery);
+            PreparedStatement PhaseStatement = con.prepareStatement(NewPhaseQuery);
+            ResultSet rs_phase = PhaseStatement.executeQuery();
 
             if (!rs_phase.next()) {
                 GovernanceDetails governance[] = new GovernanceDetails[5];
@@ -424,11 +425,12 @@ public class Login extends HttpServlet {
             }
             rs_phase.close();
             PhaseStatement.close();
-
+            statements.close();
+            rs_governance.close();
 
             String Triage_Query = "select * from Triage_Info_Template_Details";
-            Statement statement1 = con.createStatement();
-            ResultSet rs_Triage = statement1.executeQuery(Triage_Query);
+            PreparedStatement statement1 = con.prepareStatement(Triage_Query);
+            ResultSet rs_Triage = statement1.executeQuery();
 
 
             if (!rs_Triage.next()) {
@@ -492,7 +494,8 @@ public class Login extends HttpServlet {
                     prestmt.execute();
                 }
             }
-
+            statement1.close();
+            rs_Triage.close();
             String TriageSummary = "select * from Triage_Summary_Info_Template_Details";
             Statement stTriSumm = con.createStatement();
             ResultSet rsTriSumm = stTriSumm.executeQuery(TriageSummary);
@@ -529,8 +532,8 @@ public class Login extends HttpServlet {
             // Archive Requirement - Role&Response
 
             String roleRes = "select * from ArchiveReq_Roles_Info_Template_Details";
-            Statement stRoleRes = con.createStatement();
-            ResultSet RsroleRes = stRoleRes.executeQuery(roleRes);
+            PreparedStatement stRoleRes = con.prepareStatement(roleRes);
+            ResultSet RsroleRes = stRoleRes.executeQuery();
 
             if (!RsroleRes.next()) {
                 rolesRespons RoleResponse[] = new rolesRespons[5];
@@ -554,8 +557,8 @@ public class Login extends HttpServlet {
                     prestmtResponse.execute();
                 }
             }
-
-
+            stRoleRes.close();
+            RsroleRes.close();
 
             String AssessmentDataChar = "select * from Assessment_Data_Char_Info_Template_Details";
             Statement AssDataCharst = con.createStatement();
@@ -611,9 +614,9 @@ public class Login extends HttpServlet {
 
 
             String AssessmentQuery = "Select * from Assessment_Compliance_Char_Info_Template_Details;";
-            Statement AssessmentSt = con.createStatement();
+            PreparedStatement AssessmentSt = con.prepareStatement(AssessmentQuery);
 
-            ResultSet AssessmentRs = AssessmentSt.executeQuery(AssessmentQuery);
+            ResultSet AssessmentRs = AssessmentSt.executeQuery();
 
             if (!AssessmentRs.next()) {
                 String ComplianceChar = "ComplianceCharacteristics";
@@ -648,10 +651,12 @@ public class Login extends HttpServlet {
                     prestmt1.execute();
                 }
             }
-
+            AssessmentSt.close();
+            AssessmentRs.close();
+            
             String AssessmentArchival = "Select * from Assessment_Archival_Consumption_Info_Template_Details";
-            Statement AssArchivalst = con.createStatement();
-            ResultSet AssArchivalrs = AssArchivalst.executeQuery(AssessmentArchival);
+            PreparedStatement AssArchivalst = con.prepareStatement(AssessmentArchival);
+            ResultSet AssArchivalrs = AssArchivalst.executeQuery();
 
             if (!AssArchivalrs.next()) {
                 String ArchivConsump = "ArchivalConsumption";
@@ -684,12 +689,14 @@ public class Login extends HttpServlet {
                     prestmt3.execute();
                 }
             }
-
+            AssArchivalst.close();
+            AssArchivalrs.close();
+            
             String AssessAppInfoQuery = "Select * from Assessment_Application_Info_Template_Details;";
 
-            Statement AssessAppInfoSt = con.createStatement();
+            PreparedStatement AssessAppInfoSt = con.prepareStatement(AssessAppInfoQuery);
 
-            ResultSet AssessAppInfoRs = AssessAppInfoSt.executeQuery(AssessAppInfoQuery);
+            ResultSet AssessAppInfoRs = AssessAppInfoSt.executeQuery();
 
             if (!AssessAppInfoRs.next()) {
                 String AppInfo = "ApplicationInformation";
@@ -732,14 +739,15 @@ public class Login extends HttpServlet {
                     prestmt1.execute();
                 }
             }
-
+            AssessAppInfoSt.close();
+            AssessAppInfoRs.close();
             //Template tale for Assessment Contract Information
 
             String AssessContractInfoQuery = "Select * from Assessment_Contract_Info_Template_Details;";
 
-            Statement AssessContractInfoSt = con.createStatement();
+            PreparedStatement AssessContractInfoSt = con.prepareStatement(AssessContractInfoQuery);
 
-            ResultSet AssessContractInfoRs = AssessContractInfoSt.executeQuery(AssessContractInfoQuery);
+            ResultSet AssessContractInfoRs = AssessContractInfoSt.executeQuery();
 
             if (!AssessContractInfoRs.next()) {
                 String ContractInfo = "ContractInformation";
@@ -768,13 +776,14 @@ public class Login extends HttpServlet {
                     prestmt1.execute();
                 }
             }
-
+            AssessContractInfoSt.close();
+            AssessContractInfoRs.close();
 
             // Business Requirements
 
             String BusReqInScope = "select * from BusinessReqinscope_Info_template_details";
-            Statement stBusReqInScope = con.createStatement();
-            ResultSet RsBusReqInScope = stBusReqInScope.executeQuery(BusReqInScope);
+            PreparedStatement stBusReqInScope = con.prepareStatement(BusReqInScope);
+            ResultSet RsBusReqInScope = stBusReqInScope.executeQuery();
 
             if (!RsBusReqInScope.next()) {
                 BusinessReqInScope BusreqinscopeDetails[] = new BusinessReqInScope[2];
@@ -791,7 +800,8 @@ public class Login extends HttpServlet {
                     prestmtBusReq.execute();
                 }
             }
-
+            stBusReqInScope.close();
+            RsBusReqInScope.close();
             //calling Archive Execution Template function 
             ArchiveExecutionTemplateService archiveExecObj = new ArchiveExecutionTemplateService("");
             archiveExecObj.archiveExecutionDefaultRecords();
@@ -962,7 +972,7 @@ public class Login extends HttpServlet {
 
             logger.info("Logged In");
         } catch (Exception e) {
-            System.err.println("[ERROR]-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage() + "----[ERROR]");
+            System.err.println("-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage() + "----");
         }
 
 
