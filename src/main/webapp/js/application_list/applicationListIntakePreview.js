@@ -77,7 +77,6 @@ $(document).on('click', '#saveApplicationList', function(e) {
 	if (validation) {
 		console.log("JsonArray Retrieve--->", JsonArray);
 		applicationListSaveAjaxcall(JsonArray);
-		window.setTimeout(function(){location.reload()},1000);
 	}
 	else {
 		notification("warning", "Please fill atleast one row fields.", "Warning");
