@@ -22,6 +22,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import File_Utility.FileUtils;
 import onboard.DBconnection;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class legacyApplicationScreenshotsUpload extends HttpServlet {
 	properties.load(fileInput);
 	fileInput.close();
 	String path = properties.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH"); 
-	File directory=new File(path+File.separator+Id);
+	File directory=FileUtils.createFile(path+File.separator+Id);
 	if(!directory.exists())
 		directory.mkdir();
 	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());

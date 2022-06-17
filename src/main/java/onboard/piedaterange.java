@@ -29,7 +29,7 @@ public class piedaterange extends HttpServlet {
 	ArrayList<String> Range_dates = new ArrayList<String>();
 	ArrayList<String> Range_dates_conv = new ArrayList<String>();
 	ArrayList<String> result_projects = new ArrayList<String>();
-	String Res="";
+	static String Res="";
 	
 	private static final long serialVersionUID = 1L;
        

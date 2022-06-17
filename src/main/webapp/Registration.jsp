@@ -146,6 +146,7 @@
 	System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Registration JSP PAGE-----[INFO]"); %>
 <%@page import="java.sql.*" %>
 <%@ page import="onboard.DBconnection"%>
+<%@page import="org.owasp.encoder.Encode"%>
 <%	PreparedStatement st=null;
 	ResultSet rs=null;
 	HttpSession ses = request.getSession();
@@ -301,7 +302,7 @@ rs.close();
 																</label>
 																<div class="col-sm-9">
 																	<input type="text" name="reg_email" id="reg_email"
-																		   class="form-control" value="<%=email%>">
+																		   class="form-control" value="<%=Encode.forHtmlAttribute(email)%>">
 																</div>
 															</div>
 														</div>
@@ -514,7 +515,7 @@ rs.close();
 		var SecurityAnswer=$('#reg_ans').val();
 		var CheckUserName = true;
 		<% while(rs.next()){ %>
-		if (uuname == "<%=rs.getString(1)%>") {
+		if (uuname == "<%=Encode.forHtmlAttribute(rs.getString(1))%>") {
 			
 			CheckUserName = false;
 			

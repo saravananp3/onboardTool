@@ -16,6 +16,7 @@ public class DBconnection{
 	
 private Connection connection;
 public  DBconnection() throws ClassNotFoundException, SQLException{
+			
 			StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
 			EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
 			config.setPassword("Decom3Sixty");                        // we HAVE TO set a password
@@ -31,7 +32,7 @@ public  DBconnection() throws ClassNotFoundException, SQLException{
               InputStream resourceStream = (InputStream) loader.getResourceAsStream("Configuration.properties");
  
                    prop.load(resourceStream);
-
+                   resourceStream.close();
                    Class.forName(prop.getProperty("DRIVER"));
                    
                    String dbcPw=prop.getProperty("Pw");
@@ -50,11 +51,10 @@ public  DBconnection() throws ClassNotFoundException, SQLException{
                 	   
                    }
                    this.connection= DriverManager.getConnection(prop.getProperty("URL")+prop.getProperty("DATABASENAME"),prop.getProperty("USERNAME"),decPw);
-                   resourceStream.close();
+                   
 		} catch (Exception e) {
 System.out.println(e.getMessage());
 }
- 
 		
 		
 }
@@ -74,7 +74,7 @@ public  DBconnection(boolean create_db_Flag) throws ClassNotFoundException, SQLE
 	  InputStream resourceStream = (InputStream) loader.getResourceAsStream("Configuration.properties");
 	
 	       prop.load(resourceStream);
-	
+	       resourceStream.close();
 	       Class.forName(prop.getProperty("DRIVER"));
 	       
 	       String dbcPw=prop.getProperty("Pw");
@@ -93,12 +93,13 @@ public  DBconnection(boolean create_db_Flag) throws ClassNotFoundException, SQLE
 	    	   
 	       }
 	       this.connection= DriverManager.getConnection(prop.getProperty("URL"),prop.getProperty("USERNAME"),decPw);
-	       resourceStream.close();
+	       
 	}
 	
 	catch (Exception e) {
 	System.out.println(e.getMessage());
 	}
+	
 }
 public Connection getConnection(){
 return this.connection;
@@ -106,6 +107,6 @@ return this.connection;
 
 protected void finalize() throws Throwable {
 	   System.out.println("Db connection closed.");
-	   connection.close();
+	   this.connection.close();
 	}
 }

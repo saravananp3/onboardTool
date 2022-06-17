@@ -11,9 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.fileupload.FileItem;
 
+import File_Utility.FileUtils;
 import common.constant.ARCHIVE_REQUIREMENTS_SECTION;
 import common.constant.ARCHIVE_REQUIREMENT_TABLE;
 import common.constant.INTAKE_SECTIONS;
@@ -103,6 +105,14 @@ public class documentUploadService {
 	
 	public boolean retrieveBlob() {
 		try {
+			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            Properties prop = new Properties();
+            String workingDir = System.getProperty("user.dir");
+            InputStream resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
+
+                 prop.load(resourceStream);
+                 String Path=prop.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH");
+                 System.out.println("Path : "+Path);
 			String selectQuery ="SELECT * FROM "+tableName+" WHERE appId=? AND seq_num="+1;
 			PreparedStatement st = con.prepareStatement(selectQuery);
 			st.setString(1, appId);
@@ -110,7 +120,9 @@ public class documentUploadService {
 			if(rs.next()) {
 				Blob blob = rs.getBlob("doc");
 				InputStream in = blob.getBinaryStream();
-				OutputStream out = new FileOutputStream("D:\\scrupload\\"+rs.getString("File_Name"));
+				Path=Path.concat(rs.getString("File_Name"));
+				System.out.println("Path 2 : "+Path);
+				OutputStream out = FileUtils.createFileOut(Path);
 				byte[] buff = new byte[4096];  // how much of the blob to read/write at a time
 				int len = 0;
 

@@ -66,11 +66,11 @@ HttpSession details = request.getSession();
 	}
         catch (SQLException ex) {
             ex.printStackTrace();
-            response.getWriter().print(ex.getMessage());
+            response.getWriter().print("SQL Error");
         } 
         catch (IOException ex) {
             ex.printStackTrace();
-            response.getWriter().print(ex.getMessage());
+            response.getWriter().print("Error");
         } catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

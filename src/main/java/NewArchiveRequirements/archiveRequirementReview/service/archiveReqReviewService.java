@@ -1,12 +1,17 @@
 package NewArchiveRequirements.archiveRequirementReview.service;
 
 import java.io.File;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import File_Utility.FileUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -137,9 +142,17 @@ public JsonArray archiveReqReviewDataRetrieve(){
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
-			
-			String path = "S:\\Decom3Sixty\\Screenshot\\Files\\DecommRequirements\\LegacyApplicationScreenshots"+File.separator+Id;
-			File screenShot = new File(path);
+			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            Properties prop = new Properties();
+            String workingDir = System.getProperty("user.dir");
+            InputStream resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
+
+                 prop.load(resourceStream);
+                 String Path=prop.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH");
+                 System.out.println("Path : "+Path);
+			String path = Path+File.separator+Id;
+			System.out.println("PATH : "+path);
+			File screenShot = FileUtils.createFile(path);
 			
 			File[] files =screenShot.listFiles();
 			String fileList = "";

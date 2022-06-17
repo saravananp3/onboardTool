@@ -461,6 +461,8 @@ display:none;
     }
 %>
 	<%
+	PreparedStatement visit_st=null;
+	ResultSet visit_rs=null;
     HttpSession role_ses=request.getSession();
     String frole=(String)role_ses.getAttribute("role");
     int sumcount=0;
@@ -474,8 +476,8 @@ display:none;
         DBconnection d=new DBconnection();
         Connection con = (Connection)d.getConnection();
         String visit_query="select * from visits";
-        Statement visit_st = con.createStatement();
-        ResultSet visit_rs = visit_st.executeQuery(visit_query);
+        visit_st = con.prepareStatement(visit_query);
+        visit_rs = visit_st.executeQuery();
         int flag=1,knt=0;
         Date date = new Date();
         SimpleDateFormat ft,ft1;
@@ -627,8 +629,10 @@ display:none;
 
 					</div>
 					<%
+												visit_st.close();
+												visit_rs.close();
                                                 con.close();
-                                                visit_st.close();
+                                                
     }
                                             catch(Exception e){
                                                 e.printStackTrace();
