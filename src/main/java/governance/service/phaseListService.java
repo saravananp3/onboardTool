@@ -23,14 +23,16 @@ public class phaseListService {
 	}
 
 	public  JsonArray phaseListDetails() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
 			if(waves.equals("all"))
 			{
 			 String selectQuery ="select * from phase_info where column_name = 'phaseName'";
-			 Statement st = con.createStatement();
-			 ResultSet rs = st.executeQuery(selectQuery);
+			 st = con.prepareStatement(selectQuery);
+			 rs = st.executeQuery();
 			 
 			 while(rs.next()) {
 				 JsonObject jsonObj = new JsonObject();
@@ -41,6 +43,8 @@ public class phaseListService {
 			 }
 			 
 			}
+			st.close();
+			rs.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

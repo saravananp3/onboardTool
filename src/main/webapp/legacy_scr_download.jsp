@@ -5,6 +5,10 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import="onboard.DBconnection"%>
 <%@page import="org.owasp.encoder.Encode" %>
+<%@page import="org.apache.log4j.BasicConfigurator"%>
+<%@page import="org.apache.log4j.MDC"%>
+<%@page import="org.apache.log4j.Logger"%>
+
 <%String File = request.getParameter("File_Name");%>
 
  <%
@@ -68,11 +72,11 @@ HttpSession details = request.getSession();
 	}
         catch (SQLException ex) {
             ex.printStackTrace();
-            response.getWriter().print("SQL Error: " + ex.getMessage());
+            response.getWriter().print(ex.getMessage());
         } 
         catch (IOException ex) {
             ex.printStackTrace();
-            response.getWriter().print("IO Error: " + ex.getMessage());
+            response.getWriter().print(ex.getMessage());
         } catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

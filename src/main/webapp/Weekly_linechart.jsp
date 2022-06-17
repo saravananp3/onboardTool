@@ -13,16 +13,15 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
-		<%@page import="org.owasp.encoder.Encode" %>
 		<%
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 	    Date date = new Date();  
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Weekly_linechart JSP PAGE-----[INFO]");  %>
 <% HttpSession details=request.getSession(); %>
-  <%
+  <%		PreparedStatement st_distinct=null;
             DBconnection d=new DBconnection();
             Connection con = (Connection)d.getConnection();
-            Statement st_distinct= con.createStatement(); %>
+            st_distinct= con.prepareStatement("select uname from Admin_UserDetails"); %>
  <script>
             
             function ajx_call()
@@ -35,7 +34,7 @@
             	var uid;
             	 if(select_val=="none")
         		 {
-        		 uid="<%=details.getAttribute(Encode.forHtmlAttribute("username")) %>";
+        		 uid="<%= details.getAttribute("username") %>";
         		 }
         	 else
         		 {
@@ -126,16 +125,19 @@
   <select id = "myList">
 <option value="none">select</option>
 
- <% ResultSet rs_name=st_distinct.executeQuery("select uname from Admin_UserDetails ");
+ <% ResultSet rs_name=st_distinct.executeQuery();
  while (rs_name.next())
  {
  
  %>
  
-               <option value="<%=Encode.forHtmlAttribute(rs_name.getString(1)) %>"> <%=Encode.forHtml(rs_name.getString(1)) %></option>
+               <option value="<%=rs_name.getString(1) %>"> <%=rs_name.getString(1) %></option>
               
            
-             <%} %>
+             <%}
+ st_distinct.close();
+ rs_name.close();
+ %>
                </select>
         <button id="somebutton" onclick="ajx_call()">press here</button>
         

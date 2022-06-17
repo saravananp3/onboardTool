@@ -57,13 +57,11 @@ body {
 	background: #1565c0;
 	padding: 15px;
 }
-
 .fixed-top {
 	width: 100%;
 	padding-left: 0px;
 	padding-right: 0px;
 }
-
 h1 {
 	color: green;
 }
@@ -108,30 +106,24 @@ p {
 .checkbox {
 	display: none;
 }
-
 hr {
 	border-top: 3px solid #dce8f1;
 }
-
 input[type=search] {
 	outline: 0;
 	border-width: 0 0 3px 0;
 	border-color: #d2d2d2;
 }
-
 input[type=search]:focus {
 	border-color: #1565c0;
 }
-
 .cbp-vm-switcher {
 	padding: 42px;
 }
-
 .cbp-vm-options {
 	text-align: right;
 	padding-bottom: 10px;
 }
-
 .cbp-vm-options a {
 	display: inline-block;
 	width: 30px;
@@ -164,35 +156,28 @@ input[type=search]:focus {
 	content: " ";
 	display: table;
 }
-
 .cbp-vm-switcher ul:after {
 	clear: both;
 }
-
 .cbp-vm-switcher ul li {
 	display: block;
 	position: relative;
 }
-
 .cbp-vm-image {
 	display: block;
 	margin: 0 auto;
 }
-
 .cbp-vm-image img {
 	display: inline-block;
 	max-width: 100%;
 }
-
 .cbp-vm-title {
 	margin: 0;
 	padding: 0;
 }
-
 .cbp-vm-price {
 	color: #c0c0c0;
 }
-
 .cbp-vm-add {
 	color: #fff;
 	background: #47a3da;
@@ -207,7 +192,6 @@ input[type=search]:focus {
 	color: #fff;
 	background: #02639d;
 }
-
 .cbp-vm-add:before {
 	margin-right: 5px;
 }
@@ -227,7 +211,6 @@ input[type=search]:focus {
 .cbp-vm-view-grid ul {
 	text-align: center;
 }
-
 .cbp-vm-view-grid ul li {
 	width: 20%;
 	text-align: center;
@@ -235,46 +218,38 @@ input[type=search]:focus {
 	display: inline-block;
 	vertical-align: top;
 }
-
 .cbp-vm-view-grid .cbp-vm-title {
 	font-size: 21px;
 }
-
 .cbp-vm-view-grid .cbp-vm-details {
 	max-width: 300px;
 	min-height: 70px;
 	margin: 0 auto;
 }
-
 .cbp-vm-view-grid .cbp-vm-price {
 	margin: 10px 0;
 	font-size: 1.5em;
 }
-
 .cbp-vm-view-list .right-col {
 	float: left;
 	width: 25%;
 }
-
 .cbp-vm-view-list .cbp-vm-title {
 	font-size: 1.3em;
 	padding: 0 30px;
 	white-space: normal;
 	width: 25%;
 }
-
 .cbp-vm-view-list .center-col {
 	float: left;
 	width: 20%;
 	margin-right: 51px;
 }
-
 .cbp-vm-view-list .center-col {
 	float: left;
 	width: 20%;
 	margin-right: 51px;
 }
-
 .cbp-vm-view-list li {
 	padding: 12px 0;
 	white-space: nowrap;
@@ -283,24 +258,20 @@ input[type=search]:focus {
 	margin: 13px;
 	padding-top: 10px;
 }
-
 .cbp-vm-view-list li:focus {
 	display: block;
 	border: 2px solid red;
 }
-
 @media screen and (max-width: 66.7em) {
 	.cbp-vm-view-list .cbp-vm-details {
 		width: 30%;
 	}
 }
-
 @media screen and (max-width: 57em) {
 	.cbp-vm-view-grid ul li {
 		width: 49%;
 	}
 }
-
 @media screen and (max-width: 47.375em) {
 	.cbp-vm-view-list .cbp-vm-image {
 		width: 20%;
@@ -317,7 +288,6 @@ input[type=search]:focus {
 		margin: 10px;
 	}
 }
-
 @media screen and (max-width: 40.125em) {
 	.cbp-vm-view-grid ul li {
 		width: 100%;
@@ -331,22 +301,18 @@ input[type=search]:focus {
 	display: block;
 	border: 2px solid red;
 }
-
 .progress {
 	margin-top: 5px;
 }
-
 .cologen {
 	color: #1c95f8 !important;
 }
-
 .right-side {
 	position: absolute;
 	right: 10%;
 	top: 80px;
 	z-index: 1;
 }
-
 #button {
 	height: 50px;
 	width: 50px;
@@ -359,21 +325,18 @@ input[type=search]:focus {
 	padding: 12px;
 	text-align: center;
 }
-
 .form-row {
 	display: flex;
 	flex-wrap: wrap;
 	margin-right: -5px;
 	margin-left: -5px;
 }
-
 .search-input {
 	min-width: 150px;
 	max-width: 290px;
 	flex: 1;
 	position: relative;
 }
-
 #myInput {
 	border: none;
 	border-bottom: 1px solid #959595;
@@ -389,7 +352,6 @@ input[type=search]:focus {
 	margin-top: 5px;
 	padding-bottom: 3px;
 }
-
 .fa-search {
 	color: #fff;
 }
@@ -399,92 +361,81 @@ input[type=search]:focus {
 	font-size: .875rem;
 	color: #fff;
 }
-
 .paneldashboard {
 	box-shadow: 0 1px 7px rgb(76, 89, 103);
 	margin-top: 14px;
 }
-
 .font_icon {
 	font-size: 20px;
 }
-
 .totcounter {
 	font-size: 43px;
 	margin-bottom: 14px;
 	text-align: center;
 }
-
 .headercharts {
 	margin-left: 22px;
 	margin-bottom: 21px;
 }
-
 #card-header {
 	background-color: #fff;
 	font-weight: 600;
-	font-size: 16px;
-	color: #141515;
+    font-size: 16px;
+    color: #141515;
 }
-
 focus {
-	background-color: #ff00ff;
-	color: #fff;
-	cursor: pointer;
-	font-weight: bold;
+background-color: #ff00ff;
+color: #fff;
+cursor: pointer;
+font-weight: bold;
 }
-
-#dropDownMenu {
-	margin: 0;
-	width: 1%;
-	padding: 0;
-	left: -20px;
+#dropDownMenu
+{
+margin: 0;
+width: 1%;
+padding: 0;
+left: -20px;
 }
-
 .dropdown-menu>li>a {
-	line-height: 1.128571489;
+line-height: 1.128571489;
 }
-
 h6 {
 	padding-left: 55%;
-	font-size: 16px;
+    font-size: 16px;
 }
-
-#overlay {
-	position: fixed;
-	top: 0;
-	z-index: 100;
-	width: 1400px;
-	height: 100%;
-	display: none;
-	background: rgb(0, 0, 0, 0.6);
+#overlay{
+position: fixed;
+top: 0;
+z-index: 100;
+width:1400px;
+height:100%;
+display: none;
+background: rgb(0,0,0,0.6);
 }
-
 .cv-spinner {
-	height: 70%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+height: 70%;
+display: flex;
+justify-content: center;
+align-items: center;
 }
-
 .spinner {
-	width: 80px;
-	height: 80px;
-	border: 8px #ddd solid;
-	border-top: 8px #2e93e6 solid;
-	border-radius: 50%;
-	animation: sp-anime 0.8s infinite linear;
+width: 80px;
+height: 80px;
+border: 8px #ddd solid;
+border-top: 8px #2e93e6 solid;
+border-radius: 50%;
+animation: sp-anime 0.8s infinite linear;
+}
+@keyframes sp-anime {
+100% {
+transform: rotate(360deg);
+}
+}
+.is-hide{
+display:none;
 }
 
-@
-keyframes sp-anime { 100% {
-	transform: rotate(360deg);
-}
 
-}
-.is-hide {
-	display: none;
-}
 </style>
 
 </head>
@@ -492,10 +443,9 @@ keyframes sp-anime { 100% {
 	<%@ page import="java.text.SimpleDateFormat"%>
 	<%@ page import="java.util.Date"%>
 	<%
-	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	Date date1 = new Date();
-	System.out.println("[INFO]-----" + formatter.format(date1) + "-----Accessed OpportunityList JSP PAGE-----[INFO]");
-	%>
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date date1 = new Date();
+    System.out.println("[INFO]-----"+formatter.format(date1)+"-----Accessed OpportunityList JSP PAGE-----[INFO]"); %>
 	<%@page language="java"%>
 	<%@page import="java.text.DateFormat"%>
 	<%@page import="java.text.SimpleDateFormat"%>
@@ -503,71 +453,70 @@ keyframes sp-anime { 100% {
 	<%@page import="java.sql.*"%>
 	<%@ page import="onboard.DBconnection"%>
 	<%
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	response.setHeader("Pragma", "no-cache");
-	response.setHeader("Expires", "0");
-	if (session.getAttribute("username") == null) {
-		response.sendRedirect("Login.jsp");
-	}
-	%>
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+    if (session.getAttribute("username")==null){
+        response.sendRedirect("Login.jsp");
+    }
+%>
 	<%
-	HttpSession role_ses = request.getSession();
-	String frole = (String) role_ses.getAttribute("role");
-	int sumcount = 0;
-	Statement st, st1;
-	PreparedStatement visit_st = null;
-	ResultSet visit_rs = null;
-
-	try {
-		String query;
-		HttpSession details = request.getSession();
-		String Projets = (String) details.getAttribute("projects");
-		System.out.println("projects-------------" + Projets);
-		String roles = (String) details.getAttribute("role");
-		DBconnection d = new DBconnection();
-		Connection con = (Connection) d.getConnection();
-		String visit_query = "select * from visits";
-		visit_st = con.prepareStatement(visit_query);
-		visit_rs = visit_st.executeQuery();
-		int flag = 1, knt = 0;
-		Date date = new Date();
-		SimpleDateFormat ft, ft1;
-		String username = (String) details.getAttribute("username");
-		ft = new SimpleDateFormat("yyyy-MM-dd");
-		ft1 = new SimpleDateFormat("hh:mm:ss");
-		String strDate = ft.format(date);
-		String strTime = ft1.format(date);
-		while (visit_rs.next()) {
-			if (visit_rs.getString(6) != null) {
-		if (visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate)
-				&& visit_rs.getString(3).equals("Logged in")) {
-			String queryy = "update visits set count=count+1,time=? where uname=? and module='Logged in' and date =?";
-			PreparedStatement stmtt = con.prepareStatement(queryy);
-			stmtt.setString(1, strTime);
-			stmtt.setString(2, username);
-			stmtt.setString(3, strDate);
-			int count = stmtt.executeUpdate();
-			flag = 0;
-			break;
-		}
-			}
-		}
-		//System.out.println("the flag value is "+flag);
-		if (flag == 1) {
-			String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
-			+ " values (?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement preparedStmt = con.prepareStatement(ins_query);
-			preparedStmt.setString(1, username);
-			preparedStmt.setString(2, strDate);
-			preparedStmt.setString(3, "Logged in");
-			preparedStmt.setString(4, "1");
-			preparedStmt.setString(5, strTime);
-			preparedStmt.setString(6, "None");
-			preparedStmt.setString(7, "");
-			// execute the preparedstatement
-			preparedStmt.execute();
-		}
-	%>
+    HttpSession role_ses=request.getSession();
+    String frole=(String)role_ses.getAttribute("role");
+    int sumcount=0;
+    Statement st,st1;
+    try{
+        String query;
+        HttpSession details=request.getSession();
+        String Projets=(String)details.getAttribute("projects");
+        System.out.println("projects-------------"+Projets);
+        String roles=(String)details.getAttribute("role");
+        DBconnection d=new DBconnection();
+        Connection con = (Connection)d.getConnection();
+        String visit_query="select * from visits";
+        Statement visit_st = con.createStatement();
+        ResultSet visit_rs = visit_st.executeQuery(visit_query);
+        int flag=1,knt=0;
+        Date date = new Date();
+        SimpleDateFormat ft,ft1;
+        String username=(String)details.getAttribute("username");
+        ft=new SimpleDateFormat ("yyyy-MM-dd");
+        ft1=new SimpleDateFormat ("hh:mm:ss");
+        String strDate=ft.format(date);
+        String strTime=ft1.format(date);
+        while(visit_rs.next())
+        {
+            if(visit_rs.getString(6)!=null)
+            {
+                if(visit_rs.getString(1).equals(username) && visit_rs.getString(2).equals(strDate) && visit_rs.getString(3).equals("Logged in"))
+                {
+                	String queryy = "update visits set count=count+1,time=? where uname=? and module='Logged in' and date =?";
+                	PreparedStatement stmtt = con.prepareStatement(queryy);
+                	stmtt.setString(1, strTime);
+                	stmtt.setString(2, username);
+                	stmtt.setString(3, strDate);
+                	int count = stmtt.executeUpdate();
+                	flag=0;
+                    break;
+                }
+            }
+        }
+        //System.out.println("the flag value is "+flag);
+        if(flag==1)
+        {
+            String ins_query = " insert into visits (uname, date, module, count, time, Projects, Applications)"
+                    + " values (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStmt = con.prepareStatement(ins_query);
+            preparedStmt.setString (1, username);
+            preparedStmt.setString (2, strDate);
+            preparedStmt.setString(3, "Logged in");
+            preparedStmt.setString(4, "1");
+            preparedStmt.setString(5, strTime);
+            preparedStmt.setString(6, "None");
+            preparedStmt.setString(7, "");
+            // execute the preparedstatement
+            preparedStmt.execute();
+        }%>
 
 	<%@include file="Nav-Bar.jspf"%>
 	<nav class="nav nav-height nav-font" id="bg-color">
@@ -587,7 +536,7 @@ keyframes sp-anime { 100% {
 			</div>
 		</div>
 	</nav>
-
+	
 	<!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
 
 	<div class="content-wrapper">
@@ -614,12 +563,10 @@ keyframes sp-anime { 100% {
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
-											<span class="font_icon text-align"
-												style="height: 20%; color: white;">Intake</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Intake</span>
 										</div>
-										<div class="col-sm-8 col-md-8 col-lg-8">Intake is the
-											initiation of the product.Number of opportunity or
-											application in intake step that are yet to be approved.</div>
+										<div class="col-sm-8 col-md-8 col-lg-8">Intake is the initiation of the
+                                            product.Number of opportunity or application in intake step that are yet to be approved.</div>
 									</a>
 								</div>
 
@@ -629,15 +576,13 @@ keyframes sp-anime { 100% {
 									class="dashboard-stat col-md-12 col-sm-12 col-lg-12"
 									style="background: linear-gradient(to left, rgba(22, 101, 192, 0.2) 70%, #1565c0 30%);"
 									href="PhaseList.jsp">
-									<div class="col-sm-4 col-md-4 col-lg-4"
-										style="height: 100%; margin-left: -17px;">
+									<div class="col-sm-4 col-md-4 col-lg-4" style="height: 100%; margin-left: -17px;">
 										<p class="totcounter" style="height: 80%; color: white;"></p>
-										<span class="font_icon text-align"
-											style="height: 20%; color: white;">Phases</span>
+										<span class="font_icon text-align" style="height: 20%; color: white;">Phases</span>
 									</div>
-									<div class="col-sm-8 col-md-8 col-lg-8">Phases can be
-										described as a project that is scheduled over a period of time
-										Which consists of multiple waves.</div>
+									<div class="col-sm-8 col-md-8 col-lg-8">Phases can be described as a
+										project that is scheduled over a period of time Which consists
+										of multiple waves.</div>
 								</a> </card>
 
 								<div class="col-md-3 col-sm-3 col-lg-3 "
@@ -648,12 +593,11 @@ keyframes sp-anime { 100% {
 										<div class="col-sm-4 col-md-4 col-lg-4"
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter" style="height: 80%; color: white;"></p>
-											<span class="font_icon text-align"
-												style="height: 20%; color: white;">Waves</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Waves</span>
 										</div>
-										<div class="col-sm-8 col-md-8 col-lg-8">Waves can be
-											comprised of set of applications that are ready for
-											implementation over a period of time.</div>
+										<div class="col-sm-8 col-md-8 col-lg-8">Waves can be comprised of set of
+											applications that are ready for implementation over a period
+											of time.</div>
 									</a>
 
 								</div>
@@ -667,13 +611,12 @@ keyframes sp-anime { 100% {
 											style="height: 100%; margin-left: -17px;">
 											<p class="totcounter"
 												style="height: 80%; color: white; padding-right: 10px;"></p>
-											<span class="font_icon text-align"
-												style="height: 20%; color: white;">Apps</span>
+											<span class="font_icon text-align" style="height: 20%; color: white;">Apps</span>
 										</div> <!-- <div class="col-md-8">Applications are opportunities provided within the organisation
 											for Archival or Decommission or Retiring purpose.</div> -->
-										<div class="col-sm-8 col-md-8 col-lg-8">Applications are
-											opportunities provided within the organisation for Archival
-											or Decommission or Retiring purpose.</div>
+										<div class="col-sm-8 col-md-8 col-lg-8">Applications are opportunities
+											provided within the organisation for Archival or Decommission
+											or Retiring purpose.</div>
 									</a>
 
 								</div>
@@ -684,16 +627,13 @@ keyframes sp-anime { 100% {
 
 					</div>
 					<%
-					con.close();
-
-					} catch (Exception e) {
-					e.printStackTrace();
-					} finally {
-					visit_st.close();
-					visit_rs.close();
-
-					}
-					%>
+                                                con.close();
+                                                visit_st.close();
+    }
+                                            catch(Exception e){
+                                                e.printStackTrace();
+                                            }
+                                        %>
 
 
 					</ul>
@@ -723,8 +663,7 @@ keyframes sp-anime { 100% {
                                                         </div>-->
 														<div class="ms-auto">
 															<select class="form-select"
-																aria-label="Default select example" id="phase"
-																style="padding: 0 0 0 0.75rem;">
+																aria-label="Default select example" id="phase" style="padding: 0 0 0 0.75rem;">
 																<!-- <option class='options' value='All'>All</option> -->
 															</select>
 														</div>
@@ -737,8 +676,7 @@ keyframes sp-anime { 100% {
                                                         </div>-->
 														<div class="ms-auto">
 															<select class="form-select"
-																aria-label="Default select example" id="wave"
-																style="padding: 0 0 0 0.75rem;">
+																aria-label="Default select example" id="wave" style="padding: 0 0 0 0.75rem;">
 																<!-- <option class='options' value='All'>All</option> -->
 															</select>
 														</div>
@@ -783,7 +721,7 @@ keyframes sp-anime { 100% {
 											<div class="align1">
 												<div id="pieChartId" width="250" height="250"></div>
 											</div>
-
+										
 										</div>
 									</div>
 								</div>
@@ -937,12 +875,12 @@ keyframes sp-anime { 100% {
 
 
 			</div>
+			</div>
+
+
+
+
 		</div>
-
-
-
-
-	</div>
 	</div>
 
 
@@ -954,8 +892,8 @@ keyframes sp-anime { 100% {
 
 	</div>
 	<!-- end of main wrapper -->
-
-
+	
+	
 
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -1027,121 +965,94 @@ keyframes sp-anime { 100% {
 		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 	<!-- Active Icon Color changes  -->
 	<script>
-		$(document)
-				.ready(
-						function() {
-							$('.searchbox-input').keyup(function() {
-								search_text($(this).val());
-							});
-							function search_text(value) {
-								$('#ul_id .cbp-vm-title')
-										.each(
-												function() {
-													var found = 'false';
-													$(this)
-															.each(
-																	function() {
-																		if ($(
-																				this)
-																				.text()
-																				.toLowerCase()
-																				.indexOf(
-																						value
-																								.toLowerCase()) >= 0) {
-																			found = 'true';
-																		}
-																	});
-													if (found == 'true') {
-														$(this).parent().css(
-																'display', '');
-													} else {
-														$(this).parent().css(
-																'display',
-																'none');
-													}
-												})
-							}
-						});
-	</script>
+$(document).ready(function() {
+    $('.searchbox-input').keyup(function(){
+        search_text($(this).val());
+    });
+    function search_text(value){
+        $('#ul_id .cbp-vm-title').each(function(){
+            var found = 'false';
+            $(this).each(function(){
+                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                {
+                    found = 'true';
+                }
+            });
+            if(found == 'true'){
+                $(this).parent().css('display','');
+            }
+            else {
+                $(this).parent().css('display','none');
+            }
+        })
+    }
+});
+</script>
 	<script type="text/javascript"
 		src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
-		google.charts.load("current", {
-			packages : [ "corechart" ]
-		});
-		google.charts.setOnLoadCallback(drawChart);
-		function drawChart() {
-			var data = google.visualization.arrayToDataTable([
-					[ 'State', '$', {
-						role : 'style'
-					} ], [ 'Sum of Realized', 110000.00, 'blue' ],
-					[ 'Sum of in Process', 365000, 'blue' ],
-					[ 'Sum of Intake/Opportunity', 192000.00, 'blue' ] ]);
-			var view = new google.visualization.DataView(data);
-			view.setColumns([ 0, 1, {
-				calc : "stringify",
-				sourceColumn : 1,
-				type : "string",
-				role : "annotation"
-			}, 2 ]);
-			var options = {
-				title : "Total",
-				width : 600,
-				height : 400,
-				bar : {
-					groupWidth : "95%"
-				},
-				legend : {
-					position : "none"
-				},
-			};
-			var chart = new google.visualization.BarChart(document
-					.getElementById("barChartId"));
-			chart.draw(view, options);
-		}
-	</script>
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+    	var data = google.visualization.arrayToDataTable([
+            ['State', '$', { role: 'style' }],
+            ['Sum of Realized',      110000.00, 'blue'],     
+            ['Sum of in Process',  365000, 'blue'],          
+            ['Sum of Intake/Opportunity', 192000.00, 'blue']
+         ]);
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+      var options = {
+        title: "Total",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barChartId"));
+      chart.draw(view, options);
+  }
+  </script>
 	<script type="text/javascript">
-		google.charts.load("current", {
-			packages : [ 'corechart' ]
-		});
-		google.charts.setOnLoadCallback(drawChart);
-		function drawChart() {
-			var data = google.visualization.arrayToDataTable([
-					[ "State", "$", {
-						role : "style"
-					} ], [ 'Sum of Realized', 110000.00, 'blue' ],
-					[ 'Sum of in Process', 365000, 'blue' ],
-					[ 'Sum of Intake/Opportunity', 192000.00, 'blue' ] ]);
-			var view = new google.visualization.DataView(data);
-			view.setColumns([ 0, 1, {
-				calc : "stringify",
-				sourceColumn : 1,
-				type : "string",
-				role : "annotation"
-			}, 2 ]);
-			var options = {
-				title : "Total",
-				width : 400,
-				height : 250,
-				bar : {
-					groupWidth : "25%"
-				},
-				legend : {
-					position : "none"
-				},
-			};
-			var chart = new google.visualization.ColumnChart(document
-					.getElementById("columnChartId"));
-			chart.draw(view, options);
-		}
-	</script>
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["State", "$", { role: "style" } ],
+        ['Sum of Realized',      110000.00, 'blue'],     
+        ['Sum of in Process',  365000, 'blue'],          
+        ['Sum of Intake/Opportunity', 192000.00, 'blue'] ]);
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+      var options = {
+        title: "Total",
+        width: 400,
+        height: 250,
+        bar: {groupWidth: "25%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnChartId"));
+      chart.draw(view, options);
+  }
+    
+  </script>
 	<script src="js/navigation/navigation.js"></script>
 	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
 	<script src="js/dashboard/dashboardAjaxCall.js"></script>
-	<!-- 	<script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> -->
+<!-- 	<script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> -->
 	<!-- <script src="https://cdnjs.com/libraries/Chart.js"></script> -->
 	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-
+	
 </body>
 </html>

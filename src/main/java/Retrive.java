@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -49,10 +50,12 @@ public class Retrive extends HttpServlet {
         response.setContentType("text/html");
         out.println("<html><body>");
         try {
+        	PreparedStatement stmt=null;
+        	ResultSet rs=null;
         	DBconnection dBconnection = new DBconnection();
 	        Connection con = (Connection) dBconnection.getConnection();
-            Statement stmt = (Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from appdetails");
+            stmt = con.prepareStatement("select * from appdetails");
+            rs = stmt.executeQuery();
            
           
             while (rs.next()) {

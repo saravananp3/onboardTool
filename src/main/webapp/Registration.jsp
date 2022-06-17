@@ -140,14 +140,14 @@
 
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
-<%@page import="org.owasp.encoder.Encode" %>
 <%
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
 	System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Registration JSP PAGE-----[INFO]"); %>
 <%@page import="java.sql.*" %>
 <%@ page import="onboard.DBconnection"%>
-<%
+<%	PreparedStatement st=null;
+	ResultSet rs=null;
 	HttpSession ses = request.getSession();
 	String role = (String) ses.getAttribute("My_Roles");
 	String fname = (String) ses.getAttribute("fname");
@@ -159,10 +159,13 @@
 	DBconnection dBconnection = new DBconnection();
     Connection connection = (Connection) dBconnection.getConnection();
 	String query = "select uname from Admin_UserDetails";
-	Statement st = connection.createStatement();
-	ResultSet rs = st.executeQuery(query);
+	st = connection.prepareStatement(query);
+	rs = st.executeQuery();
 %>
-
+<%
+st.close();
+rs.close();
+%>
 <div class="main-wrapper">
 
 	<!-- ========== TOP NAVBAR ========== -->
@@ -298,7 +301,7 @@
 																</label>
 																<div class="col-sm-9">
 																	<input type="text" name="reg_email" id="reg_email"
-																		   class="form-control" value="<%=Encode.forHtmlAttribute(email)%>">
+																		   class="form-control" value="<%=email%>">
 																</div>
 															</div>
 														</div>
@@ -511,29 +514,13 @@
 		var SecurityAnswer=$('#reg_ans').val();
 		var CheckUserName = true;
 		<% while(rs.next()){ %>
-		if (uuname == "<%=Encode.forHtmlAttribute(rs.getString(1))%>") {
+		if (uuname == "<%=rs.getString(1)%>") {
 			
 			CheckUserName = false;
 			
 			/* window.alert("User Name is already taken");
 			window.location.href = 'Registration.jsp'; */
 		}
-if (uuname == "<%=Encode.forHtmlContent(rs.getString(1))%>") {
-			
-			CheckUserName = false;
-			
-			/* window.alert("User Name is already taken");
-			window.location.href = 'Registration.jsp'; */
-		}
-		
-if (uuname == "<%=Encode.forJavaScript(rs.getString(1))%>") {
-	
-	CheckUserName = false;
-	
-	/* window.alert("User Name is already taken");
-	window.location.href = 'Registration.jsp'; */
-}
-		
 		<%}%>
 		if (ffname === "" || llname === "" || uuname === "" || SecurityQuestion == "" || SecurityAnswer == "")
 			window.alert("fill the mandatory fileds");

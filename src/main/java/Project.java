@@ -143,8 +143,8 @@ public class Project extends HttpServlet {
 		           preparedStmt1.execute();
 		           
 		          String query1="select * from ArchiveExecution_Defaultvalues";
-		          Statement st1 = connection.createStatement();
-				     ResultSet rs1 = st1.executeQuery(query1);
+		          PreparedStatement st1 = connection.prepareStatement(query1);
+				     ResultSet rs1 = st1.executeQuery();
 				     while(rs1.next())
 				     {
 				    	 
@@ -166,7 +166,8 @@ public class Project extends HttpServlet {
 				          preparedStmt2.setString (14,"0");
 				          preparedStmt2.execute(); 
 				     }
-		          
+				     st1.close();
+				     rs1.close();
 				     connection.close();
 		        }
 		        catch (Exception e)

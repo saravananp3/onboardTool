@@ -84,8 +84,8 @@ response.sendRedirect("Login.jsp");
   <%
                          String uname=(String)details.getAttribute("username");
                          String role=(String)details.getAttribute("role");%>                   
-	<li><a href="#"><span id="nav_userid"><%=Encode.forHtmlAttribute(uname)%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=Encode.forHtmlAttribute(role)%></span></a></li>
-	<li><a href="#"><span id="nav_userid"><%=Encode.forHtmlContent(uname)%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=Encode.forHtmlContent(role)%></span></a></li>
+	<li><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=Encode.forHtml(role)%></span></a></li>
+	
 <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
                     </ul>

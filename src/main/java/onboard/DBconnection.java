@@ -50,7 +50,8 @@ public  DBconnection() throws ClassNotFoundException, SQLException{
                 	   
                    }
                    this.connection= DriverManager.getConnection(prop.getProperty("URL")+prop.getProperty("DATABASENAME"),prop.getProperty("USERNAME"),decPw);
-} catch (Exception e) {
+                   resourceStream.close();
+		} catch (Exception e) {
 System.out.println(e.getMessage());
 }
  
@@ -92,7 +93,7 @@ public  DBconnection(boolean create_db_Flag) throws ClassNotFoundException, SQLE
 	    	   
 	       }
 	       this.connection= DriverManager.getConnection(prop.getProperty("URL"),prop.getProperty("USERNAME"),decPw);
-	
+	       resourceStream.close();
 	}
 	
 	catch (Exception e) {
@@ -102,4 +103,9 @@ public  DBconnection(boolean create_db_Flag) throws ClassNotFoundException, SQLE
 public Connection getConnection(){
 return this.connection;
 }
+
+protected void finalize() throws Throwable {
+	   System.out.println("Db connection closed.");
+	   connection.close();
+	}
 }

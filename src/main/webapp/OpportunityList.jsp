@@ -481,6 +481,8 @@ full width */
 	}
 	%>
 	<%
+	PreparedStatement visit_st=null;
+	ResultSet visit_rs=null;
 	HttpSession role_ses = request.getSession();
 	String frole = (String) role_ses.getAttribute("role");
 	int sumcount = 0;
@@ -494,8 +496,8 @@ full width */
 		DBconnection d = new DBconnection();
 		Connection con = (Connection) d.getConnection();
 		String visit_query = "select * from visits";
-		Statement visit_st = con.createStatement();
-		ResultSet visit_rs = visit_st.executeQuery(visit_query);
+		visit_st = con.prepareStatement(visit_query);
+		visit_rs = visit_st.executeQuery();
 		int flag = 1, knt = 0;
 		Date date = new Date();
 		SimpleDateFormat ft, ft1;
@@ -798,12 +800,13 @@ full width */
 			<div class="content-container">
 				<!-- Projects List Start -->
 				<%
-				{
+				{	PreparedStatement projectCountst=null;
+					ResultSet projectCountqyery=null;
 					int application_count = 0;
-					if (Projets.equals("all")) {
+					if (Projets == "all") {
 						String projectCount = "select count(*) from appemphazize_projectdetails";
-						Statement projectCountst = con.createStatement();
-						ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
+						projectCountst = con.prepareStatement(projectCount);
+						projectCountqyery = projectCountst.executeQuery();
 						if (projectCountqyery.next()) {
 					application_count = Integer.parseInt(projectCountqyery.getString(1));
 						}
@@ -819,7 +822,10 @@ full width */
 					}
 				%>
 				<%
+				projectCountst.close();
+				projectCountqyery.close();
 				}
+				
 				%>
 				<div class="main-page">
 					<div class="container"></div>
@@ -851,8 +857,10 @@ full width */
 												</ul>
 											</div>
 											<%
-											con.close();
+											
 											visit_st.close();
+											visit_rs.close();
+											con.close();
 											}
 
 											catch (Exception e) {

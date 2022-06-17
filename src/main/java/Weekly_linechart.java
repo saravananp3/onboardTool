@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,9 +38,9 @@ public class Weekly_linechart extends HttpServlet {
 	ArrayList<String> end_dates = new ArrayList<String>();
 	ArrayList<String> uname = new ArrayList<String>();
 	ArrayList<Integer> final_count = new ArrayList<Integer>();
-	String month = "";
-	String year = "";
-	String user_id="";
+	static String month = "";
+	static String year = "";
+	static String user_id="";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -83,15 +84,19 @@ public class Weekly_linechart extends HttpServlet {
 			db_date.clear();
 			db_count.clear();
 			uname.clear();
+			PreparedStatement week=null;
+			ResultSet rs_week=null;
 			DBconnection dBconnection = new DBconnection();
 			Connection connection = (Connection) dBconnection.getConnection();
-			Statement week = connection.createStatement();
-			ResultSet rs_week = week.executeQuery("select date,count,uname from  visits ");
+			week = connection.prepareStatement("select date,count,uname from  visits");
+			rs_week = week.executeQuery();
 			while (rs_week.next()) {
 				db_date.add(rs_week.getString(1));
 				db_count.add(rs_week.getString(2));
 				uname.add(rs_week.getString(3));
 			}
+			week.close();
+			rs_week.close();
 			connection.close();
 		} catch (Exception e) {
 			System.err.println("[ERROR]-----Got an exception!-----"+e.getMessage()+"----[ERROR]");

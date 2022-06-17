@@ -241,18 +241,19 @@ public class Login extends HttpServlet {
 
         try {
 
-
+        	PreparedStatement st5=null,st6=null,st7=null,st8=null,stTriSumm=null,AssDataCharst=null;
+        	ResultSet rs5=null,rs6=null,rs7=null,rs8=null,rsTriSumm=null,AssDataCharrs=null;
             DBconnection dbConnection = new DBconnection();
             Connection con = (Connection) dbConnection.getConnection();
 
-            Statement st5 = con.createStatement();
-            ResultSet rs5 = st5.executeQuery("select * from ArchiveExecution_Defaultvalues");
-            Statement st6 = con.createStatement();
-            ResultSet rs6 = st6.executeQuery("select * from details");
-            Statement st7 = con.createStatement();
-            ResultSet rs7 = st7.executeQuery("select * from dummy");
-            Statement st8 = con.createStatement();
-            ResultSet rs8 = st8.executeQuery("select * from Role_Details");
+            st5 = con.prepareStatement("select * from ArchiveExecution_Defaultvalues");
+            rs5 = st5.executeQuery();
+            st6 = con.prepareStatement("select * from details");
+            rs6 = st6.executeQuery();
+            st7 = con.prepareStatement("select * from dummy");
+            rs7 = st7.executeQuery();
+            st8 = con.prepareStatement("select * from Role_Details");
+            rs8 = st8.executeQuery();
             while (rs8.next())
                 lm++;
             while (rs5.next())
@@ -293,14 +294,7 @@ public class Login extends HttpServlet {
                 }
 
             }
-            st5.close();
-            rs5.close();
-            st6.close();
-            rs6.close();
-            st7.close();
-            rs7.close();
-            st8.close();
-            rs8.close();
+           
             
 
             if (dum == 0) {
@@ -497,8 +491,8 @@ public class Login extends HttpServlet {
             statement1.close();
             rs_Triage.close();
             String TriageSummary = "select * from Triage_Summary_Info_Template_Details";
-            Statement stTriSumm = con.createStatement();
-            ResultSet rsTriSumm = stTriSumm.executeQuery(TriageSummary);
+            stTriSumm = con.prepareStatement(TriageSummary);
+            rsTriSumm = stTriSumm.executeQuery();
 
             if (!rsTriSumm.next()) {
                 TriageSummary Trisumm[] = new TriageSummary[6];
@@ -561,8 +555,8 @@ public class Login extends HttpServlet {
             RsroleRes.close();
 
             String AssessmentDataChar = "select * from Assessment_Data_Char_Info_Template_Details";
-            Statement AssDataCharst = con.createStatement();
-            ResultSet AssDataCharrs = AssDataCharst.executeQuery(AssessmentDataChar);
+            AssDataCharst = con.prepareStatement(AssessmentDataChar);
+            AssDataCharrs = AssDataCharst.executeQuery();
 
             if (!AssDataCharrs.next()) {
                 String DataChar = "DataCharacteristics";
@@ -971,7 +965,19 @@ public class Login extends HttpServlet {
 
 
             logger.info("Logged In");
-        } catch (Exception e) {
+            st5.close();
+            rs5.close();
+            st6.close();
+            rs6.close();
+            st7.close();
+            rs7.close();
+            st8.close();
+            rs8.close();
+            AssDataCharst.close();
+            AssDataCharrs.close();
+            stTriSumm.close();
+            rsTriSumm.close();
+            } catch (Exception e) {
             System.err.println("-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage() + "----");
         }
 

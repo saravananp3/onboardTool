@@ -1,11 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.io.*"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="onboard.DBconnection"%>
-<%@page import="org.owasp.encoder.Encode" %>
+<%@page import="org.owasp.encoder.Encode"%>
 <%String File_Name = request.getParameter("File_Name");%>
- <%
+<%
 HttpSession details = request.getSession();
 		String Id=(String)details.getAttribute("ID");
 		System.out.println("FILESS:"+File_Name);
@@ -66,11 +66,11 @@ HttpSession details = request.getSession();
 	}
         catch (SQLException ex) {
             ex.printStackTrace();
-            response.getWriter().print("Problem Occured : " + ex.getMessage());
+            response.getWriter().print(ex.getMessage());
         } 
         catch (IOException ex) {
             ex.printStackTrace();
-            response.getWriter().print("Error: " + ex.getMessage());
+            response.getWriter().print(ex.getMessage());
         } catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,4 +79,3 @@ finally{
 	
 }
  %>
- 

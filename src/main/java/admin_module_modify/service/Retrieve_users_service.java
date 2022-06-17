@@ -8,6 +8,8 @@ import com.google.gson.JsonObject;
 import onboard.DBconnection;
 public class Retrieve_users_service {
     public JsonArray retrieve_users() {
+    	PreparedStatement st=null;
+    	ResultSet rs=null;
         JsonArray jsonArray = new JsonArray();
     try {
         //String random_id = generateRandomApprovalId();
@@ -15,8 +17,8 @@ public class Retrieve_users_service {
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("Connected...");
         String selectQuery = "select uname,ufname,ulname,u_email,u_role,random_id from users where random_id IS NOT NULL";
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery(selectQuery);
+        st = connection.prepareStatement(selectQuery);
+        rs = st.executeQuery();
         while(rs.next())
         {
             JsonObject jsonObj = new JsonObject();
@@ -27,7 +29,9 @@ public class Retrieve_users_service {
             jsonObj.addProperty("u_role",rs.getString(5));
             jsonObj.addProperty("random_id",rs.getString(6));
             jsonArray.add(jsonObj);
-       }    
+       }
+        st.close();
+        rs.close();
     }
 catch(Exception e)
     {
