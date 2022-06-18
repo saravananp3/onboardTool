@@ -134,20 +134,26 @@ function phaseDataretrieveAjaxCall()
                 else if(Type=="MultiselectDropdown")
                 {
                 	var Options=value.options;
+                	console.log(Options);
                 	var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'governance'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
                     "<select multiple data-live-search='true' style = 'width:100%;' class ='form-control multiselect' id='"+ColumnName+"'name='"+ColumnName+"' multiple data-actions-box='true'>";
                 
                 var sub_option = Options.substring(0, Options.length - 1);
-                var option=Options.split(",");
-                if(option.length==0)
-                	inputdrop +="<option></option>";
-                for(var i=0;i<option.length;i++) {
+                var option = [];
+                if(Options.length != 0 || Options[0] == "") {
+					option=Options.split(",");				
+				}
+                
+               /* if(option.length == 0 || option[0] == "")
+                	inputdrop +="<option></option>";*/
+                for(var i=0;i<option.length;i++) {	
                     var select = "";
                     if(Value.includes(option[i])){
                      select = "selected";
                     }
                     inputdrop += "<option label='"+ option[i] + "' class='control-label' for= 'governance' "+select+">" + option[i] + "</option>";
                 }
+                
                 inputdrop +="</select></div>";
                 $('#inputFields').append(inputdrop);
                /* if(Options==""){
