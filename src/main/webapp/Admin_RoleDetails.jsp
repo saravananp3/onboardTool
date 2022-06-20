@@ -203,7 +203,7 @@ int count=0;
        <%
                          String uname=(String)details.getAttribute("username");
                          String role=(String)details.getAttribute("role");%>                   
-		<li ><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%> </span>logged in as <span id='nav_role'><%=Encode.forHtml(role)%></span></a></li>	
+		<%-- <li ><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%> </span>logged in as <span id='nav_role'><%=Encode.forHtml(role)%></span></a></li> --%>	
 <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
                     </ul>
@@ -299,14 +299,14 @@ int count=0;
                                       while(rs.next()){ 
                                       %>
                                      
-                                      <tr>
+                                     <%--  <tr>
                                       <td><input class="act" style="width:170px;" type="text" id="slideradmin<%=Encode.forHtml(String.valueOf(i)) %>" name="role<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtmlAttribute(rs.getString(1)) %>"></td>
                                       <td><label class="switch"><input type="checkbox" id="slideradmin<%=Encode.forHtml(String.valueOf(i)) %>" onclick=chk("admin<%=Encode.forHtml(String.valueOf(i)) %>","slideradmin<%=Encode.forHtml(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="admin<%=Encode.forHtml(String.valueOf(i)) %>" name="admin<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtmlAttribute(rs.getString(2)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
                                       <td><label class="switch"><input type="checkbox" id="slideradmin<%=Encode.forHtmlAttribute(String.valueOf(i)) %>" onclick=chk("admin<%=Encode.forJavaScriptAttribute(String.valueOf(i)) %>","slideradmin<%=Encode.forJavaScriptAttribute(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="admin<%=Encode.forHtmlAttribute(String.valueOf(i)) %>" name="admin<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtmlAttribute(rs.getString(2)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
                                       <td><label class="switch"><input type="checkbox" id="slideradmin<%=Encode.forHtmlAttribute(String.valueOf(i)) %>" onclick=chk("admin<%=Encode.forJavaScript(String.valueOf(i)) %>","slideradmin<%=Encode.forJavaScript(String.valueOf(i)) %>") ><span class="slider round"></span></label><input class="act" type="text" id="admin<%=Encode.forHtmlAttribute(String.valueOf(i)) %>" name="admin<%=Encode.forHtml(String.valueOf(i)) %>" value="<%= Encode.forHtmlAttribute(rs.getString(2)) %>" style="background-color:lightgrey; " readonly="readonly"/></td>
                                       
                                      
-                                      </tr> 
+                                      </tr>  --%>
                                       <%
                                       i++;
                                       }

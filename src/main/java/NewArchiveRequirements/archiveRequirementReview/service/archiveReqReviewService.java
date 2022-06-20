@@ -40,14 +40,14 @@ public class archiveReqReviewService {
 	public archiveReqReviewService(String Id,String OppName) throws ClassNotFoundException, SQLException
 	{
 		dBconnection = new DBconnection();
-		 con = (Connection) dBconnection.getConnection();
-		 this.Id = Id;
-		 this.OppName = OppName;
+		con = (Connection) dBconnection.getConnection();
+		this.Id = Id;
+		this.OppName = OppName;
 	}
-public JsonArray archiveReqReviewDataRetrieve(){
-		
+	public JsonArray archiveReqReviewDataRetrieve(){
+
 		JsonArray jsonArray = new JsonArray();
-		
+
 		try {
 			// archive Requirement introduction page Data retrieve
 			JsonArray JsonArray = new JsonArray();
@@ -55,114 +55,115 @@ public JsonArray archiveReqReviewDataRetrieve(){
 			JsonArray.add(archiveReqIntro.archiveReqDataRetrieve());
 			//archiveReqIntro.con.close();
 			archiveReqIntroRolesResponseTemplateService archiveReqIntroObj = new archiveReqIntroRolesResponseTemplateService(Id,OppName);
- 			JsonArray.add(archiveReqIntroObj.archiveReqIntroRolesResponseDataRetrieve());
+			JsonArray.add(archiveReqIntroObj.archiveReqIntroRolesResponseDataRetrieve());
 			jsonArray.add(JsonArray);
-			
+
 			// archive Requirement legacy app info details
 			JsonArray = new JsonArray();
 			archiveReqLegacyDataRetrieveService Appinfo = new archiveReqLegacyDataRetrieveService(Id, OppName);
 			JsonArray.add(Appinfo.archiveReqLegacyTemplateToArchiveReqLegacyInfo());
-		    //Appinfo.con.close();
-		    
-		    archiveEnvironmentNameDataRetrieveService EnvmtName = new archiveEnvironmentNameDataRetrieveService(Id, OppName);
+			//Appinfo.con.close();
+
+			archiveEnvironmentNameDataRetrieveService EnvmtName = new archiveEnvironmentNameDataRetrieveService(Id, OppName);
 			JsonArray.add(EnvmtName.archiveEnvmtDataRetrieve());
 			//EnvmtName.con.close();
 			JsonArray.add(getUploadedScreenShotNameList());
 			jsonArray.add(JsonArray);
-			
+
 			// archive Requirement Retention Details
 			archiveRetentionDataRetrieve retentionDetails = new archiveRetentionDataRetrieve(Id, OppName);
 			jsonArray.add(retentionDetails.archiveRetentionDataRetrieveService());
 			//retentionDetails.con.close();
-			
+
 			// archive Requirement  Business Req Details
 			businessReqInScopeService businesssreqscope = new businessReqInScopeService(Id,OppName);
- 			jsonArray.add(businesssreqscope.BusinessRequirementsDataRetrieve());
- 			//businesssreqscope.con.close();
- 			
- 			//archive Requirement  Business Req Contact Info Details
- 			businessReqDataRetrieveService archivebusReq = new businessReqDataRetrieveService(Id);
+			jsonArray.add(businesssreqscope.BusinessRequirementsDataRetrieve());
+			//businesssreqscope.con.close();
+
+			//archive Requirement  Business Req Contact Info Details
+			businessReqDataRetrieveService archivebusReq = new businessReqDataRetrieveService(Id);
 			jsonArray.add(archivebusReq.archiveReqDataRetrieve());
- 			
+
 			JsonArray = new JsonArray();
- 			String[] tableNamesFunctionReq = {"Archive_DataReq_Info","Archive_RetentionLegalReq_Info","Archive_SecurityReq_Info","Archive_UsabilityReq_Info","Archive_AuditReq_Info"};
- 	    	for(int index=0;index<tableNamesFunctionReq.length;index++)
- 	    	{
- 	    		archiveFunctionDataRetrieveService dataReqDetails;
- 				try {
- 					dataReqDetails = new archiveFunctionDataRetrieveService(Id, OppName,tableNamesFunctionReq[index]);
- 					JsonArray.add(dataReqDetails.archiveFunctionDataRetrieve());
- 					//dataReqDetails.con.close();
- 				} catch (ClassNotFoundException e) {
- 					// TODO Auto-generated catch block
- 					e.printStackTrace();
- 				} catch (SQLException e) {
- 					// TODO Auto-generated catch block
- 					e.printStackTrace();
- 				}
- 	    	}
- 	    	
- 	    	jsonArray.add(JsonArray);
- 	    	JsonArray = new JsonArray();
- 	    	archiveScreenReqDataRetrieveService ScreenReq = new archiveScreenReqDataRetrieveService(Id);
+			String[] tableNamesFunctionReq = {"Archive_DataReq_Info","Archive_RetentionLegalReq_Info","Archive_SecurityReq_Info","Archive_UsabilityReq_Info","Archive_AuditReq_Info"};
+			for(int index=0;index<tableNamesFunctionReq.length;index++)
+			{
+				archiveFunctionDataRetrieveService dataReqDetails;
+				try {
+					dataReqDetails = new archiveFunctionDataRetrieveService(Id, OppName,tableNamesFunctionReq[index]);
+					JsonArray.add(dataReqDetails.archiveFunctionDataRetrieve());
+					//dataReqDetails.con.close();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			jsonArray.add(JsonArray);
+			JsonArray = new JsonArray();
+			archiveScreenReqDataRetrieveService ScreenReq = new archiveScreenReqDataRetrieveService(Id);
 			JsonArray.add(ScreenReq.archiveScreenInfoDataRetrieve());
 			JsonArray.add(ScreenReq.searchFormDataRetrieve());
 			jsonArray.add(JsonArray);
 			//ScreenReq.con.close();
-			
+
 			// document revision 
-			
+
 			archiveReqDocRevDataRetrieveService docRevData = new archiveReqDocRevDataRetrieveService(Id, OppName);
 			jsonArray.add(docRevData.archiveReqDocDataRetrieve());
-            //docRevData.con.close();
-            
-            // addendum
-            
-            archiveReqAddendumDataRetrieveService addendumRevData = new archiveReqAddendumDataRetrieveService(Id, OppName);
+			//docRevData.con.close();
+
+			// addendum
+
+			archiveReqAddendumDataRetrieveService addendumRevData = new archiveReqAddendumDataRetrieveService(Id, OppName);
 			jsonArray.add(addendumRevData.archiveReqAddendumDataRetrieve());
 			//addendumRevData.con.close();
-			
+
 			//over all status
-		    jsonArray.add(getOverAllApproval());	
-			
-		    //approval 
-		    archiveReqApprovalDataRetrieveService approvalData = new archiveReqApprovalDataRetrieveService(Id, OppName);
-		    jsonArray.add(approvalData.ApprovalDataRetrieve());
-		    
+			jsonArray.add(getOverAllApproval());	
+
+			//approval 
+			archiveReqApprovalDataRetrieveService approvalData = new archiveReqApprovalDataRetrieveService(Id, OppName);
+			jsonArray.add(approvalData.ApprovalDataRetrieve());
+
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return jsonArray;
 	}
-	
+
 	private JsonObject getUploadedScreenShotNameList()
 	{
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
 			ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            Properties prop = new Properties();
-            String workingDir = System.getProperty("user.dir");
-            InputStream resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
+			Properties prop = new Properties();
+			String workingDir = System.getProperty("user.dir");
+			InputStream resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
 
-                 prop.load(resourceStream);
-                 String Path=prop.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH");
-                 System.out.println("Path : "+Path);
+			prop.load(resourceStream);
+			String Path=prop.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH");
+			System.out.println("Path : "+Path);
 			String path = Path+File.separator+Id;
 			System.out.println("PATH : "+path);
 			File screenShot = FileUtils.createFile(path);
-			
+
 			File[] files =screenShot.listFiles();
 			String fileList = "";
 			if(files!=null)
-			for(File f: files)
-			{
-				fileList+=f.getName()+",";
-			}
-			
+				for(File f: files)
+				{
+					fileList+=f.getName()+",";
+				}
+
 			jsonObject.addProperty("listOfScreenShots",(files!=null)?fileList.substring(0,fileList.length()-1):"");
+			resourceStream.close();
 		}
 		catch(Exception e)
 		{
@@ -180,10 +181,10 @@ public JsonArray archiveReqReviewDataRetrieve(){
 			PreparedStatement st = con.prepareStatement(selectQuery);
 			st.setString(1,Id);
 			ResultSet rs = st.executeQuery();
-			
+
 			if(rs.next())
 				checkOverAllApproval = rs.getBoolean("overAllApproval");
-		  jsonObject.addProperty("checkOverAllStatus",checkOverAllApproval);
+			jsonObject.addProperty("checkOverAllStatus",checkOverAllApproval);
 		}
 		catch(Exception e)
 		{
@@ -192,9 +193,9 @@ public JsonArray archiveReqReviewDataRetrieve(){
 		return jsonObject;
 	}
 	protected void finalize() throws Throwable {
-		 con.close();
-		 System.out.println("DB connection closed");
-		}
+		con.close();
+		System.out.println("DB connection closed");
+	}
 
-	
+
 }

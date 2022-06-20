@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import onboard.DBconnection;
-import onboard.encryption;
+
 
 /**
  * Servlet implementation class Login
@@ -978,7 +978,7 @@ public class Login extends HttpServlet {
             stTriSumm.close();
             rsTriSumm.close();
             } catch (Exception e) {
-            System.err.println("-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage() + "----");
+            System.err.println("-----Got an exception!" + formatter.format(date) + "-----"+"Check Database Connection"+"----");
         }
 
 

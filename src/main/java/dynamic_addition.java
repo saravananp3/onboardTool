@@ -121,7 +121,7 @@ public class dynamic_addition extends HttpServlet {
 	        catch (Exception e)
 	        {
 	        	
-	        	  System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
+	        	 // System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
 	        }
 	          
 		  if(servlet_name.equals("Business")){

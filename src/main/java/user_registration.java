@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.owasp.encoder.Encode;
 
 import onboard.DBconnection;
-import onboard.encryption;
+
 
 /**
  * Servlet implementation class user_registration
@@ -64,8 +64,9 @@ public class user_registration extends HttpServlet {
 		String question=request.getParameter("reg_qn");
 		String answer=request.getParameter("reg_ans");
 		String app=request.getParameter("reg_app");
-		encryption et=new encryption();
-		String passw=et.encrypt(pass);
+		String passw=pass;
+		//encryption et=new encryption();
+		
 	//System.out.println("enpt pass is "+passw);
 	 try
       {
@@ -96,7 +97,7 @@ public class user_registration extends HttpServlet {
       }
       catch (Exception e)
       {
-    	  System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
+    	  //System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
       }		
 	}
 

@@ -280,8 +280,8 @@ public class Displaydb extends HttpServlet {
 			app_details.setAttribute("proj_priorities", projectPriorities);
 			
 		} catch (Exception e) {
-			System.err.println("[ERROR]-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage()
-					+ "----[ERROR]");
+			//System.err.println("[ERROR]-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage()
+				//	+ "----[ERROR]");
 			e.printStackTrace();
 		}
 		response.sendRedirect("AppEmphasize_PrioritizedApplications.jsp");

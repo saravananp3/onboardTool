@@ -1,6 +1,6 @@
 var path = window.location.pathname;
 var page = path.split("/").pop();
-console.log(page);
+console.log(Encode.forJava(page));
 $(document).ready(function() {
 
 	switchActiveModule();

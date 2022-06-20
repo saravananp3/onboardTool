@@ -404,7 +404,7 @@ transition: width 2s, height 2s, transform 2s;
                             String role=(String)details.getAttribute("role");%>
 
                         
-                        <li><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%> </span>logged in as <span id='nav_role'><%=Encode.forHtml(role)%></span></a></li>
+                      <%--   <li><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%> </span>logged in as <span id='nav_role'><%=Encode.forHtml(role)%></span></a></li> --%>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
                 </div>

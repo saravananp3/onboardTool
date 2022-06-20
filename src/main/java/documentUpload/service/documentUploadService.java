@@ -109,7 +109,7 @@ public class documentUploadService {
             Properties prop = new Properties();
             String workingDir = System.getProperty("user.dir");
             InputStream resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
-
+            
                  prop.load(resourceStream);
                  String Path=prop.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH");
                  System.out.println("Path : "+Path);
@@ -134,6 +134,7 @@ public class documentUploadService {
 			}
 			st.close();
 			rs.close();
+			resourceStream.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

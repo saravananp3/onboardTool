@@ -24,7 +24,7 @@ import NewArchiveRequirements.LegacyApplicationInfo.Service.archiveReqLegacyAppT
 import NewArchiveRequirements.LegacyApplicationInfo.retentionDetails.Service.archiveRetentionTemplateDetailsService;
 import NewArchiveRequirements.businessRequirementsDetails.functionalReqInfo.dataReq.Service.archiveFunDataReqTemplate;
 import onboard.DBconnection;
-import onboard.encryption;
+
 /**
  * Servlet implementation class Login_1
  */
@@ -828,7 +828,7 @@ public class Login_1 extends HttpServlet {
 
 					details.setAttribute("role",dbu_role);
 					details.setAttribute("projects","all");
-					details.setAttribute(dbu_role,"X");
+					details.setAttribute("dbu_role","X");
 					details.setAttribute("prj","X");
 					details.setAttribute("app_emp","X");
 					details.setAttribute("intake","X");

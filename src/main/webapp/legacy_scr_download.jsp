@@ -70,19 +70,10 @@ HttpSession details = request.getSession();
 		
 		
 	}
-        catch (SQLException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
-            response.getWriter().print(ex.getMessage());
+            response.getWriter().print("Check Database Connection");
         } 
-        catch (IOException ex) {
-            ex.printStackTrace();
-            response.getWriter().print(ex.getMessage());
-        } catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-finally{
-	
-}
+ 
  %>
  

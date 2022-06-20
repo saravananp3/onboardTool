@@ -242,8 +242,8 @@ h1 {
                          String uname=(String)details.getAttribute("username");
                          String roles1=(String)details.getAttribute("role");%>
 								
-								<li><a href="#"><span id="nav_userid"><%=Encode.forHtml(username)%>
-										</span>logged in as <span id='nav_role'><%=Encode.forHtml(roles1)%></span></a></li>
+							<%-- 	<li><a href="#"><span id="nav_userid"><%=Encode.forHtml(username)%>
+										</span>logged in as <span id='nav_role'><%=Encode.forHtml(roles1)%></span></a></li> --%>
 
 									<li><a href="logout.jsp" class=" text-center"><i
 											class="fa fa-sign-out"></i> Logout</a></li>
