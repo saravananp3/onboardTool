@@ -6,7 +6,6 @@ var readOnlyValue = "";
 var finalCheck;
 var exportContent = [];
 var JsonObject =[];
-var num=0;
 
 $(document).ready(function() {
 	$.ajax({
@@ -20,16 +19,30 @@ $(document).ready(function() {
 				var opportunityId = value.Id;
 				var phaseName = value.phaseName;
 				var waveName = value.waveName;
-				var readonly = "readonly";
 				var disable = "disabled";
+				
+				var phaseOptions = "<option selected class='options Select' id='phase-list"+number+"' value='" + phaseName + "'>"+ phaseName + "</option>"
+				$.each(data[1][1][0], function(key, value) {
+				phaseOptions += "<option class='phaseOptions options' value='" + value.phaseName + "'>" + value.phaseName + "</option>";
+				});
+
+				var waveOptions = "<option selected class='options Select' id='wave-list"+number+"' value='"+waveName+"'>"+waveName+"</option>"
+				$.each(data[1][1][1], function(key, value) {
+				var phaseList1 = ((value.phaseName).replaceAll(" ", "")).replaceAll("-", "");
+				waveOptions += "<option class='options waveOptions " + phaseList1 + "' value='" + value.waveName + "'>" + value.waveName + "</option>";
+				});
 				
 				var t_row = "<tr class='rowClass'>"
 					+ "<td style='display: none;'><input type = 'text' class ='applicationId' " + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityId + "'>"+opportunityId+"</td>"
 					+ "<td><input type = 'text' class ='applicationName' value = '" + opportunityName + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityName + "'></td>"
 
-					+ "<td><input type = 'text' class ='phaseList' id='phaseSearch" + number + "' value = '" + phaseName + "'" + readonly + " style='width:100%; border:none; background-color: #fff; text-align:center;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + phaseName + "'><ul id='phaseResult" + number + "' class='list-group searchResult'></ul></td>"
+					+ "<td>"+"<select class='form-select phase phaseList' id='phase1'  aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
+					phaseOptions +
+					"</select>"+"</td>"
 
-					+ "<td><input type = 'text' class ='waveList' id='waveSearch" + number + "' value = '" + waveName + "'" + readonly + " style='width:100%; border:none; background-color: #fff; text-align:center;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + waveName + "'><ul id='waveResult" + number + "' class='list-group searchResult'></ul></td>"
+					+ "<td>"+"<select class='form-select wave waveList' id='wave1"+number+"' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
+					waveOptions +
+					"</select>"+"</td>"
 
 					+ "<td style='text-align:center;vertical-align: middle;'><span class='fa fa-pencil-square-o editpopup1' style='display:block;'></span>" +
 					"</td>" +
@@ -47,9 +60,9 @@ $(document).ready(function() {
 
 				$('#applicationList').append(t_row);
 				number++;
+				
 			});
-
-
+			
 			$(document).ready(function() {
 				$('#appTable').DataTable();
 			});
@@ -58,6 +71,43 @@ $(document).ready(function() {
 		}
 	})
 });
+
+
+$(document).on('change', '#phase1', function(j) {
+	$(".waveOptions").hide();
+	var phaseName = $(this).val();
+	if (phaseName == "") {
+		$("." + (phaseName.replaceAll(" ", "")).replaceAll("-", "")).show();
+		$("#wave1"+j).val("");
+	}
+	else {
+		$(".waveOptions").show();
+	}
+});
+
+$(document).on('change', '.filter', function(j) {
+	var phase = $("#phase1").val();
+	var wave = $("#wave1"+j).val();
+	filterAjaxCall(category, phase, wave);
+});
+
+function filterAjaxCall(category, phase, wave) {
+	$.ajax({
+		url: "OpportunityFilterListServlet",
+		type: 'POST',
+		dataType: "json",
+		data: { wave: wave, category: category, phase: phase, bySearch: false },
+		success: function(data) {
+			console.log("Data:", data);
+			if (!$.isArray(data)) {
+				data = [data];
+			}
+		},
+		error: function(e) {
+			console.log(e);
+		}
+	});
+}
 
 $(document).on('click', '#saveApplicationList', function(e) {
 	var validation = false;
@@ -109,30 +159,30 @@ function applicationListSaveAjaxcall(JsonArray) {
 	});
 }
 
-$(document).on('click', '.EditRow', function() {
+$(document).on('click', '.EditRow', function(i) {
 	var seqnum = $(this).index('.EditRow');
-	var ReadOnly = $('.phaseList').eq(seqnum).is('[readonly]');
-	if (ReadOnly) {
-		ReadOnlyPropertyConfig(seqnum, false);
+	var Disabled = $('.phaseList').eq(seqnum).is('[disabled]');
+	if (Disabled) {
+		disabledPropertyConfig(seqnum, false);
+		$("#phase-list"+seqnum).empty().append('<option selected="selected" value="Select">Select</option>');
+		$("#wave-list"+seqnum).empty().append('<option selected="selected" value="Select">Select</option>');
 		notification("info", "Selected row is editable.", "Info");
-		searchPhaseFunction(seqnum);
-		searchWaveFunction(seqnum);
 	}
 	else {
-		ReadOnlyPropertyConfig(seqnum, true);
+		disabledPropertyConfig(seqnum, true);
 		notification("info", "Selected row is non editable", "Info");
 	}
 
 });
 
 
-function ReadOnlyPropertyConfig(index, prop) {
+function disabledPropertyConfig(index, prop) {
 	var fieldClass = ['phaseList', 'waveList'];
 	for (var i = 0; i < fieldClass.length; i++) {
 		var checkrole = true;
 		if (checkrole) {
-			$("." + fieldClass[i]).eq(index).attr('Readonly', '');
-			$("." + fieldClass[i]).eq(index).attr('Readonly', prop);
+			$("." + fieldClass[i]).eq(index).attr('disabled', '');
+			$("." + fieldClass[i]).eq(index).attr('disabled', prop);
 		}
 	}
 	if (prop == false)
@@ -140,7 +190,7 @@ function ReadOnlyPropertyConfig(index, prop) {
 }
 
 
-function searchPhaseFunction(i) {
+/*function searchPhaseFunction(i) {
 	$('#phaseSearch' + i).keyup(function() {
 		$('#phaseResult' + i).html('');
 		var searchField = $('#phaseSearch' + i).val();
@@ -170,9 +220,9 @@ function searchPhaseFunction(i) {
 
 	});
 };
+*/
 
-
-function searchWaveFunction(i) {
+/*function searchWaveFunction(i) {
 	$('#waveSearch' + i).keyup(function() {
 		$('#waveResult' + i).html('');
 		var searchField = $('#waveSearch' + i).val();
@@ -188,7 +238,6 @@ function searchWaveFunction(i) {
 				}
 				$('#waveResult' + i).empty();
 				$.each(data[1][3][1], function(key, value) {
-					/*var filterPhase = ((value.phaseName).replaceAll(" ", "")).replaceAll("-", "");*/
 					if (value.waveName.search(expression) != -1) {
 						$('#waveResult' + i).append("<li class='list-group-item link-class filterWave'>" + value.waveName + "</li>");
 						console.log(value.waveName);
@@ -204,46 +253,7 @@ function searchWaveFunction(i) {
 	});
 	
 	
-};
-
-/*
-$(document).on('change', '#phaseResult'+i, function(i) {
-	$(".filterWave").hide();
-	var phaseName = $(this).val();
-	if (phaseName != "") {
-		$("#" + (phaseName.replaceAll(" ", "")).replaceAll("-", "")).show();
-		$("#waveResult"+i).val("");
-	}
-	else {
-		$(".filterWave").show();
-	}
-});
-
-$(document).on('change', '.filter', function(i) {
-	var phase = $("#phaseResult"+i).val();
-	var wave = $("#waveResult"+i).val();
-	filterAjaxCall(category, phase, wave);
-});
-
-function filterAjaxCall(category, phase, wave) {
-	$.ajax({
-		url: "OpportunityFilterListServlet",
-		type: 'POST',
-		dataType: "json",
-		data: { wave: wave, category: category, phase: phase, bySearch: false },
-		success: function(data) {
-			console.log("Data:", data);
-			if (!$.isArray(data)) {
-				data = [data];
-			}
-		},
-		error: function(e) {
-			console.log(e);
-		}
-	});
-}
-*/
-
+};*/
 
 	$(document).on('click', '.editpopup1', function() {
 		var intakePreview = $(this).closest("tr");
@@ -507,7 +517,6 @@ function checkReadOnlyData(ColumnName){
         $("#Sequence").val(seqNum);
         $("#deletepopup_btn").click();
     });
-    //
    $(document).on('click', '#DeleteSubmit', function() {
 		var DeleteSeqNum = $("#Sequence").val();
 		var JsonArray = [];
