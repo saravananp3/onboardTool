@@ -81,8 +81,8 @@ public class Intake_scr_Download extends HttpServlet {
 				response.setContentType(Encode.forJava(mimeType));
 				response.setContentLength(fileLength);
 				String headerKey = "Content-Disposition";
-				String headerValue = String.format("attachment; filename=\"%s\"", fileName);
-				response.setHeader(Encode.forJava(headerKey), Encode.forHtmlContent(headerValue));
+				String headerValue = String.format("attachment; filename=%s", fileName);
+				response.setHeader(Encode.forJava(headerKey), Encode.forJava(headerValue));
 
 				// writes the file to the client
 				OutputStream outStream = response.getOutputStream();
