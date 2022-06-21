@@ -538,7 +538,7 @@ function DeleteRowAjaxCall(JsonArray,DeleteSeqNum) {
             JsonObject = data;
              $(".rowClass").eq(DeleteSeqNum).remove();
             notification("success", "Row deleted successfully.", "Note");
-           	window.setTimeout(function(){location.reload()},220);
+           	window.setTimeout(function(){location.reload()},1000);
         },
         error: function(e) {
             console.log(e);
