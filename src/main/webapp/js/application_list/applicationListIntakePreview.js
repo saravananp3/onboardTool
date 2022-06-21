@@ -36,11 +36,11 @@ $(document).ready(function() {
 					+ "<td style='display: none;'><input type = 'text' class ='applicationId' " + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityId + "'>"+opportunityId+"</td>"
 					+ "<td><input type = 'text' class ='applicationName' value = '" + opportunityName + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityName + "'></td>"
 
-					+ "<td>"+"<select class='form-select phase phaseList' id='phase1'  aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
+					+ "<td>"+"<select class='form-select phase' id='phase1' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
 					phaseOptions +
 					"</select>"+"</td>"
 
-					+ "<td>"+"<select class='form-select wave waveList' id='wave1"+number+"' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
+					+ "<td>"+"<select class='form-select wave' id='wave1"+number+"' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
 					waveOptions +
 					"</select>"+"</td>"
 
@@ -115,8 +115,8 @@ $(document).on('click', '#saveApplicationList', function(e) {
 	for (var i = 0; i < $('.rowClass').length; i++) {
 		var inputs = {};
 		var appId = $('.applicationName').eq(i).val();
-		var phaseId = $('.phaseList').eq(i).val();
-		var waveId = $('.waveList').eq(i).val();
+		var phaseId = $('.phase').eq(i).val();
+		var waveId = $('.wave').eq(i).val();
 		validation = true;
 		inputs['appName'] = appId;
 		inputs['phase'] = phaseId;
@@ -127,10 +127,11 @@ $(document).on('click', '#saveApplicationList', function(e) {
 	if (validation) {
 		console.log("JsonArray Retrieve--->", JsonArray);
 		applicationListSaveAjaxcall(JsonArray);
-	}
-	else {
-		notification("warning", "Please fill atleast one row fields.", "Warning");
-	}
+		notification("success", "Saved successfully.", "Note:");	
+	} else {
+		notification("warning", "Please select phase and wave for atleast one application.", "Warning");
+		
+	} 
 	e.preventDefault();
 });
 
@@ -146,22 +147,18 @@ function applicationListSaveAjaxcall(JsonArray) {
 		success: function(data) {
 			console.log("SAVE DATA:", data);
 			JsonObject = data;
-			if (data) {
-				notification("success", "Saved successfully.", "Note:");
-			}
-			else {
-				notification("error", "Error occured while saving.", "Error:");
-			}
 		},
 		error: function(e) {
 			console.log(e);
 		}
 	});
+	
+	return JsonObject;
 }
 
 $(document).on('click', '.EditRow', function(i) {
 	var seqnum = $(this).index('.EditRow');
-	var Disabled = $('.phaseList').eq(seqnum).is('[disabled]');
+	var Disabled = $('.phase').eq(seqnum).is('[disabled]');
 	if (Disabled) {
 		disabledPropertyConfig(seqnum, false);
 		$("#phase-list"+seqnum).empty().append('<option selected="selected" value="Select">Select</option>');
@@ -177,7 +174,7 @@ $(document).on('click', '.EditRow', function(i) {
 
 
 function disabledPropertyConfig(index, prop) {
-	var fieldClass = ['phaseList', 'waveList'];
+	var fieldClass = ['phase', 'wave'];
 	for (var i = 0; i < fieldClass.length; i++) {
 		var checkrole = true;
 		if (checkrole) {
@@ -186,7 +183,7 @@ function disabledPropertyConfig(index, prop) {
 		}
 	}
 	if (prop == false)
-		$(".phaseList").eq(index).focus();
+		$(".phase").eq(index).focus();
 }
 
 
@@ -522,7 +519,7 @@ function checkReadOnlyData(ColumnName){
 		var JsonArray = [];
 		var inputs = {};
         var appName = $(".applicationName").eq(DeleteSeqNum).val();
-        var wave = $(".waveList").eq(DeleteSeqNum).val();
+        var wave = $(".wave").eq(DeleteSeqNum).val();
         inputs['appName'] = appName;
 		inputs['wave'] = wave;
 		JsonArray.push(inputs);
