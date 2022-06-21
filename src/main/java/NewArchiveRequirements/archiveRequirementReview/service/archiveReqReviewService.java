@@ -1,6 +1,7 @@
 package NewArchiveRequirements.archiveRequirementReview.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -139,13 +140,14 @@ public class archiveReqReviewService {
 
 	private JsonObject getUploadedScreenShotNameList()
 	{
+		InputStream resourceStream=null;
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
 			ClassLoader loader = Thread.currentThread().getContextClassLoader();
 			Properties prop = new Properties();
 			String workingDir = System.getProperty("user.dir");
-			InputStream resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
+			resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
 
 			prop.load(resourceStream);
 			String Path=prop.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH");
@@ -168,6 +170,14 @@ public class archiveReqReviewService {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+		finally {
+			try {
+				resourceStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return jsonObject;
 	}

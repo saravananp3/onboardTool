@@ -43,7 +43,7 @@ try {
 		response.setContentLength(fileLength);
 		String headerKey = "Content-Disposition";
 		String headerValue = String.format("attachment; filename=\"%s\"", fileName);
-		response.setHeader(Encode.forJava(headerKey), Encode.forJava(headerValue));
+		response.setHeader(Encode.forJava(headerKey), Encode.forHtmlContent(headerValue));
 
 		// writes the file to the client
 		OutputStream outStream = response.getOutputStream();

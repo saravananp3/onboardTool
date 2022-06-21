@@ -2,6 +2,7 @@ package documentUpload.service;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
@@ -104,11 +105,12 @@ public class documentUploadService {
 	}
 	
 	public boolean retrieveBlob() {
+		InputStream resourceStream=null;
 		try {
 			ClassLoader loader = Thread.currentThread().getContextClassLoader();
             Properties prop = new Properties();
             String workingDir = System.getProperty("user.dir");
-            InputStream resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
+            resourceStream = (InputStream) loader.getResourceAsStream("fileUpload.properties");
             
                  prop.load(resourceStream);
                  String Path=prop.getProperty("FILE.REQUIREMENTS.SCREENSHOT.PATH");
@@ -134,11 +136,19 @@ public class documentUploadService {
 			}
 			st.close();
 			rs.close();
-			resourceStream.close();
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+		finally {
+			try {
+				resourceStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return true;
 	}

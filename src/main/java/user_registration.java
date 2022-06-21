@@ -64,7 +64,7 @@ public class user_registration extends HttpServlet {
 		String question=request.getParameter("reg_qn");
 		String answer=request.getParameter("reg_ans");
 		String app=request.getParameter("reg_app");
-		String passw=pass;
+		String passw=request.getParameter("reg_pwd");
 		//encryption et=new encryption();
 		
 	//System.out.println("enpt pass is "+passw);
