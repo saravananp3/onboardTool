@@ -918,7 +918,7 @@ e.printStackTrace();
 							          			</div>
 							          		</div>
 							          	</div>
-							          	<form action="legacy_scr_download.jsp" method="post">
+							          	<form action="legacy_scr_download" method="post">
       												<input type="hidden" id="File_Name" name="File_Name">
       												<input type="submit" id="scr_submit" style="display:none;">
       												

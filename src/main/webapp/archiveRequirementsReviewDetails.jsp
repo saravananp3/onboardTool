@@ -1029,7 +1029,7 @@ $(document).on('mouseenter','.active1', function(){
 	 });
 	
 </script>
-<form action="legacy_scr_download.jsp" method="post">
+<form action="legacy_scr_download" method="post">
       												<input type="hidden" name="File_Name" id="File_Name">
       												<input type="submit" id="scr_submit" style="display:none;">
 											    </form>
