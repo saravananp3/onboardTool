@@ -141,6 +141,7 @@
 						</tr>
 					</thead>
 					<tbody id="applicationList">
+						<tr id="notFound1"><td colspan='5' style="text-align: center;">No Data Available</td></tr>
 					</tbody>
 				</table>
 
@@ -174,6 +175,7 @@
 						</tr>
 					</thead>
 					<tbody id="applicationListWithoutPhase">
+						<tr id="notFound"><td colspan='4' style="text-align: center;">No Data Available</td></tr>
 					</tbody>
 				</table>
 				<div class="row">
