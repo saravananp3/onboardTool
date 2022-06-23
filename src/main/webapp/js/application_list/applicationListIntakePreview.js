@@ -118,7 +118,7 @@ $(document).on('click', '#saveApplicationList', function(e) {
 	if (validation) {
 		console.log("JsonArray Retrieve--->", JsonArray);
 		applicationListSaveAjaxcall(JsonArray);
-		notification("success", "Saved successfully.", "Note:");
+		notification("success", "Updated successfully.", "Note:");
 		/*window.setTimeout(function() { location.reload() }, 1000);*/
 	} else {
 		notification("warning", "No data available", "Warning");
