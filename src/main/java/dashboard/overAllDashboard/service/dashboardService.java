@@ -101,6 +101,7 @@ public class dashboardService {
             while (rs.next()) {
                 if (rs.getString("column_name").equals("waves")) {
                     String waveArray[] = rs.getString("value").split(",");
+                    
                     for (String string : waveArray) {
                         waves.add(string);
                     }
@@ -179,6 +180,7 @@ public class dashboardService {
                     
                     jsonObject.addProperty("targetCompletionDate", "15-07-2022");
                     jsonObject.addProperty("DesignApproval", "No");
+                    jsonObject.addProperty("Nanda", rs.getString("OppId"));
                     String Id = rs.getString("OppId");
                     // System.out.println("OppId: " + Id);
                     String selectAppdetail = "select * from ArchiveReq_Roles_Info where OppId = ? and priority_order_num!=''";
@@ -303,6 +305,10 @@ public class dashboardService {
             while (rs.next()) {
                 if (rs.getString("column_name").equals("waves")) {
                     String waves[] = rs.getString("value").split(",");
+                    if(waves[0].equals(""))
+                    {
+                    	continue;
+                    }
                     list=(getWaveinfo(waves, rs.getString("phaseName")));
                 }
             }

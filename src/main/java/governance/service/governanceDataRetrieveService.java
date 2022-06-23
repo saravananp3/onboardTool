@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
 import java.util.UUID;
 
 import org.checkerframework.checker.formatter.qual.ReturnsFormat;
@@ -121,16 +122,25 @@ public class governanceDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
+			HashSet<String> WaveSet = new HashSet<String>();
 			String selectQuery = "select * from Governance_Info_Details;";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(selectQuery);
-			while(rs.next())
-			{
+			while (rs.next()) {
+				String options = rs.getString("options");
+				String waveArray[] = options.split(",");
+				for (String wave : waveArray) {
+					if (wave.equals("")) {
+						continue;
+					}
+					WaveSet.add(wave);
+			}
+			String appToReturn = String.join(",", WaveSet);
 			JsonObject jsonObject = new JsonObject();
 			jsonObject.addProperty("seq_num",rs.getInt("seq_no"));
 			jsonObject.addProperty("WaveId",rs.getString("WaveId"));
 			jsonObject.addProperty("waveName", rs.getString("waveName"));
-			jsonObject.addProperty("options",rs.getString("options"));
+			jsonObject.addProperty("options",appToReturn);
 			jsonObject.addProperty("LabelName",rs.getString("label_name"));
 			jsonObject.addProperty("ColumnName",rs.getString("column_name"));
 			jsonObject.addProperty("Type",rs.getString("type"));
@@ -151,17 +161,26 @@ public class governanceDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
+			HashSet<String> WaveSet = new HashSet<String>();
 			String selectQuery = "select * from governance_Info where waveId = ?;";
 			PreparedStatement st = con.prepareStatement(selectQuery);
 			st.setString(1, waveId);
 			ResultSet rs = st.executeQuery();
-			while(rs.next())
-			{
+			while (rs.next()) {
+				String options = rs.getString("options");
+				String waveArray[] = options.split(",");
+				for (String wave : waveArray) {
+					if (wave.equals("")) {
+						continue;
+					}
+					WaveSet.add(wave);
+				}
+			String appToReturn = String.join(",", WaveSet);
 			JsonObject jsonObject = new JsonObject();
 			jsonObject.addProperty("seq_num",rs.getInt("seq_no"));
 			jsonObject.addProperty("waveId",rs.getString("waveId"));
 			jsonObject.addProperty("waveName", rs.getString("waveName"));
-			jsonObject.addProperty("options",rs.getString("options"));
+			jsonObject.addProperty("options",appToReturn);
 			jsonObject.addProperty("LabelName",rs.getString("label_name"));
 			jsonObject.addProperty("ColumnName",rs.getString("column_name"));
 			jsonObject.addProperty("Type",rs.getString("type"));

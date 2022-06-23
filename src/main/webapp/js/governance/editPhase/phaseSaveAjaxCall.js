@@ -134,7 +134,16 @@ function AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,id,e)
         success: function (data) {
         	console.log("CREATE VALIDATION",data);
         	JsonObject = data;
-        	if(data.SaveStatus)
+        	if(data.checkphaseId){
+	                     checkAjax = false;
+		                	notification("warning","Phase Id is already exist.","Warning:");
+		                    }
+		          if(data.checkphaseName){
+			                   checkAjax = false;
+		                	  notification("warning","Phase name is already exist.","Warning:");
+		                    
+	                      }
+        	   if(data.SaveStatus)
         		{
         		notification("success","New Phase successfully created.","Note:");
         		setTimeout(function()
@@ -142,15 +151,11 @@ function AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,id,e)
         			      $("#ListId").click();
         				},1000);
         		}
-        	else
-        	{
-           		if(data.checkphaseName)
-        			notification("warning","Phase Name already exist.","Warning:");
-        		else if(data.checkphaseId)
-        			notification("warning","Phase Id already exist.","Warning:");
-        		else
-        		notification("error","Error occured while saving.","Error:");
-        	}
+        	    	else{
+	                    e.preventDefault();
+		                     notification("error","Error Occured while saving.","Error:");
+        		        return false;
+        		}
         	    	
            },
         error: function (e) {

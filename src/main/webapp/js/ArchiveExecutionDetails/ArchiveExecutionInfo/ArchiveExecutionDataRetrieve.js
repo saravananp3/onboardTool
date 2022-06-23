@@ -448,7 +448,7 @@ function userAppendFunction(optionlist,value1) {
         //var getUser = "user"+count.toString();
         var userList = (value);
          if(value1.includes(userList.toString()))
-          options += "<option value='"+userList+"' selected>"+userList+"</option>";
+          options += "<option value='"+userList+"'>"+userList+"</option>";
       else
           options += "<option value='"+userList+"'>"+userList+"</option>";
     });

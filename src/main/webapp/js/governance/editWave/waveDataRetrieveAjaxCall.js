@@ -148,9 +148,11 @@ function waveDataretrieveAjaxCall(waveId)
                     "<select multiple data-live-search='true' style = 'width:100%;' class ='form-control multiselect' id='"+ColumnName+"'name='"+ColumnName+"' multiple data-actions-box='true'>";
                 
                 var sub_option = Options.substring(0, Options.length - 1);
-                var option=Options.split(",");
-                if(option.length==0)
-                	inputdrop +="<option></option>";
+                if(Options.length != 0 || Options[0] == "") {
+					option=Options.split(",");				
+				}
+               /* if(option.length==0)
+                	inputdrop +="<option></option>";*/
                 for(var i=0;i<option.length;i++) {
                     var select = "";
                     if(Value.includes(option[i])){

@@ -355,12 +355,20 @@ public class DashboardDoughnutService {
             }
             double totalCBA = inprogreeCBA + intakeCBA + realisedCBA;
             DecimalFormat f = new DecimalFormat("##.##");
+            if(totalCBA==0.0)
+            {
+            	jsonObject.addProperty("sunmOfIntake", 0);
+                jsonObject.addProperty("sumOfInProgress", 0);
+                jsonObject.addProperty("sumOfRealised", 0);
+            }
+            else {
             double sunmOfIntake = Double.parseDouble(f.format((intakeCBA * 100) / totalCBA));
             double sumOfInProgress = Double.parseDouble(f.format((inprogreeCBA * 100) / totalCBA));
             double sumOfRealised = Double.parseDouble(f.format((realisedCBA * 100) / totalCBA));
             jsonObject.addProperty("sunmOfIntake", sunmOfIntake);
             jsonObject.addProperty("sumOfInProgress", sumOfInProgress);
             jsonObject.addProperty("sumOfRealised", sumOfRealised);
+            }
             jsonArray.add(jsonObject);
         } catch (Exception e) {
             e.printStackTrace();

@@ -22,7 +22,7 @@ $(document).ready(function(){
                      $('#existWaveTypesId').append(options);
                  });
                  var i = 1;
-                 $.each(data[1], function(key, value){
+                 $.each(data[2], function(key, value){
                      var opportunityName = value.OpportunityName; 
                      var OpportunityId = value.OpportunityId; 
                      var checkWave = value.CheckWave;
@@ -58,12 +58,12 @@ $(document).ready(function(){
                 
                  });
                  var phaseOptions ="<option class='options All' value='All'>All</option>"
-                 $.each(data[2][0], function(key, value){
+                 $.each(data[3][0], function(key, value){
                       phaseOptions += "<option class='phaseOptions options' value='"+value.phaseName+"'>"+value.phaseName+"</option>";
                  });
                  $('#phase').append(phaseOptions);
                  var waveOptions ="<option class='options All' value='All'>All</option>"
-                     $.each(data[2][1], function(key, value){
+                     $.each(data[3][1], function(key, value){
                          var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
                           waveOptions += "<option class='options waveOptions "+phase+"' value='"+value.waveName+"'>"+value.waveName+"</option>";
                      });

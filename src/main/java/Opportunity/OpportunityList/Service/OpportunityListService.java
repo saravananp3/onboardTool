@@ -18,7 +18,7 @@ public class OpportunityListService {
 		JsonArray jsonArray1 = new JsonArray();
 		try {
 			jsonArray1.add(getWaveName());
-			
+			jsonArray1.add(getResources());	
 			DBconnection dBconnection = new DBconnection();
 			Connection connection = (Connection) dBconnection.getConnection();
 			
@@ -110,5 +110,35 @@ public class OpportunityListService {
 				connection.close();
 		}
 		return checkWave;
+	}
+	
+	public static JsonArray getResources() {
+		JsonArray jsonArray = new JsonArray();
+		JsonArray jsonArray1 = new JsonArray();
+		try {
+			
+			DBconnection dBconnection = new DBconnection();
+			Connection connection = (Connection) dBconnection.getConnection();
+			
+		
+			 String SelectResourcesQuery ="select * from users";
+			 Statement st = connection.createStatement();
+			 ResultSet rs = st.executeQuery(SelectResourcesQuery);
+			 
+			 while(rs.next()) {
+				 JsonObject jsonObj = new JsonObject();
+				 jsonObj.addProperty("resourcesList", rs.getString("uname"));
+				 jsonArray.add(jsonObj);
+			 }
+			 System.out.println("Exception------->>>>>--------" + jsonArray);
+			 jsonArray1.add(jsonArray);
+			 jsonArray1.add(new OpportunityDropdownOptions().getOptions());
+	
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("Exception------->>>>>--------" + e);
+		}
+		return jsonArray1;
 	}
 }

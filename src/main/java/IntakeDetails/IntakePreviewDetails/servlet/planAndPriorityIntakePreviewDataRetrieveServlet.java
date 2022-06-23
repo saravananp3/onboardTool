@@ -1,5 +1,4 @@
 package IntakeDetails.IntakePreviewDetails.servlet;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -16,11 +15,13 @@ import com.google.gson.JsonArray;
 import IntakeDetails.IntakePreviewDetails.service.IntakePreviewDetailsService;
 import IntakeDetails.IntakeTriageSummary.service.IntakeTriageSummaryService;
 
-@WebServlet("/IntakePreviewDataRetrieveServlet")
-public class IntakePreviewDataRetrieveServlet extends HttpServlet {
+@WebServlet("/planAndPriorityIntakePreviewDataRetrieveServlet")
+public class planAndPriorityIntakePreviewDataRetrieveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession details = request.getSession();
-       	String Id=(String)details.getAttribute("ID");
+       // String Id=(String)details.getAttribute("ID");
+        String Id=request.getParameter("demo");
+        System.out.println("Demo Id"+Id);
         String user = (String)details.getAttribute("username");
        System.out.println("Opportunity Id "+Id);
 		JsonArray jsonArray = new JsonArray();
