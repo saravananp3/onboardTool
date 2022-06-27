@@ -4,6 +4,10 @@ $('#AssessAddSubmit').click(function() {
 	       // var columnname = $('#idname').val();
 	        var type = $('#AssessTypes').val();
 	        var mandatory = $('#AssessMandatory').val();
+	        if(mandatory=="No")
+			var umandatory="No";
+			if(mandatory=="Yes")
+			var umandatory="Yes";
 	        var num = 1;
 	        var options = "";
 	        if (type == "Check box") {
@@ -37,7 +41,7 @@ $('#AssessAddSubmit').click(function() {
 	            url: "IntakeAssessmentAddFeatureServlet",
 	            type: 'POST',
 	            async:false,
-	            data: {LabelName:labelname,Type:type,Mandatory:mandatory,Number:num,Options:options,Section:AssessmentSection},
+	            data: {LabelName:labelname,Type:type,Mandatory:mandatory,Number:num,Options:options,Section:AssessmentSection,umandatory:umandatory},
 	            dataType: "json",
 	            success: function (data) {
 	                var required = "";
@@ -54,9 +58,9 @@ $('#AssessAddSubmit').click(function() {
 	               // console.log("lentgth")
 	                var required_field = "";
 	                var delete_icon = "<span class='glyphicon glyphicon-trash deletepopupAssessment hidedeleteAssessment "+Section+"_Delete' style='float:right;display:none;' ></span>";
-	                if (data.Mandatory == "Yes"){
+	                if (data.Mandatory == "Yes" && data.umandatory=="Yes"){
 	                    required_field = "class = 'required_fie'";
-	                    delete_icon="<div class='deletepopupAssessment "+Section+"_Delete' style='display:none;'></div>";
+	                    //delete_icon="<div class='deletepopupAssessment "+Section+"_Delete' style='display:none;'></div>";
 	                }
 	                if (data.LabelDuplicateCheck == true)
 	                {

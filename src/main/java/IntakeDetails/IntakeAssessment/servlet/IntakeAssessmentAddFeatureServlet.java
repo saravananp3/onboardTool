@@ -48,12 +48,14 @@ public class IntakeAssessmentAddFeatureServlet extends HttpServlet {
             String label_name = request.getParameter("LabelName");
             //String column_name = request.getParameter("ColumnName");
             String mandatory = request.getParameter("Mandatory");
+            String umandatory = request.getParameter("umandatory");
+            System.out.println("U MANDATORY : "+umandatory);
             String type = request.getParameter("Type");
             String option=request.getParameter("Options");
             String Section = request.getParameter("Section");
             /*String Field_Name=request.getParameter("FieldName");*/
             int NumberofInputfields=Integer.parseInt(request.getParameter("Number"));
-         jsonObject = new IntakeAssessmentService().AddFeature(ID, label_name, mandatory, type, NumberofInputfields, option, Section);            
+         jsonObject = new IntakeAssessmentService().AddFeature(ID, label_name, mandatory,umandatory, type, NumberofInputfields, option, Section);            
         }
         catch(Exception e)
         {

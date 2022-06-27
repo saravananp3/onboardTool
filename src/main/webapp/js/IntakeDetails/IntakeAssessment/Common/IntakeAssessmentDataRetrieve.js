@@ -128,7 +128,11 @@ function AssessmentDataRetrieveAjaxCall()
                 	}
                 }
                 
-               
+               if(value.Mandatory=="Yes" && value.UMandatory=="Yes")
+                {		
+                      delete_icon = "<span class='glyphicon glyphicon-trash deletepopupAssessment hidedeleteAssessment "+Section+"_Delete' style='float:right;display:none;' ></span>";
+                    //delete_edit_icon = "<span class='glyphicon glyphicon-trash deletepopupAssessment hidedeleteAssessment' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment' style='float:right;display:none;'></span>";
+                }
                 //var options=data[i].options.split(',');
                 if(value.Mandatory=="No")
                 {

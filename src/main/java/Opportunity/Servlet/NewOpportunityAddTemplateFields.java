@@ -41,13 +41,15 @@ public class NewOpportunityAddTemplateFields extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String selected_index[] = request.getParameter("Selected_Index").split(",");
+		String tempmandatory=request.getParameter("templateMandatory");
+		String umandatory=request.getParameter("umandatory");
 		int[] Sel_seq = new int[selected_index.length];
 		
 		for(int i = 0; i< selected_index.length; i++)
 		{
 			Sel_seq[i] = Integer.parseInt(selected_index[i]);
 		}
-		JsonArray jsonArray = NewOpportunityService.AddTemplateFields1(Sel_seq);
+		JsonArray jsonArray = NewOpportunityService.AddTemplateFields1(Sel_seq,tempmandatory,umandatory);
 		
 		 String json = new Gson().toJson(jsonArray);
 	        response.setContentType("application/json");

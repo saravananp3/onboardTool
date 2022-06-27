@@ -123,6 +123,10 @@ padding-right: 0px;
   position: relative;
   margin: 25px 0;
 }
+.form-wizard .form-group-popup {
+  position: relative;
+  margin: 10px 0;
+}
 .form-wizard .wizard-form-text-label {
   position: absolute;
   left: 10px;

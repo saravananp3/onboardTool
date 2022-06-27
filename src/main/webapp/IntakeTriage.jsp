@@ -1706,8 +1706,8 @@ e.printStackTrace();
 														<form name="PopUpform">
 															<div id="scrollbar">
 																<div class="row">
-																	<div class="form-group">
-																		<div class="col-lg-8">
+																	<div class="form-group-popup">
+																		<div class="col-lg-12">
 																			<label class="control-label" for="formInput526">Label:</label>
 																			<input type="text" class="form-control"
 																				id="Triagelabel" name="label" required>
@@ -1730,8 +1730,8 @@ e.printStackTrace();
                     </div>
                 </div> -->
 																<div class="row">
-																	<div class="form-group">
-																		<div class="col-lg-8">
+																	<div class="form-group-popup">
+																		<div class="col-lg-12">
 																			<label class="control-label" for="formInput526">Type:</label>
 																			<select id="Triagetypes" class="form-select"
 																				name="types" required>
@@ -1746,8 +1746,8 @@ e.printStackTrace();
 																</div>
 																<div class="row TriageHideField" id="TriageCheck"
 																	style="display: none;">
-																	<div class="form-group">
-																		<div class="col-sm-4">
+																	<div class="form-group-popup">
+																		<div class="col-lg-12">
 																			<label class="control-label" for="formInput526">Number
 																				of check boxes:</label> <input type="text"
 																				class="form-control" id="TriageNumber"
@@ -1758,8 +1758,8 @@ e.printStackTrace();
 																</div>
 																<div class="row TriageHideField" id="TriageRadio"
 																	style="display: none;">
-																	<div class="form-group">
-																		<div class="col-sm-4">
+																	<div class="form-group-popup">
+																		<div class="col-lg-12">
 																			<label class="control-label" for="formInput526">Number
 																				of Radio boxes:</label> <input type="text"
 																				class="form-control" id="TriageRadioNumber"
@@ -1770,8 +1770,8 @@ e.printStackTrace();
 																</div>
 																<div class="row TriageHideField" id="TriageDrop"
 																	style="display: none;">
-																	<div class="form-group">
-																		<div class="col-sm-4">
+																	<div class="form-group-popup">
+																		<div class="col-lg-12">
 																			<label class="control-label" for="formInput526">Number
 																				of Options:</label> <input type="text" class="form-control"
 																				id="TriageDropNumber" name="TriageDropNumber">
@@ -1779,31 +1779,12 @@ e.printStackTrace();
 																	</div>
 																
 																</div>
+															
+																<div class="col-lg-12" id="TriageOptions"></div>
+																
 																<div class="row">
-																	<div class="form-group">
-																		<div class="col-sm-4">
-																			<div id="demo"></div>
-																		</div>
-																	</div>
-																</div>
-																<div id="TriageOptions"></div>
-																<div class="row">
-																	<div class="form-group">
-																		<div class="col-sm-4">
-																			<div id="demo1"></div>
-																		</div>
-																	</div>
-																</div>
-																<div class="row">
-																	<div class="form-group">
-																		<div class="col-sm-4">
-																			<div id="demo2"></div>
-																		</div>
-																	</div>
-																</div>
-																<div class="row">
-																	<div class="form-group">
-																		<div class="col-lg-8">
+																	<div class="form-group-popup">
+																		<div class="col-lg-12">
 																			<label class="control-label" for="formInput526">Mandatory:</label>
 																			<select id="Triagemandatory" class="form-select"
 																				name="mandatory" required>

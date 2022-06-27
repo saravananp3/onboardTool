@@ -747,130 +747,110 @@ body {
 										</div>
 
 										<!-------Oppurtunity Add popup---------->
-										<div class="modal" id="AddPopUp" tabindex="-1" role="dialog"
-											aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="exampleModalLabel">Add
-															Input Fields</h5>
-														<button type="button" class="btn-close"
-															data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-														<form name="PopUpform">
-															<div class="row">
-																<div class="form-group">
-																	<div class="col-lg-12">
-																		<label class="control-label" for="formInput526">Label:</label>
-																		<input type="text" class="form-control" id="label"
-																			name="label" required>
-																	</div>
-																</div>
-															</div>
-															<input type="hidden" id="project_name"
-																name="project_name" value=""> <input type="text"
-																id="appln_name" name="appln_name" value=""
-																style="display: none;"> <input type="text"
-																id="servlet_name" name="servlet_name" value=""
-																style="display: none;">
-															<div class="row">
-																<div class="form-group">
-																	<div class="col-lg-12">
-																		<label class="control-label" for="formInput526">Type:</label>
-																		<select id="types" class="form-select" name="types"
-																			required>
-																			<option value="Text box">Text box</option>
-																			<option value="Check box">Check box</option>
-																			<option value="Radio box">Radio box</option>
-																			<option value="Dropdown">Dropdown</option>
-																			<option value="Datepicker">Datepicker</option>
-																		</select>
-																	</div>
-																</div>
-															</div>
-
-															<div class="row hidefield" id="check"
-																style="display: none;">
-																<div class="form-group">
-																	<div class="col-sm-4">
-																		<label class="control-label" for="formInput526">Number
-																			of check boxes:</label> <input type="text"
-																			class="form-control" id="number" name="number1">
-																	</div>
-																</div>
-
-															</div>
-															<div class="row hidefield" id="rdo"
-																style="display: none;">
-																<div class="form-group">
-																	<div class="col-sm-4">
-																		<label class="control-label" for="formInput526">Number
-																			of Radio boxes:</label> <input type="text"
-																			class="form-control" id="radio_number"
-																			name="radio_number">
-																	</div>
-																</div>
-
-															</div>
-															<div class="row hidefield" id="drop"
-																style="display: none;">
-																<div class="form-group">
-																	<div class="col-sm-4">
-																		<label class="control-label" for="formInput526">Number
-																			of Options:</label> <input type="text" class="form-control"
-																			id="drop_number" name="drop_number">
-																	</div>
-																</div>
-
-															</div>
-
-															<div class="row">
-																<div class="form-group">
-																	<div class="col-sm-4">
-																		<div id="demo"></div>
-																	</div>
-																</div>
-															</div>
-															<div id="options"></div>
-															<div class="row">
-																<div class="form-group">
-																	<div class="col-sm-4">
-																		<div id="demo1"></div>
-																	</div>
-																</div>
-															</div>
-															<div class="row">
-																<div class="form-group">
-																	<div class="col-sm-4">
-																		<div id="demo2"></div>
-																	</div>
-																</div>
-															</div>
-
-															<div class="row">
-																<div class="form-group">
-																	<div class="col-lg-12">
-																		<label class="control-label" for="formInput526">Mandatory:</label>
-																		<select id="mandatory" class="form-select"
-																			name="mandatory" required>
-																			<option>Yes</option>
-																			<option>No</option>
-																		</select>
-																	</div>
-																</div>
-															</div>
-														</form>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary"
-															data-bs-dismiss="modal">Close</button>
-														<button type="button" class="btn btn-primary" id="submit"
-															data-bs-dismiss="modal">Add Fields</button>
-													</div>
-												</div>
+										<div class="modal" id="AddPopUp" tabindex="-1"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Add Input Fields</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<form name="PopUpform">
+									<div class="row">
+										<div class="form-group-popup">
+											<div class="col-lg-12">
+												<label class="control-label" for="formInput526">Label:</label>
+												<input type="text" class="form-control" id="label"
+													name="label" required>
 											</div>
 										</div>
+									</div>
+									<input type="hidden" id="project_name" name="project_name"
+										value=""> <input type="text" id="appln_name"
+										name="appln_name" value="" style="display: none;"> <input
+										type="text" id="servlet_name" name="servlet_name" value=""
+										style="display: none;">
+									<div class="row">
+										<div class="form-group-popup">
+											<div class="col-lg-12">
+												<label class="control-label" for="formInput526">Type:</label>
+												<select id="types" class="form-select" name="types"
+													required>
+													<option value="Text box">Text box</option>
+													<option value="Check box">Check box</option>
+													<option value="Radio box">Radio box</option>
+													<option value="Dropdown">Dropdown</option>
+													<option value="Datepicker">Datepicker</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="row hidefield" id="check" style="display: none;">
+										<div class="form-group-popup">
+											<div class="col-lg-12">
+												<label class="control-label" for="formInput526">Number
+													of check boxes:</label> <input type="text" class="form-control"
+													id="number" name="number1">
+											</div>
+										</div>
+									
+									</div>
+									<div class="row hidefield" id="rdo" style="display: none;">
+										<div class="form-group-popup">
+											<div class="col-lg-12">
+												<label class="control-label" for="formInput526">Number
+													of Radio boxes:</label> <input type="text" class="form-control"
+													id="radio_number" name="radio_number">
+											</div>
+										</div>
+									
+									</div>
+									<div class="row hidefield" id="drop" style="display: none;">
+										<div class="form-group-popup">
+											<div class="col-lg-12">
+												<label class="control-label" for="formInput526">Number
+													of Options:</label> <input type="text" class="form-control"
+													id="drop_number" name="drop_number">
+											</div>
+										</div>
+								
+								</div>
+
+								
+									
+										<div class="form-group-popup">
+											<div class="col-lg-12" id="options">
+												
+											</div>
+										</div>
+								
+
+									<div class="row">
+										<div class="form-group-popup">
+											<div class="col-lg-12">
+												<label class="control-label" for="formInput526">Mandatory:</label>
+												<select id="mandatory" class="form-select" name="mandatory"
+													required>
+													<option>Yes</option>
+													<option>No</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary" id="submit" data-bs-dismiss="modal">Add Fields</button>
+							</div>
+						</div>
+					</div>
+				</div>
+										
 										<!-- Edit pop up -->
 										<div class="modal" id="EditPopUp" tabindex="-1"
 											aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -5,6 +5,10 @@ $('#submitTriage').click(function() {
 	        //var columnname = $('#idname').val();
 	        var type = $('#Triagetypes').val();
 	        var mandatory = $('#Triagemandatory').val();
+	        if(mandatory=="No")
+	        var umandatory="No";
+	        if(mandatory=="Yes")
+	        var umandatory="Yes";
 	        var num = 1;
 	        var options = "";
 	        if (type == "Check box") {
@@ -37,7 +41,7 @@ $('#submitTriage').click(function() {
 	        $.ajax({
 	            url: "IntakeTriageAddServlet",
 	            type: 'POST',
-	            data: {ApplicationName:appname,ProjectName: projname,LabelName:labelname,Type:type,Mandatory:mandatory,Number:num,Options:options},
+	            data: {ApplicationName:appname,ProjectName: projname,LabelName:labelname,Type:type,Mandatory:mandatory,Number:num,Options:options,umandatory:umandatory},
 	            dataType: "json",
 	            success: function (data) {
 	                var required = "";
@@ -46,10 +50,11 @@ $('#submitTriage').click(function() {
 	               // console.log("lentgth")
 	                var required_field = "";
 	                var delete_icon = "<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span>";
-	                if (data.Mandatory == "Yes"){
-	                    required_field = "class = 'required_fie'";
-	                    delete_icon="<div class='deletealert' style='display:none;'></div>";
-	                }
+	                if(data.Mandatory=="Yes" && data.umandatory=="Yes")
+	                {	required_field = "class = 'required_fie'";
+						delete_icon = "<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span>";
+					}
+	               
 	                if (data.LabelDuplicateCheck == "true")
 	                {
 	                	checkNotify = false;
@@ -64,7 +69,7 @@ $('#submitTriage').click(function() {
 	                	}
 	                else if(data.Type=="Text box")
 	               {
-	                    var inputtext="<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
+	                    var inputtext="<div class='form-group InputField' id = '"+data.ColumnName+"_Row'>"+
 	                        "<label class='control-label' for='opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
 	                        "<input type='text' class='form-control' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
 	                        "</div>";
@@ -73,7 +78,7 @@ $('#submitTriage').click(function() {
 	                }
 	                else if(data.Type=="Datepicker")
 	                {
-	                    var inputdate="<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
+	                    var inputdate="<div class='form-group InputField' id = '"+data.ColumnName+"_Row'>"+
 	                        "<label class='control-label' for= 'opportuity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
 	                        "<input type='text' class='form-control datepicker1' id='"+data.LabelName+"' placeholder='"+data.LabelName+"' name='"+data.ColumnName+num+"'/>"+
 	                        "</div>";
@@ -87,7 +92,7 @@ $('#submitTriage').click(function() {
 	                else if(data.Type=="Radio box")
 	                {
 	                    var input="";
-	                    input+= "<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
+	                    input+= "<div class='form-group InputField' id = '"+data.ColumnName+"_Row'>"+
 	                       "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
@@ -104,7 +109,7 @@ $('#submitTriage').click(function() {
 	                else if(data.Type=="Check box")
 	                {
 	                    var input="";
-	                    input+= "<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'>"+
+	                    input+= "<div class='form-group InputField' id = '"+data.ColumnName+"_Row'>"+
 	                        "<label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span><br/>";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);
@@ -120,7 +125,7 @@ $('#submitTriage').click(function() {
 	                else if(data.Type=="Dropdown")
 	                {
 	                    var select="";
-	                    select+= "<div class='form-group Inputvalue' id = '"+data.ColumnName+"_Row'><label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
+	                    select+= "<div class='form-group InputField' id = '"+data.ColumnName+"_Row'><label class='control-label' for= 'opportunity'><div "+required_field+">"+data.LabelName+delete_icon+"</div></label><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
 	                        "<select style = 'width:100%;' name = "+data.ColumnName+num+">";
 	                    var Options=data.Options;
 	                    var sub_option = Options.substring(0, Options.length - 1);

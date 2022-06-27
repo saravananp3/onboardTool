@@ -56,14 +56,16 @@ public class IntakeTriageAddServlet extends HttpServlet {
             String label_name = request.getParameter("LabelName");
             //String column_name = request.getParameter("ColumnName");
             String mandatory = request.getParameter("Mandatory");
+            String umandatory = request.getParameter("umandatory");
             String type = request.getParameter("Type");
             String option=request.getParameter("Options");
-
+            System.out.println("U Mandatory : "+umandatory);
             /*String Field_Name=request.getParameter("FieldName");*/
             int NumberofInputfields=Integer.parseInt(request.getParameter("Number"));
             jsonobject.addProperty("LabelName", label_name);
             jsonobject.addProperty("ColumnName","TriageAddInfo");
             jsonobject.addProperty("Mandatory", mandatory);
+            jsonobject.addProperty("umandatory", umandatory);
             jsonobject.addProperty("Type", type);
             jsonobject.addProperty("Options",option);
             if (type.equals("Text box") || type.equals("Datepicker")) {
@@ -114,7 +116,7 @@ public class IntakeTriageAddServlet extends HttpServlet {
 			 */
             if(!labelcheck)
             {
-            int seq_num =new IntakeTriageService().Add(ID,label_name, mandatory, type, NumberofInputfields, option);
+            int seq_num =new IntakeTriageService().Add(ID,label_name, mandatory,umandatory, type, NumberofInputfields, option);
             jsonobject.addProperty("Seq_Num",seq_num);
             }
 

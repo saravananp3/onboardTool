@@ -44,8 +44,9 @@ public class IntakeOpportunityDeleteServlet extends HttpServlet {
 		JsonObject jsonobj = new JsonObject();
 		HttpSession details = request.getSession();
         String Id=(String)details.getAttribute("ID");
-       System.out.println("Opportunity Id "+Id);
+        System.out.println("Opportunity Id "+Id);
 		int seq_num = Integer.parseInt(request.getParameter("seq_num"))+1;
+		System.out.println("SEQ NUM : "+seq_num);
 		jsonobj.addProperty("index",seq_num-1);
 		IntakeOpportunityService.IntakeOpportunityDeleteService(seq_num, Id);
 		String json = new Gson().toJson(jsonobj);

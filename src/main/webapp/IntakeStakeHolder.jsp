@@ -550,7 +550,7 @@ e.printStackTrace();
                                                 <div class="card-body">
                                                     <div>
                                                     <h4>User List</h4>
-                                                <div class="table-responsive">           
+                                                <div class="">           
                                                     <table class="table-bordered" style="width: 100%;">
                                                     <thead>
                                                     <tr>
