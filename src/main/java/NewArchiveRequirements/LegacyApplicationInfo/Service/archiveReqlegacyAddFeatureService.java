@@ -24,7 +24,7 @@ public class archiveReqlegacyAddFeatureService {
 		 con = (Connection) dBconnection.getConnection();
 		 this.Id = Id;
 	}
-	public static int ArchiveReqLegacyAddOperationService(String Id,String label_name, String mandatory, String type, int NumberofInputfields, String options )
+	public static int ArchiveReqLegacyAddOperationService(String Id,String label_name, String mandatory,String umandatory, String type, int NumberofInputfields, String options )
 	{
 		int max_seq_num = 1;
 			try {
@@ -50,7 +50,7 @@ public class archiveReqlegacyAddFeatureService {
 				if (!type.equals("Text box") && !type.equals("Datepicker")) {
 					options = options.substring(0, options.length() - 1);
 				}
-				String insert_query = "insert into archivereq_legacyapp_info (seq_no,Id,prj_name,app_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				String insert_query = "insert into archivereq_legacyapp_info (seq_no,Id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 				PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 				preparedStatement1.setInt(1, max_seq_num);
 				preparedStatement1.setString(2, Id);
@@ -62,6 +62,7 @@ public class archiveReqlegacyAddFeatureService {
 				preparedStatement1.setString(8, type);
 				preparedStatement1.setString(9, mandatory);
 				preparedStatement1.setString(10, "");
+				preparedStatement1.setString(11, umandatory);
 				preparedStatement1.execute();
 			} catch (Exception e) {
 				System.out.println("Exception---[info]------" + e);

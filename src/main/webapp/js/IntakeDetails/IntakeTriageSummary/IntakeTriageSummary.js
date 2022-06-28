@@ -22,6 +22,13 @@ $(document).ready(function(){
                // var delete_edit_icon="<div class='editpopupSummary deletepopupSummary' style='display:none;'></div>";
                 var Value=value.Value;
                 //var options=data[i].options.split(',');
+                
+                if(value.Mandatory=="Yes" && value.UMandatory=="Yes" )
+                {
+                      delete_icon = "<span class='glyphicon glyphicon-trash deletepopupSummary hidedeleteSummary' style='float:right;display:none;' ></span>";
+                    //delete_edit_icon = "<span class='glyphicon glyphicon-trash deletepopupSummary hidedeleteSummary' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopupSummary hidepencilSummary' style='float:right;display:none;'></span>";
+                }
+                
                 if(value.Mandatory=="No")
                 {
                     manadatory="";

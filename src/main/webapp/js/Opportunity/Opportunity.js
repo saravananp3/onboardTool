@@ -31,6 +31,7 @@ $(document).ready(function(){
                 	$("#Record_No").val(Value);
             	}*/
                 //var options=data[i].options.split(',');
+                
                 if(value.Mandatory=="No")
                 {
                     manadatory="";
@@ -228,6 +229,13 @@ $(document).on('click', '.deletepopup', function () {
 function validateForm(e){
 	/*try
 	{*/
+	var umandatory="";
+	var templateMandatory = $('#templmandatory').val();
+	if(templateMandatory=="Yes")
+	umandatory="Yes";
+	if(templateMandatory=="No")
+	umandatory="No";
+	
 	$(".submitDisable").attr("disabled", true);
 	 $(this).prop('disabled', true);
 	$(".hidepencil").hide();
@@ -246,7 +254,7 @@ function validateForm(e){
 	$.ajax({
         url: "NewOpportunityAddTemplateFields",
         type: 'POST',
-        data : {Selected_Index:selected_index},
+        data : {Selected_Index:selected_index,templateMandatory:templateMandatory,umandatory:umandatory},
         dataType: "json",
         success: function (data) {
         	console.log("data add template ; ",data);
@@ -268,6 +276,10 @@ function validateForm(e){
                     var Value=value.Value;
                     var delete_edit_icon="<div class='editpopup deletepopup' style='display:none;'></div>";
                     //var options=AddTemplateData[i].options.split(',');
+                      if(value.Mandatory=="Yes" && value.UMandatory=="Yes")
+                    {
+                        delete_edit_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>";
+                    }
                     if(value.Mandatory=="No")
                     {
                         manadatory="";

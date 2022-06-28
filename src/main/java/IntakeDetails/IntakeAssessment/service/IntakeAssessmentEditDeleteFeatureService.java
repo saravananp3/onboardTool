@@ -208,6 +208,8 @@ public void deleteSingleField()
     ArrayList<String> arr_type = new ArrayList<String>();
     ArrayList<String> arr_mandatory = new ArrayList<String>();
     ArrayList<String> arr_value = new ArrayList<String>();
+    ArrayList<String> arr_iscomplete = new ArrayList<String>();
+    ArrayList<String> arr_umandatory = new ArrayList<String>();
     ArrayList<Integer> arr_seqmax_split = new ArrayList<Integer>();
     ArrayList<String> arr_id_split = new ArrayList<String>();
     ArrayList<String> arr_prj_split = new ArrayList<String>();
@@ -219,6 +221,8 @@ public void deleteSingleField()
     ArrayList<String> arr_type_split = new ArrayList<String>();
     ArrayList<String> arr_mandatory_split = new ArrayList<String>();
     ArrayList<String> arr_value_split = new ArrayList<String>();
+    ArrayList<String> arr_iscomplete_split = new ArrayList<String>();
+    ArrayList<String> arr_umandatory_split = new ArrayList<String>();
     String select_query = "select max(seq_no) from "+SectionInfoTable+" where Id = ? and section =? order by seq_no;";
     PreparedStatement st = con.prepareStatement(select_query);
 	st.setString(1, ID);
@@ -244,6 +248,8 @@ public void deleteSingleField()
         arr_type.add(rs1.getString(9));
         arr_mandatory.add(rs1.getString(10));
         arr_value.add(rs1.getString(11));
+        arr_iscomplete.add(rs1.getString(12));
+        arr_umandatory.add(rs1.getString(13));
     }
     for (int i = 0; i < seqmax; i++) {
         if (arr_seqmax.get(i) < Seq_num) {
@@ -258,6 +264,8 @@ public void deleteSingleField()
             arr_type_split.add(arr_type.get(i));
             arr_mandatory_split.add(arr_mandatory.get(i));
             arr_value_split.add(arr_value.get(i));
+            arr_iscomplete_split.add(arr_iscomplete.get(i));
+            arr_umandatory_split.add(arr_umandatory.get(i));
         } else if (arr_seqmax.get(i) > Seq_num) {
             arr_seqmax_split.add((arr_seqmax.get(i) - 1));
             arr_id_split.add(arr_id.get(i));
@@ -270,6 +278,8 @@ public void deleteSingleField()
             arr_type_split.add(arr_type.get(i));
             arr_mandatory_split.add(arr_mandatory.get(i));
             arr_value_split.add(arr_value.get(i));
+            arr_iscomplete_split.add(arr_iscomplete.get(i));
+            arr_umandatory_split.add(arr_umandatory.get(i));
         }
     }
     String delete_query = "delete from "+SectionInfoTable+" where id=? and section =?;";
@@ -278,7 +288,7 @@ public void deleteSingleField()
     st2.setString(2, SectionName);
     st2.executeUpdate();
     for (int j = 0; j < seqmax - 1; j++) {
-        String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,section,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,section,options,label_name,column_name,type,mandatory,value,isCompleted,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
         PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
         preparedStatement1.setInt(1, arr_seqmax_split.get(j));
         preparedStatement1.setString(2, arr_id_split.get(j));
@@ -291,6 +301,8 @@ public void deleteSingleField()
         preparedStatement1.setString(9, arr_type_split.get(j));
         preparedStatement1.setString(10, arr_mandatory_split.get(j));
         preparedStatement1.setString(11, arr_value_split.get(j));
+        preparedStatement1.setString(12, arr_iscomplete_split.get(j));
+        preparedStatement1.setString(13, arr_umandatory_split.get(j));
         preparedStatement1.execute();
     }
     }

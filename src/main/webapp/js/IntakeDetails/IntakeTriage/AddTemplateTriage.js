@@ -3,6 +3,10 @@ function validateTriage(){
 	$(".hidepen").hide();
 	$(".hidedel").hide();
 	var templateMandatory = $('#mandatory2').val();
+	if(templateMandatory=="No")
+	var umandatory="No";
+	if(templateMandatory=="Yes")
+	var umandatory="Yes";
 	var selected_seq = [];
 	var selected_index = "";
 	console.log("class total length"+$(".Template_Values").length);
@@ -17,7 +21,7 @@ function validateTriage(){
 	$.ajax({
         url: "IntakeDetailsTriageAddTemplateFields",
         type: 'POST',
-        data : {Selected_Index:selected_index, Mandatory:templateMandatory},
+        data : {Selected_Index:selected_index, Mandatory:templateMandatory,umandatory:umandatory},
         dataType: "json",
         success: function (data) {
         	 console.log(data);
@@ -72,6 +76,10 @@ console.log("data add template ;",templateMandatory);
                     var Value=value.Value;
                     var delete_edit_icon="<div class='edit deletealert' style='display:none;'></div>";
                     //var options=AddTemplateData[i].options.split(',');
+                     if(value.Mandatory=="Yes" && value.UMandatory=="Yes")
+                    {
+						delete_edit_icon = "<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'></span>";
+					}
                     if(value.Mandatory=="No")
                     {
                         manadatory="";
@@ -80,7 +88,7 @@ console.log("data add template ;",templateMandatory);
                     }
                     if(Type=="Text box")
                     {
-                        var inputtext="<div class='form-group Inputvalue' id ='"+ColumnName+"_Row'>\n" +
+                        var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row'>\n" +
                             "<label class='control-label' for='triage'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"\n" +
                             "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                             "</div>";
@@ -90,7 +98,7 @@ console.log("data add template ;",templateMandatory);
                         }
                     else if(Type=="Datepicker")
                     {
-                        var inputdate="<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>" +
+                        var inputdate="<div class='form-group InputField' id = '"+ColumnName+"_Row'>" +
                             "<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"\n" +
                             "<input type='text' Class='form-control datepicker1' id='"+ColumnName+"' placeholder='mm/dd/yyyy' name='"+ColumnName+"' value='"+Value+"'/>" +
                             "</div>";
@@ -100,7 +108,7 @@ console.log("data add template ;",templateMandatory);
                     }
                     else if(Type=="Dropdown")
                     {
-                        var inputdrop= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>" + 
+                        var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'>" + 
 							"<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_edit_icon+"\n"+
                             "<select style = 'width:100%;' class ='form-select' id = '"+ColumnName+"' name='"+ColumnName+"'>";
                         var Options=value.options;
@@ -120,7 +128,7 @@ console.log("data add template ;",templateMandatory);
                       }
                     else if(Type=="Check box")
                     {
-                        var inputcheck= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>"+
+                        var inputcheck= "<div class='form-group InputField' id = '"+ColumnName+"_Row'>"+
                             "<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label><span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
@@ -141,7 +149,7 @@ console.log("data add template ;",templateMandatory);
                     }
                     else if(Type=="Radio box")
                     {
-                        var inputdrop= "<div class='form-group Inputvalue' id = '"+ColumnName+"_Row'>"+
+                        var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'>"+
                             "<label class='control-label' for= 'triage'>"+LabelName+"<span "+manadatory+"></span></label><span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;'  onclick=''></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;' '></span><br/>";
                         var Options=value.options;
                         var sub_option = Options.substring(0, Options.length - 1);
@@ -160,7 +168,7 @@ console.log("data add template ;",templateMandatory);
                     }
                     else if(Type=="file")
                     {
-                        inputfile="<div class='form-group Inputvalue'>\n" +
+                        inputfile="<div class='form-group InputField'>\n" +
                             "<label class='control-label' for='triage'><div class='required_fie'>"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'' ></span></div></label>\n" +
                             "<input type='file' name='"+ColumnName+"' accept='image/!*' id ='choosen_file_name'>\n" +
                             "</div>";
@@ -169,7 +177,7 @@ console.log("data add template ;",templateMandatory);
                     }
                     else if(Type=="Text area")
                     {
-                        var inputtext="<div class='form-group Inputvalue'>\n" +
+                        var inputtext="<div class='form-group InputField'>\n" +
                             "<label class='control-label' for='triage'><div "+manadatory+">"+LabelName+"<span class='glyphicon glyphicon-trash deletealert hidedel' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil edit hidepencil' style='float:right;display:none;'></span></div></label>\n" +
                             "<input type='text' class='form-control' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                              "<textarea class='form-control' name='"+ColumnName+"' id='"+ColumnName+"'>"+Value+"</textarea>"+
@@ -179,7 +187,7 @@ console.log("data add template ;",templateMandatory);
                     else if(Type=="HiddenText")
             		{
             		var template_check=""; 
-                    var inputtext="<div class='form-group Inputvalue' id ='"+ColumnName+"_Row' style ='display:none';>\n" +
+                    var inputtext="<div class='form-group InputField' id ='"+ColumnName+"_Row' style ='display:none';>\n" +
                         "<label class='control-label' for='triage'><div "+manadatory+">"+LabelName+"</div><div class ='edit deletealert'></div></label>\n" +
                         "<input type='text' class='form-control' size='35' id='"+ColumnName+"' placeholder='' name='"+ColumnName+"' value='"+Value+"'/>\n" +
                         "</div>";

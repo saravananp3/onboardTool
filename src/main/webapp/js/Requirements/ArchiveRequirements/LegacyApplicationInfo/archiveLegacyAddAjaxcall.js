@@ -4,6 +4,10 @@ $('#Legacysubmit').click(function() {
 			var label_name = $('#Legacyaddlabel').val();
 	        var type = $('#Legacytypes').val();
 	        var mandatory = $('#Legacymandatory').val();
+	        if(mandatory=="No")
+			var umandatory="No";
+			if(mandatory=="Yes")
+			var umandatory="Yes";
 	        var num = 1;
 	        var options = "";
 	        if (type == "Check box") {
@@ -33,7 +37,7 @@ $('#Legacysubmit').click(function() {
 	      if(label_name != '' && type !='' && mandatory !='')
 	      {
 	    	 
-	    	 addAjaxCall(app_name,proj_name,label_name,type,mandatory,num,options);
+	    	 addAjaxCall(app_name,proj_name,label_name,type,mandatory,num,options,umandatory);
 	       }
 	      else{
 	    	  notification("warning","Please fill the value in fields.","Warning");
@@ -43,14 +47,14 @@ $('#Legacysubmit').click(function() {
 		        
 });
  
-function addAjaxCall(app_name,proj_name,label_name,type,mandatory,num,options)
+function addAjaxCall(app_name,proj_name,label_name,type,mandatory,num,options,umandatory)
 {
 	var checkNotify = true;
 	$.ajax({
         url: "archiveLegacyAppAddServlet",
         type: 'post',
 		async: false,
-        data: {ApplicationName:app_name,ProjectName: proj_name,LabelName:label_name,Type:type,Mandatory:mandatory,Number:num,Options:options},
+        data: {ApplicationName:app_name,ProjectName: proj_name,LabelName:label_name,Type:type,Mandatory:mandatory,Number:num,Options:options,umandatory:umandatory},
         dataType: "json",
         success: function (data) {
             var required = "";
@@ -60,9 +64,9 @@ function addAjaxCall(app_name,proj_name,label_name,type,mandatory,num,options)
 			var num=data.Seq_Num;
             var required_field = "";
             var delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
-            if (data.Mandatory == "Yes"){
+            if (data.Mandatory == "Yes" && data.UMandatory == "Yes" ){
                 required_field = "class = 'required_fie LabelName'";
-                delete_icon="<div class='deletepopup' style='display:none;'></div>";
+                delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
             }
             if (data.LabelDuplicateCheck == "true")
             {
@@ -156,9 +160,9 @@ function addAjaxCall(app_name,proj_name,label_name,type,mandatory,num,options)
          
           
           if(checkNotify)
-        	  notification("success","Field is added successfully to Triage.","Note");
+        	  notification("success","Field is added successfully to Archive Requirements.","Note");
           else
-        	  notification("error","Field not added to Triage.","Error");
+        	  notification("error","Field not added to Archive Requirements.","Error");
         },
     
    

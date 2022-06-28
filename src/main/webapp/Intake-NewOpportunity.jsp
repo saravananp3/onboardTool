@@ -75,11 +75,11 @@
 <link rel="stylesheet" href="css/Responsive/responsive.css"
 	media="screen">
 <style id="alignEnd"></style>
-	
+
 </head>
 <body>
 
-<%@include file="Nav-Bar.jspf"%>
+	<%@include file="Nav-Bar.jspf"%>
 	<nav class="nav nav-height-50" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">
@@ -119,15 +119,16 @@
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 									<li><a class="dropdown-item dropDown-font" id="add"
 										href="#" data-bs-toggle="modal" data-bs-target="#addModal">
-										<i class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-												</i>Add</a></li>
+											<i class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+										</i>Add
+									</a></li>
 									<li><a class="dropdown-item dropDown-font" id="Edit"
 										href="#"><i class="fas fa-edit" aria-hidden="true">&nbsp;&nbsp;
-												</i>Edit</a></li>
+										</i>Edit</a></li>
 									<li><a class="dropdown-item dropDown-font" id="Delete"
 										href="#"><i class="fas fa-trash" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-												</i>Delete</a></li>
-												
+										</i>Delete</a></li>
+
 								</ul>
 							</div>
 							<button type="button" class="btn btn-primary" id="create">Create</button>
@@ -146,13 +147,14 @@
 					</div>
 				</form>
 				<!-------addModal---------->
-				
+
 				<div class="modal" id="addModal" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Add Input Fields</h5>
+								<h5 class="modal-title" id="exampleModalLabel">Add Input
+									Fields</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
 									aria-label="Close"></button>
 							</div>
@@ -176,8 +178,7 @@
 										<div class="form-group">
 											<div class="col-lg-12">
 												<label class="control-label" for="formInput526">Type:</label>
-												<select id="types" class="form-select" name="types"
-													required>
+												<select id="types" class="form-select" name="types" required>
 													<option value="Text box">Text box</option>
 													<option value="Check box">Check box</option>
 													<option value="Radio box">Radio box</option>
@@ -190,57 +191,45 @@
 
 									<div class="row hidefield" id="check" style="display: none;">
 										<div class="form-group">
-											<div class="col-sm-4">
+											<div class="col-lg-12">
 												<label class="control-label" for="formInput526">Number
 													of check boxes:</label> <input type="text" class="form-control"
 													id="number" name="number1">
 											</div>
 										</div>
-									
+
 									</div>
 									<div class="row hidefield" id="rdo" style="display: none;">
 										<div class="form-group">
-											<div class="col-sm-4">
+											<div class="col-lg-12">
 												<label class="control-label" for="formInput526">Number
 													of Radio boxes:</label> <input type="text" class="form-control"
 													id="radio_number" name="radio_number">
 											</div>
 										</div>
-									
+
 									</div>
 									<div class="row hidefield" id="drop" style="display: none;">
 										<div class="form-group">
-											<div class="col-sm-4">
+											<div class="col-lg-12">
 												<label class="control-label" for="formInput526">Number
 													of Options:</label> <input type="text" class="form-control"
 													id="drop_number" name="drop_number">
 											</div>
 										</div>
-								
+
 									</div>
 
-									<div class="row">
-										<div class="form-group">
-											<div class="col-sm-4">
-												<div id="demo"></div>
-											</div>
-										</div>
+
+
+									<div class="form-group">
+										<div class="col-lg-12" id="options"></div>
 									</div>
-									<div id="options"></div>
-									<div class="row">
-										<div class="form-group">
-											<div class="col-sm-4">
-												<div id="demo1"></div>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="form-group">
-											<div class="col-sm-4">
-												<div id="demo2"></div>
-											</div>
-										</div>
-									</div>
+
+
+
+
+
 
 									<div class="row">
 										<div class="form-group">
@@ -259,20 +248,22 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary" id="submit" data-bs-dismiss="modal">Add Fields</button>
+								<button type="button" class="btn btn-primary" id="submit"
+									data-bs-dismiss="modal">Add Fields</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<!-------editModal---------->
-				
+
 				<div class="modal" id="EditPopUp" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Edit Input Field</h5>
+								<h5 class="modal-title" id="exampleModalLabel">Edit Input
+									Field</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
 									aria-label="Close"></button>
 							</div>
@@ -294,12 +285,13 @@
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Cancel</button>
-								<button type="button" class="btn btn-primary" id="submit1" data-bs-dismiss="modal">Submit</button>
+								<button type="button" class="btn btn-primary" id="submit1"
+									data-bs-dismiss="modal">Submit</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<!-------DeleteModal---------->
 				<div class="modal" id="DeletePopUp" tabindex="-1"
 					aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -320,7 +312,7 @@
 								</form>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-primary" 
+								<button type="button" class="btn btn-primary"
 									data-bs-dismiss="modal" id="submit2">Yes</button>
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">No</button>
@@ -343,13 +335,22 @@
 							<div class="modal-body">
 								<form name="myForm">
 									<div class="form-group" id="TemplateFields"></div>
+									<div class="col-md-6">
+										<label class="control-label" for="opportunity">Mandatory:</label>
+										<select id="templmandatory" class="form-select"
+											name="mandatory" required>
+											<option value="Yes">Yes</option>
+											<option value="No">No</option>
+										</select>
+									</div>
 								</form>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Close</button>
 								<button type="button" class="btn btn-primary"
-									onclick="validateForm()" data-bs-dismiss="modal">Add Template</button>
+									onclick="validateForm()" data-bs-dismiss="modal">Add
+									Template</button>
 							</div>
 						</div>
 					</div>
@@ -357,33 +358,36 @@
 			</div>
 		</div>
 	</div>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="js/toastr/toastr.min.js"></script>
-<script src="js/Opportunity/AddFeatureFunctionality.js"></script>
-<script src="js/Opportunity/AddFeatureAjaxCall.js"></script>
-<script src="js/Opportunity/Opportunity.js"></script>
-<script src="js/Opportunity/EditDeleteToggle.js"></script>
-<script src="js/Opportunity/EditFunctionality.js"></script>
-<script src="js/notification/notification.js"></script>
-<script src="js/Opportunity/NewOpportunityCreate.js"></script>
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
-<!-- ========== Toastr ========== -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-
-
-<!-- Date Picker -->
-<link
-	href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="js/toastr/toastr.min.js"></script>
+	<script src="js/Opportunity/AddFeatureFunctionality.js"></script>
+	<script src="js/Opportunity/AddFeatureAjaxCall.js"></script>
+	<script src="js/Opportunity/Opportunity.js"></script>
+	<script src="js/Opportunity/EditDeleteToggle.js"></script>
+	<script src="js/Opportunity/EditFunctionality.js"></script>
+	<script src="js/notification/notification.js"></script>
+	<script src="js/Opportunity/NewOpportunityCreate.js"></script>
+	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- ========== Toastr ========== -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link
+		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
 		rel="stylesheet">
 
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="js/toastr/toastr.min.js"></script>
 
-<script id="scripttag"></script>
-<script id="scripttag1"></script>
-<script src="js/navigation/navigation.js"></script>
+	<!-- Date Picker -->
+	<link
+		href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+		rel="stylesheet">
+
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="js/toastr/toastr.min.js"></script>
+
+	<script id="scripttag"></script>
+	<script id="scripttag1"></script>
+	<script src="js/navigation/navigation.js"></script>
 </body>
 </html>
