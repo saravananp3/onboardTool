@@ -92,7 +92,7 @@ public class archiveReqLegacyDataRetrieveService {
 				jsonObject.addProperty("Type", rs.getString("type"));
 				jsonObject.addProperty("mandatory", rs.getString("mandatory"));
 				jsonObject.addProperty("Value", columnDetails.containsKey(column)&&rs.getString("value").equals("")?getAutoPopulateValue(columnDetails.get(column),column):rs.getString("value"));
-				jsonObject.addProperty("umandatory", rs.getString("umandatory"));
+				jsonObject.addProperty("umandatory", rs.getString("usermandatoryflag"));
 				jsonArray.add(jsonObject);
 				
 			}

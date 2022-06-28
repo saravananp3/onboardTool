@@ -288,7 +288,7 @@ public void deleteSingleField()
     st2.setString(2, SectionName);
     st2.executeUpdate();
     for (int j = 0; j < seqmax - 1; j++) {
-        String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,section,options,label_name,column_name,type,mandatory,value,isCompleted,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
+        String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,section,options,label_name,column_name,type,mandatory,value,isCompleted,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
         PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
         preparedStatement1.setInt(1, arr_seqmax_split.get(j));
         preparedStatement1.setString(2, arr_id_split.get(j));

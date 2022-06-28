@@ -121,7 +121,7 @@ public class IntakeAssessSectionDataRetrieveService {
 					jsonObject.addProperty("Type", rs1.getString("type"));
 					jsonObject.addProperty("Mandatory", rs1.getString("mandatory"));
 					jsonObject.addProperty("Value", rs1.getString("value"));
-					jsonObject.addProperty("UMandatory", rs1.getString("umandatory"));
+					jsonObject.addProperty("UMandatory", rs1.getString("usermandatoryflag"));
 					jsonArray.add(jsonObject);
 				 while(rs1.next())
 				 {
@@ -137,7 +137,7 @@ public class IntakeAssessSectionDataRetrieveService {
 						jsonObject1.addProperty("Type", rs1.getString("type"));
 						jsonObject1.addProperty("Mandatory", rs1.getString("mandatory"));
 						jsonObject1.addProperty("Value", rs1.getString("value"));
-						jsonObject1.addProperty("UMandatory", rs1.getString("umandatory"));
+						jsonObject1.addProperty("UMandatory", rs1.getString("usermandatoryflag"));
 						jsonArray.add(jsonObject1);  
 				 }
 				 st1.close();

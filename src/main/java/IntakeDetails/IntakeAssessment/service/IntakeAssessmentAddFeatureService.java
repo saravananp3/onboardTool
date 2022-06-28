@@ -108,7 +108,7 @@ private void SetTableName(String section) {
 			if (!type.equals("Text box") && !type.equals("Datepicker")) {
 				options = options.substring(0, options.length() - 1);
 			}
-			String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,Section,options,label_name,column_name,type,mandatory,value,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+			String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,Section,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 			PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 			preparedStatement1.setInt(1, max_seq_num);
 			preparedStatement1.setString(2, id);

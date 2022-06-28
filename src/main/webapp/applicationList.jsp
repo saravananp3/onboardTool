@@ -144,7 +144,7 @@
 																				</i>Create Wave
 																			</a></li>
 																				<li><a class="dropdown-item dropDown-font"
-																				id="viewwave" onclick="location.href='waveList.jsp';" data-bs-toggle="modal"
+																				id="viewwave" onclick="location.href='waveList.jsp?waves=all';" data-bs-toggle="modal"
 																				data-bs-target=""> <i
 																					class="fa fa-eye" aria-hidden="true">&nbsp;&nbsp;
 																				</i>View Waves

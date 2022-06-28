@@ -79,7 +79,7 @@ public class IntakeTriageService extends DynamicFields {
 						jsonObject.addProperty("Type", rs1.getString("type"));
 						jsonObject.addProperty("Mandatory", rs1.getString("mandatory"));
 						jsonObject.addProperty("Value", rs1.getString("value"));
-						jsonObject.addProperty("UMandatory", rs1.getString("umandatory"));
+						jsonObject.addProperty("UMandatory", rs1.getString("usermandatoryflag"));
 						jsonArray.add(jsonObject);
 						
 					}
@@ -155,7 +155,7 @@ public class IntakeTriageService extends DynamicFields {
 					if (!type.equals("Text box") && !type.equals("Datepicker")) {
 						options = options.substring(0, options.length() - 1);
 					}
-					String insert_query = "insert into triage_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+					String insert_query = "insert into triage_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 					PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 					preparedStatement1.setInt(1, max_seq_num);
 					preparedStatement1.setString(2, id);
@@ -309,7 +309,7 @@ public class IntakeTriageService extends DynamicFields {
 				st2.close();
 		
 				for (int j = 0; j < seqmax - 1; j++) {
-					String insert_query = "insert into triage_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+					String insert_query = "insert into triage_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 					PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 					preparedStatement1.setInt(1, arr_seqmax_split.get(j));
 					preparedStatement1.setString(2, arr_id_split.get(j));
@@ -560,7 +560,7 @@ public class IntakeTriageService extends DynamicFields {
 		        			  String usermandatory = umandatory;
 		        			  if(isOpportunityField(column_name))
 		        				value =getValue(column_name,id);  
-		        			  String Triage_InsertQuery ="insert into triage_info (seq_no, id,  prj_name, app_name, options, label_name, column_name, type, mandatory, value,umandatory) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+		        			  String Triage_InsertQuery ="insert into triage_info (seq_no, id,  prj_name, app_name, options, label_name, column_name, type, mandatory, value,usermandatoryflag) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 		        		  
 		        		  PreparedStatement prestmt = connection.prepareStatement(Triage_InsertQuery); 
 		        		  prestmt.setInt(1,max_seq+1); 

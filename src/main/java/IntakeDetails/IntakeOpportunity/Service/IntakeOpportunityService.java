@@ -43,7 +43,7 @@ public class IntakeOpportunityService {
 				jsonObject.addProperty("Type", rs.getString("type"));
 				jsonObject.addProperty("Mandatory", rs.getString("mandatory"));
 				jsonObject.addProperty("Value", rs.getString("value"));
-				jsonObject.addProperty("UMandatory", rs.getString("umandatory"));
+				jsonObject.addProperty("UMandatory", rs.getString("usermandatoryflag"));
 				jsonArray.add(jsonObject);
 
 			}
@@ -80,7 +80,7 @@ public class IntakeOpportunityService {
 			if (!type.equals("Text box") && !type.equals("Datepicker")) {
 				options = options.substring(0, options.length() - 1);
 			}
-			String insert_query = "insert into Opportunity_Info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+			String insert_query = "insert into Opportunity_Info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 			PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 			preparedStatement1.setInt(1, max_seq_num);
 			preparedStatement1.setString(2, id);
@@ -228,7 +228,7 @@ public class IntakeOpportunityService {
 			st2.executeUpdate();
 
 			for (int j = 0; j < seqmax - 1; j++) {
-				String insert_query = "insert into opportunity_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+				String insert_query = "insert into opportunity_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 				PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 				preparedStatement1.setInt(1, arr_seqmax_split.get(j));
 				preparedStatement1.setString(2, arr_id_split.get(j));
@@ -426,7 +426,7 @@ public class IntakeOpportunityService {
 						String mandatory = templateMandatory;
 						String value = rs4.getString(9);
 						String usermandatory = umandatory;
-						String Opportunity_InsertQuery ="insert into Opportunity_Info (seq_no, id,  prj_name, app_name, options, label_name, column_name, type, mandatory, value,umandatory) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+						String Opportunity_InsertQuery ="insert into Opportunity_Info (seq_no, id,  prj_name, app_name, options, label_name, column_name, type, mandatory, value,usermandatoryflag) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
 						PreparedStatement prestmt = connection.prepareStatement(Opportunity_InsertQuery); 
 						prestmt.setInt(1,max_seq+1); 

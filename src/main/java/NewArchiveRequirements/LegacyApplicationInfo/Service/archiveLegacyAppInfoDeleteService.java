@@ -122,7 +122,7 @@ public class archiveLegacyAppInfoDeleteService {
 			st2.close();
 	
 			for (int j = 0; j < seqmax - 1; j++) {
-				String insert_query = "insert into archivereq_legacyapp_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,umandatory) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+				String insert_query = "insert into archivereq_legacyapp_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 				PreparedStatement preparedStatement1 = con.prepareStatement(insert_query);
 				preparedStatement1.setInt(1, arr_seqmax_split.get(j));
 				preparedStatement1.setString(2, arr_id_split.get(j));
