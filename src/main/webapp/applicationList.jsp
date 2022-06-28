@@ -107,7 +107,53 @@
 			</div>
 		</div>
 	</nav>
+<div class="col-lg-6 right-side phase-btn" align="end"> 
+					<div class="dropdown">
+																		<button type="button"
+																			class="btn btn-primary dropdown-toggle"
+																			id="dropdownMenuButton1" data-bs-toggle="dropdown"
+																			aria-expanded="false">Phase</button>
+																		<ul class="dropdown-menu"
+																			aria-labelledby="dropdownMenuButton1">
+																			<li><a class="dropdown-item dropDown-font"
+																				id="phaseadd" onclick="location.href='NewPhase.jsp';" data-bs-toggle="modal"
+																				data-bs-target=""> <i
+																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+																				</i>Create Phase
+																			</a></li>
+																				<li><a class="dropdown-item dropDown-font"
+																				id="viewphase" onclick="location.href='PhaseList.jsp';" data-bs-toggle="modal"
+																				data-bs-target=""> <i
+																					class="fa fa-eye" aria-hidden="true">&nbsp;&nbsp;
+																				</i>View Phases
+																			</a></li>
 
+																		</ul>
+																	</div>
+																	<div class="dropdown">
+																		<button type="button"
+																			class="btn btn-primary dropdown-toggle"
+																			id="dropdownMenuButton1" data-bs-toggle="dropdown"
+																			aria-expanded="false">Wave</button>
+																		<ul class="dropdown-menu"
+																			aria-labelledby="dropdownMenuButton1">
+																			<li><a class="dropdown-item dropDown-font"
+																				id="waveadd" onclick="location.href='NewGovernance.jsp';" data-bs-toggle="modal"
+																				data-bs-target=""> <i
+																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+																				</i>Create Wave
+																			</a></li>
+																				<li><a class="dropdown-item dropDown-font"
+																				id="viewwave" onclick="location.href='waveList.jsp';" data-bs-toggle="modal"
+																				data-bs-target=""> <i
+																					class="fa fa-eye" aria-hidden="true">&nbsp;&nbsp;
+																				</i>View Waves
+																			</a></li>
+
+																		</ul>
+																	</div>
+	
+			</div><br/>
 	<div class="card-container-5 card d3s-mt-50">
 		<div class="card-header d3s-pl-15" id="cd-header">
 			Applications List

@@ -724,7 +724,7 @@ e.printStackTrace();
                                 <option value="Datepicker">Datepicker</option>
                             </select>
                         </div>
-                    </div><br/>
+                    </div>
                 </div>
                 <div class="row Legacyhidefield" id="Legacycheck" style="display:none;">
                     <div class="form-group-popup">
@@ -733,7 +733,7 @@ e.printStackTrace();
                             <input type="text" class="form-control" id="Legacycheck_number"  name="Legacycheck_number">
                         </div>
                     </div>
-                    <br/>
+                   
                 </div>
                 <div class="row Legacyhidefield" id="Legacyradio" style="display:none;">
                     <div class="form-group-popup">
@@ -742,7 +742,7 @@ e.printStackTrace();
                             <input type="text" class="form-control" id="Legacyradio_number"  name="Legacyradio_number">
                         </div>
                     </div>
-                    <br/>
+                   
                 </div>
                 <div class="row Legacyhidefield" id="Legacydrop" style="display:none;">
                     <div class="form-group-popup">
@@ -754,7 +754,7 @@ e.printStackTrace();
                     <br/>
                 </div>
                
-                <div class="col-lg-12" id="Legacyoptions">
+                <div class="col-lg-12"id="Legacyoptions">
                 </div>
                
                 <div class="row">
@@ -765,13 +765,13 @@ e.printStackTrace();
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
-                       
+                        </div>
                     </div>
                 </div>
                 <br/><br/>
             </div>
         </form>
-      </div><br/>
+      </div>
       <div class="modal-footer">
         <button type="button" id ="Legacysubmit" class="btn btn-primary">Add Fields</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="Legacyclose">Close</button>

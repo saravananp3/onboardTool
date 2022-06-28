@@ -267,7 +267,7 @@ li a.alignCenter {
 																PopUp</button>
 															<button type="button" class="btn btn-primary pull-right"
 																id="ListId"
-																onclick="window.location.href='PhaseList.jsp';"
+																onclick="window.location.href='applicationList.jsp';"
 																style="display: none;"></button>
 														</div>
 													</div>
