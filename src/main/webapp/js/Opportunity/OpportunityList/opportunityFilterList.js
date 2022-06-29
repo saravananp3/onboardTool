@@ -1,3 +1,16 @@
+$(document).ready(function()
+{	var url_string=window.location.href;
+	var modulecategory=url_string.substr(url_string.indexOf("=") + 1)
+	if(modulecategory=="Intake")
+    {
+	var category = "Intake";
+    var phase = "All";
+    var wave = "All";
+    filterAjaxCall(category,phase,wave);
+    $("#category").val(category);
+	}
+    
+});
 $(document).on('change','#phase',function(){
 $(".waveOptions").hide();
 var phaseName = $(this).val();
