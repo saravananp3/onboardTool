@@ -28,6 +28,11 @@ body {
     margin-left: 2.5%;
 }
 
+.form-wizard .form-group-popup {
+  position: relative;
+  margin: 12px 0;
+}
+
 .card-container-4 {
 	font-family: 'Poppins', sans-serif;
 	width: 100%;

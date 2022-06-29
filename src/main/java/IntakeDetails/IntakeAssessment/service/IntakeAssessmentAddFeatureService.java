@@ -21,10 +21,10 @@ DBconnection dBconnection =null;
 	
 	public static String SectionInfoTable;
 	
-	public static String id,label_name, mandatory, type, options;
+	public static String id,label_name, mandatory,umandatory, type, options;
 
 	public static int NumberofInputfields = 0 ;
-	public IntakeAssessmentAddFeatureService(DBconnection dBconnection, Connection con,String SectionName,String id,String label_name, String mandatory, String type, int NumberofInputfields, String options) {
+	public IntakeAssessmentAddFeatureService(DBconnection dBconnection, Connection con,String SectionName,String id,String label_name, String mandatory, String umandatory,String type, int NumberofInputfields, String options) {
 		this.dBconnection = dBconnection;
 		this.con = con;
 		this.SectionName = SectionName;
@@ -32,6 +32,7 @@ DBconnection dBconnection =null;
 		SetTableName(SectionName);
 		this.label_name = label_name;
 		this.mandatory = mandatory;
+		this.umandatory = umandatory;
 		this.type = type;
 		this.NumberofInputfields = NumberofInputfields;
 		this.options = options;
@@ -107,7 +108,7 @@ private void SetTableName(String section) {
 			if (!type.equals("Text box") && !type.equals("Datepicker")) {
 				options = options.substring(0, options.length() - 1);
 			}
-			String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,Section,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String insert_query = "insert into "+SectionInfoTable+" (seq_no,id,prj_name,app_name,Section,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 			PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 			preparedStatement1.setInt(1, max_seq_num);
 			preparedStatement1.setString(2, id);
@@ -120,6 +121,7 @@ private void SetTableName(String section) {
 			preparedStatement1.setString(9, type);
 			preparedStatement1.setString(10, mandatory);
 			preparedStatement1.setString(11, "");
+			preparedStatement1.setString(12, umandatory);
 			preparedStatement1.execute();
 		} catch (Exception e) {
 			e.printStackTrace();

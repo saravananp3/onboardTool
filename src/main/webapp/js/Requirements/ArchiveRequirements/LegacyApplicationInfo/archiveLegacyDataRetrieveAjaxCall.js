@@ -34,6 +34,12 @@ $(document).ready(function(){
                     disable_property = "";
                     delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
                 }
+                if(value.mandatory=="Yes" && value.umandatory=="Yes")
+                {
+                	//manadatory="class = 'LabelName'";
+                    //disable_property = "";
+                    delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
+                }
 				if (Type == "Text box") {
 					var template_check = "";
 					var inputtext = "<div class='form-group InputField' id ='" + ColumnName + "_Row'>\n" +

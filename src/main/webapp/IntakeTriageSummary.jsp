@@ -697,13 +697,13 @@ e.printStackTrace();
         <form name="PopUpform">
             <div id="scrollbar">
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="TriageSummary">Label:</label>
                             <input type="text" class="form-control" id="TriSummLabel"  name="TriSummLabel" required>
                         </div>
                     </div>
-                </div><br/>
+                </div>
                 <input type="hidden" id="project_name" name="project_name" value="">
                 <input type="text" id="appln_name" name="appln_name" value="" style="display:none;">
                 <input type="text" id="servlet_name" name="servlet_name" value="" style="display:none;">
@@ -717,8 +717,8 @@ e.printStackTrace();
                     </div>
                 </div> -->
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="TriageSummary">Type:</label>
                             <select id="TriSummTypes" class="form-select" name="TriSummTypes" required >
                                 <option value="Text box">Text box</option>
@@ -731,8 +731,8 @@ e.printStackTrace();
                     </div>
                 </div>
                 <div class="row hidefield" id="TriSummCheck" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="TriageSummary">Number of check boxes:</label>
                             <input type="text" class="form-control" id="TriSummNumber"  name="TriSummNumber1">
                         </div>
@@ -740,8 +740,8 @@ e.printStackTrace();
                     <br/>
                 </div>
                 <div class="row hidefield" id="TriSummRadio" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="TriageSummary">Number of Radio boxes:</label>
                             <input type="text" class="form-control" id="TriSummRadioNbr"  name="TriSummRadioNbr">
                         </div>
@@ -749,40 +749,22 @@ e.printStackTrace();
                     <br/>
                 </div>
                 <div class="row hidefield" id="TriSummDrop" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="TriageSummary">Number of Options:</label>
                             <input type="text" class="form-control" id="TriSummDropNbr"  name="TriSummDropNbr">
                         </div>
                     </div>
                     <br/>
                 </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo"></div>
-                        </div>
-                    </div>
+               
+                <div class="col-lg-12" id="TriageSummaryOptions">
                 </div>
-                <div id="TriageSummaryOptions">
-                </div>
+               
+                
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo1"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo2"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="TriageSummary">Mandatory:</label>
                             <select id="TriSummMandatory" class="form-select" name="TriSummMandatory" required >
                                 <option>Yes</option>

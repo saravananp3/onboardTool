@@ -46,12 +46,13 @@ import IntakeDetails.IntakeTriage.Service.IntakeTriageService;
 			String id = (String)details.getAttribute("ID");
 			String selected_index[] = request.getParameter("Selected_Index").split(",");
 			String templateMandatory = request.getParameter("Mandatory");
+			String umandatory = request.getParameter("umandatory");
 			int[] Sel_seq = new int[selected_index.length];
 			for(int i = 0; i<selected_index.length; i++)
 			{
 				Sel_seq[i] = Integer.parseInt(selected_index[i]);
 			}
-			JsonArray jsonArray = new IntakeTriageService().AddTemplateFields(Sel_seq, id,templateMandatory);
+			JsonArray jsonArray = new IntakeTriageService().AddTemplateFields(Sel_seq, id,templateMandatory,umandatory);
 			
 			 String json = new Gson().toJson(jsonArray);
 		        response.setContentType("application/json");

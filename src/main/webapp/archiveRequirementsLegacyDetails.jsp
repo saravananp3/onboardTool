@@ -700,21 +700,21 @@ e.printStackTrace();
         <form name="PopUpform">
             <div id="scrollbar">
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Label:</label>
                             <input type="text" class="form-control" id="Legacyaddlabel"  name="Legacylabel" required>
                         </div>
                     </div>
-                </div><br/>
+                </div>
                 <input type="hidden" id="Legacyproject_name" name="project_name" value="">
                 <input type="text" id="Legacyappln_name" name="appln_name" value="" style="display:none;">
                 <input type="text" id="Legacyservlet_name" name="servlet_name" value="" style="display:none;">  
 
              
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Type:</label>
                             <select id="Legacytypes" class="form-select" name="types" required >
                                 <option value="Text box">Text box</option>
@@ -727,58 +727,39 @@ e.printStackTrace();
                     </div>
                 </div>
                 <div class="row Legacyhidefield" id="Legacycheck" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Number of check boxes:</label>
                             <input type="text" class="form-control" id="Legacycheck_number"  name="Legacycheck_number">
                         </div>
                     </div>
-                    <br/>
+                   
                 </div>
                 <div class="row Legacyhidefield" id="Legacyradio" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Number of Radio boxes:</label>
                             <input type="text" class="form-control" id="Legacyradio_number"  name="Legacyradio_number">
                         </div>
                     </div>
-                    <br/>
+                   
                 </div>
                 <div class="row Legacyhidefield" id="Legacydrop" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Number of Options:</label>
                             <input type="text" class="form-control" id="Legacydrop_number"  name="Legacydrop_number">
                         </div>
                     </div>
                     <br/>
                 </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo"></div>
-                        </div>
-                    </div>
+               
+                <div class="col-lg-12"id="Legacyoptions">
                 </div>
-                <div id="Legacyoptions">
-                </div>
+               
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo1"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo2"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Mandatory:</label>
                             <select id="Legacymandatory" class="form-select" name="mandatory" required >
                                 <option>Yes</option>

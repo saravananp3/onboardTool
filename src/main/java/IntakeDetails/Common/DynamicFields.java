@@ -23,4 +23,15 @@ public abstract class DynamicFields {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int Add(String id, String label_name, String mandatory, String umandatory, String type,
+			int NumberofInputfields, String options) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public JsonArray AddTemplateFields(int[] selected_index, String id, String templateMandatory, String umandatory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

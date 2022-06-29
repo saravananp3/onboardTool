@@ -61,12 +61,13 @@ function StakeHolderDataRetrieveAjaxCall() {
                     }
                     var Row = "<tr class='UserRow'>" +
                         "<td><div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>" +
-                        "<ul class='dropdown-menu' style = 'min-width: inherit;'>" +
-                        "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black;'>&nbsp;&nbsp;&nbsp;Edit</a></li>" +
-                        "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black;'>&nbsp;&nbsp;&nbsp;Delete</a></li>" +
-                        "</ul>" +
-                        "</div>" +
-                        "</td>" +
+						"<ul class='dropdown-menu' style = 'min-width: inherit;'>" +
+						"<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black;'>&nbsp;&nbsp;&nbsp;Edit</a></li>" +
+						"<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black;'>&nbsp;&nbsp;&nbsp;Delete</a></li>" +
+						"</ul>" +
+						"</div>" +
+						"</td>" +
+                       
                         "<td><input type='text' id='firstName" + number + "' class ='name' style='width: 100%; text-align: center;' value='" + name + "' " + readonly + "></td>" +
                         "<td><input type='text' id='search" + number + "' class ='emailid' style='width: 100%; text-align: center;' onClick='searchFunction(" + number + ");' value='" + emailid + "' " + readonly + "><ul id='result" + number + "' class='list-group searchResult'></ul></td>" +
                         "<td><input type='text' id='userName" + number + "' class='username' style='width: 100%; text-align: center;' value='" + username + "' " + readonly + "></td>" +

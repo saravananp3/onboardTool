@@ -1,10 +1,15 @@
 $('#submit').click(function() {
+			
 	    	var projname = "";
 	    	var appname = $('#appName').val();
 	        var labelname = $('#label').val();
 	        var columnname = $('#idname').val();
 	        var type = $('#types').val();
 	        var mandatory = $('#mandatory').val();
+	        if(mandatory=="Yes")
+	        var umandatory="Yes";
+	        if(mandatory=="No")
+	        var umandatory="No";
 	        var num = 1;
 	        var options = "";
 	        if (type == "Check box") {
@@ -37,7 +42,7 @@ $('#submit').click(function() {
 	        $.ajax({
 	            url: "IntakeOpportunityAddServlet",
 	            type: 'POST',
-	            data: {ApplicationName:appname,ProjectName: projname,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,Number:num,Options:options},
+	            data: {ApplicationName:appname,ProjectName: projname,LabelName:labelname,ColumnName:columnname,Type:type,Mandatory:mandatory,umandatory:umandatory,Number:num,Options:options},
 	            dataType: "json",
 	            success: function (data) {
 	                var required = "";
@@ -46,9 +51,9 @@ $('#submit').click(function() {
 	               // console.log("lentgth")
 	                var required_field = "";
 	                var delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
-	                if (data.Mandatory == "Yes"){
+	                if (data.Mandatory == "Yes" && data.UMandatory=="Yes"){
 	                    required_field = "class = 'required_fie'";
-	                    delete_icon="<div class='deletepopup' style='display:none;'></div>";
+	                    //delete_icon="<div class='deletepopup' style='display:none;'></div>";
 	                }
 	                if (data.LabelDuplicateCheck == "true")
 	                {

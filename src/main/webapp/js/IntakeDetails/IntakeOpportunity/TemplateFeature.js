@@ -6,6 +6,10 @@ function validateForm(e){
     $(".hidepencil").hide();
     $(".hidedelete").hide();
     var templateMandatory = $('#mandatory2').val();
+    if(templateMandatory=="No")
+	var umandatory="No";
+	if(templateMandatory=="Yes")
+	var umandatory="Yes";
     var selected_seq = [];
     var selected_index = "";
     console.log("class total length"+$(".Template_Field").length);
@@ -20,7 +24,7 @@ function validateForm(e){
     $.ajax({
         url: "IntakeDetailsOpportunityAddTemplateFields",
         type: 'POST',
-        data : {Selected_Index:selected_index, Mandatory:templateMandatory},
+        data : {Selected_Index:selected_index, Mandatory:templateMandatory,umandatory:umandatory},
         dataType: "json",
         success: function (data) {
                console.log(data);
@@ -76,6 +80,11 @@ console.log("data add template ;",templateMandatory);
                     {
                         manadatory="";
                         disable_property = "";
+                        delete_edit_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>";
+                    }
+                    if(value.Mandatory=="Yes" && value.UMandatory=="Yes")
+                    {
+                       
                         delete_edit_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>";
                     }
                     if(Type=="Text box")

@@ -81,7 +81,7 @@ public class IntakeAssessmentService extends DynamicFields {
 		// TODO Auto-generated method stub
 		
 	}
-    public JsonObject AddFeature(String ID, String label_name, String mandatory, String type, int NumberofInputfields,String options,String SectionName)
+    public JsonObject AddFeature(String ID, String label_name, String mandatory,String umandatory, String type, int NumberofInputfields,String options,String SectionName)
     {
     	JsonObject jsonobject = new JsonObject();
     	try
@@ -89,10 +89,11 @@ public class IntakeAssessmentService extends DynamicFields {
     		jsonobject.addProperty("LabelName", label_name);
             jsonobject.addProperty("ColumnName","AssessmentAddInfo");
             jsonobject.addProperty("Mandatory", mandatory);
+            jsonobject.addProperty("umandatory", umandatory);
             jsonobject.addProperty("Type", type);
             jsonobject.addProperty("Options",options);
             jsonobject.addProperty("section",SectionName);
-    		IntakeAssessmentAddFeatureService add = new IntakeAssessmentAddFeatureService(dBconnection, con, SectionName,ID,label_name, mandatory, type, NumberofInputfields, options);
+    		IntakeAssessmentAddFeatureService add = new IntakeAssessmentAddFeatureService(dBconnection, con, SectionName,ID,label_name, mandatory,umandatory, type, NumberofInputfields, options);
     		boolean labelcheck = add.CheckDuplicateAddLabel();
     		jsonobject.addProperty("LabelDuplicateCheck", labelcheck);
     		if(!labelcheck)
@@ -108,7 +109,7 @@ public class IntakeAssessmentService extends DynamicFields {
     	return jsonobject;
     }
 	@Override
-	public int Add(String id, String label_name, String mandatory, String type, int NumberofInputfields,
+	public int Add(String id, String label_name, String mandatory, String umandatory,String type, int NumberofInputfields,
 			String options) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -141,4 +142,13 @@ public class IntakeAssessmentService extends DynamicFields {
 		}
 		return jsonArray;
 	}
+
+	@Override
+	public int Add(String id, String label_name, String mandatory, String type, int NumberofInputfields,
+			String options) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 }

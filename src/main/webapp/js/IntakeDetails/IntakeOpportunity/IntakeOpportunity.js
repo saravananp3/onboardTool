@@ -26,6 +26,12 @@ $(document).ready(function(){
             	{
                 	$("#Record_No").val(Value);
             	}
+            	 if(value.Mandatory=="Yes" && value.UMandatory=="Yes")
+                {
+				  
+                   delete_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span>";
+                    //delete_edit_icon = "<span class='glyphicon glyphicon-trash deletepopup hidedelete' style='float:right;display:none;' ></span><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>";
+                }
                 //var options=data[i].options.split(',');
                 if(value.Mandatory=="No")
                 {

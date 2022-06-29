@@ -1431,8 +1431,8 @@ e.printStackTrace();
         <form name="PopUpform">
             <div id="scrollbar">
              <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Section:</label>
                             <select id="AssessSection" class="form-select" name="AssessSection" required >
                                 <option value="ApplicationInformation" selected>Application Information</option>
@@ -1443,15 +1443,15 @@ e.printStackTrace();
                             </select>
                         </div>
                     </div>
-                </div><br/>
+                </div>
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Label:</label>
                             <input type="text" class="form-control" id="AssessLabel"  name="AssessLabel" required>
                         </div>
                     </div>
-                </div><br/>
+                </div>
                 <input type="hidden" id="project_name" name="project_name" value="">
                 <input type="text" id="appln_name" name="appln_name" value="" style="display:none;">
                 <input type="text" id="servlet_name" name="servlet_name" value="" style="display:none;">
@@ -1465,8 +1465,8 @@ e.printStackTrace();
                     </div>
                 </div> -->
                 <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Type:</label>
                             <select id="AssessTypes" class="form-select" name="AssessTypes" required >
                                 <option value="Text box">Text box</option>
@@ -1479,64 +1479,43 @@ e.printStackTrace();
                     </div>
                 </div>
                 <div class="row AssessHideField" id="AssessCheck" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Number of check boxes:</label>
                             <input type="text" class="form-control" id="AssessCheckNumber"  name="AssessCheckNumber1">
                         </div>
                     </div>
-                    <br/>
+                    
                 </div>
                 <div class="row AssessHideField" id="AssessRadio" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Number of Radio boxes:</label>
                             <input type="text" class="form-control" id="AssessRadioNumber"  name="AssessRadioNumber">
                         </div>
                     </div>
-                    <br/>
+                    
                 </div>
                 <div class="row AssessHideField" id="AssessDrop" style="display:none;">
-                    <div class="form-group">
-                        <div class="col-sm-4">
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Number of Options:</label>
                             <input type="text" class="form-control" id="AssessDropNumber"  name="AssessDropNumber">
                         </div>
                     </div>
-                    <br/>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo"></div>
-                        </div>
                     </div>
+              
+                <div class="col-lg-12" id="AssessOptions">
                 </div>
-                <div id="AssessOptions">
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo1"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-4">
-                            <div id="demo2"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-lg-8">
+                             
+                    <div class="form-group-popup">
+                        <div class="col-lg-12">
                             <label class="control-label" for="formInput526">Mandatory:</label>
                             <select id="AssessMandatory" class="form-select" name="AssessMandatory" required >
                                 <option>Yes</option>
                                 <option>No</option>
                             </select>
-                        </div>
+                       
                     </div>
                 </div>
                 <br/><br/>
