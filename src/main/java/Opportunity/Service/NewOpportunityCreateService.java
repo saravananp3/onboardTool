@@ -90,20 +90,21 @@ public class NewOpportunityCreateService {
             ResultSet rs2 = st2.executeQuery(SelectTableQuery);
             while(rs2.next())
             {
-            	String Opportunity_InsertQuery = "insert into Opportunity_Info (seq_no,Id, prj_name, app_name, options, label_name, column_name, type, mandatory, value)"
-						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            	String Opportunity_InsertQuery = "insert into Opportunity_Info (seq_no,Id, prj_name, app_name, options, label_name, column_name, type, mandatory, value,usermandatoryflag)"
+						+ "value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
 				PreparedStatement prestmt = connection.prepareStatement(Opportunity_InsertQuery);
-				prestmt.setInt(1, rs2.getInt(1));
-				prestmt.setString(2, rs2.getString(2));
-				prestmt.setString(3, rs2.getString(3));
-				prestmt.setString(4, rs2.getString(4));
-				prestmt.setString(5, rs2.getString(5));
-				prestmt.setString(6, rs2.getString(6));
-				prestmt.setString(7, rs2.getString(7));
-				prestmt.setString(8, rs2.getString(8));
-				prestmt.setString(9, rs2.getString(9));
-				prestmt.setString(10, rs2.getString(10));
+				prestmt.setInt(1, rs2.getInt("seq_no"));
+				prestmt.setString(2, rs2.getString("Id"));
+				prestmt.setString(3, rs2.getString("prj_name"));
+				prestmt.setString(4, rs2.getString("app_name"));
+				prestmt.setString(5, rs2.getString("options"));
+				prestmt.setString(6, rs2.getString("label_name"));
+				prestmt.setString(7, rs2.getString("column_name"));
+				prestmt.setString(8, rs2.getString("type"));
+				prestmt.setString(9, rs2.getString("mandatory"));
+				prestmt.setString(10, rs2.getString("value"));
+				prestmt.setString(11, rs2.getString("usermandatoryflag"));
 				prestmt.execute();
 				  }
 			st2.close();

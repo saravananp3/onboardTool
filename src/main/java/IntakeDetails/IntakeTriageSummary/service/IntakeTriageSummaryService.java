@@ -318,7 +318,6 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 			ArrayList<String> arr_type = new ArrayList<String>();
 			ArrayList<String> arr_mandatory = new ArrayList<String>();
 			ArrayList<String> arr_value = new ArrayList<String>();
-			ArrayList<String> arr_iscomplete = new ArrayList<String>();
 			ArrayList<String> arr_umandatory = new ArrayList<String>();
 			
 			ArrayList<Integer> arr_seqmax_split = new ArrayList<Integer>();
@@ -331,7 +330,6 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 			ArrayList<String> arr_type_split = new ArrayList<String>();
 			ArrayList<String> arr_mandatory_split = new ArrayList<String>();
 			ArrayList<String> arr_value_split = new ArrayList<String>();
-			ArrayList<String> arr_iscomplete_split = new ArrayList<String>();
 			ArrayList<String> arr_umandatory_split = new ArrayList<String>();
 			String select_query = "select max(seq_no) from Triage_summary_info where Id = ? order by seq_no;";
 			PreparedStatement st = connection.prepareStatement(select_query);
@@ -346,18 +344,17 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 			st1.setString(1, Id);
 			ResultSet rs1 = st1.executeQuery();
 			while (rs1.next()) {
-				arr_seqmax.add(rs1.getInt(1));
-				arr_id.add(rs1.getString(2));
-				arr_prj.add(rs1.getString(3));
-				arr_app.add(rs1.getString(4));
-				arr_options.add(rs1.getString(5));
-				arr_label_name.add(rs1.getString(6));
-				arr_column_name.add(rs1.getString(7));
-				arr_type.add(rs1.getString(8));
-				arr_mandatory.add(rs1.getString(9));
-				arr_value.add(rs1.getString(10));
-				arr_iscomplete.add(rs1.getString(11));
-				arr_umandatory.add(rs1.getString(12));
+				arr_seqmax.add(rs1.getInt("seq_no"));
+				arr_id.add(rs1.getString("Id"));
+				arr_prj.add(rs1.getString("prj_name"));
+				arr_app.add(rs1.getString("app_name"));
+				arr_options.add(rs1.getString("options"));
+				arr_label_name.add(rs1.getString("label_name"));
+				arr_column_name.add(rs1.getString("column_name"));
+				arr_type.add(rs1.getString("type"));
+				arr_mandatory.add(rs1.getString("mandatory"));
+				arr_value.add(rs1.getString("value"));
+				arr_umandatory.add(rs1.getString("usermandatoryflag"));
 			}
 
 			for (int i = 0; i < seqmax; i++) {
@@ -372,7 +369,6 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 					arr_type_split.add(arr_type.get(i));
 					arr_mandatory_split.add(arr_mandatory.get(i));
 					arr_value_split.add(arr_value.get(i));
-					arr_iscomplete_split.add(arr_iscomplete.get(i));
 					arr_umandatory_split.add(arr_umandatory.get(i));
 				} else if (arr_seqmax.get(i) > delete_seqnum) {
 					arr_seqmax_split.add((arr_seqmax.get(i) - 1));
@@ -385,7 +381,6 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 					arr_type_split.add(arr_type.get(i));
 					arr_mandatory_split.add(arr_mandatory.get(i));
 					arr_value_split.add(arr_value.get(i));
-					arr_iscomplete_split.add(arr_iscomplete.get(i));
 					arr_umandatory_split.add(arr_umandatory.get(i));
 				}
 			}
@@ -397,7 +392,7 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 			st2.close();
 
 			for (int j = 0; j < seqmax - 1; j++) {
-				String insert_query = "insert into Triage_summary_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,isCompleted,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
+				String insert_query = "insert into Triage_summary_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
 				PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
 				preparedStatement1.setInt(1, arr_seqmax_split.get(j));
 				preparedStatement1.setString(2, arr_id_split.get(j));
@@ -409,8 +404,7 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 				preparedStatement1.setString(8, arr_type_split.get(j));
 				preparedStatement1.setString(9, arr_mandatory_split.get(j));
 				preparedStatement1.setString(10, arr_value_split.get(j));
-				preparedStatement1.setString(11, arr_iscomplete_split.get(j));
-				preparedStatement1.setString(12, arr_umandatory_split.get(j));
+				preparedStatement1.setString(11, arr_umandatory_split.get(j));
 				preparedStatement1.execute();
 			}
 			

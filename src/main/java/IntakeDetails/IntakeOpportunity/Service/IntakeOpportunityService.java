@@ -182,17 +182,17 @@ public class IntakeOpportunityService {
 			ResultSet rs1 = st1.executeQuery();
 
 			while (rs1.next()) {
-				arr_seqmax.add(rs1.getInt(1));
-				arr_id.add(rs1.getString(2));
-				arr_prj.add(rs1.getString(3));
-				arr_app.add(rs1.getString(4));
-				arr_options.add(rs1.getString(5));
-				arr_label_name.add(rs1.getString(6));
-				arr_column_name.add(rs1.getString(7));
-				arr_type.add(rs1.getString(8));
-				arr_mandatory.add(rs1.getString(9));
-				arr_value.add(rs1.getString(10));
-				arr_umandatory.add(rs1.getString(11));
+				arr_seqmax.add(rs1.getInt("seq_no"));
+				arr_id.add(rs1.getString("Id"));
+				arr_prj.add(rs1.getString("prj_name"));
+				arr_app.add(rs1.getString("app_name"));
+				arr_options.add(rs1.getString("options"));
+				arr_label_name.add(rs1.getString("label_name"));
+				arr_column_name.add(rs1.getString("column_name"));
+				arr_type.add(rs1.getString("type"));
+				arr_mandatory.add(rs1.getString("mandatory"));
+				arr_value.add(rs1.getString("value"));
+				arr_umandatory.add(rs1.getString("usermandatoryflag"));
 			}
 
 			for (int i = 0; i < seqmax; i++) {
