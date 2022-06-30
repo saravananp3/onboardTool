@@ -620,7 +620,7 @@ e.printStackTrace();
                                               <div id="inputFieldsReqinscope">
                                               
                                                  			<h4 class="title1">4.1.5 Audit Requirements</h4>
-                                                 			<div class="table-responsive">
+                                                 			<div class="">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>
