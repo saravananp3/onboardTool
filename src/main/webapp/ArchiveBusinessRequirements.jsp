@@ -231,6 +231,7 @@ System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP 
 <%@page import="java.util.Date"%>
 <%@page import="onboard.DBconnection"%>
 <%@page import="java.util.Calendar"%>
+<%@page import="org.owasp.encoder.Encode" %>
 <%
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -309,7 +310,7 @@ Statement st1;
                             <div class="sub-title" style="color: #fff">
                                 <a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
                                 class="glyphicon glyphicon-home"></span> Home</a> >> <a
-                                href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a> >>
+                                href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff"><%=Encode.forHtml(OpportunityName)%></a> >>
                      <a href="ArchiveDecommPage.jsp" id="sitetitle1" style="color: #fff">Requirements</a> >>
                       <a href="ArchiveRequirementsIntroDetails.jsp" id="sitetitle1" style="color: #fff">Introduction</a> >>
                       <a href="archiveRequirementsLegacyDetails.jsp" id="sitetitle1" style="color: #fff">Legacy Application Info</a> >>
