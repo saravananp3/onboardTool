@@ -420,7 +420,7 @@ e.printStackTrace();
                                                  <div class="modal-body">
                     <form name="myForm">
                         <div class="form-group" id="TemplateFields">
-                          <div class="table-responsive">
+                          <div class="">
                                                    				<table class="table-bordered" style="width: 100%;">
 														  		 <thead> 												
 																	<tr>

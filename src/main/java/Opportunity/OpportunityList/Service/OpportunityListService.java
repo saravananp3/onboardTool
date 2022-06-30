@@ -121,6 +121,8 @@ public class OpportunityListService {
 	public static JsonArray getResources() {
 		JsonArray jsonArray = new JsonArray();
 		JsonArray jsonArray1 = new JsonArray();
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		try {
 			
 			DBconnection dBconnection = new DBconnection();
@@ -128,8 +130,8 @@ public class OpportunityListService {
 			
 		
 			 String SelectResourcesQuery ="select * from users";
-			 Statement st = connection.createStatement();
-			 ResultSet rs = st.executeQuery(SelectResourcesQuery);
+			 st = connection.prepareStatement(SelectResourcesQuery);
+			 rs = st.executeQuery();
 			 
 			 while(rs.next()) {
 				 JsonObject jsonObj = new JsonObject();
@@ -139,7 +141,8 @@ public class OpportunityListService {
 			 System.out.println("Exception------->>>>>--------" + jsonArray);
 			 jsonArray1.add(jsonArray);
 			 jsonArray1.add(new OpportunityDropdownOptions().getOptions());
-	
+			 st.close();
+			 rs.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

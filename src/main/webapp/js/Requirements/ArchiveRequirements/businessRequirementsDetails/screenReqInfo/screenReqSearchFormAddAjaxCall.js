@@ -73,7 +73,7 @@ function archiveSearchFormAddAjaxCall(searchFormName,seqNum,reqId){
             	 "</td>" +
             	 "<td align='center'>"+
             	 "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>"+
-                 "<ul class='dropdown-menu'>"+
+                 "<ul class='dropdown-menu' style='margin: -49px -10px 0px -70px'>"+
                  "<li><a  class='fa fa-edit searchFormEditRow Edit' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>"+
                  "<li><a  class='fa fa-trash searchFormDeleteRow Delete' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>"+
                  "</ul>"+
