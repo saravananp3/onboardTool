@@ -323,7 +323,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="onboard.DBconnection"%>
-
+<%@page import="org.owasp.encoder.Encode" %>
 <%
     DBconnection dBconnection = new DBconnection();
     HttpSession details = request.getSession();
@@ -355,7 +355,7 @@
                     </button>
                 </div>
                 <!-- /.navbar-header -->
-                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=prjname %>
+                <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Onboarding Tool-<%=Encode.forHtml(prjname) %>
                 </a>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">

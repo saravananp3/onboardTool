@@ -10,17 +10,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.owasp.encoder.Encode;
+import File_Utility.FileUtils;
 
 @WebServlet("/downloadPDFservlet")
 public class downloadPDFservlet extends HttpServlet {
 	private final int ARBITARY_SIZE = 1048;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String downloadFilePath = request.getParameter("path").replaceAll("'","");//"S:\\sample.pdf";//request.getParameter("path");
-        File f = new File(downloadFilePath);
+        File f =FileUtils.createFile(downloadFilePath);
 		response.setContentType("application/pdf");
 		response.setContentLength((int) f.length());
-		response.setHeader( "Content-Disposition", "attachment; filename=" +f.getName() );
-        try(InputStream in = new FileInputStream(new File(downloadFilePath));
+		response.setHeader( "Content-Disposition", Encode.forJava("attachment; filename=" +f.getName()) );
+        try(InputStream in = new FileInputStream(FileUtils.createFile(downloadFilePath));
           OutputStream out = response.getOutputStream()) {
 
             byte[] buffer = new byte[ARBITARY_SIZE];
@@ -30,5 +32,6 @@ public class downloadPDFservlet extends HttpServlet {
                 out.write(buffer, 0, numBytesRead);
             }
         }
+        
 	}
 }

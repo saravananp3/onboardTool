@@ -45,16 +45,18 @@ public class phaseDataRetrieveService {
 	}
 
 	private void moveTemptoInfo() {
+		PreparedStatement st1=null,st2=null;
+		ResultSet rs2=null;
 		try {
 			// delete prev table
 			String deleteQuery = "delete from phase_Info_Details";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			st1 = con.prepareStatement(deleteQuery);
+			st1.executeUpdate();
 
 			// select temp details
 			String selectTempQuery = "select * from phase_info_template_details order by seq_no";
-			Statement st2 = con.createStatement();
-			ResultSet rs2 = st2.executeQuery(selectTempQuery);
+			st2 = con.prepareStatement(selectTempQuery);
+			rs2 = st2.executeQuery(); 
 			String phaseId = getUUID();
 			while (rs2.next()) {
 				// insert temp details into info details
@@ -75,6 +77,9 @@ public class phaseDataRetrieveService {
 				prestmt.execute();
 				prestmt.close();
 			}
+			st1.close();
+			st2.close();
+			rs2.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -101,12 +106,14 @@ public class phaseDataRetrieveService {
 	}
 
 	public JsonArray getInfoDetails() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			HashSet<String> WaveSet = new HashSet<String>();
 			String selectQuery = "select * from phase_Info_Details;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				String options = rs.getString("options");
 				String waveArray[] = options.split(",");
@@ -129,6 +136,8 @@ public class phaseDataRetrieveService {
 				jsonObject.addProperty("Value", rs.getString("value"));
 				jsonArray.add(jsonObject);
 			}
+			st.close();
+			rs.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -174,12 +183,14 @@ public class phaseDataRetrieveService {
 	}
 
 	private void updateApplications() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		String waveNames = "";
 		try {
 			boolean checkApp = false;
 			String selectQuery = "select * from governance_info where column_name='waveName';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				checkApp = true;
 				String selectQuery1 = "select * from phase_info where column_name='waves' and value like ?";
@@ -202,6 +213,8 @@ public class phaseDataRetrieveService {
 			st2.execute();
 			st2.close();
 			System.out.println("waveNames : " + waveNames);
+			st.close();
+			rs.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -209,12 +222,14 @@ public class phaseDataRetrieveService {
 	}
 
 	private void updateApplicationsEditPhase() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		String waveNames = "";
 		try {
 			boolean checkApp = false;
 			String selectQuery = "select * from governance_info where column_name='waveName';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while (rs.next()) {
 				checkApp = true;
 				String selectQuery1 = "select * from phase_info where column_name='waves' and value like ?";
@@ -248,6 +263,8 @@ public class phaseDataRetrieveService {
 			st2.execute();
 			st2.close();
 			System.out.println("waveNames : " + waveNames);
+			st.close();
+			rs.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();

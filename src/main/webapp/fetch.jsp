@@ -23,7 +23,10 @@
 	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Fetch JSP PAGE-----[INFO]");  %>
  <%@page import="java.sql.*"%>
  <%@ page import="onboard.DBconnection"%>
+ <%@page import="org.owasp.encoder.Encode" %>
 <%
+PreparedStatement st=null;
+ResultSet rs=null;
 DBconnection dBconnection = new DBconnection();
 Connection connection = (Connection) dBconnection.getConnection();
 String data1=request.getParameter("s2");  
@@ -33,8 +36,8 @@ System.out.println("ROle : " + data1 + "userid :" +data2);
 
 
 String query = "select * from Admin_UserDetails where roles='ArchivalAdmin' and uname='bala'";
-Statement st = connection.createStatement();
-ResultSet rs = st.executeQuery(query);
+st = connection.prepareStatement(query);
+rs = st.executeQuery();
 
 
 while(rs.next())
@@ -47,7 +50,7 @@ st1.setString(1, s);
 ResultSet rs1 = st1.executeQuery();
 while(rs1.next())
 {
-if(rs1.getString("progressbar")=="100")
+if(rs1.getString("progressbar").equals("100"))
 continue;
 else
 break;
@@ -95,26 +98,31 @@ break;
 }
 }
 
-}%>
+}
+st.close();
+rs.close();
+%>
 <br/><br/>
 <%
+PreparedStatement st4=null;
+ResultSet rs4=null;
 String query4 = "SELECT    * FROM visits WHERE date BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()";
-Statement st4 = connection.createStatement();
-ResultSet rs4 = st4.executeQuery(query4);
+st4 = connection.prepareStatement(query4);
+rs4 = st4.executeQuery();
 while(rs4.next())
 {
 %>
 <div class="row">
-    <div class="col-sm-2"><%=rs4.getString(1) %></div>
-    <div class="col-sm-2"><%=rs4.getString(2) %></div>
-    <div class="col-sm-2"><%=rs4.getString(3) %></div>
-    <div class="col-sm-2"><%=rs4.getString(4) %></div>
-    <div class="col-sm-2"><%=rs4.getString(5) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(1)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(2)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(3)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(4)) %></div>
+    <div class="col-sm-2"><%=Encode.forHtml(rs4.getString(5)) %></div>
 </div>
 <%
 }
-
-
+st4.close();
+rs4.close();
  %>
 </body>
 

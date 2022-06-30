@@ -338,10 +338,11 @@ public class governanceDeleteService {
      	      rs.close();
   			  }
   			  if(tableName.equals("governance_info_details"))
-  			  {
+  			  {PreparedStatement st=null;
+  			   ResultSet rs=null;
   				 String SelectQuery =getQuery(tableName);
-  	     	      Statement st = con.createStatement();
-  	     	      ResultSet rs = st.executeQuery(SelectQuery);
+  	     	      st = con.prepareStatement(SelectQuery);
+  	     	      rs = st.executeQuery();
   	     	      String startStr = "GovernanceAddInfo";
   	     	      while(rs.next())
   	     	      {
@@ -371,6 +372,7 @@ public class governanceDeleteService {
   		  e.printStackTrace();
   		  System.out.println("Exception-----------[info]-------"+e);
   	  }
+  		 
     }
 	protected void finalize() throws Throwable {
 	 con.close();

@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mysql.cj.protocol.Resultset;
+
 import onboard.DBconnection;
 public class ArchiveExecutionDetailService {
     String oppname;
@@ -52,6 +54,8 @@ public class ArchiveExecutionDetailService {
                 jsonObj.addProperty("remark",rs.getString(17));
                 jsonArray.add(jsonObj);
             }
+            st.close();
+            rs.close();
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -59,49 +63,42 @@ public class ArchiveExecutionDetailService {
         System.out.println("Bug"+jsonArray);
         return jsonArray;
     }
-    public JsonObject archiveExecutionHearderInfo(String Id,String oppName) {
+    public JsonObject archiveExecutionHearderInfo(String Id,String oppName) throws SQLException {
+    	PreparedStatement st=null,sds=null,eds=null,ats=null;
+    	ResultSet rs=null,srs=null,ars=null,ers=null;
     	String resultDate = "";
     	String resultDate1 = "";
         JsonArray jsonArray=new JsonArray();
         JsonObject jsonObj = new JsonObject();
         try {
             String selectQuery = "select * from opportunity_info where id = ?;";
-            PreparedStatement st = con.prepareStatement(selectQuery);
+            st = con.prepareStatement(selectQuery);
             st.setString(1,Id);
-            ResultSet rs = st.executeQuery();
-            
-			/*
-			 * String sd = "select planSrt from Archive_Execution_Info where oppId = '"
-			 * +Id+"' and oppName = '"+oppName+"' and taskId='1.01'  order by seq_no;";
-			 */
+            rs = st.executeQuery();
+          
             int pscount=0;
             int pecount=0;
             String sd = "select planSrt from Archive_Execution_Info where oppId = ? and level=? order by seq_no";
-            PreparedStatement  sds = con.prepareStatement(sd);
+            sds = con.prepareStatement(sd);
             sds.setString(1,Id);
             sds.setString(2, lvl);
-            ResultSet srs = sds.executeQuery();
+            srs = sds.executeQuery();
             ArrayList<String> arrDate = new ArrayList<String>();
 			ArrayList<Date> arrChildDate = new ArrayList<Date>();
 
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");         
-            
-            
-			/*
-			 * String ed = "select planEnd from Archive_Execution_Info where oppId = '"
-			 * +Id+"' and oppName = '"+oppName+"' and taskId='5.05'  order by seq_no;";
-			 */
+         
             String ed = "select planEnd from Archive_Execution_Info where oppId = ? and level=? order by seq_no";
-            PreparedStatement eds = con.prepareStatement(ed);
+            eds = con.prepareStatement(ed);
             eds.setString(1,Id);
             eds.setString(2,lvl);
-            ResultSet ers = eds.executeQuery();
+            ers = eds.executeQuery();
             ArrayList<String> arrDate1 = new ArrayList<String>();
 			ArrayList<Date> arrChildDate1 = new ArrayList<Date>();
            
             String at = "select uname from users";
-            Statement ats = con.createStatement();
-            ResultSet ars = ats.executeQuery(at);
+            ats = con.prepareStatement(at);
+            ars = ats.executeQuery();
             while(rs.next()) {
                 if((rs.getString("column_name")).equals("apmid"))
                     jsonObj.addProperty("Opp_Id",rs.getString("value"));
@@ -176,8 +173,21 @@ public class ArchiveExecutionDetailService {
             
 		
         }
+        
+        
         catch(Exception e) {
             e.printStackTrace();
+        }
+        finally {
+        	st.close();
+        	sds.close();
+        	eds.close();
+        	ats.close();
+        	rs.close();
+        	srs.close();
+        	ers.close();
+        	ars.close();
+        	       	
         }
         return jsonObj;
     }

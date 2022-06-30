@@ -51,19 +51,21 @@ public class governanceDataRetrieveService {
 		return jsonArray;
 	}
 	
-	private void moveTemptoInfo()
+	private void moveTemptoInfo() throws SQLException
 	{
+		PreparedStatement st1=null,st2=null;
+		ResultSet rs2=null;
 		try
 		{
 			//delete prev table
 			String deleteQuery = "delete from Governance_Info_Details";
-			Statement st1 = con.createStatement();
-			st1.executeUpdate(deleteQuery);
+			st1 = con.prepareStatement(deleteQuery);
+			st1.executeUpdate();
 			
 			//select temp details
 			String selectTempQuery = "select * from governance_info_template_details order by seq_no";
-			Statement st2 = con.createStatement();
-			ResultSet rs2 = st2.executeQuery(selectTempQuery); 
+			st2 = con.prepareStatement(selectTempQuery);
+			rs2 = st2.executeQuery(); 
 			String WaveId=getUUID();
 			while(rs2.next())
 			{
@@ -90,10 +92,17 @@ public class governanceDataRetrieveService {
 		{
 			e.printStackTrace();
 		}
+		finally
+		{
+			st1.close();
+			st2.close();
+			rs2.close();
+		}
 	}
-	
-	private String getUUID()
+	private String getUUID() throws SQLException
 	{
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		String WaveId="";
 		try
 		{
@@ -103,9 +112,9 @@ public class governanceDataRetrieveService {
 			WaveId=UUID.randomUUID().toString();
 			//checking the wave id in Governance_Info
 			String selectQuery = "select * from Governance_Info where waveId=?";
-			PreparedStatement st = con.prepareStatement(selectQuery);
+				st = con.prepareStatement(selectQuery);
 			st.setString(1, WaveId);
-			ResultSet rs = st.executeQuery();
+				rs = st.executeQuery();
 			if(!rs.next())
 			checkWaveId =false;
 			}
@@ -114,19 +123,26 @@ public class governanceDataRetrieveService {
 		{
 			e.printStackTrace();
 		}
+		finally
+		{
+			st.close();
+			rs.close();
+		}
 		return WaveId;
 	}
 	
-	public JsonArray getInfoDetails()
+	public JsonArray getInfoDetails() throws SQLException
 	{
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
 			HashSet<String> WaveSet = new HashSet<String>();
 			String selectQuery = "select * from Governance_Info_Details;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
-			while (rs.next()) {
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
+			while(rs.next()) {
 				String options = rs.getString("options");
 				String waveArray[] = options.split(",");
 				for (String wave : waveArray) {
@@ -153,20 +169,27 @@ public class governanceDataRetrieveService {
 		{
 			e.printStackTrace();
 		}
+		finally
+		{
+			st.close();
+			rs.close();
+		}
 		return jsonArray;
 	}
 	
-	public JsonArray getInfoEditDetails()
+	public JsonArray getInfoEditDetails() throws SQLException
 	{
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
 			HashSet<String> WaveSet = new HashSet<String>();
 			String selectQuery = "select * from governance_Info where waveId = ?;";
-			PreparedStatement st = con.prepareStatement(selectQuery);
+			st = con.prepareStatement(selectQuery);
 			st.setString(1, waveId);
-			ResultSet rs = st.executeQuery();
-			while (rs.next()) {
+			rs = st.executeQuery();
+			while(rs.next()) {
 				String options = rs.getString("options");
 				String waveArray[] = options.split(",");
 				for (String wave : waveArray) {
@@ -198,15 +221,17 @@ public class governanceDataRetrieveService {
 		return jsonArray;
 	}
 	
-	private void updateApplications()
+	private void updateApplications() throws SQLException
 	{
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		String appNames = "";
 		try
 		{
 			boolean checkApp = false;
 			String selectQuery="select * from opportunity_info where column_name='appName';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while(rs.next())
 			{
 				checkApp =true;
@@ -237,15 +262,17 @@ public class governanceDataRetrieveService {
 			e.printStackTrace();
 		}
 	}
-	private void updateApplicationsEditWave()
+	private void updateApplicationsEditWave() throws SQLException
 	{
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		String appNames = "";
 		try
 		{
 			boolean checkApp = false;
 			String selectQuery="select * from opportunity_info where column_name='appName';";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while(rs.next())
 			{
 				checkApp =true;

@@ -17,6 +17,8 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 
 	@Override
 	public JsonArray DataRetrieve(String Id)  {
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			DBconnection dBconnection = new DBconnection();
@@ -69,8 +71,8 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 			else
 			{
 				String SelectQuery1 = "select * from triage_summary_info_template_details order by seq_no;";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(SelectQuery1);
+				st1 = con.prepareStatement(SelectQuery1);
+				rs1 = st1.executeQuery();
 				
 				while(rs1.next()) {
 					JsonObject jsonObject1 = new JsonObject();
@@ -89,6 +91,8 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 					jsonArray.add(jsonObject1);
 					
 				}
+				st1.close();
+				rs1.close();
 			}
 		}
 		catch(Exception e) {
@@ -100,6 +104,8 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 	}
 	@Override
 	public JsonArray AddTemplateFields(int[] selected_index,String id) {
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 	      JsonArray jsonArray = new JsonArray();
 	      try
 	      {
@@ -118,9 +124,9 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 	    	   
 	    	   String SelectedColumnQuery ="select * from triage_summary_info_template_details;"; 
 	    	   
-	    	   Statement st1 =connection.createStatement(); 
+	    	   st1 =connection.prepareStatement(SelectedColumnQuery);
 	    	   
-	    	   ResultSet rs1 =st1.executeQuery(SelectedColumnQuery); 
+	    	   rs1 =st1.executeQuery(); 
 	    	   
 	    	   while(rs1.next()) {
 	    		
@@ -259,17 +265,20 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 				
 			}
 	      }
+	    	 st1.close();
+	    	 rs1.close();
 	    	  }
 	    	  else
-	    	  {
+	    	  {	  PreparedStatement st2=null;
+	    	  	  ResultSet rs2=null;
 	    		  String selectQuery ="select * from triage_summary_info_template_details order by seq_no;";
-	    		  Statement st2 = connection.createStatement();
-	    		  ResultSet rs2 = st2.executeQuery(selectQuery);
+	    		  st2 = connection.prepareStatement(selectQuery);
+	    		  rs2 = st2.executeQuery();
 	    		  String delete_column_name ="";
 	    		  while(rs2.next())
 	    		  {
 	    			  String DeleteQuery = "delete from triage_summary_info where id=? and column_name=?;";
-	    			  PreparedStatement st1 = connection.prepareStatement(DeleteQuery);
+	    			  st1 = connection.prepareStatement(DeleteQuery);
 	    				st1.setString(1,id);
 	    				st1.setString(2,rs2.getString("column_name"));
 	    				st1.executeUpdate();	
@@ -285,7 +294,7 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 	    		  while(rs3.next())
 	    		  {
 	    			  String UpdateSeqNumQuery = "Update triage_summary_info set seq_no=? where id=? and column_name=?;";
-	    			  PreparedStatement st1 = connection.prepareStatement(UpdateSeqNumQuery);
+	    			  st1 = connection.prepareStatement(UpdateSeqNumQuery);
 	    	          st1.setInt(1, seq_no++);
 	    	          st1.setString(2, id);
 	    	          st1.setString(3, rs3.getString("column_name"));
@@ -293,7 +302,11 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 	    		  }
 	    		  OrderingColumnNameBySeq(id);
 	    		  jsonArray.add(delete_column_name.substring(0,delete_column_name.length()-1));
+	    	  st1.close();
+	    	  st2.close();
+	    	  rs2.close();
 	    	  }
+	    	  
 	      }
 	      catch(Exception e)
 	      {
@@ -418,14 +431,15 @@ public class IntakeTriageSummaryService  extends DynamicFields{
 	
 	@Override
 	public void OrderingColumnNameBySeq(String ID)
-    {
+    {	PreparedStatement st=null;
+    	ResultSet rs=null;
   		  try {
   		  
   		  DBconnection dBconnection = new DBconnection();
      	      Connection connection = (Connection) dBconnection.getConnection(); 
      	      String SelectQuery ="Select * from Triage_summary_info order by seq_no";
-     	      Statement st = connection.createStatement();
-     	      ResultSet rs = st.executeQuery(SelectQuery);
+     	      st = connection.prepareStatement(SelectQuery);
+     	      rs = st.executeQuery();
      	      String startStr = "TriageSummaryAddInfo";
      	      while(rs.next())
      	      {
@@ -447,7 +461,8 @@ public class IntakeTriageSummaryService  extends DynamicFields{
      	    		  }
      	    	  }
      	      }
-  
+     	      st.close();
+     	      rs.close();
   	  }
   	  catch(Exception e)
   	  {

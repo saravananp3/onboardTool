@@ -6,6 +6,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+import org.owasp.encoder.Encode;
 
 import onboard.DBconnection;
 
@@ -77,7 +78,7 @@ public class Project extends HttpServlet {
 				     
 
 				String projectname = request.getParameter("projectname");
-				 logger.info("created project "+projectname); 
+				 logger.info("created project "+Encode.forJava(projectname)); 
 				 
 		        String descr = request.getParameter("descr");
 		        String appno = request.getParameter("appno");
@@ -142,8 +143,8 @@ public class Project extends HttpServlet {
 		           preparedStmt1.execute();
 		           
 		          String query1="select * from ArchiveExecution_Defaultvalues";
-		          Statement st1 = connection.createStatement();
-				     ResultSet rs1 = st1.executeQuery(query1);
+		          PreparedStatement st1 = connection.prepareStatement(query1);
+				     ResultSet rs1 = st1.executeQuery();
 				     while(rs1.next())
 				     {
 				    	 
@@ -165,12 +166,13 @@ public class Project extends HttpServlet {
 				          preparedStmt2.setString (14,"0");
 				          preparedStmt2.execute(); 
 				     }
-		          
+				     st1.close();
+				     rs1.close();
 				     connection.close();
 		        }
 		        catch (Exception e)
 		        {
-		        	System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
+		        	//System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
 		        }
 		        // return response
 		        response.sendRedirect("Project_List.jsp");

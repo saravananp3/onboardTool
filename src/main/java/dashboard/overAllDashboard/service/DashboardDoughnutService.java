@@ -39,6 +39,8 @@ public class DashboardDoughnutService {
         return jsonArray;
     }
     public JsonArray getPercentageByphase(String phaseFilter, String wave) {
+		PreparedStatement st=null;
+		ResultSet rs=null;
         JsonArray jsonArray = new JsonArray();
         List < String > waves = new ArrayList < String > ();
         try {
@@ -46,8 +48,8 @@ public class DashboardDoughnutService {
             {
                 System.out.println("Doughnut Service All");
                 String selectPhases = "select * from phase_info";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(selectPhases);
+				st = con.prepareStatement(selectPhases);
+				rs = st.executeQuery();
                 while (rs.next()) {
                     if (rs.getString("column_name").equals("waves")) {
                         if (rs.getString("value").isEmpty() == false) {
@@ -61,16 +63,16 @@ public class DashboardDoughnutService {
                 String[] allWave = new String[waves.size()];
                 allWave = waves.toArray(allWave);
                 jsonArray = (getWaveDetailsStatus(allWave, wave));
-                rs.close();
-                st.close();    
+				st.close();  
+				rs.close();
             }
                 if(!phaseFilter.equals("All"))
                 {
                     System.out.println("Phase is :: "+phaseFilter);
                     String selectPhases = "select * from phase_info where phaseName like ?";
-                    PreparedStatement st=con.prepareStatement(selectPhases);
+				st=con.prepareStatement(selectPhases);
                     st.setString(1,"%"+phaseFilter+"%");
-                    ResultSet rs = st.executeQuery();
+				rs = st.executeQuery();
                     while (rs.next()) {
                         if (rs.getString("column_name").equals("waves")) {
                             if (rs.getString("value").isEmpty() == false) {
@@ -84,8 +86,8 @@ public class DashboardDoughnutService {
                     String[] allWave = new String[waves.size()];
                     allWave = waves.toArray(allWave);
                     jsonArray = (getWaveDetailsStatus(allWave, wave));
-                    rs.close();
-                    st.close(); 
+				st.close(); 
+				rs.close();
                 }
         } catch (Exception e) {
             e.printStackTrace();
@@ -281,20 +283,22 @@ public class DashboardDoughnutService {
         return jsonArray;
     }
     public JsonArray getCBADetail() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
         JsonArray jsonArray = new JsonArray();
         try {
             ArrayList < String > app = new ArrayList < String > ();
             String selectApp = "select * from opportunity_info where column_name='appName'";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(selectApp);
+			st = con.prepareStatement(selectApp);
+			rs = st.executeQuery();
             while (rs.next()) {
                 app.add(rs.getString("value"));
             }
             String[] apps = new String[app.size()];
             apps = app.toArray(apps);
             jsonArray.addAll(getIntakeDetail(apps));
-            rs.close();
-            st.close();
+			st.close();
+			rs.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

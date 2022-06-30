@@ -64,23 +64,25 @@ public class waveListService {
 	
 	public JsonArray getAllWaveList()
 	{
-	
+	PreparedStatement st=null;
+	ResultSet rs=null;
 	JsonArray jsonArray = new JsonArray();
 	JsonArray jsonArray1 = new JsonArray();
 	try
 	{
 		String selectWaves = "select * from governance_info where column_name='waveName';";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectWaves);
+		st = con.prepareStatement(selectWaves);
+		rs = st.executeQuery();
 		while(rs.next()) {
 		String wave = rs.getString("value");
 			if(!wave.isEmpty())
 			jsonArray1.add(getWave(wave));
 		}
-		st.close();
-		rs.close();
+		
 		if(jsonArray1.size()!=0)
 		jsonArray.add(jsonArray1);
+		st.close();
+		rs.close();
 	}
 	catch(Exception e)
 	{

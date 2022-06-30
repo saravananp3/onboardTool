@@ -1,6 +1,6 @@
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection"%>
-
+<%@page import="org.owasp.encoder.Encode" %>
 
  <html>
       <head>  
@@ -37,16 +37,20 @@
       <select name='country' onchange="showState(this.value)">  
        <option value="none">Select</option>  
     <%
+    PreparedStatement stmt=null;
+    ResultSet rs=null;
     DBconnection dBconnection = new DBconnection();
 
  Connection con = dBconnection.getConnection();  
- Statement stmt = con.createStatement();  
- ResultSet rs = stmt.executeQuery("Select * from country");
+ stmt = con.prepareStatement("Select * from country");
+ rs = stmt.executeQuery();
  while(rs.next()){
      %>
-      <option value="<%=rs.getString(1)%>"><%=rs.getString(2)%></option>  
+      <option value="<%=Encode.forHtmlAttribute(rs.getString(1))%>"><%=Encode.forHtmlAttribute(rs.getString(2))%></option>  
       <%
  }
+     stmt.close();
+     rs.close();
      %>
       </select>  
       <br>  

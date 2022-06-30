@@ -19,18 +19,25 @@
         Date date = new Date();  
         System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed DB_Creation JSP PAGE-----[INFO]");  %>
 <%
+PreparedStatement s=null;
+
 	try
 	{		
 			DBconnection  d = new DBconnection(true);
 	    	Connection dbconnection = (Connection) d.getConnection();
-	        Statement s = dbconnection.createStatement();
-	       	s.executeUpdate("CREATE DATABASE decom3sixtytool");
+	        s = dbconnection.prepareStatement("CREATE DATABASE decom3sixtytool");
+	       	s.executeUpdate();
+	       
 	       	dbconnection.close();
 	}
 
 	catch(Exception e)
 	{
     System.err.println("[ERROR]-----Got an exception!-----Tables Already Created----[ERROR]");
+	}
+	finally
+	{
+		s.close();
 	}
 %>
 </body>

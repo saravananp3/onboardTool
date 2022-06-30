@@ -43,6 +43,7 @@
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection" %>
 <%@ page import="java.text.SimpleDateFormat"%>
+<%@page import="org.owasp.encoder.Encode" %>
 		<%@ page import="java.util.Date"%>
 		<%
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
@@ -83,7 +84,8 @@ response.sendRedirect("Login.jsp");
   <%
                          String uname=(String)details.getAttribute("username");
                          String role=(String)details.getAttribute("role");%>                   
-	<li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
+	<%-- <li><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=Encode.forHtml(role)%></span></a></li> --%>
+	
 <li><a href="Logout" class=" text-center"><i class="fa fa-sign-out"></i> Logout</a>
                         </li>
                     </ul>

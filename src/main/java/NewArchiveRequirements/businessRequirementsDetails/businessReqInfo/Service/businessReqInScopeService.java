@@ -28,15 +28,17 @@ DBconnection dBconnection =null;
 		this.OppName = OppName;
 	}
 
-	public void BusinessReqServiceDefaultRecords() {
+	public void BusinessReqServiceDefaultRecords() throws SQLException {
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null,rs1=null;
 		try {
 			 
 			 String oppName = "";
 			 
 			 String AppNameQuery = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName' and Id = ?";
-			 PreparedStatement st = con.prepareStatement(AppNameQuery);
+			 st = con.prepareStatement(AppNameQuery);
 			 st.setString(1, Id);
-			 ResultSet rs = st.executeQuery();
+			 rs = st.executeQuery();
 				 
 			 if(rs.next())
 				 oppName = rs.getString("value");
@@ -47,8 +49,8 @@ DBconnection dBconnection =null;
 			
 			 
 			 String selectQuery = "select * from BusinessReqinscope_Info_template_details";
-			 Statement st1 = con.createStatement();
-			 ResultSet rs1 = st1.executeQuery(selectQuery);
+			 st1 = con.prepareStatement(selectQuery);
+			 rs1 = st1.executeQuery();
 			 
 			 while(rs1.next()) {
 				 String BusinessReq_InsertQuery = "insert into BusinessReqinscope_Info (seq_no, OppId, prj_name, OppName, req_in_scope, description)"
@@ -63,13 +65,16 @@ DBconnection dBconnection =null;
 					preparedStatement1.setString(6, rs1.getString(3));
 					preparedStatement1.execute();
 			 	}
-				 st1.close();
-				 rs1.close();
+				
 			 }
 		 catch(Exception e) {
 			 e.printStackTrace();
 		 }
-		
+		finally
+		{
+			 st1.close();
+			 rs1.close();
+		}
 	}
 	
 	public JsonArray BusinessRequirementsDataRetrieve() {

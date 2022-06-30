@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -14,6 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.owasp.encoder.Encode;
+
+import onboard.DBconnection;
 
 import java.sql.Statement;
 
@@ -45,17 +50,18 @@ public class Retrive extends HttpServlet {
         response.setContentType("text/html");
         out.println("<html><body>");
         try {
-            Class.forName("org.gjt.mm.mysql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/decom3sixtytool", "root", "root");
-            // Here dsnname- mydsn,user id- system(for oracle 10g),password is pintu.
-            Statement stmt = (Statement) con.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from appdetails");
+        	PreparedStatement stmt=null;
+        	ResultSet rs=null;
+        	DBconnection dBconnection = new DBconnection();
+	        Connection con = (Connection) dBconnection.getConnection();
+            stmt = con.prepareStatement("select * from appdetails");
+            rs = stmt.executeQuery();
            
           
             while (rs.next()) {
                 String n = rs.getString("appname");
                 String nm = rs.getString("ref");
-                out.println("<textbox" +n  ); 
+                out.println("<textbox" +Encode.forHtml(n)); 
                 out.print(">");
             }
            

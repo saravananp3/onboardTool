@@ -109,7 +109,7 @@ public class IntakeOpportunityService {
 			PreparedStatement st1 = connection.prepareStatement(PreviouslabelQuery);
 			st1.setString(1, id);
 			st1.setInt(2, sequencenumber);
-			ResultSet rs1 = st1.executeQuery(PreviouslabelQuery);
+			ResultSet rs1 = st1.executeQuery();
 			if (rs1.next()) {
 				jsonobj.addProperty("previous_label_name", rs1.getString(1));
 			}
@@ -226,6 +226,7 @@ public class IntakeOpportunityService {
 			PreparedStatement st2 = connection.prepareStatement(delete_query);
 			st2.setString(1,Id);
 			st2.executeUpdate();
+			st2.close();
 
 			for (int j = 0; j < seqmax - 1; j++) {
 				String insert_query = "insert into opportunity_info (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
@@ -261,8 +262,8 @@ public class IntakeOpportunityService {
 		KeyValue.put("businessowner","busOwner");
 		KeyValue.put("sme","devOwner");
 		KeyValue.put("billcode","billing_Code");
-		KeyValue.put("buisnesssegment","business_Segment");
-		KeyValue.put("buisnessunit","busUnit");
+    	  KeyValue.put("businesssegment","business_Segment");
+    	  KeyValue.put("businessunit","busUnit");
 		KeyValue.put("pscontact","segment_contact");
 		return KeyValue;
 	}
@@ -303,6 +304,8 @@ public class IntakeOpportunityService {
 		return value; 
 	}
 	public static JsonArray IntakeDetailsOpportunityAddTemplateFields1(int[] selected_index,String id,String templateMandatory,String umandatory) {
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
@@ -318,9 +321,9 @@ public class IntakeOpportunityService {
 
 			String SelectedColumnQuery ="select * from opportunity_info_template_details;"; 
 
-			Statement st1 =connection.createStatement(); 
+	    	   st1 =connection.prepareStatement(SelectedColumnQuery);
 
-			ResultSet rs1 =st1.executeQuery(SelectedColumnQuery); 
+	    	   rs1 =st1.executeQuery(); 
 
 			while(rs1.next()) {
 
@@ -460,6 +463,8 @@ public class IntakeOpportunityService {
 
 				}
 			}
+	      st1.close();
+	      rs1.close();
 		}
 		catch(Exception e)
 		{
@@ -470,6 +475,8 @@ public class IntakeOpportunityService {
 	}
 	public static JsonObject intakeDetailsOpportunityValidation(String AppName,JsonArray jsonArray,boolean checkMandatory,String APMID,String id)
 	{
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
@@ -510,14 +517,16 @@ public class IntakeOpportunityService {
 			if(!CheckAPP)
 			{
 				String CheckQueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName';";
-				Statement st1 = connection.createStatement();
-				ResultSet rs1 = st1.executeQuery(CheckQueryAppName);
+			st1 = connection.prepareStatement(CheckQueryAppName);
+			rs1 = st1.executeQuery();
 				while(rs1.next()) {
 					if(rs1.getString("value").equals(AppName))
 					{
 						checkAppName =true;
 					}
 				}
+			st1.close();
+			rs1.close();
 			}
 			jsonObject.addProperty("APMID_VALIDATION", checkAPMID);
 			jsonObject.addProperty("AppName_VALIDATION",checkAppName);

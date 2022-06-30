@@ -22,6 +22,8 @@ import onboard.DBconnection;
 public class LegacyAppInfoService {
 
 	public JsonArray LegacyAppInfoDataRetrieveService(String Id,String Opportunityname) {
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			DBconnection dBconnection = new DBconnection();
@@ -34,8 +36,8 @@ public class LegacyAppInfoService {
 			
 			if (!rs.next()){
 				String TemplateQuery = "select * from archivereq_legacyapp_template_details order by seq_no;";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(TemplateQuery);
+				st1 = con.prepareStatement(TemplateQuery);
+				rs1 = st1.executeQuery();
 				
 				while(rs1.next()) {
 					JsonObject jsonObject = new JsonObject();
@@ -57,13 +59,15 @@ public class LegacyAppInfoService {
 				}
 				LegacyAppInfoRecordsStorage(Id,Opportunityname);
 				new LegacyAppInfoService().LegacyAppInfoDataRetrieveService(Id,Opportunityname);
+			st1.close();
+			rs1.close();
 			}
 			else
 			{
 				String TemplateQuery = "select * from archivereq_legacyapp_info where id=? order by seq_no;";
-				PreparedStatement st1 = con.prepareStatement(TemplateQuery);
+				st1 = con.prepareStatement(TemplateQuery);
 				st1.setString(1, Id);
-				ResultSet rs1 = st1.executeQuery();
+				rs1 = st1.executeQuery();
 				
 				while(rs1.next()) {
 					JsonObject jsonObject = new JsonObject();
@@ -94,14 +98,16 @@ public class LegacyAppInfoService {
 	}
 
 	private static void LegacyAppInfoRecordsStorage(String Id,String Opportunityname) {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		try
 		{
 			DBconnection dBconnection = new DBconnection();
 			Connection con = (Connection) dBconnection.getConnection();
 			
 			String SelectRecords = "select * from archivereq_legacyapp_info_template_details ";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(SelectRecords);
+			st = con.prepareStatement(SelectRecords);
+			rs = st.executeQuery();
 			int seq_num=1;
 			while(rs.next())
 			{
@@ -119,6 +125,8 @@ public class LegacyAppInfoService {
 				preparedStatement1.setString(10, "");
 				preparedStatement1.execute();
 			}
+			st.close();
+			rs.close();
 		}
 		catch(Exception e)
 		{

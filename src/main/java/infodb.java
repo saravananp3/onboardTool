@@ -63,7 +63,7 @@ public class infodb extends HttpServlet {
 	        }
 	        catch (Exception e)
 	        {
-	        	 System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
+	        	// System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
 	        }
 	        response.sendRedirect("AppEmphasize_CostCalculation.jsp");	
 
