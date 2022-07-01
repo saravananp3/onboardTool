@@ -12,6 +12,7 @@ $(document).ready(function() {
 
 $('#cancelwithphase').click(function(){
 $('#applicationList').empty();
+number = 0;
 getDataWithPhaseAndWave();
 });
 
@@ -40,7 +41,7 @@ function getDataWithPhaseAndWave() {
 				var t_row = "<tr class='rowClass'>"
 					+ "<td style='display: none;'><input type = 'text' class ='applicationId' " + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityId + "'>" + opportunityId + "</td>"
 					+ "<td><input type = 'text' class ='applicationName' value = '" + opportunityName + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityName + "'></td>"
-					+ "<td>" + "<select class='form-select phase' id='phase1' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
+					+ "<td>" + "<select class='form-select phase' id='phase1" + number + "' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
 					phaseOptions +
 					"</select>" + "</td>"
 					+ "<td>" + "<select class='form-select wave' id='wave1" + number + "' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
