@@ -11,7 +11,9 @@ $(document).ready(function() {
 });
 $('#cancelwithphase').click(function(){
 $('#applicationList').empty();
-number=0;
+$("#phase-list" + number).empty();
+$("#wave-list" + number).empty();
+number = 0;
 getDataWithPhaseAndWave();
 });
 function getDataWithPhaseAndWave() {
@@ -451,6 +453,11 @@ $(document).on('click', '#DeleteSubmit', function() {
 	DeleteRowAjaxCall(JsonArray, DeleteSeqNum);
 	$('#applicationListWithoutPhase').empty();
 	getDataWithOutPhaseAndWave();
+	$('#applicationList').empty();
+	$("#phase-list" + number).empty();
+	$("#wave-list" + number).empty();
+	number = 0;
+	getDataWithPhaseAndWave();
 });
 function DeleteRowAjaxCall(JsonArray, DeleteSeqNum) {
 	$.ajax({
