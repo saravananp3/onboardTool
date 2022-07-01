@@ -454,8 +454,6 @@ $(document).on('click', '#DeleteSubmit', function() {
 	$('#applicationListWithoutPhase').empty();
 	getDataWithOutPhaseAndWave();
 	$('#applicationList').empty();
-	$("#phase-list" + number).empty();
-	$("#wave-list" + number).empty();
 	number = 0;
 	getDataWithPhaseAndWave();
 });
