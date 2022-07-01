@@ -9,6 +9,12 @@ var JsonObject = [];
 $(document).ready(function() {
 	getDataWithPhaseAndWave();
 });
+
+$('#cancelwithphase').click(function(){
+$('#applicationList').empty();
+getDataWithPhaseAndWave();
+});
+
 function getDataWithPhaseAndWave() {
 	$.ajax({
 		url: "PlanAndPriorityWithinPhase",
@@ -444,6 +450,9 @@ $(document).on('click', '#DeleteSubmit', function() {
 	inputs['wave'] = wave;
 	JsonArray.push(inputs);
 	DeleteRowAjaxCall(JsonArray, DeleteSeqNum);
+	$('#applicationListWithoutPhase').empty();
+	
+	getDataWithOutPhaseAndWave();
 });
 function DeleteRowAjaxCall(JsonArray, DeleteSeqNum) {
 	$.ajax({

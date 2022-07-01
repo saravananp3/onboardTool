@@ -80,8 +80,10 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Retrieve_Review.js"></script>
-<script src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Download.js"></script>
+<script
+	src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Retrieve_Review.js"></script>
+<script
+	src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Download.js"></script>
 </head>
 <body>
 
@@ -107,61 +109,55 @@
 			</div>
 		</div>
 	</nav>
-<div class="col-lg-6 right-side phase-btn" align="end"> 
-					<div class="dropdown">
-																		<button type="button"
-																			class="btn btn-primary dropdown-toggle"
-																			id="dropdownMenuButton1" data-bs-toggle="dropdown"
-																			aria-expanded="false">Phase</button>
-																		<ul class="dropdown-menu"
-																			aria-labelledby="dropdownMenuButton1">
-																			<li><a class="dropdown-item dropDown-font"
-																				id="phaseadd" onclick="location.href='NewPhase.jsp';" data-bs-toggle="modal"
-																				data-bs-target=""> <i
-																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-																				</i>Create Phase
-																			</a></li>
-																				<li><a class="dropdown-item dropDown-font"
-																				id="viewphase" onclick="location.href='PhaseList.jsp';" data-bs-toggle="modal"
-																				data-bs-target=""> <i
-																					class="fa fa-eye" aria-hidden="true">&nbsp;&nbsp;
-																				</i>View Phases
-																			</a></li>
+	<div class="col-lg-6 right-side phase-btn" align="end">
+		<div class="dropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle"
+				id="dropdownMenuButton1" data-bs-toggle="dropdown"
+				aria-expanded="false">Phase</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<li><a class="dropdown-item dropDown-font" id="phaseadd"
+					onclick="location.href='NewPhase.jsp';" data-bs-toggle="modal"
+					data-bs-target=""> <i class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+					</i>Create Phase
+				</a></li>
+				<li><a class="dropdown-item dropDown-font" id="viewphase"
+					onclick="location.href='PhaseList.jsp';" data-bs-toggle="modal"
+					data-bs-target=""> <i class="fa fa-eye" aria-hidden="true">&nbsp;&nbsp;
+					</i>View Phases
+				</a></li>
 
-																		</ul>
-																	</div>
-																	<div class="dropdown">
-																		<button type="button"
-																			class="btn btn-primary dropdown-toggle"
-																			id="dropdownMenuButton1" data-bs-toggle="dropdown"
-																			aria-expanded="false">Wave</button>
-																		<ul class="dropdown-menu"
-																			aria-labelledby="dropdownMenuButton1">
-																			<li><a class="dropdown-item dropDown-font"
-																				id="waveadd" onclick="location.href='NewGovernance.jsp';" data-bs-toggle="modal"
-																				data-bs-target=""> <i
-																					class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-																				</i>Create Wave
-																			</a></li>
-																				<li><a class="dropdown-item dropDown-font"
-																				id="viewwave" onclick="location.href='waveList.jsp?waves=all';" data-bs-toggle="modal"
-																				data-bs-target=""> <i
-																					class="fa fa-eye" aria-hidden="true">&nbsp;&nbsp;
-																				</i>View Waves
-																			</a></li>
+			</ul>
+		</div>
+		<div class="dropdown">
+			<button type="button" class="btn btn-primary dropdown-toggle"
+				id="dropdownMenuButton1" data-bs-toggle="dropdown"
+				aria-expanded="false">Wave</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<li><a class="dropdown-item dropDown-font" id="waveadd"
+					onclick="location.href='NewGovernance.jsp';" data-bs-toggle="modal"
+					data-bs-target=""> <i class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
+					</i>Create Wave
+				</a></li>
+				<li><a class="dropdown-item dropDown-font" id="viewwave"
+					onclick="location.href='waveList.jsp?waves=all';"
+					data-bs-toggle="modal" data-bs-target=""> <i class="fa fa-eye"
+						aria-hidden="true">&nbsp;&nbsp; </i>View Waves
+				</a></li>
 
-																		</ul>
-																	</div>
-	
-			</div><br/>
+			</ul>
+		</div>
+
+	</div>
+	<br />
 	<div class="card-container-5 card d3s-mt-50">
 		<div class="card-header d3s-pl-15" id="cd-header">
-			Applications List
-			<select class="form-select align-right" aria-label="Default select example" id="appChange" style="padding: 0 0 0 0.35rem; width: 25%;">
-                <option  value="1">Applications without phase and wave</option>
-                <option value="2">Applications with phase and wave</option>
-                
-            </select>
+			Applications List <select class="form-select align-right"
+				aria-label="Default select example" id="appChange"
+				style="padding: 0 0 0 0.35rem; width: 25%;">
+				<option value="1">Applications without phase and wave</option>
+				<option value="2">Applications with phase and wave</option>
+
+			</select>
 		</div>
 		<div class="card-body">
 			<div class="withPhase" id="withPhase">
@@ -187,7 +183,10 @@
 						</tr>
 					</thead>
 					<tbody id="applicationList">
-						<tr id="notFound1"><td colspan='5' style="text-align: center;">No Data Available</td></tr>
+						<tr id="notFound1">
+							<td colspan='5' style="text-align: center;">No Data
+								Available</td>
+						</tr>
 					</tbody>
 				</table>
 
@@ -197,6 +196,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12" align="end">
+						<button class="btn btn-primary" id="cancelwithphase">Cancel</button>
 						<button class="btn btn-primary" id="saveApplicationList">Submit</button>
 					</div>
 				</div>
@@ -221,11 +221,15 @@
 						</tr>
 					</thead>
 					<tbody id="applicationListWithoutPhase">
-						<tr id="notFound"><td colspan='4' style="text-align: center;">No Data Available</td></tr>
+						<tr id="notFound">
+							<td colspan='4' style="text-align: center;">No Data
+								Available</td>
+						</tr>
 					</tbody>
 				</table>
 				<div class="row">
 					<div class="col-md-12" align="end">
+						<button class="btn btn-primary" id="cancelwithoutphase">Cancel</button>
 						<button class="btn btn-primary" id="saveApplicationList-1">Submit</button>
 					</div>
 				</div>
@@ -243,33 +247,36 @@
 			data-bs-target="#DeletePopUp" style="display: none;">Delete
 			PopUp</button>
 	</div>
-	
-	<!-- Delete Row Pop Up  -->
-    <div class="modal" id="DeletePopUp" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Field</h5>
-       <button type="button" class="btn-close"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form name="DeleteForm">
-                <div class="modal-body">
-                    <p style="font-size:20px;">Do you want to delete this Row permanently?</p>
-                    <input type="hidden" id="Sequence"/>
-                </div>
-            </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="DeleteSubmit" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close" >No</button>
-      </div>
-    </div>
-  </div>
-</div>  
 
-<!-- Edit Row Pop Up  -->
+	<!-- Delete Row Pop Up  -->
+	<div class="modal" id="DeletePopUp" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Delete Field</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form name="DeleteForm">
+						<div class="modal-body">
+							<p style="font-size: 20px;">Do you want to delete this Row
+								permanently?</p>
+							<input type="hidden" id="Sequence" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="DeleteSubmit" class="btn btn-primary"
+						data-bs-dismiss="modal">Yes</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal" aria-label="Close">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Edit Row Pop Up  -->
 	<div class="modal" id="EditPopUp" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-xl">
@@ -281,7 +288,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					
+
 					<div class="container">
 
 						<div bgcolor='#e4e4e4'
@@ -298,10 +305,9 @@
 													<tr align='left'>
 														<td
 															style='color: #404041; font-size: 12px; line-height: 16px; padding: 10px 16px 20px 18px'>
-															<h3 class="panel-title">Opportunity Information</h3>
-															<br>
+															<h3 class="panel-title">Opportunity Information</h3> <br>
 															<div id="OpportunityInfoPreview"></div>
-														
+
 														</td>
 													</tr>
 
@@ -310,7 +316,7 @@
 															style='color: #404041; font-size: 12px; line-height: 16px; padding: 10px 16px 20px 18px'>
 															<h3 class="panel-title">Triage Information</h3> <br>
 															<div id="TriageInfoPreview"></div>
-															
+
 														</td>
 													</tr>
 
@@ -321,7 +327,7 @@
 															<div id="TriageSummInfoPreview">
 																<br>
 															</div>
-														
+
 														</td>
 													</tr>
 
@@ -349,35 +355,30 @@
 																	</tbody>
 																</table>
 															</div>
-														
-															
-															<h3 class="panel-title">Data Characteristics</h3>
-															<br>
+
+
+															<h3 class="panel-title">Data Characteristics</h3> <br>
 															<div id="DataCharacteristicsPreview"></div>
-															<h3 class="panel-title">Compliance Characteristics</h3>
-															<br>
+															<h3 class="panel-title">Compliance Characteristics</h3> <br>
 															<div id="ComplianceCharacteristicsPreview"></div>
-															<h3 class="panel-title">Archival Consumption</h3>
-															<br>
+															<h3 class="panel-title">Archival Consumption</h3> <br>
 															<div id="ArchivalConsumptionPreview"></div>
 
 															<div id="ContractInformationPreview"
 																style="display: none;">
 																<h3 class="panel-title">Contract Consumption</h3>
 																<br>
-															</div>											
-														
+															</div>
+
 														</td>
 													</tr>
 
 													<tr align='left'>
 														<td
 															style='color: #404041; font-size: 12px; line-height: 16px; padding: 10px 16px 20px 18px'>
-															<h3 class="panel-title">Approval</h3>
-															<br>
-														<br>
+															<h3 class="panel-title">Approval</h3> <br> <br>
 															<div id="StakeHolderInfoPreview"></div>
-														
+
 														</td>
 													</tr>
 												</tbody>
@@ -388,41 +389,46 @@
 							</table>
 						</div>
 					</div>
-					 <div class="modal fade" id="myModal modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" style="width:1000px">
-                            <div id="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel" style="text-align: center"><b>List of
-                                        Users</b></h4>
-                                    <input type="checkbox" name="signorder" id="signorder" style="margin-left: 245px;"> <b>Set signing order</b>
-                                    <input class="searchbox" id="search_bar" type="text" placeholder="Search User"
-                                           name="search" style="font-size: 15px"/>
-                                </div>
-                                <div class="modal-body" style="width: 500px" id="user_list_div_id_name">
-
-                                </div>
-                                <div class="modal-footer" style="height: 80px;padding: 20px">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" name="email_id" id="email_id"
-                                            data-dismiss="modal">Send Email
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<div class="modal fade" id="myModal modal" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog" style="width: 1000px">
+							<div id="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="myModalLabel"
+										style="text-align: center">
+										<b>List of Users</b>
+									</h4>
+									<input type="checkbox" name="signorder" id="signorder"
+										style="margin-left: 245px;"> <b>Set signing order</b>
+									<input class="searchbox" id="search_bar" type="text"
+										placeholder="Search User" name="search"
+										style="font-size: 15px" />
+								</div>
+								<div class="modal-body" style="width: 500px"
+									id="user_list_div_id_name"></div>
+								<div class="modal-footer" style="height: 80px; padding: 20px">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary" name="email_id"
+										id="email_id" data-dismiss="modal">Send Email</button>
+								</div>
+							</div>
+						</div>
+					</div>
 					<form action="Intake_scr_Download" method="post">
-      					<input type="hidden" name="File_Name" id="File_Name">
-      					<input type="submit" id="scr_submit" style="display:none;">
+						<input type="hidden" name="File_Name" id="File_Name"> <input
+							type="submit" id="scr_submit" style="display: none;">
 					</form>
 				</div>
 				<div class="modal-footer">
 					<!-- <button type="button" class="btn btn-primary" id="update_submit"
 						data-bs-dismiss="modal">Add</button> -->
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary"
+						data-bs-dismiss="modal">Ok</button>
 
 				</div>
 			</div>
@@ -431,14 +437,14 @@
 	<div>
 		<input type="text" id="demo" style="display: none;">
 	</div>
-	
-	
+
+
 	<script>
-	$(document).ready(function(){
-		$("#appChange").on('change', function(e) {
-			 $('#withoutPhase, #withPhase').toggleClass('display');
+		$(document).ready(function() {
+			$("#appChange").on('change', function(e) {
+				$('#withoutPhase, #withPhase').toggleClass('display');
+			});
 		});
-	});
 	</script>
 
 
@@ -482,7 +488,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
 		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 		crossorigin="anonymous"></script>
-	
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
 	<link rel="stylesheet"
@@ -494,6 +500,6 @@
 		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
 		rel="stylesheet">
 	<script src="js/notification/notification.js"></script>
-	
+
 </body>
 </html>
