@@ -1,3 +1,4 @@
+<%@page import="org.owasp.encoder.Encode" %>
 <html lang="en">
 <head>
     <title>PM-Dashboard</title>
@@ -707,9 +708,9 @@
         <span data-notify="icon" class="fa fa-2x fa-gift"></span> <span data-notify="title"></span> <span
             data-notify="message">Welcome to <b>Project Manager Dashboard</b> - a beautiful Project Manager  Panel for your  project.</span><a
             href="#" target="_blank" data-notify="url"></a></div>
-    <input type="hidden" id="projectname" name="projectname" value="<%=prjname%>">
-    <input type="hidden" id="appname" name="appname" value="<%=appname%>">
-    <input type="hidden" id="role" name="role" value="<%=role%>">
+    <input type="hidden" id="projectname" name="projectname" value="<%=Encode.forHtmlAttribute(prjname)%>">
+    <input type="hidden" id="appname" name="appname" value="<%=Encode.forHtmlAttribute(appname)%>">
+    <input type="hidden" id="role" name="role" value="<%=Encode.forHtmlAttribute(role)%>">
     <script>
         $(function () {
 

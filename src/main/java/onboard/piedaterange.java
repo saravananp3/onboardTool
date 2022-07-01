@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.util.*;
 import java.sql.Connection;
-
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
@@ -29,7 +29,7 @@ public class piedaterange extends HttpServlet {
 	ArrayList<String> Range_dates = new ArrayList<String>();
 	ArrayList<String> Range_dates_conv = new ArrayList<String>();
 	ArrayList<String> result_projects = new ArrayList<String>();
-	String Res="";
+	static String Res="";
 	
 	private static final long serialVersionUID = 1L;
        
@@ -53,21 +53,21 @@ public class piedaterange extends HttpServlet {
 	public void Db_Connection() {
 		//System.out.println("Inside dbconnection funtion");
 		try {
-			DBconnection d;
-			Connection con;
-			d = new DBconnection();
-			con = (Connection) d.getConnection();
-			Statement week = con.createStatement();
+			DBconnection dBconnection = new DBconnection();
+			Connection connection = (Connection) dBconnection.getConnection();
+			PreparedStatement week = connection.prepareStatement("select projectname,Intdate from AppEmphazize_ProjectDetails");
 			pro_name.clear();
 			int_date.clear();
-			ResultSet rs = week.executeQuery("select projectname,Intdate from AppEmphazize_ProjectDetails ");
+			ResultSet rs = week.executeQuery();
 			while (rs.next()) {
 				
 				pro_name.add(rs.getString(1));
 				int_date.add(rs.getString(2));
 				
 			}
-			con.close();
+			week.close();
+			rs.close();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

@@ -14,6 +14,8 @@ import onboard.DBconnection;
 public class OpportunityListService {
 
 	public static JsonArray OpportunityListDetails(String Projects) {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		JsonArray jsonArray1 = new JsonArray();
 		try {
@@ -25,8 +27,8 @@ public class OpportunityListService {
 			if(Projects.equals("all"))
 			{
 			 String SelectOpportunityQuery ="select * from opportunity_info where column_name = 'appName'";
-			 Statement st = connection.createStatement();
-			 ResultSet rs = st.executeQuery(SelectOpportunityQuery);
+			 st = connection.prepareStatement(SelectOpportunityQuery);
+			 rs = st.executeQuery();
 			 
 			 while(rs.next()) {
 				 JsonObject jsonObj = new JsonObject();
@@ -38,6 +40,8 @@ public class OpportunityListService {
 			 jsonArray1.add(jsonArray);
 			 jsonArray1.add(new OpportunityDropdownOptions().getOptions());
 			}
+			st.close();
+			rs.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -48,6 +52,8 @@ public class OpportunityListService {
 	
 	public static JsonArray getWaveName() throws SQLException {
 		
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		
 		DBconnection dBconnection = null;
 		Connection connection = null;
@@ -58,12 +64,12 @@ public class OpportunityListService {
 			connection = (Connection) dBconnection.getConnection();
 			
 			String selectQuery = "select * from governance_info where column_name = 'waveName';";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = connection.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			
-			while(rs.next()) 
+			while(rs.next()) { 
 				jsonArray.add(rs.getString("value"));
-			
+			}
 			st.close();
 			rs.close();
 		}
@@ -115,6 +121,8 @@ public class OpportunityListService {
 	public static JsonArray getResources() {
 		JsonArray jsonArray = new JsonArray();
 		JsonArray jsonArray1 = new JsonArray();
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		try {
 			
 			DBconnection dBconnection = new DBconnection();
@@ -122,8 +130,8 @@ public class OpportunityListService {
 			
 		
 			 String SelectResourcesQuery ="select * from users";
-			 Statement st = connection.createStatement();
-			 ResultSet rs = st.executeQuery(SelectResourcesQuery);
+			 st = connection.prepareStatement(SelectResourcesQuery);
+			 rs = st.executeQuery();
 			 
 			 while(rs.next()) {
 				 JsonObject jsonObj = new JsonObject();
@@ -133,7 +141,8 @@ public class OpportunityListService {
 			 System.out.println("Exception------->>>>>--------" + jsonArray);
 			 jsonArray1.add(jsonArray);
 			 jsonArray1.add(new OpportunityDropdownOptions().getOptions());
-	
+			 st.close();
+			 rs.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

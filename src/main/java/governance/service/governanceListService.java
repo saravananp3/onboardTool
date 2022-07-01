@@ -23,14 +23,16 @@ public class governanceListService {
 	}
 
 	public  JsonArray governanceListDetails() {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try {
 			
 			if(waves.equals("all"))
 			{
 			 String selectQuery ="select * from governance_info where column_name = 'waveName'";
-			 Statement st = con.createStatement();
-			 ResultSet rs = st.executeQuery(selectQuery);
+			 st = con.prepareStatement(selectQuery);
+			 rs = st.executeQuery();
 			 
 			 while(rs.next()) {
 				 JsonObject jsonObj = new JsonObject();
@@ -41,6 +43,8 @@ public class governanceListService {
 			 }
 			 
 			}
+			rs.close();
+			st.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

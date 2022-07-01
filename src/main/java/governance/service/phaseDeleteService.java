@@ -273,8 +273,8 @@ public class phaseDeleteService {
 		}
 		if(tableName.equals("phase_info_details"))
 		{	String delete_query = getDelQuery(tableName);
-			Statement st2 = con.createStatement();
-			st2.executeUpdate(delete_query);
+			PreparedStatement st2 = con.prepareStatement(delete_query);
+			st2.executeUpdate();
 			st2.close();
 		}
 		for (int j = 0; j < seqmax - 1; j++) {

@@ -21,6 +21,8 @@ public class IntakeTriageService extends DynamicFields {
 
 	   @Override
 		public JsonArray DataRetrieve(String Id) {
+		   PreparedStatement st1=null;
+		   ResultSet rs1=null;
 			JsonArray jsonArray = new JsonArray();
 			try {
 				DBconnection dBconnection = new DBconnection();
@@ -32,8 +34,8 @@ public class IntakeTriageService extends DynamicFields {
 				ResultSet rs = st.executeQuery();
 				if (!rs.next()){
 					String TemplateQuery = "select * from triage_info_template_details order by seq_no;";
-					Statement st1 = con.createStatement();
-					ResultSet rs1 = st1.executeQuery(TemplateQuery);
+					st1 = con.prepareStatement(TemplateQuery);
+					rs1 = st1.executeQuery();
 					
 					while(rs1.next()) {
 						JsonObject jsonObject = new JsonObject();
@@ -57,13 +59,15 @@ public class IntakeTriageService extends DynamicFields {
 					}
 					IntakeTriageInfoRecordsStorage(Id);
 					new IntakeAssessmentService().DataRetrieve(Id);
+				rs1.close();
+				st1.close();
 				}
 				else
 				{
 					String TemplateQuery = "select * from triage_info where id=? order by seq_no;";
-					PreparedStatement st1 = con.prepareStatement(TemplateQuery);
+					st1 = con.prepareStatement(TemplateQuery);
 					st1.setString(1, Id);
-					ResultSet rs1 = st1.executeQuery();
+					rs1 = st1.executeQuery();
 									
 					while(rs1.next()) {
 						JsonObject jsonObject = new JsonObject();
@@ -83,6 +87,8 @@ public class IntakeTriageService extends DynamicFields {
 						jsonArray.add(jsonObject);
 						
 					}
+				st1.close();
+				rs1.close();
 				}
 
 				
@@ -94,6 +100,8 @@ public class IntakeTriageService extends DynamicFields {
 			return jsonArray;
 		}
 		public static void IntakeTriageInfoRecordsStorage(String id) {
+			PreparedStatement st=null;
+			ResultSet rs=null;
 			try
 			{
 				DBconnection dBconnection = new DBconnection();
@@ -103,8 +111,8 @@ public class IntakeTriageService extends DynamicFields {
 				
 				String SelectRecords = "select * from triage_info_template_details where seq_no>='11' and seq_no<='21'";
 				
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(SelectRecords);
+				st = con.prepareStatement(SelectRecords);
+				rs = st.executeQuery();
 				int seq_num=1;
 				while(rs.next())
 				{
@@ -122,6 +130,8 @@ public class IntakeTriageService extends DynamicFields {
 					preparedStatement1.setString(10, "");
 					preparedStatement1.execute();
 				}
+			rs.close();
+			st.close();
 			}
 			catch(Exception e)
 			{
@@ -417,6 +427,8 @@ public class IntakeTriageService extends DynamicFields {
 		
 		@Override
 		public JsonArray AddTemplateFields(int[] selected_index,String id,String templateMandatory,String umandatory) {
+			  PreparedStatement st1=null;
+			  ResultSet rs1=null;
 		      JsonArray jsonArray = new JsonArray();
 		      JsonArray FinalJson = new JsonArray();
 		      JsonArray jsonAssessment = new JsonArray();
@@ -437,9 +449,9 @@ public class IntakeTriageService extends DynamicFields {
 		    	   
 		    	   String SelectedColumnQuery ="select * from triage_info_template_details;"; 
 		    	   
-		    	   Statement st1 =connection.createStatement(); 
+		    	   st1 =connection.prepareStatement(SelectedColumnQuery);
 		    	   
-		    	   ResultSet rs1 =st1.executeQuery(SelectedColumnQuery); 
+		    	   rs1 =st1.executeQuery(); 
 		    	   
 		    	   while(rs1.next()) {
 		    		
@@ -642,6 +654,8 @@ public class IntakeTriageService extends DynamicFields {
 		      FinalJson.add(jsonArray);
 		      FinalJson.add(jsonAssessment);
 		      System.out.println("Finaljson : "+FinalJson);
+		      st1.close();
+		      rs1.close();
 		      }
 		      catch(Exception e)
 		      {
@@ -652,6 +666,8 @@ public class IntakeTriageService extends DynamicFields {
 		      }
 		public static JsonObject intakeDetailsTriageValidation(String AppName,JsonArray jsonArray,boolean checkMandatory,String APMID,String id)
 		{
+			PreparedStatement st1=null;
+			ResultSet rs1=null;
 			JsonObject jsonObject = new JsonObject();
 			try
 			{
@@ -692,8 +708,8 @@ public class IntakeTriageService extends DynamicFields {
 				if(!CheckAPP)
 				{
 				String CheckQueryAppName = "SELECT * FROM triage_info WHERE COLUMN_NAME = 'app_name';";
-				Statement st1 = connection.createStatement();
-				ResultSet rs1 = st1.executeQuery(CheckQueryAppName);
+				st1 = connection.prepareStatement(CheckQueryAppName);
+				rs1 = st1.executeQuery();
 				while(rs1.next()) {
 					if(rs1.getString("value").equals(AppName))
 					{
@@ -707,6 +723,8 @@ public class IntakeTriageService extends DynamicFields {
 				{
 					IntakeTriageService.IntakeDetailsTriageDetailsSave(jsonArray,id);
 				}
+			rs1.close();
+			st1.close();
 			}
 			catch(Exception e)
 			{
@@ -756,13 +774,15 @@ public class IntakeTriageService extends DynamicFields {
 		@Override
 		 public void OrderingColumnNameBySeq(String ID)
 	     {
+		 	PreparedStatement st=null;
+	     	ResultSet rs=null;
 	   		  try {
 	   		  
 	   		  DBconnection dBconnection = new DBconnection();
 	      	      Connection connection = (Connection) dBconnection.getConnection(); 
 	      	      String SelectQuery ="Select * from triage_info order by seq_no";
-	      	      Statement st = connection.createStatement();
-	      	      ResultSet rs = st.executeQuery(SelectQuery);
+	      	      st = connection.prepareStatement(SelectQuery);
+	      	      rs = st.executeQuery();
 	      	      String startStr = "TriageAddInfo";
 	      	      while(rs.next())
 	      	      {
@@ -783,6 +803,8 @@ public class IntakeTriageService extends DynamicFields {
 	      	    		}
 	      	    	  }
 	      	      }
+	      	      st.close();
+	      	      rs.close();
 	   
 	   	  }
 	   	  catch(Exception e)

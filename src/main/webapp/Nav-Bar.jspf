@@ -48,6 +48,7 @@
 	<%@page import="java.util.Date"%>
 	<%@page import="java.sql.*"%>
 	<%@ page import="onboard.DBconnection"%>
+	<%@page import="org.owasp.encoder.Encode" %>
 	<%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -63,6 +64,8 @@
 	Statement sDate, sTime;
 	try {
 		//String query;
+		PreparedStatement visit_start=null;
+		ResultSet visit_reset=null;
 		HttpSession sessionDetails = request.getSession();
 		String Projects = (String) sessionDetails.getAttribute("projects");
 		System.out.println("projects-------------" + Projects);
@@ -70,8 +73,8 @@
 		DBconnection db = new DBconnection();
 		Connection connectCon = (Connection) db.getConnection();
 		String visit_query1 = "select * from visits";
-		Statement visit_start = connectCon.createStatement();
-		ResultSet visit_reset = visit_start.executeQuery(visit_query1);
+		visit_start = connectCon.prepareStatement(visit_query1);
+		visit_reset = visit_start.executeQuery();
 		int flag1 = 1, knt1 = 0;
 		Date newDate = new Date();
 		SimpleDateFormat fDate, fTime;
@@ -170,7 +173,7 @@
 						aria-labelledby="dropdownMenuLink">
 						<li><a class="dropdown-item" href="#" id="textAlign"><i
 								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
-								in as <br /> <b class="user-ellipsis"><%=userName%></b></a></li>
+								in as <br /> <b class="user-ellipsis"><%=Encode.forHtml(userName)%></b></a></li>
 
 						<li class="mt-5"><a class="dropdown-item li-align" href="#"
 							id="textAlign" onclick="location.href='logout.jsp';"
@@ -185,8 +188,11 @@
 	</nav>
 
 	<%
-	connectCon.close();
 	visit_start.close();
+	visit_reset.close();
+	connectCon.close();
+	
+	
 	}
 
 	catch (Exception e) {

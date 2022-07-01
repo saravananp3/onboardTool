@@ -25,13 +25,15 @@ public class NewOpportunityService {
         return jsonArray;
     }
     public static JsonArray NewOpportunityInfoDataRetrieveService(String randomNumber) {
+		PreparedStatement statementforcheck=null;
+		ResultSet Resultset=null;
         JsonArray jsonArray = new JsonArray();
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             String query = "select * from opportunity_info_Template_details order by seq_no;";
-            Statement statementforcheck = connection.createStatement();
-            ResultSet Resultset = statementforcheck.executeQuery(query);
+			statementforcheck = connection.prepareStatement(query);
+			Resultset = statementforcheck.executeQuery();
             if (Resultset.next()) {
                 //String value = Resultset.getString("column_name").equals("apmid") ? randomNumber
                     //  : Resultset.getString("value");
@@ -64,6 +66,8 @@ public class NewOpportunityService {
                     jsonArray.add(jsonObject2);
                 }
             }
+			statementforcheck.close();
+			Resultset.close();
         } catch (Exception e) {
             System.out.println("Exception--->>" + e);
         }
@@ -71,19 +75,21 @@ public class NewOpportunityService {
     }
     public static int NewOpportunityAddOperationService(String applicationname, String label_name, String column_name,
             String mandatory, String umandatory,String type, int NumberofInputfields, String options) {
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null,rs1=null;
         int max_seq_num = 1;
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             String select_query = "select * from Opportunity_Info_Details  order by seq_no;";
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(select_query);
+			st = connection.prepareStatement(select_query);
+			rs = st.executeQuery();
             String name = "OpportunityAddInfo";
             String randomNumber = OpportunityBean.getRecord_Number();
             if (rs.next()) {
                 String max_seqnum = "select max(seq_no) from Opportunity_Info_Details;";
-                Statement st1 = connection.createStatement();
-                ResultSet rs1 = st1.executeQuery(max_seqnum);
+				st1 = connection.prepareStatement(max_seqnum);
+				rs1 = st1.executeQuery();
                 if (rs1.next()) {
                     max_seq_num = Integer.parseInt(rs1.getString(1));
                     max_seq_num++;
@@ -106,6 +112,10 @@ public class NewOpportunityService {
             preparedStatement1.setString(10, "");
             preparedStatement1.setString(11, umandatory);
             preparedStatement1.execute();
+			st.close();
+			rs.close();
+			st1.close();
+			rs1.close();
         } catch (Exception e) {
             System.out.println("Exception---[info]------" + e);
         }
@@ -148,11 +158,13 @@ public class NewOpportunityService {
                 Connection connection = (Connection) dBconnection.getConnection();
                 String query = "select * from opportunity_info where id='" +"D3S"+AlphaNumericNumber
                         + "' order by seq_no;";
-                Statement statementforcheck = connection.createStatement();
-                ResultSet Resultset = statementforcheck.executeQuery(query);
+				PreparedStatement statementforcheck = connection.prepareStatement(query);
+				ResultSet Resultset = statementforcheck.executeQuery();
                 if (!Resultset.next()) {
                     DuplicateFlag = false;
                 }
+				statementforcheck.close();
+				Resultset.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,19 +176,21 @@ public class NewOpportunityService {
         return "D3S" + AlphaNumericNumber;
     }
     public static void AddingOpportunityRecords(String RecordNumber) {
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null;
         try {
             // Deleting the opportunity_info_details table for adding template for new
             // Opportunity
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             String Deletequery = "delete from opportunity_info_details";
-            Statement st = connection.createStatement();
-            st.executeUpdate(Deletequery);
+			st = connection.prepareStatement(Deletequery);
+			st.executeUpdate();
             // Selecting the records from opportunity_template_info_details to
             // opportunity_info_template_details
             String SelectQuery = "select * from opportunity_info_template_details order by seq_no";
-            Statement st1 = connection.createStatement();
-            ResultSet rs = st1.executeQuery(SelectQuery);
+			st1 = connection.prepareStatement(SelectQuery);
+			rs = st1.executeQuery();
             while (rs.next()) {
                 if (rs.getInt(1) <= 16) {
                     String Opportunity_InsertQuery = "insert into Opportunity_Info_Details (seq_no,Id, prj_name, app_name, options, label_name, column_name, type, mandatory, value)"
@@ -195,20 +209,25 @@ public class NewOpportunityService {
                     prestmt.execute();
                 }
             }
+		st.close();
+		rs.close();
+		st1.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception ---------[info]---------" + e);
         }
     }
     public static JsonObject NewOpportunityModifyOperationService(String label_name, int sequencenumber) {
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null,rs1=null;
         JsonObject jsonobj = new JsonObject();
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             String PreviouslabelQuery = "select label_name from Opportunity_Info_Details where seq_no ='"
                     + sequencenumber + "';";
-            Statement st1 = connection.createStatement();
-            ResultSet rs1 = st1.executeQuery(PreviouslabelQuery);
+			st1 = connection.prepareStatement(PreviouslabelQuery);
+			rs1 = st1.executeQuery();
             if (rs1.next()) {
                 jsonobj.addProperty("previous_label_name", rs1.getString(1));
             }
@@ -218,8 +237,8 @@ public class NewOpportunityService {
             preparedStmt1.setString(1, label_name);
             preparedStmt1.execute();
             String SelectQuery = "select * from Opportunity_Info_Details where seq_no ='" + sequencenumber + "';";
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(SelectQuery);
+			st = connection.prepareStatement(SelectQuery);
+			rs = st.executeQuery();
             int i = 1;
             if (rs.next()) {
                 ResultSetMetaData rsmd = rs.getMetaData();
@@ -228,6 +247,10 @@ public class NewOpportunityService {
                     i++;
                 }
             }
+		st.close();
+		rs.close();
+		st1.close();
+		rs1.close();
         } catch (Exception e) {
             System.out.println("Exception---->>>>" + e);
         }
@@ -235,6 +258,8 @@ public class NewOpportunityService {
         return jsonobj;
     }
     public static void NewOportunityDeleteOperationService(int delete_seqnum) {
+		PreparedStatement st=null,st1=null,st2=null;
+		ResultSet rs=null,rs1=null;
         try {
             int seqmax = 0;
             DBconnection dBconnection = new DBconnection();
@@ -262,14 +287,14 @@ public class NewOpportunityService {
             ArrayList<String> arr_value_split = new ArrayList<String>();
             ArrayList<String> arr_umandatory_split = new ArrayList<String>();
             String select_query = "select max(seq_no) from opportunity_info_details order by seq_no;";
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(select_query);
+			st = connection.prepareStatement(select_query);
+			rs = st.executeQuery();
             if (rs.next()) {
                 seqmax = Integer.parseInt(rs.getString(1));
             }
             String query = "select * from opportunity_info_details order by seq_no;";
-            Statement st1 = connection.createStatement();
-            ResultSet rs1 = st1.executeQuery(query);
+			st1 = connection.prepareStatement(query);
+			rs1 = st1.executeQuery();
             while (rs1.next()) {
                 arr_seqmax.add(rs1.getInt("seq_no"));
                 arr_id.add(rs1.getString("Id"));
@@ -311,8 +336,8 @@ public class NewOpportunityService {
                 }
             }
             String delete_query = "delete from opportunity_info_details;";
-            Statement st2 = connection.createStatement();
-            st2.executeUpdate(delete_query);
+			st2 = connection.prepareStatement(delete_query);
+			st2.executeUpdate();
             for (int j = 0; j < seqmax - 1; j++) {
                 String insert_query = "insert into opportunity_info_details (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
                 PreparedStatement preparedStatement1 = connection.prepareStatement(insert_query);
@@ -331,13 +356,19 @@ public class NewOpportunityService {
             }
             st2.close();
             OrderingColumnNameBySeq();
+			st.close();
+			rs.close();
+			st1.close();
+			rs1.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception---->>>" + e);
         }
     }
-      public static JsonArray AddTemplateFields(int[] selected_index) { JsonArray
-      jsonArray = new JsonArray();
+	public static JsonArray AddTemplateFields(int[] selected_index) { 
+		PreparedStatement st1=null,st2=null,st4=null,st=null;
+		ResultSet rs1=null,rs2=null,rs4=null,rs=null;
+		JsonArray jsonArray = new JsonArray();
       try { 
       ArrayList<Integer> seq_no = new ArrayList<Integer>();
       ArrayList<String> temp_column_name = new ArrayList<String>();
@@ -345,8 +376,8 @@ public class NewOpportunityService {
       DBconnection dBconnection = new DBconnection();
       Connection connection = (Connection) dBconnection.getConnection();
       String SelectedColumnQuery ="select * from opportunity_info_template_details;"; 
-      Statement st1 = connection.createStatement(); 
-      ResultSet rs1 = st1.executeQuery(SelectedColumnQuery);
+		st1 = connection.prepareStatement(SelectedColumnQuery);
+		rs1 = st1.executeQuery();
       while(rs1.next()) {
       temp_column_name.add(rs1.getString("column_name"));
       }
@@ -355,14 +386,14 @@ public class NewOpportunityService {
       }
       ArrayList<String> infodetails_column = new ArrayList<String>();
       String SelectQuery1 = "select * from opportunity_info_details order by seq_no;";
-      Statement st4 = connection.createStatement(); 
-      ResultSet rs4 = st4.executeQuery(SelectQuery1); 
+		st4 = connection.prepareStatement(SelectQuery1);
+		rs4 = st4.executeQuery(); 
       while(rs4.next()) {
       infodetails_column.add(rs4.getString("column_name"));
       } 
       String SelectQuery = "select * from opportunity_info_details order by seq_no;"; 
-      Statement st2 = connection.createStatement(); 
-      ResultSet rs2 = st2.executeQuery(SelectQuery);
+		st2 = connection.prepareStatement(SelectQuery);
+		rs2 = st2.executeQuery();
       ArrayList<String> existing_column = new ArrayList<String>();
       ArrayList<String> add_column = new ArrayList<String>(); 
       ArrayList<String> delete_column = new ArrayList<String>(); 
@@ -409,8 +440,8 @@ public class NewOpportunityService {
       jsonArray.add(del_seq_num.substring(0,del_seq_num.length()-1));
       //adding the checked records in opportunity info table 
       String MaxSeqnoQuery = "select max(seq_no) from opportunity_info_details order by seq_no"; 
-      Statement st = connection.createStatement(); 
-      ResultSet rs = st.executeQuery(MaxSeqnoQuery); 
+			st = connection.prepareStatement(MaxSeqnoQuery);
+			rs = st.executeQuery(); 
       int max_seq = 1; 
       if(rs.next()) { 
           max_seq = rs.getInt(1); 
@@ -450,6 +481,14 @@ public class NewOpportunityService {
           } 
         } 
       }
+	st.close();
+	rs.close();
+	st1.close();
+	rs1.close();
+	st2.close();
+	rs2.close();
+	st4.close();
+	rs4.close();
       }
       catch(Exception e) {
           e.printStackTrace();
@@ -458,6 +497,8 @@ public class NewOpportunityService {
       return jsonArray; 
       }
       public static JsonArray AddTemplateFields1(int[] selected_index,String tempmandatory,String umandatory) {
+		PreparedStatement st=null,st1=null,st2=null;
+		ResultSet rs=null,rs1=null,rs2=null;
       JsonArray jsonArray = new JsonArray();
       try
       {
@@ -467,8 +508,8 @@ public class NewOpportunityService {
            DBconnection dBconnection = new DBconnection();
            Connection connection = (Connection) dBconnection.getConnection(); 
            String SelectedColumnQuery ="select * from opportunity_info_template_details;"; 
-           Statement st1 =connection.createStatement(); 
-           ResultSet rs1 =st1.executeQuery(SelectedColumnQuery); 
+			st1 =connection.prepareStatement(SelectedColumnQuery);
+			rs1 =st1.executeQuery(); 
            while(rs1.next()) {
             temp_column_name.add(rs1.getString("column_name")); 
             }
@@ -478,8 +519,8 @@ public class NewOpportunityService {
            String delete_seq_num = ""; 
            String delete_column_name ="";
            String CheckQuery = "select * from opportunity_info_details order by seq_no";
-           Statement st2 = connection.createStatement();
-           ResultSet rs2 = st2.executeQuery(CheckQuery);
+			st2 = connection.prepareStatement(CheckQuery);
+			rs2 = st2.executeQuery();
            boolean check_first_occurance = true;
            while(rs2.next())
            {
@@ -512,8 +553,8 @@ public class NewOpportunityService {
                delete_column_name = delete_column_name.substring(0,delete_column_name.length()-1);
            jsonArray.add(delete_column_name);
            String MaxSeqnoQuery = "select max(seq_no) from opportunity_info_details order by seq_no"; 
-              Statement st = connection.createStatement(); 
-              ResultSet rs = st.executeQuery(MaxSeqnoQuery); 
+			st = connection.prepareStatement(MaxSeqnoQuery);
+			rs = st.executeQuery(); 
               int max_seq = 1; 
               if(rs.next()) { 
                   max_seq = rs.getInt(1); 
@@ -571,6 +612,12 @@ public class NewOpportunityService {
                }
         }
       }
+		st.close();
+		rs.close();
+		st1.close();
+		rs1.close();
+		st2.close();
+		rs2.close();
       }
       catch(Exception e)
       {
@@ -581,12 +628,14 @@ public class NewOpportunityService {
       }
       public static void OrderingColumnNameBySeq()
       {
+		PreparedStatement st=null;
+		ResultSet rs=null;
           try {  
               DBconnection dBconnection = new DBconnection();
               Connection connection = (Connection) dBconnection.getConnection(); 
               String SelectQuery ="Select * from Opportunity_Info_Details order by seq_no";
-              Statement st = connection.createStatement();
-              ResultSet rs = st.executeQuery(SelectQuery);
+			st = connection.prepareStatement(SelectQuery);
+			rs = st.executeQuery();
               String startStr = "OpportunityAddInfo";
               while(rs.next())
               {

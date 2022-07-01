@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import File_Utility.FileUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -20,8 +20,7 @@ public class deletePDFservlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JsonObject jsonObject = new JsonObject();
 		String path = request.getParameter("path");
-		
-		File file = new File(path);
+		File file = FileUtils.createFile(path);
 		boolean flag = false;
 		if(file.exists()) {
 			file.delete();

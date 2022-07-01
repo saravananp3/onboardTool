@@ -63,13 +63,13 @@ public class dynamic_addition extends HttpServlet {
 		
 		String number = request.getParameter("number"+Pid);
 		
-		if(number==null || number=="")
+		if(number.equals(null) || number.equals(""))
 			number="0";
 		String Rnumber = request.getParameter("radio_number"+Pid);
-		if(Rnumber==null || Rnumber=="")
+		if(Rnumber.equals(null) || Rnumber.equals(""))
 			Rnumber="0";
 		String Dnumber = request.getParameter("drop_number"+Pid);
-		if(Dnumber==null || Dnumber=="")
+		if(Dnumber.equals(null) || Dnumber.equals(""))
 			Dnumber="0";
 		
 		for(int i=1;i<=Integer.parseInt(number);i++)
@@ -121,7 +121,7 @@ public class dynamic_addition extends HttpServlet {
 	        catch (Exception e)
 	        {
 	        	
-	        	  System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
+	        	 // System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
 	        }
 	          
 		  if(servlet_name.equals("Business")){

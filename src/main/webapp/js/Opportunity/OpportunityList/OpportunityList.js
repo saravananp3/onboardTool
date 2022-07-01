@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	var url_string=window.location.href;
+	var modulecategory=url_string.substr(url_string.indexOf("=") + 1)
+	console.log("Module Category",modulecategory);
     $(document).on('click', '.addClass', function(){
         var index = $(this).index('.addClass');
         $(".myDropdown").eq(index).hide();
@@ -6,8 +9,10 @@ $(document).ready(function(){
         $('#oppNameId').val(oppName);
         $('#existWaveSeqNum').val(index);
         $('#addWaveBtnId').click();
+        
     });
-    
+     if(modulecategory!="Intake")
+    { 
      $.ajax({
             url: "OpportunityListServlet",
             type: 'POST',
@@ -85,4 +90,5 @@ $(document).ready(function(){
 //       $('.activeIcon').css('color','#fff');
 //       
 //   });
+}
 });

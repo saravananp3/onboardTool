@@ -46,6 +46,7 @@ import exportPdf.waterMarkConditions;
 import net.sf.dynamicreports.report.constant.FontName;
 import onboard.DBconnection;
 import com.itextpdf.kernel.font.PdfFont;
+import File_Utility.FileUtils;
 public class exportPdfService extends jsonToHtmlContent {
     DBconnection dBconnection = null;
     Connection con = null;
@@ -134,7 +135,7 @@ public class exportPdfService extends jsonToHtmlContent {
         int counter = 1;
         String file_name= fileName;
         while(flag) {
-            if(!new File(downloadDirectory+File.separator+file_name+".pdf").exists()) {
+            if(!FileUtils.createFile(downloadDirectory+File.separator+file_name+".pdf").exists()) {
             flag =false;
             }
             else {

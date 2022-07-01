@@ -111,6 +111,7 @@ body {
 		<%@page import="java.util.Date"%>
 		<%@page import="onboard.DBconnection"%>
 		<%@page import="java.util.Calendar"%>
+		<%@page import="org.owasp.encoder.Encode" %>
 		<%
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
@@ -201,7 +202,7 @@ body {
 
 							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
 								class="glyphicon glyphicon-home"></span> Home</a> >> <a
-								href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a>>><a
+								href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><%=Encode.forHtml(OpportunityName)%></a>>><a
 								href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff">Intake</a> >> Opportunity
 								
 						</div>

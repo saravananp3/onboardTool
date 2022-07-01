@@ -469,6 +469,8 @@ pointer-events:all;
     Statement st,st1;
     try{
         String query;
+        PreparedStatement visit_st=null;
+        ResultSet visit_rs=null;
         HttpSession details=request.getSession();
         String Projets=(String)details.getAttribute("projects");
         System.out.println("projects-------------"+Projets);
@@ -476,8 +478,8 @@ pointer-events:all;
         DBconnection d=new DBconnection();
         Connection con = (Connection)d.getConnection();
         String visit_query="select * from visits";
-        Statement visit_st = con.createStatement();
-        ResultSet visit_rs = visit_st.executeQuery(visit_query);
+        visit_st = con.prepareStatement(visit_query);
+        visit_rs = visit_st.executeQuery();
         int flag=1,knt=0;
         Date date = new Date();
         SimpleDateFormat ft,ft1;
@@ -773,10 +775,13 @@ pointer-events:all;
             <%
                 {
                     int application_count=0;
-                    if(Projets=="all") {
+                    PreparedStatement projectCountst=null;
+                    ResultSet projectCountqyery=null;
+                    if(Projets.equals("all")) {
+
                         String projectCount = "select count(*) from appemphazize_projectdetails";
-                        Statement projectCountst = con.createStatement();
-                        ResultSet projectCountqyery = projectCountst.executeQuery(projectCount);
+                        projectCountst = con.prepareStatement(projectCount);
+                        projectCountqyery = projectCountst.executeQuery();
                         if (projectCountqyery.next()) {
                             application_count = Integer.parseInt(projectCountqyery.getString(1));
                         }
@@ -794,7 +799,10 @@ pointer-events:all;
                         }
                     }
             %>
-             <%} %>
+             <%
+             projectCountst.close();
+             projectCountqyery.close();
+                } %>
             <div class="main-page">
                 <div class="container">
                   
@@ -825,8 +833,10 @@ pointer-events:all;
                                         </ul>
                                       </div>
                                         <%
-                                                con.close();
+                                                
                                                 visit_st.close();
+                                        		visit_rs.close();	
+                                        		con.close();	
     }
 
 

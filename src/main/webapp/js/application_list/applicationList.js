@@ -9,6 +9,10 @@ var num = 0;
 $(document).ready(function() {
     getDataWithOutPhaseAndWave();
 });
+$('#cancelwithoutphase').click(function(){
+$('#applicationListWithoutPhase').empty();
+getDataWithOutPhaseAndWave();
+});
 function getDataWithOutPhaseAndWave() {
     $.ajax({
         url: "PlanAndPriorityWithoutPhaseWaveServlet",

@@ -471,6 +471,7 @@ color:#fff;
 <%@page import="java.util.Date" %>
 <%@page import="java.sql.*"%>
 <%@ page import="onboard.DBconnection" %>
+<%@page import="org.owasp.encoder.Encode"%>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     response.setHeader("Pragma", "no-cache");
@@ -484,7 +485,8 @@ color:#fff;
     String frole=(String)role_ses.getAttribute("role");
     int sumcount=0;
     Statement st,st1;
-    try{
+    try{PreparedStatement visit_st=null;
+    	ResultSet visit_rs=null;
         String query;
         HttpSession details=request.getSession();
         String Projets=(String)details.getAttribute("projects");
@@ -493,8 +495,8 @@ color:#fff;
         DBconnection d=new DBconnection();
         Connection con = (Connection)d.getConnection();
         String visit_query="select * from visits";
-        Statement visit_st = con.createStatement();
-        ResultSet visit_rs = visit_st.executeQuery(visit_query);
+        visit_st = con.prepareStatement(visit_query);
+        visit_rs = visit_st.executeQuery();
         int flag=1,knt=0;
         Date date = new Date();
         SimpleDateFormat ft,ft1;
@@ -574,7 +576,7 @@ color:#fff;
                             String uname=(String)details.getAttribute("username");
                             String role=(String)details.getAttribute("role");%>
 
-                        <li><a href="#"><span id="nav_userid"><%=uname%>&nbsp;</span>logged in as &nbsp;<span id='nav_role'><%=role%></span></a></li>
+                       <%--  <li><a href="#"><span id="nav_userid"><%=Encode.forHtml(uname)%> </span>logged in as <span id='nav_role'><%=Encode.forHtml(role)%></span></a></li> --%>
                         <li><a href="Logout" class="text-center"> Logout</a> </li>
                     </ul>
                 </div>
@@ -732,9 +734,10 @@ color:#fff;
                             </div>
                   
                                       </div>
-                                        <%
+                                        <%		visit_st.close();
+                                        		visit_rs.close();
                                                 con.close();
-                                                visit_st.close();
+                                               
     }
 
 

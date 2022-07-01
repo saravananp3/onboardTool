@@ -44,7 +44,7 @@ public class AddTemplateFieldsIntakeTriageSummary extends HttpServlet {
 		String id = (String)details.getAttribute("ID");
 		String selected_index[] = request.getParameter("Selected_Index").split(",");
 		int[] Sel_seq = new int[selected_index.length];
-		if(selected_index[0]!="0"&&selected_index.length!=0&&selected_index[0]!="")
+		if(!selected_index[0].equals("0")&&selected_index.length!=0&&!selected_index[0].equals(""))
 		{
 		for(int i = 0; i< selected_index.length; i++)
 		 {

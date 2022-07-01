@@ -4,10 +4,12 @@ $(document).ready(function()
 	if(modulecategory=="Intake")
     {
 	var category = "Intake";
-    var phase = "All";
-    var wave = "All";
-    filterAjaxCall(category,phase,wave);
+    var phases = "All";
+    var waves = "All";
+    filterAjaxCall(category,phases,waves);
     $("#category").val(category);
+    $("#phase").val(phases);
+    $("#wave").val(waves);
 	}
     
 });

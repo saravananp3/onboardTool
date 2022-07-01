@@ -80,8 +80,10 @@ public class archiveRetentionDataRetrieve {
 		}
 		return jsonObj;
 	}
-	private void checkTempTable()
+	private void checkTempTable() throws SQLException
 	{
+		PreparedStatement st1=null;
+		ResultSet rs1=null;
 		try
 		{
 			String selectQuery = "select * from Archive_Retention_Info where OppId = ? order by seq_no";
@@ -92,8 +94,8 @@ public class archiveRetentionDataRetrieve {
 			if(!rs.next())
 			{
 				String TempTable ="select * from Archive_Retention_Template_details;";
-				Statement st1 = con.createStatement();
-				ResultSet rs1 = st1.executeQuery(TempTable);
+				st1 = con.prepareStatement(TempTable);
+				rs1 = st1.executeQuery();
 				while(rs1.next())
 				{
 				 String InsertQuery = "insert into Archive_Retention_Info (seq_no, OppId, prjName, app_name, retentionCheck, retentionLevel, conditions, dateUsedType, dateUsed, descp)"
@@ -112,12 +114,17 @@ public class archiveRetentionDataRetrieve {
 	             prestmt.execute();
 	             prestmt.close();
 				}
+				rs1.close();
+				st1.close();
 			}
+			
+			
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
+		
 	}
 	private JsonArray getRetentionInfo()
 	{

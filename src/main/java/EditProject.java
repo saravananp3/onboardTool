@@ -10,6 +10,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+import org.owasp.encoder.Encode;
 
 import onboard.DBconnection;
 
@@ -71,7 +72,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 				
     String id = request.getParameter("pid");
 String projectname = request.getParameter("projectname");
-logger.info("modified project "+projectname); 
+logger.info("modified project "+Encode.forJava(projectname)); 
         String descr = request.getParameter("descr");
         String appno = request.getParameter("appno");
         String Startdate = request.getParameter("Startdate");
@@ -128,7 +129,7 @@ try
   catch (Exception e)
         {
          
-	  System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
+//	  System.err.println("[ERROR]-----Got an exception!"+formatter.format(date)+"-----"+e.getMessage()+"----[ERROR]");
         }
         // return response
         response.sendRedirect("AppEmphasize_Application.jsp");

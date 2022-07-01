@@ -17,6 +17,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import org.apache.log4j.MDC;
+import org.owasp.encoder.Encode;
 
 import bean.PriorityComparator;
 import bean.ProjectComplexity;
@@ -72,7 +73,7 @@ public class Displaydb extends HttpServlet {
 		MDC.put("USERID", userid);
 		MDC.put("USERROLE", u_role);
 		String prj_name = request.getParameter("prj_name");
-		logger.info("modified project "+prj_name);
+		logger.info("modified project "+Encode.forJava(prj_name));
 		String IA_lic_cst = request.getParameter("IA_lic_cst");
 		String IA_maint_cst = request.getParameter("IA_maint_cst");
 		String Infrastrct_cst = request.getParameter("Infrastrct_cst");
@@ -279,8 +280,8 @@ public class Displaydb extends HttpServlet {
 			app_details.setAttribute("proj_priorities", projectPriorities);
 			
 		} catch (Exception e) {
-			System.err.println("[ERROR]-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage()
-					+ "----[ERROR]");
+			//System.err.println("[ERROR]-----Got an exception!" + formatter.format(date) + "-----" + e.getMessage()
+				//	+ "----[ERROR]");
 			e.printStackTrace();
 		}
 		response.sendRedirect("AppEmphasize_PrioritizedApplications.jsp");

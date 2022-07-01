@@ -520,6 +520,7 @@ background:#1565c0 important;
 	<%@page import="java.util.Date"%>
 	<%@page import="java.sql.*"%>
 	<%@ page import="onboard.DBconnection"%>
+	<%@page import="org.owasp.encoder.Encode" %>
 	<%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -529,6 +530,8 @@ background:#1565c0 important;
 	}
 	%>
 	<%
+	PreparedStatement visit_start=null;
+	ResultSet visit_reset=null;
 	HttpSession role_session = request.getSession();
 	String frole1 = (String) role_session.getAttribute("role");
 	//int sumcount1=0;
@@ -542,8 +545,8 @@ background:#1565c0 important;
 		DBconnection db = new DBconnection();
 		Connection connectCon = (Connection) db.getConnection();
 		String visit_query1 = "select * from visits";
-		Statement visit_start = connectCon.createStatement();
-		ResultSet visit_reset = visit_start.executeQuery(visit_query1);
+		visit_start = connectCon.prepareStatement(visit_query1);
+		visit_reset = visit_start.executeQuery();
 		int flag1 = 1, knt1 = 0;
 		Date newDate = new Date();
 		SimpleDateFormat fDate, fTime;
@@ -637,7 +640,7 @@ background:#1565c0 important;
 						<li><a class="dropdown-item" href="#" id="textAlign"><i
 								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
 								in as <br />
-							<b><%=userName%></b></a></li>
+							<b><%=Encode.forHtml(userName)%></b></a></li>
 						<hr style="margin-left: 0px;" />
 						<li><a class="dropdown-item li-align" href="#" id="textAlign"
 							onclick="location.href='Login.jsp';"><i
@@ -653,11 +656,16 @@ background:#1565c0 important;
 
 <%
 	connectCon.close();
-	visit_start.close();
+	
 	}
 
 	catch (Exception e) {
 	e.printStackTrace();
+	}
+	finally{
+	
+		visit_start.close();
+		visit_reset.close();
 	}
 	%>
 

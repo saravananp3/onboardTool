@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import org.owasp.encoder.Encode;
 
 import onboard.DBconnection;
 
@@ -37,11 +38,9 @@ public class Weekly_linechart extends HttpServlet {
 	ArrayList<String> end_dates = new ArrayList<String>();
 	ArrayList<String> uname = new ArrayList<String>();
 	ArrayList<Integer> final_count = new ArrayList<Integer>();
-	String month = "";
-	String year = "";
-	String user_id="";
-	DBconnection d;
-	Connection con;
+	static String month = "";
+	static String year = "";
+	static String user_id="";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -85,18 +84,22 @@ public class Weekly_linechart extends HttpServlet {
 			db_date.clear();
 			db_count.clear();
 			uname.clear();
-			d = new DBconnection();
-			con = (Connection) d.getConnection();
-			Statement week = con.createStatement();
-			ResultSet rs_week = week.executeQuery("select date,count,uname from  visits ");
+			PreparedStatement week=null;
+			ResultSet rs_week=null;
+			DBconnection dBconnection = new DBconnection();
+			Connection connection = (Connection) dBconnection.getConnection();
+			week = connection.prepareStatement("select date,count,uname from  visits");
+			rs_week = week.executeQuery();
 			while (rs_week.next()) {
 				db_date.add(rs_week.getString(1));
 				db_count.add(rs_week.getString(2));
 				uname.add(rs_week.getString(3));
 			}
-			con.close();
+			week.close();
+			rs_week.close();
+			connection.close();
 		} catch (Exception e) {
-			 System.err.println("[ERROR]-----Got an exception!-----"+e.getMessage()+"----[ERROR]");
+			System.err.println("[ERROR]-----Got an exception!-----"+e.getMessage()+"----[ERROR]");
 		}
 	}
 
@@ -172,9 +175,9 @@ public class Weekly_linechart extends HttpServlet {
 	}
 
 	public void Visits_Calculation() {
-		
+
 		final_count.clear();
-		
+
 		//System.out.println("inside visits_calculation function");
 		for (int i = 0; i < from_dates.size(); i++) {
 			String s = from_dates.get(i);
@@ -184,10 +187,10 @@ public class Weekly_linechart extends HttpServlet {
 			LocalDate end = LocalDate.parse(e);
 			List<LocalDate> totalDates = new ArrayList<>();
 			while (!start.isAfter(end)) {
-				
+
 				totalDates.add(start);
 				for (int k = 0; k < db_date.size(); k++) {
-					
+
 					String s1 = start.toString();
 					if (s1.equals(db_date.get(k)) && user_id.equals(uname.get(k))) {
 						count = count + Integer.parseInt(db_count.get(k));
@@ -196,7 +199,7 @@ public class Weekly_linechart extends HttpServlet {
 					}
 				}
 				start = start.plusDays(1);
-				
+
 			}
 			final_count.add(count);
 		}
@@ -204,25 +207,22 @@ public class Weekly_linechart extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-	    Date date = new Date();  
-	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Weekly Linechart servlet-----[INFO]");  
+		Date date = new Date();  
+		System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Weekly Linechart servlet-----[INFO]");  
 		String text="";
 		month = request.getParameter("field1");
 		year = request.getParameter("field2");
 		user_id=request.getParameter("field3");
-		Db_Connection();
-		Date_Formation();
-		Visits_Calculation();
+
 		String result = "";
 		for (int i = 0; i < from_dates.size(); i++) {
 			result = result + from_dates.get(i) + "," + final_count.get(i).toString() + ",";
 		}
-		
 		//System.out.println(result.substring(0, result.length() - 1));
-		text = result.substring(0, result.length() - 1);
+		text = result.substring(0, result.length());
 		response.setContentType("text/plain"); // Set content type of the response so that jQuery knows what it can// expect.
 		response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-		response.getWriter().write(text);
+		response.getWriter().write(Encode.forHtml(text));
 
 	}
 }

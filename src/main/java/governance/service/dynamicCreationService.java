@@ -54,8 +54,9 @@ public class dynamicCreationService {
 		return jsonObject;
 	}
 	
-	public JsonObject CreateDynamicPhase() {
-		
+	public JsonObject CreateDynamicPhase() throws SQLException {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonObject jsonObject = new JsonObject();
 		
 		try {
@@ -72,8 +73,8 @@ public class dynamicCreationService {
 			{
 				JsonArray jsonArray = new JsonArray();
 				String selectQuery = "select * from phase_info_template_details order by seq_no";
-				Statement st =con.createStatement();
-				ResultSet rs = st.executeQuery(selectQuery);
+				st =con.prepareStatement(selectQuery);
+				rs = st.executeQuery();
 				
 				while(rs.next())
 				{
@@ -100,8 +101,7 @@ public class dynamicCreationService {
 					
 		            preparedStatement1.close();
 				}
-				rs.close();
-				st.close();
+				
 				
 			}
 			
@@ -111,11 +111,18 @@ public class dynamicCreationService {
 			e.printStackTrace();
 			
 		}
+		finally
+		{
+			rs.close();
+			st.close();
+		}
 		return jsonObject;
 	}
 
-	private String getPhaseUUID()
+	private String getPhaseUUID() throws SQLException
 	{
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		String PhaseId="";
 		try
 		{
@@ -125,8 +132,8 @@ public class dynamicCreationService {
 			PhaseId=UUID.randomUUID().toString();
 			//checking the wave id in Governance_Info
 			String selectQuery = "select * from phase_info where column_name='phaseId' and value='"+PhaseId+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			if(!rs.next())
 			checkPhaseId =false;
 			}
@@ -135,11 +142,16 @@ public class dynamicCreationService {
 		{
 			e.printStackTrace();
 		}
+		finally {
+			st.close();
+			rs.close();
+		}
 		return PhaseId;
 	}
 	
-	public JsonObject CreateDynamicWave() {
-		
+	public JsonObject CreateDynamicWave() throws SQLException {
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonObject jsonObject = new JsonObject();
 		boolean saveStatus = false;	
 		try {
@@ -155,8 +167,8 @@ public class dynamicCreationService {
 			{
 				JsonArray jsonArray = new JsonArray();
 				String selectQuery = "select * from governance_info_template_details order by seq_no";
-				Statement st =con.createStatement();
-				ResultSet rs = st.executeQuery(selectQuery);
+				st =con.prepareStatement(selectQuery);
+				rs = st.executeQuery();
 				
 				while(rs.next())
 				{
@@ -184,8 +196,7 @@ public class dynamicCreationService {
 		            preparedStatement1.close();
 					saveStatus = true;
 				}
-				rs.close();
-				st.close();
+				
 			}
 		}
 		
@@ -193,12 +204,19 @@ public class dynamicCreationService {
 			e.printStackTrace();
 			
 		}
+		finally
+		{
+			st.close();
+			rs.close();
+		}
 		jsonObject.addProperty("saveStatus", saveStatus);
 		return jsonObject;
 	}
 	
-	private String getWaveUUID()
+	private String getWaveUUID() throws SQLException
 	{
+		PreparedStatement st=null;
+		ResultSet rs=null;
 		String WaveId="";
 		try
 		{
@@ -208,8 +226,8 @@ public class dynamicCreationService {
 			WaveId=UUID.randomUUID().toString();
 			//checking the wave id in Governance_Info
 			String selectQuery = "select * from Governance_Info where column_name='waveId' and value='"+WaveId+"'";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			if(!rs.next())
 			checkWaveId =false;
 			}
@@ -217,6 +235,11 @@ public class dynamicCreationService {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+		finally
+		{
+			st.close();
+			rs.close();
 		}
 		return WaveId;
 	}

@@ -156,16 +156,20 @@ public String generateRandomApprovalId() throws SQLException {
         return uniqueID;
     }
     public boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
+    	PreparedStatement state=null;
+    	ResultSet result=null;
         boolean checkDuplicate = false;
         String selectQuery = "select * from ArchiveReq_Roles_Info order by seq_no;";
-        Statement state = con.createStatement();
-        ResultSet result = state.executeQuery(selectQuery);
+        state = con.prepareStatement(selectQuery);
+        result = state.executeQuery();
         while(result.next()) {
             String checkApprovalId = result.getString("approvalId");
-            if(checkApprovalId == uniqueID) {
+            if(checkApprovalId.equals(uniqueID)) {
                 checkDuplicate = true;
             }   
         }
+        state.close();
+        result.close();
         return checkDuplicate;
     }
 }

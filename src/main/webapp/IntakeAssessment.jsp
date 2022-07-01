@@ -117,6 +117,7 @@ crossorigin="anonymous"></script>
 
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
+<%@page import="org.owasp.encoder.Encode" %>
 <%
 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 Date date = new Date();
@@ -172,7 +173,7 @@ Statement st1;
 						<div class="sub-title" style="color: #fff">
 						<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
 								class="glyphicon glyphicon-home"></span> Home</a> >> <a
-								href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><%=OpportunityName%></a>>><a
+								href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><%=Encode.forHtml(OpportunityName)%></a>>><a
 								href="OpportunityGrid.jsp" id="sitetitle1" style="color: #fff">Intake</a> >>
 								<a href="IntakeOpportunity.jsp" id="sitetitle1" style="color: #fff">Opportunity</a> >>
 								<a href="IntakeTriage.jsp" id="sitetitle1" style="color: #fff">Triage</a> >>
@@ -1047,7 +1048,7 @@ e.printStackTrace();
 							          			</div>
 							          		</div>
 							          	</div>
-							          	<form action="Intakescrdownload.jsp" method="post">
+							          	<form action="Intake_scr_Download" method="post">
       												<input type="hidden" id="File_Name" name="File_Name">
       												<input type="submit" id="scr_submit" style="display:none;">
 											    </form>

@@ -19,6 +19,8 @@ public class NewOpportunityCreateService {
 
 	public static JsonObject OpportunityValidation(String AppName,JsonArray jsonArray,boolean checkMandatory)
 	{
+		PreparedStatement st=null,st1=null;
+		ResultSet rs=null,rs1=null;
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
@@ -28,15 +30,15 @@ public class NewOpportunityCreateService {
 			Connection connection = (Connection) dBconnection.getConnection();
 			String AMPID = OpportunityBean.getRecord_Number();
 			String CheckQueryAmpid = "SELECT * FROM OPPORTUNITY_INFO WHERE ID='"+AMPID+"'";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(CheckQueryAmpid);
+			st = connection.prepareStatement(CheckQueryAmpid);
+			rs = st.executeQuery();
 			if(rs.next())
 			{
 				checkAPMID = true;
 			}
 			String CheckQueryAppName = "SELECT * FROM OPPORTUNITY_INFO WHERE COLUMN_NAME = 'appName';";
-			Statement st1 = connection.createStatement();
-			ResultSet rs1 = st1.executeQuery(CheckQueryAppName);
+			st1 = connection.prepareStatement(CheckQueryAppName);
+			rs1 = st1.executeQuery();
 			while(rs1.next()) {
 				if(rs1.getString("value").equals(AppName))
 				{
@@ -53,6 +55,10 @@ public class NewOpportunityCreateService {
 				archiveExecObj = null;
 				System.gc();
 			}
+			st.close();
+			rs.close();
+			st1.close();
+			rs1.close();
 		}
 		catch(Exception e)
 		{
@@ -64,6 +70,8 @@ public class NewOpportunityCreateService {
 	
 	
 	public static void NewOpportunityDetailsSave(JsonArray jsonArr) {
+		PreparedStatement st=null,st1=null,st2=null;
+		ResultSet rs=null,rs2=null;
 		 try {
 			 
 			 DBconnection con = new DBconnection();
@@ -75,19 +83,19 @@ public class NewOpportunityCreateService {
 			String name = jsonObj.get("Name").getAsString();
 			String value = jsonObj.get("Value").getAsString();
 			String SelectQuery = "select * from opportunity_info_details where column_name='"+name+"';";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(SelectQuery);
+			st = connection.prepareStatement(SelectQuery);
+			rs = st.executeQuery();
 			if(rs.next())
 			{
 				String UpdateQuery = "update opportunity_info_details set value='"+value+"' where column_name ='"+name+"'";
-				Statement st1 = connection.createStatement();
-                st1.executeUpdate(UpdateQuery);
+				st1 = connection.prepareStatement(UpdateQuery);
+                st1.executeUpdate();
                 
 			}
 			 }
 			String SelectTableQuery = "select * from opportunity_info_details order by seq_no;";
-			Statement st2 = connection.createStatement();
-            ResultSet rs2 = st2.executeQuery(SelectTableQuery);
+			st2 = connection.prepareStatement(SelectTableQuery);
+            rs2 = st2.executeQuery();
             while(rs2.next())
             {
             	String Opportunity_InsertQuery = "insert into Opportunity_Info (seq_no,Id, prj_name, app_name, options, label_name, column_name, type, mandatory, value,usermandatoryflag)"
@@ -109,6 +117,9 @@ public class NewOpportunityCreateService {
 				  }
 			st2.close();
 			rs2.close();
+			st.close();
+			rs.close();
+			st1.close();
 			connection.close();
       
 		 }

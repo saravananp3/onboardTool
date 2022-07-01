@@ -23,13 +23,14 @@ public archiveRetentionTemplateDetailsService() throws ClassNotFoundException, S
 		 
 	}
 
-public void archiveRetentionTemplate() {
-	
+public void archiveRetentionTemplate() throws SQLException {
+	PreparedStatement st=null;
+	ResultSet rs=null;
 	try {
 		
 		String selectQuery = "select * from Archive_Retention_Template_details;";
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(selectQuery);
+		st = con.prepareStatement(selectQuery);
+		rs = st.executeQuery();
 		
 		if(!rs.next()) {
 			
@@ -61,6 +62,11 @@ public void archiveRetentionTemplate() {
 	}
 	catch(Exception e) {
 		e.printStackTrace();
+	}
+	finally
+	{
+		st.close();
+		rs.close();
 	}
 }
 

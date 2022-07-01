@@ -166,13 +166,14 @@ public class phaseSaveService {
 		return saveStatus;
 	}
 	public boolean moveInfoDetailsToInfo()
-	{
+	{	PreparedStatement st=null;
+		ResultSet rs=null;
 		boolean statusFlag = false;
 		try
 		{
 			String selectQuery = "select * from phase_info_details order by seq_no;";
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(selectQuery);
+			st = con.prepareStatement(selectQuery);
+			rs = st.executeQuery();
 			while(rs.next())
 			{
 				String insert_query = "insert into phase_info (seq_no,phaseId,phaseName,prj_name,options,label_name,column_name,type,mandatory,value) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -190,8 +191,8 @@ public class phaseSaveService {
 				preparedStatement1.execute();
 	            preparedStatement1.close();
 			}
-			rs.close();
 			st.close();
+			rs.close();
 		}
 		catch(Exception e)
 		{

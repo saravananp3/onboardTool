@@ -1,13 +1,57 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page language="java"%>
-<%@ page import="java.sql.*"%>
-<%@ page import="java.io.*"%>
-<%@ page trimDirectiveWhitespaces="true" %>
-<%@ page import="onboard.DBconnection"%>
-<%String File = request.getParameter("File_Name");%>
+package NewArchiveRequirements.LegacyApplicationInfo.legacyAppScreenshot.servlet;
 
- <%
-HttpSession details = request.getSession();
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.owasp.encoder.Encode;
+
+import onboard.DBconnection;
+
+/**
+ * Servlet implementation class legacy_scr_download
+ */
+@WebServlet("/legacy_scr_download")
+public class legacy_scr_download extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public legacy_scr_download() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		HttpSession details = request.getSession();
+		String File = request.getParameter("File_Name");
 		String Id=(String)details.getAttribute("ID");
 		System.out.println("File Name : "+File);
         try {
@@ -37,11 +81,11 @@ HttpSession details = request.getSession();
 	            }              
 	             
 	            // set content properties and header attributes for the response
-	            response.setContentType(mimeType);
+	            response.setContentType(Encode.forJava(mimeType));
 	            response.setContentLength(fileLength);
 	            String headerKey = "Content-Disposition";
-	            String headerValue = String.format("attachment; filename=\"%s\"", fileName);
-	            response.setHeader(headerKey, headerValue);
+	        	String headerValue = String.format("attachment; filename=%s", fileName);
+	            response.setHeader(Encode.forJava(headerKey), Encode.forJava(headerValue));
 
 	            // writes the file to the client
 	            OutputStream outStream = response.getOutputStream();
@@ -65,19 +109,14 @@ HttpSession details = request.getSession();
 		
 		
 	}
-        catch (SQLException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
-            response.getWriter().print("SQL Error: " + ex.getMessage());
+            response.getWriter().print("Check Database Connection");
         } 
-        catch (IOException ex) {
-            ex.printStackTrace();
-            response.getWriter().print("IO Error: " + ex.getMessage());
-        } catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-finally{
-	
+
+		
+		
+		
+	}
+
 }
- %>
- 

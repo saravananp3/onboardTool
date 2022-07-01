@@ -89,13 +89,14 @@ public class OpportunityFilterList {
 		return jsonArray;
 	}
 	private JsonArray getAllAppListWithorWithoutCategory()
-	{
+	{	PreparedStatement st=null;
+		ResultSet rs=null;
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
 			String selectAppList = "select * from opportunity_info where column_name='appName';";
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(selectAppList);
+			st = connection.prepareStatement(selectAppList);
+			rs = st.executeQuery();
 			
 			while(rs.next())
 			{
@@ -105,8 +106,8 @@ public class OpportunityFilterList {
 					jsonArray.add(jsonObject);
 			}
 			
-			rs.close();
 			st.close();
+			rs.close();
 		}
 		catch(Exception e)
 		{

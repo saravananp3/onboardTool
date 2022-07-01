@@ -274,16 +274,20 @@ public class PlanAndPrioritySaveService {
         return uniqueID;
     }
     public boolean checkDuplicateApprovalId(String uniqueID) throws SQLException {
+    	PreparedStatement state=null;
+    	ResultSet result=null;
         boolean checkDuplicate = false;
         String selectQuery = "select * from planAndPriorityInfo;";
-        Statement state = con.createStatement();
-        ResultSet result = state.executeQuery(selectQuery);
+        state = con.prepareStatement(selectQuery);
+        result = state.executeQuery();
         while (result.next()) {
             String checkApprovalId = result.getString("rowId");
-            if (checkApprovalId == uniqueID) {
+            if (checkApprovalId.equals(uniqueID)) {
                 checkDuplicate = true;
             }
         }
+        state.close();
+        result.close();
         return checkDuplicate;
     }
 }

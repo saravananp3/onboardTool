@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
@@ -20,15 +21,16 @@ public class Modify_List_User_Service {
     final static Logger logger = Logger.getLogger(Modify_List_User_Service.class);
 
     public JsonArray getModify_List_of_User() {
-
+    PreparedStatement user_st=null;
+    ResultSet users_list=null;
         //JSONArray jsonArray1 = new JSONArray();
         JsonArray jsonArray = new JsonArray();
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();
             String user_query = "select  uname, fname, lname, email, projects, application, id from admin_userdetails";
-            Statement user_st = connection.createStatement();
-            ResultSet users_list = user_st.executeQuery(user_query);
+            user_st = connection.prepareStatement(user_query);
+            users_list = user_st.executeQuery();
 
             while (users_list.next()) {
                 JsonObject infoJson = new JsonObject();
@@ -40,6 +42,8 @@ public class Modify_List_User_Service {
                 jsonArray.add(infoJson);
                 logger.info("json array---->" + jsonArray);
             }
+            user_st.close();
+            users_list.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
