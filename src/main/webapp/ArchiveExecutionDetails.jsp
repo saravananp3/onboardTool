@@ -584,7 +584,7 @@ background:#1565c0 important;
 								class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
 						</li>
 						<li class="nav-item moduleIcon"><a class="nav-link active"
-							aria-current="page" href="PhaseList.jsp"><i
+							aria-current="page" href="Governance_Home.jsp"><i
 								class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
 						<li class="nav-item moduleIcon" id="financeHint"
 							data-toggle="tooltip" title="For Future Enhancement"><a

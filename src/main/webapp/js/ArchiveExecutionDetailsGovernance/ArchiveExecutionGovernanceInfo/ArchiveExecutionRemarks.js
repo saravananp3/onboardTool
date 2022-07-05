@@ -1,8 +1,10 @@
-
 $(document).on('click','.remarksIcon',function(){
-var seq_num = $(this).index(".remarksIcon");
-$("#ArchiveRemarksSeq").val(seq_num);
-var remarks = $('.remark').eq(seq_num).val();
+var ss=$(this).index(".remarksIcon");
+var s1 = $(this).attr("id");
+var seq_num=parseInt(s1.replace(/[^0-9.]/g, ""));
+console.log("Index",seq_num);
+$("#ArchiveRemarksSeq").val(ss);
+var remarks = $('.remark').eq(ss).val();
 var remarkPoints=[];
 $("#remarkPts").html("");
 var pts="";
@@ -19,10 +21,9 @@ if(emptyListFlag)
 	pts += "<li></li>"
 pts += "</ul>";
 $("#remarkPts").html(pts);
-var taskName = $(".taskName").eq(seq_num).html();
-var taskGroup =$(".taskGroup").eq(seq_num).html();
+var taskGroup =$("#taskGroup"+seq_num+"").text();
+console.log("TASK GROUP",taskGroup);
 $("#remarksTaskGroup").html("Task Group : "+((taskGroup=="")?"NA":taskGroup));
-$("#remarksTaskName").html("Task Name : "+((taskName=="")?"NA":taskName));
 $("#ArchExecRemarksId").click();
 });
 

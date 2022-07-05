@@ -13,6 +13,25 @@ body {
 	font-size: 12px;
 }
 
+.archeadbutton {
+	background-color: #1565c0; 
+	border: 2px #80ffd3;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13.5px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 60px;
+	font-weight: 600;
+}
+
+.archeadbutton:hover {
+	background-color: #20336e;
+}
+
 .d3s-font-12 {
 	font-size: 12px;
 }

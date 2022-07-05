@@ -264,7 +264,7 @@ public class ArchiveExecutionGovernanceDeleteService {
 
 			}
 			ArchiveExecutionGovernanceDetailService archiveExecution =  new ArchiveExecutionGovernanceDetailService();
-			jsonArray = archiveExecution.archiveExecutionGovernanceDataRetrieve(waveId,waveName);
+			jsonArray = archiveExecution.archiveExecutionGovernanceDataRetrieve(waveName);
 			archiveExecution.con.close();
 			/*
 			 * archiveExecution =null; System.gc();
