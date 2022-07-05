@@ -307,10 +307,21 @@ e.printStackTrace();
 							          			data-bs-parent="#accordionPanelsStayOpenExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsAppInfo"></div> 
-							          		 		<button type="button"
-																		class="btn btn-primary" id="editpopup_btn"
-																		data-bs-toggle="modal" data-bs-target="#EditPopUp"
-																		style="display: block;">View Uploaded Files</button>
+							          		 		<div class='row'>
+														<div class='col-md-4'>
+															<button type="button" class="btn btn-primary"
+															id="editpopup_btn" data-bs-toggle="modal"
+															data-bs-target="#EditPopUp"
+															style="display: block;">View Uploaded
+															Files</button>
+
+															</div>
+															<div class='col-md-8' align='end'>
+															<button type="submit" class="btn btn-primary"
+															id="AppInfoSaveBtn">Save</button>
+																						
+															</div>
+														</div>
 							          		 		
 							          			</div>
 							          		</div>
@@ -326,6 +337,9 @@ e.printStackTrace();
 							          			data-bs-parent="#accordionPanelsStayOpenExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsDataChar"></div> 
+							          		 		<div align='end'>
+													<button type="submit" class="btn btn-primary"
+													 id="DataCharSaveBtn">Save</button>
 							          			</div>
 							          		</div>
 							          </div>
@@ -339,6 +353,10 @@ e.printStackTrace();
 							          			data-bs-parent="#accordionPanelsStayOpenExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsComplianceChar"></div> 
+							          		 		<div align='end'>
+																				
+													<button type="submit" class="btn btn-primary"
+													id="ComCharSaveBtn">Save</button>
 							          			</div>
 							          		</div>
 							          </div>
@@ -352,6 +370,10 @@ e.printStackTrace();
 							          			data-bs-parent="#accordionPanelsStayOpenExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsArchivConsump"></div> 
+							          		 		<div align='end'>
+																				
+													<button type="submit" class="btn btn-primary"
+													id="ArchConSaveBtn">Save</button>
 							          			</div>
 							          		</div>
 							          </div>
@@ -427,9 +449,9 @@ e.printStackTrace();
 																			<button type="submit" class="btn btn-primary" id="edit" >Edit</button>
 																			<button type="submit" class="btn btn-primary" id="complete" disabled="true">Complete</button>
 																			
-																			<button type="submit" class="btn btn-primary"
+																			<!--<button type="submit" class="btn btn-primary"
 																				id="AssessmentSaveBtn">Save</button>
-																			<!-- <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
+																			 <a href="javascript:;" class="form-wizard-next-btn float-right btn-info btn btn-info" onclick="location.href='IntakeTriage.jsp';">Next</a> -->
 																			<!-- <button
 																				class="form-wizard-next-btn float-right btn-info btn btn-info"
 																				id="next"  onclick="location.href='IntakeStakeHolder.jsp';" disabled="true" style="color: #fff;">

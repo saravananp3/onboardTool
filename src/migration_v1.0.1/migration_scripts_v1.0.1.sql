@@ -20,6 +20,7 @@ update `decom3sixtytool`.`Assessment_Data_Char_Info_Template_Details` set label_
 /* Assessment_Application_Info_Template_Details */
 select * from decom3sixtytool.Assessment_Application_Info_Template_Details;
 update `decom3sixtytool`.`Assessment_Application_Info_Template_Details` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
+update `decom3sixtytool`.`Assessment_Application_Info_Template_Details` set mandatory='No' where column_name='OtherPleaseDescribe';
 
 /* Opportunity_Info_Details */
 SELECT * FROM decom3sixtytool.Opportunity_Info_Details;

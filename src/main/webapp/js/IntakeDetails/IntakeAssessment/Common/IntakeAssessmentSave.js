@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	enableSaveButtonFunction()
+	enableCompleteButtonFunction();
 	
 		});
 
@@ -14,9 +15,34 @@ var DependencykeyValuePair = [];
 var DependencyType=[];
 var JsonArray =[];
 
+$("#AppInfoSaveBtn").click(function(e){
+	var section = 'ApplicationInformation';
+	saveFunctionalityDevisionWise(section,e);
+	document.getElementById("DataCharSaveBtn").disabled = false;
+	enableCompleteButtonFunction();
+	});
 
+$("#DataCharSaveBtn").click(function(e){
+	var section = 'DataCharacteristics';
+	saveFunctionalityDevisionWise(section,e)
+	document.getElementById("ComCharSaveBtn").disabled = false;
+	enableCompleteButtonFunction();
+	});
 
-$("#AssessmentSaveBtn").click(function(e){
+$("#ComCharSaveBtn").click(function(e){
+	var section = 'ComplianceCharacteristics';
+	saveFunctionalityDevisionWise(section,e)
+	document.getElementById("ArchConSaveBtn").disabled = false;
+	enableCompleteButtonFunction();
+	});
+
+$("#ArchConSaveBtn").click(function(e){
+	var section = 'ArchivalConsumption';
+	saveFunctionalityDevisionWise(section,e)
+	enableCompleteButtonFunction();
+	});		
+
+/*$("#AssessmentSaveBtn").click(function(e){
 	uploadFiles();
 	var section =['ApplicationInformation','DataCharacteristics','ComplianceCharacteristics','ArchivalConsumption'];
 	//var section =['ApplicationInformation'];
@@ -56,7 +82,50 @@ $("#AssessmentSaveBtn").click(function(e){
 	
 	e.preventDefault();
 	
-});
+});*/
+
+function saveFunctionalityDevisionWise(section,e){
+	if(section == 'ApplicationInformation'){
+	    uploadFiles();
+	    }
+	//var section =['ApplicationInformation','DataCharacteristics','ComplianceCharacteristics','ArchivalConsumption'];
+	//var section =['ApplicationInformation'];
+	UnfilledSections = [];
+	JsonArray =[];
+	checkAllMandatoryFields = true;
+	
+	  console.log("check section: ",section);
+	  checkMandatoryFields = true;
+	  CheckMandatoryCommonFields(section);	
+	
+	CheckMandatoryContractInfo();
+	CheckDependencyFields();
+	console.log("Assessment Save json Array :",JsonArray);
+	if(checkAllMandatoryFields)
+	{
+		//alert("IntakeAssessment Save");
+		var JsonString = JSON.stringify(JsonArray);
+		var jsonobj = AssessmentAjaxCallUpdate(JsonString,e,section);
+		if(jsonobj.CheckExistence){
+			notification("success",section+" assessment section details are saved successfully.","Note");
+			//alert("Saved Successfully!");
+			//document.getElementById("complete").disabled = false;
+	        //document.getElementById("next").disabled = false;
+          	
+		    }
+		else
+			notification("error","Failed to save.","Error");
+	}
+	else
+	{
+	var ValidationMsg = ValidationMsgMandatoryFields();
+	notification("warning",ValidationMsg,"Warning");
+	//alert(ValidationMsg);	
+	}	
+	
+	e.preventDefault();
+	
+}
 
 function CheckMandatoryCommonFields(InputFieldClass)
 {
@@ -361,7 +430,7 @@ function BriefDescTextArea(jsonObj)
 	inputarr["Value"]=$("#BriefArchitectureDescription").val();
 	jsonObj.push(inputarr);
 }
-function AssessmentAjaxCallUpdate(JsonString,e)
+function AssessmentAjaxCallUpdate(JsonString,e,section)
 {
 	e.preventDefault();
 	var JsonObject = [];
@@ -369,7 +438,7 @@ function AssessmentAjaxCallUpdate(JsonString,e)
 	$.ajax({
         url: "IntakeAssessmentSaveServlet",
         type: 'POST',
-        data : {JsonString : JsonString},
+        data : {JsonString : JsonString,section : section},
         async: false,
         dataType: "json",
         success: function (data) {
@@ -436,7 +505,10 @@ $(document).on('click', '#complete', function(e) {
 	
 			$(document).on('click', '#edit', function(e) {
                
-              			document.getElementById("AssessmentSaveBtn").disabled = false;
+              			document.getElementById("AppInfoSaveBtn").disabled = false;
+			            document.getElementById("DataCharSaveBtn").disabled = false;
+			            document.getElementById("ComCharSaveBtn").disabled = false;
+			            document.getElementById("ArchConSaveBtn").disabled = false;
               			notification("success", "Current Page is editable", "Note:");
 
  
@@ -457,18 +529,40 @@ $(document).on('click', '#complete', function(e) {
 			console.log("Completed DATA:", data);
 			JsonObject = data;
 			if (data.iscompleted==true) {
-			document.getElementById("AssessmentSaveBtn").disabled = true;
-
+			document.getElementById("AppInfoSaveBtn").disabled = true;
+            document.getElementById("DataCharSaveBtn").disabled = true;
+            document.getElementById("ComCharSaveBtn").disabled = true;
+            document.getElementById("ArchConSaveBtn").disabled = true;
 			}else{
-			document.getElementById("AssessmentSaveBtn").disabled = false;
-
-								
-							}
+			document.getElementById("AppInfoSaveBtn").disabled = false;
+			document.getElementById("DataCharSaveBtn").disabled = false;
+			document.getElementById("ComCharSaveBtn").disabled = false;
+			document.getElementById("ArchConSaveBtn").disabled = false;
+            }
 			
 		}
 		
 	});
-	e.preventDefault();
-
 		}	
 
+function enableCompleteButtonFunction(e){
+			$.ajax({
+	    url: "IntakeAssessmentCompleteEnableServlet1",
+		type: 'POST',
+		async: false,
+		dataType: "json",
+		success: function(data) {
+			console.log("Completed status DATA:", data);
+			JsonObject = data;
+			if (data.status=='true') {
+	          document.getElementById("complete").disabled = false;
+	          document.getElementById("next").disabled = false;
+			}else{
+			document.getElementById("complete").disabled = true;
+	          document.getElementById("next").disabled = true;
+            }
+			
+		}
+		
+	});
+		}	

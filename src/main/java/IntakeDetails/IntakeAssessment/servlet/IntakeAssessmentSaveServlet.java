@@ -48,11 +48,13 @@ public class IntakeAssessmentSaveServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String section[] = {"ApplicationInformation" , "DataCharacteristics" , "ComplianceCharacteristics" , "ArchivalConsumption","ContractInformation"};
+		//String section[] = {"ApplicationInformation" , "DataCharacteristics" , "ComplianceCharacteristics" , "ArchivalConsumption","ContractInformation"};
 		System.out.println("Response");
 		HttpSession details = request.getSession();
 		String id = (String)details.getAttribute("ID");
 		String JsonString= (String)request.getParameter("JsonString");
+		String section= (String)request.getParameter("section");
+
 	    JsonParser parser = new JsonParser();
 		JsonElement tradeElement = parser.parse(JsonString);
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
@@ -60,7 +62,7 @@ public class IntakeAssessmentSaveServlet extends HttpServlet {
 		for(int i = 0; i<jsonArray.size(); i++) {
 			try {
 				JsonArray jsonArraySection = jsonArray.get(i).getAsJsonArray();
-				new IntakeAssessmentSaveFunctionalityService(section[i],id).Save(jsonArraySection,id);
+				new IntakeAssessmentSaveFunctionalityService(section,id).Save(jsonArraySection,id);
 				check = true;
 			} catch (ClassNotFoundException e) {
 				
