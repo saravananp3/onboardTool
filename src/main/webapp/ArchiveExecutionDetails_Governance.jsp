@@ -159,7 +159,7 @@ Wizard-->body {
 }
 
 .archeadbutton {
-	background-color: #1565c0; 
+	background-color: #1565c0;
 	border: 2px #80ffd3;
 	color: white;
 	padding: 10px;
@@ -175,7 +175,7 @@ Wizard-->body {
 
 .archeadbutton:hover {
 	background-color: #20336e;
-	color:#80ffd3;
+	color: #80ffd3;
 }
 
 .form-wizard .wizard-form-radio input[type="radio"]:checked::before {
@@ -347,9 +347,13 @@ keyframes click-radio-wave { 0% {
 
 
 
+
+
 %
 {
 width
+
+
 
 
 
@@ -371,7 +375,11 @@ width
 
 
 
+
+
 60px
+
+
 
 
 
@@ -392,6 +400,8 @@ height
 
 
 
+
+
 :
 
 
@@ -403,7 +413,11 @@ height
 
 
 
+
+
 60px
+
+
 
 
 
@@ -424,6 +438,8 @@ margin-left
 
 
 
+
+
 :
 
 
@@ -435,7 +451,11 @@ margin-left
 
 
 
+
+
 -15px
+
+
 
 
 
@@ -456,6 +476,8 @@ margin-top
 
 
 
+
+
 :
 
 
@@ -467,7 +489,11 @@ margin-top
 
 
 
+
+
 -15px
+
+
 
 
 
@@ -488,7 +514,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -508,7 +538,11 @@ opacity
 
 
 
+
+
 .0
+
+
 
 
 
@@ -898,23 +932,26 @@ input[type="text"] {
 	}
 	%>
 
-<nav class="nav nav-height nav-font" id="bg-color">
+	<nav class="nav nav-height nav-font" id="bg-color">
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">
 				<div class="col-lg-12 col-md-12">
-					<h5 style="margin-top:-12px;"id="title">Project Plan</h5>
+					<h5 style="margin-top: -12px;" id="title">Project Plan</h5>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="sub-title" style="color: #fff">
 						<a href="DashBoard.jsp" id="sitetitle1" style="color: #fff"><span
-							class="glyphicon glyphicon-home"></span> Home</a> >> <a href="Governance_Home.jsp" id="sitetitle1" style="color: #fff"> Governance</a> >> Archive Execution
+							class="glyphicon glyphicon-home"></span> Home</a> >> <a
+							href="Governance_Home.jsp" id="sitetitle1" style="color: #fff">
+							Governance</a> >> Archive Execution
 					</div>
 				</div>
-				
-			
-						<div class="col-lg-3 col-md-6" style="margin-top:-30px;margin-left:30%;">
+
+
+				<div class="col-lg-3 col-md-6"
+					style="margin-top: -30px; margin-left: 30%;">
 					<div class="row align-items-center">
 						<div class="col-auto">
 							<label class="col-form-label" id="title">Phase</label>
@@ -926,7 +963,8 @@ input[type="text"] {
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6" style="margin-top:-43.5px;margin-left:50%;">
+				<div class="col-lg-3 col-md-6"
+					style="margin-top: -43.5px; margin-left: 50%;">
 					<div class="row align-items-center">
 						<div class="col-auto">
 							<label class="col-form-label" id="title">Wave</label>
@@ -938,14 +976,14 @@ input[type="text"] {
 						</div>
 					</div>
 				</div>
-				</div>
+			</div>
 		</div>
 	</nav>
 
 	<div id="demo" style="display: none;">
 		<form class="form-signin" name="loginForm" method="post">
 			<div class="main-wrapper">
-				
+
 				<div class="content-wrapper">
 					<div class="content-container">
 
@@ -979,7 +1017,7 @@ input[type="text"] {
 																id="completion_date" class="archeadbutton"
 																style="color: white;"></a>
 														</center>
-														
+
 													</div>
 													<div class="card-header d3s-pl-15" id="cd-header">Archive
 														Execution</div>
@@ -1343,14 +1381,14 @@ input[type="text"] {
 					</button>
 					<h5 class="modal-title" id="remarksTaskGroup" style="color: white">Task
 						Group:</h5>
-					
+
 				</div>
 				<div class="modal-body">
 					<form name="DeleteForm">
 						<div class="modal-body">
 							<div id="remarkPts" class="row changeText RemarksPoints"
 								contenteditable="true" spellcheck="false"></div>
-								
+
 							<input type="hidden" id="ArchiveRemarksSeq" />
 						</div>
 					</form>
