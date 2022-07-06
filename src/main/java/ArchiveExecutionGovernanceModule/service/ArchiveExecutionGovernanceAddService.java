@@ -249,7 +249,7 @@ public class ArchiveExecutionGovernanceAddService {
 				System.gc();
 				
 				ArchiveExecutionGovernanceDetailService archiveExecution =  new ArchiveExecutionGovernanceDetailService();
-				jsonArray = archiveExecution.archiveExecutionGovernanceDataRetrieve(waveId,waveName);
+				jsonArray = archiveExecution.archiveExecutionGovernanceDataRetrieve(waveName);
 				archiveExecution =null;
 				System.gc();
 				}

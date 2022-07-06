@@ -100,9 +100,8 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="sub-title" style="color: #fff">
-						<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
-							class="glyphicon glyphicon-home"></span> Home</a> >> Applications
-						List
+						<a href="DashBoard.jsp" id="sitetitle1" style="color: #fff"><span
+							class="glyphicon glyphicon-home"></span> Home</a> >> <a href="Governance_Home.jsp" id="sitetitle1" style="color: #fff"> Governance</a> >> Plan and Priority
 						<%-- <%=waveName%> --%>
 					</div>
 				</div>
