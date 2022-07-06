@@ -54,3 +54,26 @@ ALTER TABLE decom3sixtytool.assessment_compliance_char_info ADD usermandatoryfla
 ALTER TABLE decom3sixtytool.assessment_archival_consumption_info ADD usermandatoryflag varchar(255);
 ALTER TABLE decom3sixtytool.assessment_contract_info ADD usermandatoryflag varchar(255);
 ALTER TABLE decom3sixtytool.archivereq_legacyapp_info ADD usermandatoryflag varchar(255);
+
+/* Create Stored Procedure for Governance Archive Execution */
+
+DROP PROCEDURE IF EXISTS `governance_app_name`;
+DELIMITER $$
+CREATE PROCEDURE `governance_app_name` (in app_name varchar(255))
+begin
+select distinct ar.oppName,OppId from opportunity_info o inner join archive_execution_info ar on o.Id=ar.OppId where column_name='appName' and value =app_name;
+end $$
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `governance_archive_data`;
+DELIMITER $$
+CREATE PROCEDURE `governance_archive_data` (in app_id varchar(255))
+begin
+select * from `archive_execution_info` where level='1' and OppId = app_id;
+end $$
+
+DELIMITER ;
+
+
+
