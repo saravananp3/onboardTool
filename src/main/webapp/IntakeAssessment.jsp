@@ -342,7 +342,7 @@ e.printStackTrace();
 													 id="DataCharSaveBtn">Save</button>
 							          			</div>
 							          		</div>
-							          </div>
+							          </div></div>
 							          <!-- ========== Compliance Characteristics ========== -->
 							           <div class="accordion-item">
 							          		<h2 class="accordion-header" id="panelsStayOpen-headingThree">
@@ -359,7 +359,7 @@ e.printStackTrace();
 													id="ComCharSaveBtn">Save</button>
 							          			</div>
 							          		</div>
-							          </div>
+							          </div></div>
 							          <!-- ========== Archival Consumption ========== -->
 							           <div class="accordion-item">
 							          		<h2 class="accordion-header" id="panelsStayOpen-headingFour">
@@ -376,7 +376,7 @@ e.printStackTrace();
 													id="ArchConSaveBtn">Save</button>
 							          			</div>
 							          		</div>
-							          </div>
+							          </div></div>
 							           <!-- ========== Contract Information ========== -->
 							            <div class="accordion-item" id ="ContractInformation" style ="display:none;">
 							          		<h2 class="accordion-header" id="panelsStayOpen-headingFive">

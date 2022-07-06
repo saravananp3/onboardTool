@@ -107,7 +107,7 @@ public class IntakeStakeHolderService extends  DynamicFields
 				arr_comments.add(rs1.getString(12));
 				arr_priority.add(rs1.getString(13));
 				arr_mail_flag.add(rs1.getString(14));
-				arr_isCompleted.add(rs1.getString(15));
+				arr_isCompleted.add(rs1.getString(16));
 			}
 
 			rs1.close();

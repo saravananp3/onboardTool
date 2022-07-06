@@ -458,7 +458,7 @@ e.printStackTrace();
                                             </div>
                                             <div id="inputFieldsReqinscope">
                                                             <h4 class="title1">4.1.2 Retention and Legal Requirements</h4>
-                                                            <div class="table-responsive">
+                                                            <div class="">
                                                                 <table class="table-bordered" style="width: 100%;">
                                                                  <thead>                                                
                                                                     <tr>
