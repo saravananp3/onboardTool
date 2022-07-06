@@ -387,6 +387,10 @@ e.printStackTrace();
 							          			data-bs-parent="#accordionPanelsStayOpenExample">
 							          			<div class="accordion-body">
 							          		 		<div id="inputFieldsContInfo"></div> 
+							          		 		<div align='end'>
+																				
+													<button type="submit" class="btn btn-primary"
+													id="ArchContractSaveBtn">Save</button>
 							          			</div>
 							          		</div>
 							          </div>
