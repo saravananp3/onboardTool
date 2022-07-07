@@ -936,7 +936,7 @@ input[type="text"] {
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">
 				<div class="col-lg-12 col-md-12">
-					<h5 style="margin-top: -12px;" id="title">Project Plan</h5>
+					<h5 style="margin-top: -10px; margin-bottom:5px;" id="title">Project Plan</h5>
 				</div>
 			</div>
 			<div class="row">
@@ -1485,6 +1485,7 @@ $(document).on('mouseenter','.active1', function(){
 <script id="scripttag"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <script
@@ -1492,6 +1493,7 @@ $(document).on('mouseenter','.active1', function(){
 <!-- ========== Toastr ========== -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="js/bootstrap/bootstrap.min.js"></script>
 <link
 	href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
 	rel="stylesheet">

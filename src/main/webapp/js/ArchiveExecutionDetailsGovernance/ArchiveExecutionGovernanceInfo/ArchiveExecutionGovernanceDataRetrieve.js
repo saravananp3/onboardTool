@@ -195,6 +195,7 @@ if(data.length>1)
 	$('#notfound').hide();
 }
     $.each(data, function(key, value){
+	
 	console.log("INDEX UI",i);
         if(checkIndex){
         var seqNo = value.seq_no;
@@ -230,7 +231,7 @@ if(data.length>1)
             collapse = "collapse"+i;
            
        var row = "<tr class='ArchiveList' style='height:60px;' role='button' data-toggle='collapse' data-parent='#accordion' href='."+collapse+"' aria-expanded='false' aria-controls='"+collapse+"' >"+
-         		  "<td style='text-align:left;vertical-align: middle; color:black;' class='arc_level' id='arclevel_"+i+"'><label class='control-label' style='cursor:pointer;'for='ArchiveExection'><i class='fa fa-angle-down arc_expand"+i+"' style='font-size:14px;color:black; display:none;'></i>&nbsp;<i class='fa fa-angle-right arc_collapse"+i+"' style='font-size:14px;color:black'></i>&nbsp;"+oppName+"</label>" +
+         		  "<td style='text-align:left;vertical-align: middle; color:black;' class='arc_level' id='arclevel_"+i+"' data-bs-toggle='tooltip' data-bs-placement='top' title='"+oppName+"'><label class='control-label' style='cursor:pointer;'for='ArchiveExection'><i class='fa fa-angle-down arc_expand"+i+"' style='font-size:14px;color:black; display:none;'></i>&nbsp;<i class='fa fa-angle-right arc_collapse"+i+"' style='font-size:14px;color:black'></i>&nbsp;"+oppName+"</label>" +
                 "<td style='text-align:center;vertical-align: middle;'><label class='control-label taskChange taskId' for='ArchiveExection'></label>" +
                         "<input type = 'hidden' class = 'archiveLevel' value = '"+level+"'/>"+
                  "</td>"+
@@ -276,6 +277,7 @@ if(data.length>1)
                   $("#ArchiveExecutionList").append(row);
                  
         }
+        
      
             
         else if(level==2){
@@ -349,7 +351,7 @@ if(data.length>1)
         }
         
    i++;
-   
+    
     });
          
   getData();
