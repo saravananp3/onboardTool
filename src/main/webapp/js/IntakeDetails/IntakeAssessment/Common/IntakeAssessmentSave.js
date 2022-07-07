@@ -169,11 +169,16 @@ function CheckMandatoryCommonFields(InputFieldClass) {
 				else if (val1 == "") {
 					var name_attr = $(this).find("input").attr("name");
 					var count = $("#datatable tr").length;
-					if (count > 1 && name_attr == 'BriefArchitectureDescription_file') {
+					if  count > 1 && name_attr =  'BriefArchitectureDescription_file') {
 						checkMandatoryFields = true;
 					}
-					else {
+					else  
 						if (!DependencyPairs.includes(name_attr))
+							checkMandatoryFields = false;
+					}
+					if ($(this).find("textarea").length) {
+						var value = $(this).find("textarea").val();
+						if (value == "" || value == undefined)
 							checkMandatoryFields = false;
 					}
 				}
