@@ -272,13 +272,13 @@ function columnNameToClassName(columnName){
 
 $(document).on('click','.colorCode',function()
 {
-	status = "";
+	/*status = "";
 	fieldName = 'colorCode';
 	var class_name = $(this).attr('class');
 	var index = $(this).index('.colorCode');
 	$(".colorCode").eq(index).attr('class',changeColor(class_name));
 	var seqNo = parseInt(index)+1;
-	saveFunction(seqNo, "status", status,"");
+	saveFunction(seqNo, "status", status,"");*/
 });
 
 

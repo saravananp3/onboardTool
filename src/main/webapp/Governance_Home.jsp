@@ -448,9 +448,9 @@ transition: width 2s, height 2s, transform 2s;
                       <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="sub-title" style="color: #fff">
-                            <a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
+                            <a href="DashBoard.jsp" id="sitetitle1" style="color: #fff"><span
                                 class="glyphicon glyphicon-home"></span> Home</a> >>
-                            <%=Encode.forHtml(waveName)%>
+                            Governance
                         </div>
                        </div>
                     </div>

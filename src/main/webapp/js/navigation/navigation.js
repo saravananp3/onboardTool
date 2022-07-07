@@ -37,6 +37,7 @@ function switchActiveModule() {
 		case "Modify_Admin_Users_list.jsp":*/
 		case "Admin_Userslist.jsp":
 		case "License_info.jsp":
+		
 		/*case "Admin_Role_Details.jsp":*/
 			selectiveActiveIcon(1);
 			break;
@@ -49,7 +50,9 @@ function switchActiveModule() {
 		case "waveEdit.jsp":
 		case "phaseEdit.jsp":
 		case "applicationList.jsp":
+		case "Governance_Home.jsp":
 		case "ArchiveExecutionDetails_Governance.jsp":
+		
 			selectiveActiveIcon(2);
 			break;
 		case "DashBoard.jsp":

@@ -20,6 +20,8 @@ update `decom3sixtytool`.`Assessment_Data_Char_Info_Template_Details` set label_
 /* Assessment_Application_Info_Template_Details */
 select * from decom3sixtytool.Assessment_Application_Info_Template_Details;
 update `decom3sixtytool`.`Assessment_Application_Info_Template_Details` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
+update `decom3sixtytool`.`Assessment_Application_Info_Template_Details` set mandatory='No' where column_name='OtherPleaseDescribe';
+update `decom3sixtytool`.`Assessment_Application_Info` set mandatory='No' where column_name='OtherPleaseDescribe';
 
 /* Opportunity_Info_Details */
 SELECT * FROM decom3sixtytool.Opportunity_Info_Details;
@@ -41,6 +43,26 @@ update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='If yes, ple
 select * from decom3sixtytool.Assessment_Application_Info;
 update `decom3sixtytool`.`Assessment_Application_Info` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
 
+/* Create Stored Procedure for Governance Archive Execution */
+use decom3sixtytool;
+DROP PROCEDURE IF EXISTS `decom3sixtytool.governance_app_name`;
+DELIMITER $$
+CREATE PROCEDURE `decom3sixtytool.governance_app_name` (in app_name varchar(255))
+begin
+select distinct ar.oppName,OppId from decom3sixtytool.opportunity_info o inner join decom3sixtytool.archive_execution_info ar on o.Id=ar.OppId where column_name='appName' and value =app_name;
+end $$
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS `decom3sixtytool.governance_archive_data`;
+DELIMITER $$
+CREATE PROCEDURE `decom3sixtytool.governance_archive_data` (in app_id varchar(255))
+begin
+select * from `decom3sixtytool.archive_execution_info` where level='1' and OppId = app_id;
+end $$
+
+DELIMITER ;
+
 /* User Mandatory DeleteFlag Alter Statement */
 ALTER TABLE decom3sixtytool.Opportunity_Info_Details ADD usermandatoryflag varchar(255);
 ALTER TABLE decom3sixtytool.Opportunity_Info ADD usermandatoryflag varchar(255);
@@ -52,3 +74,4 @@ ALTER TABLE decom3sixtytool.assessment_compliance_char_info ADD usermandatoryfla
 ALTER TABLE decom3sixtytool.assessment_archival_consumption_info ADD usermandatoryflag varchar(255);
 ALTER TABLE decom3sixtytool.assessment_contract_info ADD usermandatoryflag varchar(255);
 ALTER TABLE decom3sixtytool.archivereq_legacyapp_info ADD usermandatoryflag varchar(255);
+

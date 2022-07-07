@@ -719,7 +719,7 @@ try
 			AssessmentDetails[3] = new Assessment(4,"","",AppInfo,"","If NO,who supports this Application?","SupportApp","TextBoxDependencyNo","No","");
 			AssessmentDetails[4] = new Assessment(5,"","",AppInfo,"Yes,No","Operational support staff/SME's available for analysis?","OperationalSupportStaff","Radio box","No","");
 			AssessmentDetails[5] = new Assessment(6,"","",AppInfo,"Mainframe,Distibuted - Unix,Windows,hybrid,Others","Application platform","AssessAppPlatform","Dropdown","Yes","");
-			AssessmentDetails[6]= new Assessment(7,"","",AppInfo,"","If Other,please describe ", "OtherPleaseDescribe", "Text box", "Yes", "");
+			AssessmentDetails[6]= new Assessment(7,"","",AppInfo,"","If Other,please describe ", "OtherPleaseDescribe", "Text box", "No", "");
 			AssessmentDetails[7] = new Assessment(8,"","",AppInfo,"","Brief architecture description","BriefArchitectureDescription","TextAreaFile","Yes","");
 			AssessmentDetails[8] = new Assessment(9,"","",AppInfo,"","Application Hosting Vendor","AppHost","Text box","No","");
 			AssessmentDetails[9] = new Assessment(10,"","",AppInfo,"","Application Supporting Vendor","AppSupport","Text box","No","");

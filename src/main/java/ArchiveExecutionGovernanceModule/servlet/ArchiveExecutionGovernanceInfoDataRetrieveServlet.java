@@ -21,17 +21,18 @@ public class ArchiveExecutionGovernanceInfoDataRetrieveServlet extends HttpServl
 		
 		HttpSession details = request.getSession();
         
-		String waveId=(String)details.getAttribute("selectedWaveId");
+		/* String waveId=(String)details.getAttribute("selectedWaveId"); */
         
-		String waveName =(String)details.getAttribute("selectedWaveName");
-       
-		System.out.println("wave Id "+waveId);
+		/* String waveName =(String)details.getAttribute("selectedWaveName"); */
+		String waveName=request.getParameter("wave");
+		System.out.println("wave Name "+waveName);
 		
 		JsonArray jsonArray = null;
 		
 		try {
 			ArchiveExecutionGovernanceDetailService archiveExecution =  new ArchiveExecutionGovernanceDetailService();
-			jsonArray = archiveExecution.archiveExecutionGovernanceDataRetrieve(waveId,waveName);
+			jsonArray = archiveExecution.archiveExecutionGovernanceDataRetrieve(waveName);
+			
 			archiveExecution =null;
 			System.gc();
 		} catch (ClassNotFoundException e) {

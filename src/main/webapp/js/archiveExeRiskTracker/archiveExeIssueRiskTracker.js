@@ -94,7 +94,7 @@ function archiveExeIssueAddAjaxCall(seqNum) {
                 var Row = "<tr class = 'rowClass'>" +
                     "<td>" +
                     "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>" +
-                    "<ul class='dropdown-menu'>" +
+                    "<ul class='dropdown-menu' style='margin: -50px -12px -9px -6px;'>" +
                     "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>" +
                     "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>" +
                     "</ul>" +
@@ -212,7 +212,7 @@ function archiveExeIssueDataRetrieve() {
                 var Row = "<tr class = 'rowClass'>" +
                     "<td>" +
                     "<div class='col-md-4 dropdown'><img src='images/icons8-expand-arrow-25.png' class='dropdown-toggle' data-toggle='dropdown'></img>" +
-                    "<ul class='dropdown-menu'>" +
+                    "<ul class='dropdown-menu' style='margin: -50px -12px -9px -6px;'>" +
                     "<li><a  class='fa fa-edit EditRow' style='font-size: 19px; color: black'>&nbsp;&nbsp;&nbsp;Edit</a></li>" +
                     "<li><a  class='fa fa-trash DeleteRow' style='font-size: 18px; color: black'>&nbsp;&nbsp;&nbsp;Delete</a></li>" +
                     "</ul>" +
