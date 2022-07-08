@@ -1,6 +1,6 @@
 package ArchiveExecutionGovernanceModule.service;
 
-import java.sql.CallableStatement;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,7 +45,7 @@ public class ArchiveExecutionGovernanceDetailService {
 			}
 			System.out.println("APPS : "+apps);
 			if (apps.length > 0) {
-				//jsonArray2 = getAppDetail(apps);
+
 				jsonArray1 = getArchiveExeDetail(apps);
 
 			} 
@@ -66,7 +66,7 @@ public class ArchiveExecutionGovernanceDetailService {
 	}
 
 	private JsonArray getArchiveExeDetail(String[] apps) {
-		CallableStatement st=null;
+		PreparedStatement st=null;
 		ResultSet rs=null;
 		String Id="";
 		JsonArray jsonArray = new JsonArray();
@@ -74,8 +74,8 @@ public class ArchiveExecutionGovernanceDetailService {
 		try {
 			for(String app:apps) {
 				JsonObject js = new JsonObject();
-				String selectApp = "{CALL governance_app_name(?)}";
-				st = con.prepareCall(selectApp);
+				String selectApp = "select distinct ar.oppName,OppId from decom3sixtytool.opportunity_info o inner join decom3sixtytool.archive_execution_info ar on o.Id=ar.OppId where column_name='appName' and value =?";
+				st = con.prepareStatement(selectApp);
 				st.setString(1, app);
 				rs = st.executeQuery();
 				while (rs.next()) {
@@ -86,8 +86,8 @@ public class ArchiveExecutionGovernanceDetailService {
 					jsonArray.add(jsonObj1);
 				}
 
-				String selectAppdetail = "{CALL governance_archive_data(?)}";
-				CallableStatement st12 = con.prepareCall(selectAppdetail);
+				String selectAppdetail = "select * from decom3sixtytool.archive_execution_info where level='1' and OppId = ?";
+				PreparedStatement st12 = con.prepareStatement(selectAppdetail);
 				st12.setString(1, Id);
 				ResultSet rs12 = st12.executeQuery();
 				while (rs12.next()) {
@@ -125,46 +125,6 @@ public class ArchiveExecutionGovernanceDetailService {
 		System.out.println("APPS ARRAY : "+jsonArray);
 		return jsonArray;
 	}
-	private JsonArray getAppDetail(String[] apps) {
-		CallableStatement st=null;
-		ResultSet rs=null;
-		String Id="";
-		JsonArray jsonArray = new JsonArray();
-		try {
-			for(String app:apps) {
-				JsonObject js = new JsonObject();
-				String selectApp = "{CALL governance_app_name(?)}";
-				st = con.prepareCall(selectApp);
-				st.setString(1, app);
-				rs = st.executeQuery();
-				while (rs.next()) {
-					Id = rs.getString("OppId");
-				}
-				String selectAppdetail = "{CALL governance_archive_data(?)}";
-				CallableStatement st12 = con.prepareCall(selectAppdetail);
-				st12.setString(1, Id);
-				ResultSet rs12 = st12.executeQuery();
-				if (rs12.next()) {
-					JsonObject jsonObj = new JsonObject();
-					jsonObj.addProperty("oppName",rs12.getString("oppName"));
-					jsonObj.addProperty("level","1");
-					jsonArray.add(jsonObj);
-				}
-				rs12.close();
-				st12.close();
-			}
-
-
-			rs.close();
-			st.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println("APPLICATION ARRAY : "+jsonArray);
-		return jsonArray;
-	}
-
-
 
 	private JsonObject archiveExecutionHearderInfo(String waveName) {
 
@@ -176,16 +136,15 @@ public class ArchiveExecutionGovernanceDetailService {
 			st.setString(1, waveName);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
-				if((rs.getString("column_name")).equals("waveId"))
-					jsonObj.addProperty("waveId",rs.getString("value"));
-				else if((rs.getString("column_name")).equals("waveName"))
+				
+				 if((rs.getString("column_name")).equals("waveName"))
 					jsonObj.addProperty("waveName",rs.getString("value"));
 				else if((rs.getString("column_name")).equals("creation_date"))
 					jsonObj.addProperty("creation_date",rs.getString("value"));
 				else if((rs.getString("column_name")).equals("completion_date"))
 					jsonObj.addProperty("completion_date",rs.getString("value"));
 			}
-			
+
 
 			st.close();
 			rs.close();

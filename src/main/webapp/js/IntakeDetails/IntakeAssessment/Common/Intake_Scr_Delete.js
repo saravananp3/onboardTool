@@ -1,5 +1,4 @@
 $('#intake_scr_delete_submit').click(function(){
-          
      var File_Name=$('#File_Name').val();
         $.ajax({
             url: "IntakeAssessmentScrDeleteServlet",
@@ -13,10 +12,7 @@ $('#intake_scr_delete_submit').click(function(){
         });
         notification("warning","Screenshot is Deleted Successfully","Delete Screenshot");
      });
-     
      $('#deletegrid_update').click(function() {      
-        
-       
     $.ajax({
         url: "IntakeAssessmentScrRetrieveServlet",
         type: 'POST',
@@ -36,15 +32,18 @@ function appendRowFunction(data){
     $.each(data, function(key, value){
         var Id = value.AppId;
         var File_Name = value.File_Name;
-               
         var row = "<tr>"+
                 "<td style='text-align:center;vertical-align: middle; display:none;'><label class='control-label' for=''>"+Id+"</label>" +
                  "</td>"+
-                 "<td style='text-align:center;vertical-align: middle;'><label class='control-label ' for=''>"+File_Name+"</label>" +
+                 "<td style='text-align:center;vertical-align: middle;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:10ch;' data-bs-toggle='tooltip' data-bs-placement='top' title='"+File_Name+"'><label class='control-label ' for=''>"+File_Name+"</label>" +
                  "</td>"+
                   "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt download_btn'style='display:block; margin-left:-23px;'></span><span class='glyphicon glyphicon-trash intake_scr_deletepopup' style='float:right;display:block;margin-top:-13px; margin-right:9px;'></span>"+
                   "</td>"+
                   "</tr>";
                   $("#Legacy_Scr_List").append(row);
+                   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) 
     });
+    })
 }
