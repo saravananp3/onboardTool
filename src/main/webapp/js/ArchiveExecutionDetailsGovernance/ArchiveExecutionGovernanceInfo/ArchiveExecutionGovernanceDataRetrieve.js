@@ -10,7 +10,6 @@ $(document).ready(function()
             var completion_date="";
             $('#phaseName').html("Phase Name : "+phasename);
             $('#waveName').html("Wave Name : "+wavename);
-            $('#waveId').html("Wave Id : "+waveid);
             $('#creation_date').html("Creation Date : "+creation_date);
             $('#completion_date').html("Planned Completion Date : "+completion_date);
  $('#spinner').hide();
@@ -345,7 +344,6 @@ if(data.length>1)
             var creation_date=value.creation_date == false ? "" : value.creation_date;
             var completion_date=value.completion_date == false ? "" : value.completion_date;
             $('#waveName').html("Wave Name : "+wavename);
-            $('#waveId').html("Wave Id : "+waveid);
             $('#creation_date').html("Creation Date : "+creation_date);
             $('#completion_date').html("Planned Completion Date : "+completion_date);
         }

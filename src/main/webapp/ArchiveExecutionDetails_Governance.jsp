@@ -1010,8 +1010,7 @@ input[type="text"] {
 															<a href="#" id="phaseName" class="archeadbutton"
 																style="color: white; border: 2px #80ffd3;"></a> <a
 																href="#" id="waveName" class="archeadbutton"
-																style="color: white;"></a> <a href="#" id="waveId"
-																class="archeadbutton" style="color: white;"></a> </br> <a
+																style="color: white;"></a></br> <a
 																href="#" id="creation_date" class="archeadbutton"
 																style="color: white;"></a> <a href="#"
 																id="completion_date" class="archeadbutton"

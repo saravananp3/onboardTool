@@ -136,9 +136,8 @@ public class ArchiveExecutionGovernanceDetailService {
 			st.setString(1, waveName);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
-				if((rs.getString("column_name")).equals("waveId"))
-					jsonObj.addProperty("waveId",rs.getString("value"));
-				else if((rs.getString("column_name")).equals("waveName"))
+				
+				 if((rs.getString("column_name")).equals("waveName"))
 					jsonObj.addProperty("waveName",rs.getString("value"));
 				else if((rs.getString("column_name")).equals("creation_date"))
 					jsonObj.addProperty("creation_date",rs.getString("value"));
