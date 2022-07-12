@@ -110,6 +110,9 @@ $(document).on('click', '#saveApplicationList-1', function(e) {
         $('#applicationListWithoutPhase').empty();
 		getDataWithOutPhaseAndWave();
 		$('#applicationList').empty();
+		$("#phase-list" + number).empty();
+		$("#wave-list" + number).empty();
+		number = 0;;
 		getDataWithPhaseAndWave();
     } else {
         notification("warning", "No data available", "Warning");
