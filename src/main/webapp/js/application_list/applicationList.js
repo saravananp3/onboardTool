@@ -7,7 +7,9 @@ var exportContent = [];
 var JsonObject = [];
 var num = 0;
 $(document).ready(function() {
+    $('#spinner').show();
     getDataWithOutPhaseAndWave();
+    
 });
 $('#cancelwithoutphase').click(function(){
 $('#applicationListWithoutPhase').empty();
@@ -18,7 +20,11 @@ function getDataWithOutPhaseAndWave() {
         url: "PlanAndPriorityWithoutPhaseWaveServlet",
         type: 'POST',
         dataType: "json",
+         beforeSend : function(){
+         $('#overlay').show();
+  },
         success: function(data) {
+		$('#overlay').hide();
             console.log(data);
             var resourceOptions = "<option selected class='options Select' value=''>Select</option>"
             $.each(data[1][1][0], function(key, value) {
@@ -51,15 +57,18 @@ function getDataWithOutPhaseAndWave() {
                     "</tr>";
                 $('#applicationListWithoutPhase').append(t_row);
                 num++;
-                noDataFound(num)
+               
             });
+            noDataFound(num);
+            getPagination('#appwithoutphase');
         }
     })
 }
 function noDataFound(count) {
-    if (count < 1) {
+     if (count < 1) {
         $("#notFound").show();
     } else {
+		$("#notFound").empty();
         $("#notFound").hide();
     }
 }
@@ -97,8 +106,11 @@ $(document).on('click', '#saveApplicationList-1', function(e) {
     else if (validation==true && checkData==true) {
         console.log("JsonArray Retrieve--->", JsonArray);
         applicationListSaveAjaxFunction(JsonArray);
-        window.setTimeout(function() { location.reload() }, 1000);
         notification("success", "Saved successfully.", "Note:");
+        $('#applicationListWithoutPhase').empty();
+		getDataWithOutPhaseAndWave();
+		$('#applicationList').empty();
+		getDataWithPhaseAndWave();
     } else {
         notification("warning", "No data available", "Warning");
     }

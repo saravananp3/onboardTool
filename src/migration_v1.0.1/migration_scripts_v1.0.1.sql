@@ -47,3 +47,9 @@ ALTER TABLE decom3sixtytool.assessment_compliance_char_info ADD usermandatoryfla
 ALTER TABLE decom3sixtytool.assessment_archival_consumption_info ADD usermandatoryflag varchar(255);
 ALTER TABLE decom3sixtytool.assessment_contract_info ADD usermandatoryflag varchar(255);
 ALTER TABLE decom3sixtytool.archivereq_legacyapp_info ADD usermandatoryflag varchar(255);
+
+/* Create Index for Plan & Priority */
+CREATE INDEX plan_priority_app_name ON decom3sixtytool.opportunity_info(column_name,value);
+CREATE INDEX plan_priority_phase_name ON decom3sixtytool.phase_info(phaseName);
+CREATE INDEX plan_priority_wave_name ON decom3sixtytool.governance_info(waveName);
+CREATE INDEX plan_priority_update_details ON decom3sixtytool.planandpriorityinfo(app_Id);

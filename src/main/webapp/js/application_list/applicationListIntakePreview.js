@@ -21,7 +21,11 @@ function getDataWithPhaseAndWave() {
 		url: "PlanAndPriorityWithinPhase",
 		type: 'POST',
 		dataType: "json",
+		 beforeSend : function(){
+         $('#overlay1').show();
+  },
 		success: function(data) {
+			 $('#overlay1').hide();
 			console.log(data);
 			$.each(data[0], function(key, value) {
 				var opportunityName = value.app_name;
@@ -61,9 +65,7 @@ function getDataWithPhaseAndWave() {
 				number++;
 			});
 			noDataFoundWithphase(number);
-			$(document).ready(function() {
-				$('#appTable').DataTable();
-			});
+			getPagination1('#appwithphase');
 		}
 	})
 }
@@ -71,6 +73,7 @@ function noDataFoundWithphase(count1) {
 	if (count1 < 1) {
 		$("#notFound1").show();
 	} else {
+		$("#notFound1").empty();
 		$("#notFound1").hide();
 	}
 }
