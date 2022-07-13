@@ -1,0 +1,134 @@
+<head>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+
+<!-- ========== BootstrapV5 ========== -->
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+	src="js/verinfo.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
+	<style type="text/css">
+	footer { float: left; background: lightgray; width: 100%; font-size:auto;font-weight:500;}
+	</style>
+</head>
+
+<body>
+
+	<%@ page import="java.text.SimpleDateFormat"%>
+	<%@ page import="java.util.Date"%>
+	<%
+	SimpleDateFormat dateformatter1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date datenewDate1 = new Date();
+	System.out.println("[INFO]-----" + dateformatter1.format(datenewDate1) + "-----Accessed OpportunityList JSP PAGE-----[INFO]");
+	%>
+	<%@page language="java"%>
+	<%@page import="java.text.DateFormat"%>
+	<%@page import="java.text.SimpleDateFormat"%>
+	<%@page import="java.util.Date"%>
+	<%@page import="java.sql.*"%>
+	<%@ page import="onboard.DBconnection"%>
+	<%@page import="org.owasp.encoder.Encode"%>
+	<%@ page import="java.util.ResourceBundle"%>
+	<%
+	ResourceBundle resource = ResourceBundle.getBundle("VersionInfo");
+	String versioninfo = resource.getString("VERSION");
+	System.out.println("Version" + versioninfo);
+	%>
+
+
+	<script>
+		let tooltipTriggerList = [].slice.call(document
+				.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+			return new bootstrap.Tooltip(tooltipTriggerEl, {
+				container : 'body',
+				trigger : 'onClick'
+			});
+
+		});
+	</script>
+	<div class="modal" id="verModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h4 class="modal-title" id="exampleModalLabel"
+						style="color: white;">About</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form name="PopUpform">
+						<div class="row">
+							<div class="form-group">
+								<div class="col-lg-12">
+									<center>
+										<img src="images/Decom360_logo.png" style="width: 80%;">
+									</center>
+									<div class="col-lg-12">
+										<center>
+											<label class="control-label" for="formInput526">Version :
+												<%=versioninfo%></label>
+										</center>
+										<center><label class="control-label" for="formInput526">Copyright
+											&copy; 2022 <a href="https://platform3solutions.com/">Platform
+												3 Solutions.</a> All Rights Reserved.
+										</label></center>
+										<center>
+											<label class="control-label" for="formInput526">Trademarks
+												owned by Platform 3 Solutions </label>
+										</center>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	</div>
+
+
+	</div>
+	</div>
+	</div>
+
+
+	</div>
+	</div>
+	</div>
+
+	<button type="button" id="ver_info_btn"
+		class="btn btn-primary d3s-font-14" href="#" data-bs-toggle="modal"
+		data-bs-target="#verModal"
+		style="margin: 5px; font-size: 14px; display: none;">Version
+		Info</button>
+		
+		<footer style="background-color:#f7f7f7; color:#888888;font-size:9px;font-weight:500;">Decom3Sixty&nbsp;<img src="images/info.png" id="verinfo"width="10px" height="10px"></footer>
+	
+</body>
+

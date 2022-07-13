@@ -43,7 +43,7 @@
 <script src="js/multiplepages.js"></script>
 <script src="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>
 <link rel="stylesheet" href="css/Responsive/responsive.css"
-media="screen">
+	media="screen">
 <style>
 body {
 	background-color: #fff;
@@ -52,7 +52,6 @@ body {
 /* .active {
 	background: #1565c0;
 } */
-
 .page-title-div {
 	background: #1565c0;
 	padding: 15px;
@@ -343,18 +342,19 @@ img.filtered {
 </head>
 <body class="top-navbar-fixed">
 	<script>
-    $(document).ready(function() {
+		$(document).ready(function() {
 
-        $('#testDecom').attr('disabled', true);
-    });
-</script>
+			$('#testDecom').attr('disabled', true);
+		});
+	</script>
 	<div class="main-wrapper">
 		<%@ page import="java.text.SimpleDateFormat"%>
 		<%@ page import="java.util.Date"%>
 		<%
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]");  %>
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Grid JSP PAGE-----[INFO]");
+		%>
 		<%@page language="java"%>
 		<%@page import="java.sql.*"%>
 		<%@page import="java.text.DateFormat"%>
@@ -362,41 +362,37 @@ img.filtered {
 		<%@page import="java.util.Date"%>
 		<%@page import="onboard.DBconnection"%>
 		<%@page import="java.util.Calendar"%>
-		<%@page import="org.owasp.encoder.Encode" %>
+		<%@page import="org.owasp.encoder.Encode"%>
 		<%
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-        response.setHeader("Expires", "0"); // Proxies.
-        DBconnection dBconnection = new DBconnection();
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setHeader("Expires", "0"); // Proxies.
+		DBconnection dBconnection = new DBconnection();
 
-        if (session.getAttribute("username")==null)
-        {
-            response.sendRedirect("Login.jsp");
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("Login.jsp");
 
-        }
-        else{
-            String name=(String)session.getAttribute("ID");
-            HttpSession details=request.getSession();
-            Connection con = null;
-            session.setAttribute("theName", name);
-            String roles=(String)details.getAttribute("role");
-            String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
-            System.out.println("[INFO]-----"+OpportunityName+"-----Accessed Grid JSP PAGE-----[INFO]");
-            int sumcount=0;
-            Statement st,st2;
-            try{
-               
-             con=dBconnection.getConnection();
-                Statement st1;
+		} else {
+			String name = (String) session.getAttribute("ID");
+			HttpSession details = request.getSession();
+			Connection con = null;
+			session.setAttribute("theName", name);
+			String roles = (String) details.getAttribute("role");
+			String OpportunityName = (String) details.getAttribute("SelectedOpportunity");
+			System.out.println("[INFO]-----" + OpportunityName + "-----Accessed Grid JSP PAGE-----[INFO]");
+			int sumcount = 0;
+			Statement st, st2;
+			try {
 
+				con = dBconnection.getConnection();
+				Statement st1;
 
-                /* String query1 = "select * from AppEmphazize_ProjectDetails where id = "+name;
-                st1 = con.createStatement();
-                ResultSet rs = st1.executeQuery(query1);
-                if(rs.next())
-                { */
-
-    %>
+				/* String query1 = "select * from AppEmphazize_ProjectDetails where id = "+name;
+				st1 = con.createStatement();
+				ResultSet rs = st1.executeQuery(query1);
+				if(rs.next())
+				{ */
+		%>
 
 		<!-- ========== TOP NAVBAR ========== -->
 		<%--    <nav class="navbar top-navbar bg-white box-shadow">
@@ -465,9 +461,9 @@ img.filtered {
 								class="glyphicon glyphicon-home"></span> Home</a> >>
 							<%=OpportunityName%> --%>
 							<a href="OpportunityList.jsp" id="sitetitle1" style="color: #fff"><span
-								class="glyphicon glyphicon-home"></span> Home</a> >> 
-								<a  id="sitetitle1" style="color: #fff"><%=Encode.forHtml(OpportunityName)%></a>
-								
+								class="glyphicon glyphicon-home"></span> Home</a> >> <a
+								id="sitetitle1" style="color: #fff"><%=Encode.forHtml(OpportunityName)%></a>
+
 						</div>
 					</div>
 				</div>
@@ -484,8 +480,8 @@ img.filtered {
 					<div class="container-fluid">
 
 						<%
-                    if(roles.equals("admin")|| !roles.equals("admin") ){
-                %>
+						if (roles.equals("admin") || !roles.equals("admin")) {
+						%>
 						<!--  admin Role -->
 						<section class="flow-container">
 							<div class="flow container" style="margin-left: 10%;">
@@ -585,13 +581,13 @@ img.filtered {
 
 
 	<%
-}
-else if(roles.equals("ArchivalDeveloper"))
-{
-%>
+	} else if (roles.equals("ArchivalDeveloper")) {
+	%>
 	<section></section>
 
-	<%} %>
+	<%
+	}
+	%>
 
 
 	</div>
@@ -618,35 +614,34 @@ else if(roles.equals("ArchivalDeveloper"))
 
 
 	<%
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-%>
+	} catch (Exception e) {
+	e.printStackTrace();
+	}
+	}
+	%>
 
 	<script>
-    $(document).ready(function() {
+		$(document).ready(function() {
 
-        $('#testDecom').attr('disabled', true);
-    });
-</script>
+			$('#testDecom').attr('disabled', true);
+		});
+	</script>
 
 	<!-- Active Icon Color changes  -->
 	<script>
-/* $(document).on('mouseenter','.active', function(){
+		/* $(document).on('mouseenter','.active', function(){
 		
 		 $('.activeIcon').css('color','#1565c0');
-		 
-	 });
-	 
-	 $(document).on('mouseleave','.active', function(){
-			
+		
+		 });
+		
+		 $(document).on('mouseleave','.active', function(){
+		
 		 $('.activeIcon').css('color','#fff');
-		 
-	 }); */
-</script>
-
+		
+		 }); */
+	</script>
+	<%@include file="Footer.jspf"%>
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<script src="js/jquery-ui/jquery-ui.min.js"></script>
@@ -690,8 +685,11 @@ else if(roles.equals("ArchivalDeveloper"))
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link
+		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet">
 	<script src="js/toastr/toastr.min.js"></script>
 
 </body>

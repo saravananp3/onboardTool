@@ -63,7 +63,7 @@ body {
 
 #panel-container {
 	width: 70%;
-    margin-left: 15%;
+	margin-left: 15%;
 }
 
 .iconAlign {
@@ -202,13 +202,13 @@ li a.alignCenter {
 
 
 						<div class="row">
-							
+
 							<div class="container" id="panel-container">
 
 
 
 								<div class="card-container-1 mt-5">
-									
+
 									<div class="Card">
 										<div class="card-header" id="cd-header">New Phase</div>
 										<%@ page import="java.sql.*"%>
@@ -233,23 +233,28 @@ li a.alignCenter {
 																onclick="location.href='PhaseList.jsp';">Back</button>
 														</div>
 														<div class="col-8" align="end">
-															
+
 															<button type="button" class="btn btn-secondary"
 																id="template" data-bs-toggle="modal"
 																data-bs-target="#addWavePopUp">Add Wave</button>
 															<div class="btn-group dropup dropright">
 																<button class="btn btn-secondary dropdown-toggle "
-																	id="dropdownMenuButton1" type="button" data-bs-toggle="dropdown">
-																	Actions <!-- <span class="caret"></span> -->
+																	id="dropdownMenuButton1" type="button"
+																	data-bs-toggle="dropdown">
+																	Actions
+																	<!-- <span class="caret"></span> -->
 																</button>
 																<ul class="dropdown-menu" style="min-width: inherit;">
-																	<li><a class="dropdown-item dropDown-font" href="#" id="add" data-bs-toggle="modal"
-																		data-bs-target="#AddPopUp"><i class="fas fa-plus" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-																			</i>Add</a></li>			
-																	<li><a class="dropdown-item dropDown-font" href="#" id="Edit"><i class="fas fa-edit" aria-hidden="true">&nbsp;&nbsp;
-																			</i>Edit</a></li>
-																	<li><a class="dropdown-item dropDown-font" href="#" id="Delete"><i class="fas fa-trash" aria-hidden="true">&nbsp;&nbsp;&nbsp;
-																			</i>Delete</a></li>
+																	<li><a class="dropdown-item dropDown-font"
+																		href="#" id="add" data-bs-toggle="modal"
+																		data-bs-target="#AddPopUp"><i class="fas fa-plus"
+																			aria-hidden="true">&nbsp;&nbsp;&nbsp; </i>Add</a></li>
+																	<li><a class="dropdown-item dropDown-font"
+																		href="#" id="Edit"><i class="fas fa-edit"
+																			aria-hidden="true">&nbsp;&nbsp; </i>Edit</a></li>
+																	<li><a class="dropdown-item dropDown-font"
+																		href="#" id="Delete"><i class="fas fa-trash"
+																			aria-hidden="true">&nbsp;&nbsp;&nbsp; </i>Delete</a></li>
 																</ul>
 															</div>
 															<button type="submit" class="btn btn-primary" id="create">Create</button>
@@ -275,7 +280,7 @@ li a.alignCenter {
 
 												<!--Delete pop up-->
 												<div class="modal" id="DeletePopUp" tabindex="-1"
-													 aria-labelledby="exampleModalLabel" role="dialog">
+													aria-labelledby="exampleModalLabel" role="dialog">
 													<div class="modal-dialog" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -334,7 +339,7 @@ li a.alignCenter {
 													role="dialog" aria-labelledby="exampleModalLabel">
 													<div class="modal-dialog" role="document">
 														<div class="modal-content">
-															
+
 															<div class="modal-header">
 																<h5 class="modal-title" id="exampleModalLabel">Edit
 																	Input Field</h5>
@@ -352,8 +357,8 @@ li a.alignCenter {
 																			</div>
 																		</div>
 																	</div>
-																	<br /> <input type="text" id="seq_num" name="" value=""
-																		style="display: none;">
+																	<br /> <input type="text" id="seq_num" name=""
+																		value="" style="display: none;">
 																</form>
 
 															</div>
@@ -368,10 +373,11 @@ li a.alignCenter {
 													</div>
 												</div>
 												<!-------Add popup---------->
-												<div class="modal" id="AddPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+												<div class="modal" id="AddPopUp" tabindex="-1" role="dialog"
+													aria-labelledby="exampleModalLabel">
 													<div class="modal-dialog" role="document">
 														<div class="modal-content">
-															
+
 															<div class="modal-header">
 																<h5 class="modal-title" id="exampleModalLabel">Add
 																	Input Fields</h5>
@@ -410,8 +416,8 @@ li a.alignCenter {
 																			<div class="form-group">
 																				<div class="col-lg-8">
 																					<label class="control-label" for="formInput526">Type:</label>
-																					<select id="types" class="form-select"
-																						name="types" required>
+																					<select id="types" class="form-select" name="types"
+																						required>
 																						<option value="Text box">Text box</option>
 																						<option value="Check box">Check box</option>
 																						<option value="Radio box">Radio box</option>
@@ -493,15 +499,15 @@ li a.alignCenter {
 																				</div>
 																			</div>
 																		</div>
-																		<br />
-																		<br />
+																		<br /> <br />
 																	</div>
 																</form>
 
 															</div>
 															<div class="modal-footer">
 																<button type="button" id="submit"
-																	class="btn btn-primary" data-bs-dismiss="modal">Add Fields</button>
+																	class="btn btn-primary" data-bs-dismiss="modal">Add
+																	Fields</button>
 																<button type="button" class="btn btn-secondary"
 																	data-bs-dismiss="modal">Close</button>
 															</div>
@@ -571,16 +577,17 @@ li a.alignCenter {
 	</div>
 	</div>
 
-	<div class="modal" id="addWavePopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	<div class="modal" id="addWavePopUp" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Add Wave Name</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
+						aria-label="Close"></button>
 				</div>
-				
+
 				<div class="modal-body">
 					<form name="PopUpform">
 						<div class="row">
@@ -592,10 +599,8 @@ li a.alignCenter {
 
 								</div>
 							</div>
-							<br />
-							<br />
-							<input type="text" id="addWaveSeqNum" name="" value=""
-								style="display: none;">
+							<br /> <br /> <input type="text" id="addWaveSeqNum" name=""
+								value="" style="display: none;">
 
 
 							<div class="row" style="width: 150px;">
@@ -608,8 +613,8 @@ li a.alignCenter {
 				</div>
 				<div class="modal-footer">
 
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-						aria-label="Close">Cancel</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal" aria-label="Close">Cancel</button>
 
 				</div>
 			</div>
@@ -621,6 +626,7 @@ $('.deletepopup').click(function() {
     alert("Testing index"+$(this).index('.deletepopup'));
 });
 </script> -->
+	<%@include file="Footer.jspf"%>
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
 	<script src="js/jquery-ui/jquery-ui.min.js"></script>
@@ -639,7 +645,7 @@ $('.deletepopup').click(function() {
 	<link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
 		type="text/css" media="all" />
 	<script src="js/amcharts/themes/light.js"></script>
-	<
+	
 	<script src="js/icheck/icheck.min.js"></script>
 	<script src="js/bootstrap-tour/bootstrap-tour.js"></script>
 	<link rel="stylesheet" href="css/UserInfo/userinfo.css">
@@ -673,7 +679,10 @@ $('.deletepopup').click(function() {
 	<script id="scripttag"></script>
 	<script id="scripttag1"></script>
 	<!-- ========== Toastr ========== -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link
+		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet">
 </body>
 </html>

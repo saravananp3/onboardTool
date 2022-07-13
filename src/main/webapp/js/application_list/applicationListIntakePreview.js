@@ -136,6 +136,7 @@ $(document).on('click', '#saveApplicationList', function(e) {
 		getDataWithPhaseAndWave();
 		
 	} else {
+		
 		notification("warning", "No data available", "Warning");
 	}
 	e.preventDefault();

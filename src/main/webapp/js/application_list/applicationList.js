@@ -116,6 +116,7 @@ $(document).on('click', '#saveApplicationList-1', function(e) {
 		getDataWithPhaseAndWave();
     } else {
         notification("warning", "No data available", "Warning");
+        
     }
     e.preventDefault();
 });

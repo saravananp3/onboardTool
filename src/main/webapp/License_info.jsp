@@ -389,7 +389,8 @@ $(document).on('mouseenter','.active1', function(){
 		 
 	 });
 </script>
-
+</table></div></form></div></div></div></div></div></div></section></div></div></div></form></div>
+<%@include file="Footer.jspf"%>
 	<!-- ========== COMMON JS FILES ========== -->
 	
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>

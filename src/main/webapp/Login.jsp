@@ -472,6 +472,7 @@
     </div>
     <!-- Copyright -->
 </footer>
+
 <!-- Footer -->
 <!-- Script -->
 <script>
@@ -532,5 +533,6 @@
     }
     //------------------------------Clear Function End------------------------------//
 </script>
+
 </body>
 </html>

@@ -2,7 +2,9 @@ $(document).on('click','.waveCard',function(){
 	var index = $(this).index(".waveCard");
 	var waveName = $(".waveName").eq(index).val();
 	var waveId = $(".waveId").eq(index).val();
-	selectWaveAjaxCall(waveName,waveId);
+    location.href ="waveEdit.jsp?waveId='"+waveId+"'";
+	
+	//selectWaveAjaxCall(waveName,waveId);
 });
 
 function selectWaveAjaxCall(name,id)
