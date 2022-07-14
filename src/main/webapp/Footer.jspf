@@ -13,6 +13,9 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="css/footer.css"
+	media="screen">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,7 +27,12 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
 	rel="stylesheet">
 	<style type="text/css">
-	footer { float: left; background: lightgray; width: 100%; font-size:auto;font-weight:500;}
+	.versioninfo
+{
+/* font-size:95%; */
+font-weight:750;
+font-family:sans-serif;
+}
 	</style>
 </head>
 
@@ -70,7 +78,7 @@
 				<div class="modal-header" style="background-color: #1565c0;">
 					<h4 class="modal-title" id="exampleModalLabel"
 						style="color: white;">About</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
+					<button type="button" class="btn-close" data-bs-dismiss="modal" style="color:white;"
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -83,15 +91,15 @@
 									</center>
 									<div class="col-lg-12">
 										<center>
-											<label class="control-label" for="formInput526">Version :
+											<label class="versioninfo">Version :
 												<%=versioninfo%></label>
 										</center>
-										<center><label class="control-label" for="formInput526">Copyright
+										<center><label class="versioninfo">Copyright
 											&copy; 2022 <a href="https://platform3solutions.com/">Platform
 												3 Solutions.</a> All Rights Reserved.
 										</label></center>
 										<center>
-											<label class="control-label" for="formInput526">Trademarks
+											<label class="versioninfo" for="formInput526">Trademarks
 												owned by Platform 3 Solutions </label>
 										</center>
 									</div>
@@ -128,7 +136,7 @@
 		style="margin: 5px; font-size: 14px; display: none;">Version
 		Info</button>
 		
-		<footer style="background-color:#f7f7f7; color:#888888;font-size:9px;font-weight:500;">Decom3Sixty&nbsp;<img src="images/info.png" id="verinfo"width="10px" height="10px"></footer>
+		<footer class="verinfofooter">Decom3Sixty&nbsp;<img src="images/info.png" id="verinfo"width="10px" height="10px"></footer>
 	
 </body>
 

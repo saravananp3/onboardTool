@@ -6,9 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=1,initial-scale=1,user-scalable=1"/>
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
+    
     <title>Decom3Sixty</title>
 </head>
 <style>
+
+
+
     @import url('https://fonts.googleapis.com/css?family=Poppins');
     /* BASIC */
     html {
@@ -407,12 +411,106 @@
             margin-left: 14px;
         }
     }
+    
+    /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius:8px;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: #0b3360;
+  float: right;
+  font-size: 28px;
+  padding: 0.5rem 0.5rem;
+  margin: 0px -12px 0px 0px;
+  font-weight: none;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color:#1565c0 ;
+  color: white;
+  border-radius:7px 7px 0px 0px;
+  
+}
+
+.modal-body {
+padding: 2px 16px;
+margin-bottom:10px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.versioninfo
+{
+font-size:95%;
+font-weight:550;
+font-family:sans-serif;
+}
+
 </style>
 <body onLoad="Clear();">
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@page import="onboard.DBconnection"%>
 <%@page import="org.owasp.encoder.Encode" %>
+<%@ page import="java.util.ResourceBundle"%>
+	<%
+	ResourceBundle resource = ResourceBundle.getBundle("VersionInfo");
+	String versioninfo = resource.getString("VERSION");
+	System.out.println("Version" + versioninfo);
+	%>
 <%
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date = new Date();
@@ -465,16 +563,48 @@
 <!-- Footer -->
 <footer class="page-footer font-small blue">
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3"><p>This product is the proprietary property of Platform3 Solutions
-        and is only authorized to users with a valid license. If you do not have a license, please contact Platform3
-        Solutions or one of its partner representatives to obtain the required license.</p>© 2018 Copyright:
-        <a href="https://www.Platform3solutions.com">Platform3solutions</a>
+    <div class="footer-copyright text-center py-3"><p>This product is the proprietary property of Platform 3 Solutions
+        and is only authorized to users with a valid license. If you do not have a license, please contact Platform 3
+        Solutions or one of its partner representatives to obtain the required license.</p>Decom3Sixty&nbsp;<img src="images/info.png" id="myBtn"width="10px" height="10px">&nbsp;Copyright © 2022 <a href="https://www.Platform3solutions.com"> Platform 3 Solutions.</a>All Rights Reserved.
     </div>
+    
     <!-- Copyright -->
 </footer>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h3 style=" font-family: 'Poppins', sans-serif;">About</h3>
+    </div>
+    <div class="modal-body">
+     <center><img src="images/Decom360_logo.png" style="width: 80%;margin-top:5px;"></center>
+     
+     <center>
+											<label class="versioninfo" for="formInput526">Version :
+												<%=versioninfo%></label>
+										</center>
+										<center><label class="versioninfo">Copyright
+											&copy; 2022 <a href="https://platform3solutions.com/" style="color:#0d6efd;font-weight:550;">Platform
+												3 Solutions.</a> All Rights Reserved.
+										</label></center>
+										<center>
+											<label class="versioninfo" margin-bottom:10px;>Trademarks
+												owned by Platform 3 Solutions </label>
+										</center>
+    </div>
+    
+  </div>
+
+</div>
+
+
 <!-- Footer -->
 <!-- Script -->
+
 <script>
     //------------------------------Password Recovery Form Hide Start------------------------------//
     function showrecoveryform() {
@@ -534,5 +664,32 @@
     //------------------------------Clear Function End------------------------------//
 </script>
 
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>
