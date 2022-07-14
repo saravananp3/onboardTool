@@ -503,26 +503,7 @@ body {
 												</div>
 											</div>
 										</div>
-	<!-- /.col-md-6 -->
-
-	</div>
-	<!-- /.row -->
-
-	</section>
-	<!-- /.section -->
-
-	</div>
-	<!-- /.main-page -->
-
-	<!-- Project List End -->
-
-	</div>
-	<!-- /.content-container -->
-	</div>
-	<!-- /.content-wrapper -->
-
-	</div>
-	<!-- /.main-wrapper -->
+	
 
 	<script>
 $(document).on('mouseenter','.active1', function(){
@@ -537,7 +518,8 @@ $(document).on('mouseenter','.active1', function(){
 		 
 	 });
 </script>
-
+</table></div></form></div></div></div></div></div></div></section></div></div></div></form></div>
+<%@include file="Footer.jspf"%>	
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/admin_modify_module/admin_retrieve_users.js"></script>
 
@@ -702,7 +684,7 @@ crossorigin="anonymous">
 		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
 		rel="stylesheet">
 	<script src="js/notification/notification.js"></script>
+	
 </body>
 </html>
-
 

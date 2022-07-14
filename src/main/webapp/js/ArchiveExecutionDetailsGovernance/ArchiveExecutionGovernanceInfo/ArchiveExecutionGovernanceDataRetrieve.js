@@ -63,6 +63,7 @@ $(document).on('change','#wave',function(){
 	var wave=$('#wave').val();
 	var phase=$('#phase').val();
 	$('#demo').show();
+	$('#govmsg').hide();
 	 $("#ArchiveExecutionList").empty();
 	  $('#spinner').show();
 	  

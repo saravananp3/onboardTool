@@ -85,6 +85,96 @@
 <script
 	src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Download.js"></script>
 </head>
+<style>
+#overlay {
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 1400px;
+	height: 100%;
+	display: none;
+}
+
+.cv-spinner {
+	height: 62rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.pagination li:hover{
+    cursor: pointer;
+}
+.pagination1 li:hover{
+    cursor: pointer;
+}
+.spinner {
+	width: 60px;
+	height: 60px;
+	margin-right: 15rem;
+	margin-left: -3.5rem;
+	border: 8px #ddd solid;
+	border-top: 8px #2e93e6 solid;
+	border-radius: 50%;
+	animation: sp-anime 0.8s infinite linear;
+}
+
+@-webkit-keyframes sp-anime {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes sp-anime {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+}
+.is-hide {
+	display: none;
+}
+
+#overlay1 {
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 1400px;
+	height: 100%;
+	display: none;
+}
+
+.cv-spinner1 {
+	height: 62rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.spinner1 {
+	width: 60px;
+	height: 60px;
+	margin-right: 15rem;
+	margin-left: -3.5rem;
+	border: 8px #ddd solid;
+	border-top: 8px #2e93e6 solid;
+	border-radius: 50%;
+	animation: sp-anime1 0.8s infinite linear;
+}
+
+@-webkit-keyframes sp-anime1 {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes sp-anime1 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+}
+.is-hide1 {
+	display: none;
+}
+</style>
 <body>
 
 	<%@include file="Nav-Bar.jspf"%>
@@ -101,7 +191,9 @@
 				<div class="col-lg-12 col-md-12">
 					<div class="sub-title" style="color: #fff">
 						<a href="DashBoard.jsp" id="sitetitle1" style="color: #fff"><span
-							class="glyphicon glyphicon-home"></span> Home</a> >> <a href="Governance_Home.jsp" id="sitetitle1" style="color: #fff"> Governance</a> >> Plan and Priority
+							class="glyphicon glyphicon-home"></span> Home</a> >> <a
+							href="Governance_Home.jsp" id="sitetitle1" style="color: #fff">
+							Governance</a> >> Plan and Priority
 						<%-- <%=waveName%> --%>
 					</div>
 				</div>
@@ -160,8 +252,23 @@
 		</div>
 		<div class="card-body">
 			<div class="withPhase" id="withPhase">
-				<table class="table table-bordered table-responsive" id="appTable"
-					style="width: 100%; font-size: 12px;">
+				<table class="table table-bordered table-responsive"
+					id="appwithphase" style="width: 100%; font-size: 12px;">
+					<label>Show</label>
+					<label style="margin-left: 110px;"> Entries</label>
+					<select class="form-select align-left"
+						aria-label="Default select example" id="maxRows_1"
+						style="padding: 0.75 0 0 0.75rem; margin-bottom: 5px; margin-top: -28px; margin-left: 44px; width: auto;">
+						<option value="5000">Show All</option>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+						<option value="50">50</option>
+						<option value="70">70</option>
+						<option value="100">100</option>
+					</select>
+
 					<thead>
 						<tr>
 							<th
@@ -181,19 +288,37 @@
 								scope="col">Action</th>
 						</tr>
 					</thead>
+					<div id="overlay1">
+						<div class="cv-spinner1">
+							<span class="spinner1"></span>
+						</div>
+					</div>
 					<tbody id="applicationList">
-						<tr id="notFound1">
-							<td colspan='5' style="text-align: center;">No Data
-								Available</td>
+
+					</tbody>
+					<tbody id="notFound1" style="display: none;">
+						<tr>
+							<td colspan='4' style="text-align: center;"><label
+								style="color: black;">No Apps Found </label></td>
 						</tr>
 					</tbody>
+
 				</table>
 
-				<div class="col-md-12 text-center">
-					<ul class="pagination pagination-lg pager pagination-align"
-						id="developer_page_3"></ul>
-				</div>
 				<div class="row">
+					<div class="col-md-12" align="end">
+						<div class='pagination-container' style="float: right;">
+							<nav>
+								<ul class="pagination1">
+
+									<li data-page="prev"><span> << <span class="sr-only">(current)</span></span></li>
+									<!-- Here the JS Function Will Add the Rows -->
+									<li data-page="next" id="prev"><span> >> <span
+											class="sr-only">(current)</span></span></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
 					<div class="col-md-12" align="end">
 						<button class="btn btn-primary" id="cancelwithphase">Cancel</button>
 						<button class="btn btn-primary" id="saveApplicationList">Submit</button>
@@ -201,8 +326,23 @@
 				</div>
 			</div>
 			<div class="withoutPhase display" id="withoutPhase">
-				<table class="table table-bordered table-responsive" id="example4"
-					style="width: 100%; font-size: 12px;">
+				<table class="table table-bordered table-responsive"
+					id="appwithoutphase" style="width: 100%; font-size: 12px;">
+					<label>Show</label>
+					<label style="margin-left: 110px;"> Entries</label>
+					<select class="form-select align-left"
+						aria-label="Default select example" id="maxRows"
+						style="padding: 0.75 0 0 0.75rem; margin-bottom: 5px; margin-top: -28px; margin-left: 44px; width: auto;">
+						<option value="5000">Show All</option>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+						<option value="50">50</option>
+						<option value="70">70</option>
+						<option value="100">100</option>
+					</select>
+
 					<thead>
 						<tr>
 							<th
@@ -219,14 +359,35 @@
 								scope="col">Preview</th>
 						</tr>
 					</thead>
+					<div id="overlay">
+						<div class="cv-spinner">
+							<span class="spinner"></span>
+						</div>
+					</div>
 					<tbody id="applicationListWithoutPhase">
-						<tr id="notFound">
-							<td colspan='4' style="text-align: center;">No Data
-								Available</td>
+
+					</tbody>
+					<tbody id="notFound" style="display: none;">
+						<tr>
+							<td colspan='4' style="text-align: center;"><label
+								style="color: black;">No Apps Found </label></td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="row">
+					<div class="col-md-12" align="end">
+						<div class='pagination-container' style="float: right;">
+							<nav>
+								<ul class="pagination">
+
+									<li data-page="prev"><span> << <span class="sr-only">(current)</span></span></li>
+									<!--	Here the JS Function Will Add the Rows -->
+									<li data-page="next" id="prev"><span> >> <span
+											class="sr-only">(current)</span></span></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
 					<div class="col-md-12" align="end">
 						<button class="btn btn-primary" id="cancelwithoutphase">Cancel</button>
 						<button class="btn btn-primary" id="saveApplicationList-1">Submit</button>
@@ -463,12 +624,13 @@
 	<script src="js/navigation/navigation.js"></script>
 	<script src="js/application_list/applicationList.js"></script>
 	<script src="js/application_list/applicationListIntakePreview.js"></script>
-
+	<script src="js/application_list/withoutphasepagination.js"></script>
+	<script src="js/application_list/withphasepagination.js"></script>
 	<!-- ========== Pagination ========== -->
 	<script src="js/paging/pagination.js"></script>
 
-
-
+</br>
+<%@include file="Footer.jspf"%>
 	<!-- ========== BootstrapV5 ========== -->
 	<link
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"

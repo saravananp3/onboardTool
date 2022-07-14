@@ -349,9 +349,13 @@ keyframes click-radio-wave { 0% {
 
 
 
+
+
 %
 {
 width
+
+
 
 
 
@@ -377,7 +381,11 @@ width
 
 
 
+
+
 60px
+
+
 
 
 
@@ -402,6 +410,8 @@ height
 
 
 
+
+
 :
 
 
@@ -415,7 +425,11 @@ height
 
 
 
+
+
 60px
+
+
 
 
 
@@ -440,6 +454,8 @@ margin-left
 
 
 
+
+
 :
 
 
@@ -453,7 +469,11 @@ margin-left
 
 
 
+
+
 -15px
+
+
 
 
 
@@ -478,6 +498,8 @@ margin-top
 
 
 
+
+
 :
 
 
@@ -491,7 +513,11 @@ margin-top
 
 
 
+
+
 -15px
+
+
 
 
 
@@ -516,7 +542,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -540,7 +570,11 @@ opacity
 
 
 
+
+
 .0
+
+
 
 
 
@@ -936,7 +970,8 @@ input[type="text"] {
 		<div class="container-fluid" id="container-fluid-margin">
 			<div class="row" id="d3s-mt-10">
 				<div class="col-lg-12 col-md-12">
-					<h5 style="margin-top: -10px; margin-bottom:5px;" id="title">Project Plan</h5>
+					<h5 style="margin-top: -10px; margin-bottom: 5px;" id="title">Project
+						Plan</h5>
 				</div>
 			</div>
 			<div class="row">
@@ -979,7 +1014,7 @@ input[type="text"] {
 			</div>
 		</div>
 	</nav>
-
+<center><label id="govmsg"style="color:#888888; margin-top:15px;">Please select Phase and Wave to view the details</label></center>
 	<div id="demo" style="display: none;">
 		<form class="form-signin" name="loginForm" method="post">
 			<div class="main-wrapper">
@@ -1003,15 +1038,15 @@ input[type="text"] {
 							</ul>
 						</div> -->
 
-
+													
 													<div class="card-container-5 card">
 
 														<center>
 															<a href="#" id="phaseName" class="archeadbutton"
 																style="color: white; border: 2px #80ffd3;"></a> <a
 																href="#" id="waveName" class="archeadbutton"
-																style="color: white;"></a></br> <a
-																href="#" id="creation_date" class="archeadbutton"
+																style="color: white;"></a></br> <a href="#"
+																id="creation_date" class="archeadbutton"
 																style="color: white;"></a> <a href="#"
 																id="completion_date" class="archeadbutton"
 																style="color: white;"></a>
@@ -1453,7 +1488,9 @@ $(document).on('mouseenter','.active1', function(){
             document.getElementById('creation_date').value = today;
         }
     </script> -->
+
 </body>
+
 <!-- ========== COMMON JS FILES ========== -->
 
 <!-- <script src="js/jquery-ui/jquery-ui.min.js"></script> -->
@@ -1484,7 +1521,7 @@ $(document).on('mouseenter','.active1', function(){
 <script id="scripttag"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	 
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <script
@@ -1492,7 +1529,7 @@ $(document).on('mouseenter','.active1', function(){
 <!-- ========== Toastr ========== -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
 <link
 	href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
 	rel="stylesheet">

@@ -2392,9 +2392,9 @@ e.printStackTrace();
 											</div>
 										</div>
 
-										<a id="back-to-top" href="#"
+										<!-- <a id="back-to-top" href="#"
 											class="btn btn-light btn-lg back-to-top" role="button"><i
-											class="fa fa-arrow-up"></i></a>
+											class="fa fa-arrow-up"></i></a> -->
 
 									</form>
 
@@ -2506,6 +2506,7 @@ e.printStackTrace();
 		<!-- content-wrapper -->
 
 	</div>
+	<%@include file="Footer.jspf"%>
 	<!-- main-wrapper -->
 
 	<!-- <script src ="js/IntakeDetails/StakeHolder/StakeHolderDataRetrieve.js"></script> -->

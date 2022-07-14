@@ -579,6 +579,7 @@ $('.deletepopup').click(function() {
     alert("Testing index"+$(this).index('.deletepopup'));
 });
 </script> -->
+<%@include file="Footer.jspf"%>
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/jquery-ui/jquery-ui.min.js"></script>
@@ -596,7 +597,7 @@ $('.deletepopup').click(function() {
 <script src="js/amcharts/plugins/export/export.min.js"></script>
 <link rel="stylesheet" href="js/amcharts/plugins/export/export.css" type="text/css" media="all" />
 <script src="js/amcharts/themes/light.js"></script>
-<<script src="js/icheck/icheck.min.js"></script>
+<script src="js/icheck/icheck.min.js"></script>
 <script src="js/bootstrap-tour/bootstrap-tour.js"></script>
   <link rel="stylesheet" href="css/UserInfo/userinfo.css" >
 <!-- ========== THEME JS ========== -->

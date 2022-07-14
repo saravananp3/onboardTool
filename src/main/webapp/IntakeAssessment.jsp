@@ -1794,7 +1794,7 @@ e.printStackTrace();
   </div>
 </div> 
         
-	 <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" ><i class="fa fa-arrow-up"></i></a> 					
+	<!--  <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" ><i class="fa fa-arrow-up"></i></a> --> 					
 						
 					</form>
 					
@@ -1921,7 +1921,7 @@ e.printStackTrace();
 											</div>
 										</div>
 
-
+<%@include file="Footer.jspf"%>
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
          rel = "stylesheet"><!-- newly added code by parthiban -->
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>

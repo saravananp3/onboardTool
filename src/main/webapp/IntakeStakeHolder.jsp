@@ -646,6 +646,8 @@ e.printStackTrace();
 </div>  
 </div>
 </div>
+<%@include file="Footer.jspf"%>
+
     <!-- Date picker --> 
        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"  
          rel = "stylesheet"><!-- newly added code by parthiban -->

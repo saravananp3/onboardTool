@@ -897,7 +897,7 @@ display:none;
 	</div>
 	<!-- end of main wrapper -->
 	
-	
+	<%@include file="Footer.jspf"%>
 
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -1054,6 +1054,7 @@ $(document).ready(function() {
 	<script type="text/javascript" src="js/chartjs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/chartjs/Chart.js"></script>
 	<script src="js/dashboard/dashboardAjaxCall.js"></script>
+	
 <!-- 	<script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> -->
 	<!-- <script src="https://cdnjs.com/libraries/Chart.js"></script> -->
 	<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->

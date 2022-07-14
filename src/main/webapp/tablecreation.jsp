@@ -96,7 +96,7 @@
         statement.executeUpdate(query29);
         String query30 = "CREATE TABLE IF NOT EXISTS `Decomm_Manage_Service_Categories_Checklist_Server` (`seq_num` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255), `label_name` varchar(255),`column_name` varchar(255), `value` varchar(255),`dev` varchar(255),`test` varchar(255),`stage` varchar(255),`prod` varchar(255),`comments` varchar(600))";
         statement.executeUpdate(query30);
-        String query31 = "CREATE TABLE IF NOT EXISTS `Opportunity_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255),`usermandatoryflag` varchar(255))";
+        String query31 = "CREATE TABLE IF NOT EXISTS `Opportunity_Info` (`seq_no` INTEGER (255),`Id` varchar(255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255),`usermandatoryflag` varchar(255),INDEX(`column_name`,`value`))";
         statement.executeUpdate(query31);
         String query32 = "CREATE TABLE IF NOT EXISTS `Opportunity_Info_Template_Details` (`seq_no` INTEGER (255),`prj_name` varchar(255), `app_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query32);
@@ -225,7 +225,7 @@
         String query82 = "CREATE TABLE IF NOT EXISTS `Governance_Info_Details` (`seq_no` INTEGER (255), `waveId` varchar(255), `waveName` varchar(255), `prj_name` varchar(255), `options` varchar(14000),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query82);
         
-        String query83 = "CREATE TABLE IF NOT EXISTS `Governance_Info` (`seq_no` INTEGER (255), `waveId` varchar(255), `waveName` varchar(255), `prj_name` varchar(255), `options` varchar(14000), `label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        String query83 = "CREATE TABLE IF NOT EXISTS `Governance_Info` (`seq_no` INTEGER (255), `waveId` varchar(255), `waveName` varchar(255), `prj_name` varchar(255), `options` varchar(14000), `label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255),INDEX(`waveName`))";
         statement.executeUpdate(query83);
         
         String query84 = "CREATE TABLE IF NOT EXISTS `Archive_Req_Addendum_Info` (`seq_no` INTEGER (255),`oppId` varchar(255), `oppName` varchar(255), `prjName` varchar(255),`labelName` varchar(255), `addendumInfo` varchar(255))";
@@ -240,7 +240,7 @@
         String query87 = "CREATE TABLE IF NOT EXISTS `Phase_Info_Details` (`seq_no` INTEGER (255), `phaseId` varchar(255), `phaseName` varchar(255), `prj_name` varchar(255), `options` varchar(255),`label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
         statement.executeUpdate(query87);
         
-        String query88 = "CREATE TABLE IF NOT EXISTS `Phase_Info` (`seq_no` INTEGER (255), `phaseId` varchar(255), `phaseName` varchar(255), `prj_name` varchar(255), `options` varchar(255), `label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255))";
+        String query88 = "CREATE TABLE IF NOT EXISTS `Phase_Info` (`seq_no` INTEGER (255), `phaseId` varchar(255), `phaseName` varchar(255), `prj_name` varchar(255), `options` varchar(255), `label_name` varchar(255), `column_name` varchar(255),`type` varchar(255),`mandatory` varchar(255),`value` varchar(255),INDEX(`phaseName`))";
         statement.executeUpdate(query88);
         
         String query89 = "CREATE TABLE IF NOT EXISTS `Archive_Execution_Governance_Info` (`seq_no` INTEGER (255),`waveId` varchar(255),`waveName` varchar(255),`level` varchar(255),`taskId` varchar(255),`taskGroup` varchar(255),`taskName` varchar(255),`taskType` varchar(255),`majorDependencies` varchar(255),`assignedTo` varchar(255),`planSrt` varchar(255),`planEnd` varchar(255),`actSrt` varchar(255),`actEnd` varchar(255),`completion` varchar(255),`status` varchar(255),`remark` varchar(255))";
@@ -273,9 +273,10 @@
         String query98 = "CREATE TABLE IF NOT EXISTS `license` (`id` int(11) NOT NULL AUTO_INCREMENT, PRIMARY KEY (`id`),`license_info` longtext, `last_update_date` VARCHAR(255));";
         statement.executeUpdate(query98);
         
-        String query99 = "CREATE TABLE IF NOT EXISTS `planAndPriorityInfo` (`rowId` varchar(255),`app_Id` varchar(255), `waveId` VARCHAR(255),`phaseId` VARCHAR(255));";
+        String query99 = "CREATE TABLE IF NOT EXISTS `planAndPriorityInfo` (`rowId` varchar(255),`app_Id` varchar(255), `waveId` VARCHAR(255),`phaseId` VARCHAR(255),INDEX(`app_Id`));";
         statement.executeUpdate(query99);
         
+               
         
 %>
 <% } catch (Exception ex) {
