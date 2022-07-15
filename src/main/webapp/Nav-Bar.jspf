@@ -176,7 +176,7 @@
 						aria-expanded="false"><i
 						class="fas fa-user-circle iconAlign iconColor fa-3x"></i> </a>
 					<ul class="dropdown-menu" id="dropDownMenu"
-						aria-labelledby="dropdownMenuLink">
+						aria-labelledby="dropdownMenuLink" style="width:165px;margin-left:-15px;">
 						<li><a class="dropdown-item" href="#" id="textAlign"><i
 								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
 								in as <br /> <b class="user-ellipsis"><%=Encode.forHtml(userName)%></b></a></li>
@@ -185,7 +185,7 @@
 						<a
 							class="dropdown-item li-align" href=""
 							id="textAlign" data-target="#verModal1" data-toggle="modal"
-							style="border-top: 1px solid #d3d7e2; padding: 1px 0px 11px;"><i class="fa fa-info-circle iconColor fa-1x"></i>About</a>
+							style="border-top: 1px solid #d3d7e2; padding: 11px 0px 11px;">About Decom3Sixty</a>
 						<a class="dropdown-item li-align" href="#"
 							id="textAlign" onclick="location.href='logout.jsp';"
 							style="border-top: 1px solid #d3d7e2;"><i
