@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,27 +7,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ page import="java.text.SimpleDateFormat"%>
-		<%@ page import="java.util.Date"%>
-		<%
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-	    Date date = new Date();  
-	    System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Logout JSP PAGE-----[INFO]");  %>
-<%
+	<%@ page import="java.text.SimpleDateFormat"%>
+	<%@ page import="java.util.Date"%>
+	<%@ page import="java.util.ResourceBundle"%>
+	<%
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date date = new Date();
+	System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Logout JSP PAGE-----[INFO]");
+	%>
+	<%
+	ResourceBundle resource = ResourceBundle.getBundle("Configuration");
+	String authtype = resource.getString("AUTHTYPE");
+	%>
+	<%
+	
 
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-response.setHeader("Expires", "0"); // Proxies.
+	if (session.getAttribute("username") == null && !authtype.equals("SSO")) {
+		response.sendRedirect("Login.jsp");
+	}
+	else if (session.getAttribute("username") != null && !authtype.equals("SSO")) {
+		session.invalidate();
+		response.sendRedirect("Login.jsp");
 
-if (session.getAttribute("username")==null)
-{
-	response.sendRedirect("Login.jsp");
-}
-session.invalidate();
-response.sendRedirect("Login.jsp");
+	}
 
+	else if (authtype.equals("SSO")) {
+		response.sendRedirect("SSO_Logout.jsp");
+	}
+	%>
 
-%>
 
 </body>
 </html>

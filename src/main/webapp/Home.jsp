@@ -10,10 +10,11 @@
 <%@ page import = "java.util.ResourceBundle" %>
 <% ResourceBundle resource = ResourceBundle.getBundle("Configuration");
   String authtype=resource.getString("AUTHTYPE");
+  String ssologinurl=resource.getString("SSOLOGINURL");
   
  %>
-  <%=authtype %>
- <%-- <%=surname%> --%>
+Welcome<%=authtype%>
+
  <%
  if(authtype.equals("LOCAL"))
  {
@@ -21,7 +22,7 @@
  }
  else if(authtype.equals("SSO"))
  {
-	 response.sendRedirect("https://localhost:8442/");
+	 response.sendRedirect(ssologinurl);
  }
  
  %>
