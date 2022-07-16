@@ -168,7 +168,7 @@
 	<div class="container"> 
 	<div class="well"> 
 	<h1 id="ErrorMessage"></h1>
-	<h2>User has been Successfully Logged out from Decom3Sixty</h2>
+	<h2>User has been Successfully Logged out from the Application</h2>
 		
 	</div> 
 	
