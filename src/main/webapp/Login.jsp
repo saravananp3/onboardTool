@@ -508,9 +508,24 @@ font-family:sans-serif;
 <%@ page import="java.util.ResourceBundle"%>
 	<%
 	ResourceBundle resource = ResourceBundle.getBundle("VersionInfo");
+	ResourceBundle resource1 = ResourceBundle.getBundle("Configuration");
 	String versioninfo = resource.getString("VERSION");
+	String ssologinurl = resource1.getString("SSOLOGINURL");
+	String authtype = resource1.getString("AUTHTYPE");
 	System.out.println("Version" + versioninfo);
+	System.out.println("SSOURL" + ssologinurl);
 	%>
+	
+	<%
+ 
+  if(authtype.equals("SSO"))
+ {
+	 response.sendRedirect(ssologinurl);
+ }
+ 
+ %>
+	
+	
 <%
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date = new Date();

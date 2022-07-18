@@ -49,6 +49,12 @@
 	<%@page import="java.sql.*"%>
 	<%@ page import="onboard.DBconnection"%>
 	<%@page import="org.owasp.encoder.Encode" %>
+	<%@ page import="java.util.ResourceBundle"%>
+	<%
+	ResourceBundle resource1 = ResourceBundle.getBundle("VersionInfo");
+	String versioninfo1 = resource1.getString("VERSION");
+	System.out.println("Version" + versioninfo1);
+	%>
 	<%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -170,12 +176,17 @@
 						aria-expanded="false"><i
 						class="fas fa-user-circle iconAlign iconColor fa-3x"></i> </a>
 					<ul class="dropdown-menu" id="dropDownMenu"
-						aria-labelledby="dropdownMenuLink">
+						aria-labelledby="dropdownMenuLink" style="width:165px;margin-left:-15px;">
 						<li><a class="dropdown-item" href="#" id="textAlign"><i
 								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
 								in as <br /> <b class="user-ellipsis"><%=Encode.forHtml(userName)%></b></a></li>
 
-						<li class="mt-5"><a class="dropdown-item li-align" href="#"
+						<li class="mt-5">
+						<a
+							class="dropdown-item li-align" href=""
+							id="textAlign" data-target="#verModal1" data-toggle="modal"
+							style="border-top: 1px solid #d3d7e2; padding: 11px 0px 11px;">About Decom3Sixty</a>
+						<a class="dropdown-item li-align" href="#"
 							id="textAlign" onclick="location.href='logout.jsp';"
 							style="border-top: 1px solid #d3d7e2;"><i
 								class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
@@ -210,7 +221,50 @@
 			
 		});
 	</script>
+<div class="modal" id="verModal1" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h4 class="modal-title" id="exampleModalLabel"
+						style="color: white;">About</h4>
+					<button type="button" class="btn-close" data-dismiss="modal"
+						style="color: white;" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form name="PopUpform">
+						<div class="row">
+							<div class="form-group">
+								<div class="col-lg-12">
+									<center>
+										<img src="images/Decom360_logo.png" style="width: 80%;">
+									</center>
+									<div class="col-lg-12">
+										<center>
+											<label class="versioninfo">Version : <%=versioninfo1%></label>
+										</center>
+										<center>
+											<label class="versioninfo">Copyright &copy; 2022 <a
+												href="https://platform3solutions.com/">Platform 3
+													Solutions.</a> All Rights Reserved.
+											</label>
+										</center>
+										<center>
+											<label class="versioninfo" for="formInput526">Trademarks
+												owned by Platform 3 Solutions </label>
+										</center>
+									</div>
 
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
 
 
 </body>

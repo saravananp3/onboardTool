@@ -54,9 +54,9 @@ font-family:sans-serif;
 	<%@page import="org.owasp.encoder.Encode"%>
 	<%@ page import="java.util.ResourceBundle"%>
 	<%
-	ResourceBundle resource = ResourceBundle.getBundle("VersionInfo");
-	String versioninfo = resource.getString("VERSION");
-	System.out.println("Version" + versioninfo);
+	ResourceBundle resource2 = ResourceBundle.getBundle("VersionInfo");
+	String versioninfo2 = resource2.getString("VERSION");
+	System.out.println("Version" + versioninfo2);
 	%>
 
 
@@ -92,7 +92,7 @@ font-family:sans-serif;
 									<div class="col-lg-12">
 										<center>
 											<label class="versioninfo">Version :
-												<%=versioninfo%></label>
+												<%=versioninfo2%></label>
 										</center>
 										<center><label class="versioninfo">Copyright
 											&copy; 2022 <a href="https://platform3solutions.com/">Platform
