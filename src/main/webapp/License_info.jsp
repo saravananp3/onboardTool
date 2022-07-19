@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="css/icheck/skins/line/red.css">
 <link rel="stylesheet" href="css/icheck/skins/line/green.css">
 <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
+
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 	rel="stylesheet">
@@ -340,9 +341,9 @@ body {
 								</div>
 							</div>
 					</div>
-<button type="button" id="add_btn" class="btn btn-primary"
+<button type="button" id="update_license_btn" class="btn btn-primary"
 															href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-															style="margin: 5px; font-size: 14px;">Update License</button>
+															style="margin: 5px; font-size: 14px;display:none;">Update License</button>
 																		
 																		
 			<script>
@@ -541,7 +542,10 @@ $(document).ready(function() {
 <script src="js/navigation/navigation.js"></script>
 <script src="js/license/retrieve_license_info.js"></script>
 <script src="js/license/update_license.js"></script>
+
 <link rel="stylesheet" href="css/Responsive/responsive.css"
+media="screen">
+<link rel="stylesheet" href="css/admin_changepwd.css"
 media="screen">
 <link
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"

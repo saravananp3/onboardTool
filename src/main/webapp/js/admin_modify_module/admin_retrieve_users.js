@@ -1,5 +1,5 @@
 $(document).ready(function()
-{
+{	
     $.ajax({
         url: "Retrieve_users_servlet",
         type: 'POST',
@@ -13,6 +13,7 @@ $(document).ready(function()
             appendRowFunction(data);
             },
     });
+    
 });
 function appendRowFunction(data){
     $.each(data, function(key, value){
@@ -22,7 +23,6 @@ function appendRowFunction(data){
         var u_email = value.u_email;
         var u_role = value.u_role;
         var random_id = value.random_id;
-        
         var row = "<tr>"+
                 "<td style='text-align:center;vertical-align: middle;'><label class='control-label' for=''>"+uname+"</label>" +
                  "</td>"+
@@ -36,9 +36,11 @@ function appendRowFunction(data){
                  "</td>"+
                   "<td style='text-align:center;vertical-align: middle;display:none;'><label class='control-label ' for=''>"+random_id+"</label>" +
                  "</td>"+
-                  "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup'style='display:block;'></span><span class='glyphicon glyphicon-trash deletepopup' style='float:right;display:block;margin-top:-13px;'></span>"+
+                  "<td class='useraction' style='text-align:center;vertical-align: middle;display:none;'><span class='glyphicon glyphicon-pencil editpopup'id='editpopup"+random_id+"'style='display:block;'></span><span class='glyphicon glyphicon-trash deletepopup' style='float:right;display:block;margin-top:-13px;'></span>"+
                   "</td>"+
                   "</tr>";
+                 
                   $("#Userslist").append(row);
+                 usertablehide();
     });
 }

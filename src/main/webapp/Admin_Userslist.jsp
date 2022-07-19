@@ -155,6 +155,7 @@ body {
 	background: #1565c0;
 	padding: 15px;
 }
+
 </style>
 
 </head>
@@ -280,7 +281,7 @@ body {
 																	<th style="text-align:center;">LastName</th>
 																	<th style="text-align:center;">Email</th>
 																	<th style="text-align:center;">Role</th>
-																	<th style="text-align:center;">Action</th>
+																	<th style="text-align:center;display:none;" class="useractionheader">Action</th>
 																
 																</thead>
 																<tbody id ="Userslist">
@@ -376,7 +377,7 @@ body {
 					</div>
 <button type="button" id="add_btn" class="btn btn-primary d3s-font-14"
 															href="#" data-bs-toggle="modal" data-bs-target="#addModal"
-															style="margin: 5px; font-size: 14px;">Add User</button>
+															style="margin: 5px; font-size: 14px;display:none;">Add User</button>
 																		
 																		<button type="button"
 																		class="btn btn-primary pull-right" id="editpopup_btn"
@@ -574,7 +575,7 @@ $(document).on('mouseenter','.active1', function(){
 	<script src="js/admin_modify_module/admin_retrieve_users.js"></script>
 	<script src="js/admin_modify_module/DeleteAjaxCall.js"></script>
 	<script src="js/admin_modify_module/EditAjaxCall.js"></script>
-	
+	<script src="js/admin_modify_module/admin_role.js"></script>
 	<script type="text/javascript"
 		src="js/date-picker/bootstrap-datepicker.js"></script>
 	<script type="text/javascript"
@@ -671,6 +672,8 @@ $(document).ready(function() {
 </script>
 	<script src="js/navigation/navigation.js"></script>
 <link rel="stylesheet" href="css/Responsive/responsive.css"
+media="screen">
+<link rel="stylesheet" href="css/admin_changepwd.css"
 media="screen">
 <link
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
