@@ -1,5 +1,6 @@
 $(document).ready(function()
-{    $.ajax({
+{   usertablehide();
+	 $.ajax({
         url: "retrieve_license_servlet",
         type: 'POST',
         dataType: "json",
