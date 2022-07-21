@@ -454,12 +454,12 @@ margin-left: 289px;
 										aria-label=".form-select-lg example" id="u_role" name="u_role" style="font-size:14px;"
 										required>
 										<option value="">Select</option>
-										<option>DECOM_SUPER_ADMIN</option>
-										<option>DECOM_ADMIN</option>
-										<option>DECOM_TECHNICAL_CONTRIBUTOR</option>
-										<option>DECOM_ARCHIVE_CONTRIBUTOR</option>
-										<option>DECOM_DECOMMISSION_CONTRIBUTOR</option>
-										<option>DECOM_FINANCE_CONTRIBUTOR</option>
+										<option>D3SIXTY_SUPER_ADMIN</option>
+										<option>D3SIXTY_ADMIN</option>
+										<option>D3SIXTY_TECHNICAL_CONTRIBUTOR</option>
+										<option>D3SIXTY_ARCHIVE_CONTRIBUTOR</option>
+										<option>D3SIXTY_DECOMMISSION_CONTRIBUTOR</option>
+										<option>D3SIXTY_FINANCE_CONTRIBUTOR</option>
 									</select>
 								</div>
 
@@ -526,12 +526,12 @@ margin-left: 289px;
 										aria-label=".form-select-lg example" id="u_role_modify"
 										name="u_role" style="font-size:14px;"required>
 										<option>Select</option>
-										<option>DECOM_SUPER_ADMIN</option>
-										<option>DECOM_ADMIN</option>
-										<option>DECOM_TECHNICAL_CONTRIBUTOR</option>
-										<option>DECOM_ARCHIVE_CONTRIBUTOR</option>
-										<option>DECOM_DECOMMISSION_CONTRIBUTOR</option>
-										<option>DECOM_FINANCE_CONTRIBUTOR</option>
+										<option>D3SIXTY_SUPER_ADMIN</option>
+										<option>D3SIXTY_ADMIN</option>
+										<option>D3SIXTY_TECHNICAL_CONTRIBUTOR</option>
+										<option>D3SIXTY_ARCHIVE_CONTRIBUTOR</option>
+										<option>D3SIXTY_DECOMMISSION_CONTRIBUTOR</option>
+										<option>D3SIXTY_FINANCE_CONTRIBUTOR</option>
 									</select>
 
 

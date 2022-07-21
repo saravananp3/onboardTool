@@ -10,7 +10,7 @@ function usertablehide()
         data : {user_Name:user_Name},
         success: function (data) {
             console.log("Users List Retrieve",data);
-    		if(data.User_Role=="DECOM_SUPER_ADMIN")
+    		if(data.User_Role=="D3SIXTY_SUPER_ADMIN")
     		{
 			 $(".useraction").show();
 			 $("#add_user_btn").show();
