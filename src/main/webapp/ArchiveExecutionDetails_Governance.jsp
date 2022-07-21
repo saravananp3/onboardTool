@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Decom3Sixty - ArchiveExecution-Governance</title>
+<title>D3Sixty - ArchiveExecution-Governance</title>
 
 <!-- ========== COMMON STYLES ========== -->
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
@@ -892,7 +892,7 @@ input[type="text"] {
 		<div class="container-fluid col-sm-12 col-md-12 col-lg-12">
 			<div class="col-sm-2 col-md-2 col-lg-2">
 				<a class="navbar-brand" href="OpportunityList.jsp"> <img
-					src="images/Decom360-logo.png" class="d3s-logo-1" alt="Decom3Sxity">
+					src="images/D3Sixty-logo.png" class="d3s-logo-1" alt="D3Sixty">
 				</a>
 			</div>
 			<div class="col-md-8 col-lg-8 col-sm-8">

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Decom3Sixty</title>
+<title>D3Sixty</title>
 </head>
 <%@ page language="java" import="java.util.*" %> 
 <%@ page import = "java.util.ResourceBundle" %>

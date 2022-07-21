@@ -41,7 +41,6 @@ public class Add_users_servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		HttpSession details = request.getSession();
         String id=request.getParameter("id");
         String uname=request.getParameter("uname");

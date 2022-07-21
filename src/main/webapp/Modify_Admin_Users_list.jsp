@@ -171,7 +171,7 @@ body {
             <div class="row">
 				<div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
+                        <img src="images/D3Sixty_logo.png" alt="D3Sixty" class="logo" style = "margin-top : 50px;">
                     </a>
 
                    

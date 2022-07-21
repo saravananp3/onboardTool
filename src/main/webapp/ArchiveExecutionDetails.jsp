@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Decom3Sixty - Intake</title>
+<title>D3Sixty - Intake</title>
 
 <!-- ========== COMMON STYLES ========== -->
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
@@ -568,7 +568,7 @@ background:#1565c0 important;
 		<div class="container-fluid col-sm-12 col-md-12 col-lg-12">
 			<div class="col-sm-2 col-md-2 col-lg-2">
 				<a class="navbar-brand" href="OpportunityList.jsp"> <img
-					src="images/Decom360-logo.png" class="d3s-logo-1" alt="Decom3Sxity">
+					src="images/D3Sixty-logo.png" class="d3s-logo-1" alt="D3Sixty">
 				</a>
 			</div>
 			<div class="col-md-8 col-lg-8 col-sm-8">
@@ -671,7 +671,7 @@ background:#1565c0 important;
             <div class="row">
                  <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
+                        <img src="images/D3Sixty_logo.png" alt="D3Sixty" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
                 /.navbar-header

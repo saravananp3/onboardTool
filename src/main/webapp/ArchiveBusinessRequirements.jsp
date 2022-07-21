@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
 <link rel="stylesheet" href="css/animate-css/animate.min.css"
 	media="screen">
-<title>Decom3Sixty - Business Requirements</title>
+<title>D3Sixty - Business Requirements</title>
 <!-- ========== PAGE STYLES ========== -->
 <link rel="stylesheet" href="css/prism/prism.css" media="screen">
 <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
@@ -284,7 +284,7 @@ Statement st1;
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/Decom3Sixty_logo.png" alt="Decomm3Sixty" class="logo" style = "margin-top : 50px;">
+                        <img src="images/D3Sixty_logo.png" alt="D3Sixty" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
                 /.navbar-header

@@ -4,26 +4,81 @@ $('#add_usersubmit').click(function(){
         var ulname=$('#ulname').val();
         var u_email=$('#u_email').val();
         var u_pwd=$('#u_pwd').val();
+        var conf_u_pwd=$('#conf_u_pwd').val();
         var u_role=$('#u_role').val();
+        
+        if(uname=="")
+        {
+		notification("error","Please Enter Username","Note");
+		}
+		 if(ufname=="")
+        {
+		notification("error","Please Enter Firstname","Note");
+		}
+		 if(ulname=="")
+        {
+		notification("error","Please Enter Lastname","Note");
+		}		
+        
+        if(IsEmail(u_email)==false)
+        {
+		notification("error","Please Enter a Valid Email","Note");
+		}	
+		if(u_pwd=="")
+        {
+		notification("error","Please Enter Password","Note");
+		}
+		 if(u_role=="")
+         {
+		 notification("error","Please Select a User Role","Note");
+		 }
+        if(u_pwd!=conf_u_pwd)
+        {
+		notification("error","Password and Confirm Password Does not Match","Note");
+		}
+        if(u_pwd==conf_u_pwd&&IsEmail(u_email)==true&&u_role!="")
+        {
         $.ajax({
             url: "Add_users_servlet",
             type: 'POST',
             data : {uname:uname,ufname:ufname,ulname:ulname,u_email:u_email,u_pwd:u_pwd,u_role:u_role},
             dataType: "json",
             success: function (data) {
-                var uname=data.uname;
-                var ufname=data.ufname;
-                var ulname=data.ulname;
-                var u_email=data.u_email;
-                var u_pwd=data.u_pwd;
-                var u_role=data.u_role;
-                
+			if($("#u_pwd").val().length<8 && $('#conf_u_pwd').val().length<8)
+			{
+				notification("error","Password and Confirm Password Contains atleast 8 Characters","Note");
+			}
+			
+          	if(data.uemailduplicate=="Yes")
+            {
+			notification("error","E-Mail Already Exists","Note");
+	 		}
+	 		if(data.unameduplicate=="Yes")
+            {
+	 		notification("error","Username Already Exists","Note");
+	 		}
+	 		if(data.flag=="Success")
+            {
+	 		notification("success","User is Added Successfully.","Note");
+	 		window.setTimeout(function(){location.reload()},1500)
+	 		}
+                console.log("Data",data);
                 
         } 
            
         });
-       notification("success","User is Added Successfully.","Note");
-       window.setTimeout(function(){location.reload()},220) });
+        }
+        function IsEmail(u_email) {
+  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  if(!regex.test(u_email)) {
+    return false;
+  }else{
+    return true;
+  }
+}
+       });
+        
+
        
        
         $(document).on('click', '.editpopup', function () {
