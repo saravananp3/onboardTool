@@ -20,7 +20,7 @@ import common.constant.MODULE_NAME;
 public class jsonToHtmlContent {
 	private static StringBuffer buffer = null;
 	private String appName;
-	private String imagePath="S:/Decom3Sixty/D3S_21092021/D3S/src/main/webapp/images/Decom3Sixty_logo.png";
+	private String imagePath="S:/Decom3Sixty/D3S_21092021/D3S/src/main/webapp/images/D3Sixty_logo.png";
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd yyyy");
 
 	public String getHtmlContentFromJson(JsonArray jsonArray,String modulename) {

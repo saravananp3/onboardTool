@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<title>Decom3Sixty Modules List</title>
+<title>D3Sixty Modules List</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -400,7 +400,7 @@ img.filtered {
             <div class="row">
                 <div class="navbar-header no-padding" style = "height : 100px;">
                     <a class="navbar-brand" href="OpportunityList.jsp" id="sitetitle">
-                        <img src="images/Decom3Sixty_logo.png" alt="Decom3Sxity" class="logo" style = "margin-top : 50px;">
+                        <img src="images/D3Sixty_logo.png" alt="D3Sixty" class="logo" style = "margin-top : 50px;">
                     </a>
                 </div>
                 <!-- /.navbar-header -->

@@ -218,7 +218,7 @@
                     </div>
                     <!-- /.navbar-header -->
 
-                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">Decom3Sixty
+                    <a class="navbar-brand" href="Project_List.jsp" id="sitetitle">D3Sixty
                         Tool-<%=Encode.forHtml(Opportunityname)%>
                     </a>
                                     

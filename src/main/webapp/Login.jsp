@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=1,initial-scale=1,user-scalable=1"/>
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
     
-    <title>Decom3Sixty</title>
+    <title>D3Sixty</title>
 </head>
 <style>
 
@@ -580,7 +580,7 @@ font-family:sans-serif;
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3"><p>This product is the proprietary property of Platform 3 Solutions
         and is only authorized to users with a valid license. If you do not have a license, please contact Platform 3
-        Solutions or one of its partner representatives to obtain the required license.</p>Decom3Sixty&nbsp;<img src="images/info.png" id="myBtn"width="10px" height="10px">&nbsp;Copyright © 2022 <a href="https://www.Platform3solutions.com"> Platform 3 Solutions.</a>All Rights Reserved.
+        Solutions or one of its partner representatives to obtain the required license.</p>D3Sixty&nbsp;<img src="images/info.png" id="myBtn"width="10px" height="10px">&nbsp;Copyright © 2022 <a href="https://www.Platform3solutions.com"> Platform 3 Solutions.</a>All Rights Reserved.
     </div>
     
     <!-- Copyright -->
@@ -596,7 +596,7 @@ font-family:sans-serif;
       <h3 style=" font-family: 'Poppins', sans-serif;">About</h3>
     </div>
     <div class="modal-body">
-     <center><img src="images/Decom360_logo.png" style="width: 80%;margin-top:5px;"></center>
+     <center><img src="images/D3Sixty_logo.png" style="width: 60%;margin-top:5px;"></center>
      
      <center>
 											<label class="versioninfo" for="formInput526">Version :

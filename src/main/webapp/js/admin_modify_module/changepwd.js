@@ -4,19 +4,23 @@ $('#change_PWD').click(function(){
         var new_pwd=$("#new_pwd").val();
         var conf_new_pwd=$('#conf_new_pwd').val();
         console.log("Prev Pwd : ",prev_pwd);
+        if(prev_pwd=="")
+        {
+		notification("error","Please Enter Current Password","Note");
+		}
          if(new_pwd!=conf_new_pwd)
 		{
-			notification("warning","New Password and Confirm New Password Does not Match","Note");
-			 setTimeout(function() {
-				location.reload();
-				}, 1000);
+
+			notification("error","New Password and Confirm New Password Does not Match","Note");
+			 
+
 		}
 		
 		if($("#new_pwd").val().length<8 && $('#conf_new_pwd').val().length<8)
 		{
-			notification("warning","New Password and Confirm New Password Contains atleast 8 Characters","Note");
+			notification("error","New Password and Confirm New Password Contains atleast 8 Characters","Note");
 		}
-        if(new_pwd==conf_new_pwd && $("#new_pwd").val().length>=8 && $('#conf_new_pwd').val().length>=8 )
+        if(new_pwd==conf_new_pwd && $("#new_pwd").val().length>=8 && $('#conf_new_pwd').val().length>=8 && prev_pwd!="")
         {
 			$.ajax({
             url: "Change_pwd_servlet",
@@ -28,16 +32,14 @@ $('#change_PWD').click(function(){
            if(data.Prev_Pwd=="False")
            {
 			notification("error", "Current Password is Incorrect", "Error");
-           setTimeout(function() {
-				location.reload();
-				}, 1000);
+
       	  } 
       	  if(data.Prev_Pwd=="True")
            {
 			notification("success", "Password is Updated Successfully", "Note");
            setTimeout(function() {
-				location.reload();
-				}, 1000);
+				location.href="logout.jsp";
+				}, 2000);
       	  } 
       	  }
         });

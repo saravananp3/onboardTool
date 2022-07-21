@@ -136,7 +136,7 @@ font-family:sans-serif;
 		style="margin: 5px; font-size: 14px; display: none;">Version
 		Info</button>
 		
-		<footer class="verinfofooter">Decom3Sixty&nbsp;<img src="images/info.png" id="verinfo"width="10px" height="10px"></footer>
+		<footer class="verinfofooter">D3Sixty&nbsp;<img src="images/info.png" id="verinfo"width="10px" height="10px"></footer>
 	
 </body>
 

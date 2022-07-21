@@ -47,20 +47,7 @@ public class Change_pwd {
 				jsonobj.addProperty("Prev_Pwd","False");
 				System.out.println("Prev Password Not Matched");
 			}
-			/*
-			 * String insert_query
-			 * ="insert into users (random_id,uname,ufname,ulname,u_email,u_pwd,u_role) values(?,?, ?, ?, ?, ?, ?);"
-			 * ; PreparedStatement preparedStmt1 =
-			 * connection.prepareStatement(insert_query); preparedStmt1.setString(1,
-			 * random_id); preparedStmt1.setString(2, uname); preparedStmt1.setString(3,
-			 * ufname); preparedStmt1.setString(4, ulname); preparedStmt1.setString(5,
-			 * u_email); preparedStmt1.setString(6, s_u_pwd); preparedStmt1.setString(7,
-			 * u_role); preparedStmt1.execute(); jsonobj.addProperty("id", random_id);
-			 * jsonobj.addProperty("uname", uname); jsonobj.addProperty("ufname", ufname);
-			 * jsonobj.addProperty("ulname", ulname); jsonobj.addProperty("u_email",
-			 * u_email); jsonobj.addProperty("u_pwd", s_u_pwd);
-			 * jsonobj.addProperty("u_role", u_role);
-			 */
+		
 		}
 		catch(Exception e)
 		{

@@ -35,6 +35,8 @@ update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='If yes, ple
 /* Assessment_Application_Info */
 update `decom3sixtytool`.`Assessment_Application_Info` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
 
+/* Users Group Update For D3Sixty */
+UPDATE `decom3sixtytool`.`users`SET u_role = REPLACE(u_role, 'DECOM', 'D3SIXTY') WHERE u_role like'%DECOM%'
 
 /* User Mandatory DeleteFlag Alter Statement */
 ALTER TABLE decom3sixtytool.Opportunity_Info_Details ADD usermandatoryflag varchar(255);

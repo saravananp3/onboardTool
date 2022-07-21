@@ -152,7 +152,7 @@
 	<html> 
 	<head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> 
-	<title>Decom3Sixty</title> 
+	<title>D3Sixty</title> 
 	</head> 
 	<body> 
 	

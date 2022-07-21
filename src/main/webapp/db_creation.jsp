@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Decom3Sixty Tool</title>
+<title>D3Sixty Tool</title>
 </head>
 <body>
 <%@ page import="java.text.SimpleDateFormat"%>

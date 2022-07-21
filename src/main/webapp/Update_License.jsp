@@ -26,7 +26,7 @@
 <link rel="icon" type="image/png" href="assets/img/favicon.ico">
 
 
-<title>Decom3Sixty Update License</title>
+<title>D3Sixty Update License</title>
 
 <meta
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
