@@ -549,8 +549,8 @@ font-family:sans-serif;
             <input type="submit" id="burton" name="go" class="fadeIn fourth" value="Log In">
             <!-- Remind Passowrd -->
             <div id="formFooter">
-                <a class="underlineHover" href="#" onclick="showuserform()">Forgot Username?/</a>
-                <a class="underlineHover" href="#" onclick="showrecoveryform()">Forgot Password?</a>
+                <!-- <a class="underlineHover" href="#" onclick="showuserform()">Forgot Username?/</a>
+                <a class="underlineHover" href="#" onclick="showrecoveryform()">Forgot Password?</a> -->
             </div>
         </div>
     </form>
