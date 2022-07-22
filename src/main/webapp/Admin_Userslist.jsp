@@ -46,7 +46,6 @@
 <script src="js/modernizr/modernizr.min.js"></script>
 
 <script src="js/multiplepages.js"></script>
-<script src="js/Opportunity/OpportunityGrid/OpportunityGrid.js"></script>
 
 <!-- ========== COMMON JS FILES ========== -->
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -80,10 +79,7 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Retrieve_Review.js"></script>
-<script
-	src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Download.js"></script>
+
 </head>
 <style>
 #overlay {
@@ -129,25 +125,37 @@
 100
 
 
+
+
 %
 {
 -webkit-transform
 
 
+
+
 :
 
 
+
+
 rotate
+
+
 (
+
+
 
 
 360deg
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -158,25 +166,37 @@ keyframes sp-anime { 0% {
 100
 
 
+
+
 %
 {
 transform
 
 
+
+
 :
 
 
+
+
 rotate
+
+
 (
+
+
 
 
 360deg
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 }
@@ -219,25 +239,37 @@ rotate
 100
 
 
+
+
 %
 {
 -webkit-transform
 
 
+
+
 :
 
 
+
+
 rotate
+
+
 (
+
+
 
 
 360deg
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 @
@@ -248,42 +280,54 @@ keyframes sp-anime1 { 0% {
 100
 
 
+
+
 %
 {
 transform
 
 
+
+
 :
 
 
+
+
 rotate
+
+
 (
+
+
 
 
 360deg
 
 
+
+
 )
+
+
 ;
-
-
 }
 }
 }
 .is-hide1 {
 	display: none;
 }
-#u_pwd_togglePassword
-{
-position: absolute; 
-margin-top: 22px;
-margin-left: 348px;
+
+#u_pwd_togglePassword {
+	position: absolute;
+	margin-top: 22px;
+	margin-left: 348px;
 }
-#conf_u_pwd_togglePassword
-{
-position: absolute; 
-margin-top: 22px;
-margin-left: 289px;
+
+#conf_u_pwd_togglePassword {
+	position: absolute;
+	margin-top: 22px;
+	margin-left: 289px;
 }
 </style>
 <body>
@@ -326,7 +370,7 @@ margin-left: 289px;
 	<div class="card-container-5 card d3s-mt-50">
 		<div class="card-header d3s-pl-15" id="cd-header">Users List</div>
 
-		<div class="withoutPhase display" id="withoutPhase">
+		<div class="withoutPhase display" id="admin_userslist_div">
 			<table class="table table-bordered table-responsive"
 				id="admin_userslist" style="width: 100%; font-size: 12px;">
 				</br>
@@ -369,11 +413,11 @@ margin-left: 289px;
 						<span class="spinner"></span>
 					</div>
 				</div>
-				<tbody id="Userslist">
+				<tbody id="AdminUserslist">
 
 				</tbody>
-			
-		</table>
+
+			</table>
 			<div class="row">
 				<div class="col-md-12" align="end">
 					<div class='pagination-container' style="float: right;">
@@ -433,17 +477,15 @@ margin-left: 289px;
 								<div class="col-lg-12">
 									<label class="control-label" for="formInput526">Password:</label>
 									<i class="fa fa-eye-slash icon" aria-hidden="true"
-										id="u_pwd_togglePassword"
-										></i>
-									<input type="password" class="form-control" id="u_pwd"
-										name="u_pwd" required>
+										id="u_pwd_togglePassword"></i> <input
+										type="password" class="form-control" id="u_pwd" name="u_pwd"
+										required>
 								</div>
 								<div class="col-lg-12">
-									<label class="control-label" for="formInput526">Confirm Password:</label>
-									<i class="fa fa-eye-slash icon" aria-hidden="true"
-										id="conf_u_pwd_togglePassword"
-										></i>
-									<input type="password" class="form-control" id="conf_u_pwd"
+									<label class="control-label" for="formInput526">Confirm
+										Password:</label> <i class="fa fa-eye-slash icon" aria-hidden="true"
+										id="conf_u_pwd_togglePassword"></i> <input
+										type="password" class="form-control" id="conf_u_pwd"
 										name="conf_u_pwd" required>
 								</div>
 								<div class="col-lg-12">
@@ -451,8 +493,8 @@ margin-left: 289px;
 									<!-- <input type="text" class="form-control" id="u_role"
 													name="u_role" required>  -->
 									<select class="form-select form-select-lg mb-3"
-										aria-label=".form-select-lg example" id="u_role" name="u_role" style="font-size:14px;"
-										required>
+										aria-label=".form-select-lg example" id="u_role" name="u_role"
+										style="font-size: 14px;" required>
 										<option value="">Select</option>
 										<option>D3SIXTY_SUPER_ADMIN</option>
 										<option>D3SIXTY_ADMIN</option>
@@ -524,7 +566,7 @@ margin-left: 289px;
 										for="formInput526">User Role:</label> <select
 										class="form-select form-select-lg mb-3"
 										aria-label=".form-select-lg example" id="u_role_modify"
-										name="u_role" style="font-size:14px;"required>
+										name="u_role" style="font-size: 14px;" required>
 										<option>Select</option>
 										<option>D3SIXTY_SUPER_ADMIN</option>
 										<option>D3SIXTY_ADMIN</option>
@@ -582,7 +624,7 @@ margin-left: 289px;
 		</div>
 	</div>
 
-<script>
+	<script>
         const togglePassword10 = document
             .querySelector('#conf_u_pwd_togglePassword');
   
@@ -608,8 +650,8 @@ margin-left: 289px;
            
         });
     </script>
-    
-    <script>
+
+	<script>
         const togglePassword11 = document
             .querySelector('#u_pwd_togglePassword');
   
@@ -656,9 +698,8 @@ margin-left: 289px;
 	<script src="js/admin_modify_module/admin_add_user.js"></script>
 	<script src="js/admin_modify_module/DeleteAjaxCall.js"></script>
 	<script src="js/admin_modify_module/EditAjaxCall.js"></script>
-<script src="js/admin_modify_module/admin_users_pagination.js"></script>
+	<script src="js/admin_modify_module/admin_users_pagination.js"></script>
 	<!-- ========== Pagination ========== -->
-	<script src="js/paging/pagination.js"></script>
 
 
 	<!-- ========== BootstrapV5 ========== -->

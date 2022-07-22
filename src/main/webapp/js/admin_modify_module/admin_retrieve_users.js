@@ -45,7 +45,7 @@ function appendRowFunction(data){
                   "</td>"+
                   "</tr>";
                  
-                  $("#Userslist").append(row);
+                  $("#AdminUserslist").append(row);
                  usertablehide();
                  getPagination('#admin_userslist');
     });
