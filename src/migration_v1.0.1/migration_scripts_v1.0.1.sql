@@ -36,7 +36,7 @@ update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='If yes, ple
 update `decom3sixtytool`.`Assessment_Application_Info` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
 
 /* Users Group Update For D3Sixty */
-UPDATE `decom3sixtytool`.`users`SET u_role = REPLACE(u_role, 'DECOM', 'D3SIXTY') WHERE u_role like'%DECOM%'
+UPDATE `decom3sixtytool`.`users`SET u_role = REPLACE(u_role, 'DECOM', 'D3SIXTY') WHERE u_role like'%DECOM%';
 
 /* User Mandatory DeleteFlag Alter Statement */
 ALTER TABLE decom3sixtytool.Opportunity_Info_Details ADD usermandatoryflag varchar(255);
@@ -54,4 +54,4 @@ ALTER TABLE decom3sixtytool.archivereq_legacyapp_info ADD usermandatoryflag varc
 CREATE INDEX column_name ON decom3sixtytool.opportunity_info(column_name,value);
 CREATE INDEX phaseName ON decom3sixtytool.phase_info(phaseName);
 CREATE INDEX waveName ON decom3sixtytool.governance_info(waveName);
-CREATE INDEX app_Id ON decom3sixtytool.planandpriorityinfo(app_Id);
+
