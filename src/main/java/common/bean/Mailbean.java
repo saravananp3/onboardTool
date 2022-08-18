@@ -5,10 +5,31 @@ public class Mailbean {
 	private String smtpPort;
 	private String smtpFrom;
 	private String smtpPwd;
+	private String SMTP_AUTH;
+	private String SMTP_DEBUG;
+	private String SMTP_STARTTLS;
 	private static Exception smtpException;
 	
 	public String getSmtpServer() {
 		return smtpServer;
+	}
+	public String getSMTP_AUTH() {
+		return SMTP_AUTH;
+	}
+	public void setSMTP_AUTH(String sMTP_AUTH) {
+		SMTP_AUTH = sMTP_AUTH;
+	}
+	public String getSMTP_DEBUG() {
+		return SMTP_DEBUG;
+	}
+	public void setSMTP_DEBUG(String sMTP_DEBUG) {
+		SMTP_DEBUG = sMTP_DEBUG;
+	}
+	public String getSMTP_STARTTLS() {
+		return SMTP_STARTTLS;
+	}
+	public void setSMTP_STARTTLS(String sMTP_STARTTLS) {
+		SMTP_STARTTLS = sMTP_STARTTLS;
 	}
 	public void setSmtpServer(String smtpServer) {
 		this.smtpServer = smtpServer;
