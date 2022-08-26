@@ -14,14 +14,18 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig;
+
 import common.bean.Mailbean;
 import common.constant.EMAIL_SERVICE_CONSTANT;
 
 public class EmailService {
-
+	static String mailPwd=null;
 	static Properties properties = new Properties();
 
 	public Properties loadProperties() {
+
 		try {
 			InputStream fileInput = EmailApprovalService.class
 					.getResourceAsStream(EMAIL_SERVICE_CONSTANT.MAIL_PROPS);
@@ -36,11 +40,28 @@ public class EmailService {
 	public boolean sendApprovalEmail(String username, String uEmail, String approval_Link, String mail_content, String subject,Object[] replaceValues) throws MessagingException, UnsupportedEncodingException {
 		loadProperties();
 		Mailbean mbn = new Mailbean();
+		StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+		EnvironmentStringPBEConfig config = new EnvironmentStringPBEConfig();
+		config.setPassword("Decom3Sixty");                        // we HAVE TO set a password
+		config.setAlgorithm("PBEWITHHMACSHA512AndAES_256");
+		encryptor.setConfig(config);
+		encryptor.setKeyObtentionIterations(1000);
+		mailPwd=properties.getProperty("EMAIL.PASSWORD");	
+		if(mailPwd.startsWith("ENC("))
+		{
+			String separator =")";
+			String s=mailPwd.substring(4);
+			int sepPos = s.lastIndexOf(separator);
+			String lc=s.substring(0,sepPos);
+			mailPwd=encryptor.decrypt(lc);
+		}
+		
 		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+
 
 			protected PasswordAuthentication getPasswordAuthentication() {
 
-				return new PasswordAuthentication(properties.getProperty("EMAIL.TOOL"), properties.getProperty("EMAIL.PASSWORD"));
+				return new PasswordAuthentication(properties.getProperty("EMAIL.TOOL"), mailPwd);
 
 			}
 
