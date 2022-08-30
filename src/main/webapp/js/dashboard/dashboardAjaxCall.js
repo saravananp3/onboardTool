@@ -637,31 +637,31 @@ $.ajax({
             value: value11.newOpportunity,
             color: "#7FFFD4",
             highlight: "lightblue",
-            label: "New Opportunity"
+            label: "New Opportunity: " + value11.newOpportunity
         },
         {
             value: value11.triage,
             color: "#1565c0",
             highlight: "lightskyblue",
-            label: "Triage"
+            label: "Triage: " + value11.triage
         },
         {
             value: value11.assesment,
             color: "#6495ed",
             highlight: "#82aadd",
-            label: "Assessment"
+            label: "Assessment: " + value11.assesment
         },
         {
             value: value11.pendingApproval,
             color: "#1d88aa",
             highlight: "darkorange",
-            label: "Pending Approval"
+            label: "Pending Approval: " + value11.pendingApproval
         },
         {
             value: value11.completed,
             color: "#83ddd4",
             highlight: "darkgreen",
-            label: "Completed"
+            label: "Completed: " + value11.completed
         }
     ];
     console.log(data)
@@ -707,25 +707,25 @@ function doughnutType()
             value: value1.NoApp,
             color: "#aeb8c1",
             highlight: "lightskyblue",
-            label: "No Apps Found"
+            label: "No Apps Found: " + value1.NoApp
         },
         {
             value: value1.archiveReqPer,
             color: "#1565c0",
             highlight: "#82aadd",
-            label: "Archive Requirements"
+            label: "Archive Requirements: " + value1.archiveReqPer
         },
         {
             value: value1.archiveExePer,
             color: "#1d88aa",
             highlight: "darkorange",
-            label: "Archive Execution"
+            label: "Archive Execution: " + value1.archiveExePer
         },
         {
             value: value1.completed,
             color: "#83ddd4",
             highlight: "darkgreen",
-            label: "Completed"
+            label: "Completed: " + value1.completed
         }
     ];
     console.log("Result : ",result)
@@ -878,56 +878,67 @@ function resetCanvas() {
   $('#canvas2').append("<canvas id='mycanvas1' width='200' height='200' style='margin-left: 96%;'><canvas>");
 };
 
-$(document).ready(function() {
-   /* var ctx = $("#canvasCBA").get(0).getContext("2d");*/
-   
-    var options = {
-        title: {
-            display: true,
-            text: 'Waves'
-        },
-    }
-    var selectedPhase=$('#phase :selected').text();
-    var selectedwave=$('#wave :selected').text();
-    var phase=selectedPhase==""?"All":selectedPhase;
-    var wave=selectedwave==""?"All":selectedwave;
-    $.ajax({
-        url: "dashboardDoughnutServlet",
-        type: 'POST',
-        async: false,
-         data:{phase:phase,wave:wave},
-        dataType: "json",
-        success: function(data) {
-            console.log("CBA Data : ", data);
-            $.each(data[1],function(key,value1){
-    var result = [
-        {
-            value: value1.sunmOfIntake,
-            color: "#1565c0",
-            highlight: "lightskyblue",
-            label: "Sum Of Intake/Opportunity"
-        },
-        {
-            value: value1.sumOfInProgress,
-            color: "#d1e0f3",
-            highlight: "#82aadd",
-            label: "Sum Of InProcess"
-        },
-        {
-            value: value1.sumOfRealised,
-            color: "#d2d6e2",
-            highlight: "darkorange",
-            label: "Sum Of Realized"
-        }
-    ];
-    console.log("Result : ",result)
-    /*var chart = new Chart(ctx).Pie(result);*/
-	var ctx = $("#canvasCBA").get(0).getContext("2d");
-	var PieChart = new Chart(ctx).Pie(result);
-	document.getElementById('legend1').innerHTML = PieChart.generateLegend();
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-        });
-   }});
+$(document).ready(function() {
+	/* var ctx = $("#canvasCBA").get(0).getContext("2d");*/
+	var options = {
+		title: {
+			display: true,
+			text: 'Waves'
+		},
+	}
+	var selectedPhase = $('#phase :selected').text();
+	var selectedwave = $('#wave :selected').text();
+	var phase = selectedPhase == "" ? "All" : selectedPhase;
+	var wave = selectedwave == "" ? "All" : selectedwave;
+	$.ajax({
+		url: "dashboardDoughnutServlet",
+		type: 'POST',
+		async: false,
+		data: { phase: phase, wave: wave },
+		dataType: "json",
+		success: function(data) {
+			console.log("CBA Data : ", data);
+			/*var formatter = new Intl.NumberFormat('en-US', {
+				style: 'currency',
+				currency: 'USD',
+			
+			});*/
+			$.each(data[1], function(key, value1) {
+				var sumOfIntakeinDoller = numberWithCommas(value1.sunmOfIntake);
+				var sumOfInProgressinDoller = numberWithCommas(value1.sumOfInProgress);
+				var sumOfRealisedinDoller = numberWithCommas(value1.sumOfRealised);
+				var result = [
+					{
+						value: value1.sunmOfIntake,
+						color: "#1565c0",
+						highlight: "lightskyblue",
+						label: "Sum Of Intake/Opportunity: $" + sumOfIntakeinDoller
+					},
+					{
+						value: value1.sumOfInProgress,
+						color: "#d1e0f3",
+						highlight: "#82aadd",
+						label: "Sum Of InProcess: $" + sumOfInProgressinDoller
+					},
+					{
+						value: value1.sumOfRealised,
+						color: "#d2d6e2",
+						highlight: "darkorange",
+						label: "Sum Of Realized: $" + sumOfRealisedinDoller
+					}
+				];
+				console.log("Result : ", result)
+				/*var chart = new Chart(ctx).Pie(result);*/
+				var ctx = $("#canvasCBA").get(0).getContext("2d");
+				var PieChart = new Chart(ctx).Pie(result);
+				document.getElementById('legend1').innerHTML = PieChart.generateLegend();
+			});
+		}
+	});
 });
 
 /*$(document).ready(function() {
