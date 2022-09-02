@@ -710,10 +710,10 @@ display:none;
 													<b style="margin-top: -8px;">Waves</b>
 												</h6>
 												<canvas id="mycanvas1" width="200" height="200"
-													style="margin-left: 96%;"></canvas>
+													style="margin-left: 95%;"></canvas>
 											</div>
 											<div id="legend2"
-												style="float: right; margin-right: -57%; margin-top: -33%; font-size: 11px; font-weight: 600;"></div>
+												style="float: right; margin-right: -59%; margin-top: -33%; font-size: 11px; font-weight: 600;"></div>
 										</div>
 									</div>
 								</div>
@@ -859,10 +859,10 @@ display:none;
 
 										<div class="card-body align2" style="width: fit-content;">
 											<div class="col-md-4 mt-3">
-												<canvas id="canvasCBA" width="200" height="200"
+												<canvas id="canvasCBA" width="175" height="175"
 													style="margin-left: -10%;"></canvas>
 												<div id="legend1"
-													style="margin-top: -165%; margin-left: 180%; float: left; font-size: 75%; font-weight: 600;"></div>
+													style="margin-top: -170%; margin-left: 140%; float: left; font-size: 70%; font-weight: 600;"></div>
 											</div>
 										</div>
 

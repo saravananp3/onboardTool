@@ -366,13 +366,13 @@ public class DashboardDoughnutService {
                 jsonObject.addProperty("sumOfRealised", 0);
             }
             else {
-            double sunmOfIntake = Double.parseDouble(f.format((intakeCBA * 100) / totalCBA));
-            double sumOfInProgress = Double.parseDouble(f.format((inprogreeCBA * 100) / totalCBA));
-            double sumOfRealised = Double.parseDouble(f.format((realisedCBA * 100) / totalCBA));
-            jsonObject.addProperty("sunmOfIntake", sunmOfIntake);
-            jsonObject.addProperty("sumOfInProgress", sumOfInProgress);
-            jsonObject.addProperty("sumOfRealised", sumOfRealised);
-            }
+            	double sunmOfIntake = Double.parseDouble(f.format((intakeCBA)));
+                double sumOfInProgress = Double.parseDouble(f.format((inprogreeCBA )));
+                double sumOfRealised = Double.parseDouble(f.format((realisedCBA)));
+                jsonObject.addProperty("sunmOfIntake", sunmOfIntake);
+                jsonObject.addProperty("sumOfInProgress", sumOfInProgress);
+                jsonObject.addProperty("sumOfRealised", sumOfRealised);
+                }
             jsonArray.add(jsonObject);
         } catch (Exception e) {
             e.printStackTrace();

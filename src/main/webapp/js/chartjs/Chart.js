@@ -72,7 +72,7 @@
 			scaleLabel: "<%=value%>",
 
 			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
-			scaleIntegersOnly: true,
+			scaleIntegersOnly: false,
 
 			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
 			scaleBeginAtZero: false,
@@ -144,7 +144,7 @@
 			tooltipXOffset: 10,
 
 			// String - Template string for single tooltips
-			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+			tooltipTemplate: "<%if (label){%><%=label%><%}%>",
 
 			// String - Template string for single tooltips
 			multiTooltipTemplate: "<%= value %>",
