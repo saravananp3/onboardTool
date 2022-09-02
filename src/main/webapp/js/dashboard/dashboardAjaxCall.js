@@ -637,31 +637,31 @@ $.ajax({
             value: value11.newOpportunity,
             color: "#7FFFD4",
             highlight: "lightblue",
-            label: "New Opportunity: " + value11.newOpportunity
+            label: "New Opportunity: " + value11.newOpportunity +"%"
         },
         {
             value: value11.triage,
             color: "#1565c0",
             highlight: "lightskyblue",
-            label: "Triage: " + value11.triage
+            label: "Triage: " + value11.triage +"%"
         },
         {
             value: value11.assesment,
             color: "#6495ed",
             highlight: "#82aadd",
-            label: "Assessment: " + value11.assesment
+            label: "Assessment: " + value11.assesment +"%"
         },
         {
             value: value11.pendingApproval,
             color: "#1d88aa",
             highlight: "darkorange",
-            label: "Pending Approval: " + value11.pendingApproval
+            label: "Pending Approval: " + value11.pendingApproval +"%"
         },
         {
             value: value11.completed,
             color: "#83ddd4",
             highlight: "darkgreen",
-            label: "Completed: " + value11.completed
+            label: "Completed: " + value11.completed +"%"
         }
     ];
     console.log(data)
@@ -707,25 +707,25 @@ function doughnutType()
             value: value1.NoApp,
             color: "#aeb8c1",
             highlight: "lightskyblue",
-            label: "No Apps Found: " + value1.NoApp
+            label: "No Apps Found: " + value1.NoApp +"%"
         },
         {
             value: value1.archiveReqPer,
             color: "#1565c0",
             highlight: "#82aadd",
-            label: "Archive Requirements: " + value1.archiveReqPer
+            label: "Archive Requirements: " + value1.archiveReqPer +"%"
         },
         {
             value: value1.archiveExePer,
             color: "#1d88aa",
             highlight: "darkorange",
-            label: "Archive Execution: " + value1.archiveExePer
+            label: "Archive Execution: " + value1.archiveExePer +"%"
         },
         {
             value: value1.completed,
             color: "#83ddd4",
             highlight: "darkgreen",
-            label: "Completed: " + value1.completed
+            label: "Completed: " + value1.completed +"%"
         }
     ];
     console.log("Result : ",result)
