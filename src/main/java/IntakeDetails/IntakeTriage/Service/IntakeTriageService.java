@@ -831,6 +831,10 @@ public class IntakeTriageService extends DynamicFields {
 				JsonObject jsonObj = jsonArr.get(i).getAsJsonObject();
 				String name = jsonObj.get("Name").getAsString();
 				String value = jsonObj.get("Value").getAsString();
+				if(value.contains("$") && name.equals("Preliminary_CBA"))
+				{
+					 value = value.substring(1);
+				}
 				String SelectQuery = "select * from triage_info where id =? and column_name=?;";
 				PreparedStatement st = connection.prepareStatement(SelectQuery);
 				st.setString(1, id);
