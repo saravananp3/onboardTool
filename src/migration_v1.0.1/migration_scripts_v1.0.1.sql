@@ -17,7 +17,9 @@ update `decom3sixtytool`.`Assessment_Data_Char_Info_Template_Details` set label_
 /* Assessment_Application_Info_Template_Details */
 update `decom3sixtytool`.`Assessment_Application_Info_Template_Details` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
 update `decom3sixtytool`.`Assessment_Application_Info_Template_Details` set mandatory='No' where column_name='OtherPleaseDescribe';
+update `decom3sixtytool`.`Assessment_Application_Info_Template_Details` set mandatory='No' where column_name='BriefArchitectureDescription';
 update `decom3sixtytool`.`Assessment_Application_Info` set mandatory='No' where column_name='OtherPleaseDescribe';
+update `decom3sixtytool`.`Assessment_Application_Info` set mandatory='No' where column_name='BriefArchitectureDescription';
 
 /* Opportunity_Info_Details */
 update `decom3sixtytool`.`Opportunity_Info_Details` set label_name='Business Unit' where column_name='buisnessunit';
@@ -31,6 +33,8 @@ update `decom3sixtytool`.`Opportunity_Info` set label_name='Business Segment' wh
 update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='Data is in Read Only State (no updates can be made)' where column_name='ReadonlyData';
 update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='Are there any datasets on mainframe  that this application uses?' where column_name='DataSetMainframe';
 update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='If yes, please describe ' where column_name='plsdescribeStreams';
+update `decom3sixtytool`.`Assessment_Data_Char_Info` set mandatory='No',options=',PCI,SOX,Consumer PII,Customer PII,Associate PII,SSN,N/A' where column_name='ApplicationData';
+update `decom3sixtytool`.`Assessment_Data_Char_Info_Template_Details` set mandatory='No',options=',PCI,SOX,Consumer PII,Customer PII,Associate PII,SSN,N/A' where column_name='ApplicationData';
 
 /* Assessment_Application_Info */
 update `decom3sixtytool`.`Assessment_Application_Info` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
