@@ -528,7 +528,7 @@ public class Login_1 extends HttpServlet {
 			Assdata[16] = new Assessment(17,"","",DataChar,"Yes,No","Data is in Read Only state (no updates CAN be made) ", "ReadonlyData", "Radio box", "No", "");
 			Assdata[17] = new Assessment(18,"","",DataChar,"","If yes, when was the last updates made? ", "LastUpdateMade", "DatepickerDependency", "No", "");
 			Assdata[18] = new Assessment(19,"","",DataChar,"","If no, when is it expected to be read only? ", "ExpectedDate", "DatepickerDependency", "No", "");
-			Assdata[19] = new Assessment(20,"","",DataChar,"PCI, SOX, Consumer PII, Customer PII, Associate PII, SSN","Application  Data ", "ApplicationData", "Dropdown", "Yes", "");
+	        Assdata[19] = new Assessment(20,"","",DataChar,",PCI,SOX,Consumer PII,Customer PII,Associate PII,SSN,N/A","Application  Data ", "ApplicationData", "Dropdown", "No", "");
 			Assdata[20] = new Assessment(21,"","",DataChar,"Yes,No","Upstream/Downstream dependencies ", "UpDownStream", "RadioBoxDependencyYes", "Yes", "");
 			Assdata[21] = new Assessment(22,"","",DataChar,"","If yes, please decsribe ", "plsdescribeStreams", "TextBoxDependencyYes", "No", "");
 			Assdata[22] = new Assessment(23,"","",DataChar,"","Date Range (age of records, e.g., 2009 - May, 2019) ", "Datepicker", "Text box", "No", "");
@@ -641,7 +641,7 @@ public class Login_1 extends HttpServlet {
 			AssessmentDetails[4] = new Assessment(5,"","",AppInfo,"Yes,No","Operational support staff/SME's available for analysis?","OperationalSupportStaff","Radio box","No","");
 			AssessmentDetails[5] = new Assessment(6,"","",AppInfo,"Mainframe,Distibuted - Unix,Windows,hybrid,Others","Application platform","AssessAppPlatform","Dropdown","Yes","");
 			AssessmentDetails[6]= new Assessment(7,"","",AppInfo,"","If Other,please describe ", "OtherPleaseDescribe", "Text box", "No", "");
-			AssessmentDetails[7] = new Assessment(8,"","",AppInfo,"","Brief architecture description","BriefArchitectureDescription","TextAreaFile","Yes","");
+			AssessmentDetails[7] = new Assessment(8,"","",AppInfo,"","Brief architecture description","BriefArchitectureDescription","TextAreaFile","No","");
 			AssessmentDetails[8] = new Assessment(9,"","",AppInfo,"","Application Hosting Vendor","AppHost","Text box","No","");
 			AssessmentDetails[9] = new Assessment(10,"","",AppInfo,"","Application Supporting Vendor","AppSupport","Text box","No","");
 			AssessmentDetails[10] = new Assessment(11,"","",AppInfo,"","Decommission Readiness Date","DecomReadiness","Datepicker","No","");
