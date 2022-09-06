@@ -59,6 +59,10 @@ public class IntakeTriageSaveServlet extends HttpServlet {
 					JsonObject jsonObj = jsonArray.get(i).getAsJsonObject();
 					String name = jsonObj.get("Name").getAsString();
 					String value = jsonObj.get("Value").getAsString();
+					if(value.contains("$") && name.equals("Preliminary_CBA"))
+					{
+						 value = value.substring(1);
+					}
 					if(name.equals("appId")||name.equals("applicationName"))
 					{
 						   boolean duplicateCheck =IntakeTriageService.DuplicateValueCheck(id, name, value);
