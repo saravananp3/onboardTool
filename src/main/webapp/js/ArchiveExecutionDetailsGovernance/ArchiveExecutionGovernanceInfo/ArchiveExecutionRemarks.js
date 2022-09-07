@@ -5,22 +5,13 @@ var seq_num=parseInt(s1.replace(/[^0-9.]/g, ""));
 console.log("Index",seq_num);
 $("#ArchiveRemarksSeq").val(ss);
 var remarks = $('.remark').eq(ss).val();
-var remarkPoints=[];
-$("#remarkPts").html("");
-var pts="";
-pts+="<ul>";
-var emptyListFlag = true;
-if(remarks!=""&&remarks!=undefined){
-remarkPoints = remarks.split(":=:");
-for(var i=0;i<remarkPoints.length;i++){
- pts+="<li>"+remarkPoints[i]+"</li>";
- emptyListFlag = false;
+console.log("REmarks : ",remarks);
+if(remarks=="")
+{
+	remarks="N/A";
 }
-}
-if(emptyListFlag)
-	pts += "<li></li>"
-pts += "</ul>";
-$("#remarkPts").html(pts);
+remarks = remarks.split(":=:");
+$("#govremarks").val(remarks);
 var taskGroup =$("#taskGroup"+seq_num+"").text();
 console.log("TASK GROUP",taskGroup);
 $("#remarksTaskGroup").html("Task Group : "+((taskGroup=="")?"NA":taskGroup));

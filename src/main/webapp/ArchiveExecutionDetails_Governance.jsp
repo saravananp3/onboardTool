@@ -1415,14 +1415,14 @@ input[type="text"] {
 					</button>
 					<h5 class="modal-title" id="remarksTaskGroup" style="color: white">Task
 						Group:</h5>
-
+					
 				</div>
 				<div class="modal-body">
 					<form name="DeleteForm">
 						<div class="modal-body">
 							<div id="remarkPts" class="row changeText RemarksPoints"
 								contenteditable="true" spellcheck="false"></div>
-
+								<textarea id="govremarks" name="w3review" rows="6" cols="100" disabled></textarea>
 							<input type="hidden" id="ArchiveRemarksSeq" />
 						</div>
 					</form>
@@ -1436,6 +1436,7 @@ input[type="text"] {
 	</div>
 	</div>
 	</div>
+
 
 	<!-- Active Icon Color changes  -->
 	<!-- <script>
@@ -1488,9 +1489,7 @@ $(document).on('mouseenter','.active1', function(){
             document.getElementById('creation_date').value = today;
         }
     </script> -->
-
 </body>
-
 <!-- ========== COMMON JS FILES ========== -->
 
 <!-- <script src="js/jquery-ui/jquery-ui.min.js"></script> -->
@@ -1521,7 +1520,6 @@ $(document).on('mouseenter','.active1', function(){
 <script id="scripttag"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <script
@@ -1529,7 +1527,6 @@ $(document).on('mouseenter','.active1', function(){
 <!-- ========== Toastr ========== -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="js/bootstrap/bootstrap.min.js"></script>
 <link
 	href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
 	rel="stylesheet">

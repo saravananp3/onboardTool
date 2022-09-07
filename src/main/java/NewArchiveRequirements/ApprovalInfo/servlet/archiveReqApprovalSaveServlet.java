@@ -22,10 +22,11 @@ public class archiveReqApprovalSaveServlet extends HttpServlet {
     String OppName = (String)details.getAttribute("SelectedOpportunity");
     int seqNum = Integer.parseInt(request.getParameter("SeqNum"));
     String approvalStatus = request.getParameter("approvalStatus");
+    String approverId = request.getParameter("a_Id");
     JsonObject jsonObject = new JsonObject();
     try
     {
-    	archiveReqApprovalSaveService saveService = new archiveReqApprovalSaveService(seqNum,Id,OppName,approvalStatus);
+    	archiveReqApprovalSaveService saveService = new archiveReqApprovalSaveService(seqNum,Id,OppName,approverId,approvalStatus);
     	jsonObject=saveService.approvalSave();
     	saveService =null;
     	System.gc();

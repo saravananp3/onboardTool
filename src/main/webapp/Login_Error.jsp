@@ -155,13 +155,10 @@
 	<title>D3Sixty</title> 
 	</head> 
 	<body> 
-	
+		<%session.invalidate();%>
 	</body> 
 	</html> 
-	
-	
-	
-	
+		
 	
 	
 	

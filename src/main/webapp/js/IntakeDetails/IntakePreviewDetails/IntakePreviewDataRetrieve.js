@@ -60,8 +60,12 @@ function IntakePreviewDataRetrieveAjaxCall() {
 
 
 			for (var i = 0; i < data[0].length; i++) {
-				var OppTag = "<pre style='font-family:verdana;font-size:100%;' class = 'OppInfoPreview'><b>" + data[0][i].LabelName + "</b> : " + data[0][i].Value + " </pre>";
+				var OppTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;'data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[0][i].Value+"' class = 'OppInfoPreview'><b>"+data[0][i].LabelName+"</b> : "+data[0][i].Value+" </pre>";
 				$("#OpportunityInfoPreview").append(OppTag);
+			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) 
+    });
 			}
 
 			var checkTriageDependency;
@@ -85,15 +89,21 @@ function IntakePreviewDataRetrieveAjaxCall() {
 				if (checkTriageDependency)
 					triageStyle = "display:none;";
 
-				var TriageTag = "<pre style='font-family:verdana;font-size:100%;" + triageStyle + "' class = 'TriageInfoPreview'><b>" + data[1][j].LabelName + "</b> : " + columnValue + " </pre>";
+				     	var TriageTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;"+triageStyle+"' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[1][j].Value+"' class = 'TriageInfoPreview'><b>"+data[1][j].LabelName+"</b> : "+data[1][j].Value+" </pre>";
 				checkTriageDependency = checkDependency(column_name, columnValue);
 
 				$("#TriageInfoPreview").append(TriageTag);
+					var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 			}
 
 			for (var k = 0; k < data[2].length; k++) {
-				var TriageSummTag = "<pre style='font-family:verdana;font-size:100%;' class = 'TriageSummInfoPreview'><b>" + data[2][k].LabelName + "</b> : " + data[2][k].Value + " </pre>";
+					var TriageSummTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[2][k].Value+"'class = 'TriageSummInfoPreview'><b>"+data[2][k].LabelName+"</b> : "+data[2][k].Value+" </pre>";
 				$("#TriageSummInfoPreview").append(TriageSummTag);
+				     	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 			}
 
 			var checkAssessmentDependency;
@@ -123,14 +133,17 @@ function IntakePreviewDataRetrieveAjaxCall() {
 					if (data[3][l][m].ColumnName == "AppDetails" && data[3][l][m].section == "ApplicationInformation" && data[3][l][m].Value == "Third Party")
 						$("#ContractInformationPreview").show();
 
-					var AssessmentTag = "<pre style='font-family:verdana;font-size:100%;" + assessmentStyle + "' class = 'AssessmentPreview'><b>" + data[3][l][m].LabelName + "</b> : " + data[3][l][m].Value + " </pre>";
+					var AssessmentTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;"+assessmentStyle+"' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[3][l][m].Value+"'class = 'AssessmentPreview'><b>"+data[3][l][m].LabelName+"</b> : "+data[3][l][m].Value+" </pre>";
 					checkAssessmentDependency = checkDependency(column_name, columnValue);
 
 					$("#" + data[3][l][m].section + "Preview").append(AssessmentTag);
+					 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 				}
 			}
 
-			var table = "<table class='table table-bordered'>" +
+			 var table = "<table class='table table-bordered'style='white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:144ch;'>"+
 				"<thead>" +
 				"<tr>" +
 				"<th>Name</th>" +
@@ -149,17 +162,20 @@ function IntakePreviewDataRetrieveAjaxCall() {
 				// style='font-family:verdana;font-size:100%;' class =
 				// 'stakeHolderInfoPreview'><b>"+data[4][n].LabelName+"</b> :
 				// "+data[4][n].Value+" </pre>";
-				table += "<tr>" +
-					"<td>" + data[4][n].name + "</td>" +
-					"<td>" + data[4][n].emailId + "</td>" +
-					"<td>" + data[4][n].username + "</td>" +
-					"<td>" + data[4][n].role + "</td>" +
-					"<td>" + data[4][n].intakeApproval + "</td>" +
-					"</tr>";
+				table += "<tr>"+
+            				"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>"+data[4][n].name+"</td>"+
+            				"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[4][n].emailId+"'>"+data[4][n].emailId+"</td>"+
+            				"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>"+data[4][n].username+"</td>"+
+            				"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>"+data[4][n].role+"</td>"+
+            				"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>"+data[4][n].intakeApproval+"</td>"+
+            			  "</tr>";
 			}
 			table += "</tbody>" +
 				"</table>";
 			$("#StakeHolderInfoPreview").append(table);
+			 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 			notification("info", "Review of previous details.", "Info");
 			// var onclick_attr = $("#ReviewNextBtn").attr("onclick");
 			$("#ReviewNextBtn").attr("onclick", "location.href='IntakeApproval.jsp?a_id=" + data[5].a_id + "';");

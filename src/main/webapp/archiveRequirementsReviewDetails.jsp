@@ -695,22 +695,22 @@ e.printStackTrace();
                                                         <h3 class="panel-title">2.1 Application Information</h3> <br>
                                                         <table class='table-bordered'><tbody id="AppInfoPreview"></tbody></table> 
                                                         <h3 class="panel-title">2.2 Archive Environment Information</h3> <br>
-                                                        <h3 class="panel-title">2.2.1 Archive Environment</h3> <br>
+                                                        <!-- <h3 class="panel-title">2.2.1 Archive Environment</h3> <br> -->
                                                         <table class='table-bordered'>
                                                          <thead>
-                                                         <th scope='col'>Dev Name</th>
-                                                         <th scope='col'>Test Name</th>
-                                                         <th scope='col'>Stage Name</th>
-                                                         <th scope='col'>Production Name</th>
+                                                         <th scope='col'>Dev DB Name</th>
+                                                         <th scope='col'>Test DB Name</th>
+                                                         <th scope='col'>Stage DB Name</th>
+                                                         <th scope='col'>Production DB Name</th>
                                                          </thead>
                                                         	<tbody id="ArchiveEnvInfoPreview">  </tbody>
                                                         	</table> 
                                                         <table class='table-bordered'>
                                                          <thead>
-                                                         <th scope='col'>Dev Server IP</th>
-                                                         <th scope='col'>Test Server IP</th>
-                                                         <th scope='col'>Stage Server IP</th>
-                                                         <th scope='col'>Production Server IP</th>
+                                                         <th scope='col'>Dev DB Server</th>
+                                                         <th scope='col'>Test DB Server</th>
+                                                         <th scope='col'>Stage DB Server</th>
+                                                         <th scope='col'>Production DB Server</th>
                                                          </thead>
                                                         	<tbody id="ArchiveEnvServerInfoPreview">  </tbody>
                                                         	</table> 

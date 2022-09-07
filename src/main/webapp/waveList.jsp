@@ -527,7 +527,18 @@ full width */
 		<%@include file="Nav-Bar.jspf"%>
 		<nav class="nav nav-down-height" id="bg-color">
 			<div class="container-fluid" id="container-fluid-margin">
-				<div class="row" id="d3s-mt-20">
+				<div class="row" id="d3s-mt-10">
+					<div class="col-lg-12 col-md-12">
+						<div class="sub-title" style="color: #fff">
+							<a href="DashBoard.jsp" id="sitetitle1" style="color: #fff"><span
+								class="glyphicon glyphicon-home"></span> Home</a> >><a
+								href="Governance_Home.jsp" id="sitetitle1" style="color: #fff">Governance</a> >> <a
+								href="applicationList.jsp" id="sitetitle1" style="color: #fff">Plan and Priority</a> >> Waves
+								
+						</div>
+					</div>
+				</div>
+				<div class="row" id="d3s-mt-10">
 					<div class="col-lg-12 col-md-12">
 						<h5 id="title">Waves</h5>
 					</div>

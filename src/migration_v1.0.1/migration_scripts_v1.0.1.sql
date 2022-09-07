@@ -8,6 +8,10 @@ update `decom3sixtytool`.`Opportunity_Info_Template_Details` set label_name='Ple
 update `decom3sixtytool`.`Triage_Info_Template_Details` set label_name='Business Segment' where column_name='business_Segment';
 update `decom3sixtytool`.`Triage_Info_Template_Details` set label_name='Program or Segment Contact' where column_name='segment_contact';
 update `decom3sixtytool`.`Triage_Info_Template_Details` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='appPlatfrm';
+update `decom3sixtytool`.`Triage_Info_Template_Details` set label_name='EDR Analyst' where column_name='decomAnalyst';
+
+/* Triage_Info */
+update `decom3sixtytool`.`triage_info` set label_name='EDR Analyst' where column_name='decomAnalyst';
 
 /* Assessment_Data_Char_Info_Template_Details */
 update `decom3sixtytool`.`Assessment_Data_Char_Info_Template_Details` set label_name='Data is in Read Only State (no updates can be made)' where column_name='ReadonlyData';
@@ -41,6 +45,27 @@ update `decom3sixtytool`.`Assessment_Application_Info` set options='Mainframe,Di
 
 /* Users Group Update For D3Sixty */
 UPDATE `decom3sixtytool`.`users`SET u_role = REPLACE(u_role, 'DECOM', 'D3SIXTY') WHERE u_role like'%DECOM%';
+
+/* archive_retentionlegalreq_template_details */
+update decom3sixtytool.archive_retentionlegalreq_template_details set descp="Data from the application must be retained based on Company's Retention Policy and should be set at the:Application Level,Table Level,Record Level" where reqId='FR-R-001';
+update decom3sixtytool.archive_retentionlegalreq_template_details set descp="Current Legal hold on the application data will be applied to the application's archived data to override the Retention schedule." where reqId='FR-R-002';
+
+/* archive_retentionlegalreq_info */
+update decom3sixtytool.archive_retentionlegalreq_info set descp="Data from the application must be retained based on Company's Retention Policy and should be set at the:Application Level,Table Level,Record Level" where descp="Data from the application must be retained based on Company�s Retention Policy and should be set at the:Application Level,Table Level,Record Level";
+update decom3sixtytool.archive_retentionlegalreq_info set descp="Current Legal hold on the application data will be applied to the application's archived data to override the Retention schedule." where descp="Current Legal hold on the application data will be applied to the application�s archived data to override the Retention schedule.";
+
+/* archive_securityreq_template_details */
+update decom3sixtytool.archive_securityreq_template_details set reqType='Access - End User' where reqType='Access � End User';
+update decom3sixtytool.archive_securityreq_template_details set reqType='Access - Unauthorized Login' where reqType='Access � Unauthorized Login';
+update decom3sixtytool.archive_securityreq_template_details set reqType='Access - Company Code' where reqType='Access � Company Code';
+
+/* archive_securityreq_info */
+update decom3sixtytool.archive_securityreq_info set reqType='Access - End User' where reqType='Access � End User';
+update decom3sixtytool.archive_securityreq_info set reqType='Access - Unauthorized Login' where reqType='Access � Unauthorized Login';
+update decom3sixtytool.archive_securityreq_info set reqType='Access - Company Code' where reqType='Access � Company Code';
+
+/* User Group Column Alter Statement */
+ALTER TABLE decom3sixtytool.users ADD COLUMN u_group VARCHAR(255) AFTER u_pwd;
 
 /* User Mandatory DeleteFlag Alter Statement */
 ALTER TABLE decom3sixtytool.Opportunity_Info_Details ADD usermandatoryflag varchar(255);

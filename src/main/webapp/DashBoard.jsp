@@ -667,7 +667,7 @@ display:none;
                                                         </div>-->
 														<div class="ms-auto">
 															<select class="form-select"
-																aria-label="Default select example" id="phase" style="padding: 0 0 0 0.75rem;">
+																aria-label="Default select example" id="phase" name="phase" style="padding: 0 0 0 0.75rem;">
 																<!-- <option class='options' value='All'>All</option> -->
 															</select>
 														</div>
@@ -736,7 +736,7 @@ display:none;
 							<div class="row">
 								<div class="col-md-8">
 									<div class="card ht-233">
-										<div class="card-header" id="card-header">Application
+										<div class="card-header" id="card-header">Intake
 											Status</div>
 										<div class="card-body" style="padding: 0px;">
 											<div id="ApplicationStatusDash">

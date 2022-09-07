@@ -759,8 +759,8 @@ function BindPhaseWave()
                  $('#phase').append(phaseOptions);
                  var waveOptions ="<option selected class='options All' value='All'>All</option>"
                      $.each(data[3][1], function(key, value){
-                         var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
-                          waveOptions += "<option class='options waveOptions "+phase+"' value='"+value.waveName+"'>"+value.waveName+"</option>";
+                        // var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
+                          waveOptions += "<option class='options waveOptions' value='"+value.waveName+"'>"+value.waveName+"</option>";
                      });
                  $('#wave').append(waveOptions);
             },
@@ -771,18 +771,18 @@ function BindPhaseWave()
 }
 
 $(document).on('change','#phase',function(){
-$(".waveOptions").hide();
 var phaseName = $(this).val();
+if(phaseName=="All")
+{
+	BindWaveAll();
+    $("#wave").val("All");
+}
 if(phaseName!="All")
     {
-    $("."+(phaseName.replaceAll(" ","")).replaceAll("-","")).show();
+  	BindWave();
     $("#wave").val("All");
     }
-    else
-    {
-    $(".waveOptions").show();
-    }
-   /* UpdateDoughnut();*/
+
    getApplicationDetails();
    doughnutType();
    

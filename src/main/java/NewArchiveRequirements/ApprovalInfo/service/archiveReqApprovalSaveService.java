@@ -18,13 +18,15 @@ public class archiveReqApprovalSaveService {
 	String approvalStatus;
 	int seqNum;
 	String OppName;
-	public archiveReqApprovalSaveService(int seqNum,String Id,String OppName,String approvalStatus) throws ClassNotFoundException, SQLException
+	String approverId; 
+	public archiveReqApprovalSaveService(int seqNum,String Id,String OppName,String approverId,String approvalStatus) throws ClassNotFoundException, SQLException
 	{
 		dBconnection = new DBconnection();
 		 con = (Connection) dBconnection.getConnection();
 		 this.Id = Id;
 		 this.approvalStatus = approvalStatus;
 		 this.seqNum = seqNum;
+		 this.approverId = approverId;
 		 
 	}
 	
@@ -34,11 +36,11 @@ public class archiveReqApprovalSaveService {
 		JsonObject jsonObject = new JsonObject();
 		try
 		{
-		   String updateQuery = "update ArchiveReq_Roles_Info set intakeApproval =?  where oppid=? and seq_no=?;";
+		   String updateQuery = "update ArchiveReq_Roles_Info set intakeApproval =?  where oppid=? and approvalId=?;";
 		   PreparedStatement st = con.prepareStatement(updateQuery);
 	          st.setString(1, approvalStatus);
 	          st.setString(2, Id);
-	          st.setInt(3, seqNum);
+	          st.setString(3, approverId);
 	          st.execute();
 		 
 		   statusFlag =true;

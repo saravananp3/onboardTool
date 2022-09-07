@@ -449,7 +449,7 @@ public class Login extends HttpServlet {
                 Details[17] = new Triage(18, "", "", "", "Number of Infrastructure Components", "nmbr_of_infrastructure_components", "Text box", "No", "");
                 Details[18] = new Triage(19, "", "", "Yes,No", "Archival Solution", "archival_Sol", "Dropdown", "No", "");
                 Details[19] = new Triage(20, "", "", "", "Status/Notes", "Status", "Text box", "No", "");
-                Details[20] = new Triage(21, "", "", "", "Decom Analyst", "decomAnalyst", "Text box", "No", "");
+                Details[20] = new Triage(21, "", "", "", "EDR Analyst", "decomAnalyst", "Text box", "No", "");
                 Details[21] = new Triage(22, "", "", " Replace,Retire,Combine,Other", "Rationalization Type", "rationalization_type", "Dropdown", "No", "");
                 Details[22] = new Triage(23, "", "", "", "If other, please describe ", "If_other_please_describe", "HiddenText", "Yes", "");
                 Details[23] = new Triage(24, "", "", "Mainframe,Distributed - Unix,Windows,hybrid,Others", "Application platform", "appPlatfrm", "Dropdown", "Yes", "");

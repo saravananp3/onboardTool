@@ -39,16 +39,15 @@ function getDataWithPhaseAndWave() {
 				});
 				var waveOptions = "<option selected class='options Select' id='wave-list" + number + "' value='" + waveName + "'>" + waveName + "</option>"
 				$.each(data[1][1][1], function(key, value) {
-					var phaseList1 = ((value.phaseName).replaceAll(" ", "")).replaceAll("-", "");
-					waveOptions += "<option class='options waveOptions " + phaseList1 + "' value='" + value.waveName + "'>" + value.waveName + "</option>";
+					waveOptions += "<option class='options waveOptions' value='" + value.waveName + "'>" + value.waveName + "</option>";
 				});
 				var t_row = "<tr class='rowClass'>"
 					+ "<td style='display: none;'><input type = 'text' class ='applicationId' " + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityId + "'>" + opportunityId + "</td>"
 					+ "<td><input type = 'text' class ='applicationName' value = '" + opportunityName + "'" + disable + " style='width:100%; border:none; text-align:center; background-color: #fff;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + opportunityName + "'></td>"
-					+ "<td>" + "<select class='form-select phase' id='phase1' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
+					+ "<td>" + "<select class='form-select phase phaseno"+number+"' id='phase1' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + " phasenoflag="+number+";>" +
 					phaseOptions +
 					"</select>" + "</td>"
-					+ "<td>" + "<select class='form-select wave' id='wave1" + number + "' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
+					+ "<td>" + "<select class='form-select wave waveno"+number+"' id='Wave1" + number + "' aria-label='Default select example' style='padding: 0.75 0 0 0.75rem;' " + disable + ">" +
 					waveOptions +
 					"</select>" + "</td>"
 					+ "<td style='text-align:center;vertical-align: middle;'><span class='fa fa-pencil-square-o editpopup1' style='display:block;'></span>" +
@@ -78,19 +77,21 @@ function noDataFoundWithphase(count1) {
 	}
 }
 $(document).on('change', '#phase1', function(j) {
-	$(".waveOptions").hide();
-	var phaseName = $(this).val();
-	if (phaseName == "") {
-		$("." + (phaseName.replaceAll(" ", "")).replaceAll("-", "")).show();
-		$("#wave1" + j).val("");
-	}
-	else {
-		$(".waveOptions").show();
-	}
+  var phaseName = $(this).val();
+  console.log("{Phase Value}",phaseName);
+    var phaseid = $(this).attr('phasenoflag');
+    if (phaseName != "") {
+       AppWaveBind(phaseName,phaseid);
+         
+       }
+    if (phaseName == "") {
+	AppWaveAllBind(phaseid);
+      
+    }
 });
 $(document).on('change', '.filter', function(j) {
 	var phase = $("#phase1").val();
-	var wave = $("#wave1" + j).val();
+	var wave = $("#Wave1" + j).val();
 	filterAjaxCall(category, phase, wave);
 });
 function filterAjaxCall(category, phase, wave) {
@@ -163,8 +164,11 @@ $(document).on('click', '.EditRow', function(i) {
 	var Disabled = $('.phase').eq(seqnum).is('[disabled]');
 	if (Disabled) {
 		disabledPropertyConfig(seqnum, false);
-		$("#phase-list" + seqnum).empty().append('<option selected="selected" value="Select">Select</option>');
-		$("#wave-list" + seqnum).empty().append('<option selected="selected" value="Select">Select</option>');
+		$("#phase-list" + seqnum).remove();
+		$(".phaseno" + seqnum).prepend('<option selected class="options Select"value="">Select</option>');
+		//$("#phase-list" + seqnum).append('<option selected class="options Select"value="">Select</option>');
+		$("#wave-list" + seqnum).remove();
+		$(".waveno" + seqnum).prepend('<option selected class="options Select"value="">Select</option>');
 		notification("info", "Selected row is editable.", "Info");
 	}
 	else {
@@ -268,8 +272,12 @@ $(document).on('click', '.editpopup1', function() {
 			$("#ContractInformationPreview").html("");
 			$("#StakeHolderInfoPreview").html("");
 			for (var i = 0; i < data[0].length; i++) {
-				var OppTag = "<pre style='font-family:verdana;font-size:100%;' class = 'OppInfoPreview'><b>" + data[0][i].LabelName + "</b> : " + data[0][i].Value + " </pre>";
+				var OppTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:155ch;'data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[0][i].Value+"' class = 'OppInfoPreview'><b>" + data[0][i].LabelName + "</b> : " + data[0][i].Value + " </pre>";
 				$("#OpportunityInfoPreview").append(OppTag);
+				   	                   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) 
+    });
 			}
 			var checkTriageDependency;
 			for (var j = 0; j < data[1].length; j++) {
@@ -278,13 +286,19 @@ $(document).on('click', '.editpopup1', function() {
 				var columnValue = data[1][j].Value;
 				if (checkTriageDependency)
 					triageStyle = "display:none;";
-				var TriageTag = "<pre style='font-family:verdana;font-size:100%;" + triageStyle + "' class = 'TriageInfoPreview'><b>" + data[1][j].LabelName + "</b> : " + data[1][j].Value + " </pre>";
+				var TriageTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:155ch;'" + triageStyle + "' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[1][j].Value+"'class = 'TriageInfoPreview'><b>" + data[1][j].LabelName + "</b> : " + data[1][j].Value + " </pre>";
 				checkTriageDependency = checkDependency(column_name, columnValue);
 				$("#TriageInfoPreview").append(TriageTag);
+				  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 			}
 			for (var k = 0; k < data[2].length; k++) {
-				var TriageSummTag = "<pre style='font-family:verdana;font-size:100%;' class = 'TriageSummInfoPreview'><b>" + data[2][k].LabelName + "</b> : " + data[2][k].Value + " </pre>";
+				var TriageSummTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:155ch;' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[2][k].Value+"'class = 'TriageSummInfoPreview'><b>" + data[2][k].LabelName + "</b> : " + data[2][k].Value + " </pre>";
 				$("#TriageSummInfoPreview").append(TriageSummTag);
+				var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 			}
 			var checkAssessmentDependency;
 			for (var l = 0; l < data[3].length; l++) {
@@ -304,12 +318,15 @@ $(document).on('click', '.editpopup1', function() {
 					}
 					if (data[3][l][m].ColumnName == "AppDetails" && data[3][l][m].section == "ApplicationInformation" && data[3][l][m].Value == "Third Party")
 						$("#ContractInformationPreview").show();
-					var AssessmentTag = "<pre style='font-family:verdana;font-size:100%;" + assessmentStyle + "' class = 'AssessmentPreview'><b>" + data[3][l][m].LabelName + "</b> : " + data[3][l][m].Value + " </pre>";
+					var AssessmentTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:155ch;" + assessmentStyle + "' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[3][l][m].Value+"'class = 'AssessmentPreview'><b>" + data[3][l][m].LabelName + "</b> : " + data[3][l][m].Value + " </pre>";
 					checkAssessmentDependency = checkDependency(column_name, columnValue);
 					$("#" + data[3][l][m].section + "Preview").append(AssessmentTag);
+									var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 				}
 			}
-			var table = "<table class='table table-bordered'>" +
+			var table = "<table style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:155ch;' class='table table-bordered'>" +
 				"<thead>" +
 				"<tr>" +
 				"<th>Name</th>" +
@@ -326,16 +343,19 @@ $(document).on('click', '.editpopup1', function() {
 				// 'stakeHolderInfoPreview'><b>"+data[4][n].LabelName+"</b> :
 				// "+data[4][n].Value+" </pre>";
 				table += "<tr>" +
-					"<td>" + data[4][n].name + "</td>" +
-					"<td>" + data[4][n].emailId + "</td>" +
-					"<td>" + data[4][n].username + "</td>" +
-					"<td>" + data[4][n].role + "</td>" +
-					"<td>" + data[4][n].intakeApproval + "</td>" +
+					"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>" + data[4][n].name + "</td>" +
+					"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[4][n].emailId+"'>" + data[4][n].emailId + "</td>" +
+					"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>" + data[4][n].username + "</td>" +
+					"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>" + data[4][n].role + "</td>" +
+					"<td style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:50ch;'>" + data[4][n].intakeApproval + "</td>" +
 					"</tr>";
 			}
 			table += "</tbody>" +
 				"</table>";
 			$("#StakeHolderInfoPreview").append(table);
+			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
 			notification("info", "Review of previous details.", "Info");
 			// var onclick_attr = $("#ReviewNextBtn").attr("onclick");
 			$("#ReviewNextBtn").attr("onclick", "location.href='IntakeApproval.jsp?a_id=" + data[5].a_id + "';");
@@ -485,4 +505,56 @@ function DeleteRowAjaxCall(JsonArray, DeleteSeqNum) {
 		}
 	});
 	return false;
+}
+
+function AppWaveBind(phaseName,phaseid)
+{	
+    $.ajax({
+            url: "WaveFilterServlet",
+            type: 'POST',
+            data:{phase:phaseName},
+            dataType: "json",
+            success: function (data) {
+	console.log("DATA",data);
+	 var waveOptions ="<option selected class='options Select' value=''>Select</option>"
+	 $.each(data[0],function(key,value){
+              
+              
+              waveOptions += "<option class='options waveOptions' value='"+value.WaveName+"'>"+value.WaveName+"</option>";
+              
+              
+                });
+                $("#Wave1"+parseInt(phaseid)+"").empty();
+                $("#Wave1"+parseInt(phaseid)+"").append(waveOptions);
+                },
+            error: function (e) {
+                console.log(e);
+            }
+});
+}
+
+function AppWaveAllBind(phaseid)
+{
+    $.ajax({
+            url: "OpportunityListServlet",
+            type: 'POST',
+            dataType: "json",
+            success: function (data) {
+                console.log("Data OpportunityList", data);
+                 if (!$.isArray(data)) {
+                     data = [data];
+                 }
+              
+                 var waveOptions ="<option selected class='options Select' value=''>Select</option>"
+                     $.each(data[3][1], function(key, value){
+                         
+                          waveOptions += "<option class='options waveOptions' value='"+value.waveName+"'>"+value.waveName+"</option>";
+                     });
+                 $("#Wave1"+parseInt(phaseid)+"").empty();
+                 $("#Wave1"+parseInt(phaseid)+"").append(waveOptions);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+});
 }
