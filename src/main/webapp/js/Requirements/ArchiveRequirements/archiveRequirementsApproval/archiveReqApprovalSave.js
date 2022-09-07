@@ -10,8 +10,8 @@ $('#ApprovalSave').click(function(){
     seq_num = "";
     currentArchiveReqApproval = "";
     username="";
-     /*seq_num = parseInt($(".CurrentRole").eq(0).val());*/
-     seq_num = parseInt($('.CurrentRole').length);
+     seq_num = parseInt($(".CurrentRole").eq(0).val());
+     //seq_num = parseInt($('.CurrentRole').length);
      currentArchiveReqApproval = $(".archiveRequirementApproval").eq(seq_num-1).val();
     username =$(".UserName").eq(seq_num-1).html();
     var checkOverAllAapproval = true;
@@ -63,7 +63,7 @@ function ApprovalSaveAjaxCall(seq_num,approvalStatus)
         url: "archiveReqApprovalSaveServlet",
         type: 'POST',
         async: false,
-        data : {SeqNum:seq_num,approvalStatus:approvalStatus},
+        data : {a_Id:a_Id,SeqNum:seq_num,approvalStatus:approvalStatus},
         dataType: "json",
         success: function (data) {
         console.log("data save  -->",data);

@@ -575,22 +575,20 @@ e.printStackTrace();
 																				<div class="panel-body">
 																					<div id="inputFieldsEnv">
 																						<div>
-																							<h4 class="title1">Archive Environment</h4>
-																							<table class="table-bordered"
+																																														<table class="table-bordered"
 																								style="width: 100%;">
 																								<thead>
 																									<tr>
 																										<th
-																											style='text-align: center; vertical-align: middle;'>Dev
+																											style='text-align: center; vertical-align: middle;'>Dev DB Name</th>
+																										<th
+																											style='text-align: center; vertical-align: middle;'>Test DB 
 																											Name</th>
 																										<th
-																											style='text-align: center; vertical-align: middle;'>Test
+																											style='text-align: center; vertical-align: middle;'>Stage DB 
 																											Name</th>
 																										<th
-																											style='text-align: center; vertical-align: middle;'>Stage
-																											Name</th>
-																										<th
-																											style='text-align: center; vertical-align: middle;'>Production
+																											style='text-align: center; vertical-align: middle;'>Production DB
 																											Name</th>
 																										<th
 																											style='text-align: center; vertical-align: middle;'>Action</th>
@@ -626,17 +624,17 @@ e.printStackTrace();
 																								<thead>
 																									<tr>
 																										<th
-																											style='text-align: center; vertical-align: middle;'>Dev
-																											Server IP</th>
+																											style='text-align: center; vertical-align: middle;'>Dev DB 
+																											Server</th>
 																										<th
-																											style='text-align: center; vertical-align: middle;'>Test
-																											Server IP</th>
+																											style='text-align: center; vertical-align: middle;'>Test DB
+																											Server</th>
 																										<th
-																											style='text-align: center; vertical-align: middle;'>Stage
-																											Server IP</th>
+																											style='text-align: center; vertical-align: middle;'>Stage DB
+																											Server</th>
 																										<th
-																											style='text-align: center; vertical-align: middle;'>Production
-																											Server IP</th>
+																											style='text-align: center; vertical-align: middle;'>Production DB
+																											Server</th>
 																										<th
 																											style='text-align: center; vertical-align: middle;'>Action</th>
 																									</tr>

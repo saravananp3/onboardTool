@@ -60,7 +60,7 @@ font-family:sans-serif;
 	%>
 
 
-	<script>
+<%-- 	<script>
 		let tooltipTriggerList = [].slice.call(document
 				.querySelectorAll('[data-bs-toggle="tooltip"]'))
 		var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -113,30 +113,20 @@ font-family:sans-serif;
 
 			</div>
 		</div>
-	</div>
+	</div> --%>
 
 
 
 
-	</div>
+	
 
-
-	</div>
-	</div>
-	</div>
-
-
-	</div>
-	</div>
-	</div>
-
-	<button type="button" id="ver_info_btn"
+	<!-- <button type="button" id="ver_info_btn"
 		class="btn btn-primary d3s-font-14" href="#" data-bs-toggle="modal"
 		data-bs-target="#verModal"
 		style="margin: 5px; font-size: 14px; display: none;">Version
 		Info</button>
 		
-		<footer class="verinfofooter">D3Sixty&nbsp;<img src="images/info.png" id="verinfo"width="10px" height="10px"></footer>
+		<footer class="verinfofooter">D3Sixty&nbsp;<img src="images/info.png" id="verinfo"width="10px" height="10px"></footer> -->
 	
 </body>
 

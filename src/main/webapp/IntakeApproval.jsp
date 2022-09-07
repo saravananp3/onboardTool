@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 <link rel="stylesheet" href="css/headerIcon/headerIcon.css" media="screen" >
 <!-- ========== MODERNIZR ========== -->
+<script src="js/common/email/emailAjaxCall.js"></script>
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
@@ -878,6 +879,7 @@ e.printStackTrace();
 																		Role</th>
 																	<th style='text-align: center; vertical-align: middle;'>Approval</th>
 																	<th style='text-align: center; vertical-align: middle;'>Action</th>
+																	<th style='text-align: center; vertical-align: middle;'>Comments</th>
 																</tr>
 															</thead>
 															<tbody id="ApprovalDetails">
@@ -1042,6 +1044,7 @@ $(document).on('mouseenter','.active1', function(){
        <script src="js/toastr/toastr.min.js"></script>
         <script src="js/notification/notification.js"></script>
         <script src="js/IntakeDetails/IntakeApproval/IntakeApprovalDataRetrieve.js"></script>
+        
         
     <script src="js/amcharts/themes/light.js"></script>
    

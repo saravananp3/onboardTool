@@ -69,8 +69,8 @@ $(document).ready(function(){
                  $('#phase').append(phaseOptions);
                  var waveOptions ="<option class='options All' value='All'>All</option>"
                      $.each(data[3][1], function(key, value){
-                         var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
-                          waveOptions += "<option class='options waveOptions "+phase+"' value='"+value.waveName+"'>"+value.waveName+"</option>";
+                        
+                          waveOptions += "<option class='options waveOptions' value='"+value.waveName+"'>"+value.waveName+"</option>";
                      });
                  $('#wave').append(waveOptions);
                  $('#title_id').html("Number of Opportunities &nbsp;("+(i-1)+")");
@@ -140,8 +140,8 @@ $(document).ready(function(){
                  $('#phase').append(phaseOptions);
                  var waveOptions ="<option class='options All' value='All'>All</option>"
                      $.each(data[3][1], function(key, value){
-                         var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
-                          waveOptions += "<option class='options waveOptions "+phase+"' value='"+value.waveName+"'>"+value.waveName+"</option>";
+                         
+                          waveOptions += "<option class='options waveOptions' value='"+value.waveName+"'>"+value.waveName+"</option>";
                      });
                  $('#wave').append(waveOptions);
                  $('#title_id').html("Number of Opportunities &nbsp;("+(i-1)+")");

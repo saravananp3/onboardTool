@@ -142,9 +142,8 @@ public class EmailApprovalService extends EmailService {
                 } else if (mailFlag && decision.equals(APPROVAL_CONSTANT.REJECTED)) {
                     setFlagAndDecision("false", APPROVAL_CONSTANT.DECISION_PENDING);
                     return 1;
-                } else if (mailFlag && decision.equals(APPROVAL_CONSTANT.DECISION_PENDING)) {
-                    return 0;
-                }
+                }    else if(mailFlag && decision.equals(APPROVAL_CONSTANT.DECISION_PENDING) && rs.getInt("priority_order_num")!=0)
+                	return rs.getInt("priority_order_num");
             }
             st.close();
             rs.close();

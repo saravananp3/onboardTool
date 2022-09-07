@@ -69,8 +69,8 @@ $(document).ready(function(){
                  $('#phase').append(phaseOptions);
                  var waveOptions ="<option class='options All' value='Select'>Select</option>"
                      $.each(data[3][1], function(key, value){
-                         var phase = ((value.phaseName).replaceAll(" ","")).replaceAll("-","");
-                          waveOptions += "<option class='options waveOptions "+phase+"' value='"+value.waveName+"'>"+value.waveName+"</option>";
+                         
+                          waveOptions += "<option class='options waveOptions' value='"+value.waveName+"'>"+value.waveName+"</option>";
                      });
                  $('#wave').append(waveOptions);
                  $('#title_id').html("Number of Opportunities &nbsp;("+(i-1)+")");
@@ -85,15 +85,69 @@ $(document).ready(function(){
 
 $(document).on('change','#phase',function(){
 	$("#ArchiveExecutionList").empty();
-$(".waveOptions").hide();
 var phaseName = $(this).val();
 if(phaseName!="Select")
     {
-    $("."+(phaseName.replaceAll(" ","")).replaceAll("-","")).show();
+   GovBindWave();
     $("#wave").val("Select");
     }
-    else
+    if(phaseName=="Select")
     {
-    $(".waveOptions").show();
+   GovBindWaveAll();
+    $("#wave").val("Select");
     }
 });
+
+
+function GovBindWave()
+{
+	var phase1=$("#phase").val();
+    $.ajax({
+            url: "WaveFilterServlet",
+            type: 'POST',
+            data:{phase:phase1},
+            dataType: "json",
+            success: function (data) {
+	 var waveOptions ="<option selected class='options All' value='All'>All</option>"
+	 $.each(data[0],function(key,value){
+              
+              
+              waveOptions += "<option class='options waveOptions' value='"+value.WaveName+"'>"+value.WaveName+"</option>";
+              
+              
+                });
+                $('#wave').empty();
+                $('#wave').append(waveOptions);
+             },
+            error: function (e) {
+                console.log(e);
+            }
+});
+}
+
+
+function GovBindWaveAll()
+{
+    $.ajax({
+            url: "OpportunityListServlet",
+            type: 'POST',
+            dataType: "json",
+            success: function (data) {
+                console.log("Data OpportunityList", data);
+                 if (!$.isArray(data)) {
+                     data = [data];
+                 }
+              
+                 var waveOptions ="<option selected class='options All' value='All'>All</option>"
+                     $.each(data[3][1], function(key, value){
+                         
+                          waveOptions += "<option class='options waveOptions' value='"+value.waveName+"'>"+value.waveName+"</option>";
+                     });
+                     $('#wave').empty();
+                 $('#wave').append(waveOptions);
+            },
+            error: function (e) {
+                console.log(e);
+            }
+});
+}

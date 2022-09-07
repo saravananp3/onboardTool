@@ -14,16 +14,16 @@ $(document).ready(function()
     
 });
 $(document).on('change','#phase',function(){
-$(".waveOptions").hide();
 var phaseName = $(this).val();
+if(phaseName=="All")
+{
+	BindWaveAll();
+    $("#wave").val("All");
+}
 if(phaseName!="All")
     {
-    $("."+(phaseName.replaceAll(" ","")).replaceAll("-","")).show();
+  	BindWave();
     $("#wave").val("All");
-    }
-    else
-    {
-    $(".waveOptions").show();
     }
 });
 $(document).on('change','.filter',function(){

@@ -503,8 +503,9 @@
 																<h4 class="panel-title">Application Information
 																	Screenshots</h4>
 																<br>
-																<table class="table table-bordered table-striped"
-																	id="datatable">
+																
+															<table class="table table-bordered table-striped"
+																	id="datatable" style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:159.5ch;">
 																	<thead>
 																		<th style="text-align: center;">File Name</th>
 																		<th style="text-align: center;">Action</th>
