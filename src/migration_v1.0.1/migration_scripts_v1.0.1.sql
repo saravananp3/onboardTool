@@ -33,8 +33,8 @@ update `decom3sixtytool`.`Opportunity_Info` set label_name='Business Segment' wh
 update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='Data is in Read Only State (no updates can be made)' where column_name='ReadonlyData';
 update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='Are there any datasets on mainframe  that this application uses?' where column_name='DataSetMainframe';
 update `decom3sixtytool`.`Assessment_Data_Char_Info` set label_name='If yes, please describe ' where column_name='plsdescribeStreams';
-update `decom3sixtytool`.`Assessment_Data_Char_Info` set mandatory='No',options=',PCI,SOX,Consumer PII,Customer PII,Associate PII,SSN,N/A' where column_name='ApplicationData';
-update `decom3sixtytool`.`Assessment_Data_Char_Info_Template_Details` set mandatory='No',options=',PCI,SOX,Consumer PII,Customer PII,Associate PII,SSN,N/A' where column_name='ApplicationData';
+update `decom3sixtytool`.`Assessment_Data_Char_Info` set mandatory='No',options=',PCI,SOX,Consumer PII,Customer PII,Associate PII,SSN,None' where column_name='ApplicationData';
+update `decom3sixtytool`.`Assessment_Data_Char_Info_Template_Details` set mandatory='No',options=',PCI,SOX,Consumer PII,Customer PII,Associate PII,SSN,None' where column_name='ApplicationData';
 
 /* Assessment_Application_Info */
 update `decom3sixtytool`.`Assessment_Application_Info` set options='Mainframe,Distributed - Unix,Windows,hybrid,Others' where column_name='AssessAppPlatform';
@@ -58,4 +58,7 @@ ALTER TABLE decom3sixtytool.archivereq_legacyapp_info ADD usermandatoryflag varc
 CREATE INDEX column_name ON decom3sixtytool.opportunity_info(column_name,value);
 CREATE INDEX phaseName ON decom3sixtytool.phase_info(phaseName);
 CREATE INDEX waveName ON decom3sixtytool.governance_info(waveName);
+
+update `decom3sixtytool`.`assessment_compliance_char_info` set mandatory='No',options=',On Hold,Pending review,Cleared,N/A' where column_name='legalstatus';
+update `decom3sixtytool`.`Assessment_Compliance_Char_Info_Template_Details` set mandatory='No',options=',On Hold,Pending review,Cleared,N/A' where column_name='legalstatus';
 
