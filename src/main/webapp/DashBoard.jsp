@@ -862,7 +862,7 @@ display:none;
 												<canvas id="canvasCBA" width="175" height="175"
 													style="margin-left: -10%;"></canvas>
 												<div id="legend1"
-													style="margin-top: -170%; margin-left: 140%; float: left; font-size: 70%; font-weight: 600;"></div>
+													style="margin-top: -170%; margin-left: 132%; float: left; font-size: 70%; font-weight: 600;"></div>
 											</div>
 										</div>
 

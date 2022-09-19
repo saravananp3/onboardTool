@@ -39,7 +39,6 @@
 <script src="js/modernizr/modernizr.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
-
 <!--  ========== Three Toggle ========= -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" />
 <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
@@ -457,10 +456,9 @@ DBconnection dBconnection = new DBconnection();
 
 if (session.getAttribute("username")==null)
 {
-response.sendRedirect("Login.jsp");
-
-
-
+	HttpSession details=request.getSession();
+	session.setAttribute("pageUrl",request.getRequestURL().toString()+"?"+ request.getQueryString());
+    response.sendRedirect("Login.jsp");
 }
 else{
 String name=(String)session.getAttribute("ID");
@@ -688,7 +686,6 @@ e.printStackTrace();
     </div>
   </div>
 </div>
-
 
 
 <!-- Comment Pop Up -->

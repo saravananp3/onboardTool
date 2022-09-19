@@ -902,33 +902,33 @@ $(document).ready(function() {
 		dataType: "json",
 		success: function(data) {
 			console.log("CBA Data : ", data);
-			/*var formatter = new Intl.NumberFormat('en-US', {
+			var formatter = new Intl.NumberFormat('en-US', {
 				style: 'currency',
 				currency: 'USD',
 			
-			});*/
+			});
 			$.each(data[1], function(key, value1) {
-				var sumOfIntakeinDoller = numberWithCommas(value1.sunmOfIntake);
-				var sumOfInProgressinDoller = numberWithCommas(value1.sumOfInProgress);
-				var sumOfRealisedinDoller = numberWithCommas(value1.sumOfRealised);
+				var sumOfIntakeinDoller = formatter.format(value1.sunmOfIntake);
+				var sumOfInProgressinDoller = formatter.format(value1.sumOfInProgress);
+				var sumOfRealisedinDoller = formatter.format(value1.sumOfRealised);
 				var result = [
 					{
 						value: value1.sunmOfIntake,
 						color: "#1565c0",
 						highlight: "lightskyblue",
-						label: "Sum Of Intake/Opportunity: $" + sumOfIntakeinDoller
+						label: "Sum Of Intake/Opportunity: " + sumOfIntakeinDoller
 					},
 					{
 						value: value1.sumOfInProgress,
 						color: "#d1e0f3",
 						highlight: "#82aadd",
-						label: "Sum Of InProcess: $" + sumOfInProgressinDoller
+						label: "Sum Of InProcess: " + sumOfInProgressinDoller
 					},
 					{
 						value: value1.sumOfRealised,
 						color: "#d2d6e2",
 						highlight: "darkorange",
-						label: "Sum Of Realized: $" + sumOfRealisedinDoller
+						label: "Sum Of Realized: " + sumOfRealisedinDoller
 					}
 				];
 				console.log("Result : ", result)

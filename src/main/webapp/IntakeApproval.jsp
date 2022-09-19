@@ -477,6 +477,8 @@ DBconnection dBconnection = new DBconnection();
 
 if (session.getAttribute("username")==null)
 {
+HttpSession details=request.getSession();
+session.setAttribute("pageUrl",request.getRequestURL().toString()+"?"+ request.getQueryString());
 response.sendRedirect("Login.jsp");
 
 

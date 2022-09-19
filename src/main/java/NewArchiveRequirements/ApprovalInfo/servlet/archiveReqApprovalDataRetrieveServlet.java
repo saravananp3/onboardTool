@@ -18,6 +18,8 @@ public class archiveReqApprovalDataRetrieveServlet extends HttpServlet {
         String OppName = (String)details.getAttribute("SelectedOpportunity");
         String role = (String)details.getAttribute("role");
         String username = (String)details.getAttribute("username");
+        String approverId = request.getParameter("aproverId");
+        boolean isApprover = Boolean.parseBoolean(request.getParameter("isApprover"));
         /* String approverId = request.getParameter("aproverId"); */
         JsonArray jsonArray = new JsonArray();
         JsonObject jsonObject = new JsonObject();
@@ -28,7 +30,14 @@ public class archiveReqApprovalDataRetrieveServlet extends HttpServlet {
         try
         {
             archiveReqApprovalDataRetrieveService dataService = new archiveReqApprovalDataRetrieveService(Id, OppName);
-            jsonArray.addAll(dataService.ApprovalDataRetrieve());
+            if(approverId.isBlank() || approverId.isEmpty())
+            {
+                jsonArray.addAll(dataService.ApprovalDataRetrieve());
+
+            }
+            else {
+            jsonArray.addAll(dataService.ApprovalRetrieveUsingApprovalId(Id,username,approverId,isApprover,request));
+            }
             dataService = null;
             System.gc();
         }
