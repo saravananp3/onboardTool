@@ -927,7 +927,7 @@ e.printStackTrace();
                                                                 
 																
 																<button type="button" class="btn btn-primary"
-                                                                    onclick="location.href='archiveRequirementsApprovalDetails.jsp';" id="ReviewNextBtn" >Next</button>
+                                                                    onclick="location.href='archiveRequirementsApprovalDetails.jsp'" id="ReviewNextBtn" >Next</button>
                                                                
                                                             </div>
                                                     </div>

@@ -48,7 +48,7 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
         url: "archiveReqApprovalDataRetrieveServlet",
         type: 'POST',
         dataType: "json",
-        data: {aproverId: a_Id},
+        data: {aproverId: a_Id,isApprover:"true"},
         success: function (data) {
             console.log("Data Retrieve Stake Holder json array----->",data);
             console.log("Data Retrieve for User----->",data[0].user);
@@ -75,6 +75,9 @@ function archiveRequirementApprovalDataRetrieveAjaxCall()
                    var archiveRequirementApproval = value.approvalStatus;
                    var approvalId = value.approvalId;
                    var priorityNo = value.priority_order_num;
+                  // var oppId = value.oppId;
+                   //var app_name = value.app_name;
+                   
                    var checkToggleApprove = "";
                    var checkToggleNotApprove = "";
                    var checkToggleNotYet = "";
@@ -189,3 +192,6 @@ function approvefrombackend(approvalId,username,priorityNo)
        }
        });
        }
+       
+      
+    

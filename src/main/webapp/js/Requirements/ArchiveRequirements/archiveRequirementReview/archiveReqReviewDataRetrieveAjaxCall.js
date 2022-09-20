@@ -271,7 +271,8 @@ function reviewDataRetrieveAjaxCall()
             	}
             	indexCount++;
       	 });
-            
+             $("#ReviewNextBtn").attr("onclick", "location.href='archiveRequirementsApprovalDetails.jsp?a_id=" + data[10][0].approvalId + "';");
+			$(".ReviewNextBtn").attr("onclick", "location.href='archiveRequirementsApprovalDetails.jsp?a_id=" + data[10][0].approvalId + "';");
         	     },
         error: function (e) {
             console.log(e);

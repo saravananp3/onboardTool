@@ -833,6 +833,11 @@ public class Login_1 extends HttpServlet {
 					details.setAttribute("app_emp","X");
 					details.setAttribute("intake","X");
 					details.setAttribute("archive_exec","X");
+					String pagename = (String)session.getAttribute("pageUrl");
+                    if(pagename != null)
+                    {
+                    	response.sendRedirect(pagename);
+                    }
 					String redirectURL = "DashBoard.jsp";
 					response.sendRedirect(redirectURL);
 				}
