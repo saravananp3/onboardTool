@@ -181,8 +181,8 @@ function CheckMandatoryCommonFields(InputFieldClass) {
                     checkMandatoryFields = false;
             }
         }
-        if (InputFieldClass == "ApplicationInformation" && !CheckFileFields())
-            checkMandatoryFields = false;
+       /* if (InputFieldClass == "ApplicationInformation" && !CheckFileFields())
+            checkMandatoryFields = false; */
         if (checkMandatoryFields == false && !UnfilledSections.includes(InputFieldClass)) {
             checkAllMandatoryFields = false;
             UnfilledSections.push(InputFieldClass);
@@ -211,8 +211,8 @@ function CheckMandatoryCommonFields(InputFieldClass) {
             else {
                 var name1 = $(this).find("input").attr("name");
                 var val1 = $(this).find("input").val();
-                if (name1 == "BriefArchitectureDescription_file")
-                    BriefDescTextArea(jsonObj);
+               /* if (name1 == "BriefArchitectureDescription_file")
+                    BriefDescTextArea(jsonObj); */
                 if (DependencyColumnNameCheck(name1)) {
                     name1 = DependencyColumnNameChange(name1);
                 }
