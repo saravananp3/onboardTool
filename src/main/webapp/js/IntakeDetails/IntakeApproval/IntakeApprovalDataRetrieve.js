@@ -433,7 +433,7 @@ function AssessmentInfo(data,n){
             finalCheck = false;
             assessmentStyle = "display:none;";
         }
-        if(data[n][m].ColumnName == "AppDetails" && data[n][m].section == "ApplicationInformation" && data[n][m].Value == "Third Party"){
+        if(data[n][m].ColumnName == "AppDetails" && data[n][m].section == "ApplicationInformation" && data[n][m].Value === "COTS – Commercial Off The Shelf" || data[n][m].Value === "MOTS – Modified Off The Shelf"){
             $("#ContractInformationPreview").show();
             $(".ContractInformationPreview").show();
         }

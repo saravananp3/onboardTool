@@ -110,7 +110,7 @@ function dashboardDetails() {
 			obj.push(data[5].decommissionCount);
 			pieChartData.push(obj);
 			obj = [];
-			obj.push("To be Retired");
+			obj.push("Archive+Decommission");
 			obj.push(data[5].retiredCount);
 			pieChartData.push(obj);
 			

@@ -240,7 +240,7 @@ function CheckMandatoryCommonFields(InputFieldClass) {
 }
 function CheckMandatoryContractInfo() {
     var appDetailsValue = $("#AppDetails").val();
-    if (appDetailsValue == "Third Party") {
+    if (appDetailsValue === "COTS – Commercial Off The Shelf" || appDetailsValue === "MOTS – Modified Off The Shelf") {
         checkMandatoryFields = true;
         CheckMandatoryCommonFields("ContractInformation");
     }

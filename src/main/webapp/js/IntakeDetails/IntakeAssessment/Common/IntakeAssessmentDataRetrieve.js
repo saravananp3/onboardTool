@@ -143,7 +143,7 @@ function AssessmentDataRetrieveAjaxCall()
                 }
                 if(ColumnName == "AppDetails")
                 {
-                	if(Value=="Third Party")
+                	if(Value === "COTS – Commercial Off The Shelf" || Value === "MOTS – Modified Off The Shelf") 
                 	  checkThirdParty =true;
                 }
                 if(Section == "ContractInformation")

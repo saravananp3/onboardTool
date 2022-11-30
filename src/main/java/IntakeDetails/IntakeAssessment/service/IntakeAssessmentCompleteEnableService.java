@@ -159,7 +159,7 @@ public class IntakeAssessmentCompleteEnableService {
 			// st.setString(2, SectionName);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
-				if (rs.getString("value").equals("Third Party")) {
+				if (rs.getString("value").equals("COTS – Commercial Off The Shelf")||rs.getString("value").equals("MOTS – Modified Off The Shelf")) {
 					status = true;
 				}
 			}

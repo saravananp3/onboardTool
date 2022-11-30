@@ -29,7 +29,7 @@ public class ApproverRoles_Service {
 			if(rs.next()) {
 				
 				jsonObject.addProperty("request_type", rs.getString("value"));
-				if((rs.getString("value")).equals("To be retire")||(rs.getString("value")).equals("Archive"))
+				if((rs.getString("value")).equals("Archive+Decommission")||(rs.getString("value")).equals("Archive"))
 					jsonObject.addProperty("checkOverAllArchiveStatus",checkOverAllApproval(Id,"Archive_Requirement"));
 				
 								

@@ -78,7 +78,7 @@ public class IntakeAssessSectionDataRetrieveService {
 	public boolean checkForContractInformation() {
 		boolean flag = false;
 		try {
-			String SelectQuery = "SELECT * FROM "+SectionInfoTable+" WHERE ID = ? AND COLUMN_NAME = 'AppDetails' AND VALUE = 'Third Party' ORDER BY SEQ_NO;";
+			String SelectQuery = "SELECT * FROM "+SectionInfoTable+" WHERE ID = ? AND COLUMN_NAME = 'AppDetails' AND VALUE = 'COTS – Commercial Off The Shelf' OR VALUE='MOTS – Modified Off The Shelf' ORDER BY SEQ_NO;";
 			PreparedStatement st1 = con.prepareStatement(SelectQuery);
 			st1.setString(1, id);
 			ResultSet rs1 = st1.executeQuery();
@@ -294,7 +294,8 @@ public class IntakeAssessSectionDataRetrieveService {
 	  {
 	   if(SectionName.equals("CONTRACTINFO"))
 		{
-			String value = "Third Party";
+			String value = "COTS – Commercial Off The Shelf";
+			String value1 = "MOTS – Modified Off The Shelf";
 			
 			String selectQuery = "Select * from Assessment_Application_Info where id =? and column_name = 'AppDetails';";
 			PreparedStatement st = con.prepareStatement(selectQuery);
@@ -303,7 +304,7 @@ public class IntakeAssessSectionDataRetrieveService {
 			
 			if(rs.next())
 			{
-			  if(value.equals(rs.getString("value").toString()))
+			  if(value.equals(rs.getString("value").toString()) || value1.equals(rs.getString("value").toString()))
 			  {
 				  Check = true;
 			  }

@@ -282,7 +282,7 @@ public class Login_1 extends HttpServlet {
 			opportunity[2] = new OpportunityDetails(3,"","","","Creation Date", "creation_date", "Datepicker", "No", "");
 			opportunity[3] = new OpportunityDetails(4,"","","","Request Source", "source", "Text box", "No", "");
 			opportunity[4] = new OpportunityDetails(5,"","","","Status", "status", "Text box", "No", "");
-			opportunity[5] = new OpportunityDetails(6,"","","Archive,Decommission,To be retired","Request Type", "request_type", "Dropdown", "Yes", "");
+			opportunity[5] = new OpportunityDetails(6,"","","Archive,Decommission,Archive+Decommission","Request Type", "request_type", "Dropdown", "Yes", "");
 			opportunity[6] = new OpportunityDetails(7,"","","","Requester", "requester", "Text box", "Yes", "");
 			opportunity[7] = new OpportunityDetails(8,"","","","Application Descrpition", "appdesc", "Text box", "No", "");
 			opportunity[8] = new OpportunityDetails(9,"","","","Application Owner", "appowner", "Text box", "Yes", "");
@@ -634,7 +634,7 @@ public class Login_1 extends HttpServlet {
 		{
 			String AppInfo = "ApplicationInformation";
 			Assessment AssessmentDetails[] = new Assessment[19];
-			AssessmentDetails[0] = new Assessment(1,"","",AppInfo,"Shrink Wrap,Third Party,Internally Developed","Application Details","AppDetails","Dropdown","No","");
+			AssessmentDetails[0] = new Assessment(1,"","",AppInfo,"COTS - Commercial Off The Shelf,MOTS - Modified Off The Shelf,Custom – In-house Development","Application Details","AppDetails","Dropdown","No","");
 			AssessmentDetails[1] = new Assessment(2,"","",AppInfo,"Currently supported, Nearing end of life, End of life with extended support/maintenance, unsupported","Lifecycle","Lifecycle","Dropdown","No","");
 			AssessmentDetails[2] = new Assessment(3,"","",AppInfo,"Yes,No","Is this a currently supported application?","SupportedApp","RadioBoxDependencyNo","No","");
 			AssessmentDetails[3] = new Assessment(4,"","",AppInfo,"","If NO,who supports this Application?","SupportApp","TextBoxDependencyNo","No","");
