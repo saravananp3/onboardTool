@@ -130,7 +130,7 @@ function IntakePreviewDataRetrieveAjaxCall() {
 						finalCheck = false;
 						assessmentStyle = "display:none;";
 					}
-					if (data[3][l][m].ColumnName == "AppDetails" && data[3][l][m].section == "ApplicationInformation" && data[3][l][m].Value === "COTS – Commercial Off The Shelf" || data[3][l][m].Value === "MOTS – Modified Off The Shelf")
+					if (data[3][l][m].ColumnName == "AppDetails" && data[3][l][m].section == "ApplicationInformation" && data[3][l][m].Value === "COTS - Commercial Off The Shelf" || data[3][l][m].Value === "MOTS - Modified Off The Shelf")
 						$("#ContractInformationPreview").show();
 
 					var AssessmentTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;"+assessmentStyle+"' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[3][l][m].Value+"'class = 'AssessmentPreview'><b>"+data[3][l][m].LabelName+"</b> : "+data[3][l][m].Value+" </pre>";
