@@ -450,9 +450,9 @@ public class Login extends HttpServlet {
                 Details[18] = new Triage(19, "", "", ",Yes,No", "Archival Solution", "archival_Sol", "Dropdown", "No", "");
                 Details[19] = new Triage(20, "", "", "", "Status/Notes", "Status", "Text box", "No", "");
                 Details[20] = new Triage(21, "", "", "", "EDR Analyst", "decomAnalyst", "Text box", "No", "");
-                Details[21] = new Triage(22, "", "", " ,Replace,Retire,Combine,Other", "Rationalization Type", "rationalization_type", "Dropdown", "No", "");
+                Details[21] = new Triage(22, "", "", ",Replace,Retire,Combine,Other", "Rationalization Type", "rationalization_type", "Dropdown", "No", "");
                 Details[22] = new Triage(23, "", "", "", "If other, please describe ", "If_other_please_describe", "HiddenText", "Yes", "");
-                Details[23] = new Triage(24, "", "", "Mainframe,Distributed - Unix,Windows,hybrid,Others", "Application platform", "appPlatfrm", "Dropdown", "Yes", "");
+                Details[23] = new Triage(24, "", "", ",Mainframe,Distributed - Unix,Windows,hybrid,Others", "Application platform", "appPlatfrm", "Dropdown", "Yes", "");
                 Details[24] = new Triage(25, "", "", "", "If Other,please describe ", "If_Other_describe", "HiddenText", "Yes", "");
                 Details[25] = new Triage(26, "", "", "Yes,No", "Is application and Data hosted externally?", "app_and_data_hosted", "Radio box", "No", "");
                 Details[26] = new Triage(27, "", "", "", "If yes,vendor?Location?", "vendor", "HiddenText", "Yes", "");
