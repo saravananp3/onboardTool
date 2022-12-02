@@ -78,7 +78,7 @@ public class IntakeAssessSectionDataRetrieveService {
 	public boolean checkForContractInformation() {
 		boolean flag = false;
 		try {
-			String SelectQuery = "SELECT * FROM "+SectionInfoTable+" WHERE ID = ? AND COLUMN_NAME = 'AppDetails' AND VALUE = 'COTS � Commercial Off The Shelf' OR VALUE='MOTS � Modified Off The Shelf' ORDER BY SEQ_NO;";
+			String SelectQuery = "SELECT * FROM "+SectionInfoTable+" WHERE ID = ? AND COLUMN_NAME = 'AppDetails' AND VALUE = 'COTS - Commercial Off The Shelf' OR VALUE='MOTS – Modified Off The Shelf' ORDER BY SEQ_NO;";
 			PreparedStatement st1 = con.prepareStatement(SelectQuery);
 			st1.setString(1, id);
 			ResultSet rs1 = st1.executeQuery();
