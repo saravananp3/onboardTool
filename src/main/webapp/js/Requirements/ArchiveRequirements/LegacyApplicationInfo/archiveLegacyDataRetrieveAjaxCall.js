@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    
+    
     $.ajax({
         url: "archiveLegacyAppDataRetrieve",
         type: 'POST',
@@ -21,12 +23,13 @@ $(document).ready(function(){
                 var LabelName=value.LabelName;
                 var delete_icon="<div class='deletepopup' style='display:none;'></div>";
                 var Value=value.Value;
-                if(ColumnName=="thirdpartyvendor" || ColumnName == "listcountry")
+                if(ColumnName=="thirdpartyvendor")
             	{
-                	dependencyValue = Value;
+                	//dependencyValue = "Internal";
                 	//if(Value=="Internally Developed")
-                		Value="Internal";
+                		//Value="Internal";
             	}
+            	//|| ColumnName == "listcountry"
                 //var options=data[i].options.split(',');
                 if(value.mandatory=="No")
                 {
@@ -152,9 +155,10 @@ $(document).ready(function(){
                         "</div>";
                     $('#inputFieldsAppInfo').append(inputtext);
                 }
+                
                 else if(Type=="HiddenText")
                 {
-                	var style = (dependencyValue=="Internally Developed" || dependencyValue=="Yes")?"style='display:block;'":"style='display:none;'";
+                	var style = (dependencyValue=="Internal")?"style='display:block;'":"style='display:none;'";
                 	dependencyValue = ""; 
                 	var inputtext="<div class='form-group InputField hiddenText1' id ='"+ColumnName+"_Row' "+style+">\n" +
                      "<label class='control-label' for='archiveLegacy'><div "+manadatory+">"+LabelName+"<div class='deletepopup' style='display:none;'></div><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
@@ -164,7 +168,23 @@ $(document).ready(function(){
                 }
 
             });
-            
+           	
+           	var ss=$('input[name = dataloclaw]:checked').val();
+           	console.log("Radio Value : ",ss);
+           	if(ss=="Yes")           	
+			$("#listcountry_Row").show();
+			else
+			$("#listcountry_Row").hide();		
+           
+            var s=$('#thirdpartyvendor').val();
+            if(s=="Internal")
+            {
+			 $('#locationcenter_Row').show();
+			}
+			if(s=="Third Party")
+			{
+				$('#locationcenter_Row').hide();
+			}
             /*var script="<script>$('.datepicker1').datepicker({\n" +
                 "format: \"mm/dd/yyyy\",\n"+
                 "autoclose: true\n"+
@@ -182,6 +202,7 @@ $(document).ready(function(){
         error: function (e) {
             console.log(e);
         }
+        
     });
     $(document).on('click', '.editpopup', function () {
     	$('#editpopup_btn').click();

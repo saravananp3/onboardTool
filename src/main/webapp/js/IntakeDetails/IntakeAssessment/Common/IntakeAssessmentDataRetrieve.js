@@ -194,7 +194,7 @@ function AssessmentDataRetrieveAjaxCall()
                     var inputdrop= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'><label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span>"+
                         "<select style = 'width:100%;' class ='form-select' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
-                    var sub_option = Options.substring(0, Options.length - 1);
+                    var sub_option = Options.substring(0, Options.length);
                     var option=Options.split(",");
                     for(var i=0;i<option.length;i++) {
                         var select = "";
@@ -211,7 +211,7 @@ function AssessmentDataRetrieveAjaxCall()
                     var inputcheck= "<div class='form-group InputFieldAssessment "+Section+"' id = '"+ColumnName+"_AssessmentRow'>"+
                         "<label class='control-label' for= 'Assessment'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment "+Section+"_Edit' style='float:right;display:none;'></span><br/>";
                     var Options=value.options;
-                    var sub_option = Options.substring(0, Options.length - 1);
+                    var sub_option = Options.substring(0, Options.length);
                     var option=Options.split(",");
                     var value_arr=Value.split(",");
                     for (var i=0; i<option.length; i++) {

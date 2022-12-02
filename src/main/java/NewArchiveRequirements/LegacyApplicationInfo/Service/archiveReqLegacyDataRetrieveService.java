@@ -118,7 +118,7 @@ public class archiveReqLegacyDataRetrieveService {
 			columnDet.put("readonly","ReadonlyData-assessment_data_char_info");
 			columnDet.put("ifYesDate","LastUpdateMade-assessment_data_char_info");
 			columnDet.put("ifNoDate","ExpectedDate-assessment_data_char_info");
-			columnDet.put("thirdpartyvendor","AppDetails-assessment_application_info");
+			//columnDet.put("thirdpartyvendor","AppDetails-assessment_application_info");
 			columnDet.put("AppDetails","DataTypeCharacteristics-assessment_data_char_info");
 			//columnDet.put("srcdb","AssessAppPlatform-assessment_application_info");
 			columnDet.put("nooftables","StrucNoofTables-assessment_data_char_info");
