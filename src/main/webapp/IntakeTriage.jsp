@@ -657,6 +657,8 @@ e.printStackTrace();
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
 																			id="date_type_temp1" name="date_type_temp">
+																			<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="EMR" system="" class="control-label"
 																				for="opportunity">EMR System</option>
 																			<option label="ERP" data="" class="control-label"
@@ -831,7 +833,7 @@ e.printStackTrace();
 																			name="devOwner" class="Template_Values" value="">
 																	</div>
 																	<div class="col-md-2">
-																		<label class="control-label" for="Triage">Developement
+																		<label class="control-label" for="Triage">Development
 																			Owner or SME</label>
 																	</div>
 																	<div class="col-md-6">
@@ -861,7 +863,7 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-2">
 																		<label class="control-label" for="Triage">Billing
-																			Segement</label>
+																			Segment</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input type="text" class="form-control" size="35"
@@ -891,7 +893,7 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-2">
 																		<label class="control-label" for="Triage">Program
-																			or Segement Contact</label>
+																			or Segment Contact</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input type="text" class="form-control" size="35">
@@ -1001,6 +1003,8 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="Yes" class="control-label"
 																				for="Triage">Yes</option>
 																			<option label="No" class="control-label" for="Triage">No</option>
@@ -1035,6 +1039,8 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="Yes" class="control-label"
 																				for="Triage">Yes</option>
 																			<option label="No" class="control-label" for="Triage">No</option>
@@ -1081,6 +1087,8 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="Replace" class="control-label"
 																				for="Triage">Replace</option>
 																			<option label="Retire" class="control-label"
@@ -1119,10 +1127,12 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="Mainframe" class="control-label"
 																				for="Triage">Mainframe</option>
 																			<option label="Distibuted - Unix"
-																				class="control-label" for="Triage">Distibuted
+																				class="control-label" for="Triage">Distributed
 																				- Unix</option>
 																			<option label="Windows" class="control-label"
 																				for="Triage">Windows</option>
