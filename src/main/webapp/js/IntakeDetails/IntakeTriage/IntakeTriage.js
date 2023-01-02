@@ -65,14 +65,14 @@ $(document).ready(function() {
 							Value = formatter.format(Value)
 							inputtext = "<div class='form-group InputField' id ='" + ColumnName + "_Row'>\n" +
 								"<label class='control-label' for='opportunity'>" + LabelName + "<span " + manadatory + "></span></label>" + delete_icon + "<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
-								"<input type='text' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "' onkeypress='return isNumber(event)'" +
-								"</div>";
+								"<input type='number' pattern=' 0+.[0-9]*[1-9][0-9]*$' onkeypress='return event.charCode >= 48 && event.charCode <= 57' class='form-control' size='35' min= '0' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
 						}
 						else {
 							inputtext = "<div class='form-group InputField' id ='" + ColumnName + "_Row'>\n" +
 								"<label class='control-label' for='opportunity'>" + LabelName + "<span " + manadatory + "></span></label>" + delete_icon + "<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>\n" +
-								"<input type='text' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
-								"</div>";
+								"<input type='number' pattern=' 0+.[0-9]*[1-9][0-9]*$' onkeypress='return event.charCode >= 48 && event.charCode <= 57' class='form-control' size='35' min= '0' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+							"</div>";
 						}
 						var template_check = "";
 

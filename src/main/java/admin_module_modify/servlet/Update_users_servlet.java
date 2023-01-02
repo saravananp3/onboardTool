@@ -43,7 +43,7 @@ public class Update_users_servlet extends HttpServlet {
         String random_id_modify=request.getParameter("random_id_modify");
        
         //String seq_num = request.getParameter("seq_num");
-        System.out.println("ID"+id);
+        System.out.println("ID :"+id);
         System.out.println("User Name : "+uname_modify);
         System.out.println("User First Name: "+ufname_modify);
         System.out.println("User Last Name: "+ulname_modify);

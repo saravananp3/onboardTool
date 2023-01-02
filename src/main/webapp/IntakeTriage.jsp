@@ -238,7 +238,7 @@ e.printStackTrace();
 											<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
 											
 											<ul class="list-unstyled form-wizard-steps clearfix">
-												<li class="activated" onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+												<li class="activated" onclick="location.href='IntakeOpportunity.jsp';"><span>1</span><i>Opportunity</i></li>
 												<li class="active" onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
 												<li onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage Summary</i></li>
 												<li onclick="location.href='IntakeAssessment.jsp';"><span>4</span><i>Assessment</i></li>
@@ -657,6 +657,8 @@ e.printStackTrace();
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
 																			id="date_type_temp1" name="date_type_temp">
+																			<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="EMR" system="" class="control-label"
 																				for="opportunity">EMR System</option>
 																			<option label="ERP" data="" class="control-label"
@@ -671,7 +673,7 @@ e.printStackTrace();
 																				for="opportunity">HR Data</option>
 																			<option label="MR/HR" data="" class="control-label"
 																				for="opportunity">MR/HR Data</option>
-																			<option label="Other" dat="" class="control-label"
+																			<option label="Other" data="" class="control-label"
 																				for="opportunity">Other Data</option>
 																		</select>
 																	</div>
@@ -831,7 +833,7 @@ e.printStackTrace();
 																			name="devOwner" class="Template_Values" value="">
 																	</div>
 																	<div class="col-md-2">
-																		<label class="control-label" for="Triage">Developement
+																		<label class="control-label" for="Triage">Development
 																			Owner or SME</label>
 																	</div>
 																	<div class="col-md-6">
@@ -861,7 +863,7 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-2">
 																		<label class="control-label" for="Triage">Billing
-																			Segement</label>
+																			Segment</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input type="text" class="form-control" size="35"
@@ -891,7 +893,7 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-2">
 																		<label class="control-label" for="Triage">Program
-																			or Segement Contact</label>
+																			or Segment Contact</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input type="text" class="form-control" size="35">
@@ -938,6 +940,8 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" class="control-label"
+																				for="Triage"></option>
 																			<option label="Yes" class="control-label"
 																				for="Triage">Yes</option>
 																			<option label="No" class="control-label" for="Triage">No</option>
@@ -1001,6 +1005,8 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" class="control-label"
+																				for="Triage"></option>
 																			<option label="Yes" class="control-label"
 																				for="Triage">Yes</option>
 																			<option label="No" class="control-label" for="Triage">No</option>
@@ -1035,6 +1041,8 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" class="control-label"
+																				for="Triage"></option>
 																			<option label="Yes" class="control-label"
 																				for="Triage">Yes</option>
 																			<option label="No" class="control-label" for="Triage">No</option>
@@ -1081,6 +1089,8 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" class="control-label"
+																				for="Triage"></option>
 																			<option label="Replace" class="control-label"
 																				for="Triage">Replace</option>
 																			<option label="Retire" class="control-label"
@@ -1119,14 +1129,16 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select">
+																		<option label="" class="control-label"
+																				for="Triage"></option>
 																			<option label="Mainframe" class="control-label"
 																				for="Triage">Mainframe</option>
-																			<option label="Distibuted - Unix"
-																				class="control-label" for="Triage">Distibuted
+																			<option label="Distributed - Unix"
+																				class="control-label" for="Triage">Distributed
 																				- Unix</option>
 																			<option label="Windows" class="control-label"
 																				for="Triage">Windows</option>
-																			<option label="hybrid" class="control-label"
+																			<option label="Hybrid" class="control-label"
 																				for="Triage">hybrid</option>
 																			<option label="Others" class="control-label"
 																				for="Triage">Others</option>
@@ -1156,7 +1168,7 @@ e.printStackTrace();
 																	</div>
 																	<div class="col-md-2">
 																		<label class="control-label" for="Triage">Is
-																			application and Data hosted externally?</label>
+																			Application and Data hosted externally?</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input class="form-check-input" type="radio"
@@ -1262,8 +1274,8 @@ e.printStackTrace();
 																	<div class="col-md-2">
 																		<label class="control-label" for="Triage">Are
 																			there any technical drivers determining retirement by
-																			a certain date?.(Eg server end of life
-																			,support,software,end of life,support)</label>
+																			a certain date?.(Eg server end of life,
+																			support,software,end of life,support)</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input class="form-check-input" type="radio"

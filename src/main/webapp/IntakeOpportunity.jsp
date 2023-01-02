@@ -233,7 +233,7 @@ body {
 												to go next step</p> -->
 											<ul class="list-unstyled form-wizard-steps clearfix">
 												<li class="active"
-													onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+													onclick="location.href='IntakeOpportunity.jsp';"><span>1</span><i>Opportunity</i></li>
 												<li onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
 												<li onclick="location.href='IntakeTriageSummary.jsp';"><span>3</span><i>Triage
 														Summary</i></li>
@@ -475,13 +475,15 @@ body {
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
 																			id="request_type_temp1" name="request_type_temp">
-																			<option label="Decommission" class="control-label"
-																				for="opportunity">Decommission</option>
+																			<option label="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="Archive" class="control-label"
 																				for="opportunity">Archive</option>
-																			<option label="To" be="" retrive=""
-																				class="control-label" for="opportunity">To
-																				be retrive</option>
+																			<option label="Decommission" class="control-label"
+																				for="opportunity">Decommission</option>
+																			<option label="Archive+Decommission" 
+																				class="control-label" for="opportunity">Archive+Decommission
+																				</option>
 																		</select>
 																	</div>
 																</div>
@@ -508,7 +510,7 @@ body {
 																	</div>
 																	<div class="col-md-2">
 																		<label class="control-label" for="opportunity">Application
-																			Descrpition</label>
+																			Description</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input type="text" class="form-control" size="35"
@@ -655,6 +657,8 @@ body {
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
 																			id="date_type_temp1" name="date_type_temp">
+																			<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="EMR" system="" class="control-label"
 																				for="opportunity">EMR System</option>
 																			<option label="ERP" data="" class="control-label"
@@ -669,7 +673,7 @@ body {
 																				for="opportunity">HR Data</option>
 																			<option label="MR/HR" data="" class="control-label"
 																				for="opportunity">MR/HR Data</option>
-																			<option label="Other" dat="" class="control-label"
+																			<option label="Other" data="" class="control-label"
 																				for="opportunity">Other Data</option>
 																		</select>
 																	</div>

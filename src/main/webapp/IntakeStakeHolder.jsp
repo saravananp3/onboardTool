@@ -600,7 +600,7 @@ e.printStackTrace();
 													<!-- <p style="font-size: 14px;">Fill all the required fields to go next step</p> -->
 													<ul class="list-unstyled form-wizard-steps clearfix">
 														<li class="activated"
-															onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+															onclick="location.href='IntakeOpportunity.jsp';"><span>1</span><i>Opportunity</i></li>
 														<li class="activated"
 															onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
 														<li class="activated"

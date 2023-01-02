@@ -30,7 +30,6 @@ $(document).ready(function()
           $(a.target).prev('.card-header').removeClass('active');
           console.log("Collapse");
           n=false;
-          
         });
        
      

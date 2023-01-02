@@ -612,7 +612,7 @@ e.printStackTrace();
 							<ul class="list-unstyled form-wizard-steps clearfix nav-font" style="margin-left:23px;">
 							<!-- <p class="nav-font" style="margin-bottom: -52px;">Fill all the required fields to go next step</p> -->
 								<li class="activated" onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
-								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy Application Info</i></li>
+								<li class="activated" onclick="location.href='archiveRequirementsLegacyDetails.jsp';"><span>2</span><i>Legacy Application Info</i></li>
 								<li class="activated" onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention Details</i></li>
 								<li class="activated" onclick="location.href='ArchiveBusinessRequirements.jsp';"><span>4</span><i>Business requirements</i></li>
 								<li class="activated" onclick="location.href='archiveReqAbbrevation.jsp;'"><span>5</span><i>Abbreviations</i></li>

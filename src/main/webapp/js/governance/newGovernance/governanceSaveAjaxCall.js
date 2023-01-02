@@ -2,6 +2,8 @@ $("#create").click(function(e)
 {
 	var waveName = $("#waveName").val();
 	var waveId = $("#waveId").val();
+	var startDate = new Date($('#creation_date').val());
+	var endDate = new Date($('#completion_date').val());
 	var checkMandatory = true;
 	var nameAttr = [];
 	var jsonObj = [];
@@ -38,8 +40,8 @@ $("#create").click(function(e)
   				   {
   				     var name2 =$(this).find("select").attr("name");
   				     var val2 =$(this).find("select").val();
-  				   var classNames =$(this).find("select").attr('class');
-  				 var multiselectValue = $(this).find("select").val();
+  				     var classNames =$(this).find("select").attr('class');
+  				     var multiselectValue = $(this).find("select").val();
   				   if(classNames.includes("multiselect"))
 			    	 {
   					   val2 = "";
@@ -99,10 +101,18 @@ $("#create").click(function(e)
     	console.log("Json Object : ",jsonObj);
     	var JsonString = JSON.stringify(jsonObj);
     	$('#Json_sample_id').val(JSON.stringify(jsonObj));
-    	
+    	 if (startDate > endDate && (startDate&&endDate!=null)){
+    					        e.preventDefault();
+    					        checkMandatory=false;
+					}
     	var checkAjax;
-    	if(checkMandatory)
+    	if(checkMandatory){
         var validationCheck_json = AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e);
+        }
+        else if(!checkMandatory){
+		      notification("warning","Creation date cannot be greater than Completion date.","Warning");
+         }
+
     	else
     		{
     		notification("warning","Please fill the mandatory fields.","Warning");
@@ -138,8 +148,8 @@ function AjaxCallUpdate(waveName,waveId,JsonString,checkMandatory,e)
 		          if(data.checkWaveName){
 			                   checkAjax = false;
 		                	  notification("warning","Wave name is already exist.","Warning:");
-		                    
-	                      }
+		             }
+		         
         	   if(data.SaveStatus)
         		{
         		notification("success","New Wave successfully created.","Note:");

@@ -266,7 +266,7 @@ e.printStackTrace();
 							
 								<ul class="list-unstyled form-wizard-steps clearfix">
 									<li class="activated"
-										onclick="location.href='IntakeOpportunity.jsp;'"><span>1</span><i>Opportunity</i></li>
+										onclick="location.href='IntakeOpportunity.jsp';"><span>1</span><i>Opportunity</i></li>
 									<li class="activated"
 										onclick="location.href='IntakeTriage.jsp';"><span>2</span><i>Triage</i></li>
 									<li class="activated"
@@ -574,9 +574,9 @@ e.printStackTrace();
                                 <div class="col-md-2"> <label class="control-label" for="opportunity">Request Type</label> </div>
                                 <div class="col-md-6">
                                     <select style="width: 100%;" class="form-select" id="request_type_temp1" name="request_type_temp">
-                                        <option label="Decommission" class="control-label" for="opportunity">Decommission</option>
                                         <option label="Archive" class="control-label" for="opportunity">Archive</option>
-                                        <option label="To" be="" retrive="" class="control-label" for="opportunity">To be retrive</option>
+                                        <option label="Decommission" class="control-label" for="opportunity">Decommission</option>
+                                        <option label="Archive+Decommission" class="control-label" for="opportunity">Archive+Decommission</option>
                                     </select>
                                 </div>
                             </div>
@@ -589,7 +589,7 @@ e.printStackTrace();
                             <br>
                             <div class="row">
                                 <div class="col-md-1"> <input type="checkbox" id="appdesc_temp" name="appdesc_temp" class="Template_Field" value=""> </div>
-                                <div class="col-md-2"> <label class="control-label" for="opportunity">Application Descrpition</label> </div>
+                                <div class="col-md-2"> <label class="control-label" for="opportunity">Application Description</label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35" id="appdesc_temp1" name="appdesc"> </div>
                             </div>
                             <br>
@@ -619,13 +619,13 @@ e.printStackTrace();
                             <br>
                             <div class="row">
                                 <div class="col-md-1"> <input type="checkbox" id="buisnesssegment_temp" name="buisnesssegment_temp" class="Template_Field" value=""> </div>
-                                <div class="col-md-2"> <label class="control-label" for="opportunity">Buisness Segment</label> </div>
+                                <div class="col-md-2"> <label class="control-label" for="opportunity">Business Segment</label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35" id="buisnesssegment_temp1" name="buisnesssegment"> </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-1"> <input type="checkbox" id="buisnessunit_temp" name="buisnessunit_temp" class="Template_Field" value=""> </div>
-                                <div class="col-md-2"> <label class="control-label" for="opportunity">Buisness Unit</label> </div>
+                                <div class="col-md-2"> <label class="control-label" for="opportunity">Business Unit</label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35" id="buisnessunit_temp1" name="buisnessunit"> </div>
                             </div>
                             <br>
@@ -648,6 +648,8 @@ e.printStackTrace();
                                 <div class="col-md-6">
                                     <select style="width: 100%;" class="form-select"
                                         id="date_type_temp1" name="date_type_temp">
+                                        <option label="" system="" class="control-label"
+                                            for="opportunity"></option>
                                         <option label="EMR" system="" class="control-label"
                                             for="opportunity">EMR System</option>
                                         <option label="ERP" data="" class="control-label"
@@ -660,7 +662,7 @@ e.printStackTrace();
                                             for="opportunity">HR Data</option>
                                         <option label="MR/HR" data="" class="control-label"
                                             for="opportunity">MR/HR Data</option>
-                                        <option label="Other" dat="" class="control-label"
+                                        <option label="Other" data="" class="control-label"
                                             for="opportunity">Other Data</option>
                                     </select>
                                 </div>
@@ -736,7 +738,7 @@ e.printStackTrace();
                             <br>
                             <div class="row">
                                 <div class="col-md-1"> <input type="checkbox" id="devOwner_temp" name="devOwner" class="Template_Values" value="" > </div>
-                                <div class="col-md-2"> <label class="control-label" for="Triage">Developement Owner or SME</label> </div>
+                                <div class="col-md-2"> <label class="control-label" for="Triage">Development Owner or SME</label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35"> </div>
                             </div>
                             <br>   
@@ -748,7 +750,7 @@ e.printStackTrace();
                             <br>   
                             <div class="row">
                                 <div class="col-md-1"> <input type="checkbox" id="business_Segment_temp" name="biling_Segment" class="Template_Values" value="" > </div>
-                                <div class="col-md-2"> <label class="control-label" for="Triage">Billing Segement</label> </div>
+                                <div class="col-md-2"> <label class="control-label" for="Triage">Billing Segment</label> </div>
                                 <div class="col-md-6"> <input type="text" class="form-control" size="35" name="biling_Segment"> </div>
                              </div>           
                              <br> 

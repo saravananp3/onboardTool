@@ -47,7 +47,7 @@ public class Retrieve_users_servlet extends HttpServlet {
         Retrieve_users_service retrieveusers =  new Retrieve_users_service();
         jsonArray = retrieveusers.retrieve_users();
         retrieveusers =null;
-        //calling finalize method and garabage collector
+        //calling finalise method and garbage collector
         System.gc();
         System.out.println("JSON ARRAY"+jsonArray);
         String json = new Gson().toJson(jsonArray);

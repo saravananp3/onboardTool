@@ -1100,6 +1100,8 @@ font-size:12px;
                                 <div class="col-md-6">
                                     <select style="width: 100%;" class="form-control"
                                         id="date_type_temp1" name="date_type_temp">
+                                        <option label="" system="" class="control-label"
+                                            for="opportunity"></option>
                                         <option label="EMR" system="" class="control-label"
                                             for="opportunity">EMR System</option>
                                         <option label="ERP" data="" class="control-label"
@@ -1112,7 +1114,7 @@ font-size:12px;
                                             for="opportunity">HR Data</option>
                                         <option label="MR/HR" data="" class="control-label"
                                             for="opportunity">MR/HR Data</option>
-                                        <option label="Other" dat="" class="control-label"
+                                        <option label="Other" data="" class="control-label"
                                             for="opportunity">Other Data</option>
                                     </select>
                                 </div>

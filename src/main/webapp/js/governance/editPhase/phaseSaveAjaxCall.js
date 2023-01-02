@@ -4,6 +4,8 @@ $("#create").click(function(e)
 	var id=$("#Id").val();
 	var phaseName = $("#phaseName").val();
 	var phaseId = $("#phaseId").val();
+	var startDate = new Date($('#creation_date').val());
+	var endDate = new Date($('#completion_date').val());
 	var checkMandatory = true;
 	var nameAttr = [];
 	var jsonObj = [];
@@ -102,10 +104,17 @@ $("#create").click(function(e)
     	console.log("Json Object : ",jsonObj);
     	var JsonString = JSON.stringify(jsonObj);
     	$('#Json_sample_id').val(JSON.stringify(jsonObj));
-    	
+    	if (startDate > endDate && (startDate&&endDate!=null)){
+    					        e.preventDefault();
+    					        checkMandatory=false;
+					}
     	var checkAjax;
     	if(checkMandatory)
         var validationCheck_json = AjaxCallUpdate(phaseName,phaseId,JsonString,checkMandatory,id,e);
+        else if(!checkMandatory){
+		      notification("warning","Creation date cannot be greater than Completion date.","Warning");
+         }
+
     	else
     		{
     		notification("warning","Please fill the mandatory fields.","Warning");

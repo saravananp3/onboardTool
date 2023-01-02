@@ -617,8 +617,8 @@ display:none;
 										</div> <!-- <div class="col-md-8">Applications are opportunities provided within the organisation
 											for Archival or Decommission or Retiring purpose.</div> -->
 										<div class="col-sm-8 col-md-8 col-lg-8">Applications are opportunities
-											provided within the organisation for Archival or Decommission
-											or Retiring purpose.</div>
+											provided within the organisation for Archiving or Decommissioning
+											or for both Archiving and Decommissioning purpose.</div>
 									</a>
 
 								</div>
@@ -694,26 +694,26 @@ display:none;
 											<div class="col-md-4.5">
 
 												<h6 class="d-flex justify-content-left"
-													style="margin-left: -40%;">
+													style="margin-left: -49%;">
 													<b>Intake</b>
 												</h6>
 												<canvas id="mycanvas" width="200" height="200"
-													style="margin-left: 0%;"></canvas>
+													style="margin-left: -9%;"></canvas>
 												<div id="legend"
-													style="margin-top: -34%; margin-left: 37%; font-size: 11px; font-weight: 600;">
+													style="margin-top: -34%; margin-left: 33%; font-size: 11px; font-weight: 600;">
 												</div>
 											</div>
 											<div class="col-md-4.5" id="canvas2"
 												style="padding-left: 318px; margin-top: -34%; margin-right: 12%;">
 												<h6 class="d-flex justify-content-left"
 													style="margin-left: 95%;">
-													<b style="margin-top: -8px;">Waves</b>
+													<b style="margin-top: -8px;margin-left: -4px;">Waves</b>
 												</h6>
 												<canvas id="mycanvas1" width="200" height="200"
-													style="margin-left: 95%;"></canvas>
+													style="margin-left: 157%;"></canvas>
 											</div>
 											<div id="legend2"
-												style="float: right; margin-right: -59%; margin-top: -33%; font-size: 11px; font-weight: 600;"></div>
+												style="float: right; margin-right: -69%; margin-top: -33%; font-size: 11px; font-weight: 600;"></div>
 										</div>
 									</div>
 								</div>

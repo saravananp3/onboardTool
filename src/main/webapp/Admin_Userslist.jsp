@@ -347,7 +347,6 @@ rotate
 						style="color: #fff; padding: 7px 7px; margin-top: -10px; height: 35px;">License
 							Information</a></li>
 				</ul>
-
 			</div>
 		</div>
 	</nav>
@@ -438,8 +437,6 @@ rotate
 
 	</div>
 
-	</div>
-
 	<div class="modal" id="adduserModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -524,19 +521,6 @@ rotate
 
 
 
-
-	</div>
-
-
-	</div>
-	</div>
-	</div>
-
-
-	</div>
-	</div>
-	</div>
-
 	<div class="modal" id="EditPopUp" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -557,8 +541,8 @@ rotate
 										name="uname" required> <label class="control-label"
 										for="formInput526">Firstname:</label> <input type="text"
 										class="form-control" id="ufname_modify" name="ufname" required>
-									<label class="control-label" for="formInput526">Lastname:</label>
-									<input type="text" class="form-control" id="ulname_modify"
+									    <label class="control-label" for="formInput526">Lastname:</label>
+									    <input type="text" class="form-control" id="ulname_modify"
 										name="ulname" required> <label class="control-label"
 										for="formInput526">User E-Mail:</label> <input type="text"
 										class="form-control" id="u_email_modify" name="u_email"
@@ -575,12 +559,9 @@ rotate
 										<option>D3SIXTY_DECOMMISSION_CONTRIBUTOR</option>
 										<option>D3SIXTY_FINANCE_CONTRIBUTOR</option>
 									</select>
-
-
-
-								</div>
+							  </div>
 							</div>
-						</div>
+						  </div>
 						<input type="text" id="random_id_modify" name="random_id" value=""
 							style="display: none;">
 					</form>
@@ -590,7 +571,6 @@ rotate
 						data-bs-dismiss="modal">Update</button>
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Cancel</button>
-
 				</div>
 			</div>
 		</div>
@@ -608,8 +588,7 @@ rotate
 				<div class="modal-body">
 					<form name="DeleteForm">
 						<div class="modal-body">
-							<p style="font-size: 14px;">Do you want to Delete this User
-								Permanently?</p>
+							<p style="font-size: 14px;">Do you want to Delete this User Permanently?</p>
 							<input type="text" id="random_id" style="display: none;" />
 						</div>
 					</form>

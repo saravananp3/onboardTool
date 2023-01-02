@@ -397,7 +397,7 @@ e.printStackTrace();
 								<li class="active"
 									onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
 								<li
-									onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy
+									onclick="location.href='archiveRequirementsLegacyDetails.jsp';"><span>2</span><i>Legacy
 										Application Info</i></li>
 								<li
 									onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention

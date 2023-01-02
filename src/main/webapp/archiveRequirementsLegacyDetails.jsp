@@ -281,9 +281,6 @@ DBconnection dBconnection = new DBconnection();
 if (session.getAttribute("username")==null)
 {
 response.sendRedirect("Login.jsp");
-
-
-
 }
 else{
 String name=(String)session.getAttribute("ID");
@@ -395,7 +392,7 @@ e.printStackTrace();
 								<li class="activated"
 									onclick="location.href='ArchiveRequirementsIntroDetails.jsp;'"><span>1</span><i>Introduction</i></li>
 								<li class="active"
-									onclick="location.href='archiveRequirementsLegacyDetails.jsp;'"><span>2</span><i>Legacy
+									onclick="location.href='archiveRequirementsLegacyDetails.jsp';"><span>2</span><i>Legacy
 										Application Info</i></li>
 								<li
 									onclick="location.href='archiveRequirementsRetentionDetails.jsp;'"><span>3</span><i>Retention
@@ -696,7 +693,7 @@ e.printStackTrace();
 																								enctype="multipart/form-data">
 																								<div class="fileClass">
 																									<label for="upload"> <input type="file"
-																										id="fileUpload" multiple> Upload Files
+																										id="fileUpload"  multiple> Upload Files
 																									</label>
 																								</div>
 																								<div class="files fileClass">
@@ -707,7 +704,7 @@ e.printStackTrace();
 																								</div>
 																								<input type="button" value="Upload"
 																									class="btn btn-primary" name="submit"
-																									id="UploadFiles" />
+																									id="UploadFiles"/>
 																							</form>
 																						</div>
 																					</div>
@@ -1045,10 +1042,7 @@ e.printStackTrace();
 
 	</div>
 
-	</div>
-	</div>
-	</div>
-
+	
 
 	<!-- Environment Server Delete PopUp -->
 	<div class="modal" id="EnvmntServerDeletePopUp" tabindex="-1"
@@ -1140,9 +1134,10 @@ $(document).on('mouseenter','.active1', function(){
 	 $(document).on('mouseleave','.active1', function(){
 			
 		 $('.activeIcon').css('color','#fff');
-		 
+
 	 });
-</script>
+	 
+	 </script>
 	<%@include file="Footer.jspf"%>
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>

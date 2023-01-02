@@ -19,7 +19,8 @@ $("#fileUpload").change(function(e) {
 $(".files").on("click", "li > i", function(e) {
 	let key = $(this)
 		.parent()
-		.attr("key");
+		.attr("key")
+		.required;
 	let curArr = state.filesArr;
 	curArr.splice(key, 1);
 	updateState({ filesArr: curArr });

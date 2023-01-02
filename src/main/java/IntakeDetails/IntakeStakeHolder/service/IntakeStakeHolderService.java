@@ -509,8 +509,12 @@ public class IntakeStakeHolderService extends  DynamicFields
 				else
 					checkName = false;
 				
-				if(!Email.contains(emailId))
-					Email.add(emailId);				
+				if(!Email.contains(emailId.toLowerCase())) {
+					System.out.println("the email id is "+emailId);
+					Email.add(emailId.toLowerCase());	
+					System.out.println("the email id 2 is "+Email);
+
+					}			
 				else
 					checkEmail = false;
 				

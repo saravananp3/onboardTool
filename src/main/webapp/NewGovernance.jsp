@@ -453,18 +453,6 @@ HttpSession details = request.getSession();
 
 
                                 </div>
-                     
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- /.col-md-6 -->
 

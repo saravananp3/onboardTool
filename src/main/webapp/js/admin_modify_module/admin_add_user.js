@@ -63,7 +63,6 @@ $('#add_usersubmit').click(function(){
 	 		window.setTimeout(function(){location.reload()},1500)
 	 		}
                 console.log("Data",data);
-                
         } 
            
         });

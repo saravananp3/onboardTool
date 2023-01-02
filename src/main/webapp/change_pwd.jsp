@@ -150,88 +150,6 @@ margin-left: 247px;
 		}
 	%>
 
-	<nav
-		class="navbar navbar-expand-lg navbar-expand-lg navbar-light bg-white nav-height nav-font">
-		<div class="container-fluid col-sm-12 col-md-12 col-lg-12">
-			<div class="col-sm-2 col-md-2 col-lg-2">
-				<a class="navbar-brand" href="OpportunityList.jsp"> <img
-					src="images/D3Sixty-logo.png" class="d3s-logo" alt="D3Sixty">
-				</a>
-			</div>
-			<div class="col-md-8 col-lg-8 col-sm-8">
-				<div class="collapse navbar-collapse">
-					<ul class="navbar-nav mr-auto d3s-ml-80" id="nav-res-align">
-						<li class="nav-item moduleIcon"><a class="nav-link active"
-							aria-current="page" href="OpportunityList.jsp"><i
-								class="fas fa-folders fa-2x iconAlign iconColor"></i>Applications</a>
-						</li>
-						<li class="nav-item moduleIcon"><a class="nav-link active"
-							aria-current="page" href="Admin_Userslist.jsp"><i
-								class="fas fa-user-cog iconAlign iconColor fa-2x"></i>Administration</a>
-						</li>
-						<li class="nav-item moduleIcon"><a class="nav-link active"
-							aria-current="page" href="Governance_Home.jsp"><i
-								class="fas fa-desktop iconAlign iconColor fa-2x"></i>Governance</a></li>
-						<li class="nav-item moduleIcon" id="myElementwithTooltip"
-							data-bs-toggle="tooltip" data-bs-placement="bottom"
-							title="For Future Enhancement"><a class="nav-link active"
-							aria-current="page" href="#"><i
-								class="fas fa-wallet iconAlign iconColor fa-2x"></i>Finance</a></li>
-						<li class="nav-item moduleIcon"><a class="nav-link active"
-							aria-current="page" href="DashBoard.jsp"><i
-								class="fas fa-chart-pie iconAlign iconColor fa-2x"></i>Dashboards</a>
-						</li>
-						<li class="nav-item moduleIcon" id="myElementwithTooltip"
-							data-bs-toggle="tooltip" data-bs-placement="bottom"
-							title="For Future Enhancement"><a class="nav-link active"
-							aria-current="page" href="#"><i
-								class="fas fa-comment-lines iconAlign iconColor fa-2x"></i>Compliance</a>
-						</li>
-
-					</ul>
-
-				</div>
-			</div>
-
-			<div class="col-sm-2 col-md-2 col-lg-2">
-				<div class="dropdown d3s-ml-70" align="end" id="user-icon-lign">
-					<a class="dropdown-toggle" href="#" role="button"
-						id="dropdownMenuLink" data-bs-toggle="dropdown"
-						aria-expanded="false"><i
-						class="fas fa-user-circle iconAlign iconColor fa-3x"></i> </a>
-					<ul class="dropdown-menu" id="dropDownMenu"
-						aria-labelledby="dropdownMenuLink"
-						style="width: 165px; margin-left: -15px;">
-						<li><a class="dropdown-item" href="#" id="textAlign"><i
-								class="fas fa-user-circle iconAlign iconColor fa-3x"></i><br />Signed
-								in as <br /> <b class="user-ellipsis"><%=Encode.forHtml(userName)%></b></a></li>
-
-						<li class="mt-5"><a class="dropdown-item li-align"
-							href="#" id="textAlign"onclick="location.href='viewprofile.jsp';" 
-							data-target="#viewprofile" data-toggle="modal"
-							style="border-top: 1px solid #d3d7e2; padding: 11px 0px 11px;">View Profile</a>
-							<a class="dropdown-item li-align changepwwd"
-							href="" id="textAlign" data-target="#changepwd"
-							data-toggle="modal"
-							style="border-top: 1px solid #d3d7e2; padding: 11px 0px 11px;">Change
-								Password</a> <a class="dropdown-item li-align" href=""
-							id="textAlign" data-target="#verModal1" data-toggle="modal"
-							style="border-top: 1px solid #d3d7e2; padding: 11px 0px 11px;">About
-								D3Sixty</a> <a class="dropdown-item li-align" href="#"
-							id="textAlign" onclick="location.href='logout.jsp';"
-							style="border-top: 1px solid #d3d7e2;"><i
-								class="fa fa-sign-out iconColor fa-1x"></i>Logout</a></li>
-					</ul>
-
-				</div>
-
-
-			</div>
-		</div>
-
-	</nav>
-
-
 	<script>
 		let tooltipTriggerList = [].slice.call(document
 				.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -243,50 +161,7 @@ margin-left: 247px;
 
 		});
 	</script>
-	<div class="modal" id="verModal1" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header" style="background-color: #1565c0;">
-					<h4 class="modal-title" id="exampleModalLabel"
-						style="color: white;">About</h4>
-					<button type="button" class="btn-close" data-dismiss="modal"
-						style="color: white;" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form name="PopUpform">
-						<div class="row">
-							<div class="form-group">
-								<div class="col-lg-12">
-									<center>
-										<img src="images/D3Sixty_logo.png" style="width: 60%;">
-									</center>
-									<div class="col-lg-12">
-										<center>
-											<label class="versioninfo">Version : <%=versioninfo1%></label>
-										</center>
-										<center>
-											<label class="versioninfo">Copyright &copy; 2022 <a
-												href="https://platform3solutions.com/">Platform 3
-													Solutions.</a> All Rights Reserved.
-											</label>
-										</center>
-										<center>
-											<label class="versioninfo" for="formInput526">Trademarks
-												owned by Platform 3 Solutions </label>
-										</center>
-									</div>
 
-								</div>
-							</div>
-						</div>
-
-					</form>
-				</div>
-
-			</div>
-		</div>
-	</div>
 	<div class="modal" id="changepwd" tabindex="-1"
 		aria-labelledby="exampleModalLabel1" aria-hidden="true">
 		<div class="modal-dialog">
