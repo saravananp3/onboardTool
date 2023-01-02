@@ -6,7 +6,7 @@ $('#add_usersubmit').click(function(){
         var u_pwd=$('#u_pwd').val();
         var conf_u_pwd=$('#conf_u_pwd').val();
         var u_role=$('#u_role').val();
-        
+        var uflag=true;
         if(uname=="")
         {
 		notification("error","Please Enter Username","Note");
@@ -48,12 +48,16 @@ $('#add_usersubmit').click(function(){
 			{
 				notification("error","Password and Confirm Password Contains atleast 8 Characters","Note");
 			}
-			
-          	if(data.uemailduplicate=="Yes")
+			 if(data.uemailduplicate=="Yes" && data.unameduplicate=="Yes")
+            {
+			 uflag=false;	
+			 notification("error","Username & E-Mail Already Exists","Note");
+			}
+          	if(data.uemailduplicate=="Yes" && uflag)
             {
 			notification("error","E-Mail Already Exists","Note");
 	 		}
-	 		if(data.unameduplicate=="Yes")
+	 		if(data.unameduplicate=="Yes" && uflag)
             {
 	 		notification("error","Username Already Exists","Note");
 	 		}

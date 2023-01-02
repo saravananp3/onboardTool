@@ -53,9 +53,7 @@ public class Update_users_service {
 		if(uemailcount!=0)
 		{
 			jsonobj.addProperty("uemailduplicate", "Yes");
-		}
-
-		
+		}		
 		if(unamecount==0 && uemailcount==0)
 		{
 		System.out.println("Uname Count : "+unamecount);
