@@ -696,7 +696,7 @@ public class Login extends HttpServlet {
                 String AppInfo = "ApplicationInformation";
                 Assessment AssessmentDetails[] = new Assessment[19];
                 AssessmentDetails[0] = new Assessment(1, "", "", AppInfo, ",COTS - Commercial Off The Shelf,MOTS - Modified Off The Shelf,Custom - In-house Development", "Application Details", "AppDetails", "Dropdown", "No", "");
-                AssessmentDetails[1] = new Assessment(2, "", "", AppInfo, ",Currently supported, Nearing end of life, End of life with extended support/maintenance, unsupported", "Lifecycle", "Lifecycle", "Dropdown", "No", "");
+                AssessmentDetails[1] = new Assessment(2, "", "", AppInfo, ",Currently supported,Nearing end of life,End of life with extended support/maintenance,unsupported", "Lifecycle", "Lifecycle", "Dropdown", "No", "");
                 AssessmentDetails[2] = new Assessment(3, "", "", AppInfo, "Yes,No", "Is this a currently supported application?", "SupportedApp", "RadioBoxDependencyNo", "No", "");
                 AssessmentDetails[3] = new Assessment(4, "", "", AppInfo, "", "If NO,who supports this Application?", "SupportApp", "TextBoxDependencyNo", "No", "");
                 AssessmentDetails[4] = new Assessment(5, "", "", AppInfo, "Yes,No", "Operational support staff/SME's available for analysis?", "OperationalSupportStaff", "Radio box", "No", "");

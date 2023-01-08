@@ -850,10 +850,10 @@ e.printStackTrace();
                                                         </div> </td> </tr>
                                                         
                                                  <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
-                                                       <h3 class="panel-title">5 Abbrevations, Acronyms, Definitions</h3><br><br>
+                                                       <h3 class="panel-title">5 Abbreviations, Acronyms, Definitions</h3><br><br>
                                                         <table class='table-bordered'>
                                                           <thead>
-                                                          <th>Abbrevation/Acronym</th>
+                                                          <th>Abbreviation/Acronym</th>
                                                           <th>Description</th>
                                                           </thead>
                                                           <tbody id='AbbrevationDescriptionInfoPreview'>

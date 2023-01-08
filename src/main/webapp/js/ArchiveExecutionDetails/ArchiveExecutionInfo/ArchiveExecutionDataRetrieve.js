@@ -204,7 +204,7 @@ function appendRowFunction(data){
         var taskName = value.taskName;
         var taskType = value.taskType;
         var majDep = value.majorDep;
-        var assingedTo = value.assignedTo;
+        var assignedTo = value.assignedTo;
         var planStart = value.planStart;
         var planEnd = value.planEnd;
         var actStart = value.actStart;
@@ -212,7 +212,7 @@ function appendRowFunction(data){
         var completion = !isNaN(value.completion)&&value.completion!=""?value.completion:0 ;
         var status = value.status;
         var remark = value.remark;
-        var AssignedToOptions =userAppendFunction(data[0].user,assingedTo);
+        var AssignedToOptions =userAppendFunction(data[0].user,assignedTo);
         var taskTypeOptions = Options(taskTypeArr,taskType);
         var status1=arcstatuscolor(completion);
         var lvlflag=levlflag(level);
@@ -240,7 +240,7 @@ function appendRowFunction(data){
                   "</td>"+
                   "<td style='text-align:center;vertical-align: middle;'><input type='text' class ='majorDep changeText' value='"+majDep+"' disabled></td>"+
                   "<td style='text-align:center;vertical-align: middle;'>"+
-                  "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' disabled>"+
+                  "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' disabled value='"+assignedTo+"'>"+
                   AssignedToOptions+
                   "</select>" +
                   "</td>"+
@@ -302,7 +302,7 @@ function appendRowFunction(data){
               "</td>"+
               "<td style='text-align:center;vertical-align: middle;'><input type='text' class ='majorDep changeText' id='maj_"+t+"' value='"+majDep+"'></td>"+
               "<td style='text-align:center;vertical-align: middle;'>"+
-              "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' id='assign_"+t+"' >"+
+              "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' id='assign_"+t+"' value='"+assignedTo+"' >"+
             AssignedToOptions+
               "</select>" +
               "</td>"+
@@ -362,7 +362,7 @@ function appendRowFunction(data){
               "</td>"+
               "<td style='text-align:center;vertical-align: middle;'><input type='text' class ='majorDep changeText' id='maj_"+t+"' value='"+majDep+"'></td>"+
               "<td style='text-align:center;vertical-align: middle;'>"+
-              "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' id='assign_"+t+"' >"+
+              "<select multiple data-live-search='true' class='assignedToDrop selectpicker' multiple data-actions-box='true' id='assign_"+t+"' value='"+assignedTo+"'>"+
             AssignedToOptions+
               "</select>" +
               "</td>"+
@@ -448,7 +448,7 @@ function userAppendFunction(optionlist,value1) {
         //var getUser = "user"+count.toString();
         var userList = (value);
          if(value1.includes(userList.toString()))
-          options += "<option value='"+userList+"'>"+userList+"</option>";
+          options += "<option value='"+userList+"' selected>"+userList+"</option>";
       else
           options += "<option value='"+userList+"'>"+userList+"</option>";
     });

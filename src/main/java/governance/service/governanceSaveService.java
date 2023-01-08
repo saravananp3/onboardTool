@@ -309,7 +309,25 @@ public class governanceSaveService {
 		boolean statusFlag  = false;
 		try
 		{
-			if(operation.equals("NewWave"))
+			
+			if(operation==null)
+			{
+				String selectQuery = "select * from governance_info where column_name=? and value=?;";
+				PreparedStatement st = con.prepareStatement(selectQuery);
+				st.setString(1, columnName);
+				st.setString(2, value);
+				ResultSet rs = st.executeQuery();
+				System.out.println("Query : "+selectQuery);
+				while(rs.next())
+				{
+					if(value.equals(rs.getString("value"))&&!rs.getString("waveId").equals(id))
+					statusFlag =  true;
+					
+				}
+				st.close();
+				rs.close();
+			}
+		else if(operation.equals("NewWave"))
 			{
 			String selectQuery = "select * from governance_info where column_name=? and value=?;";
 			PreparedStatement st = con.prepareStatement(selectQuery);
@@ -342,6 +360,7 @@ public class governanceSaveService {
 				st.close();
 				rs.close();
 			}
+		
 		}
 		catch(Exception e)
 		{

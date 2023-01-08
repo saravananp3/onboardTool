@@ -4,8 +4,14 @@ $('#addWave').click(function(){
     	var waveName = $("#addWaveModify").val();
     	
     	var creationType = "Wave";
-    	
+    	if(waveName!=="")
+    	{
     	dynamicWave(waveName, creationType);
+    	}
+    	else
+    	{
+		notification("warning","Wave Name cannot be Empty","Warning");
+		}
 });
 
 
