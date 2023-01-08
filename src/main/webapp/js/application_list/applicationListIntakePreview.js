@@ -258,7 +258,11 @@ $(document).on('click', '.editpopup1', function() {
 		type: 'POST',
 		dataType: "json",
 		data: { demo: demo },
+	    beforeSend : function(){
+         $('#overlay3').show();
+  },
 		success: function(data) {
+			 $('#overlay3').hide();
 			console.log("Data Retrieve Preview json array----->", data);
 			exportContent = data;
 			var inputs = {};
