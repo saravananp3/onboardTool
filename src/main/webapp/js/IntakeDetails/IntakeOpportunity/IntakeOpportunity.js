@@ -78,11 +78,18 @@ $(document).ready(function(){
                     var option=sub_option.split(",");
                     for(var i=0;i<option.length;i++) {
                         var select = "";
+                        if(Value!==""){
                         if(Value.includes(option[i])){
                          select = "selected";
                         }
-                        inputdrop += "<option label='" + option[i] + "' class='control-label' for= 'opportunity' "+select+">" + option[i] + "</option>";
-                    }
+                        }
+                         if(option[i]!==""){
+                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'opportunity' " + select + ">" + option[i] + "</option>";
+                            }
+                            else{
+                                inputdrop += "<option label=''class='control-label' for= 'opportunity' " + select + ">" + option[i] + "</option>";
+                            }
+                        }                       
                     inputdrop +="</select></div>";
                     $('#inputFields').append(inputdrop);
                 }
