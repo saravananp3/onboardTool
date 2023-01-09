@@ -24,22 +24,18 @@ public class Update_users_service {
             jsonobj.addProperty("prev_u_email", rs.getString(4));
             jsonobj.addProperty("prev_u_role", rs.getString(5));
         }
-        String select_query ="select * from users where uname=?";
+        String select_query ="select count(*) from users where uname=?";
 		PreparedStatement preparedStmt = connection.prepareStatement(select_query);
 		preparedStmt.setString(1, uname_modify);
 		ResultSet rs1=preparedStmt.executeQuery();
-		String select_query1 ="select * from users where u_email=?";
+		String select_query1 ="select count(*) from users where u_email=?";
 		PreparedStatement preparedStmt2 = connection.prepareStatement(select_query1);
 		preparedStmt2.setString(1, u_email_modify.toLowerCase());
 		ResultSet rs2=preparedStmt2.executeQuery();
-		while(rs1.next())
-		{
-			unamecount++;
-		}
-		while(rs2.next())
-		{
-			uemailcount++;	
-		}
+		rs1.next();
+	    unamecount = rs1.getInt(1);	
+	    rs2.next();
+	    uemailcount = rs2.getInt(1);		
 		if(unamecount!=0 && uemailcount!=0)
 		{
 			jsonobj.addProperty("unameduplicate", "Yes");
