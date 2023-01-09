@@ -119,7 +119,7 @@ $("#create").click(function(e)
 	    
     	if(checkMandatory==true && checkAjax == true && checkAjax !=undefined)
 	    {
-    		notification("warning","New Opportunity is created successfully.","Warning");
+    		notification("success","New Opportunity is created successfully.","Note");
 	    	$("#OpportunityListbtn").click();
 	    	
 	    	/*var f=document.OpportunityForm;

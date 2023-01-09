@@ -148,8 +148,15 @@ $(document).ready(function()
                    var seqNo = parseInt(index)+1;
                    var columnName = "completion";
                    fieldName = "";
+                    if(parseInt(value1)===0)
+                   {
+					$(this).attr("disabled", "disabled");
+				   }
+				   else{
                    saveFunction(seqNo, columnName, value1);
+                   }
                    console.log("VALUE 1 : ",parseInt(value1))
+                  
                statusColor(parseInt(value1),statusIndex);
                 });
       function progressPercentage(percentClass)

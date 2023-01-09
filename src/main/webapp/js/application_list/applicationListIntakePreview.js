@@ -253,6 +253,8 @@ $(document).on('click', '.editpopup1', function() {
 	var demo = intakePreview.find("td:eq(0)").text();
 	$('#demo').val(demo);
 	$('#editpopup_btn').click();
+	$("#ContractInformationPreview").hide();
+	$("#contract_info_heading").hide();
 	$.ajax({
 		url: "planAndPriorityIntakePreviewDataRetrieveServlet",
 		type: 'POST',
@@ -321,7 +323,10 @@ $(document).on('click', '.editpopup1', function() {
 						assessmentStyle = "display:none;";
 					}
 					if (data[3][l][m].ColumnName == "AppDetails" && data[3][l][m].section == "ApplicationInformation" && data[3][l][m].Value === "COTS - Commercial Off The Shelf" || data[3][l][m].Value === "MOTS - Modified Off The Shelf")
-						$("#ContractInformationPreview").show();
+						{
+							$("#ContractInformationPreview").show();
+							$("#contract_info_heading").show();
+						}
 					var AssessmentTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:155ch;" + assessmentStyle + "' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[3][l][m].Value+"'class = 'AssessmentPreview'><b>" + data[3][l][m].LabelName + "</b> : " + data[3][l][m].Value + " </pre>";
 					checkAssessmentDependency = checkDependency(column_name, columnValue);
 					$("#" + data[3][l][m].section + "Preview").append(AssessmentTag);

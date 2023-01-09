@@ -623,7 +623,7 @@ public class Login extends HttpServlet {
                 AssessmentDetails[5] = new Assessment(6, "", "", ComplianceChar, "", "Special Data Retention Requirements", "specialdataretention", "Text box", "No", "");
                 AssessmentDetails[6] = new Assessment(7, "", "", ComplianceChar, "Yes,No", "Legal Hold", "legalhold", "RadioBoxDependencyYes", "Yes", "");
                 AssessmentDetails[7] = new Assessment(8, "", "", ComplianceChar, "", "If any, please describe details", "ifanypleasedescribe", "TextBoxDependencyYes", "No", "");
-                AssessmentDetails[8] = new Assessment(9, "", "", ComplianceChar, "Yes,No", "Are there any pending litigations that impacts the retirment of the application and data", "retirementappanddata", "Radio box", "Yes", "");
+                AssessmentDetails[8] = new Assessment(9, "", "", ComplianceChar, "Yes,No", "Are there any pending litigations that impacts the retirement of the application and data", "retirementappanddata", "Radio box", "Yes", "");
         		AssessmentDetails[9] = new Assessment(10,"","",ComplianceChar,",On Hold,Pending review,Cleared,N/A","Legal Status","legalstatus","Dropdown","No","");
                 AssessmentDetails[10] = new Assessment(11, "", "", ComplianceChar, "Yes,No", "Any specific purge requirements?", "specificpurgerequirements", "RadioBoxDependencyYes", "Yes", "");
                 AssessmentDetails[11] = new Assessment(12, "", "", ComplianceChar, "", "If any, please describe details", "describedetails", "TextBoxDependencyYes", "No", "");

@@ -80,10 +80,7 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Retrieve_Review.js"></script>
-<script
-	src="js/IntakeDetails/IntakeAssessment/Common/Intake_Scr_Download.js"></script>
+
 </head>
 <style>
 #overlay {

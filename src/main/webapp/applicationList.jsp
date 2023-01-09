@@ -556,11 +556,10 @@
 															<div id="ComplianceCharacteristicsPreview"></div>
 															<h3 class="panel-title">Archival Consumption</h3> <br>
 															<div id="ArchivalConsumptionPreview"></div>
-
+															<h3 class="panel-title" style = "display:none;" id="contract_info_heading">Contract Information</h3><br>
 															<div id="ContractInformationPreview"
 																style="display: none;">
-																<h3 class="panel-title">Contract Consumption</h3>
-																<br>
+																
 															</div>
 
 														</td>
