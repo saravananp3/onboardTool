@@ -156,19 +156,19 @@ function AssessmentDataRetrieveAjaxCall()
 					var inputtext = "<div class='form-group InputFieldAssessment " + Section + "' id ='" + ColumnName + "_AssessmentRow'" + HideShow + ">\n" +
 						"<label class='control-label' for='Assessment'>" + LabelName + "<span " + manadatory + "></span></label>" + delete_icon + "<span class='glyphicon glyphicon-pencil editpopupAssessment hidepencilAssessment " + Section + "_Edit' style='float:right;display:none;'></span>\n";
 					if (ColumnName == "StrucDBsize") {
-						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+						inputtext = inputtext + "<input type='number' min='0' onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))'class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
 							"</div>";
 					}
 					else if (ColumnName == "UnstrucDataVolume") {
-						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+						inputtext = inputtext + "<input type='number' min='0' onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
 							"</div>";
 					}
 					else if (ColumnName == "archivalusercount") {
-						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+						inputtext = inputtext + "<input type='number' min='0' onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
 							"</div>";
 					}
 					else if (ColumnName == "noofsearch") {
-						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+						inputtext = inputtext + "<input type='number' min='0' onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
 							"</div>";
 					}
 					else {

@@ -57,7 +57,12 @@ $('#update_submit').click(function(){
             {
 	 		notification("success","User Details Updated Successfully.","User Update");
 	 		window.setTimeout(function(){location.reload()},1500)
-	 		}                
+	 		}  
+	 		if(data.partial_update=="Success")
+            {
+	 		notification("success","User Details Updated Successfully.","User Update");
+	 		window.setTimeout(function(){location.reload()},1500)
+	 		}              
             }
         });
  }});	

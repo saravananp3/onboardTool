@@ -116,10 +116,17 @@ console.log("data add template ;",templateMandatory);
                         var option=Options.split(",");
                         for(var i=0;i<option.length;i++) {
                             var select = "";
+                            		if(Value!==""){
                             if(Value.includes(option[i])){
                              select = "selected";
-                            }
-                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'triage' "+select+">" + option[i] + "</option>";
+                            }}
+                            	if(option[i]!==""){
+							inputdrop += "<option label=" + option[i] + " class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
+							else{
+								inputdrop += "<option label=''class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
+                            
                         }
                         inputdrop +="</select></div>";
                         if(!$('#'+ColumnName).length){
@@ -260,11 +267,18 @@ console.log("data add template ;",templateMandatory);
                        var option=Options.split(",");
                        for(var i=0;i<option.length;i++) {
                            var select = "";
+                           if(Value!==""){
                            if(Value.includes(option[i])){
                             select = "selected";
                            }
+                           }
+                             if(option[i]!==""){
                            inputdrop += "<option label='" + option[i] + "' class='control-label' for= 'opportunity' "+select+">" + option[i] + "</option>";
                        }
+                       else{
+							inputdrop += "<option label=''class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
+							}
                        inputdrop +="</select></div>";
                        $('#'+InputFieldName).append(inputdrop);
                    }
