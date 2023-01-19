@@ -384,7 +384,12 @@ rotate
 	margin-left: 289px;
 }
 
-	
+@media all and (max-width:30em){
+ .changepwd{
+  display:block;
+  margin:0.4em auto;
+ }
+}
 </style>
 <body>
 
@@ -884,20 +889,18 @@ $(document).ready(function() {
 	</nav>
 
 	<br />
-	<div class="card-container-5 card d3s-mt-50" style="max-width: 1500px;margin-left:10%">
-		<div class="card-header d3s-pl-15" id="cd-header" style="max-width: 100%;">Profile Details</div>
-		<div class="col-lg-4"style="margin-left: 89%;margin-top: -87px;">
-                      <div class="form-group focused">
-                      <input type="button"class="btn btn-primary" data-target="#changepwd"
+	<div class="col-lg-6 right-side phase-btn" align="end" style="margin-top: 36px;">
+		      <input type="button"class="btn btn-primary" data-target="#changepwd"
 							data-toggle="modal" value="Change Password">
-                       </div>
-                    </div>
- 
+		</div>
+	<div class="card-container-5 card d3s-mt-50" >
+		
+		<div class="card-header d3s-pl-15" id="cd-header">Profile Details</div>
+		
+
 		<div class="withoutPhase display" id="admin_userslist_div">
-	        
-            <div class="card-body"style="padding-left: 8%;">
-            
-             										<table class="table table-bordered table-responsive" style="width:81%;font-size: 18px;margin-left: 5%;margin-top: 3%;">
+			<center><table class="table table-bordered table-responsive"
+				id="admin_userslist" style="width: 80%; margin:20px 20px;font-size: 12px;" > </center> 										
       												<tr>
              <th  style='text-align:left;vertical-align: middle;'>UserName</th> 
     												<td id ="uname"style="text-align: left; font-weight:500;">   											
