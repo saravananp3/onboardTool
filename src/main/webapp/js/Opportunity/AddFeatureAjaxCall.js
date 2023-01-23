@@ -133,7 +133,12 @@ $('#submit').click(function() {
 	                    var sub_option = Options.substring(0, Options.length - 1);
 	                    var option=sub_option.split(",");
 	                    for(var i=0;i<option.length;i++) {
+		  			if(option[i]!==""){
 	                        select += "<option label=" + option[i] + " class='control-label' for= 'opportunity' >" + option[i] + "</option>";
+	                        }
+	                        else{
+								select += "<option label=''class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
 	                    }
 	                    select +="</select></div>";
 	                    $('#inputFields').append(select);

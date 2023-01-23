@@ -100,10 +100,17 @@ $(document).ready(function(){
                     var option=sub_option.split(",");
                     for(var i=0;i<option.length;i++) {
                         var select = "";
+                        if(Value!==""){
                         if(Value.includes(option[i])){
                          select = "selected";
                         }
-                        inputdrop += "<option label='"+ option[i] + "' class='control-label' for= 'opportunity' "+select+">" + option[i] + "</option>";
+                        }                        
+                      if(option[i]!==""){
+							inputdrop += "<option label=" + option[i] + " class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
+							else{
+								inputdrop += "<option label=''class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
                     }
                     inputdrop +="</select></div>";
                     $('#inputFields').append(inputdrop);
@@ -123,10 +130,16 @@ $(document).ready(function(){
                      var option1=sub_option1.split(",");
                      for(var i=0;i<option1.length;i++) {
                          var select1 = "";
+                         if(Value!==""){
                          if(Value.includes(option1[i])){
                           select1 = "selected";
-                         }
+                         }}
+                         if(option1[i]!==""){
                          TemplateField += "<option label=" + option1[i] + " class='control-label' for= 'opportunity' "+select1+">" + option1[i] + "</option>";
+                         }
+                         else{
+								TemplateField += "<option label=''class='control-label' for= 'triage' " + select1 + ">" + option1[i] + "</option>";
+							}
                      }
                      TemplateField +="</select>"+
         	        "</div>"+
