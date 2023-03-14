@@ -502,6 +502,12 @@ e.printStackTrace();
 																		data-bs-target="#addendumViewPopUp"
 																		style="display: none;">View Uploaded Files PopUp</button>
 																		
+																		<button type="button"
+																		class="btn btn-primary pull-right" id="addendumUploadId"
+																		data-bs-toggle="modal"
+																		data-bs-target="#addendumUploadPopUp"
+																		style="display: none;">Upload Files</button>
+																		
 
 																	<div class="col-12" align="end">
 																		<!--  <div class = "btn-group dropup dropright">
@@ -676,7 +682,7 @@ e.printStackTrace();
 			<div class="modal-content">
 				<div class="modal-header" style="background-color: #1565c0;">
 					<h5 class="modal-title" id="exampleModalLabel"
-						style="color: white;">Uploaded Files</h5>
+						style="color: white;">View Uploaded Files</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
@@ -713,6 +719,71 @@ e.printStackTrace();
 		<input type="submit" id="deletegrid_update" style="display: none;">
 
 	</div> 
+	
+	<div class="modal" id="addendumUploadPopUp" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h5 class="modal-title" id="exampleModalLabel11"
+						style="color: white;">Upload Files</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" data-bs-target="">
+				<div class="container fileClass">
+																							<form action="" method="post"
+																								enctype="multipart/form-data">
+																								<div class="fileClass">
+																									<label for="upload"> <input type="file"
+																										id="fileUpload" multiple> Upload Files
+																									</label>
+																								</div>
+																								<div class="files fileClass">
+																									<h6>
+																										<b>Files Selected</b>
+																									</h6>
+																									<ul id="FileList"></ul>
+																								</div>
+																								<input type="button" value="Upload"
+																									class="btn btn-primary" name="submit"
+																									id="UploadFiles" />
+																							</form>
+																						</div>
+																					</div>
+					<!-- <table class="table table-bordered table-striped"
+						id="legacy_datatable11">
+
+						<thead>
+
+							<tr>
+								<th style="text-align: center;">File Name</th>
+								<th style="text-align: center;">Action</th>
+							</tr>
+						</thead>
+
+						<tbody id="Uploaded_Files_List11">
+
+						</tbody>
+					</table> -->
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="legacy_scr_download" method="post">
+			<input type="hidden" id="File_Name111" name="File_Name"> <input
+				type="submit" id="scr_submit111" style="display: none;">
+
+		</form>
+		<input type="submit" id="deletegrid_update111" style="display: none;">
+
+	</div> 
+	
 
 	<%-- <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
@@ -792,6 +863,8 @@ $(document).on('mouseenter','.active1', function(){
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDeleteAjaxCall.js"></script>
 	<script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumSaveAjaxCall.js"></script>
+		<script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
 	<script
