@@ -11,6 +11,75 @@
   font-weight: normal;
   font-style: normal;
 }
+.upload-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.upload-icon input[type="file"] {
+  display: none;
+}
+
+.upload-icon label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1565C0;
+  padding: 3px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1565C0;
+  margin-left: 90%;
+  margin-top: 0px;
+}
+
+/* .upload-icon label:hover {
+  background-color: #333;
+  color: #fff;
+}
+ */
+.fa-cloud-upload-alt {
+  margin-right: 0px;
+  margin-top: -6px;
+}
+
+.view-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+/* color: #333; */}
+
+.view-icon label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1565C0;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+/*   color: #333;*/
+  margin-left: 90%;
+  margin-top: 0px;
+}
+
+.view-icon label:hover {
+  background-color: #333; 
+  color: #fff;
+}
+
+.fa fa-eye {
+  margin-right: 50%;
+  color: #1565C0;
+}
+
+
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;

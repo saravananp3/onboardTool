@@ -201,27 +201,46 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
                     }		//over
 				
 				private void getAbbrevationDef() {
-					writeHeader("Abbreviation, Acronym, Definitions");
-					String key[]= {"AB","BI","IA","Read-Only","REQ","UAT","XML"};
-					String value[]= {"Active Directory Group","Business Intelligence",
-							"InfoArchive is a repository that compresses and maintains data from business applications and data sources. Data contained within the archive is no longer transactional and immutable (unable to be changed). Access to the archive is normally confined to a small group of users defined by security rules and roles. Data retention policies may be applied to data contained within the archive"
-							,"Date at which the legacy application data has been set to static use. There are no changes to be made to the data, no integration jobs running to alter the status of the data, nor will any future changes be made to the data",
-							"Requirement","User Acceptance Testing",
-							"Extensible Markup Format is used to define documents with a standard format that can be read by any XML-compatible application.It is a \\\"metalanguage\\\" that can be used to create markup languages for specific applications"};
+					/*
+					 * writeHeader("Abbreviation, Acronym, Definitions"); String key[]=
+					 * {"AB","BI","IA","Read-Only","REQ","UAT","XML"}; String value[]=
+					 * {"Active Directory Group","Business Intelligence",
+					 * "InfoArchive is a repository that compresses and maintains data from business applications and data sources. Data contained within the archive is no longer transactional and immutable (unable to be changed). Access to the archive is normally confined to a small group of users defined by security rules and roles. Data retention policies may be applied to data contained within the archive"
+					 * ,"Date at which the legacy application data has been set to static use. There are no changes to be made to the data, no integration jobs running to alter the status of the data, nor will any future changes be made to the data"
+					 * , "Requirement","User Acceptance Testing",
+					 * "Extensible Markup Format is used to define documents with a standard format that can be read by any XML-compatible application.It is a \\\"metalanguage\\\" that can be used to create markup languages for specific applications"
+					 * }; writeTableStartTags(); writeTableHeadingTags(new
+					 * String[]{"Abbreviation/Acronym","Description"}); for(int
+					 * i=0;i<key.length;i++) {
+					 * 
+					 * writeTableDataTags(new String[] {key[i],value[i]}); }
+					 */
+                    writeHeader("Abbreviation/Acronyms");					
+					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
 					writeTableStartTags();
-					writeTableHeadingTags(new String[]{"Abbreviation/Acronym","Description"});
-					for(int i=0;i<key.length;i++) {
-						
-					writeTableDataTags(new String[] {key[i],value[i]});
+					writeTableHeadingTags(new String[]{"Abrreviation/Acronym","Description"});
+					for(int i=0;i<jsonArray1.size();i++) {
+						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();	
+						writeTableDataTags(new String[] {jsonObject1.get("abbreviation_acronym").getAsString(),jsonObject1.get("description").getAsString()});
 					}
-						writeTableEndTags();
-                    }
+					writeTableEndTags();
+				}
+//					writeHeader("Abbreviation, Acronym, Definitions");
+//					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
+//					writeTableStartTags();
+//					writeTableHeadingTags(new String[]{"Abbreviations","Description"});
+//					for(int i=0;i<jsonArray1.size();i++) {
+//						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();	
+//						writeTableDataTags(new String[] {jsonObject1.get("abbreviation_acronym").getAsString(),jsonObject1.get("description").getAsString()});
+//					}
+//						writeTableEndTags();
+//                    }
 				
 				// Document Revisions
 				private void getDocumentRevisions() {
 					writeHeader("Document Revisions");
 					
-					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
+					JsonArray jsonArray1 = jsonArray.get(8).getAsJsonArray();
 					writeTableStartTags();
 					writeTableHeadingTags(new String[]{"Date","Version No","Document Changes","Change Author"});
 					for(int i=0;i<jsonArray1.size();i++) {
@@ -234,7 +253,7 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				private void getAddendum() {
 					writeHeader("Addendum");
 					
-					JsonArray jsonArray1 = jsonArray.get(8).getAsJsonArray();
+					JsonArray jsonArray1 = jsonArray.get(9).getAsJsonArray();
 					JsonObject jsonObject1 = jsonArray1.get(0).getAsJsonObject();	
 
 			     	writeTableStartTags();

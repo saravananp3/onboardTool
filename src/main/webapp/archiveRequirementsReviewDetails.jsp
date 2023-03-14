@@ -858,7 +858,7 @@ e.printStackTrace();
                                                           </thead>
                                                           <tbody id='AbbrevationDescriptionInfoPreview'>
                                                           </tbody>
-                                                          </table > </td> </tr>
+                                                          </table > 
                                                  <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
                                                        <h3 class="panel-title">6 Document Revisions</h3><br><br>
                                                         <table class='table-bordered'>

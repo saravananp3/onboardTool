@@ -21,7 +21,9 @@ function archiveFunctionalDataRetrieve(){
                  data = [data];
              }
         	 for(var i = 0;i<data.length;i++)
-            {
+            {				
+            
+            if (data[i][0]){ 
         	var checkDataReq = data[i][0].checkExistance;
         	if(checkDataReq){
         	 var rowCount=0;
@@ -55,6 +57,7 @@ function archiveFunctionalDataRetrieve(){
             	 $("#"+SectionId[i]).append(Row);
              });
         	}
+            }
             }
              var script="<script>$('.datepicker1').datepicker({\n" +
              "format: \"mm/dd/yyyy\",\n"+

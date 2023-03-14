@@ -35,7 +35,7 @@ public class archiveFunctionDataRetrieveService {
 		JsonArray jsonArray = new JsonArray();
 		try
 		{
-			checkDataReqTempTable();
+			//checkDataReqTempTable();
 			jsonArray = getDataInfo();
 		}
 		catch(Exception e)
@@ -43,6 +43,10 @@ public class archiveFunctionDataRetrieveService {
 			e.printStackTrace();
 		}
 		return jsonArray;
+	}
+	public void TemplateInsert() throws Exception
+	{
+		checkDataReqTempTable();
 	}
 	
 	private void checkDataReqTempTable() throws SQLException

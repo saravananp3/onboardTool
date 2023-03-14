@@ -16,6 +16,7 @@ import File_Utility.FileUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import NewArchiveRequirements.AbbreviationList.service.Retrieve_Abbreviations_Service;
 import NewArchiveRequirements.ApprovalInfo.service.archiveReqApprovalDataRetrieveService;
 import NewArchiveRequirements.Introduction.service.ApproverRoles_Service;
 import NewArchiveRequirements.Introduction.service.archiveReqIntroDataRetrieveService;
@@ -112,6 +113,8 @@ public class archiveReqReviewService {
 			//ScreenReq.con.close();
 
 			// document revision 
+			Retrieve_Abbreviations_Service retrieve_abbreviations=new Retrieve_Abbreviations_Service();
+			jsonArray.add(retrieve_abbreviations.retrieve_abbreviations(Id));
 
 			archiveReqDocRevDataRetrieveService docRevData = new archiveReqDocRevDataRetrieveService(Id, OppName);
 			jsonArray.add(docRevData.archiveReqDocDataRetrieve());

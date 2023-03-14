@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- ========== COMMON STYLES ========== -->
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -19,6 +21,11 @@
 <link rel="stylesheet" href="css/icheck/skins/line/green.css">
 <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
 <link rel="stylesheet" href="css/UserInfo/userinfo.css">
+
+<!-- ========== Upload Icon ========== -->
+
+<link rel="stylesheet" href="css/font-awesome.css">
+
 <!-- ========== THEME CSS ========== -->
 <link rel="stylesheet" href="css/main.css" media="screen">
 
@@ -481,13 +488,20 @@ e.printStackTrace();
 																		class="btn btn-primary pull-right" id="addendumAddId"
 																		data-bs-toggle="modal"
 																		data-bs-target="#addendumAddPopUp"
-																		style="display: none;">Delete PopUp</button>
+																		style="display: none;">Add PopUp</button>
 
 																	<button type="button"
 																		class="btn btn-primary pull-right"
 																		id="addendumDeleteId" data-bs-toggle="modal"
 																		data-bs-target="#addendumDeletePopUp"
 																		style="display: none;">Delete PopUp</button>
+																		
+																	<button type="button"
+																		class="btn btn-primary pull-right" id="addendumViewUploadId"
+																		data-bs-toggle="modal"
+																		data-bs-target="#addendumViewPopUp"
+																		style="display: none;">View Uploaded Files PopUp</button>
+																		
 
 																	<div class="col-12" align="end">
 																		<!--  <div class = "btn-group dropup dropright">
@@ -654,6 +668,51 @@ e.printStackTrace();
 			</div>
 		</div>
 	</div>
+		<!-- View Uploaded Files PopUp -->
+	
+		<div class="modal" id="addendumViewPopUp" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="color: white;">Uploaded Files</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" data-bs-target="">
+					<table class="table table-bordered table-striped"
+						id="legacy_datatable">
+
+						<thead>
+
+							<tr>
+								<th style="text-align: center;">File Name</th>
+								<th style="text-align: center;">Action</th>
+							</tr>
+						</thead>
+
+						<tbody id="Uploaded_Files_List">
+
+						</tbody>
+					</table>
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="legacy_scr_download" method="post">
+			<input type="hidden" id="File_Name" name="File_Name"> <input
+				type="submit" id="scr_submit" style="display: none;">
+
+		</form>
+		<input type="submit" id="deletegrid_update" style="display: none;">
+
+	</div> 
 
 	<%-- <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>

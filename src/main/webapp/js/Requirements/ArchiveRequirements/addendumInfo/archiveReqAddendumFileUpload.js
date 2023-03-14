@@ -1,17 +1,14 @@
-// no react or anything
 let state = {};
-
-// state management
 function updateState(newState) {
 	state = { ...state, ...newState };
 	console.log(state);
 }
 
-// event handlers
 $("#fileUpload").change(function(e) {
 	let files = $("#fileUpload")[0].files;
 	let filesArr = Array.from(files);
 	updateState({ files: files, filesArr: filesArr });
+
 	renderFileList();
 });
 
@@ -31,7 +28,6 @@ $(document).on("#UploadFiles", function(e) {
 	renderFileList();
 });
 
-// render functions
 function renderFileList() {
 	let fileMap = state.filesArr.map((file, index) => {
 		let suffix = "bytes";
