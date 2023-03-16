@@ -6,6 +6,6 @@ $(document).on('click', '.download_btn', function () {
     var File_Name=currentRow.find("td:eq(1)").text();
    
      $('#File_Name').val(File_Name);
-     $('#scr_submit').click();
+     $('#addendum_file_submit').click();
      });
     

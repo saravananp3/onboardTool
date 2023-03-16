@@ -58,7 +58,7 @@ $.each($('#fileUpload')[0].files, function(k, value)
             });
 
     $.ajax({
-      url: 'legacyApplicationScreenshotsUpload',
+      url: 'ArchiveRequirementsAddendumFileUpload',
       data: fd,
       processData: false,
       contentType: false,

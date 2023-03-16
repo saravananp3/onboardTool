@@ -60,11 +60,11 @@ function archiveReqAddendumDataRetrieveAjaxCall(){
         }
     });
 }
- $(document).on('click', '.fa-eye', function () {
+/* $(document).on('click', '.fa-eye', function () {
     $('#addendumViewUploadId').click();
         $('#addendumViewPopUp').on('shown.bs.modal', function () {
     });
-    });
+    });*/
     
      $(document).on('click', '.upload-icon', function () {
     $('#addendumUploadId').click();

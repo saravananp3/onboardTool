@@ -1,7 +1,7 @@
-$('#legacy_scr_delete_submit').click(function(){
+$('#uploaded_file_delete_submit').click(function(){
      var File_Name=$('#File_Name').val();
         $.ajax({
-            url: "Legacy_App_Scr_DeleteServlet",
+            url: "ArchiveReqAddendumFileDeleteServlet",
             type: 'POST',
             data : {File_Name:File_Name},
             dataType: "json",
@@ -10,20 +10,20 @@ $('#legacy_scr_delete_submit').click(function(){
         $('#deletegrid_update').click();      
             }
         });
-        notification("warning","Screenshot is Deleted Successfully","Delete Screenshot");
+        notification("warning","File is Deleted Successfully","Delete Files");
        });
  $('#deletegrid_update').click(function() {      
         $.ajax({
-        url: "Legacy_App_Scr_Retrieve_Servlet",
+        url: "ArchiveReqAddendumFileRetrieveServlet",
         type: 'POST',
         dataType: "json",
         success: function (data) {
-            console.log("Legacy Application Screenshots",data);
+            console.log("Addendum Files :",data);
             if (!$.isArray(data)) {
                 data = [data];
             }
-            $('#Legacy_Scr_List').html(data);
-            /*var parentRow = ""*/
+            $('#Uploaded_Files_List').html(data);
+            /*var parentRow = ""*/	
             appendRowFunction(data);
             },
     });
@@ -40,7 +40,7 @@ $('#legacy_scr_delete_submit').click(function(){
                   "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt download_btn'style='display:block; margin-left:-15px;'></span><span class='glyphicon glyphicon-trash legacy_scr_deletepopup' style='float:right;display:block;margin-top:-13px; margin-right:18px;'></span>"+
                   "</td>"+
                   "</tr>";
-                  $("#Legacy_Scr_List").append(row);
+                  $("#Uploaded_Files_List").append(row);
                    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
                 var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
                     return new bootstrap.Tooltip(tooltipTrigger) 

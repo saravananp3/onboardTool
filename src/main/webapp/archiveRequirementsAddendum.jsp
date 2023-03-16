@@ -674,6 +674,45 @@ e.printStackTrace();
 			</div>
 		</div>
 	</div>
+	
+			<!-- Delete Uploaded Files PopUp -->
+	
+		<button type="button" class="btn btn-primary"
+		id="uploaded_file_delete_btn" data-bs-toggle="modal"
+		data-bs-target="UploadedFilesDeletePopUp" style="display: none;"></button>
+
+	<div class="modal" id="UploadedFilesDeletePopUp" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: auto; height: 250px;">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="color: white;">Delete File</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form name="DeleteForm">
+						<div class="modal-body">
+							<p style="font-size: 14px;">Do you want to Delete this File
+								Permanently?</p>
+							<input type="text" id="random_id" style="display: none;" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bs-dismiss="modal" id="uploaded_file_delete_submit">Yes</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
 		<!-- View Uploaded Files PopUp -->
 	
 		<div class="modal" id="addendumViewPopUp" tabindex="-1"
@@ -711,9 +750,9 @@ e.printStackTrace();
 				</div>
 			</div>
 		</div>
-		<form action="legacy_scr_download" method="post">
+		<form action="addendum_file_download" method="post">
 			<input type="hidden" id="File_Name" name="File_Name"> <input
-				type="submit" id="scr_submit" style="display: none;">
+				type="submit" id="addendum_file_submit" style="display: none;">
 
 		</form>
 		<input type="submit" id="deletegrid_update" style="display: none;">
@@ -863,6 +902,22 @@ $(document).on('mouseenter','.active1', function(){
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDeleteAjaxCall.js"></script>
 	<script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumSaveAjaxCall.js"></script>
+		<script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileRetrieve.js"></script>	
+	
+	<!-- <script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js"></script>	
+	 --> <!-- <script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumEditableLabel.js"></script>	
+	 --><!-- <script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDelete.js"></script>	
+	<script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDownload.js"></script>	
+	<script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUpload.js"></script>		
+	<script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>	
+	 -->
 		<script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
 	<script src="js/navigation/navigation.js"></script>

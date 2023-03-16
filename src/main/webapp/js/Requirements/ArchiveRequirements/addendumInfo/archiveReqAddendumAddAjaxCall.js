@@ -34,8 +34,8 @@ function archiveReqAddendumAddAjaxCall(seqNum,labelName){
         	if(data.AddStatus){
         		
         		var Row ="<div class='addendumField' style='margin-top: 6px;margin-bottom: 60px;'>"+
-            	 		 "<label class='editable' contenteditable='true'>"+value.labelName+"</label>"+delete_icon+
-            	 		 "<textarea rows='2' cols='130' style='height:100px;' class='req addendumInfo'>"+value.addendumInfo+"</textarea>"+
+            	 		 "<label class='editable' contenteditable='true'>"+labelName+"</label>"+delete_icon+
+            	 		 "<textarea rows='2' cols='130' style='height:100px;' class='req addendumInfo'></textarea>"+
                          "<div style='margin-top: -69px;margin-left: 87%;'>"+
                          "<button class='upload-icon' style='margin-top: -87px;border: none;background: white;display: inline-block;padding: 12px;'>"+
   						 
