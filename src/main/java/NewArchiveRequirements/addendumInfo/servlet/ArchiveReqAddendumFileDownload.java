@@ -50,18 +50,22 @@ public class ArchiveReqAddendumFileDownload extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		HttpSession details = request.getSession();
-		String File = request.getParameter("File_Name");
+		HttpSession details = request.getSession();		
 		String Id=(String)details.getAttribute("ID");
+		String Seq_no = request.getParameter("Seq_Number");
+		String Section_no = request.getParameter("Section_Number");
+		String File = request.getParameter("File_Name");		
 		System.out.println("File Name : "+File);
         try {
 		 DBconnection dBconnection = new DBconnection();
 	        Connection connection = (Connection) dBconnection.getConnection();
 	        System.out.println("Connected...");
-	        String selectQuery = "select oppId,File_Name,doc from archive_req_addendum_fileupload where oppId=? and File_Name=?";
+	        String selectQuery = "select oppId,File_Name,doc from archive_req_addendum_fileupload where oppId=? and seq_num=? and section_no=? and File_Name=?";
 	        PreparedStatement st=connection.prepareStatement(selectQuery);
 	        st.setString(1, Id);
-	        st.setString(2,File);
+	        st.setString(2,Seq_no);
+	        st.setString(3,Section_no);
+	        st.setString(4,File);
 	        ResultSet rs = st.executeQuery();
 	        if (rs.next()) {
 	            // gets file name and file blob data

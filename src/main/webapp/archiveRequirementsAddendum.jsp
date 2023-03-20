@@ -677,38 +677,11 @@ e.printStackTrace();
 	
 			<!-- Delete Uploaded Files PopUp -->
 	
-		<button type="button" class="btn btn-primary"
-		id="uploaded_file_delete_btn" data-bs-toggle="modal"
-		data-bs-target="UploadedFilesDeletePopUp" style="display: none;"></button>
+	<button type="button" class="btn btn-primary"
+		id="uploaded_files_delete_btn" data-bs-toggle="modal"
+		data-bs-target="#LegacySCRDeletePopUp" style="display: none;"></button>
 
-	<div class="modal" id="UploadedFilesDeletePopUp" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: auto; height: 250px;">
-				<div class="modal-header" style="background-color: #1565c0;">
-					<h5 class="modal-title" id="exampleModalLabel"
-						style="color: white;">Delete File</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form name="DeleteForm">
-						<div class="modal-body">
-							<p style="font-size: 14px;">Do you want to Delete this File
-								Permanently?</p>
-							<input type="text" id="random_id" style="display: none;" />
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary"
-						data-bs-dismiss="modal" id="uploaded_file_delete_submit">Yes</button>
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">No</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	
 	
 	
@@ -750,12 +723,15 @@ e.printStackTrace();
 				</div>
 			</div>
 		</div>
-		<form action="addendum_file_download" method="post">
-			<input type="hidden" id="File_Name" name="File_Name"> <input
+		<form action="ArchiveReqAddendumFileDownload" method="post">
+			<input type="hidden" id="Seq_Number" name="Seq_Number">
+			<input type="hidden" id="Section_Number" name="Section_Number">
+			<input type="hidden" id="File_Name" name="File_Name">		
+			 <input
 				type="submit" id="addendum_file_submit" style="display: none;">
 
 		</form>
-		<input type="submit" id="deletegrid_update" style="display: none;">
+		<input type="submit" id="addendum_deletegrid_update" style="display: none;">
 
 	</div> 
 	
@@ -777,6 +753,7 @@ e.printStackTrace();
 																									<label for="upload"> <input type="file"
 																										id="fileUpload" multiple> Upload Files
 																									</label>
+																									<input type="text" id="seq_no_section_insert" name="seq_no_section_insert" style="display:none;">
 																								</div>
 																								<div class="files fileClass">
 																									<h6>
@@ -822,6 +799,36 @@ e.printStackTrace();
 		<input type="submit" id="deletegrid_update111" style="display: none;">
 
 	</div> 
+	<div class="modal" id="LegacySCRDeletePopUp" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: auto; height: 250px;">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="color: white;">Delete File</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form name="DeleteForm">
+						<div class="modal-body">
+							<p style="font-size: 14px;">Do you want to Delete this File
+								Permanently?</p>
+							<input type="text" id="Delete_Seq_Number" name="Delete_Seq_Number">
+			<input type="text" id="Delete_Section_Number" name="Delete_Section_Number">
+			<input type="text" id="Delete_File_Name" name="Delete_File_Name">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bs-dismiss="modal" id="addendum_scr_delete_submit">Yes</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 
 	<%-- <jsp:include page="samp_forms.jsp">
@@ -902,24 +909,16 @@ $(document).on('mouseenter','.active1', function(){
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDeleteAjaxCall.js"></script>
 	<script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumSaveAjaxCall.js"></script>
-		<script
-		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileRetrieve.js"></script>	
-	
 	<!-- <script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js"></script>	
 	 --> <!-- <script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumEditableLabel.js"></script>	
-	 --><!-- <script
-		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDelete.js"></script>	
-	<script
-		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDownload.js"></script>	
-	<script
-		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUpload.js"></script>		
-	<script
-		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>	
-	 -->
-		<script
-		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
+	 -->		
+	<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUpload.js"></script>		
+	
+		<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
+		<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDownload.js"></script>
+		 <script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDelete.js"></script>	
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
 	<script

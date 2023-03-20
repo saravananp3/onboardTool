@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function(){
 		$("#UploadFiles").attr('disabled',true);
 		});
 		$("#fileUpload").change(function () {
@@ -49,16 +49,16 @@ $(".files").on("click", "li > i", function(e) {
 	updateState({ filesArr: curArr });
 	renderFileList();
 });
-
 $("#UploadFiles").click(function(){
-var fd = new FormData();    
+var fd = new FormData();  
+var section_no=$("#seq_no_section_insert").val();  
 $.each($('#fileUpload')[0].files, function(k, value)
             {
-                fd.append(k, value);
+              fd.append(k, value);
+               
             });
-
     $.ajax({
-      url: 'ArchiveRequirementsAddendumFileUpload',
+      url: 'ArchiveRequirementsAddendumFileUpload?section_no='+section_no,
       data: fd,
       processData: false,
       contentType: false,

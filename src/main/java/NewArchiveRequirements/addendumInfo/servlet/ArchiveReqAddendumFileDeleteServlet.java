@@ -43,8 +43,10 @@ public class ArchiveReqAddendumFileDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession details = request.getSession();
 	    String Id=(String)details.getAttribute("ID");
-	    String File_Name=request.getParameter("File_Name");
-	    JsonObject jsonObj =archiveReqAddendumFileDeleteService.delete_uploaded_files(Id,File_Name);
+	    String Seq_no=request.getParameter("Delete_Section_Number");
+	    String Section_no=request.getParameter("Delete_Section_Number");
+	    String File_Name=request.getParameter("Delete_File_Name");
+	    JsonObject jsonObj =archiveReqAddendumFileDeleteService.delete_uploaded_files(Id,Seq_no,Section_no,File_Name);
         String json = new Gson().toJson(jsonObj);
         System.out.println("Addendum File Delete JSON : "+json);
         response.setContentType("application/json");

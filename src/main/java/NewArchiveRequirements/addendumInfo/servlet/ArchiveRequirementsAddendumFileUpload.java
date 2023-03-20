@@ -25,6 +25,7 @@ import com.google.gson.JsonObject;
 import File_Utility.FileUtils;
 import onboard.DBconnection;
 
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
@@ -40,6 +41,7 @@ public class ArchiveRequirementsAddendumFileUpload extends HttpServlet {
 	{
 	HttpSession details = request.getSession();
     String Id=(String)details.getAttribute("ID");
+    String seqNoSection = request.getParameter("section_no");
     Properties properties = new Properties();
     InputStream fileInput = ArchiveRequirementsAddendumFileUpload.class
 			.getResourceAsStream("/fileUpload.properties");
@@ -52,52 +54,43 @@ public class ArchiveRequirementsAddendumFileUpload extends HttpServlet {
 	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 	 List<FileItem> multiFiles = sf.parseRequest(request);
 	 DBconnection dBconnection = new DBconnection();
-	 Connection	con = (Connection) dBconnection.getConnection();	 
-//	 int seq_num = 1;
-	 int lastrow_count=0;
+	 Connection	con = (Connection) dBconnection.getConnection();
+	 int lastrow_count=0;	 
 	 for(FileItem item : multiFiles)
 	 {
-		 String selectQuery3 ="SELECT COUNT(*) FROM decom3sixtytool.archive_req_addendum_fileupload where oppId=? ";
+		 String selectQuery3 ="SELECT COUNT(*) FROM decom3sixtytool.archive_req_addendum_fileupload where oppId=? and section_no=?";
 		 PreparedStatement st3 = con.prepareStatement(selectQuery3);
 		 st3.setString(1, Id);
+		 st3.setString(2, seqNoSection);
 		 ResultSet rs3 = st3.executeQuery();
 		 rs3.next();
-	     lastrow_count = rs3.getInt(1);
-		 String selectQuery ="SELECT * FROM decom3sixtytool.archive_req_addendum_fileupload WHERE oppId=? ORDER BY seq_num;";
-		 PreparedStatement st = con.prepareStatement(selectQuery);
-		 st.setString(1, Id);
-//		 st.setInt(2, lastrow_count);
-		 ResultSet rs = st.executeQuery();
-		 rs.next();
-	     
+	     lastrow_count = rs3.getInt(1);		     
 		 if (lastrow_count > 0) {
-		 String insertQuery = "INSERT INTO decom3sixtytool.archive_req_addendum_fileupload (doc, File_Name, seq_num, oppId) VALUES (?, ?, ?, ?);";
+		 String insertQuery = "INSERT INTO decom3sixtytool.archive_req_addendum_fileupload (seq_num,section_no,oppId,File_Name,doc) VALUES (?, ?, ?, ?,?);";
 		 InputStream is  = (InputStream) item.getInputStream();
 		 PreparedStatement pstmt = con.prepareStatement(insertQuery);
-		 pstmt.setBinaryStream(1, is);
-		 pstmt.setString(2, item.getName());
-		 pstmt.setInt(3, lastrow_count+1 );
-		 pstmt.setString(4, Id);
+		 pstmt.setInt(1, lastrow_count+1 );
+		 pstmt.setString(2, seqNoSection);
+		 pstmt.setString(3, Id);
+		 pstmt.setString(4, item.getName());
+		 pstmt.setBinaryStream(5, is);
 		 pstmt.executeUpdate();
 		 pstmt.close();
 		 is.close();
 		 }else {
 			 lastrow_count=1;
-			 String insertQuery = "INSERT INTO decom3sixtytool.archive_req_addendum_fileupload (doc, File_name, seq_num, oppId) VALUES (?, ?, ?, ?);";
+			 String insertQuery = "INSERT INTO decom3sixtytool.archive_req_addendum_fileupload (seq_num,section_no,oppId,File_Name,doc) VALUES (?, ?, ?, ?,?);";
 			 InputStream is  = (InputStream) item.getInputStream();
 			 PreparedStatement pstmt = con.prepareStatement(insertQuery);
-			 pstmt.setBinaryStream(1, is);
-			 pstmt.setString(2, item.getName());
-			 pstmt.setInt(3, lastrow_count );
-			 pstmt.setString(4, Id);
+			 pstmt.setInt(1, lastrow_count);
+			 pstmt.setString(2, seqNoSection);
+			 pstmt.setString(3, Id);
+			 pstmt.setString(4, item.getName());
+			 pstmt.setBinaryStream(5, is);
 			 pstmt.executeUpdate();
 			 pstmt.close();
-			 is.close();
-			 
+			 is.close();			 
 		 }
-		 
-		 st.close();
-		 rs.close();
 		 st3.close();
 		 rs3.close();
 		 

@@ -38,17 +38,16 @@ public JsonArray archiveReqAddendumDataRetrieve() {
 			if(rs.next()) {
 				JsonObject jsonObj =new JsonObject();
 				jsonObj.addProperty("checkExistance",true);
-				
+				jsonObj.addProperty("seq_no",rs.getString("seq_no"));
 				jsonObj.addProperty("labelName",rs.getString("labelName"));
-				jsonObj.addProperty("addendumInfo",rs.getString("addendumInfo"));
-			
+				jsonObj.addProperty("addendumInfo",rs.getString("addendumInfo"));			
                 jsonArray.add(jsonObj);
                 
                 while(rs.next()) {
                 	JsonObject jsonObj1 =new JsonObject();
+                	jsonObj1.addProperty("seq_no",rs.getString("seq_no"));
     				jsonObj1.addProperty("labelName",rs.getString("labelName"));
-    				jsonObj1.addProperty("addendumInfo",rs.getString("addendumInfo"));
-    				
+    				jsonObj1.addProperty("addendumInfo",rs.getString("addendumInfo"));    				
                     jsonArray.add(jsonObj1);
                 }
 			}

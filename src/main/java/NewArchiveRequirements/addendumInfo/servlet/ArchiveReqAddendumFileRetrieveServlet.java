@@ -44,10 +44,11 @@ public class ArchiveReqAddendumFileRetrieveServlet extends HttpServlet {
 	
 		HttpSession details = request.getSession();
 	    String Id=(String)details.getAttribute("ID");
+	    String Section_no=request.getParameter("section_no");
 	    String File_Name=request.getParameter("File_Name");
 	    JsonArray jsonArray = null;
 	    ArchiveReqAddendumFileRetrieveService file_retrive=new ArchiveReqAddendumFileRetrieveService();
-	    jsonArray=file_retrive.file_retrieve(Id);
+	    jsonArray=file_retrive.file_retrieve(Id,Section_no);
         file_retrive =null;
         //calling finalize method and garabage collector
         System.gc();
