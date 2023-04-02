@@ -98,6 +98,24 @@ public class jsonToHtmlContent {
 			buffer.append("<td style='text-align:left;padding: 10px;'>&nbsp;"+value+"</td>\n");
 		buffer.append("</thead>");
 	}
+	protected void writeTableDataEmptyTags(String[] values) {
+		buffer.append("<thead>");
+		int count=0;
+		for(String value:values) {
+			count+=1;
+		}
+		buffer.append("<td colspan="+count+" style=text-align:center;padding: 10px;'>No Data Found</td>\n");
+		buffer.append("</thead>");
+	}
+	protected void writeTableFileEmptyTags(String[] values) {
+		buffer.append("<thead>");
+		int count=0;
+		for(String value:values) {
+			count+=1;
+		}
+		buffer.append("<td colspan="+count+" style=text-align:center;padding: 10px;'>No Attachments Found</td>\n");
+		buffer.append("</thead>");
+	}
 	protected void writeTableStartTags() {
 		   buffer.append("<table style=\"width:100%;\">\n");
 //		   buffer.append("<thead>\n");

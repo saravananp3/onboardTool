@@ -62,7 +62,7 @@ function deletegrid(section_no){
             "</td>"+
             "<td style='text-align:center;vertical-align: middle;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:10ch;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + File_Name + "'><label class='control-label ' for=''>" + File_Name + "</label>" +
             "</td>" +
-            "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt download_btn'style='display:block; margin-left:-15px;'></span><span class='glyphicon glyphicon-trash addendum_scr_deletepopup'id='addendum_file_delete_icon" +count+ "'style='display:block;float:right;margin-top:-13px; margin-right:18px; margin-left:10px;'></span>" +
+            "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt add_download_btn'style='display:block; margin-left:-15px;'></span><span class='glyphicon glyphicon-trash addendum_scr_deletepopup'id='addendum_file_delete_icon" +count+ "'style='display:block;float:right;margin-top:-13px; margin-right:18px; margin-left:10px;'></span>" +
             "</td>" +
             "</tr>";	
     	$("#Uploaded_Files_List").append(row);		

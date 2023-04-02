@@ -41,8 +41,14 @@
 <link
 	href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet">
+<link
+		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet">	
+<link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
+		type="text/css" media="all" />		
 <script
-	src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js">
+	src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js"></script>
+<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
 <script
@@ -625,7 +631,7 @@ e.printStackTrace();
 								<div class="col-lg-8">
 									<label class="control-label" for="formInput526">Label:</label>
 									<input type="text" id="addendumLabelId" class="form-control"
-										name="addendumLabelName" required> </input>
+										name="addendumLabelName" required>
 								</div>
 							</div>
 						</div>
@@ -700,7 +706,7 @@ e.printStackTrace();
 				</div>
 				<div class="modal-body" data-bs-target="">
 					<table class="table table-bordered table-striped"
-						id="legacy_datatable">
+						id="addendum_datatable">
 
 						<thead>
 
@@ -710,7 +716,7 @@ e.printStackTrace();
 							</tr>
 						</thead>
 
-						<tbody id="Uploaded_Files_List">
+						<tbody class="Uploaded_Files_List">
 
 						</tbody>
 					</table>
@@ -726,7 +732,7 @@ e.printStackTrace();
 		<form action="ArchiveReqAddendumFileDownload" method="post">
 			<input type="hidden" id="Seq_Number" name="Seq_Number">
 			<input type="hidden" id="Section_Number" name="Section_Number">
-			<input type="hidden" id="File_Name" name="File_Name">		
+			<input type="hidden" id="Add_File_Name" name="Add_File_Name">		
 			 <input
 				type="submit" id="addendum_file_submit" style="display: none;">
 
@@ -798,7 +804,6 @@ e.printStackTrace();
 		</form>
 		<input type="submit" id="deletegrid_update111" style="display: none;">
 
-	</div> 
 	<div class="modal" id="LegacySCRDeletePopUp" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -876,8 +881,7 @@ $(document).on('mouseenter','.active1', function(){
 	<script src="js/amcharts/amcharts.js"></script>
 	<script src="js/amcharts/serial.js"></script>
 	<script src="js/amcharts/plugins/export/export.min.js"></script>
-	<link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
-		type="text/css" media="all" />
+	
 	<script src="js/amcharts/themes/light.js"></script>
 	<script src="js/toastr/toastr.min.js"></script>
 	<script src="js/icheck/icheck.min.js"></script>
@@ -909,23 +913,18 @@ $(document).on('mouseenter','.active1', function(){
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDeleteAjaxCall.js"></script>
 	<script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumSaveAjaxCall.js"></script>
-	<!-- <script
-		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js"></script>	
-	 --> <!-- <script
+    <!-- <script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumEditableLabel.js"></script>	
-	 -->		
-	<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUpload.js"></script>		
-	
-		<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
+	-->
+<!-- 	<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUpload.js"></script>		 
+ -->	 			
 		<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDownload.js"></script>
 		 <script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDelete.js"></script>	
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link
-		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-		rel="stylesheet">
+	
 
 </body>
 </html>

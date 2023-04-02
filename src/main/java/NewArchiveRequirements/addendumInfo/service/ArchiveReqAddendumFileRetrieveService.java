@@ -22,7 +22,7 @@ public class ArchiveReqAddendumFileRetrieveService {
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("Connected...");
-        String selectQuery = "select seq_num,section_no,oppId,File_Name from archive_req_addendum_fileupload where oppId=? and section_no=?";
+        String selectQuery = "select seq_num,section_no,oppId,File_Name from decom3sixtytool.archive_req_addendum_fileupload where oppId=? and section_no=?";
         PreparedStatement st=connection.prepareStatement(selectQuery);
         st.setString(1, Id);
         st.setString(2, Section_no);
@@ -30,8 +30,8 @@ public class ArchiveReqAddendumFileRetrieveService {
         while(rs.next())
         {
             JsonObject jsonObj = new JsonObject();
-            jsonObj.addProperty("seq_num",rs.getString(1));
-            jsonObj.addProperty("section_no",rs.getString(2));
+            jsonObj.addProperty("seq_num",rs.getInt(1));
+            jsonObj.addProperty("section_no",rs.getInt(2));
             jsonObj.addProperty("oppId",rs.getString(3));
             jsonObj.addProperty("File_Name",rs.getString(4));
             jsonArray.add(jsonObj);

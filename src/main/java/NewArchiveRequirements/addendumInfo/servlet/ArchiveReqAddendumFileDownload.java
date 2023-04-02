@@ -54,8 +54,8 @@ public class ArchiveReqAddendumFileDownload extends HttpServlet {
 		String Id=(String)details.getAttribute("ID");
 		String Seq_no = request.getParameter("Seq_Number");
 		String Section_no = request.getParameter("Section_Number");
-		String File = request.getParameter("File_Name");		
-		System.out.println("File Name : "+File);
+		String File_Name = request.getParameter("Add_File_Name");		
+		System.out.println("File Name : "+File_Name);
         try {
 		 DBconnection dBconnection = new DBconnection();
 	        Connection connection = (Connection) dBconnection.getConnection();
@@ -65,7 +65,7 @@ public class ArchiveReqAddendumFileDownload extends HttpServlet {
 	        st.setString(1, Id);
 	        st.setString(2,Seq_no);
 	        st.setString(3,Section_no);
-	        st.setString(4,File);
+	        st.setString(4,File_Name);
 	        ResultSet rs = st.executeQuery();
 	        if (rs.next()) {
 	            // gets file name and file blob data

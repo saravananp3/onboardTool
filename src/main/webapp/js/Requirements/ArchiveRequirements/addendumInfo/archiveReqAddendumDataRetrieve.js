@@ -73,7 +73,7 @@ function archiveReqAddendumDataRetrieveAjaxCall(){
     $('#addendumViewUploadId').click(); 
     var section_no=$(this).attr("eyesectioncount"); 
     $('#seq_no_section_insert').val(section_no); 
-    $("#Uploaded_Files_List").empty();
+    $(".Uploaded_Files_List").empty();
     	$.ajax({
         url: "ArchiveReqAddendumFileRetrieveServlet",
         type: 'POST',
@@ -106,10 +106,10 @@ function appendRowFunction(data) {
             "</td>"+
             "<td style='text-align:center;vertical-align: middle;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:10ch;' data-bs-toggle='tooltip' data-bs-placement='top' title='" + File_Name + "'><label class='control-label ' for=''>" + File_Name + "</label>" +
             "</td>" +
-            "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt download_btn'style='display:block; margin-left:-15px;'></span><span class='glyphicon glyphicon-trash addendum_scr_deletepopup'id='addendum_file_delete_icon" +count+ "'style='display:block;float:right;margin-top:-13px; margin-right:18px; margin-left:10px;'></span>" +
+            "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt add_download_btn'style='display:block; margin-left:-15px;'></span><span class='glyphicon glyphicon-trash addendum_scr_deletepopup'id='addendum_file_delete_icon" +count+ "'style='display:block;float:right;margin-top:-13px; margin-right:18px; margin-left:10px;'></span>" +
             "</td>" +
             "</tr>";	
-    	$("#Uploaded_Files_List").append(row);		
+    	$(".Uploaded_Files_List").append(row);		
 		count++;
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function(tooltipTrigger) {

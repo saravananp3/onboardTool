@@ -27,6 +27,7 @@ $(document).on('click','#exportPdf',function(o){
 	    	 var pdfPath = data.path;
 	    	 pdfPath =pdfPath.replaceAll("\\","//");
 	    	 window.location.href = "downloadPDFservlet?path='"+pdfPath+"'";
+	    	 console.log("export pdf archive req :"+data);
 	    	 //downloadPDFAjaxCall(pdfPath);
 	    	 //setTimeout(deletePDFAjaxCall(pdfPath), 2000);
 	    	 //deletePDFAjaxCall(pdfPath);
@@ -176,7 +177,10 @@ function reviewDataRetrieveAjaxCall()
          		         $("#"+functionalReqIdArray[j]).append(input);
             	         }
                  	});
-            	}
+            	}else{
+						   var input = "<tr><td colspan='5' style='text-align: center;'>Nil Data found.</td></tr>";
+         		         $("#"+functionalReqIdArray[j]).append(input); 
+						 }
             	}
               var checkScreenReqData= data[6][0][0].checkData;
               if(checkScreenReqData)
@@ -187,7 +191,10 @@ function reviewDataRetrieveAjaxCall()
       		         $("#ScreenReqInfoPreview").append(input);
          	         
               	});
-            	}
+            	}else{
+						   var input = "<tr><td colspan='5' style='text-align: center;'>Nil Data found.</td></tr>";
+         		         $("#ScreenReqInfoPreview").append(input); 
+						 }
               var checkSearchFormReqData = data[6][1][0].checkData;
               if(checkSearchFormReqData)
                {
@@ -197,7 +204,11 @@ function reviewDataRetrieveAjaxCall()
        		         $("#SearchFormInfoPreview").append(input);
           	         
                	});
-            	  }
+            	  }else{
+						   var input = "<tr><td colspan='8' style='text-align: center;'>Nil Data found.</td></tr>";
+         		         $("#SearchFormInfoPreview").append(input); 
+						 }
+
               //AbbrevationDescriptionInfoPreview
              	  $.each(data[7],function(key,value){    
 
@@ -219,16 +230,47 @@ function reviewDataRetrieveAjaxCall()
             	  }
               
               //addendum
-              var checkDocumentRevisionData = data[9][0].checkExistance;
-              if(checkDocumentRevisionData)
-            	{
-            	  $.each(data[9],function(key,value){    
-           	         
-                		 var input = "<pre style='font-family:verdana;font-size:100%;width:800px;' class = 'OppInfoPreview'><b>"+value.labelName+"</b> : "+value.addendumInfo+" </pre>";
-        		         $("#addendumInfoPreview").append(input);
-           	         
-                	});
-            	  }
+              var checkAddendumData = data[9][0].checkExistance;
+if (checkAddendumData) {
+    $.each(data[9], function(key, value) {
+        var input = `<pre style="font-family: verdana; font-size: 100%; width: 800px;" class="OppInfoPreview">
+                       <b>${value.labelName}</b>: ${value.addendumInfo}
+                     </pre>
+                     <br>
+                     <div class="content table-responsive" id="addendum_filelist">
+                       <table class="table-bordered" id="datatable_add">
+                         <thead>
+                           <th style="text-align: center;">File Name</th>
+                           <th style="text-align: center;">Action</th>
+                         </thead>
+                         <tbody>`;
+        if (value.fileNames) {
+            $.each(value.fileNames, function(index, fileName) {
+				console.log("Value is :"+value);
+                input += `<tr>
+                			<td hidden>${index}</td>
+                			<td hidden>${value.section_no}</td>
+                			<td hidden>${value.labelName}</td>
+                            <td>${fileName}</td>
+                            
+                            <td>
+                              <span class="glyphicon glyphicon-download-alt add_download_btn" style="margin-left:50%;">
+                              </span>
+                            </td>
+                          </tr>`;
+            });
+        } else {
+            input += `<tr>
+                        <td colspan="2" style="text-align: center;">No files found.</td>
+                      </tr>`;
+        }
+        input += `</tbody>
+                   </table>
+                 </div>`;
+        $("#addendumInfoPreview").append(input);
+    });
+}
+
             if(data[10].checkOverAllStatus)
             	{
             	  $("#ReviewNextBtn").show();

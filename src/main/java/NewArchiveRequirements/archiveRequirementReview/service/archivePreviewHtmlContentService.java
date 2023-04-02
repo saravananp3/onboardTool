@@ -186,20 +186,48 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 					
 					JsonArray jsonArray1 = jsonArray.get(6).getAsJsonArray();
      				JsonArray jsonArray2 = jsonArray1.get(0).getAsJsonArray();
-	    			JsonObject jsonObject = jsonArray2.get(0).getAsJsonObject();
-			     	writeTableStartTags();
-					writeTableHeadingTags(new String[]{"Req Id","Screen Display Name in Infoarchive","Purpose","Equivalent in the Legacy Application"});
-						writeTableEndTags();
+	    			JsonObject jsonObject1 = jsonArray2.get(0).getAsJsonObject();
+			     	Boolean dataCheck1=jsonObject1.get("checkData").getAsBoolean();	
+			     	System.out.println("Screen Requirements : "+jsonArray1);
+	    			if(dataCheck1) {
+	    				writeTableStartTags();
+			     		writeTableHeadingTags(new String[]{"Req Id","Screen Display Name in Infoarchive","Purpose","Equivalent in the Legacy Application"});
+			     		for(int i=0;i<jsonArray2.size();i++) {
+							JsonObject jsonObject2 = jsonArray2.get(i).getAsJsonObject();
+							
+								writeTableDataTags(new String[] {jsonObject2.get("reqId").getAsString(),jsonObject2.get("screenDisplay").getAsString(),jsonObject2.get("purpose").getAsString(),jsonObject2.get("equivalentLegacy").getAsString()});
+							  
+			     		}
+			     		writeTableEndTags();
 						writeHeader("");
+	    			}else {
+	    				writeTableStartTags();
+			     		writeTableHeadingTags(new String[]{"Req Id","Screen Display Name in Infoarchive","Purpose","Equivalent in the Legacy Application"});
+			     		writeTableDataEmptyTags(new String[] {"","","",""});
+			     		writeTableEndTags();
+						writeHeader("");
+	    			}
 	     				JsonArray jsonArray3 = jsonArray1.get(1).getAsJsonArray();
-
+		    			JsonObject jsonObject3 = jsonArray3.get(0).getAsJsonObject();
+				     	Boolean dataCheck2=jsonObject3.get("checkData").getAsBoolean();	
+				     	if(dataCheck2) {	
 				     	writeTableStartTags();
-
 						writeTableHeadingTags(new String[]{"Req Id","Search Form Name","Search Field Name","Field Format","Data Type","Data Retrieval Requirement","Required Field","Search Field Additional Information"});
-							writeTableEndTags();
-						
+						for(int i=0;i<jsonArray3.size();i++) {
+							JsonObject jsonObject4 = jsonArray3.get(i).getAsJsonObject();
+							
+								writeTableDataTags(new String[] {jsonObject4.get("reqId").getAsString(),jsonObject4.get("searchForm").getAsString(),jsonObject4.get("searchField").getAsString(),jsonObject4.get("fieldFormat").getAsString(),jsonObject4.get("dataType").getAsString(),jsonObject4.get("dataRetrieval").getAsString(),jsonObject4.get("requiredField").getAsString(),jsonObject4.get("additionalInfo").getAsString()});
+							  
+						}
+						writeTableEndTags();						
+                    }else {
+                    	writeTableStartTags();
+						writeTableHeadingTags(new String[]{"Req Id","Search Form Name","Search Field Name","Field Format","Data Type","Data Retrieval Requirement","Required Field","Search Field Additional Information"});
+			     		writeTableDataEmptyTags(new String[] {"","","","","","","",""});
+						writeTableEndTags();
                     }		//over
-				
+                    
+				}
 				private void getAbbrevationDef() {
 					/*
 					 * writeHeader("Abbreviation, Acronym, Definitions"); String key[]=
@@ -254,15 +282,30 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 					writeHeader("Addendum");
 					
 					JsonArray jsonArray1 = jsonArray.get(9).getAsJsonArray();
-					JsonObject jsonObject1 = jsonArray1.get(0).getAsJsonObject();	
+			     	System.out.println(" Addendum jsonArray1 : "+jsonArray1);
 
+			     	for(int i=0;i<jsonArray1.size();i++) {
+						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();	
+						System.out.println(" Addendum Objects "+i+" : "+jsonObject1);
 			     	writeTableStartTags();
 					String label= jsonObject1.get("labelName").getAsString();
 					String value= jsonObject1.get("addendumInfo").getAsString();
 					writeTableContent(label, value);
-
-						writeTableEndTags();
+					writeTableEndTags();
+					writeTableStartTags();
+				    writeTableHeadingTags(new String[]{"S.No","File Name"});
+					JsonObject jsonObject2 = jsonObject1.getAsJsonObject("fileNames");
+					for(int j=1;j<=jsonObject2.size();j++) {
+					    System.out.println("Addendum Json Object2... : "+jsonObject2);
+					    if(jsonObject2.size()>0) {
+					    writeTableDataTags(new String[] {String.valueOf(j),jsonObject2.get(String.valueOf(j)).getAsString()});
+					    }else {
+					    writeTableFileEmptyTags(new String[] {"",""});
+					    }
+					}
+				    writeTableEndTags();  
                     }
+				}
 	   private void getRolesResponsibilites() {
 			writeHeader("Roles & Responsibilites");
 			writeTableStartTags();

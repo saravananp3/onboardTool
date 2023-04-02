@@ -167,7 +167,11 @@ public class archiveReqReviewService {
 					fileList+=f.getName()+",";
 				}
 
-			jsonObject.addProperty("listOfScreenShots",(files!=null)?fileList.substring(0,fileList.length()-1):"");
+			if (files != null & fileList.length() > 0) {
+			    jsonObject.addProperty("listOfScreenShots", fileList.substring(0, fileList.length() - 1));
+			} else {
+			    jsonObject.addProperty("listOfScreenShots", "");
+			}
 			resourceStream.close();
 		}
 		catch(Exception e)
