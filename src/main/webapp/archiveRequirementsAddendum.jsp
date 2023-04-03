@@ -48,7 +48,7 @@
 		type="text/css" media="all" />		
 <script
 	src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js"></script>
-<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
+
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
 <script
@@ -759,7 +759,7 @@ e.printStackTrace();
 																									<label for="upload"> <input type="file"
 																										id="fileUpload" multiple> Upload Files
 																									</label>
-																									<input type="text" id="seq_no_section_insert" name="seq_no_section_insert" style="display:none;">
+																									<input type="text" id="seq_no_section_insert" name="seq_no_section_insert" style="display:block;">
 																								</div>
 																								<div class="files fileClass">
 																									<h6>
@@ -913,6 +913,7 @@ $(document).on('mouseenter','.active1', function(){
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDeleteAjaxCall.js"></script>
 	<script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumSaveAjaxCall.js"></script>
+		<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
     <!-- <script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumEditableLabel.js"></script>	
 	-->

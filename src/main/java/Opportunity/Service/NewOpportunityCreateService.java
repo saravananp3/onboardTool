@@ -12,6 +12,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionTemplateService;
+import NewArchiveRequirements.AbbreviationList.service.Add_Abbreviation_Service;
 import NewArchiveRequirements.businessRequirementsDetails.functionalReqInfo.dataReq.Service.archiveFunctionDataRetrieveService;
 import Opportunity.OpportunityBean;
 import onboard.DBconnection;
@@ -52,6 +53,8 @@ public class NewOpportunityCreateService {
 			{
 				NewOpportunityCreateService.NewOpportunityDetailsSave(jsonArray);
 				
+				Add_Abbreviation_Service AddAbbFromTemplate=new Add_Abbreviation_Service();
+				AddAbbFromTemplate.TemplateInsert(AMPID);
 				ArchiveExecutionTemplateService archiveExecObj = new ArchiveExecutionTemplateService(OpportunityBean.getRecord_Number());
 				archiveExecObj.archiveTemplateToArchiveInfo();
 				archiveExecObj = null;

@@ -21,33 +21,6 @@ public class Add_Abbreviation_Service {
 			PreparedStatement preparedStmt = connection.prepareStatement(select_query);
 			preparedStmt.setString(1, app_id);
 			ResultSet rs=preparedStmt.executeQuery();
-//			String select_query1 ="select count(*) from users where u_email=?";
-//			PreparedStatement preparedStmt2 = connection.prepareStatement(select_query1);
-//			preparedStmt2.setString(1, u_email);
-//			ResultSet rs2=preparedStmt2.executeQuery();	
-//			rs.next();			
-//			uabbcount = rs.getInt(1);	
-//			rs2.next();
-//			udescount = rs2.getInt(1);	
-//			if(uabbcount!=0)
-//			{
-//				jsonobj.addProperty("uabbduplicate", "Yes");
-//			}
-//			if(udescount!=0)
-//			{
-//				jsonobj.addProperty("udesduplicate", "Yes");
-//			}
-//
-//			if(uabbcount!=0 && udescount!=0)
-//			{
-//				jsonobj.addProperty("uabbduplicate", "Yes");
-//				jsonobj.addProperty("udesduplicate", "Yes");
-//			}
-//			if(uabbcount==0 && udescount==0)
-//			{
-//				System.out.println("uabbreviation Count : "+uabbcount);
-//				System.out.println("udesc Count : "+udescount);
-
 				String insert_query ="insert into archivereq_abbreviations_info_details (seq_no,app_id,abbreviation_acronym,description) values( ?, ?, ?, ?);";
 				PreparedStatement preparedStmt1 = connection.prepareStatement(insert_query);
 				preparedStmt1.setString(1, random_id);
@@ -110,4 +83,35 @@ public class Add_Abbreviation_Service {
 			return checkDuplicate;
 
 		}
+		
+		public static JsonObject TemplateInsert(String app_id) {
+			JsonObject jsonobj = new JsonObject();
+			try {
+				
+				DBconnection dBconnection = new DBconnection();
+				Connection connection = (Connection) dBconnection.getConnection();
+				System.out.println("Connected...");
+				String select_query ="select * from archivereq_abbreviations_template_details order by seq_no";
+				PreparedStatement preparedStmt = connection.prepareStatement(select_query);				
+				ResultSet rs=preparedStmt.executeQuery();
+				while(rs.next())
+				{
+					String random_id = generateRandomApprovalId();
+					String insert_query ="insert into archivereq_abbreviations_info_details (seq_no,app_id,abbreviation_acronym,description) values( ?, ?, ?, ?);";
+					PreparedStatement preparedStmt1 = connection.prepareStatement(insert_query);
+					preparedStmt1.setString(1, random_id);
+					preparedStmt1.setString(2, app_id);
+					preparedStmt1.setString(3, rs.getString("abbreviation_acronym"));
+					preparedStmt1.setString(4, rs.getString("description"));
+					preparedStmt1.execute();				
+				//}
+				}
+			}
+				catch(Exception e)
+				{
+					System.out.println("Exception Occurs");
+				}
+				return jsonobj;
+			}
+		
 	}

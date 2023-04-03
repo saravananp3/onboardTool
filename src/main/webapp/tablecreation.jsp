@@ -276,6 +276,15 @@
         String query99 = "CREATE TABLE IF NOT EXISTS `planAndPriorityInfo` (`rowId` varchar(255),`app_Id` varchar(255), `waveId` VARCHAR(255),`phaseId` VARCHAR(255),INDEX(`app_Id`));";
         statement.executeUpdate(query99);
         
+        String query100 = "CREATE TABLE IF NOT EXISTS `archivereq_abbreviations_template_details` (`seq_no` int(11) NOT NULL,`abbreviation_acronym` varchar(255) DEFAULT NULL,`description` varchar(255) DEFAULT NULL,PRIMARY KEY (`seq_no`));";
+        statement.executeUpdate(query100);
+        
+        String query101 = "CREATE TABLE IF NOT EXISTS `archivereq_abbreviations_info_details` (`seq_no` varchar(255) NOT NULL,`app_id` varchar(255) DEFAULT NULL, `abbreviation_acronym` varchar(255) DEFAULT NULL,`description` varchar(255) DEFAULT NULL,PRIMARY KEY (`seq_no`));";
+        statement.executeUpdate(query101);
+        
+        String query102 = "CREATE TABLE IF NOT EXISTS `archive_req_addendum_fileupload` (`seq_num` int(11) NOT NULL,`section_no` int(11) DEFAULT NULL, `oppId` varchar(255) DEFAULT NULL,`File_Name` varchar(255) DEFAULT NULL,`doc` longblob);";
+        statement.executeUpdate(query102);
+        
                
         
 %>

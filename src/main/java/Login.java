@@ -192,6 +192,16 @@ public class Login extends HttpServlet {
                 this.value = value;
             }
         }
+        
+        class AbbTemplate {
+            int seq_no;
+            String abbreviation_acronynm, description;
+            AbbTemplate(int seq_no, String abbreviation_acronynm, String description) {
+                this.seq_no = seq_no;
+                this.abbreviation_acronynm = abbreviation_acronynm;
+                this.description = description;                
+            }
+        }
 
         class Assessment {
             int seq_num;
@@ -241,8 +251,8 @@ public class Login extends HttpServlet {
 
         try {
 
-        	PreparedStatement st5=null,st6=null,st7=null,st8=null,stTriSumm=null,AssDataCharst=null;
-        	ResultSet rs5=null,rs6=null,rs7=null,rs8=null,rsTriSumm=null,AssDataCharrs=null;
+        	PreparedStatement st5=null,st6=null,st7=null,st8=null,stTriSumm=null,AssDataCharst=null,stAbbTemplate=null;
+        	ResultSet rs5=null,rs6=null,rs7=null,rs8=null,rsTriSumm=null,AssDataCharrs=null,rsAbbTemp=null;
             DBconnection dbConnection = new DBconnection();
             Connection con = (Connection) dbConnection.getConnection();
 
@@ -517,6 +527,27 @@ public class Login extends HttpServlet {
                     prestmt1.setString(7, Trisumm[index].type);
                     prestmt1.setString(8, Trisumm[index].mandatory);
                     prestmt1.setString(9, Trisumm[index].value);
+                    prestmt1.execute();
+
+                }
+            }
+            
+            String AbbreviationTemplate = "select * from decom3sixtytool.archivereq_abbreviations_template_details;";
+            stAbbTemplate = con.prepareStatement(AbbreviationTemplate);
+            rsAbbTemp = stAbbTemplate.executeQuery();
+
+            if (!rsAbbTemp.next()) {
+                AbbTemplate AbbTemplate[] = new AbbTemplate[3];
+                AbbTemplate[0] = new AbbTemplate(1, "IA", "INFOARCHIVE");
+                AbbTemplate[1] = new AbbTemplate(2, "ADS", "ARCHON DATA STORE");
+                AbbTemplate[2] = new AbbTemplate(3, "ETL", "EXTRACTION TRANSFORMATION LOAD");     
+                for (int index = 0; index < AbbTemplate.length; index++) {
+                    String Abbreviation_InsertQuery = "insert into archivereq_abbreviations_template_details (seq_no, abbreviation_acronym, description)" +
+                        "values(?, ?, ?)";
+                    PreparedStatement prestmt1 = con.prepareStatement(Abbreviation_InsertQuery);
+                    prestmt1.setInt(1, AbbTemplate[index].seq_no);
+                    prestmt1.setString(2, AbbTemplate[index].abbreviation_acronynm);
+                    prestmt1.setString(3, AbbTemplate[index].description);                  
                     prestmt1.execute();
 
                 }

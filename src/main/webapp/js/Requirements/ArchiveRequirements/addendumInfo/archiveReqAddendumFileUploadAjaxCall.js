@@ -1,19 +1,14 @@
 $(document).ready(function(){
 		$("#UploadFiles").attr('disabled',true);
-		});
-		$("#fileUpload").change(function () {
-	    $('#FileList').show();
-
-		$("#UploadFiles").attr('disabled',false);			
-
-			});
+		});	
 			let state = {};
 			
-$("#fileUpload").change(function(e) {
+$('#fileUpload').change(function(e) {
 	let files = $("#fileUpload")[0].files;
 	let filesArr = Array.from(files);
 	updateState({ files: files, filesArr: filesArr });
 	renderFileList();
+	$("#UploadFiles").attr('disabled',false);
 });
 
 function updateState(newState) {

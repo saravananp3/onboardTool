@@ -28,7 +28,7 @@ function appendRowFunction(data){
         var description = value.description;
         
         var row = "<tr>"+
-        		  "<td style='text-align:center;vertical-align: middle;'><label class='control-label' for=''>"+seq_no+"</label>" +
+        		  "<td style='text-align:center;vertical-align: middle;display:none;'><label class='control-label' for=''>"+seq_no+"</label>" +
                   "</td>"+
                   "<td style='text-align:center;vertical-align: middle;'><label class='control-label' for=''>"+abbreviation_acronym+"</label>" +
                   "</td>"+
