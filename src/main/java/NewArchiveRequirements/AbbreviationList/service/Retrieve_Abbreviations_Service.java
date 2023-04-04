@@ -16,13 +16,16 @@ public class Retrieve_Abbreviations_Service {
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("Connected...");
+		boolean checkData = false;
         String selectQuery = "select seq_no,app_id,abbreviation_acronym,description from archivereq_abbreviations_info_details where app_id=?";
         st = connection.prepareStatement(selectQuery);
         st.setString(1,id);
         rs = st.executeQuery();
         while(rs.next())
         {
+        	checkData = true;
             JsonObject jsonObj = new JsonObject();
+            jsonObj.addProperty("checkData",checkData);
             jsonObj.addProperty("seq_no",rs.getString(1));
             jsonObj.addProperty("app_id",rs.getString(2));
             jsonObj.addProperty("abbreviation_acronym",rs.getString(3));
@@ -30,6 +33,13 @@ public class Retrieve_Abbreviations_Service {
             jsonArray.add(jsonObj);
             System.out.println("JSON ARRAY:"+jsonArray);
        }
+        if(!checkData)
+		{
+        	JsonObject jsonObject = new JsonObject();
+			jsonObject.addProperty("checkData",checkData);
+			jsonArray.add(jsonObject);
+		}
+
         st.close();
         rs.close();
     }

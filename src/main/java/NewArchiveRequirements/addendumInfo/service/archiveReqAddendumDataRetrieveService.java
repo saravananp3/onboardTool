@@ -49,12 +49,16 @@ public JsonArray archiveReqAddendumDataRetrieve() {
 			    ResultSet rs2 = st2.executeQuery();
 
 			    JsonObject fileNames = new JsonObject();
+				boolean checkData = false;
 			    while (rs2.next()) {
+			    	checkData=true;
+			    	fileNames.addProperty("checkData",checkData);
 			        fileNames.addProperty(rs2.getString("seq_num"),rs2.getString("File_Name"));
 			    }
-
+			    if(!checkData) {
+			    	fileNames.addProperty("checkData",checkData);
+			    }
 			    jsonObj.add("fileNames", fileNames);
-
 			    jsonArray.add(jsonObj);
 
 			    while (rs.next()) {
@@ -70,9 +74,15 @@ public JsonArray archiveReqAddendumDataRetrieve() {
 			        ResultSet rs3 = st3.executeQuery();
 
 			        JsonObject fileNames1 = new JsonObject();
+					boolean checkData1 = false;
 			        while (rs3.next()) {
+			        	checkData1=true;
+				    	fileNames1.addProperty("checkData",checkData1);
 			            fileNames1.addProperty(rs3.getString("seq_num"),rs3.getString("File_Name"));
 			        }
+			        if(!checkData1) {
+				    	fileNames1.addProperty("checkData",checkData1);
+				    }
 
 			        jsonObj1.add("fileNames", fileNames1);
 

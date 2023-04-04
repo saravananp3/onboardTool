@@ -15,6 +15,9 @@ import org.apache.commons.codec.binary.Base64;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonObject;
+
 
 import exportPdf.service.jsonToHtmlContent;
 
@@ -247,10 +250,16 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
 					writeTableStartTags();
 					writeTableHeadingTags(new String[]{"Abrreviation/Acronym","Description"});
+					
 					for(int i=0;i<jsonArray1.size();i++) {
-						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();	
+						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();
+						if(jsonObject1.get("checkData").getAsBoolean()) {
 						writeTableDataTags(new String[] {jsonObject1.get("abbreviation_acronym").getAsString(),jsonObject1.get("description").getAsString()});
 					}
+					else
+			     		writeTableDataEmptyTags(new String[] {"",""});
+					}
+
 					writeTableEndTags();
 				}
 //					writeHeader("Abbreviation, Acronym, Definitions");
@@ -297,11 +306,16 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 					JsonObject jsonObject2 = jsonObject1.getAsJsonObject("fileNames");
 					for(int j=1;j<=jsonObject2.size();j++) {
 					    System.out.println("Addendum Json Object2... : "+jsonObject2);
-					    if(jsonObject2.size()>0) {
-					    writeTableDataTags(new String[] {String.valueOf(j),jsonObject2.get(String.valueOf(j)).getAsString()});
-					    }else {
-					    writeTableFileEmptyTags(new String[] {"",""});
-					    }
+//					    if(jsonObject2.get("checkData").getAsBoolean()){
+//					    	JsonParser parser = new JsonParser();
+//					    	JsonObject jsonObject = parser.parse(value).getAsJsonObject();
+//					    	for (String index : jsonObject.getAsJsonObject("fileNames").keySet()) {
+//					    		if (!index.equals("checkData")) {
+//					    writeTableDataTags(new String[] {String.valueOf(j),jsonObject2.get(String.valueOf(j)).getAsString()});
+//					    		}}
+//					    }else {
+//					    writeTableFileEmptyTags(new String[] {"",""});
+//					    }
 					}
 				    writeTableEndTags();  
                     }

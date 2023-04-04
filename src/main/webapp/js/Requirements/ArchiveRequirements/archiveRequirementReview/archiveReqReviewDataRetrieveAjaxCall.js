@@ -178,7 +178,7 @@ function reviewDataRetrieveAjaxCall()
             	         }
                  	});
             	}else{
-						   var input = "<tr><td colspan='5' style='text-align: center;'>Nil Data found.</td></tr>";
+						   var input = "<tr><td colspan='5' style='text-align: center;'>No Data found.</td></tr>";
          		         $("#"+functionalReqIdArray[j]).append(input); 
 						 }
             	}
@@ -192,7 +192,7 @@ function reviewDataRetrieveAjaxCall()
          	         
               	});
             	}else{
-						   var input = "<tr><td colspan='5' style='text-align: center;'>Nil Data found.</td></tr>";
+						   var input = "<tr><td colspan='5' style='text-align: center;'>No Data found.</td></tr>";
          		         $("#ScreenReqInfoPreview").append(input); 
 						 }
               var checkSearchFormReqData = data[6][1][0].checkData;
@@ -205,17 +205,22 @@ function reviewDataRetrieveAjaxCall()
           	         
                	});
             	  }else{
-						   var input = "<tr><td colspan='8' style='text-align: center;'>Nil Data found.</td></tr>";
+						   var input = "<tr><td colspan='8' style='text-align: center;'>No Data found.</td></tr>";
          		         $("#SearchFormInfoPreview").append(input); 
 						 }
 
               //AbbrevationDescriptionInfoPreview
-             	  $.each(data[7],function(key,value){    
-
-              var abbreviation = "<tr><td>"+value.abbreviation_acronym+"</td><td>"+value.description+"</td></tr>";
-                 $("#AbbrevationDescriptionInfoPreview").append(abbreviation);
-                        
-               	});
+             	var checkAbbreviationData= data[7].checkData;
+             	if(checkAbbreviationData){
+             	$.each(data[7], function(key, value) {
+					 var abbreviation = "<tr><td>" + value.abbreviation_acronym + "</td><td>" + value.description + "</td></tr>";
+       				 $("#AbbrevationDescriptionInfoPreview").append(abbreviation);
+       				 });
+    			} else {
+       				  var abbreviation = "<tr><td colspan='2' style='text-align: center;'>No Abbreviations found.</td></tr>";
+       				 $("#AbbrevationDescriptionInfoPreview").append(abbreviation);
+ 			    }
+				
               
               //document revision
               var checkDocumentRevisionData = data[8][0].checkExistance;
@@ -230,45 +235,46 @@ function reviewDataRetrieveAjaxCall()
             	  }
               
               //addendum
-              var checkAddendumData = data[9][0].checkExistance;
+var checkAddendumData = data[9][0].checkExistance;
 if (checkAddendumData) {
-    $.each(data[9], function(key, value) {
-        var input = `<pre style="font-family: verdana; font-size: 100%; width: 800px;" class="OppInfoPreview">
-                       <b>${value.labelName}</b>: ${value.addendumInfo}
-                     </pre>
-                     <br>
-                     <div class="content table-responsive" id="addendum_filelist">
-                       <table class="table-bordered" id="datatable_add">
-                         <thead>
-                           <th style="text-align: center;">File Name</th>
-                           <th style="text-align: center;">Action</th>
-                         </thead>
-                         <tbody>`;
-        if (value.fileNames) {
-            $.each(value.fileNames, function(index, fileName) {
-				console.log("Value is :"+value);
-                input += `<tr>
-                			<td hidden>${index}</td>
-                			<td hidden>${value.section_no}</td>
-                			<td hidden>${value.labelName}</td>
-                            <td>${fileName}</td>
-                            
-                            <td>
-                              <span class="glyphicon glyphicon-download-alt add_download_btn" style="margin-left:50%;">
-                              </span>
-                            </td>
-                          </tr>`;
-            });
-        } else {
-            input += `<tr>
-                        <td colspan="2" style="text-align: center;">No files found.</td>
-                      </tr>`;
+  $.each(data[9], function(key, value) {
+    var input = `<pre style="font-family: verdana; font-size: 100%; width: 800px;" class="OppInfoPreview">
+                   <b>${value.labelName}</b>: ${value.addendumInfo}
+                 </pre>
+                 <br>
+                 <div class="content table-responsive" id="addendum_filelist">
+                   <table class="table-bordered" id="datatable_add">
+                     <thead>
+                       <th style="text-align: center;">File Name</th>
+                       <th style="text-align: center;">Action</th>
+                     </thead>
+                     <tbody>`;
+    if (value.fileNames.checkData) {
+      Object.keys(value.fileNames).forEach(function(index) {
+        if (index !== "checkData") {
+          var fileName = value.fileNames[index];
+          input += `<tr>
+                     <td hidden>${index}</td>
+                     <td hidden>${value.section_no}</td>
+                     <td hidden>${value.labelName}</td>
+                     <td>${fileName}</td>
+                     <td>
+                       <span class="glyphicon glyphicon-download-alt add_download_btn" style="margin-left:50%;">
+                       </span>
+                     </td>
+                   </tr>`;
         }
-        input += `</tbody>
-                   </table>
-                 </div>`;
-        $("#addendumInfoPreview").append(input);
-    });
+      });
+    } else {
+      input += `<tr>
+                  <td colspan="2" style="text-align: center;">No files found.</td>
+                </tr>`;
+    }
+    input += `</tbody>
+               </table>
+             </div>`;
+    $("#addendumInfoPreview").append(input);
+  });
 }
 
             if(data[10].checkOverAllStatus)
