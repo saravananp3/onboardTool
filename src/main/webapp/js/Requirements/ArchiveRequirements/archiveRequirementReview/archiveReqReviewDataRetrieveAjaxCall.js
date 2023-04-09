@@ -267,7 +267,7 @@ if (checkAddendumData) {
       });
     } else {
       input += `<tr>
-                  <td colspan="2" style="text-align: center;">No files found.</td>
+                  <td colspan="2" style="text-align: center;">No Attachments found.</td>
                 </tr>`;
     }
     input += `</tbody>

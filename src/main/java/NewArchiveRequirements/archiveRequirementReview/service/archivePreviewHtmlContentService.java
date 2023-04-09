@@ -14,8 +14,10 @@ import java.util.Set;
 import org.apache.commons.codec.binary.Base64;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonObject;
 
 
@@ -102,8 +104,6 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				writeTableEndTags();
 				writeHeader("");
 				}
-				
-
 				else if(i==1)
 				{
 					writeTableStartTags();
@@ -288,38 +288,40 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				}
 				// Document Revisions
 				private void getAddendum() {
-					writeHeader("Addendum");
-					
-					JsonArray jsonArray1 = jsonArray.get(9).getAsJsonArray();
-			     	System.out.println(" Addendum jsonArray1 : "+jsonArray1);
+				    writeHeader("Addendum");
+				    
+				    JsonArray jsonArray1 = jsonArray.get(9).getAsJsonArray();
+				    System.out.println(" Addendum jsonArray1 : "+jsonArray1);
+				    for(int i=0;i<jsonArray1.size();i++) {
+				        JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();
+				        System.out.println(" Addendum Objects "+i+" : "+jsonObject1);
+				        writeTableStartTags();
+				        String label= jsonObject1.get("labelName").getAsString();
+				        String value= jsonObject1.get("addendumInfo").getAsString();
+				        writeTableContent(label, value);
+				        writeTableEndTags();
+				        writeTableStartTags();
+				        writeTableHeadingTags(new String[]{"S.No","File Name"});
+				        JsonObject jsonObject2 = jsonObject1.getAsJsonObject("fileNames");
+				        System.out.println(" Addendum Objects File Names : "+jsonObject2);
+				        System.out.println(" Addendum Objects Size : "+jsonObject2.size());
 
-			     	for(int i=0;i<jsonArray1.size();i++) {
-						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();	
-						System.out.println(" Addendum Objects "+i+" : "+jsonObject1);
-			     	writeTableStartTags();
-					String label= jsonObject1.get("labelName").getAsString();
-					String value= jsonObject1.get("addendumInfo").getAsString();
-					writeTableContent(label, value);
-					writeTableEndTags();
-					writeTableStartTags();
-				    writeTableHeadingTags(new String[]{"S.No","File Name"});
-					JsonObject jsonObject2 = jsonObject1.getAsJsonObject("fileNames");
-					for(int j=1;j<=jsonObject2.size();j++) {
-					    System.out.println("Addendum Json Object2... : "+jsonObject2);
-//					    if(jsonObject2.get("checkData").getAsBoolean()){
-//					    	JsonParser parser = new JsonParser();
-//					    	JsonObject jsonObject = parser.parse(value).getAsJsonObject();
-//					    	for (String index : jsonObject.getAsJsonObject("fileNames").keySet()) {
-//					    		if (!index.equals("checkData")) {
-//					    writeTableDataTags(new String[] {String.valueOf(j),jsonObject2.get(String.valueOf(j)).getAsString()});
-//					    		}}
-//					    }else {
-//					    writeTableFileEmptyTags(new String[] {"",""});
-//					    }
-					}
-				    writeTableEndTags();  
-                    }
+				        if (jsonObject2.size()>1) {
+				        for(int j=1;j<=jsonObject2.size();j++) {
+				            JsonElement element = jsonObject2.get(String.valueOf(j));
+				            if(element != null && !element.isJsonNull()) {
+				            
+				                    writeTableDataTags(new String[] {String.valueOf(j),String.valueOf(element)});
+				            }
+				            }
+				        }else {
+						    writeTableFileEmptyTags(new String[] {"",""});
+						    }
+				        
+				        writeTableEndTags();
+				    } 
 				}
+				
 	   private void getRolesResponsibilites() {
 			writeHeader("Roles & Responsibilites");
 			writeTableStartTags();

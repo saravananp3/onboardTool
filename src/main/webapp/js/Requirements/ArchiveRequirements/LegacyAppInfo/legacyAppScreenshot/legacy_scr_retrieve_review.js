@@ -16,6 +16,12 @@ $(document).ready(function()
    
 });
 function appendRowFunction(data){
+	if(!data[0]){
+		 var row = "<tr>" +
+    				  "<td colspan='2' style='text-align: center;'>No Attachments found.</td>" +
+     			   "</tr>";
+    $("#Legacy_Scr_List").append(row);
+	}else{
     $.each(data, function(key, value){
         var Id = value.AppId;
         var File_Name = value.File_Name;
@@ -31,7 +37,9 @@ function appendRowFunction(data){
                   $("#Legacy_Scr_List").append(row);
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
                 var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
-                    return new bootstrap.Tooltip(tooltipTrigger) 
+                    return new bootstrap.Tooltip(tooltipTrigger)
+                     
     });
     })
+    }
 }
