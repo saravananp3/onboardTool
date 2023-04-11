@@ -92,6 +92,20 @@ public class jsonToHtmlContent {
 			buffer.append("<th style='text-align:left; background-color:#737373;color:white;table-layout:fixed;padding: 10px;'>"+column+"</th>\n");
 		buffer.append("</thead>");
 	}
+	
+	protected void writeAddendumFilesTableHeadingTags(String[] columnNames) {
+		buffer.append("<thead>");
+		for(String column:columnNames) {
+			if(column.equalsIgnoreCase("S.No")) {
+			buffer.append("<th style='text-align: center; vertical-align: middle; width: 5%;background-color:#737373;color:white;table-layout:fixed;padding: 10px;'>"+column+"</th>\n");			
+			}
+			else
+			{
+				buffer.append("<th style='text-align: center; vertical-align: middle; width: 45%;background-color:#737373;color:white;table-layout:fixed;padding: 10px;'>"+column+"</th>\n");
+				buffer.append("</thead>");	
+			}
+		}
+	}
 	protected void writeTableDataTags(String[] values) {
 		buffer.append("<thead>");
 		for(String value:values)
@@ -104,7 +118,7 @@ public class jsonToHtmlContent {
 		for(String value:values) {
 			count+=1;
 		}
-		buffer.append("<td colspan="+count+" style=text-align:center;padding: 10px;'>No Data Found</td>\n");
+		buffer.append("<td colspan="+count+" style='text-align:center;padding:10px;height:18px;'>No Records Found</td>\n");
 		buffer.append("</thead>");
 	}
 	protected void writeTableFileEmptyTags(String[] values) {
@@ -113,8 +127,11 @@ public class jsonToHtmlContent {
 		for(String value:values) {
 			count+=1;
 		}
-		buffer.append("<td colspan="+count+" style=text-align:center;padding: 10px;'>No Attachments Found</td>\n");
+		buffer.append("<td colspan="+count+" style='text-align:center;padding:10px;height:18px;'>No Attachments Found</td>\n");
 		buffer.append("</thead>");
+	}
+	protected void writeNewLineTags() {
+		buffer.append("<br/>");		
 	}
 	protected void writeTableStartTags() {
 		   buffer.append("<table style=\"width:100%;\">\n");

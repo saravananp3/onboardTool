@@ -39,6 +39,7 @@ public JsonArray archiveReqAddendumDataRetrieve() {
 			    JsonObject jsonObj = new JsonObject();
 			    jsonObj.addProperty("checkExistance", true);
 			    jsonObj.addProperty("section_no", rs.getString("seq_no"));
+			    jsonObj.addProperty("seq_no", rs.getString("seq_no"));
 			    jsonObj.addProperty("labelName", rs.getString("labelName"));
 			    jsonObj.addProperty("addendumInfo", rs.getString("addendumInfo"));
 
@@ -64,6 +65,7 @@ public JsonArray archiveReqAddendumDataRetrieve() {
 			    while (rs.next()) {
 			        JsonObject jsonObj1 = new JsonObject();
 			        jsonObj1.addProperty("section_no", rs.getString("seq_no"));
+			        jsonObj1.addProperty("seq_no", rs.getString("seq_no"));
 			        jsonObj1.addProperty("labelName", rs.getString("labelName"));
 			        jsonObj1.addProperty("addendumInfo", rs.getString("addendumInfo"));
 

@@ -21,7 +21,7 @@ public class archiveReqAddendumFileDeleteService {
 	        st2.setString(2, seq_no);
 	        st2.setString(3, section_no);
 	        st2.setString(4, file_Name);
-	        st2.executeUpdate();
+	        st2.execute();
 	        System.out.println("File Deleted : "+file_Name);
 	        jsonobj.addProperty("Deleted File : ", file_Name);
 	        connection.close();

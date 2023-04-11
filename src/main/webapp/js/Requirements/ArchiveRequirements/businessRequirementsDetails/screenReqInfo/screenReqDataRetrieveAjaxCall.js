@@ -48,6 +48,14 @@ function archiveScreenReqDataRetrieve(){
             	 $('#searchFormTypesId').append(option);
              });
         	}
+        	else
+        	{
+			var Row="<tr class = 'screenReqRowClass'id='NoDataScrRow'>"+
+            	 "<td align='center' colspan='5'style='width:100%; text-decoration:bold;'>"+"<label style='color: black;'>No Records Found </label>"+
+            	 "</td>" +
+            	 "</tr>";
+            	 $("#screenReqInfo").append(Row);
+			}
             
         	var searchFormDataReq = data[1][0].checkData;
         	var searchFormArray = [];
@@ -104,6 +112,15 @@ function archiveScreenReqDataRetrieve(){
             	 $("#searchFormInfo").append(searchFormRow);
              });
         	}
+        	
+        	else
+        	{
+			var searchFormRow="<tr class = 'screenReqRowClass' id='NoDataSearchFormRow'>"+
+            	 "<td align='center' colspan='9'style='width:100%; text-decoration:bold;'>"+"<label style='color: black;'>No Records Found </label>"+
+            	 "</td>" +
+            	 "</tr>";
+            	 $("#searchFormInfo").append(searchFormRow);
+			}
         	
 	       /*else
 	    	   {

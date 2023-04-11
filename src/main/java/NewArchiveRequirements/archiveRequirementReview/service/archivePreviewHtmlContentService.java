@@ -300,8 +300,9 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				        String value= jsonObject1.get("addendumInfo").getAsString();
 				        writeTableContent(label, value);
 				        writeTableEndTags();
-				        writeTableStartTags();
-				        writeTableHeadingTags(new String[]{"S.No","File Name"});
+				        writeNewLineTags();
+				        writeTableStartTags();		
+				        writeAddendumFilesTableHeadingTags(new String[]{"S.No","File Name"});
 				        JsonObject jsonObject2 = jsonObject1.getAsJsonObject("fileNames");
 				        System.out.println(" Addendum Objects File Names : "+jsonObject2);
 				        System.out.println(" Addendum Objects Size : "+jsonObject2.size());
@@ -309,16 +310,21 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				        if (jsonObject2.size()>1) {
 				        for(int j=1;j<=jsonObject2.size();j++) {
 				            JsonElement element = jsonObject2.get(String.valueOf(j));
+				            if(element!=null) {
+				            String jsonString = element.toString().replaceAll("^\"|\"$", "");
+
 				            if(element != null && !element.isJsonNull()) {
 				            
-				                    writeTableDataTags(new String[] {String.valueOf(j),String.valueOf(element)});
+				                    writeTableDataTags(new String[] {String.valueOf(j),jsonString});
 				            }
 				            }
-				        }else {
+				        }}
+				        else {
 						    writeTableFileEmptyTags(new String[] {"",""});
 						    }
 				        
 				        writeTableEndTags();
+				        writeNewLineTags();
 				    } 
 				}
 				

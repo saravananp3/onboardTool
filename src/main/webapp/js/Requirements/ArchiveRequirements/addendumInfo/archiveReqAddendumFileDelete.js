@@ -28,6 +28,7 @@ $('#addendum_scr_delete_submit').click(function(){
         notification("warning","File is Deleted Successfully","Delete Files");
        });
 function deletegrid(section_no){
+	      var count=1;
  //$('#addendum_deletegrid_update').click(function() {      
        $.ajax({
         url: "ArchiveReqAddendumFileRetrieveServlet",
@@ -39,15 +40,7 @@ function deletegrid(section_no){
             if (!$.isArray(data)) {
                 data = [data];
             }
-            $('#Uploaded_Files_List').html(data);
-            /*var parentRow = ""*/	
-            deleteappendRowFunction(data);
-            },
-    });
-    //});
-    }   
-        var count=1;
-       function deleteappendRowFunction(data){
+            $(".Uploaded_Files_List").empty();
         $.each(data, function(key, value) {
 		var seq_num = value.seq_num;
 		var section_no = value.section_no;
@@ -65,11 +58,19 @@ function deletegrid(section_no){
             "<td style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-download-alt add_download_btn'style='display:block; margin-left:-15px;'></span><span class='glyphicon glyphicon-trash addendum_scr_deletepopup'id='addendum_file_delete_icon" +count+ "'style='display:block;float:right;margin-top:-13px; margin-right:18px; margin-left:10px;'></span>" +
             "</td>" +
             "</tr>";	
-    	$("#Uploaded_Files_List").append(row);		
+    	$(".Uploaded_Files_List").append(row);		
 		count++;
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function(tooltipTrigger) {
             return new bootstrap.Tooltip(tooltipTrigger)
         })
     });
-}
+            /*var parentRow = ""*/	
+           
+            },
+    });
+    //});
+    }   
+  
+       
+     

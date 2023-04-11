@@ -47,7 +47,11 @@ function getScreenReqJsonArray(e){
 function checkScreenReqValues(screenDisplay, purpose, equivalentLegacy){
 	
 	var validationFlag = false;
-	if((screenDisplay != '' && screenDisplay != undefined && screenDisplay != null) && (purpose != '' && purpose != undefined && purpose != null) && 
+	if(screenDisplay==undefined && purpose==undefined && equivalentLegacy==undefined)
+	{
+		validationFlag=true;
+	}
+	else if((screenDisplay != '' && screenDisplay != undefined && screenDisplay != null) && (purpose != '' && purpose != undefined && purpose != null) && 
 			(equivalentLegacy != '' && equivalentLegacy != undefined && equivalentLegacy != null))
 			validationFlag = true;
 	

@@ -3,10 +3,11 @@ $(document).ready(function(){
 		});	
 			let state = {};
 			
-$('#fileUpload').change(function(e) {
+$('#fileUpload').change(function(e) {	
 	let files = $("#fileUpload")[0].files;
 	let filesArr = Array.from(files);
 	updateState({ files: files, filesArr: filesArr });
+	$('#FileList').show();
 	renderFileList();
 	$("#UploadFiles").attr('disabled',false);
 });
@@ -65,6 +66,7 @@ $.each($('#fileUpload')[0].files, function(k, value)
     		  $('#FileList').hide();
     		  notification("success","File uploaded successfully.","Note:");
     		   $("#fileUpload").val('');
+    		   $("#FileList").empty();
     		  $("#UploadFiles").attr('disabled',true);
     		    }
     	  else

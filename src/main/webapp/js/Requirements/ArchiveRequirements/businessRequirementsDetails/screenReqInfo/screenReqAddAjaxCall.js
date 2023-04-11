@@ -29,7 +29,8 @@ function archiveScreenReqAddAjaxCall(displayName){
 
         	if(checkDataReq){
         	 var rowCount=0;
-            
+            $('#NoDataSearchFormRow').hide();
+            $('#NoDataScrRow').hide();            
             	 rowCount++;
             	     var Row="<tr class = 'screenReqRowClass'>"+
             	 "<td align='center' class = 'ScreenReqId'>"+data.ReqId+

@@ -487,8 +487,7 @@ e.printStackTrace();
 															<div id="collapse1" class="panel-collapse "
 																name="collapse">
 																<div class="panel-body">
-																	<div id="inputFieldsAddendum"></div>
-
+																	<div id="inputFieldsAddendum"></div>																	
 
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="addendumAddId"
@@ -759,7 +758,7 @@ e.printStackTrace();
 																									<label for="upload"> <input type="file"
 																										id="fileUpload" multiple> Upload Files
 																									</label>
-																									<input type="text" id="seq_no_section_insert" name="seq_no_section_insert" style="display:block;">
+																									<input type="text" id="seq_no_section_insert" name="seq_no_section_insert" style="display:none;">
 																								</div>
 																								<div class="files fileClass">
 																									<h6>
@@ -819,9 +818,9 @@ e.printStackTrace();
 						<div class="modal-body">
 							<p style="font-size: 14px;">Do you want to Delete this File
 								Permanently?</p>
-							<input type="text" id="Delete_Seq_Number" name="Delete_Seq_Number">
-			<input type="text" id="Delete_Section_Number" name="Delete_Section_Number">
-			<input type="text" id="Delete_File_Name" name="Delete_File_Name">
+							<input type="hidden" id="Delete_Seq_Number" name="Delete_Seq_Number">
+			<input type="hidden" id="Delete_Section_Number" name="Delete_Section_Number">
+			<input type="hidden" id="Delete_File_Name" name="Delete_File_Name">
 						</div>
 					</form>
 				</div>
@@ -923,8 +922,9 @@ $(document).on('mouseenter','.active1', function(){
 		 <script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDelete.js"></script>	
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+		
 	
 
 </body>

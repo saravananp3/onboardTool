@@ -210,7 +210,7 @@ function reviewDataRetrieveAjaxCall()
 						 }
 
               //AbbrevationDescriptionInfoPreview
-             	var checkAbbreviationData= data[7].checkData;
+             	var checkAbbreviationData= data[7][0].checkData;
              	if(checkAbbreviationData){
              	$.each(data[7], function(key, value) {
 					 var abbreviation = "<tr><td>" + value.abbreviation_acronym + "</td><td>" + value.description + "</td></tr>";
@@ -245,8 +245,8 @@ if (checkAddendumData) {
                  <div class="content table-responsive" id="addendum_filelist">
                    <table class="table-bordered" id="datatable_add">
                      <thead>
-                       <th style="text-align: center;">File Name</th>
-                       <th style="text-align: center;">Action</th>
+                       <th style='text-align: center; vertical-align: middle; width: 25%;'>File Name</th>
+                       <th style='text-align: center; vertical-align: middle; width: 25%;'>Action</th>
                      </thead>
                      <tbody>`;
     if (value.fileNames.checkData) {

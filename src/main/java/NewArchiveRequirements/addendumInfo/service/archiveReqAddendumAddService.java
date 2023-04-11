@@ -47,7 +47,15 @@ public boolean checkDuplicateLabelName()
 	}
 	return checkDuplicate;
 }
-public JsonObject archiveReqAddendumAdd() {
+public JsonObject archiveReqAddendumAdd() throws SQLException {
+	int newSeqNum=0;
+	
+	 String selectQuery3 ="SELECT max(seq_no) FROM decom3sixtytool.Archive_Req_Addendum_Info where oppId=?";
+	 PreparedStatement st3 = con.prepareStatement(selectQuery3);
+	 st3.setString(1, Id);	
+	 ResultSet rs3 = st3.executeQuery();
+	 rs3.next();
+	 newSeqNum = rs3.getInt(1);		 
 		
 		JsonObject jsonObject = new JsonObject();
 		
@@ -57,7 +65,7 @@ public JsonObject archiveReqAddendumAdd() {
 			  String InsertQuery = "insert into Archive_Req_Addendum_Info (seq_no, OppId, OppName, prjName, labelName, addendumInfo)"
 						+ " value(?, ?, ?, ?, ?, ?);";
 	          PreparedStatement prestmt = con.prepareStatement(InsertQuery);
-	          prestmt.setInt(1, SeqNum+1);
+	          prestmt.setInt(1, newSeqNum+1);
 	          prestmt.setString(2, Id);
 	          prestmt.setString(3, oppName);
 	          prestmt.setString(4, "");
@@ -66,7 +74,7 @@ public JsonObject archiveReqAddendumAdd() {
 	          prestmt.execute();
 	          prestmt.close();
 	          statusFlag =true;
-			
+			jsonObject.addProperty("seq_no", newSeqNum+1);
 			jsonObject.addProperty("AddStatus", statusFlag);
 			
 			

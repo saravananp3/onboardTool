@@ -868,11 +868,11 @@ e.printStackTrace();
                                                           <tbody id='documentRevisionsInfoPreview'>
                                                           </tbody>
                                                           </table></div> </td> </tr>
-                                                   <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
                                                        <h3 class="panel-title">7 Addendum</h3><br><br>
                                                         <div id = "addendumInfoPreview">
                                                         </div>
-                                                        </td> </tr>
+                                                        </td> </tr>                                                                                                         
                                                         <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
                                                      
                                                       <!--  <h3 class="panel-title">8 Approval Details</h3><br><br>
