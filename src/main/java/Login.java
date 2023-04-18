@@ -538,9 +538,12 @@ public class Login extends HttpServlet {
 
             if (!rsAbbTemp.next()) {
                 AbbTemplate AbbTemplate[] = new AbbTemplate[3];
-                AbbTemplate[0] = new AbbTemplate(1, "IA", "INFOARCHIVE");
-                AbbTemplate[1] = new AbbTemplate(2, "ADS", "ARCHON DATA STORE");
-                AbbTemplate[2] = new AbbTemplate(3, "ETL", "EXTRACTION TRANSFORMATION LOAD");     
+                AbbTemplate[0] = new AbbTemplate(1, "AD", "Active Directory Group");
+                AbbTemplate[1] = new AbbTemplate(2, "BI", "Business Intelligence");
+                AbbTemplate[2] = new AbbTemplate(3, "IA", "InfoArchive is a repository that compresses and maintains data from business applications and data sources.Data contained within the archive is no longer transactional and immutable (unable to be changed).");     
+                AbbTemplate[3] = new AbbTemplate(4, "Read-Only", "Date at which the legacy application data has been set to static use. There are no changes to be made to the data, no integration jobs running to alter the status of the data,nor will any future changes be made to the data.");
+                AbbTemplate[4] = new AbbTemplate(5, "XML", "Extensible Markup Language is a markup language that is used to structure, store, and transport data across different applications and platforms.XML uses tags to describe the data.It is highly extensible and adaptable to various data formats.");
+                AbbTemplate[5] = new AbbTemplate(6, "UAT", "User Acceptance Testing");
                 for (int index = 0; index < AbbTemplate.length; index++) {
                     String Abbreviation_InsertQuery = "insert into archivereq_abbreviations_template_details (seq_no, abbreviation_acronym, description)" +
                         "values(?, ?, ?)";

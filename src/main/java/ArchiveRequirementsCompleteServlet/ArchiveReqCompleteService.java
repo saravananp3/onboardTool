@@ -26,7 +26,7 @@ public class ArchiveReqCompleteService {
 				  SelectQuery = "select * from archive_retention_info where OppId =? ;";
 			 }
 			 else if(completeType.equals("BusinessRequirement")) {
-				  SelectQuery = "select * from Archive_AuditReq_Info where OppId =? ;";
+				  SelectQuery = "select * from archive_retentionlegalreq_info where OppId =? ;";
 			 }
 			 	  PreparedStatement st=connection.prepareStatement(SelectQuery);
 			 	  st.setString(1, id);
@@ -41,7 +41,7 @@ public class ArchiveReqCompleteService {
 
 				 }
 				 else if(completeType.equals("BusinessRequirement")) {
-					 UpdateQuery = "update Archive_AuditReq_Info set isCompleted ='Yes'  where OppId =? ";
+					 UpdateQuery = "update archive_retentionlegalreq_info set isCompleted ='Yes'  where OppId =? ";
 
 				 }	 PreparedStatement st1=connection.prepareStatement(UpdateQuery);
 				 	 st1.setString(1, id);
@@ -187,7 +187,7 @@ public class ArchiveReqCompleteService {
 				SelectQuery = "select ifnull(isCompleted,'No')isCompleted from archive_retention_info where OppId =? ;";
 			}
 			else if(completeType.equals("BusinessRequirement")) {
-				SelectQuery = "select ifnull(isCompleted,'No')isCompleted from Archive_AuditReq_Info where OppId =? ;";
+				SelectQuery = "select ifnull(isCompleted,'No')isCompleted from archive_retentionlegalreq_info where OppId =? ;";
 			}
 			PreparedStatement st=connection.prepareStatement(SelectQuery);
 			st.setString(1, id);
@@ -267,7 +267,7 @@ public class ArchiveReqCompleteService {
 									jsonObj.addProperty("completeStatus", rs3.getString("IsCompleted"));
 									jsonObj.addProperty("cuurrentModule", "RetentionApplication");
 									
-									String BusinessRequirementQuery = "select ifnull(isCompleted,'No')isCompleted from Archive_AuditReq_Info where OppId =? ;";
+									String BusinessRequirementQuery = "select ifnull(isCompleted,'No')isCompleted from archive_retentionlegalreq_info where OppId =? ;";
 									PreparedStatement st4=con.prepareStatement(BusinessRequirementQuery);
 									st4.setString(1, id);
 									ResultSet rs4 = st4.executeQuery();

@@ -9,7 +9,8 @@ function getScreenReqJsonArray(e){
 	var checkDuplicate = true;
 	var validation = true;
 	var JsonArray = [];
-	for(var i = 0; i<$('.screenReqRowClass').length; i++){
+	var rowCount = $('#screenReqInfo').children('tr.screenReqRowClass').length;
+	for(var i = 0; i<rowCount; i++){
 		var inputs = {};
 		var ReqId = $('.ScreenReqId').eq(i).html();
 		var screenDisplay = $('.screenDisplay').eq(i).val();
@@ -47,11 +48,7 @@ function getScreenReqJsonArray(e){
 function checkScreenReqValues(screenDisplay, purpose, equivalentLegacy){
 	
 	var validationFlag = false;
-	if(screenDisplay==undefined && purpose==undefined && equivalentLegacy==undefined)
-	{
-		validationFlag=true;
-	}
-	else if((screenDisplay != '' && screenDisplay != undefined && screenDisplay != null) && (purpose != '' && purpose != undefined && purpose != null) && 
+	if((screenDisplay != '' && screenDisplay != undefined && screenDisplay != null) && (purpose != '' && purpose != undefined && purpose != null) && 
 			(equivalentLegacy != '' && equivalentLegacy != undefined && equivalentLegacy != null))
 			validationFlag = true;
 	

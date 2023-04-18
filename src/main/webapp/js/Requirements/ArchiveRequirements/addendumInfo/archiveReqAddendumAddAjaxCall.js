@@ -43,8 +43,9 @@ function archiveReqAddendumAddAjaxCall(seqNum,labelName){
 					     "</div>"+
             	 		 "</div>";
         		$("#inputFieldsAddendum").append(Row);
-        		$("#addendumAddClose").click();
+        		$("#addendumAddClose").click();        		
            	 	notification("success","Row added Successfully.","Note:");
+           	 	$("#addendumLabelId").val('');
         	}
         	else if(data.checkDuplicate)
         		notification("warning","Label Name already exist.","Warning:");

@@ -13,20 +13,24 @@ public class Add_Abbreviation_Service {
 		JsonObject jsonobj = new JsonObject();
 		try {
 //			int uabbcount=0,udescount=0;
+			int newSeqNum=0;
 			String random_id = generateRandomApprovalId();
 			DBconnection dBconnection = new DBconnection();
 			Connection connection = (Connection) dBconnection.getConnection();
 			System.out.println("Connected...");
-			String select_query ="select count(*) from archivereq_abbreviations_info_details where app_id=?";
+			String select_query ="select max(seq_no) from archivereq_abbreviations_info_details where app_id=?";
 			PreparedStatement preparedStmt = connection.prepareStatement(select_query);
 			preparedStmt.setString(1, app_id);
 			ResultSet rs=preparedStmt.executeQuery();
-				String insert_query ="insert into archivereq_abbreviations_info_details (seq_no,app_id,abbreviation_acronym,description) values( ?, ?, ?, ?);";
+			rs.next();
+			newSeqNum = rs.getInt(1);	
+				String insert_query ="insert into archivereq_abbreviations_info_details (seq_no,random_id,app_id,abbreviation_acronym,description) values( ?, ?, ?, ?,?);";
 				PreparedStatement preparedStmt1 = connection.prepareStatement(insert_query);
-				preparedStmt1.setString(1, random_id);
-				preparedStmt1.setString(2, app_id);
-				preparedStmt1.setString(3, abbreviation_acronym);
-				preparedStmt1.setString(4, description);
+				preparedStmt1.setInt(1, newSeqNum+1);
+				preparedStmt1.setString(2, random_id);
+				preparedStmt1.setString(3, app_id);
+				preparedStmt1.setString(4, abbreviation_acronym);
+				preparedStmt1.setString(5, description);
 				
 				preparedStmt1.execute();
 				jsonobj.addProperty("flag", "Success");
@@ -97,12 +101,13 @@ public class Add_Abbreviation_Service {
 				while(rs.next())
 				{
 					String random_id = generateRandomApprovalId();
-					String insert_query ="insert into archivereq_abbreviations_info_details (seq_no,app_id,abbreviation_acronym,description) values( ?, ?, ?, ?);";
+					String insert_query ="insert into archivereq_abbreviations_info_details (seq_no,random_id,app_id,abbreviation_acronym,description) values( ?, ?, ?, ?,?);";
 					PreparedStatement preparedStmt1 = connection.prepareStatement(insert_query);
-					preparedStmt1.setString(1, random_id);
-					preparedStmt1.setString(2, app_id);
-					preparedStmt1.setString(3, rs.getString("abbreviation_acronym"));
-					preparedStmt1.setString(4, rs.getString("description"));
+					preparedStmt1.setString(1, rs.getString("seq_no"));
+					preparedStmt1.setString(2, random_id);
+					preparedStmt1.setString(3, app_id);
+					preparedStmt1.setString(4, rs.getString("abbreviation_acronym"));
+					preparedStmt1.setString(5, rs.getString("description"));
 					preparedStmt1.execute();				
 				//}
 				}

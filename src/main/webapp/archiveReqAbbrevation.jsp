@@ -598,9 +598,9 @@ td {
 																									id="abbreviation_acronym_modify"
 																									name="abbreviation_acronym_modify" required>
 																								<label class="control-label" for="formInput526">Description:</label>
-																								<input type="text" class="form-control"
+																								<textarea class="form-control"
 																									id="description_modify"
-																									name="description_modify" required> <input
+																									name="description_modify" rows="4" required></textarea> <input
 																									type="text" hidden class="form-control"
 																									id="seq_no_modify" name="seq_no_modify"
 																									required> <input type="text" hidden

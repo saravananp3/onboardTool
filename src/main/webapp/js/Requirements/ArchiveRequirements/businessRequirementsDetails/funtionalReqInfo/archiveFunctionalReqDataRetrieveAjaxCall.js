@@ -62,7 +62,7 @@ function archiveFunctionalDataRetrieve(){
             }
             else
         	{
-			 var Row="<tr class = 'screenReqRowClass'id='NoDataScrRow'>"+
+			 var Row="<tr class = 'screenReqRowClass'id='"+SectionId[i]+"NoDataScrRow'>"+
             	 "<td align='center' colspan='6'style='width:100%; text-decoration:bold;'>"+"<label style='color: black;'>No Records Found </label>"+
             	 "</td>" +
             	 "</tr>";

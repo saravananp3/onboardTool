@@ -17,7 +17,7 @@ public class Retrieve_Abbreviations_Service {
         Connection connection = (Connection) dBconnection.getConnection();
         System.out.println("Connected...");
 		boolean checkData = false;
-        String selectQuery = "select seq_no,app_id,abbreviation_acronym,description from archivereq_abbreviations_info_details where app_id=?";
+        String selectQuery = "select seq_no,random_id,app_id,abbreviation_acronym,description from archivereq_abbreviations_info_details where app_id=? order by seq_no";
         st = connection.prepareStatement(selectQuery);
         st.setString(1,id);
         rs = st.executeQuery();
@@ -27,9 +27,10 @@ public class Retrieve_Abbreviations_Service {
             JsonObject jsonObj = new JsonObject();
             jsonObj.addProperty("checkData",checkData);
             jsonObj.addProperty("seq_no",rs.getString(1));
-            jsonObj.addProperty("app_id",rs.getString(2));
-            jsonObj.addProperty("abbreviation_acronym",rs.getString(3));
-            jsonObj.addProperty("description",rs.getString(4));
+            jsonObj.addProperty("random_id",rs.getString(2));
+            jsonObj.addProperty("app_id",rs.getString(3));
+            jsonObj.addProperty("abbreviation_acronym",rs.getString(4));
+            jsonObj.addProperty("description",rs.getString(5));
             jsonArray.add(jsonObj);
             System.out.println("JSON ARRAY:"+jsonArray);
        }

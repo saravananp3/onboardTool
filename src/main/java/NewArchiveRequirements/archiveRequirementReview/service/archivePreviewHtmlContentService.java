@@ -249,7 +249,7 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
                     writeHeader("Abbreviation/Acronyms");					
 					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
 					writeTableStartTags();
-					writeTableHeadingTags(new String[]{"Abrreviation/Acronym","Description"});
+					writeTableHeadingTags(new String[]{"Abbreviation/Acronym","Description"});
 					
 					for(int i=0;i<jsonArray1.size();i++) {
 						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();
@@ -308,17 +308,17 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				        System.out.println(" Addendum Objects Size : "+jsonObject2.size());
 
 				        if (jsonObject2.size()>1) {
-				        for(int j=1;j<=jsonObject2.size();j++) {
-				            JsonElement element = jsonObject2.get(String.valueOf(j));
-				            if(element!=null) {
-				            String jsonString = element.toString().replaceAll("^\"|\"$", "");
-
-				            if(element != null && !element.isJsonNull()) {
-				            
-				                    writeTableDataTags(new String[] {String.valueOf(j),jsonString});
-				            }
-				            }
-				        }}
+				        	jsonObject2.remove("checkData");
+				        	int j=1;
+				        	for (Map.Entry<String, JsonElement> entry : jsonObject2.entrySet()) {				        	 
+				        	    JsonElement value1 = entry.getValue();				        	    
+				        	    if (value1 != null && value1.isJsonPrimitive()) {
+				        	        String fileName = value1.getAsString();
+				        	        writeTableDataTags(new String[] { String.valueOf(j), fileName });
+				        	    }
+				        	    j++;
+				        	}
+				        }
 				        else {
 						    writeTableFileEmptyTags(new String[] {"",""});
 						    }

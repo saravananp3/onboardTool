@@ -1,11 +1,13 @@
 var deleteClass = "";
 var deleteTableName = "";
 var tableNameDelEdit = "";
+var tableNoData="";
 $(document).ready(function(){
 $(document).on('click','.DeleteRow', function(){
 		var className = $(this).attr('class');
 		deleteClass = "";
 		deleteTableName = "";
+		tableNoData="";
 		getTableSections(className);
 		var seqNum = $(this).index('.'+deleteClass+"Delete")+1;
 		$('#DataDeleteSeq').val(seqNum);
@@ -59,30 +61,35 @@ function getTableSections(className){
 		 deleteClass = "dataReq";
 		 deleteTableName = "archive_datareq_info";
 		 tableNameDelEdit = "Data Requirements";
+		 tableNoData="DataReqId";
 	}
 	else if(className.includes("legalReq"))
 	{
 		deleteClass = "legalReq";
 		 deleteTableName = "Archive_RetentionLegalReq_Info";
 		 tableNameDelEdit = "Retention and Legal Requirements";
+		 tableNoData="LegalReqId";
 	}
 	else if(className.includes("securityReq"))
 	{
 		deleteClass = "securityReq";
 		 deleteTableName = "Archive_SecurityReq_Info";
 		 tableNameDelEdit = "Security Requirements";
+		 tableNoData="SecurityReqId";
 	}
 	else if(className.includes("usabilityReq"))
 	{
 		deleteClass = "usabilityReq";
 		 deleteTableName = "Archive_UsabilityReq_Info";
 		 tableNameDelEdit = "Usability Requirements";
+		 tableNoData="UsabilityReqId";
 	}
 	else if(className.includes("auditReq"))
 	{
 		deleteClass = "auditReq";
 		 deleteTableName = "Archive_AuditReq_Info";
 		 tableNameDelEdit = "Audit Requirements";
+		 tableNoData="AuditReqId";
 	}
 }
 
@@ -97,6 +104,7 @@ function archiveFunctionalReqDeleteAjaxCall(seqNum){
         success: function (data) {
         	console.log("Delete Row Retrieve--->",data);
         	if(data.DeleteStatus){
+	var nodatamsgflag=$('.'+deleteClass+'ReqId').length;
         		console.log("delete length",$('.'+deleteClass+'ReqId').length);
         		for(var i=seqNum;i<$('.'+deleteClass+'ReqId').length;i++)
         			{
@@ -113,6 +121,16 @@ function archiveFunctionalReqDeleteAjaxCall(seqNum){
         			$('.'+deleteClass+'ReqId').eq(i).html(ReqId[0]+"-"+ReqId[1]+"-"+seq_num);
         			}
         		$('.'+deleteClass+'RowClass').eq(seqNum-1).remove();
+        		if(nodatamsgflag==1)
+        		{
+				   var Row="<tr class = 'screenReqRowClass'id='"+tableNoData+"NoDataScrRow'>"+
+            	 "<td align='center' colspan='6'style='width:100%; text-decoration:bold;'>"+"<label style='color: black;'>No Records Found </label>"+
+            	 "</td>" +
+            	 "</tr>";
+			  $("#"+tableNoData).append(Row);
+	
+				 //$("#"+tableNoData+"NoDataScrRow").show();
+				}
         		notification("success","Seleted row deleted Successfully in "+tableNameDelEdit+".","Note:");
         	}
         	else

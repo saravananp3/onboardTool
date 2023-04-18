@@ -6,8 +6,6 @@ $(document).ready(function(){
 	archiveScreenReqDataRetrieve();	
 });
 
-
-	
 function archiveScreenReqDataRetrieve(){
 	$.ajax({
         url: "archiveScreenReqDataRetrieveServlet",
@@ -50,11 +48,12 @@ function archiveScreenReqDataRetrieve(){
         	}
         	else
         	{
-			var Row="<tr class = 'screenReqRowClass'id='NoDataScrRow'>"+
+			var Row="<tr class = 'screenReqRowClass'id='NoDataScrRecordsRow'>"+
             	 "<td align='center' colspan='5'style='width:100%; text-decoration:bold;'>"+"<label style='color: black;'>No Records Found </label>"+
             	 "</td>" +
             	 "</tr>";
             	 $("#screenReqInfo").append(Row);
+            	 $("#saveScreenReqId").attr("disabled","disabled");
 			}
             
         	var searchFormDataReq = data[1][0].checkData;
@@ -120,6 +119,7 @@ function archiveScreenReqDataRetrieve(){
             	 "</td>" +
             	 "</tr>";
             	 $("#searchFormInfo").append(searchFormRow);
+            	 $("#saveSearchFormId").attr("disabled","disabled");
 			}
         	
 	       /*else
