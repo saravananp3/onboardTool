@@ -114,7 +114,7 @@ function archiveScreenReqDataRetrieve(){
         	
         	else
         	{
-			var searchFormRow="<tr class = 'screenReqRowClass' id='NoDataSearchFormRow'>"+
+			var searchFormRow="<tr class = 'NoDatascreenReqRowClass' id='NoDataSearchFormRow'>"+
             	 "<td align='center' colspan='9'style='width:100%; text-decoration:bold;'>"+"<label style='color: black;'>No Records Found </label>"+
             	 "</td>" +
             	 "</tr>";

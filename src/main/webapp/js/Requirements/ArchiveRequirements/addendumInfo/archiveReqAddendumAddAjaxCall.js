@@ -35,7 +35,7 @@ function archiveReqAddendumAddAjaxCall(seqNum,labelName){
         		var Row ="<div class='addendumField' style='margin-top: 6px;margin-bottom: 60px;'>"+
             	 		 "<label class='editable' contenteditable='true'>"+labelName+"</label>"+delete_icon+
             	 		 "<textarea rows='2' cols='130' style='height:100px;' class='req addendumInfo'></textarea>"+
-                         "<div style='margin-top: -69px;margin-left: 87%;'>"+
+                         "<div style='margin-top: -69px;margin-left: 86%;'>"+
                          "<button class='upload-icon' style='margin-top: -87px;border: none;background: white;display: inline-block;padding: 12px;'>"+
                          "<button class='upload-icon' id='"+data.seq_no+"'style='margin-top: -87px;border: none;background: white;display: inline-block;padding: 12px;' uploadsectioniconcount='"+data.seq_no+"'>"+  						 
   						 "<label for='fileUpload" + data.seq_no + "' style='border: none;'><i class='fas fa-cloud-upload-alt' id='UploadFile" + data.seq_no + "' uploadsectioniconcount='"+data.seq_no+"'></i></label></button>"+  						 

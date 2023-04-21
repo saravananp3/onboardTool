@@ -150,7 +150,7 @@ $(document).on('click', '#complete', function(e) {
             if (data.iscompleted==true) {
                 notification("success", "Completed successfully.", "Note:");
             }else if (data.iscompleted==false) {
-                notification("error","Please fill all the fields.","Error:");
+                notification("error","Please fill atleast One Row in Archive Environment Information Server Details","Error:");
             }
         }
     });

@@ -178,7 +178,7 @@ function reviewDataRetrieveAjaxCall()
             	         }
                  	});
             	}else{
-						   var input = "<tr><td colspan='5' style='text-align: center;'>No Data found.</td></tr>";
+						   var input = "<tr><td colspan='5' style='text-align: center;'>No Records Found</td></tr>";
          		         $("#"+functionalReqIdArray[j]).append(input); 
 						 }
             	}
@@ -192,7 +192,7 @@ function reviewDataRetrieveAjaxCall()
          	         
               	});
             	}else{
-						   var input = "<tr><td colspan='5' style='text-align: center;'>No Data found.</td></tr>";
+						   var input = "<tr><td colspan='5' style='text-align: center;'>No Records Found</td></tr>";
          		         $("#ScreenReqInfoPreview").append(input); 
 						 }
               var checkSearchFormReqData = data[6][1][0].checkData;
@@ -205,7 +205,7 @@ function reviewDataRetrieveAjaxCall()
           	         
                	});
             	  }else{
-						   var input = "<tr><td colspan='8' style='text-align: center;'>No Data found.</td></tr>";
+						   var input = "<tr><td colspan='8' style='text-align: center;'>No Records Found</td></tr>";
          		         $("#SearchFormInfoPreview").append(input); 
 						 }
 

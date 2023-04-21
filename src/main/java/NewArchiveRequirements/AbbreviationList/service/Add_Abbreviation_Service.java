@@ -43,6 +43,7 @@ public class Add_Abbreviation_Service {
 			catch(Exception e)
 			{
 				System.out.println("Exception Occurs");
+				e.printStackTrace();
 			}
 			return jsonobj;
 		}

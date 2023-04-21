@@ -537,7 +537,7 @@ public class Login extends HttpServlet {
             rsAbbTemp = stAbbTemplate.executeQuery();
 
             if (!rsAbbTemp.next()) {
-                AbbTemplate AbbTemplate[] = new AbbTemplate[3];
+                AbbTemplate AbbTemplate[] = new AbbTemplate[6];
                 AbbTemplate[0] = new AbbTemplate(1, "AD", "Active Directory Group");
                 AbbTemplate[1] = new AbbTemplate(2, "BI", "Business Intelligence");
                 AbbTemplate[2] = new AbbTemplate(3, "IA", "InfoArchive is a repository that compresses and maintains data from business applications and data sources.Data contained within the archive is no longer transactional and immutable (unable to be changed).");     

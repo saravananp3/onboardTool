@@ -172,13 +172,18 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 							writeHeader(functionalReqSection[j].toString());
 					     	writeTableStartTags();
 					     	writeTableHeadingTags(new String[]{"Req Id","Req In-Scope(Y/N)","Requirement Type","Requirement","Additional Info"});
-
+					    if(jsonArray2.size()>0)
+					    {
 						for(int i=0;i<jsonArray2.size();i++) {
 								JsonObject jsonObject1 = jsonArray2.get(i).getAsJsonObject();
 								
 									writeTableDataTags(new String[] {jsonObject1.get("reqId").getAsString(),jsonObject1.get("reqInScope").getAsString(),jsonObject1.get("reqType").getAsString(),jsonObject1.get("req").getAsString(),jsonObject1.get("additionInfo").getAsString()});
 								  
-						}
+						}}
+					    else
+					    {
+					    	writeTableDataEmptyTags(new String[] {"","","","",""});
+					    }
 								writeTableEndTags();
                             }
 				}
