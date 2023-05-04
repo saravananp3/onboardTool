@@ -20,7 +20,8 @@ function appendRowFunction(data){
         var issue_to = value.issue_to;
         var issue_date = value.issue_date;
         var valid_till = value.valid_till;
-                
+        if(typeof issue_to !== "undefined" && typeof issue_date !== "undefined" && typeof valid_till !== "undefined")
+        {   
         var row = "<tr>"+
                 "<td style='text-align:center;vertical-align: middle;'><label class='control-label' for=''>"+issue_to+"</label>" +
                  "</td>"+
@@ -31,5 +32,6 @@ function appendRowFunction(data){
  
                   "</tr>";
                   $("#license_info_1").append(row);
+                  }
     });
 }

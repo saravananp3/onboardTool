@@ -91,17 +91,24 @@ $(document).ready(function() {
 						var template_check = "";
 						var inputdrop = "<div class='form-group InputField' id = '" + ColumnName + "_Row'><label class='control-label' for='opportunity'>" + LabelName + "<span " + manadatory + "></span></label>" + delete_icon + "<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>" +
 							"<select style = 'width:100%;' class ='form-select mb-3' id='" + ColumnName + "'name='" + ColumnName + "'>";
-						var Options = value.options;
+						var Options = value.options;						
 						//var sub_option = Options.substring(0, Options.length);
 						var option = Options.split(",");
 						for (var i = 0; i < option.length; i++) {
 							var select = "";
+							if(Value!==""){
 							if (Value.includes(option[i])) {
 								select = "selected";
 							}
+							}
+							if(option[i]!==""){
 							inputdrop += "<option label=" + option[i] + " class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
+							else{
+								inputdrop += "<option label=''class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
 						}
-						inputdrop += "</select></div>";
+						inputdrop += "</select></div>";						
 						$('#inputValue').append(inputdrop);
 					}
 					else if (Type == "Check box") {

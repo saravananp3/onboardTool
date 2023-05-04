@@ -317,7 +317,7 @@ e.printStackTrace();
 
 
 
-							<h3>Decommision Requirements</h3>
+							<h3>Decommission Requirements</h3>
 							<p class="small">
 								Decommissioning is a general term for a formal process to remove
 								something from an active status. <br>

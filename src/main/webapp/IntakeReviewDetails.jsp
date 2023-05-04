@@ -733,9 +733,9 @@ e.printStackTrace();
                                                            <div id="ComplianceCharacteristicsPreview">  </div>
                                                            <h3 class="panel-title">Archival Consumption</h3><br>
                                                             <div id="ArchivalConsumptionPreview"> </div>
-                                                           
-                                                            <div id="ContractInformationPreview" style = "display:none;"> <h3 class="panel-title">Contract Consumption</h3> <br> </div></div> 
-                                                        </div> </td> </tr>
+                                                           	<h3 class="panel-title" style = "display:none;" id="contract_info_heading">Contract Information</h3><br>
+                                                            <div id="ContractInformationPreview" style = "display:none;"> </div>
+                                                    </td> </tr>
                                                         
                                                  <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
                                                        <h3 class="panel-title">Approval</h3><br><br>

@@ -567,7 +567,7 @@ rotate
 										class="form-select form-select-lg mb-3"
 										aria-label=".form-select-lg example" id="u_role_modify"
 										name="u_role" style="font-size: 14px;" required>
-										<option>Select</option>
+										<option value="">Select</option>
 										<option>D3SIXTY_SUPER_ADMIN</option>
 										<option>D3SIXTY_ADMIN</option>
 										<option>D3SIXTY_TECHNICAL_CONTRIBUTOR</option>
@@ -587,7 +587,7 @@ rotate
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" id="update_submit"
-						data-bs-dismiss="modal">Update</button>
+						>Update</button>
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Cancel</button>
 

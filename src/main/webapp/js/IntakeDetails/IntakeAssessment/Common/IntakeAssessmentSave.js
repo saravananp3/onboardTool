@@ -99,8 +99,9 @@ function saveFunctionalityDevisionWise(section, e) {
         //alert("IntakeAssessment Save");
         var JsonString = JSON.stringify(JsonArray);
         var jsonobj = AssessmentAjaxCallUpdate(JsonString, e, section);
+        var sectionmsg=sectionMsg(section);
         if (jsonobj.CheckExistence) {
-            notification("success", section + " assessment section details are saved successfully.", "Note");
+            notification("success",  sectionmsg+ " Section Details are Saved Successfully.", "Note");
             //alert("Saved Successfully!");
             //document.getElementById("complete").disabled = false;
             //document.getElementById("next").disabled = false;
@@ -240,7 +241,7 @@ function CheckMandatoryCommonFields(InputFieldClass) {
 }
 function CheckMandatoryContractInfo() {
     var appDetailsValue = $("#AppDetails").val();
-    if (appDetailsValue == "Third Party") {
+    if (appDetailsValue === "COTS – Commercial Off The Shelf" || appDetailsValue === "MOTS – Modified Off The Shelf") {
         checkMandatoryFields = true;
         CheckMandatoryCommonFields("ContractInformation");
     }

@@ -21,12 +21,12 @@ $(document).ready(function(){
                 var LabelName=value.LabelName;
                 var delete_icon="<div class='deletepopup' style='display:none;'></div>";
                 var Value=value.Value;
-                if(ColumnName=="thirdpartyvendor" || ColumnName == "listcountry")
+               /* if(ColumnName=="thirdpartyvendor" || ColumnName == "listcountry")
             	{
                 	dependencyValue = Value;
                 	if(Value=="Internally Developed")
                 		Value="Internal";
-            	}
+            	}*/
                 //var options=data[i].options.split(',');
                 if(value.mandatory=="No")
                 {
@@ -45,15 +45,15 @@ $(document).ready(function(){
 					var inputtext = "<div class='form-group InputField' id ='" + ColumnName + "_Row'>\n" +
 						"<label class='control-label' for='archiveLegacy'>" + LabelName + "<span " + manadatory + "></span></label>" + delete_icon + "<span class='glyphicon glyphicon-pencil editpopup hidepencil ' style='float:right;display:none;'></span>\n";
 					if (ColumnName == "totalsize") {
-						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+						inputtext = inputtext + "<input type='number' min='0' onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
 							"</div>";
 					}
 					else if (ColumnName == "estimatestrucsize") {
-						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+						inputtext = inputtext + "<input type='number' min='0' onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
 							"</div>";
 					}
 					else if (ColumnName == "estimateunstrucsize") {
-						inputtext = inputtext + "<input type='number' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
+						inputtext = inputtext + "<input type='number' min='0' onkeypress='return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))' class='form-control' size='35' id='" + ColumnName + "' placeholder='' name='" + ColumnName + "' value='" + Value + "'/>\n" +
 							"</div>";
 					}
 					else {
@@ -82,7 +82,7 @@ $(document).ready(function(){
                     var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for= 'archiveLegacy'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
                         "<select style = 'width:100%;' class ='form-select' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
-                    var sub_option = Options.substring(0, Options.length - 1);
+                    var sub_option = Options.substring(0, Options.length);
                     var option=sub_option.split(",");
                     for(var i=0;i<option.length;i++) {
                         var select = "";
@@ -154,7 +154,7 @@ $(document).ready(function(){
                 }
                 else if(Type=="HiddenText")
                 {
-                	var style = (dependencyValue=="Internally Developed" || dependencyValue=="Yes")?"style='display:block;'":"style='display:none;'";
+                	var style = (dependencyValue=="Internal")?"style='display:block;'":"style='display:none;'";//var style = (dependencyValue=="Internally Developed" || dependencyValue=="Yes")?"style='display:block;'":"style='display:none;'";
                 	dependencyValue = ""; 
                 	var inputtext="<div class='form-group InputField hiddenText1' id ='"+ColumnName+"_Row' "+style+">\n" +
                      "<label class='control-label' for='archiveLegacy'><div "+manadatory+">"+LabelName+"<div class='deletepopup' style='display:none;'></div><span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span></div></label>\n" +
@@ -169,7 +169,22 @@ $(document).ready(function(){
                 "format: \"mm/dd/yyyy\",\n"+
                 "autoclose: true\n"+
                 "});<\/script>";*/
-            
+            var ss=$('input[name = dataloclaw]:checked').val();
+           	console.log("Radio Value : ",ss);
+           	if(ss=="Yes")           	
+			$("#listcountry_Row").show();
+			else
+			$("#listcountry_Row").hide();		
+
+            var s=$('#thirdpartyvendor').val();
+            if(s=="Internal")
+            {
+			 $('#locationcenter_Row').show();
+			}
+			if(s=="Third Party")
+			{
+				$('#locationcenter_Row').hide();
+			}
             var script="<script>$('.datepicker1').datepicker({\n" +
             "format: \"mm/dd/yyyy\",\n"+
             "clearBtn:true,"+

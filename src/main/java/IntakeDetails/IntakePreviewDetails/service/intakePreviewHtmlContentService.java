@@ -77,7 +77,7 @@ public class intakePreviewHtmlContentService  extends jsonToHtmlContent{
 			
 			if(section.equals("Application Details")) {
 				String columnName = jsonObject.get("ColumnName").getAsString();
-				if(columnName.equals("AppDetails")&&value.equals("Third Party")) {
+				if(columnName.equals("AppDetails")&&value.equals("COTS - Commercial Off The Shelf") || value.equals("MOTS - Modified Off The Shelf")) {
 					isContractInformationVisible =true;
 				}
 			}

@@ -266,7 +266,7 @@ public class OpportunityFilterList {
 				checkPhase = getReqInfo("Decomm_Requirement", oppId);
 				break;
 				
-			case "To be retire":
+			case "Archive+Decommission":
 				if(!getReqInfo("Archive_Requirement", oppId) && !getReqInfo("Decomm_Requirement", oppId)) 
 					checkPhase = false;
 				
@@ -490,7 +490,7 @@ public class OpportunityFilterList {
 				requirements= "Archive_Requirement,";
 				else if(value.equals("Decommission"))
 				requirements = "Decomm_Requirement,";
-				else if(value.equals("To be retire"))
+				else if(value.equals("Archive+Decommission"))
 				requirements ="Archive_Requirement,Decomm_Requirement,";
 			}
 		}

@@ -2,11 +2,13 @@ $(document).on('change','#AppDetails',function()
 {	
 var value = $(this).val();
 $("#AssessSection option[value='ContractInformation']").remove();
-if(value=="Third Party")
-{	         
+if(value === "MOTS - Modified Off The Shelf" || value === "COTS - Commercial Off The Shelf")
+{	 
 	$("#ContractInformation").show();
 	$("#AssessSection").append('<option value="ContractInformation">Contract Information</option>');
-}
+  
+	
+	}
 else
 {
 	$("#ContractInformation").hide();

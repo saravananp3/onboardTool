@@ -141,6 +141,17 @@
 	height: 100%;
 	display: none;
 }
+#overlay3 {
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	width: 1100px;
+	margin-top:100px;
+	height: 100%;
+	display: none;
+	background-color:white;
+	opacity:1.0;
+}
 
 .cv-spinner1 {
 	height: 62rem;
@@ -160,6 +171,23 @@
 	animation: sp-anime1 0.8s infinite linear;
 }
 
+.cv-spinner2 {
+	height: 62rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity:1.0;
+}
+
+.spinner2 {
+	width: 60px;
+	height: 60px;
+	margin-right: 10rem;	
+	border: 8px #ddd solid;
+	border-top: 8px #2e93e6 solid;
+	border-radius: 50%;
+	animation: sp-anime1 0.8s infinite linear;
+}
 @-webkit-keyframes sp-anime1 {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -450,7 +478,11 @@
 				<div class="modal-body">
 
 					<div class="container">
-
+								<div id="overlay3">
+						<div class="cv-spinner2">
+							<span class="spinner2"></span>
+						</div>
+					</div>
 						<div bgcolor='#e4e4e4'
 							style='font-family: Arial, Helvetica, sans-serif;'
 							id="table-scroll">
@@ -524,11 +556,10 @@
 															<div id="ComplianceCharacteristicsPreview"></div>
 															<h3 class="panel-title">Archival Consumption</h3> <br>
 															<div id="ArchivalConsumptionPreview"></div>
-
+															<h3 class="panel-title" style = "display:none;" id="contract_info_heading">Contract Information</h3><br>
 															<div id="ContractInformationPreview"
 																style="display: none;">
-																<h3 class="panel-title">Contract Consumption</h3>
-																<br>
+																
 															</div>
 
 														</td>

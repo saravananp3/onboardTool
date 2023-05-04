@@ -474,14 +474,13 @@ body {
 																	</div>
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
-																			id="request_type_temp1" name="request_type_temp">
-																			<option label="Decommission" class="control-label"
-																				for="opportunity">Decommission</option>
+																			id="request_type_temp1" name="request_type_temp">																			
 																			<option label="Archive" class="control-label"
 																				for="opportunity">Archive</option>
+																				<option label="Decommission" class="control-label"
+																				for="opportunity">Decommission</option>																			
 																			<option label="To" be="" retrive=""
-																				class="control-label" for="opportunity">To
-																				be retrive</option>
+																				class="control-label" for="opportunity">Archive+Decommission</option>
 																		</select>
 																	</div>
 																</div>
@@ -508,7 +507,7 @@ body {
 																	</div>
 																	<div class="col-md-2">
 																		<label class="control-label" for="opportunity">Application
-																			Descrpition</label>
+																			Description</label>
 																	</div>
 																	<div class="col-md-6">
 																		<input type="text" class="form-control" size="35"
@@ -655,6 +654,8 @@ body {
 																	<div class="col-md-6">
 																		<select style="width: 100%;" class="form-select"
 																			id="date_type_temp1" name="date_type_temp">
+																			<option label="" system="" class="control-label"
+																				for="opportunity"></option>
 																			<option label="EMR" system="" class="control-label"
 																				for="opportunity">EMR System</option>
 																			<option label="ERP" data="" class="control-label"

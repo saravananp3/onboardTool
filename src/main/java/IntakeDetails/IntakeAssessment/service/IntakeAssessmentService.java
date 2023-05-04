@@ -126,7 +126,7 @@ public class IntakeAssessmentService extends DynamicFields {
 		try
 		{
 			IntakeAssessSectionDataRetrieveService DataRetrieveObj= new IntakeAssessSectionDataRetrieveService("CONTRACTINFO", id);
-			if(value.equals("Third Party"))
+			if(value.equals("COTS - Commercial Off The Shelf")|| value.equals("MOTS - Modified Off The Shelf"))
 			{
 			  jsonArray = DataRetrieveObj.DataRetrieveForContractInformation(id);	
 			}

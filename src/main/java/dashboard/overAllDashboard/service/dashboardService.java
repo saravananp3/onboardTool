@@ -809,7 +809,7 @@ public class dashboardService {
                 case "Decommission":
                     checkPhase = getReqInfo("Decommission_Requirement", oppId);
                     break;
-                case "To be retire":
+                case "Archive+Decommission":
                     if (!getReqInfo("Archive_Requirement", oppId) && !getReqInfo("Decommission_Requirement", oppId))
                         checkPhase = false;
                     break;
@@ -898,7 +898,7 @@ public class dashboardService {
                 if (value.equals("Decommission")) {
                     decomissionCount++;
                 }
-                if (value.equals("To be retire")) {
+                if (value.equals("Archive+Decommission")) {
                     retiredCount++;
                 }
             }

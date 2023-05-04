@@ -618,7 +618,7 @@ display:none;
 											for Archival or Decommission or Retiring purpose.</div> -->
 										<div class="col-sm-8 col-md-8 col-lg-8">Applications are opportunities
 											provided within the organisation for Archival or Decommission
-											or Retiring purpose.</div>
+											or for both Archival and Decommission purpose.</div>
 									</a>
 
 								</div>

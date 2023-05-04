@@ -26,7 +26,7 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 		private String[] businessReqSection= {"Requirement In Scope","Functional Requirement","Screen Requirements"};
 		private String[] retentionSection= {"ContentInfo"};
 		private String[] functionalReqSection= {"Data Requirements","Retention and Legal Requirements","Security Requirements","Usability Requirements","Audit Requirements"};
-		private String[] archive_sections = {"Introduction","Legacy Application Information","Retention Details","Business Requirements","Abbrevations, Acronyms, Definitions","Document Revisions","Addendum","Roles & Responsibilites"};
+		private String[] archive_sections = {"Introduction","Legacy Application Information","Retention Details","Business Requirements","Abbreviation, Acronym, Definitions","Document Revisions","Addendum","Roles & Responsibilites"};
 		public archivePreviewHtmlContentService(JsonArray jsonArray) {
 		 this.jsonArray = jsonArray;
 		}
@@ -201,7 +201,7 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
                     }		//over
 				
 				private void getAbbrevationDef() {
-					writeHeader("Abbrevations, Acronyms, Definitions");
+					writeHeader("Abbreviation, Acronym, Definitions");
 					String key[]= {"AB","BI","IA","Read-Only","REQ","UAT","XML"};
 					String value[]= {"Active Directory Group","Business Intelligence",
 							"InfoArchive is a repository that compresses and maintains data from business applications and data sources. Data contained within the archive is no longer transactional and immutable (unable to be changed). Access to the archive is normally confined to a small group of users defined by security rules and roles. Data retention policies may be applied to data contained within the archive"
@@ -209,7 +209,7 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 							"Requirement","User Acceptance Testing",
 							"Extensible Markup Format is used to define documents with a standard format that can be read by any XML-compatible application.It is a \\\"metalanguage\\\" that can be used to create markup languages for specific applications"};
 					writeTableStartTags();
-					writeTableHeadingTags(new String[]{"Abbrevation/Acronym","Description"});
+					writeTableHeadingTags(new String[]{"Abbreviation/Acronym","Description"});
 					for(int i=0;i<key.length;i++) {
 						
 					writeTableDataTags(new String[] {key[i],value[i]});

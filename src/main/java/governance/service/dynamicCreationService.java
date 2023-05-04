@@ -205,9 +205,10 @@ public class dynamicCreationService {
 			
 		}
 		finally
-		{
+		{   if(st!=null) {
 			st.close();
 			rs.close();
+		}
 		}
 		jsonObject.addProperty("saveStatus", saveStatus);
 		return jsonObject;

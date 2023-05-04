@@ -96,14 +96,21 @@ $(document).ready(function(){
                     var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
                         "<select style = 'width:100%;' class ='form-select mb-3' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
-                    var sub_option = Options.substring(0, Options.length - 1);
+                    var sub_option = Options.substring(0, Options.length);
                     var option=sub_option.split(",");
                     for(var i=0;i<option.length;i++) {
                         var select = "";
+                        if(Value!==""){
                         if(Value.includes(option[i])){
                          select = "selected";
                         }
-                        inputdrop += "<option label='"+ option[i] + "' class='control-label' for= 'opportunity' "+select+">" + option[i] + "</option>";
+                        }                        
+                      if(option[i]!==""){
+							inputdrop += "<option label=" + option[i] + " class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
+							else{
+								inputdrop += "<option label=''class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}
                     }
                     inputdrop +="</select></div>";
                     $('#inputFields').append(inputdrop);
@@ -123,10 +130,16 @@ $(document).ready(function(){
                      var option1=sub_option1.split(",");
                      for(var i=0;i<option1.length;i++) {
                          var select1 = "";
+                         if(Value!==""){
                          if(Value.includes(option1[i])){
                           select1 = "selected";
-                         }
+                         }}
+                         if(option1[i]!==""){
                          TemplateField += "<option label=" + option1[i] + " class='control-label' for= 'opportunity' "+select1+">" + option1[i] + "</option>";
+                         }
+                         else{
+								TemplateField += "<option label=''class='control-label' for= 'triage' " + select1 + ">" + option1[i] + "</option>";
+							}
                      }
                      TemplateField +="</select>"+
         	        "</div>"+
@@ -315,10 +328,17 @@ function validateForm(e){
                         var option=sub_option.split(",");
                         for(var i=0;i<option.length;i++) {
                             var select = "";
+                            	if(Value!==""){
                             if(Value.includes(option[i])){
                              select = "selected";
-                            }
-                            inputdrop += "<option label=" + option[i] + " class='control-label' for= 'opportunity' "+select+">" + option[i] + "</option>";
+                            }}
+                            if(option[i]!==""){
+							inputdrop += "<option label=" + option[i] + " class='control-label' for= 'opportunity' " + select + ">" + option[i] + "</option>";
+							}
+							else{
+								inputdrop += "<option label=''class='control-label' for= 'triage' " + select + ">" + option[i] + "</option>";
+							}                                                       
+                    
                         }
                         inputdrop +="</select></div>";
                         if(!$('#'+ColumnName).length){

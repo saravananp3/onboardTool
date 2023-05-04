@@ -40,12 +40,12 @@ public class archiveReqLegacyAppTemplateService {
 				legacy[2] = new archiveReqLegacyTemplateInfo(3,"","Legacy Application Description(High level Usage)", "legacyappdesc", "Text box", "No", "");
 				legacy[3] = new archiveReqLegacyTemplateInfo(4,"","What is the read-only date?", "readonly", "Datepicker", "Yes", "");
 				legacy[4] = new archiveReqLegacyTemplateInfo(5,"","Is this application the only source of truth for the data?", "onlysrcdata", "Text box", "No", "");
-				legacy[5] = new archiveReqLegacyTemplateInfo(6," ,Internal,Third Party","Is the legacy application hosted internally or with an third-party  vendor?", "thirdpartyvendor", "Dropdown", "No", "");
+				legacy[5] = new archiveReqLegacyTemplateInfo(6,",Internal,Third Party","Is the legacy application hosted internally or with an third-party  vendor?", "thirdpartyvendor", "Dropdown", "No", "");
 				legacy[6] = new archiveReqLegacyTemplateInfo(7,"City,State,Country","If hosted internally, where is the data center location?(City, State,Country)", "locationcenter", "HiddenText", "No", "");
 				legacy[7] = new archiveReqLegacyTemplateInfo(8,"","Name of the DBA who will grant access to the database", "dbaaccess", "Text box", "No", "");
 				legacy[8] = new archiveReqLegacyTemplateInfo(9,"Yes,No","Is the legacy application following data localization laws?", "dataloclaw", "Radio box", "No", "");
 				legacy[9] = new archiveReqLegacyTemplateInfo(10,"","If yes, List out the countries where the regulations apply?", "listcountry", "HiddenText", "No", "");
-				legacy[10] = new archiveReqLegacyTemplateInfo(11,"Structured,Unstructured, Hybrid","Data Type Charecteristics:", "datachar", "Dropdown", "Yes", "");
+				legacy[10] = new archiveReqLegacyTemplateInfo(11,",Structured,Unstructured, Hybrid","Data Type Charecteristics:", "datachar", "Dropdown", "Yes", "");
 				legacy[11] = new archiveReqLegacyTemplateInfo(12,"","What is the total data size?(MB,GB ,TB)", "totalsize", "Text box", "Yes", "");
 				legacy[12] = new archiveReqLegacyTemplateInfo(13,"","What is the estimated number of tables?", "nooftables", "Text box", "No", "");
 				legacy[13] = new archiveReqLegacyTemplateInfo(14,"","What is the estimated size of Structured data ?( MB,GB, TB)", "estimatestrucsize", "Text box", "No", "");

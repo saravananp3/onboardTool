@@ -74,7 +74,7 @@ $(document).ready(function(){
                     var inputdrop= "<div class='form-group InputField' id = '"+ColumnName+"_Row'><label class='control-label' for='opportunity'>"+LabelName+"<span "+manadatory+"></span></label>"+delete_icon+"<span class='glyphicon glyphicon-pencil editpopup hidepencil' style='float:right;display:none;'></span>"+
                         "<select style = 'width:100%;' class ='form-select mb-3' id='"+ColumnName+"'name='"+ColumnName+"'>";
                     var Options=value.options;
-                    var sub_option = Options.substring(0, Options.length - 1);
+                    var sub_option = Options.substring(0, Options.length);
                     var option=sub_option.split(",");
                     for(var i=0;i<option.length;i++) {
                         var select = "";

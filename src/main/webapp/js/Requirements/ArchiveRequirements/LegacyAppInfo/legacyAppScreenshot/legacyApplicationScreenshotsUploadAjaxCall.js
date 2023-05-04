@@ -1,3 +1,13 @@
+$(document).ready(function () {
+		$("#UploadFiles").attr('disabled',true);
+		});
+		$("#fileUpload").change(function () {
+	    $('#FileList').show();
+
+		$("#UploadFiles").attr('disabled',false);			
+
+			});
+
 $("#UploadFiles").click(function(){
 var fd = new FormData();    
 $.each($('#fileUpload')[0].files, function(k, value)
@@ -17,6 +27,8 @@ $.each($('#fileUpload')[0].files, function(k, value)
     		  $('#deletegrid_update').click();    
     		  $('#FileList').hide();
     		  notification("success","File uploaded successfully.","Note:");
+    		   $("#fileUpload").val('');
+    		  $("#UploadFiles").attr('disabled',true);
     		    }
     	  else
     		  notification("error","Problem occured while file uploading.","Error:");
