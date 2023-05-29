@@ -30,11 +30,11 @@ function appendRowFunction(data){
         var row = "<tr>"+
         		  "<td style='text-align:center;vertical-align: middle;display:none;'><label class='control-label' for=''>"+seq_no+"</label>" +
                   "</td>"+
-                  "<td style='text-align:center;vertical-align: middle;'><label class='control-label' for=''>"+abbreviation_acronym+"</label>" +
+                  "<td style='text-align:left;color:black;vertical-align: middle;'><label class='control-label' for=''>"+abbreviation_acronym+"</label>" +
                   "</td>"+
-                  "<td style='text-align:center;vertical-align: middle;'><label class='control-label ' for=''>"+description+"</label>" +
+                  "<td style='text-align:left;color:black;vertical-align: middle;'><label class='control-label ' for=''>"+description+"</label>" +
                   "</td>"+
-                  "<td class='useraction' style='text-align:center;vertical-align: middle;'><span class='glyphicon glyphicon-pencil editpopup'id='editpopupabb"+seq_no+"'style='display:block;margin-left:-22px;'></span><span class='glyphicon glyphicon-trash deletepopup' style='float:right;display:block;margin-top:-13px;'></span>"+
+                  "<td class='useraction' style='text-align:center;vertical-align: middle;color:black;'><span class='glyphicon glyphicon-pencil editpopup'id='editpopupabb"+seq_no+"'style='display:block;margin-left:-22px;'></span><span class='glyphicon glyphicon-trash deletepopup' style='float:right;display:block;margin-top:-13px;'></span>"+
                   "</td>"+                  
                   "</tr>";
                  

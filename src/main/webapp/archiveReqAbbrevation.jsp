@@ -477,9 +477,9 @@ td {
 																									style='text-align: center; vertical-align: middle; display: none;'>Sequence
 																									Number</th>
 																								<th
-																									style='text-align: center; vertical-align: middle;'>Abbreviation/Acronym</th>
+																									style='text-align: center; vertical-align: middle; width: 35%;'>Abbreviation/Acronym</th>
 																								<th
-																									style='text-align: center; vertical-align: middle;'>Description</th>
+																									style='text-align: center; vertical-align: middle; width: 50%;'>Description</th>
 																								<th
 																									style='text-align: center; vertical-align: middle; width: 15%;'
 																									class="useractionheader" scope="col">Action</th>
@@ -547,13 +547,13 @@ td {
 																					<div class="row">
 																						<div class="form-group">
 																							<div class="col-lg-12">
-																								<label class="control-label" for="formInput526">Abbreviation/Acronym:</label>
+																								<label class="control-label" for="formInput526" style="color:black;">Abbreviation/Acronym:</label>
 																								<input type="text" class="form-control"
 																									id="abbreviation_acronym"
 																									name="abbreviation/acronym" required>
 																							</div>
 																							<div class="col-lg-12">
-																								<label class="control-label" for="formInput526">Description:</label>
+																								<label class="control-label" for="formInput526" style="color:black;">Description:</label>
 																								<textarea class="form-control"
 																									id="abb_description" name="abb_description"
 																									rows="4" required></textarea>
@@ -593,11 +593,11 @@ td {
 																					<div class="row">
 																						<div class="form-group">
 																							<div class="col-lg-12">
-																								<label class="control-label" for="formInput526">Abbreviation:</label>
+																								<label class="control-label" for="formInput526" style="color:black;">Abbreviation:</label>
 																								<input type="text" class="form-control"
 																									id="abbreviation_acronym_modify"
 																									name="abbreviation_acronym_modify" required>
-																								<label class="control-label" for="formInput526">Description:</label>
+																								<label class="control-label" for="formInput526" style="color:black;">Description:</label>
 																								<textarea class="form-control"
 																									id="description_modify"
 																									name="description_modify" rows="4" required></textarea> <input
@@ -640,7 +640,7 @@ td {
 																			<div class="modal-body">
 																				<form name="DeleteForm">
 																					<div class="modal-body">
-																						<p style="font-size: 14px;">Do you want to
+																						<p style="font-size: 14px; color:black;">Do you want to
 																							delete this Abbreviation/Acronym permanently?</p>
 																						<input type="text" class="form-control"
 																							id="seq_no_dlt" name="seq_no" required style="display:none;"><input

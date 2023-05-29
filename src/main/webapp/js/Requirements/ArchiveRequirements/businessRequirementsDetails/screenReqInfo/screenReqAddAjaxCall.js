@@ -49,7 +49,7 @@ function archiveScreenReqAddAjaxCall(displayName){
                  "</div>"+
             	 "</td>"+
             	 "</tr>";
-            	 $('#NoDataScrRecordsRow').hide();  
+            	 $('#NoDataScrRecordsRow').remove();  
             	 $("#screenReqInfo").append(Row);
             	 $('#saveScreenReqId').prop('disabled', false);
             	 notification("success","Row added successfully.","Success:");            	 
@@ -105,7 +105,7 @@ function archiveScreenReqAddAjaxCall(displayName){
             	 "</tr>";
             	 $("#searchFormInfo").append(searchFormRow);
             	 $('#saveSearchFormId').prop('disabled', false);
-            	 $("#NoDataSearchFormRow").hide();
+            	 $("#NoDataSearchFormRow").remove();
             	 
             	 var option = "<option value = '"+data.ReqId+" - "+displayName+"'>"+data.ReqId+" - "+displayName+"</option>"; 
             	 $('#searchFormTypesId').append(option);

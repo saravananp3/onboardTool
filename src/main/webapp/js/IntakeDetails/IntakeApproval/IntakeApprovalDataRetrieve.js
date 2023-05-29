@@ -50,6 +50,13 @@ $(document).ready(function(){
       });
 function IntakeApprovalDataRetrieveAjaxCall()
 {
+	if(a_Id=="undefined")
+	{
+		 $("#ApprovalSave").hide();
+		IntakePreviewDataRetrieveAjaxCall();
+	}
+	else
+	{
     $.ajax({
         url: "IntakeStakeHolderDataRetrieveServlet",
         type: 'POST',
@@ -244,6 +251,7 @@ function IntakeApprovalDataRetrieveAjaxCall()
             console.log(e);
         }
     });
+    }
 }
 function checkDependency(ColumnName,Value){
     var boolean = false;
@@ -433,14 +441,20 @@ function AssessmentInfo(data,n){
             finalCheck = false;
             assessmentStyle = "display:none;";
         }
-        if(data[n][m].ColumnName == "AppDetails" && data[n][m].section == "ApplicationInformation" && data[n][m].Value === "COTS – Commercial Off The Shelf" || data[n][m].Value === "MOTS – Modified Off The Shelf"){
-            $("#ContractInformationPreview").show();
-            $(".ContractInformationPreview").show();
-        }
+        if(data[n][m].ColumnName == "AppDetails" && data[n][m].section == "ApplicationInformation" && data[n][m].Value === "COTS – Commercial Off The Shelf" || data[n][m].Value === "MOTS – Modified Off The Shelf")
+        {    
+         $("#ContractInformationPart").show();
+						
+		}
+		else
+		{
+		 $("#ContractInformationPart").hide();
+		}        
         var AssessmentTag ="<tr style='"+assessmentStyle+"'>\n";
         AssessmentTag +="<td style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>"+data[n][m].LabelName+"</td>\n";
         AssessmentTag += "<td style='border: 1px solid black;text-align:left;padding: 10px;'>&nbsp;"+data[n][m].Value+"</td>\n";
-        AssessmentTag += "</tr>\n" 
+        AssessmentTag += "</tr>\n";
+        checkAssessmentDependency = checkDependency(column_name, columnValue);
          $("#"+data[n][m].section+"Preview").append(AssessmentTag);
         }
 }
@@ -573,6 +587,9 @@ $(document).on('click','#ApprovalCommentCancelBtn',function(){
     }
     $("#ApprovalCommentClose").click();
 });
+$(document).on('click','#IntakeApprovalCommentCancelBtn',function(){
+    $("#IntakeApprovalCommentClose").click();
+});
 function isDirectApprove(){
 if( directApprove==true){
     approvefrombackend(directApprovId,directApprovName,directApprovPriority)
@@ -594,3 +611,360 @@ function approvefrombackend(approvalId,username,priorityNo)
        }
        });
        }
+       
+function IntakePreviewDataRetrieveAjaxCall() {
+	$.ajax({
+		url: "IntakePreviewDataRetrieveServlet",
+		type: 'POST',
+		dataType: "json",
+		success: function(data) {
+			console.log("Data Retrieve Preview json array----->", data);
+			exportContent = data;
+			var inputs = {};
+			$("#OpportunityInfoPreview").html("");
+			$("#TriageInfoPreview").html("");
+			$("#TriageSummInfoPreview").html("");
+			$("#ApplicationInformationPreview").html("");
+			$("#DataCharacteristicsPreview").html("");
+			$("#ComplianceCharacteristicsPreview").html("");
+			$("#ArchivalConsumptionPreview").html("");
+			$("#ContractInformationPreview").html("");
+			$("#StakeHolderInfoPreview").html("");
+
+
+			for (var i = 0; i < data[0].length; i++) {
+				var OppTag ="<tr>\n";
+         			OppTag +="<td style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>"+data[0][i].LabelName+"</td>\n";
+         			OppTag += "<td style='border: 1px solid black;text-align:left;padding: 10px;'>&nbsp;"+data[0][i].Value+"</td>\n";
+         			OppTag += "</tr>\n"   
+				$("#OpportunityInfoPreview").append(OppTag);
+			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) 
+    });
+			}
+
+			var checkTriageDependency;
+			for (var j = 0; j < data[1].length; j++) {
+
+				var triageStyle = "";
+
+				var column_name = data[1][j].ColumnName;
+
+				var columnValue = data[1][j].Value;
+
+				if (column_name == 'Preliminary_CBA') {
+					var formatter = new Intl.NumberFormat('en-US', {
+						style: 'currency',
+						currency: 'USD',
+
+					});
+					columnValue = formatter.format(columnValue)
+				}
+
+				if (checkTriageDependency)
+					triageStyle = "display:none;";
+				   var TriageTag ="<tr style='"+triageStyle+"'>\n";
+        			   TriageTag +="<td style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>"+data[1][j].LabelName+"</td>\n";
+        			   TriageTag += "<td style='border: 1px solid black;text-align:left;padding: 10px;'>&nbsp;"+data[1][j].Value+"</td>\n";
+        			   TriageTag += "</tr>\n";  
+				checkTriageDependency = checkPreviewDependency(column_name, columnValue);			
+
+				$("#TriageInfoPreview").append(TriageTag);
+					var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
+			}
+			var triageStyle = "";
+			for (var k = 0; k < data[2].length; k++) {				  
+					//var TriageSummTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[2][k].Value+"'class = 'TriageSummInfoPreview'><b>"+data[2][k].LabelName+"</b> : "+data[2][k].Value+" </pre>";
+				var TriageSummTag ="<tr style='"+triageStyle+"'>\n";
+     				TriageSummTag +="<td style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>"+data[2][k].LabelName+"</td>\n";
+     				TriageSummTag += "<td style='border: 1px solid black;text-align:left;padding: 10px;'>&nbsp;"+data[2][k].Value+"</td>\n";
+     				TriageSummTag += "</tr>\n";  
+				
+				$("#TriageSummInfoPreview").append(TriageSummTag);
+				     	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
+			}
+
+			var checkAssessmentDependency;
+
+			for (var l = 0; l < data[3].length; l++) {
+
+				for (var m = 0; m < data[3][l].length; m++) {
+
+					var assessmentStyle = "";
+
+					var column_name = data[3][l][m].ColumnName;
+
+					var columnValue = data[3][l][m].Value;
+
+					var check = checkReadOnlyData(column_name);
+
+					if (checkAssessmentDependency)
+						assessmentStyle = "display:none;";
+
+					if (check) {
+						assessmentStyle = "";
+					}
+					else if (finalCheck) {
+						finalCheck = false;
+						assessmentStyle = "display:none;";
+					}
+					if (data[3][l][m].ColumnName == "AppDetails" && data[3][l][m].section == "ApplicationInformation" && data[3][l][m].Value === "COTS - Commercial Off The Shelf" || data[3][l][m].Value === "MOTS - Modified Off The Shelf")
+					{
+						$("#ContractInformationPart").show();
+						
+					}
+					else
+					{
+						$("#ContractInformationPart").hide();
+					}
+
+					//var AssessmentTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;"+assessmentStyle+"' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[3][l][m].Value+"'class = 'AssessmentPreview'><b>"+data[3][l][m].LabelName+"</b> : "+data[3][l][m].Value+" </pre>";
+					 var AssessmentTag ="<tr style='"+assessmentStyle+"'>\n";
+        				  AssessmentTag +="<td style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>"+data[3][l][m].LabelName+"</td>\n";
+        				  AssessmentTag += "<td style='border: 1px solid black;text-align:left;padding: 10px;'>&nbsp;"+data[3][l][m].Value+"</td>\n";
+        				  AssessmentTag += "</tr>\n";
+					checkAssessmentDependency = checkPreviewDependency(column_name, columnValue);
+
+					$("#" + data[3][l][m].section + "Preview").append(AssessmentTag);
+					 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
+				}
+			}
+			
+	    var table = "<table class='table table-bordered'>"+
+    	"<thead>"+
+        "<tr>"+
+        "<th style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>Name</th>"+
+        "<th style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>Email</th>"+
+        "<th style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>User Name</th>"+
+        "<th style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>Role</th>"+
+        "<th style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>Approval Status</th>"+
+        "</tr>"+
+        "</thead>"+
+        "<tbody id = 'StakeHolder'>";
+			  var checkToggleApprove = "";
+              var checkToggleNotApprove = "";
+              var checkToggleNotYet = "";
+			for (var n = 1; n < data[4].length; n++) {
+
+				// var stakeHolderTag = "<pre
+				// style='font-family:verdana;font-size:100%;' class =
+				// 'stakeHolderInfoPreview'><b>"+data[4][n].LabelName+"</b> :
+				// "+data[4][n].Value+" </pre>";
+				table += "<tr>"+
+            				"<td>"+data[4][n].name+"</td>"+
+            				"<td>"+data[4][n].emailId+"</td>"+
+            				"<td>"+data[4][n].username+"</td>"+
+            				"<td>"+data[4][n].role+"</td>"+
+            				"<td>"+data[4][n].intakeApproval+"</td>"+
+            			  "</tr>";
+            			  var intakeApproval=data[4][n].intakeApproval;
+            switch(intakeApproval)
+                   {
+                      case "Approved":
+                            checkToggleApprove="checked";                            
+                            break;
+                      case "Rejected":
+                            checkToggleNotApprove = "checked";                            
+                            break;
+                      case "Decision pending":
+                           checkToggleNotYet = "checked";                           
+                           break;
+                   }
+            			  
+            			  var Row = "<tr>"+
+                            "<td style='text-align:center;vertical-align: middle;'class='UserName' >"+data[4][n].name+"</td>"+
+                            "<td style='text-align:center;vertical-align: middle;'>"+data[4][n].role+"</td>"+  
+                             "<td style='text-align:center;vertical-align: middle;'>"+
+                             "<select class='intakeApproval' disabled>"+
+    						"<option value='"+data[4][n].intakeApproval+"' selected>"+data[4][n].intakeApproval+"</option>"+
+   							"</select>"+
+                            "<input type='hidden' class='CurrentUser' value="+n+"/>"+
+                            "</td>"+
+                            "<td>"+
+                            "<div class='wrapper'>"+
+                            "<label class='btn_container'>"+
+                            "<input type='radio' class='yes disabledapproval' name='radio"+n+"' ng-model='$scope.teste' value='yes' disabled "+checkToggleApprove+">"+
+                            "<div class='checkmark'><i class='ion-checkmark-round'></i></div>"+
+                            "</label>"+
+                            "<label class='btn_container' >"+
+                            "<input type='radio' class='neutral disabledapproval' name='radio"+n+"' model='$scope.teste' value='neutral' disabled "+checkToggleNotYet+">"+
+                            "<div class='checkmark'><i class='ion-record'></i></div>"+
+                            "</label>"+
+                            "<label class='btn_container'>"+
+                            "<input type='radio' class='no disabledapproval' name='radio"+n+"' ng-model='$scope.teste' value='no' disabled "+checkToggleNotApprove+">"+
+                            "<div class='checkmark'><i class='ion-close-round'></i></div>"+
+                            "</label>"+
+                            "</div>"+
+                            "</td>"+
+                            "<td style='text-align:center;vertical-align: middle; display:none;'><label class='control-label ' for=''>"+(data[4][n].comments || 'N/A')+"</label></td>"+ 
+                            "<td style='text-align: center;padding-top:25px;' >"+
+                              "<i class='fas fa-comment-alt fa-2x IntakeApprovalCommentIcon 'id='ApprovercmdIcon"+n+"' style='color:#87CEEB;' role='button'></i>"+
+                            "</td>"+                     
+                            "</tr>";
+                           $("#ApprovalDetails").append(Row);
+			}
+			table += "</tbody>" +
+				"</table>";
+			$("#StakeHolderInfoPreview").append(table);
+		
+			 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                var tooltipList = tooltipTriggerList.map(function (tooltipTrigger) {
+                    return new bootstrap.Tooltip(tooltipTrigger) });
+			notification("info", "Review of Intake Approval Details.", "Info");
+			// var onclick_attr = $("#ReviewNextBtn").attr("onclick");
+			$("#ReviewNextBtn").attr("onclick", "location.href='IntakeApproval.jsp?a_id=" + data[5].a_id + "';");
+			$(".ReviewNextBtn").attr("onclick", "location.href='IntakeApproval.jsp?a_id=" + data[5].a_id + "';");
+
+			if (data[5].checkRequestSign == 1) {
+				$("#button_id").show();
+			}
+			else {
+				$("#button_id").show();
+			}
+			var checkReviewPage = data[data.length - 1].CheckExistence;
+			if (checkReviewPage == true) {
+				$("#ReviewNextBtn").show();
+				$("#ReviewPrevBtn").show();
+				$("#button_id").hide();
+			}
+		},
+		error: function(e) {
+			console.log(e);
+
+		}
+
+	});
+}
+
+      $(document).on('click', '.IntakeApprovalCommentIcon', function () {
+    $('#IntakeApprovalCommentsPopUp_btn').click();
+     var seqnum=$(this).index('.IntakeApprovalCommentIcon');
+    var currentRow=$(this).closest("tr"); 
+    var IntakeComments=currentRow.find("td:eq(4)").text();
+    $('#IntakeApprovalComments').val(IntakeComments);
+     $('#IntakeApprovalCommentsPopUp').on('shown.bs.modal', function () {
+    });
+    });    
+
+
+function PreviewdependencyKeyValuePair() {
+
+	var inputs = {};
+
+	// Triage Dependency
+	inputs["rationalization_type"] = "Other";
+	inputs["appPlatfrm"] = "Other";
+	inputs["app_and_data_hosted"] = "Yes";
+	inputs["compliance"] = "Yes";
+	inputs["Financialdate"] = "Yes";
+	inputs["TechincalDeterminingdate"] = "Yes";
+
+	// Application Info Dependency
+	inputs["AssessAppPlatform"] = "Others";
+	inputs["ComplianceLegalDrivers"] = "Yes";
+	inputs["BusinessDriversDrivers"] = "Yes";
+	inputs["TechnicalDrivers"] = "Yes";
+	inputs["SupportedApp"] = "No";
+
+	// DataChar Dependency
+	inputs["DataSetMainframe"] = "Yes";
+	inputs["ReportGeneration"] = "Yes";
+	// inputs["ReadonlyData"] = "Yes";
+	// inputs["ReadonlyData"] = "No";
+	inputs["UpDownStream"] = "Yes";
+
+	// Archival Dependency
+	inputs["legalhold"] = "Yes";
+	inputs["specificpurgerequirements"] = "Yes";
+
+	return inputs;
+}
+
+function PreviewdependencyKeyValueColumnPair() {
+
+	var inputs = {};
+
+	// Triage Dependency
+	inputs["rationalization_type"] = "If_other_please_describe";
+	inputs["appPlatfrm"] = "If_Other_describe";
+	inputs["app_and_data_hosted"] = "vendor";
+	inputs["compliance"] = "describe";
+	inputs["Financialdate"] = "plsdescribe";
+	inputs["TechincalDeterminingdate"] = "pls_describe";
+
+	// Application Info Dependency
+	inputs["AssessAppPlatform"] = "OtherPleaseDescribe";
+	inputs["ComplianceLegalDrivers"] = "PleaseDescribe1";
+	inputs["BusinessDriversDrivers"] = "PleaseDescribe2";
+	inputs["TechnicalDrivers"] = "PleaseDescribe3";
+	inputs["SupportedApp"] = "SupportApp";
+
+	// DataChar Dependency
+	inputs["DataSetMainframe"] = "plsprovideinfo";
+	inputs["ReportGeneration"] = "plsprovidedetails";
+	// inputs["ReadonlyData"] = "LastUpdateMade";
+	// inputs["ReadonlyData"] = "ExpectedDate";
+	inputs["UpDownStream"] = "plsdescribeStreams";
+
+	// Archival Dependency
+	inputs["legalhold"] = "ifanypleasedescribe";
+	inputs["specificpurgerequirements"] = "describedetails";
+
+	return inputs;
+}
+
+
+function checkPreviewDependency(ColumnName, Value) {
+	var boolean = false;
+
+	var inputs = PreviewdependencyKeyValuePair();
+
+	var inputsValueColumn = PreviewdependencyKeyValueColumnPair();
+
+	if (inputs.hasOwnProperty(ColumnName)) {
+
+		if (inputs[ColumnName] == Value) {
+			boolean = false;
+			dependencyColumn = inputsValueColumn[ColumnName];
+		}
+		else {
+			boolean = true;
+			dependencyColumn = "";
+		}
+
+	}
+	else if (ColumnName == "ReadonlyData") {
+		finalCheck = true;
+		dependencyColumn = "";
+		if (Value == "Yes")
+			readOnlyValue = "LastUpdateMade";
+		else if (Value == "No")
+			readOnlyValue = "ExpectedDate";
+	}
+	else {
+		dependencyColumn = "";
+	}
+	return boolean;
+
+}
+function checkReadOnlyData(ColumnName) {
+
+	var checkBoolean = false;
+
+	if (ColumnName == readOnlyValue) {
+		checkBoolean = true;
+		readOnlyValue = "";
+	}
+	return checkBoolean;
+
+}
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

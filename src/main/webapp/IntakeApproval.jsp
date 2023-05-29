@@ -811,7 +811,7 @@ e.printStackTrace();
 
 																
 															<!-- ==========Contract Information Details========== -->
-																		<div class="accordion-item">
+																		<div class="accordion-item" id="ContractInformationPart">
 																			<h2 class="accordion-header"
 																				id="panelsStayOpen-heading-8">
 																				<button class="accordion-button collapsed"
@@ -969,6 +969,32 @@ e.printStackTrace();
         <div class="modal-footer">
         <button type="button" class="btn btn-primary" id = "ApprovalCommentOKBtn" >Ok</button>
         <button type="button" class="btn btn-secondary" id = "ApprovalCommentCancelBtn" >Cancel</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  <button type="button" class="btn btn-primary pull-right"
+			id="IntakeApprovalCommentsPopUp_btn" data-bs-toggle="modal" data-bs-target="#IntakeApprovalCommentsPopUp"
+			style="display: none;">Intake Approval Comments PopUp</button>
+  
+  	<div class="modal" id="IntakeApprovalCommentsPopUp"   tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Comments</h5>
+			<button type="button" class="btn-close" id ="IntakeApprovalCommentClose" data-bs-dismiss="modal"
+				aria-label="Close"></button>
+		</div>
+      <div class="modal-body">
+                <div class="modal-body">                
+             <textarea id="IntakeApprovalComments" name="ApprovalCommentSection" rows="4" cols="70" disabled></textarea>
+			 </div>
+             <input type="hidden" id="IntakeApprovalCommentSeq"/>
+        </div>
+        <div class="modal-footer">        
+        <button type="button" class="btn btn-secondary" id = "IntakeApprovalCommentCancelBtn" >Cancel</button>
       </div>
       </div>
     </div>
