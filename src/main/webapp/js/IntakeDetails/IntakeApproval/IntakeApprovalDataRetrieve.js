@@ -443,13 +443,9 @@ function AssessmentInfo(data,n){
         }
         if(data[n][m].ColumnName == "AppDetails" && data[n][m].section == "ApplicationInformation" && data[n][m].Value === "COTS – Commercial Off The Shelf" || data[n][m].Value === "MOTS – Modified Off The Shelf")
         {    
-         $("#ContractInformationPart").show();
-						
+         $('#ContractInformationPart').show();						
 		}
-		else
-		{
-		 $("#ContractInformationPart").hide();
-		}        
+		       
         var AssessmentTag ="<tr style='"+assessmentStyle+"'>\n";
         AssessmentTag +="<td style='border: 1px solid black;text-align:left; background-color:#737373;color:white;table-layout:fixed;width:40%;padding: 10px;'>"+data[n][m].LabelName+"</td>\n";
         AssessmentTag += "<td style='border: 1px solid black;text-align:left;padding: 10px;'>&nbsp;"+data[n][m].Value+"</td>\n";
@@ -715,13 +711,9 @@ function IntakePreviewDataRetrieveAjaxCall() {
 					}
 					if (data[3][l][m].ColumnName == "AppDetails" && data[3][l][m].section == "ApplicationInformation" && data[3][l][m].Value === "COTS - Commercial Off The Shelf" || data[3][l][m].Value === "MOTS - Modified Off The Shelf")
 					{
-						$("#ContractInformationPart").show();
-						
+						$('#ContractInformationPart').show();						
 					}
-					else
-					{
-						$("#ContractInformationPart").hide();
-					}
+					
 
 					//var AssessmentTag = "<pre style='font-family:verdana;font-size:90%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:140ch;"+assessmentStyle+"' data-bs-toggle='tooltip' data-bs-placement='top' title='"+data[3][l][m].Value+"'class = 'AssessmentPreview'><b>"+data[3][l][m].LabelName+"</b> : "+data[3][l][m].Value+" </pre>";
 					 var AssessmentTag ="<tr style='"+assessmentStyle+"'>\n";

@@ -811,7 +811,7 @@ e.printStackTrace();
 
 																
 															<!-- ==========Contract Information Details========== -->
-																		<div class="accordion-item" id="ContractInformationPart">
+																		<div class="accordion-item" id="ContractInformationPart" style="display:none;">
 																			<h2 class="accordion-header"
 																				id="panelsStayOpen-heading-8">
 																				<button class="accordion-button collapsed"
