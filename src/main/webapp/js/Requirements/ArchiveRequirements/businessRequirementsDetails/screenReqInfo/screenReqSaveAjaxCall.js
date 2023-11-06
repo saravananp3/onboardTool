@@ -9,7 +9,8 @@ function getScreenReqJsonArray(e){
 	var checkDuplicate = true;
 	var validation = true;
 	var JsonArray = [];
-	for(var i = 0; i<$('.screenReqRowClass').length; i++){
+	var rowCount = $('#screenReqInfo').children('tr.screenReqRowClass').length;
+	for(var i = 0; i<rowCount; i++){
 		var inputs = {};
 		var ReqId = $('.ScreenReqId').eq(i).html();
 		var screenDisplay = $('.screenDisplay').eq(i).val();

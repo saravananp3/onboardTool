@@ -14,7 +14,12 @@ import java.util.Set;
 import org.apache.commons.codec.binary.Base64;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonObject;
+
 
 import exportPdf.service.jsonToHtmlContent;
 
@@ -99,8 +104,6 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				writeTableEndTags();
 				writeHeader("");
 				}
-				
-
 				else if(i==1)
 				{
 					writeTableStartTags();
@@ -169,13 +172,18 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 							writeHeader(functionalReqSection[j].toString());
 					     	writeTableStartTags();
 					     	writeTableHeadingTags(new String[]{"Req Id","Req In-Scope(Y/N)","Requirement Type","Requirement","Additional Info"});
-
+					    if(jsonArray2.size()>0)
+					    {
 						for(int i=0;i<jsonArray2.size();i++) {
 								JsonObject jsonObject1 = jsonArray2.get(i).getAsJsonObject();
 								
 									writeTableDataTags(new String[] {jsonObject1.get("reqId").getAsString(),jsonObject1.get("reqInScope").getAsString(),jsonObject1.get("reqType").getAsString(),jsonObject1.get("req").getAsString(),jsonObject1.get("additionInfo").getAsString()});
 								  
-						}
+						}}
+					    else
+					    {
+					    	writeTableDataEmptyTags(new String[] {"","","","",""});
+					    }
 								writeTableEndTags();
                             }
 				}
@@ -186,42 +194,95 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 					
 					JsonArray jsonArray1 = jsonArray.get(6).getAsJsonArray();
      				JsonArray jsonArray2 = jsonArray1.get(0).getAsJsonArray();
-	    			JsonObject jsonObject = jsonArray2.get(0).getAsJsonObject();
-			     	writeTableStartTags();
-					writeTableHeadingTags(new String[]{"Req Id","Screen Display Name in Infoarchive","Purpose","Equivalent in the Legacy Application"});
-						writeTableEndTags();
+	    			JsonObject jsonObject1 = jsonArray2.get(0).getAsJsonObject();
+			     	Boolean dataCheck1=jsonObject1.get("checkData").getAsBoolean();	
+			     	System.out.println("Screen Requirements : "+jsonArray1);
+	    			if(dataCheck1) {
+	    				writeTableStartTags();
+			     		writeTableHeadingTags(new String[]{"Req Id","Screen Display Name in Infoarchive","Purpose","Equivalent in the Legacy Application"});
+			     		for(int i=0;i<jsonArray2.size();i++) {
+							JsonObject jsonObject2 = jsonArray2.get(i).getAsJsonObject();
+							
+								writeTableDataTags(new String[] {jsonObject2.get("reqId").getAsString(),jsonObject2.get("screenDisplay").getAsString(),jsonObject2.get("purpose").getAsString(),jsonObject2.get("equivalentLegacy").getAsString()});
+							  
+			     		}
+			     		writeTableEndTags();
 						writeHeader("");
+	    			}else {
+	    				writeTableStartTags();
+			     		writeTableHeadingTags(new String[]{"Req Id","Screen Display Name in Infoarchive","Purpose","Equivalent in the Legacy Application"});
+			     		writeTableDataEmptyTags(new String[] {"","","",""});
+			     		writeTableEndTags();
+						writeHeader("");
+	    			}
 	     				JsonArray jsonArray3 = jsonArray1.get(1).getAsJsonArray();
-
+		    			JsonObject jsonObject3 = jsonArray3.get(0).getAsJsonObject();
+				     	Boolean dataCheck2=jsonObject3.get("checkData").getAsBoolean();	
+				     	if(dataCheck2) {	
 				     	writeTableStartTags();
-
 						writeTableHeadingTags(new String[]{"Req Id","Search Form Name","Search Field Name","Field Format","Data Type","Data Retrieval Requirement","Required Field","Search Field Additional Information"});
-							writeTableEndTags();
-						
+						for(int i=0;i<jsonArray3.size();i++) {
+							JsonObject jsonObject4 = jsonArray3.get(i).getAsJsonObject();
+							
+								writeTableDataTags(new String[] {jsonObject4.get("reqId").getAsString(),jsonObject4.get("searchForm").getAsString(),jsonObject4.get("searchField").getAsString(),jsonObject4.get("fieldFormat").getAsString(),jsonObject4.get("dataType").getAsString(),jsonObject4.get("dataRetrieval").getAsString(),jsonObject4.get("requiredField").getAsString(),jsonObject4.get("additionalInfo").getAsString()});
+							  
+						}
+						writeTableEndTags();						
+                    }else {
+                    	writeTableStartTags();
+						writeTableHeadingTags(new String[]{"Req Id","Search Form Name","Search Field Name","Field Format","Data Type","Data Retrieval Requirement","Required Field","Search Field Additional Information"});
+			     		writeTableDataEmptyTags(new String[] {"","","","","","","",""});
+						writeTableEndTags();
                     }		//over
-				
+                    
+				}
 				private void getAbbrevationDef() {
-					writeHeader("Abbreviation, Acronym, Definitions");
-					String key[]= {"AB","BI","IA","Read-Only","REQ","UAT","XML"};
-					String value[]= {"Active Directory Group","Business Intelligence",
-							"InfoArchive is a repository that compresses and maintains data from business applications and data sources. Data contained within the archive is no longer transactional and immutable (unable to be changed). Access to the archive is normally confined to a small group of users defined by security rules and roles. Data retention policies may be applied to data contained within the archive"
-							,"Date at which the legacy application data has been set to static use. There are no changes to be made to the data, no integration jobs running to alter the status of the data, nor will any future changes be made to the data",
-							"Requirement","User Acceptance Testing",
-							"Extensible Markup Format is used to define documents with a standard format that can be read by any XML-compatible application.It is a \\\"metalanguage\\\" that can be used to create markup languages for specific applications"};
+					/*
+					 * writeHeader("Abbreviation, Acronym, Definitions"); String key[]=
+					 * {"AB","BI","IA","Read-Only","REQ","UAT","XML"}; String value[]=
+					 * {"Active Directory Group","Business Intelligence",
+					 * "InfoArchive is a repository that compresses and maintains data from business applications and data sources. Data contained within the archive is no longer transactional and immutable (unable to be changed). Access to the archive is normally confined to a small group of users defined by security rules and roles. Data retention policies may be applied to data contained within the archive"
+					 * ,"Date at which the legacy application data has been set to static use. There are no changes to be made to the data, no integration jobs running to alter the status of the data, nor will any future changes be made to the data"
+					 * , "Requirement","User Acceptance Testing",
+					 * "Extensible Markup Format is used to define documents with a standard format that can be read by any XML-compatible application.It is a \\\"metalanguage\\\" that can be used to create markup languages for specific applications"
+					 * }; writeTableStartTags(); writeTableHeadingTags(new
+					 * String[]{"Abbreviation/Acronym","Description"}); for(int
+					 * i=0;i<key.length;i++) {
+					 * 
+					 * writeTableDataTags(new String[] {key[i],value[i]}); }
+					 */
+                    writeHeader("Abbreviation/Acronyms");					
+					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
 					writeTableStartTags();
 					writeTableHeadingTags(new String[]{"Abbreviation/Acronym","Description"});
-					for(int i=0;i<key.length;i++) {
-						
-					writeTableDataTags(new String[] {key[i],value[i]});
+					
+					for(int i=0;i<jsonArray1.size();i++) {
+						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();
+						if(jsonObject1.get("checkData").getAsBoolean()) {
+						writeTableDataTags(new String[] {jsonObject1.get("abbreviation_acronym").getAsString(),jsonObject1.get("description").getAsString()});
 					}
-						writeTableEndTags();
-                    }
+					else
+			     		writeTableDataEmptyTags(new String[] {"",""});
+					}
+
+					writeTableEndTags();
+				}
+//					writeHeader("Abbreviation, Acronym, Definitions");
+//					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
+//					writeTableStartTags();
+//					writeTableHeadingTags(new String[]{"Abbreviations","Description"});
+//					for(int i=0;i<jsonArray1.size();i++) {
+//						JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();	
+//						writeTableDataTags(new String[] {jsonObject1.get("abbreviation_acronym").getAsString(),jsonObject1.get("description").getAsString()});
+//					}
+//						writeTableEndTags();
+//                    }
 				
 				// Document Revisions
 				private void getDocumentRevisions() {
 					writeHeader("Document Revisions");
 					
-					JsonArray jsonArray1 = jsonArray.get(7).getAsJsonArray();
+					JsonArray jsonArray1 = jsonArray.get(8).getAsJsonArray();
 					writeTableStartTags();
 					writeTableHeadingTags(new String[]{"Date","Version No","Document Changes","Change Author"});
 					for(int i=0;i<jsonArray1.size();i++) {
@@ -232,18 +293,46 @@ public class archivePreviewHtmlContentService extends jsonToHtmlContent {
 				}
 				// Document Revisions
 				private void getAddendum() {
-					writeHeader("Addendum");
-					
-					JsonArray jsonArray1 = jsonArray.get(8).getAsJsonArray();
-					JsonObject jsonObject1 = jsonArray1.get(0).getAsJsonObject();	
+				    writeHeader("Addendum");
+				    
+				    JsonArray jsonArray1 = jsonArray.get(9).getAsJsonArray();
+				    System.out.println(" Addendum jsonArray1 : "+jsonArray1);
+				    for(int i=0;i<jsonArray1.size();i++) {
+				        JsonObject jsonObject1 = jsonArray1.get(i).getAsJsonObject();
+				        System.out.println(" Addendum Objects "+i+" : "+jsonObject1);
+				        writeTableStartTags();
+				        String label= jsonObject1.get("labelName").getAsString();
+				        String value= jsonObject1.get("addendumInfo").getAsString();
+				        writeTableContent(label, value);
+				        writeTableEndTags();
+				        writeNewLineTags();
+				        writeTableStartTags();		
+				        writeAddendumFilesTableHeadingTags(new String[]{"S.No","File Name"});
+				        JsonObject jsonObject2 = jsonObject1.getAsJsonObject("fileNames");
+				        System.out.println(" Addendum Objects File Names : "+jsonObject2);
+				        System.out.println(" Addendum Objects Size : "+jsonObject2.size());
 
-			     	writeTableStartTags();
-					String label= jsonObject1.get("labelName").getAsString();
-					String value= jsonObject1.get("addendumInfo").getAsString();
-					writeTableContent(label, value);
-
-						writeTableEndTags();
-                    }
+				        if (jsonObject2.size()>1) {
+				        	jsonObject2.remove("checkData");
+				        	int j=1;
+				        	for (Map.Entry<String, JsonElement> entry : jsonObject2.entrySet()) {				        	 
+				        	    JsonElement value1 = entry.getValue();				        	    
+				        	    if (value1 != null && value1.isJsonPrimitive()) {
+				        	        String fileName = value1.getAsString();
+				        	        writeTableDataTags(new String[] { String.valueOf(j), fileName });
+				        	    }
+				        	    j++;
+				        	}
+				        }
+				        else {
+						    writeTableFileEmptyTags(new String[] {"",""});
+						    }
+				        
+				        writeTableEndTags();
+				        writeNewLineTags();
+				    } 
+				}
+				
 	   private void getRolesResponsibilites() {
 			writeHeader("Roles & Responsibilites");
 			writeTableStartTags();

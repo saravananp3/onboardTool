@@ -33,11 +33,8 @@
 <script src="js/common/email/emailAjaxCall.js"></script>
 <script src ="js/pdf/downloadPDF_AjaxCall.js"></script>
 <script src ="js/pdf/deletePDF_AjaxCall.js"></script>
-<script src ="js/IntakeDetails/IntakePreviewDetails/IntakePreviewDataRetrieve.js"></script>
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
 <link rel="stylesheet" href="js_in_pages/requirements.css" type="text/css"/>
 
 <link rel="stylesheet" href="css/Responsive/intake-opportunity.css"
@@ -858,7 +855,7 @@ e.printStackTrace();
                                                           </thead>
                                                           <tbody id='AbbrevationDescriptionInfoPreview'>
                                                           </tbody>
-                                                          </table > </td> </tr>
+                                                          </table > 
                                                  <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
                                                        <h3 class="panel-title">6 Document Revisions</h3><br><br>
                                                         <table class='table-bordered'>
@@ -871,12 +868,13 @@ e.printStackTrace();
                                                           <tbody id='documentRevisionsInfoPreview'>
                                                           </tbody>
                                                           </table></div> </td> </tr>
-                                                   <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                 <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
                                                        <h3 class="panel-title">7 Addendum</h3><br><br>
                                                         <div id = "addendumInfoPreview">
                                                         </div>
-                                                        </td> </tr>
+                                                        </td> </tr>                                                                                                         
                                                         <tr align='left'><td style='color:#404041;font-size:12px;line-height:16px;padding:10px 16px 20px 18px'>
+                                                     
                                                       <!--  <h3 class="panel-title">8 Approval Details</h3><br><br>
                                                         <table class='table-bordered'>
                                                           <thead>
@@ -988,8 +986,8 @@ e.printStackTrace();
     </body>
     <%@include file="Footer.jspf"%>
     <!-- ========== COMMON JS FILES ========== -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/jquery-ui/jquery-ui.min.js"></script>
+<!--     <script src="js/jquery/jquery-2.2.4.min.js"></script>
+ -->    <script src="js/jquery-ui/jquery-ui.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/pace/pace.min.js"></script>
     <script src="js/lobipanel/lobipanel.min.js"></script>
@@ -1035,6 +1033,13 @@ $(document).on('mouseenter','.active1', function(){
       												<input type="submit" id="scr_submit" style="display:none;">
 											    </form>
 											   <input type="submit" id="delete_icon_none" style="display:none;">
+<form action="ArchiveReqAddendumFileDownload" method="post">
+													<input hidden type="text" name="Seq_Number" id="Seq_Number">
+      												<input hidden type="text" name="Section_Number" id="Section_Number">
+      												<input hidden type="text" name="Add_File_Name" id="Add_File_Name">
+      												<input hidden type="submit" id="addendum_file_submit" style="display:none;">
+											    </form>
+											   <input type="submit" id="delete_icon_none" style="display:none;">											   
 <script>
 var myVar;
 function myFunction() {
@@ -1048,8 +1053,10 @@ document.getElementById("overlay").style.display = "none";
 <script src="js/navigation/navigation.js"></script>
 <!-- ========== Toastr ========== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-     <script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/legacyAppScreenshot/legacy_scr_retrieve_review.js"></script>
 	<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/legacyAppScreenshot/legacy_scr_download.js"></script>
      <script src="js/Requirements/ArchiveRequirements/archiveRequirementReview/archiveReqReviewDataRetrieveAjaxCall.js"></script>
+          <script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js"></script>
+                    <script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDownload.js"></script>
+<script type="text/javascript" src="js/Requirements/ArchiveRequirements/LegacyAppInfo/legacyAppScreenshot/legacy_scr_retrieve_review.js"></script>     
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </html>

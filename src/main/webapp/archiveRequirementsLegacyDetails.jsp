@@ -1043,7 +1043,7 @@ e.printStackTrace();
 		</form>
 		<input type="submit" id="deletegrid_update" style="display: none;">
 
-	</div>
+	</div> 
 
 	</div>
 	</div>

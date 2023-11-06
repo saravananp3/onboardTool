@@ -27,6 +27,7 @@ $(document).on('click','#exportPdf',function(o){
 	    	 var pdfPath = data.path;
 	    	 pdfPath =pdfPath.replaceAll("\\","//");
 	    	 window.location.href = "downloadPDFservlet?path='"+pdfPath+"'";
+	    	 console.log("export pdf archive req :"+data);
 	    	 //downloadPDFAjaxCall(pdfPath);
 	    	 //setTimeout(deletePDFAjaxCall(pdfPath), 2000);
 	    	 //deletePDFAjaxCall(pdfPath);
@@ -168,6 +169,7 @@ function reviewDataRetrieveAjaxCall()
               var functionalReqIdArray = ['FunctionReqDataReqInfoPreview','FunctionReqRetentionLegalReqInfoPreview','FunctionReqSecurityReqInfoPreview','FunctionReqUsabilityReqInfoPreview','FunctionReqAuditReqInfoPreview'];
               for(var j=0;j<functionalReqIdArray.length;j++)
             	  {
+					  if(data[5][j][0]){
               var dataCheck = data[5][j][0].checkExistance; 
               $.each(data[5][j],function(key,value){    
             	         if(dataCheck){
@@ -175,6 +177,10 @@ function reviewDataRetrieveAjaxCall()
          		         $("#"+functionalReqIdArray[j]).append(input);
             	         }
                  	});
+            	}else{
+						   var input = "<tr><td colspan='5' style='text-align: center;'>No Records Found</td></tr>";
+         		         $("#"+functionalReqIdArray[j]).append(input); 
+						 }
             	}
               var checkScreenReqData= data[6][0][0].checkData;
               if(checkScreenReqData)
@@ -185,7 +191,10 @@ function reviewDataRetrieveAjaxCall()
       		         $("#ScreenReqInfoPreview").append(input);
          	         
               	});
-            	}
+            	}else{
+						   var input = "<tr><td colspan='5' style='text-align: center;'>No Records Found</td></tr>";
+         		         $("#ScreenReqInfoPreview").append(input); 
+						 }
               var checkSearchFormReqData = data[6][1][0].checkData;
               if(checkSearchFormReqData)
                {
@@ -195,49 +204,29 @@ function reviewDataRetrieveAjaxCall()
        		         $("#SearchFormInfoPreview").append(input);
           	         
                	});
-            	  }
+            	  }else{
+						   var input = "<tr><td colspan='8' style='text-align: center;'>No Records Found</td></tr>";
+         		         $("#SearchFormInfoPreview").append(input); 
+						 }
+
               //AbbrevationDescriptionInfoPreview
-              var abbreviation = "<tr>"+
-								  "<td>AD</td>"+
-		    					   "<td>Active Directory Group</td>"+
-								   "</tr>"+
-								   "<tr>"+
-								   "<td>BI</td>"+
-			     				   "<td>Business Intelligence</td>"+
-								   "</tr>"+
-								   "<tr>"+
-								   "<td>IA</td>"+
-								   "<td>InfoArchive: InfoArchive is a repository that compresses and maintains data from business applications and data sources."+ 
-								    "Data contained within the archive is no longer transactional and immutable (unable to be changed)."+ 
-								    "Access to the archive is normally confined to a small group of users defined by security rules and roles."+ 
-									"Data retention policies may be applied to data contained within the archive</td>"+
-								    "</tr>"+
-									"<tr>"+
-									"<td>Read-Only</td>"+
-									"<td>Date at which the legacy application data has been set to static use."+ 
-									"There are no changes to be made to the data, no integration jobs running to alter the status of the data,"+ 
-									"nor will any future changes be made to the data</td>"+
-									"</tr>"+
-									"<tr>"+
-									"<td>REQ</td>"+
-									"<td>Requirement</td>"+
-									"</tr>"+
-									"<tr>"+
-									"<td>UAT</td>"+
-									"<td>User Acceptance Testing</td>"+
-									"</tr>"+
-									"<tr>"+
-									"<td>XML</td>"+
-									"<td>Extensible Markup Format is used to define documents with a standard format that can be read by any XML-compatible application."+ 
-									"It is a \"metalanguage\" that can be used to create markup languages for specific applications</td>"+
-									"</tr>"+
-									"</tbody>";
-                 $("#AbbrevationDescriptionInfoPreview").html(abbreviation);
+             	var checkAbbreviationData= data[7][0].checkData;
+             	if(checkAbbreviationData){
+             	$.each(data[7], function(key, value) {
+					 var abbreviation = "<tr><td>" + value.abbreviation_acronym + "</td><td>" + value.description + "</td></tr>";
+       				 $("#AbbrevationDescriptionInfoPreview").append(abbreviation);
+       				 });
+    			} else {
+       				  var abbreviation = "<tr><td colspan='2' style='text-align: center;'>No Abbreviations found.</td></tr>";
+       				 $("#AbbrevationDescriptionInfoPreview").append(abbreviation);
+ 			    }
+				
+              
               //document revision
-              var checkDocumentRevisionData = data[7][0].checkExistance;
+              var checkDocumentRevisionData = data[8][0].checkExistance;
               if(checkDocumentRevisionData)
             	{
-            	  $.each(data[7],function(key,value){    
+            	  $.each(data[8],function(key,value){    
            	         
                 		 var input = "<tr><td width='80px;'>"+value.date+"</td><td>"+value.version+"</td><td>"+value.documentChanges+"</td><td>"+value.changeAuthor+"</td></tr>";
         		         $("#documentRevisionsInfoPreview").append(input);
@@ -246,24 +235,56 @@ function reviewDataRetrieveAjaxCall()
             	  }
               
               //addendum
-              var checkDocumentRevisionData = data[8][0].checkExistance;
-              if(checkDocumentRevisionData)
-            	{
-            	  $.each(data[8],function(key,value){    
-           	         
-                		 var input = "<pre style='font-family:verdana;font-size:100%;width:800px;' class = 'OppInfoPreview'><b>"+value.labelName+"</b> : "+value.addendumInfo+" </pre>";
-        		         $("#addendumInfoPreview").append(input);
-           	         
-                	});
-            	  }
-            if(data[9].checkOverAllStatus)
+var checkAddendumData = data[9][0].checkExistance;
+if (checkAddendumData) {
+  $.each(data[9], function(key, value) {
+    var input = `<pre style="font-family: verdana; font-size: 100%; width: 800px;" class="OppInfoPreview">
+                   <b>${value.labelName}</b>: ${value.addendumInfo}
+                 </pre>
+                 <br>
+                 <div class="content table-responsive" id="addendum_filelist">
+                   <table class="table-bordered" id="datatable_add">
+                     <thead>
+                       <th style='text-align: center; vertical-align: middle; width: 25%;'>File Name</th>
+                       <th style='text-align: center; vertical-align: middle; width: 25%;'>Action</th>
+                     </thead>
+                     <tbody>`;
+    if (value.fileNames.checkData) {
+      Object.keys(value.fileNames).forEach(function(index) {
+        if (index !== "checkData") {
+          var fileName = value.fileNames[index];
+          input += `<tr>
+                     <td hidden>${index}</td>
+                     <td hidden>${value.section_no}</td>
+                     <td hidden>${value.labelName}</td>
+                     <td>${fileName}</td>
+                     <td>
+                       <span class="glyphicon glyphicon-download-alt add_download_btn" style="margin-left:50%;">
+                       </span>
+                     </td>
+                   </tr>`;
+        }
+      });
+    } else {
+      input += `<tr>
+                  <td colspan="2" style="text-align: center;">No Attachments found.</td>
+                </tr>`;
+    }
+    input += `</tbody>
+               </table>
+             </div>`;
+    $("#addendumInfoPreview").append(input);
+  });
+}
+
+            if(data[10].checkOverAllStatus)
             	{
             	  $("#ReviewNextBtn").show();
             	  $("#button_id").hide();
             	  $("#ReviewPrevBtn").attr('onclick','location.href="ArchiveDecommPage.jsp";');
             	}
             var indexCount =0;
-            $.each(data[10],function(key,value){
+            $.each(data[11],function(key,value){
             	if(indexCount!=0)
             	{
       		  var input = "<tr><td width='80px;'>"+value.role+"</td><td>"+value.name+"</td><td>"+value.emailId+"</td><td>"+value.username+"</td><td>"+value.priority_order_num+"</td><td>"+value.approvalStatus+"</td></tr>";
@@ -271,8 +292,8 @@ function reviewDataRetrieveAjaxCall()
             	}
             	indexCount++;
       	 });
-             $("#ReviewNextBtn").attr("onclick", "location.href='archiveRequirementsApprovalDetails.jsp?a_id=" + data[10][0].approvalId + "';");
-			$(".ReviewNextBtn").attr("onclick", "location.href='archiveRequirementsApprovalDetails.jsp?a_id=" + data[10][0].approvalId + "';");
+             $("#ReviewNextBtn").attr("onclick", "location.href='archiveRequirementsApprovalDetails.jsp?a_id=" + data[11][0].approvalId + "';");
+			$(".ReviewNextBtn").attr("onclick", "location.href='archiveRequirementsApprovalDetails.jsp?a_id=" + data[11][0].approvalId + "';");
         	     },
         error: function (e) {
             console.log(e);

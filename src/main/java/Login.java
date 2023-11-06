@@ -192,6 +192,16 @@ public class Login extends HttpServlet {
                 this.value = value;
             }
         }
+        
+        class AbbTemplate {
+            int seq_no;
+            String abbreviation_acronynm, description;
+            AbbTemplate(int seq_no, String abbreviation_acronynm, String description) {
+                this.seq_no = seq_no;
+                this.abbreviation_acronynm = abbreviation_acronynm;
+                this.description = description;                
+            }
+        }
 
         class Assessment {
             int seq_num;
@@ -241,8 +251,8 @@ public class Login extends HttpServlet {
 
         try {
 
-        	PreparedStatement st5=null,st6=null,st7=null,st8=null,stTriSumm=null,AssDataCharst=null;
-        	ResultSet rs5=null,rs6=null,rs7=null,rs8=null,rsTriSumm=null,AssDataCharrs=null;
+        	PreparedStatement st5=null,st6=null,st7=null,st8=null,stTriSumm=null,AssDataCharst=null,stAbbTemplate=null;
+        	ResultSet rs5=null,rs6=null,rs7=null,rs8=null,rsTriSumm=null,AssDataCharrs=null,rsAbbTemp=null;
             DBconnection dbConnection = new DBconnection();
             Connection con = (Connection) dbConnection.getConnection();
 
@@ -517,6 +527,30 @@ public class Login extends HttpServlet {
                     prestmt1.setString(7, Trisumm[index].type);
                     prestmt1.setString(8, Trisumm[index].mandatory);
                     prestmt1.setString(9, Trisumm[index].value);
+                    prestmt1.execute();
+
+                }
+            }
+            
+            String AbbreviationTemplate = "select * from decom3sixtytool.archivereq_abbreviations_template_details;";
+            stAbbTemplate = con.prepareStatement(AbbreviationTemplate);
+            rsAbbTemp = stAbbTemplate.executeQuery();
+
+            if (!rsAbbTemp.next()) {
+                AbbTemplate AbbTemplate[] = new AbbTemplate[6];
+                AbbTemplate[0] = new AbbTemplate(1, "AD", "Active Directory Group");
+                AbbTemplate[1] = new AbbTemplate(2, "BI", "Business Intelligence");
+                AbbTemplate[2] = new AbbTemplate(3, "IA", "InfoArchive is a repository that compresses and maintains data from business applications and data sources.Data contained within the archive is no longer transactional and immutable (unable to be changed).");     
+                AbbTemplate[3] = new AbbTemplate(4, "Read-Only", "Date at which the legacy application data has been set to static use. There are no changes to be made to the data, no integration jobs running to alter the status of the data,nor will any future changes be made to the data.");
+                AbbTemplate[4] = new AbbTemplate(5, "XML", "Extensible Markup Language is a markup language that is used to structure, store, and transport data across different applications and platforms.XML uses tags to describe the data.It is highly extensible and adaptable to various data formats.");
+                AbbTemplate[5] = new AbbTemplate(6, "UAT", "User Acceptance Testing");
+                for (int index = 0; index < AbbTemplate.length; index++) {
+                    String Abbreviation_InsertQuery = "insert into archivereq_abbreviations_template_details (seq_no, abbreviation_acronym, description)" +
+                        "values(?, ?, ?)";
+                    PreparedStatement prestmt1 = con.prepareStatement(Abbreviation_InsertQuery);
+                    prestmt1.setInt(1, AbbTemplate[index].seq_no);
+                    prestmt1.setString(2, AbbTemplate[index].abbreviation_acronynm);
+                    prestmt1.setString(3, AbbTemplate[index].description);                  
                     prestmt1.execute();
 
                 }

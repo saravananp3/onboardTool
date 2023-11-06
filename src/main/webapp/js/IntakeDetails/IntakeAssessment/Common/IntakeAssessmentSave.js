@@ -98,6 +98,9 @@ function saveFunctionalityDevisionWise(section, e) {
     if (checkAllMandatoryFields) {
         //alert("IntakeAssessment Save");
         var JsonString = JSON.stringify(JsonArray);
+        var AppDetailsVal=$("#AppDetails").val();
+        if(AppDetailsVal!="")
+        {
         var jsonobj = AssessmentAjaxCallUpdate(JsonString, e, section);
         var sectionmsg=sectionMsg(section);
         if (jsonobj.CheckExistence) {
@@ -109,6 +112,12 @@ function saveFunctionalityDevisionWise(section, e) {
         else
             notification("error", "Failed to save.", "Error");
     }
+    
+    else
+    {
+	notification("error", "Application Details should not be Empty", "Error");
+	}
+	}
     else {
         var ValidationMsg = ValidationMsgMandatoryFields();
         notification("warning", ValidationMsg, "Warning");

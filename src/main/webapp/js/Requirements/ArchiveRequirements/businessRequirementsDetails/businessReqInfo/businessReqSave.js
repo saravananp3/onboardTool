@@ -128,7 +128,7 @@ var typingTimer;                //timer identifier
             if (data.iscompleted==true) {
                 notification("success", "Completed successfully.", "Note:");
             }else if (data.iscompleted==false) {
-                notification("error","Please fill all the fields.","Error:");
+                notification("error","Retention and Legal Requirements requires atleast one Row ","Error:");
             }
         }
     });

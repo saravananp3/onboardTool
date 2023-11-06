@@ -88,6 +88,7 @@ function archiveFunctionalReqAddAjaxCall(seqNum){
             	 "</td>"+
             	 "</tr>";
             	 $("#"+sectionid).append(Row);
+            	 $("#"+sectionid+"NoDataScrRow").hide();	
       
            	 	notification("success","Row added Successfully in "+tableNameAdd+".","Note:");
         	}

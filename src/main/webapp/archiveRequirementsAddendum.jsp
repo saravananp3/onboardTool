@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- ========== COMMON STYLES ========== -->
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
 <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
@@ -19,6 +21,11 @@
 <link rel="stylesheet" href="css/icheck/skins/line/green.css">
 <link rel="stylesheet" href="css/bootstrap-tour/bootstrap-tour.css">
 <link rel="stylesheet" href="css/UserInfo/userinfo.css">
+
+<!-- ========== Upload Icon ========== -->
+
+<link rel="stylesheet" href="css/font-awesome.css">
+
 <!-- ========== THEME CSS ========== -->
 <link rel="stylesheet" href="css/main.css" media="screen">
 
@@ -34,8 +41,14 @@
 <link
 	href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet">
+<link
+		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		rel="stylesheet">	
+<link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
+		type="text/css" media="all" />		
 <script
-	src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js">
+	src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDataRetrieve.js"></script>
+
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 
 <script
@@ -474,20 +487,32 @@ e.printStackTrace();
 															<div id="collapse1" class="panel-collapse "
 																name="collapse">
 																<div class="panel-body">
-																	<div id="inputFieldsAddendum"></div>
-
+																	<div id="inputFieldsAddendum"></div>																	
 
 																	<button type="button"
 																		class="btn btn-primary pull-right" id="addendumAddId"
 																		data-bs-toggle="modal"
 																		data-bs-target="#addendumAddPopUp"
-																		style="display: none;">Delete PopUp</button>
+																		style="display: none;">Add PopUp</button>
 
 																	<button type="button"
 																		class="btn btn-primary pull-right"
 																		id="addendumDeleteId" data-bs-toggle="modal"
 																		data-bs-target="#addendumDeletePopUp"
 																		style="display: none;">Delete PopUp</button>
+																		
+																	<button type="button"
+																		class="btn btn-primary pull-right" id="addendumViewUploadId"
+																		data-bs-toggle="modal"
+																		data-bs-target="#addendumViewPopUp"
+																		style="display: none;">View Uploaded Files PopUp</button>
+																		
+																		<button type="button"
+																		class="btn btn-primary pull-right" id="addendumUploadId"
+																		data-bs-toggle="modal"
+																		data-bs-target="#addendumUploadPopUp"
+																		style="display: none;">Upload Files</button>
+																		
 
 																	<div class="col-12" align="end">
 																		<!--  <div class = "btn-group dropup dropright">
@@ -605,7 +630,7 @@ e.printStackTrace();
 								<div class="col-lg-8">
 									<label class="control-label" for="formInput526">Label:</label>
 									<input type="text" id="addendumLabelId" class="form-control"
-										name="addendumLabelName" required> </input>
+										name="addendumLabelName" required>
 								</div>
 							</div>
 						</div>
@@ -654,6 +679,161 @@ e.printStackTrace();
 			</div>
 		</div>
 	</div>
+	
+			<!-- Delete Uploaded Files PopUp -->
+	
+	<button type="button" class="btn btn-primary"
+		id="uploaded_files_delete_btn" data-bs-toggle="modal"
+		data-bs-target="#LegacySCRDeletePopUp" style="display: none;"></button>
+
+	
+	
+	
+	
+	
+		<!-- View Uploaded Files PopUp -->
+	
+		<div class="modal" id="addendumViewPopUp" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="color: white;">View Uploaded Files</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" data-bs-target="">
+					<table class="table table-bordered table-striped"
+						id="addendum_datatable">
+
+						<thead>
+
+							<tr>
+								<th style="text-align: center;">File Name</th>
+								<th style="text-align: center;">Action</th>
+							</tr>
+						</thead>
+
+						<tbody class="Uploaded_Files_List">
+
+						</tbody>
+					</table>
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="ArchiveReqAddendumFileDownload" method="post">
+			<input type="hidden" id="Seq_Number" name="Seq_Number">
+			<input type="hidden" id="Section_Number" name="Section_Number">
+			<input type="hidden" id="Add_File_Name" name="Add_File_Name">		
+			 <input
+				type="submit" id="addendum_file_submit" style="display: none;">
+
+		</form>
+		<input type="submit" id="addendum_deletegrid_update" style="display: none;">
+
+	</div> 
+	
+	<div class="modal" id="addendumUploadPopUp" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h5 class="modal-title" id="exampleModalLabel11"
+						style="color: white;">Upload Files</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" data-bs-target="">
+				<div class="container fileClass">
+																							<form action="" method="post"
+																								enctype="multipart/form-data">
+																								<div class="fileClass">
+																									<label for="upload"> <input type="file"
+																										id="fileUpload" multiple> Upload Files
+																									</label>
+																									<input type="text" id="seq_no_section_insert" name="seq_no_section_insert" style="display:none;">
+																								</div>
+																								<div class="files fileClass">
+																									<h6>
+																										<b>Files Selected</b>
+																									</h6>
+																									<ul id="FileList"></ul>
+																								</div>
+																								<input type="button" value="Upload"
+																									class="btn btn-primary" name="submit"
+																									id="UploadFiles" />
+																							</form>
+																						</div>
+																					</div>
+					<!-- <table class="table table-bordered table-striped"
+						id="legacy_datatable11">
+
+						<thead>
+
+							<tr>
+								<th style="text-align: center;">File Name</th>
+								<th style="text-align: center;">Action</th>
+							</tr>
+						</thead>
+
+						<tbody id="Uploaded_Files_List11">
+
+						</tbody>
+					</table> -->
+					<div class="modal-footer">
+
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<form action="legacy_scr_download" method="post">
+			<input type="hidden" id="File_Name111" name="File_Name"> <input
+				type="submit" id="scr_submit111" style="display: none;">
+
+		</form>
+		<input type="submit" id="deletegrid_update111" style="display: none;">
+
+	<div class="modal" id="LegacySCRDeletePopUp" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: auto; height: 250px;">
+				<div class="modal-header" style="background-color: #1565c0;">
+					<h5 class="modal-title" id="exampleModalLabel"
+						style="color: white;">Delete File</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form name="DeleteForm">
+						<div class="modal-body">
+							<p style="font-size: 14px;">Do you want to Delete this File
+								Permanently?</p>
+							<input type="hidden" id="Delete_Seq_Number" name="Delete_Seq_Number">
+			<input type="hidden" id="Delete_Section_Number" name="Delete_Section_Number">
+			<input type="hidden" id="Delete_File_Name" name="Delete_File_Name">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bs-dismiss="modal" id="addendum_scr_delete_submit">Yes</button>
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 
 	<%-- <jsp:include page="samp_forms.jsp">
     <jsp:param name="ProjectName" value="<%=Opportunityname %>"/>
@@ -700,8 +880,7 @@ $(document).on('mouseenter','.active1', function(){
 	<script src="js/amcharts/amcharts.js"></script>
 	<script src="js/amcharts/serial.js"></script>
 	<script src="js/amcharts/plugins/export/export.min.js"></script>
-	<link rel="stylesheet" href="js/amcharts/plugins/export/export.css"
-		type="text/css" media="all" />
+	
 	<script src="js/amcharts/themes/light.js"></script>
 	<script src="js/toastr/toastr.min.js"></script>
 	<script src="js/icheck/icheck.min.js"></script>
@@ -733,13 +912,20 @@ $(document).on('mouseenter','.active1', function(){
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumDeleteAjaxCall.js"></script>
 	<script
 		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumSaveAjaxCall.js"></script>
+		<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUploadAjaxCall.js"></script>
+    <!-- <script
+		src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumEditableLabel.js"></script>	
+	-->
+<!-- 	<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileUpload.js"></script>		 
+ -->	 			
+		<script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDownload.js"></script>
+		 <script src="js/Requirements/ArchiveRequirements/addendumInfo/archiveReqAddendumFileDelete.js"></script>	
 	<script src="js/navigation/navigation.js"></script>
 	<!-- ========== Toastr ========== -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link
-		href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-		rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+		
+	
 
 </body>
 </html>

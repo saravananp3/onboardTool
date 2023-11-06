@@ -12,7 +12,6 @@ $("#fileUpload").change(function(e) {
 	let files = $("#fileUpload")[0].files;
 	let filesArr = Array.from(files);
 	updateState({ files: files, filesArr: filesArr });
-
 	renderFileList();
 });
 

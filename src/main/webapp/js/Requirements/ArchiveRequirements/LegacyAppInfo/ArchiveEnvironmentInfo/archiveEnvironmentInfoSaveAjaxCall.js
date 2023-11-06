@@ -26,8 +26,19 @@ function getJsonArray(tableName,e){
         inputs['prod'] = prod;
         JsonArray.push(inputs);
     }
+    
     if(validation)
-        archiveEnvironmentSaveAjaxcall(JsonArray, tableName);
+    {
+	if(JsonArray.length === 0 && tableName=="archive_environment_serverip_info")
+	{
+		notification("error","Archive Environment Information Server Details requires atleast One Row","Error");
+	}
+	else
+	{
+	 archiveEnvironmentSaveAjaxcall(JsonArray, tableName);
+	 }
+	}
+       
     else
         notification("warning","Please fill the all fields.","Warning");
     e.preventDefault(); 

@@ -64,8 +64,16 @@ function getJsonArray(e){
         inputs['Additional'] = Additional;
         JsonArray.push(inputs);
     }
-    if(validation)
-        archiveFunctionalReqSaveAjaxcall(JsonArray);
+    if(validation){
+	 if(JsonArray.length === 0 && tableSaveName=="Archive_RetentionLegalReq_Info") {
+        notification("error","Retention and Legal Requirements requires Atleast One Row","Error");
+    }
+    else
+    {
+	archiveFunctionalReqSaveAjaxcall(JsonArray);
+	}
+        
+        }
     else
         notification("warning","Please fill the all fields in "+Table_Name_Save+".","Warning");
     e.preventDefault(); 

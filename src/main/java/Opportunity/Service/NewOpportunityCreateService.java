@@ -12,6 +12,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import ArchiveExecutionModule.ArchiveExecutionDetails.service.ArchiveExecutionTemplateService;
+import NewArchiveRequirements.AbbreviationList.service.Add_Abbreviation_Service;
+import NewArchiveRequirements.businessRequirementsDetails.functionalReqInfo.dataReq.Service.archiveFunctionDataRetrieveService;
 import Opportunity.OpportunityBean;
 import onboard.DBconnection;
 
@@ -50,10 +52,23 @@ public class NewOpportunityCreateService {
 			if(checkMandatory==true && checkAPMID == false && checkAppName == false)
 			{
 				NewOpportunityCreateService.NewOpportunityDetailsSave(jsonArray);
+				
+				Add_Abbreviation_Service AddAbbFromTemplate=new Add_Abbreviation_Service();
+				AddAbbFromTemplate.TemplateInsert(AMPID);
 				ArchiveExecutionTemplateService archiveExecObj = new ArchiveExecutionTemplateService(OpportunityBean.getRecord_Number());
 				archiveExecObj.archiveTemplateToArchiveInfo();
 				archiveExecObj = null;
-				System.gc();
+				String[] tableNamesFunctionReq = { "Archive_DataReq_Info", "Archive_RetentionLegalReq_Info",
+						"Archive_SecurityReq_Info", "Archive_UsabilityReq_Info", "Archive_AuditReq_Info" };
+				for (int index = 0; index < tableNamesFunctionReq.length; index++) {
+					archiveFunctionDataRetrieveService dataReqDetails;					
+						dataReqDetails = new archiveFunctionDataRetrieveService(AMPID, AppName, tableNamesFunctionReq[index]);
+						dataReqDetails.TemplateInsert();
+						dataReqDetails = null;	
+                        System.gc();
+					
+					}
+				
 			}
 			st.close();
 			rs.close();

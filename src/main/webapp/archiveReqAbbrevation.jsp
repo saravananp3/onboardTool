@@ -36,6 +36,7 @@
 	href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
 	rel="stylesheet">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script
@@ -250,9 +251,10 @@ td {
 	<%@ page import="java.text.SimpleDateFormat"%>
 	<%@ page import="java.util.Date"%>
 	<%
-SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-Date date = new Date();
-System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP PAGE-----[INFO]"); %>
+	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	Date date = new Date();
+	System.out.println("[INFO]-----" + formatter.format(date) + "-----Accessed Grid JSP PAGE-----[INFO]");
+	%>
 	<%@page language="java"%>
 	<%@page import="java.sql.*"%>
 	<%@page import="java.text.DateFormat"%>
@@ -262,38 +264,31 @@ System.out.println("[INFO]-----"+formatter.format(date)+"-----Accessed Grid JSP 
 	<%@page import="java.util.Calendar"%>
 	<%@page import="org.owasp.encoder.Encode"%>
 	<%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-response.setHeader("Expires", "0"); // Proxies.
-DBconnection dBconnection = new DBconnection();
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setHeader("Expires", "0"); // Proxies.
+	DBconnection dBconnection = new DBconnection();
 
+	if (session.getAttribute("username") == null) {
+		response.sendRedirect("Login.jsp");
 
+	} else {
+		String name = (String) session.getAttribute("ID");
+		HttpSession details = request.getSession();
+		Connection con = null;
+		session.setAttribute("theName", name);
+		String roles = (String) details.getAttribute("role");
+		String OpportunityName = (String) details.getAttribute("SelectedOpportunity");
+		String s = OpportunityName;
+		System.out.println("Welcome" + OpportunityName);
 
-if (session.getAttribute("username")==null)
-{
-response.sendRedirect("Login.jsp");
+		int sumcount = 0;
+		Statement st, st2;
+		try {
 
-
-
-}
-else{
-String name=(String)session.getAttribute("ID");
-HttpSession details=request.getSession();
-Connection con = null;
-session.setAttribute("theName", name);
-String roles=(String)details.getAttribute("role");
-String OpportunityName = (String)details.getAttribute("SelectedOpportunity");
-String s=OpportunityName;
-System.out.println("Welcome"+OpportunityName);
-
-int sumcount=0;
-Statement st,st2;
-try{
-
-con=dBconnection.getConnection();
-Statement st1;
-
-%>
+			con = dBconnection.getConnection();
+			Statement st1;
+	%>
 
 	<form class="form-signin" name="loginForm" method="post">
 
@@ -380,14 +375,12 @@ Statement st1;
 
 
 			<%
-}
-catch(Exception e){
-e.printStackTrace();
-}
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
 
-
-
-} %>
+			}
+			%>
 			<div class="content-wrapper">
 
 				<div class="col-md-12">
@@ -440,22 +433,20 @@ e.printStackTrace();
 										<div class="form-wizard">
 
 											<%
-                                        String initiate = (String) session.getAttribute("Ideation and Initiate");
-                                        String plan = (String) session.getAttribute("Plan");
-                                        String execute = (String) session.getAttribute("Execute");
-                                        String hypercare = (String) session.getAttribute("Closure");
-                                        if (initiate == null)
-                                            initiate = "0";
-                                        if (plan == null)
-                                            plan = "0";
-                                        if (execute == null)
-                                            execute = "0";
-                                        if (hypercare == null)
-                                            hypercare = "0";
-                                    %>
-											<br />
-											<br />
-											<br />
+											String initiate = (String) session.getAttribute("Ideation and Initiate");
+											String plan = (String) session.getAttribute("Plan");
+											String execute = (String) session.getAttribute("Execute");
+											String hypercare = (String) session.getAttribute("Closure");
+											if (initiate == null)
+												initiate = "0";
+											if (plan == null)
+												plan = "0";
+											if (execute == null)
+												execute = "0";
+											if (hypercare == null)
+												hypercare = "0";
+											%>
+											<br /> <br /> <br />
 
 
 
@@ -482,64 +473,19 @@ e.printStackTrace();
 																					<table class="table-bordered" style="width: 100%;">
 																						<thead>
 																							<tr>
-
 																								<th
-																									style='text-align: center; vertical-align: middle;'>Abbreviation/Acronym</th>
+																									style='text-align: center; vertical-align: middle; display: none;'>Sequence
+																									Number</th>
 																								<th
-																									style='text-align: center; vertical-align: middle;'>Description</th>
-
+																									style='text-align: center; vertical-align: middle; width: 35%;'>Abbreviation/Acronym</th>
+																								<th
+																									style='text-align: center; vertical-align: middle; width: 50%;'>Description</th>
+																								<th
+																									style='text-align: center; vertical-align: middle; width: 15%;'
+																									class="useractionheader" scope="col">Action</th>
 																							</tr>
 																						</thead>
-																						<tbody>
-
-																							<tr>
-																								<td>AD</td>
-																								<td>Active Directory Group</td>
-																							</tr>
-																							<tr>
-																								<td>BI</td>
-																								<td>Business Intelligence</td>
-																							</tr>
-																							<tr>
-																								<td>IA</td>
-																								<td>InfoArchive: InfoArchive is a
-																									repository that compresses and maintains data
-																									from business applications and data sources.
-																									Data contained within the archive is no longer
-																									transactional and immutable (unable to be
-																									changed). Access to the archive is normally
-																									confined to a small group of users defined by
-																									security rules and roles. Data retention
-																									policies may be applied to data contained
-																									within the archive</td>
-																							</tr>
-																							<tr>
-																								<td>Read-Only</td>
-																								<td>Date at which the legacy application
-																									data has been set to static use. There are no
-																									changes to be made to the data, no integration
-																									jobs running to alter the status of the data,
-																									nor will any future changes be made to the data</td>
-																							</tr>
-																							<tr>
-																								<td>REQ</td>
-																								<td>Requirement</td>
-																							</tr>
-																							<tr>
-																								<td>UAT</td>
-																								<td>User Acceptance Testing</td>
-																							</tr>
-																							<tr>
-																								<td>XML</td>
-																								<td>Extensible Markup Format is used to
-																									define documents with a standard format that
-																									can be read by any XML-compatible application.
-																									It is a "metalanguage" that can be used to
-																									create markup languages for specific
-																									applications</td>
-																							</tr>
-
-																						</tbody>
+																						<tbody id="abbreviationlist"></tbody>
 
 																					</table>
 																				</div>
@@ -547,7 +493,6 @@ e.printStackTrace();
 																		</form>
 																	</div>
 																</div>
-
 
 																<button type="button" class="btn btn-primary pull-right"
 																	id="DataDeleteId" data-toggle="modal"
@@ -564,6 +509,18 @@ e.printStackTrace();
 																			onclick="location.href='ArchiveBusinessRequirements.jsp';">Prev</button>
 																	</div>
 																	<div class="col-12" align="end">
+																		<button class="btn btn-secondary" type="button"
+																			id="addabbreviationbtn" href="#"
+																			data-bs-toggle="modal"
+																			data-bs-target="#addabbreviationModal">Add</button>
+																		<button class="btn btn-secondary" type="button" hidden
+																			id="editabbreviationbtn" href="#"
+																			data-bs-toggle="modal"
+																			data-bs-target="#editabbreviationModal">Edit</button>
+																		<button class="btn btn-secondary" type="button" hidden
+																			id="dltabbreviationbtn" href="#"
+																			data-bs-toggle="modal"
+																			data-bs-target="#dltabbreviationModal">Delete</button>
 
 																		<button class="btn btn-primary"
 																			onclick="location.href='archiveRequirementsDocumentRevisions.jsp';"
@@ -571,6 +528,134 @@ e.printStackTrace();
 																			<a href="archiveRequirementsDocumentRevisions.jsp">Next</a>
 																		</button>
 
+																	</div>
+																</div>
+																<div class="modal" id="addabbreviationModal"
+																	tabindex="-1" aria-labelledby="exampleModalLabel"
+																	aria-hidden="true">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header"
+																				style="background-color: #1565c0;">
+																				<h5 class="modal-title" id="exampleModalLabel"
+																					style="color: white;">Add New Abbreviation</h5>
+																				<button type="button" class="btn-close"
+																					data-bs-dismiss="modal" aria-label="Close"></button>
+																			</div>
+																			<div class="modal-body">
+																				<form name="PopUpform">
+																					<div class="row">
+																						<div class="form-group">
+																							<div class="col-lg-12">
+																								<label class="control-label" for="formInput526" style="color:black;">Abbreviation/Acronym:</label>
+																								<input type="text" class="form-control"
+																									id="abbreviation_acronym"
+																									name="abbreviation/acronym" required>
+																							</div>
+																							<div class="col-lg-12">
+																								<label class="control-label" for="formInput526" style="color:black;">Description:</label>
+																								<textarea class="form-control"
+																									id="abb_description" name="abb_description"
+																									rows="4" required></textarea>
+																							</div>
+																						</div>
+																					</div>
+
+
+																				</form>
+																			</div>
+																			<div class="modal-footer">
+
+																				<button type="button" class="btn btn-primary"
+																					id="add_abbreviation_submit" data-dismiss="modal"
+																					style="font-size: 12px;">Add</button>
+																				<button type="button" class="btn btn-secondary"
+																					data-bs-dismiss="modal" style="font-size: 12px;">Cancel</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="modal" id="editabbreviationModal"
+																	tabindex="-1" aria-labelledby="exampleModalLabel"
+																	aria-hidden="true">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header"
+																				style="background-color: #1565c0;">
+																				<h5 class="modal-title" id="exampleModalLabel"
+																					style="color: white;">Update
+																					Abbreviation/Acronym Details</h5>
+																				<button type="button" class="btn-close"
+																					data-bs-dismiss="modal" aria-label="Close"></button>
+																			</div>
+																			<div class="modal-body">
+																				<form name="PopUpform">
+																					<div class="row">
+																						<div class="form-group">
+																							<div class="col-lg-12">
+																								<label class="control-label" for="formInput526" style="color:black;">Abbreviation:</label>
+																								<input type="text" class="form-control"
+																									id="abbreviation_acronym_modify"
+																									name="abbreviation_acronym_modify" required>
+																								<label class="control-label" for="formInput526" style="color:black;">Description:</label>
+																								<textarea class="form-control"
+																									id="description_modify"
+																									name="description_modify" rows="4" required></textarea> <input
+																									type="text" hidden class="form-control"
+																									id="seq_no_modify" name="seq_no_modify"
+																									required> <input type="text" hidden
+																									class="form-control" id="app_id_modify"
+																									name="app_id_modify" required>
+
+																							</div>
+																						</div>
+																					</div>
+																					<input type="text" id="random_id_modify"
+																						name="random_id" value="" style="display: none;">
+																				</form>
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-primary"
+																					id="update_abbreviation_submit">Update</button>
+																				<button type="button" class="btn btn-secondary"
+																					data-bs-dismiss="modal">Cancel</button>
+
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="modal" id="dltabbreviationModal"
+																	tabindex="-1" aria-labelledby="exampleModalLabel"
+																	aria-hidden="true">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header"
+																				style="background-color: #1565c0;">
+																				<h5 class="modal-title" id="exampleModalLabel"
+																					style="color: white;">Delete
+																					Abbreviation/Acronym</h5>
+																				<button type="button" class="btn-close"
+																					data-bs-dismiss="modal" aria-label="Close"></button>
+																			</div>
+																			<div class="modal-body">
+																				<form name="DeleteForm">
+																					<div class="modal-body">
+																						<p style="font-size: 14px; color:black;">Do you want to
+																							delete this Abbreviation/Acronym permanently?</p>
+																						<input type="text" class="form-control"
+																							id="seq_no_dlt" name="seq_no" required style="display:none;"><input
+																							type="text" id="random_id" style="display: none;" />
+																					</div>
+																				</form>
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-primary"
+																					data-bs-dismiss="modal"
+																					id="delete_abbreviation_submit">Yes</button>
+																				<button type="button" class="btn btn-secondary"
+																					data-bs-dismiss="modal">No</button>
+																			</div>
+																		</div>
 																	</div>
 																</div>
 
@@ -600,21 +685,21 @@ e.printStackTrace();
 
 				<!-- /.main-wrapper -->
 				<script>
-        function validateform9() {
+					function validateform9() {
 
-            var f = document.loginForm;
-            f.method = "post";
-            f.action = 'ArchivalRequirements';
-            f.submit();
+						var f = document.loginForm;
+						f.method = "post";
+						f.action = 'ArchivalRequirements';
+						f.submit();
 
-        }
-    </script>
+					}
+				</script>
 
 
 				<%
-       //     }
-    //    }
-    %>
+				//     }
+				//    }
+				%>
 			</div>
 		</div>
 	</form>
@@ -637,18 +722,18 @@ e.printStackTrace();
 
 	<!-- Active Icon Color changes  -->
 	<script>
-$(document).on('mouseenter','.active1', function(){
-		
-		 $('.activeIcon').css('color','#1565c0');
-		 
-	 });
-	 
-	 $(document).on('mouseleave','.active1', function(){
-			
-		 $('.activeIcon').css('color','#fff');
-		 
-	 });
-</script>
+		$(document).on('mouseenter', '.active1', function() {
+
+			$('.activeIcon').css('color', '#1565c0');
+
+		});
+
+		$(document).on('mouseleave', '.active1', function() {
+
+			$('.activeIcon').css('color', '#fff');
+
+		});
+	</script>
 	<%@include file="Footer.jspf"%>
 	<!-- ========== COMMON JS FILES ========== -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
@@ -692,6 +777,15 @@ $(document).on('mouseenter','.active1', function(){
 	<script type="text/javascript" src="js/date-picker/moment.js"></script>
 	<script src="js/notification/notification.js"></script>
 	<script src="js/navigation/navigation.js"></script>
+	<script
+		src="js/Requirements/ArchiveRequirements/archiveRequirementAbbreviation/Archive_Req_Add_Abbreviation.js"></script>
+	<script
+		src="js/Requirements/ArchiveRequirements/archiveRequirementAbbreviation/Archive_Req_Delete_Abbreviation.js"></script>
+	<script
+		src="js/Requirements/ArchiveRequirements/archiveRequirementAbbreviation/Archive_Req_Retrieve_Abbreviations.js"></script>
+	<script
+		src="js/Requirements/ArchiveRequirements/archiveRequirementAbbreviation/Archive_Req_Update_Abbreviation.js"></script>
+
 	<!-- ========== Toastr ========== -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

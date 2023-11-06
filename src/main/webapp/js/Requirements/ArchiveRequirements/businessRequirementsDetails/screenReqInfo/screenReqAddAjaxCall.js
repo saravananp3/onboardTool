@@ -9,8 +9,6 @@ $(document).on('click', '#screenReqAddSubmit', function(){
 	
 });
 
-
-
 function archiveScreenReqAddAjaxCall(displayName){
 	
 	$.ajax({
@@ -29,7 +27,8 @@ function archiveScreenReqAddAjaxCall(displayName){
 
         	if(checkDataReq){
         	 var rowCount=0;
-            
+            $('#NoDataSearchFormRow').hide();
+            $('#NoDataScrRecordsRow').hide();            
             	 rowCount++;
             	     var Row="<tr class = 'screenReqRowClass'>"+
             	 "<td align='center' class = 'ScreenReqId'>"+data.ReqId+
@@ -50,8 +49,10 @@ function archiveScreenReqAddAjaxCall(displayName){
                  "</div>"+
             	 "</td>"+
             	 "</tr>";
+            	 $('#NoDataScrRecordsRow').remove();  
             	 $("#screenReqInfo").append(Row);
-            	 notification("success","Row added successfully.","Success:");
+            	 $('#saveScreenReqId').prop('disabled', false);
+            	 notification("success","Row added successfully.","Success:");            	 
             	 $('#closeIdScreenInfo').click();
             	 $('#screenReqAddId').val('');
             	 var ReqID = (data.ReqId).replace("-","");
@@ -103,6 +104,8 @@ function archiveScreenReqAddAjaxCall(displayName){
             	 "</td>"+
             	 "</tr>";
             	 $("#searchFormInfo").append(searchFormRow);
+            	 $('#saveSearchFormId').prop('disabled', false);
+            	 $("#NoDataSearchFormRow").remove();
             	 
             	 var option = "<option value = '"+data.ReqId+" - "+displayName+"'>"+data.ReqId+" - "+displayName+"</option>"; 
             	 $('#searchFormTypesId').append(option);
