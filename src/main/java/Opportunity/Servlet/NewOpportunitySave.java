@@ -46,7 +46,10 @@ public class NewOpportunitySave extends HttpServlet {
 		JsonParser parser = new JsonParser();
 		JsonElement tradeElement = parser.parse(request.getParameter("Json_Sample"));
 		JsonArray jsonArray = tradeElement.getAsJsonArray();
+		System.out.println("The values for save");
+		
 		System.out.println("jsonArray : "+jsonArray);
+		System.out.println("The details are printed in Save");
 		NewOpportunityCreateService.NewOpportunityDetailsSave(jsonArray);
 		response.sendRedirect("/onboardTool/OpportunityList.jsp");
 		

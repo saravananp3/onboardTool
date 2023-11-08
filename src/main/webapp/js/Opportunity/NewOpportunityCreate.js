@@ -2,6 +2,7 @@ $("#create").click(function(e)
 {
 	    //e.stopPropagation();
 	var AppName = $("#appName").val();
+	console.log("Application Name", AppName)
 	var APM_ID = $("#apmid").val();
 	var CheckAPPID;
 	var CheckAppname;

@@ -455,5 +455,5 @@ function AppBindWaveAll(phaseid)
             error: function (e) {
                 console.log(e);
             }
-});
+	});
 }

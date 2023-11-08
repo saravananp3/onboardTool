@@ -53,6 +53,7 @@ function filterAjaxCall(category,phase,wave)
 }
 function getAppList(data)
 {
+	console.log("GetAppList")
     $('#ul_id').html("");
      var i = 1;
      $.each(data, function(key, value){

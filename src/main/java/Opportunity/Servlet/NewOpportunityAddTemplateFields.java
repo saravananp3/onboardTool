@@ -41,6 +41,7 @@ public class NewOpportunityAddTemplateFields extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String selected_index[] = request.getParameter("Selected_Index").split(",");
+		System.out.println("selected_index"+selected_index);
 		String tempmandatory=request.getParameter("templateMandatory");
 		String umandatory=request.getParameter("umandatory");
 		int[] Sel_seq = new int[selected_index.length];

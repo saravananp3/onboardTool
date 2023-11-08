@@ -4,6 +4,7 @@ $('.datepicker1').datepicker({
             });
             //$('.editpopup').click(function() {
 	$(document).on('click', '.editpopup', function () {
+		console.log("The Popup Comes Here");
 	            	$('#editpopup_btn').click();
 	            var seqnum=$(this).index('.editpopup');
 	            //alert('seq_num in js file '+seqnum);

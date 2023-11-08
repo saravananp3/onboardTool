@@ -31,8 +31,11 @@ function filterBySearchAjaxCall(appName)
         	console.log("Data:", data);
         	 if (!$.isArray(data)) {
                  data = [data];
+                 console.log("data",data);
         	 }  
+        	 
         	 getAppList(data);
+        	
         },
         error: function (e) {
             console.log(e);

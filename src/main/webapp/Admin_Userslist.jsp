@@ -438,7 +438,7 @@ rotate
 
 	</div>
 
-	</div>
+
 
 	<div class="modal" id="adduserModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -43,6 +43,7 @@ public class NewOpportunityCreateValidationAndUpdate extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String AppName =request.getParameter("AppName");
+		System.out.println("Application Name "+AppName);
         String JsonString= (String)request.getParameter("JsonString");
         boolean checkMandatory =Boolean.parseBoolean(request.getParameter("checkMandatory"));
         JsonParser parser = new JsonParser();

@@ -71,6 +71,7 @@ public class NewOpportunityService {
         } catch (Exception e) {
             System.out.println("Exception--->>" + e);
         }
+        System.out.println("Json array from retrival"+jsonArray);
         return jsonArray;
     }
     public static int NewOpportunityAddOperationService(String applicationname, String label_name, String column_name,

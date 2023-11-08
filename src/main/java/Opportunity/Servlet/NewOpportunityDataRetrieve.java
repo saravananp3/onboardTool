@@ -42,9 +42,11 @@ public class NewOpportunityDataRetrieve extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         JsonArray jsonArray=new NewOpportunityService().OpportunityDataRetrieve();
         String json = new Gson().toJson(jsonArray);
+       
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
+        System.out.println("json"+json);
 	}
 
 }

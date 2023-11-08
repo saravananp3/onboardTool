@@ -12,6 +12,8 @@ $(document).ready(function(){
             console.log("Data Retrieve json array----->",data);
             AddTemplateData = data;
             if (!$.isArray(data)) {
+	console.log("Data Retrieve json array222222222----->",data);
+	
                 data = [data];
                 AddTemplateData=[data];
             }
@@ -270,7 +272,7 @@ function validateForm(e){
         data : {Selected_Index:selected_index,templateMandatory:templateMandatory,umandatory:umandatory},
         dataType: "json",
         success: function (data) {
-        	console.log("data add template ; ",data);
+        	console.log("data add template in the js page ; ",data);
         	if (!$.isArray(data)) {
         		data = [data];
                 

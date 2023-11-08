@@ -50,7 +50,7 @@ public class IntakeOpportunityAddServlet extends HttpServlet {
 		HttpSession details = request.getSession();
 		String ID = (String) details.getAttribute("ID");
 		JsonObject jsonobject = new JsonObject();
-        
+       
         try {
             DBconnection dBconnection = new DBconnection();
             Connection connection = (Connection) dBconnection.getConnection();

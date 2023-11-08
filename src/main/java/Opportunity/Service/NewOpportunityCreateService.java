@@ -98,6 +98,7 @@ public class NewOpportunityCreateService {
 			String name = jsonObj.get("Name").getAsString();
 			String value = jsonObj.get("Value").getAsString();
 			String SelectQuery = "select * from opportunity_info_details where column_name='"+name+"';";
+			
 			st = connection.prepareStatement(SelectQuery);
 			rs = st.executeQuery();
 			if(rs.next())

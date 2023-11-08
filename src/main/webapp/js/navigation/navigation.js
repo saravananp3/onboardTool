@@ -9,8 +9,9 @@ $(document).ready(function() {
 
 function switchActiveModule() {
 	switch (page) {
-		case "OpportunityList.jsp":
+		case "":
 		case "Intake-NewOpportunity.jsp":
+		case"OpportunityList.jsp":
 		case "OpportunityGrid.jsp":
 		case "IntakeOpportunity.jsp":
 		case "IntakeTriage.jsp":
@@ -52,8 +53,12 @@ function switchActiveModule() {
 		case "applicationList.jsp":
 		case "Governance_Home.jsp":
 		case "ArchiveExecutionDetails_Governance.jsp":
-		
+		case "Compliance.jsp":
 			selectiveActiveIcon(2);
+			break;
+		case"Finance.jsp":
+		case "FinanceInput.jsp":
+			selectiveActiveIcon(3);
 			break;
 		case "DashBoard.jsp":
 			selectiveActiveIcon(4);
@@ -76,6 +81,7 @@ $(document).on('mouseenter', '.selected', function() {
 
 	$('.activeIcon').css('color', '#1565c0');
 	var index = $(this).index('.selected');
+	
 	$('.selected').eq(index).css('background-color', '#f8f9fa');
 
 });

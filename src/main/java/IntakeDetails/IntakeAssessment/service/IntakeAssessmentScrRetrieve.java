@@ -14,7 +14,7 @@ public JsonArray intake_screenshot_retrieve(String Id) {
 		
         JsonArray jsonArray = new JsonArray();
     try {
-        //String random_id = generateRandomApprovalId();
+       
     	
         DBconnection dBconnection = new DBconnection();
         Connection connection = (Connection) dBconnection.getConnection();
