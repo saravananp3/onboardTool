@@ -114,6 +114,7 @@ public class FinanceDetailRetrieveService {
             }
             String delete_query = "delete from Finance_Informations_Details;";
 			st2 = connection.prepareStatement(delete_query);
+			System.out.println("The Sequence  Number");
 			st2.executeUpdate();
             for (int j = 0; j < seqmax - 1; j++) {
                 String insert_query = "insert into Finance_Informations_Details (seq_no,id,prj_name,app_name,options,label_name,column_name,type,mandatory,value,usermandatoryflag) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";

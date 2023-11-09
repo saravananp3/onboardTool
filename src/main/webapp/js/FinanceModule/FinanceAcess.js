@@ -1,8 +1,7 @@
 function AddAndEdit()
 {
 	var user_Name=$("#user_Name").val();
-	var auth_Type=$("#auth_type").val();
-	console.log("Auth Type",$("#auth_type").val());
+	console.log("Auth Type",user_Name);
 	$.ajax({
         url: "Retrieve_pwd_servlet",
         type: 'POST',
@@ -14,7 +13,6 @@ function AddAndEdit()
     		{
 			 $(".useraction").show();
 			 $("#add_user_btn").show();
-			
 			 $(".useractionheader").show();
 			 
 			}       

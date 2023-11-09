@@ -390,7 +390,7 @@ public class Login extends HttpServlet {
             ResultSet Finance = statement11.executeQuery();
 
             if (!Finance.next()) {
-            	 FinanceDetails[] FinanceInput = new  FinanceDetails[14];
+            	 FinanceDetails[] FinanceInput = new  FinanceDetails[11];
             	 FinanceInput[0] = new  FinanceDetails(1, "", "", "", "Project Number", "ProjectNumber", "Text box", "Yes", "");
             	 FinanceInput[1] = new FinanceDetails(2, "", "", "", "Application Name", "appName", "Text box", "Yes", "");
             	 FinanceInput[2] = new  FinanceDetails(3, "", "", "", "Software and Licensing", "License", "Text box", "No", "");

@@ -1,0 +1,894 @@
+body {
+	margin: 0 auto;
+	width: 100%;
+	background: #f1f1f1;
+	font-family: 'Poppins', sans-serif;
+}
+
+.nav-font {
+	font-family: 'Poppins', sans-serif;
+	color: #494949;
+	letter-spacing: 0.5px;
+	line-height: 1.75em;
+	font-size: 12px;
+}
+
+.archeadbutton {
+	background-color: #1565c0; 
+	border: 2px #80ffd3;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13.5px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 60px;
+	font-weight: 600;
+}
+
+.archeadbutton:hover {
+	background-color: #20336e;
+}
+
+.d3s-font-12 {
+	font-size: 12px;
+}
+
+.d3s-font-14 {
+	font-size: 14px;
+}
+
+#title {
+	color: #fff;
+}
+
+.d3s-logo {
+	height: 50px;
+	margin-top: 10px;
+}
+
+.d3s-logo-1 {
+	height: 50px;
+	margin-top: 60px;
+}
+
+.nav-height {
+	height: 100px;
+}
+
+.nav-height-50 {
+	height: 50px;
+}
+
+.nav-height-70 {
+	height: 70px;
+}
+
+.nav-down-height {
+	height: 140px;
+}
+
+.d3s-ml-5 {
+	margin-right: 5px;
+}
+
+.d3s-mr-10 {
+	margin-right: 10px;
+}
+
+.d3s-mr-20 {
+	margin-right: 20px;
+}
+
+.d3s-mr-30 {
+	margin-right: 30px;
+}
+
+.d3s-mr-40 {
+	margin-right: 40px;
+}
+
+.d3s-mr-50 {
+	margin-right: 50px;
+}
+
+.d3s-mr-60 {
+	margin-right: 60px;
+}
+
+.d3s-mr-70 {
+	margin-right: 70px;
+}
+
+.d3s-mr-80 {
+	margin-right: 80px;
+}
+
+.d3s-mr-90 {
+	margin-right: 80px;
+}
+
+.d3s-mr-100 {
+	margin-right: 100px;
+}
+
+.d3s-ml-10 {
+	margin-left: 10px;
+}
+
+.d3s-ml-20 {
+	margin-left: 20px;
+}
+
+.d3s-ml-30 {
+	margin-left: 30px;
+}
+
+.d3s-ml-40 {
+	margin-left: 40px;
+}
+
+.d3s-ml-50 {
+	margin-left: 50px;
+}
+
+.d3s-ml-60 {
+	margin-left: 60px;
+}
+
+.d3s-ml-70 {
+	margin-left: 70px;
+}
+
+.d3s-ml-80 {
+	margin-left: 80px;
+}
+
+.d3s-ml-90 {
+	margin-left: 80px;
+}
+
+.d3s-ml-100 {
+	margin-left: 100px;
+}
+
+.d3s-ml-110 {
+	margin-left: 110px;
+}
+
+.d3s-ml-10 {
+	margin-left: 10px;
+}
+
+.d3s-ml-20 {
+	margin-left: 20px;
+}
+
+.d3s-ml-30 {
+	margin-left: 30px;
+}
+
+.d3s-ml-40 {
+	margin-left: 40px;
+}
+
+.d3s-ml-50 {
+	margin-left: 50px;
+}
+
+.d3s-ml-60 {
+	margin-left: 60px;
+}
+
+.d3s-ml-70 {
+	margin-left: 70px;
+}
+
+.d3s-ml-80 {
+	margin-left: 80px;
+}
+
+.d3s-ml-90 {
+	margin-left: 80px;
+}
+
+.d3s-ml-100 {
+	margin-left: 100px;
+}
+
+.d3s-ml-10 {
+	margin-left: 10px;
+}
+
+.d3s-ml-20 {
+	margin-left: 20px;
+}
+
+.d3s-ml-30 {
+	margin-left: 30px;
+}
+
+.d3s-ml-40 {
+	margin-left: 40px;
+}
+
+.d3s-ml-50 {
+	margin-left: 50px;
+}
+
+.d3s-ml-60 {
+	margin-left: 60px;
+}
+
+.d3s-pl-15 {
+	padding-left: 15px;
+}
+
+.d3s-ml-70 {
+	margin-left: 70px;
+}
+
+.d3s-ml-80 {
+	margin-left: 80px;
+}
+
+.d3s-ml-90 {
+	margin-left: 80px;
+}
+
+.d3s-ml-100 {
+	margin-left: 100px;
+}
+
+#d3s-mt-10 {
+	margin-top: 10px;
+}
+
+#d3s-mt-20 {
+	margin-top: 20px;
+}
+
+#d3s-mt-30 {
+	margin-top: 30px;
+}
+
+#d3s-mt-40 {
+	margin-top: 40px;
+}
+
+.d3s-mt-40 {
+	margin-top: 40px;
+}
+
+.d3s-mt-50 {
+	margin-top: 50px;
+}
+.d3s-mt-52 {
+	margin-top: 10px;
+}
+
+#d3s-mt-80 {
+	margin-top: 80px;
+}
+
+.d3s-mt-75 {
+	margin-top: 75px;
+}
+
+#d3s-mb-10 {
+	margin-bottom: 10px;
+}
+
+#d3s-mb-20 {
+	margin-bottom: 20px;
+}
+
+#d3s-mb-30 {
+	margin-bottom: 30px;
+}
+
+#d3s-mb-40 {
+	margin-bottom: 40px;
+}
+
+#container-fluid-margin {
+	margin: 0px 20px 0px 20px;
+}
+
+#space-evenly {
+	padding-right: 20px;
+}
+
+#bg-color {
+	background-color: #1565c0;
+}
+
+.selected {
+	background-color: #1565c0;
+	color: #fff;
+}
+
+#appFilter {
+	border: none;
+	border-bottom: 1px solid #959595;
+	-o-border-image: initial;
+	border-image: initial;
+	border-radius: 0;
+	color: #fff !important;
+	text-indent: 12px;
+	background-color: transparent !important;
+	box-shadow: none;
+	height: 28px;
+	padding-bottom: 3px;
+	width: 240px;
+	margin-left: -25px;
+}
+
+.searchboxInput {
+	border: none;
+	border-bottom: 1px solid #959595;
+	-o-border-image: initial;
+	border-image: initial;
+	border-radius: 0;
+	color: #fff !important;
+	text-indent: 12px;
+	background-color: transparent !important;
+	box-shadow: none;
+	height: 28px;
+	padding-bottom: 3px;
+	width: 240px;
+	margin-left: -25px;
+}
+
+.selectInput {
+	border-bottom: 1px solid #959595;
+	color: #fff !important;
+	background-color: transparent !important;
+}
+
+.dropDown-width {
+	width: 200px;
+}
+
+.phase-dropDown-width {
+	width: 200px;
+}
+
+.options {
+	color: #000000;
+}
+
+.right-side {
+	position: absolute;
+	right: 12%;
+	top: 210px;
+	left: 47%;
+	z-index: 1;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+#button {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 1px solid #dd6a2c;
+	background-color: #dd6a2c;
+	color: #fff;
+	outline-width: 0;
+	font-size: 20px;
+	padding: 9px;
+	text-align: center;
+}
+
+.glyphicon {
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-family: Glyphicons Halflings;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.search-icon {
+	position: relative;
+	left: 10px;
+	bottom: 5px;
+	color: #fff;
+}
+
+.li-align {
+	position: relative;
+	bottom: 12px;
+}
+
+#textAlign {
+	text-align: center;
+}
+
+#dropDownMenu {
+	margin: 0;
+	padding: 0;
+	left: -23px;
+}
+
+#dropDownMenu>li>a {
+	margin: 0;
+	padding: 0;
+}
+
+.align-right {
+	float: right;
+}
+
+#accordion-button-clr {
+	background-color: #1565c0;
+	color: #fff;
+}
+
+.btn-export {
+	float: right;
+	background-color: #31d2f2;
+	color: #fff;
+	margin-top: -5px;
+}
+
+.caret {
+	bottom: 35px;
+	position: relative;
+	color: #1565c0;
+	right: 94%;
+}
+
+#caret {
+	bottom: 35px;
+	position: relative;
+	color: #1565c0;
+	right: 94%;
+}
+
+/* <!-- ========== Data Characteritics for Dashboard ========== --> */
+#chart {
+	width: 98%;
+	height: 400px;
+	margin-left: 10px;
+	display: flex;
+}
+
+#chart #numbers {
+	width: 50px;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	float: left;
+}
+
+#chart #numbers li:first-child {
+	margin-top: 15px;
+}
+
+#chart #numbers li {
+	text-align: right;
+	padding-right: 1em;
+	list-style: none;
+	height: 15px;
+	position: relative;
+}
+
+#chart #numbers li:last-child {
+	height: 18px;
+}
+
+#chart #numbers li span {
+	position: absolute;
+	bottom: 0;
+	right: 10px;
+}
+
+#chart #bars {
+	display: inline-block;
+	width: 600px;
+	margin-top: -120px;
+}
+
+.bars-align {
+	position: relative;
+	right: 20px;
+	height: 0px;
+}
+
+.numbers-align {
+	position: relative;
+	right: 18px;
+}
+
+#chart #bars li {
+	display: table-cell;
+	width: 100px;
+	height: 300px;
+	margin: 0;
+	text-align: center;
+	position: relative;
+}
+
+#chart #bars li .bar {
+	display: block;
+	width: 40px;
+	margin-left: -25px;
+	background: #486ccc;
+	position: absolute;
+	bottom: 0;
+}
+
+#chart #bars li .bar:hover {
+	background: #5AE;
+	cursor: pointer;
+}
+
+#chart #bars li .bar:hover:before {
+	color: #000;
+	content: attr(data-percentage);
+	position: relative;
+	bottom: 20px;
+}
+
+#chart #bars li span {
+	width: 100%;
+	position: absolute;
+	bottom: -2em;
+	left: -32px;
+	text-align: center;
+}
+
+.ht-270 {
+	height: 270px !important;
+}
+
+.ht-290 {
+	height: 290px !important;
+}
+
+.ht-233 {
+	height: 233px !important;
+}
+
+.pagination-align {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	bottom: 7px;
+	float: right;
+}
+
+.iconColor {
+	color: #1565c0;
+}
+
+.user-ellipsis {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.doughnut-legend {
+	list-style: none;
+	margin: 0;
+}
+
+.doughnut-legend span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	margin-right: 16px;
+	margin-bottom: -2px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.doughnut-legend li {
+	margin-bottom: 10px;
+	white-space: nowrap;
+}
+
+.doughnut-legend2 {
+	list-style: none;
+	margin: 0;
+}
+
+.doughnut-legend2 span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	margin-right: 16px;
+	margin-bottom: -2px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.doughnut-legend2 li {
+	margin-bottom: 10px;
+	white-space: nowrap;
+}
+
+.searchResult {
+    position: absolute;
+    width: 25%;
+    max-width: 870px;
+    cursor: pointer;
+    overflow-y: auto;
+    max-height: 400px;
+    box-sizing: border-box;
+    z-index: 1001;
+    font-size: 12px;
+}
+
+ .link-class:hover {
+   background-color:#1565c0;
+   color: #fff;
+  }
+.pie-legend {
+	list-style: none;
+	margin: 0;
+	white-space: nowrap
+}
+
+.doughnut-legend2 li {
+	margin-bottom: 10px;
+	white-space: nowrap;
+}
+
+.pie-legend {
+	list-style: none;
+	margin: 0;
+}
+
+.pie-legend span {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	margin-right: 16px;
+	margin-bottom: -2px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.pie-legend li {
+	margin-bottom: 10px;
+	white-space: nowrap;
+}
+
+.flow-container {
+	margin-left: 0%;
+}
+
+.withPhase, 
+.withoutPhase {
+	display: none;
+}
+
+.display {
+	display: block;
+}
+
+/* <!-- ========== OpportunityList.jsp && Dashboard.jsp ========== --> */
+@media only screen and (min-width:912px) and (max-width: 1114px) {
+	.cbp-vm-view-grid ul li {
+		padding-top: 68px;
+		width: 22%;
+		text-align: center;
+		box-shadow: 5px 5px 5px 5px #dbdbdb;
+		display: inline-block;
+		vertical-align: top;
+	}
+	#ul_id {
+		margin-left: 35px;
+	}
+}
+
+@media only screen and (min-width:980px) and (max-width:1158px) {
+	.form-wizard-header li i {
+		font-size: 9px;
+	}
+}
+
+
+@media only screen and (min-width:992px) and (max-width: 1399px) {
+   .phase-btn{
+		
+        margin-left:-13px;
+
+    }
+}
+
+@media only screen and (min-width:1400px) and (max-width: 1499px) {
+    .phase-btn{
+		
+        margin-left:-17px;
+
+    }
+}
+
+@media only screen and (min-width:1500px) and (max-width: 1600px) {
+    .phase-btn{
+		
+        margin-left:-18px;
+
+    }
+}
+
+@media only screen and (min-width:1601px) and (max-width: 1800px) {
+     .phase-btn{
+		
+        margin-left:-20px;
+
+    }
+}
+
+@media only screen and (min-width:1801px) and (max-width: 2000px) {
+     .phase-btn{
+		
+        margin-left:-24px;
+
+    }
+}
+
+/* <!-- ========== Users.jsp ========== --> */
+
+@media only screen and (min-width:992px) and (max-width: 1399px) {
+   .phase-btn1{
+		
+        margin-left:-33px;
+
+    }
+}
+
+@media only screen and (min-width:1400px) and (max-width: 1499px) {
+    .phase-btn1{
+		
+        margin-left:-25px;
+
+    }
+}
+
+@media only screen and (min-width:1500px) and (max-width: 1600px) {
+    .phase-btn1{
+		
+        margin-left:-18px;
+
+    }
+}
+
+@media only screen and (min-width:1601px) and (max-width: 1800px) {
+     .phase-btn1{
+		
+        margin-left:-10px;
+
+    }
+}
+
+@media only screen and (min-width:1801px) and (max-width: 2000px) {
+     .phase-btn1{
+		
+        margin-left:-3px;
+
+    }
+}
+
+
+/* <!-- ========== OpportunityGrid.jsp ========== --> */
+@media only screen and (min-width:992px) and (max-width: 1399px) {
+	.flow-container {
+		margin-left: 0%;
+	}
+}
+
+@media only screen and (min-width:1400px) and (max-width: 1600px) {
+	.flow-container {
+		margin-left: 5%;
+	}
+	
+	.card-m-align {
+		margin-left: 15px;	
+	}
+}
+
+@media only screen and (min-width:1601px) and (max-width: 1800px) {
+	.flow-container {
+		margin-left: 10%;
+	}
+	
+	.text-align {
+		margin-left: 10%;
+	}
+	
+	.card-m-align {
+		margin-left: 20px;	
+	}
+}
+
+@media only screen and (min-width:1801px) and (max-width: 2000px) {
+	.flow-container {
+		margin-left: 10%;
+	}
+	
+	.text-align {
+		margin-left: 15%;
+	}
+	
+	.card-m-align {
+		margin-left: 30px;	
+	}
+}
+
+@media only screen and (min-width:2001px) and (max-width: 2200px) {
+	.flow-container {
+		margin-left: 15%;
+	}
+	
+	.text-align {
+		margin-left: 20%;
+	}
+	
+	.card-m-align {
+		margin-left: 30px;	
+	}
+}
+
+/* <!-- ========== Dashboard.jsp ========== --> */
+@media only screen and (min-width:1400px) and (max-width:1599px) {
+	.align {
+		margin-left: 5%;
+	}
+	
+	.text-align {
+		margin-left: 10%;
+	}
+}
+
+@media only screen and (min-width:1600px) and (max-width:2000px) {
+	.align {
+		margin-left: 120px;
+	}
+}
+
+@media only screen and (min-width:2000px) and (max-width:2600px) {
+	.align {
+		margin-left: 229px;
+	}
+}
+
+@media only screen and (min-width:1600px) and (max-width:2000px) {
+	.align1 {
+		margin-left: 59px;
+	}
+}
+
+@media only screen and (min-width:2000px) and (max-width:2600px) {
+	.align1 {
+		margin-left: 115px;
+	}
+}
+
+@media only screen and (min-width:1600px) and (max-width:2000px) {
+	.align2 {
+		margin-left: 69px;
+	}
+}
+
+@media only screen and (min-width:2000px) and (max-width:2600px) {
+	.align2 {
+		margin-left: 125px;
+	}
+}

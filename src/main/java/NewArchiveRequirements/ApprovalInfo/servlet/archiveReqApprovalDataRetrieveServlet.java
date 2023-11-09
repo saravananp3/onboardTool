@@ -30,7 +30,7 @@ public class archiveReqApprovalDataRetrieveServlet extends HttpServlet {
         try
         {
             archiveReqApprovalDataRetrieveService dataService = new archiveReqApprovalDataRetrieveService(Id, OppName);
-            if(approverId.isBlank() || approverId.isEmpty())
+            if( approverId.isEmpty())
             {
                 jsonArray.addAll(dataService.ApprovalDataRetrieve());
 

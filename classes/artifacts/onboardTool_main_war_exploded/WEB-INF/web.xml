@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee; http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>D3Sixty</display-name>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>intakereport1</display-name>
+  	<servlet-name>intakereport1</servlet-name>
+  	<servlet-class>compliance.servlet.intakereport1</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>Intakereport</display-name>
+  	<servlet-name>Intakereport</servlet-name>
+  	<servlet-class>Compliance.servlet.Intakereport</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>IntakeReport</display-name>
+  	<servlet-name>IntakeReport</servlet-name>
+  	<servlet-class>compliance.servlet.IntakeReport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>intakereport1</servlet-name>
+  	<url-pattern>/intakereport1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Intakereport</servlet-name>
+  	<url-pattern>/Intakereport</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>IntakeReport</servlet-name>
+  	<url-pattern>/IntakeReport</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>Home.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <description>Location to zstore uploaded file</description>
+    <param-name>file-upload</param-name>
+    <param-value>
+         C:\apache-tomcat-9.0.0.M20\webapps\data\
+     </param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4j-config-location</param-name>
+    <param-value>WEB-INF/log4j.properties</param-value>
+  </context-param>
+  <!-- <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>D3Sixty</web-resource-name>
+        <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+</security-constraint> -->
+</web-app>

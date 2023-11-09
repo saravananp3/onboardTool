@@ -284,9 +284,13 @@
         
         String query102 = "CREATE TABLE IF NOT EXISTS `archive_req_addendum_fileupload` (`seq_num` int(11) NOT NULL,`section_no` int(11) DEFAULT NULL, `oppId` varchar(255) DEFAULT NULL,`File_Name` varchar(255) DEFAULT NULL,`doc` longblob);";
         statement.executeUpdate(query102);
-        
-               
-        
+        String query103 = "CREATE TABLE IF NOT EXISTS `finance_info_template_details` (`  seq_no ` int(11) NOT NULL,` prj_name` VARCHAR(255), `app_name` VARCHAR(255),options` VARCHAR(255),`label_name` VARCHAR(255),column_name ` VARCHAR(255),`type` varchar(255) ,` mandatory` varchar(255),` value` varchar(255));";
+        statement.executeUpdate(query103);
+      
+        String query104 = "CREATE TABLE IF NOT EXISTS `finance_informations_details` (`  seq_no ` int(11) NOT NULL, `Id` VARCHAR(255),` prj_name` VARCHAR(255), `app_name` VARCHAR(255),options` VARCHAR(255),`label_name` VARCHAR(255),column_name ` VARCHAR(255),`type` varchar(255) ,` mandatory` varchar(255),` value` varchar(255),` usermandatoryflag` varchar(255));";
+        statement.executeUpdate(query104);      
+        String query105 = "CREATE TABLE IF NOT EXISTS `finance_informations` (`  seq_no ` int(11) NOT NULL, `Id` VARCHAR(255),` prj_name` VARCHAR(255), `app_name` VARCHAR(255),options` VARCHAR(255),`label_name` VARCHAR(255),column_name ` VARCHAR(255),`type` varchar(255) ,` mandatory` varchar(255),` value` varchar(255),` usermandatoryflag` varchar(255));";
+        statement.executeUpdate(query105);    
 %>
 <% } catch (Exception ex) {
     ex.printStackTrace();
